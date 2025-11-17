@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option csharp_namespace = "Microsoft.Azure.Workflows.Sdk.Grpc";
+
+// The job session defintion.
+service IJobSessionService {
+  // Sends a greeting
+  rpc GetActionOutputs (ActionRequest) returns (ActionResponse);
+  rpc GetTriggerOutput (TriggerRequest) returns (TriggerResponse);
+  rpc CreateWorkflows (WorkflowsRequest) returns (WorkflowsResponse);
+}
+
+// The request message containing the action name and session id.
+message ActionRequest {
+  string sessionId = 1;
+  string actionName = 2;
+}
+
+// The response message containing the action output.
+message ActionResponse {
+  string outputs = 1;
+}
+
+// The request message containing the trigger session id.
+message TriggerRequest {
+  string sessionId = 1;
+}
+
+// The response message containing the trigger output.
+message TriggerResponse {
+  string outputs = 1;
+}
+
+// The request message containing the workflows session id.
+message WorkflowsRequest {
+  string workflows = 1;
+}
+
+// The request message containing the workflows session id.
+message WorkflowsResponse {
+  string workflows = 1;
+} 

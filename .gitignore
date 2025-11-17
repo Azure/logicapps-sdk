@@ -182,6 +182,9 @@ AutoTest.Net/
 # Installshield output folder
 [Ee]xpress/
 
+#Nuget package
+nugetpackages/
+
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
 DocProject/Help/*.HxT
