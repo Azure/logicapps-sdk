@@ -1,0 +1,87 @@
+﻿// -----------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+// -----------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Represents a workflow trigger for HTTP requests, providing a strongly-typed output.
+    /// </summary>
+    public class HttpRequestTrigger : IOutputWorkflowTrigger<HttpRequestTriggerOutput>
+    {
+        /// <summary>
+        /// The request input parameters.
+        /// </summary>
+        private HttpRequestTriggerInput input;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpAction{T}"/> class.
+        /// </summary>
+        /// <param name="method">The HTTP method to use for the request (optional).</param>
+        /// <param name="requestBodyJsonSchema">The request body JSON schema (optional).</param>
+        /// <param name="relativePath">The relative path (optional).</param>
+        public HttpRequestTrigger(
+            HttpMethod method = null,
+            JToken requestBodyJsonSchema = null,
+            string relativePath = null)
+        {
+            if (method != null || requestBodyJsonSchema != null || relativePath != null)
+            {
+                this.input = new HttpRequestTriggerInput
+                {
+                    Method = method,
+                    Schema = requestBodyJsonSchema,
+                    RelativePath = relativePath
+                };
+            }
+            
+        }
+
+        /// <summary>
+        /// Gets the name of the HTTP request trigger.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the trigger definition for the HTTP request trigger.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="FlowTemplateTrigger"/> configured for HTTP request operations.
+        /// </returns>
+        public FlowTemplateTrigger GetTriggerDefinition()
+        {
+            // Implementation for getting the trigger definition
+            return new FlowTemplateTrigger
+            {
+                Type = FlowTemplateOperationType.Request,
+                Kind = FlowTemplateOperationKind.Http,
+                Inputs = this.input?.ToJToken(),
+            };
+        }
+
+        /// <summary>
+        /// Sets the name of the HTTP request trigger.
+        /// </summary>
+        /// <param name="name">The name to assign to the trigger.</param>
+        public void WithName(string name)
+        {
+            this.Name = name;
+        }
+        
+        /// <summary>
+        /// Sets the recurrence of the conversational flow trigger.
+        /// </summary>
+        /// <param name="r">The recurrence object.</param>
+        public void WithRecurrence(FlowRecurrence r)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Gets the output parameters for the HTTP trigger.
+        /// </summary>
+        public HttpRequestTriggerOutput TriggerOutput { get; private set; } = new HttpRequestTriggerOutput();
+    }
+}
