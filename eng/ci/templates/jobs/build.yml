@@ -1,7 +1,7 @@
 parameters:
 - name: official
   type: boolean
-  default: false
+  default: true
 - name: skipStorage
   type: boolean
   default: false

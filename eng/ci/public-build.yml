@@ -27,16 +27,20 @@ resources:
     type: git
     name: 1ESPipelineTemplates/1ESPipelineTemplates
     ref: refs/tags/release
+  - repository: eng
+    type: git
+    name: engineering
+    ref: refs/tags/release
 
 variables:
   - template: /eng/ci/templates/variables/build.yml@self
 
 extends:
-  template: v1/1ES.Unofficial.PipelineTemplate.yml@1es
+  template: v1/1ES.Official.PipelineTemplate.yml@1es
   parameters:
 
     pool:
-      name: 1es-pool-azfunc-public
+      name: 1es-pool-azfunc
       image: 1es-windows-2022
       os: windows
       ${{ if eq( variables['Build.Reason'], 'Schedule' ) }}:
@@ -59,4 +63,4 @@ extends:
         jobs:
         - template: /eng/ci/templates/jobs/build.yml@self
           parameters:
-            official: false
+            official: true
