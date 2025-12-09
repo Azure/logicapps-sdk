@@ -1,0 +1,7 @@
+steps:
+
+- task: UseDotNet@2 # Needed by some of our test resources
+  displayName: Install .NET 8
+  inputs:
+    packageType: sdk
+    version: 8.x
