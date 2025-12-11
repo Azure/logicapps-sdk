@@ -1,0 +1,21 @@
+<Project>
+
+  <!-- Common NuGet settings -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable> <!-- default nothing packs, unless opted in -->
+    <Authors>Microsoft</Authors>
+    <Company>Microsoft</Company>
+    <Product>Azure WebJobs SDK</Product>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/Azure/logicapps-sdk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>Microsoft Azure Logic Apps SDK</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Version.props" />
+
+</Project>
