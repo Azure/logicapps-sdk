@@ -158,14 +158,106 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             WorkflowBuilderFactory.WorkflowLoggerService?.LogDebug($"Retrieving codeful workflow artifacts '{WorkflowBuilderFactory.WorkflowBuilders?.Count}'");
 
+            // Generate all flow definitions once
+            var flows = WorkflowBuilderFactory.WorkflowBuilders.ToDictionary(
+                kvp => kvp.Key,
+                kvp => kvp.Value.GetFlowDefinition());
+
             var codefulArtifacts = new CodefulWorkflowsArtifacts
             {
-                Flows = WorkflowBuilderFactory.WorkflowBuilders.ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value.GetFlowDefinition()),
+                Flows = flows,
+                Connections = ExtractConnections(flows)
             };
 
             return codefulArtifacts;
+        }
+
+        /// <summary>
+        /// Extracts API connections from workflow definitions.
+        /// </summary>
+        /// <param name="flows">Dictionary of workflow definitions</param>
+        private static ConnectionsArtifacts ExtractConnections(Dictionary<string, FlowPropertiesDefinition> flows)
+        {
+            var connections = new ConnectionsArtifacts();
+            var connectionNames = new HashSet<string>();
+
+            // Scan all workflow definitions for API connection actions and triggers
+            foreach (var flowDefinition in flows.Values)
+            {
+
+                // Scan actions
+                if (flowDefinition.Definition?.Actions != null)
+                {
+                    foreach (var action in flowDefinition.Definition.Actions.Values)
+                    {
+                        if (action.Type == FlowTemplateOperationType.ApiConnection ||
+                            action.Type == FlowTemplateOperationType.ApiConnectionWebhook ||
+                            action.Type == FlowTemplateOperationType.ApiConnectionNotification)
+                        {
+                            var inputs = action.Inputs as ApiConnectionActionInput;
+                            if (inputs?.Host?.Connection?.ReferenceName != null)
+                            {
+                                connectionNames.Add(inputs.Host.Connection.ReferenceName);
+                            }
+                        }
+                    }
+                }
+
+                // Scan triggers
+                if (flowDefinition.Definition?.Triggers != null)
+                {
+                    foreach (var trigger in flowDefinition.Definition.Triggers.Values)
+                    {
+                        if (trigger.Type == FlowTemplateOperationType.ApiConnection ||
+                            trigger.Type == FlowTemplateOperationType.ApiConnectionWebhook ||
+                            trigger.Type == FlowTemplateOperationType.ApiConnectionNotification)
+                        {
+                            var inputs = trigger.Inputs as ApiConnectionActionInput;
+                            if (inputs?.Host?.Connection?.ReferenceName != null)
+                            {
+                                connectionNames.Add(inputs.Host.Connection.ReferenceName);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Create connection definitions for each unique connection
+            foreach (var connectionName in connectionNames)
+            {
+                var connectorName = InferConnectorName(connectionName);
+                connections.ManagedApiConnections[connectionName] = new ManagedApiConnection
+                {
+                    Api = new ApiInfo
+                    {
+                        Id = $"/subscriptions/{{subscriptionId}}/providers/Microsoft.Web/locations/{{location}}/managedApis/{connectorName}"
+                    },
+                    Connection = new ConnectionInfo
+                    {
+                        Id = $"/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Web/connections/{connectionName}"
+                    },
+                    Authentication = new AuthenticationInfo
+                    {
+                        Type = "ManagedServiceIdentity"
+                    }
+                };
+            }
+
+            return connections;
+        }
+
+        /// <summary>
+        /// Infers the connector name from a connection name.
+        /// </summary>
+        /// <param name="connectionName">The connection name (e.g., "msnweather-connection")</param>
+        /// <returns>The inferred connector name (e.g., "msnweather")</returns>
+        private static string InferConnectorName(string connectionName)
+        {
+            // Simple heuristic: extract connector name from connection name
+            // e.g., "msnweather-connection" -> "msnweather"
+            // e.g., "office365_connection" -> "office365"
+            var parts = connectionName.Split(new[] { '-', '_' }, StringSplitOptions.RemoveEmptyEntries);
+            return parts[0].ToLowerInvariant();
         }
 
         #region Private Methods.
