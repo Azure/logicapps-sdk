@@ -26,26 +26,34 @@ namespace MyWorkflowExperiment
             // Get the workflow artifacts (JSON definitions)
             var artifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
 
-            // Save each workflow definition to a JSON file
-            var outputDir = Path.Combine(Directory.GetCurrentDirectory(), "GeneratedWorkflows");
-            Directory.CreateDirectory(outputDir);
+            // Save workflows in Azure Logic Apps Standard structure
+            var outputDir = Path.Combine(Directory.GetCurrentDirectory(), "LogicApp");
+            WorkflowArtifactWriter.SaveAsLogicAppStandard(artifacts, outputDir);
 
+            // Display summary
             Console.WriteLine($"Generated {artifacts.Flows.Count} workflow(s):\n");
 
             foreach (var flow in artifacts.Flows)
             {
-                var fileName = $"{flow.Key}.json";
-                var filePath = Path.Combine(outputDir, fileName);
-                var json = Newtonsoft.Json.JsonConvert.SerializeObject(flow.Value, Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(filePath, json);
-
+                var workflowPath = Path.Combine(outputDir, flow.Key, "workflow.json");
                 Console.WriteLine($"  ✓ {flow.Key}");
                 Console.WriteLine($"    Kind: {flow.Value.Kind}");
-                Console.WriteLine($"    File: {filePath}");
+                Console.WriteLine($"    File: {workflowPath}");
                 Console.WriteLine();
             }
 
-            Console.WriteLine($"\nAll workflow definitions saved to: {outputDir}");
+            // Display connections if any
+            if (artifacts.Connections?.ManagedApiConnections?.Count > 0)
+            {
+                var connectionsPath = Path.Combine(outputDir, "connections.json");
+                Console.WriteLine($"  ✓ connections.json");
+                Console.WriteLine($"    Connections: {string.Join(", ", artifacts.Connections.ManagedApiConnections.Keys)}");
+                Console.WriteLine($"    File: {connectionsPath}");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"All files saved to: {outputDir}");
+            Console.WriteLine("\nThis structure is ready for Azure Logic Apps (Standard) deployment!");
         }
 
         /// <summary>
