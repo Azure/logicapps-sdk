@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -3,7 +3,7 @@ using Microsoft.Azure.Workflows.Sdk.Connectors;
 using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
 using System.Net;
 
-namespace MyWorkflowExperiment
+namespace SampleWorkflows
 {
     public class Program
     {

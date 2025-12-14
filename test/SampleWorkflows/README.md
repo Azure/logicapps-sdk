@@ -1,4 +1,4 @@
-# My Workflow Experiment
+# Sample Workflows
 
 This project demonstrates how to use the **Azure Logic Apps SDK** to create workflows programmatically using C# instead of the visual designer.
 
@@ -16,18 +16,27 @@ When you run the program, it generates standard Azure Logic Apps JSON workflow d
 ## Project Structure
 
 ```
-MyWorkflowExperiment/
+SampleWorkflows/
 ├── Program.cs                    # Workflow definitions in C#
-├── MyWorkflowExperiment.csproj   # Project file (references the SDK)
-├── GeneratedWorkflows/           # Output directory (generated at runtime)
-│   ├── SimpleHttpWorkflow.json
-│   ├── WeatherLookupWorkflow.json
-│   ├── ScheduledWorkflow.json
-│   └── HttpApiWorkflow.json
+├── SampleWorkflows.csproj        # Project file (references the SDK)
+├── LogicApp/                     # Output directory (generated at runtime)
+│   ├── SimpleHttpWorkflow/
+│   │   └── workflow.json
+│   ├── WeatherLookupWorkflow/
+│   │   └── workflow.json
+│   ├── ScheduledWorkflow/
+│   │   └── workflow.json
+│   ├── HttpApiWorkflow/
+│   │   └── workflow.json
+│   └── connections.json
+├── deploy-to-azure.ps1           # PowerShell deployment script
+├── deploy-to-azure.sh            # Bash deployment script
 └── README.md                     # This file
 ```
 
 ## How to Run
+
+### Generate Workflow Artifacts
 
 ```bash
 dotnet run
@@ -35,8 +44,59 @@ dotnet run
 
 This will:
 1. Build and execute the workflow definitions
-2. Generate JSON files in the `GeneratedWorkflows/` directory
-3. Display a summary of created workflows
+2. Generate JSON files in the `LogicApp/` directory with Azure-compatible structure
+3. Automatically generate `connections.json` for any managed connectors used
+4. Display a summary of created workflows
+
+### Deploy to Azure
+
+After generating the artifacts, deploy them to Azure using the provided deployment scripts.
+
+#### Prerequisites
+- Azure CLI installed and configured
+- Logged in to Azure: `az login`
+- Appropriate permissions to create resources in your subscription
+
+#### Windows (PowerShell)
+
+```powershell
+.\deploy-to-azure.ps1 `
+    -SubscriptionId "your-subscription-id" `
+    -ResourceGroup "your-resource-group" `
+    -LogicAppName "your-logic-app-name" `
+    -Location "eastus"
+```
+
+#### Linux/Mac (Bash)
+
+```bash
+./deploy-to-azure.sh \
+    --subscription-id "your-subscription-id" \
+    --resource-group "your-resource-group" \
+    --logic-app-name "your-logic-app-name" \
+    --location "eastus"
+```
+
+**Parameters:**
+- `SubscriptionId` / `--subscription-id` (required): Your Azure subscription ID
+- `ResourceGroup` / `--resource-group` (required): Resource group name (will be created if doesn't exist)
+- `LogicAppName` / `--logic-app-name` (required): Logic App name (will be created if doesn't exist)
+- `Location` / `--location` (optional): Azure region (default: eastus)
+- `ArtifactsPath` / `--artifacts-path` (optional): Path to generated artifacts (default: ./LogicApp)
+
+**What the deployment script does:**
+1. Creates resource group if it doesn't exist
+2. Creates Logic App (Standard) instance if it doesn't exist
+3. Creates required storage account for the Logic App
+4. Creates API connections defined in connections.json
+5. Deploys all workflows to the Logic App
+6. Provides a portal URL to manage your Logic App
+
+#### Post-Deployment Steps
+
+1. **Configure API Connections**: If your workflows use managed connectors (like MSN Weather), you'll need to authenticate these connections in the Azure Portal
+2. **Enable Workflows**: Enable the workflows you want to run
+3. **Test**: Test your workflows using the provided endpoints
 
 ## Example Workflows Created
 

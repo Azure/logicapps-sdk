@@ -99,7 +99,8 @@ logicapps-sdk/
 │   ├── Entities/             # Core entity definitions
 │   ├── Expressions/          # Expression conversion logic
 │   └── generated/            # Auto-generated connector bindings
-└── MyWorkflowExperiment/     # Example project demonstrating SDK usage
+└── test/
+    └── SampleWorkflows/      # Example project demonstrating SDK usage
 ```
 
 ## Getting Started
@@ -175,7 +176,7 @@ WorkflowArtifactWriter.SaveAsLogicAppStandard(artifacts, "./LogicApp");
 
 ## Examples
 
-See the [MyWorkflowExperiment](./MyWorkflowExperiment) directory for complete working examples including:
+See the [test/SampleWorkflows](./test/SampleWorkflows) directory for complete working examples including:
 
 1. Simple HTTP request/response workflow
 2. Weather lookup with managed connector
