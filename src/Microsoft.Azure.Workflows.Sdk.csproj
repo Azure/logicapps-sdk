@@ -23,10 +23,6 @@
       <ExcludeFromStyleCop Include="**\*.cs" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <PackageVersion>1.0.0</PackageVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.9" IncludeAssets="all" />
     <PackageReference Include="Grpc.Core.Api" Version="2.60.0" IncludeAssets="all" />

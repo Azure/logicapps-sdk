@@ -21,7 +21,12 @@
     <BuildCounter Condition="'$(BuildCounter)' == ''">0</BuildCounter>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(CI)' != 'true'">
+    <!-- Constant file version for local enviornment and main branch. -->
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(CI)' == 'true'">
     <FileVersion>$(VersionPrefix).$(BuildNumber)</FileVersion>
   </PropertyGroup>
 

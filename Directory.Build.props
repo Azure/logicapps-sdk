@@ -11,7 +11,7 @@
   <Import Project="$(EngBuildRoot)Engineering.props" />
 
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
 </Project>
