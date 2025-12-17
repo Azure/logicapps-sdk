@@ -26,10 +26,6 @@
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="$(RepoRoot)stylecop.json" Link="stylecop.json" Visible="false" />
-  </ItemGroup>
-
   <Import Project="$(MSBuildThisFileDirectory)Release.props" />
 
 </Project>

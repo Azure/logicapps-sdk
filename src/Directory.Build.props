@@ -3,7 +3,6 @@
           Condition="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')) != ''" />
 
   <PropertyGroup>
-    <IsPackable>true</IsPackable>
     <ArtifactsBinOutputName>bin/src</ArtifactsBinOutputName>
   </PropertyGroup>
 
