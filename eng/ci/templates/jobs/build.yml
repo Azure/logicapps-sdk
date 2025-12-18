@@ -1,0 +1,68 @@
+parameters:
+- name: official
+  type: boolean
+  default: false
+
+jobs:
+- job: build
+  displayName: Build
+
+  variables:
+  - name: pack_dir
+    value: $(Build.ArtifactStagingDirectory)/pkg
+  - name: pack_projects
+    readonly: true
+    value: |
+        src\Microsoft.Azure.Workflows.Sdk.csproj
+
+  templateContext:
+    outputParentDirectory: $(Build.ArtifactStagingDirectory)
+    outputs:
+    - output: pipelineArtifact
+      displayName: Publish logs
+      path: $(pack_dir)
+      artifact: drop_packages
+
+  steps:
+    - template: /eng/ci/templates/steps/install-dotnet.yml@self
+
+    - task: DotNetCoreCLI@2
+      displayName: Restore $(project)
+      inputs:
+        command: custom
+        custom: restore
+        projects: $(project)
+        arguments: -v m
+
+    - task: DotNetCoreCLI@2
+      displayName: Build $(project)
+      inputs:
+        command: build
+        projects: $(project)
+        arguments: -c $(configuration) -v m --no-restore
+
+    - ${{ if eq(parameters.official, true) }}:
+      - template: ci/sign-files.yml@eng
+        parameters:
+          displayName: Sign assemblies
+          folderPath: out/bin/src
+          minimatch: true
+          pattern: |
+            **/Microsoft.Azure.Workflows.Sdk*.dll
+          signType: dll
+
+    - task: DotNetCoreCLI@2
+      displayName: Pack
+      inputs:
+        command: custom
+        custom: pack
+        arguments: -c $(configuration) -v m -o $(pack_dir) --no-build
+        projects: $(pack_projects)
+
+    - ${{ if eq(parameters.official, true) }}:
+      - template: ci/sign-files.yml@eng
+        parameters:
+          displayName: Sign nuget packages
+          folderPath: $(pack_dir)
+          pattern: Microsoft.Azure.Workflows.Sdk*.nupkg
+          signType: nuget
