@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<object>> requestBody = null,
             Expression<Func<Dictionary<string, string>>> headers = null)
         {
-            if (requestBody != null)
-            Console.WriteLine("FRUITCAKE STORE: " + requestBody + " -> " + ExpressionConverter.ConvertObject(requestBody));
-
             return new NestedWorkFlowAction<JToken>(
                 ExpressionConverter.Convert(workflowReferenceName),
                 requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,

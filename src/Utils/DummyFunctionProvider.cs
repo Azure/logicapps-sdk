@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>  
         public Task<ImmutableArray<IFunctionMetadata>> GetFunctionMetadataAsync(string directory)
         {
-            Console.WriteLine("Apseth loading agent endpoint functions from worker.");
-
             var metadataList = new List<IFunctionMetadata>();
             var agentFunctionRawBindings = new List<string>
             {
@@ -67,6 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             return $"{typeof(DummyFunctionProvider).FullName}.{nameof(DummyFunctionProvider.Callback)}";
         }
+
         /// <summary>
         /// Gets the script file.
         /// </summary>
@@ -80,7 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public static void Callback()
         {
-            Console.WriteLine("Dummy Callback called.");
         }
     }
 }

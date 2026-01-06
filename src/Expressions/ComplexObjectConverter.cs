@@ -1,17 +1,23 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
-    using Newtonsoft.Json.Linq;
-    using System.ComponentModel;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.CompilerServices;
+    using Newtonsoft.Json.Linq;
 
+    /// <summary>
+    /// Converts complex object expression trees to JSON tokens.
+    /// </summary>
     internal class ComplexObjectConverter : VisitorBase<JToken, object>
     {
+        /// <summary>
+        /// Determines whether the specified type is a compiler-generated anonymous type.
+        /// </summary>
+        /// <param name="type">The type to inspect.</param>
         public static bool IsAnonymousType(Type type)
         {
             if (type == null) return false;
@@ -25,50 +31,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return isClass && isSealed && isNotPublic && hasCompilerGeneratedAttribute && nameContainsAnonymousType;
         }
 
-        public override JToken Visit(ListInitExpression e, object p)
+        /// <summary>
+        /// Visits a list initialization expression.
+        /// </summary>
+        /// <param name="expr">The list initialization expression to visit.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(ListInitExpression expr, object param)
         {
+            expr.NewExpression.Visit(this, param);
 
-            e.NewExpression.Visit(this, p);
-            foreach (var init in e.Initializers)
-            {
-                Console.WriteLine(init.AddMethod);
-            }
-            Console.WriteLine("watermelon");
-            return base.Visit(e, p);
+            return base.Visit(expr, param);
         }
 
-        public override JToken Visit(BinaryExpression e, object p)
+        /// <summary>
+        /// Visits a binary expression, with special handling for string concatenation.
+        /// </summary>
+        /// <param name="expr">The binary expression to visit.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(BinaryExpression expr, object param)
         {
             var concat2 = typeof(string).GetMethod("Concat", [typeof(string), typeof(string)]);
-            Console.WriteLine(concat2);
 
-            if (e.Method == concat2)
+            if (expr.Method == concat2)
             {
                 var conv = new LogicConverter();
-                var node = e.Visit(conv, null);
-                Console.WriteLine("CONCAT2" + node.Render());
+                var node = expr.Visit(conv, null);
                 return new JValue(node.Render());
             }
 
-            Console.WriteLine($"BINARY {e.NodeType} METHOD {e.Method} EXPR {e}");
             throw new NotImplementedException();
         }
 
-        public override JToken Visit(ConstantExpression e, object p)
+        /// <summary>
+        /// Visits a constant expression.
+        /// </summary>
+        /// <param name="expr">The constant expression to visit.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(ConstantExpression expr, object param)
         {
-            if (e.Type == typeof(string))
+            if (expr.Type == typeof(string))
             {
-                return new JValue((string)e.Value);
+                return new JValue((string)expr.Value);
             }
-            throw new NotImplementedException($"ConstantExpression {e.Type} / {e.Value}");
+
+            throw new NotImplementedException($"ConstantExpression {expr.Type} / {expr.Value}");
         }
 
-        public override JToken Visit(NewExpression e, object p)
+        /// <summary>
+        /// Visits a new expression, with special handling for anonymous types.
+        /// </summary>
+        /// <param name="expr">The new expression to visit.</param>
+        /// <param name="param">Additional parameter passed to nested visits.</param>
+        public override JToken Visit(NewExpression expr, object param)
         {
-            if (IsAnonymousType(e.Type))
+            if (IsAnonymousType(expr.Type))
             {
-                var props = e.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                if (e.Arguments.Count != props.Length)
+                var props = expr.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                if (expr.Arguments.Count != props.Length)
                 {
                     throw new FormatException();
                 }
@@ -77,43 +96,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 for (var i = 0; i < props.Length; i++)
                 {
-                    var arg = e.Arguments[i];
+                    var arg = expr.Arguments[i];
                     var prop = props[i];
 
-                    result[prop.Name] = arg.Visit(this, p);
+                    result[prop.Name] = arg.Visit(this, param);
                 }
-                Console.WriteLine("Anonymous type detected!");
+
                 return result;
             }
 
-            Console.WriteLine($"NewExpression({e.Arguments.Count}) -> " + e.ToString());
             throw new NotImplementedException();
         }
 
-        public override JToken Visit(MemberExpression e, object p)
+        /// <summary>
+        /// Visits a member expression (property or field access).
+        /// </summary>
+        /// <param name="expr">The member expression to visit.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(MemberExpression expr, object param)
         {
             var conv = new LogicConverter();
             var node = e.Visit(conv, null);
-            Console.WriteLine("PROP ACESS" + node.Render());
+
             return new JValue(node.Render());
         }
 
-        public override JToken Visit(MethodCallExpression e, object p)
+        /// <summary>
+        /// Visits a method call expression, with special handling for string formatting.
+        /// </summary>
+        /// <param name="expr">The method call expression to visit.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(MethodCallExpression expr, object param)
         {
-            var method = e.Method;
+            var method = expr.Method;
             if (method.DeclaringType == typeof(string) && method.Name == "Format")
             {
                 var conv = new LogicConverter();
-                var node = e.Visit(conv, null);
-                Console.WriteLine("STRFORMAT" + node.Render());
+                var node = expr.Visit(conv, null);
+
                 return new JValue(node.Render());
             }
             throw new NotImplementedException();
         }
 
-        public override JToken Visit(Expression e, object _)
+        /// <summary>
+        /// Default visit method for unsupported expression types.
+        /// </summary>
+        /// <param name="expr">The expression that cannot be visited.</param>
+        /// <param name="param">Additional parameter (not used).</param>
+        public override JToken Visit(Expression expr, object param)
         {
-            Console.WriteLine("Can't visit " + e.NodeType + "/" + e.GetType() + " => " + e.ToString());
             throw new NotImplementedException();
         }
     }
