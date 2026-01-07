@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Workflow agent builder for constructing a workflow with multiple actions.
+    /// Workflow builder for constructing a workflow with multiple actions.
     /// </summary>
     public class WorkflowBuilder : IWorkflowBuilder
     {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Workflow agent builder for constructing a workflow with multiple actions.
+    /// Workflow builder for constructing a workflow with multiple actions.
     /// </summary>
     public class WorkflowBuilder<TTriggerOutput> : WorkflowBuilder
     {

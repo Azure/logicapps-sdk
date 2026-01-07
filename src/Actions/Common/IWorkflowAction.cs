@@ -4,8 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Newtonsoft.Json;
-
     /// <summary>
     /// IWorkfowAction interface defines the contract for workflow actions.
     /// </summary>
@@ -18,14 +16,26 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Extends IWorkflowAction to support actions with strongly-typed output bodies.
+    /// Extends IWorkflowAction to support actions with strongly-typed bodies for managed connectors.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public interface IOutputWorkflowAction<T> : IWorkflowAction
+    public interface IBodyWorkflowAction<T> : IWorkflowAction
     {
         /// <summary>
         /// Gets the body of the action.
         /// </summary>
         T Body { get; }
+    }
+
+    /// <summary>
+    /// Extends IWorkflowAction to support actions with strongly-typed output.
+    /// </summary>
+    /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
+    public interface IOutputWorkflowAction<T> : IWorkflowAction
+    {
+        /// <summary>
+        /// Gets the output of the action.
+        /// </summary>
+        T Output { get; }
     }
 }

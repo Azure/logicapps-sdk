@@ -1,28 +1,18 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 {
-    using System.Net;
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public static class MicrosoftformsExtensions
+    public class MicrosoftformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        public static IWorkflowTrigger WhenCreateFormWebhook([ConnectionName] string connectionId, [DynamicValues("ListForms")] Expression<Func<string>> formId)
-        {
-            var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            // callPayload.Body = ExpressionConverter.ConvertObject(requestBodyOfWebhook);
-            return new ApiConnectionTrigger(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        public static IOutputWorkflowAction<JToken> GetFormResponseById([ConnectionName] string connectionId, [DynamicValues("ListForms")] Expression<Func<string>> formId, Expression<Func<int>> responseId)
+        public IBodyWorkflowAction<JToken> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
         {
             var apiCallPath = String.Format("/formapi/api/forms('{0}')/responses", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
@@ -30,48 +20,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
             callPayload.Queries["response_id"] = ExpressionConverter.Convert(responseId);
             return new ApiConnectionAction<JToken>(callPayload);
         }
-    }
 
-    public class MicrosoftformsInstance(string connectionId)
-    {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        public IOutputWorkflowAction<JToken> GetFormResponseById([DynamicValues("ListForms")] Expression<Func<string>> formId, Expression<Func<int>> responseId) => MicrosoftformsExtensions.GetFormResponseById(connectionId, formId, responseId);
+        public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById(Expression<Func<string>> formId)
+        {
+            var apiCallPath = String.Format("/formapi/api/forms('{0}')", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
+            return new ApiConnectionAction<GetFormDetailsByIdResult>(callPayload);
+        }
     }
 
-    public class MicrosoftformsInstanceTriggers([ConnectionName] string connectionId)
+    public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenCreateFormWebhook([DynamicValues("ListForms")] Expression<Func<string>> formId) => MicrosoftformsExtensions.WhenCreateFormWebhook(connectionId, formId);
+        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId)
+        {
+            var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var requestBodyOfWebhook = new JObject();
+            var requestBodyOfWebhookpropCount = 0;
+            requestBodyOfWebhook["eventType"] = "responseAdded";
+            requestBodyOfWebhookpropCount++;
+            requestBodyOfWebhook["notificationUrl"] = "@listcallbackurl()";
+            requestBodyOfWebhookpropCount++;
+            requestBodyOfWebhook["source"] = "ms-connector";
+            requestBodyOfWebhookpropCount++;
+            if (requestBodyOfWebhookpropCount > 0)
+            {
+                callPayload.Body = requestBodyOfWebhook;
+            }
+
+            return new ApiConnectionTrigger(callPayload);
+        }
     }
 
-    public class WebhookRequestBody
+    public class GetFormDetailsByIdResult
     {
-        [JsonProperty("eventType")]
-        public string EventType { get; set; }
-
-        [JsonProperty("notificationUrl")]
-        public string NotificationUrl { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-    }
-
-    public class FormsListItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string FormTitle { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms;
 
-    public static class MicrosoftformsTriggerInstanceExtensions
+    public partial class WorkflowManagedActions
     {
-        public static MicrosoftformsInstanceTriggers Microsoftforms(this WorkflowManagedTriggers t, string connectionId) => new MicrosoftformsInstanceTriggers(connectionId);
-        public static MicrosoftformsInstance Microsoftforms(this WorkflowManagedActions t, string connectionId) => new MicrosoftformsInstance(connectionId);
+        public MicrosoftformsActions Microsoftforms(string connectionId) => new MicrosoftformsActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public MicrosoftformsTriggers Microsoftforms(string connectionId) => new MicrosoftformsTriggers(connectionId);
     }
 }

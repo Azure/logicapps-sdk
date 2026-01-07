@@ -4,10 +4,11 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
+    using Newtonsoft.Json.Linq;
+    using System.ComponentModel;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.CompilerServices;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Converts complex object expression trees to JSON tokens.
@@ -34,28 +35,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <summary>
         /// Visits a list initialization expression.
         /// </summary>
-        /// <param name="expr">The list initialization expression to visit.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(ListInitExpression expr, object param)
+        /// <param name="e">The list initialization expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(ListInitExpression e, object p)
         {
-            expr.NewExpression.Visit(this, param);
-
-            return base.Visit(expr, param);
+            e.NewExpression.Visit(this, p);
+            foreach (var init in e.Initializers)
+            {
+            }
+            return base.Visit(e, p);
         }
 
         /// <summary>
         /// Visits a binary expression, with special handling for string concatenation.
         /// </summary>
-        /// <param name="expr">The binary expression to visit.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(BinaryExpression expr, object param)
+        /// <param name="e">The binary expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(BinaryExpression e, object p)
         {
             var concat2 = typeof(string).GetMethod("Concat", [typeof(string), typeof(string)]);
 
-            if (expr.Method == concat2)
+            if (e.Method == concat2)
             {
                 var conv = new LogicConverter();
-                var node = expr.Visit(conv, null);
+                var node = e.Visit(conv, null);
                 return new JValue(node.Render());
             }
 
@@ -65,29 +68,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <summary>
         /// Visits a constant expression.
         /// </summary>
-        /// <param name="expr">The constant expression to visit.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(ConstantExpression expr, object param)
+        /// <param name="e">The constant expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(ConstantExpression e, object p)
         {
-            if (expr.Type == typeof(string))
+            if (e.Type == typeof(string))
             {
-                return new JValue((string)expr.Value);
+                return new JValue((string)e.Value);
             }
-
-            throw new NotImplementedException($"ConstantExpression {expr.Type} / {expr.Value}");
+            if (e.Type == typeof(bool))
+            {
+                return new JValue((bool)e.Value);
+            }
+            if (e.Type.IsEnum)
+            {
+                var enumValue = e.Value;
+                var enumType = e.Type;
+                var enumName = Enum.GetName(enumType, enumValue);
+                var member = enumType.GetMember(enumName).FirstOrDefault();
+                var enumMemberAttr = member?.GetCustomAttribute<System.Runtime.Serialization.EnumMemberAttribute>();
+                var value = enumMemberAttr?.Value ?? enumName;
+                return new JValue(value);
+            }
+            throw new NotImplementedException($"ConstantExpression {e.Type} / {e.Value}");
         }
 
         /// <summary>
         /// Visits a new expression, with special handling for anonymous types.
         /// </summary>
-        /// <param name="expr">The new expression to visit.</param>
-        /// <param name="param">Additional parameter passed to nested visits.</param>
-        public override JToken Visit(NewExpression expr, object param)
+        /// <param name="e">The new expression to visit.</param>
+        /// <param name="p">Additional parameter passed to nested visits.</param>
+        public override JToken Visit(NewExpression e, object p)
         {
-            if (IsAnonymousType(expr.Type))
+            if (IsAnonymousType(e.Type))
             {
-                var props = expr.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                if (expr.Arguments.Count != props.Length)
+                var props = e.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                if (e.Arguments.Count != props.Length)
                 {
                     throw new FormatException();
                 }
@@ -96,12 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 for (var i = 0; i < props.Length; i++)
                 {
-                    var arg = expr.Arguments[i];
+                    var arg = e.Arguments[i];
                     var prop = props[i];
 
-                    result[prop.Name] = arg.Visit(this, param);
+                    result[prop.Name] = arg.Visit(this, p);
                 }
-
                 return result;
             }
 
@@ -111,40 +126,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <summary>
         /// Visits a member expression (property or field access).
         /// </summary>
-        /// <param name="expr">The member expression to visit.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(MemberExpression expr, object param)
+        /// <param name="e">The member expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(MemberExpression e, object p)
         {
             var conv = new LogicConverter();
             var node = e.Visit(conv, null);
-
             return new JValue(node.Render());
         }
 
         /// <summary>
-        /// Visits a method call expression, with special handling for string formatting.
+        /// Visits a method call expression.
         /// </summary>
-        /// <param name="expr">The method call expression to visit.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(MethodCallExpression expr, object param)
+        /// <param name="e">The method call expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(MethodCallExpression e, object p)
         {
-            var method = expr.Method;
-            if (method.DeclaringType == typeof(string) && method.Name == "Format")
-            {
-                var conv = new LogicConverter();
-                var node = expr.Visit(conv, null);
+            var conv = new LogicConverter();
+            var node = e.Visit(conv, null);
+            return new JValue(node.Render());
+        }
 
-                return new JValue(node.Render());
-            }
-            throw new NotImplementedException();
+        /// <summary>
+        /// Visits a unary expression.
+        /// </summary>
+        /// <param name="e">The unary expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(UnaryExpression e, object p)
+        {
+            var conv = new LogicConverter();
+            var node = e.Visit(conv, null);
+            return new JValue(node.Render());
+        }
+
+        /// <summary>
+        /// Visits a conditional expression.
+        /// </summary>
+        /// <param name="e">The conditional expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override JToken Visit(ConditionalExpression e, object p)
+        {
+            var conv = new LogicConverter();
+            var node = e.Visit(conv, null);
+            return new JValue(node.Render());
         }
 
         /// <summary>
         /// Default visit method for unsupported expression types.
         /// </summary>
-        /// <param name="expr">The expression that cannot be visited.</param>
-        /// <param name="param">Additional parameter (not used).</param>
-        public override JToken Visit(Expression expr, object param)
+        /// <param name="e">The expression that cannot be visited.</param>
+        /// <param name="_">Additional parameter (not used).</param>
+        public override JToken Visit(Expression e, object _)
         {
             throw new NotImplementedException();
         }

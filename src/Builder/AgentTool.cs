@@ -8,8 +8,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Agent tool.
+    /// Represents an agent tool with configurable parameters and actions.
     /// </summary>
+    /// <typeparam name="T">The type of the tool parameters.</typeparam>
     public class AgentTool<T> : IAgentToolBuilder<T> where T : class
     {
         /// <summary>
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the flow template action tool branch.
+        /// Gets the flow template action tool branch with generated schema for parameters.
         /// </summary>
         public (string, FlowTemplateActionToolBranch) GetFlowTemplateActionToolBranch()
         {

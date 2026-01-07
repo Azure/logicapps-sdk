@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents an API connection action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ApiConnectionAction<T> : ApiConnectionAction, IOutputWorkflowAction<T>
+    public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
     {
         public ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
             : base(apiConnectionActionInput)

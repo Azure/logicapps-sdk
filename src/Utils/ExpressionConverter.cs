@@ -1,8 +1,8 @@
 ﻿namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using Newtonsoft.Json.Linq;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Converts LINQ expressions to their string representations.
@@ -75,6 +75,7 @@
         /// </summary>
         /// <param name="e">The expression to convert.</param>
         /// <param name="times">The number of times to apply URL encoding.</param>
+        /// <typeparam name="T">The enum type.</typeparam>
         public static string ConvertWithUrlEncoding<T>(Expression<Func<T>> e, int times) where T : Enum
         {
             var value = e.Compile().Invoke();
@@ -94,6 +95,15 @@
         }
 
         /// <summary>
+        /// Converts a string array expression to a JSON array.
+        /// </summary>
+        /// <param name="e">The expression to convert.</param>
+        public static JArray Convert(Expression<Func<string[]>> e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Converts a double expression to its rendered form.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
@@ -108,6 +118,7 @@
         /// Converts an enum expression to its member value representation.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
+        /// <typeparam name="T">The enum type.</typeparam>
         public static string Convert<T>(Expression<Func<T>> e) where T : Enum
         {
             var value = e.Compile().Invoke();
@@ -130,7 +141,8 @@
         /// Converts a class expression to a JSON token representation.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
-        public static JToken ConvertO<T>(Expression<Func<T>> e) where T : class
+        /// <typeparam name="T">The class type.</typeparam>
+        public static JToken ConvertO<T>(Expression<Func<T>> e)
         {
             var converter = new ComplexObjectConverter();
             return e.Body.Visit(converter, null);
@@ -140,6 +152,7 @@
         /// Converts an expression to an object by processing member assignments and compiling the result.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
+        /// <typeparam name="TResult">The result type.</typeparam>
         public static TResult ConvertObject<TResult>(Expression<Func<TResult>> e)
         {
             var objConvert = new ObjectExpressionConverter();

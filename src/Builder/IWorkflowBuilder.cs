@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Interface for building a Codeful Workflow Agent.
+    /// Interface for building a codeful workflow.
     /// </summary>
     public interface IWorkflowBuilder : IActionBuilder
     {
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         void AddAgent(IWorkflowAction action);
 
         /// <summary>
-        /// Gets the flow definition for the workflow agent.
+        /// Gets the workflow definition.
         /// </summary>
         FlowPropertiesDefinition GetFlowDefinition();
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Interface for building a Codeful Workflow Agent.
+    /// Interface for building a codeful workflow.
     /// </summary>
     public interface IWorkflowBuilder<T> : IWorkflowBuilder where T : class
     {

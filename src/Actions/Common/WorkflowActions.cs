@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Workflow actions.
+    /// Workflow actions entry point providing access to built-in and managed connector actions.
     /// </summary>
     public static class WorkflowActions
     {

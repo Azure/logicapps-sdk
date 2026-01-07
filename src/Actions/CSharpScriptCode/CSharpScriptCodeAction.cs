@@ -4,12 +4,10 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Newtonsoft.Json.Linq;
-
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class ComposeAction(JToken inputs) : IWorkflowAction
+    public class CSharpScriptCode(string methodName) : IWorkflowAction
     {
         /// <summary>
         /// Gets or sets the name.
@@ -19,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public JToken Inputs { get; private set; } = inputs;
+        public string MethodName { get; private set; } = methodName;
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
@@ -29,8 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             return new FlowTemplateAction
             {
-                Type = FlowTemplateOperationType.Compose,
-                Inputs = this.Inputs,
+                Type = FlowTemplateOperationType.CSharpScriptCode,
+                Inputs = new CSharpScriptCodeActionInput
+                {
+                    CodeFile = this.MethodName,
+                },
             };
         }
 
@@ -48,18 +49,18 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a nested workflow action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ComposeAction<T> : ComposeAction, IOutputWorkflowAction<T>
+    public class CSharpScriptCode<T> : CSharpScriptCode, IBodyWorkflowAction<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NestedWorkFlowAction{T}"/> class.
+        /// Initializes a new instance of the <see cref="CSharpScriptCode{T}"/> class.
         /// </summary>
-        public ComposeAction(JToken inputs) : base(inputs)
+        public CSharpScriptCode(string methodName) : base(methodName)
         {
         }
 
         /// <summary>
         /// Gets the strongly-typed body of the action.
         /// </summary>
-        public T Output { get; private set; }
+        public T Body { get; private set; }
     }
 }

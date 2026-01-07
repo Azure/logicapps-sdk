@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Runtime
                 if (t == typeof(int))
                 {
                     desc["type"] = "integer";
-                }   
+                }
                 else if (t == typeof(string))
                 {
                     desc["type"] = "string";
