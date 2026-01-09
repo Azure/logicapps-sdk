@@ -123,10 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 var sb = new StringBuilder();
                 foreach (var arg in fn.Arguments)
                 {
-                    if (arg is LiteralNode lit)
+                    if (arg is LiteralNode literal)
                     {
                         // Render literal values directly without expression markers
-                        sb.Append(lit.Value);
+                        sb.Append(literal.Value);
                     }
                     else
                     {

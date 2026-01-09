@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System;
     using global::Grpc.Net.Client;
     using Microsoft.Azure.Functions.Worker.Core.FunctionMetadata;
+    using Microsoft.Azure.Workflows.Sdk.Agents.Services;
     using Microsoft.Azure.Workflows.Sdk.Grpc;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -140,13 +141,17 @@ namespace Microsoft.Azure.Workflows.Sdk
             });
 
             services.AddSingleton<IFunctionMetadataProvider, DummyFunctionProvider>();
+            services.AddHostedService<WorkflowInitializationService>();
         }
 
         /// <summary>
         /// Creates workflows from the workflow builders and sends them to the extension service.
         /// </summary>
-        public static void CreateWorkflows()
+        /// <param name="cancellationToken">The cancellation token.</param>
+        public static void CreateWorkflows(CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             var workflowArtifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
             WorkflowBuilderFactory.WorkflowLoggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
 
