@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using System;
     using System.Collections.Generic;
     using System.Collections.Immutable;
     using System.Reflection;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Microsoft.Azure.Functions.Worker.Core.FunctionMetadata;
 
     /// <summary>  
-    /// Agent function provider.  
+    /// Dummy function provider.
     /// </summary>  
     public class DummyFunctionProvider : IFunctionMetadataProvider
     {
@@ -21,7 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public ImmutableDictionary<string, ImmutableArray<string>> FunctionErrors
         {
-            // ToDo (psrivas): collect all errors and throw it to the users
             get
             {
                 return new Dictionary<string, ImmutableArray<string>>().ToImmutableDictionary();
@@ -29,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// The agent function name.
+        /// The dummy function name.
         /// </summary>
         private const string TestHttpFunctionName = "HttpFromWorker";
 
@@ -38,8 +36,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>  
         public Task<ImmutableArray<IFunctionMetadata>> GetFunctionMetadataAsync(string directory)
         {
-            Console.WriteLine("Apseth loading agent endpoint functions from worker.");
-
             var metadataList = new List<IFunctionMetadata>();
             var agentFunctionRawBindings = new List<string>
             {
@@ -56,7 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 RawBindings = agentFunctionRawBindings,
             });
 
-            // Fix: Use ToImmutableArray() instead of ToImmutable()
             return Task.FromResult(metadataList.ToImmutableArray());
         }
 
@@ -67,6 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             return $"{typeof(DummyFunctionProvider).FullName}.{nameof(DummyFunctionProvider.Callback)}";
         }
+
         /// <summary>
         /// Gets the script file.
         /// </summary>
@@ -76,11 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// The callback for the HTTP request to the agent API.
+        /// The callback for the HTTP request to the dummy API.
         /// </summary>
         public static void Callback()
         {
-            Console.WriteLine("Dummy Callback called.");
         }
     }
 }

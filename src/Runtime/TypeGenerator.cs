@@ -22,11 +22,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Runtime
         {
             if (IsSimpleType(t))
             {
-                Console.WriteLine($"Simple type: {t.Name}");
                 if (t == typeof(int))
                 {
                     desc["type"] = "integer";
-                }   
+                }
                 else if (t == typeof(string))
                 {
                     desc["type"] = "string";
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Runtime
                 {
                     var propDesc = new JObject();
                     var schema = GenerateSchema(prop.PropertyType, propDesc, generateRequired);
-                    Console.WriteLine($"Property: {prop.Name}, Type: {prop.PropertyType.Name}, Schema: {schema}");
                     propDesc["description"] = $"The {prop.Name} property.";
 
                     properties[prop.Name] = propDesc;

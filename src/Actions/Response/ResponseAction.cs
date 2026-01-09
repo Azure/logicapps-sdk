@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a nested workflow action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ResponseAction<T> : ResponseAction, IOutputWorkflowAction<T>
+    public class ResponseAction<T> : ResponseAction, IBodyWorkflowAction<T>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseAction{T}"/> class.

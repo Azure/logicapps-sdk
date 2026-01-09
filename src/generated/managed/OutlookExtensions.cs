@@ -1,132 +1,130 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 {
-    using System.Net;
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public static class OutlookExtensions
+    public class OutlookActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenOnUpcomingEventsV2([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
-        {
-            var apiCallPath = "/v2/Events/OnUpcomingEvents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["table"] = ExpressionConverter.Convert(table);
-            if (lookAheadTimeInMinutes != null)
-            {
-                callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
-            }
-
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<BatchResponseClientReceiveMessage> GetEmailsV2([ConnectionName] string connectionId, Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<GetEmailsV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<BatchResponseClientReceiveMessage> GetEmailsV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
         {
             var apiCallPath = "/v2/Mail";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
-            {
                 callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            }
-
             if (to != null)
-            {
                 callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            }
-
             if (cc != null)
-            {
                 callPayload.Queries["cc"] = ExpressionConverter.Convert(cc);
-            }
-
             if (toOrCc != null)
-            {
                 callPayload.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
-            }
-
             if (from != null)
-            {
                 callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            }
-
+            callPayload.Queries["importance"] = Convert.ToString("Any");
             if (importance != null)
-            {
                 callPayload.Queries["importance"] = ExpressionConverter.Convert(importance);
-            }
-
+            callPayload.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
             if (fetchOnlyWithAttachment != null)
-            {
                 callPayload.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            }
-
             if (subjectFilter != null)
-            {
                 callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            }
-
+            callPayload.Queries["fetchOnlyUnread"] = Convert.ToString(true);
             if (fetchOnlyUnread != null)
-            {
                 callPayload.Queries["fetchOnlyUnread"] = ExpressionConverter.Convert(fetchOnlyUnread);
-            }
-
+            callPayload.Queries["fetchOnlyFlagged"] = Convert.ToString(false);
+            callPayload.Queries["includeAttachments"] = Convert.ToString(false);
             if (includeAttachments != null)
-            {
                 callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            }
-
             if (searchQuery != null)
-            {
                 callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
-            }
-
+            callPayload.Queries["top"] = Convert.ToString(10);
             if (top != null)
-            {
                 callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            }
-
-            callPayload.Queries["fetchOnlyFlagged"] = "false";
             return new ApiConnectionAction<BatchResponseClientReceiveMessage>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction SendEmailV2([ConnectionName] string connectionId, Expression<Func<ClientSendHtmlMessage>> emailMessage)
+        public IWorkflowAction SendEmailV2(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagesubject, Expression<Func<string>> emailMessagebody, Expression<Func<string>> emailMessagefromSendAs = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<ClientSendAttachment[]>> emailMessageattachments = null, Expression<Func<string>> emailMessagereplyTo = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null)
         {
             var apiCallPath = "/v2/Mail";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(emailMessage);
+            var emailMessage = new JObject();
+            var emailMessagepropCount = 0;
+            emailMessagepropCount++;
+            emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
+            emailMessagepropCount++;
+            emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
+            emailMessagepropCount++;
+            emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
+            if (emailMessagefromSendAs != null)
+            {
+                emailMessage["From"] = ExpressionConverter.ConvertO(emailMessagefromSendAs);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagecC != null)
+            {
+                emailMessage["Cc"] = ExpressionConverter.ConvertO(emailMessagecC);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagebCC != null)
+            {
+                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebCC);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessageattachments != null)
+            {
+                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagereplyTo != null)
+            {
+                emailMessage["ReplyTo"] = ExpressionConverter.ConvertO(emailMessagereplyTo);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessageimportance != null)
+            {
+                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagepropCount > 0)
+            {
+                callPayload.Body = emailMessage;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<ClientReceiveMessage> GetEmail([ConnectionName] string connectionId, Expression<Func<string>> messageId, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> internetMessageId = null)
+        public IBodyWorkflowAction<ClientReceiveMessage> GetEmail(Expression<Func<string>> messageId, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> internetMessageId = null)
         {
             var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["includeAttachments"] = Convert.ToString(false);
             if (includeAttachments != null)
-            {
                 callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            }
-
             if (internetMessageId != null)
-            {
                 callPayload.Queries["internetMessageId"] = ExpressionConverter.Convert(internetMessageId);
-            }
-
             return new ApiConnectionAction<ClientReceiveMessage>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction DeleteEmail([ConnectionName] string connectionId, Expression<Func<string>> messageId)
+        public IWorkflowAction DeleteEmail(Expression<Func<string>> messageId)
         {
             var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "delete";
@@ -135,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<ClientReceiveMessageStringEnums> Move([ConnectionName] string connectionId, Expression<Func<string>> messageId, Expression<Func<string>> folderPath)
+        public IBodyWorkflowAction<ClientReceiveMessageStringEnums> Move(Expression<Func<string>> messageId, Expression<Func<string>> folderPath)
         {
             var apiCallPath = String.Format("/Mail/Move/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
@@ -145,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction Flag([ConnectionName] string connectionId, Expression<Func<string>> messageId)
+        public IWorkflowAction Flag(Expression<Func<string>> messageId)
         {
             var apiCallPath = String.Format("/Mail/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
@@ -154,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction MarkAsRead([ConnectionName] string connectionId, Expression<Func<string>> messageId)
+        public IWorkflowAction MarkAsRead(Expression<Func<string>> messageId)
         {
             var apiCallPath = String.Format("/Mail/MarkAsRead/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
@@ -163,17 +161,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction ReplyToV3([ConnectionName] string connectionId, Expression<Func<string>> messageId, Expression<Func<ReplyHtmlMessage>> replyParameters)
+        public IWorkflowAction ReplyToV3(Expression<Func<string>> messageId, Expression<Func<string>> replyParametersto = null, Expression<Func<string>> replyParameterscC = null, Expression<Func<string>> replyParametersbCC = null, Expression<Func<string>> replyParameterssubject = null, Expression<Func<string>> replyParametersbody = null, Expression<Func<bool>> replyParametersreplyAll = null, Expression<Func<replyParametersimportanceInput>> replyParametersimportance = null, Expression<Func<ClientSendAttachment[]>> replyParametersattachments = null)
         {
             var apiCallPath = String.Format("/v3/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(replyParameters);
+            var replyParameters = new JObject();
+            var replyParameterspropCount = 0;
+            if (replyParametersto != null)
+            {
+                replyParameters["To"] = ExpressionConverter.ConvertO(replyParametersto);
+                replyParameterspropCount++;
+            }
+
+            if (replyParameterscC != null)
+            {
+                replyParameters["Cc"] = ExpressionConverter.ConvertO(replyParameterscC);
+                replyParameterspropCount++;
+            }
+
+            if (replyParametersbCC != null)
+            {
+                replyParameters["Bcc"] = ExpressionConverter.ConvertO(replyParametersbCC);
+                replyParameterspropCount++;
+            }
+
+            if (replyParameterssubject != null)
+            {
+                replyParameters["Subject"] = ExpressionConverter.ConvertO(replyParameterssubject);
+                replyParameterspropCount++;
+            }
+
+            if (replyParametersbody != null)
+            {
+                replyParameters["Body"] = ExpressionConverter.ConvertO(replyParametersbody);
+                replyParameterspropCount++;
+            }
+
+            if (replyParametersreplyAll != null)
+            {
+                replyParameters["ReplyAll"] = ExpressionConverter.ConvertO(replyParametersreplyAll);
+                replyParameterspropCount++;
+            }
+
+            if (replyParametersimportance != null)
+            {
+                replyParameters["Importance"] = ExpressionConverter.ConvertO(replyParametersimportance);
+                replyParameterspropCount++;
+            }
+
+            if (replyParametersattachments != null)
+            {
+                replyParameters["Attachments"] = ExpressionConverter.ConvertO(replyParametersattachments);
+                replyParameterspropCount++;
+            }
+
+            if (replyParameterspropCount > 0)
+            {
+                callPayload.Body = replyParameters;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<string> GetAttachment([ConnectionName] string connectionId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
+        public IBodyWorkflowAction<string> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
             var apiCallPath = String.Format("/Mail/{0}/Attachments/{1}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(attachmentId, 1));
             var apiCallHttpMethod = "get";
@@ -182,79 +234,183 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnNewEmailV2([ConnectionName] string connectionId, Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnNewEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
-        {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch.PathTemplate.Template = "/v2/Mail/OnNewEmail";
-            input.Fetch.Method = "get";
-            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
-            input.Fetch.Queries["importance"] = Convert.ToString(0);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            input.Subscribe.PathTemplate.Template = "/MailSubscriptionPoke/$subscriptions";
-            input.Subscribe.Method = "post";
-            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
-            input.Subscribe.Queries["importance"] = Convert.ToString(0);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnFlaggedEmailV2([ConnectionName] string connectionId, Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnFlaggedEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
-        {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch.PathTemplate.Template = "/v2/Mail/OnFlaggedEmail";
-            input.Fetch.Method = "get";
-            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
-            input.Fetch.Queries["importance"] = Convert.ToString(0);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            input.Subscribe.PathTemplate.Template = "/FlaggedMailSubscriptionPoke/$subscriptions";
-            input.Subscribe.Method = "post";
-            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
-            input.Subscribe.Queries["importance"] = Convert.ToString(0);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnNewMentionMeEmailV2([ConnectionName] string connectionId, Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnNewMentionMeEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
-        {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch.PathTemplate.Template = "/v2/Mail/OnNewMentionMeEmail";
-            input.Fetch.Method = "get";
-            input.Fetch.Queries["importance"] = Convert.ToString(0);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            input.Subscribe.PathTemplate.Template = "/MentionMeMailSubscriptionPoke/$subscriptions";
-            input.Subscribe.Method = "post";
-            input.Subscribe.Queries["importance"] = Convert.ToString(0);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<SubscriptionResponse> SendMailWithOptions([ConnectionName] string connectionId, Expression<Func<OptionsEmailSubscription>> optionsEmailSubscription)
+        public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionMessageto, Expression<Func<string>> optionsEmailSubscriptionMessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionMessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionMessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionMessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionMessagebody = null, Expression<Func<optionsEmailSubscriptionMessageimportanceInput>> optionsEmailSubscriptionMessageimportance = null, Expression<Func<ClientSendAttachment[]>> optionsEmailSubscriptionMessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionMessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionMessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionMessageshowHTMLConfirmationDialog = null)
         {
             var apiCallPath = "/mailwithoptions/$subscriptions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(optionsEmailSubscription);
+            var optionsEmailSubscription = new JObject();
+            var optionsEmailSubscriptionpropCount = 0;
+            optionsEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            optionsEmailSubscriptionpropCount++;
+            var MessageObject = new JObject();
+            var MessageObjectpropCount = 0;
+            MessageObjectpropCount++;
+            MessageObject["To"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageto);
+            if (optionsEmailSubscriptionMessagesubject != null)
+            {
+                MessageObject["Subject"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagesubject);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageuserOptions != null)
+            {
+                MessageObject["Options"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageuserOptions);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageheaderText != null)
+            {
+                MessageObject["HeaderText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageheaderText);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageselectionText != null)
+            {
+                MessageObject["SelectionText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageselectionText);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessagebody != null)
+            {
+                MessageObject["Body"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagebody);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageimportance != null)
+            {
+                MessageObject["Importance"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageimportance);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageattachments != null)
+            {
+                MessageObject["Attachments"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageattachments);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageuseOnlyHTMLMessage != null)
+            {
+                MessageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageuseOnlyHTMLMessage);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessagehideHTMLMessage != null)
+            {
+                MessageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagehideHTMLMessage);
+                MessageObjectpropCount++;
+            }
+
+            if (optionsEmailSubscriptionMessageshowHTMLConfirmationDialog != null)
+            {
+                MessageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageshowHTMLConfirmationDialog);
+                MessageObjectpropCount++;
+            }
+
+            if (MessageObjectpropCount > 0)
+            {
+                optionsEmailSubscription["Message"] = MessageObject;
+                optionsEmailSubscriptionpropCount++;
+            }
+
+            if (optionsEmailSubscriptionpropCount > 0)
+            {
+                callPayload.Body = optionsEmailSubscription;
+            }
+
             return new ApiConnectionAction<SubscriptionResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<SubscriptionResponse> SendApprovalMail([ConnectionName] string connectionId, Expression<Func<ApprovalEmailSubscription>> approvalEmailSubscription)
+        public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionMessageto, Expression<Func<string>> approvalEmailSubscriptionMessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionMessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionMessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionMessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionMessagebody = null, Expression<Func<approvalEmailSubscriptionMessageimportanceInput>> approvalEmailSubscriptionMessageimportance = null, Expression<Func<ClientSendAttachment[]>> approvalEmailSubscriptionMessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionMessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionMessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionMessageshowHTMLConfirmationDialog = null)
         {
             var apiCallPath = "/approvalmail/$subscriptions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(approvalEmailSubscription);
+            var approvalEmailSubscription = new JObject();
+            var approvalEmailSubscriptionpropCount = 0;
+            approvalEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            approvalEmailSubscriptionpropCount++;
+            var MessageObject = new JObject();
+            var MessageObjectpropCount = 0;
+            MessageObjectpropCount++;
+            MessageObject["To"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageto);
+            if (approvalEmailSubscriptionMessagesubject != null)
+            {
+                MessageObject["Subject"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagesubject);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageuserOptions != null)
+            {
+                MessageObject["Options"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageuserOptions);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageheaderText != null)
+            {
+                MessageObject["HeaderText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageheaderText);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageselectionText != null)
+            {
+                MessageObject["SelectionText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageselectionText);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessagebody != null)
+            {
+                MessageObject["Body"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagebody);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageimportance != null)
+            {
+                MessageObject["Importance"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageimportance);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageattachments != null)
+            {
+                MessageObject["Attachments"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageattachments);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageuseOnlyHTMLMessage != null)
+            {
+                MessageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageuseOnlyHTMLMessage);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessagehideHTMLMessage != null)
+            {
+                MessageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagehideHTMLMessage);
+                MessageObjectpropCount++;
+            }
+
+            if (approvalEmailSubscriptionMessageshowHTMLConfirmationDialog != null)
+            {
+                MessageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageshowHTMLConfirmationDialog);
+                MessageObjectpropCount++;
+            }
+
+            if (MessageObjectpropCount > 0)
+            {
+                approvalEmailSubscription["Message"] = MessageObject;
+                approvalEmailSubscriptionpropCount++;
+            }
+
+            if (approvalEmailSubscriptionpropCount > 0)
+            {
+                callPayload.Body = approvalEmailSubscription;
+            }
+
             return new ApiConnectionAction<SubscriptionResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<EntityListResponseTable> CalendarGetTables([ConnectionName] string connectionId)
+        public IBodyWorkflowAction<EntityListResponseTable> CalendarGetTables()
         {
             var apiCallPath = "/datasets/calendars/tables";
             var apiCallHttpMethod = "get";
@@ -263,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction CalendarDeleteItem([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id)
+        public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/datasets/calendars/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
@@ -272,46 +428,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<CalendarEventListClientReceive> V3CalendarGetItems([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<CalendarEventListClientReceive> V3CalendarGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-            {
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            }
-
             if (orderby != null)
-            {
                 callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            }
-
             if (top != null)
-            {
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            }
-
             if (skip != null)
-            {
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            }
-
             return new ApiConnectionAction<CalendarEventListClientReceive>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPostItem([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<CalendarEventHtmlClient>> item)
+        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPostItem(Expression<Func<string>> table, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(item);
+            var item = new JObject();
+            var itempropCount = 0;
+            itempropCount++;
+            item["Subject"] = ExpressionConverter.ConvertO(itemsubject);
+            itempropCount++;
+            item["Start"] = ExpressionConverter.ConvertO(itemstartTime);
+            itempropCount++;
+            item["End"] = ExpressionConverter.ConvertO(itemendTime);
+            if (itemtimeZone != null)
+            {
+                item["TimeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+                itempropCount++;
+            }
+
+            if (itemrequiredAttendees != null)
+            {
+                item["RequiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                itempropCount++;
+            }
+
+            if (itemoptionalAttendees != null)
+            {
+                item["OptionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                itempropCount++;
+            }
+
+            if (itemresourceAttendees != null)
+            {
+                item["ResourceAttendees"] = ExpressionConverter.ConvertO(itemresourceAttendees);
+                itempropCount++;
+            }
+
+            if (itembody != null)
+            {
+                item["Body"] = ExpressionConverter.ConvertO(itembody);
+                itempropCount++;
+            }
+
+            if (itemlocation != null)
+            {
+                item["Location"] = ExpressionConverter.ConvertO(itemlocation);
+                itempropCount++;
+            }
+
+            if (itemimportance != null)
+            {
+                item["Importance"] = ExpressionConverter.ConvertO(itemimportance);
+                itempropCount++;
+            }
+
+            if (itemisAllDayEvent != null)
+            {
+                item["IsAllDay"] = ExpressionConverter.ConvertO(itemisAllDayEvent);
+                itempropCount++;
+            }
+
+            if (itemrecurrence != null)
+            {
+                item["Recurrence"] = ExpressionConverter.ConvertO(itemrecurrence);
+                itempropCount++;
+            }
+
+            if (itemrecurrenceEndTime != null)
+            {
+                item["RecurrenceEnd"] = ExpressionConverter.ConvertO(itemrecurrenceEndTime);
+                itempropCount++;
+            }
+
+            if (itemnumberOfOccurrences != null)
+            {
+                item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(itemnumberOfOccurrences);
+                itempropCount++;
+            }
+
+            if (itemreminder != null)
+            {
+                item["Reminder"] = ExpressionConverter.ConvertO(itemreminder);
+                itempropCount++;
+            }
+
+            if (itemshowAs != null)
+            {
+                item["ShowAs"] = ExpressionConverter.ConvertO(itemshowAs);
+                itempropCount++;
+            }
+
+            if (itemresponseRequested != null)
+            {
+                item["ResponseRequested"] = ExpressionConverter.ConvertO(itemresponseRequested);
+                itempropCount++;
+            }
+
+            if (itempropCount > 0)
+            {
+                callPayload.Body = item;
+            }
+
             return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarViewV2([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> calendarId, Expression<Func<string>> startDateTimeOffset, Expression<Func<string>> endDateTimeOffset, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarViewV2(Expression<Func<string>> calendarId, Expression<Func<string>> startDateTimeOffset, Expression<Func<string>> endDateTimeOffset, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> search = null)
         {
             var apiCallPath = "/datasets/calendars/v2/tables/items/calendarview";
             var apiCallHttpMethod = "get";
@@ -320,35 +560,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             callPayload.Queries["startDateTimeOffset"] = ExpressionConverter.Convert(startDateTimeOffset);
             callPayload.Queries["endDateTimeOffset"] = ExpressionConverter.Convert(endDateTimeOffset);
             if (filter != null)
-            {
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            }
-
             if (orderby != null)
-            {
                 callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            }
-
             if (top != null)
-            {
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            }
-
             if (skip != null)
-            {
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            }
-
             if (search != null)
-            {
                 callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            }
-
             return new ApiConnectionAction<EntityListResponseCalendarEventClientReceiveStringEnums>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V2CalendarGetItem([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id)
+        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> V2CalendarGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
@@ -357,80 +582,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPatchItem([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<CalendarEventHtmlClient>> item)
+        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(item);
+            var item = new JObject();
+            var itempropCount = 0;
+            itempropCount++;
+            item["Subject"] = ExpressionConverter.ConvertO(itemsubject);
+            itempropCount++;
+            item["Start"] = ExpressionConverter.ConvertO(itemstartTime);
+            itempropCount++;
+            item["End"] = ExpressionConverter.ConvertO(itemendTime);
+            if (itemtimeZone != null)
+            {
+                item["TimeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+                itempropCount++;
+            }
+
+            if (itemrequiredAttendees != null)
+            {
+                item["RequiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                itempropCount++;
+            }
+
+            if (itemoptionalAttendees != null)
+            {
+                item["OptionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                itempropCount++;
+            }
+
+            if (itemresourceAttendees != null)
+            {
+                item["ResourceAttendees"] = ExpressionConverter.ConvertO(itemresourceAttendees);
+                itempropCount++;
+            }
+
+            if (itembody != null)
+            {
+                item["Body"] = ExpressionConverter.ConvertO(itembody);
+                itempropCount++;
+            }
+
+            if (itemlocation != null)
+            {
+                item["Location"] = ExpressionConverter.ConvertO(itemlocation);
+                itempropCount++;
+            }
+
+            if (itemimportance != null)
+            {
+                item["Importance"] = ExpressionConverter.ConvertO(itemimportance);
+                itempropCount++;
+            }
+
+            if (itemisAllDayEvent != null)
+            {
+                item["IsAllDay"] = ExpressionConverter.ConvertO(itemisAllDayEvent);
+                itempropCount++;
+            }
+
+            if (itemrecurrence != null)
+            {
+                item["Recurrence"] = ExpressionConverter.ConvertO(itemrecurrence);
+                itempropCount++;
+            }
+
+            if (itemrecurrenceEndTime != null)
+            {
+                item["RecurrenceEnd"] = ExpressionConverter.ConvertO(itemrecurrenceEndTime);
+                itempropCount++;
+            }
+
+            if (itemnumberOfOccurrences != null)
+            {
+                item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(itemnumberOfOccurrences);
+                itempropCount++;
+            }
+
+            if (itemreminder != null)
+            {
+                item["Reminder"] = ExpressionConverter.ConvertO(itemreminder);
+                itempropCount++;
+            }
+
+            if (itemshowAs != null)
+            {
+                item["ShowAs"] = ExpressionConverter.ConvertO(itemshowAs);
+                itempropCount++;
+            }
+
+            if (itemresponseRequested != null)
+            {
+                item["ResponseRequested"] = ExpressionConverter.ConvertO(itemresponseRequested);
+                itempropCount++;
+            }
+
+            if (itempropCount > 0)
+            {
+                callPayload.Body = item;
+            }
+
             return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenCalendarGetOnNewItemsV2([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
-        {
-            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (orderby != null)
-            {
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            }
-
-            if (top != null)
-            {
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            }
-
-            if (skip != null)
-            {
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            }
-
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenCalendarGetOnUpdatedItemsV2([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
-        {
-            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (orderby != null)
-            {
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            }
-
-            if (top != null)
-            {
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            }
-
-            if (skip != null)
-            {
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            }
-
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowTrigger<CalendarEventListWithActionType> WhenCalendarGetOnChangedItemsV2([ConnectionName] string connectionId, [DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
-        {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch.PathTemplate.Template = "/datasets/calendars/v2/tables/{0}/onchangeditems";
-            input.Fetch.Method = "get";
-            input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
-            input.Fetch.Queries["pastDays"] = Convert.ToString(50);
-            input.Subscribe.PathTemplate.Template = "/{0}/EventSubscriptionPoke/$subscriptions";
-            input.Subscribe.Method = "post";
-            input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
-            input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<EntityListResponseTable> ContactGetTables([ConnectionName] string connectionId)
+        public IBodyWorkflowAction<EntityListResponseTable> ContactGetTables()
         {
             var apiCallPath = "/datasets/contacts/tables";
             var apiCallHttpMethod = "get";
@@ -439,46 +697,338 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<EntityListResponseContactResponse> ContactGetItems([ConnectionName] string connectionId, [DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EntityListResponseContactResponse> ContactGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (filter != null)
-            {
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            }
-
             if (orderby != null)
-            {
                 callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            }
-
             if (top != null)
-            {
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            }
-
             if (skip != null)
-            {
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            }
-
             return new ApiConnectionAction<EntityListResponseContactResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<ContactResponse> ContactPostItem([ConnectionName] string connectionId, [DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<Contact>> item)
+        public IBodyWorkflowAction<ContactResponse> ContactPostItem(Expression<Func<string>> table, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemHomeAddressStreet = null, Expression<Func<string>> itemHomeAddressCity = null, Expression<Func<string>> itemHomeAddressState = null, Expression<Func<string>> itemHomeAddressCountryOrRegion = null, Expression<Func<string>> itemHomeAddressPostalCode = null, Expression<Func<string>> itemBusinessAddressStreet = null, Expression<Func<string>> itemBusinessAddressCity = null, Expression<Func<string>> itemBusinessAddressState = null, Expression<Func<string>> itemBusinessAddressCountryOrRegion = null, Expression<Func<string>> itemBusinessAddressPostalCode = null, Expression<Func<string>> itemOtherAddressStreet = null, Expression<Func<string>> itemOtherAddressCity = null, Expression<Func<string>> itemOtherAddressState = null, Expression<Func<string>> itemOtherAddressCountryOrRegion = null, Expression<Func<string>> itemOtherAddressPostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
             var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(item);
+            var item = new JObject();
+            var itempropCount = 0;
+            if (itemid != null)
+            {
+                item["Id"] = ExpressionConverter.ConvertO(itemid);
+                itempropCount++;
+            }
+
+            if (itemparentFolderId != null)
+            {
+                item["ParentFolderId"] = ExpressionConverter.ConvertO(itemparentFolderId);
+                itempropCount++;
+            }
+
+            if (itembirthday != null)
+            {
+                item["Birthday"] = ExpressionConverter.ConvertO(itembirthday);
+                itempropCount++;
+            }
+
+            if (itemfileAs != null)
+            {
+                item["FileAs"] = ExpressionConverter.ConvertO(itemfileAs);
+                itempropCount++;
+            }
+
+            if (itemdisplayName != null)
+            {
+                item["DisplayName"] = ExpressionConverter.ConvertO(itemdisplayName);
+                itempropCount++;
+            }
+
+            itempropCount++;
+            item["GivenName"] = ExpressionConverter.ConvertO(itemgivenName);
+            if (iteminitials != null)
+            {
+                item["Initials"] = ExpressionConverter.ConvertO(iteminitials);
+                itempropCount++;
+            }
+
+            if (itemmiddleName != null)
+            {
+                item["MiddleName"] = ExpressionConverter.ConvertO(itemmiddleName);
+                itempropCount++;
+            }
+
+            if (itemnickname != null)
+            {
+                item["NickName"] = ExpressionConverter.ConvertO(itemnickname);
+                itempropCount++;
+            }
+
+            if (itemsurname != null)
+            {
+                item["Surname"] = ExpressionConverter.ConvertO(itemsurname);
+                itempropCount++;
+            }
+
+            if (itemtitle != null)
+            {
+                item["Title"] = ExpressionConverter.ConvertO(itemtitle);
+                itempropCount++;
+            }
+
+            if (itemgeneration != null)
+            {
+                item["Generation"] = ExpressionConverter.ConvertO(itemgeneration);
+                itempropCount++;
+            }
+
+            if (itememailAddresses != null)
+            {
+                item["EmailAddresses"] = ExpressionConverter.ConvertO(itememailAddresses);
+                itempropCount++;
+            }
+
+            if (itemiMAddresses != null)
+            {
+                item["ImAddresses"] = ExpressionConverter.ConvertO(itemiMAddresses);
+                itempropCount++;
+            }
+
+            if (itemjobTitle != null)
+            {
+                item["JobTitle"] = ExpressionConverter.ConvertO(itemjobTitle);
+                itempropCount++;
+            }
+
+            if (itemcompanyName != null)
+            {
+                item["CompanyName"] = ExpressionConverter.ConvertO(itemcompanyName);
+                itempropCount++;
+            }
+
+            if (itemdepartment != null)
+            {
+                item["Department"] = ExpressionConverter.ConvertO(itemdepartment);
+                itempropCount++;
+            }
+
+            if (itemofficeLocation != null)
+            {
+                item["OfficeLocation"] = ExpressionConverter.ConvertO(itemofficeLocation);
+                itempropCount++;
+            }
+
+            if (itemprofession != null)
+            {
+                item["Profession"] = ExpressionConverter.ConvertO(itemprofession);
+                itempropCount++;
+            }
+
+            if (itembusinessHomePage != null)
+            {
+                item["BusinessHomePage"] = ExpressionConverter.ConvertO(itembusinessHomePage);
+                itempropCount++;
+            }
+
+            if (itemassistantName != null)
+            {
+                item["AssistantName"] = ExpressionConverter.ConvertO(itemassistantName);
+                itempropCount++;
+            }
+
+            if (itemmanager != null)
+            {
+                item["Manager"] = ExpressionConverter.ConvertO(itemmanager);
+                itempropCount++;
+            }
+
+            itempropCount++;
+            item["HomePhones"] = ExpressionConverter.ConvertO(itemhomePhones);
+            if (itembusinessPhones != null)
+            {
+                item["BusinessPhones"] = ExpressionConverter.ConvertO(itembusinessPhones);
+                itempropCount++;
+            }
+
+            if (itemmobilePhone != null)
+            {
+                item["MobilePhone1"] = ExpressionConverter.ConvertO(itemmobilePhone);
+                itempropCount++;
+            }
+
+            var HomeAddressObject = new JObject();
+            var HomeAddressObjectpropCount = 0;
+            if (itemHomeAddressStreet != null)
+            {
+                HomeAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressCity != null)
+            {
+                HomeAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressState != null)
+            {
+                HomeAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressCountryOrRegion != null)
+            {
+                HomeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressPostalCode != null)
+            {
+                HomeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (HomeAddressObjectpropCount > 0)
+            {
+                item["HomeAddress"] = HomeAddressObject;
+                itempropCount++;
+            }
+
+            var BusinessAddressObject = new JObject();
+            var BusinessAddressObjectpropCount = 0;
+            if (itemBusinessAddressStreet != null)
+            {
+                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemBusinessAddressStreet);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressCity != null)
+            {
+                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemBusinessAddressCity);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressState != null)
+            {
+                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemBusinessAddressState);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressCountryOrRegion != null)
+            {
+                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemBusinessAddressCountryOrRegion);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressPostalCode != null)
+            {
+                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemBusinessAddressPostalCode);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (BusinessAddressObjectpropCount > 0)
+            {
+                item["BusinessAddress"] = BusinessAddressObject;
+                itempropCount++;
+            }
+
+            var OtherAddressObject = new JObject();
+            var OtherAddressObjectpropCount = 0;
+            if (itemOtherAddressStreet != null)
+            {
+                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemOtherAddressStreet);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressCity != null)
+            {
+                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemOtherAddressCity);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressState != null)
+            {
+                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemOtherAddressState);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressCountryOrRegion != null)
+            {
+                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemOtherAddressCountryOrRegion);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressPostalCode != null)
+            {
+                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemOtherAddressPostalCode);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (OtherAddressObjectpropCount > 0)
+            {
+                item["OtherAddress"] = OtherAddressObject;
+                itempropCount++;
+            }
+
+            if (itemyomiCompanyName != null)
+            {
+                item["YomiCompanyName"] = ExpressionConverter.ConvertO(itemyomiCompanyName);
+                itempropCount++;
+            }
+
+            if (itemyomiGivenName != null)
+            {
+                item["YomiGivenName"] = ExpressionConverter.ConvertO(itemyomiGivenName);
+                itempropCount++;
+            }
+
+            if (itemyomiSurname != null)
+            {
+                item["YomiSurname"] = ExpressionConverter.ConvertO(itemyomiSurname);
+                itempropCount++;
+            }
+
+            if (itemcategories != null)
+            {
+                item["Categories"] = ExpressionConverter.ConvertO(itemcategories);
+                itempropCount++;
+            }
+
+            if (itemchangeKey != null)
+            {
+                item["ChangeKey"] = ExpressionConverter.ConvertO(itemchangeKey);
+                itempropCount++;
+            }
+
+            if (itemcreatedTime != null)
+            {
+                item["DateTimeCreated"] = ExpressionConverter.ConvertO(itemcreatedTime);
+                itempropCount++;
+            }
+
+            if (itemlastModifiedTime != null)
+            {
+                item["DateTimeLastModified"] = ExpressionConverter.ConvertO(itemlastModifiedTime);
+                itempropCount++;
+            }
+
+            if (itempropCount > 0)
+            {
+                callPayload.Body = item;
+            }
+
             return new ApiConnectionAction<ContactResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<ContactResponse> ContactGetItem([ConnectionName] string connectionId, [DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactResponse> ContactGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "get";
@@ -487,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction ContactDeleteItem([ConnectionName] string connectionId, [DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id)
+        public IWorkflowAction ContactDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "delete";
@@ -496,219 +1046,696 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IOutputWorkflowAction<ContactResponse> ContactPatchItem([ConnectionName] string connectionId, [DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<Contact>> item)
+        public IBodyWorkflowAction<ContactResponse> ContactPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemHomeAddressStreet = null, Expression<Func<string>> itemHomeAddressCity = null, Expression<Func<string>> itemHomeAddressState = null, Expression<Func<string>> itemHomeAddressCountryOrRegion = null, Expression<Func<string>> itemHomeAddressPostalCode = null, Expression<Func<string>> itemBusinessAddressStreet = null, Expression<Func<string>> itemBusinessAddressCity = null, Expression<Func<string>> itemBusinessAddressState = null, Expression<Func<string>> itemBusinessAddressCountryOrRegion = null, Expression<Func<string>> itemBusinessAddressPostalCode = null, Expression<Func<string>> itemOtherAddressStreet = null, Expression<Func<string>> itemOtherAddressCity = null, Expression<Func<string>> itemOtherAddressState = null, Expression<Func<string>> itemOtherAddressCountryOrRegion = null, Expression<Func<string>> itemOtherAddressPostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
             var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(item);
+            var item = new JObject();
+            var itempropCount = 0;
+            if (itemid != null)
+            {
+                item["Id"] = ExpressionConverter.ConvertO(itemid);
+                itempropCount++;
+            }
+
+            if (itemparentFolderId != null)
+            {
+                item["ParentFolderId"] = ExpressionConverter.ConvertO(itemparentFolderId);
+                itempropCount++;
+            }
+
+            if (itembirthday != null)
+            {
+                item["Birthday"] = ExpressionConverter.ConvertO(itembirthday);
+                itempropCount++;
+            }
+
+            if (itemfileAs != null)
+            {
+                item["FileAs"] = ExpressionConverter.ConvertO(itemfileAs);
+                itempropCount++;
+            }
+
+            if (itemdisplayName != null)
+            {
+                item["DisplayName"] = ExpressionConverter.ConvertO(itemdisplayName);
+                itempropCount++;
+            }
+
+            itempropCount++;
+            item["GivenName"] = ExpressionConverter.ConvertO(itemgivenName);
+            if (iteminitials != null)
+            {
+                item["Initials"] = ExpressionConverter.ConvertO(iteminitials);
+                itempropCount++;
+            }
+
+            if (itemmiddleName != null)
+            {
+                item["MiddleName"] = ExpressionConverter.ConvertO(itemmiddleName);
+                itempropCount++;
+            }
+
+            if (itemnickname != null)
+            {
+                item["NickName"] = ExpressionConverter.ConvertO(itemnickname);
+                itempropCount++;
+            }
+
+            if (itemsurname != null)
+            {
+                item["Surname"] = ExpressionConverter.ConvertO(itemsurname);
+                itempropCount++;
+            }
+
+            if (itemtitle != null)
+            {
+                item["Title"] = ExpressionConverter.ConvertO(itemtitle);
+                itempropCount++;
+            }
+
+            if (itemgeneration != null)
+            {
+                item["Generation"] = ExpressionConverter.ConvertO(itemgeneration);
+                itempropCount++;
+            }
+
+            if (itememailAddresses != null)
+            {
+                item["EmailAddresses"] = ExpressionConverter.ConvertO(itememailAddresses);
+                itempropCount++;
+            }
+
+            if (itemiMAddresses != null)
+            {
+                item["ImAddresses"] = ExpressionConverter.ConvertO(itemiMAddresses);
+                itempropCount++;
+            }
+
+            if (itemjobTitle != null)
+            {
+                item["JobTitle"] = ExpressionConverter.ConvertO(itemjobTitle);
+                itempropCount++;
+            }
+
+            if (itemcompanyName != null)
+            {
+                item["CompanyName"] = ExpressionConverter.ConvertO(itemcompanyName);
+                itempropCount++;
+            }
+
+            if (itemdepartment != null)
+            {
+                item["Department"] = ExpressionConverter.ConvertO(itemdepartment);
+                itempropCount++;
+            }
+
+            if (itemofficeLocation != null)
+            {
+                item["OfficeLocation"] = ExpressionConverter.ConvertO(itemofficeLocation);
+                itempropCount++;
+            }
+
+            if (itemprofession != null)
+            {
+                item["Profession"] = ExpressionConverter.ConvertO(itemprofession);
+                itempropCount++;
+            }
+
+            if (itembusinessHomePage != null)
+            {
+                item["BusinessHomePage"] = ExpressionConverter.ConvertO(itembusinessHomePage);
+                itempropCount++;
+            }
+
+            if (itemassistantName != null)
+            {
+                item["AssistantName"] = ExpressionConverter.ConvertO(itemassistantName);
+                itempropCount++;
+            }
+
+            if (itemmanager != null)
+            {
+                item["Manager"] = ExpressionConverter.ConvertO(itemmanager);
+                itempropCount++;
+            }
+
+            itempropCount++;
+            item["HomePhones"] = ExpressionConverter.ConvertO(itemhomePhones);
+            if (itembusinessPhones != null)
+            {
+                item["BusinessPhones"] = ExpressionConverter.ConvertO(itembusinessPhones);
+                itempropCount++;
+            }
+
+            if (itemmobilePhone != null)
+            {
+                item["MobilePhone1"] = ExpressionConverter.ConvertO(itemmobilePhone);
+                itempropCount++;
+            }
+
+            var HomeAddressObject = new JObject();
+            var HomeAddressObjectpropCount = 0;
+            if (itemHomeAddressStreet != null)
+            {
+                HomeAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressCity != null)
+            {
+                HomeAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressState != null)
+            {
+                HomeAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressCountryOrRegion != null)
+            {
+                HomeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (itemHomeAddressPostalCode != null)
+            {
+                HomeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
+                HomeAddressObjectpropCount++;
+            }
+
+            if (HomeAddressObjectpropCount > 0)
+            {
+                item["HomeAddress"] = HomeAddressObject;
+                itempropCount++;
+            }
+
+            var BusinessAddressObject = new JObject();
+            var BusinessAddressObjectpropCount = 0;
+            if (itemBusinessAddressStreet != null)
+            {
+                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemBusinessAddressStreet);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressCity != null)
+            {
+                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemBusinessAddressCity);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressState != null)
+            {
+                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemBusinessAddressState);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressCountryOrRegion != null)
+            {
+                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemBusinessAddressCountryOrRegion);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (itemBusinessAddressPostalCode != null)
+            {
+                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemBusinessAddressPostalCode);
+                BusinessAddressObjectpropCount++;
+            }
+
+            if (BusinessAddressObjectpropCount > 0)
+            {
+                item["BusinessAddress"] = BusinessAddressObject;
+                itempropCount++;
+            }
+
+            var OtherAddressObject = new JObject();
+            var OtherAddressObjectpropCount = 0;
+            if (itemOtherAddressStreet != null)
+            {
+                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemOtherAddressStreet);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressCity != null)
+            {
+                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemOtherAddressCity);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressState != null)
+            {
+                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemOtherAddressState);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressCountryOrRegion != null)
+            {
+                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemOtherAddressCountryOrRegion);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (itemOtherAddressPostalCode != null)
+            {
+                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemOtherAddressPostalCode);
+                OtherAddressObjectpropCount++;
+            }
+
+            if (OtherAddressObjectpropCount > 0)
+            {
+                item["OtherAddress"] = OtherAddressObject;
+                itempropCount++;
+            }
+
+            if (itemyomiCompanyName != null)
+            {
+                item["YomiCompanyName"] = ExpressionConverter.ConvertO(itemyomiCompanyName);
+                itempropCount++;
+            }
+
+            if (itemyomiGivenName != null)
+            {
+                item["YomiGivenName"] = ExpressionConverter.ConvertO(itemyomiGivenName);
+                itempropCount++;
+            }
+
+            if (itemyomiSurname != null)
+            {
+                item["YomiSurname"] = ExpressionConverter.ConvertO(itemyomiSurname);
+                itempropCount++;
+            }
+
+            if (itemcategories != null)
+            {
+                item["Categories"] = ExpressionConverter.ConvertO(itemcategories);
+                itempropCount++;
+            }
+
+            if (itemchangeKey != null)
+            {
+                item["ChangeKey"] = ExpressionConverter.ConvertO(itemchangeKey);
+                itempropCount++;
+            }
+
+            if (itemcreatedTime != null)
+            {
+                item["DateTimeCreated"] = ExpressionConverter.ConvertO(itemcreatedTime);
+                itempropCount++;
+            }
+
+            if (itemlastModifiedTime != null)
+            {
+                item["DateTimeLastModified"] = ExpressionConverter.ConvertO(itemlastModifiedTime);
+                itempropCount++;
+            }
+
+            if (itempropCount > 0)
+            {
+                callPayload.Body = item;
+            }
+
             return new ApiConnectionAction<ContactResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction RespondToEvent([ConnectionName] string connectionId, Expression<Func<string>> eventId, Expression<Func<RespondToEventresponseInput>> response, Expression<Func<ResponseToEventInvite>> body)
+        public IWorkflowAction RespondToEvent(Expression<Func<string>> eventId, Expression<Func<responseInput>> response, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> bodysendResponse = null)
         {
             var apiCallPath = String.Format("/codeless/api/v2.0/me/events/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1), ExpressionConverter.ConvertWithUrlEncoding(response, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(body);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycomment != null)
+            {
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                bodypropCount++;
+            }
+
+            if (bodysendResponse != null)
+            {
+                body["SendResponse"] = ExpressionConverter.ConvertO(bodysendResponse);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public static IWorkflowAction ForwardEmail([ConnectionName] string connectionId, Expression<Func<string>> messageId, Expression<Func<DirectForwardMessage>> body)
+        public IWorkflowAction ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> bodycomment = null)
         {
             var apiCallPath = String.Format("/codeless/api/v2.0/me/messages/{0}/forward", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertObject(body);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycomment != null)
+            {
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["ToRecipients"] = ExpressionConverter.ConvertO(bodyto);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
     }
 
-    public class OutlookInstance(string connectionId)
+    public class OutlookTriggers([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<BatchResponseClientReceiveMessage> GetEmailsV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<GetEmailsV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null) => OutlookExtensions.GetEmailsV2(connectionId, folderPath, to, cc, toOrCc, from, importance, fetchOnlyWithAttachment, subjectFilter, fetchOnlyUnread, includeAttachments, searchQuery, top);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction SendEmailV2(Expression<Func<ClientSendHtmlMessage>> emailMessage) => OutlookExtensions.SendEmailV2(connectionId, emailMessage);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<ClientReceiveMessage> GetEmail(Expression<Func<string>> messageId, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> internetMessageId = null) => OutlookExtensions.GetEmail(connectionId, messageId, includeAttachments, internetMessageId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction DeleteEmail(Expression<Func<string>> messageId) => OutlookExtensions.DeleteEmail(connectionId, messageId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<ClientReceiveMessageStringEnums> Move(Expression<Func<string>> messageId, Expression<Func<string>> folderPath) => OutlookExtensions.Move(connectionId, messageId, folderPath);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction Flag(Expression<Func<string>> messageId) => OutlookExtensions.Flag(connectionId, messageId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction MarkAsRead(Expression<Func<string>> messageId) => OutlookExtensions.MarkAsRead(connectionId, messageId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction ReplyToV3(Expression<Func<string>> messageId, Expression<Func<ReplyHtmlMessage>> replyParameters) => OutlookExtensions.ReplyToV3(connectionId, messageId, replyParameters);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<string> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId) => OutlookExtensions.GetAttachment(connectionId, messageId, attachmentId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<OptionsEmailSubscription>> optionsEmailSubscription) => OutlookExtensions.SendMailWithOptions(connectionId, optionsEmailSubscription);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<ApprovalEmailSubscription>> approvalEmailSubscription) => OutlookExtensions.SendApprovalMail(connectionId, approvalEmailSubscription);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<EntityListResponseTable> CalendarGetTables() => OutlookExtensions.CalendarGetTables(connectionId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction CalendarDeleteItem([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id) => OutlookExtensions.CalendarDeleteItem(connectionId, table, id);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<CalendarEventListClientReceive> V3CalendarGetItems([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null) => OutlookExtensions.V3CalendarGetItems(connectionId, table, filter, orderby, top, skip);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPostItem([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<CalendarEventHtmlClient>> item) => OutlookExtensions.V3CalendarPostItem(connectionId, table, item);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarViewV2([DynamicValues("CalendarGetTables")] Expression<Func<string>> calendarId, Expression<Func<string>> startDateTimeOffset, Expression<Func<string>> endDateTimeOffset, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> search = null) => OutlookExtensions.GetEventsCalendarViewV2(connectionId, calendarId, startDateTimeOffset, endDateTimeOffset, filter, orderby, top, skip, search);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V2CalendarGetItem([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id) => OutlookExtensions.V2CalendarGetItem(connectionId, table, id);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<CalendarEventClientReceiveStringEnums> V3CalendarPatchItem([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<CalendarEventHtmlClient>> item) => OutlookExtensions.V3CalendarPatchItem(connectionId, table, id, item);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<EntityListResponseTable> ContactGetTables() => OutlookExtensions.ContactGetTables(connectionId);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<EntityListResponseContactResponse> ContactGetItems([DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null) => OutlookExtensions.ContactGetItems(connectionId, table, filter, orderby, top, skip);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<ContactResponse> ContactPostItem([DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<Contact>> item) => OutlookExtensions.ContactPostItem(connectionId, table, item);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<ContactResponse> ContactGetItem([DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id) => OutlookExtensions.ContactGetItem(connectionId, table, id);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction ContactDeleteItem([DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id) => OutlookExtensions.ContactDeleteItem(connectionId, table, id);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IOutputWorkflowAction<ContactResponse> ContactPatchItem([DynamicValues("ContactGetTables")] Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<Contact>> item) => OutlookExtensions.ContactPatchItem(connectionId, table, id, item);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction RespondToEvent(Expression<Func<string>> eventId, Expression<Func<RespondToEventresponseInput>> response, Expression<Func<ResponseToEventInvite>> body) => OutlookExtensions.RespondToEvent(connectionId, eventId, response, body);
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction ForwardEmail(Expression<Func<string>> messageId, Expression<Func<DirectForwardMessage>> body) => OutlookExtensions.ForwardEmail(connectionId, messageId, body);
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEventsV2(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
+        {
+            var apiCallPath = "/v2/Events/OnUpcomingEvents";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["table"] = ExpressionConverter.Convert(table);
+            callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
+            if (lookAheadTimeInMinutes != null)
+                callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+        }
+
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        {
+            var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
+            if (folderPath != null)
+                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            if (to != null)
+                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
+            if (cc != null)
+                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
+            if (toOrCc != null)
+                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
+            if (from != null)
+                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
+            input.Fetch.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+            if (includeAttachments != null)
+                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
+            if (subjectFilter != null)
+                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
+            if (folderPath != null)
+                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            var subscription = new JObject();
+            var subscriptionpropCount = 0;
+            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscriptionpropCount++;
+            if (subscriptionpropCount > 0)
+            {
+                input.Subscribe.Body = subscription;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+        }
+
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        {
+            var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
+            if (folderPath != null)
+                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            if (to != null)
+                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
+            if (cc != null)
+                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
+            if (toOrCc != null)
+                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
+            if (from != null)
+                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
+            input.Fetch.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+            if (includeAttachments != null)
+                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
+            if (subjectFilter != null)
+                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
+            if (folderPath != null)
+                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            var subscription = new JObject();
+            var subscriptionpropCount = 0;
+            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscriptionpropCount++;
+            if (subscriptionpropCount > 0)
+            {
+                input.Subscribe.Body = subscription;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+        }
+
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        {
+            var input = new ApiConnectionNotificationActionInput(connectionId);
+            if (folderPath != null)
+                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            if (to != null)
+                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
+            if (cc != null)
+                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
+            if (toOrCc != null)
+                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
+            if (from != null)
+                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
+            input.Fetch.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+            if (includeAttachments != null)
+                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
+            if (subjectFilter != null)
+                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            if (folderPath != null)
+                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+            if (importance != null)
+                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
+            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+            if (fetchOnlyWithAttachment != null)
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
+            var subscription = new JObject();
+            var subscriptionpropCount = 0;
+            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscriptionpropCount++;
+            if (subscriptionpropCount > 0)
+            {
+                input.Subscribe.Body = subscription;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+        }
+
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        {
+            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (orderby != null)
+                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+            if (top != null)
+                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+            if (skip != null)
+                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+        }
+
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        {
+            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (orderby != null)
+                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+            if (top != null)
+                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+            if (skip != null)
+                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+        }
+
+        public IOutputWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItemsV2(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
+        {
+            var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
+            if (incomingDays != null)
+                input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
+            input.Fetch.Queries["pastDays"] = Convert.ToString(50);
+            if (pastDays != null)
+                input.Fetch.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
+            input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
+            if (incomingDays != null)
+                input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
+            input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
+            if (pastDays != null)
+                input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
+            var subscription = new JObject();
+            var subscriptionpropCount = 0;
+            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscriptionpropCount++;
+            if (subscriptionpropCount > 0)
+            {
+                input.Subscribe.Body = subscription;
+            }
+
+            return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
+        }
     }
 
-    public class OutlookInstanceTriggers([ConnectionName] string connectionId)
-    {
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenOnUpcomingEventsV2([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null) => OutlookExtensions.WhenOnUpcomingEventsV2(connectionId, table, lookAheadTimeInMinutes);
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnNewEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null) => OutlookExtensions.WhenOnNewEmailV2(connectionId, folderPath, to, cc, toOrCc, from, importance, fetchOnlyWithAttachment, includeAttachments, subjectFilter);
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnFlaggedEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null) => OutlookExtensions.WhenOnFlaggedEmailV2(connectionId, folderPath, to, cc, toOrCc, from, importance, fetchOnlyWithAttachment, includeAttachments, subjectFilter);
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> WhenOnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<OnNewMentionMeEmailV2importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null) => OutlookExtensions.WhenOnNewMentionMeEmailV2(connectionId, folderPath, to, cc, toOrCc, from, importance, fetchOnlyWithAttachment, includeAttachments, subjectFilter);
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenCalendarGetOnNewItemsV2([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null) => OutlookExtensions.WhenCalendarGetOnNewItemsV2(connectionId, table, orderby, top, skip);
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> WhenCalendarGetOnUpdatedItemsV2([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null) => OutlookExtensions.WhenCalendarGetOnUpdatedItemsV2(connectionId, table, orderby, top, skip);
-        public IOutputWorkflowTrigger<CalendarEventListWithActionType> WhenCalendarGetOnChangedItemsV2([DynamicValues("CalendarGetTables")] Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null) => OutlookExtensions.WhenCalendarGetOnChangedItemsV2(connectionId, table, incomingDays, pastDays);
-    }
-
-    public class TableSortRestrictionsMetadata
-    {
-        [JsonProperty("sortable")]
-        public bool Sortable { get; set; }
-
-        [JsonProperty("unsortableProperties")]
-        public string[] UnsortableProperties { get; set; }
-
-        [JsonProperty("ascendingOnlyProperties")]
-        public string[] AscendingOnlyProperties { get; set; }
-    }
-
-    public class TableFilterRestrictionsMetadata
-    {
-        [JsonProperty("filterable")]
-        public bool Filterable { get; set; }
-
-        [JsonProperty("nonFilterableProperties")]
-        public string[] NonFilterableProperties { get; set; }
-
-        [JsonProperty("requiredProperties")]
-        public string[] RequiredProperties { get; set; }
-    }
-
-    public class TableSelectRestrictionsMetadata
-    {
-        [JsonProperty("selectable")]
-        public bool Selectable { get; set; }
-    }
-
-    public class TableCapabilitiesMetadata
-    {
-        [JsonProperty("sortRestrictions")]
-        public TableSortRestrictionsMetadata SortRestrictions { get; set; }
-
-        [JsonProperty("filterRestrictions")]
-        public TableFilterRestrictionsMetadata FilterRestrictions { get; set; }
-
-        [JsonProperty("selectRestrictions")]
-        public TableSelectRestrictionsMetadata SelectRestrictions { get; set; }
-
-        [JsonProperty("isOnlyServerPagable")]
-        public bool IsOnlyServerPagable { get; set; }
-
-        [JsonProperty("filterFunctionSupport")]
-        public TableCapabilitiesMetadataFilterFunctionSupportTypeItem[] FilterFunctionSupport { get; set; }
-
-        [JsonProperty("serverPagingOptions")]
-        public TableCapabilitiesMetadataServerPagingOptionsTypeItem[] ServerPagingOptions { get; set; }
-    }
-
-    public class TableMetadata
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("x-ms-permission")]
-        public string XMsPermission { get; set; }
-
-        [JsonProperty("x-ms-capabilities")]
-        public TableCapabilitiesMetadata XMsCapabilities { get; set; }
-
-        [JsonProperty("schema")]
-        public JToken Schema { get; set; }
-
-        [JsonProperty("referencedEntities")]
-        public JToken ReferencedEntities { get; set; }
-
-        [JsonProperty("webUrl")]
-        public string WebUrl { get; set; }
-    }
-
-    public class CalendarEventClientReceive
-    {
-        public string Subject { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
-        public int ShowAs { get; set; }
-        public int Recurrence { get; set; }
-        public int ResponseType { get; set; }
-        public string ResponseTime { get; set; }
-        public string ICalUId { get; set; }
-        public int Importance { get; set; }
-        public string Id { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
-        public string Organizer { get; set; }
-        public string TimeZone { get; set; }
-        public string SeriesMasterId { get; set; }
-        public string[] Categories { get; set; }
-        public string WebLink { get; set; }
-        public string RequiredAttendees { get; set; }
-        public string OptionalAttendees { get; set; }
-        public string ResourceAttendees { get; set; }
-        public string Body { get; set; }
-        public bool IsHtml { get; set; }
-        public string Location { get; set; }
-        public bool IsAllDay { get; set; }
-        public string RecurrenceEnd { get; set; }
-        public int NumberOfOccurrences { get; set; }
-        public int Reminder { get; set; }
-        public bool ResponseRequested { get; set; }
-    }
-
-    public class CalendarEventListClientReceive
+    public class BatchResponseClientReceiveMessage
     {
         [JsonProperty("value")]
-        public CalendarEventClientReceive[] Value { get; set; }
+        public ClientReceiveMessage[] Value { get; set; }
     }
 
-    public class ClientSubscription
+    public class ClientReceiveMessage
     {
-        public string NotificationUrl { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public string ReplyTo { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+        public int Importance { get; set; }
+        public string BodyPreview { get; set; }
+        public bool HasAttachment { get; set; }
+
+        [JsonProperty("Id")]
+        public string MessageId { get; set; }
+        public string InternetMessageId { get; set; }
+        public string ConversationId { get; set; }
+
+        [JsonProperty("DateTimeReceived")]
+        public string ReceivedTime { get; set; }
+        public bool IsRead { get; set; }
+        public ClientReceiveFileAttachment[] Attachments { get; set; }
+
+        [JsonProperty("IsHtml")]
+        public bool IsHTML { get; set; }
+    }
+
+    public class ClientReceiveFileAttachment
+    {
+        [JsonProperty("Id")]
+        public string AttachmentId { get; set; }
+        public string Name { get; set; }
+
+        [JsonProperty("ContentBytes")]
+        public string Content { get; set; }
+        public string ContentType { get; set; }
+        public int Size { get; set; }
+        public bool IsInline { get; set; }
+        public string LastModifiedDateTime { get; set; }
+        public string ContentId { get; set; }
+    }
+
+    public enum importanceInput
+    {
+        Any,
+        Low,
+        Normal,
+        High
+    }
+
+    public class ClientSendAttachment
+    {
+        public string Name { get; set; }
+
+        [JsonProperty("ContentBytes")]
+        public string Content { get; set; }
+    }
+
+    public enum emailMessageimportanceInput
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public class ClientReceiveMessageStringEnums
+    {
+        public ClientReceiveMessageStringEnumsImportanceType Importance { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+
+        [JsonProperty("Cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("Bcc")]
+        public string BCC { get; set; }
+        public string ReplyTo { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+        public string BodyPreview { get; set; }
+        public bool HasAttachment { get; set; }
+
+        [JsonProperty("Id")]
+        public string MessageId { get; set; }
+        public string InternetMessageId { get; set; }
+        public string ConversationId { get; set; }
+
+        [JsonProperty("DateTimeReceived")]
+        public string ReceivedTime { get; set; }
+        public bool IsRead { get; set; }
+        public ClientReceiveFileAttachment[] Attachments { get; set; }
+
+        [JsonProperty("IsHtml")]
+        public bool IsHTML { get; set; }
+    }
+
+    public enum ClientReceiveMessageStringEnumsImportanceType
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public enum replyParametersimportanceInput
+    {
+        Low,
+        Normal,
+        High
     }
 
     public class SubscriptionResponse
@@ -726,196 +1753,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string NotificationUrl { get; set; }
     }
 
-    public class FilePickerFile
+    public enum optionsEmailSubscriptionMessageimportanceInput
     {
-        public string Id { get; set; }
-        public string DisplayName { get; set; }
-        public bool IsFolder { get; set; }
-        public string Path { get; set; }
+        Low,
+        Normal,
+        High
     }
 
-    public class EntityListResponseFilePickerFile
+    public enum approvalEmailSubscriptionMessageimportanceInput
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public class EntityListResponseTable
     {
         [JsonProperty("value")]
-        public FilePickerFile[] Value { get; set; }
-    }
-
-    public class ClientReceiveFileAttachment
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string ContentBytes { get; set; }
-        public string ContentType { get; set; }
-        public int Size { get; set; }
-        public bool IsInline { get; set; }
-        public string LastModifiedDateTime { get; set; }
-        public string ContentId { get; set; }
-    }
-
-    public class ClientReceiveMessage
-    {
-        public string From { get; set; }
-        public string To { get; set; }
-        public string Cc { get; set; }
-        public string Bcc { get; set; }
-        public string ReplyTo { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-        public int Importance { get; set; }
-        public string BodyPreview { get; set; }
-        public bool HasAttachment { get; set; }
-        public string Id { get; set; }
-        public string InternetMessageId { get; set; }
-        public string ConversationId { get; set; }
-        public string DateTimeReceived { get; set; }
-        public bool IsRead { get; set; }
-        public ClientReceiveFileAttachment[] Attachments { get; set; }
-        public bool IsHtml { get; set; }
-    }
-
-    public class BatchResponseClientReceiveMessage
-    {
-        [JsonProperty("value")]
-        public ClientReceiveMessage[] Value { get; set; }
-    }
-
-    public class ClientSendAttachment
-    {
-        public string Name { get; set; }
-        public string ContentBytes { get; set; }
-    }
-
-    public class ClientSendHtmlMessage
-    {
-        public string To { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-        public string From { get; set; }
-        public string Cc { get; set; }
-        public string Bcc { get; set; }
-        public ClientSendAttachment[] Attachments { get; set; }
-        public string ReplyTo { get; set; }
-        public ClientSendHtmlMessageImportanceType Importance { get; set; }
-    }
-
-    public class ClientReceiveMessageStringEnums
-    {
-        public ClientReceiveMessageStringEnumsImportanceType Importance { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
-        public string Cc { get; set; }
-        public string Bcc { get; set; }
-        public string ReplyTo { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-        public string BodyPreview { get; set; }
-        public bool HasAttachment { get; set; }
-        public string Id { get; set; }
-        public string InternetMessageId { get; set; }
-        public string ConversationId { get; set; }
-        public string DateTimeReceived { get; set; }
-        public bool IsRead { get; set; }
-        public ClientReceiveFileAttachment[] Attachments { get; set; }
-        public bool IsHtml { get; set; }
-    }
-
-    public class ReplyHtmlMessage
-    {
-        public string To { get; set; }
-        public string Cc { get; set; }
-        public string Bcc { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-        public bool ReplyAll { get; set; }
-        public ReplyHtmlMessageImportanceType Importance { get; set; }
-        public ClientSendAttachment[] Attachments { get; set; }
-    }
-
-    public class TriggerBatchResponseClientReceiveMessage
-    {
-        [JsonProperty("value")]
-        public ClientReceiveMessage[] Value { get; set; }
-    }
-
-    public class TabularDataSetsMetadata
-    {
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("urlEncoding")]
-        public string UrlEncoding { get; set; }
-
-        [JsonProperty("tableDisplayName")]
-        public string TableDisplayName { get; set; }
-
-        [JsonProperty("tablePluralName")]
-        public string TablePluralName { get; set; }
-    }
-
-    public class BlobDataSetsMetadata
-    {
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("urlEncoding")]
-        public string UrlEncoding { get; set; }
-    }
-
-    public class DataSetsMetadata
-    {
-        [JsonProperty("tabular")]
-        public TabularDataSetsMetadata Tabular { get; set; }
-
-        [JsonProperty("blob")]
-        public BlobDataSetsMetadata Blob { get; set; }
-    }
-
-    public class MessageWithOptions
-    {
-        public string To { get; set; }
-        public string Subject { get; set; }
-        public string Options { get; set; }
-        public string HeaderText { get; set; }
-        public string SelectionText { get; set; }
-        public string Body { get; set; }
-        public MessageWithOptionsImportanceType Importance { get; set; }
-        public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
-    }
-
-    public class OptionsEmailSubscription
-    {
-        public string NotificationUrl { get; set; }
-        public MessageWithOptions Message { get; set; }
-    }
-
-    public class ApprovalMessage
-    {
-        public string To { get; set; }
-        public string Subject { get; set; }
-        public string Options { get; set; }
-        public string HeaderText { get; set; }
-        public string SelectionText { get; set; }
-        public string Body { get; set; }
-        public ApprovalMessageImportanceType Importance { get; set; }
-        public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
-    }
-
-    public class ApprovalEmailSubscription
-    {
-        public string NotificationUrl { get; set; }
-        public ApprovalMessage Message { get; set; }
+        public Table[] Value { get; set; }
     }
 
     public class Table
@@ -925,30 +1780,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public JToken DynamicProperties { get; set; }
     }
 
-    public class EntityListResponseTable
+    public class CalendarEventListClientReceive
     {
         [JsonProperty("value")]
-        public Table[] Value { get; set; }
+        public CalendarEventClientReceive[] Value { get; set; }
     }
 
-    public class CalendarEventHtmlClient
+    public class CalendarEventClientReceive
     {
         public string Subject { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
-        public CalendarEventHtmlClientTimeZoneType TimeZone { get; set; }
+
+        [JsonProperty("Start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("End")]
+        public string EndTime { get; set; }
+        public int ShowAs { get; set; }
+        public int Recurrence { get; set; }
+        public int ResponseType { get; set; }
+        public string ResponseTime { get; set; }
+
+        [JsonProperty("ICalUId")]
+        public string EventUniqueID { get; set; }
+        public int Importance { get; set; }
+        public string Id { get; set; }
+
+        [JsonProperty("DateTimeCreated")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("DateTimeLastModified")]
+        public string LastModifiedTime { get; set; }
+        public string Organizer { get; set; }
+        public string TimeZone { get; set; }
+        public string SeriesMasterId { get; set; }
+        public string[] Categories { get; set; }
+        public string WebLink { get; set; }
         public string RequiredAttendees { get; set; }
         public string OptionalAttendees { get; set; }
         public string ResourceAttendees { get; set; }
         public string Body { get; set; }
+
+        [JsonProperty("IsHtml")]
+        public bool IsHTML { get; set; }
         public string Location { get; set; }
-        public CalendarEventHtmlClientImportanceType Importance { get; set; }
-        public bool IsAllDay { get; set; }
-        public CalendarEventHtmlClientRecurrenceType Recurrence { get; set; }
-        public string RecurrenceEnd { get; set; }
+
+        [JsonProperty("IsAllDay")]
+        public bool IsAllDayEvent { get; set; }
+
+        [JsonProperty("RecurrenceEnd")]
+        public string RecurrenceEndTime { get; set; }
         public int NumberOfOccurrences { get; set; }
         public int Reminder { get; set; }
-        public CalendarEventHtmlClientShowAsType ShowAs { get; set; }
         public bool ResponseRequested { get; set; }
     }
 
@@ -959,13 +1841,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public CalendarEventClientReceiveStringEnumsRecurrenceType Recurrence { get; set; }
         public CalendarEventClientReceiveStringEnumsShowAsType ShowAs { get; set; }
         public string Subject { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
+
+        [JsonProperty("Start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("End")]
+        public string EndTime { get; set; }
         public string ResponseTime { get; set; }
-        public string ICalUId { get; set; }
+
+        [JsonProperty("ICalUId")]
+        public string EventUniqueID { get; set; }
         public string Id { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
+
+        [JsonProperty("DateTimeCreated")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("DateTimeLastModified")]
+        public string LastModifiedTime { get; set; }
         public string Organizer { get; set; }
         public string TimeZone { get; set; }
         public string SeriesMasterId { get; set; }
@@ -975,577 +1867,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string OptionalAttendees { get; set; }
         public string ResourceAttendees { get; set; }
         public string Body { get; set; }
-        public bool IsHtml { get; set; }
+
+        [JsonProperty("IsHtml")]
+        public bool IsHTML { get; set; }
         public string Location { get; set; }
-        public bool IsAllDay { get; set; }
-        public string RecurrenceEnd { get; set; }
+
+        [JsonProperty("IsAllDay")]
+        public bool IsAllDayEvent { get; set; }
+
+        [JsonProperty("RecurrenceEnd")]
+        public string RecurrenceEndTime { get; set; }
         public int NumberOfOccurrences { get; set; }
         public int Reminder { get; set; }
         public bool ResponseRequested { get; set; }
     }
 
-    public class EntityListResponseCalendarEventClientReceiveStringEnums
-    {
-        [JsonProperty("value")]
-        public CalendarEventClientReceiveStringEnums[] Value { get; set; }
-    }
-
-    public class ResponseStatus
-    {
-        public ResponseStatusResponseType Response { get; set; }
-        public string Time { get; set; }
-    }
-
-    public class EmailAddress
-    {
-        public string Name { get; set; }
-        public string Address { get; set; }
-    }
-
-    public class Attendee
-    {
-        public ResponseStatus Status { get; set; }
-        public AttendeeTypeType Type { get; set; }
-        public EmailAddress EmailAddress { get; set; }
-    }
-
-    public class ItemBody
-    {
-        public ItemBodyContentTypeType ContentType { get; set; }
-        public string Content { get; set; }
-    }
-
-    public class PhysicalAddress
-    {
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string CountryOrRegion { get; set; }
-        public string PostalCode { get; set; }
-    }
-
-    public class GeoCoordinates
-    {
-        public double Altitude { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public double Accuracy { get; set; }
-        public double AltitudeAccuracy { get; set; }
-    }
-
-    public class Location
-    {
-        public string DisplayName { get; set; }
-        public PhysicalAddress Address { get; set; }
-        public GeoCoordinates Coordinates { get; set; }
-    }
-
-    public class Recipient
-    {
-        public EmailAddress EmailAddress { get; set; }
-    }
-
-    public class RecurrencePattern
-    {
-        public RecurrencePatternTypeType Type { get; set; }
-        public int Interval { get; set; }
-        public int Month { get; set; }
-        public int DayOfMonth { get; set; }
-        public RecurrencePatternDaysOfWeekTypeItem[] DaysOfWeek { get; set; }
-        public RecurrencePatternFirstDayOfWeekType FirstDayOfWeek { get; set; }
-        public RecurrencePatternIndexType Index { get; set; }
-    }
-
-    public class RecurrenceRange
-    {
-        public RecurrenceRangeTypeType Type { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
-        public int NumberOfOccurrences { get; set; }
-    }
-
-    public class PatternedRecurrence
-    {
-        public RecurrencePattern Pattern { get; set; }
-        public RecurrenceRange Range { get; set; }
-    }
-
-    public class CalendarEventBackend
-    {
-        public string Id { get; set; }
-        public Attendee[] Attendees { get; set; }
-        public ItemBody Body { get; set; }
-        public string BodyPreview { get; set; }
-        public string[] Categories { get; set; }
-        public string ChangeKey { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
-        public string End { get; set; }
-        public string EndTimeZone { get; set; }
-        public bool HasAttachments { get; set; }
-        public string ICalUId { get; set; }
-        public CalendarEventBackendImportanceType Importance { get; set; }
-        public bool IsAllDay { get; set; }
-        public bool IsCancelled { get; set; }
-        public bool IsOrganizer { get; set; }
-        public Location Location { get; set; }
-        public Recipient Organizer { get; set; }
-        public PatternedRecurrence Recurrence { get; set; }
-        public int Reminder { get; set; }
-        public bool ResponseRequested { get; set; }
-        public ResponseStatus ResponseStatus { get; set; }
-        public string SeriesMasterId { get; set; }
-        public CalendarEventBackendShowAsType ShowAs { get; set; }
-        public string Start { get; set; }
-        public string StartTimeZone { get; set; }
-        public string Subject { get; set; }
-        public CalendarEventBackendTypeType Type { get; set; }
-        public string WebLink { get; set; }
-        public string Reason { get; set; }
-    }
-
-    public class CalendarEventList
-    {
-        [JsonProperty("value")]
-        public CalendarEventBackend[] Value { get; set; }
-    }
-
-    public class CalendarEventClientWithActionType
-    {
-        public CalendarEventClientWithActionTypeActionTypeType ActionType { get; set; }
-        public bool IsAdded { get; set; }
-        public bool IsUpdated { get; set; }
-        public string Subject { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
-        public int ShowAs { get; set; }
-        public int Recurrence { get; set; }
-        public int ResponseType { get; set; }
-        public string ResponseTime { get; set; }
-        public string ICalUId { get; set; }
-        public int Importance { get; set; }
-        public string Id { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
-        public string Organizer { get; set; }
-        public string TimeZone { get; set; }
-        public string SeriesMasterId { get; set; }
-        public string[] Categories { get; set; }
-        public string WebLink { get; set; }
-        public string RequiredAttendees { get; set; }
-        public string OptionalAttendees { get; set; }
-        public string ResourceAttendees { get; set; }
-        public string Body { get; set; }
-        public bool IsHtml { get; set; }
-        public string Location { get; set; }
-        public bool IsAllDay { get; set; }
-        public string RecurrenceEnd { get; set; }
-        public int NumberOfOccurrences { get; set; }
-        public int Reminder { get; set; }
-        public bool ResponseRequested { get; set; }
-    }
-
-    public class CalendarEventListWithActionType
-    {
-        [JsonProperty("value")]
-        public CalendarEventClientWithActionType[] Value { get; set; }
-    }
-
-    public class ContactResponse
-    {
-        public string GivenName { get; set; }
-        public string[] HomePhones { get; set; }
-        public string Id { get; set; }
-        public string ParentFolderId { get; set; }
-        public string Birthday { get; set; }
-        public string FileAs { get; set; }
-        public string DisplayName { get; set; }
-        public string Initials { get; set; }
-        public string MiddleName { get; set; }
-        public string NickName { get; set; }
-        public string Surname { get; set; }
-        public string Title { get; set; }
-        public string Generation { get; set; }
-        public EmailAddress[] EmailAddresses { get; set; }
-        public string[] ImAddresses { get; set; }
-        public string JobTitle { get; set; }
-        public string CompanyName { get; set; }
-        public string Department { get; set; }
-        public string OfficeLocation { get; set; }
-        public string Profession { get; set; }
-        public string BusinessHomePage { get; set; }
-        public string AssistantName { get; set; }
-        public string Manager { get; set; }
-        public string[] BusinessPhones { get; set; }
-        public string MobilePhone1 { get; set; }
-        public PhysicalAddress HomeAddress { get; set; }
-        public PhysicalAddress BusinessAddress { get; set; }
-        public PhysicalAddress OtherAddress { get; set; }
-        public string YomiCompanyName { get; set; }
-        public string YomiGivenName { get; set; }
-        public string YomiSurname { get; set; }
-        public string[] Categories { get; set; }
-        public string ChangeKey { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
-    }
-
-    public class EntityListResponseContactResponse
-    {
-        [JsonProperty("value")]
-        public ContactResponse[] Value { get; set; }
-    }
-
-    public class Contact
-    {
-        public string Id { get; set; }
-        public string ParentFolderId { get; set; }
-        public string Birthday { get; set; }
-        public string FileAs { get; set; }
-        public string DisplayName { get; set; }
-        public string GivenName { get; set; }
-        public string Initials { get; set; }
-        public string MiddleName { get; set; }
-        public string NickName { get; set; }
-        public string Surname { get; set; }
-        public string Title { get; set; }
-        public string Generation { get; set; }
-        public EmailAddress[] EmailAddresses { get; set; }
-        public string[] ImAddresses { get; set; }
-        public string JobTitle { get; set; }
-        public string CompanyName { get; set; }
-        public string Department { get; set; }
-        public string OfficeLocation { get; set; }
-        public string Profession { get; set; }
-        public string BusinessHomePage { get; set; }
-        public string AssistantName { get; set; }
-        public string Manager { get; set; }
-        public string[] HomePhones { get; set; }
-        public string[] BusinessPhones { get; set; }
-        public string MobilePhone1 { get; set; }
-        public PhysicalAddress HomeAddress { get; set; }
-        public PhysicalAddress BusinessAddress { get; set; }
-        public PhysicalAddress OtherAddress { get; set; }
-        public string YomiCompanyName { get; set; }
-        public string YomiGivenName { get; set; }
-        public string YomiSurname { get; set; }
-        public string[] Categories { get; set; }
-        public string ChangeKey { get; set; }
-        public string DateTimeCreated { get; set; }
-        public string DateTimeLastModified { get; set; }
-    }
-
-    public class PassThroughNativeQuery
-    {
-        public string Language { get; set; }
-    }
-
-    public class DataSet
-    {
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-
-        [JsonProperty("query")]
-        public PassThroughNativeQuery[] Query { get; set; }
-    }
-
-    public class DataSetsList
-    {
-        [JsonProperty("value")]
-        public DataSet[] Value { get; set; }
-    }
-
-    public class ResponseToEventInvite
-    {
-        public string Comment { get; set; }
-        public bool SendResponse { get; set; }
-    }
-
-    public class DirectForwardMessage
-    {
-        public string Comment { get; set; }
-        public string ToRecipients { get; set; }
-    }
-
-    public class OutlookReceiveAttachment
-    {
-        [JsonProperty("@odata.type")]
-        public string Type { get; set; }
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string ContentBytes { get; set; }
-        public string ContentType { get; set; }
-        public int Size { get; set; }
-        public string Permission { get; set; }
-        public string ProviderType { get; set; }
-        public string SourceUrl { get; set; }
-        public bool IsInline { get; set; }
-        public string LastModifiedDateTime { get; set; }
-        public string ContentId { get; set; }
-    }
-
-    public class InternetMessageHeader
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
-    }
-
-    public class OutlookReceiveMessage
-    {
-        public string InternetMessageId { get; set; }
-        public string BodyPreview { get; set; }
-        public string Id { get; set; }
-        public string ConversationId { get; set; }
-        public bool HasAttachments { get; set; }
-        public bool IsRead { get; set; }
-        public string CreatedDateTime { get; set; }
-        public string ReceivedDateTime { get; set; }
-        public string LastModifiedDateTime { get; set; }
-        public OutlookReceiveAttachment[] Attachments { get; set; }
-        public Recipient[] ToRecipients { get; set; }
-        public Recipient[] CcRecipients { get; set; }
-        public Recipient[] BccRecipients { get; set; }
-        public Recipient[] ReplyTo { get; set; }
-        public string Subject { get; set; }
-        public ItemBody Body { get; set; }
-        public Recipient From { get; set; }
-        public OutlookReceiveMessageImportanceType Importance { get; set; }
-        public InternetMessageHeader[] InternetMessageHeaders { get; set; }
-    }
-
-    public class SubscriptionPayloadEntityOutlookReceiveMessage
-    {
-        public int SequenceNumber { get; set; }
-        public string ChangeType { get; set; }
-        public string ClientState { get; set; }
-        public string Resource { get; set; }
-        public OutlookReceiveMessage ResourceData { get; set; }
-    }
-
-    public class SubscriptionPayloadOutlookReceiveMessage
-    {
-        [JsonProperty("value")]
-        public SubscriptionPayloadEntityOutlookReceiveMessage[] Value { get; set; }
-    }
-
-    public class SubscriptionEvent
-    {
-        public string Id { get; set; }
-    }
-
-    public class SubscriptionPayloadEntitySubscriptionEvent
-    {
-        public int SequenceNumber { get; set; }
-        public string ChangeType { get; set; }
-        public string ClientState { get; set; }
-        public string Resource { get; set; }
-        public SubscriptionEvent ResourceData { get; set; }
-    }
-
-    public class SubscriptionPayloadSubscriptionEvent
-    {
-        [JsonProperty("value")]
-        public SubscriptionPayloadEntitySubscriptionEvent[] Value { get; set; }
-    }
-
-    public enum TableCapabilitiesMetadataFilterFunctionSupportTypeItem
-    {
-        [EnumMember(Value = "eq")]
-        Eq,
-        [EnumMember(Value = "ne")]
-        Ne,
-        [EnumMember(Value = "gt")]
-        Gt,
-        [EnumMember(Value = "ge")]
-        Ge,
-        [EnumMember(Value = "lt")]
-        Lt,
-        [EnumMember(Value = "le")]
-        Le,
-        [EnumMember(Value = "and")]
-        And,
-        [EnumMember(Value = "or")]
-        Or,
-        [EnumMember(Value = "contains")]
-        Contains,
-        [EnumMember(Value = "startswith")]
-        Startswith,
-        [EnumMember(Value = "endswith")]
-        Endswith,
-        [EnumMember(Value = "length")]
-        Length,
-        [EnumMember(Value = "indexof")]
-        Indexof,
-        [EnumMember(Value = "replace")]
-        Replace,
-        [EnumMember(Value = "substring")]
-        Substring,
-        [EnumMember(Value = "substringof")]
-        Substringof,
-        [EnumMember(Value = "tolower")]
-        Tolower,
-        [EnumMember(Value = "toupper")]
-        Toupper,
-        [EnumMember(Value = "trim")]
-        Trim,
-        [EnumMember(Value = "concat")]
-        Concat,
-        [EnumMember(Value = "year")]
-        Year,
-        [EnumMember(Value = "month")]
-        Month,
-        [EnumMember(Value = "day")]
-        Day,
-        [EnumMember(Value = "hour")]
-        Hour,
-        [EnumMember(Value = "minute")]
-        Minute,
-        [EnumMember(Value = "second")]
-        Second,
-        [EnumMember(Value = "date")]
-        Date,
-        [EnumMember(Value = "time")]
-        Time,
-        [EnumMember(Value = "now")]
-        Now,
-        [EnumMember(Value = "totaloffsetminutes")]
-        Totaloffsetminutes,
-        [EnumMember(Value = "totalseconds")]
-        Totalseconds,
-        [EnumMember(Value = "floor")]
-        Floor,
-        [EnumMember(Value = "ceiling")]
-        Ceiling,
-        [EnumMember(Value = "round")]
-        Round,
-        [EnumMember(Value = "not")]
-        Not,
-        [EnumMember(Value = "negate")]
-        Negate,
-        [EnumMember(Value = "add")]
-        Add,
-        [EnumMember(Value = "sub")]
-        Sub,
-        [EnumMember(Value = "mul")]
-        Mul,
-        [EnumMember(Value = "div")]
-        Div,
-        [EnumMember(Value = "mod")]
-        Mod,
-        [EnumMember(Value = "sum")]
-        Sum,
-        [EnumMember(Value = "min")]
-        Min,
-        [EnumMember(Value = "max")]
-        Max,
-        [EnumMember(Value = "average")]
-        Average,
-        [EnumMember(Value = "countdistinct")]
-        Countdistinct,
-        [EnumMember(Value = "null")]
-        Null
-    }
-
-    public enum TableCapabilitiesMetadataServerPagingOptionsTypeItem
-    {
-        [EnumMember(Value = "top")]
-        Top,
-        [EnumMember(Value = "skiptoken")]
-        Skiptoken
-    }
-
-    public enum GetEmailsV2importanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum ClientSendHtmlMessageImportanceType
+    public enum CalendarEventClientReceiveStringEnumsImportanceType
     {
         Low,
         Normal,
         High
     }
 
-    public enum ClientReceiveMessageStringEnumsImportanceType
+    public enum CalendarEventClientReceiveStringEnumsResponseTypeType
     {
-        Low,
-        Normal,
-        High
+        None,
+        Organizer,
+        TentativelyAccepted,
+        Accepted,
+        Declined,
+        NotResponded
     }
 
-    public enum ReplyHtmlMessageImportanceType
+    public enum CalendarEventClientReceiveStringEnumsRecurrenceType
     {
-        Low,
-        Normal,
-        High
+        None,
+        Daily,
+        Weekly,
+        Monthly,
+        Yearly
     }
 
-    public enum OnNewEmailV2importanceInput
+    public enum CalendarEventClientReceiveStringEnumsShowAsType
     {
-        Any,
-        Low,
-        Normal,
-        High
+        Free,
+        Tentative,
+        Busy,
+        Oof,
+        WorkingElsewhere,
+        Unknown
     }
 
-    public enum OnFlaggedEmailV2importanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum OnNewMentionMeEmailV2importanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum CreateOnNewEmailPokeSubscriptionimportanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum CreateOnNewMentionMeEmailPokeSubscriptionimportanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum CreateOnFlaggedEmailPokeSubscriptionimportanceInput
-    {
-        Any,
-        Low,
-        Normal,
-        High
-    }
-
-    public enum MessageWithOptionsImportanceType
-    {
-        Low,
-        Normal,
-        High
-    }
-
-    public enum ApprovalMessageImportanceType
-    {
-        Low,
-        Normal,
-        High
-    }
-
-    public enum CalendarEventHtmlClientTimeZoneType
+    public enum itemtimeZoneInput
     {
         [EnumMember(Value = "")]
         None,
@@ -1823,14 +2196,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         UTC1400KiritimatiIsland
     }
 
-    public enum CalendarEventHtmlClientImportanceType
+    public enum itemimportanceInput
     {
         Low,
         Normal,
         High
     }
 
-    public enum CalendarEventHtmlClientRecurrenceType
+    public enum itemrecurrenceInput
     {
         None,
         Daily,
@@ -1839,7 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Yearly
     }
 
-    public enum CalendarEventHtmlClientShowAsType
+    public enum itemshowAsInput
     {
         Free,
         Tentative,
@@ -1849,136 +2222,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Unknown
     }
 
-    public enum CalendarEventClientReceiveStringEnumsImportanceType
+    public class EntityListResponseCalendarEventClientReceiveStringEnums
     {
-        Low,
-        Normal,
-        High
+        [JsonProperty("value")]
+        public CalendarEventClientReceiveStringEnums[] Value { get; set; }
     }
 
-    public enum CalendarEventClientReceiveStringEnumsResponseTypeType
+    public class EntityListResponseContactResponse
     {
-        None,
-        Organizer,
-        TentativelyAccepted,
-        Accepted,
-        Declined,
-        NotResponded
+        [JsonProperty("value")]
+        public ContactResponse[] Value { get; set; }
     }
 
-    public enum CalendarEventClientReceiveStringEnumsRecurrenceType
+    public class ContactResponse
     {
-        None,
-        Daily,
-        Weekly,
-        Monthly,
-        Yearly
+        public string GivenName { get; set; }
+        public string[] HomePhones { get; set; }
+        public string Id { get; set; }
+        public string ParentFolderId { get; set; }
+        public string Birthday { get; set; }
+        public string FileAs { get; set; }
+        public string DisplayName { get; set; }
+        public string Initials { get; set; }
+        public string MiddleName { get; set; }
+
+        [JsonProperty("NickName")]
+        public string Nickname { get; set; }
+        public string Surname { get; set; }
+        public string Title { get; set; }
+        public string Generation { get; set; }
+        public EmailAddress[] EmailAddresses { get; set; }
+
+        [JsonProperty("ImAddresses")]
+        public string[] IMAddresses { get; set; }
+        public string JobTitle { get; set; }
+        public string CompanyName { get; set; }
+        public string Department { get; set; }
+        public string OfficeLocation { get; set; }
+        public string Profession { get; set; }
+        public string BusinessHomePage { get; set; }
+        public string AssistantName { get; set; }
+        public string Manager { get; set; }
+        public string[] BusinessPhones { get; set; }
+
+        [JsonProperty("MobilePhone1")]
+        public string MobilePhone { get; set; }
+        public PhysicalAddress HomeAddress { get; set; }
+        public PhysicalAddress BusinessAddress { get; set; }
+        public PhysicalAddress OtherAddress { get; set; }
+        public string YomiCompanyName { get; set; }
+        public string YomiGivenName { get; set; }
+        public string YomiSurname { get; set; }
+        public string[] Categories { get; set; }
+        public string ChangeKey { get; set; }
+
+        [JsonProperty("DateTimeCreated")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("DateTimeLastModified")]
+        public string LastModifiedTime { get; set; }
     }
 
-    public enum CalendarEventClientReceiveStringEnumsShowAsType
+    public class EmailAddress
     {
-        Free,
-        Tentative,
-        Busy,
-        Oof,
-        WorkingElsewhere,
-        Unknown
+        public string Name { get; set; }
+        public string Address { get; set; }
     }
 
-    public enum ResponseStatusResponseType
+    public class PhysicalAddress
     {
-        None,
-        Organizer,
-        TentativelyAccepted,
-        Accepted,
-        Declined,
-        NotResponded
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string CountryOrRegion { get; set; }
+        public string PostalCode { get; set; }
     }
 
-    public enum AttendeeTypeType
+    public enum responseInput
     {
-        Required,
-        Optional,
-        Resource
+        Accept,
+        [EnumMember(Value = "Tentatively Accept")]
+        TentativelyAccept,
+        Decline
     }
 
-    public enum ItemBodyContentTypeType
+    public class TriggerBatchResponseClientReceiveMessage
     {
-        Text,
-        HTML
+        [JsonProperty("value")]
+        public ClientReceiveMessage[] Value { get; set; }
     }
 
-    public enum CalendarEventBackendImportanceType
+    public class CalendarEventListWithActionType
     {
-        Low,
-        Normal,
-        High
+        [JsonProperty("value")]
+        public CalendarEventClientWithActionType[] Value { get; set; }
     }
 
-    public enum RecurrencePatternTypeType
+    public class CalendarEventClientWithActionType
     {
-        Daily,
-        Weekly,
-        AbsoluteMonthly,
-        RelativeMonthly,
-        AbsoluteYearly,
-        RelativeYearly
-    }
+        public CalendarEventClientWithActionTypeActionTypeType ActionType { get; set; }
+        public bool IsAdded { get; set; }
+        public bool IsUpdated { get; set; }
+        public string Subject { get; set; }
 
-    public enum RecurrencePatternDaysOfWeekTypeItem
-    {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
-    }
+        [JsonProperty("Start")]
+        public string StartTime { get; set; }
 
-    public enum RecurrencePatternFirstDayOfWeekType
-    {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
-    }
+        [JsonProperty("End")]
+        public string EndTime { get; set; }
+        public int ShowAs { get; set; }
+        public int Recurrence { get; set; }
+        public int ResponseType { get; set; }
+        public string ResponseTime { get; set; }
 
-    public enum RecurrencePatternIndexType
-    {
-        First,
-        Second,
-        Third,
-        Fourth,
-        Last
-    }
+        [JsonProperty("ICalUId")]
+        public string EventUniqueID { get; set; }
+        public int Importance { get; set; }
+        public string Id { get; set; }
 
-    public enum RecurrenceRangeTypeType
-    {
-        EndDate,
-        NoEnd,
-        Numbered
-    }
+        [JsonProperty("DateTimeCreated")]
+        public string CreatedTime { get; set; }
 
-    public enum CalendarEventBackendShowAsType
-    {
-        Free,
-        Tentative,
-        Busy,
-        Oof,
-        WorkingElsewhere,
-        Unknown
-    }
+        [JsonProperty("DateTimeLastModified")]
+        public string LastModifiedTime { get; set; }
+        public string Organizer { get; set; }
+        public string TimeZone { get; set; }
+        public string SeriesMasterId { get; set; }
+        public string[] Categories { get; set; }
+        public string WebLink { get; set; }
+        public string RequiredAttendees { get; set; }
+        public string OptionalAttendees { get; set; }
+        public string ResourceAttendees { get; set; }
+        public string Body { get; set; }
 
-    public enum CalendarEventBackendTypeType
-    {
-        SingleInstance,
-        Occurrence,
-        Exception,
-        SeriesMaster
+        [JsonProperty("IsHtml")]
+        public bool IsHTML { get; set; }
+        public string Location { get; set; }
+
+        [JsonProperty("IsAllDay")]
+        public bool IsAllDayEvent { get; set; }
+
+        [JsonProperty("RecurrenceEnd")]
+        public string RecurrenceEndTime { get; set; }
+        public int NumberOfOccurrences { get; set; }
+        public int Reminder { get; set; }
+        public bool ResponseRequested { get; set; }
     }
 
     public enum CalendarEventClientWithActionTypeActionTypeType
@@ -1990,30 +2378,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [EnumMember(Value = "deleted")]
         Deleted
     }
-
-    public enum RespondToEventresponseInput
-    {
-        Accept,
-        [EnumMember(Value = "Tentatively Accept")]
-        TentativelyAccept,
-        Decline
-    }
-
-    public enum OutlookReceiveMessageImportanceType
-    {
-        Low,
-        Normal,
-        High
-    }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Outlook;
 
-    public static class OutlookTriggerInstanceExtensions
+    public partial class WorkflowManagedActions
     {
-        public static OutlookInstanceTriggers Outlook(this WorkflowManagedTriggers t, string connectionId) => new OutlookInstanceTriggers(connectionId);
-        public static OutlookInstance Outlook(this WorkflowManagedActions t, string connectionId) => new OutlookInstance(connectionId);
+        public OutlookActions Outlook(string connectionId) => new OutlookActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public OutlookTriggers Outlook(string connectionId) => new OutlookTriggers(connectionId);
     }
 }

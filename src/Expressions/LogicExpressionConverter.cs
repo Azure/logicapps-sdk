@@ -8,9 +8,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.CompilerServices;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
 
+    /// <summary>
+    /// Converts LINQ expressions to logic app expression nodes.
+    /// </summary>
     internal class LogicConverter : VisitorBase<LogicAppExpressionNode, object>
     {
+        /// <summary>
+        /// Gets the value of a member from an object instance.
+        /// </summary>
+        /// <param name="member">The member to get the value from.</param>
+        /// <param name="instance">The object instance.</param>
         private object GetMemberValue(MemberInfo member, object instance)
         {
             return member switch
@@ -21,11 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
-
-        // Helper method to check if an object implements a generic interface
+        /// <summary>
+        /// Checks if an object type implements a generic interface.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <param name="genericInterfaceType">The generic interface type to match.</param>
         private static bool ImplementsGenericInterface(Type type, Type genericInterfaceType)
-        { 
-            Console.WriteLine($"TYPETYPE {type.Name} {genericInterfaceType.Name}");
+        {
             // Check if the type itself is the generic interface
             if (type.IsGenericType && type.GetGenericTypeDefinition() == genericInterfaceType)
                 return true;
@@ -33,6 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 i.IsGenericType && i.GetGenericTypeDefinition() == genericInterfaceType);
         }
 
+        /// <summary>
+        /// Gets the property name from a member, checking for JSON property attributes.
+        /// </summary>
+        /// <param name="obj">The object instance.</param>
+        /// <param name="member">The member to get the name from.</param>
         private static string GetPropertyName(object obj, MemberInfo member)
         {
             var name = member.Name;
@@ -43,11 +59,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (!string.IsNullOrEmpty(propName))
                     name = propName;
             }
-            Console.WriteLine($"Property name: {name}");
 
             return name;
         }
 
+        /// <summary>
+        /// Determines if a type is a compiler-generated closure type.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
         private static bool IsClosureType(Type type)
         {
             if (type == null) return false;
@@ -65,6 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return isCompilerGenerated && hasClosureName && isNested;
         }
 
+        /// <summary>
+        /// Gets the type of a member.
+        /// </summary>
+        /// <param name="member">The member to get the type from.</param>
         private static Type GetMemberType(MemberInfo member)
         {
             return member switch
@@ -77,11 +100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
+        /// <summary>
+        /// Visits a parameter expression.
+        /// </summary>
+        /// <param name="e">The parameter expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(ParameterExpression e, object p)
         {
-            // Custom logic for ParameterExpression
-            Console.WriteLine($"Visiting ParameterExpression: {e.Name} ({e.Type})");
-
             return new LiteralNode
             {
                 Type = e.Type,
@@ -89,16 +114,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
+        /// <summary>
+        /// Visits a conditional expression.
+        /// </summary>
+        /// <param name="e">The conditional expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override LogicAppExpressionNode Visit(ConditionalExpression e, object p)
+        {
+            var test = e.Test.Visit(this, p);
+            var ifTrue = e.IfTrue.Visit(this, p);
+            var ifFalse = e.IfFalse.Visit(this, p);
+
+            return new FunctionCallNode
+            {
+                FunctionName = "if",
+                Arguments = [test, ifTrue, ifFalse]
+            };
+        }
+
+        /// <summary>
+        /// Visits a new array expression.
+        /// </summary>
+        /// <param name="e">The new array expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(NewArrayExpression e, object p)
         {
-            Console.WriteLine($"Visiting NewArrayExpression: ({e.Type})");
-
             return new ArrayNode
             {
                 Items = e.Expressions.Select(expr => expr.Visit(this, p)).ToArray()
             };
         }
 
+        /// <summary>
+        /// Visits a member expression.
+        /// </summary>
+        /// <param name="e">The member expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(MemberExpression e, object p)
         {
             if (e.Expression == null && e.Member is PropertyInfo propertyInfo)
@@ -106,7 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 object instance = null;
 
                 var value = propertyInfo.GetValue(instance);
-                Console.WriteLine($"Property value: {value}");
                 return new LiteralNode
                 {
                     Type = value?.GetType() ?? propertyInfo.PropertyType,
@@ -116,13 +166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             // Custom logic for MemberExpression
             var obj = e.Expression.Visit(this, p);
-            Console.WriteLine($"Visiting MemberExpression: {e.Member.Name} -> {e.Member.DeclaringType?.Name} ({obj.Type})");
 
             var litNode = obj as LiteralNode;
 
             if (litNode != null && IsClosureType(obj.Type))
             {
-                Console.WriteLine($"Detected closure type: {obj.Type.Name}");
                 var value = this.GetMemberValue(e.Member, litNode.Value);
                 return new LiteralNode
                 {
@@ -130,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     Value = value
                 };
             }
-            else if (litNode != null && obj.Type.GetInterfaces().Any( type => type == typeof(IWorkflowBuilder)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IOutputWorkflowTrigger<>)))
             {
                 if (e.Member.Name.Equals("TriggerOutput"))
                 {
@@ -145,18 +193,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 throw new NotImplementedException();
             }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IOutputWorkflowAction<>)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IBodyWorkflowAction<>)))
             {
                 if (e.Member.Name != "Body")
                 {
                     throw new NotImplementedException();
                 }
                 var actionName = ((IWorkflowAction)litNode.Value).Name;
-                Console.WriteLine("^^^^ Action Name: " + actionName);
 
                 return new FunctionCallNode
                 {
                     FunctionName = "body",
+                    Arguments = [
+                        new LiteralNode
+                        {
+                            Type = typeof(string),
+                            Value = actionName
+                        }
+                    ]
+                };
+            }
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IOutputWorkflowAction<>)))
+            {
+                if (e.Member.Name != "Output")
+                {
+                    throw new NotImplementedException();
+                }
+                var actionName = ((IWorkflowAction)litNode.Value).Name;
+
+                return new FunctionCallNode
+                {
+                    FunctionName = "outputs",
                     Arguments = [
                         new LiteralNode
                         {
@@ -184,7 +251,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 if (partialCall != null)
                 {
-                    Console.WriteLine($"Detected partial function call: {partialCall.FunctionName}");
                     return new FunctionCallNode
                     {
                         FunctionName = partialCall.FunctionName,
@@ -208,14 +274,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
 
             throw new NotImplementedException("MemberExpression handling not implemented yet.");
-
         }
 
+        /// <summary>
+        /// Visits a constant expression.
+        /// </summary>
+        /// <param name="e">The constant expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(ConstantExpression e, object p)
         {
-            // Custom logic for ConstantExpression
-            Console.WriteLine($"Visiting ConstantExpression: {e.Value}");
-
             return new LiteralNode
             {
                 Type = e.Type,
@@ -223,19 +290,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
+        /// <summary>
+        /// Visits a binary expression.
+        /// </summary>
+        /// <param name="e">The binary expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(BinaryExpression e, object p)
         {
             // Custom logic for BinaryExpression
-            Console.WriteLine($"Visiting BinaryExpression: {e.NodeType}");
             var left = e.Left.Visit(this, p);
             var right = e.Right.Visit(this, p);
-            Console.WriteLine($"Left: {left.Type}, Right: {right.Type}");
 
             if (e.NodeType == ExpressionType.ArrayIndex)
             {
                 if (!left.Type.IsArray)
                 {
                     throw new NotImplementedException();
+                }
+
+                if (right is LiteralNode n && n.Type == typeof(int) && (int)n.Value == 0)
+                {
+                    return new FunctionCallNode
+                    {
+                        FunctionName = "first",
+                        Arguments = [left]
+                    };
                 }
 
                 return new IndexNode
@@ -254,12 +333,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
+        /// <summary>
+        /// Visits a unary expression.
+        /// </summary>
+        /// <param name="e">The unary expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(UnaryExpression e, object p)
         {
             // Custom logic for UnaryExpression
-            Console.WriteLine($"Visiting UnaryExpression: {e.NodeType}");
             var operand = e.Operand.Visit(this, p);
-            Console.WriteLine($"Operand: {operand.Type}");
 
             switch (e.NodeType)
             {
@@ -271,23 +353,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
         }
 
+        /// <summary>
+        /// Visits a method call expression.
+        /// </summary>
+        /// <param name="e">The method call expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(MethodCallExpression e, object p)
         {
             // Custom logic for MethodCallExpression
-            Console.WriteLine($"Visiting MethodCallExpression: {e.Method.Name} ({e.Method.DeclaringType?.Name})");
             var instance = e.Object?.Visit(this, p);
             var args = e.Arguments.Select(arg => arg.Visit(this, p)).ToArray();
 
-            var concat = typeof(string).GetMethod("Concat", [ typeof(string), typeof(string) ]);
-            var concat3 = typeof(string).GetMethod("Concat", [ typeof(string), typeof(string), typeof(string) ]);
+            var concat = typeof(string).GetMethod("Concat", [typeof(string), typeof(string)]);
+            var concat3 = typeof(string).GetMethod("Concat", [typeof(string), typeof(string), typeof(string)]);
             var concatArray = typeof(string).GetMethod("Concat", new[] { typeof(string[]) });
 
-            var format1 = typeof(string).GetMethod("Format", [ typeof(string), typeof(object) ]);
-            var format2 = typeof(string).GetMethod("Format", [ typeof(string), typeof(object), typeof(object) ]);
-            var format3 = typeof(string).GetMethod("Format", [ typeof(string), typeof(object), typeof(object), typeof(object) ]);
+            var format1 = typeof(string).GetMethod("Format", [typeof(string), typeof(object)]);
+            var format2 = typeof(string).GetMethod("Format", [typeof(string), typeof(object), typeof(object)]);
+            var format3 = typeof(string).GetMethod("Format", [typeof(string), typeof(object), typeof(object), typeof(object)]);
             var formatArray = typeof(string).GetMethod("Format", new[] { typeof(string), typeof(object[]) });
 
             var toString = typeof(object).GetMethod("ToString", Type.EmptyTypes);
+
+            // Get IDictionary<string, string> indexer (get_Item) method
+            var dictType = typeof(IDictionary<string, string>);
+            var getItemMethod = dictType.GetProperty("Item")?.GetGetMethod();
+
+            if (e.Method.DeclaringType == typeof(WorkflowFunctions) && e.Method.Name == "ToJson")
+            {
+                return new FunctionCallNode
+                {
+                    FunctionName = "json",
+                    Arguments = args
+                };
+            }
 
             if (e.Method == concat || e.Method == concat3)
             {
@@ -295,6 +394,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 {
                     FunctionName = "concat",
                     Arguments = args
+                };
+            }
+            else if (e.Method.Name == "get_Item")
+            {
+                var memberName = args[0] as LiteralNode;
+                if (memberName == null)
+                {
+                    throw new NotImplementedException($"Member name must be a literal");
+                }
+
+                return new MemberAccessNode
+                {
+                    MemberName = (string)memberName.Value,
+                    Target = instance
                 };
             }
             else if (e.Method == concatArray)
@@ -336,14 +449,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             else if (e.Method == toString)
             {
                 // Tostring is a noop
-                return instance;
+                return new FunctionCallNode
+                {
+                    FunctionName = "string",
+                    Arguments = [instance]
+                };
             }
             else
             {
-                throw new NotImplementedException($"Can't convert call to method {e.Method}");
+                throw new NotImplementedException($"Can't convert call to method {e.Method.DeclaringType} {e.Method}: {e}");
             }
         }
 
+        /// <summary>
+        /// Converts a format string and arguments into a concat function call.
+        /// </summary>
+        /// <param name="formatString">The format string to convert.</param>
+        /// <param name="args">The format arguments.</param>
         private static FunctionCallNode ConvertFormat(string formatString, LogicAppExpressionNode[] args)
         {
             var concatArgs = new List<LogicAppExpressionNode>();
@@ -366,8 +488,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 var beforePortion = formatString.Substring(searchStart, formatStart - searchStart);
                 var argIndex = int.Parse(formatPortion);
-
-                Console.WriteLine($"Format portion: {beforePortion} {argIndex} {args[argIndex]}");
 
                 if (!string.IsNullOrEmpty(beforePortion))
                 {
@@ -404,10 +524,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             };
         }
 
+        /// <summary>
+        /// Selects the appropriate binary function name based on the expression type and operand types.
+        /// </summary>
+        /// <param name="nodeType">The binary expression type.</param>
+        /// <param name="method">The method information of the binary operation.</param>
+        /// <param name="left">The left operand type.</param>
+        /// <param name="right">The right operand type.</param>
         private static string SelectBinaryFunction(ExpressionType nodeType, MethodInfo method, Type left, Type right)
         {
-            Console.WriteLine($"Selecting binary function for {nodeType} with method {method?.Name} and types {left?.Name}, {right?.Name}");
-
             if ((nodeType, left, right) == (ExpressionType.Add, typeof(int), typeof(int)))
             {
                 return "add";
@@ -417,9 +542,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 // LA Expressions are pretty loose with typing, as long as it's concat we'll concatenate it come hell or high water
                 return "concat";
             }
+            else if (nodeType == ExpressionType.Equal)
+            {
+                return "equals";
+            }
             throw new NotImplementedException($"Binary operation {nodeType} not implemented for types {left.Name} and {right.Name} ({method})");
         }
 
+        /// <summary>
+        /// Visits a generic expression, with special handling for Uri construction.
+        /// </summary>
+        /// <param name="e">The expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(Expression e, object p)
         {
             // If the expression's type is Uri, try to resolve its value and return as string

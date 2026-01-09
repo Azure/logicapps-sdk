@@ -6,23 +6,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
     using System.Text;
 
+    /// <summary>
+    /// Renders Logic App expression nodes to their string representation.
+    /// </summary>
     internal class LogicExpressionRenderer : ILogicExpressionVisitor<string, object>
     {
+        /// <summary>
+        /// Visits a partial function call node.
+        /// </summary>
         public string Visit(PartialFunctionCallNode node, object param)
         {
             throw new NotSupportedException($"PartialFunctionCallNode rendering not supported. ({node.FunctionName})");
         }
 
+        /// <summary>
+        /// Visits an array node.
+        /// </summary>
         public string Visit(ArrayNode node, object param)
         {
             throw new NotSupportedException("ArrayNode rendering not supported.");
         }
-        
+
+        /// <summary>
+        /// Visits a nullable node and appends the nullable operator.
+        /// </summary>
         public string Visit(NullableNode node, object param)
         {
             return node.Inner.Accept(this, param) + "?";
         }
 
+        /// <summary>
+        /// Renders a function call node with its arguments.
+        /// </summary>
         public string Visit(FunctionCallNode node, object param)
         {
             var sb = new StringBuilder();
@@ -44,80 +59,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Renders a literal node with appropriate formatting based on its type.
+        /// </summary>
         public string Visit(LiteralNode node, object param)
         {
             if (node.Value == null)
+            {
                 return "null";
+            }
             else if (node.Value is string str)
             {
                 return $"'{str}'"; // Escape single quotes if necessary
             }
             else if (node.Value is bool b)
+            {
                 return b ? "true" : "false";
+            }
             else if (node.Value is int || node.Value is double || node.Value is float || node.Value is long)
+            {
                 return node.Value.ToString();
+            }
             else if (node.Value is DateTime dt)
+            {
                 return dt.ToString("o"); // ISO 8601 format
+            }
             else
+            {
                 return node.Value.ToString();
+            }
         }
 
+        /// <summary>
+        /// Renders a member access node with bracket notation.
+        /// </summary>
         public string Visit(MemberAccessNode node, object param)
         {
             return $"{node.Target.Accept(this, param)}['{node.MemberName}']";
         }
 
+        /// <summary>
+        /// Renders an index access node.
+        /// </summary>
         public string Visit(IndexNode node, object param)
         {
             return $"{node.Target.Accept(this, param)}[{node.Index.Accept(this, param)}]";
         }
     }
 
+    /// <summary>
+    /// Extension methods for rendering Logic App expression nodes.
+    /// </summary>
     internal static class LogicExpressionExtensions
     {
+        /// <summary>
+        /// Renders a Logic App expression node to its string representation.
+        /// </summary>
         public static string Render(this LogicAppExpressionNode node, bool forceInline = false)
         {
-            
-            Console.WriteLine($"Rendering expression of type {node.GetType().Name}");
-
-            if (node is FunctionCallNode asdf)
-            {
-                Console .WriteLine($"FunctionCallNode: {asdf.FunctionName} with {asdf.Arguments.Length} arguments"); ;
-            }
-
+            // Special case: handle concat functions by rendering literals directly and other arguments as inline expressions
             if (node is FunctionCallNode fn && fn.FunctionName == "concat")
+            {
+                var sb = new StringBuilder();
+                foreach (var arg in fn.Arguments)
                 {
-                    Console.WriteLine("Rendering concat function with special handling.");
-                    var sb = new StringBuilder();
-                    // Special case: if top-level function is concat, render literals directly
-                    foreach (var arg in fn.Arguments)
+                    if (arg is LiteralNode literal)
                     {
-                        Console.WriteLine($"Concat argument type: {arg.GetType().Name}");
-                        if (arg is LiteralNode lit)
-                    {
-                        sb.Append(lit.Value);
-                        // Just return the string value directly
+                        // Render literal values directly without expression markers
+                        sb.Append(literal.Value);
                     }
                     else
                     {
+                        // Render non-literal arguments as inline expressions
                         var expr = arg.Accept(new LogicExpressionRenderer(), null);
                         sb.Append("@{");
                         sb.Append(expr);
                         sb.Append("}");
                     }
-                    }
+                }
 
-                    Console.WriteLine("Rendered concat expression: " + sb.ToString());
                 return sb.ToString();
-                }
-                else if (node is LiteralNode lit)
-                {
-                    // Special case: if top-level node is a string literal, return the string directly
-                    return lit.Value?.ToString() ?? string.Empty;
-                }
+            }
 
+            // Special case: if top-level node is a string literal, return the string directly
+            if (node is LiteralNode lit)
+            {
+                return lit.Value?.ToString() ?? string.Empty;
+            }
+
+            // Render the expression with appropriate notation based on forceInline flag
             if (forceInline)
+            {
                 return "@{" + node.Accept(new LogicExpressionRenderer(), null) + "}";
+            }
 
             return "@" + node.Accept(new LogicExpressionRenderer(), null);
         }
