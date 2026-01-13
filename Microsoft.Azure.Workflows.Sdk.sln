@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36705.20 d17.14
+VisualStudioVersion = 17.14.36705.20
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.Workflows.Sdk", "src\Microsoft.Azure.Workflows.Sdk.csproj", "{7E98CE91-2EA7-962A-3310-B545E2DB23BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.Workflows.Sdk.Tests.Worker", "tests\Microsoft.Azure.Workflows.Sdk.Tests.Worker\Microsoft.Azure.Workflows.Sdk.Tests.Worker.csproj", "{C59BC734-CF36-61B4-9B87-B0F87AEF70F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.Workflows.Sdk.UnitTests", "tests\Microsoft.Azure.Workflows.Sdk.UnitTests\Microsoft.Azure.Workflows.Sdk.UnitTests.csproj", "{F981A1D6-3D50-69B0-B737-26485B860909}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7E98CE91-2EA7-962A-3310-B545E2DB23BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E98CE91-2EA7-962A-3310-B545E2DB23BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E98CE91-2EA7-962A-3310-B545E2DB23BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C59BC734-CF36-61B4-9B87-B0F87AEF70F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C59BC734-CF36-61B4-9B87-B0F87AEF70F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C59BC734-CF36-61B4-9B87-B0F87AEF70F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C59BC734-CF36-61B4-9B87-B0F87AEF70F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F981A1D6-3D50-69B0-B737-26485B860909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F981A1D6-3D50-69B0-B737-26485B860909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F981A1D6-3D50-69B0-B737-26485B860909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F981A1D6-3D50-69B0-B737-26485B860909}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,10 +2,9 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-namespace harness
+namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.Connectors;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
 
     /// <summary>
@@ -84,16 +83,13 @@ namespace harness
                 b.AddAction(getCalendar);
 
                 var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").V4CalendarPostItem(
-                    table: () => getCalendar.Body.Value[1].Id, // "body('Get_calendars_for_meeting')?['value'][1]['id']",
-                    item: () => new GraphCalendarEventClient
-                    {
-                        Subject = $"Job Interview with Contoso - {b.Parameters.CandidateName}",
-                        Start = "@agentParameters('MeetingStartTime')",
-                        End = "@agentParameters('MeetingEndTime')",
-                        TimeZone = GraphCalendarEventClientTimeZoneType.UTC0800PacificTimeUSCanada,
-                        RequiredAttendees = b.Parameters.CandidateEmail,
-                        Body = $"<p class=\"editor-paragraph\">Hi {b.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>",
-                    });
+                    table: () => getCalendar.Body.Value[1].ID, // "body('Get_calendars_for_meeting')?['value'][1]['id']",
+                    itemsubject: () => $"Job Interview with Contoso - {b.Parameters.CandidateName}",
+                    itemstartTime: () => "@agentParameters('MeetingStartTime')",
+                    itemendTime: () => "@agentParameters('MeetingEndTime')",
+                    itemtimeZone: () => itemtimeZoneInput.UTC0800PacificTimeUSCanada,
+                    itemrequiredAttendees: () => b.Parameters.CandidateEmail,
+                    itembody: () => $"<p class=\"editor-paragraph\">Hi {b.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>");
                 b.AddAction(createEvent);
             },
                description: "This tool will book a meeting between the recruiter and the job candidate",

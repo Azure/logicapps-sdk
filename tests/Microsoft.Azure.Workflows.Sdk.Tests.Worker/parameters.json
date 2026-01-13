@@ -1,0 +1,52 @@
+{
+  "azureagentservice-ConnectionRuntimeUrl": {
+    "type": "String",
+    "value": "@appsetting('azureagentservice-ConnectionRuntimeUrl')"
+  },
+  "azureagentservice-Authentication": {
+    "type": "Object",
+    "value": {
+      "type": "ManagedServiceIdentity"
+    }
+  },
+  "service-now-1-ConnectionRuntimeUrl": {
+    "type": "String",
+    "value": "@appsetting('service-now-1-ConnectionRuntimeUrl')"
+  },
+  "service-now-1-Authentication": {
+    "type": "Object",
+    "value": {
+      "type": "ManagedServiceIdentity"
+    }
+  },
+  "outlook-ConnectionRuntimeUrl": {
+    "type": "String",
+    "value": "@appsetting('outlook-ConnectionRuntimeUrl')"
+  },
+  "outlook-Authentication": {
+    "type": "Object",
+    "value": {
+      "type": "ManagedServiceIdentity"
+    }
+  },
+  "teams-ConnectionRuntimeUrl": {
+    "type": "String",
+    "value": "@appsetting('teams-ConnectionRuntimeUrl')"
+  },
+  "teams-Authentication": {
+    "type": "Object",
+    "value": {
+      "type": "ManagedServiceIdentity"
+    }
+  },
+  "msnweather-ConnectionRuntimeUrl": {
+    "type": "String",
+    "value": "@appsetting('msnweather-ConnectionRuntimeUrl')"
+  },
+  "msnweather-Authentication": {
+    "type": "Object",
+    "value": {
+      "type": "ManagedServiceIdentity"
+    }
+  }
+}
