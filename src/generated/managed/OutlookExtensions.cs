@@ -1,8 +1,8 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
+namespace Microsoft.Azure.Workflows.Sdk.Outlook
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -2382,7 +2382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Outlook;
+    using Microsoft.Azure.Workflows.Sdk.Outlook;
 
     public partial class WorkflowManagedActions
     {

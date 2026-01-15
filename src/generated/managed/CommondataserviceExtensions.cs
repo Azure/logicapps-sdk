@@ -1,8 +1,8 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
+namespace Microsoft.Azure.Workflows.Sdk.Commondataservice
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice;
+    using Microsoft.Azure.Workflows.Sdk.Commondataservice;
 
     public partial class WorkflowManagedActions
     {
