@@ -2,11 +2,9 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-namespace harness
+namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.Connectors;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
 
     /// <summary>
     /// Nested workflow class.
@@ -85,12 +83,10 @@ namespace harness
 
             agent.AddTool(toolBuilder =>
                 {
-                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("office365-2").SendEmailV2(emailMessage: () => new ClientSendHtmlMessage()
-                    {
-                        To = "apseth@microsoft.com",
-                        Subject = "Interview Scheduled",
-                        Body = "An interview has been scheduled."
-                    });
+                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("connectionId").SendEmailV2(
+                        emailMessageto: () => "apseth@microsoft.com",
+                        emailMessagesubject: () => "Interview Scheduled",
+                        emailMessagebody: () => "An interview has been scheduled.");
                     toolBuilder.AddAction(action: sendEmailAction);
                 },
                description: "This tool will send an email",

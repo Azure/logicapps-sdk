@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class CSharpScriptCodeActionInput
     {
         /// <summary>
-        /// Gets or sets the user code file.
+        /// Gets or sets the user function name.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public string CodeFile { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string UserFunctionName { get; set; }
     }
 }

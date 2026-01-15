@@ -5,11 +5,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <AssemblyName>LOogicAppsSDK.Test</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

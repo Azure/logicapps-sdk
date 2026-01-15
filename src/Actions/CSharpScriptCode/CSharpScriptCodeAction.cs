@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.CSharpScriptCode,
                 Inputs = new CSharpScriptCodeActionInput
                 {
-                    CodeFile = this.MethodName,
+                    UserFunctionName = this.MethodName,
                 },
             };
         }

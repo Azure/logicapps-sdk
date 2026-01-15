@@ -1,0 +1,26 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_INPROC_NET8_ENABLED": "1",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "APP_KIND": "workflowapp",
+    "ProjectDirectoryPath": "C:\\repos\\logicapps-sdk\\tests",
+    "AzureWebJobsFeatureFlags": "EnableMultiLanguageWorker",
+    "WORKFLOW_CODEFUL_ENABLED": "true",
+    "AzureFunctionsJobHost__extensionBundle__id": "Microsoft.Azure.Functions.ExtensionBundle.Workflows",
+    "AzureFunctionsJobHost__extensionBundle__version": "[1.160.0.18]",
+    "FUNCTIONS_EXTENSIONBUNDLE_SOURCE_URI": "https://cdnforlogicappsv2.blob.core.windows.net/apseth-test",
+    "WORKFLOWS_TENANT_ID": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "WORKFLOWS_SUBSCRIPTION_ID": "2ba690bf-a85f-4cbc-b4cb-3bfead7e2f97",
+    "WORKFLOWS_RESOURCE_GROUP_NAME": "apsethRg",
+    "WORKFLOWS_LOCATION_NAME": "brazilsouth",
+    "WORKFLOWS_MANAGEMENT_BASE_URI": "https://management.azure.com/",
+    "WORKFLOWS_AUTHENTICATION_METHOD": "managedServiceIdentity",
+    "azureagentservice-3-ConnectionRuntimeUrl": "https://a9ab15f5a12185bf.07.common.logic-westus3.azure-apihub.net/apim/azureagentservice/e39f1f5327754a45804da7db8162f682",
+    "outlook-ConnectionRuntimeUrl": "https://a9ab15f5a12185bf.07.common.logic-westus3.azure-apihub.net/apim/office365/55e60ca0097c4497bab41eaee053a88c",
+    "service-now-1-ConnectionRuntimeUrl": "https://64a656acd36aad8f.14.common.logic-df.azure-apihub.net/apim/service-now/8c711684f0a74410b9102048a95a057c/",
+    "teams-ConnectionRuntimeUrl": "https://64a656acd36aad8f.14.common.logic-df.azure-apihub.net/apim/service-now/8c711684f0a74410b9102048a95a057c/",
+    "msnweather-ConnectionRuntimeUrl": "https://64a656acd36aad8f.14.common.logic-df.azure-apihub.net/apim/msnweather/fcff47cce51844d8a11c2227a2347e68/"
+  }
+}
