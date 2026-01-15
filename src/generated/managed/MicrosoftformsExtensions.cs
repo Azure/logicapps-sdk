@@ -1,8 +1,8 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
+namespace Microsoft.Azure.Workflows.Sdk.Microsoftforms
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms;
+    using Microsoft.Azure.Workflows.Sdk.Microsoftforms;
 
     public partial class WorkflowManagedActions
     {
