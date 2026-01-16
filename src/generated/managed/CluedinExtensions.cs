@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
     public class CluedinTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RequestRACIRuleApproval()
+        public IWorkflowTrigger RequestRACIRuleApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/419f013d-61fe-4f3b-b52e-8069811e6c94";
             var apiCallHttpMethod = "post";
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RequestBatchedCluesApproval()
+        public IWorkflowTrigger RequestBatchedCluesApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/227C247E-7495-49DB-B1AD-486B99B43E2D";
             var apiCallHttpMethod = "post";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RequestRACIVocabularyApproval()
+        public IWorkflowTrigger RequestRACIVocabularyApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/641f26b6-1285-4fbc-8990-10da9010700b";
             var apiCallHttpMethod = "post";
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RequestRACIVocabularyKeyApproval()
+        public IWorkflowTrigger RequestRACIVocabularyKeyApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/26b92c0c-fc04-4db5-beda-31f8435a6445";
             var apiCallHttpMethod = "post";
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RequestRACIEntityTypeApproval()
+        public IWorkflowTrigger RequestRACIEntityTypeApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/6fb298be-bfc5-4d97-ba6a-66e4651578e5";
             var apiCallHttpMethod = "post";
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RequestRACIUserInviteApproval()
+        public IWorkflowTrigger RequestRACIUserInviteApproval(string triggerName = null)
         {
             var apiCallPath = "/webhooks/a021ce72-c00c-43f3-9a6a-c856e6f5b005";
             var apiCallHttpMethod = "post";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger Notification()
+        public IWorkflowTrigger Notification(string triggerName = null)
         {
             var apiCallPath = "/webhooks/af67f6ab-5ce6-4d04-8a16-6f90ecf9a502";
             var apiCallHttpMethod = "post";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger StreamIdleEvent()
+        public IWorkflowTrigger StreamIdleEvent(string triggerName = null)
         {
             var apiCallPath = "/webhooks/4a1ff455-ce3e-47f3-a3cc-07dbdd3b2bdd";
             var apiCallHttpMethod = "post";

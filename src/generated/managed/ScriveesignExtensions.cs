@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class ScriveesignTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> StartAndOnDocumentSign(Expression<Func<string>> bodydocumentId)
+        public IOutputWorkflowTrigger<string> StartAndOnDocumentSign(Expression<Func<string>> bodydocumentId, string triggerName = null)
         {
             var apiCallPath = "/webhooks/signed/createandstart";
             var apiCallHttpMethod = "post";
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic)
+        public IOutputWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, string triggerName = null)
         {
             var apiCallPath = String.Format("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
             var apiCallHttpMethod = "post";
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollSignedDocumentsResponse> PollSignedDocuments()
+        public IOutputWorkflowTrigger<PollSignedDocumentsResponse> PollSignedDocuments(string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/signed";
             var apiCallHttpMethod = "get";

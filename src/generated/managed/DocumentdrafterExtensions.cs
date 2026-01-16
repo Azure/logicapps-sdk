@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
 
     public class DocumentdrafterTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling(Expression<Func<string>> siteUrl, Expression<Func<string>> scope)
+        public IOutputWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling(Expression<Func<string>> siteUrl, Expression<Func<string>> scope, string triggerName = null)
         {
             var apiCallPath = "/FlowWaitForSubmitPolling";
             var apiCallHttpMethod = "get";
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl)
+        public IOutputWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl, string triggerName = null)
         {
             var apiCallPath = "/FlowTriggerPolling";
             var apiCallHttpMethod = "get";

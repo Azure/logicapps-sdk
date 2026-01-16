@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyInboxEmail)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null)
         {
             var apiCallPath = "/Automation/InboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyInboxEmail)
+        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null)
         {
             var apiCallPath = "/Automation/OutboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyInboxEmail)
+        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null)
         {
             var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
             var apiCallHttpMethod = "post";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger InboundMessageV2(Expression<Func<string>> bodyInboxEmail)
+        public IWorkflowTrigger InboundMessageV2(Expression<Func<string>> bodyInboxEmail, string triggerName = null)
         {
             var apiCallPath = "/v2/Automation/InboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OutboundMessageV2(Expression<Func<string>> bodyInboxEmail)
+        public IWorkflowTrigger OutboundMessageV2(Expression<Func<string>> bodyInboxEmail, string triggerName = null)
         {
             var apiCallPath = "/v2/Automation/OutboundMessageNotification";
             var apiCallHttpMethod = "post";

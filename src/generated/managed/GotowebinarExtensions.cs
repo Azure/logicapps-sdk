@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 
     public class GotowebinarTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebinarSummary[]> OnNewWebinar()
+        public IOutputWorkflowTrigger<WebinarSummary[]> OnNewWebinar(string triggerName = null)
         {
             var apiCallPath = "/trigger/organizers/organizerKey/webinars";
             var apiCallHttpMethod = "get";
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
             return new ApiConnectionTrigger<WebinarSummary[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RegistrantSummary[]> OnNewRegistration(Expression<Func<string>> webinarKey)
+        public IOutputWorkflowTrigger<RegistrantSummary[]> OnNewRegistration(Expression<Func<string>> webinarKey, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
             var apiCallHttpMethod = "get";

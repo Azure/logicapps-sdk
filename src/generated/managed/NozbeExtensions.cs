@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
     public class NozbeTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null)
+        public IOutputWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, string triggerName = null)
         {
             var apiCallPath = "/poll/tasks/new";
             var apiCallHttpMethod = "get";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null)
+        public IOutputWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, string triggerName = null)
         {
             var apiCallPath = "/poll/tasks/updated";
             var apiCallHttpMethod = "get";

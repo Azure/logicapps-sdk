@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> OnMessageThresholdReachedV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold)
+        public IOutputWorkflowTrigger<string> OnMessageThresholdReachedV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "get";
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<Messages> OnMessagesV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null)
+        public IOutputWorkflowTrigger<Messages> OnMessagesV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
             var apiCallHttpMethod = "get";

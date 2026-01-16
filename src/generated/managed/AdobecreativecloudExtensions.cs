@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 
     public class AdobecreativecloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeToAssetCreatedEvents()
+        public IWorkflowTrigger WebhookSubscribeToAssetCreatedEvents(string triggerName = null)
         {
             var apiCallPath = "/webhook1/csm/cc/events/asset_created";
             var apiCallHttpMethod = "post";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookSubscribeToAssetUpdatedEvents()
+        public IWorkflowTrigger WebhookSubscribeToAssetUpdatedEvents(string triggerName = null)
         {
             var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
             var apiCallHttpMethod = "post";

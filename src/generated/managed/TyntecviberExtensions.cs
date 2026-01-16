@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 
     public class TyntecviberTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IncomingV3(Expression<Func<string>> viberServiceId)
+        public IWorkflowTrigger IncomingV3(Expression<Func<string>> viberServiceId, string triggerName = null)
         {
             var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(viberServiceId, 1));
             var apiCallHttpMethod = "post";

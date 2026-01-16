@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
 
     public class ZaharaTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CostCodeIntegrationModel[]> NewCostCode()
+        public IOutputWorkflowTrigger<CostCodeIntegrationModel[]> NewCostCode(string triggerName = null)
         {
             var apiCallPath = "/api/CostCodeIntegration/GetAll";
             var apiCallHttpMethod = "get";
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ProcessLogIntegrationModel[]> NewApprovalComment()
+        public IOutputWorkflowTrigger<ProcessLogIntegrationModel[]> NewApprovalComment(string triggerName = null)
         {
             var apiCallPath = "/api/DocumentsIntegration/GetApprovalComments";
             var apiCallHttpMethod = "get";
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved(Expression<Func<documentTypeInput>> documentType)
+        public IOutputWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved(Expression<Func<documentTypeInput>> documentType, string triggerName = null)
         {
             var apiCallPath = "/api/DocumentsIntegration/GetApproved";
             var apiCallHttpMethod = "get";
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoice()
+        public IOutputWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoice(string triggerName = null)
         {
             var apiCallPath = "/api/InvoiceIntegration/GetAll";
             var apiCallHttpMethod = "get";
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoiceSetAsExported()
+        public IOutputWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoiceSetAsExported(string triggerName = null)
         {
             var apiCallPath = "/api/InvoiceIntegration/GetExported";
             var apiCallHttpMethod = "get";
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NominalCodeIntegrationModel[]> NewNominalCode()
+        public IOutputWorkflowTrigger<NominalCodeIntegrationModel[]> NewNominalCode(string triggerName = null)
         {
             var apiCallPath = "/api/NominalCodeIntegration/GetAll";
             var apiCallHttpMethod = "get";
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ProjectIntegrationModel[]> NewProject()
+        public IOutputWorkflowTrigger<ProjectIntegrationModel[]> NewProject(string triggerName = null)
         {
             var apiCallPath = "/api/ProjectIntegration/getall";
             var apiCallHttpMethod = "get";
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<ProjectIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrder()
+        public IOutputWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrder(string triggerName = null)
         {
             var apiCallPath = "/api/PurchaseOrderIntegration/GetAll";
             var apiCallHttpMethod = "get";
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrderSentToSupplier()
+        public IOutputWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrderSentToSupplier(string triggerName = null)
         {
             var apiCallPath = "/api/PurchaseOrderIntegration/GetSentToSupplier";
             var apiCallHttpMethod = "get";
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PurchaseRequsitionIntegrationModel[]> NewPurchaseRequsition()
+        public IOutputWorkflowTrigger<PurchaseRequsitionIntegrationModel[]> NewPurchaseRequsition(string triggerName = null)
         {
             var apiCallPath = "/api/PurchaseRequsitionIntegration/getall";
             var apiCallHttpMethod = "get";
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SupplierIntegrationModel[]> NewSupplier()
+        public IOutputWorkflowTrigger<SupplierIntegrationModel[]> NewSupplier(string triggerName = null)
         {
             var apiCallPath = "/api/SupplierIntegration/GetAll";
             var apiCallHttpMethod = "get";
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<SupplierIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SupplierUpdateIntegrationModel[]> SupplierAmended()
+        public IOutputWorkflowTrigger<SupplierUpdateIntegrationModel[]> SupplierAmended(string triggerName = null)
         {
             var apiCallPath = "/api/SupplierIntegration/GetAllUpdated";
             var apiCallHttpMethod = "get";
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaxCodeIntegrationModel[]> NewTaxCode()
+        public IOutputWorkflowTrigger<TaxCodeIntegrationModel[]> NewTaxCode(string triggerName = null)
         {
             var apiCallPath = "/api/TaxCodeIntegration/getall";
             var apiCallHttpMethod = "get";

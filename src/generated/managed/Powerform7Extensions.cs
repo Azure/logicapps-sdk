@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId)
+        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, string triggerName = null)
         {
             var apiCallPath = String.Format("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";

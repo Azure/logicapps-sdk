@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery)
+        public IOutputWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, string triggerName = null)
         {
             var apiCallPath = "/onnewtweet";
             var apiCallHttpMethod = "get";

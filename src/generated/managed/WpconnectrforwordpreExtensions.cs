@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
 
     public class WpconnectrforwordpreTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> bodyresourceType, Expression<Func<string>> bodytriggerEvent)
+        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> bodyresourceType, Expression<Func<string>> bodytriggerEvent, string triggerName = null)
         {
             var apiCallPath = "/triggers";
             var apiCallHttpMethod = "post";

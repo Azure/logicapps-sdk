@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform)
+        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, string triggerName = null)
         {
             var apiCallPath = "/api/submissions";
             var apiCallHttpMethod = "post";

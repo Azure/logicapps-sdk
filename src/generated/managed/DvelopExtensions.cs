@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null)
+        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(triggerId, 1));
             var apiCallHttpMethod = "post";

@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
     public class ServicebusTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IOutputWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";

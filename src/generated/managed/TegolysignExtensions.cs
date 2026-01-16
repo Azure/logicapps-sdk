@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 
     public class TegolysignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CompletelySigned(Expression<Func<string>> bodyname)
+        public IWorkflowTrigger CompletelySigned(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/api/webhook/end-trigger";
             var apiCallHttpMethod = "post";

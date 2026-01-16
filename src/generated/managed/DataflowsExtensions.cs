@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete)
+        public IOutputWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
             var apiCallHttpMethod = "get";

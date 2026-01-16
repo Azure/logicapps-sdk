@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
     public class NoscoTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId)
+        public IOutputWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, string triggerName = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
             var apiCallHttpMethod = "get";
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null)
+        public IOutputWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
             var apiCallHttpMethod = "get";
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null)
+        public IOutputWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
             var apiCallHttpMethod = "get";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null)
+        public IOutputWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
             var apiCallHttpMethod = "get";

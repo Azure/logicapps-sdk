@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
+        public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, string triggerName = null)
         {
             var apiCallPath = String.Format("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
             var apiCallHttpMethod = "post";

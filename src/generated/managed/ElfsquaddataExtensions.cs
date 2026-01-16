@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
 
     public class ElfsquaddataTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> triggerName)
+        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> triggerName, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/2/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(triggerName, 1));
             var apiCallHttpMethod = "post";

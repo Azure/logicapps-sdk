@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null)
+        public IOutputWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/export";
             var apiCallHttpMethod = "post";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
             return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null)
+        public IOutputWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/notifications";
             var apiCallHttpMethod = "post";

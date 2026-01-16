@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
     public class _10to8Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<GetAppointmentsResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/customers/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<GetCustomersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<IncomingMessage[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<IncomingMessage[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<EventProposal[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<EventProposal[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
             return new ApiConnectionTrigger<EventProposal[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared(Expression<Func<string>> organisationId)
+        public IOutputWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared(Expression<Func<string>> organisationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
             var apiCallHttpMethod = "get";

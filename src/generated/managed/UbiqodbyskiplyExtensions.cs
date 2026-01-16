@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class UbiqodbyskiplyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId)
+        public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId, string triggerName = null)
         {
             var apiCallPath = "/key/subscribe";
             var apiCallHttpMethod = "post";

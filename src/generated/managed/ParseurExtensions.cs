@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID)
+        public IOutputWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, string triggerName = null)
         {
             var apiCallPath = String.Format("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
             var apiCallHttpMethod = "post";
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID)
+        public IOutputWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, string triggerName = null)
         {
             var apiCallPath = String.Format("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
             var apiCallHttpMethod = "post";
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID)
+        public IOutputWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, string triggerName = null)
         {
             var apiCallPath = String.Format("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(tableID, 1));
             var apiCallHttpMethod = "post";

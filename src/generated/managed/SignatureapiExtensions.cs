@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class SignatureapiTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
             var apiCallHttpMethod = "post";
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
             var apiCallHttpMethod = "post";
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
             var apiCallHttpMethod = "post";
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
             var apiCallHttpMethod = "post";
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
             var apiCallHttpMethod = "post";
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
             var apiCallHttpMethod = "post";
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
             var apiCallHttpMethod = "post";
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
             var apiCallHttpMethod = "post";
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
             var apiCallHttpMethod = "post";
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
             var apiCallHttpMethod = "post";
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
             var apiCallHttpMethod = "post";
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
             var apiCallHttpMethod = "post";
@@ -1044,7 +1044,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
             var apiCallHttpMethod = "post";
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
             var apiCallHttpMethod = "post";
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null)
+        public IOutputWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null)
         {
             var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";
             var apiCallHttpMethod = "post";

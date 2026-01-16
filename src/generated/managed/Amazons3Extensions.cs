@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
 
     public class Amazons3Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
+        public IOutputWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null, string triggerName = null)
         {
             var apiCallPath = "/buckets/objects/onupdate";
             var apiCallHttpMethod = "get";

@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddFinancialValuesChangedHook";
             var apiCallHttpMethod = "post";
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddEntityCreatedHook";
             var apiCallHttpMethod = "post";
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddEntityUpdatedHook";
             var apiCallHttpMethod = "post";
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddEntityDeletedHook";
             var apiCallHttpMethod = "post";
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddStageTransitionHook";
             var apiCallHttpMethod = "post";
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
             var apiCallHttpMethod = "post";
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
             var apiCallHttpMethod = "post";
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddChangeRequestCreatedHook";
             var apiCallHttpMethod = "post";
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
             var apiCallHttpMethod = "post";
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddChangeRequestDeletedHook";
             var apiCallHttpMethod = "post";
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
             var apiCallHttpMethod = "post";
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
             var apiCallHttpMethod = "post";
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
             var apiCallHttpMethod = "post";
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
             var apiCallHttpMethod = "post";
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddMilestoneCreatedHook";
             var apiCallHttpMethod = "post";
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddMilestoneUpdatedHook";
             var apiCallHttpMethod = "post";
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddMilestoneDeletedHook";
             var apiCallHttpMethod = "post";
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddRelationshipCreatedHook";
             var apiCallHttpMethod = "post";
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddRelationshipUpdatedHook";
             var apiCallHttpMethod = "post";
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             return new ApiConnectionTrigger<EventCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL)
+        public IOutputWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null)
         {
             var apiCallPath = "/Events/AddRelationshipDeletedHook";
             var apiCallHttpMethod = "post";

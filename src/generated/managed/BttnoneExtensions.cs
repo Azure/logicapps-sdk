@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId)
+        public IOutputWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, string triggerName = null)
         {
             var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
             var apiCallHttpMethod = "post";

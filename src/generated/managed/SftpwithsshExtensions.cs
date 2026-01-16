@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
 
     public class SftpwithsshTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeFileContent = null, Expression<Func<bool>> inferContentType = null)
+        public IOutputWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeFileContent = null, Expression<Func<bool>> inferContentType = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/onupdatedfile";
             var apiCallHttpMethod = "get";
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
             var apiCallHttpMethod = "get";

@@ -2250,7 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class EgnyteTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FileLocked(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileLocked(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileLocked";
             var apiCallHttpMethod = "post";
@@ -2268,7 +2268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FileUnlocked(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileUnlocked(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileUnlocked";
             var apiCallHttpMethod = "post";
@@ -2286,7 +2286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FileUpdated(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileUpdated(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileUpdated";
             var apiCallHttpMethod = "post";
@@ -2304,7 +2304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FileCreated(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileCreated(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileCreated";
             var apiCallHttpMethod = "post";
@@ -2322,7 +2322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ShareLinkCreated(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger ShareLinkCreated(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/ShareLinkCreated";
             var apiCallHttpMethod = "post";
@@ -2340,7 +2340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ShareLinkDeleted(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger ShareLinkDeleted(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/ShareLinkDeleted";
             var apiCallHttpMethod = "post";
@@ -2358,7 +2358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FileOrFolderPermissionChange(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileOrFolderPermissionChange(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileOrFolderPermissionChange";
             var apiCallHttpMethod = "post";
@@ -2376,7 +2376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FileOrFolderMetadataChange(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FileOrFolderMetadataChange(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FileOrFolderMetadataChange";
             var apiCallHttpMethod = "post";
@@ -2394,7 +2394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderProjectAdded(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FolderProjectAdded(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FolderProjectAdded";
             var apiCallHttpMethod = "post";
@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderProjectUnmarked(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FolderProjectUnmarked(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FolderProjectUnmarked";
             var apiCallHttpMethod = "post";
@@ -2430,7 +2430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderProjectUpdated(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger FolderProjectUpdated(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/FolderProjectUpdated";
             var apiCallHttpMethod = "post";
@@ -2448,7 +2448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WorkflowCreated(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger WorkflowCreated(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/WorkflowCreated";
             var apiCallHttpMethod = "post";
@@ -2466,7 +2466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WorkflowCompleted(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger WorkflowCompleted(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/WorkflowCompleted";
             var apiCallHttpMethod = "post";
@@ -2484,7 +2484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
             var apiCallHttpMethod = "post";
@@ -2502,7 +2502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath)
+        public IWorkflowTrigger WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
             var apiCallHttpMethod = "post";
@@ -2520,7 +2520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupCreated()
+        public IWorkflowTrigger GroupCreated(string triggerName = null)
         {
             var apiCallPath = "/webhook/GroupCreated";
             var apiCallHttpMethod = "post";
@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupUpdated()
+        public IWorkflowTrigger GroupUpdated(string triggerName = null)
         {
             var apiCallPath = "/webhook/GroupUpdated";
             var apiCallHttpMethod = "post";
@@ -2554,7 +2554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupDeleted()
+        public IWorkflowTrigger GroupDeleted(string triggerName = null)
         {
             var apiCallPath = "/webhook/GroupDeleted";
             var apiCallHttpMethod = "post";
@@ -2571,7 +2571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/created-files";
             var apiCallHttpMethod = "get";
@@ -2580,7 +2580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/created-folders";
             var apiCallHttpMethod = "get";
@@ -2589,7 +2589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/deleted-files";
             var apiCallHttpMethod = "get";
@@ -2598,7 +2598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/deleted-folders";
             var apiCallHttpMethod = "get";
@@ -2607,7 +2607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/renamed-files";
             var apiCallHttpMethod = "get";
@@ -2616,7 +2616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/renamed-folders";
             var apiCallHttpMethod = "get";
@@ -2625,7 +2625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/moved-files";
             var apiCallHttpMethod = "get";
@@ -2634,7 +2634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/moved-folders";
             var apiCallHttpMethod = "get";
@@ -2643,7 +2643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/copied-files";
             var apiCallHttpMethod = "get";
@@ -2652,7 +2652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders(Expression<Func<string>> folderPath)
+        public IOutputWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders(Expression<Func<string>> folderPath, string triggerName = null)
         {
             var apiCallPath = "/trigger/polling/copied-folders";
             var apiCallHttpMethod = "get";

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreatedV2(Expression<Func<string>> id)
+        public IOutputWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreatedV2(Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = String.Format("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 
     public class TheeventscalendarTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewEventTriggerResponse> NewEventTrigger()
+        public IOutputWorkflowTrigger<NewEventTriggerResponse> NewEventTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/new-events/";
             var apiCallHttpMethod = "get";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UpdatedEventTriggerResponse> UpdatedEventTrigger()
+        public IOutputWorkflowTrigger<UpdatedEventTriggerResponse> UpdatedEventTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-events/";
             var apiCallHttpMethod = "get";
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CanceledEventTriggerResponse> CanceledEventTrigger()
+        public IOutputWorkflowTrigger<CanceledEventTriggerResponse> CanceledEventTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/canceled-events/";
             var apiCallHttpMethod = "get";

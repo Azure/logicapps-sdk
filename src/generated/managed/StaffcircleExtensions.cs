@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class StaffcircleTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> NewPerson(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> NewPerson(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/NewPerson";
             var apiCallHttpMethod = "post";
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> NewObjective(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> NewObjective(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/NewObjective";
             var apiCallHttpMethod = "post";
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> UpdateObjective(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> UpdateObjective(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/UpdateObjective";
             var apiCallHttpMethod = "post";
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> PublishedArticle(Expression<Func<string>> bodyname = null)
+        public IOutputWorkflowTrigger<JToken> PublishedArticle(Expression<Func<string>> bodyname = null, string triggerName = null)
         {
             var apiCallPath = "/Public/Security/v1/Webhooks/NewArticle";
             var apiCallHttpMethod = "post";
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> NewTask(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> NewTask(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/NewTask";
             var apiCallHttpMethod = "post";
@@ -1070,7 +1070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> NewReview(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> NewReview(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/NewReview";
             var apiCallHttpMethod = "post";
@@ -1103,7 +1103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> NewAbsence(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<JToken> NewAbsence(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/public/security/v1/webhooks/newabsence";
             var apiCallHttpMethod = "post";

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
 
     public class ActTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ActWebApiModelsContact[]> TrigNewContact()
+        public IOutputWorkflowTrigger<ActWebApiModelsContact[]> TrigNewContact(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/Contacts/";
             var apiCallHttpMethod = "get";

@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class CloudpkimanagementTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<AddedHookResponse> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<AddedHookResponse> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/added-hook", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<AddedHookResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RemovedHookResponse> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<RemovedHookResponse> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/removed-hook", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<RemovedHookResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/issued-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/revoked-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/expiring-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/expired-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/renewing-certificate", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PendingRequestResponse> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<PendingRequestResponse> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/pending-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<PendingRequestResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/approved-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<DeniedRequestResponse> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<DeniedRequestResponse> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/denied-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<FailedRequestResponse> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<FailedRequestResponse> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/failed-request", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<FailedRequestResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/published-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/unpublished-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/updated-template", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IssuedCRLResponse> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<IssuedCRLResponse> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/issued-crl", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -872,7 +872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/new-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/completed-action", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/failed-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IOutputWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/deployments/{1}/hooks/stalled-connectoraction", ExpressionConverter.ConvertWithUrlEncoding(regionid, 1), ExpressionConverter.ConvertWithUrlEncoding(deploymentid, 1));
             var apiCallHttpMethod = "post";

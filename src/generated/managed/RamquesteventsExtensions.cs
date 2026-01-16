@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null)
+        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, string triggerName = null)
         {
             var apiCallPath = "/register/cce";
             var apiCallHttpMethod = "post";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null)
+        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, string triggerName = null)
         {
             var apiCallPath = "/register/horizon";
             var apiCallHttpMethod = "post";

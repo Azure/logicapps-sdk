@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 
     public class DataactivatorpreviewTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString)
+        public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, string triggerName = null)
         {
             var apiCallPath = "/powerAutomateFlow";
             var apiCallHttpMethod = "post";

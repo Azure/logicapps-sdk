@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class CornerstonelearningvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateInstructorSubscribe()
+        public IWorkflowTrigger CreateInstructorSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/addInstructor";
             var apiCallHttpMethod = "post";
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UpdateInstructorSubscribe()
+        public IWorkflowTrigger UpdateInstructorSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/updateInstructor";
             var apiCallHttpMethod = "post";
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateSessionSubscribe()
+        public IWorkflowTrigger CreateSessionSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/createSession";
             var apiCallHttpMethod = "post";
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UpdateSessionSubscribe()
+        public IWorkflowTrigger UpdateSessionSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/updateSession";
             var apiCallHttpMethod = "post";
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DeleteSessionSubscribe()
+        public IWorkflowTrigger DeleteSessionSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/deleteSession";
             var apiCallHttpMethod = "post";
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger LaunchSessionSubscribe()
+        public IWorkflowTrigger LaunchSessionSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/launchSession";
             var apiCallHttpMethod = "post";
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GetAttendanceSubscribe()
+        public IWorkflowTrigger GetAttendanceSubscribe(string triggerName = null)
         {
             var apiCallPath = "/subscribe/getAttendance";
             var apiCallHttpMethod = "post";

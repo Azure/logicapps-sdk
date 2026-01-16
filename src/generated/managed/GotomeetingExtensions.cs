@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
     public class GotomeetingTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting()
+        public IOutputWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting(string triggerName = null)
         {
             var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
             var apiCallHttpMethod = "get";
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete()
+        public IOutputWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete(string triggerName = null)
         {
             var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
             var apiCallHttpMethod = "get";

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookResponse> WebhookTriggerV2(Expression<Func<string>> workspaceID, Expression<Func<string>> formID)
+        public IOutputWorkflowTrigger<WebhookResponse> WebhookTriggerV2(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, string triggerName = null)
         {
             var apiCallPath = String.Format("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";

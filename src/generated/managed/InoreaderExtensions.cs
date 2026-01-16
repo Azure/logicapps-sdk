@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
     public class InoreaderTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Subscription[]> OnNewSubscription()
+        public IOutputWorkflowTrigger<Subscription[]> OnNewSubscription(string triggerName = null)
         {
             var apiCallPath = "/trigger/subscription/list";
             var apiCallHttpMethod = "get";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             return new ApiConnectionTrigger<Subscription[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target)
+        public IOutputWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, string triggerName = null)
         {
             var apiCallPath = "/trigger/unread-count";
             var apiCallHttpMethod = "get";

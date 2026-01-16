@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneflow
 
     public class OneflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookRegister(Expression<Func<bodyupdateTypeInputItem[]>> bodyupdateType, Expression<Func<int>> bodytemplateGroupId = null)
+        public IWorkflowTrigger WebhookRegister(Expression<Func<bodyupdateTypeInputItem[]>> bodyupdateType, Expression<Func<int>> bodytemplateGroupId = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks";
             var apiCallHttpMethod = "post";

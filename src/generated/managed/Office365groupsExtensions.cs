@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
     public class Office365groupsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/delta";
             var apiCallHttpMethod = "get";
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";

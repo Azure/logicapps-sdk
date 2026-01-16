@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 
     public class BingsearchTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewsArticle[]> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
+        public IOutputWorkflowTrigger<NewsArticle[]> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/news/search";
             var apiCallHttpMethod = "get";

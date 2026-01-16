@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class KaizalaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null)
+        public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/ActionCreated";
             var apiCallHttpMethod = "post";
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/Announcement";
             var apiCallHttpMethod = "post";
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/GroupAdded";
             var apiCallHttpMethod = "post";
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/GroupRemoved";
             var apiCallHttpMethod = "post";
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/MemberAdded";
             var apiCallHttpMethod = "post";
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/MemberRemoved";
             var apiCallHttpMethod = "post";
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/SurveyCreated";
             var apiCallHttpMethod = "post";
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
             var apiCallHttpMethod = "post";
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId)
+        public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Action/SurveyResponse";
             var apiCallHttpMethod = "post";
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
             var apiCallHttpMethod = "post";
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId)
+        public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook";
             var apiCallHttpMethod = "post";
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId)
+        public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/Group/UserJoined";
             var apiCallHttpMethod = "post";

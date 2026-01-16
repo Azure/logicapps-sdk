@@ -2120,7 +2120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class ImanageworkTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<string>> bodyworkspaces = null, Expression<Func<string>> bodyclasses = null, Expression<Func<bool>> bodywaitForCompletion = null)
+        public IOutputWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<string>> bodyworkspaces = null, Expression<Func<string>> bodyclasses = null, Expression<Func<bool>> bodywaitForCompletion = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/register/singleSelectedDocument";
             var apiCallHttpMethod = "post";
@@ -2177,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             return new ApiConnectionTrigger<SingleSelectedDocumentResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodyshowFormPerObject = null, Expression<Func<bool>> bodywaitForCompletion = null)
+        public IOutputWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodyshowFormPerObject = null, Expression<Func<bool>> bodywaitForCompletion = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/register/multipleSelectedDocuments";
             var apiCallHttpMethod = "post";
@@ -2228,7 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             return new ApiConnectionTrigger<MultipleSelectedDocumentsResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null)
+        public IOutputWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/register/singleSelectedWorkspace";
             var apiCallHttpMethod = "post";
@@ -2271,7 +2271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             return new ApiConnectionTrigger<SingleSelectedWorkspaceResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null)
+        public IOutputWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";
             var apiCallHttpMethod = "post";

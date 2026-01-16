@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
+        public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null)
         {
             var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "put";
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId)
+        public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null)
         {
             var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
             var apiCallHttpMethod = "put";

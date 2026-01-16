@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class XeroaccountingmagnetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<eventTypeInput>> eventType, Expression<Func<eventCategoryInput>> eventCategory)
+        public IWorkflowTrigger TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<eventTypeInput>> eventType, Expression<Func<eventCategoryInput>> eventCategory, string triggerName = null)
         {
             var apiCallPath = "/v1/webhook/register";
             var apiCallHttpMethod = "post";

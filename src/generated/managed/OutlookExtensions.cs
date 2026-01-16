@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class OutlookTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEventsV2(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEventsV2(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, string triggerName = null)
         {
             var apiCallPath = "/v2/Events/OnUpcomingEvents";
             var apiCallHttpMethod = "get";
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
@@ -1472,7 +1472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             if (folderPath != null)
@@ -1562,7 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IOutputWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -1590,7 +1590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItemsV2(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
+        public IOutputWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItemsV2(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["incomingDays"] = Convert.ToString(300);

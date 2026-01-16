@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid)
+        public IOutputWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             return new ApiConnectionTrigger<Invoice[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid)
+        public IOutputWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             return new ApiConnectionTrigger<Expense[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid)
+        public IOutputWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
             var apiCallHttpMethod = "get";

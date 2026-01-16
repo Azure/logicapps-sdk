@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class OpentextedocsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentCreated";
             var apiCallHttpMethod = "post";
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentContentUpdated";
             var apiCallHttpMethod = "post";
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentPropertiesUpdated";
             var apiCallHttpMethod = "post";
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentDeleted";
             var apiCallHttpMethod = "post";
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderCreated";
             var apiCallHttpMethod = "post";
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderUpdated";
             var apiCallHttpMethod = "post";
@@ -1038,7 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderDeleted";
             var apiCallHttpMethod = "post";
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ItemDeleted()
+        public IWorkflowTrigger ItemDeleted(string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/ItemDeleted";
             var apiCallHttpMethod = "post";

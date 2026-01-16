@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 
     public class CrmbotTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic)
+        public IOutputWorkflowTrigger<JToken> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, string triggerName = null)
         {
             var apiCallPath = "/runtime/api/flowconnector";
             var apiCallHttpMethod = "post";

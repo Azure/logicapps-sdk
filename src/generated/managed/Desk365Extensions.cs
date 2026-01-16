@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class Desk365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null)
+        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null, string triggerName = null)
         {
             var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
             var apiCallHttpMethod = "post";
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null)
+        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null, string triggerName = null)
         {
             var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
             var apiCallHttpMethod = "post";
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyContent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null)
+        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyContent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null, string triggerName = null)
         {
             var apiCallPath = "/power_automate/tickets/add_note_webhook";
             var apiCallHttpMethod = "post";
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodyContent = null, Expression<Func<bodyResponseTypeInput>> bodyResponseType = null)
+        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodyContent = null, Expression<Func<bodyResponseTypeInput>> bodyResponseType = null, string triggerName = null)
         {
             var apiCallPath = "/power_automate/tickets/add_reply_webhook";
             var apiCallHttpMethod = "post";

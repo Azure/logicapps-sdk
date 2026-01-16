@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform)
+        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, string triggerName = null)
         {
             var apiCallPath = "/webhooks";
             var apiCallHttpMethod = "post";

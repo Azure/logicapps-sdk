@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class PowertextorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductionWebhook()
+        public IWorkflowTrigger ProductionWebhook(string triggerName = null)
         {
             var apiCallPath = "/api/twilio/registration";
             var apiCallHttpMethod = "post";
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger MMSWebhook()
+        public IWorkflowTrigger MMSWebhook(string triggerName = null)
         {
             var apiCallPath = "/api/twilio/MMSregistration";
             var apiCallHttpMethod = "post";

@@ -2189,7 +2189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class Office365Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEventsV3(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
+        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEventsV3(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, string triggerName = null)
         {
             var apiCallPath = "/v3/Events/OnUpcomingEvents";
             var apiCallHttpMethod = "get";
@@ -2201,7 +2201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
@@ -2247,7 +2247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
@@ -2293,7 +2293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV4(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV4(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
@@ -2339,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewMentionMeEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewMentionMeEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             if (folderPath != null)
@@ -2383,7 +2383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> SharedMailboxOnNewEmailV2(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> SharedMailboxOnNewEmailV2(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var apiCallPath = "/v2/SharedMailbox/Mail/OnNewEmail";
             var apiCallHttpMethod = "get";
@@ -2414,7 +2414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnNewItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnNewItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -2428,7 +2428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnUpdatedItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnUpdatedItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -2442,7 +2442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListWithActionType> CalendarGetOnChangedItemsV3(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
+        public IOutputWorkflowTrigger<GraphCalendarEventListWithActionType> CalendarGetOnChangedItemsV3(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["incomingDays"] = Convert.ToString(300);

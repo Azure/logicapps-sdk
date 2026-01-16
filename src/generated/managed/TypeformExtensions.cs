@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null)
+        public IOutputWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
             var apiCallHttpMethod = "post";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
             return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookCreationResponse> NewResponseWebhookV2(Expression<Func<string>> formId, Expression<Func<string>> tag)
+        public IOutputWorkflowTrigger<WebhookCreationResponse> NewResponseWebhookV2(Expression<Func<string>> formId, Expression<Func<string>> tag, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
             var apiCallHttpMethod = "post";

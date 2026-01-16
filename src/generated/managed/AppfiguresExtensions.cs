@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
     public class AppfiguresTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Event[]> OnNewEvent()
+        public IOutputWorkflowTrigger<Event[]> OnNewEvent(string triggerName = null)
         {
             var apiCallPath = "/event_trigger/events";
             var apiCallHttpMethod = "get";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             return new ApiConnectionTrigger<Event[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null)
+        public IOutputWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, string triggerName = null)
         {
             var apiCallPath = "/reviews_trigger/reviews";
             var apiCallHttpMethod = "get";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             return new ApiConnectionTrigger<ReviewInfo[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null)
+        public IOutputWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, string triggerName = null)
         {
             var apiCallPath = "/ratings_trigger/ratings";
             var apiCallHttpMethod = "get";

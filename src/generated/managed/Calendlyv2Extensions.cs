@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents)
+        public IOutputWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null)
         {
             var apiCallPath = "/webhook_subscriptions";
             var apiCallHttpMethod = "post";
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents)
+        public IOutputWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null)
         {
             var apiCallPath = "/webhook_subscriptions/routing_form_submission";
             var apiCallHttpMethod = "post";

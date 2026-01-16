@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 
     public class OkdokumentipTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId)
+        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, string triggerName = null)
         {
             var apiCallPath = String.Format("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(signatureRequestId, 1));
             var apiCallHttpMethod = "post";

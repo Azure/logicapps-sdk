@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class IotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Action> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<string>> bodyrule, Expression<Func<string>> bodyactionID = null)
+        public IOutputWorkflowTrigger<Action> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<string>> bodyrule, Expression<Func<string>> bodyactionID = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/applications/{0}/actions/", ExpressionConverter.ConvertWithUrlEncoding(applicationId, 1));
             var apiCallHttpMethod = "post";

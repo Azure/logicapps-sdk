@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null)
+        public IOutputWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, string triggerName = null)
         {
             var apiCallPath = "/posts/list.json";
             var apiCallHttpMethod = "get";
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             return new ApiConnectionTrigger<Post[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum)
+        public IOutputWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, string triggerName = null)
         {
             var apiCallPath = "/threads/list.json";
             var apiCallHttpMethod = "get";

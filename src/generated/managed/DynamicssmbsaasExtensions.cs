@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
     public class DynamicssmbsaasTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null)
+        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(businessevent, 2));
             var apiCallHttpMethod = "post";
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
+        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2), ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
+        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2), ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
+        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2), ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table)
+        public IOutputWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscriptionV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2), ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "post";
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null)
+        public IOutputWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHookV3(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(company, 2));
             var apiCallHttpMethod = "post";

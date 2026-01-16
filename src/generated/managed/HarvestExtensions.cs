@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class HarvestTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GetUserByIDResponse[]> TrigNewUser()
+        public IOutputWorkflowTrigger<GetUserByIDResponse[]> TrigNewUser(string triggerName = null)
         {
             var apiCallPath = "/trigger/people";
             var apiCallHttpMethod = "get";
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<GetUserByIDResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListAllClientsResponseItem[]> TrigNewClient()
+        public IOutputWorkflowTrigger<ListAllClientsResponseItem[]> TrigNewClient(string triggerName = null)
         {
             var apiCallPath = "/trigger/clients";
             var apiCallHttpMethod = "get";
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListAllClientsResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListAllContactsResponseItem[]> TrigNewContact()
+        public IOutputWorkflowTrigger<ListAllContactsResponseItem[]> TrigNewContact(string triggerName = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListAllContactsResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListProjectsResponseItem[]> TrigNewProject()
+        public IOutputWorkflowTrigger<ListProjectsResponseItem[]> TrigNewProject(string triggerName = null)
         {
             var apiCallPath = "/trigger/projects";
             var apiCallHttpMethod = "get";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null)
+        public IOutputWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/daily";
             var apiCallHttpMethod = "get";
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null)
+        public IOutputWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/daily/day/year";
             var apiCallHttpMethod = "get";

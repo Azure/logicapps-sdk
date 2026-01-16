@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendly
 
     public class CalendlyTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> WebhookCreateInvitee()
+        public IOutputWorkflowTrigger<string> WebhookCreateInvitee(string triggerName = null)
         {
             var apiCallPath = "/webhook1/api/v1/hooks";
             var apiCallHttpMethod = "post";
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendly
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> WebhookCancelInvitee()
+        public IOutputWorkflowTrigger<string> WebhookCancelInvitee(string triggerName = null)
         {
             var apiCallPath = "/webhook2/api/v1/hooks";
             var apiCallHttpMethod = "post";

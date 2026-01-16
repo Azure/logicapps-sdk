@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class ProjectonlineTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnNewProject(Expression<Func<string>> siteUrl)
+        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnNewProject(Expression<Func<string>> siteUrl, string triggerName = null)
         {
             var apiCallPath = "/trigger/_api/ProjectData/Projects";
             var apiCallHttpMethod = "get";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished(Expression<Func<string>> siteUrl)
+        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished(Expression<Func<string>> siteUrl, string triggerName = null)
         {
             var apiCallPath = "/trigger/_api/ProjectData/PublishedProjects";
             var apiCallHttpMethod = "get";
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerResourcesWrapper> OnNewResource(Expression<Func<string>> siteUrl)
+        public IOutputWorkflowTrigger<TriggerResourcesWrapper> OnNewResource(Expression<Func<string>> siteUrl, string triggerName = null)
         {
             var apiCallPath = "/trigger/_api/ProjectData/Resources";
             var apiCallHttpMethod = "get";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerTasksWrapper> OnNewTask(Expression<Func<string>> siteUrl)
+        public IOutputWorkflowTrigger<TriggerTasksWrapper> OnNewTask(Expression<Func<string>> siteUrl, string triggerName = null)
         {
             var apiCallPath = "/trigger/_api/ProjectData/Tasks";
             var apiCallHttpMethod = "get";
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnNewProjectV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select)
+        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnNewProjectV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null)
         {
             var apiCallPath = "/v2/trigger/_api/ProjectData/Projects";
             var apiCallHttpMethod = "get";
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublishedV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select)
+        public IOutputWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublishedV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null)
         {
             var apiCallPath = "/v2/trigger/_api/ProjectData/PublishedProjects";
             var apiCallHttpMethod = "get";
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerResourcesWrapper> OnNewResourceV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select)
+        public IOutputWorkflowTrigger<TriggerResourcesWrapper> OnNewResourceV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null)
         {
             var apiCallPath = "/v2/trigger/_api/ProjectData/Resources";
             var apiCallHttpMethod = "get";
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerTasksWrapper> OnNewTaskV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select)
+        public IOutputWorkflowTrigger<TriggerTasksWrapper> OnNewTaskV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null)
         {
             var apiCallPath = "/v2/trigger/_api/ProjectData/Tasks";
             var apiCallHttpMethod = "get";

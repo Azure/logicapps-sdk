@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID)
+        public IOutputWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID, string triggerName = null)
         {
             var apiCallPath = String.Format("/v1/msflow/forms/{0}/c/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
             return new ApiConnectionTrigger<WebhookResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID)
+        public IOutputWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID, string triggerName = null)
         {
             var apiCallPath = String.Format("/v1/msflow/forms/{0}/u/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";

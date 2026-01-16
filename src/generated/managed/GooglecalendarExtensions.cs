@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
     public class GooglecalendarTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CalendarEventList> OnNewEventInCalendar(Expression<Func<string>> calendarId)
+        public IOutputWorkflowTrigger<CalendarEventList> OnNewEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger1/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             return new ApiConnectionTrigger<CalendarEventList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId)
+        public IOutputWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger2/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             return new ApiConnectionTrigger<CalendarEventList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar(Expression<Func<string>> calendarId)
+        public IOutputWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar(Expression<Func<string>> calendarId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger3/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             return new ApiConnectionTrigger<CalendarEventList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null)
+        public IOutputWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger4/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             return new ApiConnectionTrigger<CalendarEventChangedList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CalendarEventList> OnEventStarted(Expression<Func<string>> calendarId)
+        public IOutputWorkflowTrigger<CalendarEventList> OnEventStarted(Expression<Func<string>> calendarId, string triggerName = null)
         {
             var apiCallPath = String.Format("/eventstarted/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
             var apiCallHttpMethod = "get";

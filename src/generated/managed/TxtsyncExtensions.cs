@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class TxtsyncTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<InboundSMSResponse> InboundSMS()
+        public IOutputWorkflowTrigger<InboundSMSResponse> InboundSMS(string triggerName = null)
         {
             var apiCallPath = "/system/applications/webhooks/type/0";
             var apiCallHttpMethod = "post";
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
             return new ApiConnectionTrigger<InboundSMSResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OutboundSMSResponse> OutboundSMS()
+        public IOutputWorkflowTrigger<OutboundSMSResponse> OutboundSMS(string triggerName = null)
         {
             var apiCallPath = "/system/applications/webhooks/type/5";
             var apiCallHttpMethod = "post";

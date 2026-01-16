@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board)
+        public IOutputWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             return new ApiConnectionTrigger<PinResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board)
+        public IOutputWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             return new ApiConnectionTrigger<PinResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UserResponse> OnSomeoneFollowsMeV2()
+        public IOutputWorkflowTrigger<UserResponse> OnSomeoneFollowsMeV2(string triggerName = null)
         {
             var apiCallPath = "/trigger4/users/me/followers";
             var apiCallHttpMethod = "get";

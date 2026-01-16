@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
 
     public class EventticketsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<AttendeeTriggerResponse> AttendeeTrigger()
+        public IOutputWorkflowTrigger<AttendeeTriggerResponse> AttendeeTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/attendees/";
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<AttendeeTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<UpdatedAttendeeTriggerResponse> UpdatedAttendeeTrigger()
+        public IOutputWorkflowTrigger<UpdatedAttendeeTriggerResponse> UpdatedAttendeeTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-attendees/";
             var apiCallHttpMethod = "get";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<UpdatedAttendeeTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CheckinTriggerResponse> CheckinTrigger()
+        public IOutputWorkflowTrigger<CheckinTriggerResponse> CheckinTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/checkin/";
             var apiCallHttpMethod = "get";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<CheckinTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewOrderTriggerResponse> NewOrderTrigger()
+        public IOutputWorkflowTrigger<NewOrderTriggerResponse> NewOrderTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/orders/";
             var apiCallHttpMethod = "get";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<NewOrderTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RefundedOrderTriggerResponse> RefundedOrderTrigger()
+        public IOutputWorkflowTrigger<RefundedOrderTriggerResponse> RefundedOrderTrigger(string triggerName = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/refunded-orders/";
             var apiCallHttpMethod = "get";

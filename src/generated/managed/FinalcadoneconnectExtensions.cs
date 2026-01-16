@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ThenObsCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID)
+        public IWorkflowTrigger ThenObsCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null)
         {
             var apiCallPath = "/webhooks/ev/201";
             var apiCallHttpMethod = "post";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID)
+        public IWorkflowTrigger ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null)
         {
             var apiCallPath = "/webhooks/ev/202";
             var apiCallHttpMethod = "post";
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID)
+        public IWorkflowTrigger ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null)
         {
             var apiCallPath = "/webhooks/ev/301";
             var apiCallHttpMethod = "post";
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID)
+        public IWorkflowTrigger ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null)
         {
             var apiCallPath = "/webhooks/ev/302";
             var apiCallHttpMethod = "post";
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID)
+        public IWorkflowTrigger ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null)
         {
             var apiCallPath = "/webhooks/ev/401";
             var apiCallHttpMethod = "post";

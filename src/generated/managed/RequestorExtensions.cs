@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
 
     public class RequestorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TicketCreated()
+        public IWorkflowTrigger TicketCreated(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserCreated()
+        public IWorkflowTrigger UserCreated(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TicketMonitoring()
+        public IWorkflowTrigger TicketMonitoring(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketMonitoringTrigger";
             var apiCallHttpMethod = "post";
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TicketStateChange()
+        public IWorkflowTrigger TicketStateChange(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketStateChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TicketCategoryChange()
+        public IWorkflowTrigger TicketCategoryChange(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCategoryChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TicketCustomFormChange()
+        public IWorkflowTrigger TicketCustomFormChange(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCustomFormChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserUpdated()
+        public IWorkflowTrigger UserUpdated(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserUpdatedTrigger";
             var apiCallHttpMethod = "post";
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserDeleted()
+        public IWorkflowTrigger UserDeleted(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserDeletedTrigger";
             var apiCallHttpMethod = "post";
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CompanyCreated()
+        public IWorkflowTrigger CompanyCreated(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CompanyUpdated()
+        public IWorkflowTrigger CompanyUpdated(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyUpdatedTrigger";
             var apiCallHttpMethod = "post";
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CompanyDeleted()
+        public IWorkflowTrigger CompanyDeleted(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyDeletedTrigger";
             var apiCallHttpMethod = "post";

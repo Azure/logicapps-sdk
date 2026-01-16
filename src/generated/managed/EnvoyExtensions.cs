@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
 
     public class EnvoyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InviteCreated(Expression<Func<string>> bodytoken = null)
+        public IWorkflowTrigger InviteCreated(Expression<Func<string>> bodytoken = null, string triggerName = null)
         {
             var apiCallPath = "/register-invite-created";
             var apiCallHttpMethod = "post";

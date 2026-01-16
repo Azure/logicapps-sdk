@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName)
+        public IOutputWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(item, 1), ExpressionConverter.ConvertWithUrlEncoding(operationName, 1));
             var apiCallHttpMethod = "post";

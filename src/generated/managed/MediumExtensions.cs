@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medium
 
     public class MediumTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Publications> TriggerPublicationAdded()
+        public IOutputWorkflowTrigger<Publications> TriggerPublicationAdded(string triggerName = null)
         {
             var apiCallPath = "/trigger/publications";
             var apiCallHttpMethod = "get";

@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
 
     public class HuddleforusgovhealthTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId)
+        public IOutputWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";

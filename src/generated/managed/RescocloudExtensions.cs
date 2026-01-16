@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
 
     public class RescocloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action)
+        public IWorkflowTrigger TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action, string triggerName = null)
         {
             var apiCallPath = "/$hook";
             var apiCallHttpMethod = "post";

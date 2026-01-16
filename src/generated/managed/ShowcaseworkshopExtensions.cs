@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
     public class ShowcaseworkshopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ShowcaseShareSendEmail(Expression<Func<string>> workshopUid)
+        public IWorkflowTrigger ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, string triggerName = null)
         {
             var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageView(Expression<Func<string>> workshopUid)
+        public IWorkflowTrigger ShowcaseSharedPageView(Expression<Func<string>> workshopUid, string triggerName = null)
         {
             var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
             var apiCallHttpMethod = "post";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid)
+        public IWorkflowTrigger ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, string triggerName = null)
         {
             var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
             var apiCallHttpMethod = "post";

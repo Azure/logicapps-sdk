@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
     public class OnedriveTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> OnNewFileV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null)
+        public IOutputWorkflowTrigger<string> OnNewFileV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/onnewfilev2";
             var apiCallHttpMethod = "get";
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> OnUpdatedFileV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null)
+        public IOutputWorkflowTrigger<string> OnUpdatedFileV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/onupdatedfilev2";
             var apiCallHttpMethod = "get";
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFilesV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFilesV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onnewfilesv2";
             var apiCallHttpMethod = "get";
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfilesv2";
             var apiCallHttpMethod = "get";
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnDeletedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnDeletedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/ondeletedfile";
             var apiCallHttpMethod = "get";

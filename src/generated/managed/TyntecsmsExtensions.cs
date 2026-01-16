@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
 
     public class TyntecsmsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IncomingV3(Expression<Func<string>> smsSender)
+        public IWorkflowTrigger IncomingV3(Expression<Func<string>> smsSender, string triggerName = null)
         {
             var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(smsSender, 1));
             var apiCallHttpMethod = "post";

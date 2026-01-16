@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 
     public class EventbriteTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEventV2(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter)
+        public IOutputWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEventV2(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
             var apiCallHttpMethod = "get";
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChangedV2(Expression<Func<string>> organizationId, Expression<Func<string>> id)
+        public IOutputWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChangedV2(Expression<Func<string>> organizationId, Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

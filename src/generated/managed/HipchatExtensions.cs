@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
     public class HipchatTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId)
+        public IOutputWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, string triggerName = null)
         {
             var apiCallPath = String.Format("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             return new ApiConnectionTrigger<HistoryResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId)
+        public IOutputWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, string triggerName = null)
         {
             var apiCallPath = String.Format("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             return new ApiConnectionTrigger<HistoryResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RoomList> OnNewRoom()
+        public IOutputWorkflowTrigger<RoomList> OnNewRoom(string triggerName = null)
         {
             var apiCallPath = "/room_trigger/room";
             var apiCallHttpMethod = "get";

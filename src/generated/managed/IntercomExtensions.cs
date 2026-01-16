@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
     public class IntercomTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TrigLeadResponse[]> TrigNewLead()
+        public IOutputWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(string triggerName = null)
         {
             var apiCallPath = "/create_lead_trigger/contacts";
             var apiCallHttpMethod = "get";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TrigUserResponse[]> TrigNewUser()
+        public IOutputWorkflowTrigger<TrigUserResponse[]> TrigNewUser(string triggerName = null)
         {
             var apiCallPath = "/create_user_trigger/users";
             var apiCallHttpMethod = "get";
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser()
+        public IOutputWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(string triggerName = null)
         {
             var apiCallPath = "/update_user_trigger/users";
             var apiCallHttpMethod = "get";
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation()
+        public IOutputWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(string triggerName = null)
         {
             var apiCallPath = "/create_conversation_trigger/conversations";
             var apiCallHttpMethod = "get";

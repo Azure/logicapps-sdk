@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookSubscription> WebhooksCreate(Expression<Func<dataeventTypeInput>> dataeventType, Expression<Func<string>> datacreated = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datateamname = null, Expression<Func<string>> datateamsubdomain = null, Expression<Func<string>> datateamurl = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null)
+        public IOutputWorkflowTrigger<WebhookSubscription> WebhooksCreate(Expression<Func<dataeventTypeInput>> dataeventType, Expression<Func<string>> datacreated = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datateamname = null, Expression<Func<string>> datateamsubdomain = null, Expression<Func<string>> datateamurl = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/";
             var apiCallHttpMethod = "post";

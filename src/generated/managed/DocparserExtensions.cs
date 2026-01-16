@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId)
+        public IOutputWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, string triggerName = null)
         {
             var apiCallPath = String.Format("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";

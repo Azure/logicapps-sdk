@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<MembershipsUpdatedResponse> MembershipsUpdated()
+        public IOutputWorkflowTrigger<MembershipsUpdatedResponse> MembershipsUpdated(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/1";
             var apiCallHttpMethod = "post";
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MembershipsDeletedResponse> MembershipsDeleted()
+        public IOutputWorkflowTrigger<MembershipsDeletedResponse> MembershipsDeleted(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/2";
             var apiCallHttpMethod = "post";
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MembershipsCreatedResponse> MembershipsCreated()
+        public IOutputWorkflowTrigger<MembershipsCreatedResponse> MembershipsCreated(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/3";
             var apiCallHttpMethod = "post";
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MessagesCreatedResponse> MessagesCreated()
+        public IOutputWorkflowTrigger<MessagesCreatedResponse> MessagesCreated(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/4";
             var apiCallHttpMethod = "post";
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<MessagesDeletedResponse> MessagesDeleted()
+        public IOutputWorkflowTrigger<MessagesDeletedResponse> MessagesDeleted(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/5";
             var apiCallHttpMethod = "post";
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SpaceCreatedResponse> SpaceCreated()
+        public IOutputWorkflowTrigger<SpaceCreatedResponse> SpaceCreated(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/6";
             var apiCallHttpMethod = "post";
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SpaceUpdatedResponse> SpaceUpdated()
+        public IOutputWorkflowTrigger<SpaceUpdatedResponse> SpaceUpdated(string triggerName = null)
         {
             var apiCallPath = "/v1/webhooks/7";
             var apiCallHttpMethod = "post";

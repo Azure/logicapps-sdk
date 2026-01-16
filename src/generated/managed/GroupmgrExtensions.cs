@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupmgrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger GroupMgrGroupRequested(Expression<Func<string>> bodyname)
+        public IWorkflowTrigger GroupMgrGroupRequested(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupRequested";
             var apiCallHttpMethod = "post";
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupMgrGroupCreated()
+        public IWorkflowTrigger GroupMgrGroupCreated(string triggerName = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupCreated";
             var apiCallHttpMethod = "post";
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupMgrGroupUpdated()
+        public IWorkflowTrigger GroupMgrGroupUpdated(string triggerName = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupUpdated";
             var apiCallHttpMethod = "post";
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GroupMgrGroupDeleted()
+        public IWorkflowTrigger GroupMgrGroupDeleted(string triggerName = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupDeleted";
             var apiCallHttpMethod = "post";

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat
 
     public class Touchsmsv2documentatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, string triggerName = null)
         {
             var apiCallPath = "/v2/integrations/power-automate/subscribe";
             var apiCallHttpMethod = "post";

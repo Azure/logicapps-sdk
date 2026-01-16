@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 
     public class SlackTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile(Expression<Func<string>> channel)
+        public IOutputWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile(Expression<Func<string>> channel, string triggerName = null)
         {
             var apiCallPath = "/trigger/files.list";
             var apiCallHttpMethod = "get";

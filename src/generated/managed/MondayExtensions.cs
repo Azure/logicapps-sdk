@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class MondayTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/CreateItem";
             var apiCallHttpMethod = "post";
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/CreateUpdate";
             var apiCallHttpMethod = "post";
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/ChangeName";
             var apiCallHttpMethod = "post";
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/ChangeSubitemName";
             var apiCallHttpMethod = "post";
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/CreateSubitem";
             var apiCallHttpMethod = "post";
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId)
+        public IOutputWorkflowTrigger<JToken> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/ColumnChanges";
             var apiCallHttpMethod = "post";
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/AnyColumnChanges";
             var apiCallHttpMethod = "post";
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId)
+        public IOutputWorkflowTrigger<JToken> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, string triggerName = null)
         {
             var apiCallPath = "/registerWebhook/SubitemColumnChanges";
             var apiCallHttpMethod = "post";

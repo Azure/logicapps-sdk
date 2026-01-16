@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode)
+        public IOutputWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, string triggerName = null)
         {
             var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
             var apiCallHttpMethod = "post";

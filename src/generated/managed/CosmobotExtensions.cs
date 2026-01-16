@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class CosmobotTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger OnNewTicket()
+        public IWorkflowTrigger OnNewTicket(string triggerName = null)
         {
             var apiCallPath = "/webhooks/new-ticket";
             var apiCallHttpMethod = "post";
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OnResolvedTicket()
+        public IWorkflowTrigger OnResolvedTicket(string triggerName = null)
         {
             var apiCallPath = "/webhooks/resolved-ticket";
             var apiCallHttpMethod = "post";
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OnUpdatedTicketTopic()
+        public IWorkflowTrigger OnUpdatedTicketTopic(string triggerName = null)
         {
             var apiCallPath = "/webhooks/updated-ticket-topic";
             var apiCallHttpMethod = "post";
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OnNewAnswer()
+        public IWorkflowTrigger OnNewAnswer(string triggerName = null)
         {
             var apiCallPath = "/webhooks/new-answer";
             var apiCallHttpMethod = "post";
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OnUpdateAnswer()
+        public IWorkflowTrigger OnUpdateAnswer(string triggerName = null)
         {
             var apiCallPath = "/webhooks/update-answer";
             var apiCallHttpMethod = "post";
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OnAskedQuestion()
+        public IWorkflowTrigger OnAskedQuestion(string triggerName = null)
         {
             var apiCallPath = "/webhooks/asked-question";
             var apiCallHttpMethod = "post";

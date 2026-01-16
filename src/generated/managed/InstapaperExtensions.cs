@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
     public class InstapaperTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkAdded(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkAdded(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<int[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkArchived()
+        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkArchived(string triggerName = null)
         {
             var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
             var apiCallHttpMethod = "get";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkLiked()
+        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkLiked(string triggerName = null)
         {
             var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
             var apiCallHttpMethod = "get";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<FoldersResponse> OnFolderCreated()
+        public IOutputWorkflowTrigger<FoldersResponse> OnFolderCreated(string triggerName = null)
         {
             var apiCallPath = "/folder_trigger/1/folders/list";
             var apiCallHttpMethod = "get";
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<FoldersResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
             var apiCallHttpMethod = "get";
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<BookmarksResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId)
+        public IOutputWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, string triggerName = null)
         {
             var apiCallPath = String.Format("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
             var apiCallHttpMethod = "get";

@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
     public class SalesforceTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ItemsList> GetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null)
+        public IOutputWorkflowTrigger<ItemsList> GetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/default/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
             return new ApiConnectionTrigger<ItemsList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ItemsList> GetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null)
+        public IOutputWorkflowTrigger<ItemsList> GetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/default/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";

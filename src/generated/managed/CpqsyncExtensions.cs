@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
     public class CpqsyncTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId)
+        public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId, string triggerName = null)
         {
             var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId)
+        public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId, string triggerName = null)
         {
             var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
             var apiCallHttpMethod = "post";

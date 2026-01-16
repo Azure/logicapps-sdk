@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 
     public class BttnTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id)
+        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = "/hook";
             var apiCallHttpMethod = "post";

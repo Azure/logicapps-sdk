@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CapsulecrmTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OpportunityResponse[]> OnNewOpportunity()
+        public IOutputWorkflowTrigger<OpportunityResponse[]> OnNewOpportunity(string triggerName = null)
         {
             var apiCallPath = "/create_trigger/opportunities";
             var apiCallHttpMethod = "get";
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OpportunityResponse[]> OnUpdateOpportunity()
+        public IOutputWorkflowTrigger<OpportunityResponse[]> OnUpdateOpportunity(string triggerName = null)
         {
             var apiCallPath = "/update_trigger/opportunities";
             var apiCallHttpMethod = "get";
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaskResponse[]> OnNewTask()
+        public IOutputWorkflowTrigger<TaskResponse[]> OnNewTask(string triggerName = null)
         {
             var apiCallPath = "/create_trigger/tasks";
             var apiCallHttpMethod = "get";
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<TaskResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PartyResponse[]> OnNewParty()
+        public IOutputWorkflowTrigger<PartyResponse[]> OnNewParty(string triggerName = null)
         {
             var apiCallPath = "/create_trigger/parties";
             var apiCallHttpMethod = "get";
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<PartyResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<PartyResponseV2[]> OnNewPartyV2()
+        public IOutputWorkflowTrigger<PartyResponseV2[]> OnNewPartyV2(string triggerName = null)
         {
             var apiCallPath = "/v2/create_trigger/parties";
             var apiCallHttpMethod = "get";

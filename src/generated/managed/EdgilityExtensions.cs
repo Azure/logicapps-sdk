@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, string triggerName = null)
         {
             var apiCallPath = "/v2/integrations/power-automate/subscribe";
             var apiCallHttpMethod = "post";

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null)
+        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null)
         {
             var apiCallPath = "/WhenTaskCreated";
             var apiCallHttpMethod = "post";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null)
+        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null)
         {
             var apiCallPath = "/WhenTaskUpdated";
             var apiCallHttpMethod = "post";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null)
+        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null)
         {
             var apiCallPath = "/WhenTaskArchived";
             var apiCallHttpMethod = "post";
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null)
+        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null)
         {
             var apiCallPath = "/WhenMilestoneReached";
             var apiCallHttpMethod = "post";
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null)
+        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null)
         {
             var apiCallPath = "/WhenMilestoneCleared";
             var apiCallHttpMethod = "post";

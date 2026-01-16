@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
     public class OnenoteTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook(Expression<Func<string>> notebookKey)
+        public IOutputWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook(Expression<Func<string>> notebookKey, string triggerName = null)
         {
             var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
             var apiCallHttpMethod = "get";
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             return new ApiConnectionTrigger<NewSectionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey)
+        public IOutputWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey, string triggerName = null)
         {
             var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
             var apiCallHttpMethod = "get";
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewPageResponse> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId)
+        public IOutputWorkflowTrigger<NewPageResponse> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, string triggerName = null)
         {
             var apiCallPath = "/trigger3/sections/Dynamic/pages";
             var apiCallHttpMethod = "get";
