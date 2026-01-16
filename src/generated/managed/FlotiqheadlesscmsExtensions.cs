@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Flotiqheadlesscms
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flotiqheadlesscms
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Flotiqheadlesscms
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Flotiqheadlesscms;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Flotiqheadlesscms;
 
     public partial class WorkflowManagedActions
     {

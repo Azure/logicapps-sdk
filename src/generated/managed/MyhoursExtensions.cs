@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Myhours
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -874,9 +874,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Myhours
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Myhours;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Myhours;
 
     public partial class WorkflowManagedActions
     {

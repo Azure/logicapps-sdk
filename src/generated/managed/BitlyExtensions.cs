@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Bitly
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Bitly
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Bitly;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Bitly;
 
     public partial class WorkflowManagedActions
     {

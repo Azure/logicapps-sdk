@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Pdf4meai
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meai
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Pdf4meai
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Pdf4meai;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meai;
 
     public partial class WorkflowManagedActions
     {

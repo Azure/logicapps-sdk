@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Solosign
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Solosign
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Solosign;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Solosign;
 
     public partial class WorkflowManagedActions
     {

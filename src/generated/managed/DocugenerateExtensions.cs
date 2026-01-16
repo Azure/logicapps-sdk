@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Docugenerate
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -384,9 +384,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Docugenerate
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Docugenerate;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate;
 
     public partial class WorkflowManagedActions
     {

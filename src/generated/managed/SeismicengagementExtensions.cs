@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Seismicengagement
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -590,9 +590,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Seismicengagement
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Seismicengagement;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement;
 
     public partial class WorkflowManagedActions
     {

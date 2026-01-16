@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Myacclaro
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Myacclaro
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Myacclaro;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro;
 
     public partial class WorkflowManagedActions
     {

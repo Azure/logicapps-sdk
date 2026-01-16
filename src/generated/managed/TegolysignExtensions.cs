@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tegolysign
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tegolysign
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tegolysign;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign;
 
     public partial class WorkflowManagedActions
     {

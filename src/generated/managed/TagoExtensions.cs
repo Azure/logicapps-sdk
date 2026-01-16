@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tago
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1782,9 +1782,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tago
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tago;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tago;
 
     public partial class WorkflowManagedActions
     {

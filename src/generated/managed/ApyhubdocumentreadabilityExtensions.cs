@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Apyhubdocumentreadability
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Apyhubdocumentreadability
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Apyhubdocumentreadability;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tdox
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tdox
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tdox;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tdox;
 
     public partial class WorkflowManagedActions
     {

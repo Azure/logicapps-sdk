@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dadjokesioip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -155,9 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dadjokesioip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dadjokesioip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip;
 
     public partial class WorkflowManagedActions
     {

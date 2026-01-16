@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Office365groups
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -529,9 +529,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Office365groups
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Office365groups;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups;
 
     public partial class WorkflowManagedActions
     {

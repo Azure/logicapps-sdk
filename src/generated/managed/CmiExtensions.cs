@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cmi
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cmi
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cmi;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cmi;
 
     public partial class WorkflowManagedActions
     {

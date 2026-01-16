@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cognitiveservicescomputervision
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervision
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -514,9 +514,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cognitiveservicescomputervision
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cognitiveservicescomputervision;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervision;
 
     public partial class WorkflowManagedActions
     {

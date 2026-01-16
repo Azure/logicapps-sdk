@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Keyvault
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -314,9 +314,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Keyvault
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Keyvault;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk._365training
+namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -654,9 +654,9 @@ namespace Microsoft.Azure.Workflows.Sdk._365training
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk._365training;
+    using Microsoft.Azure.Workflows.Sdk.Connectors._365training;
 
     public partial class WorkflowManagedActions
     {

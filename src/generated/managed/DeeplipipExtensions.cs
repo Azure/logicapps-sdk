@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Deeplipip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deeplipip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Deeplipip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Deeplipip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Deeplipip;
 
     public partial class WorkflowManagedActions
     {

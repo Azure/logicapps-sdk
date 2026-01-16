@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Supportivekoalaip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -365,9 +365,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Supportivekoalaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Supportivekoalaip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip;
 
     public partial class WorkflowManagedActions
     {

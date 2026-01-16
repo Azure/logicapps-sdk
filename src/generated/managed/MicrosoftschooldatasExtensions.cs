@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Microsoftschooldatas
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Microsoftschooldatas
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Microsoftschooldatas;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas;
 
     public partial class WorkflowManagedActions
     {

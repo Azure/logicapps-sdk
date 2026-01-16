@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tradegov
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -810,9 +810,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tradegov
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tradegov;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov;
 
     public partial class WorkflowManagedActions
     {

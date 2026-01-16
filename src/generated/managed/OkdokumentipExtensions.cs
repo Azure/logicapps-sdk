@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Okdokumentip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Okdokumentip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Okdokumentip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Lifx
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -742,9 +742,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Lifx
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Lifx;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Lifx;
 
     public partial class WorkflowManagedActions
     {

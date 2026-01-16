@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Googletasks
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Googletasks
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Googletasks;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks;
 
     public partial class WorkflowManagedActions
     {

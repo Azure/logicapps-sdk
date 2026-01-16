@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tyntecviber
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tyntecviber
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tyntecviber;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Microsoftd365cev9ip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -281,9 +281,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Microsoftd365cev9ip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Microsoftd365cev9ip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip;
 
     public partial class WorkflowManagedActions
     {

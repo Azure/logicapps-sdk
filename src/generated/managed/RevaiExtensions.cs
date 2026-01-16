@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Revai
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1126,9 +1126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Revai
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Revai;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Revai;
 
     public partial class WorkflowManagedActions
     {

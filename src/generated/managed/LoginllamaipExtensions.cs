@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Loginllamaip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Loginllamaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Loginllamaip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip;
 
     public partial class WorkflowManagedActions
     {

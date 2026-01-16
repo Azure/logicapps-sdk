@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Saplingai
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -260,9 +260,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Saplingai
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Saplingai;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Intentionaldatasources
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Intentionaldatasources
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Intentionaldatasources;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources;
 
     public partial class WorkflowManagedActions
     {

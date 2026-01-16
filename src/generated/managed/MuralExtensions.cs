@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mural
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -354,9 +354,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mural
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mural;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mural;
 
     public partial class WorkflowManagedActions
     {

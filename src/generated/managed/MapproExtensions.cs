@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mappro
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mappro
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mappro;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mappro;
 
     public partial class WorkflowManagedActions
     {

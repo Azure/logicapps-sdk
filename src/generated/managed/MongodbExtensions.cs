@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mongodb
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -420,9 +420,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mongodb
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mongodb;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb;
 
     public partial class WorkflowManagedActions
     {

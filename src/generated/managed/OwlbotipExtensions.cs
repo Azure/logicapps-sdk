@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Owlbotip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Owlbotip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Owlbotip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Iaconnectmainframe
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -673,9 +673,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Iaconnectmainframe
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Iaconnectmainframe;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe;
 
     public partial class WorkflowManagedActions
     {

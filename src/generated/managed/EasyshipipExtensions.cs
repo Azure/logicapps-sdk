@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Easyshipip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -3289,9 +3289,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Easyshipip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Easyshipip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip;
 
     public partial class WorkflowManagedActions
     {

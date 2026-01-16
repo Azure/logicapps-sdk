@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Advanceddataoperatio
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1849,9 +1849,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Advanceddataoperatio
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Advanceddataoperatio;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio;
 
     public partial class WorkflowManagedActions
     {

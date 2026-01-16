@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dynamicssmbsaas
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1004,9 +1004,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dynamicssmbsaas
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dynamicssmbsaas;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas;
 
     public partial class WorkflowManagedActions
     {

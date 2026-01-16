@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Adobepdftools
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -835,9 +835,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Adobepdftools
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Adobepdftools;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools;
 
     public partial class WorkflowManagedActions
     {

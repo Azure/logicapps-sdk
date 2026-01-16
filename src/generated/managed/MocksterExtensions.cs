@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mockster
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1265,9 +1265,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mockster
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mockster;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mockster;
 
     public partial class WorkflowManagedActions
     {

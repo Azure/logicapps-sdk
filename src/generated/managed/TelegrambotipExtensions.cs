@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Telegrambotip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -221,9 +221,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Telegrambotip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Telegrambotip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip;
 
     public partial class WorkflowManagedActions
     {

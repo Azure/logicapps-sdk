@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Clearbitip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Clearbitip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Clearbitip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip;
 
     public partial class WorkflowManagedActions
     {

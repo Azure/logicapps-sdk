@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mediastack
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -181,9 +181,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mediastack
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mediastack;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack;
 
     public partial class WorkflowManagedActions
     {

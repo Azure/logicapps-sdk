@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Blackbauddocuments
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Blackbauddocuments
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Blackbauddocuments;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments;
 
     public partial class WorkflowManagedActions
     {

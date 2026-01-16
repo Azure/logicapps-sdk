@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Onenotepersonalip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -655,9 +655,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Onenotepersonalip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Onenotepersonalip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip;
 
     public partial class WorkflowManagedActions
     {

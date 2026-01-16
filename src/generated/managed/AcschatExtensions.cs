@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Acschat
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -426,9 +426,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Acschat
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Acschat;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Acschat;
 
     public partial class WorkflowManagedActions
     {

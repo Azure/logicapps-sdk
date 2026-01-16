@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mailparser
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mailparser
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mailparser;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Sapodata
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -253,9 +253,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Sapodata
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Sapodata;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata;
 
     public partial class WorkflowManagedActions
     {

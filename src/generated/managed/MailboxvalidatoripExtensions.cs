@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mailboxvalidatorip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -149,9 +149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mailboxvalidatorip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mailboxvalidatorip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dataactivatorpreview
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dataactivatorpreview
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dataactivatorpreview;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview;
 
     public partial class WorkflowManagedActions
     {

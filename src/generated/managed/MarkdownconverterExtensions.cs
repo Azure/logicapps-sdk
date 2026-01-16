@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Markdownconverter
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1058,9 +1058,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Markdownconverter
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Markdownconverter;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter;
 
     public partial class WorkflowManagedActions
     {

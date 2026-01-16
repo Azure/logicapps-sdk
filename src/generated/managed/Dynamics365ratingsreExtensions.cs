@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dynamics365ratingsre
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dynamics365ratingsre
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dynamics365ratingsre;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre;
 
     public partial class WorkflowManagedActions
     {

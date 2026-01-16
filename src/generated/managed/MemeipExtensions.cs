@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Memeip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Memeip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Memeip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Memeip;
 
     public partial class WorkflowManagedActions
     {

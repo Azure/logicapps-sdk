@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Finra
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Finra
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Finra;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Finra;
 
     public partial class WorkflowManagedActions
     {

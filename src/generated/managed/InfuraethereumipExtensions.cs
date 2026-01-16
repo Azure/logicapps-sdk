@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Infuraethereumip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Infuraethereumip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Infuraethereumip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip;
 
     public partial class WorkflowManagedActions
     {

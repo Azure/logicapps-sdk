@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Loripsumip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Loripsumip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Loripsumip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip;
 
     public partial class WorkflowManagedActions
     {

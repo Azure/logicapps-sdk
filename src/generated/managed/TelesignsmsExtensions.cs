@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Telesignsms
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Telesignsms
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Telesignsms;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms;
 
     public partial class WorkflowManagedActions
     {

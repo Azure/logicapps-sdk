@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Hotprofile
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1206,9 +1206,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Hotprofile
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Hotprofile;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile;
 
     public partial class WorkflowManagedActions
     {

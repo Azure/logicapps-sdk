@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dicebearip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -179,9 +179,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dicebearip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dicebearip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip;
 
     public partial class WorkflowManagedActions
     {

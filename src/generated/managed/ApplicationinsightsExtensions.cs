@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Applicationinsights
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Applicationinsights
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Applicationinsights;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights;
 
     public partial class WorkflowManagedActions
     {

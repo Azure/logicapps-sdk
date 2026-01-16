@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Sirvarelocatingemplo
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -636,9 +636,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Sirvarelocatingemplo
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Sirvarelocatingemplo;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo;
 
     public partial class WorkflowManagedActions
     {

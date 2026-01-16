@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Safetyculture
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -832,9 +832,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Safetyculture
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Safetyculture;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture;
 
     public partial class WorkflowManagedActions
     {

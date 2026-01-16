@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Ibmwatsonassistantip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Ibmwatsonassistantip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Ibmwatsonassistantip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip;
 
     public partial class WorkflowManagedActions
     {

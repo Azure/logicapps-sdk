@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Usgsearthquakehazaip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usgsearthquakehazaip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -244,9 +244,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Usgsearthquakehazaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Usgsearthquakehazaip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Usgsearthquakehazaip;
 
     public partial class WorkflowManagedActions
     {

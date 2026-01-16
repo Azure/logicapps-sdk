@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Apyhubgenerateical
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -227,9 +227,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Apyhubgenerateical
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Apyhubgenerateical;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical;
 
     public partial class WorkflowManagedActions
     {

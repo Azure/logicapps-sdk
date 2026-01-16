@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Prosaiforsalescopilo
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prosaiforsalescopilo
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Prosaiforsalescopilo
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Prosaiforsalescopilo;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Prosaiforsalescopilo;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cloudmersive
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cloudmersive
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cloudmersive;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive;
 
     public partial class WorkflowManagedActions
     {

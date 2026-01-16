@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Airlabsip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -718,9 +718,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Airlabsip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Airlabsip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip;
 
     public partial class WorkflowManagedActions
     {

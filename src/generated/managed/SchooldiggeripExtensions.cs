@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Schooldiggerip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1035,9 +1035,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Schooldiggerip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Schooldiggerip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip;
 
     public partial class WorkflowManagedActions
     {

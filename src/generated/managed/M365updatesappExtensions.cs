@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.M365updatesapp
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Workflows.Sdk.M365updatesapp
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.M365updatesapp;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp;
 
     public partial class WorkflowManagedActions
     {

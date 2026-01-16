@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk._24pullrequestip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -370,9 +370,9 @@ namespace Microsoft.Azure.Workflows.Sdk._24pullrequestip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk._24pullrequestip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip;
 
     public partial class WorkflowManagedActions
     {

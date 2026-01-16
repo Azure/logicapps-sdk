@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Meekou
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Meekou
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Meekou;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Meekou;
 
     public partial class WorkflowManagedActions
     {

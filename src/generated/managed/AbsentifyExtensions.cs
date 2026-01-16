@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Absentify
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Absentify
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Absentify
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Absentify;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Absentify;
 
     public partial class WorkflowManagedActions
     {

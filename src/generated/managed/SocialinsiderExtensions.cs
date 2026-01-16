@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Socialinsider
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Socialinsider
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Socialinsider;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider;
 
     public partial class WorkflowManagedActions
     {

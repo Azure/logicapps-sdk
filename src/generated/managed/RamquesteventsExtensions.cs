@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Ramquestevents
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Ramquestevents
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Ramquestevents;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents;
 
     public partial class WorkflowManagedActions
     {

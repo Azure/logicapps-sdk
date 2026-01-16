@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Signl4mobilealerting
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signl4mobilealerting
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Signl4mobilealerting
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Signl4mobilealerting;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Signl4mobilealerting;
 
     public partial class WorkflowManagedActions
     {

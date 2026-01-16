@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Nutrientextractfromp
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -444,9 +444,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Nutrientextractfromp
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Nutrientextractfromp;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp;
 
     public partial class WorkflowManagedActions
     {

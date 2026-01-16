@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mailchimp
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1908,9 +1908,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mailchimp
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mailchimp;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp;
 
     public partial class WorkflowManagedActions
     {

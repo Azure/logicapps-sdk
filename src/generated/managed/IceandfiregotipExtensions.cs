@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Iceandfiregotip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -397,9 +397,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Iceandfiregotip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Iceandfiregotip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip;
 
     public partial class WorkflowManagedActions
     {

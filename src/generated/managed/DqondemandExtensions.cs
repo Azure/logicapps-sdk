@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Dqondemand
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -2330,9 +2330,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Dqondemand
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Dqondemand;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand;
 
     public partial class WorkflowManagedActions
     {

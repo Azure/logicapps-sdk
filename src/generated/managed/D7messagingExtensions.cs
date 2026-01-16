@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.D7messaging
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -259,9 +259,9 @@ namespace Microsoft.Azure.Workflows.Sdk.D7messaging
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.D7messaging;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging;
 
     public partial class WorkflowManagedActions
     {

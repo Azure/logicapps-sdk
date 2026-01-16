@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectwisepsa
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectwisepsa
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectwisepsa;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa;
 
     public partial class WorkflowManagedActions
     {
