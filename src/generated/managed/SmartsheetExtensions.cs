@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
     public class SmartsheetTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null)
+        public IOutputWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null, string triggerName = null)
         {
             var apiCallPath = "/new_trigger/sheets";
             var apiCallHttpMethod = "get";
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null)
+        public IOutputWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null, string triggerName = null)
         {
             var apiCallPath = "/updated_trigger/sheets";
             var apiCallHttpMethod = "get";
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId)
+        public IOutputWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, string triggerName = null)
         {
             var apiCallPath = String.Format("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<SmartsheetCollectionDiscussionComment>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
+        public IOutputWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<SmartsheetCollectionSheetWithRows>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
+        public IOutputWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<RowResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId)
+        public IOutputWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, string triggerName = null)
         {
             var apiCallPath = String.Format("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
             var apiCallHttpMethod = "get";
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
             return new ApiConnectionTrigger<CommentResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId)
+        public IOutputWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, string triggerName = null)
         {
             var apiCallPath = String.Format("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
             var apiCallHttpMethod = "get";

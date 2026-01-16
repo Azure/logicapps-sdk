@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class TeamsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
+        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
+        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload);
         }
 
-        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookChatMessageTrigger()
+        public IWorkflowTrigger WebhookChatMessageTrigger(string triggerName = null)
         {
             var apiCallPath = "/beta/subscriptions/chatmessagetrigger";
             var apiCallHttpMethod = "post";
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipRemoval(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipRemoval(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/removal";
             var apiCallHttpMethod = "get";
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipAdd(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipAdd(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/delta";
             var apiCallHttpMethod = "get";

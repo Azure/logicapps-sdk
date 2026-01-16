@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
     public class SurveymonkeyTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewSurveysItem[]> OnSurveyCreated()
+        public IOutputWorkflowTrigger<NewSurveysItem[]> OnSurveyCreated(string triggerName = null)
         {
             var apiCallPath = "/trigger1/surveys";
             var apiCallHttpMethod = "get";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId)
+        public IOutputWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId)
+        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1));
             var apiCallHttpMethod = "get";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId)
+        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
             var apiCallHttpMethod = "get";
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null)
+        public IOutputWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
             var apiCallHttpMethod = "get";

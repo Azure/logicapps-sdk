@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, string triggerName = null)
         {
             var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
             var apiCallHttpMethod = "post";

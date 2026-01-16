@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconnect
 
     public class Pdf4meconnectTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> GetDocumentFromPDF4me(Expression<Func<string>> bodyName)
+        public IOutputWorkflowTrigger<string> GetDocumentFromPDF4me(Expression<Func<string>> bodyName, string triggerName = null)
         {
             var apiCallPath = "/v2/FlowV2/WebhookSubscribe";
             var apiCallHttpMethod = "post";

@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
     public class TyntecwaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IncomingV2(Expression<Func<string>> wABA)
+        public IWorkflowTrigger IncomingV2(Expression<Func<string>> wABA, string triggerName = null)
         {
             var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(wABA, 1));
             var apiCallHttpMethod = "post";

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission()
+        public IOutputWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(string triggerName = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";

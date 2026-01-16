@@ -2339,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
     public class ImprezianTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewSalesLeadResponseItem[]> NewSalesLead()
+        public IOutputWorkflowTrigger<NewSalesLeadResponseItem[]> NewSalesLead(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/new_lead";
             var apiCallHttpMethod = "get";
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewMarketingCampaignResponseItem[]> NewMarketingCampaign()
+        public IOutputWorkflowTrigger<NewMarketingCampaignResponseItem[]> NewMarketingCampaign(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/new_campaign";
             var apiCallHttpMethod = "get";
@@ -2355,7 +2355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads(Expression<Func<int>> promotionID)
+        public IOutputWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads(Expression<Func<int>> promotionID, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/new_members_leads";
             var apiCallHttpMethod = "get";
@@ -2364,7 +2364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewSalesOrderResponseItem[]> NewSalesOrder()
+        public IOutputWorkflowTrigger<NewSalesOrderResponseItem[]> NewSalesOrder(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/new_orders";
             var apiCallHttpMethod = "get";
@@ -2372,7 +2372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewProposalCreatedResponseItem[]> NewProposalCreated()
+        public IOutputWorkflowTrigger<NewProposalCreatedResponseItem[]> NewProposalCreated(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/new_quotes";
             var apiCallHttpMethod = "get";
@@ -2380,7 +2380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged(Expression<Func<string>> status)
+        public IOutputWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged(Expression<Func<string>> status, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/order_status";
             var apiCallHttpMethod = "get";
@@ -2389,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<OrderStatusChangedResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OrderInHistoryResponseItem[]> OrderInHistory()
+        public IOutputWorkflowTrigger<OrderInHistoryResponseItem[]> OrderInHistory(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/orders_final";
             var apiCallHttpMethod = "get";
@@ -2397,7 +2397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OrderInProcessingResponseItem[]> OrderInProcessing()
+        public IOutputWorkflowTrigger<OrderInProcessingResponseItem[]> OrderInProcessing(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/orders_processing";
             var apiCallHttpMethod = "get";
@@ -2405,7 +2405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OrderIsShippingResponseItem[]> OrderIsShipping()
+        public IOutputWorkflowTrigger<OrderIsShippingResponseItem[]> OrderIsShipping(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/orders_shipping";
             var apiCallHttpMethod = "get";
@@ -2413,7 +2413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ProposalNeedsApprovalResponseItem[]> ProposalNeedsApproval()
+        public IOutputWorkflowTrigger<ProposalNeedsApprovalResponseItem[]> ProposalNeedsApproval(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/quotes_approval";
             var apiCallHttpMethod = "get";
@@ -2421,7 +2421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WorkOrderClosedResponseItem[]> WorkOrderClosed()
+        public IOutputWorkflowTrigger<WorkOrderClosedResponseItem[]> WorkOrderClosed(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/wo_closed";
             var apiCallHttpMethod = "get";
@@ -2429,7 +2429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WorkOrderCreatedResponseItem[]> WorkOrderCreated()
+        public IOutputWorkflowTrigger<WorkOrderCreatedResponseItem[]> WorkOrderCreated(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/wo_opened";
             var apiCallHttpMethod = "get";
@@ -2437,7 +2437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WorkOrderPastDueResponseItem[]> WorkOrderPastDue()
+        public IOutputWorkflowTrigger<WorkOrderPastDueResponseItem[]> WorkOrderPastDue(string triggerName = null)
         {
             var apiCallPath = "/trigger/api/wo_pastdue";
             var apiCallHttpMethod = "get";
@@ -2445,7 +2445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged(Expression<Func<string>> status)
+        public IOutputWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged(Expression<Func<string>> status, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/wo_status";
             var apiCallHttpMethod = "get";

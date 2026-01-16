@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName)
+        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, string triggerName = null)
         {
             var apiCallPath = "/subscriptions";
             var apiCallHttpMethod = "post";

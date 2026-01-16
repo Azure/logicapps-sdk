@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 
     public class EasyredmineTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListProjectsResponse> OnNewProject()
+        public IOutputWorkflowTrigger<ListProjectsResponse> OnNewProject(string triggerName = null)
         {
             var apiCallPath = "/new_project_trigger/projects.json";
             var apiCallHttpMethod = "get";
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             return new ApiConnectionTrigger<ListProjectsResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId)
+        public IOutputWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId, string triggerName = null)
         {
             var apiCallPath = "/new_issue_trigger/issues.json";
             var apiCallHttpMethod = "get";
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
             return new ApiConnectionTrigger<ListIssuesResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId)
+        public IOutputWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId, string triggerName = null)
         {
             var apiCallPath = "/resolved_issue_trigger/issues.json";
             var apiCallHttpMethod = "get";

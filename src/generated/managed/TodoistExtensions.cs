@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnItemCompletedV4Response> OnItemCompletedV4(Expression<Func<string>> projectId)
+        public IOutputWorkflowTrigger<OnItemCompletedV4Response> OnItemCompletedV4(Expression<Func<string>> projectId, string triggerName = null)
         {
             var apiCallPath = "/v4/trigger/completed/get_all";
             var apiCallHttpMethod = "get";
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnItemCreatedV4Response> OnItemCreatedV4(Expression<Func<string>> projectId)
+        public IOutputWorkflowTrigger<OnItemCreatedV4Response> OnItemCreatedV4(Expression<Func<string>> projectId, string triggerName = null)
         {
             var apiCallPath = "/v4/trigger/sync";
             var apiCallHttpMethod = "get";

@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
     public class MaximizercrmTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/AbEntry/trigger/updated";
             var apiCallHttpMethod = "post";
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/AbEntry/trigger/created";
             var apiCallHttpMethod = "post";
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/AbEntry/trigger/DateNotification";
             var apiCallHttpMethod = "post";
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Appointment/trigger/Updated";
             var apiCallHttpMethod = "post";
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Appointment/trigger/created";
             var apiCallHttpMethod = "post";
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Appointment/trigger/DateNotification";
             var apiCallHttpMethod = "post";
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Case/api/Case/trigger/Updated";
             var apiCallHttpMethod = "post";
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Case/trigger/DateNotification";
             var apiCallHttpMethod = "post";
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Case/api/Case/trigger/Created";
             var apiCallHttpMethod = "post";
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/HotlistTask/trigger/created";
             var apiCallHttpMethod = "post";
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Lead/trigger/DateNotification";
             var apiCallHttpMethod = "post";
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Lead/trigger/updated";
             var apiCallHttpMethod = "post";
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Lead/trigger/created";
             var apiCallHttpMethod = "post";
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookCreated> WebhookOppStageChanged(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<WebhookCreated> WebhookOppStageChanged(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
             var apiCallHttpMethod = "post";
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<WebhookCreated>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Opportunity/trigger/Created";
             var apiCallHttpMethod = "post";
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Opportunity/trigger/Updated";
             var apiCallHttpMethod = "post";
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification(Expression<Func<object>> body = null)
+        public IOutputWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification(Expression<Func<object>> body = null, string triggerName = null)
         {
             var apiCallPath = "/api/Opportunity/trigger/DateNotification";
             var apiCallHttpMethod = "post";

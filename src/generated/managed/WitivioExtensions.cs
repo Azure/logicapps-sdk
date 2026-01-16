@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class WitivioTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/conversations/{0}/{1}/questions/{2}/triggers/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(questionId, 1));
             var apiCallHttpMethod = "post";
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId)
+        public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/escalation/{0}/{1}/triggers/{2}/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(escalationId, 1));
             var apiCallHttpMethod = "post";

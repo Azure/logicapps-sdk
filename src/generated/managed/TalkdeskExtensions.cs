@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
 
     public class TalkdeskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ContactCreated()
+        public IWorkflowTrigger ContactCreated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/contactCreated";
             var apiCallHttpMethod = "post";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ContactUpdated()
+        public IWorkflowTrigger ContactUpdated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/contactUpdated";
             var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NoteCreated()
+        public IWorkflowTrigger NoteCreated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/noteCreated";
             var apiCallHttpMethod = "post";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AgentLogIn()
+        public IWorkflowTrigger AgentLogIn(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogIn";
             var apiCallHttpMethod = "post";
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AgentLogOut()
+        public IWorkflowTrigger AgentLogOut(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogOut";
             var apiCallHttpMethod = "post";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger OutboundCallEnds()
+        public IWorkflowTrigger OutboundCallEnds(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/outboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger InboundCallReachesContactCenter()
+        public IWorkflowTrigger InboundCallReachesContactCenter(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallReachesContactCenter";
             var apiCallHttpMethod = "post";
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger InboundCallEnds()
+        public IWorkflowTrigger InboundCallEnds(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger InboundCallStarts()
+        public IWorkflowTrigger InboundCallStarts(string triggerName = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallStarts";
             var apiCallHttpMethod = "post";

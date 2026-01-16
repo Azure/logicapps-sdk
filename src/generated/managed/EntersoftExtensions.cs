@@ -2150,7 +2150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationBusinessEventTypeInput>> registrationBusinessEventType, Expression<Func<string>> registrationContext = null, Expression<Func<double>> registrationValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null)
+        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationBusinessEventTypeInput>> registrationBusinessEventType, Expression<Func<string>> registrationContext = null, Expression<Func<double>> registrationValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null)
         {
             var apiCallPath = "/api/businesshook";
             var apiCallHttpMethod = "post";
@@ -2199,7 +2199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationStateInput>> registrationState = null, Expression<Func<registrationPackageTypeInput>> registrationPackageType = null, Expression<Func<string>> registrationConveyanceLicencePlate = null, Expression<Func<string>> registrationBranchID = null, Expression<Func<string>> registrationTradeAccountName = null, Expression<Func<string>> registrationDriverCode = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null)
+        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationStateInput>> registrationState = null, Expression<Func<registrationPackageTypeInput>> registrationPackageType = null, Expression<Func<string>> registrationConveyanceLicencePlate = null, Expression<Func<string>> registrationBranchID = null, Expression<Func<string>> registrationTradeAccountName = null, Expression<Func<string>> registrationDriverCode = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null)
         {
             var apiCallPath = "/api/podhook";
             var apiCallHttpMethod = "post";
@@ -2270,7 +2270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationRequestedBy = null, Expression<Func<registrationPriorityInput>> registrationPriority = null, Expression<Func<string>> registrationRequestClass = null, Expression<Func<string>> registrationRequestCategory = null, Expression<Func<double>> registrationNumericValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null)
+        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationRequestedBy = null, Expression<Func<registrationPriorityInput>> registrationPriority = null, Expression<Func<string>> registrationRequestClass = null, Expression<Func<string>> registrationRequestCategory = null, Expression<Func<double>> registrationNumericValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null)
         {
             var apiCallPath = "/api/rfahook";
             var apiCallHttpMethod = "post";
@@ -2335,7 +2335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationEntityTypeInput>> registrationEntityType, Expression<Func<registrationEventTypeInput>> registrationEventType, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null)
+        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationEntityTypeInput>> registrationEntityType, Expression<Func<registrationEventTypeInput>> registrationEventType, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null)
         {
             var apiCallPath = "/api/hook";
             var apiCallHttpMethod = "post";
@@ -2374,7 +2374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationSystemEventTypeInputItem[]>> registrationSystemEventType, Expression<Func<string>> registrationOtherEvent = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null)
+        public IOutputWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationSystemEventTypeInputItem[]>> registrationSystemEventType, Expression<Func<string>> registrationOtherEvent = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null)
         {
             var apiCallPath = "/api/systemhook";
             var apiCallHttpMethod = "post";

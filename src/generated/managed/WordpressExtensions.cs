@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class WordpressTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListPostsResponse> OnTriggerNewPost()
+        public IOutputWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(string triggerName = null)
         {
             var apiCallPath = "/trigger/me/posts";
             var apiCallHttpMethod = "get";

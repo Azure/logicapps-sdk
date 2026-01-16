@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 
     public class HellosignTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<RequestResponse[]> OnNewRequest()
+        public IOutputWorkflowTrigger<RequestResponse[]> OnNewRequest(string triggerName = null)
         {
             var apiCallPath = "/request_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             return new ApiConnectionTrigger<RequestResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RequestResponse[]> OnRequestCompleted()
+        public IOutputWorkflowTrigger<RequestResponse[]> OnRequestCompleted(string triggerName = null)
         {
             var apiCallPath = "/complete_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
             return new ApiConnectionTrigger<RequestResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<RequestResponse[]> OnRequestDeclined()
+        public IOutputWorkflowTrigger<RequestResponse[]> OnRequestDeclined(string triggerName = null)
         {
             var apiCallPath = "/decline_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";

@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null)
+        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, string triggerName = null)
         {
             var apiCallPath = "/response-subscription";
             var apiCallHttpMethod = "post";
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null)
+        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, string triggerName = null)
         {
             var apiCallPath = "/response-deletion-subscription";
             var apiCallHttpMethod = "post";

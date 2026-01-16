@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null)
+        public IOutputWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/onCreatedMicValues";
             var apiCallHttpMethod = "get";

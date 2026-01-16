@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
     public class GoogletasksTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TaskListList> OnNewTaskList()
+        public IOutputWorkflowTrigger<TaskListList> OnNewTaskList(string triggerName = null)
         {
             var apiCallPath = "/trigger1/users/@me/lists";
             var apiCallHttpMethod = "get";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskListList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaskList> OnNewTaskInList(Expression<Func<string>> taskListId)
+        public IOutputWorkflowTrigger<TaskList> OnNewTaskInList(Expression<Func<string>> taskListId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "get";
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaskList> OnCompletedTaskInList(Expression<Func<string>> taskListId)
+        public IOutputWorkflowTrigger<TaskList> OnCompletedTaskInList(Expression<Func<string>> taskListId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "get";
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaskList> OnDueTaskInList(Expression<Func<string>> taskListId)
+        public IOutputWorkflowTrigger<TaskList> OnDueTaskInList(Expression<Func<string>> taskListId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "get";
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TaskList> OnCompletedTaskInListV2(Expression<Func<string>> taskListId)
+        public IOutputWorkflowTrigger<TaskList> OnCompletedTaskInListV2(Expression<Func<string>> taskListId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger5/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
             var apiCallHttpMethod = "get";

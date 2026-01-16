@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
     public class FeatheryformsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey)
+        public IOutputWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey, string triggerName = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/form_completion/";
             var apiCallHttpMethod = "get";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             return new ApiConnectionTrigger<FormCompletionResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey)
+        public IOutputWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, string triggerName = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/data_received/";
             var apiCallHttpMethod = "get";
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             return new ApiConnectionTrigger<DataReceivedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey)
+        public IOutputWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, string triggerName = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/file/";
             var apiCallHttpMethod = "get";

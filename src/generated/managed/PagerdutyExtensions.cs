@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class PagerdutyTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId)
+        public IOutputWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "get";
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<NotesResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated()
+        public IOutputWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated(string triggerName = null)
         {
             var apiCallPath = "/trigger2/incidents";
             var apiCallHttpMethod = "get";
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId)
+        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged()
+        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged(string triggerName = null)
         {
             var apiCallPath = "/trigger4/incidents";
             var apiCallHttpMethod = "get";
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentResolved()
+        public IOutputWorkflowTrigger<IncidentsResponse> OnIncidentResolved(string triggerName = null)
         {
             var apiCallPath = "/trigger5/incidents";
             var apiCallHttpMethod = "get";

@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null)
+        public IOutputWorkflowTrigger<JToken> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null)
         {
             var apiCallPath = "/notifications";
             var apiCallHttpMethod = "post";
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null)
+        public IOutputWorkflowTrigger<JToken> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null)
         {
             var apiCallPath = "/notifications/connexion_ended";
             var apiCallHttpMethod = "post";
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null)
+        public IOutputWorkflowTrigger<JToken> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null)
         {
             var apiCallPath = "/notifications/token_signed";
             var apiCallHttpMethod = "post";

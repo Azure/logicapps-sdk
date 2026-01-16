@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null)
+        public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, string triggerName = null)
         {
             var apiCallPath = "/api/v3/power/CSAT/";
             var apiCallHttpMethod = "post";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null)
+        public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, string triggerName = null)
         {
             var apiCallPath = "/api/v3/power/NPS/";
             var apiCallHttpMethod = "post";
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null)
+        public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, string triggerName = null)
         {
             var apiCallPath = "/api/v3/power/PRJ/";
             var apiCallHttpMethod = "post";

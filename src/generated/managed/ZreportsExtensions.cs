@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null)
+        public IOutputWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/despatch-advice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
             var apiCallHttpMethod = "post";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
             return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null)
+        public IOutputWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/invoice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
             var apiCallHttpMethod = "post";

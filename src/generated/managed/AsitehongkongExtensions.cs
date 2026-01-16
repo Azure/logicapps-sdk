@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
 
     public class AsitehongkongTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName)
+        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null)
         {
             var apiCallPath = "/asitePullDataWebhook";
             var apiCallHttpMethod = "post";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName)
+        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null)
         {
             var apiCallPath = "/asitePullAppFormDataWebhook";
             var apiCallHttpMethod = "post";

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
 
     public class HouseraterqaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InspectionStatusChange()
+        public IWorkflowTrigger InspectionStatusChange(string triggerName = null)
         {
             var apiCallPath = "/createWebhook/onSVStatusChange";
             var apiCallHttpMethod = "post";

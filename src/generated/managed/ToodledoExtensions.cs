@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 
     public class ToodledoTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TaskObject[]> TrigOnNewTask()
+        public IOutputWorkflowTrigger<TaskObject[]> TrigOnNewTask(string triggerName = null)
         {
             var apiCallPath = "/trigger/tasks/get.php";
             var apiCallHttpMethod = "get";

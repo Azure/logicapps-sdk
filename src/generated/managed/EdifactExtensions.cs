@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class EdifactTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null)
+        public IOutputWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/onmodifiedcontrolnumber";
             var apiCallHttpMethod = "get";

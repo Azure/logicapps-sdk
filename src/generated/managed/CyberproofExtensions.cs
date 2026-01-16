@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CyberproofTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters)
+        public IWorkflowTrigger CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters, string triggerName = null)
         {
             var apiCallPath = "/api/v1/webhooks";
             var apiCallHttpMethod = "post";

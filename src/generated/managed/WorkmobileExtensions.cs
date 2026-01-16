@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData)
+        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, string triggerName = null)
         {
             var apiCallPath = "/api/notifications/external";
             var apiCallHttpMethod = "post";

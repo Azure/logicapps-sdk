@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 
     public class TractionguestTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateInviteWebhook()
+        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateInviteWebhook(string triggerName = null)
         {
             var apiCallPath = "/webhooks/invite";
             var apiCallHttpMethod = "post";
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateSigninWebhook()
+        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateSigninWebhook(string triggerName = null)
         {
             var apiCallPath = "/webhooks/signin";
             var apiCallHttpMethod = "post";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateSignoutWebhook()
+        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateSignoutWebhook(string triggerName = null)
         {
             var apiCallPath = "/webhooks/signout";
             var apiCallHttpMethod = "post";
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateWatchlistWebhook()
+        public IOutputWorkflowTrigger<WebhookCreatedResponse> CreateWatchlistWebhook(string triggerName = null)
         {
             var apiCallPath = "/webhooks/watchlist";
             var apiCallHttpMethod = "post";

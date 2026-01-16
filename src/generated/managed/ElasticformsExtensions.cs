@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform)
+        public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, string triggerName = null)
         {
             var apiCallPath = "/api/external/WebHook";
             var apiCallHttpMethod = "post";

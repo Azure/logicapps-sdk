@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
     public class VimeoTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Video[]> OnVideoUpload()
+        public IOutputWorkflowTrigger<Video[]> OnVideoUpload(string triggerName = null)
         {
             var apiCallPath = "/trigger/me/videos";
             var apiCallHttpMethod = "get";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
             return new ApiConnectionTrigger<Video[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId)
+        public IOutputWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null)
         {
             var apiCallPath = "/trigger/channels/videos";
             var apiCallHttpMethod = "get";

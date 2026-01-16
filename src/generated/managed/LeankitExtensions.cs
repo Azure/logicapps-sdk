@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class LeankitTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CardResponse[]> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane)
+        public IOutputWorkflowTrigger<CardResponse[]> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, string triggerName = null)
         {
             var apiCallPath = "/add_card_trigger/io/card";
             var apiCallHttpMethod = "get";
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             return new ApiConnectionTrigger<CardResponse[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CardResponse[]> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane)
+        public IOutputWorkflowTrigger<CardResponse[]> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, string triggerName = null)
         {
             var apiCallPath = "/update_card_trigger/io/card";
             var apiCallHttpMethod = "get";

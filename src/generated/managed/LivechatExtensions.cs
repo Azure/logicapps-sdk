@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class LivechatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTicketCreated()
+        public IWorkflowTrigger WebhookTicketCreated(string triggerName = null)
         {
             var apiCallPath = "/ticket_created_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookChatStarted()
+        public IWorkflowTrigger WebhookChatStarted(string triggerName = null)
         {
             var apiCallPath = "/chat_starts_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger WebhookChatEnded()
+        public IWorkflowTrigger WebhookChatEnded(string triggerName = null)
         {
             var apiCallPath = "/chat_ends_webhook/webhooks";
             var apiCallHttpMethod = "post";

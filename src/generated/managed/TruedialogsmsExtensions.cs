@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId)
+        public IOutputWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId, string triggerName = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId)
+        public IOutputWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId, string triggerName = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId)
+        public IOutputWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId, string triggerName = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId)
+        public IOutputWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId, string triggerName = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId)
+        public IOutputWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId, string triggerName = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";

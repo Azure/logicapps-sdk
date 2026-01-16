@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class InfobipTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook(Expression<Func<string>> requestBodyOfWebhookphoneNumber, Expression<Func<string>> requestBodyOfWebhookkeyword)
+        public IOutputWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook(Expression<Func<string>> requestBodyOfWebhookphoneNumber, Expression<Func<string>> requestBodyOfWebhookkeyword, string triggerName = null)
         {
             var apiCallPath = "/sms/1/webhooks";
             var apiCallHttpMethod = "post";

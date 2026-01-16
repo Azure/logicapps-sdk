@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
 
     public class DynamicsaxTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BusinessEventSubscriptionResponse> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null)
+        public IOutputWorkflowTrigger<BusinessEventSubscriptionResponse> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/subscribebusinessevent/{1}", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(businessevent, 2));
             var apiCallHttpMethod = "post";

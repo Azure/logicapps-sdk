@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname)
+        public IOutputWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, string triggerName = null)
         {
             var apiCallPath = "/webhooks";
             var apiCallHttpMethod = "post";

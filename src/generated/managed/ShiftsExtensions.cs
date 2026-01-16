@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
     public class ShiftsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerForOpenShiftChangeRequests(Expression<Func<string>> teamId)
+        public IWorkflowTrigger TriggerForOpenShiftChangeRequests(Expression<Func<string>> teamId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/teams/{0}/openshiftchangerequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TriggerForSwapShiftsChangeRequests(Expression<Func<string>> teamId)
+        public IWorkflowTrigger TriggerForSwapShiftsChangeRequests(Expression<Func<string>> teamId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/teams/{0}/swapshiftschangerequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TriggerForOfferShiftRequests(Expression<Func<string>> teamId)
+        public IWorkflowTrigger TriggerForOfferShiftRequests(Expression<Func<string>> teamId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/teams/{0}/offershiftrequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TriggerForTimeOffRequests(Expression<Func<string>> teamId)
+        public IWorkflowTrigger TriggerForTimeOffRequests(Expression<Func<string>> teamId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/teams/{0}/timeoffrequests", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TriggerForShifts(Expression<Func<string>> teamId)
+        public IWorkflowTrigger TriggerForShifts(Expression<Func<string>> teamId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/teams/{0}/shifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
             var apiCallHttpMethod = "post";

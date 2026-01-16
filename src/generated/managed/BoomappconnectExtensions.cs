@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER()
+        public IOutputWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(string triggerName = null)
         {
             var apiCallPath = "/get_responses";
             var apiCallHttpMethod = "get";
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER()
+        public IOutputWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(string triggerName = null)
         {
             var apiCallPath = "/get_all_new_drs";
             var apiCallHttpMethod = "get";

@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
     public class BitbucketTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListRepositoriesResponse> OnNewRepo(Expression<Func<string>> account)
+        public IOutputWorkflowTrigger<ListRepositoriesResponse> OnNewRepo(Expression<Func<string>> account, string triggerName = null)
         {
             var apiCallPath = String.Format("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug)
+        public IWorkflowTrigger CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, string triggerName = null)
         {
             var apiCallPath = String.Format("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
             var apiCallHttpMethod = "post";

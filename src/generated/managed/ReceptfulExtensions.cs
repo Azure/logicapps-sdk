@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyeventInput>> bodyevent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null)
+        public IOutputWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyeventInput>> bodyevent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, string triggerName = null)
         {
             var apiCallPath = "/hooks";
             var apiCallHttpMethod = "post";

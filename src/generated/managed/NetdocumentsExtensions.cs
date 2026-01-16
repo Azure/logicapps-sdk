@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class NetdocumentsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null)
+        public IWorkflowTrigger SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabId, 1));
             var apiCallHttpMethod = "get";

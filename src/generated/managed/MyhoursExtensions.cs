@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class MyhoursTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerLogsEnvelope> NewTimeLog()
+        public IOutputWorkflowTrigger<TriggerLogsEnvelope> NewTimeLog(string triggerName = null)
         {
             var apiCallPath = "/trigger/logs/powerautomate";
             var apiCallHttpMethod = "get";
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             return new ApiConnectionTrigger<TriggerLogsEnvelope>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerProjectsEnvelope> NewProject()
+        public IOutputWorkflowTrigger<TriggerProjectsEnvelope> NewProject(string triggerName = null)
         {
             var apiCallPath = "/trigger/projects/powerautomate";
             var apiCallHttpMethod = "get";
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             return new ApiConnectionTrigger<TriggerProjectsEnvelope>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<TriggerProjectTasksEnvelope> NewTask()
+        public IOutputWorkflowTrigger<TriggerProjectTasksEnvelope> NewTask(string triggerName = null)
         {
             var apiCallPath = "/trigger/projecttasks/powerautomate";
             var apiCallHttpMethod = "get";

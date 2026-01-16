@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class Lms365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger EnrollmentApprovalRequest()
+        public IWorkflowTrigger EnrollmentApprovalRequest(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
             var apiCallHttpMethod = "post";
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseEnrollment()
+        public IWorkflowTrigger CourseEnrollment(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
             var apiCallHttpMethod = "post";
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseUnenrollment()
+        public IWorkflowTrigger CourseUnenrollment(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
             var apiCallHttpMethod = "post";
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseStarted()
+        public IWorkflowTrigger CourseStarted(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseStarted";
             var apiCallHttpMethod = "post";
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseCompleted()
+        public IWorkflowTrigger CourseCompleted(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseCompleted";
             var apiCallHttpMethod = "post";
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CoursePublished()
+        public IWorkflowTrigger CoursePublished(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CoursePublished";
             var apiCallHttpMethod = "post";
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseUnpublished()
+        public IWorkflowTrigger CourseUnpublished(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
             var apiCallHttpMethod = "post";
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserCreated()
+        public IWorkflowTrigger UserCreated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/UserCreated";
             var apiCallHttpMethod = "post";
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserDeleted()
+        public IWorkflowTrigger UserDeleted(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/UserDeleted";
             var apiCallHttpMethod = "post";
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseCreated()
+        public IWorkflowTrigger CourseCreated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseCreated";
             var apiCallHttpMethod = "post";
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CourseDeleted()
+        public IWorkflowTrigger CourseDeleted(string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseDeleted";
             var apiCallHttpMethod = "post";

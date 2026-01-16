@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class KintoneTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappID)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
             var apiCallHttpMethod = "post";
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappID)
+        public IWorkflowTrigger AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
             var apiCallHttpMethod = "post";
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappID)
+        public IWorkflowTrigger AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
             var apiCallHttpMethod = "post";
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappID)
+        public IWorkflowTrigger AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
             var apiCallHttpMethod = "post";
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappID)
+        public IWorkflowTrigger AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";
             var apiCallHttpMethod = "post";

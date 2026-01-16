@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null)
+        public IOutputWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/zapier/subscribe";
             var apiCallHttpMethod = "post";

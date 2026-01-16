@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Absentify
 
     public class AbsentifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerRequestCreated()
+        public IWorkflowTrigger TriggerRequestCreated(string triggerName = null)
         {
             var apiCallPath = "/webhooks/manage_ms_webhook/request_created";
             var apiCallHttpMethod = "post";
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Absentify
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger TriggerRequestStatusChanged()
+        public IWorkflowTrigger TriggerRequestStatusChanged(string triggerName = null)
         {
             var apiCallPath = "/webhooks/manage_ms_webhook/request_status_changed";
             var apiCallHttpMethod = "post";

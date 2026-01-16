@@ -938,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class AzureiotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WorkflowTrigger> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<string>> bodyrule, Expression<Func<string>> bodyworkflowTriggerID = null)
+        public IOutputWorkflowTrigger<WorkflowTrigger> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<string>> bodyrule, Expression<Func<string>> bodyworkflowTriggerID = null, string triggerName = null)
         {
             var apiCallPath = "/api/preview/_internal/workflow/triggers";
             var apiCallHttpMethod = "post";

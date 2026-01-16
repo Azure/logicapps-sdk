@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
 
     public class AzureblobTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/datasets/{0}/triggers/batch/onupdatedfile", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
             var apiCallHttpMethod = "get";

@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class TelephonyxtendedsrvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Events(Expression<Func<string>> bodyevent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null)
+        public IWorkflowTrigger Events(Expression<Func<string>> bodyevent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe";
             var apiCallHttpMethod = "post";
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsDoNotDisturb(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null)
+        public IWorkflowTrigger EventsDoNotDisturb(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Do-Not-Disturb";
             var apiCallHttpMethod = "post";
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsCallCenterMonitoring(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null)
+        public IWorkflowTrigger EventsCallCenterMonitoring(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Call-Center-Monitoring";
             var apiCallHttpMethod = "post";
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsCallCenterQueue(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null)
+        public IWorkflowTrigger EventsCallCenterQueue(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Call-Center-Queue";
             var apiCallHttpMethod = "post";
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsCallCenterAgent(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null)
+        public IWorkflowTrigger EventsCallCenterAgent(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Call-Center-Agent";
             var apiCallHttpMethod = "post";
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsVoicemail(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null)
+        public IWorkflowTrigger EventsVoicemail(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Voicemail";
             var apiCallHttpMethod = "post";
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EventsCall(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null)
+        public IWorkflowTrigger EventsCall(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null)
         {
             var apiCallPath = "/api/Events-Subscribe-Calls";
             var apiCallHttpMethod = "post";

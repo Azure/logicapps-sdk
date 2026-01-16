@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 
     public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId)
+        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, string triggerName = null)
         {
             var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";

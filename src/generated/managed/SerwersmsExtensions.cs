@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype)
+        public IOutputWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, string triggerName = null)
         {
             var apiCallPath = "/trigger/get_answer";
             var apiCallHttpMethod = "post";

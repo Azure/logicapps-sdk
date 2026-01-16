@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 
     public class M365updatesappTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId)
+        public IOutputWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, string triggerName = null)
         {
             var apiCallPath = String.Format("/connector/powerautomate/triggers/{0}/reports", ExpressionConverter.ConvertWithUrlEncoding(reportDefinitionId, 1));
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
             return new ApiConnectionTrigger<JToken[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken[]> ListReceivedReports()
+        public IOutputWorkflowTrigger<JToken[]> ListReceivedReports(string triggerName = null)
         {
             var apiCallPath = "/connector/powerautomate/triggers/reports";
             var apiCallHttpMethod = "get";

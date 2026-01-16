@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
 
     public class X12Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null)
+        public IOutputWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/onModifiedControlNumber";
             var apiCallHttpMethod = "get";

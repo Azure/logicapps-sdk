@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null)
+        public IOutputWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscriptions/responses";
             var apiCallHttpMethod = "post";
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             return new ApiConnectionTrigger<JToken>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null)
+        public IOutputWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/subscriptions/campaignmembers";
             var apiCallHttpMethod = "post";

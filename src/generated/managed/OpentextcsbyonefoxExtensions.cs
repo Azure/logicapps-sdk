@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class OpentextcsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DocumentCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentCreated";
             var apiCallHttpMethod = "post";
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DocumentUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentUpdated";
             var apiCallHttpMethod = "post";
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger DocumentDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger DocumentDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentDeleted";
             var apiCallHttpMethod = "post";
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderCreated";
             var apiCallHttpMethod = "post";
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderUpdated";
             var apiCallHttpMethod = "post";
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger FolderDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger FolderDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderDeleted";
             var apiCallHttpMethod = "post";
@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger BusinessWorkspaceCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger BusinessWorkspaceCreated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/BusinessWorkspaceCreated";
             var apiCallHttpMethod = "post";
@@ -1039,7 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger BusinessWorkspaceUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger BusinessWorkspaceUpdated(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/BusinessWorkspaceUpdated";
             var apiCallHttpMethod = "post";
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger BusinessWorkspaceDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null)
+        public IWorkflowTrigger BusinessWorkspaceDeleted(Expression<Func<string>> bodyFilterparentID = null, Expression<Func<string>> bodyFilterancestorID = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null)
         {
             var apiCallPath = "/api/web-hook/create/BusinessWorkspaceDeleted";
             var apiCallHttpMethod = "post";

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
     public class HoneywellforgeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId)
+        public IWorkflowTrigger ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, string triggerName = null)
         {
             var apiCallPath = String.Format("/projects/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(connectorId, 1));
             var apiCallHttpMethod = "post";

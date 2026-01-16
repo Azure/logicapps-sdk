@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 
     public class BloggerTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<statusInput>> status)
+        public IOutputWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<statusInput>> status, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger1/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
             var apiCallHttpMethod = "get";

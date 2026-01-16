@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
     public class TodoTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ToDoV2[]> OnNewToDoInFolderV2(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<ToDoV2[]> OnNewToDoInFolderV2(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
             return new ApiConnectionTrigger<ToDoV2[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolderV2(Expression<Func<string>> folderId)
+        public IOutputWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolderV2(Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";

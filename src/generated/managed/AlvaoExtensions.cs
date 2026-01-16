@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null)
+        public IOutputWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, string triggerName = null)
         {
             var apiCallPath = "/webhooks/tickettransitionstostatus";
             var apiCallHttpMethod = "post";

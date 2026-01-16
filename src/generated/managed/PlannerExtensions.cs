@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class PlannerTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListTasksResponseV2> OnNewTaskV3(Expression<Func<string>> groupId, Expression<Func<string>> id)
+        public IOutputWorkflowTrigger<ListTasksResponseV2> OnNewTaskV3(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListTasksResponseV2> OnCompleteTaskV3(Expression<Func<string>> groupId, Expression<Func<string>> id)
+        public IOutputWorkflowTrigger<ListTasksResponseV2> OnCompleteTaskV3(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMeV2()
+        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMeV2(string triggerName = null)
         {
             var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
             var apiCallHttpMethod = "get";

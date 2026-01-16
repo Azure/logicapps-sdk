@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
     public class StormboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger LegendChange()
+        public IWorkflowTrigger LegendChange(string triggerName = null)
         {
             var apiCallPath = "/hooks";
             var apiCallHttpMethod = "post";
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger IdeaSection()
+        public IWorkflowTrigger IdeaSection(string triggerName = null)
         {
             var apiCallPath = "/hooks/ideaSection";
             var apiCallHttpMethod = "post";
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger IdeaCreated()
+        public IWorkflowTrigger IdeaCreated(string triggerName = null)
         {
             var apiCallPath = "/hooks/ideaCreated";
             var apiCallHttpMethod = "post";
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger IdeaDeleted()
+        public IWorkflowTrigger IdeaDeleted(string triggerName = null)
         {
             var apiCallPath = "/hooks/ideaDeleted";
             var apiCallHttpMethod = "post";
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CommentCreated()
+        public IWorkflowTrigger CommentCreated(string triggerName = null)
         {
             var apiCallPath = "/hooks/commentCreated";
             var apiCallHttpMethod = "post";

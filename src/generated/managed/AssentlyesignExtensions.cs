@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath)
+        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, string triggerName = null)
         {
             var apiCallPath = "/hook/v1/";
             var apiCallHttpMethod = "post";

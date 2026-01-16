@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName)
+        public IOutputWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
             var apiCallHttpMethod = "get";
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             return new ApiConnectionTrigger<OnNewEventResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id)
+        public IOutputWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

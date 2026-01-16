@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class MailchimpTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed(Expression<Func<string>> listId)
+        public IOutputWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed(Expression<Func<string>> listId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<GetListsResponseModel> OnCreateList()
+        public IOutputWorkflowTrigger<GetListsResponseModel> OnCreateList(string triggerName = null)
         {
             var apiCallPath = "/trigger/lists";
             var apiCallHttpMethod = "get";

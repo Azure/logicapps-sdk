@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
 
     public class RssTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null)
+        public IOutputWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, string triggerName = null)
         {
             var apiCallPath = "/OnNewFeed";
             var apiCallHttpMethod = "get";

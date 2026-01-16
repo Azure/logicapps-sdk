@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class EsignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SignDocument()
+        public IWorkflowTrigger SignDocument(string triggerName = null)
         {
             var apiCallPath = "/v3/pa_create_webhook";
             var apiCallHttpMethod = "post";
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreatedEnvelope()
+        public IWorkflowTrigger CreatedEnvelope(string triggerName = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_two";
             var apiCallHttpMethod = "post";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CompletedEnvelope()
+        public IWorkflowTrigger CompletedEnvelope(string triggerName = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_three";
             var apiCallHttpMethod = "post";

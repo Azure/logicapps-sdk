@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class ZohomailTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias)
+        public IOutputWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, string triggerName = null)
         {
             var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
             var apiCallHttpMethod = "post";
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias)
+        public IOutputWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, string triggerName = null)
         {
             var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
             var apiCallHttpMethod = "post";

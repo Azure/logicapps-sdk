@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class Junglemail365Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted(Expression<Func<string>> requesttitle)
+        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted(Expression<Func<string>> requesttitle, string triggerName = null)
         {
             var apiCallPath = "/1.0/registerwebhookjobcompleted";
             var apiCallHttpMethod = "post";
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle)
+        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle, string triggerName = null)
         {
             var apiCallPath = "/1.0/registerwebhookjobstarted";
             var apiCallHttpMethod = "post";
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle)
+        public IOutputWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle, string triggerName = null)
         {
             var apiCallPath = "/1.0/registerwebhookjobsubmitted";
             var apiCallHttpMethod = "post";

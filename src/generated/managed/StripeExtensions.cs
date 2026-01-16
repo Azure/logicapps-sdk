@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
     public class StripeTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer()
+        public IOutputWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(string triggerName = null)
         {
             var apiCallPath = "/trigger/v1/customers";
             var apiCallHttpMethod = "get";
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder()
+        public IOutputWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(string triggerName = null)
         {
             var apiCallPath = "/trigger/v1/orders";
             var apiCallHttpMethod = "get";
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge()
+        public IOutputWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(string triggerName = null)
         {
             var apiCallPath = "/trigger/v1/charges";
             var apiCallHttpMethod = "get";
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem()
+        public IOutputWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(string triggerName = null)
         {
             var apiCallPath = "/trigger/v1/invoiceitems";
             var apiCallHttpMethod = "get";

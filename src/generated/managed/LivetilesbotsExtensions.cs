@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow)
+        public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow, string triggerName = null)
         {
             var apiCallPath = "/flows/subscribe";
             var apiCallHttpMethod = "post";

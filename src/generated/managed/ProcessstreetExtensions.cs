@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class ProcessstreetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTaskStateChangedTrigger(Expression<Func<bodytaskStateInput>> bodytaskState, Expression<Func<string>> bodyworkflowID = null, Expression<Func<string>> bodytaskID = null)
+        public IWorkflowTrigger CreateTaskStateChangedTrigger(Expression<Func<bodytaskStateInput>> bodytaskState, Expression<Func<string>> bodyworkflowID = null, Expression<Func<string>> bodytaskID = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/task-state-changed";
             var apiCallHttpMethod = "post";
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger(Expression<Func<string>> bodyworkflowID = null)
+        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger(Expression<Func<string>> bodyworkflowID = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/workflow-run-created";
             var apiCallHttpMethod = "post";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger(Expression<Func<string>> bodyworkflowID = null)
+        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger(Expression<Func<string>> bodyworkflowID = null, string triggerName = null)
         {
             var apiCallPath = "/triggers/workflow-run-completed";
             var apiCallHttpMethod = "post";

@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 
     public class _365trainingTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewCourseUserNotification()
+        public IWorkflowTrigger NewCourseUserNotification(string triggerName = null)
         {
             var apiCallPath = "/NewCourseUserNotification";
             var apiCallHttpMethod = "post";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NewIdeaNotification()
+        public IWorkflowTrigger NewIdeaNotification(string triggerName = null)
         {
             var apiCallPath = "/NewIdeaNotification";
             var apiCallHttpMethod = "post";
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NewCoursePublishedNotification()
+        public IWorkflowTrigger NewCoursePublishedNotification(string triggerName = null)
         {
             var apiCallPath = "/NewCoursePublishedNotification";
             var apiCallHttpMethod = "post";

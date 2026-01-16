@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
 
     public class DatascopeformsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> FormAnswer(Expression<Func<string>> formId)
+        public IOutputWorkflowTrigger<JToken> FormAnswer(Expression<Func<string>> formId, string triggerName = null)
         {
             var apiCallPath = String.Format("/hooks_flow/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";

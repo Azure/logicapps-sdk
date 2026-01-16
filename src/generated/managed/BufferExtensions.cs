@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
     public class BufferTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId)
+        public IOutputWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId)
+        public IOutputWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";

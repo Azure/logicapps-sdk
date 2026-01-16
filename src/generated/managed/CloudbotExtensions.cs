@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class CloudbotTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BotDoneResponse> BotDone(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId)
+        public IOutputWorkflowTrigger<BotDoneResponse> BotDone(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, string triggerName = null)
         {
             var apiCallPath = String.Format("/{0}/bots/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";

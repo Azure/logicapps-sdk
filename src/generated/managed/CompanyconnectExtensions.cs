@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class CompanyconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProactiveDialogSubscribe(Expression<Func<string>> bodytitle)
+        public IWorkflowTrigger ProactiveDialogSubscribe(Expression<Func<string>> bodytitle, string triggerName = null)
         {
             var apiCallPath = "/proactiveDialogs";
             var apiCallHttpMethod = "post";
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger SmartDialogSubscribe(Expression<Func<string>> bodyappId, Expression<Func<string>> bodyintent, Expression<Func<string>> bodydescription)
+        public IWorkflowTrigger SmartDialogSubscribe(Expression<Func<string>> bodyappId, Expression<Func<string>> bodyintent, Expression<Func<string>> bodydescription, string triggerName = null)
         {
             var apiCallPath = "/smartDialogs";
             var apiCallHttpMethod = "post";
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger SmartSourceSubscribe(Expression<Func<string>> bodytitle, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyicon = null)
+        public IWorkflowTrigger SmartSourceSubscribe(Expression<Func<string>> bodytitle, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyicon = null, string triggerName = null)
         {
             var apiCallPath = "/smartSources";
             var apiCallHttpMethod = "post";

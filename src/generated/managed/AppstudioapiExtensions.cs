@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId)
+        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, string triggerName = null)
         {
             var apiCallPath = "/api/Hooks/subscribe";
             var apiCallHttpMethod = "post";

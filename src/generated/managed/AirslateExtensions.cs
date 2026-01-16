@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken)
+        public IOutputWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, string triggerName = null)
         {
             var apiCallPath = "/event";
             var apiCallHttpMethod = "post";

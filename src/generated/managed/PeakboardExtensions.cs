@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peakboard
 
     public class PeakboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenAlertIsSent()
+        public IWorkflowTrigger WhenAlertIsSent(string triggerName = null)
         {
             var apiCallPath = "/api/PowerAutomate/Subscribe";
             var apiCallHttpMethod = "post";

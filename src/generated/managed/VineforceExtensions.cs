@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
     public class VineforceTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null)
+        public IOutputWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
             var apiCallHttpMethod = "get";
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null)
+        public IOutputWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
             var apiCallHttpMethod = "get";
@@ -1038,7 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration)
+        public IOutputWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
             var apiCallHttpMethod = "get";
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null)
+        public IOutputWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
             var apiCallHttpMethod = "get";
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null)
+        public IOutputWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, string triggerName = null)
         {
             var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";
             var apiCallHttpMethod = "get";

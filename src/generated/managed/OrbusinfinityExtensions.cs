@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IOutputWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, string triggerName = null)
         {
             var apiCallPath = "/odata/Webhooks";
             var apiCallHttpMethod = "post";

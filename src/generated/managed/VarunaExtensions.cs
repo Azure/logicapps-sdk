@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodyWhen = null)
+        public IOutputWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodyWhen = null, string triggerName = null)
         {
             var apiCallPath = "/subscribewebhook";
             var apiCallHttpMethod = "post";

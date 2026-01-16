@@ -4772,7 +4772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
     public class EwaycrmTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal> NewOrUpdatedJournal()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal> NewOrUpdatedJournal(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedJournal";
             var apiCallHttpMethod = "get";
@@ -4780,7 +4780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany> NewOrUpdatedCompanies()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany> NewOrUpdatedCompanies(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedCompanies";
             var apiCallHttpMethod = "get";
@@ -4788,7 +4788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact> NewOrUpdatedContacts()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact> NewOrUpdatedContacts(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedContacts";
             var apiCallHttpMethod = "get";
@@ -4796,7 +4796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead> NewOrUpdatedLeads()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead> NewOrUpdatedLeads(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedLeads";
             var apiCallHttpMethod = "get";
@@ -4804,7 +4804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject> NewOrUpdatedProjects()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject> NewOrUpdatedProjects(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedProjects";
             var apiCallHttpMethod = "get";
@@ -4812,7 +4812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
             return new ApiConnectionTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask> NewOrUpdatedTasks()
+        public IOutputWorkflowTrigger<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask> NewOrUpdatedTasks(string triggerName = null)
         {
             var apiCallPath = "/trigger/NewOrUpdatedTasks";
             var apiCallHttpMethod = "get";

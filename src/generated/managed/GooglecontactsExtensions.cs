@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
 
     public class GooglecontactsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<PeopleApiOnContactUpdatedV3Response> PeopleApiOnContactUpdatedV3()
+        public IOutputWorkflowTrigger<PeopleApiOnContactUpdatedV3Response> PeopleApiOnContactUpdatedV3(string triggerName = null)
         {
             var apiCallPath = "/v3/people/trigger/onContactUpdated";
             var apiCallHttpMethod = "get";

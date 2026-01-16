@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
     public class HuddoboardsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<NodeSummary> AddedToBoard()
+        public IOutputWorkflowTrigger<NodeSummary> AddedToBoard(string triggerName = null)
         {
             var apiCallPath = "/webhook/added-to-board";
             var apiCallHttpMethod = "post";
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             return new ApiConnectionTrigger<NodeSummary>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NodeSummary> AssignedTask()
+        public IOutputWorkflowTrigger<NodeSummary> AssignedTask(string triggerName = null)
         {
             var apiCallPath = "/webhook/assigned-task";
             var apiCallHttpMethod = "post";
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             return new ApiConnectionTrigger<NodeSummary>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NodeSummary> BoardTaskCompleted(Expression<Func<string>> boardId)
+        public IOutputWorkflowTrigger<NodeSummary> BoardTaskCompleted(Expression<Func<string>> boardId, string triggerName = null)
         {
             var apiCallPath = String.Format("/webhook/board-task-completed/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "post";
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             return new ApiConnectionTrigger<NodeSummary>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NodeSummary> CreatedNode(Expression<Func<string>> boardId)
+        public IOutputWorkflowTrigger<NodeSummary> CreatedNode(Expression<Func<string>> boardId, string triggerName = null)
         {
             var apiCallPath = String.Format("/webhook/created-node/{0}", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "post";
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             return new ApiConnectionTrigger<NodeSummary>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<NodeSummary> MyTaskCompleted()
+        public IOutputWorkflowTrigger<NodeSummary> MyTaskCompleted(string triggerName = null)
         {
             var apiCallPath = "/webhook/my-task-completed";
             var apiCallHttpMethod = "post";

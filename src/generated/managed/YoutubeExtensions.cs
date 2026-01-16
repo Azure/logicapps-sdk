@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
     public class YoutubeTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<VideoList> OnNewVideoInChannel(Expression<Func<string>> channelId)
+        public IOutputWorkflowTrigger<VideoList> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null)
         {
             var apiCallPath = "/trigger/activities";
             var apiCallHttpMethod = "get";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
             return new ApiConnectionTrigger<VideoList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<VideoList> OnMyNewVideo()
+        public IOutputWorkflowTrigger<VideoList> OnMyNewVideo(string triggerName = null)
         {
             var apiCallPath = "/trigger/mine";
             var apiCallHttpMethod = "get";
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
             return new ApiConnectionTrigger<VideoList>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<VideoList> OnNewVideoMatchingSearch(Expression<Func<string>> q)
+        public IOutputWorkflowTrigger<VideoList> OnNewVideoMatchingSearch(Expression<Func<string>> q, string triggerName = null)
         {
             var apiCallPath = "/trigger/search";
             var apiCallHttpMethod = "get";

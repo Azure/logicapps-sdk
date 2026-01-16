@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
 
     public class SkypointcloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger GetOnDataflowRefreshComplete(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyEvents)
+        public IWorkflowTrigger GetOnDataflowRefreshComplete(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyEvents, string triggerName = null)
         {
             var apiCallPath = String.Format("/instances/{0}/manage/hooks/dataflow_refresh_complete", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "post";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger GetOnDataflowRefreshFail(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyEvents)
+        public IWorkflowTrigger GetOnDataflowRefreshFail(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyEvents, string triggerName = null)
         {
             var apiCallPath = String.Format("/instances/{0}/manage/hooks/dataflow_refresh_fail", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
             var apiCallHttpMethod = "post";

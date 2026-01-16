@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null)
+        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null)
         {
             var apiCallPath = "/api/t/casecreated";
             var apiCallHttpMethod = "post";
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null)
+        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null)
         {
             var apiCallPath = "/api/t/caseupdated";
             var apiCallHttpMethod = "post";
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null)
+        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null)
         {
             var apiCallPath = "/api/t/caseclosed";
             var apiCallHttpMethod = "post";

@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent)
+        public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, string triggerName = null)
         {
             var apiCallPath = "/api/manageIntegrations";
             var apiCallHttpMethod = "post";

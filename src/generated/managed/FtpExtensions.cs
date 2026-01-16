@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ftp
 
     public class FtpTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
             var apiCallHttpMethod = "get";

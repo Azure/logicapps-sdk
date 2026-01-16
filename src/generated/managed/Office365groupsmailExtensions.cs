@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class Office365groupsmailTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";

@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
 
     public class BoxTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
             var apiCallHttpMethod = "get";
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfileV2";
             var apiCallHttpMethod = "get";
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
             var apiCallHttpMethod = "get";

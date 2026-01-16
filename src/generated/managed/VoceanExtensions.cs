@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null)
+        public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
             var apiCallHttpMethod = "post";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null)
+        public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null)
         {
             var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
             var apiCallHttpMethod = "post";

@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class ChatterTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup(Expression<Func<string>> groupId)
+        public IOutputWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup(Expression<Func<string>> groupId, string triggerName = null)
         {
             var apiCallPath = String.Format("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "get";

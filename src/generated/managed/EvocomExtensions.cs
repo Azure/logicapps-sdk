@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
 
     public class EvocomTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null)
+        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/Tasks/New";
             var apiCallHttpMethod = "post";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null)
+        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/Tasks/Change";
             var apiCallHttpMethod = "post";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant)
+        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, string triggerName = null)
         {
             var apiCallPath = "/hooks/Teams/New";
             var apiCallHttpMethod = "post";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType)
+        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, string triggerName = null)
         {
             var apiCallPath = "/hooks/Teams/Change";
             var apiCallHttpMethod = "post";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId)
+        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, string triggerName = null)
         {
             var apiCallPath = "/hooks/Processes/New";
             var apiCallHttpMethod = "post";
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null)
+        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, string triggerName = null)
         {
             var apiCallPath = "/hooks/Processes/Change";
             var apiCallHttpMethod = "post";

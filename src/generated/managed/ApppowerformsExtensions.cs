@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name)
+        public IOutputWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name, string triggerName = null)
         {
             var apiCallPath = String.Format("/trigger/TriggerGetCardResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";

@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class WorkdayhcmTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<dateCriteriaInput>> dateCriteria, Expression<Func<businessProcessTypeInput>> businessProcessType = null)
+        public IOutputWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<dateCriteriaInput>> dateCriteria, Expression<Func<businessProcessTypeInput>> businessProcessType = null, string triggerName = null)
         {
             var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
             var apiCallHttpMethod = "get";

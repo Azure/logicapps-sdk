@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
 
     public class FilesystemTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onnewfile";
             var apiCallHttpMethod = "get";
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             return new ApiConnectionTrigger<BlobMetadata[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, Expression<Func<bool>> checkBothCreatedAndModifiedDateTime = null)
+        public IOutputWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, Expression<Func<bool>> checkBothCreatedAndModifiedDateTime = null, string triggerName = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
             var apiCallHttpMethod = "get";

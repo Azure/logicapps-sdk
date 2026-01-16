@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null)
+        public IOutputWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, string triggerName = null)
         {
             var apiCallPath = String.Format("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
             var apiCallHttpMethod = "post";

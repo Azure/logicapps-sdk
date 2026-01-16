@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class AsanaTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListProjectsResponseV2> OnProjectCreatedV2(Expression<Func<string>> workspace)
+        public IOutputWorkflowTrigger<ListProjectsResponseV2> OnProjectCreatedV2(Expression<Func<string>> workspace, string triggerName = null)
         {
             var apiCallPath = "/v2/new_project_trigger/projects";
             var apiCallHttpMethod = "get";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskCreatedV2(Expression<Func<string>> workspace, Expression<Func<string>> project)
+        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskCreatedV2(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null)
         {
             var apiCallPath = "/v2/new_task_trigger/tasks";
             var apiCallHttpMethod = "get";
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskCompletedV2(Expression<Func<string>> workspace, Expression<Func<string>> project)
+        public IOutputWorkflowTrigger<ListTasksResponseV2> OnTaskCompletedV2(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null)
         {
             var apiCallPath = "/v2/complete_task_trigger/tasks";
             var apiCallHttpMethod = "get";

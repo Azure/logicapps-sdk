@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher)
+        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, string triggerName = null)
         {
             var apiCallPath = "/integration/oauth/subscribenewentry";
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher)
+        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, string triggerName = null)
         {
             var apiCallPath = "/integration/oauth/subscribeupdateentry";
             var apiCallHttpMethod = "post";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher)
+        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, string triggerName = null)
         {
             var apiCallPath = "/integration/oauth/subscribeentrydeleted";
             var apiCallHttpMethod = "post";

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 
     public class ParserrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail)
+        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, string triggerName = null)
         {
             var apiCallPath = "/api/microsoft/subscription/create";
             var apiCallHttpMethod = "post";

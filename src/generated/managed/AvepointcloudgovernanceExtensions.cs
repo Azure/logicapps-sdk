@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
 
     public class AvepointcloudgovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<string> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType)
+        public IOutputWorkflowTrigger<string> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/common";
             var apiCallHttpMethod = "post";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskCreated()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskCreated(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/errortask/created";
             var apiCallHttpMethod = "post";
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskRetried()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskRetried(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/errortask/retried";
             var apiCallHttpMethod = "post";
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestCancelled()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestCancelled(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/request/cancelled";
             var apiCallHttpMethod = "post";
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestCompleted()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestCompleted(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/request/completed";
             var apiCallHttpMethod = "post";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestSubmitted()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRequestSubmitted(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/request/submitted";
             var apiCallHttpMethod = "post";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskApproved()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskApproved(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/approved";
             var apiCallHttpMethod = "post";
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForFullyAutoImportCompleted()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForFullyAutoImportCompleted(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/autoimport";
             var apiCallHttpMethod = "post";
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForConfirmDetailCompleted()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForConfirmDetailCompleted(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/confirm";
             var apiCallHttpMethod = "post";
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskCreated()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskCreated(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/created";
             var apiCallHttpMethod = "post";
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskRejected()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForTaskRejected(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/rejected";
             var apiCallHttpMethod = "post";
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskCompleted()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskCompleted(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/completed";
             var apiCallHttpMethod = "post";
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskException()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskException(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/exception";
             var apiCallHttpMethod = "post";
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskOverdue()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForRenewalTaskOverdue(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/overdue";
             var apiCallHttpMethod = "post";
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskSkipped()
+        public IOutputWorkflowTrigger<string> FlowCreateHookForErrorTaskSkipped(string triggerName = null)
         {
             var apiCallPath = "/flow/hooks/task/skipped";
             var apiCallHttpMethod = "post";

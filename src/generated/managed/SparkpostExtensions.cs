@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class SparkpostTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList()
+        public IOutputWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList(string triggerName = null)
         {
             var apiCallPath = "/trigger/recipient-lists";
             var apiCallHttpMethod = "get";

@@ -787,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class TrelloTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInBoardV2(Expression<Func<string>> boardId)
+        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInBoardV2(Expression<Func<string>> boardId, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/boards/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
             var apiCallHttpMethod = "get";
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             return new ApiConnectionTrigger<CardInAction[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInListV2(Expression<Func<string>> boardId, Expression<Func<string>> listId)
+        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInListV2(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null)
         {
             var apiCallPath = String.Format("/v2/trigger/lists/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "get";
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             return new ApiConnectionTrigger<CardInAction[]>(callPayload);
         }
 
-        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInBoardV3(Expression<Func<string>> boardId)
+        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInBoardV3(Expression<Func<string>> boardId, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             var subscription = new JObject();
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             return new ApiConnectionTrigger<CardInAction[]>(input);
         }
 
-        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInListV3(Expression<Func<string>> boardId, Expression<Func<string>> listId)
+        public IOutputWorkflowTrigger<CardInAction[]> OnNewCardInListV3(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch.Queries["board_id"] = ExpressionConverter.Convert(boardId);

@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
     public class AutodeskforgedataexcTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhookExchangeModified(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId)
+        public IWorkflowTrigger RegisterWebhookExchangeModified(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/connector/webhook";
             var apiCallHttpMethod = "post";
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RegisterWebhookExchangeAdded(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId)
+        public IWorkflowTrigger RegisterWebhookExchangeAdded(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, string triggerName = null)
         {
             var apiCallPath = "/connector/webhookModified";
             var apiCallHttpMethod = "post";
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             return new ApiConnectionTrigger(callPayload);
         }
 
-        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId)
+        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId, string triggerName = null)
         {
             var apiCallPath = "/connector/webhookModifiedByUrl";
             var apiCallHttpMethod = "post";
