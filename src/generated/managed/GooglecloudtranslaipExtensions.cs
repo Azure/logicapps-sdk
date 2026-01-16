@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Googlecloudtranslaip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Googlecloudtranslaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Googlecloudtranslaip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip;
 
     public partial class WorkflowManagedActions
     {

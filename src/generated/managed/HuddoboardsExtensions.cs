@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Huddoboards
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -581,9 +581,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Huddoboards
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Huddoboards;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards;
 
     public partial class WorkflowManagedActions
     {

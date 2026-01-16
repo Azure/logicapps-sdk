@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cradlai
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -292,9 +292,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cradlai
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cradlai;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai;
 
     public partial class WorkflowManagedActions
     {

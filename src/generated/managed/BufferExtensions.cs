@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Buffer
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -236,9 +236,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Buffer
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Buffer;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Buffer;
 
     public partial class WorkflowManagedActions
     {

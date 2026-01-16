@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Courierip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -2652,9 +2652,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Courierip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Courierip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Courierip;
 
     public partial class WorkflowManagedActions
     {

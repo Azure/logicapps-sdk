@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Amazons3bucket
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Amazons3bucket
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Amazons3bucket;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket;
 
     public partial class WorkflowManagedActions
     {

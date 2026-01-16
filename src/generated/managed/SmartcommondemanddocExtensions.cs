@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Smartcommondemanddoc
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -246,9 +246,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Smartcommondemanddoc
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Smartcommondemanddoc;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc;
 
     public partial class WorkflowManagedActions
     {

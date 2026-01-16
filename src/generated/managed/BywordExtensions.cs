@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Byword
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -194,9 +194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Byword
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Byword;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Byword;
 
     public partial class WorkflowManagedActions
     {

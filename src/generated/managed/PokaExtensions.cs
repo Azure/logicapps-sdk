@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Poka
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Poka
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Poka;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Poka;
 
     public partial class WorkflowManagedActions
     {

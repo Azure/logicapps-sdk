@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Easyredmine
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -454,9 +454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Easyredmine
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Easyredmine;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine;
 
     public partial class WorkflowManagedActions
     {

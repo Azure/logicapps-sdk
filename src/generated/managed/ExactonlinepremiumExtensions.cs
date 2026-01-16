@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Exactonlinepremium
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinepremium
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Exactonlinepremium
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Exactonlinepremium;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinepremium;
 
     public partial class WorkflowManagedActions
     {

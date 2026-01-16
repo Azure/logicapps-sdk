@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Openaigpt4ip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -942,9 +942,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Openaigpt4ip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Openaigpt4ip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip;
 
     public partial class WorkflowManagedActions
     {

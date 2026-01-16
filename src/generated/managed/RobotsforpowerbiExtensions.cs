@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Robotsforpowerbi
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Robotsforpowerbi
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Robotsforpowerbi;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi;
 
     public partial class WorkflowManagedActions
     {

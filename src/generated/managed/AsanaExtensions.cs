@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Asana
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -279,9 +279,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Asana
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Asana;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Asana;
 
     public partial class WorkflowManagedActions
     {

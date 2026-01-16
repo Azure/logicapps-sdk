@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cognitiveservicesqnamaker
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cognitiveservicesqnamaker
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cognitiveservicesqnamaker;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Openfec
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -275,9 +275,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Openfec
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Openfec;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Openfec;
 
     public partial class WorkflowManagedActions
     {

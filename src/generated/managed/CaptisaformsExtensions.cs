@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Captisaforms
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Captisaforms
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Captisaforms;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms;
 
     public partial class WorkflowManagedActions
     {

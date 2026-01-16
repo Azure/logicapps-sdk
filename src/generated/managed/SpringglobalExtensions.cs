@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Springglobal
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Springglobal
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Springglobal;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal;
 
     public partial class WorkflowManagedActions
     {

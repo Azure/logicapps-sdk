@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Azureagentservice
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1163,9 +1163,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Azureagentservice
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Azureagentservice;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice;
 
     public partial class WorkflowManagedActions
     {

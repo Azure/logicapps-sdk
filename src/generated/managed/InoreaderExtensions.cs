@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Inoreader
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -240,9 +240,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Inoreader
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Inoreader;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader;
 
     public partial class WorkflowManagedActions
     {

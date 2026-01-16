@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tesseronasmbasicdata
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -632,9 +632,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tesseronasmbasicdata
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tesseronasmbasicdata;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata;
 
     public partial class WorkflowManagedActions
     {

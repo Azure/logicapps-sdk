@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Conversionservice
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Conversionservice
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Conversionservice;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Featheryip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -756,9 +756,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Featheryip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Featheryip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip;
 
     public partial class WorkflowManagedActions
     {

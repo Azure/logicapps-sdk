@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Partnercenterevents
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Partnercenterevents
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Partnercenterevents;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents;
 
     public partial class WorkflowManagedActions
     {

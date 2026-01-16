@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Openaiassistants
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1710,9 +1710,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Openaiassistants
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Openaiassistants;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Coinbaseip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Coinbaseip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Coinbaseip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip;
 
     public partial class WorkflowManagedActions
     {

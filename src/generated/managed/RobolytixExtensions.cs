@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Robolytix
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Robolytix
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Robolytix;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix;
 
     public partial class WorkflowManagedActions
     {

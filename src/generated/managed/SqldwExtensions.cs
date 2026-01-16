@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Sqldw
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Sqldw
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Sqldw;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw;
 
     public partial class WorkflowManagedActions
     {

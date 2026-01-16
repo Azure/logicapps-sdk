@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Wmata
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -954,9 +954,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Wmata
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Wmata;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Wmata;
 
     public partial class WorkflowManagedActions
     {

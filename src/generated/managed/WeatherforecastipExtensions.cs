@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Weatherforecastip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Weatherforecastip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Weatherforecastip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip;
 
     public partial class WorkflowManagedActions
     {

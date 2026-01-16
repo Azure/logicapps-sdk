@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Touchsmsv2documentat
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -143,9 +143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Touchsmsv2documentat
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Touchsmsv2documentat;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat;
 
     public partial class WorkflowManagedActions
     {

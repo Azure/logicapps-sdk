@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Goqr
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Goqr
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Goqr;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Goqr;
 
     public partial class WorkflowManagedActions
     {

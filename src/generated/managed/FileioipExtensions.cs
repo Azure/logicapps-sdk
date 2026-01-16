@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Fileioip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -366,9 +366,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Fileioip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Fileioip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip;
 
     public partial class WorkflowManagedActions
     {

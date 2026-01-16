@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Survey123
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Survey123
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Survey123;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Survey123;
 
     public partial class WorkflowManagedActions
     {

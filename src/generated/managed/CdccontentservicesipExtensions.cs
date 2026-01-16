@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Cdccontentservicesip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1299,9 +1299,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Cdccontentservicesip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Cdccontentservicesip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip;
 
     public partial class WorkflowManagedActions
     {

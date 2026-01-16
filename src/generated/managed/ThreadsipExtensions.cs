@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Threadsip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -224,9 +224,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Threadsip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Threadsip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip;
 
     public partial class WorkflowManagedActions
     {

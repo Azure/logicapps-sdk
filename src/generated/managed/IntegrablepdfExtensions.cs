@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Integrablepdf
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -407,9 +407,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Integrablepdf
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Integrablepdf;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf;
 
     public partial class WorkflowManagedActions
     {

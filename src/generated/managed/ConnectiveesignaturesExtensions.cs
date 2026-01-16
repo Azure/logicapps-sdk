@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectiveesignatures
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -894,9 +894,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectiveesignatures
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectiveesignatures;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures;
 
     public partial class WorkflowManagedActions
     {

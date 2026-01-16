@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Propublicanonprofiip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -477,9 +477,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Propublicanonprofiip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Propublicanonprofiip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Abstracttimezones
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Abstracttimezones
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Abstracttimezones;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones;
 
     public partial class WorkflowManagedActions
     {

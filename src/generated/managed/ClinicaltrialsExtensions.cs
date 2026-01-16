@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Clinicaltrials
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clinicaltrials
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Clinicaltrials
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Clinicaltrials;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Clinicaltrials;
 
     public partial class WorkflowManagedActions
     {

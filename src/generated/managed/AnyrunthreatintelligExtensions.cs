@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Anyrunthreatintellig
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anyrunthreatintellig
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Anyrunthreatintellig
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Anyrunthreatintellig;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Anyrunthreatintellig;
 
     public partial class WorkflowManagedActions
     {

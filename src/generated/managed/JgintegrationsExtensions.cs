@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Jgintegrations
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -333,9 +333,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Jgintegrations
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Jgintegrations;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations;
 
     public partial class WorkflowManagedActions
     {

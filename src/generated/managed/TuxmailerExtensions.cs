@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Tuxmailer
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tuxmailer
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Tuxmailer;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer;
 
     public partial class WorkflowManagedActions
     {

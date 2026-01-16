@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mailinatorip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -445,9 +445,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mailinatorip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mailinatorip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip;
 
     public partial class WorkflowManagedActions
     {

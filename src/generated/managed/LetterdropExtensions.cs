@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Letterdrop
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -544,9 +544,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Letterdrop
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Letterdrop;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop;
 
     public partial class WorkflowManagedActions
     {

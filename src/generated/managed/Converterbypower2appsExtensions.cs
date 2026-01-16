@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Converterbypower2apps
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -2983,9 +2983,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Converterbypower2apps
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Converterbypower2apps;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps;
 
     public partial class WorkflowManagedActions
     {

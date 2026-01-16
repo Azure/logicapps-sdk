@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Azuredatalake
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Azuredatalake
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Azuredatalake;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake;
 
     public partial class WorkflowManagedActions
     {

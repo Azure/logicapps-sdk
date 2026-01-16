@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Gotomeeting
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -268,9 +268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Gotomeeting
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Gotomeeting;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting;
 
     public partial class WorkflowManagedActions
     {

@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Giphyip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -651,9 +651,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Giphyip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Giphyip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip;
 
     public partial class WorkflowManagedActions
     {

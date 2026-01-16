@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mailform
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mailform
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mailform;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mailform;
 
     public partial class WorkflowManagedActions
     {

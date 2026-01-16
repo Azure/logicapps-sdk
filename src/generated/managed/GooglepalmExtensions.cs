@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Googlepalm
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Googlepalm
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Googlepalm;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm;
 
     public partial class WorkflowManagedActions
     {

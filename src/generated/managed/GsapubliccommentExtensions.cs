@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Gsapubliccomment
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Gsapubliccomment
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Gsapubliccomment;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment;
 
     public partial class WorkflowManagedActions
     {

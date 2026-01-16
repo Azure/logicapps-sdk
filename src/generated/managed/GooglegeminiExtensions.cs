@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Googlegemini
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -561,9 +561,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Googlegemini
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Googlegemini;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini;
 
     public partial class WorkflowManagedActions
     {

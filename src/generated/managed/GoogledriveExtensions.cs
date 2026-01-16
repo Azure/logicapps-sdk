@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Googledrive
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Googledrive
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Googledrive;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive;
 
     public partial class WorkflowManagedActions
     {

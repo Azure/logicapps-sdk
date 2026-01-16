@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Opentriviadbip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -607,9 +607,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Opentriviadbip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Opentriviadbip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip;
 
     public partial class WorkflowManagedActions
     {

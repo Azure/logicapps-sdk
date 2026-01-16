@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Jupyrest
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Jupyrest
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Jupyrest;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest;
 
     public partial class WorkflowManagedActions
     {

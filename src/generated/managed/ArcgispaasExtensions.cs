@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Arcgispaas
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Arcgispaas
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Arcgispaas;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas;
 
     public partial class WorkflowManagedActions
     {

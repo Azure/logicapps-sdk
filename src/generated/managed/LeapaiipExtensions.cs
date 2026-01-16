@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Leapaiip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -597,9 +597,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Leapaiip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Leapaiip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip;
 
     public partial class WorkflowManagedActions
     {

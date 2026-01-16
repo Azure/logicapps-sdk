@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Ip2whoisip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Ip2whoisip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Ip2whoisip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip;
 
     public partial class WorkflowManagedActions
     {

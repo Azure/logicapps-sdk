@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Eventhubs
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Eventhubs
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Eventhubs;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs;
 
     public partial class WorkflowManagedActions
     {

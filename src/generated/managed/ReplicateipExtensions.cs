@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Replicateip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -583,9 +583,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Replicateip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Replicateip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip;
 
     public partial class WorkflowManagedActions
     {

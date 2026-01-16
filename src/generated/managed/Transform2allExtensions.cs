@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Transform2all
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Transform2all
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Transform2all;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all;
 
     public partial class WorkflowManagedActions
     {

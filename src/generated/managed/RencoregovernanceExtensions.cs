@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Rencoregovernance
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Rencoregovernance
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Rencoregovernance;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance;
 
     public partial class WorkflowManagedActions
     {

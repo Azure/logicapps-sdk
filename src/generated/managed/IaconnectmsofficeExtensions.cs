@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Iaconnectmsoffice
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -5910,9 +5910,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Iaconnectmsoffice
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Iaconnectmsoffice;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice;
 
     public partial class WorkflowManagedActions
     {

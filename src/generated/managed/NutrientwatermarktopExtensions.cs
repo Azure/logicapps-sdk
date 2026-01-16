@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Nutrientwatermarktop
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -1636,9 +1636,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Nutrientwatermarktop
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Nutrientwatermarktop;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop;
 
     public partial class WorkflowManagedActions
     {

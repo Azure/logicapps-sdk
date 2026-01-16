@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Passageby1passwordau
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passageby1passwordau
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Passageby1passwordau
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Passageby1passwordau;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Passageby1passwordau;
 
     public partial class WorkflowManagedActions
     {

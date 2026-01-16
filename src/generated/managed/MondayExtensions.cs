@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Monday
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -984,9 +984,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Monday
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Monday;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Monday;
 
     public partial class WorkflowManagedActions
     {

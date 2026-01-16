@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Nederlandsespoorweip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -529,9 +529,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Nederlandsespoorweip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Nederlandsespoorweip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip;
 
     public partial class WorkflowManagedActions
     {

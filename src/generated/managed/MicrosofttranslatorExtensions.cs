@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Microsofttranslator
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsofttranslator
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Microsofttranslator
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Microsofttranslator;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsofttranslator;
 
     public partial class WorkflowManagedActions
     {

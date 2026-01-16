@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Fishwatchip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Fishwatchip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Fishwatchip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip;
 
     public partial class WorkflowManagedActions
     {

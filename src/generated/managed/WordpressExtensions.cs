@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Wordpress
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -288,9 +288,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Wordpress
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Wordpress;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress;
 
     public partial class WorkflowManagedActions
     {

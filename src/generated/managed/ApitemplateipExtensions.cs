@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Apitemplateip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -307,9 +307,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Apitemplateip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Apitemplateip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip;
 
     public partial class WorkflowManagedActions
     {

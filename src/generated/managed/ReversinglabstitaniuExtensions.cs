@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Reversinglabstitaniu
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -2185,9 +2185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Reversinglabstitaniu
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Reversinglabstitaniu;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu;
 
     public partial class WorkflowManagedActions
     {

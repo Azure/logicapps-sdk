@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Mensagiaip
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagiaip
 {
     using System.Linq.Expressions;
     using System.Runtime.Serialization;
@@ -555,9 +555,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Mensagiaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Connectors
 {
-    using Microsoft.Azure.Workflows.Sdk.Mensagiaip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Mensagiaip;
 
     public partial class WorkflowManagedActions
     {
