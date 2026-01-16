@@ -1811,7 +1811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip;
 

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet;
 

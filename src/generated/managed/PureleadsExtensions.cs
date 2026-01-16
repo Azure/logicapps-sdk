@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads;
 

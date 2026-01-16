@@ -2380,7 +2380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Outlook;
 

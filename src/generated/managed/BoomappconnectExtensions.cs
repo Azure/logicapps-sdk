@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect;
 

@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv;
 

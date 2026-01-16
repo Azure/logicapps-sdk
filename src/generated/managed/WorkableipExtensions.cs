@@ -1013,7 +1013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Workableip;
 

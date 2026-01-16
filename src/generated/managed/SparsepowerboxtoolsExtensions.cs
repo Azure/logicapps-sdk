@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools;
 

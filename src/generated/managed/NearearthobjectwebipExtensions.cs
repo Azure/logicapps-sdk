@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip;
 

@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip;
 

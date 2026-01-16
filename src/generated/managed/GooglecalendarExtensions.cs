@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar;
 

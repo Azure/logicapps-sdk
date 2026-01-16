@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors._10to8;
 

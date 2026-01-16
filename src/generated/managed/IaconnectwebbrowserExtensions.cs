@@ -6946,7 +6946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser;
 

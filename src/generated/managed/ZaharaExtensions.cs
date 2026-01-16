@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Zahara;
 

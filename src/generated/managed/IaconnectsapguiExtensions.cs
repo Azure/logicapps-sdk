@@ -4775,7 +4775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui;
 

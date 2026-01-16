@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip;
 

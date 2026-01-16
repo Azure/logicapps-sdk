@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle;
 

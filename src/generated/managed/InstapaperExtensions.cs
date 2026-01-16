@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper;
 

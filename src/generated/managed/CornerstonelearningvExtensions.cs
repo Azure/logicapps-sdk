@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv;
 

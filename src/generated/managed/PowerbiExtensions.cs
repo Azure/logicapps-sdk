@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi;
 

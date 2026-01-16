@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare;
 

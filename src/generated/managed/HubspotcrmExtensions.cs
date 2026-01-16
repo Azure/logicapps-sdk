@@ -4534,7 +4534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm;
 

@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip;
 

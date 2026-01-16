@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Mockster;
 

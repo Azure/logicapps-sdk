@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip;
 

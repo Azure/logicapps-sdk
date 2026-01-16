@@ -8300,7 +8300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml;
 

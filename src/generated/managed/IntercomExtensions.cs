@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Intercom;
 

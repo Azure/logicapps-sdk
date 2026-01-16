@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop;
 

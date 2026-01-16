@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors._365training;
 

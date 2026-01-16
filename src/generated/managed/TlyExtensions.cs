@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Tly;
 

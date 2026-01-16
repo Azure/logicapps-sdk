@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Revueip;
 

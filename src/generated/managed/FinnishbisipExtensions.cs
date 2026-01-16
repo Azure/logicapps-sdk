@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip;
 

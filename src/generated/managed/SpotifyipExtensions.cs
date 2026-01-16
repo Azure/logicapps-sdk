@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip;
 

@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip;
 

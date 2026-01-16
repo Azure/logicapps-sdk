@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip;
 

@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit;
 

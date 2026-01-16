@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging;
 

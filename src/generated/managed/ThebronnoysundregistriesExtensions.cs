@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries;
 

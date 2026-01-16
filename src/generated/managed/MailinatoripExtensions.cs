@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip;
 

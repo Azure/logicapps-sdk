@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures;
 

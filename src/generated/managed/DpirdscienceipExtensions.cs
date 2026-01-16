@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip;
 

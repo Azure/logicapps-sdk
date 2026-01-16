@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365users;
 

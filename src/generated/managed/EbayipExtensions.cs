@@ -4272,7 +4272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip;
 

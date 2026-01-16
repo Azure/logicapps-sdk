@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi;
 

@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset;
 

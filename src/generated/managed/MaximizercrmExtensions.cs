@@ -4716,7 +4716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm;
 

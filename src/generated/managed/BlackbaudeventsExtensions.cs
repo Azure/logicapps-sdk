@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents;
 

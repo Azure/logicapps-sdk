@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Witivio;
 

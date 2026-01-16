@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
+    using Microsoft.Azure.Workflows.Sdk.Connectors;
 
     /// <summary>
     /// Sample workflow that triggers when a new email arrives and composes its content.

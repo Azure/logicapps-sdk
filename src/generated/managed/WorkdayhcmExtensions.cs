@@ -2144,7 +2144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm;
 

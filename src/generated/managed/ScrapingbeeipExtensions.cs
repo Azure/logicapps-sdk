@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip;
 

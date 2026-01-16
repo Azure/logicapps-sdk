@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf;
 

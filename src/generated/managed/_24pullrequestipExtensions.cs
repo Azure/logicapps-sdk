@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip;
 

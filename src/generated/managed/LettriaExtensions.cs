@@ -1961,7 +1961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Lettria;
 

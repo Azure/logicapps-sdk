@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Casper365;
 

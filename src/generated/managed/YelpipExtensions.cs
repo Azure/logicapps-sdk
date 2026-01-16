@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip;
 

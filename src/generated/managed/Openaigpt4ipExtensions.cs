@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip;
 

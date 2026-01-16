@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker;
 

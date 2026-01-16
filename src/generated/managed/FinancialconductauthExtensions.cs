@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth;
 

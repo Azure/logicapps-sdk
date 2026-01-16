@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms;
 

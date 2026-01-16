@@ -2971,7 +2971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove;
 

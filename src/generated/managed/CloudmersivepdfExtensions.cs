@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf;
 

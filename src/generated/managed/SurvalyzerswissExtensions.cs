@@ -4339,7 +4339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss;
 

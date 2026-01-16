@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip;
 

@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     }
 }
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors
+namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail;
 
