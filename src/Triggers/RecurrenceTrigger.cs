@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the name of the recurrence trigger.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the trigger definition for the recurrence trigger.
@@ -79,15 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     TimeZone = this.TimeZone?.Id,
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the name of the recurrence trigger.
-        /// </summary>
-        /// <param name="name">The name to assign to the trigger.</param>
-        public void WithName(string name)
-        {
-            this.Name = name;
         }
     }
 }

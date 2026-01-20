@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the action definition for this nested workflow action.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
-        public FlowTemplateAction GetActionDefinition()
+        /// <param name="flowName">The flow name.</param>
+        public FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {
@@ -62,15 +63,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Queries = this.Queries,
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the name of the nested flow action.
-        /// </summary>
-        /// <param name="name"></param>
-        public void WithName(string name)
-        {
-            this.Name = name;
         }
     }
 

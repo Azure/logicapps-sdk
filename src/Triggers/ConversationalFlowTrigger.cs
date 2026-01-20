@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the name of the conversational flow trigger.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the trigger definition for the conversational flow.
@@ -25,24 +25,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.Request,
                 Kind = FlowTemplateOperationKind.Agent,
             };
-        }
-
-        /// <summary>
-        /// Sets the name of the conversational flow trigger.
-        /// </summary>
-        /// <param name="name">The name to assign.</param>
-        public void WithName(string name)
-        {
-            this.Name = name;
-        }
-
-        /// <summary>
-        /// Sets the recurrence of the conversational flow trigger.
-        /// </summary>
-        /// <param name="r">The recurrence object.</param>
-        public void WithRecurrence(FlowRecurrence r)
-        {
-            throw new NotImplementedException();
         }
     }
 }

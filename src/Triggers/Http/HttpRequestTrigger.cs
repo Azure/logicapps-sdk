@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the name of the HTTP request trigger.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the trigger definition for the HTTP request trigger.
@@ -59,24 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Kind = FlowTemplateOperationKind.Http,
                 Inputs = this.input?.ToJToken(),
             };
-        }
-
-        /// <summary>
-        /// Sets the name of the HTTP request trigger.
-        /// </summary>
-        /// <param name="name">The name to assign to the trigger.</param>
-        public void WithName(string name)
-        {
-            this.Name = name;
-        }
-        
-        /// <summary>
-        /// Sets the recurrence of the conversational flow trigger.
-        /// </summary>
-        /// <param name="r">The recurrence object.</param>
-        public void WithRecurrence(FlowRecurrence r)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>

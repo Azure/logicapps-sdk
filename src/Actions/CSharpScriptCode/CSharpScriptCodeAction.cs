@@ -7,41 +7,37 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class CSharpScriptCode(string methodName) : IWorkflowAction
+    public class CSharpScriptCode(Delegate callback) : IWorkflowAction
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string MethodName { get; private set; } = methodName;
+        public string MethodName { get; private set; } = callback.Method.Name;
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
-        public FlowTemplateAction GetActionDefinition()
+        /// <param name="flowName">The flow name.</param>
+        public FlowTemplateAction GetActionDefinition(string flowName)
         {
+            ScriptExecutor.SaveCustomCodeMethodInfo(
+                workflowName: flowName,
+                callback: callback);
+
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.CSharpScriptCode,
                 Inputs = new CSharpScriptCodeActionInput
                 {
-                    UserFunctionName = this.MethodName,
+                    UserFunctionName = callback.Method.Name,
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the name of the nested flow action.
-        /// </summary>
-        /// <param name="name"></param>
-        public void WithName(string name)
-        {
-            this.Name = name;
         }
     }
 
@@ -54,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="CSharpScriptCode{T}"/> class.
         /// </summary>
-        public CSharpScriptCode(string methodName) : base(methodName)
+        public CSharpScriptCode(Func<WorkflowContext, Task<T>> callback) : base(callback)
         {
         }
 

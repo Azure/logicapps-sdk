@@ -26,13 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 units: () => "I"
             );
 
-            trigger.WithName("weather_trigger");
-            trigger.WithRecurrence(new FlowRecurrence
-            {
-                Frequency = FlowRecurrenceFrequency.Minute,
-                Interval = 1
-            });
-
             var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
 
             var msg = WorkflowActions.ManagedConnectors.Teams("teams").PostMessageToConversation(

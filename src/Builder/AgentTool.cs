@@ -68,14 +68,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="runAfterSpecifications">Specifies dependencies indicating which actions this action should run after and under which conditions (optional).</param>
         public void AddAction(IWorkflowAction action, string actionName = null, params RunAfterSpecification[] runAfterSpecifications)
         {
-            var name = actionName;
+            var name = action.Name ?? actionName;
             if (string.IsNullOrEmpty(name))
             {
                 name = Utility.GetUniqueActionName();
-                action.WithName(name);
             }
 
-            var definition = action.GetActionDefinition();
+            action.Name = name;
+            var definition = action.GetActionDefinition(null);
 
             // If runAfterSpecifications are provided, use them to build the RunAfter dictionary.
             if (runAfterSpecifications != null && runAfterSpecifications.Length > 0)

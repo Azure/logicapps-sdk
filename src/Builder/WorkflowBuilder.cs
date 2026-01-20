@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="runAfterSpecifications">The runtime after specifications.</param>
         public void AddAction(IWorkflowAction action, string actionName = null, params RunAfterSpecification[] runAfterSpecifications)
         {
-            var name = action.Name;
-            if (name == null)
+            var name = action.Name ?? actionName;
+            if (string.IsNullOrEmpty(name))
             {
                 name = Utility.GetUniqueActionName();
-                action.WithName(name);
             }
 
-            var actionDefinition = action.GetActionDefinition();
+            action.Name = name;
+            var actionDefinition = action.GetActionDefinition(this.FlowName);
 
             if (runAfterSpecifications != null && runAfterSpecifications.Length > 0)
             {
