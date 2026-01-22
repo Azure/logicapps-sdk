@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the operation run after.
@@ -81,15 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             return this;
         }
 
-        public void WithName(string name)
-        {
-            this.Name = name;
-        }
-
         /// <summary>
         /// Gets the action definition for the agent.
         /// </summary>
-        public FlowTemplateAction GetActionDefinition()
+        /// <param name="flowName">The flow name.</param>
+        public FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {

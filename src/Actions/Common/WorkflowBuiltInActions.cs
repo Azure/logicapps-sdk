@@ -63,9 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(callback));
 
             var methodName = callback.Method.Name;
-            ScriptExecutor.SaveCustomCodeMethodInfo(methodName, callback);
 
-            return new CSharpScriptCode<T>(methodName);
+            return new CSharpScriptCode<T>(callback);
         }
 
         /// <summary>

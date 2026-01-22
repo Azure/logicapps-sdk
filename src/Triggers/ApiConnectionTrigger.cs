@@ -2,6 +2,8 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -9,70 +11,116 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public class ApiConnectionTrigger : IWorkflowTrigger
     {
-        public string Name { get; private set; }
+        /// <summary>
+        /// Gets or sets the name of the trigger.
+        /// </summary>
+        public string Name { get; set; }
 
+        /// <summary>
+        /// The type of the flow template operation.
+        /// </summary>
         private FlowTemplateOperationType _type;
+
+        /// <summary>
+        /// The inputs for the trigger.
+        /// </summary>
         private object _inputs;
 
-        private FlowRecurrence _recurrence;
+        /// <summary>
+        /// Gets the recurrence of the trigger.
+        /// </summary>
+        FlowRecurrence Recurrence { get; set; }
 
-        public ApiConnectionTrigger(ApiConnectionNotificationActionInput n)
+        /// <summary>
+        /// Gets or sets the trigger split on.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string SplitOn { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnectionTrigger"/> class with notification input.
+        /// </summary>
+        /// <param name="input">The API connection notification action input.</param>
+        /// <param name="triggerName">The trigger name.</param>
+        public ApiConnectionTrigger(
+            ApiConnectionNotificationActionInput input,
+            string triggerName = null)
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
-            this._inputs = n;
-        }
-        
-        public ApiConnectionTrigger(ApiConnectionActionInput n)
-        {
-            this._type = FlowTemplateOperationType.ApiConnection;
-            this._inputs = n;
+            this._inputs = input;
+            this.Name = triggerName;
         }
 
         /// <summary>
-        /// Gets the trigger definition as a JToken.
+        /// Initializes a new instance of the <see cref="ApiConnectionTrigger"/> class with action input.
         /// </summary>
+        /// <param name="input">The API connection action input.</param>
+        /// <param name="triggerName">The trigger name.</param>
+        /// <param name="recurrence">The recurrence configuration for the trigger.</param>
+        /// <param name="enableSplitOn">Enable spliton trigger</param>
+        public ApiConnectionTrigger(
+            ApiConnectionActionInput input,
+            string triggerName = null,
+            FlowRecurrence recurrence = null,
+            bool enableSplitOn = false)
+        {
+            this._type = FlowTemplateOperationType.ApiConnection;
+            this.Name = triggerName ?? "ApiConnectionTrigger";
+            this._inputs = input;
+            this.Recurrence = recurrence ?? new FlowRecurrence
+                {
+                    Frequency = FlowRecurrenceFrequency.Minute,
+                    Interval = 1,
+                };
+            this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
+        }
+
+        /// <summary>
+        /// Gets the trigger definition as a flow template trigger.
+        /// </summary>
+        /// <returns>A <see cref="FlowTemplateTrigger"/> containing the trigger configuration.</returns>
         public FlowTemplateTrigger GetTriggerDefinition()
         {
             return new FlowTemplateTrigger
             {
                 Type = this._type,
                 Inputs = this._inputs,
-                Recurrence = this._recurrence
-                // SplitOn = apiConnectionTriggerInput.SplitOn,
+                Recurrence = this.Recurrence,
+                SplitOn = this.SplitOn,
             };
-        }
-
-        public void WithName(string name)
-        {
-            this.Name = name;
-        }
-
-        /// <summary>
-        /// Sets the recurrence of the conversational flow trigger.
-        /// </summary>
-        /// <param name="recurrence">The recurrence object.</param>
-
-        public void WithRecurrence(FlowRecurrence recurrence)
-        {
-            this._recurrence = recurrence;
         }
     }
 
+    /// <summary>
+    /// Represents a generic API connection trigger with typed output in a workflow.
+    /// </summary>
+    /// <typeparam name="T">The type of the trigger output.</typeparam>
     public class ApiConnectionTrigger<T> : ApiConnectionTrigger, IOutputWorkflowTrigger<T>
     {
-        public ApiConnectionTrigger(ApiConnectionNotificationActionInput n)
-            : base(n)
-        { }
-        
-        public ApiConnectionTrigger(ApiConnectionActionInput n)
-            : base(n)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with notification input.
+        /// </summary>
+        /// <param name="input">The API connection notification action input.</param>
+        /// <param name="triggerName">The trigger name.</param>
+        public ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
+            : base(input, triggerName)
         { }
 
-        public ApiConnectionTrigger(ApiConnectionTriggerInput apiConnectionTriggerInput)
-            : base(apiConnectionTriggerInput)
-        {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with action input.
+        /// </summary>
+        /// <param name="n">The API connection action input.</param>
+        /// <param name="triggerName">The trigger name.</param>
+        /// <param name="recurrence">The recurrence configuration for the trigger.</param>
+        /// <param name="enableSplitOn">Enable spliton trigger</param>
+        public ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
+            : base(input, triggerName, recurrence, enableSplitOn)
+        { 
         }
 
+        /// <summary>
+        /// Gets the typed output of the trigger.
+        /// </summary>
         public T TriggerOutput { get; private set; }
     }
 }

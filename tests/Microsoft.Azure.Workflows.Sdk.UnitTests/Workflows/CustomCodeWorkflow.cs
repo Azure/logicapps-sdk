@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Stateful test workflow with custom code action.
     /// </summary>
-    public static class StatefulWorkflow
+    public static class CustomCodeWorkflow
     {
         /// <summary>
         /// Adds the stateful workflow with custom code.
@@ -25,18 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             // Add a compose action to process trigger input
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Processing: {trigger.TriggerOutput.Body}");
-            compose.WithName("ProcessInput");
-            builder.AddAction(compose);
+            builder.AddAction(compose, "ProcessInput");
 
             // Add custom code action
-            var customCode = WorkflowActions.BuiltIn.CustomCode<WorkflowResult>(StatefulWorkflow.RunCustomCodeAsync);
-            customCode.WithName("ExecuteCustomCode");
-            builder.AddAction(customCode);
+            var customCode = WorkflowActions.BuiltIn.CustomCode<WorkflowResult>(CustomCodeWorkflow.RunCustomCodeAsync);
+            builder.AddAction(customCode, "customCode");
 
             // Add response action
             var response = WorkflowActions.BuiltIn.Response(responseBody: () => $"{customCode.Body.Message}");
-            response.WithName("ReturnResult");
-            builder.AddAction(response);
+            builder.AddAction(response, "ReturnResult");
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 method: method,
                 requestBodyJsonSchema: requestBodyJsonSchema,
                 relativePath: relativePath);
-            httpRequestTrigger.WithName(name);
+            httpRequestTrigger.Name = name;
 
             return httpRequestTrigger;
         }

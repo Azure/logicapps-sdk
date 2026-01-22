@@ -5,7 +5,7 @@
     "FUNCTIONS_INPROC_NET8_ENABLED": "1",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "APP_KIND": "workflowapp",
-    "ProjectDirectoryPath": "C:\\repos\\logicapps-sdk\\tests",
+    "ProjectDirectoryPath": "C:\\repos\\logicapps-sdk\\tests\\Microsoft.Azure.Workflows.Sdk.Tests.Worker",
     "AzureWebJobsFeatureFlags": "EnableMultiLanguageWorker",
     "WORKFLOW_CODEFUL_ENABLED": "true",
     "AzureFunctionsJobHost__extensionBundle__id": "Microsoft.Azure.Functions.ExtensionBundle.Workflows",

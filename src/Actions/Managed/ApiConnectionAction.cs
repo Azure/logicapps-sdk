@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the action definition for this API connection action.
@@ -20,22 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>
         /// A <see cref="FlowTemplateAction"/> representing the API connection operation to be performed in the workflow.
         /// </returns>
-        public FlowTemplateAction GetActionDefinition()
+        /// <param name="flowName">The flow name.</param>
+        public FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.ApiConnection,
                 Inputs = apiConnectionActionInput,
             };
-        }
-
-        /// <summary>
-        /// Adds a name.
-        /// </summary>
-        /// <param name="name"></param>
-        public void WithName(string name)
-        {
-            this.Name = name;
         }
     }
 

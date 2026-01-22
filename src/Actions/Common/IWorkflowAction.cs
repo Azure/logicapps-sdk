@@ -7,12 +7,18 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// IWorkfowAction interface defines the contract for workflow actions.
     /// </summary>
-    public interface IWorkflowAction : INamedObject
+    public interface IWorkflowAction
     {
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
         /// </summary>
-        FlowTemplateAction GetActionDefinition();
+        /// <param name="flowName">The flow name.</param>
+        FlowTemplateAction GetActionDefinition(string flowName);
+
+        /// <summary>
+        /// Gets the name of the object.
+        /// </summary>
+        string Name { get; set; }
     }
 
     /// <summary>

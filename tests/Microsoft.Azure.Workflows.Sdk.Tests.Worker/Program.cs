@@ -23,12 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .ConfigureServices(services => WorkflowBuilderFactory.ConfigureServices(services))
                 .Build();
 
-            EmailWorkflow.AddEmailWorkflow();
-            //HttpWorkflow.AddHttpRequestResponseWorkflow();
-            //StatefulWorkflow.AddStatefulWorkflowWithCustomCode();
-            //StatelessWorkflow.AddStatelessWorkflow();
-            //RecurrenceWorkflow.AddRecurrenceWorkflow();
-            //WeatherWorkflow.AddWeatherWorkflow();
+            HttpWorkflow.AddHttpRequestResponseWorkflow();
+            CustomCodeWorkflow.AddStatefulWorkflowWithCustomCode();
+
+            NestedWorkflow.AddNestedWorkflow();
+
+            RecurrenceWorkflow.AddRecurrenceWorkflow();
+            //EmailWorkflow.AddEmailWorkflow();
+
+            WeatherWorkflow.AddWeatherWorkflow();
+
+            SerivceNowWorkflow.AddWorkflow();
 
             host.Run();
         }

@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             try
             {
-                if (!ScriptExecutor.FunctionInvokers.TryGetValue(invocationDetails.ScriptFileName, out var invocator))
+                if (!ScriptExecutor.FunctionInvokers.TryGetValue(invocationDetails.ScriptFileName.ToLower(), out var invocator))
                 {
-                    ScriptExecutor.Logger.LogDebug($"Compiled script: {invocationDetails.ScriptFileName} not found to execute...");
+                    ScriptExecutor.Logger.LogDebug($"Compiled script: {invocationDetails.ScriptFileName.ToLower()} not found to execute...");
                 }
 
                 return await this.InvokeParameters(invocationDetails, invocator).ConfigureAwait(false);
@@ -107,12 +107,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Saves the custom code method information.
         /// </summary>
-        /// <param name="functionName">The function name.</param>
+        /// <param name="workflowName">The workflow name.</param>
         /// <param name="callback">The callback method information.</param>
-        public static void SaveCustomCodeMethodInfo(string functionName, Delegate callback)
+        public static void SaveCustomCodeMethodInfo(string workflowName, Delegate callback)
         {
-            var fileName = Path.Combine("httpRequestResponse", functionName);
-            ScriptExecutor.FunctionInvokers.AddOrUpdate(fileName, callback.Method, (key, oldValue) => callback.Method);
+            var fileName = Path.Combine(workflowName, callback.Method.Name);
+
+            ScriptExecutor.FunctionInvokers.AddOrUpdate(fileName.ToLower(), callback.Method, (key, oldValue) => callback.Method);
         }
 
         /// <summary>

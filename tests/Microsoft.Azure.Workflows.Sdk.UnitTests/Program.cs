@@ -14,9 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void Main()
         {
-            RecruitmentWorkflow.AddRecruitmentWorkflow();
+            //RecruitmentWorkflow.AddRecruitmentWorkflow();
 
             HttpWorkflow.AddHttpRequestResponseWorkflow();
+            CustomCodeWorkflow.AddStatefulWorkflowWithCustomCode();
 
             NestedWorkflow.AddNestedWorkflow();
 

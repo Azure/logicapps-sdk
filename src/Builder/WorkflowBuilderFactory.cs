@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public static IWorkflowBuilder CreateConversationalAgent(string flowName)
         {
             var conversationalFlow = new ConversationalFlowTrigger();
-            conversationalFlow.WithName(WorkflowBuilderFactory.ConversationalFlowTriggerName);
+            conversationalFlow.Name = WorkflowBuilderFactory.ConversationalFlowTriggerName;
 
             var workflowBuilder = new WorkflowBuilder(flowName, conversationalFlow);
 
