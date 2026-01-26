@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/current/weather/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -53,16 +53,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             callPayload.Queries["When"] = ExpressionConverter.Convert(when);
             callPayload.Queries["Target"] = ExpressionConverter.Convert(target);
             callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload);
+            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/current/conditions/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload);
+            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
         }
     }
 

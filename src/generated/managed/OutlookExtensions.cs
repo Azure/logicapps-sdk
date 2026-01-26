@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var optionsEmailSubscription = new JObject();
             var optionsEmailSubscriptionpropCount = 0;
-            optionsEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            optionsEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             optionsEmailSubscriptionpropCount++;
             var MessageObject = new JObject();
             var MessageObjectpropCount = 0;
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var approvalEmailSubscription = new JObject();
             var approvalEmailSubscriptionpropCount = 0;
-            approvalEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            approvalEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             approvalEmailSubscriptionpropCount++;
             var MessageObject = new JObject();
             var MessageObjectpropCount = 0;
@@ -903,33 +903,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
             var BusinessAddressObject = new JObject();
             var BusinessAddressObjectpropCount = 0;
-            if (itemBusinessAddressStreet != null)
+            if (itemHomeAddressStreet != null)
             {
-                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemBusinessAddressStreet);
+                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressCity != null)
+            if (itemHomeAddressCity != null)
             {
-                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemBusinessAddressCity);
+                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressState != null)
+            if (itemHomeAddressState != null)
             {
-                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemBusinessAddressState);
+                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressCountryOrRegion != null)
+            if (itemHomeAddressCountryOrRegion != null)
             {
-                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemBusinessAddressCountryOrRegion);
+                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressPostalCode != null)
+            if (itemHomeAddressPostalCode != null)
             {
-                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemBusinessAddressPostalCode);
+                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
                 BusinessAddressObjectpropCount++;
             }
 
@@ -941,33 +941,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
             var OtherAddressObject = new JObject();
             var OtherAddressObjectpropCount = 0;
-            if (itemOtherAddressStreet != null)
+            if (itemHomeAddressStreet != null)
             {
-                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemOtherAddressStreet);
+                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressCity != null)
+            if (itemHomeAddressCity != null)
             {
-                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemOtherAddressCity);
+                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressState != null)
+            if (itemHomeAddressState != null)
             {
-                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemOtherAddressState);
+                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressCountryOrRegion != null)
+            if (itemHomeAddressCountryOrRegion != null)
             {
-                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemOtherAddressCountryOrRegion);
+                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressPostalCode != null)
+            if (itemHomeAddressPostalCode != null)
             {
-                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemOtherAddressPostalCode);
+                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
                 OtherAddressObjectpropCount++;
             }
 
@@ -1235,33 +1235,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
             var BusinessAddressObject = new JObject();
             var BusinessAddressObjectpropCount = 0;
-            if (itemBusinessAddressStreet != null)
+            if (itemHomeAddressStreet != null)
             {
-                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemBusinessAddressStreet);
+                BusinessAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressCity != null)
+            if (itemHomeAddressCity != null)
             {
-                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemBusinessAddressCity);
+                BusinessAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressState != null)
+            if (itemHomeAddressState != null)
             {
-                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemBusinessAddressState);
+                BusinessAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressCountryOrRegion != null)
+            if (itemHomeAddressCountryOrRegion != null)
             {
-                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemBusinessAddressCountryOrRegion);
+                BusinessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
                 BusinessAddressObjectpropCount++;
             }
 
-            if (itemBusinessAddressPostalCode != null)
+            if (itemHomeAddressPostalCode != null)
             {
-                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemBusinessAddressPostalCode);
+                BusinessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
                 BusinessAddressObjectpropCount++;
             }
 
@@ -1273,33 +1273,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
             var OtherAddressObject = new JObject();
             var OtherAddressObjectpropCount = 0;
-            if (itemOtherAddressStreet != null)
+            if (itemHomeAddressStreet != null)
             {
-                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemOtherAddressStreet);
+                OtherAddressObject["Street"] = ExpressionConverter.ConvertO(itemHomeAddressStreet);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressCity != null)
+            if (itemHomeAddressCity != null)
             {
-                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemOtherAddressCity);
+                OtherAddressObject["City"] = ExpressionConverter.ConvertO(itemHomeAddressCity);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressState != null)
+            if (itemHomeAddressState != null)
             {
-                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemOtherAddressState);
+                OtherAddressObject["State"] = ExpressionConverter.ConvertO(itemHomeAddressState);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressCountryOrRegion != null)
+            if (itemHomeAddressCountryOrRegion != null)
             {
-                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemOtherAddressCountryOrRegion);
+                OtherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemHomeAddressCountryOrRegion);
                 OtherAddressObjectpropCount++;
             }
 
-            if (itemOtherAddressPostalCode != null)
+            if (itemHomeAddressPostalCode != null)
             {
-                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemOtherAddressPostalCode);
+                OtherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemHomeAddressPostalCode);
                 OtherAddressObjectpropCount++;
             }
 
@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class OutlookTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEventsV2(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEventsV2(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/Events/OnUpcomingEvents";
             var apiCallHttpMethod = "get";
@@ -1423,12 +1423,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
             if (lookAheadTimeInMinutes != null)
                 callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v2/Mail/OnNewEmail"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -1451,6 +1461,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/MailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -1462,7 +1482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -1472,9 +1492,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v2/Mail/OnFlaggedEmail"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -1497,6 +1527,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/FlaggedMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -1508,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -1518,9 +1558,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmailV2(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v2/Mail/OnNewMentionMeEmail"
+                },
+                Method = "get",
+            };
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
             if (to != null)
@@ -1542,6 +1592,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/MentionMeMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
             input.Subscribe.Queries["importance"] = Convert.ToString("Any");
@@ -1552,7 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -1562,7 +1622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -1573,10 +1633,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
             if (skip != null)
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItemsV2(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -1587,18 +1647,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
             if (skip != null)
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItemsV2(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
+        public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItemsV2(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/datasets/calendars/v2/tables/{0}/onchangeditems"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
             if (incomingDays != null)
                 input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
             input.Fetch.Queries["pastDays"] = Convert.ToString(50);
             if (pastDays != null)
                 input.Fetch.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/{0}/EventSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
             if (incomingDays != null)
                 input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
@@ -1607,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {

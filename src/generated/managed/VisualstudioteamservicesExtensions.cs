@@ -1,0 +1,1924 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
+{
+    using System.Linq.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class VisualstudioteamservicesActions([ConnectionName] string connectionId)
+    {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListAccount> ListAccounts()
+        {
+            var apiCallPath = "/_apis/Accounts";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<VstsListAccount>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<Profile>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team)
+        {
+            var apiCallPath = String.Format("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            return new ApiConnectionAction<VstsListTeamSettingsIteration>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<BuildResult> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<string>> buildDetailssourceBranch = null, Expression<Func<string>> buildDetailsparameters = null)
+        {
+            var apiCallPath = String.Format("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["buildDefId"] = ExpressionConverter.Convert(buildDefId);
+            var buildDetails = new JObject();
+            var buildDetailspropCount = 0;
+            if (buildDetailssourceBranch != null)
+            {
+                buildDetails["sourceBranch"] = ExpressionConverter.ConvertO(buildDetailssourceBranch);
+                buildDetailspropCount++;
+            }
+
+            if (buildDetailsparameters != null)
+            {
+                buildDetails["parameters"] = ExpressionConverter.ConvertO(buildDetailsparameters);
+                buildDetailspropCount++;
+            }
+
+            if (buildDetailspropCount > 0)
+            {
+                callPayload.Body = buildDetails;
+            }
+
+            return new ApiConnectionAction<BuildResult>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories(Expression<Func<string>> account, Expression<Func<string>> project)
+        {
+            var apiCallPath = String.Format("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<VstsListGitRepository>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
+        {
+            var apiCallPath = "/_apis/projects";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<VstsListProject>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions(Expression<Func<string>> account, Expression<Func<string>> project)
+        {
+            var apiCallPath = String.Format("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<VstsListReleaseDefinition>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<Release> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<string>> releaseStartMetadatadescription = null, Expression<Func<bool>> releaseStartMetadataisDraft = null, Expression<Func<releaseStartMetadatareasonInput>> releaseStartMetadatareason = null, Expression<Func<ConfigurationVariable[]>> releaseStartMetadatareleaseVariables = null)
+        {
+            var apiCallPath = String.Format("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["releaseDefId"] = ExpressionConverter.Convert(releaseDefId);
+            var releaseStartMetadata = new JObject();
+            var releaseStartMetadatapropCount = 0;
+            if (releaseStartMetadatadescription != null)
+            {
+                releaseStartMetadata["Description"] = ExpressionConverter.ConvertO(releaseStartMetadatadescription);
+                releaseStartMetadatapropCount++;
+            }
+
+            if (releaseStartMetadataisDraft != null)
+            {
+                releaseStartMetadata["IsDraft"] = ExpressionConverter.ConvertO(releaseStartMetadataisDraft);
+                releaseStartMetadatapropCount++;
+            }
+
+            if (releaseStartMetadatareason != null)
+            {
+                releaseStartMetadata["Reason"] = ExpressionConverter.ConvertO(releaseStartMetadatareason);
+                releaseStartMetadatapropCount++;
+            }
+
+            if (releaseStartMetadatareleaseVariables != null)
+            {
+                releaseStartMetadata["Variables"] = ExpressionConverter.ConvertO(releaseStartMetadatareleaseVariables);
+                releaseStartMetadatapropCount++;
+            }
+
+            if (releaseStartMetadatapropCount > 0)
+            {
+                callPayload.Body = releaseStartMetadata;
+            }
+
+            return new ApiConnectionAction<Release>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> account, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersrelativeURI, Expression<Func<string>> parametersbody = null, Expression<Func<bool>> parametersbodyIsBase64 = null)
+        {
+            var apiCallPath = "/httprequest";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            var parameters = new JObject();
+            var parameterspropCount = 0;
+            parameterspropCount++;
+            parameters["Method"] = ExpressionConverter.ConvertO(parametersmethod);
+            parameterspropCount++;
+            parameters["Uri"] = ExpressionConverter.ConvertO(parametersrelativeURI);
+            var HeadersObject = new JObject();
+            var HeadersObjectpropCount = 0;
+            if (HeadersObjectpropCount > 0)
+            {
+                parameters["Headers"] = HeadersObject;
+                parameterspropCount++;
+            }
+
+            if (parametersbody != null)
+            {
+                parameters["Body"] = ExpressionConverter.ConvertO(parametersbody);
+                parameterspropCount++;
+            }
+
+            if (parametersbodyIsBase64 != null)
+            {
+                parameters["IsBase64"] = ExpressionConverter.ConvertO(parametersbodyIsBase64);
+                parameterspropCount++;
+            }
+
+            if (parameterspropCount > 0)
+            {
+                callPayload.Body = parameters;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
+        {
+            var apiCallPath = "/_apis/wit/workitemtypes";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["typeName"] = ExpressionConverter.Convert(typeName);
+            return new ApiConnectionAction<DynamicWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project = null, Expression<Func<string>> type = null, Expression<Func<string>> workItemtitle = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
+        {
+            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "patch";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (project != null)
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            if (type != null)
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            var workItem = new JObject();
+            var workItempropCount = 0;
+            if (workItemtitle != null)
+            {
+                workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
+                workItempropCount++;
+            }
+
+            if (workItemdescription != null)
+            {
+                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                workItempropCount++;
+            }
+
+            if (workItempriority != null)
+            {
+                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                workItempropCount++;
+            }
+
+            if (workItemiterationPath != null)
+            {
+                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                workItempropCount++;
+            }
+
+            if (workItemareaPath != null)
+            {
+                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                workItempropCount++;
+            }
+
+            if (workItemlinkURL != null)
+            {
+                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                workItempropCount++;
+            }
+
+            if (workItemlinkType != null)
+            {
+                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                workItempropCount++;
+            }
+
+            if (workItemlinkComment != null)
+            {
+                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                workItempropCount++;
+            }
+
+            if (workItemdynamicFields != null)
+            {
+                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                workItempropCount++;
+            }
+
+            var userEnteredFieldsObject = new JObject();
+            var userEnteredFieldsObjectpropCount = 0;
+            if (userEnteredFieldsObjectpropCount > 0)
+            {
+                workItem["userEnteredFields"] = userEnteredFieldsObject;
+                workItempropCount++;
+            }
+
+            if (workItempropCount > 0)
+            {
+                callPayload.Body = workItem;
+            }
+
+            return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> id, Expression<Func<string>> workItemType = null)
+        {
+            var apiCallPath = String.Format("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            callPayload.Queries["workItemType"] = Convert.ToString("");
+            if (workItemType != null)
+                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+            return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<string>> workItemtitle, Expression<Func<bool>> shouldReturnAllFields = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
+        {
+            var apiCallPath = String.Format("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+            var apiCallHttpMethod = "patch";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (shouldReturnAllFields != null)
+                callPayload.Queries["shouldReturnAllFields"] = ExpressionConverter.Convert(shouldReturnAllFields);
+            var workItem = new JObject();
+            var workItempropCount = 0;
+            workItempropCount++;
+            workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
+            if (workItemdescription != null)
+            {
+                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                workItempropCount++;
+            }
+
+            if (workItempriority != null)
+            {
+                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                workItempropCount++;
+            }
+
+            if (workItemiterationPath != null)
+            {
+                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                workItempropCount++;
+            }
+
+            if (workItemareaPath != null)
+            {
+                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                workItempropCount++;
+            }
+
+            if (workItemlinkURL != null)
+            {
+                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                workItempropCount++;
+            }
+
+            if (workItemlinkType != null)
+            {
+                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                workItempropCount++;
+            }
+
+            if (workItemlinkComment != null)
+            {
+                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                workItempropCount++;
+            }
+
+            if (workItemdynamicFields != null)
+            {
+                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                workItempropCount++;
+            }
+
+            var userEnteredFieldsObject = new JObject();
+            var userEnteredFieldsObjectpropCount = 0;
+            if (userEnteredFieldsObjectpropCount > 0)
+            {
+                workItem["userEnteredFields"] = userEnteredFieldsObject;
+                workItempropCount++;
+            }
+
+            if (workItempropCount > 0)
+            {
+                callPayload.Body = workItem;
+            }
+
+            return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResultsV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
+        {
+            var apiCallPath = String.Format("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["workItemsCount"] = Convert.ToString(200);
+            if (workItemsCount != null)
+                callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
+            if (throwIfQueryChanged != null)
+                callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
+            return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
+        {
+            var apiCallPath = String.Format("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
+        {
+            var apiCallPath = String.Format("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> workItemIds, Expression<Func<string>> workItemType = null)
+        {
+            var apiCallPath = String.Format("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["workItemIds"] = ExpressionConverter.Convert(workItemIds);
+            callPayload.Queries["workItemType"] = Convert.ToString("");
+            if (workItemType != null)
+                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+            return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<Pipeline> ListPipelines(Expression<Func<string>> account, Expression<Func<string>> project)
+        {
+            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<Pipeline>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<Run> ListPipelineRuns(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> pipelineId)
+        {
+            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            return new ApiConnectionAction<Run>(callPayload);
+        }
+    }
+
+    public class VisualstudioteamservicesTriggers([ConnectionName] string connectionId)
+    {
+        public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (resultFilter != null)
+                callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(resultFilter);
+            if (definitions != null)
+                callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
+            return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (refName != null)
+                callPayload.Queries["refName"] = ExpressionConverter.Convert(refName);
+            return new ApiConnectionTrigger<VstsListGitPush>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (sourceRefName != null)
+                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+            if (targetRefName != null)
+                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+            return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (sourceRefName != null)
+                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+            if (targetRefName != null)
+                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+            return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            if (team != null)
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            if (author != null)
+                callPayload.Queries["author"] = ExpressionConverter.Convert(author);
+            return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssignedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            if (wiqlSystemWorkItemType != null)
+                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+            if (wiqlSystemAreaPath != null)
+                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+            if (areaPathComparison != null)
+                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+            if (wiqlSystemIterationPath != null)
+                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+            if (iterationPathComparison != null)
+                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+            if (wiqlMicrosoftVSTSCommonPriority != null)
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+            if (wiqlSystemCreatedBy != null)
+                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdatedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (team != null)
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            if (wiqlSystemAssignedTo != null)
+                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            if (wiqlSystemWorkItemType != null)
+                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+            if (wiqlSystemAreaPath != null)
+                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+            if (areaPathComparison != null)
+                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+            if (wiqlSystemIterationPath != null)
+                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+            if (iterationPathComparison != null)
+                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+            if (wiqlMicrosoftVSTSCommonPriority != null)
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+            if (wiqlSystemCreatedBy != null)
+                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreatedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (team != null)
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            if (wiqlSystemAssignedTo != null)
+                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
+            if (wiqlSystemWorkItemType != null)
+                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+            if (wiqlSystemAreaPath != null)
+                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+            if (areaPathComparison != null)
+                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+            if (wiqlSystemIterationPath != null)
+                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+            if (iterationPathComparison != null)
+                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+            if (wiqlMicrosoftVSTSCommonPriority != null)
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+            if (wiqlSystemCreatedBy != null)
+                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            if (team != null)
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            if (wiqlSystemAssignedTo != null)
+                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
+            if (wiqlSystemWorkItemType != null)
+                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+            callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
+            if (closedState != null)
+                callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
+            if (wiqlSystemAreaPath != null)
+                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+            if (areaPathComparison != null)
+                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+            if (wiqlSystemIterationPath != null)
+                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+            if (iterationPathComparison != null)
+                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+            if (wiqlMicrosoftVSTSCommonPriority != null)
+                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+            if (wiqlSystemCreatedBy != null)
+                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+        }
+    }
+
+    public class VstsListAccount
+    {
+        [JsonProperty("value")]
+        public Account[] Value { get; set; }
+    }
+
+    public class Account
+    {
+        [JsonProperty("accountId")]
+        public string AccountId { get; set; }
+
+        [JsonProperty("accountUri")]
+        public string AccountURI { get; set; }
+
+        [JsonProperty("accountName")]
+        public string AccountName { get; set; }
+
+        [JsonProperty("accountOwner")]
+        public string AccountOwner { get; set; }
+
+        [JsonProperty("organizationName")]
+        public string OrganizationName { get; set; }
+
+        [JsonProperty("accountType")]
+        public string AccountType { get; set; }
+    }
+
+    public class Profile
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("publicAlias")]
+        public string PublicAlias { get; set; }
+
+        [JsonProperty("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("timeStamp")]
+        public string TimeStamp { get; set; }
+
+        [JsonProperty("revision")]
+        public int Revision { get; set; }
+
+        [JsonProperty("coreRevision")]
+        public int CoreRevision { get; set; }
+    }
+
+    public class VstsListTeamSettingsIteration
+    {
+        [JsonProperty("value")]
+        public TeamSettingsIteration[] Value { get; set; }
+    }
+
+    public class TeamSettingsIteration
+    {
+        public TeamIterationAttributes Attributes { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
+
+        [JsonProperty("_links")]
+        public JToken Links { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public class TeamIterationAttributes
+    {
+        public string FinishDate { get; set; }
+        public string StartDate { get; set; }
+    }
+
+    public class BuildResult
+    {
+        [JsonProperty("id")]
+        public int BuildId { get; set; }
+
+        [JsonProperty("buildNumber")]
+        public string BuildNumber { get; set; }
+
+        [JsonProperty("sourceBranch")]
+        public string SourceBranch { get; set; }
+
+        [JsonProperty("sourceVersion")]
+        public string SourceVersion { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("priority")]
+        public string Priority { get; set; }
+
+        [JsonProperty("queueTime")]
+        public string QueueTime { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("finishTime")]
+        public string FinishTime { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
+        [JsonProperty("requestedFor")]
+        public BuildRequestUser RequestedFor { get; set; }
+
+        [JsonProperty("parameters")]
+        public string Parameters { get; set; }
+
+        [JsonProperty("definition")]
+        public BuildResultDefinition Definition { get; set; }
+
+        [JsonProperty("_links")]
+        public Links Links { get; set; }
+    }
+
+    public class BuildRequestUser
+    {
+        [JsonProperty("uniqueName")]
+        public string RequestedFor { get; set; }
+    }
+
+    public class BuildResultDefinition
+    {
+        [JsonProperty("id")]
+        public int BuildDefinitionId { get; set; }
+
+        [JsonProperty("name")]
+        public string BuildDefinitionName { get; set; }
+    }
+
+    public class Links
+    {
+        [JsonProperty("web")]
+        public WebLinks Web { get; set; }
+    }
+
+    public class WebLinks
+    {
+        [JsonProperty("href")]
+        public string HTMLLink { get; set; }
+    }
+
+    public class VstsListGitRepository
+    {
+        [JsonProperty("value")]
+        public GitRepository[] Value { get; set; }
+    }
+
+    public class GitRepository
+    {
+        [JsonProperty("id")]
+        public string RepositoryId { get; set; }
+
+        [JsonProperty("name")]
+        public string RepositoryName { get; set; }
+
+        [JsonProperty("url")]
+        public string RepositoryBrowserURL { get; set; }
+
+        [JsonProperty("remoteUrl")]
+        public string RepositoryRemoteURL { get; set; }
+    }
+
+    public class VstsListProject
+    {
+        [JsonProperty("value")]
+        public Project[] Value { get; set; }
+    }
+
+    public class Project
+    {
+        [JsonProperty("id")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("name")]
+        public string ProjectName { get; set; }
+
+        [JsonProperty("url")]
+        public string ProjectURL { get; set; }
+    }
+
+    public class VstsListReleaseDefinition
+    {
+        [JsonProperty("value")]
+        public ReleaseDefinition[] Value { get; set; }
+    }
+
+    public class ReleaseDefinition
+    {
+        public string Comment { get; set; }
+        public string CreatedOn { get; set; }
+        public string Description { get; set; }
+        public int Id { get; set; }
+        public IdentityRef ModifiedBy { get; set; }
+        public string ModifiedOn { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
+        public string ReleaseNameFormat { get; set; }
+        public int Revision { get; set; }
+        public ReleaseDefinitionSourceType Source { get; set; }
+        public string[] Tags { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public class IdentityRef
+    {
+        public string DirectoryAlias { get; set; }
+        public string DisplayName { get; set; }
+        public string UniqueName { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+        public string Id { get; set; }
+    }
+
+    public enum ReleaseDefinitionSourceType
+    {
+        Undefined,
+        RestApi,
+        UserInterface,
+        Ibiza,
+        PortalExtensionApi
+    }
+
+    public class Release
+    {
+        public string Comment { get; set; }
+        public IdentityRef CreatedBy { get; set; }
+        public string CreatedOn { get; set; }
+        public string Description { get; set; }
+        public int Id { get; set; }
+        public bool KeepForever { get; set; }
+
+        [JsonProperty("LogsContainerUrl")]
+        public string LogsContainerURL { get; set; }
+        public IdentityRef ModifiedBy { get; set; }
+        public string ModifiedOn { get; set; }
+        public string Name { get; set; }
+        public ReleaseReasonType Reason { get; set; }
+        public ReleaseDefinitionShallowReference ReleaseDefinition { get; set; }
+        public ReleaseStatusType Status { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public enum ReleaseReasonType
+    {
+        None,
+        Manual,
+        ContinuousIntegration,
+        Schedule,
+        IndividualCI,
+        BatchedCI
+    }
+
+    public class ReleaseDefinitionShallowReference
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public enum ReleaseStatusType
+    {
+        Undefined,
+        Draft,
+        Active,
+        Abandoned
+    }
+
+    public enum releaseStartMetadatareasonInput
+    {
+        None,
+        Manual,
+        ContinuousIntegration,
+        Schedule,
+        IndividualCI,
+        BatchedCI
+    }
+
+    public class ConfigurationVariable
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
+
+    public enum parametersmethodInput
+    {
+        GET,
+        POST,
+        PUT,
+        PATCH,
+        DELETE,
+        OPTIONS
+    }
+
+    public class VstsListWorkItemType
+    {
+        [JsonProperty("value")]
+        public WorkItemType[] Value { get; set; }
+    }
+
+    public class WorkItemType
+    {
+        public string Description { get; set; }
+        public string Name { get; set; }
+
+        [JsonProperty("XmlForm")]
+        public string XMLForm { get; set; }
+
+        [JsonProperty("FieldInstances")]
+        public WorkItemTypeFieldInstance[] Fields { get; set; }
+
+        [JsonProperty("icon")]
+        public WorkItemTypeIconType Icon { get; set; }
+
+        [JsonProperty("states")]
+        public WorkItemStateColor[] States { get; set; }
+    }
+
+    public class WorkItemTypeFieldInstance
+    {
+        public bool AlwaysRequired { get; set; }
+        public string ReferenceName { get; set; }
+        public string Name { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public class WorkItemTypeIconType
+    {
+        [JsonProperty("id")]
+        public string IconId { get; set; }
+
+        [JsonProperty("url")]
+        public string IconUrl { get; set; }
+    }
+
+    public class WorkItemStateColor
+    {
+        [JsonProperty("category")]
+        public string CategoryOfState { get; set; }
+
+        [JsonProperty("color")]
+        public string ColorValue { get; set; }
+
+        [JsonProperty("name")]
+        public string StateName { get; set; }
+    }
+
+    public class DynamicWorkItemResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("rev")]
+        public int RevisionCount { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("fields")]
+        public DynamicWorkItemResponseFieldsType Fields { get; set; }
+    }
+
+    public class DynamicWorkItemResponseFieldsType
+    {
+        [JsonProperty("System_Id")]
+        public int Id { get; set; }
+
+        [JsonProperty("System_AreaPath")]
+        public string AreaPath { get; set; }
+
+        [JsonProperty("System_TeamProject")]
+        public string TeamProject { get; set; }
+
+        [JsonProperty("System_IterationPath")]
+        public string IterationPath { get; set; }
+
+        [JsonProperty("System_WorkItemType")]
+        public string WorkItemType { get; set; }
+
+        [JsonProperty("System_State")]
+        public string State { get; set; }
+
+        [JsonProperty("System_Reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("System_CreatedDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("System_CreatedBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("System_ChangedDate")]
+        public string ChangedDate { get; set; }
+
+        [JsonProperty("System_ChangedBy")]
+        public string ChangedBy { get; set; }
+
+        [JsonProperty("System_Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("System_Description")]
+        public string Description { get; set; }
+
+        [JsonProperty("System_Tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("System_AssignedTo")]
+        public string AssignedTo { get; set; }
+    }
+
+    public class PatchWorkItemResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("rev")]
+        public int RevisionCount { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("fields")]
+        public PatchWorkItemResponseFieldsType Fields { get; set; }
+    }
+
+    public class PatchWorkItemResponseFieldsType
+    {
+        [JsonProperty("System_Id")]
+        public int Id { get; set; }
+
+        [JsonProperty("System_AreaPath")]
+        public string AreaPath { get; set; }
+
+        [JsonProperty("System_TeamProject")]
+        public string TeamProject { get; set; }
+
+        [JsonProperty("System_IterationPath")]
+        public string IterationPath { get; set; }
+
+        [JsonProperty("System_WorkItemType")]
+        public string WorkItemType { get; set; }
+
+        [JsonProperty("System_State")]
+        public string State { get; set; }
+
+        [JsonProperty("System_Reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("System_CreatedDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("System_CreatedBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("System_ChangedDate")]
+        public string ChangedDate { get; set; }
+
+        [JsonProperty("System_ChangedBy")]
+        public string ChangedBy { get; set; }
+
+        [JsonProperty("System_Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("System_Description")]
+        public string Description { get; set; }
+
+        [JsonProperty("System_Tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("System_AssignedTo")]
+        public string AssignedTo { get; set; }
+    }
+
+    public enum workItemlinkTypeInput
+    {
+        [EnumMember(Value = "Dependency-forward")]
+        DependencyForward,
+        [EnumMember(Value = "Dependency-reverse")]
+        DependencyReverse,
+        [EnumMember(Value = "Hierarchy-forward")]
+        HierarchyForward,
+        [EnumMember(Value = "Hierarchy-reverse")]
+        HierarchyReverse,
+        Related
+    }
+
+    public class VstsListListWorkItemResponse
+    {
+        [JsonProperty("value")]
+        public ListWorkItemResponse[] Value { get; set; }
+    }
+
+    public class ListWorkItemResponse
+    {
+        [JsonProperty("System.Id")]
+        public int Id { get; set; }
+
+        [JsonProperty("System.AreaPath")]
+        public string AreaPath { get; set; }
+
+        [JsonProperty("System.TeamProject")]
+        public string TeamProject { get; set; }
+
+        [JsonProperty("System.IterationPath")]
+        public string IterationPath { get; set; }
+
+        [JsonProperty("System.WorkItemType")]
+        public string WorkItemType { get; set; }
+
+        [JsonProperty("System.State")]
+        public string State { get; set; }
+
+        [JsonProperty("System.Reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("System.CreatedDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("System.CreatedBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("System.ChangedDate")]
+        public string ChangedDate { get; set; }
+
+        [JsonProperty("System.ChangedBy")]
+        public string ChangedBy { get; set; }
+
+        [JsonProperty("System.Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("System.Description")]
+        public string Description { get; set; }
+
+        [JsonProperty("System.Tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("System.AssignedTo")]
+        public string AssignedTo { get; set; }
+    }
+
+    public class VstsListQueryResultWorkItemResponse
+    {
+        [JsonProperty("value")]
+        public QueryResultWorkItemResponse[] Value { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+    }
+
+    public class QueryResultWorkItemResponse
+    {
+        [JsonProperty("System.Id")]
+        public int Id { get; set; }
+
+        [JsonProperty("System.AreaPath")]
+        public string AreaPath { get; set; }
+
+        [JsonProperty("System.TeamProject")]
+        public string TeamProject { get; set; }
+
+        [JsonProperty("System.IterationPath")]
+        public string IterationPath { get; set; }
+
+        [JsonProperty("System.WorkItemType")]
+        public string WorkItemType { get; set; }
+
+        [JsonProperty("System.State")]
+        public string State { get; set; }
+
+        [JsonProperty("System.Reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("System.CreatedDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("System.CreatedBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("System.ChangedDate")]
+        public string ChangedDate { get; set; }
+
+        [JsonProperty("System.ChangedBy")]
+        public string ChangedBy { get; set; }
+
+        [JsonProperty("System.Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("System.Description")]
+        public string Description { get; set; }
+
+        [JsonProperty("System.Tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("System.AssignedTo")]
+        public string AssignedTo { get; set; }
+    }
+
+    public class VstsListQueryHierarchyItem
+    {
+        [JsonProperty("value")]
+        public QueryHierarchyItem[] Value { get; set; }
+    }
+
+    public class QueryHierarchyItem
+    {
+        public QueryHierarchyItem[] Children { get; set; }
+        public WorkItemQueryClause Clauses { get; set; }
+        public WorkItemFieldReference[] Columns { get; set; }
+        public QueryHierarchyItemFilterOptionsType FilterOptions { get; set; }
+        public bool HasChildren { get; set; }
+        public string Id { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool IsFolder { get; set; }
+        public bool IsInvalidSyntax { get; set; }
+        public bool IsPublic { get; set; }
+        public WorkItemQueryClause LinkClauses { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
+        public QueryHierarchyItemQueryTypeType QueryType { get; set; }
+        public WorkItemQuerySortColumn[] SortColumns { get; set; }
+        public WorkItemQueryClause SourceClauses { get; set; }
+        public WorkItemQueryClause TargetClauses { get; set; }
+        public string Wiql { get; set; }
+
+        [JsonProperty("_links")]
+        public JToken Links { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public class WorkItemQueryClause
+    {
+        public WorkItemQueryClause Clauses { get; set; }
+        public WorkItemFieldReference Field { get; set; }
+        public WorkItemFieldReference FieldValue { get; set; }
+        public bool IsFieldValue { get; set; }
+        public WorkItemQueryClauseLogicalOperatorType LogicalOperator { get; set; }
+        public WorkItemFieldOperation Operator { get; set; }
+        public string Value { get; set; }
+    }
+
+    public class WorkItemFieldReference
+    {
+        public string Name { get; set; }
+        public string ReferenceName { get; set; }
+
+        [JsonProperty("Url")]
+        public string URL { get; set; }
+    }
+
+    public enum WorkItemQueryClauseLogicalOperatorType
+    {
+        NONE,
+        AND,
+        OR
+    }
+
+    public class WorkItemFieldOperation
+    {
+        public string Name { get; set; }
+        public string ReferenceName { get; set; }
+    }
+
+    public enum QueryHierarchyItemFilterOptionsType
+    {
+        WorkItems,
+        LinksOneHopMustContain,
+        LinksOneHopMayContain,
+        LinksOneHopDoesNotContain,
+        LinksRecursiveMustContain,
+        LinksRecursiveMayContain,
+        LinksRecursiveDoesNotContain
+    }
+
+    public enum QueryHierarchyItemQueryTypeType
+    {
+        Flat,
+        Tree,
+        OneHop
+    }
+
+    public class WorkItemQuerySortColumn
+    {
+        public bool Descending { get; set; }
+        public WorkItemFieldReference Field { get; set; }
+    }
+
+    public class Pipeline
+    {
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("value")]
+        public PipelineValueTypeItem[] Value { get; set; }
+    }
+
+    public class PipelineValueTypeItem
+    {
+        [JsonProperty("_links")]
+        public PipelineValueTypeItemLinksType Links { get; set; }
+
+        [JsonProperty("folder")]
+        public string Folder { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("revision")]
+        public int Revision { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class PipelineValueTypeItemLinksType
+    {
+        [JsonProperty("self")]
+        public PipelineValueTypeItemLinksTypeSelfType Self { get; set; }
+
+        [JsonProperty("web")]
+        public PipelineValueTypeItemLinksTypeWebType Web { get; set; }
+    }
+
+    public class PipelineValueTypeItemLinksTypeSelfType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class PipelineValueTypeItemLinksTypeWebType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class Run
+    {
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("value")]
+        public RunValueTypeItem[] Value { get; set; }
+    }
+
+    public class RunValueTypeItem
+    {
+        [JsonProperty("_links")]
+        public RunValueTypeItemLinksType Links { get; set; }
+
+        [JsonProperty("pipeline")]
+        public RunValueTypeItemPipelineType Pipeline { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
+        [JsonProperty("finishedDate")]
+        public string FinishedDate { get; set; }
+    }
+
+    public class RunValueTypeItemLinksType
+    {
+        [JsonProperty("self")]
+        public RunValueTypeItemLinksTypeSelfType Self { get; set; }
+
+        [JsonProperty("web")]
+        public RunValueTypeItemLinksTypeWebType Web { get; set; }
+
+        [JsonProperty("pipeline.web")]
+        public RunValueTypeItemLinksTypePipelineWebType PipelineWeb { get; set; }
+
+        [JsonProperty("pipeline")]
+        public RunValueTypeItemLinksTypePipelineType Pipeline { get; set; }
+    }
+
+    public class RunValueTypeItemLinksTypeSelfType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class RunValueTypeItemLinksTypeWebType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class RunValueTypeItemLinksTypePipelineWebType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class RunValueTypeItemLinksTypePipelineType
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+    }
+
+    public class RunValueTypeItemPipelineType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("revision")]
+        public int Revision { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("folder")]
+        public string Folder { get; set; }
+    }
+
+    public class VstsListBuildResult
+    {
+        [JsonProperty("value")]
+        public BuildResult[] Value { get; set; }
+    }
+
+    public enum resultFilterInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "succeeded")]
+        Succeeded,
+        [EnumMember(Value = "partiallySucceeded")]
+        PartiallySucceeded,
+        [EnumMember(Value = "failed")]
+        Failed,
+        [EnumMember(Value = "canceled")]
+        Canceled
+    }
+
+    public class VstsListGitPush
+    {
+        [JsonProperty("value")]
+        public GitPush[] Value { get; set; }
+    }
+
+    public class GitPush
+    {
+        [JsonProperty("repository")]
+        public GitRepository Repository { get; set; }
+
+        [JsonProperty("pushedBy")]
+        public GitPushUser PushedBy { get; set; }
+
+        [JsonProperty("refUpdates")]
+        public GitRefUpdate[] RefUpdates { get; set; }
+
+        [JsonProperty("pushId")]
+        public int PushId { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+    }
+
+    public class GitPushUser
+    {
+        [JsonProperty("id")]
+        public string PusherId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string PusherName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string PusherUniqueName { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string PusherImageUrl { get; set; }
+    }
+
+    public class GitRefUpdate
+    {
+        [JsonProperty("name")]
+        public string RefName { get; set; }
+
+        [JsonProperty("repositoryId")]
+        public string RepositoryId { get; set; }
+
+        [JsonProperty("oldObjectId")]
+        public string OldCommitId { get; set; }
+
+        [JsonProperty("newObjectId")]
+        public string NewCommitId { get; set; }
+    }
+
+    public class VstsListGitPullRequest
+    {
+        [JsonProperty("value")]
+        public GitPullRequest[] Value { get; set; }
+    }
+
+    public class GitPullRequest
+    {
+        [JsonProperty("repository")]
+        public GitRepository Repository { get; set; }
+
+        [JsonProperty("pullRequestId")]
+        public int PullRequestId { get; set; }
+
+        [JsonProperty("createdBy")]
+        public PullRequestCreatedBy CreatedBy { get; set; }
+
+        [JsonProperty("creationDate")]
+        public string CreationDate { get; set; }
+
+        [JsonProperty("closedDate")]
+        public string ClosedDate { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("sourceRefName")]
+        public string SourceRefName { get; set; }
+
+        [JsonProperty("targetRefName")]
+        public string TargetRefName { get; set; }
+
+        [JsonProperty("isDraft")]
+        public bool IsDraft { get; set; }
+
+        [JsonProperty("reviewers")]
+        public PullRequestReviewer[] Reviewers { get; set; }
+
+        [JsonProperty("reviewerList")]
+        public string ReviewerList { get; set; }
+
+        [JsonProperty("requiredReviewerList")]
+        public string RequiredReviewerList { get; set; }
+
+        [JsonProperty("commits")]
+        public GitCommitRef[] Commits { get; set; }
+
+        [JsonProperty("completionOptions")]
+        public PullRequestCompletionOptions CompletionOptions { get; set; }
+
+        [JsonProperty("mergeOptions")]
+        public PullRequestMergeOptions MergeOptions { get; set; }
+
+        [JsonProperty("mergeFailureMessage")]
+        public string MergeFailureMessage { get; set; }
+
+        [JsonProperty("closedBy")]
+        public PullRequestClosedBy ClosedBy { get; set; }
+
+        [JsonProperty("autoCompleteSetBy")]
+        public PullRequestAutoCompleteSetBy AutoCompleteSetBy { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("remoteUrl")]
+        public string RemoteUrl { get; set; }
+
+        [JsonProperty("artifactId")]
+        public string ArtifactId { get; set; }
+
+        [JsonProperty("mergeId")]
+        public string MergeId { get; set; }
+
+        [JsonProperty("codeReviewId")]
+        public int CodeReviewId { get; set; }
+
+        [JsonProperty("completionQueueTime")]
+        public string CompletionQueueTime { get; set; }
+
+        [JsonProperty("supportsIterations")]
+        public bool SupportsIterations { get; set; }
+    }
+
+    public class PullRequestCreatedBy
+    {
+        [JsonProperty("displayName")]
+        public string CreatedByDisplayName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string CreatedByUniqueName { get; set; }
+
+        [JsonProperty("id")]
+        public string CreatedById { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string CreatedByImageUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string CreatedByUrl { get; set; }
+    }
+
+    public class PullRequestReviewer
+    {
+        [JsonProperty("displayName")]
+        public string ReviewerDisplayName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string ReviewerUniqueName { get; set; }
+
+        [JsonProperty("id")]
+        public string ReviewerId { get; set; }
+
+        [JsonProperty("url")]
+        public string ReviewerUrl { get; set; }
+
+        [JsonProperty("hasDeclined")]
+        public bool HasDeclined { get; set; }
+
+        [JsonProperty("isFlagged")]
+        public bool IsFlagged { get; set; }
+
+        [JsonProperty("isRequired")]
+        public bool IsRequired { get; set; }
+
+        [JsonProperty("vote")]
+        public int Vote { get; set; }
+
+        [JsonProperty("votedFor")]
+        public PullRequestReviewer[] VotedFor { get; set; }
+    }
+
+    public class GitCommitRef
+    {
+        [JsonProperty("author")]
+        public CommitGitUserDate Author { get; set; }
+
+        [JsonProperty("comment")]
+        public string CommitComment { get; set; }
+
+        [JsonProperty("commentTruncated")]
+        public string CommitCommentTruncated { get; set; }
+
+        [JsonProperty("commitId")]
+        public string CommitId { get; set; }
+
+        [JsonProperty("committer")]
+        public CommitGitUserDate Committer { get; set; }
+
+        [JsonProperty("parents")]
+        public string[] Parents { get; set; }
+
+        [JsonProperty("remoteUrl")]
+        public string CommitRemoteUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string CommitUrl { get; set; }
+    }
+
+    public class CommitGitUserDate
+    {
+        [JsonProperty("date")]
+        public string CommitUserDate { get; set; }
+
+        [JsonProperty("email")]
+        public string CommitUserEmail { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string CommitImageUrl { get; set; }
+
+        [JsonProperty("name")]
+        public string CommitUserName { get; set; }
+    }
+
+    public class PullRequestCompletionOptions
+    {
+        [JsonProperty("autoCompleteIgnoreConfigIds")]
+        public int[] AutoCompleteIgnoreConfigIds { get; set; }
+
+        [JsonProperty("bypassPolicy")]
+        public bool BypassPolicy { get; set; }
+
+        [JsonProperty("bypassReason")]
+        public string BypassReason { get; set; }
+
+        [JsonProperty("deleteSourceBranch")]
+        public bool DeleteSourceBranch { get; set; }
+
+        [JsonProperty("mergeCommitMessage")]
+        public string MergeCommitMessage { get; set; }
+
+        [JsonProperty("mergeStrategy")]
+        public PullRequestMergeStrategy MergeStrategy { get; set; }
+
+        [JsonProperty("squashMerge")]
+        public bool SquashMerge { get; set; }
+
+        [JsonProperty("transitionWorkItems")]
+        public bool TransitionWorkItems { get; set; }
+    }
+
+    public class PullRequestMergeStrategy
+    {
+        [JsonProperty("conflictAuthorshipCommits")]
+        public bool ConflictAuthorshipCommits { get; set; }
+
+        [JsonProperty("detectRenameFalsePositives")]
+        public bool DetectRenameFalsePositives { get; set; }
+
+        [JsonProperty("disableRenames")]
+        public bool DisableRenames { get; set; }
+    }
+
+    public class PullRequestMergeOptions
+    {
+        [JsonProperty("noFastForward")]
+        public string NoFastForward { get; set; }
+
+        [JsonProperty("rebase")]
+        public string Rebase { get; set; }
+
+        [JsonProperty("rebaseMerge")]
+        public string RebaseMerge { get; set; }
+
+        [JsonProperty("squash")]
+        public string Squash { get; set; }
+    }
+
+    public class PullRequestClosedBy
+    {
+        [JsonProperty("displayName")]
+        public string ClosedByDisplayName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string ClosedByUniqueName { get; set; }
+
+        [JsonProperty("id")]
+        public string ClosedById { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ClosedByImageUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string ClosedByUrl { get; set; }
+    }
+
+    public class PullRequestAutoCompleteSetBy
+    {
+        [JsonProperty("displayName")]
+        public string AutoCompleteSetByDisplayName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string AutoCompleteSetByUniqueName { get; set; }
+
+        [JsonProperty("id")]
+        public string AutoCompleteSetById { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string AutoCompleteSetByImageUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string AutoCompleteSetByUrl { get; set; }
+    }
+
+    public class VstsListTfvcChangeset
+    {
+        [JsonProperty("value")]
+        public TfvcChangeset[] Value { get; set; }
+    }
+
+    public class TfvcChangeset
+    {
+        [JsonProperty("changesetId")]
+        public int ChangesetId { get; set; }
+
+        [JsonProperty("author")]
+        public ChangesetAuthor Author { get; set; }
+
+        [JsonProperty("checkedInBy")]
+        public ChangesetCheckedInBy CheckedInBy { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class ChangesetAuthor
+    {
+        [JsonProperty("displayName")]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string AuthorUniqueName { get; set; }
+    }
+
+    public class ChangesetCheckedInBy
+    {
+        [JsonProperty("displayName")]
+        public string CheckedInByName { get; set; }
+
+        [JsonProperty("uniqueName")]
+        public string CheckedInByUniqueName { get; set; }
+    }
+
+    public class VstsListTriggerWorkItemResponse
+    {
+        [JsonProperty("value")]
+        public TriggerWorkItemResponse[] Value { get; set; }
+    }
+
+    public class TriggerWorkItemResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("rev")]
+        public int RevisionCount { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
+    }
+
+    public enum areaPathComparisonInput
+    {
+        Equals,
+        Under
+    }
+
+    public enum iterationPathComparisonInput
+    {
+        Equals,
+        Under
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices;
+
+    public partial class WorkflowManagedActions
+    {
+        public VisualstudioteamservicesActions Visualstudioteamservices(string connectionId) => new VisualstudioteamservicesActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public VisualstudioteamservicesTriggers Visualstudioteamservices(string connectionId) => new VisualstudioteamservicesTriggers(connectionId);
+    }
+}
