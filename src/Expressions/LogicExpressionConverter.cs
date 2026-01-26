@@ -193,6 +193,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 throw new NotImplementedException();
             }
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IBodyWorkflowTrigger<>)))
+            {
+                if (e.Member.Name.Equals("TriggerBody"))
+                {
+                    return new NullableNode
+                    {
+                        Inner = new FunctionCallNode
+                        {
+                            FunctionName = "triggerBody"
+                        }
+                    };
+                }
+
+                throw new NotImplementedException();
+            }
             else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IBodyWorkflowAction<>)))
             {
                 if (e.Member.Name != "Body")
@@ -584,6 +599,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
 
             throw new NotImplementedException($"Visit method not implemented for expression type: {e.NodeType}");
+        }
+
+        /// <summary>
+        /// Visits a member initialization expression.
+        /// </summary>
+        /// <param name="e">The member initialization expression to visit.</param>
+        /// <param name="p">Additional parameter (not used).</param>
+        public override LogicAppExpressionNode Visit(MemberInitExpression e, object p)
+        {
+            // Build a JSON object string using concat
+            // Format: {"prop1": value1, "prop2": value2, ...}
+            var concatArgs = new List<LogicAppExpressionNode>();
+
+            concatArgs.Add(new LiteralNode
+            {
+                Type = typeof(string),
+                Value = "{"
+            });
+
+            var bindings = e.Bindings.OfType<MemberAssignment>().ToList();
+            for (int i = 0; i < bindings.Count; i++)
+            {
+                var binding = bindings[i];
+                var propertyName = GetPropertyName(null, binding.Member);
+                var valueNode = binding.Expression.Visit(this, p);
+
+                // Add property name with quotes
+                concatArgs.Add(new LiteralNode
+                {
+                    Type = typeof(string),
+                    Value = $"\"{propertyName}\":"
+                });
+
+                // Wrap string values in quotes, others get converted directly
+                var memberType = GetMemberType(binding.Member);
+                if (memberType == typeof(string))
+                {
+                    concatArgs.Add(new LiteralNode
+                    {
+                        Type = typeof(string),
+                        Value = "\""
+                    });
+                    concatArgs.Add(valueNode);
+                    concatArgs.Add(new LiteralNode
+                    {
+                        Type = typeof(string),
+                        Value = "\""
+                    });
+                }
+                else
+                {
+                    concatArgs.Add(valueNode);
+                }
+
+                // Add comma separator if not the last property
+                if (i < bindings.Count - 1)
+                {
+                    concatArgs.Add(new LiteralNode
+                    {
+                        Type = typeof(string),
+                        Value = ","
+                    });
+                }
+            }
+
+            concatArgs.Add(new LiteralNode
+            {
+                Type = typeof(string),
+                Value = "}"
+            });
+
+            return new FunctionCallNode
+            {
+                FunctionName = "concat",
+                Type = e.Type,
+                Arguments = concatArgs.ToArray()
+            };
         }
     }
 }

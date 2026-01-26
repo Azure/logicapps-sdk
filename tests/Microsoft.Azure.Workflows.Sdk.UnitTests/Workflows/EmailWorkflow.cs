@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddEmailWorkflow()
         {
             // Create Office365 trigger that fires when a new email arrives
-            var trigger = WorkflowTriggers.Managed.Office365("outlook").OnNewEmailV3();
+            var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmailV3();
             var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("GetEmailWorkflow", trigger);
 
             // Compose action to output the email body content
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent
             {
-                Subject = trigger.TriggerOutput.Value[0].Subject,
-                Body = trigger.TriggerOutput.Value[0].Body,
-                From = trigger.TriggerOutput.Value[0].From,
-                ReceivedTime = trigger.TriggerOutput.Value[0].ReceivedTime
+                Subject = trigger.TriggerBody.Value[0].Subject,
+                Body = trigger.TriggerBody.Value[0].Body,
+                From = trigger.TriggerBody.Value[0].From,
+                ReceivedTime = trigger.TriggerBody.Value[0].ReceivedTime
             }.ToString());
             builder.AddAction(compose, "ComposeEmailContent");
         }

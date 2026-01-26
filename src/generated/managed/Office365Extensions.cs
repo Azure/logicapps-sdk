@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var optionsEmailSubscription = new JObject();
             var optionsEmailSubscriptionpropCount = 0;
-            optionsEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            optionsEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             optionsEmailSubscriptionpropCount++;
             var MessageObject = new JObject();
             var MessageObjectpropCount = 0;
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var approvalEmailSubscription = new JObject();
             var approvalEmailSubscriptionpropCount = 0;
-            approvalEmailSubscription["NotificationUrl"] = "@listcallbackurl()";
+            approvalEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             approvalEmailSubscriptionpropCount++;
             var MessageObject = new JObject();
             var MessageObjectpropCount = 0;
@@ -1515,33 +1515,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
             var businessAddressObject = new JObject();
             var businessAddressObjectpropCount = 0;
-            if (itembusinessAddressstreet != null)
+            if (itemhomeAddressstreet != null)
             {
-                businessAddressObject["street"] = ExpressionConverter.ConvertO(itembusinessAddressstreet);
+                businessAddressObject["street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresscity != null)
+            if (itemhomeAddresscity != null)
             {
-                businessAddressObject["city"] = ExpressionConverter.ConvertO(itembusinessAddresscity);
+                businessAddressObject["city"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddressstate != null)
+            if (itemhomeAddressstate != null)
             {
-                businessAddressObject["state"] = ExpressionConverter.ConvertO(itembusinessAddressstate);
+                businessAddressObject["state"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresscountryOrRegion != null)
+            if (itemhomeAddresscountryOrRegion != null)
             {
-                businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itembusinessAddresscountryOrRegion);
+                businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresspostalCode != null)
+            if (itemhomeAddresspostalCode != null)
             {
-                businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(itembusinessAddresspostalCode);
+                businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
                 businessAddressObjectpropCount++;
             }
 
@@ -1553,33 +1553,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
             var otherAddressObject = new JObject();
             var otherAddressObjectpropCount = 0;
-            if (itemotherAddressstreet != null)
+            if (itemhomeAddressstreet != null)
             {
-                otherAddressObject["street"] = ExpressionConverter.ConvertO(itemotherAddressstreet);
+                otherAddressObject["street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresscity != null)
+            if (itemhomeAddresscity != null)
             {
-                otherAddressObject["city"] = ExpressionConverter.ConvertO(itemotherAddresscity);
+                otherAddressObject["city"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddressstate != null)
+            if (itemhomeAddressstate != null)
             {
-                otherAddressObject["state"] = ExpressionConverter.ConvertO(itemotherAddressstate);
+                otherAddressObject["state"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresscountryOrRegion != null)
+            if (itemhomeAddresscountryOrRegion != null)
             {
-                otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemotherAddresscountryOrRegion);
+                otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresspostalCode != null)
+            if (itemhomeAddresspostalCode != null)
             {
-                otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemotherAddresspostalCode);
+                otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
                 otherAddressObjectpropCount++;
             }
 
@@ -1846,33 +1846,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
             var businessAddressObject = new JObject();
             var businessAddressObjectpropCount = 0;
-            if (itembusinessAddressstreet != null)
+            if (itemhomeAddressstreet != null)
             {
-                businessAddressObject["street"] = ExpressionConverter.ConvertO(itembusinessAddressstreet);
+                businessAddressObject["street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresscity != null)
+            if (itemhomeAddresscity != null)
             {
-                businessAddressObject["city"] = ExpressionConverter.ConvertO(itembusinessAddresscity);
+                businessAddressObject["city"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddressstate != null)
+            if (itemhomeAddressstate != null)
             {
-                businessAddressObject["state"] = ExpressionConverter.ConvertO(itembusinessAddressstate);
+                businessAddressObject["state"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresscountryOrRegion != null)
+            if (itemhomeAddresscountryOrRegion != null)
             {
-                businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itembusinessAddresscountryOrRegion);
+                businessAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
                 businessAddressObjectpropCount++;
             }
 
-            if (itembusinessAddresspostalCode != null)
+            if (itemhomeAddresspostalCode != null)
             {
-                businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(itembusinessAddresspostalCode);
+                businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
                 businessAddressObjectpropCount++;
             }
 
@@ -1884,33 +1884,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
             var otherAddressObject = new JObject();
             var otherAddressObjectpropCount = 0;
-            if (itemotherAddressstreet != null)
+            if (itemhomeAddressstreet != null)
             {
-                otherAddressObject["street"] = ExpressionConverter.ConvertO(itemotherAddressstreet);
+                otherAddressObject["street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresscity != null)
+            if (itemhomeAddresscity != null)
             {
-                otherAddressObject["city"] = ExpressionConverter.ConvertO(itemotherAddresscity);
+                otherAddressObject["city"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddressstate != null)
+            if (itemhomeAddressstate != null)
             {
-                otherAddressObject["state"] = ExpressionConverter.ConvertO(itemotherAddressstate);
+                otherAddressObject["state"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresscountryOrRegion != null)
+            if (itemhomeAddresscountryOrRegion != null)
             {
-                otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemotherAddresscountryOrRegion);
+                otherAddressObject["countryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
                 otherAddressObjectpropCount++;
             }
 
-            if (itemotherAddresspostalCode != null)
+            if (itemhomeAddresspostalCode != null)
             {
-                otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemotherAddresspostalCode);
+                otherAddressObject["postalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
                 otherAddressObjectpropCount++;
             }
 
@@ -2189,7 +2189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class Office365Triggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEventsV3(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEventsV3(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/Events/OnUpcomingEvents";
             var apiCallHttpMethod = "get";
@@ -2198,12 +2198,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
             if (lookAheadTimeInMinutes != null)
                 callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
-            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v3/Mail/OnNewEmail"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2226,6 +2236,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/GraphMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2237,7 +2257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -2247,9 +2267,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v3/Mail/OnFlaggedEmail"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2272,6 +2302,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/GraphFlaggedMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2283,7 +2323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -2293,9 +2333,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV4(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmailV4(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v4/Mail/OnFlaggedEmail"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2318,6 +2368,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/GraphFlaggedMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
@@ -2329,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -2339,9 +2399,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewMentionMeEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewMentionMeEmailV3(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/v3/Mail/OnNewMentionMeEmail"
+                },
+                Method = "get",
+            };
             if (folderPath != null)
                 input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
             if (to != null)
@@ -2363,6 +2433,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/GraphMentionMeMailSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             if (folderPath != null)
                 input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
             input.Subscribe.Queries["importance"] = Convert.ToString("Any");
@@ -2373,7 +2453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -2383,7 +2463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
         }
 
-        public IOutputWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> SharedMailboxOnNewEmailV2(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> SharedMailboxOnNewEmailV2(Expression<Func<string>> mailboxAddress, Expression<Func<string>> folderId = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> hasAttachments = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/SharedMailbox/Mail/OnNewEmail";
             var apiCallHttpMethod = "get";
@@ -2411,10 +2491,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
             if (subjectFilter != null)
                 callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload);
+            return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnNewItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnNewItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -2425,10 +2505,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
             if (skip != null)
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnUpdatedItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> CalendarGetOnUpdatedItemsV3(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -2439,18 +2519,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
             if (skip != null)
                 callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload);
+            return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<GraphCalendarEventListWithActionType> CalendarGetOnChangedItemsV3(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListWithActionType> CalendarGetOnChangedItemsV3(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
+            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/datasets/calendars/v3/tables/{0}/onchangeditems"
+                },
+                Method = "get",
+            };
             input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
             if (incomingDays != null)
                 input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
             input.Fetch.Queries["pastDays"] = Convert.ToString(50);
             if (pastDays != null)
                 input.Fetch.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
+            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
+            {
+                Queries = new Dictionary<string, string>(),
+                Headers = new Dictionary<string, string>(),
+                PathTemplate = new PathTemplate
+                {
+                    Template = "/{0}/GraphEventSubscriptionPoke/$subscriptions"
+                },
+                Method = "post",
+            };
             input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
             if (incomingDays != null)
                 input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
@@ -2459,7 +2559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listcallbackurl()";
+            subscription["NotificationUrl"] = "@listCallbackUrl()";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {

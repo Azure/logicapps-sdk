@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
             this._inputs = input;
-            this.Name = triggerName;
+            this.Name = triggerName ?? "ApiConnectionTrigger";
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a generic API connection trigger with typed output in a workflow.
     /// </summary>
     /// <typeparam name="T">The type of the trigger output.</typeparam>
-    public class ApiConnectionTrigger<T> : ApiConnectionTrigger, IOutputWorkflowTrigger<T>
+    public class ApiConnectionTrigger<T> : ApiConnectionTrigger, IBodyWorkflowTrigger<T>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with notification input.
@@ -121,6 +121,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the typed output of the trigger.
         /// </summary>
-        public T TriggerOutput { get; private set; }
+        public T TriggerBody { get; private set; }
     }
 }

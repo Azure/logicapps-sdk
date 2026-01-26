@@ -17,28 +17,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddServiceBusQueueWorkflow()
         {
             // Create Service Bus trigger that fires when a new message arrives in the queue
-            /*var trigger = WorkflowTriggers.Managed.Servicebus("servicebus").GetMessageFromQueue(
-                queueName: () => "my-queue");
-            trigger.WithName("When_a_message_is_received_in_a_queue");
-            trigger.WithRecurrence(new FlowRecurrence
-            {
-                Frequency = FlowRecurrenceFrequency.Minute,
-                Interval = 1
-            });
+            var trigger = WorkflowTriggers.Managed.Servicebus("servicebus").GetMessageFromQueue(
+                queueName: () => "my-queue",
+                triggerName: "When_a_message_is_received_in_a_queue");
 
             var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("ServiceBusQueueWorkflow", trigger);
 
             // Compose action to process the message content
             var processMessage = WorkflowActions.BuiltIn.Compose(() => new
             {
-                MessageId = trigger.TriggerOutput.MessageId,
-                Content = trigger.TriggerOutput.Content,
-                ContentType = trigger.TriggerOutput.ContentType,
-                SessionId = trigger.TriggerOutput.SessionId,
-                CorrelationId = trigger.TriggerOutput.CorrelationId,
-                Label = trigger.TriggerOutput.Label
+                MessageId = trigger.TriggerBody.MessageId,
+                Content = trigger.TriggerBody.Content,
+                ContentType = trigger.TriggerBody.ContentType,
+                SessionId = trigger.TriggerBody.SessionId,
+                CorrelationId = trigger.TriggerBody.CorrelationId,
+                Label = trigger.TriggerBody.Label
             });
-            builder.AddAction(processMessage, "Process_Message");*/
+            builder.AddAction(processMessage, "Process_Message");
         }
     }
 }

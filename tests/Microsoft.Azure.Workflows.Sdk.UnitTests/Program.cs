@@ -22,11 +22,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             NestedWorkflow.AddNestedWorkflow();
 
             RecurrenceWorkflow.AddRecurrenceWorkflow();
-            //EmailWorkflow.AddEmailWorkflow();
+            EmailWorkflow.AddEmailWorkflow();
 
             WeatherWorkflow.AddWeatherWorkflow();
 
             SerivceNowWorkflow.AddWorkflow();
+
+            ServiceBusWorkflow.AddServiceBusQueueWorkflow();
+
             var workflowArtifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
 
             foreach (var workflow in workflowArtifacts.Flows)

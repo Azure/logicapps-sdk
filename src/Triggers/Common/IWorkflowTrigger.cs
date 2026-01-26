@@ -34,4 +34,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         T TriggerOutput { get; }
     }
+
+    /// <summary>
+    /// Extends IWorkflowAction to support actions with strongly-typed bodies for managed connectors.
+    /// </summary>
+    /// <typeparam name="T">The type of the output body returned by the trigger.</typeparam>
+    public interface IBodyWorkflowTrigger<T> : IWorkflowTrigger
+    {
+        /// <summary>
+        /// Gets the body of the trigger.
+        /// </summary>
+        T TriggerBody { get; }
+    }
 }
