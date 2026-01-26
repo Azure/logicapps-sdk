@@ -411,34 +411,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class TeamsTriggers([ConnectionName] string connectionId)
     {
-        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload);
+            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload);
+            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
@@ -447,63 +447,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
             callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(runningPolicy);
             callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookChatMessageTrigger()
+        public IWorkflowTrigger WebhookChatMessageTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/beta/subscriptions/chatmessagetrigger";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var chatMessageSubscriptionRequest = new JObject();
             var chatMessageSubscriptionRequestpropCount = 0;
-            chatMessageSubscriptionRequest["notificationUrl"] = "@listcallbackurl()";
+            chatMessageSubscriptionRequest["notificationUrl"] = "@listCallbackUrl()";
             chatMessageSubscriptionRequestpropCount++;
             if (chatMessageSubscriptionRequestpropCount > 0)
             {
                 callPayload.Body = chatMessageSubscriptionRequest;
             }
 
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
             callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null)
+        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipRemoval(Expression<Func<string>> groupId)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipRemoval(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/removal";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
             callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload);
+            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IOutputWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipAdd(Expression<Func<string>> groupId)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipAdd(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/delta";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
             callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload);
+            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
         }
     }
 
