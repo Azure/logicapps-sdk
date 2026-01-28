@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Sample workflow that triggers when a new email arrives and composes its content.
@@ -37,9 +38,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// </summary>
     public class EmailContent
     {
-        public string Subject { get; set; }
-        public string Body { get; set; }
-        public string From { get; set; }
-        public string ReceivedTime { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string Subject { get; set; } = string.Empty;
+
+        [JsonProperty(Required = Required.Default)]
+        public string Body { get; set; } = string.Empty;
+
+        [JsonProperty(Required = Required.Default)]
+        public string From { get; set; } = string.Empty;
+
+        [JsonProperty(Required = Required.Default)]
+        public string ReceivedTime { get; set; } = string.Empty;
     }
 }

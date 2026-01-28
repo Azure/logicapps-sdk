@@ -490,65 +490,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 bodypropCount++;
             }
 
-            var rsvp_dateObject = new JObject();
-            var rsvp_dateObjectpropCount = 0;
+            var rsvpDateObject = new JObject();
+            var rsvpDateObjectpropCount = 0;
             if (bodyrSVPDateday != null)
             {
-                rsvp_dateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
+                rsvpDateObjectpropCount++;
             }
 
             if (bodyrSVPDatemonth != null)
             {
-                rsvp_dateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
+                rsvpDateObjectpropCount++;
             }
 
             if (bodyrSVPDateyear != null)
             {
-                rsvp_dateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
+                rsvpDateObjectpropCount++;
             }
 
-            if (rsvp_dateObjectpropCount > 0)
+            if (rsvpDateObjectpropCount > 0)
             {
-                body["rsvp_date"] = rsvp_dateObject;
+                body["rsvp_date"] = rsvpDateObject;
                 bodypropCount++;
             }
 
-            var invitation_dateObject = new JObject();
-            var invitation_dateObjectpropCount = 0;
+            var invitationDateObject = new JObject();
+            var invitationDateObjectpropCount = 0;
             if (bodyinvitationDateday != null)
             {
-                invitation_dateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
+                invitationDateObjectpropCount++;
             }
 
             if (bodyinvitationDatemonth != null)
             {
-                invitation_dateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
+                invitationDateObjectpropCount++;
             }
 
             if (bodyinvitationDateyear != null)
             {
-                invitation_dateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
+                invitationDateObjectpropCount++;
             }
 
-            if (invitation_dateObjectpropCount > 0)
+            if (invitationDateObjectpropCount > 0)
             {
-                body["invitation_date"] = invitation_dateObject;
+                body["invitation_date"] = invitationDateObject;
                 bodypropCount++;
             }
 
-            var participation_levelObject = new JObject();
-            var participation_levelObjectpropCount = 0;
-            participation_levelObjectpropCount++;
-            participation_levelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
-            if (participation_levelObjectpropCount > 0)
+            var participationLevelObject = new JObject();
+            var participationLevelObjectpropCount = 0;
+            participationLevelObjectpropCount++;
+            participationLevelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
+            if (participationLevelObjectpropCount > 0)
             {
-                body["participation_level"] = participation_levelObject;
+                body["participation_level"] = participationLevelObject;
                 bodypropCount++;
             }
 
@@ -631,65 +631,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 bodypropCount++;
             }
 
-            var rsvp_dateObject = new JObject();
-            var rsvp_dateObjectpropCount = 0;
+            var rsvpDateObject = new JObject();
+            var rsvpDateObjectpropCount = 0;
             if (bodyrSVPDateday != null)
             {
-                rsvp_dateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
+                rsvpDateObjectpropCount++;
             }
 
             if (bodyrSVPDatemonth != null)
             {
-                rsvp_dateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
+                rsvpDateObjectpropCount++;
             }
 
             if (bodyrSVPDateyear != null)
             {
-                rsvp_dateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
-                rsvp_dateObjectpropCount++;
+                rsvpDateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
+                rsvpDateObjectpropCount++;
             }
 
-            if (rsvp_dateObjectpropCount > 0)
+            if (rsvpDateObjectpropCount > 0)
             {
-                body["rsvp_date"] = rsvp_dateObject;
+                body["rsvp_date"] = rsvpDateObject;
                 bodypropCount++;
             }
 
-            var invitation_dateObject = new JObject();
-            var invitation_dateObjectpropCount = 0;
+            var invitationDateObject = new JObject();
+            var invitationDateObjectpropCount = 0;
             if (bodyinvitationDateday != null)
             {
-                invitation_dateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
+                invitationDateObjectpropCount++;
             }
 
             if (bodyinvitationDatemonth != null)
             {
-                invitation_dateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
+                invitationDateObjectpropCount++;
             }
 
             if (bodyinvitationDateyear != null)
             {
-                invitation_dateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
-                invitation_dateObjectpropCount++;
+                invitationDateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
+                invitationDateObjectpropCount++;
             }
 
-            if (invitation_dateObjectpropCount > 0)
+            if (invitationDateObjectpropCount > 0)
             {
-                body["invitation_date"] = invitation_dateObject;
+                body["invitation_date"] = invitationDateObject;
                 bodypropCount++;
             }
 
-            var participation_levelObject = new JObject();
-            var participation_levelObjectpropCount = 0;
-            participation_levelObjectpropCount++;
-            participation_levelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
-            if (participation_levelObjectpropCount > 0)
+            var participationLevelObject = new JObject();
+            var participationLevelObjectpropCount = 0;
+            participationLevelObjectpropCount++;
+            participationLevelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
+            if (participationLevelObjectpropCount > 0)
             {
-                body["participation_level"] = participation_levelObject;
+                body["participation_level"] = participationLevelObject;
                 bodypropCount++;
             }
 

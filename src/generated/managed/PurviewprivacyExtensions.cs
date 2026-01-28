@@ -71,6 +71,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Purviewprivacy
 
     public class PurviewprivacyTriggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger DsarEvent(string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/pa/webhooks";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            propertiesObject["callbackUrl"] = "@listCallbackUrl()";
+            propertiesObjectpropCount++;
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class DsarDetailsSchema

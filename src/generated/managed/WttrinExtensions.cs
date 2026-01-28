@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         [EnumMember(Value = "n")]
         NarrowVersionOnlyDayAndNight,
         [EnumMember(Value = "q")]
-        QuietVersionNo"WeatherReport"Text,
+        QuietVersionNoWeatherReportText,
         [EnumMember(Value = "Q")]
-        SuperquietVersionNo"WeatherReport"NoCityName,
+        SuperquietVersionNoWeatherReportNoCityName,
         [EnumMember(Value = "T")]
         SwitchTerminalSequencesOffNoColors
     }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
     public class SigmaconsocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ProcessjobResponse> Processjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyProcess, Expression<Func<string>> bodyAction, Expression<Func<string>> bodyCustomerCode, Expression<Func<bool>> bodyWaitForResult = null)
+        public IBodyWorkflowAction<ProcessjobResponse> Processjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyprocess, Expression<Func<string>> bodyaction, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var apiCallPath = "/api/job/process";
             var apiCallHttpMethod = "post";
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Process"] = ExpressionConverter.ConvertO(bodyProcess);
+            body["Process"] = ExpressionConverter.ConvertO(bodyprocess);
             bodypropCount++;
-            body["Action"] = ExpressionConverter.ConvertO(bodyAction);
+            body["Action"] = ExpressionConverter.ConvertO(bodyaction);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodyCustomerCode);
-            if (bodyWaitForResult != null)
+            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodyWaitForResult);
+                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ConsolidationjobResponse> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyConsoCode, Expression<Func<string>> bodyCustomerCode, Expression<Func<bool>> bodyWaitForResult = null)
+        public IBodyWorkflowAction<ConsolidationjobResponse> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyconsoCode, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var apiCallPath = "/api/job/consolidation";
             var apiCallHttpMethod = "post";
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ConsoCode"] = ExpressionConverter.ConvertO(bodyConsoCode);
+            body["ConsoCode"] = ExpressionConverter.ConvertO(bodyconsoCode);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodyCustomerCode);
-            if (bodyWaitForResult != null)
+            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodyWaitForResult);
+                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ScheduledjobResponse> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyJobScheduleName, Expression<Func<string>> bodyCustomerCode, Expression<Func<bool>> bodyWaitForResult = null)
+        public IBodyWorkflowAction<ScheduledjobResponse> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyjobScheduleName, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var apiCallPath = "/api/job/scheduledjob";
             var apiCallHttpMethod = "post";
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["JobScheduleName"] = ExpressionConverter.ConvertO(bodyJobScheduleName);
+            body["JobScheduleName"] = ExpressionConverter.ConvertO(bodyjobScheduleName);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodyCustomerCode);
-            if (bodyWaitForResult != null)
+            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
+            if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodyWaitForResult);
+                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
                 bodypropCount++;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ImportFileResponse> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyImportStructureCode, Expression<Func<string>> bodyCustomerCode, Expression<Func<string>> bodyBase64File, Expression<Func<bool>> bodyWaitForResult = null)
+        public IBodyWorkflowAction<ImportFileResponse> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyimportStructureCode, Expression<Func<string>> bodycustomerCode, Expression<Func<string>> bodybase64File, Expression<Func<bool>> bodywaitForResult = null)
         {
             var apiCallPath = "/api/hub/import";
             var apiCallHttpMethod = "post";
@@ -104,14 +104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ImportStructureCode"] = ExpressionConverter.ConvertO(bodyImportStructureCode);
+            body["ImportStructureCode"] = ExpressionConverter.ConvertO(bodyimportStructureCode);
             bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodyCustomerCode);
+            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
             bodypropCount++;
-            body["Base64File"] = ExpressionConverter.ConvertO(bodyBase64File);
-            if (bodyWaitForResult != null)
+            body["Base64File"] = ExpressionConverter.ConvertO(bodybase64File);
+            if (bodywaitForResult != null)
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodyWaitForResult);
+                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
                 bodypropCount++;
             }
 

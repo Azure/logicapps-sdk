@@ -158,6 +158,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<TagAddResponse> TagAdd(Expression<Func<string>> bodytagname = null)
+        {
+            var apiCallPath = "/tags";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var tagObject = new JObject();
+            var tagObjectpropCount = 0;
+            if (bodytagname != null)
+            {
+                tagObject["name"] = ExpressionConverter.ConvertO(bodytagname);
+                tagObjectpropCount++;
+            }
+
+            if (tagObjectpropCount > 0)
+            {
+                body["tag"] = tagObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<TagAddResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubResponse> TagSub(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
         {
             var apiCallPath = String.Format("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
@@ -352,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodypublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
         {
             var apiCallPath = "/broadcasts";
             var apiCallHttpMethod = "post";
@@ -389,9 +419,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
                 bodypropCount++;
             }
 
-            if (bodypublic != null)
+            if (bodyPublic != null)
             {
-                body["public"] = ExpressionConverter.ConvertO(bodypublic);
+                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
                 bodypropCount++;
             }
 
@@ -437,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodypublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
         {
             var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
             var apiCallHttpMethod = "put";
@@ -474,9 +504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
                 bodypropCount++;
             }
 
-            if (bodypublic != null)
+            if (bodyPublic != null)
             {
-                body["public"] = ExpressionConverter.ConvertO(bodypublic);
+                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
                 bodypropCount++;
             }
 
@@ -539,6 +569,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
             if (page != null)
                 callPayload.Queries["page"] = ExpressionConverter.Convert(page);
             return new ApiConnectionAction<PurchaseListResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd(Expression<Func<string>> bodypurchasetransactionId = null, Expression<Func<string>> bodypurchaseemailAddress = null, Expression<Func<string>> bodypurchasefirstName = null, Expression<Func<string>> bodypurchasecurrency = null, Expression<Func<string>> bodypurchasetransactionTime = null, Expression<Func<int>> bodypurchasesubtotal = null, Expression<Func<int>> bodypurchasetax = null, Expression<Func<int>> bodypurchaseshipping = null, Expression<Func<int>> bodypurchasediscount = null, Expression<Func<int>> bodypurchasetotal = null, Expression<Func<string>> bodypurchasestatus = null, Expression<Func<bodypurchaseproductsInputItem[]>> bodypurchaseproducts = null)
+        {
+            var apiCallPath = "/purchases";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var purchaseObject = new JObject();
+            var purchaseObjectpropCount = 0;
+            if (bodypurchasetransactionId != null)
+            {
+                purchaseObject["transaction_id"] = ExpressionConverter.ConvertO(bodypurchasetransactionId);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchaseemailAddress != null)
+            {
+                purchaseObject["email_address"] = ExpressionConverter.ConvertO(bodypurchaseemailAddress);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasefirstName != null)
+            {
+                purchaseObject["first_name"] = ExpressionConverter.ConvertO(bodypurchasefirstName);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasecurrency != null)
+            {
+                purchaseObject["currency"] = ExpressionConverter.ConvertO(bodypurchasecurrency);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasetransactionTime != null)
+            {
+                purchaseObject["transaction_time"] = ExpressionConverter.ConvertO(bodypurchasetransactionTime);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasesubtotal != null)
+            {
+                purchaseObject["subtotal"] = ExpressionConverter.ConvertO(bodypurchasesubtotal);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasetax != null)
+            {
+                purchaseObject["tax"] = ExpressionConverter.ConvertO(bodypurchasetax);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchaseshipping != null)
+            {
+                purchaseObject["shipping"] = ExpressionConverter.ConvertO(bodypurchaseshipping);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasediscount != null)
+            {
+                purchaseObject["discount"] = ExpressionConverter.ConvertO(bodypurchasediscount);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasetotal != null)
+            {
+                purchaseObject["total"] = ExpressionConverter.ConvertO(bodypurchasetotal);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchasestatus != null)
+            {
+                purchaseObject["status"] = ExpressionConverter.ConvertO(bodypurchasestatus);
+                purchaseObjectpropCount++;
+            }
+
+            if (bodypurchaseproducts != null)
+            {
+                purchaseObject["products"] = ExpressionConverter.ConvertO(bodypurchaseproducts);
+                purchaseObjectpropCount++;
+            }
+
+            if (purchaseObjectpropCount > 0)
+            {
+                body["purchase"] = purchaseObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<PurchaseAddResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -899,6 +1025,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class TagAddResponse
+    {
+        [JsonProperty("account_id")]
+        public int AccountId { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("deleted_at")]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
     }
 
     public class TagSubResponse
@@ -1456,6 +1606,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class PurchaseAddResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("transaction_id")]
+        public string TransactionId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("transaction_time")]
+        public string TransactionTime { get; set; }
+
+        [JsonProperty("subtotal")]
+        public int Subtotal { get; set; }
+
+        [JsonProperty("discount")]
+        public int Discount { get; set; }
+
+        [JsonProperty("tax")]
+        public int Tax { get; set; }
+
+        [JsonProperty("shipping")]
+        public int Shipping { get; set; }
+
+        [JsonProperty("total")]
+        public int Total { get; set; }
+
+        [JsonProperty("products")]
+        public PurchaseAddResponseProductsTypeItem[] Products { get; set; }
+    }
+
+    public class PurchaseAddResponseProductsTypeItem
+    {
+        [JsonProperty("unit_price")]
+        public int UnitPrice { get; set; }
+
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+
+        [JsonProperty("sku")]
+        public string Sku { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class bodypurchaseproductsInputItem
+    {
+        [JsonProperty("pid")]
+        public int Pid { get; set; }
+
+        [JsonProperty("lid")]
+        public int Lid { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("sku")]
+        public string Sku { get; set; }
+
+        [JsonProperty("unit_price")]
+        public int UnitPrice { get; set; }
+
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
     }
 
     public class PurchaseGetResponse

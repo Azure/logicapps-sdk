@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyFileName = null, Expression<Func<object>> bodyFileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
             var apiCallPath = "/api/doctopdf";
             var apiCallHttpMethod = "post";
@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
                 callPayload.Headers["apikey"] = ExpressionConverter.Convert(apikey);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyFileName != null)
+            if (bodyfileName != null)
             {
-                body["File Name"] = ExpressionConverter.ConvertO(bodyFileName);
+                body["File Name"] = ExpressionConverter.ConvertO(bodyfileName);
                 bodypropCount++;
             }
 
-            if (bodyFileContent != null)
+            if (bodyfileContent != null)
             {
-                body["File Content"] = ExpressionConverter.ConvertO(bodyFileContent);
+                body["File Content"] = ExpressionConverter.ConvertO(bodyfileContent);
                 bodypropCount++;
             }
 

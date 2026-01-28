@@ -53,6 +53,362 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
             return new ApiConnectionAction(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        public IBodyWorkflowAction<POSTJsonResponse> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
+        {
+            var apiCallPath = "/v2/autoreview/json";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (bodyflowPropertiesdisplayName != null)
+            {
+                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesflowId != null)
+            {
+                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesowner != null)
+            {
+                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesenvironment != null)
+            {
+                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                propertiesObjectpropCount++;
+            }
+
+            var definitionObject = new JObject();
+            var definitionObjectpropCount = 0;
+            if (definitionObjectpropCount > 0)
+            {
+                propertiesObject["definition"] = definitionObject;
+                propertiesObjectpropCount++;
+            }
+
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            var configsObject = new JObject();
+            var configsObjectpropCount = 0;
+            var namingObject = new JObject();
+            var namingObjectpropCount = 0;
+            if (namingObjectpropCount > 0)
+            {
+                configsObject["naming"] = namingObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigscomplexity != null)
+            {
+                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigscomplexity);
+                configsObjectpropCount++;
+            }
+
+            var ratingsObject = new JObject();
+            var ratingsObjectpropCount = 0;
+            if (ratingsObjectpropCount > 0)
+            {
+                configsObject["ratings"] = ratingsObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigsscoring != null)
+            {
+                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigsscoring);
+                configsObjectpropCount++;
+            }
+
+            configsObject["type"] = "json";
+            configsObjectpropCount++;
+            if (configsObjectpropCount > 0)
+            {
+                body["configs"] = configsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<POSTJsonResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        public IWorkflowAction POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
+        {
+            var apiCallPath = "/v1/autoreview/file";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (bodyflowPropertiesdisplayName != null)
+            {
+                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesflowId != null)
+            {
+                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesowner != null)
+            {
+                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesenvironment != null)
+            {
+                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                propertiesObjectpropCount++;
+            }
+
+            var definitionObject = new JObject();
+            var definitionObjectpropCount = 0;
+            if (definitionObjectpropCount > 0)
+            {
+                propertiesObject["definition"] = definitionObject;
+                propertiesObjectpropCount++;
+            }
+
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            var configsObject = new JObject();
+            var configsObjectpropCount = 0;
+            if (bodyconfigfileType != null)
+            {
+                configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                configsObjectpropCount++;
+            }
+
+            var namingObject = new JObject();
+            var namingObjectpropCount = 0;
+            if (namingObjectpropCount > 0)
+            {
+                configsObject["naming"] = namingObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigcomplexity != null)
+            {
+                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
+                configsObjectpropCount++;
+            }
+
+            var ratingsObject = new JObject();
+            var ratingsObjectpropCount = 0;
+            if (ratingsObjectpropCount > 0)
+            {
+                configsObject["ratings"] = ratingsObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigscoring != null)
+            {
+                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
+                configsObjectpropCount++;
+            }
+
+            if (configsObjectpropCount > 0)
+            {
+                body["configs"] = configsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        public IBodyWorkflowAction<POSTFileV2Response> POSTFileV2(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
+        {
+            var apiCallPath = "/v2/autoreview/file";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (bodyflowPropertiesdisplayName != null)
+            {
+                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesflowId != null)
+            {
+                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesowner != null)
+            {
+                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodyflowPropertiesenvironment != null)
+            {
+                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                propertiesObjectpropCount++;
+            }
+
+            var definitionObject = new JObject();
+            var definitionObjectpropCount = 0;
+            if (definitionObjectpropCount > 0)
+            {
+                propertiesObject["definition"] = definitionObject;
+                propertiesObjectpropCount++;
+            }
+
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            var configsObject = new JObject();
+            var configsObjectpropCount = 0;
+            if (bodyconfigfileType != null)
+            {
+                configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                configsObjectpropCount++;
+            }
+
+            var namingObject = new JObject();
+            var namingObjectpropCount = 0;
+            if (namingObjectpropCount > 0)
+            {
+                configsObject["naming"] = namingObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigcomplexity != null)
+            {
+                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
+                configsObjectpropCount++;
+            }
+
+            var ratingsObject = new JObject();
+            var ratingsObjectpropCount = 0;
+            if (ratingsObjectpropCount > 0)
+            {
+                configsObject["ratings"] = ratingsObject;
+                configsObjectpropCount++;
+            }
+
+            if (bodyconfigscoring != null)
+            {
+                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
+                configsObjectpropCount++;
+            }
+
+            if (configsObjectpropCount > 0)
+            {
+                body["configs"] = configsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<POSTFileV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
+        {
+            var apiCallPath = "/v2/autoreview/diagram";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (bodypropertiesdisplayName != null)
+            {
+                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodypropertiesdisplayName);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiesflowId != null)
+            {
+                propertiesObject["name"] = ExpressionConverter.ConvertO(bodypropertiesflowId);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiesowner != null)
+            {
+                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodypropertiesowner);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiesenvironment != null)
+            {
+                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodypropertiesenvironment);
+                propertiesObjectpropCount++;
+            }
+
+            var definitionObject = new JObject();
+            var definitionObjectpropCount = 0;
+            if (definitionObjectpropCount > 0)
+            {
+                propertiesObject["definition"] = definitionObject;
+                propertiesObjectpropCount++;
+            }
+
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            var configsObject = new JObject();
+            var configsObjectpropCount = 0;
+            configsObject["type"] = "SVG";
+            configsObjectpropCount++;
+            if (configsObjectpropCount > 0)
+            {
+                body["configs"] = configsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
+        }
     }
 
     public class AutoreviewTriggers([ConnectionName] string connectionId)
@@ -75,6 +431,483 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
         [JsonProperty("diagram")]
         public string Diagram { get; set; }
+    }
+
+    public class POSTJsonResponse
+    {
+        [JsonProperty("data")]
+        public POSTJsonResponseDataType Data { get; set; }
+    }
+
+    public class POSTJsonResponseDataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("environment")]
+        public string Environment { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
+
+        [JsonProperty("trigger")]
+        public string Trigger { get; set; }
+
+        [JsonProperty("triggerParam")]
+        public string TriggerParam { get; set; }
+
+        [JsonProperty("triggerData")]
+        public string TriggerData { get; set; }
+
+        [JsonProperty("triggerConfig")]
+        public string TriggerConfig { get; set; }
+
+        [JsonProperty("triggerExpress")]
+        public string TriggerExpress { get; set; }
+
+        [JsonProperty("triggerInputs")]
+        public string TriggerInputs { get; set; }
+
+        [JsonProperty("triggerRecur")]
+        public string TriggerRecur { get; set; }
+
+        [JsonProperty("premium")]
+        public bool Premium { get; set; }
+
+        [JsonProperty("connectionRefs")]
+        public int ConnectionRefs { get; set; }
+
+        [JsonProperty("connectors")]
+        public int Connectors { get; set; }
+
+        [JsonProperty("steps")]
+        public int Steps { get; set; }
+
+        [JsonProperty("variables")]
+        public int Variables { get; set; }
+
+        [JsonProperty("complexity")]
+        public int Complexity { get; set; }
+
+        [JsonProperty("varNaming")]
+        public bool VarNaming { get; set; }
+
+        [JsonProperty("varNameConsts")]
+        public bool VarNameConsts { get; set; }
+
+        [JsonProperty("varNameUse")]
+        public bool VarNameUse { get; set; }
+
+        [JsonProperty("composes")]
+        public int Composes { get; set; }
+
+        [JsonProperty("exception")]
+        public int Exception { get; set; }
+
+        [JsonProperty("exceptionHandleScope")]
+        public bool ExceptionHandleScope { get; set; }
+
+        [JsonProperty("exceptionScope")]
+        public bool ExceptionScope { get; set; }
+
+        [JsonProperty("exceptionTerminate")]
+        public bool ExceptionTerminate { get; set; }
+
+        [JsonProperty("exceptionLink")]
+        public bool ExceptionLink { get; set; }
+
+        [JsonProperty("mainScope")]
+        public bool MainScope { get; set; }
+
+        [JsonProperty("variableArray")]
+        public POSTJsonResponseDataTypeVariableArrayTypeItem[] VariableArray { get; set; }
+
+        [JsonProperty("actionArray")]
+        public POSTJsonResponseDataTypeActionArrayTypeItem[] ActionArray { get; set; }
+
+        [JsonProperty("apiActionArray")]
+        public POSTJsonResponseDataTypeApiActionArrayTypeItem[] ApiActionArray { get; set; }
+
+        [JsonProperty("exceptionArray")]
+        public POSTJsonResponseDataTypeExceptionArrayTypeItem[] ExceptionArray { get; set; }
+
+        [JsonProperty("connectionArray")]
+        public POSTJsonResponseDataTypeConnectionArrayTypeItem[] ConnectionArray { get; set; }
+
+        [JsonProperty("error")]
+        public string Error { get; set; }
+
+        [JsonProperty("actionObjectArray")]
+        public POSTJsonResponseDataTypeActionObjectArrayTypeItem[] ActionObjectArray { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeVariableArrayTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("used")]
+        public bool Used { get; set; }
+
+        [JsonProperty("named")]
+        public bool Named { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeActionArrayTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("step")]
+        public string Step { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("hashId")]
+        public string HashId { get; set; }
+
+        [JsonProperty("tier")]
+        public string Tier { get; set; }
+
+        [JsonProperty("connector")]
+        public string Connector { get; set; }
+
+        [JsonProperty("imgURL")]
+        public string ImgURL { get; set; }
+
+        [JsonProperty("runAfter")]
+        public string RunAfter { get; set; }
+
+        [JsonProperty("exception")]
+        public string Exception { get; set; }
+
+        [JsonProperty("index")]
+        public int Index { get; set; }
+
+        [JsonProperty("complexity")]
+        public int Complexity { get; set; }
+
+        [JsonProperty("detail")]
+        public string Detail { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("pagination")]
+        public string Pagination { get; set; }
+
+        [JsonProperty("secure")]
+        public string Secure { get; set; }
+
+        [JsonProperty("retry")]
+        public string Retry { get; set; }
+
+        [JsonProperty("timeout")]
+        public string Timeout { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+
+        [JsonProperty("positionInfo")]
+        public string PositionInfo { get; set; }
+
+        [JsonProperty("environmentVariables")]
+        public string EnvironmentVariables { get; set; }
+
+        [JsonProperty("environmentB")]
+        public bool EnvironmentB { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("parent")]
+        public string Parent { get; set; }
+
+        [JsonProperty("branch")]
+        public string Branch { get; set; }
+
+        [JsonProperty("positionIndex")]
+        public string PositionIndex { get; set; }
+
+        [JsonProperty("positionType")]
+        public string PositionType { get; set; }
+
+        [JsonProperty("nested")]
+        public string Nested { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeApiActionArrayTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("step")]
+        public string Step { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("hashId")]
+        public string HashId { get; set; }
+
+        [JsonProperty("tier")]
+        public string Tier { get; set; }
+
+        [JsonProperty("connector")]
+        public string Connector { get; set; }
+
+        [JsonProperty("imgURL")]
+        public string ImgURL { get; set; }
+
+        [JsonProperty("runAfter")]
+        public string RunAfter { get; set; }
+
+        [JsonProperty("exception")]
+        public string Exception { get; set; }
+
+        [JsonProperty("index")]
+        public int Index { get; set; }
+
+        [JsonProperty("complexity")]
+        public int Complexity { get; set; }
+
+        [JsonProperty("detail")]
+        public string Detail { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("pagination")]
+        public string Pagination { get; set; }
+
+        [JsonProperty("secure")]
+        public string Secure { get; set; }
+
+        [JsonProperty("retry")]
+        public string Retry { get; set; }
+
+        [JsonProperty("timeout")]
+        public string Timeout { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+
+        [JsonProperty("positionInfo")]
+        public string PositionInfo { get; set; }
+
+        [JsonProperty("environmentVariables")]
+        public string EnvironmentVariables { get; set; }
+
+        [JsonProperty("environmentB")]
+        public bool EnvironmentB { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("parent")]
+        public string Parent { get; set; }
+
+        [JsonProperty("branch")]
+        public string Branch { get; set; }
+
+        [JsonProperty("positionIndex")]
+        public string PositionIndex { get; set; }
+
+        [JsonProperty("positionType")]
+        public string PositionType { get; set; }
+
+        [JsonProperty("nested")]
+        public string Nested { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeExceptionArrayTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("step")]
+        public string Step { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("hashId")]
+        public string HashId { get; set; }
+
+        [JsonProperty("tier")]
+        public string Tier { get; set; }
+
+        [JsonProperty("connector")]
+        public string Connector { get; set; }
+
+        [JsonProperty("imgURL")]
+        public string ImgURL { get; set; }
+
+        [JsonProperty("runAfter")]
+        public string RunAfter { get; set; }
+
+        [JsonProperty("exception")]
+        public string Exception { get; set; }
+
+        [JsonProperty("index")]
+        public int Index { get; set; }
+
+        [JsonProperty("complexity")]
+        public int Complexity { get; set; }
+
+        [JsonProperty("detail")]
+        public string Detail { get; set; }
+
+        [JsonProperty("filter")]
+        public string Filter { get; set; }
+
+        [JsonProperty("pagination")]
+        public string Pagination { get; set; }
+
+        [JsonProperty("secure")]
+        public string Secure { get; set; }
+
+        [JsonProperty("retry")]
+        public string Retry { get; set; }
+
+        [JsonProperty("timeout")]
+        public string Timeout { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+
+        [JsonProperty("positionInfo")]
+        public string PositionInfo { get; set; }
+
+        [JsonProperty("environmentVariables")]
+        public string EnvironmentVariables { get; set; }
+
+        [JsonProperty("environmentB")]
+        public bool EnvironmentB { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("parent")]
+        public string Parent { get; set; }
+
+        [JsonProperty("branch")]
+        public string Branch { get; set; }
+
+        [JsonProperty("positionIndex")]
+        public string PositionIndex { get; set; }
+
+        [JsonProperty("positionType")]
+        public string PositionType { get; set; }
+
+        [JsonProperty("nested")]
+        public string Nested { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeConnectionArrayTypeItem
+    {
+        [JsonProperty("conName")]
+        public string ConName { get; set; }
+
+        [JsonProperty("appId")]
+        public string AppId { get; set; }
+
+        [JsonProperty("opId")]
+        public string OpId { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+    }
+
+    public class POSTJsonResponseDataTypeActionObjectArrayTypeItem
+    {
+        [JsonProperty("step")]
+        public string Step { get; set; }
+
+        [JsonProperty("connector")]
+        public string Connector { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("hashId")]
+        public string HashId { get; set; }
+
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("index")]
+        public int Index { get; set; }
+
+        [JsonProperty("parent")]
+        public string Parent { get; set; }
+    }
+
+    public enum bodyconfigfileTypeInput
+    {
+        [EnumMember(Value = "review")]
+        Review,
+        [EnumMember(Value = "report")]
+        Report,
+        [EnumMember(Value = "diagram")]
+        Diagram,
+        [EnumMember(Value = "exception")]
+        Exception
+    }
+
+    public class POSTFileV2Response
+    {
+        [JsonProperty("data")]
+        public POSTFileV2ResponseDataType Data { get; set; }
+    }
+
+    public class POSTFileV2ResponseDataType
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+
+        [JsonProperty("info")]
+        public string Info { get; set; }
+    }
+
+    public class POSTDiagramResponse
+    {
+        [JsonProperty("data")]
+        public POSTDiagramResponseDataType Data { get; set; }
+    }
+
+    public class POSTDiagramResponseDataType
+    {
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("info")]
+        public string Info { get; set; }
     }
 }
 

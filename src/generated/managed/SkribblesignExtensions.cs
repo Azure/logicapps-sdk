@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
                 requestpropCount++;
             }
 
-            var visual_signatureObject = new JObject();
-            var visual_signatureObjectpropCount = 0;
+            var visualSignatureObject = new JObject();
+            var visualSignatureObjectpropCount = 0;
             if (requestvisualSignatureformField != null)
             {
-                visual_signatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
-                visual_signatureObjectpropCount++;
+                visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
+                visualSignatureObjectpropCount++;
             }
 
             var imageObject = new JObject();
@@ -57,19 +57,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 
             if (imageObjectpropCount > 0)
             {
-                visual_signatureObject["image"] = imageObject;
-                visual_signatureObjectpropCount++;
+                visualSignatureObject["image"] = imageObject;
+                visualSignatureObjectpropCount++;
             }
 
             if (requestvisualSignaturepositions != null)
             {
-                visual_signatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
-                visual_signatureObjectpropCount++;
+                visualSignatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
+                visualSignatureObjectpropCount++;
             }
 
-            if (visual_signatureObjectpropCount > 0)
+            if (visualSignatureObjectpropCount > 0)
             {
-                request["visual_signature"] = visual_signatureObject;
+                request["visual_signature"] = visualSignatureObject;
                 requestpropCount++;
             }
 

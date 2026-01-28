@@ -34,24 +34,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodySkillId = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
         {
             var apiCallPath = "/api/orchestrator/executeSkill";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodySkillId != null)
+            if (bodyskillId != null)
             {
-                body["SkillId"] = ExpressionConverter.ConvertO(bodySkillId);
+                body["SkillId"] = ExpressionConverter.ConvertO(bodyskillId);
                 bodypropCount++;
             }
 
-            var InputParametersObject = new JObject();
-            var InputParametersObjectpropCount = 0;
-            if (InputParametersObjectpropCount > 0)
+            var inputParametersObject = new JObject();
+            var inputParametersObjectpropCount = 0;
+            if (inputParametersObjectpropCount > 0)
             {
-                body["InputParameters"] = InputParametersObject;
+                body["InputParameters"] = inputParametersObject;
                 bodypropCount++;
             }
 

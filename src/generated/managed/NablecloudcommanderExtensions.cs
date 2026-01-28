@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyOdataId)
+        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
         {
             var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
             var apiCallHttpMethod = "post";
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["@odata.id"] = ExpressionConverter.ConvertO(bodyOdataId);
+            body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -449,16 +449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction PutAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyOdataId = null)
+        public IWorkflowAction PutAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid = null)
         {
             var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}/manager/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyOdataId != null)
+            if (bodyid != null)
             {
-                body["@odata.id"] = ExpressionConverter.ConvertO(bodyOdataId);
+                body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
                 bodypropCount++;
             }
 

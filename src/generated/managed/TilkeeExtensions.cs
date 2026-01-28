@@ -12,6 +12,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class TilkeeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
+        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate(Expression<Func<string>> bodyprojectid = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<bool>> bodyprojectcanBeDownloaded = null, Expression<Func<bool>> bodyprojectconsultable = null, Expression<Func<string>> bodyprojectconsultableUntil = null, Expression<Func<string[]>> bodyprojecttags = null, Expression<Func<JToken[]>> bodyprojectcollaborators = null, Expression<Func<bool>> bodyprojectisTemplate = null, Expression<Func<string>> bodyprojectexternalId = null, Expression<Func<int>> bodyprojectthemeid = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodypersonInputItem[]>> bodyperson = null)
+        {
+            var apiCallPath = "/wrapper/token_from_files";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            callPayload.Headers["Accept"] = Convert.ToString("application/json");
+            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var projectObject = new JObject();
+            var projectObjectpropCount = 0;
+            if (bodyprojectid != null)
+            {
+                projectObject["id"] = ExpressionConverter.ConvertO(bodyprojectid);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectname != null)
+            {
+                projectObject["name"] = ExpressionConverter.ConvertO(bodyprojectname);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectcanBeDownloaded != null)
+            {
+                projectObject["can_be_downloaded"] = ExpressionConverter.ConvertO(bodyprojectcanBeDownloaded);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectconsultable != null)
+            {
+                projectObject["consultable"] = ExpressionConverter.ConvertO(bodyprojectconsultable);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectconsultableUntil != null)
+            {
+                projectObject["consultable_until"] = ExpressionConverter.ConvertO(bodyprojectconsultableUntil);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojecttags != null)
+            {
+                projectObject["tags"] = ExpressionConverter.ConvertO(bodyprojecttags);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectcollaborators != null)
+            {
+                projectObject["collaborators"] = ExpressionConverter.ConvertO(bodyprojectcollaborators);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectisTemplate != null)
+            {
+                projectObject["is_template"] = ExpressionConverter.ConvertO(bodyprojectisTemplate);
+                projectObjectpropCount++;
+            }
+
+            if (bodyprojectexternalId != null)
+            {
+                projectObject["external_id"] = ExpressionConverter.ConvertO(bodyprojectexternalId);
+                projectObjectpropCount++;
+            }
+
+            var themeObject = new JObject();
+            var themeObjectpropCount = 0;
+            if (bodyprojectthemeid != null)
+            {
+                themeObject["id"] = ExpressionConverter.ConvertO(bodyprojectthemeid);
+                themeObjectpropCount++;
+            }
+
+            if (themeObjectpropCount > 0)
+            {
+                projectObject["theme"] = themeObject;
+                projectObjectpropCount++;
+            }
+
+            if (projectObjectpropCount > 0)
+            {
+                body["project"] = projectObject;
+                bodypropCount++;
+            }
+
+            if (bodydocuments != null)
+            {
+                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                bodypropCount++;
+            }
+
+            if (bodyperson != null)
+            {
+                body["person"] = ExpressionConverter.ConvertO(bodyperson);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ProjectCreateResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
         public IBodyWorkflowAction<ProjectListResponse> ProjectList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> order, Expression<Func<bool>> isTemplate, Expression<Func<bool>> isOwner, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
         {
             var apiCallPath = "/projects";
@@ -375,6 +482,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
+    }
+
+    public class ProjectCreateResponse
+    {
+        [JsonProperty("project")]
+        public ProjectCreateResponseProjectType Project { get; set; }
+
+        [JsonProperty("tokens")]
+        public ProjectCreateResponseTokensTypeItem[] Tokens { get; set; }
+    }
+
+    public class ProjectCreateResponseProjectType
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("preview_url")]
+        public string PreviewUrl { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("iframes")]
+        public ProjectCreateResponseProjectTypeIframesType Iframes { get; set; }
+    }
+
+    public class ProjectCreateResponseProjectTypeIframesType
+    {
+        [JsonProperty("project_escape")]
+        public string ProjectEscape { get; set; }
+
+        [JsonProperty("tokens_escape")]
+        public string TokensEscape { get; set; }
+
+        [JsonProperty("stats_escape")]
+        public string StatsEscape { get; set; }
+    }
+
+    public class ProjectCreateResponseTokensTypeItem
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+    }
+
+    public class bodydocumentsInputItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("s3_url")]
+        public string S3Url { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("signable")]
+        public bool Signable { get; set; }
+
+        [JsonProperty("from_url")]
+        public bool FromUrl { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+    }
+
+    public class bodypersonInputItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("external_data")]
+        public JToken ExternalData { get; set; }
     }
 
     public class ProjectListResponse

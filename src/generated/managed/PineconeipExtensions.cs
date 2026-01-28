@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQueryPost(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodynamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
+        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQueryPost(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
         {
             var apiCallPath = "/query";
             var apiCallHttpMethod = "post";
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 bodypropCount++;
             }
 
-            if (bodynamespace != null)
+            if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorDeletePost(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodynamespace = null)
+        public IBodyWorkflowAction<string> VectorDeletePost(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/delete";
             var apiCallHttpMethod = "post";
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 bodypropCount++;
             }
 
-            if (bodynamespace != null)
+            if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodynamespace = null)
+        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/update";
             var apiCallHttpMethod = "post";
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 bodypropCount++;
             }
 
-            if (bodynamespace != null)
+            if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
             }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsertPost(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodynamespace = null)
+        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsertPost(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/upsert";
             var apiCallHttpMethod = "post";
@@ -202,9 +202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 bodypropCount++;
             }
 
-            if (bodynamespace != null)
+            if (bodyNamespace != null)
             {
-                body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
             }
 

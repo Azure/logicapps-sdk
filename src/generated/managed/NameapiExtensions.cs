@@ -12,6 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
+        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        {
+            var apiCallPath = "/v5.3/parser/personnameparser";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var inputPersonObject = new JObject();
+            var inputPersonObjectpropCount = 0;
+            inputPersonObject["type"] = "NaturalInputPerson";
+            inputPersonObjectpropCount++;
+            var personNameObject = new JObject();
+            var personNameObjectpropCount = 0;
+            personNameObjectpropCount++;
+            personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
+            if (personNameObjectpropCount > 0)
+            {
+                inputPersonObject["personName"] = personNameObject;
+                inputPersonObjectpropCount++;
+            }
+
+            if (bodyinputPersongender != null)
+            {
+                inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
+                inputPersonObjectpropCount++;
+            }
+
+            if (inputPersonObjectpropCount > 0)
+            {
+                body["inputPerson"] = inputPersonObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ParseNameResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
         {
             var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
@@ -24,6 +66,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 
     public class NameapiTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ParseNameResponse
+    {
+        [JsonProperty("matches")]
+        public ParseNameResponseMatchesTypeItem[] Matches { get; set; }
+
+        [JsonProperty("bestMatch")]
+        public ParseNameResponseBestMatchType BestMatch { get; set; }
+    }
+
+    public class ParseNameResponseMatchesTypeItem
+    {
+        [JsonProperty("parsedPerson")]
+        public ParsedPersonRef ParsedPerson { get; set; }
+
+        [JsonProperty("parserDisputes")]
+        public JToken[] ParserDisputes { get; set; }
+
+        [JsonProperty("likeliness")]
+        public double Likeliness { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
+    }
+
+    public class ParsedPersonRef
+    {
+        [JsonProperty("personType")]
+        public string PersonType { get; set; }
+
+        [JsonProperty("personRole")]
+        public string PersonRole { get; set; }
+
+        [JsonProperty("mailingPersonRoles")]
+        public string[] MailingPersonRoles { get; set; }
+
+        [JsonProperty("gender")]
+        public ParsedPersonRefGenderType Gender { get; set; }
+
+        [JsonProperty("addressingGivenName")]
+        public string AddressingGivenName { get; set; }
+
+        [JsonProperty("addressingSurname")]
+        public string AddressingSurname { get; set; }
+
+        [JsonProperty("outputPersonName")]
+        public ParsedPersonRefOutputPersonNameType OutputPersonName { get; set; }
+    }
+
+    public class ParsedPersonRefGenderType
+    {
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
+
+        [JsonProperty("maleProportion")]
+        public string MaleProportion { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
+    }
+
+    public class ParsedPersonRefOutputPersonNameType
+    {
+        [JsonProperty("terms")]
+        public ParsedPersonRefOutputPersonNameTypeTermsTypeItem[] Terms { get; set; }
+    }
+
+    public class ParsedPersonRefOutputPersonNameTypeTermsTypeItem
+    {
+        [JsonProperty("string")]
+        public string String { get; set; }
+
+        [JsonProperty("termType")]
+        public string TermType { get; set; }
+    }
+
+    public class ParseNameResponseBestMatchType
+    {
+        [JsonProperty("parsedPerson")]
+        public ParsedPersonRef ParsedPerson { get; set; }
+
+        [JsonProperty("parserDisputes")]
+        public JToken[] ParserDisputes { get; set; }
+
+        [JsonProperty("likeliness")]
+        public double Likeliness { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
+    }
+
+    public enum bodyinputPersongenderInput
+    {
+        MALE,
+        FEMALE,
+        UNKNOWN
     }
 
     public class DetectDeaResponse

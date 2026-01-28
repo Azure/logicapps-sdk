@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyTableName, Expression<Func<Clause[]>> bodyClauses, Expression<Func<int>> bodyOptionsTop = null, Expression<Func<int>> bodyOptionsSkip = null, Expression<Func<string>> bodyOptionsSkipToken = null)
+        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources(Expression<Func<string>> apiVersion, Expression<Func<string>> bodytableName, Expression<Func<Clause[]>> bodyclauses, Expression<Func<int>> bodyoptionstop = null, Expression<Func<int>> bodyoptionsskip = null, Expression<Func<string>> bodyoptionsskipToken = null)
         {
             var apiCallPath = "/resourcequery/resources/query";
             var apiCallHttpMethod = "post";
@@ -693,32 +693,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["TableName"] = ExpressionConverter.ConvertO(bodyTableName);
+            body["TableName"] = ExpressionConverter.ConvertO(bodytableName);
             bodypropCount++;
-            body["Clauses"] = ExpressionConverter.ConvertO(bodyClauses);
-            var OptionsObject = new JObject();
-            var OptionsObjectpropCount = 0;
-            if (bodyOptionsTop != null)
+            body["Clauses"] = ExpressionConverter.ConvertO(bodyclauses);
+            var optionsObject = new JObject();
+            var optionsObjectpropCount = 0;
+            if (bodyoptionstop != null)
             {
-                OptionsObject["Top"] = ExpressionConverter.ConvertO(bodyOptionsTop);
-                OptionsObjectpropCount++;
+                optionsObject["Top"] = ExpressionConverter.ConvertO(bodyoptionstop);
+                optionsObjectpropCount++;
             }
 
-            if (bodyOptionsSkip != null)
+            if (bodyoptionsskip != null)
             {
-                OptionsObject["Skip"] = ExpressionConverter.ConvertO(bodyOptionsSkip);
-                OptionsObjectpropCount++;
+                optionsObject["Skip"] = ExpressionConverter.ConvertO(bodyoptionsskip);
+                optionsObjectpropCount++;
             }
 
-            if (bodyOptionsSkipToken != null)
+            if (bodyoptionsskipToken != null)
             {
-                OptionsObject["SkipToken"] = ExpressionConverter.ConvertO(bodyOptionsSkipToken);
-                OptionsObjectpropCount++;
+                optionsObject["SkipToken"] = ExpressionConverter.ConvertO(bodyoptionsskipToken);
+                optionsObjectpropCount++;
             }
 
-            if (OptionsObjectpropCount > 0)
+            if (optionsObjectpropCount > 0)
             {
-                body["Options"] = OptionsObject;
+                body["Options"] = optionsObject;
                 bodypropCount++;
             }
 
@@ -1296,11 +1296,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 queryRequestpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                queryRequest["params"] = paramsObject;
+                queryRequest["params"] = @paramsObject;
                 queryRequestpropCount++;
             }
 

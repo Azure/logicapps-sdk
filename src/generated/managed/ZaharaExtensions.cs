@@ -21,70 +21,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreateInvoice(Expression<Func<string>> modelInvoiceNumber = null, Expression<Func<string>> modelPurchaseOrderNumber = null, Expression<Func<string>> modelRaisedDate = null, Expression<Func<string>> modelDueDate = null, Expression<Func<string>> modelSupplierReferenceNumber = null, Expression<Func<string>> modelDescription = null, Expression<Func<string>> modelComments = null, Expression<Func<string>> modelDivisionName = null, Expression<Func<string>> modelCurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modelLineItems = null)
+        public IBodyWorkflowAction<int> CreateInvoice(Expression<Func<string>> modelinvoiceNumber = null, Expression<Func<string>> modelpurchaseOrderNumber = null, Expression<Func<string>> modelraisedDate = null, Expression<Func<string>> modeldueDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
         {
             var apiCallPath = "/api/InvoiceIntegration/Add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
-            if (modelInvoiceNumber != null)
+            if (modelinvoiceNumber != null)
             {
-                model["InvoiceNumber"] = ExpressionConverter.ConvertO(modelInvoiceNumber);
+                model["InvoiceNumber"] = ExpressionConverter.ConvertO(modelinvoiceNumber);
                 modelpropCount++;
             }
 
-            if (modelPurchaseOrderNumber != null)
+            if (modelpurchaseOrderNumber != null)
             {
-                model["PurchaseOrderNumber"] = ExpressionConverter.ConvertO(modelPurchaseOrderNumber);
+                model["PurchaseOrderNumber"] = ExpressionConverter.ConvertO(modelpurchaseOrderNumber);
                 modelpropCount++;
             }
 
-            if (modelRaisedDate != null)
+            if (modelraisedDate != null)
             {
-                model["RaisedDate"] = ExpressionConverter.ConvertO(modelRaisedDate);
+                model["RaisedDate"] = ExpressionConverter.ConvertO(modelraisedDate);
                 modelpropCount++;
             }
 
-            if (modelDueDate != null)
+            if (modeldueDate != null)
             {
-                model["DueDate"] = ExpressionConverter.ConvertO(modelDueDate);
+                model["DueDate"] = ExpressionConverter.ConvertO(modeldueDate);
                 modelpropCount++;
             }
 
-            if (modelSupplierReferenceNumber != null)
+            if (modelsupplierReferenceNumber != null)
             {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelSupplierReferenceNumber);
+                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
                 modelpropCount++;
             }
 
-            if (modelDescription != null)
+            if (modeldescription != null)
             {
-                model["Description"] = ExpressionConverter.ConvertO(modelDescription);
+                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
                 modelpropCount++;
             }
 
-            if (modelComments != null)
+            if (modelcomments != null)
             {
-                model["Comments"] = ExpressionConverter.ConvertO(modelComments);
+                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
                 modelpropCount++;
             }
 
-            if (modelDivisionName != null)
+            if (modeldivisionName != null)
             {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modelDivisionName);
+                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
                 modelpropCount++;
             }
 
-            if (modelCurrencyCode != null)
+            if (modelcurrencyCode != null)
             {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelCurrencyCode);
+                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
                 modelpropCount++;
             }
 
-            if (modelLineItems != null)
+            if (modellineItems != null)
             {
-                model["LineItems"] = ExpressionConverter.ConvertO(modelLineItems);
+                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
                 modelpropCount++;
             }
 
@@ -97,58 +97,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreatePurchaseOrder(Expression<Func<string>> modelRequisitorName = null, Expression<Func<string>> modelRequiredDate = null, Expression<Func<string>> modelSupplierReferenceNumber = null, Expression<Func<string>> modelDescription = null, Expression<Func<string>> modelComments = null, Expression<Func<string>> modelDivisionName = null, Expression<Func<string>> modelCurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modelLineItems = null)
+        public IBodyWorkflowAction<int> CreatePurchaseOrder(Expression<Func<string>> modelrequisitorName = null, Expression<Func<string>> modelrequiredDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
         {
             var apiCallPath = "/api/PurchaseOrderIntegration/Add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
-            if (modelRequisitorName != null)
+            if (modelrequisitorName != null)
             {
-                model["RequisitorName"] = ExpressionConverter.ConvertO(modelRequisitorName);
+                model["RequisitorName"] = ExpressionConverter.ConvertO(modelrequisitorName);
                 modelpropCount++;
             }
 
-            if (modelRequiredDate != null)
+            if (modelrequiredDate != null)
             {
-                model["RequiredDate"] = ExpressionConverter.ConvertO(modelRequiredDate);
+                model["RequiredDate"] = ExpressionConverter.ConvertO(modelrequiredDate);
                 modelpropCount++;
             }
 
-            if (modelSupplierReferenceNumber != null)
+            if (modelsupplierReferenceNumber != null)
             {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelSupplierReferenceNumber);
+                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
                 modelpropCount++;
             }
 
-            if (modelDescription != null)
+            if (modeldescription != null)
             {
-                model["Description"] = ExpressionConverter.ConvertO(modelDescription);
+                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
                 modelpropCount++;
             }
 
-            if (modelComments != null)
+            if (modelcomments != null)
             {
-                model["Comments"] = ExpressionConverter.ConvertO(modelComments);
+                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
                 modelpropCount++;
             }
 
-            if (modelDivisionName != null)
+            if (modeldivisionName != null)
             {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modelDivisionName);
+                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
                 modelpropCount++;
             }
 
-            if (modelCurrencyCode != null)
+            if (modelcurrencyCode != null)
             {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelCurrencyCode);
+                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
                 modelpropCount++;
             }
 
-            if (modelLineItems != null)
+            if (modellineItems != null)
             {
-                model["LineItems"] = ExpressionConverter.ConvertO(modelLineItems);
+                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
                 modelpropCount++;
             }
 
@@ -161,64 +161,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreateSupplier(Expression<Func<string>> modelAddressLines = null, Expression<Func<string>> modelContactName = null, Expression<Func<string>> modelCountryCode = null, Expression<Func<string>> modelEmail = null, Expression<Func<string>> modelPostCode = null, Expression<Func<string>> modelReferenceNumber = null, Expression<Func<string>> modelSupplierName = null, Expression<Func<string>> modelTelephone = null, Expression<Func<string>> modelType = null)
+        public IBodyWorkflowAction<int> CreateSupplier(Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
         {
             var apiCallPath = "/api/SupplierIntegration/Add";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var model = new JObject();
             var modelpropCount = 0;
-            if (modelAddressLines != null)
+            if (modeladdressLines != null)
             {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modelAddressLines);
+                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
                 modelpropCount++;
             }
 
-            if (modelContactName != null)
+            if (modelcontactName != null)
             {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelContactName);
+                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
                 modelpropCount++;
             }
 
-            if (modelCountryCode != null)
+            if (modelcountryCode != null)
             {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelCountryCode);
+                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
                 modelpropCount++;
             }
 
-            if (modelEmail != null)
+            if (modelemail != null)
             {
-                model["Email"] = ExpressionConverter.ConvertO(modelEmail);
+                model["Email"] = ExpressionConverter.ConvertO(modelemail);
                 modelpropCount++;
             }
 
-            if (modelPostCode != null)
+            if (modelpostCode != null)
             {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelPostCode);
+                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
                 modelpropCount++;
             }
 
-            if (modelReferenceNumber != null)
+            if (modelreferenceNumber != null)
             {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelReferenceNumber);
+                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
                 modelpropCount++;
             }
 
-            if (modelSupplierName != null)
+            if (modelsupplierName != null)
             {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelSupplierName);
+                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
                 modelpropCount++;
             }
 
-            if (modelTelephone != null)
+            if (modeltelephone != null)
             {
-                model["Telephone"] = ExpressionConverter.ConvertO(modelTelephone);
+                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
                 modelpropCount++;
             }
 
-            if (modelType != null)
+            if (modeltype != null)
             {
-                model["Type"] = ExpressionConverter.ConvertO(modelType);
+                model["Type"] = ExpressionConverter.ConvertO(modeltype);
                 modelpropCount++;
             }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<JToken> UpdateSupplier(Expression<Func<int>> id, Expression<Func<int>> modelId = null, Expression<Func<string>> modelAddressLines = null, Expression<Func<string>> modelContactName = null, Expression<Func<string>> modelCountryCode = null, Expression<Func<string>> modelEmail = null, Expression<Func<string>> modelPostCode = null, Expression<Func<string>> modelReferenceNumber = null, Expression<Func<string>> modelSupplierName = null, Expression<Func<string>> modelTelephone = null, Expression<Func<string>> modelType = null)
+        public IBodyWorkflowAction<JToken> UpdateSupplier(Expression<Func<int>> id, Expression<Func<int>> modelid = null, Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
         {
             var apiCallPath = "/api/SupplierIntegration/Update";
             var apiCallHttpMethod = "post";
@@ -239,63 +239,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             callPayload.Queries["id"] = ExpressionConverter.Convert(id);
             var model = new JObject();
             var modelpropCount = 0;
-            if (modelId != null)
+            if (modelid != null)
             {
-                model["Id"] = ExpressionConverter.ConvertO(modelId);
+                model["Id"] = ExpressionConverter.ConvertO(modelid);
                 modelpropCount++;
             }
 
-            if (modelAddressLines != null)
+            if (modeladdressLines != null)
             {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modelAddressLines);
+                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
                 modelpropCount++;
             }
 
-            if (modelContactName != null)
+            if (modelcontactName != null)
             {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelContactName);
+                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
                 modelpropCount++;
             }
 
-            if (modelCountryCode != null)
+            if (modelcountryCode != null)
             {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelCountryCode);
+                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
                 modelpropCount++;
             }
 
-            if (modelEmail != null)
+            if (modelemail != null)
             {
-                model["Email"] = ExpressionConverter.ConvertO(modelEmail);
+                model["Email"] = ExpressionConverter.ConvertO(modelemail);
                 modelpropCount++;
             }
 
-            if (modelPostCode != null)
+            if (modelpostCode != null)
             {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelPostCode);
+                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
                 modelpropCount++;
             }
 
-            if (modelReferenceNumber != null)
+            if (modelreferenceNumber != null)
             {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelReferenceNumber);
+                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
                 modelpropCount++;
             }
 
-            if (modelSupplierName != null)
+            if (modelsupplierName != null)
             {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelSupplierName);
+                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
                 modelpropCount++;
             }
 
-            if (modelTelephone != null)
+            if (modeltelephone != null)
             {
-                model["Telephone"] = ExpressionConverter.ConvertO(modelTelephone);
+                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
                 modelpropCount++;
             }
 
-            if (modelType != null)
+            if (modeltype != null)
             {
-                model["Type"] = ExpressionConverter.ConvertO(modelType);
+                model["Type"] = ExpressionConverter.ConvertO(modeltype);
                 modelpropCount++;
             }
 

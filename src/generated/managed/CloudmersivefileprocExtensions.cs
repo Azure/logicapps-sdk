@@ -12,22 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     public class CloudmersivefileprocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<GetDocxCommentsResponse> EditDocumentDocxGetComments(Expression<Func<string>> reqConfigInputFileBytes = null, Expression<Func<string>> reqConfigInputFileUrl = null)
+        public IBodyWorkflowAction<GetDocxCommentsResponse> EditDocumentDocxGetComments(Expression<Func<string>> reqConfiginputFileBytes = null, Expression<Func<string>> reqConfiginputFileUrl = null)
         {
             var apiCallPath = "/convert/edit/docx/get-comments/flat-list";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var reqConfig = new JObject();
             var reqConfigpropCount = 0;
-            if (reqConfigInputFileBytes != null)
+            if (reqConfiginputFileBytes != null)
             {
-                reqConfig["InputFileBytes"] = ExpressionConverter.ConvertO(reqConfigInputFileBytes);
+                reqConfig["InputFileBytes"] = ExpressionConverter.ConvertO(reqConfiginputFileBytes);
                 reqConfigpropCount++;
             }
 
-            if (reqConfigInputFileUrl != null)
+            if (reqConfiginputFileUrl != null)
             {
-                reqConfig["InputFileUrl"] = ExpressionConverter.ConvertO(reqConfigInputFileUrl);
+                reqConfig["InputFileUrl"] = ExpressionConverter.ConvertO(reqConfiginputFileUrl);
                 reqConfigpropCount++;
             }
 
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DetectResponse> EditTextBase64Detect(Expression<Func<string>> requestBase64ContentToDetect = null)
+        public IBodyWorkflowAction<Base64DetectResponse> EditTextBase64Detect(Expression<Func<string>> requestbase64ContentToDetect = null)
         {
             var apiCallPath = "/convert/edit/text/encoding/base64/detect";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestBase64ContentToDetect != null)
+            if (requestbase64ContentToDetect != null)
             {
-                request["Base64ContentToDetect"] = ExpressionConverter.ConvertO(requestBase64ContentToDetect);
+                request["Base64ContentToDetect"] = ExpressionConverter.ConvertO(requestbase64ContentToDetect);
                 requestpropCount++;
             }
 
@@ -62,16 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64EncodeResponse> EditTextBase64Encode(Expression<Func<string>> requestContentToEncode = null)
+        public IBodyWorkflowAction<Base64EncodeResponse> EditTextBase64Encode(Expression<Func<string>> requestcontentToEncode = null)
         {
             var apiCallPath = "/convert/edit/text/encoding/base64/encode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestContentToEncode != null)
+            if (requestcontentToEncode != null)
             {
-                request["ContentToEncode"] = ExpressionConverter.ConvertO(requestContentToEncode);
+                request["ContentToEncode"] = ExpressionConverter.ConvertO(requestcontentToEncode);
                 requestpropCount++;
             }
 
@@ -84,16 +84,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DecodeResponse> EditTextBase64Decode(Expression<Func<string>> requestBase64ContentToDecode = null)
+        public IBodyWorkflowAction<Base64DecodeResponse> EditTextBase64Decode(Expression<Func<string>> requestbase64ContentToDecode = null)
         {
             var apiCallPath = "/convert/edit/text/encoding/base64/decode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestBase64ContentToDecode != null)
+            if (requestbase64ContentToDecode != null)
             {
-                request["Base64ContentToDecode"] = ExpressionConverter.ConvertO(requestBase64ContentToDecode);
+                request["Base64ContentToDecode"] = ExpressionConverter.ConvertO(requestbase64ContentToDecode);
                 requestpropCount++;
             }
 
@@ -115,22 +115,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringSimpleResponse> EditTextFindSimple(Expression<Func<string>> requestTextContent = null, Expression<Func<string>> requestTargetString = null)
+        public IBodyWorkflowAction<FindStringSimpleResponse> EditTextFindSimple(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetString = null)
         {
             var apiCallPath = "/convert/edit/text/find/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContent != null)
+            if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requestTextContent);
+                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
                 requestpropCount++;
             }
 
-            if (requestTargetString != null)
+            if (requesttargetString != null)
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requestTargetString);
+                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
                 requestpropCount++;
             }
 
@@ -143,28 +143,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringRegexResponse> EditTextFindRegex(Expression<Func<string>> requestTextContent = null, Expression<Func<string>> requestTargetRegex = null, Expression<Func<bool>> requestMatchCase = null)
+        public IBodyWorkflowAction<FindStringRegexResponse> EditTextFindRegex(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetRegex = null, Expression<Func<bool>> requestmatchCase = null)
         {
             var apiCallPath = "/convert/edit/text/find/regex";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContent != null)
+            if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requestTextContent);
+                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
                 requestpropCount++;
             }
 
-            if (requestTargetRegex != null)
+            if (requesttargetRegex != null)
             {
-                request["TargetRegex"] = ExpressionConverter.ConvertO(requestTargetRegex);
+                request["TargetRegex"] = ExpressionConverter.ConvertO(requesttargetRegex);
                 requestpropCount++;
             }
 
-            if (requestMatchCase != null)
+            if (requestmatchCase != null)
             {
-                request["MatchCase"] = ExpressionConverter.ConvertO(requestMatchCase);
+                request["MatchCase"] = ExpressionConverter.ConvertO(requestmatchCase);
                 requestpropCount++;
             }
 
@@ -177,28 +177,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringSimpleResponse> EditTextReplaceSimple(Expression<Func<string>> requestTextContent = null, Expression<Func<string>> requestTargetString = null, Expression<Func<string>> requestReplaceWithString = null)
+        public IBodyWorkflowAction<ReplaceStringSimpleResponse> EditTextReplaceSimple(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requesttargetString = null, Expression<Func<string>> requestreplaceWithString = null)
         {
             var apiCallPath = "/convert/edit/text/replace/string";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContent != null)
+            if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requestTextContent);
+                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
                 requestpropCount++;
             }
 
-            if (requestTargetString != null)
+            if (requesttargetString != null)
             {
-                request["TargetString"] = ExpressionConverter.ConvertO(requestTargetString);
+                request["TargetString"] = ExpressionConverter.ConvertO(requesttargetString);
                 requestpropCount++;
             }
 
-            if (requestReplaceWithString != null)
+            if (requestreplaceWithString != null)
             {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestReplaceWithString);
+                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
                 requestpropCount++;
             }
 
@@ -211,28 +211,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringRegexResponse> EditTextReplaceRegex(Expression<Func<string>> requestTextContent = null, Expression<Func<string>> requestRegularExpressionString = null, Expression<Func<string>> requestReplaceWithString = null)
+        public IBodyWorkflowAction<ReplaceStringRegexResponse> EditTextReplaceRegex(Expression<Func<string>> requesttextContent = null, Expression<Func<string>> requestregularExpressionString = null, Expression<Func<string>> requestreplaceWithString = null)
         {
             var apiCallPath = "/convert/edit/text/replace/regex";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContent != null)
+            if (requesttextContent != null)
             {
-                request["TextContent"] = ExpressionConverter.ConvertO(requestTextContent);
+                request["TextContent"] = ExpressionConverter.ConvertO(requesttextContent);
                 requestpropCount++;
             }
 
-            if (requestRegularExpressionString != null)
+            if (requestregularExpressionString != null)
             {
-                request["RegularExpressionString"] = ExpressionConverter.ConvertO(requestRegularExpressionString);
+                request["RegularExpressionString"] = ExpressionConverter.ConvertO(requestregularExpressionString);
                 requestpropCount++;
             }
 
-            if (requestReplaceWithString != null)
+            if (requestreplaceWithString != null)
             {
-                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestReplaceWithString);
+                request["ReplaceWithString"] = ExpressionConverter.ConvertO(requestreplaceWithString);
                 requestpropCount++;
             }
 
@@ -264,16 +264,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveHtmlFromTextResponse> EditTextRemoveHtml(Expression<Func<string>> requestTextContainingHtml = null)
+        public IBodyWorkflowAction<RemoveHtmlFromTextResponse> EditTextRemoveHtml(Expression<Func<string>> requesttextContainingHtml = null)
         {
             var apiCallPath = "/convert/edit/text/remove/html";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContainingHtml != null)
+            if (requesttextContainingHtml != null)
             {
-                request["TextContainingHtml"] = ExpressionConverter.ConvertO(requestTextContainingHtml);
+                request["TextContainingHtml"] = ExpressionConverter.ConvertO(requesttextContainingHtml);
                 requestpropCount++;
             }
 
@@ -286,16 +286,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextRemoveAllWhitespace(Expression<Func<string>> requestTextContainingWhitespace = null)
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextRemoveAllWhitespace(Expression<Func<string>> requesttextContainingWhitespace = null)
         {
             var apiCallPath = "/convert/edit/text/remove/whitespace/all";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContainingWhitespace != null)
+            if (requesttextContainingWhitespace != null)
             {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requestTextContainingWhitespace);
+                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
                 requestpropCount++;
             }
 
@@ -308,16 +308,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextTrimWhitespace(Expression<Func<string>> requestTextContainingWhitespace = null)
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse> EditTextTrimWhitespace(Expression<Func<string>> requesttextContainingWhitespace = null)
         {
             var apiCallPath = "/convert/edit/text/remove/whitespace/trim";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestTextContainingWhitespace != null)
+            if (requesttextContainingWhitespace != null)
             {
-                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requestTextContainingWhitespace);
+                request["TextContainingWhitespace"] = ExpressionConverter.ConvertO(requesttextContainingWhitespace);
                 requestpropCount++;
             }
 
@@ -357,22 +357,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFile[]>> requestFilesInZip = null, Expression<Func<ZipDirectory[]>> requestDirectoriesInZip = null)
+        public IBodyWorkflowAction<JToken> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFile[]>> requestfilesInZip = null, Expression<Func<ZipDirectory[]>> requestdirectoriesInZip = null)
         {
             var apiCallPath = "/convert/archive/zip/create/advanced";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestFilesInZip != null)
+            if (requestfilesInZip != null)
             {
-                request["FilesInZip"] = ExpressionConverter.ConvertO(requestFilesInZip);
+                request["FilesInZip"] = ExpressionConverter.ConvertO(requestfilesInZip);
                 requestpropCount++;
             }
 
-            if (requestDirectoriesInZip != null)
+            if (requestdirectoriesInZip != null)
             {
-                request["DirectoriesInZip"] = ExpressionConverter.ConvertO(requestDirectoriesInZip);
+                request["DirectoriesInZip"] = ExpressionConverter.ConvertO(requestdirectoriesInZip);
                 requestpropCount++;
             }
 
@@ -394,28 +394,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken> ZipArchiveZipEncryptAdvanced(Expression<Func<string>> encryptionRequestInputFileContents = null, Expression<Func<string>> encryptionRequestPassword = null, Expression<Func<string>> encryptionRequestEncryptionAlgorithm = null)
+        public IBodyWorkflowAction<JToken> ZipArchiveZipEncryptAdvanced(Expression<Func<string>> encryptionRequestinputFileContents = null, Expression<Func<string>> encryptionRequestpassword = null, Expression<Func<string>> encryptionRequestencryptionAlgorithm = null)
         {
             var apiCallPath = "/convert/archive/zip/encrypt/advanced";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var encryptionRequest = new JObject();
             var encryptionRequestpropCount = 0;
-            if (encryptionRequestInputFileContents != null)
+            if (encryptionRequestinputFileContents != null)
             {
-                encryptionRequest["InputFileContents"] = ExpressionConverter.ConvertO(encryptionRequestInputFileContents);
+                encryptionRequest["InputFileContents"] = ExpressionConverter.ConvertO(encryptionRequestinputFileContents);
                 encryptionRequestpropCount++;
             }
 
-            if (encryptionRequestPassword != null)
+            if (encryptionRequestpassword != null)
             {
-                encryptionRequest["Password"] = ExpressionConverter.ConvertO(encryptionRequestPassword);
+                encryptionRequest["Password"] = ExpressionConverter.ConvertO(encryptionRequestpassword);
                 encryptionRequestpropCount++;
             }
 
-            if (encryptionRequestEncryptionAlgorithm != null)
+            if (encryptionRequestencryptionAlgorithm != null)
             {
-                encryptionRequest["EncryptionAlgorithm"] = ExpressionConverter.ConvertO(encryptionRequestEncryptionAlgorithm);
+                encryptionRequest["EncryptionAlgorithm"] = ExpressionConverter.ConvertO(encryptionRequestencryptionAlgorithm);
                 encryptionRequestpropCount++;
             }
 

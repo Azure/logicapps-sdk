@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchBatchName = null, Expression<Func<string>> messagesToBatchPartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchItems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
+        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
         {
             var apiCallPath = "/Encode/Batch/ResolveByName";
             var apiCallHttpMethod = "post";
@@ -64,21 +64,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
                 callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
             var messagesToBatch = new JObject();
             var messagesToBatchpropCount = 0;
-            if (messagesToBatchBatchName != null)
+            if (messagesToBatchbatchName != null)
             {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchBatchName);
+                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
                 messagesToBatchpropCount++;
             }
 
-            if (messagesToBatchPartitionName != null)
+            if (messagesToBatchpartitionName != null)
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchPartitionName);
+                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
                 messagesToBatchpropCount++;
             }
 
-            if (messagesToBatchItems != null)
+            if (messagesToBatchitems != null)
             {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchItems);
+                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
                 messagesToBatchpropCount++;
             }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchBatchName = null, Expression<Func<string>> messagesToBatchPartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchItems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
+        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
         {
             var apiCallPath = "/Encode/Batch/ResolveByIdentities";
             var apiCallHttpMethod = "post";
@@ -164,21 +164,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
                 callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
             var messagesToBatch = new JObject();
             var messagesToBatchpropCount = 0;
-            if (messagesToBatchBatchName != null)
+            if (messagesToBatchbatchName != null)
             {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchBatchName);
+                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
                 messagesToBatchpropCount++;
             }
 
-            if (messagesToBatchPartitionName != null)
+            if (messagesToBatchpartitionName != null)
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchPartitionName);
+                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
                 messagesToBatchpropCount++;
             }
 
-            if (messagesToBatchItems != null)
+            if (messagesToBatchitems != null)
             {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchItems);
+                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
                 messagesToBatchpropCount++;
             }
 

@@ -26,6 +26,536 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
+        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyaccountexternalId = null, Expression<Func<string>> bodyaccountinboundNumber = null, Expression<Func<string>> bodyaccountlang = null, Expression<Func<string>> bodyaccountpassword = null, Expression<Func<string>> bodyaccounttimeZone = null, Expression<Func<string>> bodyaccountusername = null, Expression<Func<string>> bodyaccountvoipUsername = null, Expression<Func<string>> bodycontactInformationaddress = null, Expression<Func<string>> bodycontactInformationcity = null, Expression<Func<string>> bodycontactInformationcountry = null, Expression<Func<string>> bodycontactInformationeContacts = null, Expression<Func<string>> bodycontactInformationemail = null, Expression<Func<string>> bodycontactInformationname = null, Expression<Func<string>> bodycontactInformationphone = null, Expression<Func<string>> bodycontactInformationpostal = null, Expression<Func<string>> bodycontactInformationworkphone = null, Expression<Func<int>> bodyemploymentagentGroupId = null, Expression<Func<string>> bodyemploymentbankAcc = null, Expression<Func<string>> bodyemploymentdescription = null, Expression<Func<bodyemploymentemploymentInput>> bodyemploymentemployment = null, Expression<Func<string>> bodyemploymentemploymentStart = null, Expression<Func<string>> bodyemploymentoffice = null, Expression<Func<string>> bodyemploymentssn = null, Expression<Func<string>> bodyemploymentworkshift = null)
+        {
+            var apiCallPath = "/create_agent";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["mod"] = Convert.ToString("agent");
+            callPayload.Queries["cmd"] = Convert.ToString("create");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var accountObject = new JObject();
+            var accountObjectpropCount = 0;
+            if (bodyaccountexternalId != null)
+            {
+                accountObject["external_id"] = ExpressionConverter.ConvertO(bodyaccountexternalId);
+                accountObjectpropCount++;
+            }
+
+            if (bodyaccountinboundNumber != null)
+            {
+                accountObject["inbound_number"] = ExpressionConverter.ConvertO(bodyaccountinboundNumber);
+                accountObjectpropCount++;
+            }
+
+            if (bodyaccountlang != null)
+            {
+                accountObject["lang"] = ExpressionConverter.ConvertO(bodyaccountlang);
+                accountObjectpropCount++;
+            }
+
+            accountObject["level"] = "agent";
+            accountObjectpropCount++;
+            if (bodyaccountpassword != null)
+            {
+                accountObject["password"] = ExpressionConverter.ConvertO(bodyaccountpassword);
+                accountObjectpropCount++;
+            }
+
+            if (bodyaccounttimeZone != null)
+            {
+                accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                accountObjectpropCount++;
+            }
+
+            if (bodyaccountusername != null)
+            {
+                accountObject["username"] = ExpressionConverter.ConvertO(bodyaccountusername);
+                accountObjectpropCount++;
+            }
+
+            if (bodyaccountvoipUsername != null)
+            {
+                accountObject["voip_username"] = ExpressionConverter.ConvertO(bodyaccountvoipUsername);
+                accountObjectpropCount++;
+            }
+
+            if (accountObjectpropCount > 0)
+            {
+                body["account"] = accountObject;
+                bodypropCount++;
+            }
+
+            var contactInformationObject = new JObject();
+            var contactInformationObjectpropCount = 0;
+            if (bodycontactInformationaddress != null)
+            {
+                contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationcity != null)
+            {
+                contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationcountry != null)
+            {
+                contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationeContacts != null)
+            {
+                contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationemail != null)
+            {
+                contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationname != null)
+            {
+                contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationphone != null)
+            {
+                contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationpostal != null)
+            {
+                contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                contactInformationObjectpropCount++;
+            }
+
+            if (bodycontactInformationworkphone != null)
+            {
+                contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                contactInformationObjectpropCount++;
+            }
+
+            if (contactInformationObjectpropCount > 0)
+            {
+                body["contact_information"] = contactInformationObject;
+                bodypropCount++;
+            }
+
+            var employmentObject = new JObject();
+            var employmentObjectpropCount = 0;
+            if (bodyemploymentagentGroupId != null)
+            {
+                employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(bodyemploymentagentGroupId);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentbankAcc != null)
+            {
+                employmentObject["bank_acc"] = ExpressionConverter.ConvertO(bodyemploymentbankAcc);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentdescription != null)
+            {
+                employmentObject["description"] = ExpressionConverter.ConvertO(bodyemploymentdescription);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentemployment != null)
+            {
+                employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentemploymentStart != null)
+            {
+                employmentObject["employment_start"] = ExpressionConverter.ConvertO(bodyemploymentemploymentStart);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentoffice != null)
+            {
+                employmentObject["office"] = ExpressionConverter.ConvertO(bodyemploymentoffice);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentssn != null)
+            {
+                employmentObject["ssn"] = ExpressionConverter.ConvertO(bodyemploymentssn);
+                employmentObjectpropCount++;
+            }
+
+            if (bodyemploymentworkshift != null)
+            {
+                employmentObject["workshift"] = ExpressionConverter.ConvertO(bodyemploymentworkshift);
+                employmentObjectpropCount++;
+            }
+
+            if (employmentObjectpropCount > 0)
+            {
+                body["employment"] = employmentObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateAgentResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
+        public IBodyWorkflowAction<CreateCallbackResponse> CreateCallback(Expression<Func<string>> bodycontactaddress = null, Expression<Func<string>> bodycontactcity = null, Expression<Func<int>> bodycontactcompanyid = null, Expression<Func<string>> bodycontactcontactList = null, Expression<Func<string>> bodycontactcontactid = null, Expression<Func<string>> bodycontactcountry = null, Expression<Func<string>> bodycontactfname = null, Expression<Func<string>> bodycontactlname = null, Expression<Func<string>> bodycontactother1 = null, Expression<Func<string>> bodycontactother2 = null, Expression<Func<string>> bodycontactother3 = null, Expression<Func<string>> bodycontactother4 = null, Expression<Func<string>> bodycontactother5 = null, Expression<Func<string>> bodycontactother6 = null, Expression<Func<string>> bodycontactother7 = null, Expression<Func<string>> bodycontactother8 = null, Expression<Func<string>> bodycontactother9 = null, Expression<Func<string>> bodycontactother10 = null, Expression<Func<string>> bodycontactother11 = null, Expression<Func<string>> bodycontactother12 = null, Expression<Func<string>> bodycontactother13 = null, Expression<Func<string>> bodycontactother14 = null, Expression<Func<string>> bodycontactother15 = null, Expression<Func<string>> bodycontactother16 = null, Expression<Func<string>> bodycontactother17 = null, Expression<Func<string>> bodycontactother18 = null, Expression<Func<string>> bodycontactother19 = null, Expression<Func<string>> bodycontactother20 = null, Expression<Func<string>> bodycontactother21 = null, Expression<Func<string>> bodycontactother22 = null, Expression<Func<string>> bodycontactother23 = null, Expression<Func<string>> bodycontactother24 = null, Expression<Func<string>> bodycontactother25 = null, Expression<Func<string>> bodycontactother26 = null, Expression<Func<string>> bodycontactother27 = null, Expression<Func<string>> bodycontactother28 = null, Expression<Func<string>> bodycontactother29 = null, Expression<Func<string>> bodycontactother30 = null, Expression<Func<string>> bodycontactother31 = null, Expression<Func<string>> bodycontactother32 = null, Expression<Func<string>> bodycontactother33 = null, Expression<Func<string>> bodycontactother34 = null, Expression<Func<string>> bodycontactother35 = null, Expression<Func<string>> bodycontactpostcode = null, Expression<Func<string>> bodypropertiesagent = null, Expression<Func<string>> bodypropertiesagentGroup = null, Expression<Func<string>> bodypropertiescampaign = null, Expression<Func<string>> bodypropertiescomment = null, Expression<Func<string>> bodypropertiesphone = null, Expression<Func<string>> bodypropertiestimestamp = null, Expression<Func<bodypropertiestypeInput>> bodypropertiestype = null)
+        {
+            var apiCallPath = "/create_callback";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["mod"] = Convert.ToString("call");
+            callPayload.Queries["cmd"] = Convert.ToString("create_callback");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var contactObject = new JObject();
+            var contactObjectpropCount = 0;
+            if (bodycontactaddress != null)
+            {
+                contactObject["address"] = ExpressionConverter.ConvertO(bodycontactaddress);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactcity != null)
+            {
+                contactObject["city"] = ExpressionConverter.ConvertO(bodycontactcity);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactcompanyid != null)
+            {
+                contactObject["companyid"] = ExpressionConverter.ConvertO(bodycontactcompanyid);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactcontactList != null)
+            {
+                contactObject["contact_list"] = ExpressionConverter.ConvertO(bodycontactcontactList);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactcontactid != null)
+            {
+                contactObject["contactid"] = ExpressionConverter.ConvertO(bodycontactcontactid);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactcountry != null)
+            {
+                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactfname != null)
+            {
+                contactObject["fname"] = ExpressionConverter.ConvertO(bodycontactfname);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactlname != null)
+            {
+                contactObject["lname"] = ExpressionConverter.ConvertO(bodycontactlname);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother1 != null)
+            {
+                contactObject["other1"] = ExpressionConverter.ConvertO(bodycontactother1);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother2 != null)
+            {
+                contactObject["other2"] = ExpressionConverter.ConvertO(bodycontactother2);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother3 != null)
+            {
+                contactObject["other3"] = ExpressionConverter.ConvertO(bodycontactother3);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother4 != null)
+            {
+                contactObject["other4"] = ExpressionConverter.ConvertO(bodycontactother4);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother5 != null)
+            {
+                contactObject["other5"] = ExpressionConverter.ConvertO(bodycontactother5);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother6 != null)
+            {
+                contactObject["other6"] = ExpressionConverter.ConvertO(bodycontactother6);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother7 != null)
+            {
+                contactObject["other7"] = ExpressionConverter.ConvertO(bodycontactother7);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother8 != null)
+            {
+                contactObject["other8"] = ExpressionConverter.ConvertO(bodycontactother8);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother9 != null)
+            {
+                contactObject["other9"] = ExpressionConverter.ConvertO(bodycontactother9);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother10 != null)
+            {
+                contactObject["other10"] = ExpressionConverter.ConvertO(bodycontactother10);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother11 != null)
+            {
+                contactObject["other11"] = ExpressionConverter.ConvertO(bodycontactother11);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother12 != null)
+            {
+                contactObject["other12"] = ExpressionConverter.ConvertO(bodycontactother12);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother13 != null)
+            {
+                contactObject["other13"] = ExpressionConverter.ConvertO(bodycontactother13);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother14 != null)
+            {
+                contactObject["other14"] = ExpressionConverter.ConvertO(bodycontactother14);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother15 != null)
+            {
+                contactObject["other15"] = ExpressionConverter.ConvertO(bodycontactother15);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother16 != null)
+            {
+                contactObject["other16"] = ExpressionConverter.ConvertO(bodycontactother16);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother17 != null)
+            {
+                contactObject["other17"] = ExpressionConverter.ConvertO(bodycontactother17);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother18 != null)
+            {
+                contactObject["other18"] = ExpressionConverter.ConvertO(bodycontactother18);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother19 != null)
+            {
+                contactObject["other19"] = ExpressionConverter.ConvertO(bodycontactother19);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother20 != null)
+            {
+                contactObject["other20"] = ExpressionConverter.ConvertO(bodycontactother20);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother21 != null)
+            {
+                contactObject["other21"] = ExpressionConverter.ConvertO(bodycontactother21);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother22 != null)
+            {
+                contactObject["other22"] = ExpressionConverter.ConvertO(bodycontactother22);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother23 != null)
+            {
+                contactObject["other23"] = ExpressionConverter.ConvertO(bodycontactother23);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother24 != null)
+            {
+                contactObject["other24"] = ExpressionConverter.ConvertO(bodycontactother24);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother25 != null)
+            {
+                contactObject["other25"] = ExpressionConverter.ConvertO(bodycontactother25);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother26 != null)
+            {
+                contactObject["other26"] = ExpressionConverter.ConvertO(bodycontactother26);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother27 != null)
+            {
+                contactObject["other27"] = ExpressionConverter.ConvertO(bodycontactother27);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother28 != null)
+            {
+                contactObject["other28"] = ExpressionConverter.ConvertO(bodycontactother28);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother29 != null)
+            {
+                contactObject["other29"] = ExpressionConverter.ConvertO(bodycontactother29);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother30 != null)
+            {
+                contactObject["other30"] = ExpressionConverter.ConvertO(bodycontactother30);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother31 != null)
+            {
+                contactObject["other31"] = ExpressionConverter.ConvertO(bodycontactother31);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother32 != null)
+            {
+                contactObject["other32"] = ExpressionConverter.ConvertO(bodycontactother32);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother33 != null)
+            {
+                contactObject["other33"] = ExpressionConverter.ConvertO(bodycontactother33);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother34 != null)
+            {
+                contactObject["other34"] = ExpressionConverter.ConvertO(bodycontactother34);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactother35 != null)
+            {
+                contactObject["other35"] = ExpressionConverter.ConvertO(bodycontactother35);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactpostcode != null)
+            {
+                contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
+                contactObjectpropCount++;
+            }
+
+            if (contactObjectpropCount > 0)
+            {
+                body["contact"] = contactObject;
+                bodypropCount++;
+            }
+
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (bodypropertiesagent != null)
+            {
+                propertiesObject["agent"] = ExpressionConverter.ConvertO(bodypropertiesagent);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiesagentGroup != null)
+            {
+                propertiesObject["agent_group"] = ExpressionConverter.ConvertO(bodypropertiesagentGroup);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiescampaign != null)
+            {
+                propertiesObject["campaign"] = ExpressionConverter.ConvertO(bodypropertiescampaign);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiescomment != null)
+            {
+                propertiesObject["comment"] = ExpressionConverter.ConvertO(bodypropertiescomment);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiesphone != null)
+            {
+                propertiesObject["phone"] = ExpressionConverter.ConvertO(bodypropertiesphone);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiestimestamp != null)
+            {
+                propertiesObject["timestamp"] = ExpressionConverter.ConvertO(bodypropertiestimestamp);
+                propertiesObjectpropCount++;
+            }
+
+            if (bodypropertiestype != null)
+            {
+                propertiesObject["type"] = ExpressionConverter.ConvertO(bodypropertiestype);
+                propertiesObjectpropCount++;
+            }
+
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            body["return_callback_id"] = true;
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateCallbackResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> phone, Expression<Func<string>> list, Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<string>> email = null, Expression<Func<string>> www = null, Expression<Func<string>> address = null, Expression<Func<string>> postcode = null, Expression<Func<string>> city = null, Expression<Func<string>> country = null, Expression<Func<string>> ssc = null, Expression<Func<string>> birthyear = null, Expression<Func<string>> gender = null, Expression<Func<string>> companyid = null, Expression<Func<string>> company = null, Expression<Func<string>> vatin = null, Expression<Func<string>> title = null, Expression<Func<string>> comment = null, Expression<Func<string>> other1 = null, Expression<Func<string>> other2 = null, Expression<Func<string>> other3 = null, Expression<Func<string>> other4 = null, Expression<Func<string>> other5 = null, Expression<Func<string>> other6 = null, Expression<Func<string>> other7 = null, Expression<Func<string>> other8 = null, Expression<Func<string>> other9 = null, Expression<Func<string>> other10 = null, Expression<Func<string>> other11 = null, Expression<Func<string>> other12 = null, Expression<Func<string>> other13 = null, Expression<Func<string>> other14 = null, Expression<Func<string>> other15 = null, Expression<Func<string>> other16 = null, Expression<Func<string>> other17 = null, Expression<Func<string>> other18 = null, Expression<Func<string>> other19 = null, Expression<Func<string>> other20 = null, Expression<Func<string>> other21 = null, Expression<Func<string>> other22 = null, Expression<Func<string>> other23 = null, Expression<Func<string>> other24 = null, Expression<Func<string>> other25 = null, Expression<Func<string>> other26 = null, Expression<Func<string>> other27 = null, Expression<Func<string>> other28 = null, Expression<Func<string>> other29 = null, Expression<Func<string>> other30 = null, Expression<Func<string>> other31 = null, Expression<Func<string>> other32 = null, Expression<Func<string>> other33 = null, Expression<Func<string>> other34 = null, Expression<Func<string>> other35 = null, Expression<Func<string>> assignToAgent = null)
         {
             var apiCallPath = "/create_contact";
@@ -234,65 +764,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 bodypropCount++;
             }
 
-            var contact_informationObject = new JObject();
-            var contact_informationObjectpropCount = 0;
+            var contactInformationObject = new JObject();
+            var contactInformationObjectpropCount = 0;
             if (bodycontactInformationaddress != null)
             {
-                contact_informationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
-                contact_informationObjectpropCount++;
+                contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcity != null)
             {
-                contact_informationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
-                contact_informationObjectpropCount++;
+                contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationcountry != null)
             {
-                contact_informationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
-                contact_informationObjectpropCount++;
+                contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationeContacts != null)
             {
-                contact_informationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
-                contact_informationObjectpropCount++;
+                contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationemail != null)
             {
-                contact_informationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
-                contact_informationObjectpropCount++;
+                contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationname != null)
             {
-                contact_informationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
-                contact_informationObjectpropCount++;
+                contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationphone != null)
             {
-                contact_informationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
-                contact_informationObjectpropCount++;
+                contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationpostal != null)
             {
-                contact_informationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
-                contact_informationObjectpropCount++;
+                contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                contactInformationObjectpropCount++;
             }
 
             if (bodycontactInformationworkphone != null)
             {
-                contact_informationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
-                contact_informationObjectpropCount++;
+                contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                contactInformationObjectpropCount++;
             }
 
-            if (contact_informationObjectpropCount > 0)
+            if (contactInformationObjectpropCount > 0)
             {
-                body["contact_information"] = contact_informationObject;
+                body["contact_information"] = contactInformationObject;
                 bodypropCount++;
             }
 
@@ -510,6 +1040,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         Remove
     }
 
+    public class CreateAgentResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+    }
+
+    public enum bodyemploymentemploymentInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "active")]
+        Active,
+        [EnumMember(Value = "inactive")]
+        Inactive
+    }
+
+    public class CreateCallbackResponse
+    {
+        [JsonProperty("callback_id")]
+        public int CallbackId { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+    }
+
+    public enum bodypropertiestypeInput
+    {
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "public")]
+        Public
+    }
+
     public class CreateContactResponse
     {
         [JsonProperty("contact_id")]
@@ -544,16 +1110,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
-    }
-
-    public enum bodyemploymentemploymentInput
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "active")]
-        Active,
-        [EnumMember(Value = "inactive")]
-        Inactive
     }
 
     public class ModifyContactResponse

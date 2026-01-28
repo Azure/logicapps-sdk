@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
     public class XbridgerdocumentmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2ModernPageResponse> Convert2ModernPage(Expression<Func<string>> requestFileContent, Expression<Func<string>> requestSiteUrl, Expression<Func<string>> requestPageTitle, Expression<Func<string>> requestAuthor, Expression<Func<string>> requestFolderPath = null, Expression<Func<string>> requestBannerImageUrl = null)
+        public IBodyWorkflowAction<Convert2ModernPageResponse> Convert2ModernPage(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestsiteUrl, Expression<Func<string>> requestpageTitle, Expression<Func<string>> requestauthor, Expression<Func<string>> requestfolderPath = null, Expression<Func<string>> requestbannerImageUrl = null)
         {
             var apiCallPath = "/api/ConvertWord2ModernPage";
             var apiCallHttpMethod = "post";
@@ -20,22 +20,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestFileContent);
-            if (requestFolderPath != null)
+            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
+            if (requestfolderPath != null)
             {
-                request["FolderPath"] = ExpressionConverter.ConvertO(requestFolderPath);
+                request["FolderPath"] = ExpressionConverter.ConvertO(requestfolderPath);
                 requestpropCount++;
             }
 
             requestpropCount++;
-            request["SiteUrl"] = ExpressionConverter.ConvertO(requestSiteUrl);
+            request["SiteUrl"] = ExpressionConverter.ConvertO(requestsiteUrl);
             requestpropCount++;
-            request["PageTitle"] = ExpressionConverter.ConvertO(requestPageTitle);
+            request["PageTitle"] = ExpressionConverter.ConvertO(requestpageTitle);
             requestpropCount++;
-            request["Author"] = ExpressionConverter.ConvertO(requestAuthor);
-            if (requestBannerImageUrl != null)
+            request["Author"] = ExpressionConverter.ConvertO(requestauthor);
+            if (requestbannerImageUrl != null)
             {
-                request["BannerImageUrl"] = ExpressionConverter.ConvertO(requestBannerImageUrl);
+                request["BannerImageUrl"] = ExpressionConverter.ConvertO(requestbannerImageUrl);
                 requestpropCount++;
             }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2NonModernPageResponse> Convert2NonModernPage(Expression<Func<string>> requestFileContent)
+        public IBodyWorkflowAction<Convert2NonModernPageResponse> Convert2NonModernPage(Expression<Func<string>> requestfileContent)
         {
             var apiCallPath = "/api/ConvertWord2StaticHMTLPage";
             var apiCallHttpMethod = "post";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestFileContent);
+            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExportList2PDFResponse> ExportList2PDF(Expression<Func<string>> requestDocumentTitle, Expression<Func<string>> requestData, Expression<Func<string>> requestFieldArray)
+        public IBodyWorkflowAction<ExportList2PDFResponse> ExportList2PDF(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdata, Expression<Func<string>> requestfieldArray)
         {
             var apiCallPath = "/api/Export2PDFFromFlow";
             var apiCallHttpMethod = "post";
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["DocumentTitle"] = ExpressionConverter.ConvertO(requestDocumentTitle);
+            request["DocumentTitle"] = ExpressionConverter.ConvertO(requestdocumentTitle);
             requestpropCount++;
-            request["Data"] = ExpressionConverter.ConvertO(requestData);
+            request["Data"] = ExpressionConverter.ConvertO(requestdata);
             requestpropCount++;
-            request["FieldArray"] = ExpressionConverter.ConvertO(requestFieldArray);
+            request["FieldArray"] = ExpressionConverter.ConvertO(requestfieldArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExtractWordImagesResponse> ExtractWordImages(Expression<Func<string>> requestFileContent)
+        public IBodyWorkflowAction<ExtractWordImagesResponse> ExtractWordImages(Expression<Func<string>> requestfileContent)
         {
             var apiCallPath = "/api/Extractworddocimages";
             var apiCallHttpMethod = "post";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestFileContent);
+            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<PDFMergeResponse> PDFMerge(Expression<Func<string>> requestFileContentArray)
+        public IBodyWorkflowAction<PDFMergeResponse> PDFMerge(Expression<Func<string>> requestfileContentArray)
         {
             var apiCallPath = "/api/PDFMerge";
             var apiCallHttpMethod = "post";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContentArray"] = ExpressionConverter.ConvertO(requestFileContentArray);
+            request["FileContentArray"] = ExpressionConverter.ConvertO(requestfileContentArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordMergeResponse> WordMerge(Expression<Func<string>> requestFileContentArray)
+        public IBodyWorkflowAction<WordMergeResponse> WordMerge(Expression<Func<string>> requestfileContentArray)
         {
             var apiCallPath = "/api/WordMerge";
             var apiCallHttpMethod = "post";
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContentArray"] = ExpressionConverter.ConvertO(requestFileContentArray);
+            request["FileContentArray"] = ExpressionConverter.ConvertO(requestfileContentArray);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordtopdfResponse> Wordtopdf(Expression<Func<string>> requestFileContent, Expression<Func<string>> requestFileName)
+        public IBodyWorkflowAction<WordtopdfResponse> Wordtopdf(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestfileName)
         {
             var apiCallPath = "/api/Wordtopdf";
             var apiCallHttpMethod = "post";
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["FileContent"] = ExpressionConverter.ConvertO(requestFileContent);
+            request["FileContent"] = ExpressionConverter.ConvertO(requestfileContent);
             requestpropCount++;
-            request["FileName"] = ExpressionConverter.ConvertO(requestFileName);
+            request["FileName"] = ExpressionConverter.ConvertO(requestfileName);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;

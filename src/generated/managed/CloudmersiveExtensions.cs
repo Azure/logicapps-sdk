@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputUrl = null)
+        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
             var apiCallPath = "/virus/scan/website";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var input = new JObject();
             var inputpropCount = 0;
-            if (inputUrl != null)
+            if (inputurl != null)
             {
-                input["Url"] = ExpressionConverter.ConvertO(inputUrl);
+                input["Url"] = ExpressionConverter.ConvertO(inputurl);
                 inputpropCount++;
             }
 

@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputDatapropCount++;
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -247,11 +247,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -297,11 +297,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputCadDatapropCount++;
             inputCadDatapropCount++;
             inputCadData["source_file_name"] = ExpressionConverter.ConvertO(inputCadDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputCadData["sharepoint_file"] = sharepoint_fileObject;
+                inputCadData["sharepoint_file"] = sharepointFileObject;
                 inputCadDatapropCount++;
             }
 
@@ -401,11 +401,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputEmailDatapropCount++;
             inputEmailDatapropCount++;
             inputEmailData["source_file_name"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputEmailData["sharepoint_file"] = sharepoint_fileObject;
+                inputEmailData["sharepoint_file"] = sharepointFileObject;
                 inputEmailDatapropCount++;
             }
 
@@ -541,11 +541,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputExcelDatapropCount++;
             inputExcelDatapropCount++;
             inputExcelData["source_file_name"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputExcelData["sharepoint_file"] = sharepoint_fileObject;
+                inputExcelData["sharepoint_file"] = sharepointFileObject;
                 inputExcelDatapropCount++;
             }
 
@@ -703,11 +703,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputInfopathDatapropCount++;
             inputInfopathDatapropCount++;
             inputInfopathData["source_file_name"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputInfopathData["sharepoint_file"] = sharepoint_fileObject;
+                inputInfopathData["sharepoint_file"] = sharepointFileObject;
                 inputInfopathDatapropCount++;
             }
 
@@ -851,11 +851,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -897,11 +897,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPowerpointDatapropCount++;
             inputPowerpointDatapropCount++;
             inputPowerpointData["source_file_name"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPowerpointData["sharepoint_file"] = sharepoint_fileObject;
+                inputPowerpointData["sharepoint_file"] = sharepointFileObject;
                 inputPowerpointDatapropCount++;
             }
 
@@ -979,11 +979,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputVisioDatapropCount++;
             inputVisioDatapropCount++;
             inputVisioData["source_file_name"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputVisioData["sharepoint_file"] = sharepoint_fileObject;
+                inputVisioData["sharepoint_file"] = sharepointFileObject;
                 inputVisioDatapropCount++;
             }
 
@@ -1049,11 +1049,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputWordDatapropCount++;
             inputWordDatapropCount++;
             inputWordData["source_file_name"] = ExpressionConverter.ConvertO(inputWordDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputWordData["sharepoint_file"] = sharepoint_fileObject;
+                inputWordData["sharepoint_file"] = sharepointFileObject;
                 inputWordDatapropCount++;
             }
 
@@ -1191,11 +1191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -1325,11 +1325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputFromPdfDatapropCount++;
             inputFromPdfDatapropCount++;
             inputFromPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputFromPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputFromPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputFromPdfData["sharepoint_file"] = sharepointFileObject;
                 inputFromPdfDatapropCount++;
             }
 
@@ -1365,11 +1365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -1415,11 +1415,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["image_file"] = ExpressionConverter.ConvertO(inputDataimage);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -1551,11 +1551,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputXmlDatapropCount++;
             inputXmlDatapropCount++;
             inputXmlData["source_file_name"] = ExpressionConverter.ConvertO(inputXmlDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputXmlData["sharepoint_file"] = sharepoint_fileObject;
+                inputXmlData["sharepoint_file"] = sharepointFileObject;
                 inputXmlDatapropCount++;
             }
 
@@ -1637,11 +1637,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -1759,11 +1759,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -1887,11 +1887,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["content"] = ExpressionConverter.ConvertO(inputDatabarcodeContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2117,11 +2117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 inputDatapropCount++;
             }
 
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2171,11 +2171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2245,11 +2245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2347,11 +2347,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["pdf_file"] = ExpressionConverter.ConvertO(inputDatapDFWatermark);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2473,11 +2473,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["content"] = ExpressionConverter.ConvertO(inputDatacontent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2617,11 +2617,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["position"] = ExpressionConverter.ConvertO(inputDataposition);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -2753,11 +2753,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
             inputPdfDatapropCount++;
             inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -2815,11 +2815,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -2903,11 +2903,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["rtf_data"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -3045,11 +3045,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
 
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -3099,11 +3099,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -3151,11 +3151,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
             inputDatapropCount++;
             inputData["content"] = ExpressionConverter.ConvertO(inputDatawatermarkContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 

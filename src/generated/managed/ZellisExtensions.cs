@@ -74,6 +74,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<JToken> CRUDEntitiy(Expression<Func<string>> bodyevent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/subscription";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["Event"] = ExpressionConverter.ConvertO(bodyevent);
+            var eventTypeObject = new JObject();
+            var eventTypeObjectpropCount = 0;
+            if (bodyeventTypecreate != null)
+            {
+                eventTypeObject["Create"] = ExpressionConverter.ConvertO(bodyeventTypecreate);
+                eventTypeObjectpropCount++;
+            }
+
+            if (bodyeventTypedelete != null)
+            {
+                eventTypeObject["Delete"] = ExpressionConverter.ConvertO(bodyeventTypedelete);
+                eventTypeObjectpropCount++;
+            }
+
+            if (bodyeventTypeupdate != null)
+            {
+                eventTypeObject["Update"] = ExpressionConverter.ConvertO(bodyeventTypeupdate);
+                eventTypeObjectpropCount++;
+            }
+
+            if (eventTypeObjectpropCount > 0)
+            {
+                body["EventType"] = eventTypeObject;
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["IsEnabled"] = ExpressionConverter.ConvertO(bodyisEnabled);
+            body["URL"] = "@listCallbackUrl()";
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class StaticResponseWriteSchema

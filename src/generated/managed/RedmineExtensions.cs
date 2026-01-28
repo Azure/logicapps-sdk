@@ -21,6 +21,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
+        public IBodyWorkflowAction<string> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissuepriority = null, Expression<Func<issueissuetrackerInput>> issueissuetracker = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null)
+        {
+            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var issue = new JObject();
+            var issuepropCount = 0;
+            var issueObject = new JObject();
+            var issueObjectpropCount = 0;
+            if (issueissuepriority != null)
+            {
+                issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriority);
+                issueObjectpropCount++;
+            }
+
+            if (issueissuetracker != null)
+            {
+                issueObject["tracker_id"] = ExpressionConverter.ConvertO(issueissuetracker);
+                issueObjectpropCount++;
+            }
+
+            if (issueissuestatus != null)
+            {
+                issueObject["status_id"] = ExpressionConverter.ConvertO(issueissuestatus);
+                issueObjectpropCount++;
+            }
+
+            if (issueissuesubject != null)
+            {
+                issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
+                issueObjectpropCount++;
+            }
+
+            if (issueissuedescription != null)
+            {
+                issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
+                issueObjectpropCount++;
+            }
+
+            if (issueObjectpropCount > 0)
+            {
+                issue["issue"] = issueObject;
+                issuepropCount++;
+            }
+
+            if (issuepropCount > 0)
+            {
+                callPayload.Body = issue;
+            }
+
+            return new ApiConnectionAction<string>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
             var apiCallPath = String.Format("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
@@ -174,6 +228,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
         [JsonProperty("name")]
         public string Author { get; set; }
+    }
+
+    public enum issueissuetrackerInput
+    {
+        Bug,
+        Feature,
+        Support
+    }
+
+    public enum issueissuestatusInput
+    {
+        New,
+        [EnumMember(Value = "In Progress")]
+        InProgress,
+        Resolved,
+        Feedback,
+        Closed,
+        Rejected
     }
 
     public class GetProjectResponse

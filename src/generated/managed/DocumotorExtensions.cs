@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     public enum acceptInput
     {
         [EnumMember(Value = "*/*")]
-        **,
+        Unnamed,
         [EnumMember(Value = "application/pdf")]
         ApplicationPdf
     }

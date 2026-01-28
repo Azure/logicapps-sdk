@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyobject)
+        public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
         {
             var apiCallPath = "/v1/reports/image";
             var apiCallHttpMethod = "post";
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyobject);
+            body["object"] = ExpressionConverter.ConvertO(bodyObject);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

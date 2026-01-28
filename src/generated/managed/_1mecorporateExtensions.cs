@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodyCardTemplateId, Expression<Func<string>> bodyJobtitle, Expression<Func<string>> bodyWorkEmail, Expression<Func<string>> bodyNameOnCard = null, Expression<Func<string>> bodyExtension = null)
+        public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
         {
             var apiCallPath = "/api/Invitation/";
             var apiCallHttpMethod = "post";
@@ -29,20 +29,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["CardTemplateId"] = ExpressionConverter.ConvertO(bodyCardTemplateId);
-            if (bodyNameOnCard != null)
+            body["CardTemplateId"] = ExpressionConverter.ConvertO(bodycardTemplateId);
+            if (bodynameOnCard != null)
             {
-                body["NameOnCard"] = ExpressionConverter.ConvertO(bodyNameOnCard);
+                body["NameOnCard"] = ExpressionConverter.ConvertO(bodynameOnCard);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Jobtitle"] = ExpressionConverter.ConvertO(bodyJobtitle);
+            body["Jobtitle"] = ExpressionConverter.ConvertO(bodyjobtitle);
             bodypropCount++;
-            body["WorkEmail"] = ExpressionConverter.ConvertO(bodyWorkEmail);
-            if (bodyExtension != null)
+            body["WorkEmail"] = ExpressionConverter.ConvertO(bodyworkEmail);
+            if (bodyextension != null)
             {
-                body["Extension"] = ExpressionConverter.ConvertO(bodyExtension);
+                body["Extension"] = ExpressionConverter.ConvertO(bodyextension);
                 bodypropCount++;
             }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyEmail)
+        public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
         {
             var apiCallPath = "/api/Invitation/Disassociate";
             var apiCallHttpMethod = "delete";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

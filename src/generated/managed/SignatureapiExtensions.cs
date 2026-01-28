@@ -748,6 +748,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
+        {
+            var apiCallPath = String.Format("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var authenticationObject = new JObject();
+            var authenticationObjectpropCount = 0;
+            authenticationObject["type"] = "email_link";
+            authenticationObjectpropCount++;
+            if (authenticationObjectpropCount > 0)
+            {
+                body["authentication"] = authenticationObject;
+                bodypropCount++;
+            }
+
+            if (bodyredirectURL != null)
+            {
+                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                bodypropCount++;
+            }
+
+            if (bodyextraProperties != null)
+            {
+                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<string>> bodyauthenticationauthenticationProvider = null, Expression<Func<string[]>> bodyauthenticationauthenticationData = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
+        {
+            var apiCallPath = String.Format("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var authenticationObject = new JObject();
+            var authenticationObjectpropCount = 0;
+            authenticationObject["type"] = "custom";
+            authenticationObjectpropCount++;
+            if (bodyauthenticationauthenticationProvider != null)
+            {
+                authenticationObject["provider"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationProvider);
+                authenticationObjectpropCount++;
+            }
+
+            if (bodyauthenticationauthenticationData != null)
+            {
+                authenticationObject["data"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationData);
+                authenticationObjectpropCount++;
+            }
+
+            if (authenticationObjectpropCount > 0)
+            {
+                body["authentication"] = authenticationObject;
+                bodypropCount++;
+            }
+
+            if (bodyredirectURL != null)
+            {
+                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                bodypropCount++;
+            }
+
+            if (bodyextraProperties != null)
+            {
+                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateCeremonyCustomOutput>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> WaitEnvelope(Expression<Func<string>> envelopeId)
         {
             var apiCallPath = String.Format("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
@@ -1364,6 +1452,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         [JsonProperty("completed_at")]
         public string CompletedAt { get; set; }
+    }
+
+    public class CreateCeremonyCustomOutput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 
     public class Deliverable

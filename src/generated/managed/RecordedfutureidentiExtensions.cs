@@ -33,43 +33,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
                 filterObjectpropCount++;
             }
 
-            var breach_propertiesObject = new JObject();
-            var breach_propertiesObjectpropCount = 0;
+            var breachPropertiesObject = new JObject();
+            var breachPropertiesObjectpropCount = 0;
             if (bodyfilterbreachPropertiesdate != null)
             {
-                breach_propertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesdate);
-                breach_propertiesObjectpropCount++;
+                breachPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesdate);
+                breachPropertiesObjectpropCount++;
             }
 
             if (bodyfilterbreachPropertiesname != null)
             {
-                breach_propertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesname);
-                breach_propertiesObjectpropCount++;
+                breachPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesname);
+                breachPropertiesObjectpropCount++;
             }
 
-            if (breach_propertiesObjectpropCount > 0)
+            if (breachPropertiesObjectpropCount > 0)
             {
-                filterObject["breach_properties"] = breach_propertiesObject;
+                filterObject["breach_properties"] = breachPropertiesObject;
                 filterObjectpropCount++;
             }
 
-            var dump_propertiesObject = new JObject();
-            var dump_propertiesObjectpropCount = 0;
+            var dumpPropertiesObject = new JObject();
+            var dumpPropertiesObjectpropCount = 0;
             if (bodyfilterdumpPropertiesdate != null)
             {
-                dump_propertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesdate);
-                dump_propertiesObjectpropCount++;
+                dumpPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesdate);
+                dumpPropertiesObjectpropCount++;
             }
 
             if (bodyfilterdumpPropertiesname != null)
             {
-                dump_propertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesname);
-                dump_propertiesObjectpropCount++;
+                dumpPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesname);
+                dumpPropertiesObjectpropCount++;
             }
 
-            if (dump_propertiesObjectpropCount > 0)
+            if (dumpPropertiesObjectpropCount > 0)
             {
-                filterObject["dump_properties"] = dump_propertiesObject;
+                filterObject["dump_properties"] = dumpPropertiesObject;
                 filterObjectpropCount++;
             }
 

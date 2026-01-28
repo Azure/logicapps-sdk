@@ -3620,7 +3620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 
     public class SoftonewebcrmTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CallCreated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallCreated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/call/created";
             var apiCallHttpMethod = "post";
@@ -3630,7 +3630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3639,7 +3639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OpportunityUpdated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityUpdated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/opportunity/updated";
             var apiCallHttpMethod = "post";
@@ -3649,7 +3649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3658,7 +3658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OpportunityDeleted(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityDeleted(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/opportunity/deleted";
             var apiCallHttpMethod = "post";
@@ -3668,7 +3668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3677,7 +3677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OpportunityCreated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityCreated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/opportunity/created";
             var apiCallHttpMethod = "post";
@@ -3687,7 +3687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3696,7 +3696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger LeadUpdated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadUpdated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/lead/updated";
             var apiCallHttpMethod = "post";
@@ -3706,7 +3706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3715,7 +3715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger LeadDeleted(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadDeleted(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/lead/deleted";
             var apiCallHttpMethod = "post";
@@ -3725,7 +3725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3734,7 +3734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger LeadCreated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadCreated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/lead/created";
             var apiCallHttpMethod = "post";
@@ -3744,7 +3744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3753,7 +3753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger TaskUpdated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskUpdated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/task/updated";
             var apiCallHttpMethod = "post";
@@ -3763,7 +3763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3772,7 +3772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger TaskDeleted(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskDeleted(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/task/deleted";
             var apiCallHttpMethod = "post";
@@ -3782,7 +3782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3791,7 +3791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger TaskCreated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskCreated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/task/created";
             var apiCallHttpMethod = "post";
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3810,7 +3810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventUpdated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventUpdated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/event/updated";
             var apiCallHttpMethod = "post";
@@ -3820,7 +3820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3829,7 +3829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventDeleted(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventDeleted(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/event/deleted";
             var apiCallHttpMethod = "post";
@@ -3839,7 +3839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3848,7 +3848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventCreated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventCreated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/event/created";
             var apiCallHttpMethod = "post";
@@ -3858,7 +3858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3867,7 +3867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CallDeleted(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallDeleted(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/call/deleted";
             var apiCallHttpMethod = "post";
@@ -3877,7 +3877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3886,7 +3886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CallUpdated(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallUpdated(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/WebHook/register/call/updated";
             var apiCallHttpMethod = "post";
@@ -3896,7 +3896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

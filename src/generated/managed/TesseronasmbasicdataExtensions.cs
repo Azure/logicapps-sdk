@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactCreateContactResponse> ApiContactCreateContact(Expression<Func<string>> bodyEnterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyInitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyInfoOnTicketView = null, Expression<Func<string>> bodyInfoOnServiceAssignment = null, Expression<Func<string>> bodyInfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyIsVip = null, Expression<Func<int>> bodyenterpriseContactType = null, Expression<Func<bool>> bodyIsAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyPhoneNumbersInputItem[]>> bodyPhoneNumbers = null, Expression<Func<bodyEmailsInputItem[]>> bodyEmails = null)
+        public IBodyWorkflowAction<ApiContactCreateContactResponse> ApiContactCreateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<int>> bodyenterpriseContactType = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var apiCallPath = "/ApiContact/CreateContact";
             var apiCallHttpMethod = "post";
@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["EnterpriseReferenceNumber"] = ExpressionConverter.ConvertO(bodyEnterpriseReferenceNumber);
-            if (bodyTitle != null)
+            body["EnterpriseReferenceNumber"] = ExpressionConverter.ConvertO(bodyenterpriseReferenceNumber);
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyInitials != null)
+            if (bodyinitials != null)
             {
-                body["Initials"] = ExpressionConverter.ConvertO(bodyInitials);
+                body["Initials"] = ExpressionConverter.ConvertO(bodyinitials);
                 bodypropCount++;
             }
 
@@ -101,21 +101,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyInfoOnTicketView != null)
+            if (bodyinfoOnTicketView != null)
             {
-                body["InfoOnTicketView"] = ExpressionConverter.ConvertO(bodyInfoOnTicketView);
+                body["InfoOnTicketView"] = ExpressionConverter.ConvertO(bodyinfoOnTicketView);
                 bodypropCount++;
             }
 
-            if (bodyInfoOnServiceAssignment != null)
+            if (bodyinfoOnServiceAssignment != null)
             {
-                body["InfoOnServiceAssignment"] = ExpressionConverter.ConvertO(bodyInfoOnServiceAssignment);
+                body["InfoOnServiceAssignment"] = ExpressionConverter.ConvertO(bodyinfoOnServiceAssignment);
                 bodypropCount++;
             }
 
-            if (bodyInfoOnTicketCreate != null)
+            if (bodyinfoOnTicketCreate != null)
             {
-                body["InfoOnTicketCreate"] = ExpressionConverter.ConvertO(bodyInfoOnTicketCreate);
+                body["InfoOnTicketCreate"] = ExpressionConverter.ConvertO(bodyinfoOnTicketCreate);
                 bodypropCount++;
             }
 
@@ -125,9 +125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyIsVip != null)
+            if (bodyisVip != null)
             {
-                body["IsVip"] = ExpressionConverter.ConvertO(bodyIsVip);
+                body["IsVip"] = ExpressionConverter.ConvertO(bodyisVip);
                 bodypropCount++;
             }
 
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyIsAddressFromMainEnterprise != null)
+            if (bodyisAddressFromMainEnterprise != null)
             {
-                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyIsAddressFromMainEnterprise);
+                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
                 bodypropCount++;
             }
 
@@ -217,15 +217,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyPhoneNumbers != null)
+            if (bodyphoneNumbers != null)
             {
-                body["PhoneNumbers"] = ExpressionConverter.ConvertO(bodyPhoneNumbers);
+                body["PhoneNumbers"] = ExpressionConverter.ConvertO(bodyphoneNumbers);
                 bodypropCount++;
             }
 
-            if (bodyEmails != null)
+            if (bodyemails != null)
             {
-                body["Emails"] = ExpressionConverter.ConvertO(bodyEmails);
+                body["Emails"] = ExpressionConverter.ConvertO(bodyemails);
                 bodypropCount++;
             }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactUpdateContactResponse> ApiContactUpdateContact(Expression<Func<string>> bodyEnterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyInitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyInfoOnTicketView = null, Expression<Func<string>> bodyInfoOnServiceAssignment = null, Expression<Func<string>> bodyInfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyIsVip = null, Expression<Func<bool>> bodyIsAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyPhoneNumbersInputItem[]>> bodyPhoneNumbers = null, Expression<Func<bodyEmailsInputItem[]>> bodyEmails = null)
+        public IBodyWorkflowAction<ApiContactUpdateContactResponse> ApiContactUpdateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var apiCallPath = "/ApiContact/UpdateContact";
             var apiCallHttpMethod = "post";
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             }
 
             bodypropCount++;
-            body["EnterpriseReferenceNumber"] = ExpressionConverter.ConvertO(bodyEnterpriseReferenceNumber);
-            if (bodyTitle != null)
+            body["EnterpriseReferenceNumber"] = ExpressionConverter.ConvertO(bodyenterpriseReferenceNumber);
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
@@ -287,9 +287,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyInitials != null)
+            if (bodyinitials != null)
             {
-                body["Initials"] = ExpressionConverter.ConvertO(bodyInitials);
+                body["Initials"] = ExpressionConverter.ConvertO(bodyinitials);
                 bodypropCount++;
             }
 
@@ -299,21 +299,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyInfoOnTicketView != null)
+            if (bodyinfoOnTicketView != null)
             {
-                body["InfoOnTicketView"] = ExpressionConverter.ConvertO(bodyInfoOnTicketView);
+                body["InfoOnTicketView"] = ExpressionConverter.ConvertO(bodyinfoOnTicketView);
                 bodypropCount++;
             }
 
-            if (bodyInfoOnServiceAssignment != null)
+            if (bodyinfoOnServiceAssignment != null)
             {
-                body["InfoOnServiceAssignment"] = ExpressionConverter.ConvertO(bodyInfoOnServiceAssignment);
+                body["InfoOnServiceAssignment"] = ExpressionConverter.ConvertO(bodyinfoOnServiceAssignment);
                 bodypropCount++;
             }
 
-            if (bodyInfoOnTicketCreate != null)
+            if (bodyinfoOnTicketCreate != null)
             {
-                body["InfoOnTicketCreate"] = ExpressionConverter.ConvertO(bodyInfoOnTicketCreate);
+                body["InfoOnTicketCreate"] = ExpressionConverter.ConvertO(bodyinfoOnTicketCreate);
                 bodypropCount++;
             }
 
@@ -323,15 +323,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyIsVip != null)
+            if (bodyisVip != null)
             {
-                body["IsVip"] = ExpressionConverter.ConvertO(bodyIsVip);
+                body["IsVip"] = ExpressionConverter.ConvertO(bodyisVip);
                 bodypropCount++;
             }
 
-            if (bodyIsAddressFromMainEnterprise != null)
+            if (bodyisAddressFromMainEnterprise != null)
             {
-                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyIsAddressFromMainEnterprise);
+                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
                 bodypropCount++;
             }
 
@@ -409,15 +409,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
                 bodypropCount++;
             }
 
-            if (bodyPhoneNumbers != null)
+            if (bodyphoneNumbers != null)
             {
-                body["PhoneNumbers"] = ExpressionConverter.ConvertO(bodyPhoneNumbers);
+                body["PhoneNumbers"] = ExpressionConverter.ConvertO(bodyphoneNumbers);
                 bodypropCount++;
             }
 
-            if (bodyEmails != null)
+            if (bodyemails != null)
             {
-                body["Emails"] = ExpressionConverter.ConvertO(bodyEmails);
+                body["Emails"] = ExpressionConverter.ConvertO(bodyemails);
                 bodypropCount++;
             }
 
@@ -546,13 +546,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public int ContactId { get; set; }
     }
 
-    public class bodyPhoneNumbersInputItem
+    public class bodyphoneNumbersInputItem
     {
         public string Number { get; set; }
         public string Name { get; set; }
     }
 
-    public class bodyEmailsInputItem
+    public class bodyemailsInputItem
     {
         public string EMail { get; set; }
         public string Name { get; set; }

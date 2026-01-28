@@ -22,104 +22,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> PostCustomerDetailsupd(Expression<Func<int>> postCustomerdetailsupdRequestLGCMAREACARETURNCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERNUM = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAFIRSTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCALASTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCADOB = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENAME = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENUM = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOSTCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCANUMPOLICIES = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEHOME = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS = null, Expression<Func<string>> postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOLICYDATA = null)
+        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> PostCustomerDetailsupd(Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
             var apiCallPath = "/customernumber/Custdetailadd";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var postCustomerdetailsupdRequest = new JObject();
             var postCustomerdetailsupdRequestpropCount = 0;
-            var LGCMAREAObject = new JObject();
-            var LGCMAREAObjectpropCount = 0;
-            if (postCustomerdetailsupdRequestLGCMAREACARETURNCODE != null)
+            var lGCMAREAObject = new JObject();
+            var lGCMAREAObjectpropCount = 0;
+            if (postCustomerdetailsupdRequestlGCMAREAcARETURNCODE != null)
             {
-                LGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACARETURNCODE);
-                LGCMAREAObjectpropCount++;
+                lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
+                lGCMAREAObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERNUM != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM != null)
             {
-                LGCMAREAObject["CA_CUSTOMER_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERNUM);
-                LGCMAREAObjectpropCount++;
+                lGCMAREAObject["CA_CUSTOMER_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
+                lGCMAREAObjectpropCount++;
             }
 
-            var CA_CUSTOMER_REQUESTObject = new JObject();
-            var CA_CUSTOMER_REQUESTObjectpropCount = 0;
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAFIRSTNAME != null)
+            var cACUSTOMERREQUESTObject = new JObject();
+            var cACUSTOMERREQUESTObjectpropCount = 0;
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_FIRST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAFIRSTNAME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_FIRST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCALASTNAME != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCALASTNAME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCADOB != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCADOB);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENAME != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENAME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENUM != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAHOUSENUM);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOSTCODE != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOSTCODE);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCANUMPOLICIES != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCANUMPOLICIES);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEHOME != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPHONEHOME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOLICYDATA != null)
+            if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestLGCMAREACACUSTOMERREQUESTCAPOLICYDATA);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (CA_CUSTOMER_REQUESTObjectpropCount > 0)
+            if (cACUSTOMERREQUESTObjectpropCount > 0)
             {
-                LGCMAREAObject["CA_CUSTOMER_REQUEST"] = CA_CUSTOMER_REQUESTObject;
-                LGCMAREAObjectpropCount++;
+                lGCMAREAObject["CA_CUSTOMER_REQUEST"] = cACUSTOMERREQUESTObject;
+                lGCMAREAObjectpropCount++;
             }
 
-            if (LGCMAREAObjectpropCount > 0)
+            if (lGCMAREAObjectpropCount > 0)
             {
-                postCustomerdetailsupdRequest["LGCMAREA"] = LGCMAREAObject;
+                postCustomerdetailsupdRequest["LGCMAREA"] = lGCMAREAObject;
                 postCustomerdetailsupdRequestpropCount++;
             }
 
@@ -132,92 +132,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        public IBodyWorkflowAction<PutCustomerdetailResponse200> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<int>> bodyLGCMAREACARETURNCODE = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCALASTNAME = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCADOB = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAHOUSENAME = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAHOUSENUM = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAPOSTCODE = null, Expression<Func<int>> bodyLGCMAREACACUSTOMERREQUESTCANUMPOLICIES = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAPHONEHOME = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS = null, Expression<Func<string>> bodyLGCMAREACACUSTOMERREQUESTCAPOLICYDATA = null)
+        public IBodyWorkflowAction<PutCustomerdetailResponse200> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<int>> bodylGCMAREAcARETURNCODE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, Expression<Func<int>> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
             var apiCallPath = String.Format("/customernumber/Custdetailupd/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(num, 1), ExpressionConverter.ConvertWithUrlEncoding(firstname, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            var LGCMAREAObject = new JObject();
-            var LGCMAREAObjectpropCount = 0;
-            if (bodyLGCMAREACARETURNCODE != null)
+            var lGCMAREAObject = new JObject();
+            var lGCMAREAObjectpropCount = 0;
+            if (bodylGCMAREAcARETURNCODE != null)
             {
-                LGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(bodyLGCMAREACARETURNCODE);
-                LGCMAREAObjectpropCount++;
+                lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcARETURNCODE);
+                lGCMAREAObjectpropCount++;
             }
 
-            var CA_CUSTOMER_REQUESTObject = new JObject();
-            var CA_CUSTOMER_REQUESTObjectpropCount = 0;
-            if (bodyLGCMAREACACUSTOMERREQUESTCALASTNAME != null)
+            var cACUSTOMERREQUESTObject = new JObject();
+            var cACUSTOMERREQUESTObjectpropCount = 0;
+            if (bodylGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCALASTNAME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCADOB != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcADOB != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCADOB);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcADOB);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAHOUSENAME != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAHOUSENAME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAHOUSENUM != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAHOUSENUM);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAPOSTCODE != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAPOSTCODE);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCANUMPOLICIES != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCANUMPOLICIES);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAPHONEMOBILE);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAPHONEHOME != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAPHONEHOME);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAEMAILADDRESS);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (bodyLGCMAREACACUSTOMERREQUESTCAPOLICYDATA != null)
+            if (bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
             {
-                CA_CUSTOMER_REQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(bodyLGCMAREACACUSTOMERREQUESTCAPOLICYDATA);
-                CA_CUSTOMER_REQUESTObjectpropCount++;
+                cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                cACUSTOMERREQUESTObjectpropCount++;
             }
 
-            if (CA_CUSTOMER_REQUESTObjectpropCount > 0)
+            if (cACUSTOMERREQUESTObjectpropCount > 0)
             {
-                LGCMAREAObject["CA_CUSTOMER_REQUEST"] = CA_CUSTOMER_REQUESTObject;
-                LGCMAREAObjectpropCount++;
+                lGCMAREAObject["CA_CUSTOMER_REQUEST"] = cACUSTOMERREQUESTObject;
+                lGCMAREAObjectpropCount++;
             }
 
-            if (LGCMAREAObjectpropCount > 0)
+            if (lGCMAREAObjectpropCount > 0)
             {
-                body["LGCMAREA"] = LGCMAREAObject;
+                body["LGCMAREA"] = lGCMAREAObject;
                 bodypropCount++;
             }
 

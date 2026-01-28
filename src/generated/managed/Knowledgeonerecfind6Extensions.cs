@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<SendFileResponse> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyFileContents = null, Expression<Func<string>> bodyFileName = null, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyCreatedDate = null, Expression<Func<string>> bodyEDOCType = null, Expression<Func<bodyExtraFieldsInputItem[]>> bodyExtraFields = null)
+        public IBodyWorkflowAction<SendFileResponse> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyfileContents = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycreatedDate = null, Expression<Func<string>> bodyeDOCType = null, Expression<Func<bodyextraFieldsInputItem[]>> bodyextraFields = null)
         {
             var apiCallPath = "/SendFile";
             var apiCallHttpMethod = "post";
@@ -91,39 +91,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
                 callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyFileContents != null)
+            if (bodyfileContents != null)
             {
-                body["FileContents"] = ExpressionConverter.ConvertO(bodyFileContents);
+                body["FileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
                 bodypropCount++;
             }
 
-            if (bodyFileName != null)
+            if (bodyfileName != null)
             {
-                body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
                 bodypropCount++;
             }
 
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyCreatedDate != null)
+            if (bodycreatedDate != null)
             {
-                body["CreatedDate"] = ExpressionConverter.ConvertO(bodyCreatedDate);
+                body["CreatedDate"] = ExpressionConverter.ConvertO(bodycreatedDate);
                 bodypropCount++;
             }
 
-            if (bodyEDOCType != null)
+            if (bodyeDOCType != null)
             {
-                body["EDOCType"] = ExpressionConverter.ConvertO(bodyEDOCType);
+                body["EDOCType"] = ExpressionConverter.ConvertO(bodyeDOCType);
                 bodypropCount++;
             }
 
-            if (bodyExtraFields != null)
+            if (bodyextraFields != null)
             {
-                body["ExtraFields"] = ExpressionConverter.ConvertO(bodyExtraFields);
+                body["ExtraFields"] = ExpressionConverter.ConvertO(bodyextraFields);
                 bodypropCount++;
             }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         public string Result { get; set; }
     }
 
-    public class bodyExtraFieldsInputItem
+    public class bodyextraFieldsInputItem
     {
         public string FldName { get; set; }
         public string FldValue { get; set; }

@@ -125,6 +125,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
 
             return new ApiConnectionAction<UploadTemplateResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
+        {
+            var apiCallPath = "/GenerateDocument";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+            bodypropCount++;
+            body["outputformat"] = ExpressionConverter.ConvertO(bodyoutputformat);
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (dataObjectpropCount > 0)
+            {
+                body["data"] = dataObject;
+                bodypropCount++;
+            }
+
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+        }
     }
 
     public class ShareeffectTriggers([ConnectionName] string connectionId)
@@ -165,6 +201,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
+    }
+
+    public class GenerateDocumentResponse
+    {
+        [JsonProperty("$content-type")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("$content")]
+        public string Content { get; set; }
+    }
+
+    public enum bodyoutputformatInput
+    {
+        [EnumMember(Value = "docx")]
+        Docx,
+        [EnumMember(Value = "pdf")]
+        Pdf
     }
 }
 

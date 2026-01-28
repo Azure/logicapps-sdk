@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class TelephonyxtendedsrvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Events(Expression<Func<string>> bodyevent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Events(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/Events-Subscribe";
             var apiCallHttpMethod = "post";
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             }
 
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
             if (bodytype != null)
             {
                 body["type"] = ExpressionConverter.ConvertO(bodytype);

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     public class YakchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyInboxEmail, Expression<Func<string>> bodyMessageText, Expression<Func<string>> bodyMessageTo)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
             var apiCallPath = "/Automation/SendMessage";
             var apiCallHttpMethod = "post";
@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodyMessageText);
+            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
             bodypropCount++;
-            body["MessageTo"] = ExpressionConverter.ConvertO(bodyMessageTo);
+            body["MessageTo"] = ExpressionConverter.ConvertO(bodymessageTo);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        public IBodyWorkflowAction<SendMessageV2Response> SendMessageV2(Expression<Func<string>> bodyInboxEmail, Expression<Func<string>> bodyMessageText, Expression<Func<string>> bodyMessageTo)
+        public IBodyWorkflowAction<SendMessageV2Response> SendMessageV2(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
             var apiCallPath = "/v2/Automation/SendMessage";
             var apiCallHttpMethod = "post";
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodyMessageText);
+            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
             bodypropCount++;
-            body["MessageTo"] = ExpressionConverter.ConvertO(bodyMessageTo);
+            body["MessageTo"] = ExpressionConverter.ConvertO(bodymessageTo);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Automation/InboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Automation/OutboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyInboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
             var apiCallHttpMethod = "post";
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InboundMessageV2(Expression<Func<string>> bodyInboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessageV2(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/Automation/InboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OutboundMessageV2(Expression<Func<string>> bodyInboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessageV2(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/Automation/OutboundMessageNotification";
             var apiCallHttpMethod = "post";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyInboxEmail);
+            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
             body["TargetUrl"] = "@listCallbackUrl()";
             bodypropCount++;
             if (bodypropCount > 0)

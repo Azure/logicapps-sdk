@@ -1790,11 +1790,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 bodypropCount++;
             }
 
-            var custom_fieldsObject = new JObject();
-            var custom_fieldsObjectpropCount = 0;
-            if (custom_fieldsObjectpropCount > 0)
+            var customFieldsObject = new JObject();
+            var customFieldsObjectpropCount = 0;
+            if (customFieldsObjectpropCount > 0)
             {
-                body["custom_fields"] = custom_fieldsObject;
+                body["custom_fields"] = customFieldsObject;
                 bodypropCount++;
             }
 

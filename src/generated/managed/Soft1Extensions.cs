@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> bodyKEY, Expression<Func<string>> bodyLOCATEINFO, Expression<Func<string>> bodyFORM = null)
+        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var apiCallPath = "/getContact";
             var apiCallHttpMethod = "post";
@@ -43,16 +43,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             body["APPID"] = 702;
             bodypropCount++;
-            if (bodyFORM != null)
+            if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyFORM);
+                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodyKEY);
+            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodyLOCATEINFO);
+            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "PRSNOUT";
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> bodyKEY, Expression<Func<string>> bodyLOCATEINFO, Expression<Func<string>> bodyFORM = null)
+        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var apiCallPath = "/getProject";
             var apiCallHttpMethod = "post";
@@ -78,16 +78,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var bodypropCount = 0;
             body["APPID"] = 702;
             bodypropCount++;
-            if (bodyFORM != null)
+            if (bodyfORM != null)
             {
-                body["FORM"] = ExpressionConverter.ConvertO(bodyFORM);
+                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["KEY"] = ExpressionConverter.ConvertO(bodyKEY);
+            body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
             bodypropCount++;
-            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodyLOCATEINFO);
+            body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
             body["MODE"] = "1";
             bodypropCount++;
             body["OBJECT"] = "PRJC";
@@ -122,10 +122,431 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
             return new ApiConnectionAction<GetSystemParamsResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<SetData200response> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        {
+            var apiCallPath = "/setSomeeting";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("s1service");
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["APPID"] = 702;
+            bodypropCount++;
+            var dATAObject = new JObject();
+            var dATAObjectpropCount = 0;
+            var sOACTIONObject = new JObject();
+            var sOACTIONObjectpropCount = 0;
+            if (bodydATAsOACTIONoperator != null)
+            {
+                sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONoperatorContact != null)
+            {
+                sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONaCTSTATUS != null)
+            {
+                sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONcOMMENTS != null)
+            {
+                sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONfINALDATE != null)
+            {
+                sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONfROMDATE != null)
+            {
+                sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONorderedBy != null)
+            {
+                sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONorderedByContact != null)
+            {
+                sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONpriority != null)
+            {
+                sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONproject != null)
+            {
+                sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONrEMARKS != null)
+            {
+                sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                sOACTIONObjectpropCount++;
+            }
+
+            sOACTIONObjectpropCount++;
+            sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
+            if (bodydATAsOACTIONtRDR != null)
+            {
+                sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONtRNDATE != null)
+            {
+                sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (sOACTIONObjectpropCount > 0)
+            {
+                dATAObject["SOACTION"] = sOACTIONObject;
+                dATAObjectpropCount++;
+            }
+
+            if (bodydATAxTRDOCDATA != null)
+            {
+                dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                dATAObjectpropCount++;
+            }
+
+            if (dATAObjectpropCount > 0)
+            {
+                body["DATA"] = dATAObject;
+                bodypropCount++;
+            }
+
+            if (bodyfORM != null)
+            {
+                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                bodypropCount++;
+            }
+
+            if (bodykEY != null)
+            {
+                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                bodypropCount++;
+            }
+
+            body["MODE"] = "1";
+            bodypropCount++;
+            body["OBJECT"] = "SOMEETING";
+            bodypropCount++;
+            body["SERVICE"] = "setData";
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<SetData200response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<SetData200response> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        {
+            var apiCallPath = "/setSotask";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("s1service");
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["APPID"] = 702;
+            bodypropCount++;
+            var dATAObject = new JObject();
+            var dATAObjectpropCount = 0;
+            var sOACTIONObject = new JObject();
+            var sOACTIONObjectpropCount = 0;
+            if (bodydATAsOACTIONoperator != null)
+            {
+                sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONoperatorContact != null)
+            {
+                sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONaCTSTATUS != null)
+            {
+                sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONcOMMENTS != null)
+            {
+                sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONfINALDATE != null)
+            {
+                sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONfROMDATE != null)
+            {
+                sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONorderedBy != null)
+            {
+                sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONorderedByContact != null)
+            {
+                sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONpriority != null)
+            {
+                sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONproject != null)
+            {
+                sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONrEMARKS != null)
+            {
+                sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                sOACTIONObjectpropCount++;
+            }
+
+            sOACTIONObjectpropCount++;
+            sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
+            if (bodydATAsOACTIONtRDR != null)
+            {
+                sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (bodydATAsOACTIONtRNDATE != null)
+            {
+                sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                sOACTIONObjectpropCount++;
+            }
+
+            if (sOACTIONObjectpropCount > 0)
+            {
+                dATAObject["SOACTION"] = sOACTIONObject;
+                dATAObjectpropCount++;
+            }
+
+            if (bodydATAxTRDOCDATA != null)
+            {
+                dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                dATAObjectpropCount++;
+            }
+
+            if (dATAObjectpropCount > 0)
+            {
+                body["DATA"] = dATAObject;
+                bodypropCount++;
+            }
+
+            if (bodyfORM != null)
+            {
+                body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                bodypropCount++;
+            }
+
+            if (bodykEY != null)
+            {
+                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                bodypropCount++;
+            }
+
+            body["MODE"] = "1";
+            bodypropCount++;
+            body["OBJECT"] = "SOTASK";
+            bodypropCount++;
+            body["SERVICE"] = "setData";
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<SetData200response>(callPayload);
+        }
     }
 
     public class Soft1Triggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger Webhook(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/webhook";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("create");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycondition != null)
+            {
+                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                bodypropCount++;
+            }
+
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            body["event"] = "ONPOST";
+            bodypropCount++;
+            bodypropCount++;
+            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/webhook/onDelete";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("create");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycondition != null)
+            {
+                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                bodypropCount++;
+            }
+
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            body["event"] = "ONDELETE";
+            bodypropCount++;
+            bodypropCount++;
+            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/webhook/onInsert";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("create");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycondition != null)
+            {
+                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                bodypropCount++;
+            }
+
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            body["event"] = "ONINSERT";
+            bodypropCount++;
+            bodypropCount++;
+            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/webhook/onUpdate";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["op"] = Convert.ToString("create");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycondition != null)
+            {
+                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                bodypropCount++;
+            }
+
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            body["event"] = "ONUPDATE";
+            bodypropCount++;
+            bodypropCount++;
+            body["object"] = ExpressionConverter.ConvertO(bodyObject);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class GetContactResponse
@@ -363,6 +784,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
         [JsonProperty("zip")]
         public string Zip { get; set; }
+    }
+
+    public class SetData200response
+    {
+        [JsonProperty("error")]
+        public string Error { get; set; }
+
+        [JsonProperty("errorcode")]
+        public int ErrorCode { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+    }
+
+    public enum bodydATAsOACTIONaCTSTATUSInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "1")]
+        _1,
+        [EnumMember(Value = "2")]
+        _2,
+        [EnumMember(Value = "3")]
+        _3,
+        [EnumMember(Value = "4")]
+        _4,
+        [EnumMember(Value = "5")]
+        _5,
+        [EnumMember(Value = "6")]
+        _6
+    }
+
+    public class bodydATAxTRDOCDATAInputItem
+    {
+        [JsonProperty("LINENUM")]
+        public string LineNo { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("SOFNAME")]
+        public string Url { get; set; }
+    }
+
+    public enum bodyObjectInput
+    {
+        Cheque,
+        [EnumMember(Value = "Collections document")]
+        CollectionsDocument,
+        Contacts,
+        Customer,
+        [EnumMember(Value = "Draft entry")]
+        DraftEntry,
+        Email,
+        Expenses,
+        [EnumMember(Value = "Expenses document")]
+        ExpensesDocument,
+        Meeting,
+        Item,
+        [EnumMember(Value = "Payments document")]
+        PaymentsDocument,
+        Projects,
+        [EnumMember(Value = "Purchases document")]
+        PurchasesDocument,
+        [EnumMember(Value = "Sales document")]
+        SalesDocument,
+        Services,
+        [EnumMember(Value = "Stock document")]
+        StockDocument,
+        Supplier,
+        [EnumMember(Value = "Task")]
+        TaskObject
     }
 }
 

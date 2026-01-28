@@ -77,43 +77,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_dateObject = new JObject();
-            var start_dateObjectpropCount = 0;
+            var startDateObject = new JObject();
+            var startDateObjectpropCount = 0;
             if (bodyseasonalStartmonth != null)
             {
-                start_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
-                start_dateObjectpropCount++;
+                startDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
+                startDateObjectpropCount++;
             }
 
             if (bodyseasonalStartday != null)
             {
-                start_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
-                start_dateObjectpropCount++;
+                startDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
+                startDateObjectpropCount++;
             }
 
-            if (start_dateObjectpropCount > 0)
+            if (startDateObjectpropCount > 0)
             {
-                body["start_date"] = start_dateObject;
+                body["start_date"] = startDateObject;
                 bodypropCount++;
             }
 
-            var end_dateObject = new JObject();
-            var end_dateObjectpropCount = 0;
+            var endDateObject = new JObject();
+            var endDateObjectpropCount = 0;
             if (bodyseasonalEndmonth != null)
             {
-                end_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
-                end_dateObjectpropCount++;
+                endDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
+                endDateObjectpropCount++;
             }
 
             if (bodyseasonalEndday != null)
             {
-                end_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
-                end_dateObjectpropCount++;
+                endDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
+                endDateObjectpropCount++;
             }
 
-            if (end_dateObjectpropCount > 0)
+            if (endDateObjectpropCount > 0)
             {
-                body["end_date"] = end_dateObject;
+                body["end_date"] = endDateObject;
                 bodypropCount++;
             }
 
@@ -310,43 +310,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_dateObject = new JObject();
-            var start_dateObjectpropCount = 0;
+            var startDateObject = new JObject();
+            var startDateObjectpropCount = 0;
             if (bodyseasonalStartmonth != null)
             {
-                start_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
-                start_dateObjectpropCount++;
+                startDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
+                startDateObjectpropCount++;
             }
 
             if (bodyseasonalStartday != null)
             {
-                start_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
-                start_dateObjectpropCount++;
+                startDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
+                startDateObjectpropCount++;
             }
 
-            if (start_dateObjectpropCount > 0)
+            if (startDateObjectpropCount > 0)
             {
-                body["start_date"] = start_dateObject;
+                body["start_date"] = startDateObject;
                 bodypropCount++;
             }
 
-            var end_dateObject = new JObject();
-            var end_dateObjectpropCount = 0;
+            var endDateObject = new JObject();
+            var endDateObjectpropCount = 0;
             if (bodyseasonalEndmonth != null)
             {
-                end_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
-                end_dateObjectpropCount++;
+                endDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
+                endDateObjectpropCount++;
             }
 
             if (bodyseasonalEndday != null)
             {
-                end_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
-                end_dateObjectpropCount++;
+                endDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
+                endDateObjectpropCount++;
             }
 
-            if (end_dateObjectpropCount > 0)
+            if (endDateObjectpropCount > 0)
             {
-                body["end_date"] = end_dateObject;
+                body["end_date"] = endDateObject;
                 bodypropCount++;
             }
 
@@ -1009,29 +1009,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var educational_source_dateObject = new JObject();
-            var educational_source_dateObjectpropCount = 0;
+            var educationalSourceDateObject = new JObject();
+            var educationalSourceDateObjectpropCount = 0;
             if (bodysourceDateyear != null)
             {
-                educational_source_dateObject["year"] = ExpressionConverter.ConvertO(bodysourceDateyear);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["year"] = ExpressionConverter.ConvertO(bodysourceDateyear);
+                educationalSourceDateObjectpropCount++;
             }
 
             if (bodysourceDatemonth != null)
             {
-                educational_source_dateObject["month"] = ExpressionConverter.ConvertO(bodysourceDatemonth);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["month"] = ExpressionConverter.ConvertO(bodysourceDatemonth);
+                educationalSourceDateObjectpropCount++;
             }
 
             if (bodysourceDateday != null)
             {
-                educational_source_dateObject["day"] = ExpressionConverter.ConvertO(bodysourceDateday);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["day"] = ExpressionConverter.ConvertO(bodysourceDateday);
+                educationalSourceDateObjectpropCount++;
             }
 
-            if (educational_source_dateObjectpropCount > 0)
+            if (educationalSourceDateObjectpropCount > 0)
             {
-                body["educational_source_date"] = educational_source_dateObject;
+                body["educational_source_date"] = educationalSourceDateObject;
                 bodypropCount++;
             }
 
@@ -1041,29 +1041,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var date_graduatedObject = new JObject();
-            var date_graduatedObjectpropCount = 0;
+            var dateGraduatedObject = new JObject();
+            var dateGraduatedObjectpropCount = 0;
             if (bodydateGraduatedyear != null)
             {
-                date_graduatedObject["year"] = ExpressionConverter.ConvertO(bodydateGraduatedyear);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["year"] = ExpressionConverter.ConvertO(bodydateGraduatedyear);
+                dateGraduatedObjectpropCount++;
             }
 
             if (bodydateGraduatedmonth != null)
             {
-                date_graduatedObject["month"] = ExpressionConverter.ConvertO(bodydateGraduatedmonth);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["month"] = ExpressionConverter.ConvertO(bodydateGraduatedmonth);
+                dateGraduatedObjectpropCount++;
             }
 
             if (bodydateGraduatedday != null)
             {
-                date_graduatedObject["day"] = ExpressionConverter.ConvertO(bodydateGraduatedday);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["day"] = ExpressionConverter.ConvertO(bodydateGraduatedday);
+                dateGraduatedObjectpropCount++;
             }
 
-            if (date_graduatedObjectpropCount > 0)
+            if (dateGraduatedObjectpropCount > 0)
             {
-                body["date_graduated"] = date_graduatedObject;
+                body["date_graduated"] = dateGraduatedObject;
                 bodypropCount++;
             }
 
@@ -1085,55 +1085,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_dateObject = new JObject();
-            var start_dateObjectpropCount = 0;
+            var startDateObject = new JObject();
+            var startDateObjectpropCount = 0;
             if (bodyfromyear != null)
             {
-                start_dateObject["year"] = ExpressionConverter.ConvertO(bodyfromyear);
-                start_dateObjectpropCount++;
+                startDateObject["year"] = ExpressionConverter.ConvertO(bodyfromyear);
+                startDateObjectpropCount++;
             }
 
             if (bodyfrommonth != null)
             {
-                start_dateObject["month"] = ExpressionConverter.ConvertO(bodyfrommonth);
-                start_dateObjectpropCount++;
+                startDateObject["month"] = ExpressionConverter.ConvertO(bodyfrommonth);
+                startDateObjectpropCount++;
             }
 
             if (bodyfromday != null)
             {
-                start_dateObject["day"] = ExpressionConverter.ConvertO(bodyfromday);
-                start_dateObjectpropCount++;
+                startDateObject["day"] = ExpressionConverter.ConvertO(bodyfromday);
+                startDateObjectpropCount++;
             }
 
-            if (start_dateObjectpropCount > 0)
+            if (startDateObjectpropCount > 0)
             {
-                body["start_date"] = start_dateObject;
+                body["start_date"] = startDateObject;
                 bodypropCount++;
             }
 
-            var date_leftObject = new JObject();
-            var date_leftObjectpropCount = 0;
+            var dateLeftObject = new JObject();
+            var dateLeftObjectpropCount = 0;
             if (bodytoyear != null)
             {
-                date_leftObject["year"] = ExpressionConverter.ConvertO(bodytoyear);
-                date_leftObjectpropCount++;
+                dateLeftObject["year"] = ExpressionConverter.ConvertO(bodytoyear);
+                dateLeftObjectpropCount++;
             }
 
             if (bodytomonth != null)
             {
-                date_leftObject["month"] = ExpressionConverter.ConvertO(bodytomonth);
-                date_leftObjectpropCount++;
+                dateLeftObject["month"] = ExpressionConverter.ConvertO(bodytomonth);
+                dateLeftObjectpropCount++;
             }
 
             if (bodytoday != null)
             {
-                date_leftObject["day"] = ExpressionConverter.ConvertO(bodytoday);
-                date_leftObjectpropCount++;
+                dateLeftObject["day"] = ExpressionConverter.ConvertO(bodytoday);
+                dateLeftObjectpropCount++;
             }
 
-            if (date_leftObjectpropCount > 0)
+            if (dateLeftObjectpropCount > 0)
             {
-                body["date_left"] = date_leftObject;
+                body["date_left"] = dateLeftObject;
                 bodypropCount++;
             }
 
@@ -1216,29 +1216,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var educational_source_dateObject = new JObject();
-            var educational_source_dateObjectpropCount = 0;
+            var educationalSourceDateObject = new JObject();
+            var educationalSourceDateObjectpropCount = 0;
             if (bodysourceDateyear != null)
             {
-                educational_source_dateObject["year"] = ExpressionConverter.ConvertO(bodysourceDateyear);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["year"] = ExpressionConverter.ConvertO(bodysourceDateyear);
+                educationalSourceDateObjectpropCount++;
             }
 
             if (bodysourceDatemonth != null)
             {
-                educational_source_dateObject["month"] = ExpressionConverter.ConvertO(bodysourceDatemonth);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["month"] = ExpressionConverter.ConvertO(bodysourceDatemonth);
+                educationalSourceDateObjectpropCount++;
             }
 
             if (bodysourceDateday != null)
             {
-                educational_source_dateObject["day"] = ExpressionConverter.ConvertO(bodysourceDateday);
-                educational_source_dateObjectpropCount++;
+                educationalSourceDateObject["day"] = ExpressionConverter.ConvertO(bodysourceDateday);
+                educationalSourceDateObjectpropCount++;
             }
 
-            if (educational_source_dateObjectpropCount > 0)
+            if (educationalSourceDateObjectpropCount > 0)
             {
-                body["educational_source_date"] = educational_source_dateObject;
+                body["educational_source_date"] = educationalSourceDateObject;
                 bodypropCount++;
             }
 
@@ -1248,29 +1248,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var date_graduatedObject = new JObject();
-            var date_graduatedObjectpropCount = 0;
+            var dateGraduatedObject = new JObject();
+            var dateGraduatedObjectpropCount = 0;
             if (bodydateGraduatedyear != null)
             {
-                date_graduatedObject["year"] = ExpressionConverter.ConvertO(bodydateGraduatedyear);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["year"] = ExpressionConverter.ConvertO(bodydateGraduatedyear);
+                dateGraduatedObjectpropCount++;
             }
 
             if (bodydateGraduatedmonth != null)
             {
-                date_graduatedObject["month"] = ExpressionConverter.ConvertO(bodydateGraduatedmonth);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["month"] = ExpressionConverter.ConvertO(bodydateGraduatedmonth);
+                dateGraduatedObjectpropCount++;
             }
 
             if (bodydateGraduatedday != null)
             {
-                date_graduatedObject["day"] = ExpressionConverter.ConvertO(bodydateGraduatedday);
-                date_graduatedObjectpropCount++;
+                dateGraduatedObject["day"] = ExpressionConverter.ConvertO(bodydateGraduatedday);
+                dateGraduatedObjectpropCount++;
             }
 
-            if (date_graduatedObjectpropCount > 0)
+            if (dateGraduatedObjectpropCount > 0)
             {
-                body["date_graduated"] = date_graduatedObject;
+                body["date_graduated"] = dateGraduatedObject;
                 bodypropCount++;
             }
 
@@ -1292,55 +1292,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_dateObject = new JObject();
-            var start_dateObjectpropCount = 0;
+            var startDateObject = new JObject();
+            var startDateObjectpropCount = 0;
             if (bodyfromyear != null)
             {
-                start_dateObject["year"] = ExpressionConverter.ConvertO(bodyfromyear);
-                start_dateObjectpropCount++;
+                startDateObject["year"] = ExpressionConverter.ConvertO(bodyfromyear);
+                startDateObjectpropCount++;
             }
 
             if (bodyfrommonth != null)
             {
-                start_dateObject["month"] = ExpressionConverter.ConvertO(bodyfrommonth);
-                start_dateObjectpropCount++;
+                startDateObject["month"] = ExpressionConverter.ConvertO(bodyfrommonth);
+                startDateObjectpropCount++;
             }
 
             if (bodyfromday != null)
             {
-                start_dateObject["day"] = ExpressionConverter.ConvertO(bodyfromday);
-                start_dateObjectpropCount++;
+                startDateObject["day"] = ExpressionConverter.ConvertO(bodyfromday);
+                startDateObjectpropCount++;
             }
 
-            if (start_dateObjectpropCount > 0)
+            if (startDateObjectpropCount > 0)
             {
-                body["start_date"] = start_dateObject;
+                body["start_date"] = startDateObject;
                 bodypropCount++;
             }
 
-            var date_leftObject = new JObject();
-            var date_leftObjectpropCount = 0;
+            var dateLeftObject = new JObject();
+            var dateLeftObjectpropCount = 0;
             if (bodytoyear != null)
             {
-                date_leftObject["year"] = ExpressionConverter.ConvertO(bodytoyear);
-                date_leftObjectpropCount++;
+                dateLeftObject["year"] = ExpressionConverter.ConvertO(bodytoyear);
+                dateLeftObjectpropCount++;
             }
 
             if (bodytomonth != null)
             {
-                date_leftObject["month"] = ExpressionConverter.ConvertO(bodytomonth);
-                date_leftObjectpropCount++;
+                dateLeftObject["month"] = ExpressionConverter.ConvertO(bodytomonth);
+                dateLeftObjectpropCount++;
             }
 
             if (bodytoday != null)
             {
-                date_leftObject["day"] = ExpressionConverter.ConvertO(bodytoday);
-                date_leftObjectpropCount++;
+                dateLeftObject["day"] = ExpressionConverter.ConvertO(bodytoday);
+                dateLeftObjectpropCount++;
             }
 
-            if (date_leftObjectpropCount > 0)
+            if (dateLeftObjectpropCount > 0)
             {
-                body["date_left"] = date_leftObject;
+                body["date_left"] = dateLeftObject;
                 bodypropCount++;
             }
 
@@ -1756,29 +1756,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var birth_dateObject = new JObject();
-            var birth_dateObjectpropCount = 0;
+            var birthDateObject = new JObject();
+            var birthDateObjectpropCount = 0;
             if (bodybirthdateyear != null)
             {
-                birth_dateObject["year"] = ExpressionConverter.ConvertO(bodybirthdateyear);
-                birth_dateObjectpropCount++;
+                birthDateObject["year"] = ExpressionConverter.ConvertO(bodybirthdateyear);
+                birthDateObjectpropCount++;
             }
 
             if (bodybirthdatemonth != null)
             {
-                birth_dateObject["month"] = ExpressionConverter.ConvertO(bodybirthdatemonth);
-                birth_dateObjectpropCount++;
+                birthDateObject["month"] = ExpressionConverter.ConvertO(bodybirthdatemonth);
+                birthDateObjectpropCount++;
             }
 
             if (bodybirthdateday != null)
             {
-                birth_dateObject["day"] = ExpressionConverter.ConvertO(bodybirthdateday);
-                birth_dateObjectpropCount++;
+                birthDateObject["day"] = ExpressionConverter.ConvertO(bodybirthdateday);
+                birthDateObjectpropCount++;
             }
 
-            if (birth_dateObjectpropCount > 0)
+            if (birthDateObjectpropCount > 0)
             {
-                body["birth_date"] = birth_dateObject;
+                body["birth_date"] = birthDateObject;
                 bodypropCount++;
             }
 
@@ -1864,29 +1864,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var birth_dateObject = new JObject();
-            var birth_dateObjectpropCount = 0;
+            var birthDateObject = new JObject();
+            var birthDateObjectpropCount = 0;
             if (bodybirthdateyear != null)
             {
-                birth_dateObject["year"] = ExpressionConverter.ConvertO(bodybirthdateyear);
-                birth_dateObjectpropCount++;
+                birthDateObject["year"] = ExpressionConverter.ConvertO(bodybirthdateyear);
+                birthDateObjectpropCount++;
             }
 
             if (bodybirthdatemonth != null)
             {
-                birth_dateObject["month"] = ExpressionConverter.ConvertO(bodybirthdatemonth);
-                birth_dateObjectpropCount++;
+                birthDateObject["month"] = ExpressionConverter.ConvertO(bodybirthdatemonth);
+                birthDateObjectpropCount++;
             }
 
             if (bodybirthdateday != null)
             {
-                birth_dateObject["day"] = ExpressionConverter.ConvertO(bodybirthdateday);
-                birth_dateObjectpropCount++;
+                birthDateObject["day"] = ExpressionConverter.ConvertO(bodybirthdateday);
+                birthDateObjectpropCount++;
             }
 
-            if (birth_dateObjectpropCount > 0)
+            if (birthDateObjectpropCount > 0)
             {
-                body["birth_date"] = birth_dateObject;
+                body["birth_date"] = birthDateObject;
                 bodypropCount++;
             }
 
@@ -1971,43 +1971,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
 
             bodypropCount++;
             body["expected_date"] = ExpressionConverter.ConvertO(bodyexpectedDate);
-            var expected_start_timeObject = new JObject();
-            var expected_start_timeObjectpropCount = 0;
+            var expectedStartTimeObject = new JObject();
+            var expectedStartTimeObjectpropCount = 0;
             if (bodyexpectedStarthour != null)
             {
-                expected_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
+                expectedStartTimeObjectpropCount++;
             }
 
             if (bodyexpectedStartminute != null)
             {
-                expected_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
+                expectedStartTimeObjectpropCount++;
             }
 
-            if (expected_start_timeObjectpropCount > 0)
+            if (expectedStartTimeObjectpropCount > 0)
             {
-                body["expected_start_time"] = expected_start_timeObject;
+                body["expected_start_time"] = expectedStartTimeObject;
                 bodypropCount++;
             }
 
-            var expected_end_timeObject = new JObject();
-            var expected_end_timeObjectpropCount = 0;
+            var expectedEndTimeObject = new JObject();
+            var expectedEndTimeObjectpropCount = 0;
             if (bodyexpectedEndhour != null)
             {
-                expected_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
+                expectedEndTimeObjectpropCount++;
             }
 
             if (bodyexpectedEndminute != null)
             {
-                expected_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
+                expectedEndTimeObjectpropCount++;
             }
 
-            if (expected_end_timeObjectpropCount > 0)
+            if (expectedEndTimeObjectpropCount > 0)
             {
-                body["expected_end_time"] = expected_end_timeObject;
+                body["expected_end_time"] = expectedEndTimeObject;
                 bodypropCount++;
             }
 
@@ -2017,43 +2017,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -2150,43 +2150,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var expected_start_timeObject = new JObject();
-            var expected_start_timeObjectpropCount = 0;
+            var expectedStartTimeObject = new JObject();
+            var expectedStartTimeObjectpropCount = 0;
             if (bodyexpectedStarthour != null)
             {
-                expected_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
+                expectedStartTimeObjectpropCount++;
             }
 
             if (bodyexpectedStartminute != null)
             {
-                expected_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
+                expectedStartTimeObjectpropCount++;
             }
 
-            if (expected_start_timeObjectpropCount > 0)
+            if (expectedStartTimeObjectpropCount > 0)
             {
-                body["expected_start_time"] = expected_start_timeObject;
+                body["expected_start_time"] = expectedStartTimeObject;
                 bodypropCount++;
             }
 
-            var expected_end_timeObject = new JObject();
-            var expected_end_timeObjectpropCount = 0;
+            var expectedEndTimeObject = new JObject();
+            var expectedEndTimeObjectpropCount = 0;
             if (bodyexpectedEndhour != null)
             {
-                expected_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
+                expectedEndTimeObjectpropCount++;
             }
 
             if (bodyexpectedEndminute != null)
             {
-                expected_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
+                expectedEndTimeObjectpropCount++;
             }
 
-            if (expected_end_timeObjectpropCount > 0)
+            if (expectedEndTimeObjectpropCount > 0)
             {
-                body["expected_end_time"] = expected_end_timeObject;
+                body["expected_end_time"] = expectedEndTimeObject;
                 bodypropCount++;
             }
 
@@ -2196,43 +2196,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -2610,43 +2610,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_timeObject = new JObject();
-            var start_timeObjectpropCount = 0;
+            var startTimeObject = new JObject();
+            var startTimeObjectpropCount = 0;
             if (bodycallAfterhour != null)
             {
-                start_timeObject["hour"] = ExpressionConverter.ConvertO(bodycallAfterhour);
-                start_timeObjectpropCount++;
+                startTimeObject["hour"] = ExpressionConverter.ConvertO(bodycallAfterhour);
+                startTimeObjectpropCount++;
             }
 
             if (bodycallAfterminute != null)
             {
-                start_timeObject["minute"] = ExpressionConverter.ConvertO(bodycallAfterminute);
-                start_timeObjectpropCount++;
+                startTimeObject["minute"] = ExpressionConverter.ConvertO(bodycallAfterminute);
+                startTimeObjectpropCount++;
             }
 
-            if (start_timeObjectpropCount > 0)
+            if (startTimeObjectpropCount > 0)
             {
-                body["start_time"] = start_timeObject;
+                body["start_time"] = startTimeObject;
                 bodypropCount++;
             }
 
-            var end_timeObject = new JObject();
-            var end_timeObjectpropCount = 0;
+            var endTimeObject = new JObject();
+            var endTimeObjectpropCount = 0;
             if (bodycallBeforehour != null)
             {
-                end_timeObject["hour"] = ExpressionConverter.ConvertO(bodycallBeforehour);
-                end_timeObjectpropCount++;
+                endTimeObject["hour"] = ExpressionConverter.ConvertO(bodycallBeforehour);
+                endTimeObjectpropCount++;
             }
 
             if (bodycallBeforeminute != null)
             {
-                end_timeObject["minute"] = ExpressionConverter.ConvertO(bodycallBeforeminute);
-                end_timeObjectpropCount++;
+                endTimeObject["minute"] = ExpressionConverter.ConvertO(bodycallBeforeminute);
+                endTimeObjectpropCount++;
             }
 
-            if (end_timeObjectpropCount > 0)
+            if (endTimeObjectpropCount > 0)
             {
-                body["end_time"] = end_timeObject;
+                body["end_time"] = endTimeObject;
                 bodypropCount++;
             }
 
@@ -2686,43 +2686,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var seasonal_start_dateObject = new JObject();
-            var seasonal_start_dateObjectpropCount = 0;
+            var seasonalStartDateObject = new JObject();
+            var seasonalStartDateObjectpropCount = 0;
             if (bodyseasonalStartmonth != null)
             {
-                seasonal_start_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
-                seasonal_start_dateObjectpropCount++;
+                seasonalStartDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
+                seasonalStartDateObjectpropCount++;
             }
 
             if (bodyseasonalStartday != null)
             {
-                seasonal_start_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
-                seasonal_start_dateObjectpropCount++;
+                seasonalStartDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
+                seasonalStartDateObjectpropCount++;
             }
 
-            if (seasonal_start_dateObjectpropCount > 0)
+            if (seasonalStartDateObjectpropCount > 0)
             {
-                body["seasonal_start_date"] = seasonal_start_dateObject;
+                body["seasonal_start_date"] = seasonalStartDateObject;
                 bodypropCount++;
             }
 
-            var seasonal_end_dateObject = new JObject();
-            var seasonal_end_dateObjectpropCount = 0;
+            var seasonalEndDateObject = new JObject();
+            var seasonalEndDateObjectpropCount = 0;
             if (bodyseasonalEndmonth != null)
             {
-                seasonal_end_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
-                seasonal_end_dateObjectpropCount++;
+                seasonalEndDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
+                seasonalEndDateObjectpropCount++;
             }
 
             if (bodyseasonalEndday != null)
             {
-                seasonal_end_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
-                seasonal_end_dateObjectpropCount++;
+                seasonalEndDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
+                seasonalEndDateObjectpropCount++;
             }
 
-            if (seasonal_end_dateObjectpropCount > 0)
+            if (seasonalEndDateObjectpropCount > 0)
             {
-                body["seasonal_end_date"] = seasonal_end_dateObject;
+                body["seasonal_end_date"] = seasonalEndDateObject;
                 bodypropCount++;
             }
 
@@ -2799,43 +2799,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var start_timeObject = new JObject();
-            var start_timeObjectpropCount = 0;
+            var startTimeObject = new JObject();
+            var startTimeObjectpropCount = 0;
             if (bodycallAfterhour != null)
             {
-                start_timeObject["hour"] = ExpressionConverter.ConvertO(bodycallAfterhour);
-                start_timeObjectpropCount++;
+                startTimeObject["hour"] = ExpressionConverter.ConvertO(bodycallAfterhour);
+                startTimeObjectpropCount++;
             }
 
             if (bodycallAfterminute != null)
             {
-                start_timeObject["minute"] = ExpressionConverter.ConvertO(bodycallAfterminute);
-                start_timeObjectpropCount++;
+                startTimeObject["minute"] = ExpressionConverter.ConvertO(bodycallAfterminute);
+                startTimeObjectpropCount++;
             }
 
-            if (start_timeObjectpropCount > 0)
+            if (startTimeObjectpropCount > 0)
             {
-                body["start_time"] = start_timeObject;
+                body["start_time"] = startTimeObject;
                 bodypropCount++;
             }
 
-            var end_timeObject = new JObject();
-            var end_timeObjectpropCount = 0;
+            var endTimeObject = new JObject();
+            var endTimeObjectpropCount = 0;
             if (bodycallBeforehour != null)
             {
-                end_timeObject["hour"] = ExpressionConverter.ConvertO(bodycallBeforehour);
-                end_timeObjectpropCount++;
+                endTimeObject["hour"] = ExpressionConverter.ConvertO(bodycallBeforehour);
+                endTimeObjectpropCount++;
             }
 
             if (bodycallBeforeminute != null)
             {
-                end_timeObject["minute"] = ExpressionConverter.ConvertO(bodycallBeforeminute);
-                end_timeObjectpropCount++;
+                endTimeObject["minute"] = ExpressionConverter.ConvertO(bodycallBeforeminute);
+                endTimeObjectpropCount++;
             }
 
-            if (end_timeObjectpropCount > 0)
+            if (endTimeObjectpropCount > 0)
             {
-                body["end_time"] = end_timeObject;
+                body["end_time"] = endTimeObject;
                 bodypropCount++;
             }
 
@@ -2881,43 +2881,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            var seasonal_start_dateObject = new JObject();
-            var seasonal_start_dateObjectpropCount = 0;
+            var seasonalStartDateObject = new JObject();
+            var seasonalStartDateObjectpropCount = 0;
             if (bodyseasonalStartmonth != null)
             {
-                seasonal_start_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
-                seasonal_start_dateObjectpropCount++;
+                seasonalStartDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalStartmonth);
+                seasonalStartDateObjectpropCount++;
             }
 
             if (bodyseasonalStartday != null)
             {
-                seasonal_start_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
-                seasonal_start_dateObjectpropCount++;
+                seasonalStartDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalStartday);
+                seasonalStartDateObjectpropCount++;
             }
 
-            if (seasonal_start_dateObjectpropCount > 0)
+            if (seasonalStartDateObjectpropCount > 0)
             {
-                body["seasonal_start_date"] = seasonal_start_dateObject;
+                body["seasonal_start_date"] = seasonalStartDateObject;
                 bodypropCount++;
             }
 
-            var seasonal_end_dateObject = new JObject();
-            var seasonal_end_dateObjectpropCount = 0;
+            var seasonalEndDateObject = new JObject();
+            var seasonalEndDateObjectpropCount = 0;
             if (bodyseasonalEndmonth != null)
             {
-                seasonal_end_dateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
-                seasonal_end_dateObjectpropCount++;
+                seasonalEndDateObject["month"] = ExpressionConverter.ConvertO(bodyseasonalEndmonth);
+                seasonalEndDateObjectpropCount++;
             }
 
             if (bodyseasonalEndday != null)
             {
-                seasonal_end_dateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
-                seasonal_end_dateObjectpropCount++;
+                seasonalEndDateObject["day"] = ExpressionConverter.ConvertO(bodyseasonalEndday);
+                seasonalEndDateObjectpropCount++;
             }
 
-            if (seasonal_end_dateObjectpropCount > 0)
+            if (seasonalEndDateObjectpropCount > 0)
             {
-                body["seasonal_end_date"] = seasonal_end_dateObject;
+                body["seasonal_end_date"] = seasonalEndDateObject;
                 bodypropCount++;
             }
 
@@ -2954,7 +2954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
         {
             var apiCallPath = "/alt-conmg/relationshipjobsinfo";
             var apiCallHttpMethod = "post";
@@ -3007,9 +3007,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            if (bodycareerLevel != null)
+            if (bodycareerLevel2 != null)
             {
-                body["job_schedule"] = ExpressionConverter.ConvertO(bodycareerLevel);
+                body["job_schedule"] = ExpressionConverter.ConvertO(bodycareerLevel2);
                 bodypropCount++;
             }
 
@@ -3043,7 +3043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
+        public IWorkflowAction EditConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
         {
             var apiCallPath = String.Format("/alt-conmg/relationshipjobsinfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(relationshipJobInfoId, 1));
             var apiCallHttpMethod = "patch";
@@ -3092,9 +3092,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 bodypropCount++;
             }
 
-            if (bodycareerLevel != null)
+            if (bodycareerLevel2 != null)
             {
-                body["job_schedule"] = ExpressionConverter.ConvertO(bodycareerLevel);
+                body["job_schedule"] = ExpressionConverter.ConvertO(bodycareerLevel2);
                 bodypropCount++;
             }
 

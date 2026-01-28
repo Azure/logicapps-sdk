@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
     public class ShopranosTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/product/created";
             var apiCallHttpMethod = "post";
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/product/updated";
             var apiCallHttpMethod = "post";
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/product/deleted";
             var apiCallHttpMethod = "post";
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/category/created";
             var apiCallHttpMethod = "post";
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/category/updated";
             var apiCallHttpMethod = "post";
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/category/deleted";
             var apiCallHttpMethod = "post";
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/brand/created";
             var apiCallHttpMethod = "post";
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/brand/updated";
             var apiCallHttpMethod = "post";
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/brand/deleted";
             var apiCallHttpMethod = "post";
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/unit/created";
             var apiCallHttpMethod = "post";
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/unit/updated";
             var apiCallHttpMethod = "post";
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/unit/deleted";
             var apiCallHttpMethod = "post";
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attribute/created";
             var apiCallHttpMethod = "post";
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attribute/updated";
             var apiCallHttpMethod = "post";
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attribute/deleted";
             var apiCallHttpMethod = "post";
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attributeset/created";
             var apiCallHttpMethod = "post";
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attributeset/updated";
             var apiCallHttpMethod = "post";
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/attributeset/deleted";
             var apiCallHttpMethod = "post";
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/checkout/created";
             var apiCallHttpMethod = "post";
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/checkout/completed";
             var apiCallHttpMethod = "post";
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/customer/created";
             var apiCallHttpMethod = "post";
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/customer/updated";
             var apiCallHttpMethod = "post";
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/customer/deleted";
             var apiCallHttpMethod = "post";
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/order/created";
             var apiCallHttpMethod = "post";
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/order/updated";
             var apiCallHttpMethod = "post";
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/order/deleted";
             var apiCallHttpMethod = "post";
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/inventorylevel/created";
             var apiCallHttpMethod = "post";
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/inventorylevel/updated";
             var apiCallHttpMethod = "post";
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
             var apiCallHttpMethod = "post";
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/payment/initiated";
             var apiCallHttpMethod = "post";
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodyTitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhook/register/payment/completed";
             var apiCallHttpMethod = "post";
@@ -955,7 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             body["Url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

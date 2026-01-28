@@ -820,6 +820,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
             return new ApiConnectionAction<Descriptor>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        public IWorkflowAction PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyenvelopegreeting = null, Expression<Func<string>> bodyrecipientid = null)
+        {
+            var apiCallPath = String.Format("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            if (xNamespace != null)
+                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var envelopeObject = new JObject();
+            var envelopeObjectpropCount = 0;
+            if (bodyenvelopegreeting != null)
+            {
+                envelopeObject["greeting"] = ExpressionConverter.ConvertO(bodyenvelopegreeting);
+                envelopeObjectpropCount++;
+            }
+
+            if (envelopeObjectpropCount > 0)
+            {
+                body["envelope"] = envelopeObject;
+                bodypropCount++;
+            }
+
+            var recipientObject = new JObject();
+            var recipientObjectpropCount = 0;
+            if (bodyrecipientid != null)
+            {
+                recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
+                recipientObjectpropCount++;
+            }
+
+            if (recipientObjectpropCount > 0)
+            {
+                body["recipient"] = recipientObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
     }
 
     public class VerifiedTriggers([ConnectionName] string connectionId)

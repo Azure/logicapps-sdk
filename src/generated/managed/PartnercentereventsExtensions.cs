@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IWorkflowAction EventRegistration(Expression<Func<string>> bodySignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodyWebhookEvents = null, Expression<Func<string>> bodyWebhookUrl = null)
+        public IWorkflowAction EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var apiCallPath = "/webhooks/v1/registration";
             var apiCallHttpMethod = "post";
@@ -30,21 +30,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodySignatureTokenToMsSignatureHeader != null)
+            if (bodysignatureTokenToMsSignatureHeader != null)
             {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodySignatureTokenToMsSignatureHeader);
+                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
                 bodypropCount++;
             }
 
-            if (bodyWebhookEvents != null)
+            if (bodywebhookEvents != null)
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodyWebhookEvents);
+                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
                 bodypropCount++;
             }
 
-            if (bodyWebhookUrl != null)
+            if (bodywebhookUrl != null)
             {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodyWebhookUrl);
+                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
                 bodypropCount++;
             }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration(Expression<Func<string>> bodySignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodyWebhookEvents = null, Expression<Func<string>> bodyWebhookUrl = null)
+        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var apiCallPath = "/webhooks/v1/registration";
             var apiCallHttpMethod = "put";
@@ -65,21 +65,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
             callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodySignatureTokenToMsSignatureHeader != null)
+            if (bodysignatureTokenToMsSignatureHeader != null)
             {
-                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodySignatureTokenToMsSignatureHeader);
+                body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
                 bodypropCount++;
             }
 
-            if (bodyWebhookEvents != null)
+            if (bodywebhookEvents != null)
             {
-                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodyWebhookEvents);
+                body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
                 bodypropCount++;
             }
 
-            if (bodyWebhookUrl != null)
+            if (bodywebhookUrl != null)
             {
-                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodyWebhookUrl);
+                body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
                 bodypropCount++;
             }
 

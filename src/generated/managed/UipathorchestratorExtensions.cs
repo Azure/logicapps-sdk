@@ -12,7 +12,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataName = null, Expression<Func<bodyitemDataPriorityInput>> bodyitemDataPriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDataReference = null, Expression<Func<string>> bodyitemDataProgress = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
+        {
+            var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var startInfoObject = new JObject();
+            var startInfoObjectpropCount = 0;
+            if (bodystartInfoprocessName != null)
+            {
+                startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                startInfoObjectpropCount++;
+            }
+
+            startInfoObject["Strategy"] = "ModernJobsCount";
+            startInfoObjectpropCount++;
+            if (bodystartInfojobsCount != null)
+            {
+                startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
+                startInfoObjectpropCount++;
+            }
+
+            if (bodystartInfosource != null)
+            {
+                startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
+                startInfoObjectpropCount++;
+            }
+
+            if (bodystartInfojobPriority != null)
+            {
+                startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
+                startInfoObjectpropCount++;
+            }
+
+            if (bodystartInforuntimeType != null)
+            {
+                startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
+                startInfoObjectpropCount++;
+            }
+
+            if (bodystartInfoinputArguments != null)
+            {
+                startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
+                startInfoObjectpropCount++;
+            }
+
+            if (bodystartInforeference != null)
+            {
+                startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
+                startInfoObjectpropCount++;
+            }
+
+            if (startInfoObjectpropCount > 0)
+            {
+                body["startInfo"] = startInfoObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
+        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
         {
             var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
             var apiCallHttpMethod = "post";
@@ -22,23 +91,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             var bodypropCount = 0;
             var itemDataObject = new JObject();
             var itemDataObjectpropCount = 0;
-            if (bodyitemDataName != null)
+            if (bodyitemDataname != null)
             {
-                itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataName);
+                itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
                 itemDataObjectpropCount++;
             }
 
-            if (bodyitemDataPriority != null)
+            if (bodyitemDatapriority != null)
             {
-                itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDataPriority);
+                itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
                 itemDataObjectpropCount++;
             }
 
-            var SpecificContentObject = new JObject();
-            var SpecificContentObjectpropCount = 0;
-            if (SpecificContentObjectpropCount > 0)
+            var specificContentObject = new JObject();
+            var specificContentObjectpropCount = 0;
+            if (specificContentObjectpropCount > 0)
             {
-                itemDataObject["SpecificContent"] = SpecificContentObject;
+                itemDataObject["SpecificContent"] = specificContentObject;
                 itemDataObjectpropCount++;
             }
 
@@ -60,15 +129,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
                 itemDataObjectpropCount++;
             }
 
-            if (bodyitemDataReference != null)
+            if (bodyitemDatareference != null)
             {
-                itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDataReference);
+                itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
                 itemDataObjectpropCount++;
             }
 
-            if (bodyitemDataProgress != null)
+            if (bodyitemDataprogress != null)
             {
-                itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataProgress);
+                itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
                 itemDataObjectpropCount++;
             }
 
@@ -89,6 +158,367 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
     public class UipathorchestratorTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ODataValueOfIEnumerableOfJobDto
+    {
+        [JsonProperty("value")]
+        public JobDto[] Value { get; set; }
+    }
+
+    public class JobDto
+    {
+        public string Key { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public JobDtoStateType State { get; set; }
+        public JobDtoJobPriorityType JobPriority { get; set; }
+        public SimpleRobotDto Robot { get; set; }
+        public SimpleReleaseDto Release { get; set; }
+        public string Source { get; set; }
+        public JobDtoSourceTypeType SourceType { get; set; }
+        public string BatchExecutionKey { get; set; }
+        public string Info { get; set; }
+        public string CreationTime { get; set; }
+        public int StartingScheduleId { get; set; }
+        public string ReleaseName { get; set; }
+        public JobDtoTypeType Type { get; set; }
+        public string InputArguments { get; set; }
+        public string OutputArguments { get; set; }
+        public string HostMachineName { get; set; }
+        public bool HasMediaRecorded { get; set; }
+        public string PersistenceId { get; set; }
+        public int ResumeVersion { get; set; }
+        public JobDtoStopStrategyType StopStrategy { get; set; }
+        public JobDtoRuntimeTypeType RuntimeType { get; set; }
+        public bool RequiresUserInteraction { get; set; }
+        public int ReleaseVersionId { get; set; }
+        public string EntryPointPath { get; set; }
+        public int OrganizationUnitId { get; set; }
+        public string OrganizationUnitFullyQualifiedName { get; set; }
+        public string Reference { get; set; }
+        public JobDtoProcessTypeType ProcessType { get; set; }
+        public MachineDto Machine { get; set; }
+        public string ProfilingOptions { get; set; }
+        public int Id { get; set; }
+    }
+
+    public enum JobDtoStateType
+    {
+        Pending,
+        Running,
+        Stopping,
+        Terminating,
+        Faulted,
+        Successful,
+        Stopped,
+        Suspended,
+        Resumed
+    }
+
+    public enum JobDtoJobPriorityType
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public class SimpleRobotDto
+    {
+        public string LicenseKey { get; set; }
+        public string MachineName { get; set; }
+        public int MachineId { get; set; }
+        public string Name { get; set; }
+        public string Username { get; set; }
+        public string ExternalName { get; set; }
+        public string Description { get; set; }
+        public SimpleRobotDtoTypeType Type { get; set; }
+        public SimpleRobotDtoHostingTypeType HostingType { get; set; }
+        public SimpleRobotDtoProvisionTypeType ProvisionType { get; set; }
+        public string Password { get; set; }
+        public int CredentialStoreId { get; set; }
+        public int UserId { get; set; }
+        public bool Enabled { get; set; }
+        public SimpleRobotDtoCredentialTypeType CredentialType { get; set; }
+        public EnvironmentDto[] Environments { get; set; }
+        public string RobotEnvironments { get; set; }
+        public JToken ExecutionSettings { get; set; }
+        public bool IsExternalLicensed { get; set; }
+        public bool LimitConcurrentExecution { get; set; }
+        public int Id { get; set; }
+    }
+
+    public enum SimpleRobotDtoTypeType
+    {
+        NonProduction,
+        Attended,
+        Unattended,
+        Studio,
+        RpaDeveloper,
+        Development,
+        StudioX,
+        CitizenDeveloper,
+        Headless,
+        RpaDeveloperPro,
+        StudioPro,
+        TestAutomation
+    }
+
+    public enum SimpleRobotDtoHostingTypeType
+    {
+        Standard,
+        Floating
+    }
+
+    public enum SimpleRobotDtoProvisionTypeType
+    {
+        Manual,
+        Automatic
+    }
+
+    public enum SimpleRobotDtoCredentialTypeType
+    {
+        Default,
+        SmartCard,
+        NCipher,
+        SafeNet
+    }
+
+    public class EnvironmentDto
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public SimpleRobotDto[] Robots { get; set; }
+        public EnvironmentDtoTypeType Type { get; set; }
+        public int Id { get; set; }
+    }
+
+    public enum EnvironmentDtoTypeType
+    {
+        Dev,
+        Test,
+        Prod
+    }
+
+    public class SimpleReleaseDto
+    {
+        public string Key { get; set; }
+        public string ProcessKey { get; set; }
+        public string ProcessVersion { get; set; }
+        public bool IsLatestVersion { get; set; }
+        public bool IsProcessDeleted { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
+        public int EnvironmentId { get; set; }
+        public string EnvironmentName { get; set; }
+        public EnvironmentDto Environment { get; set; }
+        public int EntryPointId { get; set; }
+        public EntryPointDto EntryPoint { get; set; }
+        public string InputArguments { get; set; }
+        public SimpleReleaseDtoProcessTypeType ProcessType { get; set; }
+        public bool SupportsMultipleEntryPoints { get; set; }
+        public bool RequiresUserInteraction { get; set; }
+        public ReleaseVersionDto CurrentVersion { get; set; }
+        public ReleaseVersionDto[] ReleaseVersions { get; set; }
+        public ArgumentMetadata Arguments { get; set; }
+        public ProcessSettingsDto ProcessSettings { get; set; }
+        public bool AutoUpdate { get; set; }
+        public string FeedId { get; set; }
+        public SimpleReleaseDtoJobPriorityType JobPriority { get; set; }
+        public string CreationTime { get; set; }
+        public int OrganizationUnitId { get; set; }
+        public string OrganizationUnitFullyQualifiedName { get; set; }
+        public int Id { get; set; }
+    }
+
+    public class EntryPointDto
+    {
+        public string UniqueId { get; set; }
+        public string Path { get; set; }
+        public string InputArguments { get; set; }
+        public string OutputArguments { get; set; }
+        public EntryPointDataVariationDto DataVariation { get; set; }
+        public int Id { get; set; }
+    }
+
+    public class EntryPointDataVariationDto
+    {
+        public string Content { get; set; }
+        public EntryPointDataVariationDtoContentTypeType ContentType { get; set; }
+        public int Id { get; set; }
+    }
+
+    public enum EntryPointDataVariationDtoContentTypeType
+    {
+        Json
+    }
+
+    public enum SimpleReleaseDtoProcessTypeType
+    {
+        Undefined,
+        Process,
+        TestAutomationProcess
+    }
+
+    public class ReleaseVersionDto
+    {
+        public int ReleaseId { get; set; }
+        public string VersionNumber { get; set; }
+        public string CreationTime { get; set; }
+        public string ReleaseName { get; set; }
+        public int Id { get; set; }
+    }
+
+    public class ArgumentMetadata
+    {
+        public string Input { get; set; }
+        public string Output { get; set; }
+    }
+
+    public class ProcessSettingsDto
+    {
+        public bool ErrorRecordingEnabled { get; set; }
+        public int Duration { get; set; }
+        public int Frequency { get; set; }
+        public int Quality { get; set; }
+        public bool AutoStartProcess { get; set; }
+        public bool AlwaysRunning { get; set; }
+    }
+
+    public enum SimpleReleaseDtoJobPriorityType
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public enum JobDtoSourceTypeType
+    {
+        Manual,
+        Schedule,
+        Agent,
+        Queue,
+        StudioWeb
+    }
+
+    public enum JobDtoTypeType
+    {
+        Unattended,
+        Attended
+    }
+
+    public enum JobDtoStopStrategyType
+    {
+        SoftStop,
+        Kill
+    }
+
+    public enum JobDtoRuntimeTypeType
+    {
+        NonProduction,
+        Attended,
+        Unattended,
+        Studio,
+        RpaDeveloper,
+        Development,
+        StudioX,
+        CitizenDeveloper,
+        Headless,
+        RpaDeveloperPro,
+        StudioPro,
+        TestAutomation
+    }
+
+    public enum JobDtoProcessTypeType
+    {
+        Undefined,
+        Process,
+        TestAutomationProcess
+    }
+
+    public class MachineDto
+    {
+        public string LicenseKey { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public MachineDtoTypeType Type { get; set; }
+        public MachineDtoScopeType Scope { get; set; }
+        public int NonProductionSlots { get; set; }
+        public int UnattendedSlots { get; set; }
+        public int HeadlessSlots { get; set; }
+        public int TestAutomationSlots { get; set; }
+        public string Key { get; set; }
+        public MachinesRobotVersionDto[] RobotVersions { get; set; }
+        public RobotUserDto[] RobotUsers { get; set; }
+        public MachineDtoAutoScalingProfileType AutoScalingProfile { get; set; }
+        public int Id { get; set; }
+    }
+
+    public enum MachineDtoTypeType
+    {
+        Standard,
+        Template
+    }
+
+    public enum MachineDtoScopeType
+    {
+        Default,
+        Shared,
+        PersonalWorkspace,
+        Cloud
+    }
+
+    public class MachinesRobotVersionDto
+    {
+        public int Count { get; set; }
+        public string Version { get; set; }
+        public int MachineId { get; set; }
+    }
+
+    public class RobotUserDto
+    {
+        public string UserName { get; set; }
+        public int RobotId { get; set; }
+        public bool HasTriggers { get; set; }
+    }
+
+    public enum MachineDtoAutoScalingProfileType
+    {
+        CostEfficient,
+        Balanced,
+        Fast,
+        Custom
+    }
+
+    public enum bodystartInfosourceInput
+    {
+        Manual,
+        Schedule,
+        Queue,
+        StudioWeb
+    }
+
+    public enum bodystartInfojobPriorityInput
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public enum bodystartInforuntimeTypeInput
+    {
+        NonProduction,
+        Attended,
+        Unattended,
+        Studio,
+        RpaDeveloper,
+        Development,
+        StudioX,
+        CitizenDeveloper,
+        Headless,
+        RpaDeveloperPro,
+        StudioPro,
+        TestAutomation
     }
 
     public class QueueItemDto
@@ -345,84 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Low
     }
 
-    public class SimpleRobotDto
-    {
-        public string LicenseKey { get; set; }
-        public string MachineName { get; set; }
-        public int MachineId { get; set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public string ExternalName { get; set; }
-        public string Description { get; set; }
-        public SimpleRobotDtoTypeType Type { get; set; }
-        public SimpleRobotDtoHostingTypeType HostingType { get; set; }
-        public SimpleRobotDtoProvisionTypeType ProvisionType { get; set; }
-        public string Password { get; set; }
-        public int CredentialStoreId { get; set; }
-        public int UserId { get; set; }
-        public bool Enabled { get; set; }
-        public SimpleRobotDtoCredentialTypeType CredentialType { get; set; }
-        public EnvironmentDto[] Environments { get; set; }
-        public string RobotEnvironments { get; set; }
-        public JToken ExecutionSettings { get; set; }
-        public bool IsExternalLicensed { get; set; }
-        public bool LimitConcurrentExecution { get; set; }
-        public int Id { get; set; }
-    }
-
-    public enum SimpleRobotDtoTypeType
-    {
-        NonProduction,
-        Attended,
-        Unattended,
-        Studio,
-        RpaDeveloper,
-        Development,
-        StudioX,
-        CitizenDeveloper,
-        Headless,
-        RpaDeveloperPro,
-        StudioPro,
-        TestAutomation
-    }
-
-    public enum SimpleRobotDtoHostingTypeType
-    {
-        Standard,
-        Floating
-    }
-
-    public enum SimpleRobotDtoProvisionTypeType
-    {
-        Manual,
-        Automatic
-    }
-
-    public enum SimpleRobotDtoCredentialTypeType
-    {
-        Default,
-        SmartCard,
-        NCipher,
-        SafeNet
-    }
-
-    public class EnvironmentDto
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public SimpleRobotDto[] Robots { get; set; }
-        public EnvironmentDtoTypeType Type { get; set; }
-        public int Id { get; set; }
-    }
-
-    public enum EnvironmentDtoTypeType
-    {
-        Dev,
-        Test,
-        Prod
-    }
-
-    public enum bodyitemDataPriorityInput
+    public enum bodyitemDatapriorityInput
     {
         High,
         Normal,

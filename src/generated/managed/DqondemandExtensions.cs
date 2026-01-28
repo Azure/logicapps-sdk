@@ -328,6 +328,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        public IBodyWorkflowAction<ScoringResponse> Scoring(Expression<Func<inputInputItem2[]>> input = null)
+        {
+            var apiCallPath = "/Scoring";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Body = ExpressionConverter.ConvertO(input);
+            return new ApiConnectionAction<ScoringResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobal> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
         {
             var apiCallPath = "/Transform";
@@ -343,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform(Expression<Func<inputInputItem2[]>> input = null)
+        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
         {
             var apiCallPath = "/SequenceTransform";
             var apiCallHttpMethod = "post";
@@ -1694,6 +1704,217 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         IPv6
     }
 
+    public class ScoringResponse
+    {
+        [JsonProperty("status")]
+        public int Status { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("data")]
+        public ScoringResponseDataTypeItem[] Data { get; set; }
+    }
+
+    public class ScoringResponseDataTypeItem
+    {
+        [JsonProperty("datumRecordSource")]
+        public string DatumRecordSource { get; set; }
+
+        [JsonProperty("datumUniqueId")]
+        public string DatumUniqueId { get; set; }
+
+        [JsonProperty("secondaryRecordSource")]
+        public string SecondaryRecordSource { get; set; }
+
+        [JsonProperty("secondaryUniqueId")]
+        public string SecondaryUniqueId { get; set; }
+
+        [JsonProperty("percentageScore")]
+        public double PercentageScore { get; set; }
+
+        [JsonProperty("groupOutput")]
+        public ScoringResponseDataTypeItemGroupOutputTypeItem[] GroupOutput { get; set; }
+    }
+
+    public class ScoringResponseDataTypeItemGroupOutputTypeItem
+    {
+        [JsonProperty("groupFieldID")]
+        public string GroupFieldID { get; set; }
+
+        [JsonProperty("groupPercentageScore")]
+        public double GroupPercentageScore { get; set; }
+
+        [JsonProperty("warnings")]
+        public string[] Warnings { get; set; }
+    }
+
+    public class inputInputItem2
+    {
+        public bool IsDatum { get; set; }
+
+        [JsonProperty("UniqueId")]
+        public string RecordId { get; set; }
+        public string RecordSource { get; set; }
+        public inputInputItemGroupFieldsTypeItem[] GroupFields { get; set; }
+    }
+
+    public class inputInputItemGroupFieldsTypeItem
+    {
+        [JsonProperty("GroupFieldId")]
+        public string GroupName { get; set; }
+        public inputInputItemGroupFieldsTypeItemSettingsType Settings { get; set; }
+        public inputInputItemGroupFieldsTypeItemValuesTypeItem[] Values { get; set; }
+    }
+
+    public class inputInputItemGroupFieldsTypeItemSettingsType
+    {
+        public inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType ScoringType { get; set; }
+
+        [JsonProperty("ScoreMethod")]
+        public inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType ScoringMethod { get; set; }
+        public inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType ComparisonAlgorithm { get; set; }
+
+        [JsonProperty("IsNullToNullScored")]
+        public bool NullVsNullMatch { get; set; }
+
+        [JsonProperty("IsNullToValueScored")]
+        public bool NullVsValueMatch { get; set; }
+
+        [JsonProperty("IsCaseSensitiveScore")]
+        public bool CaseSensitive { get; set; }
+
+        [JsonProperty("AlphaSequenceParameter")]
+        public inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType AlphaSequence { get; set; }
+
+        [JsonProperty("IsReplaceDoubleSpaceWithSingle")]
+        public bool ReplaceDoubleSpaceWithSingleSpace { get; set; }
+
+        [JsonProperty("IsRemoveAllWhiteSpaces")]
+        public bool RemoveAllWhitespace { get; set; }
+
+        [JsonProperty("IsTrimString")]
+        public bool TrimString { get; set; }
+
+        [JsonProperty("IsIncludePunctuation")]
+        public bool IncludePunctuation { get; set; }
+
+        [JsonProperty("IsIncludeSymbols")]
+        public bool IncludeSymbols { get; set; }
+
+        [JsonProperty("IsIncludeNonPrinting")]
+        public bool IncludeNonPrinting { get; set; }
+
+        [JsonProperty("IsIncludeNumbers")]
+        public bool IncludeNumbers { get; set; }
+
+        [JsonProperty("IsIncludeAlphaChars")]
+        public bool IncludeLetters { get; set; }
+
+        [JsonProperty("IsWeightingFactorUsed")]
+        public bool ApplyWeighting { get; set; }
+
+        [JsonProperty("IsIncludeOriginalDataForScoring")]
+        public bool IncludePreTransformedDataForScoring { get; set; }
+        public bool IncludeTokenForScoring { get; set; }
+
+        [JsonProperty("IncludeTransformedDataForScoring")]
+        public bool IncludeTransformsDataForScoring { get; set; }
+
+        [JsonProperty("AutoPopulateEmptyTransformed")]
+        public bool AutoPopulateTransformedValueWhenEmpty { get; set; }
+
+        [JsonProperty("AutoPopulateEmptyToken")]
+        public bool AutoPopulateTokenWhenEmpty { get; set; }
+
+        [JsonProperty("Weighting")]
+        public int GroupWeighting { get; set; }
+        public int PostalCodeNChars { get; set; }
+        public int PositiveValidRange { get; set; }
+        public int NegativeValidRange { get; set; }
+        public inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType DateFormat { get; set; }
+        public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType InterScoreSettings { get; set; }
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType
+    {
+        InterScore,
+        IntraScore
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType
+    {
+        EditDistanceScore,
+        ExactMatch,
+        EmailScore,
+        EmailScoreAsPerDomain,
+        EmailScoreAsPerUserName,
+        PostalCodeWholeInput,
+        PostalCodeLeftN,
+        PostalCodeRightN,
+        PostalCodeAsZip,
+        PostalCodeAsZip4,
+        AddressLine1PremiseBinary,
+        AddressLine1PremiseProportional,
+        AddressLine1Street,
+        AddressLine1WholeInput,
+        DateBinary,
+        DateProportional
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType
+    {
+        JaroWinkler,
+        Jaro,
+        LevenshteinPercentage,
+        LevenshteinChangeCount,
+        MongeElkan,
+        NeedlemanWunsch,
+        Sift3,
+        SmithWatermanGotoh,
+        HammingPercentage,
+        HammingChangeCount
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType
+    {
+        AscCharacters,
+        DescCharacters,
+        AscWords,
+        DescWords,
+        None
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType
+    {
+        DDMMYYYY,
+        MMDDYYYY
+    }
+
+    public class inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType
+    {
+        [JsonProperty("InterScoreMethodType")]
+        public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType ScoringMethod { get; set; }
+
+        [JsonProperty("ThresholdValue")]
+        public int Threshold { get; set; }
+    }
+
+    public enum inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType
+    {
+        AnyMatch,
+        AllMatch
+    }
+
+    public class inputInputItemGroupFieldsTypeItemValuesTypeItem
+    {
+        public string Value { get; set; }
+        public string TransformedValue { get; set; }
+
+        [JsonProperty("Token")]
+        public string TokenValue { get; set; }
+    }
+
     public enum entityTypeInput
     {
         Addresses,
@@ -1750,7 +1971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Message { get; set; }
     }
 
-    public class inputInputItem2
+    public class inputInputItem22
     {
         public string Input { get; set; }
         public inputInputItemSettingsTypeItem[] Settings { get; set; }

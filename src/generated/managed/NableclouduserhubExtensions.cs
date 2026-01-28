@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyOdataId)
+        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
         {
             var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
             var apiCallHttpMethod = "post";
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["@odata.id"] = ExpressionConverter.ConvertO(bodyOdataId);
+            body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

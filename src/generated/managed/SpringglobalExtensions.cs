@@ -37,6 +37,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/webhook-service/subscribe/surveyexecution";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["callback"] = "@listCallbackUrl()";
+            bodypropCount++;
+            var parametersObject = new JObject();
+            var parametersObjectpropCount = 0;
+            if (bodyparameterssurveyId != null)
+            {
+                parametersObject["surveyId"] = ExpressionConverter.ConvertO(bodyparameterssurveyId);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparameterspublicationId != null)
+            {
+                parametersObject["publicationId"] = ExpressionConverter.ConvertO(bodyparameterspublicationId);
+                parametersObjectpropCount++;
+            }
+
+            if (parametersObjectpropCount > 0)
+            {
+                body["parameters"] = parametersObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class GetUserByIdResponse

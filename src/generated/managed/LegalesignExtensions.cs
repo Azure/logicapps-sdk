@@ -1224,7 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
     public enum bodyeventFilterInput
     {
         [EnumMember(Value = "document.*")]
-        Document*,
+        Document,
         [EnumMember(Value = "document.created")]
         DocumentCreated,
         [EnumMember(Value = "document.rejected")]

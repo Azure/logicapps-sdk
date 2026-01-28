@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
     public class InfoshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyUsername, Expression<Func<string>> bodyPassword, Expression<Func<string>> bodyTenantname = null)
+        public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
         {
             var apiCallPath = "/api/Logon";
             var apiCallHttpMethod = "post";
@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["Username"] = ExpressionConverter.ConvertO(bodyUsername);
+            body["Username"] = ExpressionConverter.ConvertO(bodyusername);
             bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodyPassword);
-            if (bodyTenantname != null)
+            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+            if (bodytenantname != null)
             {
-                body["Tenantname"] = ExpressionConverter.ConvertO(bodyTenantname);
+                body["Tenantname"] = ExpressionConverter.ConvertO(bodytenantname);
                 bodypropCount++;
             }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyProcessId, Expression<Func<string>> bodyAssignUserLoginNames, Expression<Func<string>> bodyTaskId = null, Expression<Func<string>> bodyComment = null)
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
         {
             var apiCallPath = "/api/CloseTaskAndAssignToUsers";
             var apiCallHttpMethod = "post";
@@ -48,25 +48,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyProcessId);
-            if (bodyTaskId != null)
+            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+            if (bodytaskId != null)
             {
-                body["TaskId"] = ExpressionConverter.ConvertO(bodyTaskId);
+                body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
                 bodypropCount++;
             }
 
-            if (bodyComment != null)
+            if (bodycomment != null)
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodyComment);
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyAssignUserLoginNames);
+            body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocumentV2(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentId, Expression<Func<string>> bodyDocumentTitle = null, Expression<Func<string>> bodyDocumentProperties = null, Expression<Func<string>> bodyRemoveDocumentProperties = null, Expression<Func<string>> bodyCulture = null, Expression<Func<string>> bodyProtectionDomain = null, Expression<Func<string>> bodyBlog = null, Expression<Func<bodyUploadMethodInput>> bodyUploadMethod = null, Expression<Func<string>> bodyFileContent = null, Expression<Func<bool>> bodyForceUndoCheckout = null, Expression<Func<int>> bodyChunkSize = null)
+        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocumentV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
         {
             var apiCallPath = "/api/UpdateDocumentV2";
             var apiCallHttpMethod = "post";
@@ -84,68 +84,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
-            if (bodyDocumentTitle != null)
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodydocumentTitle != null)
             {
-                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodyDocumentTitle);
+                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
                 bodypropCount++;
             }
 
-            if (bodyDocumentProperties != null)
+            if (bodydocumentProperties != null)
             {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodyDocumentProperties);
+                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
                 bodypropCount++;
             }
 
-            if (bodyRemoveDocumentProperties != null)
+            if (bodyremoveDocumentProperties != null)
             {
-                body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyRemoveDocumentProperties);
+                body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyremoveDocumentProperties);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodyDocumentId);
-            if (bodyProtectionDomain != null)
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            if (bodyprotectionDomain != null)
             {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyProtectionDomain);
+                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
                 bodypropCount++;
             }
 
-            if (bodyBlog != null)
+            if (bodyblog != null)
             {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyBlog);
+                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
                 bodypropCount++;
             }
 
-            if (bodyUploadMethod != null)
+            if (bodyuploadMethod != null)
             {
-                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyUploadMethod);
+                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
                 bodypropCount++;
             }
 
-            if (bodyFileContent != null)
+            if (bodyfileContent != null)
             {
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
                 bodypropCount++;
             }
 
-            if (bodyForceUndoCheckout != null)
+            if (bodyforceUndoCheckout != null)
             {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyForceUndoCheckout);
+                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
                 bodypropCount++;
             }
 
-            if (bodyChunkSize != null)
+            if (bodychunkSize != null)
             {
-                body["ChunkSize"] = ExpressionConverter.ConvertO(bodyChunkSize);
+                body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
                 bodypropCount++;
             }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId)
+        public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
         {
             var apiCallPath = "/api/Logoff";
             var apiCallHttpMethod = "post";
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentId, Expression<Func<string>> bodyCulture = null)
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
         {
             var apiCallPath = "/api/GetDocumentProperties";
             var apiCallHttpMethod = "post";
@@ -186,14 +186,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodyDocumentId);
-            if (bodyCulture != null)
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyProcessId, Expression<Func<string>> bodyCulture = null)
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
         {
             var apiCallPath = "/api/GetProcessProperties";
             var apiCallHttpMethod = "post";
@@ -214,14 +214,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyProcessId);
-            if (bodyCulture != null)
+            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentId, Expression<Func<string>> bodyVersionId = null, Expression<Func<string>> bodyDocumentDataId = null, Expression<Func<string>> bodyRenditionId = null, Expression<Func<bool>> bodyIgnoreHashValidation = null)
+        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
         {
             var apiCallPath = "/api/GetFileContent";
             var apiCallHttpMethod = "post";
@@ -242,32 +242,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodyDocumentId);
-            if (bodyVersionId != null)
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            if (bodyversionId != null)
             {
-                body["VersionId"] = ExpressionConverter.ConvertO(bodyVersionId);
+                body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentDataId != null)
+            if (bodydocumentDataId != null)
             {
-                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodyDocumentDataId);
+                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
                 bodypropCount++;
             }
 
-            if (bodyRenditionId != null)
+            if (bodyrenditionId != null)
             {
-                body["RenditionId"] = ExpressionConverter.ConvertO(bodyRenditionId);
+                body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
                 bodypropCount++;
             }
 
-            if (bodyIgnoreHashValidation != null)
+            if (bodyignoreHashValidation != null)
             {
-                body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyIgnoreHashValidation);
+                body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyignoreHashValidation);
                 bodypropCount++;
             }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentId, Expression<Func<string>> bodyTargetFormat, Expression<Func<string>> bodyVersionId = null, Expression<Func<string>> bodyDocumentDataId = null, Expression<Func<string>> bodyRenditionId = null, Expression<Func<bool>> bodyAddAnnotatins = null, Expression<Func<bool>> bodyAddOverlay = null)
+        public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
         {
             var apiCallPath = "/api/GetFileContentConverted";
             var apiCallHttpMethod = "post";
@@ -419,40 +419,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodyDocumentId);
-            if (bodyVersionId != null)
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            if (bodyversionId != null)
             {
-                body["VersionId"] = ExpressionConverter.ConvertO(bodyVersionId);
+                body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentDataId != null)
+            if (bodydocumentDataId != null)
             {
-                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodyDocumentDataId);
+                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
                 bodypropCount++;
             }
 
-            if (bodyRenditionId != null)
+            if (bodyrenditionId != null)
             {
-                body["RenditionId"] = ExpressionConverter.ConvertO(bodyRenditionId);
+                body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["TargetFormat"] = ExpressionConverter.ConvertO(bodyTargetFormat);
-            if (bodyAddAnnotatins != null)
+            body["TargetFormat"] = ExpressionConverter.ConvertO(bodytargetFormat);
+            if (bodyaddAnnotatins != null)
             {
-                body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyAddAnnotatins);
+                body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyaddAnnotatins);
                 bodypropCount++;
             }
 
-            if (bodyAddOverlay != null)
+            if (bodyaddOverlay != null)
             {
-                body["AddOverlay"] = ExpressionConverter.ConvertO(bodyAddOverlay);
+                body["AddOverlay"] = ExpressionConverter.ConvertO(bodyaddOverlay);
                 bodypropCount++;
             }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyProcessTemplateName, Expression<Func<string>> bodyProcessProperties = null, Expression<Func<string>> bodyCustomProperties = null, Expression<Func<string>> bodyDocumentIds = null, Expression<Func<string>> bodyDueDate = null, Expression<Func<bodyPriorityInput>> bodyPriority = null, Expression<Func<string>> bodyComment = null, Expression<Func<string>> bodyCulture = null)
+        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
         {
             var apiCallPath = "/api/CreateProcess";
             var apiCallHttpMethod = "post";
@@ -473,50 +473,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
-            if (bodyProcessProperties != null)
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodyprocessProperties != null)
             {
-                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyProcessProperties);
+                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
                 bodypropCount++;
             }
 
-            if (bodyCustomProperties != null)
+            if (bodycustomProperties != null)
             {
-                body["CustomProperties"] = ExpressionConverter.ConvertO(bodyCustomProperties);
+                body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
                 bodypropCount++;
             }
 
-            if (bodyDocumentIds != null)
+            if (bodydocumentIds != null)
             {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodyDocumentIds);
+                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ProcessTemplateName"] = ExpressionConverter.ConvertO(bodyProcessTemplateName);
-            if (bodyDueDate != null)
+            body["ProcessTemplateName"] = ExpressionConverter.ConvertO(bodyprocessTemplateName);
+            if (bodydueDate != null)
             {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodyDueDate);
+                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyComment != null)
+            if (bodycomment != null)
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodyComment);
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyUserTable, Expression<Func<string>> bodyWhereClause = null, Expression<Func<string>> bodyOrderByClause = null, Expression<Func<bool>> bodyAddColumnHeaders = null)
+        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
         {
             var apiCallPath = "/api/UserTableGetRecords";
             var apiCallHttpMethod = "post";
@@ -537,26 +537,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyUserTable);
-            if (bodyWhereClause != null)
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+            if (bodywhereClause != null)
             {
-                body["WhereClause"] = ExpressionConverter.ConvertO(bodyWhereClause);
+                body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
                 bodypropCount++;
             }
 
-            if (bodyOrderByClause != null)
+            if (bodyorderByClause != null)
             {
-                body["OrderByClause"] = ExpressionConverter.ConvertO(bodyOrderByClause);
+                body["OrderByClause"] = ExpressionConverter.ConvertO(bodyorderByClause);
                 bodypropCount++;
             }
 
-            if (bodyAddColumnHeaders != null)
+            if (bodyaddColumnHeaders != null)
             {
-                body["AddColumnHeaders"] = ExpressionConverter.ConvertO(bodyAddColumnHeaders);
+                body["AddColumnHeaders"] = ExpressionConverter.ConvertO(bodyaddColumnHeaders);
                 bodypropCount++;
             }
 
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyUserTable, Expression<Func<string>> bodyValues, Expression<Func<bool>> bodyDeleteAllValues = null, Expression<Func<bool>> bodyFirstRowContainsColumnHeaders = null)
+        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
         {
             var apiCallPath = "/api/UserTableImportData";
             var apiCallHttpMethod = "post";
@@ -577,22 +577,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyUserTable);
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
             bodypropCount++;
-            body["Values"] = ExpressionConverter.ConvertO(bodyValues);
-            if (bodyDeleteAllValues != null)
+            body["Values"] = ExpressionConverter.ConvertO(bodyvalues);
+            if (bodydeleteAllValues != null)
             {
-                body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodyDeleteAllValues);
+                body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodydeleteAllValues);
                 bodypropCount++;
             }
 
-            if (bodyFirstRowContainsColumnHeaders != null)
+            if (bodyfirstRowContainsColumnHeaders != null)
             {
-                body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyFirstRowContainsColumnHeaders);
+                body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyfirstRowContainsColumnHeaders);
                 bodypropCount++;
             }
 
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyUserTable, Expression<Func<string>> bodyColumnHeaders)
+        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
         {
             var apiCallPath = "/api/UserTableCreateTable";
             var apiCallHttpMethod = "post";
@@ -613,13 +613,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyUserTable);
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
             bodypropCount++;
-            body["ColumnHeaders"] = ExpressionConverter.ConvertO(bodyColumnHeaders);
+            body["ColumnHeaders"] = ExpressionConverter.ConvertO(bodycolumnHeaders);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyUserTable, Expression<Func<string>> bodyWhereClause = null)
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
         {
             var apiCallPath = "/api/UserTableDeleteRecords";
             var apiCallHttpMethod = "post";
@@ -637,14 +637,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyUserTable);
-            if (bodyWhereClause != null)
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+            if (bodywhereClause != null)
             {
-                body["WhereClause"] = ExpressionConverter.ConvertO(bodyWhereClause);
+                body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
                 bodypropCount++;
             }
 
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocumentV2(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentTitle, Expression<Func<string>> bodyFileContent, Expression<Func<string>> bodyImportTemplate = null, Expression<Func<string>> bodyDocumentProperties = null, Expression<Func<string>> bodyBlog = null, Expression<Func<string>> bodyCulture = null, Expression<Func<string>> bodyInfoStore = null, Expression<Func<string>> bodyLifeCycle = null, Expression<Func<string>> bodyProtectionDomain = null, Expression<Func<bodyUploadMethodInput>> bodyUploadMethod = null, Expression<Func<string>> bodyOriginalFileFormat = null, Expression<Func<int>> bodyChunkSize = null)
+        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocumentV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
         {
             var apiCallPath = "/api/CreateDocumentV2";
             var apiCallHttpMethod = "post";
@@ -665,73 +665,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["DocumentTitle"] = ExpressionConverter.ConvertO(bodyDocumentTitle);
-            if (bodyImportTemplate != null)
+            body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+            if (bodyimportTemplate != null)
             {
-                body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyImportTemplate);
+                body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyimportTemplate);
                 bodypropCount++;
             }
 
-            if (bodyDocumentProperties != null)
+            if (bodydocumentProperties != null)
             {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodyDocumentProperties);
+                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
                 bodypropCount++;
             }
 
-            if (bodyBlog != null)
+            if (bodyblog != null)
             {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyBlog);
+                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
-            if (bodyInfoStore != null)
+            if (bodyinfoStore != null)
             {
-                body["InfoStore"] = ExpressionConverter.ConvertO(bodyInfoStore);
+                body["InfoStore"] = ExpressionConverter.ConvertO(bodyinfoStore);
                 bodypropCount++;
             }
 
-            if (bodyLifeCycle != null)
+            if (bodylifeCycle != null)
             {
-                body["LifeCycle"] = ExpressionConverter.ConvertO(bodyLifeCycle);
+                body["LifeCycle"] = ExpressionConverter.ConvertO(bodylifeCycle);
                 bodypropCount++;
             }
 
-            if (bodyProtectionDomain != null)
+            if (bodyprotectionDomain != null)
             {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyProtectionDomain);
+                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
                 bodypropCount++;
             }
 
-            if (bodyUploadMethod != null)
+            if (bodyuploadMethod != null)
             {
-                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyUploadMethod);
+                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
                 bodypropCount++;
             }
 
-            if (bodyOriginalFileFormat != null)
+            if (bodyoriginalFileFormat != null)
             {
-                body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyOriginalFileFormat);
+                body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyoriginalFileFormat);
                 bodypropCount++;
             }
 
-            if (bodyChunkSize != null)
+            if (bodychunkSize != null)
             {
-                body["ChunkSize"] = ExpressionConverter.ConvertO(bodyChunkSize);
+                body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyDocumentId, Expression<Func<string>> bodyDocumentIdToAppend, Expression<Func<bool>> bodyForceUndoCheckout = null)
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
         {
             var apiCallPath = "/api/MergePDFDocumentsToVersion";
             var apiCallHttpMethod = "post";
@@ -749,16 +749,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodyDocumentId);
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
             bodypropCount++;
-            body["DocumentIdToAppend"] = ExpressionConverter.ConvertO(bodyDocumentIdToAppend);
-            if (bodyForceUndoCheckout != null)
+            body["DocumentIdToAppend"] = ExpressionConverter.ConvertO(bodydocumentIdToAppend);
+            if (bodyforceUndoCheckout != null)
             {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyForceUndoCheckout);
+                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
                 bodypropCount++;
             }
 
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearchV2(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyConditions = null, Expression<Func<string>> bodyMaxSerchResults = null, Expression<Func<string>> bodyResultProperties = null, Expression<Func<string>> bodyCulture = null, Expression<Func<string>> bodyStores = null)
+        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearchV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
         {
             var apiCallPath = "/api/DocumentSearchV2";
             var apiCallHttpMethod = "post";
@@ -779,36 +779,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
-            if (bodyConditions != null)
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodyconditions != null)
             {
-                body["Conditions"] = ExpressionConverter.ConvertO(bodyConditions);
+                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
                 bodypropCount++;
             }
 
-            if (bodyMaxSerchResults != null)
+            if (bodymaxSerchResults != null)
             {
-                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodyMaxSerchResults);
+                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
                 bodypropCount++;
             }
 
-            if (bodyResultProperties != null)
+            if (bodyresultProperties != null)
             {
-                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyResultProperties);
+                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
-            if (bodyStores != null)
+            if (bodystores != null)
             {
-                body["Stores"] = ExpressionConverter.ConvertO(bodyStores);
+                body["Stores"] = ExpressionConverter.ConvertO(bodystores);
                 bodypropCount++;
             }
 
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyConditions = null, Expression<Func<string>> bodyResultProperties = null, Expression<Func<string>> bodyMaxSerchResults = null, Expression<Func<string>> bodyCulture = null)
+        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
         {
             var apiCallPath = "/api/ProcessSearch";
             var apiCallHttpMethod = "post";
@@ -829,30 +829,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
-            if (bodyConditions != null)
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodyconditions != null)
             {
-                body["Conditions"] = ExpressionConverter.ConvertO(bodyConditions);
+                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
                 bodypropCount++;
             }
 
-            if (bodyResultProperties != null)
+            if (bodyresultProperties != null)
             {
-                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyResultProperties);
+                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
                 bodypropCount++;
             }
 
-            if (bodyMaxSerchResults != null)
+            if (bodymaxSerchResults != null)
             {
-                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodyMaxSerchResults);
+                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcessV2(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyProcessId, Expression<Func<string>> bodyProcessProperties = null, Expression<Func<string>> bodyRemoveProcessProperties = null, Expression<Func<string>> bodyCustomProperties = null, Expression<Func<string>> bodyComment = null, Expression<Func<string>> bodyAssignUserLoginNames = null, Expression<Func<string>> bodyAddDocumentIds = null, Expression<Func<string>> bodyRemoveDocumentIds = null, Expression<Func<string>> bodyDueDate = null, Expression<Func<bodyPriorityInput>> bodyPriority = null, Expression<Func<string>> bodyCulture = null, Expression<Func<bool>> bodyForceUndoCheckout = null, Expression<Func<string>> bodyProtectionDomain = null)
+        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcessV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
         {
             var apiCallPath = "/api/UpdateProcessV2";
             var apiCallHttpMethod = "post";
@@ -873,80 +873,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyProcessId);
-            if (bodyProcessProperties != null)
+            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+            if (bodyprocessProperties != null)
             {
-                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyProcessProperties);
+                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
                 bodypropCount++;
             }
 
-            if (bodyRemoveProcessProperties != null)
+            if (bodyremoveProcessProperties != null)
             {
-                body["RemoveProcessProperties"] = ExpressionConverter.ConvertO(bodyRemoveProcessProperties);
+                body["RemoveProcessProperties"] = ExpressionConverter.ConvertO(bodyremoveProcessProperties);
                 bodypropCount++;
             }
 
-            if (bodyCustomProperties != null)
+            if (bodycustomProperties != null)
             {
-                body["CustomProperties"] = ExpressionConverter.ConvertO(bodyCustomProperties);
+                body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
                 bodypropCount++;
             }
 
-            if (bodyComment != null)
+            if (bodycomment != null)
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodyComment);
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
                 bodypropCount++;
             }
 
-            if (bodyAssignUserLoginNames != null)
+            if (bodyassignUserLoginNames != null)
             {
-                body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyAssignUserLoginNames);
+                body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
                 bodypropCount++;
             }
 
-            if (bodyAddDocumentIds != null)
+            if (bodyaddDocumentIds != null)
             {
-                body["AddDocumentIds"] = ExpressionConverter.ConvertO(bodyAddDocumentIds);
+                body["AddDocumentIds"] = ExpressionConverter.ConvertO(bodyaddDocumentIds);
                 bodypropCount++;
             }
 
-            if (bodyRemoveDocumentIds != null)
+            if (bodyremoveDocumentIds != null)
             {
-                body["RemoveDocumentIds"] = ExpressionConverter.ConvertO(bodyRemoveDocumentIds);
+                body["RemoveDocumentIds"] = ExpressionConverter.ConvertO(bodyremoveDocumentIds);
                 bodypropCount++;
             }
 
-            if (bodyDueDate != null)
+            if (bodydueDate != null)
             {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodyDueDate);
+                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyCulture != null)
+            if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyCulture);
+                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                 bodypropCount++;
             }
 
-            if (bodyForceUndoCheckout != null)
+            if (bodyforceUndoCheckout != null)
             {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyForceUndoCheckout);
+                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
                 bodypropCount++;
             }
 
-            if (bodyProtectionDomain != null)
+            if (bodyprotectionDomain != null)
             {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyProtectionDomain);
+                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
                 bodypropCount++;
             }
 
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodyUserTable, Expression<Func<string>> bodyRowData)
+        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
         {
             var apiCallPath = "/api/UserTableUpdateRow";
             var apiCallHttpMethod = "post";
@@ -967,13 +967,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyUserTable);
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
             bodypropCount++;
-            body["RowData"] = ExpressionConverter.ConvertO(bodyRowData);
+            body["RowData"] = ExpressionConverter.ConvertO(bodyrowData);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyArchiveUrl, Expression<Func<string>> bodyConnectionId, Expression<Func<string>> bodySelectionId)
+        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
         {
             var apiCallPath = "/api/GetSelection";
             var apiCallHttpMethod = "post";
@@ -991,11 +991,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyArchiveUrl);
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
             bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyConnectionId);
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
             bodypropCount++;
-            body["SelectionId"] = ExpressionConverter.ConvertO(bodySelectionId);
+            body["SelectionId"] = ExpressionConverter.ConvertO(bodyselectionId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1512,7 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool UseUserFromProcessTemplate { get; set; }
     }
 
-    public enum bodyUploadMethodInput
+    public enum bodyuploadMethodInput
     {
         UploadFileBytesLarge,
         UploadStreamChunks,
@@ -2292,7 +2292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public enum bodyPriorityInput
+    public enum bodypriorityInput
     {
         Low,
         Normal,

@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionRfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionRfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionRfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionRfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionRfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionRfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
+        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionrfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
         {
             var apiCallPath = "/StartLongRunningRfc";
             var apiCallHttpMethod = "post";
@@ -350,43 +350,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
             var callRfcSubscription = new JObject();
             var callRfcSubscriptionpropCount = 0;
-            var RfcCallParametersObject = new JObject();
-            var RfcCallParametersObjectpropCount = 0;
-            RfcCallParametersObjectpropCount++;
-            RfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersrFCName);
-            if (callRfcSubscriptionRfcCallParametersinputRFCParametersInline != null)
+            var rfcCallParametersObject = new JObject();
+            var rfcCallParametersObjectpropCount = 0;
+            rfcCallParametersObjectpropCount++;
+            rfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCName);
+            if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
             {
-                RfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersinputRFCParametersInline);
-                RfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
+                rfcCallParametersObjectpropCount++;
             }
 
-            if (callRfcSubscriptionRfcCallParametersinputRFCParametersReference != null)
+            if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
             {
-                RfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersinputRFCParametersReference);
-                RfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
+                rfcCallParametersObjectpropCount++;
             }
 
-            if (callRfcSubscriptionRfcCallParametersrFCGroupFilter != null)
+            if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
             {
-                RfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersrFCGroupFilter);
-                RfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
+                rfcCallParametersObjectpropCount++;
             }
 
-            if (callRfcSubscriptionRfcCallParametersautoCommit != null)
+            if (callRfcSubscriptionrfcCallParametersautoCommit != null)
             {
-                RfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersautoCommit);
-                RfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersautoCommit);
+                rfcCallParametersObjectpropCount++;
             }
 
-            if (callRfcSubscriptionRfcCallParametersqueueName != null)
+            if (callRfcSubscriptionrfcCallParametersqueueName != null)
             {
-                RfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionRfcCallParametersqueueName);
-                RfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersqueueName);
+                rfcCallParametersObjectpropCount++;
             }
 
-            if (RfcCallParametersObjectpropCount > 0)
+            if (rfcCallParametersObjectpropCount > 0)
             {
-                callRfcSubscription["RfcCallParameters"] = RfcCallParametersObject;
+                callRfcSubscription["RfcCallParameters"] = rfcCallParametersObject;
                 callRfcSubscriptionpropCount++;
             }
 
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionSapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhooktrigger/subscribe";
             var apiCallHttpMethod = "post";
@@ -418,9 +418,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(degreeOfParallelism);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            if (subscriptionSapActions != null)
+            if (subscriptionsapActions != null)
             {
-                subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionSapActions);
+                subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionsapActions);
                 subscriptionpropCount++;
             }
 

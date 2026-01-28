@@ -21,12 +21,212 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
+        public IWorkflowAction AddNewContact(Expression<Func<int>> bodycontactclientId = null, Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontactofficePhone = null, Expression<Func<string>> bodycontactmobilePhone = null, Expression<Func<string>> bodycontactfax = null, Expression<Func<string>> bodycontacttitle = null)
+        {
+            var apiCallPath = "/contacts";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var contactObject = new JObject();
+            var contactObjectpropCount = 0;
+            if (bodycontactclientId != null)
+            {
+                contactObject["client_id"] = ExpressionConverter.ConvertO(bodycontactclientId);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactfirstName != null)
+            {
+                contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactlastName != null)
+            {
+                contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactemail != null)
+            {
+                contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactofficePhone != null)
+            {
+                contactObject["phone_office"] = ExpressionConverter.ConvertO(bodycontactofficePhone);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactmobilePhone != null)
+            {
+                contactObject["phone_mobile"] = ExpressionConverter.ConvertO(bodycontactmobilePhone);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontactfax != null)
+            {
+                contactObject["fax"] = ExpressionConverter.ConvertO(bodycontactfax);
+                contactObjectpropCount++;
+            }
+
+            if (bodycontacttitle != null)
+            {
+                contactObject["title"] = ExpressionConverter.ConvertO(bodycontacttitle);
+                contactObjectpropCount++;
+            }
+
+            if (contactObjectpropCount > 0)
+            {
+                body["contact"] = contactObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<ListAllClientsResponseItem[]> ListAllClients()
         {
             var apiCallPath = "/clients";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ListAllClientsResponseItem[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
+        public IWorkflowAction AddNewClient(Expression<Func<string>> bodyclientname = null, Expression<Func<string>> bodyclientcurrency = null, Expression<Func<string>> bodyclientcurrencySymbol = null, Expression<Func<string>> bodyclientdetails = null)
+        {
+            var apiCallPath = "/clients";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var clientObject = new JObject();
+            var clientObjectpropCount = 0;
+            if (bodyclientname != null)
+            {
+                clientObject["name"] = ExpressionConverter.ConvertO(bodyclientname);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientcurrency != null)
+            {
+                clientObject["currency"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientcurrencySymbol != null)
+            {
+                clientObject["currency_symbol"] = ExpressionConverter.ConvertO(bodyclientcurrencySymbol);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientdetails != null)
+            {
+                clientObject["details"] = ExpressionConverter.ConvertO(bodyclientdetails);
+                clientObjectpropCount++;
+            }
+
+            if (clientObjectpropCount > 0)
+            {
+                body["client"] = clientObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
+        public IWorkflowAction CreateUser(Expression<Func<string>> bodyuseremail = null, Expression<Func<bool>> bodyuserisAdmin = null, Expression<Func<string>> bodyuserfirstName = null, Expression<Func<string>> bodyuserlastName = null, Expression<Func<bool>> bodyuserisContractor = null, Expression<Func<string>> bodyuserphone = null, Expression<Func<double>> bodyuserhourlyRate = null, Expression<Func<string>> bodyuserdepartment = null, Expression<Func<double>> bodyusercostRate = null)
+        {
+            var apiCallPath = "/people";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var userObject = new JObject();
+            var userObjectpropCount = 0;
+            if (bodyuseremail != null)
+            {
+                userObject["email"] = ExpressionConverter.ConvertO(bodyuseremail);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserisAdmin != null)
+            {
+                userObject["is_admin"] = ExpressionConverter.ConvertO(bodyuserisAdmin);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserfirstName != null)
+            {
+                userObject["first_name"] = ExpressionConverter.ConvertO(bodyuserfirstName);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserlastName != null)
+            {
+                userObject["last_name"] = ExpressionConverter.ConvertO(bodyuserlastName);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserisContractor != null)
+            {
+                userObject["is_contractor"] = ExpressionConverter.ConvertO(bodyuserisContractor);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserphone != null)
+            {
+                userObject["telephone"] = ExpressionConverter.ConvertO(bodyuserphone);
+                userObjectpropCount++;
+            }
+
+            userObject["has_access_to_all_future_projects"] = false;
+            userObjectpropCount++;
+            if (bodyuserhourlyRate != null)
+            {
+                userObject["default_hourly_rate"] = ExpressionConverter.ConvertO(bodyuserhourlyRate);
+                userObjectpropCount++;
+            }
+
+            if (bodyuserdepartment != null)
+            {
+                userObject["department"] = ExpressionConverter.ConvertO(bodyuserdepartment);
+                userObjectpropCount++;
+            }
+
+            if (bodyusercostRate != null)
+            {
+                userObject["cost_rate"] = ExpressionConverter.ConvertO(bodyusercostRate);
+                userObjectpropCount++;
+            }
+
+            if (userObjectpropCount > 0)
+            {
+                body["user"] = userObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
@@ -126,6 +326,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var apiCallPath = String.Format("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
             var apiCallHttpMethod = "delete";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
+        public IWorkflowAction AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
+        {
+            var apiCallPath = String.Format("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var userObject = new JObject();
+            var userObjectpropCount = 0;
+            if (bodyuseruserId != null)
+            {
+                userObject["id"] = ExpressionConverter.ConvertO(bodyuseruserId);
+                userObjectpropCount++;
+            }
+
+            if (userObjectpropCount > 0)
+            {
+                body["user"] = userObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
 

@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyclasssystem = null, Expression<Func<string>> bodyclasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var apiCallPath = "/Encounter";
             var apiCallHttpMethod = "post";
@@ -1127,23 +1127,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 bodypropCount++;
             }
 
-            var classObject = new JObject();
-            var classObjectpropCount = 0;
-            if (bodyclasssystem != null)
+            var @classObject = new JObject();
+            var @classObjectpropCount = 0;
+            if (bodyClasssystem != null)
             {
-                classObject["system"] = ExpressionConverter.ConvertO(bodyclasssystem);
-                classObjectpropCount++;
+                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
+                @classObjectpropCount++;
             }
 
-            if (bodyclasscode != null)
+            if (bodyClasscode != null)
             {
-                classObject["code"] = ExpressionConverter.ConvertO(bodyclasscode);
-                classObjectpropCount++;
+                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
+                @classObjectpropCount++;
             }
 
-            if (classObjectpropCount > 0)
+            if (@classObjectpropCount > 0)
             {
-                body["class"] = classObject;
+                body["class"] = @classObject;
                 bodypropCount++;
             }
 
@@ -1237,7 +1237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEEncounterIDResponse> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyclasssystem = null, Expression<Func<string>> bodyclasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<DELETEEncounterIDResponse> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var apiCallPath = String.Format("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -1282,23 +1282,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 bodypropCount++;
             }
 
-            var classObject = new JObject();
-            var classObjectpropCount = 0;
-            if (bodyclasssystem != null)
+            var @classObject = new JObject();
+            var @classObjectpropCount = 0;
+            if (bodyClasssystem != null)
             {
-                classObject["system"] = ExpressionConverter.ConvertO(bodyclasssystem);
-                classObjectpropCount++;
+                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
+                @classObjectpropCount++;
             }
 
-            if (bodyclasscode != null)
+            if (bodyClasscode != null)
             {
-                classObject["code"] = ExpressionConverter.ConvertO(bodyclasscode);
-                classObjectpropCount++;
+                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
+                @classObjectpropCount++;
             }
 
-            if (classObjectpropCount > 0)
+            if (@classObjectpropCount > 0)
             {
-                body["class"] = classObject;
+                body["class"] = @classObject;
                 bodypropCount++;
             }
 
@@ -1383,7 +1383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTEncounterIDResponse> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyclasssystem = null, Expression<Func<string>> bodyclasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<PUTEncounterIDResponse> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var apiCallPath = String.Format("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -1428,23 +1428,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 bodypropCount++;
             }
 
-            var classObject = new JObject();
-            var classObjectpropCount = 0;
-            if (bodyclasssystem != null)
+            var @classObject = new JObject();
+            var @classObjectpropCount = 0;
+            if (bodyClasssystem != null)
             {
-                classObject["system"] = ExpressionConverter.ConvertO(bodyclasssystem);
-                classObjectpropCount++;
+                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
+                @classObjectpropCount++;
             }
 
-            if (bodyclasscode != null)
+            if (bodyClasscode != null)
             {
-                classObject["code"] = ExpressionConverter.ConvertO(bodyclasscode);
-                classObjectpropCount++;
+                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
+                @classObjectpropCount++;
             }
 
-            if (classObjectpropCount > 0)
+            if (@classObjectpropCount > 0)
             {
-                body["class"] = classObject;
+                body["class"] = @classObject;
                 bodypropCount++;
             }
 

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyeventInput>> bodyevent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks";
             var apiCallHttpMethod = "post";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
             body["url"] = "@listCallbackUrl()";
             bodypropCount++;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
             body["source"] = "microsoft";
             bodypropCount++;
             if (bodyregionId != null)
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
         public string Id { get; set; }
     }
 
-    public enum bodyeventInput
+    public enum bodyEventInput
     {
         [EnumMember(Value = "checked_in")]
         CheckedIn,

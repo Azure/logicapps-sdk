@@ -176,6 +176,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted(Expression<Func<string>> actionId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/actions";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["ActionId"] = ExpressionConverter.Convert(actionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["enabled"] = true;
+            bodypropCount++;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            configObject["httpMethod"] = "POST";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class CreateDocumentDeprecatedResponse
@@ -289,6 +318,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class RunCompletedResponse
+    {
+        [JsonProperty("output")]
+        public JToken Output { get; set; }
+
+        [JsonProperty("context")]
+        public JToken Context { get; set; }
     }
 }
 

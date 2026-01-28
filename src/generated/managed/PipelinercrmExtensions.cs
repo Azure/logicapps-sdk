@@ -782,6 +782,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
+        public IBodyWorkflowAction<OpportunitiesCreateResponse> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyclosingDate, Expression<Func<string>> bodyopptyTypeId, Expression<Func<string>> bodystepId, Expression<Func<string>> bodyownerId, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations, Expression<Func<string>> bodycreated = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null)
+        {
+            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            if (bodycreated != null)
+            {
+                body["created"] = ExpressionConverter.ConvertO(bodycreated);
+                bodypropCount++;
+            }
+
+            var valueObject = new JObject();
+            var valueObjectpropCount = 0;
+            if (bodyvaluebaseValue != null)
+            {
+                valueObject["base_value"] = ExpressionConverter.ConvertO(bodyvaluebaseValue);
+                valueObjectpropCount++;
+            }
+
+            if (bodyvaluecurrencyId != null)
+            {
+                valueObject["currency_id"] = ExpressionConverter.ConvertO(bodyvaluecurrencyId);
+                valueObjectpropCount++;
+            }
+
+            if (bodyvaluevalueForeign != null)
+            {
+                valueObject["value_foreign"] = ExpressionConverter.ConvertO(bodyvaluevalueForeign);
+                valueObjectpropCount++;
+            }
+
+            if (valueObjectpropCount > 0)
+            {
+                body["value"] = valueObject;
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["closing_date"] = ExpressionConverter.ConvertO(bodyclosingDate);
+            if (bodydescription != null)
+            {
+                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                bodypropCount++;
+            }
+
+            if (bodyranking != null)
+            {
+                body["ranking"] = ExpressionConverter.ConvertO(bodyranking);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["oppty_type_id"] = ExpressionConverter.ConvertO(bodyopptyTypeId);
+            bodypropCount++;
+            body["step_id"] = ExpressionConverter.ConvertO(bodystepId);
+            if (bodyunitId != null)
+            {
+                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
+            bodypropCount++;
+            body["account_relations"] = ExpressionConverter.ConvertO(bodyaccountRelations);
+            if (bodycontactRelations != null)
+            {
+                body["contact_relations"] = ExpressionConverter.ConvertO(bodycontactRelations);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<OpportunitiesCreateResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
         public IBodyWorkflowAction<OpportunitiesDeleteResponse> OpportunitiesDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
@@ -2910,6 +2995,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
         [JsonProperty("modified_by_user")]
         public string ModifiedByUser { get; set; }
+    }
+
+    public class OpportunitiesCreateResponse
+    {
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("data")]
+        public OpportunitiesCreateResponseDataType Data { get; set; }
+    }
+
+    public class OpportunitiesCreateResponseDataType
+    {
+        [JsonProperty("is_delete_protected")]
+        public bool IsDeleteProtected { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("is_deleted")]
+        public bool IsDeleted { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+
+        [JsonProperty("modified")]
+        public string Modified { get; set; }
+
+        [JsonProperty("active_quote")]
+        public string ActiveQuote { get; set; }
+
+        [JsonProperty("oppty_type")]
+        public string OpptyType { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
+
+        [JsonProperty("product_currency")]
+        public string ProductCurrency { get; set; }
+
+        [JsonProperty("product_price_list")]
+        public string ProductPriceList { get; set; }
+
+        [JsonProperty("reason_of_close")]
+        public string ReasonOfClose { get; set; }
+
+        [JsonProperty("step")]
+        public string Step { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("active_quote_id")]
+        public string ActiveQuoteId { get; set; }
+
+        [JsonProperty("closing_date")]
+        public string ClosingDate { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("is_archived")]
+        public bool IsArchived { get; set; }
+
+        [JsonProperty("is_value_auto_calculate")]
+        public bool IsValueAutoCalculate { get; set; }
+
+        [JsonProperty("label_flag")]
+        public int LabelFlag { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("oppty_type_id")]
+        public string OpptyTypeId { get; set; }
+
+        [JsonProperty("owner_id")]
+        public string OwnerId { get; set; }
+
+        [JsonProperty("product_currency_id")]
+        public string ProductCurrencyId { get; set; }
+
+        [JsonProperty("product_price_list_id")]
+        public string ProductPriceListId { get; set; }
+
+        [JsonProperty("product_sections")]
+        public JToken ProductSections { get; set; }
+
+        [JsonProperty("quick_account_email")]
+        public string QuickAccountEmail { get; set; }
+
+        [JsonProperty("quick_account_name")]
+        public string QuickAccountName { get; set; }
+
+        [JsonProperty("quick_account_phone")]
+        public string QuickAccountPhone { get; set; }
+
+        [JsonProperty("quick_contact_name")]
+        public string QuickContactName { get; set; }
+
+        [JsonProperty("quick_email")]
+        public string QuickEmail { get; set; }
+
+        [JsonProperty("quick_phone")]
+        public string QuickPhone { get; set; }
+
+        [JsonProperty("ranking")]
+        public int Ranking { get; set; }
+
+        [JsonProperty("reason_of_close_description")]
+        public string ReasonOfCloseDescription { get; set; }
+
+        [JsonProperty("reason_of_close_id")]
+        public string ReasonOfCloseId { get; set; }
+
+        [JsonProperty("share_mode")]
+        public int ShareMode { get; set; }
+
+        [JsonProperty("step_id")]
+        public string StepId { get; set; }
+
+        [JsonProperty("table_name")]
+        public string TableName { get; set; }
+
+        [JsonProperty("unit_id")]
+        public string UnitId { get; set; }
+
+        [JsonProperty("was_qualified")]
+        public bool WasQualified { get; set; }
+
+        [JsonProperty("revision")]
+        public int Revision { get; set; }
+
+        [JsonProperty("value")]
+        public OpportunitiesCreateResponseDataTypeValueType Value { get; set; }
+
+        [JsonProperty("oppty_recurrence")]
+        public string OpptyRecurrence { get; set; }
+
+        [JsonProperty("revenue_schedule")]
+        public string RevenueSchedule { get; set; }
+
+        [JsonProperty("product_relations")]
+        public string[] ProductRelations { get; set; }
+
+        [JsonProperty("primary_contact")]
+        public string PrimaryContact { get; set; }
+
+        [JsonProperty("primary_account")]
+        public string PrimaryAccount { get; set; }
+
+        [JsonProperty("contact_relations")]
+        public string[] ContactRelations { get; set; }
+
+        [JsonProperty("account_relations")]
+        public string[] AccountRelations { get; set; }
+
+        [JsonProperty("documents")]
+        public string[] Documents { get; set; }
+
+        [JsonProperty("quote_relations")]
+        public string[] QuoteRelations { get; set; }
+
+        [JsonProperty("status")]
+        public int Status { get; set; }
+
+        [JsonProperty("qualify_date")]
+        public string QualifyDate { get; set; }
+
+        [JsonProperty("won_date")]
+        public string WonDate { get; set; }
+
+        [JsonProperty("lost_date")]
+        public string LostDate { get; set; }
+
+        [JsonProperty("days_in_step")]
+        public int DaysInStep { get; set; }
+
+        [JsonProperty("is_favorite")]
+        public bool IsFavorite { get; set; }
+
+        [JsonProperty("sharing_units")]
+        public string[] SharingUnits { get; set; }
+
+        [JsonProperty("sharing_clients")]
+        public string[] SharingClients { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("formatted_name")]
+        public string FormattedName { get; set; }
+
+        [JsonProperty("modified_by_user")]
+        public string ModifiedByUser { get; set; }
+    }
+
+    public class OpportunitiesCreateResponseDataTypeValueType
+    {
+        [JsonProperty("base_value")]
+        public double BaseValue { get; set; }
+
+        [JsonProperty("currency_id")]
+        public string CurrencyId { get; set; }
+
+        [JsonProperty("value_foreign")]
+        public double ValueForeign { get; set; }
     }
 
     public class OpportunitiesDeleteResponse

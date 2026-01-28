@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetHLLAPIDLL(Expression<Func<string>> hLLAPISetHLLAPIDLLDLLFilename, Expression<Func<string>> hLLAPISetHLLAPIDLLWorkflow, Expression<Func<string>> hLLAPISetHLLAPIDLLIAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIDLLEntryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLIsEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLIs64BitHLLAPIDLL = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLUseCOMFor64BitHLLAPIDLL = null)
+        public IWorkflowAction HLLAPISetHLLAPIDLL(Expression<Func<string>> hLLAPISetHLLAPIDLLdLLFilename, Expression<Func<string>> hLLAPISetHLLAPIDLLworkflow, Expression<Func<string>> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIDLLentryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLisEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
             var apiCallHttpMethod = "post";
@@ -20,39 +20,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISetHLLAPIDLL = new JObject();
             var hLLAPISetHLLAPIDLLpropCount = 0;
             hLLAPISetHLLAPIDLLpropCount++;
-            hLLAPISetHLLAPIDLL["DLLFilename"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLDLLFilename);
-            if (hLLAPISetHLLAPIDLLIAHLLAPIPath != null)
+            hLLAPISetHLLAPIDLL["DLLFilename"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLdLLFilename);
+            if (hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
             {
-                hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLIAHLLAPIPath);
+                hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLiAHLLAPIPath);
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
-            if (hLLAPISetHLLAPIDLLEntryPointName != null)
+            if (hLLAPISetHLLAPIDLLentryPointName != null)
             {
-                hLLAPISetHLLAPIDLL["EntryPointName"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLEntryPointName);
+                hLLAPISetHLLAPIDLL["EntryPointName"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLentryPointName);
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
-            if (hLLAPISetHLLAPIDLLIsEnhancedInterface != null)
+            if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
             {
-                hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLIsEnhancedInterface);
+                hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLisEnhancedInterface);
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
-            if (hLLAPISetHLLAPIDLLIs64BitHLLAPIDLL != null)
+            if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
             {
-                hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLIs64BitHLLAPIDLL);
+                hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
-            if (hLLAPISetHLLAPIDLLUseCOMFor64BitHLLAPIDLL != null)
+            if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
             {
-                hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLUseCOMFor64BitHLLAPIDLL);
+                hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
             hLLAPISetHLLAPIDLLpropCount++;
-            hLLAPISetHLLAPIDLL["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLWorkflow);
+            hLLAPISetHLLAPIDLL["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLworkflow);
             if (hLLAPISetHLLAPIDLLpropCount > 0)
             {
                 callPayload.Body = hLLAPISetHLLAPIDLL;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIDispose(Expression<Func<string>> hLLAPIDisposeWorkflow)
+        public IWorkflowAction HLLAPIDispose(Expression<Func<string>> hLLAPIDisposeworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIDispose";
             var apiCallHttpMethod = "post";
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIDispose = new JObject();
             var hLLAPIDisposepropCount = 0;
             hLLAPIDisposepropCount++;
-            hLLAPIDispose["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisposeWorkflow);
+            hLLAPIDispose["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisposeworkflow);
             if (hLLAPIDisposepropCount > 0)
             {
                 callPayload.Body = hLLAPIDispose;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIConnect(Expression<Func<string>> hLLAPIConnectSessionID, Expression<Func<string>> hLLAPIConnectWorkflow)
+        public IWorkflowAction HLLAPIConnect(Expression<Func<string>> hLLAPIConnectsessionID, Expression<Func<string>> hLLAPIConnectworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIConnect";
             var apiCallHttpMethod = "post";
@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIConnect = new JObject();
             var hLLAPIConnectpropCount = 0;
             hLLAPIConnectpropCount++;
-            hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIConnectSessionID);
+            hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIConnectsessionID);
             hLLAPIConnectpropCount++;
-            hLLAPIConnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIConnectWorkflow);
+            hLLAPIConnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIConnectworkflow);
             if (hLLAPIConnectpropCount > 0)
             {
                 callPayload.Body = hLLAPIConnect;
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatusSessionID, Expression<Func<string>> hLLAPIGetConnectStatusWorkflow)
+        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatussessionID, Expression<Func<string>> hLLAPIGetConnectStatusworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
             var apiCallHttpMethod = "post";
@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIGetConnectStatus = new JObject();
             var hLLAPIGetConnectStatuspropCount = 0;
             hLLAPIGetConnectStatuspropCount++;
-            hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatusSessionID);
+            hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatussessionID);
             hLLAPIGetConnectStatuspropCount++;
-            hLLAPIGetConnectStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatusWorkflow);
+            hLLAPIGetConnectStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatusworkflow);
             if (hLLAPIGetConnectStatuspropCount > 0)
             {
                 callPayload.Body = hLLAPIGetConnectStatus;
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectSessionID, Expression<Func<string>> hLLAPIDisconnectWorkflow)
+        public IWorkflowAction HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectsessionID, Expression<Func<string>> hLLAPIDisconnectworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
             var apiCallHttpMethod = "post";
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIDisconnect = new JObject();
             var hLLAPIDisconnectpropCount = 0;
             hLLAPIDisconnectpropCount++;
-            hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIDisconnectSessionID);
+            hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIDisconnectsessionID);
             hLLAPIDisconnectpropCount++;
-            hLLAPIDisconnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisconnectWorkflow);
+            hLLAPIDisconnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisconnectworkflow);
             if (hLLAPIDisconnectpropCount > 0)
             {
                 callPayload.Body = hLLAPIDisconnect;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPosSessionID, Expression<Func<int>> hLLAPISetCursorPosCursorRowIndex, Expression<Func<int>> hLLAPISetCursorPosCursorColIndex, Expression<Func<string>> hLLAPISetCursorPosWorkflow)
+        public IWorkflowAction HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPossessionID, Expression<Func<int>> hLLAPISetCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISetCursorPoscursorColIndex, Expression<Func<string>> hLLAPISetCursorPosworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
             var apiCallHttpMethod = "post";
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISetCursorPos = new JObject();
             var hLLAPISetCursorPospropCount = 0;
             hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosSessionID);
+            hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISetCursorPossessionID);
             hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosCursorRowIndex);
+            hLLAPISetCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPoscursorRowIndex);
             hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosCursorColIndex);
+            hLLAPISetCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPoscursorColIndex);
             hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosWorkflow);
+            hLLAPISetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosworkflow);
             if (hLLAPISetCursorPospropCount > 0)
             {
                 callPayload.Body = hLLAPISetCursorPos;
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPosSessionID, Expression<Func<string>> hLLAPIGetCursorPosWorkflow)
+        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPossessionID, Expression<Func<string>> hLLAPIGetCursorPosworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
             var apiCallHttpMethod = "post";
@@ -172,9 +172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIGetCursorPos = new JObject();
             var hLLAPIGetCursorPospropCount = 0;
             hLLAPIGetCursorPospropCount++;
-            hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPosSessionID);
+            hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPossessionID);
             hLLAPIGetCursorPospropCount++;
-            hLLAPIGetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPosWorkflow);
+            hLLAPIGetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPosworkflow);
             if (hLLAPIGetCursorPospropCount > 0)
             {
                 callPayload.Body = hLLAPIGetCursorPos;
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendString(Expression<Func<string>> hLLAPISendStringInputString, Expression<Func<string>> hLLAPISendStringWorkflow)
+        public IWorkflowAction HLLAPISendString(Expression<Func<string>> hLLAPISendStringinputString, Expression<Func<string>> hLLAPISendStringworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISendString";
             var apiCallHttpMethod = "post";
@@ -192,9 +192,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISendString = new JObject();
             var hLLAPISendStringpropCount = 0;
             hLLAPISendStringpropCount++;
-            hLLAPISendString["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringInputString);
+            hLLAPISendString["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringinputString);
             hLLAPISendStringpropCount++;
-            hLLAPISendString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringWorkflow);
+            hLLAPISendString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringworkflow);
             if (hLLAPISendStringpropCount > 0)
             {
                 callPayload.Body = hLLAPISendString;
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendPassword(Expression<Func<string>> hLLAPISendPasswordInputPassword, Expression<Func<string>> hLLAPISendPasswordWorkflow)
+        public IWorkflowAction HLLAPISendPassword(Expression<Func<string>> hLLAPISendPasswordinputPassword, Expression<Func<string>> hLLAPISendPasswordworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISendPassword";
             var apiCallHttpMethod = "post";
@@ -212,9 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISendPassword = new JObject();
             var hLLAPISendPasswordpropCount = 0;
             hLLAPISendPasswordpropCount++;
-            hLLAPISendPassword["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordInputPassword);
+            hLLAPISendPassword["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordinputPassword);
             hLLAPISendPasswordpropCount++;
-            hLLAPISendPassword["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordWorkflow);
+            hLLAPISendPassword["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordworkflow);
             if (hLLAPISendPasswordpropCount > 0)
             {
                 callPayload.Body = hLLAPISendPassword;
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPosSessionID, Expression<Func<int>> hLLAPISendStringAtCursorPosCursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPosCursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosInputString, Expression<Func<string>> hLLAPISendStringAtCursorPosWorkflow)
+        public IWorkflowAction HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPossessionID, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosinputString, Expression<Func<string>> hLLAPISendStringAtCursorPosworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
             var apiCallHttpMethod = "post";
@@ -232,15 +232,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISendStringAtCursorPos = new JObject();
             var hLLAPISendStringAtCursorPospropCount = 0;
             hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosSessionID);
+            hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPossessionID);
             hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosCursorRowIndex);
+            hLLAPISendStringAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPoscursorRowIndex);
             hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosCursorColIndex);
+            hLLAPISendStringAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPoscursorColIndex);
             hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosInputString);
+            hLLAPISendStringAtCursorPos["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosinputString);
             hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosWorkflow);
+            hLLAPISendStringAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosworkflow);
             if (hLLAPISendStringAtCursorPospropCount > 0)
             {
                 callPayload.Body = hLLAPISendStringAtCursorPos;
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPosSessionID, Expression<Func<int>> hLLAPISendPasswordAtCursorPosCursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPosCursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosInputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosWorkflow)
+        public IWorkflowAction HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPossessionID, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosinputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
             var apiCallHttpMethod = "post";
@@ -258,15 +258,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISendPasswordAtCursorPos = new JObject();
             var hLLAPISendPasswordAtCursorPospropCount = 0;
             hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosSessionID);
+            hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPossessionID);
             hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosCursorRowIndex);
+            hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPoscursorRowIndex);
             hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosCursorColIndex);
+            hLLAPISendPasswordAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPoscursorColIndex);
             hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosInputPassword);
+            hLLAPISendPasswordAtCursorPos["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosinputPassword);
             hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosWorkflow);
+            hLLAPISendPasswordAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosworkflow);
             if (hLLAPISendPasswordAtCursorPospropCount > 0)
             {
                 callPayload.Body = hLLAPISendPasswordAtCursorPos;
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPosSessionID, Expression<Func<int>> hLLAPIReadScreenAtCursorPosCursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosCursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosReadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosWorkflow)
+        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPossessionID, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosreadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
             var apiCallHttpMethod = "post";
@@ -284,15 +284,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIReadScreenAtCursorPos = new JObject();
             var hLLAPIReadScreenAtCursorPospropCount = 0;
             hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosSessionID);
+            hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPossessionID);
             hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosCursorRowIndex);
+            hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPoscursorRowIndex);
             hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosCursorColIndex);
+            hLLAPIReadScreenAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPoscursorColIndex);
             hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosReadScreenLength);
+            hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosreadScreenLength);
             hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosWorkflow);
+            hLLAPIReadScreenAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosworkflow);
             if (hLLAPIReadScreenAtCursorPospropCount > 0)
             {
                 callPayload.Body = hLLAPIReadScreenAtCursorPos;
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus(Expression<Func<string>> hLLAPIQuerySessionStatusWorkflow)
+        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus(Expression<Func<string>> hLLAPIQuerySessionStatusworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
             var apiCallHttpMethod = "post";
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIQuerySessionStatus = new JObject();
             var hLLAPIQuerySessionStatuspropCount = 0;
             hLLAPIQuerySessionStatuspropCount++;
-            hLLAPIQuerySessionStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIQuerySessionStatusWorkflow);
+            hLLAPIQuerySessionStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIQuerySessionStatusworkflow);
             if (hLLAPIQuerySessionStatuspropCount > 0)
             {
                 callPayload.Body = hLLAPIQuerySessionStatus;
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowsSessionID, Expression<Func<int>> hLLAPIReadScreenRowsStartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsEndRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsWorkflow, Expression<Func<int>> hLLAPIReadScreenRowsNumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsNumberOfColumnsInSession = null)
+        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowssessionID, Expression<Func<int>> hLLAPIReadScreenRowsstartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsendRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsworkflow, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
             var apiCallHttpMethod = "post";
@@ -328,25 +328,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIReadScreenRows = new JObject();
             var hLLAPIReadScreenRowspropCount = 0;
             hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsSessionID);
+            hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowssessionID);
             hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["StartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsStartRowIndex);
+            hLLAPIReadScreenRows["StartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsstartRowIndex);
             hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["EndRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsEndRowIndex);
-            if (hLLAPIReadScreenRowsNumberOfRowsInSession != null)
+            hLLAPIReadScreenRows["EndRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsendRowIndex);
+            if (hLLAPIReadScreenRowsnumberOfRowsInSession != null)
             {
-                hLLAPIReadScreenRows["NumberOfRowsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsNumberOfRowsInSession);
+                hLLAPIReadScreenRows["NumberOfRowsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsnumberOfRowsInSession);
                 hLLAPIReadScreenRowspropCount++;
             }
 
-            if (hLLAPIReadScreenRowsNumberOfColumnsInSession != null)
+            if (hLLAPIReadScreenRowsnumberOfColumnsInSession != null)
             {
-                hLLAPIReadScreenRows["NumberOfColumnsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsNumberOfColumnsInSession);
+                hLLAPIReadScreenRows["NumberOfColumnsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsnumberOfColumnsInSession);
                 hLLAPIReadScreenRowspropCount++;
             }
 
             hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsWorkflow);
+            hLLAPIReadScreenRows["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsworkflow);
             if (hLLAPIReadScreenRowspropCount > 0)
             {
                 callPayload.Body = hLLAPIReadScreenRows;
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked(Expression<Func<string>> hLLAPIIsKeyboardUnlockedWorkflow)
+        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked(Expression<Func<string>> hLLAPIIsKeyboardUnlockedworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
             var apiCallHttpMethod = "post";
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIIsKeyboardUnlocked = new JObject();
             var hLLAPIIsKeyboardUnlockedpropCount = 0;
             hLLAPIIsKeyboardUnlockedpropCount++;
-            hLLAPIIsKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIIsKeyboardUnlockedWorkflow);
+            hLLAPIIsKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIIsKeyboardUnlockedworkflow);
             if (hLLAPIIsKeyboardUnlockedpropCount > 0)
             {
                 callPayload.Body = hLLAPIIsKeyboardUnlocked;
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked(Expression<Func<double>> hLLAPIWaitForKeyboardUnlockedSecondsToWait, Expression<Func<string>> hLLAPIWaitForKeyboardUnlockedWorkflow, Expression<Func<double>> hLLAPIWaitForKeyboardUnlockedDeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked(Expression<Func<double>> hLLAPIWaitForKeyboardUnlockedsecondsToWait, Expression<Func<string>> hLLAPIWaitForKeyboardUnlockedworkflow, Expression<Func<double>> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
             var apiCallHttpMethod = "post";
@@ -382,15 +382,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIWaitForKeyboardUnlocked = new JObject();
             var hLLAPIWaitForKeyboardUnlockedpropCount = 0;
             hLLAPIWaitForKeyboardUnlockedpropCount++;
-            hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedSecondsToWait);
-            if (hLLAPIWaitForKeyboardUnlockedDeltaSecondsToWait != null)
+            hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
+            if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
             {
-                hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedDeltaSecondsToWait);
+                hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
                 hLLAPIWaitForKeyboardUnlockedpropCount++;
             }
 
             hLLAPIWaitForKeyboardUnlockedpropCount++;
-            hLLAPIWaitForKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedWorkflow);
+            hLLAPIWaitForKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedworkflow);
             if (hLLAPIWaitForKeyboardUnlockedpropCount > 0)
             {
                 callPayload.Body = hLLAPIWaitForKeyboardUnlocked;
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady(Expression<Func<double>> hLLAPIWaitForSystemReadySecondsToWait, Expression<Func<string>> hLLAPIWaitForSystemReadyWorkflow, Expression<Func<double>> hLLAPIWaitForSystemReadyDeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady(Expression<Func<double>> hLLAPIWaitForSystemReadysecondsToWait, Expression<Func<string>> hLLAPIWaitForSystemReadyworkflow, Expression<Func<double>> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
             var apiCallHttpMethod = "post";
@@ -408,15 +408,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIWaitForSystemReady = new JObject();
             var hLLAPIWaitForSystemReadypropCount = 0;
             hLLAPIWaitForSystemReadypropCount++;
-            hLLAPIWaitForSystemReady["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadySecondsToWait);
-            if (hLLAPIWaitForSystemReadyDeltaSecondsToWait != null)
+            hLLAPIWaitForSystemReady["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadysecondsToWait);
+            if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
             {
-                hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadyDeltaSecondsToWait);
+                hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadydeltaSecondsToWait);
                 hLLAPIWaitForSystemReadypropCount++;
             }
 
             hLLAPIWaitForSystemReadypropCount++;
-            hLLAPIWaitForSystemReady["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadyWorkflow);
+            hLLAPIWaitForSystemReady["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadyworkflow);
             if (hLLAPIWaitForSystemReadypropCount > 0)
             {
                 callPayload.Body = hLLAPIWaitForSystemReady;
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIPressReset(Expression<Func<string>> hLLAPIPressResetWorkflow)
+        public IWorkflowAction HLLAPIPressReset(Expression<Func<string>> hLLAPIPressResetworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIPressReset";
             var apiCallHttpMethod = "post";
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIPressReset = new JObject();
             var hLLAPIPressResetpropCount = 0;
             hLLAPIPressResetpropCount++;
-            hLLAPIPressReset["Workflow"] = ExpressionConverter.ConvertO(hLLAPIPressResetWorkflow);
+            hLLAPIPressReset["Workflow"] = ExpressionConverter.ConvertO(hLLAPIPressResetworkflow);
             if (hLLAPIPressResetpropCount > 0)
             {
                 callPayload.Body = hLLAPIPressReset;
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringSessionID, Expression<Func<string>> hLLAPISearchForStringSearchString, Expression<Func<string>> hLLAPISearchForStringWorkflow, Expression<Func<bool>> hLLAPISearchForStringSearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringSearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringSearchStartColIndex = null)
+        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringsessionID, Expression<Func<string>> hLLAPISearchForStringsearchString, Expression<Func<string>> hLLAPISearchForStringworkflow, Expression<Func<bool>> hLLAPISearchForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringsearchStartColIndex = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPISearchForString";
             var apiCallHttpMethod = "post";
@@ -452,29 +452,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISearchForString = new JObject();
             var hLLAPISearchForStringpropCount = 0;
             hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPISearchForStringSessionID);
+            hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsessionID);
             hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPISearchForStringSearchString);
-            if (hLLAPISearchForStringSearchEntireScreen != null)
+            hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchString);
+            if (hLLAPISearchForStringsearchEntireScreen != null)
             {
-                hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPISearchForStringSearchEntireScreen);
+                hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchEntireScreen);
                 hLLAPISearchForStringpropCount++;
             }
 
-            if (hLLAPISearchForStringSearchStartRowIndex != null)
+            if (hLLAPISearchForStringsearchStartRowIndex != null)
             {
-                hLLAPISearchForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringSearchStartRowIndex);
+                hLLAPISearchForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchStartRowIndex);
                 hLLAPISearchForStringpropCount++;
             }
 
-            if (hLLAPISearchForStringSearchStartColIndex != null)
+            if (hLLAPISearchForStringsearchStartColIndex != null)
             {
-                hLLAPISearchForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringSearchStartColIndex);
+                hLLAPISearchForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchStartColIndex);
                 hLLAPISearchForStringpropCount++;
             }
 
             hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISearchForStringWorkflow);
+            hLLAPISearchForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISearchForStringworkflow);
             if (hLLAPISearchForStringpropCount > 0)
             {
                 callPayload.Body = hLLAPISearchForString;
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringSessionID, Expression<Func<string>> hLLAPIWaitForStringSearchString, Expression<Func<double>> hLLAPIWaitForStringSecondsToWait, Expression<Func<string>> hLLAPIWaitForStringWorkflow, Expression<Func<bool>> hLLAPIWaitForStringSearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringSearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringSearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringDeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringsessionID, Expression<Func<string>> hLLAPIWaitForStringsearchString, Expression<Func<double>> hLLAPIWaitForStringsecondsToWait, Expression<Func<string>> hLLAPIWaitForStringworkflow, Expression<Func<bool>> hLLAPIWaitForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
             var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
             var apiCallHttpMethod = "post";
@@ -492,37 +492,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIWaitForString = new JObject();
             var hLLAPIWaitForStringpropCount = 0;
             hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSessionID);
+            hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsessionID);
             hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSearchString);
-            if (hLLAPIWaitForStringSearchEntireScreen != null)
+            hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchString);
+            if (hLLAPIWaitForStringsearchEntireScreen != null)
             {
-                hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSearchEntireScreen);
+                hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchEntireScreen);
                 hLLAPIWaitForStringpropCount++;
             }
 
-            if (hLLAPIWaitForStringSearchStartRowIndex != null)
+            if (hLLAPIWaitForStringsearchStartRowIndex != null)
             {
-                hLLAPIWaitForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSearchStartRowIndex);
+                hLLAPIWaitForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchStartRowIndex);
                 hLLAPIWaitForStringpropCount++;
             }
 
-            if (hLLAPIWaitForStringSearchStartColIndex != null)
+            if (hLLAPIWaitForStringsearchStartColIndex != null)
             {
-                hLLAPIWaitForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSearchStartColIndex);
-                hLLAPIWaitForStringpropCount++;
-            }
-
-            hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringSecondsToWait);
-            if (hLLAPIWaitForStringDeltaSecondsToWait != null)
-            {
-                hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringDeltaSecondsToWait);
+                hLLAPIWaitForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchStartColIndex);
                 hLLAPIWaitForStringpropCount++;
             }
 
             hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringWorkflow);
+            hLLAPIWaitForString["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsecondsToWait);
+            if (hLLAPIWaitForStringdeltaSecondsToWait != null)
+            {
+                hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringdeltaSecondsToWait);
+                hLLAPIWaitForStringpropCount++;
+            }
+
+            hLLAPIWaitForStringpropCount++;
+            hLLAPIWaitForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringworkflow);
             if (hLLAPIWaitForStringpropCount > 0)
             {
                 callPayload.Body = hLLAPIWaitForString;
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetSessionParameter(Expression<Func<string>> hLLAPISetSessionParameterParameter, Expression<Func<string>> hLLAPISetSessionParameterWorkflow)
+        public IWorkflowAction HLLAPISetSessionParameter(Expression<Func<string>> hLLAPISetSessionParameterparameter, Expression<Func<string>> hLLAPISetSessionParameterworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
             var apiCallHttpMethod = "post";
@@ -540,9 +540,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPISetSessionParameter = new JObject();
             var hLLAPISetSessionParameterpropCount = 0;
             hLLAPISetSessionParameterpropCount++;
-            hLLAPISetSessionParameter["Parameter"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterParameter);
+            hLLAPISetSessionParameter["Parameter"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterparameter);
             hLLAPISetSessionParameterpropCount++;
-            hLLAPISetSessionParameter["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterWorkflow);
+            hLLAPISetSessionParameter["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterworkflow);
             if (hLLAPISetSessionParameterpropCount > 0)
             {
                 callPayload.Body = hLLAPISetSessionParameter;
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIResetSystem(Expression<Func<string>> hLLAPIResetSystemWorkflow)
+        public IWorkflowAction HLLAPIResetSystem(Expression<Func<string>> hLLAPIResetSystemworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
             var apiCallHttpMethod = "post";
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPIResetSystem = new JObject();
             var hLLAPIResetSystempropCount = 0;
             hLLAPIResetSystempropCount++;
-            hLLAPIResetSystem["Workflow"] = ExpressionConverter.ConvertO(hLLAPIResetSystemWorkflow);
+            hLLAPIResetSystem["Workflow"] = ExpressionConverter.ConvertO(hLLAPIResetSystemworkflow);
             if (hLLAPIResetSystempropCount > 0)
             {
                 callPayload.Body = hLLAPIResetSystem;
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea(Expression<Func<string>> hLLAPICopyOperatorInformationAreaWorkflow)
+        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea(Expression<Func<string>> hLLAPICopyOperatorInformationAreaworkflow)
         {
             var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";
             var apiCallHttpMethod = "post";
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             var hLLAPICopyOperatorInformationArea = new JObject();
             var hLLAPICopyOperatorInformationAreapropCount = 0;
             hLLAPICopyOperatorInformationAreapropCount++;
-            hLLAPICopyOperatorInformationArea["Workflow"] = ExpressionConverter.ConvertO(hLLAPICopyOperatorInformationAreaWorkflow);
+            hLLAPICopyOperatorInformationArea["Workflow"] = ExpressionConverter.ConvertO(hLLAPICopyOperatorInformationAreaworkflow);
             if (hLLAPICopyOperatorInformationAreapropCount > 0)
             {
                 callPayload.Body = hLLAPICopyOperatorInformationArea;

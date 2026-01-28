@@ -291,13 +291,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string ServiceType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheService { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class Assignment
@@ -318,13 +318,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string AssigneeType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheAcknowledger { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class Acknowledgement
@@ -345,13 +345,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string AcknowledgerType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheAcknowledger { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class LastStatusChangeBy
@@ -363,13 +363,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string LastStatusChangeType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutThePolicy { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class FirstTriggerLogEntry
@@ -381,13 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string LogEntryType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheLogEntry { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class EscalationPolicy
@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string PolicyType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutThePolicy { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class Team
@@ -417,13 +417,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string TeamType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheTeam { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class User
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string EMailAddress { get; set; }
 
         [JsonProperty("time_zone")]
-        public string ThePreferredTimeZoneNameIfNullTheAccountTimeZoneWillBeUsed { get; set; }
+        public string TimeZone { get; set; }
 
         [JsonProperty("color")]
         public string ScheduleColor { get; set; }
@@ -477,13 +477,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string UserType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheUser { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class ContactMethod
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string ContactMethodType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheContactMethod { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string RuleType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheRule { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
@@ -540,13 +540,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string UserType { get; set; }
 
         [JsonProperty("summary")]
-        public string AGeneratedStringThatProvidesSuccinctImportantInformationAboutTheUser { get; set; }
+        public string Summary { get; set; }
 
         [JsonProperty("self")]
         public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string AURLAtWhichTheEntityIsUniquelyDisplayedInTheWebApp { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class NoteResponse

@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             parameters["Method"] = ExpressionConverter.ConvertO(parametersmethod);
             parameterspropCount++;
             parameters["Uri"] = ExpressionConverter.ConvertO(parametersrelativeURI);
-            var HeadersObject = new JObject();
-            var HeadersObjectpropCount = 0;
-            if (HeadersObjectpropCount > 0)
+            var headersObject = new JObject();
+            var headersObjectpropCount = 0;
+            if (headersObjectpropCount > 0)
             {
-                parameters["Headers"] = HeadersObject;
+                parameters["Headers"] = headersObject;
                 parameterspropCount++;
             }
 
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Run> ListPipelineRuns(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> pipelineId)
         {
-            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineId, 1));
+            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncodingWithInt(pipelineId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["account"] = ExpressionConverter.Convert(account);

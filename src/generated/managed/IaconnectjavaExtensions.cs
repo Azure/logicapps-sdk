@@ -12,57 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     public class IaconnectjavaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABConnectToJavaAccessBridgeResponse> JABConnectToJavaAccessBridge(Expression<Func<string>> jABConnectToJavaAccessBridgeWorkflow, Expression<Func<string>> jABConnectToJavaAccessBridgeWindowsAccessBridgeDLLSearchFolder = null, Expression<Func<string>> jABConnectToJavaAccessBridgeIAJavaAccessBridgePath = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeIs64BitJABDLL = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeUseCOMFor64BitJABDLL = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeEnableJavaAccessBridge = null, Expression<Func<string>> jABConnectToJavaAccessBridgeAccessibilityFilepath = null, Expression<Func<int>> jABConnectToJavaAccessBridgeCommandTimeoutInSeconds = null)
+        public IBodyWorkflowAction<JABConnectToJavaAccessBridgeResponse> JABConnectToJavaAccessBridge(Expression<Func<string>> jABConnectToJavaAccessBridgeworkflow, Expression<Func<string>> jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder = null, Expression<Func<string>> jABConnectToJavaAccessBridgeiAJavaAccessBridgePath = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeis64BitJABDLL = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL = null, Expression<Func<bool>> jABConnectToJavaAccessBridgeenableJavaAccessBridge = null, Expression<Func<string>> jABConnectToJavaAccessBridgeaccessibilityFilepath = null, Expression<Func<int>> jABConnectToJavaAccessBridgecommandTimeoutInSeconds = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABConnectToJavaAccessBridge";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABConnectToJavaAccessBridge = new JObject();
             var jABConnectToJavaAccessBridgepropCount = 0;
-            if (jABConnectToJavaAccessBridgeWindowsAccessBridgeDLLSearchFolder != null)
+            if (jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder != null)
             {
-                jABConnectToJavaAccessBridge["WindowsAccessBridgeDLLSearchFolder"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeWindowsAccessBridgeDLLSearchFolder);
+                jABConnectToJavaAccessBridge["WindowsAccessBridgeDLLSearchFolder"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgewindowsAccessBridgeDLLSearchFolder);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeIAJavaAccessBridgePath != null)
+            if (jABConnectToJavaAccessBridgeiAJavaAccessBridgePath != null)
             {
-                jABConnectToJavaAccessBridge["IAJavaAccessBridgePath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeIAJavaAccessBridgePath);
+                jABConnectToJavaAccessBridge["IAJavaAccessBridgePath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeiAJavaAccessBridgePath);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeIs64BitJABDLL != null)
+            if (jABConnectToJavaAccessBridgeis64BitJABDLL != null)
             {
-                jABConnectToJavaAccessBridge["Is64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeIs64BitJABDLL);
+                jABConnectToJavaAccessBridge["Is64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeis64BitJABDLL);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeUseCOMFor64BitJABDLL != null)
+            if (jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL != null)
             {
-                jABConnectToJavaAccessBridge["UseCOMFor64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeUseCOMFor64BitJABDLL);
+                jABConnectToJavaAccessBridge["UseCOMFor64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeEnableJavaAccessBridge != null)
+            if (jABConnectToJavaAccessBridgeenableJavaAccessBridge != null)
             {
-                jABConnectToJavaAccessBridge["EnableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeEnableJavaAccessBridge);
+                jABConnectToJavaAccessBridge["EnableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeenableJavaAccessBridge);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeAccessibilityFilepath != null)
+            if (jABConnectToJavaAccessBridgeaccessibilityFilepath != null)
             {
-                jABConnectToJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeAccessibilityFilepath);
+                jABConnectToJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeaccessibilityFilepath);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
-            if (jABConnectToJavaAccessBridgeCommandTimeoutInSeconds != null)
+            if (jABConnectToJavaAccessBridgecommandTimeoutInSeconds != null)
             {
-                jABConnectToJavaAccessBridge["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeCommandTimeoutInSeconds);
+                jABConnectToJavaAccessBridge["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgecommandTimeoutInSeconds);
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
             jABConnectToJavaAccessBridgepropCount++;
-            jABConnectToJavaAccessBridge["Workflow"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeWorkflow);
+            jABConnectToJavaAccessBridge["Workflow"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeworkflow);
             if (jABConnectToJavaAccessBridgepropCount > 0)
             {
                 callPayload.Body = jABConnectToJavaAccessBridge;
@@ -72,27 +72,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABDisconnectFromJavaAccessBridge(Expression<Func<string>> jABDisconnectFromJavaAccessBridgeWorkflow, Expression<Func<bool>> jABDisconnectFromJavaAccessBridgeDisableJavaAccessBridge = null, Expression<Func<string>> jABDisconnectFromJavaAccessBridgeAccessibilityFilepath = null)
+        public IWorkflowAction JABDisconnectFromJavaAccessBridge(Expression<Func<string>> jABDisconnectFromJavaAccessBridgeworkflow, Expression<Func<bool>> jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge = null, Expression<Func<string>> jABDisconnectFromJavaAccessBridgeaccessibilityFilepath = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABDisconnectFromJavaAccessBridge";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABDisconnectFromJavaAccessBridge = new JObject();
             var jABDisconnectFromJavaAccessBridgepropCount = 0;
-            if (jABDisconnectFromJavaAccessBridgeDisableJavaAccessBridge != null)
+            if (jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge != null)
             {
-                jABDisconnectFromJavaAccessBridge["DisableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeDisableJavaAccessBridge);
+                jABDisconnectFromJavaAccessBridge["DisableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge);
                 jABDisconnectFromJavaAccessBridgepropCount++;
             }
 
-            if (jABDisconnectFromJavaAccessBridgeAccessibilityFilepath != null)
+            if (jABDisconnectFromJavaAccessBridgeaccessibilityFilepath != null)
             {
-                jABDisconnectFromJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeAccessibilityFilepath);
+                jABDisconnectFromJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeaccessibilityFilepath);
                 jABDisconnectFromJavaAccessBridgepropCount++;
             }
 
             jABDisconnectFromJavaAccessBridgepropCount++;
-            jABDisconnectFromJavaAccessBridge["Workflow"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeWorkflow);
+            jABDisconnectFromJavaAccessBridge["Workflow"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeworkflow);
             if (jABDisconnectFromJavaAccessBridgepropCount > 0)
             {
                 callPayload.Body = jABDisconnectFromJavaAccessBridge;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetConnectionStatusResponse> JABGetConnectionStatus(Expression<Func<string>> jABGetConnectionStatusWorkflow)
+        public IBodyWorkflowAction<JABGetConnectionStatusResponse> JABGetConnectionStatus(Expression<Func<string>> jABGetConnectionStatusworkflow)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetConnectionStatus";
             var apiCallHttpMethod = "post";
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetConnectionStatus = new JObject();
             var jABGetConnectionStatuspropCount = 0;
             jABGetConnectionStatuspropCount++;
-            jABGetConnectionStatus["Workflow"] = ExpressionConverter.ConvertO(jABGetConnectionStatusWorkflow);
+            jABGetConnectionStatus["Workflow"] = ExpressionConverter.ConvertO(jABGetConnectionStatusworkflow);
             if (jABGetConnectionStatuspropCount > 0)
             {
                 callPayload.Body = jABGetConnectionStatus;
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsJavaWindowResponse> JABIsJavaWindow(Expression<Func<int>> jABIsJavaWindowParentWindowHandle, Expression<Func<string>> jABIsJavaWindowWorkflow, Expression<Func<string>> jABIsJavaWindowSearchElementName = null, Expression<Func<string>> jABIsJavaWindowSearchElementClassName = null, Expression<Func<string>> jABIsJavaWindowSearchElementAutomationId = null, Expression<Func<string>> jABIsJavaWindowSearchLocalizedControlType = null, Expression<Func<bool>> jABIsJavaWindowSearchSubTree = null, Expression<Func<int>> jABIsJavaWindowMatchIndex = null, Expression<Func<string>> jABIsJavaWindowSearchFilter = null, Expression<Func<string>> jABIsJavaWindowSortByColumn = null, Expression<Func<bool>> jABIsJavaWindowMatchIndexAscending = null)
+        public IBodyWorkflowAction<JABIsJavaWindowResponse> JABIsJavaWindow(Expression<Func<int>> jABIsJavaWindowparentWindowHandle, Expression<Func<string>> jABIsJavaWindowworkflow, Expression<Func<string>> jABIsJavaWindowsearchElementName = null, Expression<Func<string>> jABIsJavaWindowsearchElementClassName = null, Expression<Func<string>> jABIsJavaWindowsearchElementAutomationId = null, Expression<Func<string>> jABIsJavaWindowsearchLocalizedControlType = null, Expression<Func<bool>> jABIsJavaWindowsearchSubTree = null, Expression<Func<int>> jABIsJavaWindowmatchIndex = null, Expression<Func<string>> jABIsJavaWindowsearchFilter = null, Expression<Func<string>> jABIsJavaWindowsortByColumn = null, Expression<Func<bool>> jABIsJavaWindowmatchIndexAscending = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABIsJavaWindow";
             var apiCallHttpMethod = "post";
@@ -128,63 +128,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABIsJavaWindow = new JObject();
             var jABIsJavaWindowpropCount = 0;
             jABIsJavaWindowpropCount++;
-            jABIsJavaWindow["ParentWindowHandle"] = ExpressionConverter.ConvertO(jABIsJavaWindowParentWindowHandle);
-            if (jABIsJavaWindowSearchElementName != null)
+            jABIsJavaWindow["ParentWindowHandle"] = ExpressionConverter.ConvertO(jABIsJavaWindowparentWindowHandle);
+            if (jABIsJavaWindowsearchElementName != null)
             {
-                jABIsJavaWindow["SearchElementName"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchElementName);
+                jABIsJavaWindow["SearchElementName"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchElementName);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSearchElementClassName != null)
+            if (jABIsJavaWindowsearchElementClassName != null)
             {
-                jABIsJavaWindow["SearchElementClassName"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchElementClassName);
+                jABIsJavaWindow["SearchElementClassName"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchElementClassName);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSearchElementAutomationId != null)
+            if (jABIsJavaWindowsearchElementAutomationId != null)
             {
-                jABIsJavaWindow["SearchElementAutomationId"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchElementAutomationId);
+                jABIsJavaWindow["SearchElementAutomationId"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchElementAutomationId);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSearchLocalizedControlType != null)
+            if (jABIsJavaWindowsearchLocalizedControlType != null)
             {
-                jABIsJavaWindow["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchLocalizedControlType);
+                jABIsJavaWindow["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchLocalizedControlType);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSearchSubTree != null)
+            if (jABIsJavaWindowsearchSubTree != null)
             {
-                jABIsJavaWindow["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchSubTree);
+                jABIsJavaWindow["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchSubTree);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowMatchIndex != null)
+            if (jABIsJavaWindowmatchIndex != null)
             {
-                jABIsJavaWindow["MatchIndex"] = ExpressionConverter.ConvertO(jABIsJavaWindowMatchIndex);
+                jABIsJavaWindow["MatchIndex"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndex);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSearchFilter != null)
+            if (jABIsJavaWindowsearchFilter != null)
             {
-                jABIsJavaWindow["SearchFilter"] = ExpressionConverter.ConvertO(jABIsJavaWindowSearchFilter);
+                jABIsJavaWindow["SearchFilter"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchFilter);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowSortByColumn != null)
+            if (jABIsJavaWindowsortByColumn != null)
             {
-                jABIsJavaWindow["SortByColumn"] = ExpressionConverter.ConvertO(jABIsJavaWindowSortByColumn);
+                jABIsJavaWindow["SortByColumn"] = ExpressionConverter.ConvertO(jABIsJavaWindowsortByColumn);
                 jABIsJavaWindowpropCount++;
             }
 
-            if (jABIsJavaWindowMatchIndexAscending != null)
+            if (jABIsJavaWindowmatchIndexAscending != null)
             {
-                jABIsJavaWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsJavaWindowMatchIndexAscending);
+                jABIsJavaWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndexAscending);
                 jABIsJavaWindowpropCount++;
             }
 
             jABIsJavaWindowpropCount++;
-            jABIsJavaWindow["Workflow"] = ExpressionConverter.ConvertO(jABIsJavaWindowWorkflow);
+            jABIsJavaWindow["Workflow"] = ExpressionConverter.ConvertO(jABIsJavaWindowworkflow);
             if (jABIsJavaWindowpropCount > 0)
             {
                 callPayload.Body = jABIsJavaWindow;
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse> JABGetWindowsAccessBridgeInfo(Expression<Func<int>> jABGetWindowsAccessBridgeInfoVMID, Expression<Func<string>> jABGetWindowsAccessBridgeInfoWorkflow)
+        public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse> JABGetWindowsAccessBridgeInfo(Expression<Func<int>> jABGetWindowsAccessBridgeInfovMID, Expression<Func<string>> jABGetWindowsAccessBridgeInfoworkflow)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetWindowsAccessBridgeInfo";
             var apiCallHttpMethod = "post";
@@ -202,9 +202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetWindowsAccessBridgeInfo = new JObject();
             var jABGetWindowsAccessBridgeInfopropCount = 0;
             jABGetWindowsAccessBridgeInfopropCount++;
-            jABGetWindowsAccessBridgeInfo["VMID"] = ExpressionConverter.ConvertO(jABGetWindowsAccessBridgeInfoVMID);
+            jABGetWindowsAccessBridgeInfo["VMID"] = ExpressionConverter.ConvertO(jABGetWindowsAccessBridgeInfovMID);
             jABGetWindowsAccessBridgeInfopropCount++;
-            jABGetWindowsAccessBridgeInfo["Workflow"] = ExpressionConverter.ConvertO(jABGetWindowsAccessBridgeInfoWorkflow);
+            jABGetWindowsAccessBridgeInfo["Workflow"] = ExpressionConverter.ConvertO(jABGetWindowsAccessBridgeInfoworkflow);
             if (jABGetWindowsAccessBridgeInfopropCount > 0)
             {
                 callPayload.Body = jABGetWindowsAccessBridgeInfo;
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetUIAElementPropertiesResponse> JABGetUIAElementProperties(Expression<Func<int>> jABGetUIAElementPropertiesParentWindowHandle, Expression<Func<string>> jABGetUIAElementPropertiesWorkflow, Expression<Func<string>> jABGetUIAElementPropertiesSearchElementName = null, Expression<Func<string>> jABGetUIAElementPropertiesSearchElementClassName = null, Expression<Func<string>> jABGetUIAElementPropertiesSearchElementAutomationId = null, Expression<Func<string>> jABGetUIAElementPropertiesSearchLocalizedControlType = null, Expression<Func<bool>> jABGetUIAElementPropertiesSearchSubTree = null, Expression<Func<int>> jABGetUIAElementPropertiesMatchIndex = null, Expression<Func<string>> jABGetUIAElementPropertiesSearchFilter = null, Expression<Func<string>> jABGetUIAElementPropertiesSortByColumn = null, Expression<Func<bool>> jABGetUIAElementPropertiesMatchIndexAscending = null, Expression<Func<int>> jABGetUIAElementPropertiesMaxStringLength = null)
+        public IBodyWorkflowAction<JABGetUIAElementPropertiesResponse> JABGetUIAElementProperties(Expression<Func<int>> jABGetUIAElementPropertiesparentWindowHandle, Expression<Func<string>> jABGetUIAElementPropertiesworkflow, Expression<Func<string>> jABGetUIAElementPropertiessearchElementName = null, Expression<Func<string>> jABGetUIAElementPropertiessearchElementClassName = null, Expression<Func<string>> jABGetUIAElementPropertiessearchElementAutomationId = null, Expression<Func<string>> jABGetUIAElementPropertiessearchLocalizedControlType = null, Expression<Func<bool>> jABGetUIAElementPropertiessearchSubTree = null, Expression<Func<int>> jABGetUIAElementPropertiesmatchIndex = null, Expression<Func<string>> jABGetUIAElementPropertiessearchFilter = null, Expression<Func<string>> jABGetUIAElementPropertiessortByColumn = null, Expression<Func<bool>> jABGetUIAElementPropertiesmatchIndexAscending = null, Expression<Func<int>> jABGetUIAElementPropertiesmaxStringLength = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetUIAElementProperties";
             var apiCallHttpMethod = "post";
@@ -222,69 +222,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetUIAElementProperties = new JObject();
             var jABGetUIAElementPropertiespropCount = 0;
             jABGetUIAElementPropertiespropCount++;
-            jABGetUIAElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesParentWindowHandle);
-            if (jABGetUIAElementPropertiesSearchElementName != null)
+            jABGetUIAElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesparentWindowHandle);
+            if (jABGetUIAElementPropertiessearchElementName != null)
             {
-                jABGetUIAElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchElementName);
+                jABGetUIAElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchElementName);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSearchElementClassName != null)
+            if (jABGetUIAElementPropertiessearchElementClassName != null)
             {
-                jABGetUIAElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchElementClassName);
+                jABGetUIAElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchElementClassName);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSearchElementAutomationId != null)
+            if (jABGetUIAElementPropertiessearchElementAutomationId != null)
             {
-                jABGetUIAElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchElementAutomationId);
+                jABGetUIAElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchElementAutomationId);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSearchLocalizedControlType != null)
+            if (jABGetUIAElementPropertiessearchLocalizedControlType != null)
             {
-                jABGetUIAElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchLocalizedControlType);
+                jABGetUIAElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchLocalizedControlType);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSearchSubTree != null)
+            if (jABGetUIAElementPropertiessearchSubTree != null)
             {
-                jABGetUIAElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchSubTree);
+                jABGetUIAElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchSubTree);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesMatchIndex != null)
+            if (jABGetUIAElementPropertiesmatchIndex != null)
             {
-                jABGetUIAElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesMatchIndex);
+                jABGetUIAElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndex);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSearchFilter != null)
+            if (jABGetUIAElementPropertiessearchFilter != null)
             {
-                jABGetUIAElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSearchFilter);
+                jABGetUIAElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchFilter);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesSortByColumn != null)
+            if (jABGetUIAElementPropertiessortByColumn != null)
             {
-                jABGetUIAElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesSortByColumn);
+                jABGetUIAElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessortByColumn);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesMatchIndexAscending != null)
+            if (jABGetUIAElementPropertiesmatchIndexAscending != null)
             {
-                jABGetUIAElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesMatchIndexAscending);
+                jABGetUIAElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndexAscending);
                 jABGetUIAElementPropertiespropCount++;
             }
 
-            if (jABGetUIAElementPropertiesMaxStringLength != null)
+            if (jABGetUIAElementPropertiesmaxStringLength != null)
             {
-                jABGetUIAElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesMaxStringLength);
+                jABGetUIAElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmaxStringLength);
                 jABGetUIAElementPropertiespropCount++;
             }
 
             jABGetUIAElementPropertiespropCount++;
-            jABGetUIAElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesWorkflow);
+            jABGetUIAElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesworkflow);
             if (jABGetUIAElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetUIAElementProperties;
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetJABElementPropertiesResponse> JABGetJABElementProperties(Expression<Func<int>> jABGetJABElementPropertiesSearchParentElementJABHandle, Expression<Func<string>> jABGetJABElementPropertiesWorkflow, Expression<Func<string>> jABGetJABElementPropertiesSearchElementJABName = null, Expression<Func<string>> jABGetJABElementPropertiesSearchElementJABDescription = null, Expression<Func<string>> jABGetJABElementPropertiesSearchElementJABRole = null, Expression<Func<bool>> jABGetJABElementPropertiesSearchSubTree = null, Expression<Func<int>> jABGetJABElementPropertiesMaxRelativeDepth = null, Expression<Func<int>> jABGetJABElementPropertiesMatchIndex = null, Expression<Func<string>> jABGetJABElementPropertiesSearchFilter = null, Expression<Func<string>> jABGetJABElementPropertiesSortByColumn = null, Expression<Func<bool>> jABGetJABElementPropertiesMatchIndexAscending = null, Expression<Func<bool>> jABGetJABElementPropertiesCaseSensitiveSearch = null, Expression<Func<bool>> jABGetJABElementPropertiesOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetJABElementPropertiesOnlySearchShowingElements = null, Expression<Func<string>> jABGetJABElementPropertiesElementRolesNotToTraverse = null, Expression<Func<int>> jABGetJABElementPropertiesMaximumElementsToSearch = null, Expression<Func<int>> jABGetJABElementPropertiesMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetJABElementPropertiesMaxStringLength = null)
+        public IBodyWorkflowAction<JABGetJABElementPropertiesResponse> JABGetJABElementProperties(Expression<Func<int>> jABGetJABElementPropertiessearchParentElementJABHandle, Expression<Func<string>> jABGetJABElementPropertiesworkflow, Expression<Func<string>> jABGetJABElementPropertiessearchElementJABName = null, Expression<Func<string>> jABGetJABElementPropertiessearchElementJABDescription = null, Expression<Func<string>> jABGetJABElementPropertiessearchElementJABRole = null, Expression<Func<bool>> jABGetJABElementPropertiessearchSubTree = null, Expression<Func<int>> jABGetJABElementPropertiesmaxRelativeDepth = null, Expression<Func<int>> jABGetJABElementPropertiesmatchIndex = null, Expression<Func<string>> jABGetJABElementPropertiessearchFilter = null, Expression<Func<string>> jABGetJABElementPropertiessortByColumn = null, Expression<Func<bool>> jABGetJABElementPropertiesmatchIndexAscending = null, Expression<Func<bool>> jABGetJABElementPropertiescaseSensitiveSearch = null, Expression<Func<bool>> jABGetJABElementPropertiesonlySearchVisibleElements = null, Expression<Func<bool>> jABGetJABElementPropertiesonlySearchShowingElements = null, Expression<Func<string>> jABGetJABElementPropertieselementRolesNotToTraverse = null, Expression<Func<int>> jABGetJABElementPropertiesmaximumElementsToSearch = null, Expression<Func<int>> jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetJABElementPropertiesmaxStringLength = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetJABElementProperties";
             var apiCallHttpMethod = "post";
@@ -302,105 +302,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetJABElementProperties = new JObject();
             var jABGetJABElementPropertiespropCount = 0;
             jABGetJABElementPropertiespropCount++;
-            jABGetJABElementProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchParentElementJABHandle);
-            if (jABGetJABElementPropertiesSearchElementJABName != null)
+            jABGetJABElementProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchParentElementJABHandle);
+            if (jABGetJABElementPropertiessearchElementJABName != null)
             {
-                jABGetJABElementProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchElementJABName);
+                jABGetJABElementProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchElementJABName);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesSearchElementJABDescription != null)
+            if (jABGetJABElementPropertiessearchElementJABDescription != null)
             {
-                jABGetJABElementProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchElementJABDescription);
+                jABGetJABElementProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchElementJABDescription);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesSearchElementJABRole != null)
+            if (jABGetJABElementPropertiessearchElementJABRole != null)
             {
-                jABGetJABElementProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchElementJABRole);
+                jABGetJABElementProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchElementJABRole);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesSearchSubTree != null)
+            if (jABGetJABElementPropertiessearchSubTree != null)
             {
-                jABGetJABElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchSubTree);
+                jABGetJABElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchSubTree);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMaxRelativeDepth != null)
+            if (jABGetJABElementPropertiesmaxRelativeDepth != null)
             {
-                jABGetJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMaxRelativeDepth);
+                jABGetJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxRelativeDepth);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMatchIndex != null)
+            if (jABGetJABElementPropertiesmatchIndex != null)
             {
-                jABGetJABElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMatchIndex);
+                jABGetJABElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndex);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesSearchFilter != null)
+            if (jABGetJABElementPropertiessearchFilter != null)
             {
-                jABGetJABElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSearchFilter);
+                jABGetJABElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchFilter);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesSortByColumn != null)
+            if (jABGetJABElementPropertiessortByColumn != null)
             {
-                jABGetJABElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesSortByColumn);
+                jABGetJABElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessortByColumn);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMatchIndexAscending != null)
+            if (jABGetJABElementPropertiesmatchIndexAscending != null)
             {
-                jABGetJABElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMatchIndexAscending);
+                jABGetJABElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndexAscending);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesCaseSensitiveSearch != null)
+            if (jABGetJABElementPropertiescaseSensitiveSearch != null)
             {
-                jABGetJABElementProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesCaseSensitiveSearch);
+                jABGetJABElementProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiescaseSensitiveSearch);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesOnlySearchVisibleElements != null)
+            if (jABGetJABElementPropertiesonlySearchVisibleElements != null)
             {
-                jABGetJABElementProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesOnlySearchVisibleElements);
+                jABGetJABElementProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchVisibleElements);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesOnlySearchShowingElements != null)
+            if (jABGetJABElementPropertiesonlySearchShowingElements != null)
             {
-                jABGetJABElementProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesOnlySearchShowingElements);
+                jABGetJABElementProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchShowingElements);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesElementRolesNotToTraverse != null)
+            if (jABGetJABElementPropertieselementRolesNotToTraverse != null)
             {
-                jABGetJABElementProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesElementRolesNotToTraverse);
+                jABGetJABElementProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetJABElementPropertieselementRolesNotToTraverse);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMaximumElementsToSearch != null)
+            if (jABGetJABElementPropertiesmaximumElementsToSearch != null)
             {
-                jABGetJABElementProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMaximumElementsToSearch);
+                jABGetJABElementProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumElementsToSearch);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMaximumChildElementsToSearchPerNode != null)
+            if (jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetJABElementProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMaximumChildElementsToSearchPerNode);
+                jABGetJABElementProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode);
                 jABGetJABElementPropertiespropCount++;
             }
 
-            if (jABGetJABElementPropertiesMaxStringLength != null)
+            if (jABGetJABElementPropertiesmaxStringLength != null)
             {
-                jABGetJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesMaxStringLength);
+                jABGetJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxStringLength);
                 jABGetJABElementPropertiespropCount++;
             }
 
             jABGetJABElementPropertiespropCount++;
-            jABGetJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesWorkflow);
+            jABGetJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesworkflow);
             if (jABGetJABElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetJABElementProperties;
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABDrawRectangleAroundJABElement(Expression<Func<int>> jABDrawRectangleAroundJABElementSearchParentElementJABHandle, Expression<Func<string>> jABDrawRectangleAroundJABElementWorkflow, Expression<Func<string>> jABDrawRectangleAroundJABElementSearchElementJABName = null, Expression<Func<string>> jABDrawRectangleAroundJABElementSearchElementJABDescription = null, Expression<Func<string>> jABDrawRectangleAroundJABElementSearchElementJABRole = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementSearchSubTree = null, Expression<Func<int>> jABDrawRectangleAroundJABElementMaxRelativeDepth = null, Expression<Func<int>> jABDrawRectangleAroundJABElementMatchIndex = null, Expression<Func<string>> jABDrawRectangleAroundJABElementSearchFilter = null, Expression<Func<string>> jABDrawRectangleAroundJABElementSortByColumn = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementMatchIndexAscending = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementCaseSensitiveSearch = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementOnlySearchShowingElements = null, Expression<Func<string>> jABDrawRectangleAroundJABElementElementRolesNotToTraverse = null, Expression<Func<int>> jABDrawRectangleAroundJABElementMaximumElementsToSearch = null, Expression<Func<int>> jABDrawRectangleAroundJABElementMaximumChildElementsToSearchPerNode = null, Expression<Func<string>> jABDrawRectangleAroundJABElementPenColour = null, Expression<Func<int>> jABDrawRectangleAroundJABElementPenThicknessPixels = null)
+        public IWorkflowAction JABDrawRectangleAroundJABElement(Expression<Func<int>> jABDrawRectangleAroundJABElementsearchParentElementJABHandle, Expression<Func<string>> jABDrawRectangleAroundJABElementworkflow, Expression<Func<string>> jABDrawRectangleAroundJABElementsearchElementJABName = null, Expression<Func<string>> jABDrawRectangleAroundJABElementsearchElementJABDescription = null, Expression<Func<string>> jABDrawRectangleAroundJABElementsearchElementJABRole = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementsearchSubTree = null, Expression<Func<int>> jABDrawRectangleAroundJABElementmaxRelativeDepth = null, Expression<Func<int>> jABDrawRectangleAroundJABElementmatchIndex = null, Expression<Func<string>> jABDrawRectangleAroundJABElementsearchFilter = null, Expression<Func<string>> jABDrawRectangleAroundJABElementsortByColumn = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementmatchIndexAscending = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementcaseSensitiveSearch = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementonlySearchVisibleElements = null, Expression<Func<bool>> jABDrawRectangleAroundJABElementonlySearchShowingElements = null, Expression<Func<string>> jABDrawRectangleAroundJABElementelementRolesNotToTraverse = null, Expression<Func<int>> jABDrawRectangleAroundJABElementmaximumElementsToSearch = null, Expression<Func<int>> jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode = null, Expression<Func<string>> jABDrawRectangleAroundJABElementpenColour = null, Expression<Func<int>> jABDrawRectangleAroundJABElementpenThicknessPixels = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABDrawRectangleAroundJABElement";
             var apiCallHttpMethod = "post";
@@ -418,111 +418,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABDrawRectangleAroundJABElement = new JObject();
             var jABDrawRectangleAroundJABElementpropCount = 0;
             jABDrawRectangleAroundJABElementpropCount++;
-            jABDrawRectangleAroundJABElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchParentElementJABHandle);
-            if (jABDrawRectangleAroundJABElementSearchElementJABName != null)
+            jABDrawRectangleAroundJABElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchParentElementJABHandle);
+            if (jABDrawRectangleAroundJABElementsearchElementJABName != null)
             {
-                jABDrawRectangleAroundJABElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchElementJABName);
+                jABDrawRectangleAroundJABElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchElementJABName);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementSearchElementJABDescription != null)
+            if (jABDrawRectangleAroundJABElementsearchElementJABDescription != null)
             {
-                jABDrawRectangleAroundJABElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchElementJABDescription);
+                jABDrawRectangleAroundJABElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchElementJABDescription);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementSearchElementJABRole != null)
+            if (jABDrawRectangleAroundJABElementsearchElementJABRole != null)
             {
-                jABDrawRectangleAroundJABElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchElementJABRole);
+                jABDrawRectangleAroundJABElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchElementJABRole);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementSearchSubTree != null)
+            if (jABDrawRectangleAroundJABElementsearchSubTree != null)
             {
-                jABDrawRectangleAroundJABElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchSubTree);
+                jABDrawRectangleAroundJABElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchSubTree);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementMaxRelativeDepth != null)
+            if (jABDrawRectangleAroundJABElementmaxRelativeDepth != null)
             {
-                jABDrawRectangleAroundJABElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementMaxRelativeDepth);
+                jABDrawRectangleAroundJABElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaxRelativeDepth);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementMatchIndex != null)
+            if (jABDrawRectangleAroundJABElementmatchIndex != null)
             {
-                jABDrawRectangleAroundJABElement["MatchIndex"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementMatchIndex);
+                jABDrawRectangleAroundJABElement["MatchIndex"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndex);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementSearchFilter != null)
+            if (jABDrawRectangleAroundJABElementsearchFilter != null)
             {
-                jABDrawRectangleAroundJABElement["SearchFilter"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSearchFilter);
+                jABDrawRectangleAroundJABElement["SearchFilter"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchFilter);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementSortByColumn != null)
+            if (jABDrawRectangleAroundJABElementsortByColumn != null)
             {
-                jABDrawRectangleAroundJABElement["SortByColumn"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementSortByColumn);
+                jABDrawRectangleAroundJABElement["SortByColumn"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsortByColumn);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementMatchIndexAscending != null)
+            if (jABDrawRectangleAroundJABElementmatchIndexAscending != null)
             {
-                jABDrawRectangleAroundJABElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementMatchIndexAscending);
+                jABDrawRectangleAroundJABElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndexAscending);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementCaseSensitiveSearch != null)
+            if (jABDrawRectangleAroundJABElementcaseSensitiveSearch != null)
             {
-                jABDrawRectangleAroundJABElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementCaseSensitiveSearch);
+                jABDrawRectangleAroundJABElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementcaseSensitiveSearch);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementOnlySearchVisibleElements != null)
+            if (jABDrawRectangleAroundJABElementonlySearchVisibleElements != null)
             {
-                jABDrawRectangleAroundJABElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementOnlySearchVisibleElements);
+                jABDrawRectangleAroundJABElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchVisibleElements);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementOnlySearchShowingElements != null)
+            if (jABDrawRectangleAroundJABElementonlySearchShowingElements != null)
             {
-                jABDrawRectangleAroundJABElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementOnlySearchShowingElements);
+                jABDrawRectangleAroundJABElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchShowingElements);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementElementRolesNotToTraverse != null)
+            if (jABDrawRectangleAroundJABElementelementRolesNotToTraverse != null)
             {
-                jABDrawRectangleAroundJABElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementElementRolesNotToTraverse);
+                jABDrawRectangleAroundJABElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementelementRolesNotToTraverse);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementMaximumElementsToSearch != null)
+            if (jABDrawRectangleAroundJABElementmaximumElementsToSearch != null)
             {
-                jABDrawRectangleAroundJABElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementMaximumElementsToSearch);
+                jABDrawRectangleAroundJABElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumElementsToSearch);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementMaximumChildElementsToSearchPerNode != null)
+            if (jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABDrawRectangleAroundJABElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementMaximumChildElementsToSearchPerNode);
+                jABDrawRectangleAroundJABElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementPenColour != null)
+            if (jABDrawRectangleAroundJABElementpenColour != null)
             {
-                jABDrawRectangleAroundJABElement["PenColour"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementPenColour);
+                jABDrawRectangleAroundJABElement["PenColour"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenColour);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
-            if (jABDrawRectangleAroundJABElementPenThicknessPixels != null)
+            if (jABDrawRectangleAroundJABElementpenThicknessPixels != null)
             {
-                jABDrawRectangleAroundJABElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementPenThicknessPixels);
+                jABDrawRectangleAroundJABElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenThicknessPixels);
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             jABDrawRectangleAroundJABElementpropCount++;
-            jABDrawRectangleAroundJABElement["Workflow"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementWorkflow);
+            jABDrawRectangleAroundJABElement["Workflow"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementworkflow);
             if (jABDrawRectangleAroundJABElementpropCount > 0)
             {
                 callPayload.Body = jABDrawRectangleAroundJABElement;
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABDoesElementExistResponse> JABDoesElementExist(Expression<Func<int>> jABDoesElementExistSearchParentElementJABHandle, Expression<Func<string>> jABDoesElementExistWorkflow, Expression<Func<string>> jABDoesElementExistSearchElementJABName = null, Expression<Func<string>> jABDoesElementExistSearchElementJABDescription = null, Expression<Func<string>> jABDoesElementExistSearchElementJABRole = null, Expression<Func<bool>> jABDoesElementExistSearchSubTree = null, Expression<Func<int>> jABDoesElementExistMaxRelativeDepth = null, Expression<Func<int>> jABDoesElementExistMatchIndex = null, Expression<Func<string>> jABDoesElementExistSearchFilter = null, Expression<Func<string>> jABDoesElementExistSortByColumn = null, Expression<Func<bool>> jABDoesElementExistMatchIndexAscending = null, Expression<Func<bool>> jABDoesElementExistCaseSensitiveSearch = null, Expression<Func<bool>> jABDoesElementExistOnlySearchVisibleElements = null, Expression<Func<bool>> jABDoesElementExistOnlySearchShowingElements = null, Expression<Func<string>> jABDoesElementExistElementRolesNotToTraverse = null, Expression<Func<int>> jABDoesElementExistMaximumElementsToSearch = null, Expression<Func<int>> jABDoesElementExistMaximumChildElementsToSearchPerNode = null)
+        public IBodyWorkflowAction<JABDoesElementExistResponse> JABDoesElementExist(Expression<Func<int>> jABDoesElementExistsearchParentElementJABHandle, Expression<Func<string>> jABDoesElementExistworkflow, Expression<Func<string>> jABDoesElementExistsearchElementJABName = null, Expression<Func<string>> jABDoesElementExistsearchElementJABDescription = null, Expression<Func<string>> jABDoesElementExistsearchElementJABRole = null, Expression<Func<bool>> jABDoesElementExistsearchSubTree = null, Expression<Func<int>> jABDoesElementExistmaxRelativeDepth = null, Expression<Func<int>> jABDoesElementExistmatchIndex = null, Expression<Func<string>> jABDoesElementExistsearchFilter = null, Expression<Func<string>> jABDoesElementExistsortByColumn = null, Expression<Func<bool>> jABDoesElementExistmatchIndexAscending = null, Expression<Func<bool>> jABDoesElementExistcaseSensitiveSearch = null, Expression<Func<bool>> jABDoesElementExistonlySearchVisibleElements = null, Expression<Func<bool>> jABDoesElementExistonlySearchShowingElements = null, Expression<Func<string>> jABDoesElementExistelementRolesNotToTraverse = null, Expression<Func<int>> jABDoesElementExistmaximumElementsToSearch = null, Expression<Func<int>> jABDoesElementExistmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABDoesElementExist";
             var apiCallHttpMethod = "post";
@@ -540,99 +540,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABDoesElementExist = new JObject();
             var jABDoesElementExistpropCount = 0;
             jABDoesElementExistpropCount++;
-            jABDoesElementExist["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchParentElementJABHandle);
-            if (jABDoesElementExistSearchElementJABName != null)
+            jABDoesElementExist["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchParentElementJABHandle);
+            if (jABDoesElementExistsearchElementJABName != null)
             {
-                jABDoesElementExist["SearchElementJABName"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchElementJABName);
+                jABDoesElementExist["SearchElementJABName"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchElementJABName);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistSearchElementJABDescription != null)
+            if (jABDoesElementExistsearchElementJABDescription != null)
             {
-                jABDoesElementExist["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchElementJABDescription);
+                jABDoesElementExist["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchElementJABDescription);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistSearchElementJABRole != null)
+            if (jABDoesElementExistsearchElementJABRole != null)
             {
-                jABDoesElementExist["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchElementJABRole);
+                jABDoesElementExist["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchElementJABRole);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistSearchSubTree != null)
+            if (jABDoesElementExistsearchSubTree != null)
             {
-                jABDoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchSubTree);
+                jABDoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchSubTree);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistMaxRelativeDepth != null)
+            if (jABDoesElementExistmaxRelativeDepth != null)
             {
-                jABDoesElementExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDoesElementExistMaxRelativeDepth);
+                jABDoesElementExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDoesElementExistmaxRelativeDepth);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistMatchIndex != null)
+            if (jABDoesElementExistmatchIndex != null)
             {
-                jABDoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesElementExistMatchIndex);
+                jABDoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndex);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistSearchFilter != null)
+            if (jABDoesElementExistsearchFilter != null)
             {
-                jABDoesElementExist["SearchFilter"] = ExpressionConverter.ConvertO(jABDoesElementExistSearchFilter);
+                jABDoesElementExist["SearchFilter"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchFilter);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistSortByColumn != null)
+            if (jABDoesElementExistsortByColumn != null)
             {
-                jABDoesElementExist["SortByColumn"] = ExpressionConverter.ConvertO(jABDoesElementExistSortByColumn);
+                jABDoesElementExist["SortByColumn"] = ExpressionConverter.ConvertO(jABDoesElementExistsortByColumn);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistMatchIndexAscending != null)
+            if (jABDoesElementExistmatchIndexAscending != null)
             {
-                jABDoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesElementExistMatchIndexAscending);
+                jABDoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndexAscending);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistCaseSensitiveSearch != null)
+            if (jABDoesElementExistcaseSensitiveSearch != null)
             {
-                jABDoesElementExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistCaseSensitiveSearch);
+                jABDoesElementExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistcaseSensitiveSearch);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistOnlySearchVisibleElements != null)
+            if (jABDoesElementExistonlySearchVisibleElements != null)
             {
-                jABDoesElementExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDoesElementExistOnlySearchVisibleElements);
+                jABDoesElementExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchVisibleElements);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistOnlySearchShowingElements != null)
+            if (jABDoesElementExistonlySearchShowingElements != null)
             {
-                jABDoesElementExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDoesElementExistOnlySearchShowingElements);
+                jABDoesElementExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchShowingElements);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistElementRolesNotToTraverse != null)
+            if (jABDoesElementExistelementRolesNotToTraverse != null)
             {
-                jABDoesElementExist["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABDoesElementExistElementRolesNotToTraverse);
+                jABDoesElementExist["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABDoesElementExistelementRolesNotToTraverse);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistMaximumElementsToSearch != null)
+            if (jABDoesElementExistmaximumElementsToSearch != null)
             {
-                jABDoesElementExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistMaximumElementsToSearch);
+                jABDoesElementExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumElementsToSearch);
                 jABDoesElementExistpropCount++;
             }
 
-            if (jABDoesElementExistMaximumChildElementsToSearchPerNode != null)
+            if (jABDoesElementExistmaximumChildElementsToSearchPerNode != null)
             {
-                jABDoesElementExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDoesElementExistMaximumChildElementsToSearchPerNode);
+                jABDoesElementExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumChildElementsToSearchPerNode);
                 jABDoesElementExistpropCount++;
             }
 
             jABDoesElementExistpropCount++;
-            jABDoesElementExist["Workflow"] = ExpressionConverter.ConvertO(jABDoesElementExistWorkflow);
+            jABDoesElementExist["Workflow"] = ExpressionConverter.ConvertO(jABDoesElementExistworkflow);
             if (jABDoesElementExistpropCount > 0)
             {
                 callPayload.Body = jABDoesElementExist;
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForElementResponse> JABWaitForElement(Expression<Func<int>> jABWaitForElementSearchParentElementJABHandle, Expression<Func<double>> jABWaitForElementSecondsToWait, Expression<Func<string>> jABWaitForElementWorkflow, Expression<Func<string>> jABWaitForElementSearchElementJABName = null, Expression<Func<string>> jABWaitForElementSearchElementJABDescription = null, Expression<Func<string>> jABWaitForElementSearchElementJABRole = null, Expression<Func<bool>> jABWaitForElementSearchSubTree = null, Expression<Func<int>> jABWaitForElementMaxRelativeDepth = null, Expression<Func<int>> jABWaitForElementMatchIndex = null, Expression<Func<string>> jABWaitForElementSearchFilter = null, Expression<Func<string>> jABWaitForElementSortByColumn = null, Expression<Func<bool>> jABWaitForElementMatchIndexAscending = null, Expression<Func<bool>> jABWaitForElementCaseSensitiveSearch = null, Expression<Func<bool>> jABWaitForElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABWaitForElementOnlySearchShowingElements = null, Expression<Func<string>> jABWaitForElementElementRolesNotToTraverse = null, Expression<Func<int>> jABWaitForElementMaximumElementsToSearch = null, Expression<Func<int>> jABWaitForElementMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABWaitForElementRaiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<JABWaitForElementResponse> JABWaitForElement(Expression<Func<int>> jABWaitForElementsearchParentElementJABHandle, Expression<Func<double>> jABWaitForElementsecondsToWait, Expression<Func<string>> jABWaitForElementworkflow, Expression<Func<string>> jABWaitForElementsearchElementJABName = null, Expression<Func<string>> jABWaitForElementsearchElementJABDescription = null, Expression<Func<string>> jABWaitForElementsearchElementJABRole = null, Expression<Func<bool>> jABWaitForElementsearchSubTree = null, Expression<Func<int>> jABWaitForElementmaxRelativeDepth = null, Expression<Func<int>> jABWaitForElementmatchIndex = null, Expression<Func<string>> jABWaitForElementsearchFilter = null, Expression<Func<string>> jABWaitForElementsortByColumn = null, Expression<Func<bool>> jABWaitForElementmatchIndexAscending = null, Expression<Func<bool>> jABWaitForElementcaseSensitiveSearch = null, Expression<Func<bool>> jABWaitForElementonlySearchVisibleElements = null, Expression<Func<bool>> jABWaitForElementonlySearchShowingElements = null, Expression<Func<string>> jABWaitForElementelementRolesNotToTraverse = null, Expression<Func<int>> jABWaitForElementmaximumElementsToSearch = null, Expression<Func<int>> jABWaitForElementmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABWaitForElementraiseExceptionIfElementNotFound = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABWaitForElement";
             var apiCallHttpMethod = "post";
@@ -650,107 +650,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABWaitForElement = new JObject();
             var jABWaitForElementpropCount = 0;
             jABWaitForElementpropCount++;
-            jABWaitForElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABWaitForElementSearchParentElementJABHandle);
-            if (jABWaitForElementSearchElementJABName != null)
+            jABWaitForElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABWaitForElementsearchParentElementJABHandle);
+            if (jABWaitForElementsearchElementJABName != null)
             {
-                jABWaitForElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABWaitForElementSearchElementJABName);
+                jABWaitForElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABWaitForElementsearchElementJABName);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementSearchElementJABDescription != null)
+            if (jABWaitForElementsearchElementJABDescription != null)
             {
-                jABWaitForElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABWaitForElementSearchElementJABDescription);
+                jABWaitForElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABWaitForElementsearchElementJABDescription);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementSearchElementJABRole != null)
+            if (jABWaitForElementsearchElementJABRole != null)
             {
-                jABWaitForElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABWaitForElementSearchElementJABRole);
+                jABWaitForElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABWaitForElementsearchElementJABRole);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementSearchSubTree != null)
+            if (jABWaitForElementsearchSubTree != null)
             {
-                jABWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementSearchSubTree);
+                jABWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementsearchSubTree);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementMaxRelativeDepth != null)
+            if (jABWaitForElementmaxRelativeDepth != null)
             {
-                jABWaitForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementMaxRelativeDepth);
+                jABWaitForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementmaxRelativeDepth);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementMatchIndex != null)
+            if (jABWaitForElementmatchIndex != null)
             {
-                jABWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementMatchIndex);
+                jABWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndex);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementSearchFilter != null)
+            if (jABWaitForElementsearchFilter != null)
             {
-                jABWaitForElement["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForElementSearchFilter);
+                jABWaitForElement["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForElementsearchFilter);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementSortByColumn != null)
+            if (jABWaitForElementsortByColumn != null)
             {
-                jABWaitForElement["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForElementSortByColumn);
+                jABWaitForElement["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForElementsortByColumn);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementMatchIndexAscending != null)
+            if (jABWaitForElementmatchIndexAscending != null)
             {
-                jABWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementMatchIndexAscending);
+                jABWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndexAscending);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementCaseSensitiveSearch != null)
+            if (jABWaitForElementcaseSensitiveSearch != null)
             {
-                jABWaitForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementCaseSensitiveSearch);
+                jABWaitForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementcaseSensitiveSearch);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementOnlySearchVisibleElements != null)
+            if (jABWaitForElementonlySearchVisibleElements != null)
             {
-                jABWaitForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementOnlySearchVisibleElements);
+                jABWaitForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchVisibleElements);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementOnlySearchShowingElements != null)
+            if (jABWaitForElementonlySearchShowingElements != null)
             {
-                jABWaitForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementOnlySearchShowingElements);
+                jABWaitForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchShowingElements);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementElementRolesNotToTraverse != null)
+            if (jABWaitForElementelementRolesNotToTraverse != null)
             {
-                jABWaitForElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABWaitForElementElementRolesNotToTraverse);
+                jABWaitForElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABWaitForElementelementRolesNotToTraverse);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementMaximumElementsToSearch != null)
+            if (jABWaitForElementmaximumElementsToSearch != null)
             {
-                jABWaitForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementMaximumElementsToSearch);
+                jABWaitForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumElementsToSearch);
                 jABWaitForElementpropCount++;
             }
 
-            if (jABWaitForElementMaximumChildElementsToSearchPerNode != null)
+            if (jABWaitForElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABWaitForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementMaximumChildElementsToSearchPerNode);
-                jABWaitForElementpropCount++;
-            }
-
-            jABWaitForElementpropCount++;
-            jABWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementSecondsToWait);
-            if (jABWaitForElementRaiseExceptionIfElementNotFound != null)
-            {
-                jABWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForElementRaiseExceptionIfElementNotFound);
+                jABWaitForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumChildElementsToSearchPerNode);
                 jABWaitForElementpropCount++;
             }
 
             jABWaitForElementpropCount++;
-            jABWaitForElement["Workflow"] = ExpressionConverter.ConvertO(jABWaitForElementWorkflow);
+            jABWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementsecondsToWait);
+            if (jABWaitForElementraiseExceptionIfElementNotFound != null)
+            {
+                jABWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForElementraiseExceptionIfElementNotFound);
+                jABWaitForElementpropCount++;
+            }
+
+            jABWaitForElementpropCount++;
+            jABWaitForElement["Workflow"] = ExpressionConverter.ConvertO(jABWaitForElementworkflow);
             if (jABWaitForElementpropCount > 0)
             {
                 callPayload.Body = jABWaitForElement;
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForElementToNotExistResponse> JABWaitForElementToNotExist(Expression<Func<int>> jABWaitForElementToNotExistSearchParentElementJABHandle, Expression<Func<double>> jABWaitForElementToNotExistSecondsToWait, Expression<Func<string>> jABWaitForElementToNotExistWorkflow, Expression<Func<string>> jABWaitForElementToNotExistSearchElementJABName = null, Expression<Func<string>> jABWaitForElementToNotExistSearchElementJABDescription = null, Expression<Func<string>> jABWaitForElementToNotExistSearchElementJABRole = null, Expression<Func<bool>> jABWaitForElementToNotExistSearchSubTree = null, Expression<Func<int>> jABWaitForElementToNotExistMaxRelativeDepth = null, Expression<Func<int>> jABWaitForElementToNotExistMatchIndex = null, Expression<Func<string>> jABWaitForElementToNotExistSearchFilter = null, Expression<Func<string>> jABWaitForElementToNotExistSortByColumn = null, Expression<Func<bool>> jABWaitForElementToNotExistMatchIndexAscending = null, Expression<Func<bool>> jABWaitForElementToNotExistCaseSensitiveSearch = null, Expression<Func<bool>> jABWaitForElementToNotExistOnlySearchVisibleElements = null, Expression<Func<bool>> jABWaitForElementToNotExistOnlySearchShowingElements = null, Expression<Func<string>> jABWaitForElementToNotExistElementRolesNotToTraverse = null, Expression<Func<int>> jABWaitForElementToNotExistMaximumElementsToSearch = null, Expression<Func<int>> jABWaitForElementToNotExistMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABWaitForElementToNotExistRaiseExceptionIfElementStillExists = null)
+        public IBodyWorkflowAction<JABWaitForElementToNotExistResponse> JABWaitForElementToNotExist(Expression<Func<int>> jABWaitForElementToNotExistsearchParentElementJABHandle, Expression<Func<double>> jABWaitForElementToNotExistsecondsToWait, Expression<Func<string>> jABWaitForElementToNotExistworkflow, Expression<Func<string>> jABWaitForElementToNotExistsearchElementJABName = null, Expression<Func<string>> jABWaitForElementToNotExistsearchElementJABDescription = null, Expression<Func<string>> jABWaitForElementToNotExistsearchElementJABRole = null, Expression<Func<bool>> jABWaitForElementToNotExistsearchSubTree = null, Expression<Func<int>> jABWaitForElementToNotExistmaxRelativeDepth = null, Expression<Func<int>> jABWaitForElementToNotExistmatchIndex = null, Expression<Func<string>> jABWaitForElementToNotExistsearchFilter = null, Expression<Func<string>> jABWaitForElementToNotExistsortByColumn = null, Expression<Func<bool>> jABWaitForElementToNotExistmatchIndexAscending = null, Expression<Func<bool>> jABWaitForElementToNotExistcaseSensitiveSearch = null, Expression<Func<bool>> jABWaitForElementToNotExistonlySearchVisibleElements = null, Expression<Func<bool>> jABWaitForElementToNotExistonlySearchShowingElements = null, Expression<Func<string>> jABWaitForElementToNotExistelementRolesNotToTraverse = null, Expression<Func<int>> jABWaitForElementToNotExistmaximumElementsToSearch = null, Expression<Func<int>> jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABWaitForElementToNotExistraiseExceptionIfElementStillExists = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABWaitForElementToNotExist";
             var apiCallHttpMethod = "post";
@@ -768,107 +768,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABWaitForElementToNotExist = new JObject();
             var jABWaitForElementToNotExistpropCount = 0;
             jABWaitForElementToNotExistpropCount++;
-            jABWaitForElementToNotExist["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchParentElementJABHandle);
-            if (jABWaitForElementToNotExistSearchElementJABName != null)
+            jABWaitForElementToNotExist["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchParentElementJABHandle);
+            if (jABWaitForElementToNotExistsearchElementJABName != null)
             {
-                jABWaitForElementToNotExist["SearchElementJABName"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchElementJABName);
+                jABWaitForElementToNotExist["SearchElementJABName"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchElementJABName);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistSearchElementJABDescription != null)
+            if (jABWaitForElementToNotExistsearchElementJABDescription != null)
             {
-                jABWaitForElementToNotExist["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchElementJABDescription);
+                jABWaitForElementToNotExist["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchElementJABDescription);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistSearchElementJABRole != null)
+            if (jABWaitForElementToNotExistsearchElementJABRole != null)
             {
-                jABWaitForElementToNotExist["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchElementJABRole);
+                jABWaitForElementToNotExist["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchElementJABRole);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistSearchSubTree != null)
+            if (jABWaitForElementToNotExistsearchSubTree != null)
             {
-                jABWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchSubTree);
+                jABWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchSubTree);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistMaxRelativeDepth != null)
+            if (jABWaitForElementToNotExistmaxRelativeDepth != null)
             {
-                jABWaitForElementToNotExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistMaxRelativeDepth);
+                jABWaitForElementToNotExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaxRelativeDepth);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistMatchIndex != null)
+            if (jABWaitForElementToNotExistmatchIndex != null)
             {
-                jABWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistMatchIndex);
+                jABWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndex);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistSearchFilter != null)
+            if (jABWaitForElementToNotExistsearchFilter != null)
             {
-                jABWaitForElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSearchFilter);
+                jABWaitForElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchFilter);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistSortByColumn != null)
+            if (jABWaitForElementToNotExistsortByColumn != null)
             {
-                jABWaitForElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSortByColumn);
+                jABWaitForElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsortByColumn);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistMatchIndexAscending != null)
+            if (jABWaitForElementToNotExistmatchIndexAscending != null)
             {
-                jABWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistMatchIndexAscending);
+                jABWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndexAscending);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistCaseSensitiveSearch != null)
+            if (jABWaitForElementToNotExistcaseSensitiveSearch != null)
             {
-                jABWaitForElementToNotExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistCaseSensitiveSearch);
+                jABWaitForElementToNotExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistcaseSensitiveSearch);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistOnlySearchVisibleElements != null)
+            if (jABWaitForElementToNotExistonlySearchVisibleElements != null)
             {
-                jABWaitForElementToNotExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistOnlySearchVisibleElements);
+                jABWaitForElementToNotExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchVisibleElements);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistOnlySearchShowingElements != null)
+            if (jABWaitForElementToNotExistonlySearchShowingElements != null)
             {
-                jABWaitForElementToNotExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistOnlySearchShowingElements);
+                jABWaitForElementToNotExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchShowingElements);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistElementRolesNotToTraverse != null)
+            if (jABWaitForElementToNotExistelementRolesNotToTraverse != null)
             {
-                jABWaitForElementToNotExist["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistElementRolesNotToTraverse);
+                jABWaitForElementToNotExist["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistelementRolesNotToTraverse);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistMaximumElementsToSearch != null)
+            if (jABWaitForElementToNotExistmaximumElementsToSearch != null)
             {
-                jABWaitForElementToNotExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistMaximumElementsToSearch);
+                jABWaitForElementToNotExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumElementsToSearch);
                 jABWaitForElementToNotExistpropCount++;
             }
 
-            if (jABWaitForElementToNotExistMaximumChildElementsToSearchPerNode != null)
+            if (jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode != null)
             {
-                jABWaitForElementToNotExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistMaximumChildElementsToSearchPerNode);
-                jABWaitForElementToNotExistpropCount++;
-            }
-
-            jABWaitForElementToNotExistpropCount++;
-            jABWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistSecondsToWait);
-            if (jABWaitForElementToNotExistRaiseExceptionIfElementStillExists != null)
-            {
-                jABWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistRaiseExceptionIfElementStillExists);
+                jABWaitForElementToNotExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode);
                 jABWaitForElementToNotExistpropCount++;
             }
 
             jABWaitForElementToNotExistpropCount++;
-            jABWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistWorkflow);
+            jABWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsecondsToWait);
+            if (jABWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
+            {
+                jABWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                jABWaitForElementToNotExistpropCount++;
+            }
+
+            jABWaitForElementToNotExistpropCount++;
+            jABWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistworkflow);
             if (jABWaitForElementToNotExistpropCount > 0)
             {
                 callPayload.Body = jABWaitForElementToNotExist;
@@ -878,57 +878,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetDesktopElementsResponse> JABGetDesktopElements(Expression<Func<string>> jABGetDesktopElementsWorkflow, Expression<Func<string>> jABGetDesktopElementsSearchElementLocalizedControlType = null, Expression<Func<int>> jABGetDesktopElementsSearchProcessID = null, Expression<Func<int>> jABGetDesktopElementsFirstItemToReturn = null, Expression<Func<int>> jABGetDesktopElementsMaxItemsToReturn = null, Expression<Func<bool>> jABGetDesktopElementsSearchChildElements = null, Expression<Func<int>> jABGetDesktopElementsMaxStringLength = null, Expression<Func<bool>> jABGetDesktopElementsIncludeChildProcesses = null)
+        public IBodyWorkflowAction<JABGetDesktopElementsResponse> JABGetDesktopElements(Expression<Func<string>> jABGetDesktopElementsworkflow, Expression<Func<string>> jABGetDesktopElementssearchElementLocalizedControlType = null, Expression<Func<int>> jABGetDesktopElementssearchProcessID = null, Expression<Func<int>> jABGetDesktopElementsfirstItemToReturn = null, Expression<Func<int>> jABGetDesktopElementsmaxItemsToReturn = null, Expression<Func<bool>> jABGetDesktopElementssearchChildElements = null, Expression<Func<int>> jABGetDesktopElementsmaxStringLength = null, Expression<Func<bool>> jABGetDesktopElementsincludeChildProcesses = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetDesktopElements";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABGetDesktopElements = new JObject();
             var jABGetDesktopElementspropCount = 0;
-            if (jABGetDesktopElementsSearchElementLocalizedControlType != null)
+            if (jABGetDesktopElementssearchElementLocalizedControlType != null)
             {
-                jABGetDesktopElements["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABGetDesktopElementsSearchElementLocalizedControlType);
+                jABGetDesktopElements["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchElementLocalizedControlType);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsSearchProcessID != null)
+            if (jABGetDesktopElementssearchProcessID != null)
             {
-                jABGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(jABGetDesktopElementsSearchProcessID);
+                jABGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchProcessID);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsFirstItemToReturn != null)
+            if (jABGetDesktopElementsfirstItemToReturn != null)
             {
-                jABGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsFirstItemToReturn);
+                jABGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsfirstItemToReturn);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsMaxItemsToReturn != null)
+            if (jABGetDesktopElementsmaxItemsToReturn != null)
             {
-                jABGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsMaxItemsToReturn);
+                jABGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxItemsToReturn);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsSearchChildElements != null)
+            if (jABGetDesktopElementssearchChildElements != null)
             {
-                jABGetDesktopElements["SearchChildElements"] = ExpressionConverter.ConvertO(jABGetDesktopElementsSearchChildElements);
+                jABGetDesktopElements["SearchChildElements"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchChildElements);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsMaxStringLength != null)
+            if (jABGetDesktopElementsmaxStringLength != null)
             {
-                jABGetDesktopElements["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetDesktopElementsMaxStringLength);
+                jABGetDesktopElements["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxStringLength);
                 jABGetDesktopElementspropCount++;
             }
 
-            if (jABGetDesktopElementsIncludeChildProcesses != null)
+            if (jABGetDesktopElementsincludeChildProcesses != null)
             {
-                jABGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABGetDesktopElementsIncludeChildProcesses);
+                jABGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABGetDesktopElementsincludeChildProcesses);
                 jABGetDesktopElementspropCount++;
             }
 
             jABGetDesktopElementspropCount++;
-            jABGetDesktopElements["Workflow"] = ExpressionConverter.ConvertO(jABGetDesktopElementsWorkflow);
+            jABGetDesktopElements["Workflow"] = ExpressionConverter.ConvertO(jABGetDesktopElementsworkflow);
             if (jABGetDesktopElementspropCount > 0)
             {
                 callPayload.Body = jABGetDesktopElements;
@@ -938,75 +938,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABDoesDesktopElementExistResponse> JABDoesDesktopElementExist(Expression<Func<string>> jABDoesDesktopElementExistWorkflow, Expression<Func<string>> jABDoesDesktopElementExistSearchUIAElementName = null, Expression<Func<string>> jABDoesDesktopElementExistSearchUIAElementClassName = null, Expression<Func<string>> jABDoesDesktopElementExistSearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABDoesDesktopElementExistSearchProcessID = null, Expression<Func<bool>> jABDoesDesktopElementExistSearchChildElements = null, Expression<Func<int>> jABDoesDesktopElementExistMatchIndex = null, Expression<Func<string>> jABDoesDesktopElementExistSearchFilter = null, Expression<Func<string>> jABDoesDesktopElementExistSortByColumn = null, Expression<Func<bool>> jABDoesDesktopElementExistMatchIndexAscending = null, Expression<Func<bool>> jABDoesDesktopElementExistIncludeChildProcesses = null)
+        public IBodyWorkflowAction<JABDoesDesktopElementExistResponse> JABDoesDesktopElementExist(Expression<Func<string>> jABDoesDesktopElementExistworkflow, Expression<Func<string>> jABDoesDesktopElementExistsearchUIAElementName = null, Expression<Func<string>> jABDoesDesktopElementExistsearchUIAElementClassName = null, Expression<Func<string>> jABDoesDesktopElementExistsearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABDoesDesktopElementExistsearchProcessID = null, Expression<Func<bool>> jABDoesDesktopElementExistsearchChildElements = null, Expression<Func<int>> jABDoesDesktopElementExistmatchIndex = null, Expression<Func<string>> jABDoesDesktopElementExistsearchFilter = null, Expression<Func<string>> jABDoesDesktopElementExistsortByColumn = null, Expression<Func<bool>> jABDoesDesktopElementExistmatchIndexAscending = null, Expression<Func<bool>> jABDoesDesktopElementExistincludeChildProcesses = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABDoesDesktopElementExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABDoesDesktopElementExist = new JObject();
             var jABDoesDesktopElementExistpropCount = 0;
-            if (jABDoesDesktopElementExistSearchUIAElementName != null)
+            if (jABDoesDesktopElementExistsearchUIAElementName != null)
             {
-                jABDoesDesktopElementExist["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchUIAElementName);
+                jABDoesDesktopElementExist["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchUIAElementName);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSearchUIAElementClassName != null)
+            if (jABDoesDesktopElementExistsearchUIAElementClassName != null)
             {
-                jABDoesDesktopElementExist["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchUIAElementClassName);
+                jABDoesDesktopElementExist["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchUIAElementClassName);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSearchUIAElementLocalizedControlType != null)
+            if (jABDoesDesktopElementExistsearchUIAElementLocalizedControlType != null)
             {
-                jABDoesDesktopElementExist["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchUIAElementLocalizedControlType);
+                jABDoesDesktopElementExist["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchUIAElementLocalizedControlType);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSearchProcessID != null)
+            if (jABDoesDesktopElementExistsearchProcessID != null)
             {
-                jABDoesDesktopElementExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchProcessID);
+                jABDoesDesktopElementExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchProcessID);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSearchChildElements != null)
+            if (jABDoesDesktopElementExistsearchChildElements != null)
             {
-                jABDoesDesktopElementExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchChildElements);
+                jABDoesDesktopElementExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchChildElements);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistMatchIndex != null)
+            if (jABDoesDesktopElementExistmatchIndex != null)
             {
-                jABDoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistMatchIndex);
+                jABDoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndex);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSearchFilter != null)
+            if (jABDoesDesktopElementExistsearchFilter != null)
             {
-                jABDoesDesktopElementExist["SearchFilter"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSearchFilter);
+                jABDoesDesktopElementExist["SearchFilter"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchFilter);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistSortByColumn != null)
+            if (jABDoesDesktopElementExistsortByColumn != null)
             {
-                jABDoesDesktopElementExist["SortByColumn"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistSortByColumn);
+                jABDoesDesktopElementExist["SortByColumn"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsortByColumn);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistMatchIndexAscending != null)
+            if (jABDoesDesktopElementExistmatchIndexAscending != null)
             {
-                jABDoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistMatchIndexAscending);
+                jABDoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndexAscending);
                 jABDoesDesktopElementExistpropCount++;
             }
 
-            if (jABDoesDesktopElementExistIncludeChildProcesses != null)
+            if (jABDoesDesktopElementExistincludeChildProcesses != null)
             {
-                jABDoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistIncludeChildProcesses);
+                jABDoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistincludeChildProcesses);
                 jABDoesDesktopElementExistpropCount++;
             }
 
             jABDoesDesktopElementExistpropCount++;
-            jABDoesDesktopElementExist["Workflow"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistWorkflow);
+            jABDoesDesktopElementExist["Workflow"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistworkflow);
             if (jABDoesDesktopElementExistpropCount > 0)
             {
                 callPayload.Body = jABDoesDesktopElementExist;
@@ -1016,83 +1016,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementResponse> JABWaitForDesktopElement(Expression<Func<double>> jABWaitForDesktopElementSecondsToWait, Expression<Func<string>> jABWaitForDesktopElementWorkflow, Expression<Func<string>> jABWaitForDesktopElementSearchUIAElementName = null, Expression<Func<string>> jABWaitForDesktopElementSearchUIAElementClassName = null, Expression<Func<string>> jABWaitForDesktopElementSearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABWaitForDesktopElementSearchProcessID = null, Expression<Func<bool>> jABWaitForDesktopElementSearchChildElements = null, Expression<Func<int>> jABWaitForDesktopElementMatchIndex = null, Expression<Func<string>> jABWaitForDesktopElementSearchFilter = null, Expression<Func<string>> jABWaitForDesktopElementSortByColumn = null, Expression<Func<bool>> jABWaitForDesktopElementMatchIndexAscending = null, Expression<Func<bool>> jABWaitForDesktopElementIncludeChildProcesses = null, Expression<Func<bool>> jABWaitForDesktopElementRaiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<JABWaitForDesktopElementResponse> JABWaitForDesktopElement(Expression<Func<double>> jABWaitForDesktopElementsecondsToWait, Expression<Func<string>> jABWaitForDesktopElementworkflow, Expression<Func<string>> jABWaitForDesktopElementsearchUIAElementName = null, Expression<Func<string>> jABWaitForDesktopElementsearchUIAElementClassName = null, Expression<Func<string>> jABWaitForDesktopElementsearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABWaitForDesktopElementsearchProcessID = null, Expression<Func<bool>> jABWaitForDesktopElementsearchChildElements = null, Expression<Func<int>> jABWaitForDesktopElementmatchIndex = null, Expression<Func<string>> jABWaitForDesktopElementsearchFilter = null, Expression<Func<string>> jABWaitForDesktopElementsortByColumn = null, Expression<Func<bool>> jABWaitForDesktopElementmatchIndexAscending = null, Expression<Func<bool>> jABWaitForDesktopElementincludeChildProcesses = null, Expression<Func<bool>> jABWaitForDesktopElementraiseExceptionIfElementNotFound = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElement";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABWaitForDesktopElement = new JObject();
             var jABWaitForDesktopElementpropCount = 0;
-            if (jABWaitForDesktopElementSearchUIAElementName != null)
+            if (jABWaitForDesktopElementsearchUIAElementName != null)
             {
-                jABWaitForDesktopElement["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchUIAElementName);
+                jABWaitForDesktopElement["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchUIAElementName);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSearchUIAElementClassName != null)
+            if (jABWaitForDesktopElementsearchUIAElementClassName != null)
             {
-                jABWaitForDesktopElement["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchUIAElementClassName);
+                jABWaitForDesktopElement["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchUIAElementClassName);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSearchUIAElementLocalizedControlType != null)
+            if (jABWaitForDesktopElementsearchUIAElementLocalizedControlType != null)
             {
-                jABWaitForDesktopElement["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchUIAElementLocalizedControlType);
+                jABWaitForDesktopElement["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchUIAElementLocalizedControlType);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSearchProcessID != null)
+            if (jABWaitForDesktopElementsearchProcessID != null)
             {
-                jABWaitForDesktopElement["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchProcessID);
+                jABWaitForDesktopElement["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchProcessID);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSearchChildElements != null)
+            if (jABWaitForDesktopElementsearchChildElements != null)
             {
-                jABWaitForDesktopElement["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchChildElements);
+                jABWaitForDesktopElement["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchChildElements);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementMatchIndex != null)
+            if (jABWaitForDesktopElementmatchIndex != null)
             {
-                jABWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementMatchIndex);
+                jABWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndex);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSearchFilter != null)
+            if (jABWaitForDesktopElementsearchFilter != null)
             {
-                jABWaitForDesktopElement["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSearchFilter);
+                jABWaitForDesktopElement["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchFilter);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementSortByColumn != null)
+            if (jABWaitForDesktopElementsortByColumn != null)
             {
-                jABWaitForDesktopElement["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSortByColumn);
+                jABWaitForDesktopElement["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsortByColumn);
                 jABWaitForDesktopElementpropCount++;
             }
 
-            if (jABWaitForDesktopElementMatchIndexAscending != null)
+            if (jABWaitForDesktopElementmatchIndexAscending != null)
             {
-                jABWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementMatchIndexAscending);
-                jABWaitForDesktopElementpropCount++;
-            }
-
-            jABWaitForDesktopElementpropCount++;
-            jABWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementSecondsToWait);
-            if (jABWaitForDesktopElementIncludeChildProcesses != null)
-            {
-                jABWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementIncludeChildProcesses);
-                jABWaitForDesktopElementpropCount++;
-            }
-
-            if (jABWaitForDesktopElementRaiseExceptionIfElementNotFound != null)
-            {
-                jABWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementRaiseExceptionIfElementNotFound);
+                jABWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndexAscending);
                 jABWaitForDesktopElementpropCount++;
             }
 
             jABWaitForDesktopElementpropCount++;
-            jABWaitForDesktopElement["Workflow"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementWorkflow);
+            jABWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsecondsToWait);
+            if (jABWaitForDesktopElementincludeChildProcesses != null)
+            {
+                jABWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementincludeChildProcesses);
+                jABWaitForDesktopElementpropCount++;
+            }
+
+            if (jABWaitForDesktopElementraiseExceptionIfElementNotFound != null)
+            {
+                jABWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementraiseExceptionIfElementNotFound);
+                jABWaitForDesktopElementpropCount++;
+            }
+
+            jABWaitForDesktopElementpropCount++;
+            jABWaitForDesktopElement["Workflow"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementworkflow);
             if (jABWaitForDesktopElementpropCount > 0)
             {
                 callPayload.Body = jABWaitForDesktopElement;
@@ -1102,83 +1102,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse> JABWaitForDesktopElementToNotExist(Expression<Func<double>> jABWaitForDesktopElementToNotExistSecondsToWait, Expression<Func<string>> jABWaitForDesktopElementToNotExistWorkflow, Expression<Func<string>> jABWaitForDesktopElementToNotExistSearchUIAElementName = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistSearchUIAElementClassName = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistSearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABWaitForDesktopElementToNotExistSearchProcessID = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistSearchChildElements = null, Expression<Func<int>> jABWaitForDesktopElementToNotExistMatchIndex = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistSearchFilter = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistSortByColumn = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistMatchIndexAscending = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistIncludeChildProcesses = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists = null)
+        public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse> JABWaitForDesktopElementToNotExist(Expression<Func<double>> jABWaitForDesktopElementToNotExistsecondsToWait, Expression<Func<string>> jABWaitForDesktopElementToNotExistworkflow, Expression<Func<string>> jABWaitForDesktopElementToNotExistsearchUIAElementName = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistsearchUIAElementClassName = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType = null, Expression<Func<int>> jABWaitForDesktopElementToNotExistsearchProcessID = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistsearchChildElements = null, Expression<Func<int>> jABWaitForDesktopElementToNotExistmatchIndex = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistsearchFilter = null, Expression<Func<string>> jABWaitForDesktopElementToNotExistsortByColumn = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistmatchIndexAscending = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistincludeChildProcesses = null, Expression<Func<bool>> jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElementToNotExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var jABWaitForDesktopElementToNotExist = new JObject();
             var jABWaitForDesktopElementToNotExistpropCount = 0;
-            if (jABWaitForDesktopElementToNotExistSearchUIAElementName != null)
+            if (jABWaitForDesktopElementToNotExistsearchUIAElementName != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchUIAElementName);
+                jABWaitForDesktopElementToNotExist["SearchUIAElementName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchUIAElementName);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSearchUIAElementClassName != null)
+            if (jABWaitForDesktopElementToNotExistsearchUIAElementClassName != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchUIAElementClassName);
+                jABWaitForDesktopElementToNotExist["SearchUIAElementClassName"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchUIAElementClassName);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSearchUIAElementLocalizedControlType != null)
+            if (jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchUIAElementLocalizedControlType);
+                jABWaitForDesktopElementToNotExist["SearchUIAElementLocalizedControlType"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSearchProcessID != null)
+            if (jABWaitForDesktopElementToNotExistsearchProcessID != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchProcessID);
+                jABWaitForDesktopElementToNotExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchProcessID);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSearchChildElements != null)
+            if (jABWaitForDesktopElementToNotExistsearchChildElements != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchChildElements);
+                jABWaitForDesktopElementToNotExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchChildElements);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistMatchIndex != null)
+            if (jABWaitForDesktopElementToNotExistmatchIndex != null)
             {
-                jABWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistMatchIndex);
+                jABWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndex);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSearchFilter != null)
+            if (jABWaitForDesktopElementToNotExistsearchFilter != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSearchFilter);
+                jABWaitForDesktopElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchFilter);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistSortByColumn != null)
+            if (jABWaitForDesktopElementToNotExistsortByColumn != null)
             {
-                jABWaitForDesktopElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSortByColumn);
+                jABWaitForDesktopElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsortByColumn);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (jABWaitForDesktopElementToNotExistMatchIndexAscending != null)
+            if (jABWaitForDesktopElementToNotExistmatchIndexAscending != null)
             {
-                jABWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistMatchIndexAscending);
-                jABWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            jABWaitForDesktopElementToNotExistpropCount++;
-            jABWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistSecondsToWait);
-            if (jABWaitForDesktopElementToNotExistIncludeChildProcesses != null)
-            {
-                jABWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistIncludeChildProcesses);
-                jABWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (jABWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists != null)
-            {
-                jABWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists);
+                jABWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndexAscending);
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
             jABWaitForDesktopElementToNotExistpropCount++;
-            jABWaitForDesktopElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistWorkflow);
+            jABWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsecondsToWait);
+            if (jABWaitForDesktopElementToNotExistincludeChildProcesses != null)
+            {
+                jABWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistincludeChildProcesses);
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
+            {
+                jABWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            jABWaitForDesktopElementToNotExistpropCount++;
+            jABWaitForDesktopElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistworkflow);
             if (jABWaitForDesktopElementToNotExistpropCount > 0)
             {
                 callPayload.Body = jABWaitForDesktopElementToNotExist;
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABFreeAllJABHandles(Expression<Func<string>> jABFreeAllJABHandlesWorkflow)
+        public IWorkflowAction JABFreeAllJABHandles(Expression<Func<string>> jABFreeAllJABHandlesworkflow)
         {
             var apiCallPath = "/JavaAccessBridge/JABFreeAllJABHandles";
             var apiCallHttpMethod = "post";
@@ -1196,7 +1196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABFreeAllJABHandles = new JObject();
             var jABFreeAllJABHandlespropCount = 0;
             jABFreeAllJABHandlespropCount++;
-            jABFreeAllJABHandles["Workflow"] = ExpressionConverter.ConvertO(jABFreeAllJABHandlesWorkflow);
+            jABFreeAllJABHandles["Workflow"] = ExpressionConverter.ConvertO(jABFreeAllJABHandlesworkflow);
             if (jABFreeAllJABHandlespropCount > 0)
             {
                 callPayload.Body = jABFreeAllJABHandles;
@@ -1206,7 +1206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetChildJABElementPropertiesResponse> JABGetChildJABElementProperties(Expression<Func<int>> jABGetChildJABElementPropertiesSearchElementJABHandle, Expression<Func<int>> jABGetChildJABElementPropertiesSearchChildIndex, Expression<Func<string>> jABGetChildJABElementPropertiesWorkflow, Expression<Func<int>> jABGetChildJABElementPropertiesMaxStringLength = null)
+        public IBodyWorkflowAction<JABGetChildJABElementPropertiesResponse> JABGetChildJABElementProperties(Expression<Func<int>> jABGetChildJABElementPropertiessearchElementJABHandle, Expression<Func<int>> jABGetChildJABElementPropertiessearchChildIndex, Expression<Func<string>> jABGetChildJABElementPropertiesworkflow, Expression<Func<int>> jABGetChildJABElementPropertiesmaxStringLength = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetChildJABElementProperties";
             var apiCallHttpMethod = "post";
@@ -1214,17 +1214,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetChildJABElementProperties = new JObject();
             var jABGetChildJABElementPropertiespropCount = 0;
             jABGetChildJABElementPropertiespropCount++;
-            jABGetChildJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesSearchElementJABHandle);
+            jABGetChildJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiessearchElementJABHandle);
             jABGetChildJABElementPropertiespropCount++;
-            jABGetChildJABElementProperties["SearchChildIndex"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesSearchChildIndex);
-            if (jABGetChildJABElementPropertiesMaxStringLength != null)
+            jABGetChildJABElementProperties["SearchChildIndex"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiessearchChildIndex);
+            if (jABGetChildJABElementPropertiesmaxStringLength != null)
             {
-                jABGetChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesMaxStringLength);
+                jABGetChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesmaxStringLength);
                 jABGetChildJABElementPropertiespropCount++;
             }
 
             jABGetChildJABElementPropertiespropCount++;
-            jABGetChildJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesWorkflow);
+            jABGetChildJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesworkflow);
             if (jABGetChildJABElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetChildJABElementProperties;
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetAllChildJABElementPropertiesResponse> JABGetAllChildJABElementProperties(Expression<Func<int>> jABGetAllChildJABElementPropertiesSearchElementJABHandle, Expression<Func<string>> jABGetAllChildJABElementPropertiesWorkflow, Expression<Func<int>> jABGetAllChildJABElementPropertiesFirstItemToReturn = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesMaxItemsToReturn = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesMaxStringLength = null, Expression<Func<bool>> jABGetAllChildJABElementPropertiesSearchDescendants = null, Expression<Func<string>> jABGetAllChildJABElementPropertiesSearchRole = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesMaxRelativeDepth = null)
+        public IBodyWorkflowAction<JABGetAllChildJABElementPropertiesResponse> JABGetAllChildJABElementProperties(Expression<Func<int>> jABGetAllChildJABElementPropertiessearchElementJABHandle, Expression<Func<string>> jABGetAllChildJABElementPropertiesworkflow, Expression<Func<int>> jABGetAllChildJABElementPropertiesfirstItemToReturn = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesmaxItemsToReturn = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesmaxStringLength = null, Expression<Func<bool>> jABGetAllChildJABElementPropertiessearchDescendants = null, Expression<Func<string>> jABGetAllChildJABElementPropertiessearchRole = null, Expression<Func<int>> jABGetAllChildJABElementPropertiesmaxRelativeDepth = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetAllChildJABElementProperties";
             var apiCallHttpMethod = "post";
@@ -1242,45 +1242,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetAllChildJABElementProperties = new JObject();
             var jABGetAllChildJABElementPropertiespropCount = 0;
             jABGetAllChildJABElementPropertiespropCount++;
-            jABGetAllChildJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesSearchElementJABHandle);
-            if (jABGetAllChildJABElementPropertiesFirstItemToReturn != null)
+            jABGetAllChildJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchElementJABHandle);
+            if (jABGetAllChildJABElementPropertiesfirstItemToReturn != null)
             {
-                jABGetAllChildJABElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesFirstItemToReturn);
+                jABGetAllChildJABElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesfirstItemToReturn);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
-            if (jABGetAllChildJABElementPropertiesMaxItemsToReturn != null)
+            if (jABGetAllChildJABElementPropertiesmaxItemsToReturn != null)
             {
-                jABGetAllChildJABElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesMaxItemsToReturn);
+                jABGetAllChildJABElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxItemsToReturn);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
-            if (jABGetAllChildJABElementPropertiesMaxStringLength != null)
+            if (jABGetAllChildJABElementPropertiesmaxStringLength != null)
             {
-                jABGetAllChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesMaxStringLength);
+                jABGetAllChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxStringLength);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
-            if (jABGetAllChildJABElementPropertiesSearchDescendants != null)
+            if (jABGetAllChildJABElementPropertiessearchDescendants != null)
             {
-                jABGetAllChildJABElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesSearchDescendants);
+                jABGetAllChildJABElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchDescendants);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
-            if (jABGetAllChildJABElementPropertiesSearchRole != null)
+            if (jABGetAllChildJABElementPropertiessearchRole != null)
             {
-                jABGetAllChildJABElementProperties["SearchRole"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesSearchRole);
+                jABGetAllChildJABElementProperties["SearchRole"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchRole);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
-            if (jABGetAllChildJABElementPropertiesMaxRelativeDepth != null)
+            if (jABGetAllChildJABElementPropertiesmaxRelativeDepth != null)
             {
-                jABGetAllChildJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesMaxRelativeDepth);
+                jABGetAllChildJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxRelativeDepth);
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
             jABGetAllChildJABElementPropertiespropCount++;
-            jABGetAllChildJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesWorkflow);
+            jABGetAllChildJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesworkflow);
             if (jABGetAllChildJABElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetAllChildJABElementProperties;
@@ -1290,7 +1290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetParentJABElementPropertiesResponse> JABGetParentJABElementProperties(Expression<Func<int>> jABGetParentJABElementPropertiesSearchElementJABHandle, Expression<Func<string>> jABGetParentJABElementPropertiesWorkflow, Expression<Func<int>> jABGetParentJABElementPropertiesMaxStringLength = null)
+        public IBodyWorkflowAction<JABGetParentJABElementPropertiesResponse> JABGetParentJABElementProperties(Expression<Func<int>> jABGetParentJABElementPropertiessearchElementJABHandle, Expression<Func<string>> jABGetParentJABElementPropertiesworkflow, Expression<Func<int>> jABGetParentJABElementPropertiesmaxStringLength = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetParentJABElementProperties";
             var apiCallHttpMethod = "post";
@@ -1298,15 +1298,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetParentJABElementProperties = new JObject();
             var jABGetParentJABElementPropertiespropCount = 0;
             jABGetParentJABElementPropertiespropCount++;
-            jABGetParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesSearchElementJABHandle);
-            if (jABGetParentJABElementPropertiesMaxStringLength != null)
+            jABGetParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiessearchElementJABHandle);
+            if (jABGetParentJABElementPropertiesmaxStringLength != null)
             {
-                jABGetParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesMaxStringLength);
+                jABGetParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesmaxStringLength);
                 jABGetParentJABElementPropertiespropCount++;
             }
 
             jABGetParentJABElementPropertiespropCount++;
-            jABGetParentJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesWorkflow);
+            jABGetParentJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesworkflow);
             if (jABGetParentJABElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetParentJABElementProperties;
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABPressElement(Expression<Func<int>> jABPressElementSearchParentElementJABHandle, Expression<Func<string>> jABPressElementWorkflow, Expression<Func<string>> jABPressElementSearchElementJABName = null, Expression<Func<string>> jABPressElementSearchElementJABDescription = null, Expression<Func<string>> jABPressElementSearchElementJABRole = null, Expression<Func<bool>> jABPressElementSearchSubTree = null, Expression<Func<int>> jABPressElementMaxRelativeDepth = null, Expression<Func<int>> jABPressElementMatchIndex = null, Expression<Func<string>> jABPressElementSearchFilter = null, Expression<Func<string>> jABPressElementSortByColumn = null, Expression<Func<bool>> jABPressElementMatchIndexAscending = null, Expression<Func<bool>> jABPressElementCaseSensitiveSearch = null, Expression<Func<bool>> jABPressElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABPressElementOnlySearchShowingElements = null, Expression<Func<string>> jABPressElementElementRolesNotToTraverse = null, Expression<Func<int>> jABPressElementMaximumElementsToSearch = null, Expression<Func<int>> jABPressElementMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABPressElementNumberOfTimesToPressElement = null, Expression<Func<double>> jABPressElementSecondsToWaitBetweenPresses = null, Expression<Func<bool>> jABPressElementAutoDetectActionName = null, Expression<Func<string>> jABPressElementOverrideActionName = null)
+        public IWorkflowAction JABPressElement(Expression<Func<int>> jABPressElementsearchParentElementJABHandle, Expression<Func<string>> jABPressElementworkflow, Expression<Func<string>> jABPressElementsearchElementJABName = null, Expression<Func<string>> jABPressElementsearchElementJABDescription = null, Expression<Func<string>> jABPressElementsearchElementJABRole = null, Expression<Func<bool>> jABPressElementsearchSubTree = null, Expression<Func<int>> jABPressElementmaxRelativeDepth = null, Expression<Func<int>> jABPressElementmatchIndex = null, Expression<Func<string>> jABPressElementsearchFilter = null, Expression<Func<string>> jABPressElementsortByColumn = null, Expression<Func<bool>> jABPressElementmatchIndexAscending = null, Expression<Func<bool>> jABPressElementcaseSensitiveSearch = null, Expression<Func<bool>> jABPressElementonlySearchVisibleElements = null, Expression<Func<bool>> jABPressElementonlySearchShowingElements = null, Expression<Func<string>> jABPressElementelementRolesNotToTraverse = null, Expression<Func<int>> jABPressElementmaximumElementsToSearch = null, Expression<Func<int>> jABPressElementmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABPressElementnumberOfTimesToPressElement = null, Expression<Func<double>> jABPressElementsecondsToWaitBetweenPresses = null, Expression<Func<bool>> jABPressElementautoDetectActionName = null, Expression<Func<string>> jABPressElementoverrideActionName = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABPressElement";
             var apiCallHttpMethod = "post";
@@ -1324,123 +1324,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABPressElement = new JObject();
             var jABPressElementpropCount = 0;
             jABPressElementpropCount++;
-            jABPressElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABPressElementSearchParentElementJABHandle);
-            if (jABPressElementSearchElementJABName != null)
+            jABPressElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABPressElementsearchParentElementJABHandle);
+            if (jABPressElementsearchElementJABName != null)
             {
-                jABPressElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABPressElementSearchElementJABName);
+                jABPressElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABPressElementsearchElementJABName);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSearchElementJABDescription != null)
+            if (jABPressElementsearchElementJABDescription != null)
             {
-                jABPressElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABPressElementSearchElementJABDescription);
+                jABPressElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABPressElementsearchElementJABDescription);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSearchElementJABRole != null)
+            if (jABPressElementsearchElementJABRole != null)
             {
-                jABPressElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABPressElementSearchElementJABRole);
+                jABPressElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABPressElementsearchElementJABRole);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSearchSubTree != null)
+            if (jABPressElementsearchSubTree != null)
             {
-                jABPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPressElementSearchSubTree);
+                jABPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPressElementsearchSubTree);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementMaxRelativeDepth != null)
+            if (jABPressElementmaxRelativeDepth != null)
             {
-                jABPressElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPressElementMaxRelativeDepth);
+                jABPressElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPressElementmaxRelativeDepth);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementMatchIndex != null)
+            if (jABPressElementmatchIndex != null)
             {
-                jABPressElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPressElementMatchIndex);
+                jABPressElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPressElementmatchIndex);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSearchFilter != null)
+            if (jABPressElementsearchFilter != null)
             {
-                jABPressElement["SearchFilter"] = ExpressionConverter.ConvertO(jABPressElementSearchFilter);
+                jABPressElement["SearchFilter"] = ExpressionConverter.ConvertO(jABPressElementsearchFilter);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSortByColumn != null)
+            if (jABPressElementsortByColumn != null)
             {
-                jABPressElement["SortByColumn"] = ExpressionConverter.ConvertO(jABPressElementSortByColumn);
+                jABPressElement["SortByColumn"] = ExpressionConverter.ConvertO(jABPressElementsortByColumn);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementMatchIndexAscending != null)
+            if (jABPressElementmatchIndexAscending != null)
             {
-                jABPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPressElementMatchIndexAscending);
+                jABPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPressElementmatchIndexAscending);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementCaseSensitiveSearch != null)
+            if (jABPressElementcaseSensitiveSearch != null)
             {
-                jABPressElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPressElementCaseSensitiveSearch);
+                jABPressElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPressElementcaseSensitiveSearch);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementOnlySearchVisibleElements != null)
+            if (jABPressElementonlySearchVisibleElements != null)
             {
-                jABPressElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPressElementOnlySearchVisibleElements);
+                jABPressElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchVisibleElements);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementOnlySearchShowingElements != null)
+            if (jABPressElementonlySearchShowingElements != null)
             {
-                jABPressElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPressElementOnlySearchShowingElements);
+                jABPressElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchShowingElements);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementElementRolesNotToTraverse != null)
+            if (jABPressElementelementRolesNotToTraverse != null)
             {
-                jABPressElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABPressElementElementRolesNotToTraverse);
+                jABPressElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABPressElementelementRolesNotToTraverse);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementMaximumElementsToSearch != null)
+            if (jABPressElementmaximumElementsToSearch != null)
             {
-                jABPressElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPressElementMaximumElementsToSearch);
+                jABPressElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPressElementmaximumElementsToSearch);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementMaximumChildElementsToSearchPerNode != null)
+            if (jABPressElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABPressElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPressElementMaximumChildElementsToSearchPerNode);
+                jABPressElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPressElementmaximumChildElementsToSearchPerNode);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementNumberOfTimesToPressElement != null)
+            if (jABPressElementnumberOfTimesToPressElement != null)
             {
-                jABPressElement["NumberOfTimesToPressElement"] = ExpressionConverter.ConvertO(jABPressElementNumberOfTimesToPressElement);
+                jABPressElement["NumberOfTimesToPressElement"] = ExpressionConverter.ConvertO(jABPressElementnumberOfTimesToPressElement);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementSecondsToWaitBetweenPresses != null)
+            if (jABPressElementsecondsToWaitBetweenPresses != null)
             {
-                jABPressElement["SecondsToWaitBetweenPresses"] = ExpressionConverter.ConvertO(jABPressElementSecondsToWaitBetweenPresses);
+                jABPressElement["SecondsToWaitBetweenPresses"] = ExpressionConverter.ConvertO(jABPressElementsecondsToWaitBetweenPresses);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementAutoDetectActionName != null)
+            if (jABPressElementautoDetectActionName != null)
             {
-                jABPressElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABPressElementAutoDetectActionName);
+                jABPressElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABPressElementautoDetectActionName);
                 jABPressElementpropCount++;
             }
 
-            if (jABPressElementOverrideActionName != null)
+            if (jABPressElementoverrideActionName != null)
             {
-                jABPressElement["OverrideActionName"] = ExpressionConverter.ConvertO(jABPressElementOverrideActionName);
+                jABPressElement["OverrideActionName"] = ExpressionConverter.ConvertO(jABPressElementoverrideActionName);
                 jABPressElementpropCount++;
             }
 
             jABPressElementpropCount++;
-            jABPressElement["Workflow"] = ExpressionConverter.ConvertO(jABPressElementWorkflow);
+            jABPressElement["Workflow"] = ExpressionConverter.ConvertO(jABPressElementworkflow);
             if (jABPressElementpropCount > 0)
             {
                 callPayload.Body = jABPressElement;
@@ -1450,7 +1450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABPerformActionOnElement(Expression<Func<int>> jABPerformActionOnElementSearchParentElementJABHandle, Expression<Func<string>> jABPerformActionOnElementAction, Expression<Func<string>> jABPerformActionOnElementWorkflow, Expression<Func<string>> jABPerformActionOnElementSearchElementJABName = null, Expression<Func<string>> jABPerformActionOnElementSearchElementJABDescription = null, Expression<Func<string>> jABPerformActionOnElementSearchElementJABRole = null, Expression<Func<bool>> jABPerformActionOnElementSearchSubTree = null, Expression<Func<int>> jABPerformActionOnElementMaxRelativeDepth = null, Expression<Func<int>> jABPerformActionOnElementMatchIndex = null, Expression<Func<string>> jABPerformActionOnElementSearchFilter = null, Expression<Func<string>> jABPerformActionOnElementSortByColumn = null, Expression<Func<bool>> jABPerformActionOnElementMatchIndexAscending = null, Expression<Func<bool>> jABPerformActionOnElementCaseSensitiveSearch = null, Expression<Func<bool>> jABPerformActionOnElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABPerformActionOnElementOnlySearchShowingElements = null, Expression<Func<string>> jABPerformActionOnElementElementRolesNotToTraverse = null, Expression<Func<int>> jABPerformActionOnElementMaximumElementsToSearch = null, Expression<Func<int>> jABPerformActionOnElementMaximumChildElementsToSearchPerNode = null)
+        public IWorkflowAction JABPerformActionOnElement(Expression<Func<int>> jABPerformActionOnElementsearchParentElementJABHandle, Expression<Func<string>> jABPerformActionOnElementaction, Expression<Func<string>> jABPerformActionOnElementworkflow, Expression<Func<string>> jABPerformActionOnElementsearchElementJABName = null, Expression<Func<string>> jABPerformActionOnElementsearchElementJABDescription = null, Expression<Func<string>> jABPerformActionOnElementsearchElementJABRole = null, Expression<Func<bool>> jABPerformActionOnElementsearchSubTree = null, Expression<Func<int>> jABPerformActionOnElementmaxRelativeDepth = null, Expression<Func<int>> jABPerformActionOnElementmatchIndex = null, Expression<Func<string>> jABPerformActionOnElementsearchFilter = null, Expression<Func<string>> jABPerformActionOnElementsortByColumn = null, Expression<Func<bool>> jABPerformActionOnElementmatchIndexAscending = null, Expression<Func<bool>> jABPerformActionOnElementcaseSensitiveSearch = null, Expression<Func<bool>> jABPerformActionOnElementonlySearchVisibleElements = null, Expression<Func<bool>> jABPerformActionOnElementonlySearchShowingElements = null, Expression<Func<string>> jABPerformActionOnElementelementRolesNotToTraverse = null, Expression<Func<int>> jABPerformActionOnElementmaximumElementsToSearch = null, Expression<Func<int>> jABPerformActionOnElementmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABPerformActionOnElement";
             var apiCallHttpMethod = "post";
@@ -1458,101 +1458,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABPerformActionOnElement = new JObject();
             var jABPerformActionOnElementpropCount = 0;
             jABPerformActionOnElementpropCount++;
-            jABPerformActionOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchParentElementJABHandle);
-            if (jABPerformActionOnElementSearchElementJABName != null)
+            jABPerformActionOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchParentElementJABHandle);
+            if (jABPerformActionOnElementsearchElementJABName != null)
             {
-                jABPerformActionOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchElementJABName);
+                jABPerformActionOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchElementJABName);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementSearchElementJABDescription != null)
+            if (jABPerformActionOnElementsearchElementJABDescription != null)
             {
-                jABPerformActionOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchElementJABDescription);
+                jABPerformActionOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchElementJABDescription);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementSearchElementJABRole != null)
+            if (jABPerformActionOnElementsearchElementJABRole != null)
             {
-                jABPerformActionOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchElementJABRole);
+                jABPerformActionOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchElementJABRole);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementSearchSubTree != null)
+            if (jABPerformActionOnElementsearchSubTree != null)
             {
-                jABPerformActionOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchSubTree);
+                jABPerformActionOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchSubTree);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementMaxRelativeDepth != null)
+            if (jABPerformActionOnElementmaxRelativeDepth != null)
             {
-                jABPerformActionOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPerformActionOnElementMaxRelativeDepth);
+                jABPerformActionOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaxRelativeDepth);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementMatchIndex != null)
+            if (jABPerformActionOnElementmatchIndex != null)
             {
-                jABPerformActionOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPerformActionOnElementMatchIndex);
+                jABPerformActionOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndex);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementSearchFilter != null)
+            if (jABPerformActionOnElementsearchFilter != null)
             {
-                jABPerformActionOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSearchFilter);
+                jABPerformActionOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchFilter);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementSortByColumn != null)
+            if (jABPerformActionOnElementsortByColumn != null)
             {
-                jABPerformActionOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABPerformActionOnElementSortByColumn);
+                jABPerformActionOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsortByColumn);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementMatchIndexAscending != null)
+            if (jABPerformActionOnElementmatchIndexAscending != null)
             {
-                jABPerformActionOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPerformActionOnElementMatchIndexAscending);
+                jABPerformActionOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndexAscending);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementCaseSensitiveSearch != null)
+            if (jABPerformActionOnElementcaseSensitiveSearch != null)
             {
-                jABPerformActionOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementCaseSensitiveSearch);
+                jABPerformActionOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementcaseSensitiveSearch);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementOnlySearchVisibleElements != null)
+            if (jABPerformActionOnElementonlySearchVisibleElements != null)
             {
-                jABPerformActionOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementOnlySearchVisibleElements);
+                jABPerformActionOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchVisibleElements);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementOnlySearchShowingElements != null)
+            if (jABPerformActionOnElementonlySearchShowingElements != null)
             {
-                jABPerformActionOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementOnlySearchShowingElements);
+                jABPerformActionOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchShowingElements);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementElementRolesNotToTraverse != null)
+            if (jABPerformActionOnElementelementRolesNotToTraverse != null)
             {
-                jABPerformActionOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABPerformActionOnElementElementRolesNotToTraverse);
+                jABPerformActionOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABPerformActionOnElementelementRolesNotToTraverse);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementMaximumElementsToSearch != null)
+            if (jABPerformActionOnElementmaximumElementsToSearch != null)
             {
-                jABPerformActionOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementMaximumElementsToSearch);
+                jABPerformActionOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumElementsToSearch);
                 jABPerformActionOnElementpropCount++;
             }
 
-            if (jABPerformActionOnElementMaximumChildElementsToSearchPerNode != null)
+            if (jABPerformActionOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABPerformActionOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPerformActionOnElementMaximumChildElementsToSearchPerNode);
+                jABPerformActionOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumChildElementsToSearchPerNode);
                 jABPerformActionOnElementpropCount++;
             }
 
             jABPerformActionOnElementpropCount++;
-            jABPerformActionOnElement["Action"] = ExpressionConverter.ConvertO(jABPerformActionOnElementAction);
+            jABPerformActionOnElement["Action"] = ExpressionConverter.ConvertO(jABPerformActionOnElementaction);
             jABPerformActionOnElementpropCount++;
-            jABPerformActionOnElement["Workflow"] = ExpressionConverter.ConvertO(jABPerformActionOnElementWorkflow);
+            jABPerformActionOnElement["Workflow"] = ExpressionConverter.ConvertO(jABPerformActionOnElementworkflow);
             if (jABPerformActionOnElementpropCount > 0)
             {
                 callPayload.Body = jABPerformActionOnElement;
@@ -1562,7 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalLeftMouseClickOnElement(Expression<Func<int>> jABGlobalLeftMouseClickOnElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalLeftMouseClickOnElementWorkflow, Expression<Func<string>> jABGlobalLeftMouseClickOnElementSearchElementJABName = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementSearchSubTree = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementMatchIndex = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementSearchFilter = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementSortByColumn = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementClickOffsetX = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementClickOffsetY = null, Expression<Func<jABGlobalLeftMouseClickOnElementOffsetRelativeToInput>> jABGlobalLeftMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementNumberOfTimesToClickElement = null, Expression<Func<double>> jABGlobalLeftMouseClickOnElementSecondsToWaitBetweenClicks = null)
+        public IWorkflowAction JABGlobalLeftMouseClickOnElement(Expression<Func<int>> jABGlobalLeftMouseClickOnElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalLeftMouseClickOnElementworkflow, Expression<Func<string>> jABGlobalLeftMouseClickOnElementsearchElementJABName = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementsearchSubTree = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementmatchIndex = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementsearchFilter = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementsortByColumn = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalLeftMouseClickOnElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementclickOffsetX = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementclickOffsetY = null, Expression<Func<jABGlobalLeftMouseClickOnElementoffsetRelativeToInput>> jABGlobalLeftMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement = null, Expression<Func<double>> jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalLeftMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1570,129 +1570,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalLeftMouseClickOnElement = new JObject();
             var jABGlobalLeftMouseClickOnElementpropCount = 0;
             jABGlobalLeftMouseClickOnElementpropCount++;
-            jABGlobalLeftMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchParentElementJABHandle);
-            if (jABGlobalLeftMouseClickOnElementSearchElementJABName != null)
+            jABGlobalLeftMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchParentElementJABHandle);
+            if (jABGlobalLeftMouseClickOnElementsearchElementJABName != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchElementJABName);
+                jABGlobalLeftMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchElementJABName);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSearchElementJABDescription != null)
+            if (jABGlobalLeftMouseClickOnElementsearchElementJABDescription != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchElementJABDescription);
+                jABGlobalLeftMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchElementJABDescription);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSearchElementJABRole != null)
+            if (jABGlobalLeftMouseClickOnElementsearchElementJABRole != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchElementJABRole);
+                jABGlobalLeftMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchElementJABRole);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSearchSubTree != null)
+            if (jABGlobalLeftMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchSubTree);
+                jABGlobalLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchSubTree);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementMaxRelativeDepth != null)
+            if (jABGlobalLeftMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementMaxRelativeDepth);
+                jABGlobalLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaxRelativeDepth);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementMatchIndex != null)
+            if (jABGlobalLeftMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementMatchIndex);
+                jABGlobalLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndex);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSearchFilter != null)
+            if (jABGlobalLeftMouseClickOnElementsearchFilter != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSearchFilter);
+                jABGlobalLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchFilter);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSortByColumn != null)
+            if (jABGlobalLeftMouseClickOnElementsortByColumn != null)
             {
-                jABGlobalLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSortByColumn);
+                jABGlobalLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsortByColumn);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementMatchIndexAscending != null)
+            if (jABGlobalLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementMatchIndexAscending);
+                jABGlobalLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndexAscending);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementCaseSensitiveSearch != null)
+            if (jABGlobalLeftMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementCaseSensitiveSearch);
+                jABGlobalLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementcaseSensitiveSearch);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementOnlySearchVisibleElements != null)
+            if (jABGlobalLeftMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementOnlySearchVisibleElements);
+                jABGlobalLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchVisibleElements);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementOnlySearchShowingElements != null)
+            if (jABGlobalLeftMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementOnlySearchShowingElements);
+                jABGlobalLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchShowingElements);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementElementRolesNotToTraverse != null)
+            if (jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse != null)
             {
-                jABGlobalLeftMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementElementRolesNotToTraverse);
+                jABGlobalLeftMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementelementRolesNotToTraverse);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementMaximumElementsToSearch != null)
+            if (jABGlobalLeftMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementMaximumElementsToSearch);
+                jABGlobalLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumElementsToSearch);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementMaximumChildElementsToSearchPerNode);
+                jABGlobalLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementClickOffsetX != null)
+            if (jABGlobalLeftMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementClickOffsetX);
+                jABGlobalLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetX);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementClickOffsetY != null)
+            if (jABGlobalLeftMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementClickOffsetY);
+                jABGlobalLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetY);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementOffsetRelativeTo != null)
+            if (jABGlobalLeftMouseClickOnElementoffsetRelativeTo != null)
             {
-                jABGlobalLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementOffsetRelativeTo);
+                jABGlobalLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementoffsetRelativeTo);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementNumberOfTimesToClickElement != null)
+            if (jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement != null)
             {
-                jABGlobalLeftMouseClickOnElement["NumberOfTimesToClickElement"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementNumberOfTimesToClickElement);
+                jABGlobalLeftMouseClickOnElement["NumberOfTimesToClickElement"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalLeftMouseClickOnElementSecondsToWaitBetweenClicks != null)
+            if (jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks != null)
             {
-                jABGlobalLeftMouseClickOnElement["SecondsToWaitBetweenClicks"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementSecondsToWaitBetweenClicks);
+                jABGlobalLeftMouseClickOnElement["SecondsToWaitBetweenClicks"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks);
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             jABGlobalLeftMouseClickOnElementpropCount++;
-            jABGlobalLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementWorkflow);
+            jABGlobalLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementworkflow);
             if (jABGlobalLeftMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalLeftMouseClickOnElement;
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalRightMouseClickOnElement(Expression<Func<int>> jABGlobalRightMouseClickOnElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalRightMouseClickOnElementWorkflow, Expression<Func<string>> jABGlobalRightMouseClickOnElementSearchElementJABName = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementSearchSubTree = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementMatchIndex = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementSearchFilter = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementSortByColumn = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementClickOffsetX = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementClickOffsetY = null, Expression<Func<jABGlobalRightMouseClickOnElementOffsetRelativeToInput>> jABGlobalRightMouseClickOnElementOffsetRelativeTo = null)
+        public IWorkflowAction JABGlobalRightMouseClickOnElement(Expression<Func<int>> jABGlobalRightMouseClickOnElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalRightMouseClickOnElementworkflow, Expression<Func<string>> jABGlobalRightMouseClickOnElementsearchElementJABName = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementsearchSubTree = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementmatchIndex = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementsearchFilter = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementsortByColumn = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalRightMouseClickOnElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalRightMouseClickOnElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementclickOffsetX = null, Expression<Func<int>> jABGlobalRightMouseClickOnElementclickOffsetY = null, Expression<Func<jABGlobalRightMouseClickOnElementoffsetRelativeToInput>> jABGlobalRightMouseClickOnElementoffsetRelativeTo = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalRightMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1710,117 +1710,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalRightMouseClickOnElement = new JObject();
             var jABGlobalRightMouseClickOnElementpropCount = 0;
             jABGlobalRightMouseClickOnElementpropCount++;
-            jABGlobalRightMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchParentElementJABHandle);
-            if (jABGlobalRightMouseClickOnElementSearchElementJABName != null)
+            jABGlobalRightMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchParentElementJABHandle);
+            if (jABGlobalRightMouseClickOnElementsearchElementJABName != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchElementJABName);
+                jABGlobalRightMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchElementJABName);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementSearchElementJABDescription != null)
+            if (jABGlobalRightMouseClickOnElementsearchElementJABDescription != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchElementJABDescription);
+                jABGlobalRightMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchElementJABDescription);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementSearchElementJABRole != null)
+            if (jABGlobalRightMouseClickOnElementsearchElementJABRole != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchElementJABRole);
+                jABGlobalRightMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchElementJABRole);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementSearchSubTree != null)
+            if (jABGlobalRightMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchSubTree);
+                jABGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchSubTree);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementMaxRelativeDepth != null)
+            if (jABGlobalRightMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalRightMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementMaxRelativeDepth);
+                jABGlobalRightMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaxRelativeDepth);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementMatchIndex != null)
+            if (jABGlobalRightMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementMatchIndex);
+                jABGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndex);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementSearchFilter != null)
+            if (jABGlobalRightMouseClickOnElementsearchFilter != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSearchFilter);
+                jABGlobalRightMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchFilter);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementSortByColumn != null)
+            if (jABGlobalRightMouseClickOnElementsortByColumn != null)
             {
-                jABGlobalRightMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementSortByColumn);
+                jABGlobalRightMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsortByColumn);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementMatchIndexAscending != null)
+            if (jABGlobalRightMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementMatchIndexAscending);
+                jABGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndexAscending);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementCaseSensitiveSearch != null)
+            if (jABGlobalRightMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalRightMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementCaseSensitiveSearch);
+                jABGlobalRightMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementcaseSensitiveSearch);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementOnlySearchVisibleElements != null)
+            if (jABGlobalRightMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalRightMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementOnlySearchVisibleElements);
+                jABGlobalRightMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchVisibleElements);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementOnlySearchShowingElements != null)
+            if (jABGlobalRightMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalRightMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementOnlySearchShowingElements);
+                jABGlobalRightMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchShowingElements);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementElementRolesNotToTraverse != null)
+            if (jABGlobalRightMouseClickOnElementelementRolesNotToTraverse != null)
             {
-                jABGlobalRightMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementElementRolesNotToTraverse);
+                jABGlobalRightMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementelementRolesNotToTraverse);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementMaximumElementsToSearch != null)
+            if (jABGlobalRightMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalRightMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementMaximumElementsToSearch);
+                jABGlobalRightMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumElementsToSearch);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalRightMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementMaximumChildElementsToSearchPerNode);
+                jABGlobalRightMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementClickOffsetX != null)
+            if (jABGlobalRightMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementClickOffsetX);
+                jABGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetX);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementClickOffsetY != null)
+            if (jABGlobalRightMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementClickOffsetY);
+                jABGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetY);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalRightMouseClickOnElementOffsetRelativeTo != null)
+            if (jABGlobalRightMouseClickOnElementoffsetRelativeTo != null)
             {
-                jABGlobalRightMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementOffsetRelativeTo);
+                jABGlobalRightMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementoffsetRelativeTo);
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             jABGlobalRightMouseClickOnElementpropCount++;
-            jABGlobalRightMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementWorkflow);
+            jABGlobalRightMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementworkflow);
             if (jABGlobalRightMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalRightMouseClickOnElement;
@@ -1830,7 +1830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalMiddleMouseClickOnElement(Expression<Func<int>> jABGlobalMiddleMouseClickOnElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementWorkflow, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementSearchElementJABName = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementSearchSubTree = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementMatchIndex = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementSearchFilter = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementSortByColumn = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementClickOffsetX = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementClickOffsetY = null, Expression<Func<jABGlobalMiddleMouseClickOnElementOffsetRelativeToInput>> jABGlobalMiddleMouseClickOnElementOffsetRelativeTo = null)
+        public IWorkflowAction JABGlobalMiddleMouseClickOnElement(Expression<Func<int>> jABGlobalMiddleMouseClickOnElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementworkflow, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementsearchElementJABName = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementsearchSubTree = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementmatchIndex = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementsearchFilter = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementsortByColumn = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalMiddleMouseClickOnElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementclickOffsetX = null, Expression<Func<int>> jABGlobalMiddleMouseClickOnElementclickOffsetY = null, Expression<Func<jABGlobalMiddleMouseClickOnElementoffsetRelativeToInput>> jABGlobalMiddleMouseClickOnElementoffsetRelativeTo = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalMiddleMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1838,117 +1838,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalMiddleMouseClickOnElement = new JObject();
             var jABGlobalMiddleMouseClickOnElementpropCount = 0;
             jABGlobalMiddleMouseClickOnElementpropCount++;
-            jABGlobalMiddleMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchParentElementJABHandle);
-            if (jABGlobalMiddleMouseClickOnElementSearchElementJABName != null)
+            jABGlobalMiddleMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchParentElementJABHandle);
+            if (jABGlobalMiddleMouseClickOnElementsearchElementJABName != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchElementJABName);
+                jABGlobalMiddleMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchElementJABName);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementSearchElementJABDescription != null)
+            if (jABGlobalMiddleMouseClickOnElementsearchElementJABDescription != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchElementJABDescription);
+                jABGlobalMiddleMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchElementJABDescription);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementSearchElementJABRole != null)
+            if (jABGlobalMiddleMouseClickOnElementsearchElementJABRole != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchElementJABRole);
+                jABGlobalMiddleMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchElementJABRole);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementSearchSubTree != null)
+            if (jABGlobalMiddleMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchSubTree);
+                jABGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchSubTree);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementMaxRelativeDepth != null)
+            if (jABGlobalMiddleMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementMaxRelativeDepth);
+                jABGlobalMiddleMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaxRelativeDepth);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementMatchIndex != null)
+            if (jABGlobalMiddleMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementMatchIndex);
+                jABGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndex);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementSearchFilter != null)
+            if (jABGlobalMiddleMouseClickOnElementsearchFilter != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSearchFilter);
+                jABGlobalMiddleMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchFilter);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementSortByColumn != null)
+            if (jABGlobalMiddleMouseClickOnElementsortByColumn != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementSortByColumn);
+                jABGlobalMiddleMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsortByColumn);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementMatchIndexAscending != null)
+            if (jABGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementMatchIndexAscending);
+                jABGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndexAscending);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementCaseSensitiveSearch != null)
+            if (jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalMiddleMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementCaseSensitiveSearch);
+                jABGlobalMiddleMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementOnlySearchVisibleElements != null)
+            if (jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalMiddleMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementOnlySearchVisibleElements);
+                jABGlobalMiddleMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementOnlySearchShowingElements != null)
+            if (jABGlobalMiddleMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalMiddleMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementOnlySearchShowingElements);
+                jABGlobalMiddleMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchShowingElements);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementElementRolesNotToTraverse != null)
+            if (jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse != null)
             {
-                jABGlobalMiddleMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementElementRolesNotToTraverse);
+                jABGlobalMiddleMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementelementRolesNotToTraverse);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementMaximumElementsToSearch != null)
+            if (jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementMaximumElementsToSearch);
+                jABGlobalMiddleMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementMaximumChildElementsToSearchPerNode);
+                jABGlobalMiddleMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementClickOffsetX != null)
+            if (jABGlobalMiddleMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementClickOffsetX);
+                jABGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetX);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementClickOffsetY != null)
+            if (jABGlobalMiddleMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementClickOffsetY);
+                jABGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetY);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalMiddleMouseClickOnElementOffsetRelativeTo != null)
+            if (jABGlobalMiddleMouseClickOnElementoffsetRelativeTo != null)
             {
-                jABGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementOffsetRelativeTo);
+                jABGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementoffsetRelativeTo);
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             jABGlobalMiddleMouseClickOnElementpropCount++;
-            jABGlobalMiddleMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementWorkflow);
+            jABGlobalMiddleMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementworkflow);
             if (jABGlobalMiddleMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalMiddleMouseClickOnElement;
@@ -1958,7 +1958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalDoubleLeftMouseClickOnElement(Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementWorkflow, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementSearchElementJABName = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementSearchSubTree = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementMatchIndex = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementSearchFilter = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementSortByColumn = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementClickOffsetX = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementClickOffsetY = null, Expression<Func<jABGlobalDoubleLeftMouseClickOnElementOffsetRelativeToInput>> jABGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds = null)
+        public IWorkflowAction JABGlobalDoubleLeftMouseClickOnElement(Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementworkflow, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementsearchSubTree = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementmatchIndex = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementsearchFilter = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementsortByColumn = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementclickOffsetX = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementclickOffsetY = null, Expression<Func<jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput>> jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalDoubleLeftMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1966,123 +1966,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalDoubleLeftMouseClickOnElement = new JObject();
             var jABGlobalDoubleLeftMouseClickOnElementpropCount = 0;
             jABGlobalDoubleLeftMouseClickOnElementpropCount++;
-            jABGlobalDoubleLeftMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchParentElementJABHandle);
-            if (jABGlobalDoubleLeftMouseClickOnElementSearchElementJABName != null)
+            jABGlobalDoubleLeftMouseClickOnElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchParentElementJABHandle);
+            if (jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchElementJABName);
+                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABName);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementSearchElementJABDescription != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchElementJABDescription);
+                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABDescription);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementSearchElementJABRole != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchElementJABRole);
+                jABGlobalDoubleLeftMouseClickOnElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchElementJABRole);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementSearchSubTree != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchSubTree);
+                jABGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchSubTree);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementMaxRelativeDepth != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementMaxRelativeDepth);
+                jABGlobalDoubleLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementMatchIndex != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementMatchIndex);
+                jABGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndex);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementSearchFilter != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementsearchFilter != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSearchFilter);
+                jABGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchFilter);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementSortByColumn != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementsortByColumn != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementSortByColumn);
+                jABGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsortByColumn);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementMatchIndexAscending != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementMatchIndexAscending);
+                jABGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementCaseSensitiveSearch != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementCaseSensitiveSearch);
+                jABGlobalDoubleLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementOnlySearchVisibleElements != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementOnlySearchVisibleElements);
+                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementOnlySearchShowingElements != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementOnlySearchShowingElements);
+                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementElementRolesNotToTraverse != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementElementRolesNotToTraverse);
+                jABGlobalDoubleLeftMouseClickOnElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementelementRolesNotToTraverse);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementMaximumElementsToSearch != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementMaximumElementsToSearch);
+                jABGlobalDoubleLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementMaximumChildElementsToSearchPerNode);
+                jABGlobalDoubleLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementClickOffsetX != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementClickOffsetX);
+                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetX);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementClickOffsetY != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementClickOffsetY);
+                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetY);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo);
+                jABGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (jABGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds != null)
+            if (jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds);
+                jABGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             jABGlobalDoubleLeftMouseClickOnElementpropCount++;
-            jABGlobalDoubleLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementWorkflow);
+            jABGlobalDoubleLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementworkflow);
             if (jABGlobalDoubleLeftMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalDoubleLeftMouseClickOnElement;
@@ -2092,7 +2092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetActionsForElementResponse> JABGetActionsForElement(Expression<Func<int>> jABGetActionsForElementSearchParentElementJABHandle, Expression<Func<string>> jABGetActionsForElementWorkflow, Expression<Func<string>> jABGetActionsForElementSearchElementJABName = null, Expression<Func<string>> jABGetActionsForElementSearchElementJABDescription = null, Expression<Func<string>> jABGetActionsForElementSearchElementJABRole = null, Expression<Func<bool>> jABGetActionsForElementSearchSubTree = null, Expression<Func<int>> jABGetActionsForElementMaxRelativeDepth = null, Expression<Func<int>> jABGetActionsForElementMatchIndex = null, Expression<Func<string>> jABGetActionsForElementSearchFilter = null, Expression<Func<string>> jABGetActionsForElementSortByColumn = null, Expression<Func<bool>> jABGetActionsForElementMatchIndexAscending = null, Expression<Func<bool>> jABGetActionsForElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGetActionsForElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetActionsForElementOnlySearchShowingElements = null, Expression<Func<string>> jABGetActionsForElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGetActionsForElementMaximumElementsToSearch = null, Expression<Func<int>> jABGetActionsForElementMaximumChildElementsToSearchPerNode = null)
+        public IBodyWorkflowAction<JABGetActionsForElementResponse> JABGetActionsForElement(Expression<Func<int>> jABGetActionsForElementsearchParentElementJABHandle, Expression<Func<string>> jABGetActionsForElementworkflow, Expression<Func<string>> jABGetActionsForElementsearchElementJABName = null, Expression<Func<string>> jABGetActionsForElementsearchElementJABDescription = null, Expression<Func<string>> jABGetActionsForElementsearchElementJABRole = null, Expression<Func<bool>> jABGetActionsForElementsearchSubTree = null, Expression<Func<int>> jABGetActionsForElementmaxRelativeDepth = null, Expression<Func<int>> jABGetActionsForElementmatchIndex = null, Expression<Func<string>> jABGetActionsForElementsearchFilter = null, Expression<Func<string>> jABGetActionsForElementsortByColumn = null, Expression<Func<bool>> jABGetActionsForElementmatchIndexAscending = null, Expression<Func<bool>> jABGetActionsForElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGetActionsForElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGetActionsForElementonlySearchShowingElements = null, Expression<Func<string>> jABGetActionsForElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGetActionsForElementmaximumElementsToSearch = null, Expression<Func<int>> jABGetActionsForElementmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetActionsForElement";
             var apiCallHttpMethod = "post";
@@ -2100,99 +2100,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetActionsForElement = new JObject();
             var jABGetActionsForElementpropCount = 0;
             jABGetActionsForElementpropCount++;
-            jABGetActionsForElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchParentElementJABHandle);
-            if (jABGetActionsForElementSearchElementJABName != null)
+            jABGetActionsForElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchParentElementJABHandle);
+            if (jABGetActionsForElementsearchElementJABName != null)
             {
-                jABGetActionsForElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchElementJABName);
+                jABGetActionsForElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchElementJABName);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementSearchElementJABDescription != null)
+            if (jABGetActionsForElementsearchElementJABDescription != null)
             {
-                jABGetActionsForElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchElementJABDescription);
+                jABGetActionsForElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchElementJABDescription);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementSearchElementJABRole != null)
+            if (jABGetActionsForElementsearchElementJABRole != null)
             {
-                jABGetActionsForElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchElementJABRole);
+                jABGetActionsForElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchElementJABRole);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementSearchSubTree != null)
+            if (jABGetActionsForElementsearchSubTree != null)
             {
-                jABGetActionsForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchSubTree);
+                jABGetActionsForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchSubTree);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementMaxRelativeDepth != null)
+            if (jABGetActionsForElementmaxRelativeDepth != null)
             {
-                jABGetActionsForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetActionsForElementMaxRelativeDepth);
+                jABGetActionsForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaxRelativeDepth);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementMatchIndex != null)
+            if (jABGetActionsForElementmatchIndex != null)
             {
-                jABGetActionsForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGetActionsForElementMatchIndex);
+                jABGetActionsForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndex);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementSearchFilter != null)
+            if (jABGetActionsForElementsearchFilter != null)
             {
-                jABGetActionsForElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGetActionsForElementSearchFilter);
+                jABGetActionsForElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchFilter);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementSortByColumn != null)
+            if (jABGetActionsForElementsortByColumn != null)
             {
-                jABGetActionsForElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGetActionsForElementSortByColumn);
+                jABGetActionsForElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGetActionsForElementsortByColumn);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementMatchIndexAscending != null)
+            if (jABGetActionsForElementmatchIndexAscending != null)
             {
-                jABGetActionsForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetActionsForElementMatchIndexAscending);
+                jABGetActionsForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndexAscending);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementCaseSensitiveSearch != null)
+            if (jABGetActionsForElementcaseSensitiveSearch != null)
             {
-                jABGetActionsForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementCaseSensitiveSearch);
+                jABGetActionsForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementcaseSensitiveSearch);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementOnlySearchVisibleElements != null)
+            if (jABGetActionsForElementonlySearchVisibleElements != null)
             {
-                jABGetActionsForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementOnlySearchVisibleElements);
+                jABGetActionsForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchVisibleElements);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementOnlySearchShowingElements != null)
+            if (jABGetActionsForElementonlySearchShowingElements != null)
             {
-                jABGetActionsForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementOnlySearchShowingElements);
+                jABGetActionsForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchShowingElements);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementElementRolesNotToTraverse != null)
+            if (jABGetActionsForElementelementRolesNotToTraverse != null)
             {
-                jABGetActionsForElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetActionsForElementElementRolesNotToTraverse);
+                jABGetActionsForElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetActionsForElementelementRolesNotToTraverse);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementMaximumElementsToSearch != null)
+            if (jABGetActionsForElementmaximumElementsToSearch != null)
             {
-                jABGetActionsForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementMaximumElementsToSearch);
+                jABGetActionsForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumElementsToSearch);
                 jABGetActionsForElementpropCount++;
             }
 
-            if (jABGetActionsForElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGetActionsForElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetActionsForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetActionsForElementMaximumChildElementsToSearchPerNode);
+                jABGetActionsForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumChildElementsToSearchPerNode);
                 jABGetActionsForElementpropCount++;
             }
 
             jABGetActionsForElementpropCount++;
-            jABGetActionsForElement["Workflow"] = ExpressionConverter.ConvertO(jABGetActionsForElementWorkflow);
+            jABGetActionsForElement["Workflow"] = ExpressionConverter.ConvertO(jABGetActionsForElementworkflow);
             if (jABGetActionsForElementpropCount > 0)
             {
                 callPayload.Body = jABGetActionsForElement;
@@ -2202,7 +2202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABFocusElement(Expression<Func<int>> jABFocusElementSearchParentElementJABHandle, Expression<Func<string>> jABFocusElementWorkflow, Expression<Func<string>> jABFocusElementSearchElementJABName = null, Expression<Func<string>> jABFocusElementSearchElementJABDescription = null, Expression<Func<string>> jABFocusElementSearchElementJABRole = null, Expression<Func<bool>> jABFocusElementSearchSubTree = null, Expression<Func<int>> jABFocusElementMaxRelativeDepth = null, Expression<Func<int>> jABFocusElementMatchIndex = null, Expression<Func<string>> jABFocusElementSearchFilter = null, Expression<Func<string>> jABFocusElementSortByColumn = null, Expression<Func<bool>> jABFocusElementMatchIndexAscending = null, Expression<Func<bool>> jABFocusElementCaseSensitiveSearch = null, Expression<Func<bool>> jABFocusElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABFocusElementOnlySearchShowingElements = null, Expression<Func<string>> jABFocusElementElementRolesNotToTraverse = null, Expression<Func<int>> jABFocusElementMaximumElementsToSearch = null, Expression<Func<int>> jABFocusElementMaximumChildElementsToSearchPerNode = null)
+        public IWorkflowAction JABFocusElement(Expression<Func<int>> jABFocusElementsearchParentElementJABHandle, Expression<Func<string>> jABFocusElementworkflow, Expression<Func<string>> jABFocusElementsearchElementJABName = null, Expression<Func<string>> jABFocusElementsearchElementJABDescription = null, Expression<Func<string>> jABFocusElementsearchElementJABRole = null, Expression<Func<bool>> jABFocusElementsearchSubTree = null, Expression<Func<int>> jABFocusElementmaxRelativeDepth = null, Expression<Func<int>> jABFocusElementmatchIndex = null, Expression<Func<string>> jABFocusElementsearchFilter = null, Expression<Func<string>> jABFocusElementsortByColumn = null, Expression<Func<bool>> jABFocusElementmatchIndexAscending = null, Expression<Func<bool>> jABFocusElementcaseSensitiveSearch = null, Expression<Func<bool>> jABFocusElementonlySearchVisibleElements = null, Expression<Func<bool>> jABFocusElementonlySearchShowingElements = null, Expression<Func<string>> jABFocusElementelementRolesNotToTraverse = null, Expression<Func<int>> jABFocusElementmaximumElementsToSearch = null, Expression<Func<int>> jABFocusElementmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABFocusElement";
             var apiCallHttpMethod = "post";
@@ -2210,99 +2210,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABFocusElement = new JObject();
             var jABFocusElementpropCount = 0;
             jABFocusElementpropCount++;
-            jABFocusElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABFocusElementSearchParentElementJABHandle);
-            if (jABFocusElementSearchElementJABName != null)
+            jABFocusElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABFocusElementsearchParentElementJABHandle);
+            if (jABFocusElementsearchElementJABName != null)
             {
-                jABFocusElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABFocusElementSearchElementJABName);
+                jABFocusElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABFocusElementsearchElementJABName);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementSearchElementJABDescription != null)
+            if (jABFocusElementsearchElementJABDescription != null)
             {
-                jABFocusElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABFocusElementSearchElementJABDescription);
+                jABFocusElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABFocusElementsearchElementJABDescription);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementSearchElementJABRole != null)
+            if (jABFocusElementsearchElementJABRole != null)
             {
-                jABFocusElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABFocusElementSearchElementJABRole);
+                jABFocusElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABFocusElementsearchElementJABRole);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementSearchSubTree != null)
+            if (jABFocusElementsearchSubTree != null)
             {
-                jABFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABFocusElementSearchSubTree);
+                jABFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABFocusElementsearchSubTree);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementMaxRelativeDepth != null)
+            if (jABFocusElementmaxRelativeDepth != null)
             {
-                jABFocusElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABFocusElementMaxRelativeDepth);
+                jABFocusElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABFocusElementmaxRelativeDepth);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementMatchIndex != null)
+            if (jABFocusElementmatchIndex != null)
             {
-                jABFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(jABFocusElementMatchIndex);
+                jABFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndex);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementSearchFilter != null)
+            if (jABFocusElementsearchFilter != null)
             {
-                jABFocusElement["SearchFilter"] = ExpressionConverter.ConvertO(jABFocusElementSearchFilter);
+                jABFocusElement["SearchFilter"] = ExpressionConverter.ConvertO(jABFocusElementsearchFilter);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementSortByColumn != null)
+            if (jABFocusElementsortByColumn != null)
             {
-                jABFocusElement["SortByColumn"] = ExpressionConverter.ConvertO(jABFocusElementSortByColumn);
+                jABFocusElement["SortByColumn"] = ExpressionConverter.ConvertO(jABFocusElementsortByColumn);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementMatchIndexAscending != null)
+            if (jABFocusElementmatchIndexAscending != null)
             {
-                jABFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABFocusElementMatchIndexAscending);
+                jABFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndexAscending);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementCaseSensitiveSearch != null)
+            if (jABFocusElementcaseSensitiveSearch != null)
             {
-                jABFocusElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABFocusElementCaseSensitiveSearch);
+                jABFocusElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABFocusElementcaseSensitiveSearch);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementOnlySearchVisibleElements != null)
+            if (jABFocusElementonlySearchVisibleElements != null)
             {
-                jABFocusElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABFocusElementOnlySearchVisibleElements);
+                jABFocusElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchVisibleElements);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementOnlySearchShowingElements != null)
+            if (jABFocusElementonlySearchShowingElements != null)
             {
-                jABFocusElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABFocusElementOnlySearchShowingElements);
+                jABFocusElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchShowingElements);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementElementRolesNotToTraverse != null)
+            if (jABFocusElementelementRolesNotToTraverse != null)
             {
-                jABFocusElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABFocusElementElementRolesNotToTraverse);
+                jABFocusElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABFocusElementelementRolesNotToTraverse);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementMaximumElementsToSearch != null)
+            if (jABFocusElementmaximumElementsToSearch != null)
             {
-                jABFocusElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABFocusElementMaximumElementsToSearch);
+                jABFocusElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABFocusElementmaximumElementsToSearch);
                 jABFocusElementpropCount++;
             }
 
-            if (jABFocusElementMaximumChildElementsToSearchPerNode != null)
+            if (jABFocusElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABFocusElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABFocusElementMaximumChildElementsToSearchPerNode);
+                jABFocusElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABFocusElementmaximumChildElementsToSearchPerNode);
                 jABFocusElementpropCount++;
             }
 
             jABFocusElementpropCount++;
-            jABFocusElement["Workflow"] = ExpressionConverter.ConvertO(jABFocusElementWorkflow);
+            jABFocusElement["Workflow"] = ExpressionConverter.ConvertO(jABFocusElementworkflow);
             if (jABFocusElementpropCount > 0)
             {
                 callPayload.Body = jABFocusElement;
@@ -2312,7 +2312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABInputPasswordIntoElement(Expression<Func<int>> jABInputPasswordIntoElementSearchParentElementJABHandle, Expression<Func<string>> jABInputPasswordIntoElementPasswordToInput, Expression<Func<string>> jABInputPasswordIntoElementWorkflow, Expression<Func<string>> jABInputPasswordIntoElementSearchElementJABName = null, Expression<Func<string>> jABInputPasswordIntoElementSearchElementJABDescription = null, Expression<Func<string>> jABInputPasswordIntoElementSearchElementJABRole = null, Expression<Func<bool>> jABInputPasswordIntoElementSearchSubTree = null, Expression<Func<int>> jABInputPasswordIntoElementMaxRelativeDepth = null, Expression<Func<int>> jABInputPasswordIntoElementMatchIndex = null, Expression<Func<string>> jABInputPasswordIntoElementSearchFilter = null, Expression<Func<string>> jABInputPasswordIntoElementSortByColumn = null, Expression<Func<bool>> jABInputPasswordIntoElementMatchIndexAscending = null, Expression<Func<bool>> jABInputPasswordIntoElementCaseSensitiveSearch = null, Expression<Func<bool>> jABInputPasswordIntoElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABInputPasswordIntoElementOnlySearchShowingElements = null, Expression<Func<string>> jABInputPasswordIntoElementElementRolesNotToTraverse = null, Expression<Func<int>> jABInputPasswordIntoElementMaximumElementsToSearch = null, Expression<Func<int>> jABInputPasswordIntoElementMaximumChildElementsToSearchPerNode = null)
+        public IWorkflowAction JABInputPasswordIntoElement(Expression<Func<int>> jABInputPasswordIntoElementsearchParentElementJABHandle, Expression<Func<string>> jABInputPasswordIntoElementpasswordToInput, Expression<Func<string>> jABInputPasswordIntoElementworkflow, Expression<Func<string>> jABInputPasswordIntoElementsearchElementJABName = null, Expression<Func<string>> jABInputPasswordIntoElementsearchElementJABDescription = null, Expression<Func<string>> jABInputPasswordIntoElementsearchElementJABRole = null, Expression<Func<bool>> jABInputPasswordIntoElementsearchSubTree = null, Expression<Func<int>> jABInputPasswordIntoElementmaxRelativeDepth = null, Expression<Func<int>> jABInputPasswordIntoElementmatchIndex = null, Expression<Func<string>> jABInputPasswordIntoElementsearchFilter = null, Expression<Func<string>> jABInputPasswordIntoElementsortByColumn = null, Expression<Func<bool>> jABInputPasswordIntoElementmatchIndexAscending = null, Expression<Func<bool>> jABInputPasswordIntoElementcaseSensitiveSearch = null, Expression<Func<bool>> jABInputPasswordIntoElementonlySearchVisibleElements = null, Expression<Func<bool>> jABInputPasswordIntoElementonlySearchShowingElements = null, Expression<Func<string>> jABInputPasswordIntoElementelementRolesNotToTraverse = null, Expression<Func<int>> jABInputPasswordIntoElementmaximumElementsToSearch = null, Expression<Func<int>> jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABInputPasswordIntoElement";
             var apiCallHttpMethod = "post";
@@ -2320,101 +2320,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABInputPasswordIntoElement = new JObject();
             var jABInputPasswordIntoElementpropCount = 0;
             jABInputPasswordIntoElementpropCount++;
-            jABInputPasswordIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchParentElementJABHandle);
-            if (jABInputPasswordIntoElementSearchElementJABName != null)
+            jABInputPasswordIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchParentElementJABHandle);
+            if (jABInputPasswordIntoElementsearchElementJABName != null)
             {
-                jABInputPasswordIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchElementJABName);
+                jABInputPasswordIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchElementJABName);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementSearchElementJABDescription != null)
+            if (jABInputPasswordIntoElementsearchElementJABDescription != null)
             {
-                jABInputPasswordIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchElementJABDescription);
+                jABInputPasswordIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchElementJABDescription);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementSearchElementJABRole != null)
+            if (jABInputPasswordIntoElementsearchElementJABRole != null)
             {
-                jABInputPasswordIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchElementJABRole);
+                jABInputPasswordIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchElementJABRole);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementSearchSubTree != null)
+            if (jABInputPasswordIntoElementsearchSubTree != null)
             {
-                jABInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchSubTree);
+                jABInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchSubTree);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementMaxRelativeDepth != null)
+            if (jABInputPasswordIntoElementmaxRelativeDepth != null)
             {
-                jABInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementMaxRelativeDepth);
+                jABInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaxRelativeDepth);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementMatchIndex != null)
+            if (jABInputPasswordIntoElementmatchIndex != null)
             {
-                jABInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementMatchIndex);
+                jABInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndex);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementSearchFilter != null)
+            if (jABInputPasswordIntoElementsearchFilter != null)
             {
-                jABInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSearchFilter);
+                jABInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchFilter);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementSortByColumn != null)
+            if (jABInputPasswordIntoElementsortByColumn != null)
             {
-                jABInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementSortByColumn);
+                jABInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsortByColumn);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementMatchIndexAscending != null)
+            if (jABInputPasswordIntoElementmatchIndexAscending != null)
             {
-                jABInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementMatchIndexAscending);
+                jABInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndexAscending);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementCaseSensitiveSearch != null)
+            if (jABInputPasswordIntoElementcaseSensitiveSearch != null)
             {
-                jABInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementCaseSensitiveSearch);
+                jABInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementcaseSensitiveSearch);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementOnlySearchVisibleElements != null)
+            if (jABInputPasswordIntoElementonlySearchVisibleElements != null)
             {
-                jABInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementOnlySearchVisibleElements);
+                jABInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchVisibleElements);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementOnlySearchShowingElements != null)
+            if (jABInputPasswordIntoElementonlySearchShowingElements != null)
             {
-                jABInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementOnlySearchShowingElements);
+                jABInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchShowingElements);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementElementRolesNotToTraverse != null)
+            if (jABInputPasswordIntoElementelementRolesNotToTraverse != null)
             {
-                jABInputPasswordIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementElementRolesNotToTraverse);
+                jABInputPasswordIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementelementRolesNotToTraverse);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementMaximumElementsToSearch != null)
+            if (jABInputPasswordIntoElementmaximumElementsToSearch != null)
             {
-                jABInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementMaximumElementsToSearch);
+                jABInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumElementsToSearch);
                 jABInputPasswordIntoElementpropCount++;
             }
 
-            if (jABInputPasswordIntoElementMaximumChildElementsToSearchPerNode != null)
+            if (jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementMaximumChildElementsToSearchPerNode);
+                jABInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
                 jABInputPasswordIntoElementpropCount++;
             }
 
             jABInputPasswordIntoElementpropCount++;
-            jABInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementPasswordToInput);
+            jABInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementpasswordToInput);
             jABInputPasswordIntoElementpropCount++;
-            jABInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementWorkflow);
+            jABInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementworkflow);
             if (jABInputPasswordIntoElementpropCount > 0)
             {
                 callPayload.Body = jABInputPasswordIntoElement;
@@ -2424,7 +2424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABInputTextIntoElement(Expression<Func<int>> jABInputTextIntoElementSearchParentElementJABHandle, Expression<Func<string>> jABInputTextIntoElementWorkflow, Expression<Func<string>> jABInputTextIntoElementSearchElementJABName = null, Expression<Func<string>> jABInputTextIntoElementSearchElementJABDescription = null, Expression<Func<string>> jABInputTextIntoElementSearchElementJABRole = null, Expression<Func<bool>> jABInputTextIntoElementSearchSubTree = null, Expression<Func<int>> jABInputTextIntoElementMaxRelativeDepth = null, Expression<Func<int>> jABInputTextIntoElementMatchIndex = null, Expression<Func<string>> jABInputTextIntoElementSearchFilter = null, Expression<Func<string>> jABInputTextIntoElementSortByColumn = null, Expression<Func<bool>> jABInputTextIntoElementMatchIndexAscending = null, Expression<Func<bool>> jABInputTextIntoElementCaseSensitiveSearch = null, Expression<Func<bool>> jABInputTextIntoElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABInputTextIntoElementOnlySearchShowingElements = null, Expression<Func<string>> jABInputTextIntoElementElementRolesNotToTraverse = null, Expression<Func<int>> jABInputTextIntoElementMaximumElementsToSearch = null, Expression<Func<int>> jABInputTextIntoElementMaximumChildElementsToSearchPerNode = null, Expression<Func<string>> jABInputTextIntoElementTextToInput = null, Expression<Func<bool>> jABInputTextIntoElementReplaceExistingValue = null, Expression<Func<int>> jABInputTextIntoElementInsertPosition = null)
+        public IWorkflowAction JABInputTextIntoElement(Expression<Func<int>> jABInputTextIntoElementsearchParentElementJABHandle, Expression<Func<string>> jABInputTextIntoElementworkflow, Expression<Func<string>> jABInputTextIntoElementsearchElementJABName = null, Expression<Func<string>> jABInputTextIntoElementsearchElementJABDescription = null, Expression<Func<string>> jABInputTextIntoElementsearchElementJABRole = null, Expression<Func<bool>> jABInputTextIntoElementsearchSubTree = null, Expression<Func<int>> jABInputTextIntoElementmaxRelativeDepth = null, Expression<Func<int>> jABInputTextIntoElementmatchIndex = null, Expression<Func<string>> jABInputTextIntoElementsearchFilter = null, Expression<Func<string>> jABInputTextIntoElementsortByColumn = null, Expression<Func<bool>> jABInputTextIntoElementmatchIndexAscending = null, Expression<Func<bool>> jABInputTextIntoElementcaseSensitiveSearch = null, Expression<Func<bool>> jABInputTextIntoElementonlySearchVisibleElements = null, Expression<Func<bool>> jABInputTextIntoElementonlySearchShowingElements = null, Expression<Func<string>> jABInputTextIntoElementelementRolesNotToTraverse = null, Expression<Func<int>> jABInputTextIntoElementmaximumElementsToSearch = null, Expression<Func<int>> jABInputTextIntoElementmaximumChildElementsToSearchPerNode = null, Expression<Func<string>> jABInputTextIntoElementtextToInput = null, Expression<Func<bool>> jABInputTextIntoElementreplaceExistingValue = null, Expression<Func<int>> jABInputTextIntoElementinsertPosition = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABInputTextIntoElement";
             var apiCallHttpMethod = "post";
@@ -2432,117 +2432,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABInputTextIntoElement = new JObject();
             var jABInputTextIntoElementpropCount = 0;
             jABInputTextIntoElementpropCount++;
-            jABInputTextIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchParentElementJABHandle);
-            if (jABInputTextIntoElementSearchElementJABName != null)
+            jABInputTextIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchParentElementJABHandle);
+            if (jABInputTextIntoElementsearchElementJABName != null)
             {
-                jABInputTextIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchElementJABName);
+                jABInputTextIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchElementJABName);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementSearchElementJABDescription != null)
+            if (jABInputTextIntoElementsearchElementJABDescription != null)
             {
-                jABInputTextIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchElementJABDescription);
+                jABInputTextIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchElementJABDescription);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementSearchElementJABRole != null)
+            if (jABInputTextIntoElementsearchElementJABRole != null)
             {
-                jABInputTextIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchElementJABRole);
+                jABInputTextIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchElementJABRole);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementSearchSubTree != null)
+            if (jABInputTextIntoElementsearchSubTree != null)
             {
-                jABInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchSubTree);
+                jABInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchSubTree);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementMaxRelativeDepth != null)
+            if (jABInputTextIntoElementmaxRelativeDepth != null)
             {
-                jABInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputTextIntoElementMaxRelativeDepth);
+                jABInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaxRelativeDepth);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementMatchIndex != null)
+            if (jABInputTextIntoElementmatchIndex != null)
             {
-                jABInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputTextIntoElementMatchIndex);
+                jABInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndex);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementSearchFilter != null)
+            if (jABInputTextIntoElementsearchFilter != null)
             {
-                jABInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSearchFilter);
+                jABInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchFilter);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementSortByColumn != null)
+            if (jABInputTextIntoElementsortByColumn != null)
             {
-                jABInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABInputTextIntoElementSortByColumn);
+                jABInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsortByColumn);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementMatchIndexAscending != null)
+            if (jABInputTextIntoElementmatchIndexAscending != null)
             {
-                jABInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputTextIntoElementMatchIndexAscending);
+                jABInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndexAscending);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementCaseSensitiveSearch != null)
+            if (jABInputTextIntoElementcaseSensitiveSearch != null)
             {
-                jABInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementCaseSensitiveSearch);
+                jABInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementcaseSensitiveSearch);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementOnlySearchVisibleElements != null)
+            if (jABInputTextIntoElementonlySearchVisibleElements != null)
             {
-                jABInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementOnlySearchVisibleElements);
+                jABInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchVisibleElements);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementOnlySearchShowingElements != null)
+            if (jABInputTextIntoElementonlySearchShowingElements != null)
             {
-                jABInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementOnlySearchShowingElements);
+                jABInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchShowingElements);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementElementRolesNotToTraverse != null)
+            if (jABInputTextIntoElementelementRolesNotToTraverse != null)
             {
-                jABInputTextIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABInputTextIntoElementElementRolesNotToTraverse);
+                jABInputTextIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABInputTextIntoElementelementRolesNotToTraverse);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementMaximumElementsToSearch != null)
+            if (jABInputTextIntoElementmaximumElementsToSearch != null)
             {
-                jABInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementMaximumElementsToSearch);
+                jABInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumElementsToSearch);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementMaximumChildElementsToSearchPerNode != null)
+            if (jABInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputTextIntoElementMaximumChildElementsToSearchPerNode);
+                jABInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumChildElementsToSearchPerNode);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementTextToInput != null)
+            if (jABInputTextIntoElementtextToInput != null)
             {
-                jABInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(jABInputTextIntoElementTextToInput);
+                jABInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(jABInputTextIntoElementtextToInput);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementReplaceExistingValue != null)
+            if (jABInputTextIntoElementreplaceExistingValue != null)
             {
-                jABInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(jABInputTextIntoElementReplaceExistingValue);
+                jABInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(jABInputTextIntoElementreplaceExistingValue);
                 jABInputTextIntoElementpropCount++;
             }
 
-            if (jABInputTextIntoElementInsertPosition != null)
+            if (jABInputTextIntoElementinsertPosition != null)
             {
-                jABInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(jABInputTextIntoElementInsertPosition);
+                jABInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(jABInputTextIntoElementinsertPosition);
                 jABInputTextIntoElementpropCount++;
             }
 
             jABInputTextIntoElementpropCount++;
-            jABInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABInputTextIntoElementWorkflow);
+            jABInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABInputTextIntoElementworkflow);
             if (jABInputTextIntoElementpropCount > 0)
             {
                 callPayload.Body = jABInputTextIntoElement;
@@ -2552,7 +2552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementTextValueResponse> JABGetElementTextValue(Expression<Func<int>> jABGetElementTextValueSearchParentElementJABHandle, Expression<Func<string>> jABGetElementTextValueWorkflow, Expression<Func<string>> jABGetElementTextValueSearchElementJABName = null, Expression<Func<string>> jABGetElementTextValueSearchElementJABDescription = null, Expression<Func<string>> jABGetElementTextValueSearchElementJABRole = null, Expression<Func<bool>> jABGetElementTextValueSearchSubTree = null, Expression<Func<int>> jABGetElementTextValueMaxRelativeDepth = null, Expression<Func<int>> jABGetElementTextValueMatchIndex = null, Expression<Func<string>> jABGetElementTextValueSearchFilter = null, Expression<Func<string>> jABGetElementTextValueSortByColumn = null, Expression<Func<bool>> jABGetElementTextValueMatchIndexAscending = null, Expression<Func<bool>> jABGetElementTextValueCaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementTextValueOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementTextValueOnlySearchShowingElements = null, Expression<Func<string>> jABGetElementTextValueElementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementTextValueMaximumElementsToSearch = null, Expression<Func<int>> jABGetElementTextValueMaximumChildElementsToSearchPerNode = null)
+        public IBodyWorkflowAction<JABGetElementTextValueResponse> JABGetElementTextValue(Expression<Func<int>> jABGetElementTextValuesearchParentElementJABHandle, Expression<Func<string>> jABGetElementTextValueworkflow, Expression<Func<string>> jABGetElementTextValuesearchElementJABName = null, Expression<Func<string>> jABGetElementTextValuesearchElementJABDescription = null, Expression<Func<string>> jABGetElementTextValuesearchElementJABRole = null, Expression<Func<bool>> jABGetElementTextValuesearchSubTree = null, Expression<Func<int>> jABGetElementTextValuemaxRelativeDepth = null, Expression<Func<int>> jABGetElementTextValuematchIndex = null, Expression<Func<string>> jABGetElementTextValuesearchFilter = null, Expression<Func<string>> jABGetElementTextValuesortByColumn = null, Expression<Func<bool>> jABGetElementTextValuematchIndexAscending = null, Expression<Func<bool>> jABGetElementTextValuecaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementTextValueonlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementTextValueonlySearchShowingElements = null, Expression<Func<string>> jABGetElementTextValueelementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementTextValuemaximumElementsToSearch = null, Expression<Func<int>> jABGetElementTextValuemaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetElementTextValue";
             var apiCallHttpMethod = "post";
@@ -2560,99 +2560,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetElementTextValue = new JObject();
             var jABGetElementTextValuepropCount = 0;
             jABGetElementTextValuepropCount++;
-            jABGetElementTextValue["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchParentElementJABHandle);
-            if (jABGetElementTextValueSearchElementJABName != null)
+            jABGetElementTextValue["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchParentElementJABHandle);
+            if (jABGetElementTextValuesearchElementJABName != null)
             {
-                jABGetElementTextValue["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchElementJABName);
+                jABGetElementTextValue["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchElementJABName);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueSearchElementJABDescription != null)
+            if (jABGetElementTextValuesearchElementJABDescription != null)
             {
-                jABGetElementTextValue["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchElementJABDescription);
+                jABGetElementTextValue["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchElementJABDescription);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueSearchElementJABRole != null)
+            if (jABGetElementTextValuesearchElementJABRole != null)
             {
-                jABGetElementTextValue["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchElementJABRole);
+                jABGetElementTextValue["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchElementJABRole);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueSearchSubTree != null)
+            if (jABGetElementTextValuesearchSubTree != null)
             {
-                jABGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchSubTree);
+                jABGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchSubTree);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueMaxRelativeDepth != null)
+            if (jABGetElementTextValuemaxRelativeDepth != null)
             {
-                jABGetElementTextValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementTextValueMaxRelativeDepth);
+                jABGetElementTextValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaxRelativeDepth);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueMatchIndex != null)
+            if (jABGetElementTextValuematchIndex != null)
             {
-                jABGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementTextValueMatchIndex);
+                jABGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndex);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueSearchFilter != null)
+            if (jABGetElementTextValuesearchFilter != null)
             {
-                jABGetElementTextValue["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementTextValueSearchFilter);
+                jABGetElementTextValue["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchFilter);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueSortByColumn != null)
+            if (jABGetElementTextValuesortByColumn != null)
             {
-                jABGetElementTextValue["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementTextValueSortByColumn);
+                jABGetElementTextValue["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementTextValuesortByColumn);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueMatchIndexAscending != null)
+            if (jABGetElementTextValuematchIndexAscending != null)
             {
-                jABGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementTextValueMatchIndexAscending);
+                jABGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndexAscending);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueCaseSensitiveSearch != null)
+            if (jABGetElementTextValuecaseSensitiveSearch != null)
             {
-                jABGetElementTextValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValueCaseSensitiveSearch);
+                jABGetElementTextValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuecaseSensitiveSearch);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueOnlySearchVisibleElements != null)
+            if (jABGetElementTextValueonlySearchVisibleElements != null)
             {
-                jABGetElementTextValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueOnlySearchVisibleElements);
+                jABGetElementTextValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchVisibleElements);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueOnlySearchShowingElements != null)
+            if (jABGetElementTextValueonlySearchShowingElements != null)
             {
-                jABGetElementTextValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueOnlySearchShowingElements);
+                jABGetElementTextValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchShowingElements);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueElementRolesNotToTraverse != null)
+            if (jABGetElementTextValueelementRolesNotToTraverse != null)
             {
-                jABGetElementTextValue["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementTextValueElementRolesNotToTraverse);
+                jABGetElementTextValue["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementTextValueelementRolesNotToTraverse);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueMaximumElementsToSearch != null)
+            if (jABGetElementTextValuemaximumElementsToSearch != null)
             {
-                jABGetElementTextValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValueMaximumElementsToSearch);
+                jABGetElementTextValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumElementsToSearch);
                 jABGetElementTextValuepropCount++;
             }
 
-            if (jABGetElementTextValueMaximumChildElementsToSearchPerNode != null)
+            if (jABGetElementTextValuemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementTextValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementTextValueMaximumChildElementsToSearchPerNode);
+                jABGetElementTextValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumChildElementsToSearchPerNode);
                 jABGetElementTextValuepropCount++;
             }
 
             jABGetElementTextValuepropCount++;
-            jABGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(jABGetElementTextValueWorkflow);
+            jABGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(jABGetElementTextValueworkflow);
             if (jABGetElementTextValuepropCount > 0)
             {
                 callPayload.Body = jABGetElementTextValue;
@@ -2662,7 +2662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementValueResponse> JABGetElementValue(Expression<Func<int>> jABGetElementValueSearchParentElementJABHandle, Expression<Func<string>> jABGetElementValueWorkflow, Expression<Func<string>> jABGetElementValueSearchElementJABName = null, Expression<Func<string>> jABGetElementValueSearchElementJABDescription = null, Expression<Func<string>> jABGetElementValueSearchElementJABRole = null, Expression<Func<bool>> jABGetElementValueSearchSubTree = null, Expression<Func<int>> jABGetElementValueMaxRelativeDepth = null, Expression<Func<int>> jABGetElementValueMatchIndex = null, Expression<Func<string>> jABGetElementValueSearchFilter = null, Expression<Func<string>> jABGetElementValueSortByColumn = null, Expression<Func<bool>> jABGetElementValueMatchIndexAscending = null, Expression<Func<bool>> jABGetElementValueCaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementValueOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementValueOnlySearchShowingElements = null, Expression<Func<string>> jABGetElementValueElementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementValueMaximumElementsToSearch = null, Expression<Func<int>> jABGetElementValueMaximumChildElementsToSearchPerNode = null)
+        public IBodyWorkflowAction<JABGetElementValueResponse> JABGetElementValue(Expression<Func<int>> jABGetElementValuesearchParentElementJABHandle, Expression<Func<string>> jABGetElementValueworkflow, Expression<Func<string>> jABGetElementValuesearchElementJABName = null, Expression<Func<string>> jABGetElementValuesearchElementJABDescription = null, Expression<Func<string>> jABGetElementValuesearchElementJABRole = null, Expression<Func<bool>> jABGetElementValuesearchSubTree = null, Expression<Func<int>> jABGetElementValuemaxRelativeDepth = null, Expression<Func<int>> jABGetElementValuematchIndex = null, Expression<Func<string>> jABGetElementValuesearchFilter = null, Expression<Func<string>> jABGetElementValuesortByColumn = null, Expression<Func<bool>> jABGetElementValuematchIndexAscending = null, Expression<Func<bool>> jABGetElementValuecaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementValueonlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementValueonlySearchShowingElements = null, Expression<Func<string>> jABGetElementValueelementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementValuemaximumElementsToSearch = null, Expression<Func<int>> jABGetElementValuemaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetElementValue";
             var apiCallHttpMethod = "post";
@@ -2670,99 +2670,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetElementValue = new JObject();
             var jABGetElementValuepropCount = 0;
             jABGetElementValuepropCount++;
-            jABGetElementValue["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementValueSearchParentElementJABHandle);
-            if (jABGetElementValueSearchElementJABName != null)
+            jABGetElementValue["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementValuesearchParentElementJABHandle);
+            if (jABGetElementValuesearchElementJABName != null)
             {
-                jABGetElementValue["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementValueSearchElementJABName);
+                jABGetElementValue["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementValuesearchElementJABName);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueSearchElementJABDescription != null)
+            if (jABGetElementValuesearchElementJABDescription != null)
             {
-                jABGetElementValue["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementValueSearchElementJABDescription);
+                jABGetElementValue["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementValuesearchElementJABDescription);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueSearchElementJABRole != null)
+            if (jABGetElementValuesearchElementJABRole != null)
             {
-                jABGetElementValue["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementValueSearchElementJABRole);
+                jABGetElementValue["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementValuesearchElementJABRole);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueSearchSubTree != null)
+            if (jABGetElementValuesearchSubTree != null)
             {
-                jABGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementValueSearchSubTree);
+                jABGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementValuesearchSubTree);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueMaxRelativeDepth != null)
+            if (jABGetElementValuemaxRelativeDepth != null)
             {
-                jABGetElementValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementValueMaxRelativeDepth);
+                jABGetElementValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementValuemaxRelativeDepth);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueMatchIndex != null)
+            if (jABGetElementValuematchIndex != null)
             {
-                jABGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementValueMatchIndex);
+                jABGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndex);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueSearchFilter != null)
+            if (jABGetElementValuesearchFilter != null)
             {
-                jABGetElementValue["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementValueSearchFilter);
+                jABGetElementValue["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementValuesearchFilter);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueSortByColumn != null)
+            if (jABGetElementValuesortByColumn != null)
             {
-                jABGetElementValue["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementValueSortByColumn);
+                jABGetElementValue["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementValuesortByColumn);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueMatchIndexAscending != null)
+            if (jABGetElementValuematchIndexAscending != null)
             {
-                jABGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementValueMatchIndexAscending);
+                jABGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndexAscending);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueCaseSensitiveSearch != null)
+            if (jABGetElementValuecaseSensitiveSearch != null)
             {
-                jABGetElementValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementValueCaseSensitiveSearch);
+                jABGetElementValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementValuecaseSensitiveSearch);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueOnlySearchVisibleElements != null)
+            if (jABGetElementValueonlySearchVisibleElements != null)
             {
-                jABGetElementValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementValueOnlySearchVisibleElements);
+                jABGetElementValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchVisibleElements);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueOnlySearchShowingElements != null)
+            if (jABGetElementValueonlySearchShowingElements != null)
             {
-                jABGetElementValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementValueOnlySearchShowingElements);
+                jABGetElementValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchShowingElements);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueElementRolesNotToTraverse != null)
+            if (jABGetElementValueelementRolesNotToTraverse != null)
             {
-                jABGetElementValue["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementValueElementRolesNotToTraverse);
+                jABGetElementValue["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementValueelementRolesNotToTraverse);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueMaximumElementsToSearch != null)
+            if (jABGetElementValuemaximumElementsToSearch != null)
             {
-                jABGetElementValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementValueMaximumElementsToSearch);
+                jABGetElementValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumElementsToSearch);
                 jABGetElementValuepropCount++;
             }
 
-            if (jABGetElementValueMaximumChildElementsToSearchPerNode != null)
+            if (jABGetElementValuemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementValueMaximumChildElementsToSearchPerNode);
+                jABGetElementValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumChildElementsToSearchPerNode);
                 jABGetElementValuepropCount++;
             }
 
             jABGetElementValuepropCount++;
-            jABGetElementValue["Workflow"] = ExpressionConverter.ConvertO(jABGetElementValueWorkflow);
+            jABGetElementValue["Workflow"] = ExpressionConverter.ConvertO(jABGetElementValueworkflow);
             if (jABGetElementValuepropCount > 0)
             {
                 callPayload.Body = jABGetElementValue;
@@ -2772,7 +2772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABCheckElement(Expression<Func<int>> jABCheckElementSearchParentElementJABHandle, Expression<Func<string>> jABCheckElementWorkflow, Expression<Func<string>> jABCheckElementSearchElementJABName = null, Expression<Func<string>> jABCheckElementSearchElementJABDescription = null, Expression<Func<string>> jABCheckElementSearchElementJABRole = null, Expression<Func<bool>> jABCheckElementSearchSubTree = null, Expression<Func<int>> jABCheckElementMaxRelativeDepth = null, Expression<Func<int>> jABCheckElementMatchIndex = null, Expression<Func<string>> jABCheckElementSearchFilter = null, Expression<Func<string>> jABCheckElementSortByColumn = null, Expression<Func<bool>> jABCheckElementMatchIndexAscending = null, Expression<Func<bool>> jABCheckElementCaseSensitiveSearch = null, Expression<Func<bool>> jABCheckElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABCheckElementOnlySearchShowingElements = null, Expression<Func<string>> jABCheckElementElementRolesNotToTraverse = null, Expression<Func<int>> jABCheckElementMaximumElementsToSearch = null, Expression<Func<int>> jABCheckElementMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABCheckElementCheckElement = null, Expression<Func<bool>> jABCheckElementAutoDetectActionName = null, Expression<Func<string>> jABCheckElementOverrideActionName = null)
+        public IWorkflowAction JABCheckElement(Expression<Func<int>> jABCheckElementsearchParentElementJABHandle, Expression<Func<string>> jABCheckElementworkflow, Expression<Func<string>> jABCheckElementsearchElementJABName = null, Expression<Func<string>> jABCheckElementsearchElementJABDescription = null, Expression<Func<string>> jABCheckElementsearchElementJABRole = null, Expression<Func<bool>> jABCheckElementsearchSubTree = null, Expression<Func<int>> jABCheckElementmaxRelativeDepth = null, Expression<Func<int>> jABCheckElementmatchIndex = null, Expression<Func<string>> jABCheckElementsearchFilter = null, Expression<Func<string>> jABCheckElementsortByColumn = null, Expression<Func<bool>> jABCheckElementmatchIndexAscending = null, Expression<Func<bool>> jABCheckElementcaseSensitiveSearch = null, Expression<Func<bool>> jABCheckElementonlySearchVisibleElements = null, Expression<Func<bool>> jABCheckElementonlySearchShowingElements = null, Expression<Func<string>> jABCheckElementelementRolesNotToTraverse = null, Expression<Func<int>> jABCheckElementmaximumElementsToSearch = null, Expression<Func<int>> jABCheckElementmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABCheckElementcheckElement = null, Expression<Func<bool>> jABCheckElementautoDetectActionName = null, Expression<Func<string>> jABCheckElementoverrideActionName = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABCheckElement";
             var apiCallHttpMethod = "post";
@@ -2780,117 +2780,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABCheckElement = new JObject();
             var jABCheckElementpropCount = 0;
             jABCheckElementpropCount++;
-            jABCheckElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABCheckElementSearchParentElementJABHandle);
-            if (jABCheckElementSearchElementJABName != null)
+            jABCheckElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABCheckElementsearchParentElementJABHandle);
+            if (jABCheckElementsearchElementJABName != null)
             {
-                jABCheckElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABCheckElementSearchElementJABName);
+                jABCheckElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABCheckElementsearchElementJABName);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementSearchElementJABDescription != null)
+            if (jABCheckElementsearchElementJABDescription != null)
             {
-                jABCheckElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABCheckElementSearchElementJABDescription);
+                jABCheckElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABCheckElementsearchElementJABDescription);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementSearchElementJABRole != null)
+            if (jABCheckElementsearchElementJABRole != null)
             {
-                jABCheckElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABCheckElementSearchElementJABRole);
+                jABCheckElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABCheckElementsearchElementJABRole);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementSearchSubTree != null)
+            if (jABCheckElementsearchSubTree != null)
             {
-                jABCheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABCheckElementSearchSubTree);
+                jABCheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABCheckElementsearchSubTree);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementMaxRelativeDepth != null)
+            if (jABCheckElementmaxRelativeDepth != null)
             {
-                jABCheckElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABCheckElementMaxRelativeDepth);
+                jABCheckElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABCheckElementmaxRelativeDepth);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementMatchIndex != null)
+            if (jABCheckElementmatchIndex != null)
             {
-                jABCheckElement["MatchIndex"] = ExpressionConverter.ConvertO(jABCheckElementMatchIndex);
+                jABCheckElement["MatchIndex"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndex);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementSearchFilter != null)
+            if (jABCheckElementsearchFilter != null)
             {
-                jABCheckElement["SearchFilter"] = ExpressionConverter.ConvertO(jABCheckElementSearchFilter);
+                jABCheckElement["SearchFilter"] = ExpressionConverter.ConvertO(jABCheckElementsearchFilter);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementSortByColumn != null)
+            if (jABCheckElementsortByColumn != null)
             {
-                jABCheckElement["SortByColumn"] = ExpressionConverter.ConvertO(jABCheckElementSortByColumn);
+                jABCheckElement["SortByColumn"] = ExpressionConverter.ConvertO(jABCheckElementsortByColumn);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementMatchIndexAscending != null)
+            if (jABCheckElementmatchIndexAscending != null)
             {
-                jABCheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABCheckElementMatchIndexAscending);
+                jABCheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndexAscending);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementCaseSensitiveSearch != null)
+            if (jABCheckElementcaseSensitiveSearch != null)
             {
-                jABCheckElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABCheckElementCaseSensitiveSearch);
+                jABCheckElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABCheckElementcaseSensitiveSearch);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementOnlySearchVisibleElements != null)
+            if (jABCheckElementonlySearchVisibleElements != null)
             {
-                jABCheckElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABCheckElementOnlySearchVisibleElements);
+                jABCheckElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchVisibleElements);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementOnlySearchShowingElements != null)
+            if (jABCheckElementonlySearchShowingElements != null)
             {
-                jABCheckElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABCheckElementOnlySearchShowingElements);
+                jABCheckElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchShowingElements);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementElementRolesNotToTraverse != null)
+            if (jABCheckElementelementRolesNotToTraverse != null)
             {
-                jABCheckElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABCheckElementElementRolesNotToTraverse);
+                jABCheckElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABCheckElementelementRolesNotToTraverse);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementMaximumElementsToSearch != null)
+            if (jABCheckElementmaximumElementsToSearch != null)
             {
-                jABCheckElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABCheckElementMaximumElementsToSearch);
+                jABCheckElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABCheckElementmaximumElementsToSearch);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementMaximumChildElementsToSearchPerNode != null)
+            if (jABCheckElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABCheckElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABCheckElementMaximumChildElementsToSearchPerNode);
+                jABCheckElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABCheckElementmaximumChildElementsToSearchPerNode);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementCheckElement != null)
+            if (jABCheckElementcheckElement != null)
             {
-                jABCheckElement["CheckElement"] = ExpressionConverter.ConvertO(jABCheckElementCheckElement);
+                jABCheckElement["CheckElement"] = ExpressionConverter.ConvertO(jABCheckElementcheckElement);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementAutoDetectActionName != null)
+            if (jABCheckElementautoDetectActionName != null)
             {
-                jABCheckElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABCheckElementAutoDetectActionName);
+                jABCheckElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABCheckElementautoDetectActionName);
                 jABCheckElementpropCount++;
             }
 
-            if (jABCheckElementOverrideActionName != null)
+            if (jABCheckElementoverrideActionName != null)
             {
-                jABCheckElement["OverrideActionName"] = ExpressionConverter.ConvertO(jABCheckElementOverrideActionName);
+                jABCheckElement["OverrideActionName"] = ExpressionConverter.ConvertO(jABCheckElementoverrideActionName);
                 jABCheckElementpropCount++;
             }
 
             jABCheckElementpropCount++;
-            jABCheckElement["Workflow"] = ExpressionConverter.ConvertO(jABCheckElementWorkflow);
+            jABCheckElement["Workflow"] = ExpressionConverter.ConvertO(jABCheckElementworkflow);
             if (jABCheckElementpropCount > 0)
             {
                 callPayload.Body = jABCheckElement;
@@ -2900,7 +2900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementPropertiesAsListResponse> JABGetElementPropertiesAsList(Expression<Func<int>> jABGetElementPropertiesAsListSearchParentElementJABHandle, Expression<Func<string>> jABGetElementPropertiesAsListWorkflow, Expression<Func<string>> jABGetElementPropertiesAsListSearchElementJABName = null, Expression<Func<string>> jABGetElementPropertiesAsListSearchElementJABDescription = null, Expression<Func<string>> jABGetElementPropertiesAsListSearchElementJABRole = null, Expression<Func<bool>> jABGetElementPropertiesAsListSearchSubTree = null, Expression<Func<int>> jABGetElementPropertiesAsListMaxRelativeDepth = null, Expression<Func<int>> jABGetElementPropertiesAsListMatchIndex = null, Expression<Func<string>> jABGetElementPropertiesAsListSearchFilter = null, Expression<Func<string>> jABGetElementPropertiesAsListSortByColumn = null, Expression<Func<bool>> jABGetElementPropertiesAsListMatchIndexAscending = null, Expression<Func<bool>> jABGetElementPropertiesAsListCaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementPropertiesAsListOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementPropertiesAsListOnlySearchShowingElements = null, Expression<Func<string>> jABGetElementPropertiesAsListElementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementPropertiesAsListMaximumElementsToSearch = null, Expression<Func<int>> jABGetElementPropertiesAsListMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetElementPropertiesAsListMaxStringLength = null)
+        public IBodyWorkflowAction<JABGetElementPropertiesAsListResponse> JABGetElementPropertiesAsList(Expression<Func<int>> jABGetElementPropertiesAsListsearchParentElementJABHandle, Expression<Func<string>> jABGetElementPropertiesAsListworkflow, Expression<Func<string>> jABGetElementPropertiesAsListsearchElementJABName = null, Expression<Func<string>> jABGetElementPropertiesAsListsearchElementJABDescription = null, Expression<Func<string>> jABGetElementPropertiesAsListsearchElementJABRole = null, Expression<Func<bool>> jABGetElementPropertiesAsListsearchSubTree = null, Expression<Func<int>> jABGetElementPropertiesAsListmaxRelativeDepth = null, Expression<Func<int>> jABGetElementPropertiesAsListmatchIndex = null, Expression<Func<string>> jABGetElementPropertiesAsListsearchFilter = null, Expression<Func<string>> jABGetElementPropertiesAsListsortByColumn = null, Expression<Func<bool>> jABGetElementPropertiesAsListmatchIndexAscending = null, Expression<Func<bool>> jABGetElementPropertiesAsListcaseSensitiveSearch = null, Expression<Func<bool>> jABGetElementPropertiesAsListonlySearchVisibleElements = null, Expression<Func<bool>> jABGetElementPropertiesAsListonlySearchShowingElements = null, Expression<Func<string>> jABGetElementPropertiesAsListelementRolesNotToTraverse = null, Expression<Func<int>> jABGetElementPropertiesAsListmaximumElementsToSearch = null, Expression<Func<int>> jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetElementPropertiesAsListmaxStringLength = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetElementPropertiesAsList";
             var apiCallHttpMethod = "post";
@@ -2908,105 +2908,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetElementPropertiesAsList = new JObject();
             var jABGetElementPropertiesAsListpropCount = 0;
             jABGetElementPropertiesAsListpropCount++;
-            jABGetElementPropertiesAsList["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchParentElementJABHandle);
-            if (jABGetElementPropertiesAsListSearchElementJABName != null)
+            jABGetElementPropertiesAsList["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchParentElementJABHandle);
+            if (jABGetElementPropertiesAsListsearchElementJABName != null)
             {
-                jABGetElementPropertiesAsList["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchElementJABName);
+                jABGetElementPropertiesAsList["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchElementJABName);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListSearchElementJABDescription != null)
+            if (jABGetElementPropertiesAsListsearchElementJABDescription != null)
             {
-                jABGetElementPropertiesAsList["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchElementJABDescription);
+                jABGetElementPropertiesAsList["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchElementJABDescription);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListSearchElementJABRole != null)
+            if (jABGetElementPropertiesAsListsearchElementJABRole != null)
             {
-                jABGetElementPropertiesAsList["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchElementJABRole);
+                jABGetElementPropertiesAsList["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchElementJABRole);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListSearchSubTree != null)
+            if (jABGetElementPropertiesAsListsearchSubTree != null)
             {
-                jABGetElementPropertiesAsList["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchSubTree);
+                jABGetElementPropertiesAsList["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchSubTree);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMaxRelativeDepth != null)
+            if (jABGetElementPropertiesAsListmaxRelativeDepth != null)
             {
-                jABGetElementPropertiesAsList["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMaxRelativeDepth);
+                jABGetElementPropertiesAsList["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxRelativeDepth);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMatchIndex != null)
+            if (jABGetElementPropertiesAsListmatchIndex != null)
             {
-                jABGetElementPropertiesAsList["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMatchIndex);
+                jABGetElementPropertiesAsList["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndex);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListSearchFilter != null)
+            if (jABGetElementPropertiesAsListsearchFilter != null)
             {
-                jABGetElementPropertiesAsList["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSearchFilter);
+                jABGetElementPropertiesAsList["SearchFilter"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchFilter);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListSortByColumn != null)
+            if (jABGetElementPropertiesAsListsortByColumn != null)
             {
-                jABGetElementPropertiesAsList["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListSortByColumn);
+                jABGetElementPropertiesAsList["SortByColumn"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsortByColumn);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMatchIndexAscending != null)
+            if (jABGetElementPropertiesAsListmatchIndexAscending != null)
             {
-                jABGetElementPropertiesAsList["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMatchIndexAscending);
+                jABGetElementPropertiesAsList["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndexAscending);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListCaseSensitiveSearch != null)
+            if (jABGetElementPropertiesAsListcaseSensitiveSearch != null)
             {
-                jABGetElementPropertiesAsList["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListCaseSensitiveSearch);
+                jABGetElementPropertiesAsList["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListcaseSensitiveSearch);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListOnlySearchVisibleElements != null)
+            if (jABGetElementPropertiesAsListonlySearchVisibleElements != null)
             {
-                jABGetElementPropertiesAsList["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListOnlySearchVisibleElements);
+                jABGetElementPropertiesAsList["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchVisibleElements);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListOnlySearchShowingElements != null)
+            if (jABGetElementPropertiesAsListonlySearchShowingElements != null)
             {
-                jABGetElementPropertiesAsList["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListOnlySearchShowingElements);
+                jABGetElementPropertiesAsList["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchShowingElements);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListElementRolesNotToTraverse != null)
+            if (jABGetElementPropertiesAsListelementRolesNotToTraverse != null)
             {
-                jABGetElementPropertiesAsList["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListElementRolesNotToTraverse);
+                jABGetElementPropertiesAsList["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListelementRolesNotToTraverse);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMaximumElementsToSearch != null)
+            if (jABGetElementPropertiesAsListmaximumElementsToSearch != null)
             {
-                jABGetElementPropertiesAsList["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMaximumElementsToSearch);
+                jABGetElementPropertiesAsList["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumElementsToSearch);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMaximumChildElementsToSearchPerNode != null)
+            if (jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementPropertiesAsList["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMaximumChildElementsToSearchPerNode);
+                jABGetElementPropertiesAsList["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
-            if (jABGetElementPropertiesAsListMaxStringLength != null)
+            if (jABGetElementPropertiesAsListmaxStringLength != null)
             {
-                jABGetElementPropertiesAsList["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListMaxStringLength);
+                jABGetElementPropertiesAsList["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxStringLength);
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             jABGetElementPropertiesAsListpropCount++;
-            jABGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListWorkflow);
+            jABGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListworkflow);
             if (jABGetElementPropertiesAsListpropCount > 0)
             {
                 callPayload.Body = jABGetElementPropertiesAsList;
@@ -3016,7 +3016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalInputPasswordIntoElement(Expression<Func<int>> jABGlobalInputPasswordIntoElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalInputPasswordIntoElementPasswordToInput, Expression<Func<string>> jABGlobalInputPasswordIntoElementWorkflow, Expression<Func<string>> jABGlobalInputPasswordIntoElementSearchElementJABName = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementSearchSubTree = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementMatchIndex = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementSearchFilter = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementSortByColumn = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementFocusElement = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementGlobalMouseClickOnElement = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementSendKeyEvents = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementKeyIntervalInMilliseconds = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementDoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementDontInterpretSymbols = null)
+        public IWorkflowAction JABGlobalInputPasswordIntoElement(Expression<Func<int>> jABGlobalInputPasswordIntoElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalInputPasswordIntoElementpasswordToInput, Expression<Func<string>> jABGlobalInputPasswordIntoElementworkflow, Expression<Func<string>> jABGlobalInputPasswordIntoElementsearchElementJABName = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementsearchSubTree = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementmatchIndex = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementsearchFilter = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementsortByColumn = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalInputPasswordIntoElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementfocusElement = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementglobalMouseClickOnElement = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementsendKeyEvents = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds = null, Expression<Func<int>> jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> jABGlobalInputPasswordIntoElementdontInterpretSymbols = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalInputPasswordIntoElement";
             var apiCallHttpMethod = "post";
@@ -3024,149 +3024,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalInputPasswordIntoElement = new JObject();
             var jABGlobalInputPasswordIntoElementpropCount = 0;
             jABGlobalInputPasswordIntoElementpropCount++;
-            jABGlobalInputPasswordIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchParentElementJABHandle);
-            if (jABGlobalInputPasswordIntoElementSearchElementJABName != null)
+            jABGlobalInputPasswordIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchParentElementJABHandle);
+            if (jABGlobalInputPasswordIntoElementsearchElementJABName != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchElementJABName);
+                jABGlobalInputPasswordIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchElementJABName);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementSearchElementJABDescription != null)
+            if (jABGlobalInputPasswordIntoElementsearchElementJABDescription != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchElementJABDescription);
+                jABGlobalInputPasswordIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchElementJABDescription);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementSearchElementJABRole != null)
+            if (jABGlobalInputPasswordIntoElementsearchElementJABRole != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchElementJABRole);
+                jABGlobalInputPasswordIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchElementJABRole);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementSearchSubTree != null)
+            if (jABGlobalInputPasswordIntoElementsearchSubTree != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchSubTree);
+                jABGlobalInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchSubTree);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementMaxRelativeDepth != null)
+            if (jABGlobalInputPasswordIntoElementmaxRelativeDepth != null)
             {
-                jABGlobalInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementMaxRelativeDepth);
+                jABGlobalInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaxRelativeDepth);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementMatchIndex != null)
+            if (jABGlobalInputPasswordIntoElementmatchIndex != null)
             {
-                jABGlobalInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementMatchIndex);
+                jABGlobalInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndex);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementSearchFilter != null)
+            if (jABGlobalInputPasswordIntoElementsearchFilter != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSearchFilter);
+                jABGlobalInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchFilter);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementSortByColumn != null)
+            if (jABGlobalInputPasswordIntoElementsortByColumn != null)
             {
-                jABGlobalInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSortByColumn);
+                jABGlobalInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsortByColumn);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementMatchIndexAscending != null)
+            if (jABGlobalInputPasswordIntoElementmatchIndexAscending != null)
             {
-                jABGlobalInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementMatchIndexAscending);
+                jABGlobalInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndexAscending);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementCaseSensitiveSearch != null)
+            if (jABGlobalInputPasswordIntoElementcaseSensitiveSearch != null)
             {
-                jABGlobalInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementCaseSensitiveSearch);
+                jABGlobalInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementcaseSensitiveSearch);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementOnlySearchVisibleElements != null)
+            if (jABGlobalInputPasswordIntoElementonlySearchVisibleElements != null)
             {
-                jABGlobalInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementOnlySearchVisibleElements);
+                jABGlobalInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchVisibleElements);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementOnlySearchShowingElements != null)
+            if (jABGlobalInputPasswordIntoElementonlySearchShowingElements != null)
             {
-                jABGlobalInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementOnlySearchShowingElements);
+                jABGlobalInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchShowingElements);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementElementRolesNotToTraverse != null)
+            if (jABGlobalInputPasswordIntoElementelementRolesNotToTraverse != null)
             {
-                jABGlobalInputPasswordIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementElementRolesNotToTraverse);
+                jABGlobalInputPasswordIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementelementRolesNotToTraverse);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementMaximumElementsToSearch != null)
+            if (jABGlobalInputPasswordIntoElementmaximumElementsToSearch != null)
             {
-                jABGlobalInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementMaximumElementsToSearch);
+                jABGlobalInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumElementsToSearch);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementMaximumChildElementsToSearchPerNode);
+                jABGlobalInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementFocusElement != null)
+            if (jABGlobalInputPasswordIntoElementfocusElement != null)
             {
-                jABGlobalInputPasswordIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementFocusElement);
+                jABGlobalInputPasswordIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementfocusElement);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementGlobalMouseClickOnElement != null)
+            if (jABGlobalInputPasswordIntoElementglobalMouseClickOnElement != null)
             {
-                jABGlobalInputPasswordIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementGlobalMouseClickOnElement);
+                jABGlobalInputPasswordIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementglobalMouseClickOnElement);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementReplaceExistingValueUsingDoubleClickDelete);
+                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
-            if (jABGlobalInputPasswordIntoElementReplaceExistingValueUsingCTRLADelete != null)
+            if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementReplaceExistingValueUsingCTRLADelete);
-                jABGlobalInputPasswordIntoElementpropCount++;
-            }
-
-            jABGlobalInputPasswordIntoElementpropCount++;
-            jABGlobalInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementPasswordToInput);
-            if (jABGlobalInputPasswordIntoElementSendKeyEvents != null)
-            {
-                jABGlobalInputPasswordIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementSendKeyEvents);
-                jABGlobalInputPasswordIntoElementpropCount++;
-            }
-
-            if (jABGlobalInputPasswordIntoElementKeyIntervalInMilliseconds != null)
-            {
-                jABGlobalInputPasswordIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementKeyIntervalInMilliseconds);
-                jABGlobalInputPasswordIntoElementpropCount++;
-            }
-
-            if (jABGlobalInputPasswordIntoElementDoubleClickIntervalInMilliseconds != null)
-            {
-                jABGlobalInputPasswordIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementDoubleClickIntervalInMilliseconds);
-                jABGlobalInputPasswordIntoElementpropCount++;
-            }
-
-            if (jABGlobalInputPasswordIntoElementDontInterpretSymbols != null)
-            {
-                jABGlobalInputPasswordIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementDontInterpretSymbols);
+                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete);
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             jABGlobalInputPasswordIntoElementpropCount++;
-            jABGlobalInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementWorkflow);
+            jABGlobalInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementpasswordToInput);
+            if (jABGlobalInputPasswordIntoElementsendKeyEvents != null)
+            {
+                jABGlobalInputPasswordIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsendKeyEvents);
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+
+            if (jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds != null)
+            {
+                jABGlobalInputPasswordIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds);
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+
+            if (jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds != null)
+            {
+                jABGlobalInputPasswordIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds);
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+
+            if (jABGlobalInputPasswordIntoElementdontInterpretSymbols != null)
+            {
+                jABGlobalInputPasswordIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdontInterpretSymbols);
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+
+            jABGlobalInputPasswordIntoElementpropCount++;
+            jABGlobalInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementworkflow);
             if (jABGlobalInputPasswordIntoElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalInputPasswordIntoElement;
@@ -3176,7 +3176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalInputTextIntoElement(Expression<Func<int>> jABGlobalInputTextIntoElementSearchParentElementJABHandle, Expression<Func<string>> jABGlobalInputTextIntoElementWorkflow, Expression<Func<string>> jABGlobalInputTextIntoElementSearchElementJABName = null, Expression<Func<string>> jABGlobalInputTextIntoElementSearchElementJABDescription = null, Expression<Func<string>> jABGlobalInputTextIntoElementSearchElementJABRole = null, Expression<Func<bool>> jABGlobalInputTextIntoElementSearchSubTree = null, Expression<Func<int>> jABGlobalInputTextIntoElementMaxRelativeDepth = null, Expression<Func<int>> jABGlobalInputTextIntoElementMatchIndex = null, Expression<Func<string>> jABGlobalInputTextIntoElementSearchFilter = null, Expression<Func<string>> jABGlobalInputTextIntoElementSortByColumn = null, Expression<Func<bool>> jABGlobalInputTextIntoElementMatchIndexAscending = null, Expression<Func<bool>> jABGlobalInputTextIntoElementCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalInputTextIntoElementOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalInputTextIntoElementOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalInputTextIntoElementElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalInputTextIntoElementMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalInputTextIntoElementMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalInputTextIntoElementFocusElement = null, Expression<Func<bool>> jABGlobalInputTextIntoElementGlobalMouseClickOnElement = null, Expression<Func<bool>> jABGlobalInputTextIntoElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> jABGlobalInputTextIntoElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> jABGlobalInputTextIntoElementTextToInput = null, Expression<Func<bool>> jABGlobalInputTextIntoElementSendKeyEvents = null, Expression<Func<int>> jABGlobalInputTextIntoElementKeyIntervalInMilliseconds = null, Expression<Func<int>> jABGlobalInputTextIntoElementDoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> jABGlobalInputTextIntoElementDontInterpretSymbols = null)
+        public IWorkflowAction JABGlobalInputTextIntoElement(Expression<Func<int>> jABGlobalInputTextIntoElementsearchParentElementJABHandle, Expression<Func<string>> jABGlobalInputTextIntoElementworkflow, Expression<Func<string>> jABGlobalInputTextIntoElementsearchElementJABName = null, Expression<Func<string>> jABGlobalInputTextIntoElementsearchElementJABDescription = null, Expression<Func<string>> jABGlobalInputTextIntoElementsearchElementJABRole = null, Expression<Func<bool>> jABGlobalInputTextIntoElementsearchSubTree = null, Expression<Func<int>> jABGlobalInputTextIntoElementmaxRelativeDepth = null, Expression<Func<int>> jABGlobalInputTextIntoElementmatchIndex = null, Expression<Func<string>> jABGlobalInputTextIntoElementsearchFilter = null, Expression<Func<string>> jABGlobalInputTextIntoElementsortByColumn = null, Expression<Func<bool>> jABGlobalInputTextIntoElementmatchIndexAscending = null, Expression<Func<bool>> jABGlobalInputTextIntoElementcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalInputTextIntoElementonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalInputTextIntoElementonlySearchShowingElements = null, Expression<Func<string>> jABGlobalInputTextIntoElementelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalInputTextIntoElementmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalInputTextIntoElementfocusElement = null, Expression<Func<bool>> jABGlobalInputTextIntoElementglobalMouseClickOnElement = null, Expression<Func<bool>> jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> jABGlobalInputTextIntoElementtextToInput = null, Expression<Func<bool>> jABGlobalInputTextIntoElementsendKeyEvents = null, Expression<Func<int>> jABGlobalInputTextIntoElementkeyIntervalInMilliseconds = null, Expression<Func<int>> jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> jABGlobalInputTextIntoElementdontInterpretSymbols = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalInputTextIntoElement";
             var apiCallHttpMethod = "post";
@@ -3184,153 +3184,153 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalInputTextIntoElement = new JObject();
             var jABGlobalInputTextIntoElementpropCount = 0;
             jABGlobalInputTextIntoElementpropCount++;
-            jABGlobalInputTextIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchParentElementJABHandle);
-            if (jABGlobalInputTextIntoElementSearchElementJABName != null)
+            jABGlobalInputTextIntoElement["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchParentElementJABHandle);
+            if (jABGlobalInputTextIntoElementsearchElementJABName != null)
             {
-                jABGlobalInputTextIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchElementJABName);
+                jABGlobalInputTextIntoElement["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchElementJABName);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSearchElementJABDescription != null)
+            if (jABGlobalInputTextIntoElementsearchElementJABDescription != null)
             {
-                jABGlobalInputTextIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchElementJABDescription);
+                jABGlobalInputTextIntoElement["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchElementJABDescription);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSearchElementJABRole != null)
+            if (jABGlobalInputTextIntoElementsearchElementJABRole != null)
             {
-                jABGlobalInputTextIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchElementJABRole);
+                jABGlobalInputTextIntoElement["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchElementJABRole);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSearchSubTree != null)
+            if (jABGlobalInputTextIntoElementsearchSubTree != null)
             {
-                jABGlobalInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchSubTree);
+                jABGlobalInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchSubTree);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementMaxRelativeDepth != null)
+            if (jABGlobalInputTextIntoElementmaxRelativeDepth != null)
             {
-                jABGlobalInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementMaxRelativeDepth);
+                jABGlobalInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaxRelativeDepth);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementMatchIndex != null)
+            if (jABGlobalInputTextIntoElementmatchIndex != null)
             {
-                jABGlobalInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementMatchIndex);
+                jABGlobalInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndex);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSearchFilter != null)
+            if (jABGlobalInputTextIntoElementsearchFilter != null)
             {
-                jABGlobalInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSearchFilter);
+                jABGlobalInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchFilter);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSortByColumn != null)
+            if (jABGlobalInputTextIntoElementsortByColumn != null)
             {
-                jABGlobalInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSortByColumn);
+                jABGlobalInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsortByColumn);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementMatchIndexAscending != null)
+            if (jABGlobalInputTextIntoElementmatchIndexAscending != null)
             {
-                jABGlobalInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementMatchIndexAscending);
+                jABGlobalInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndexAscending);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementCaseSensitiveSearch != null)
+            if (jABGlobalInputTextIntoElementcaseSensitiveSearch != null)
             {
-                jABGlobalInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementCaseSensitiveSearch);
+                jABGlobalInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementcaseSensitiveSearch);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementOnlySearchVisibleElements != null)
+            if (jABGlobalInputTextIntoElementonlySearchVisibleElements != null)
             {
-                jABGlobalInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementOnlySearchVisibleElements);
+                jABGlobalInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchVisibleElements);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementOnlySearchShowingElements != null)
+            if (jABGlobalInputTextIntoElementonlySearchShowingElements != null)
             {
-                jABGlobalInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementOnlySearchShowingElements);
+                jABGlobalInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchShowingElements);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementElementRolesNotToTraverse != null)
+            if (jABGlobalInputTextIntoElementelementRolesNotToTraverse != null)
             {
-                jABGlobalInputTextIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementElementRolesNotToTraverse);
+                jABGlobalInputTextIntoElement["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementelementRolesNotToTraverse);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementMaximumElementsToSearch != null)
+            if (jABGlobalInputTextIntoElementmaximumElementsToSearch != null)
             {
-                jABGlobalInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementMaximumElementsToSearch);
+                jABGlobalInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumElementsToSearch);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementMaximumChildElementsToSearchPerNode);
+                jABGlobalInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementFocusElement != null)
+            if (jABGlobalInputTextIntoElementfocusElement != null)
             {
-                jABGlobalInputTextIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementFocusElement);
+                jABGlobalInputTextIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementfocusElement);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementGlobalMouseClickOnElement != null)
+            if (jABGlobalInputTextIntoElementglobalMouseClickOnElement != null)
             {
-                jABGlobalInputTextIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementGlobalMouseClickOnElement);
+                jABGlobalInputTextIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementglobalMouseClickOnElement);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementReplaceExistingValueUsingDoubleClickDelete);
+                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementReplaceExistingValueUsingCTRLADelete != null)
+            if (jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementReplaceExistingValueUsingCTRLADelete);
+                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementTextToInput != null)
+            if (jABGlobalInputTextIntoElementtextToInput != null)
             {
-                jABGlobalInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementTextToInput);
+                jABGlobalInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementtextToInput);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementSendKeyEvents != null)
+            if (jABGlobalInputTextIntoElementsendKeyEvents != null)
             {
-                jABGlobalInputTextIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementSendKeyEvents);
+                jABGlobalInputTextIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsendKeyEvents);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementKeyIntervalInMilliseconds != null)
+            if (jABGlobalInputTextIntoElementkeyIntervalInMilliseconds != null)
             {
-                jABGlobalInputTextIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementKeyIntervalInMilliseconds);
+                jABGlobalInputTextIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementkeyIntervalInMilliseconds);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementDoubleClickIntervalInMilliseconds != null)
+            if (jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds != null)
             {
-                jABGlobalInputTextIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementDoubleClickIntervalInMilliseconds);
+                jABGlobalInputTextIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
-            if (jABGlobalInputTextIntoElementDontInterpretSymbols != null)
+            if (jABGlobalInputTextIntoElementdontInterpretSymbols != null)
             {
-                jABGlobalInputTextIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementDontInterpretSymbols);
+                jABGlobalInputTextIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdontInterpretSymbols);
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             jABGlobalInputTextIntoElementpropCount++;
-            jABGlobalInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementWorkflow);
+            jABGlobalInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementworkflow);
             if (jABGlobalInputTextIntoElementpropCount > 0)
             {
                 callPayload.Body = jABGlobalInputTextIntoElement;
@@ -3340,7 +3340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionElementItemsResponse> JABGetSelectionElementItems(Expression<Func<int>> jABGetSelectionElementItemsSearchParentElementJABHandle, Expression<Func<string>> jABGetSelectionElementItemsWorkflow, Expression<Func<string>> jABGetSelectionElementItemsSearchElementJABName = null, Expression<Func<string>> jABGetSelectionElementItemsSearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionElementItemsSearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionElementItemsSearchSubTree = null, Expression<Func<int>> jABGetSelectionElementItemsMaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionElementItemsMatchIndex = null, Expression<Func<string>> jABGetSelectionElementItemsSearchFilter = null, Expression<Func<string>> jABGetSelectionElementItemsSortByColumn = null, Expression<Func<bool>> jABGetSelectionElementItemsMatchIndexAscending = null, Expression<Func<bool>> jABGetSelectionElementItemsCaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionElementItemsOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionElementItemsOnlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionElementItemsElementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionElementItemsMaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionElementItemsMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetSelectionElementItemsGetListOfOptionsBySelecting = null, Expression<Func<bool>> jABGetSelectionElementItemsGetListOfOptionsByReadingLabels = null, Expression<Func<bool>> jABGetSelectionElementItemsExpandFirst = null, Expression<Func<bool>> jABGetSelectionElementItemsCollapseAfter = null, Expression<Func<double>> jABGetSelectionElementItemsSecondsBetweenExpandCollapse = null, Expression<Func<int>> jABGetSelectionElementItemsMaxListItemsToReturn = null)
+        public IBodyWorkflowAction<JABGetSelectionElementItemsResponse> JABGetSelectionElementItems(Expression<Func<int>> jABGetSelectionElementItemssearchParentElementJABHandle, Expression<Func<string>> jABGetSelectionElementItemsworkflow, Expression<Func<string>> jABGetSelectionElementItemssearchElementJABName = null, Expression<Func<string>> jABGetSelectionElementItemssearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionElementItemssearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionElementItemssearchSubTree = null, Expression<Func<int>> jABGetSelectionElementItemsmaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionElementItemsmatchIndex = null, Expression<Func<string>> jABGetSelectionElementItemssearchFilter = null, Expression<Func<string>> jABGetSelectionElementItemssortByColumn = null, Expression<Func<bool>> jABGetSelectionElementItemsmatchIndexAscending = null, Expression<Func<bool>> jABGetSelectionElementItemscaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionElementItemsonlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionElementItemsonlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionElementItemselementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionElementItemsmaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetSelectionElementItemsgetListOfOptionsBySelecting = null, Expression<Func<bool>> jABGetSelectionElementItemsgetListOfOptionsByReadingLabels = null, Expression<Func<bool>> jABGetSelectionElementItemsexpandFirst = null, Expression<Func<bool>> jABGetSelectionElementItemscollapseAfter = null, Expression<Func<double>> jABGetSelectionElementItemssecondsBetweenExpandCollapse = null, Expression<Func<int>> jABGetSelectionElementItemsmaxListItemsToReturn = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetSelectionElementItems";
             var apiCallHttpMethod = "post";
@@ -3348,135 +3348,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetSelectionElementItems = new JObject();
             var jABGetSelectionElementItemspropCount = 0;
             jABGetSelectionElementItemspropCount++;
-            jABGetSelectionElementItems["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchParentElementJABHandle);
-            if (jABGetSelectionElementItemsSearchElementJABName != null)
+            jABGetSelectionElementItems["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchParentElementJABHandle);
+            if (jABGetSelectionElementItemssearchElementJABName != null)
             {
-                jABGetSelectionElementItems["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchElementJABName);
+                jABGetSelectionElementItems["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchElementJABName);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSearchElementJABDescription != null)
+            if (jABGetSelectionElementItemssearchElementJABDescription != null)
             {
-                jABGetSelectionElementItems["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchElementJABDescription);
+                jABGetSelectionElementItems["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchElementJABDescription);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSearchElementJABRole != null)
+            if (jABGetSelectionElementItemssearchElementJABRole != null)
             {
-                jABGetSelectionElementItems["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchElementJABRole);
+                jABGetSelectionElementItems["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchElementJABRole);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSearchSubTree != null)
+            if (jABGetSelectionElementItemssearchSubTree != null)
             {
-                jABGetSelectionElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchSubTree);
+                jABGetSelectionElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchSubTree);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMaxRelativeDepth != null)
+            if (jABGetSelectionElementItemsmaxRelativeDepth != null)
             {
-                jABGetSelectionElementItems["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMaxRelativeDepth);
+                jABGetSelectionElementItems["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxRelativeDepth);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMatchIndex != null)
+            if (jABGetSelectionElementItemsmatchIndex != null)
             {
-                jABGetSelectionElementItems["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMatchIndex);
+                jABGetSelectionElementItems["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndex);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSearchFilter != null)
+            if (jABGetSelectionElementItemssearchFilter != null)
             {
-                jABGetSelectionElementItems["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSearchFilter);
+                jABGetSelectionElementItems["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchFilter);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSortByColumn != null)
+            if (jABGetSelectionElementItemssortByColumn != null)
             {
-                jABGetSelectionElementItems["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSortByColumn);
+                jABGetSelectionElementItems["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssortByColumn);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMatchIndexAscending != null)
+            if (jABGetSelectionElementItemsmatchIndexAscending != null)
             {
-                jABGetSelectionElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMatchIndexAscending);
+                jABGetSelectionElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndexAscending);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsCaseSensitiveSearch != null)
+            if (jABGetSelectionElementItemscaseSensitiveSearch != null)
             {
-                jABGetSelectionElementItems["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsCaseSensitiveSearch);
+                jABGetSelectionElementItems["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscaseSensitiveSearch);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsOnlySearchVisibleElements != null)
+            if (jABGetSelectionElementItemsonlySearchVisibleElements != null)
             {
-                jABGetSelectionElementItems["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsOnlySearchVisibleElements);
+                jABGetSelectionElementItems["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchVisibleElements);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsOnlySearchShowingElements != null)
+            if (jABGetSelectionElementItemsonlySearchShowingElements != null)
             {
-                jABGetSelectionElementItems["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsOnlySearchShowingElements);
+                jABGetSelectionElementItems["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchShowingElements);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsElementRolesNotToTraverse != null)
+            if (jABGetSelectionElementItemselementRolesNotToTraverse != null)
             {
-                jABGetSelectionElementItems["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsElementRolesNotToTraverse);
+                jABGetSelectionElementItems["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemselementRolesNotToTraverse);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMaximumElementsToSearch != null)
+            if (jABGetSelectionElementItemsmaximumElementsToSearch != null)
             {
-                jABGetSelectionElementItems["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMaximumElementsToSearch);
+                jABGetSelectionElementItems["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumElementsToSearch);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMaximumChildElementsToSearchPerNode != null)
+            if (jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionElementItems["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMaximumChildElementsToSearchPerNode);
+                jABGetSelectionElementItems["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsGetListOfOptionsBySelecting != null)
+            if (jABGetSelectionElementItemsgetListOfOptionsBySelecting != null)
             {
-                jABGetSelectionElementItems["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsGetListOfOptionsBySelecting);
+                jABGetSelectionElementItems["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsBySelecting);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsGetListOfOptionsByReadingLabels != null)
+            if (jABGetSelectionElementItemsgetListOfOptionsByReadingLabels != null)
             {
-                jABGetSelectionElementItems["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsGetListOfOptionsByReadingLabels);
+                jABGetSelectionElementItems["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsByReadingLabels);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsExpandFirst != null)
+            if (jABGetSelectionElementItemsexpandFirst != null)
             {
-                jABGetSelectionElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsExpandFirst);
+                jABGetSelectionElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsexpandFirst);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsCollapseAfter != null)
+            if (jABGetSelectionElementItemscollapseAfter != null)
             {
-                jABGetSelectionElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsCollapseAfter);
+                jABGetSelectionElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscollapseAfter);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsSecondsBetweenExpandCollapse != null)
+            if (jABGetSelectionElementItemssecondsBetweenExpandCollapse != null)
             {
-                jABGetSelectionElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsSecondsBetweenExpandCollapse);
+                jABGetSelectionElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssecondsBetweenExpandCollapse);
                 jABGetSelectionElementItemspropCount++;
             }
 
-            if (jABGetSelectionElementItemsMaxListItemsToReturn != null)
+            if (jABGetSelectionElementItemsmaxListItemsToReturn != null)
             {
-                jABGetSelectionElementItems["MaxListItemsToReturn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsMaxListItemsToReturn);
+                jABGetSelectionElementItems["MaxListItemsToReturn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxListItemsToReturn);
                 jABGetSelectionElementItemspropCount++;
             }
 
             jABGetSelectionElementItemspropCount++;
-            jABGetSelectionElementItems["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsWorkflow);
+            jABGetSelectionElementItems["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsworkflow);
             if (jABGetSelectionElementItemspropCount > 0)
             {
                 callPayload.Body = jABGetSelectionElementItems;
@@ -3486,7 +3486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABSetSelectionByIndex(Expression<Func<int>> jABSetSelectionByIndexSearchParentElementJABHandle, Expression<Func<int>> jABSetSelectionByIndexItemIndex, Expression<Func<string>> jABSetSelectionByIndexWorkflow, Expression<Func<string>> jABSetSelectionByIndexSearchElementJABName = null, Expression<Func<string>> jABSetSelectionByIndexSearchElementJABDescription = null, Expression<Func<string>> jABSetSelectionByIndexSearchElementJABRole = null, Expression<Func<bool>> jABSetSelectionByIndexSearchSubTree = null, Expression<Func<int>> jABSetSelectionByIndexMaxRelativeDepth = null, Expression<Func<int>> jABSetSelectionByIndexMatchIndex = null, Expression<Func<string>> jABSetSelectionByIndexSearchFilter = null, Expression<Func<string>> jABSetSelectionByIndexSortByColumn = null, Expression<Func<bool>> jABSetSelectionByIndexMatchIndexAscending = null, Expression<Func<bool>> jABSetSelectionByIndexCaseSensitiveSearch = null, Expression<Func<bool>> jABSetSelectionByIndexOnlySearchVisibleElements = null, Expression<Func<bool>> jABSetSelectionByIndexOnlySearchShowingElements = null, Expression<Func<string>> jABSetSelectionByIndexElementRolesNotToTraverse = null, Expression<Func<int>> jABSetSelectionByIndexMaximumElementsToSearch = null, Expression<Func<int>> jABSetSelectionByIndexMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABSetSelectionByIndexSelectItem = null, Expression<Func<bool>> jABSetSelectionByIndexClearSelectionFirst = null, Expression<Func<bool>> jABSetSelectionByIndexRecoverOnFailure = null)
+        public IWorkflowAction JABSetSelectionByIndex(Expression<Func<int>> jABSetSelectionByIndexsearchParentElementJABHandle, Expression<Func<int>> jABSetSelectionByIndexitemIndex, Expression<Func<string>> jABSetSelectionByIndexworkflow, Expression<Func<string>> jABSetSelectionByIndexsearchElementJABName = null, Expression<Func<string>> jABSetSelectionByIndexsearchElementJABDescription = null, Expression<Func<string>> jABSetSelectionByIndexsearchElementJABRole = null, Expression<Func<bool>> jABSetSelectionByIndexsearchSubTree = null, Expression<Func<int>> jABSetSelectionByIndexmaxRelativeDepth = null, Expression<Func<int>> jABSetSelectionByIndexmatchIndex = null, Expression<Func<string>> jABSetSelectionByIndexsearchFilter = null, Expression<Func<string>> jABSetSelectionByIndexsortByColumn = null, Expression<Func<bool>> jABSetSelectionByIndexmatchIndexAscending = null, Expression<Func<bool>> jABSetSelectionByIndexcaseSensitiveSearch = null, Expression<Func<bool>> jABSetSelectionByIndexonlySearchVisibleElements = null, Expression<Func<bool>> jABSetSelectionByIndexonlySearchShowingElements = null, Expression<Func<string>> jABSetSelectionByIndexelementRolesNotToTraverse = null, Expression<Func<int>> jABSetSelectionByIndexmaximumElementsToSearch = null, Expression<Func<int>> jABSetSelectionByIndexmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABSetSelectionByIndexselectItem = null, Expression<Func<bool>> jABSetSelectionByIndexclearSelectionFirst = null, Expression<Func<bool>> jABSetSelectionByIndexrecoverOnFailure = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABSetSelectionByIndex";
             var apiCallHttpMethod = "post";
@@ -3494,119 +3494,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABSetSelectionByIndex = new JObject();
             var jABSetSelectionByIndexpropCount = 0;
             jABSetSelectionByIndexpropCount++;
-            jABSetSelectionByIndex["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchParentElementJABHandle);
-            if (jABSetSelectionByIndexSearchElementJABName != null)
+            jABSetSelectionByIndex["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchParentElementJABHandle);
+            if (jABSetSelectionByIndexsearchElementJABName != null)
             {
-                jABSetSelectionByIndex["SearchElementJABName"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchElementJABName);
+                jABSetSelectionByIndex["SearchElementJABName"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchElementJABName);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexSearchElementJABDescription != null)
+            if (jABSetSelectionByIndexsearchElementJABDescription != null)
             {
-                jABSetSelectionByIndex["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchElementJABDescription);
+                jABSetSelectionByIndex["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchElementJABDescription);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexSearchElementJABRole != null)
+            if (jABSetSelectionByIndexsearchElementJABRole != null)
             {
-                jABSetSelectionByIndex["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchElementJABRole);
+                jABSetSelectionByIndex["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchElementJABRole);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexSearchSubTree != null)
+            if (jABSetSelectionByIndexsearchSubTree != null)
             {
-                jABSetSelectionByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchSubTree);
+                jABSetSelectionByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchSubTree);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexMaxRelativeDepth != null)
+            if (jABSetSelectionByIndexmaxRelativeDepth != null)
             {
-                jABSetSelectionByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexMaxRelativeDepth);
+                jABSetSelectionByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaxRelativeDepth);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexMatchIndex != null)
+            if (jABSetSelectionByIndexmatchIndex != null)
             {
-                jABSetSelectionByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexMatchIndex);
+                jABSetSelectionByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndex);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexSearchFilter != null)
+            if (jABSetSelectionByIndexsearchFilter != null)
             {
-                jABSetSelectionByIndex["SearchFilter"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSearchFilter);
+                jABSetSelectionByIndex["SearchFilter"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchFilter);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexSortByColumn != null)
+            if (jABSetSelectionByIndexsortByColumn != null)
             {
-                jABSetSelectionByIndex["SortByColumn"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSortByColumn);
+                jABSetSelectionByIndex["SortByColumn"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsortByColumn);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexMatchIndexAscending != null)
+            if (jABSetSelectionByIndexmatchIndexAscending != null)
             {
-                jABSetSelectionByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexMatchIndexAscending);
+                jABSetSelectionByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndexAscending);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexCaseSensitiveSearch != null)
+            if (jABSetSelectionByIndexcaseSensitiveSearch != null)
             {
-                jABSetSelectionByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexCaseSensitiveSearch);
+                jABSetSelectionByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexcaseSensitiveSearch);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexOnlySearchVisibleElements != null)
+            if (jABSetSelectionByIndexonlySearchVisibleElements != null)
             {
-                jABSetSelectionByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexOnlySearchVisibleElements);
+                jABSetSelectionByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchVisibleElements);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexOnlySearchShowingElements != null)
+            if (jABSetSelectionByIndexonlySearchShowingElements != null)
             {
-                jABSetSelectionByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexOnlySearchShowingElements);
+                jABSetSelectionByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchShowingElements);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexElementRolesNotToTraverse != null)
+            if (jABSetSelectionByIndexelementRolesNotToTraverse != null)
             {
-                jABSetSelectionByIndex["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexElementRolesNotToTraverse);
+                jABSetSelectionByIndex["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexelementRolesNotToTraverse);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexMaximumElementsToSearch != null)
+            if (jABSetSelectionByIndexmaximumElementsToSearch != null)
             {
-                jABSetSelectionByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexMaximumElementsToSearch);
+                jABSetSelectionByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumElementsToSearch);
                 jABSetSelectionByIndexpropCount++;
             }
 
-            if (jABSetSelectionByIndexMaximumChildElementsToSearchPerNode != null)
+            if (jABSetSelectionByIndexmaximumChildElementsToSearchPerNode != null)
             {
-                jABSetSelectionByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexMaximumChildElementsToSearchPerNode);
-                jABSetSelectionByIndexpropCount++;
-            }
-
-            jABSetSelectionByIndexpropCount++;
-            jABSetSelectionByIndex["ItemIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexItemIndex);
-            if (jABSetSelectionByIndexSelectItem != null)
-            {
-                jABSetSelectionByIndex["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexSelectItem);
-                jABSetSelectionByIndexpropCount++;
-            }
-
-            if (jABSetSelectionByIndexClearSelectionFirst != null)
-            {
-                jABSetSelectionByIndex["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexClearSelectionFirst);
-                jABSetSelectionByIndexpropCount++;
-            }
-
-            if (jABSetSelectionByIndexRecoverOnFailure != null)
-            {
-                jABSetSelectionByIndex["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexRecoverOnFailure);
+                jABSetSelectionByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumChildElementsToSearchPerNode);
                 jABSetSelectionByIndexpropCount++;
             }
 
             jABSetSelectionByIndexpropCount++;
-            jABSetSelectionByIndex["Workflow"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexWorkflow);
+            jABSetSelectionByIndex["ItemIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexitemIndex);
+            if (jABSetSelectionByIndexselectItem != null)
+            {
+                jABSetSelectionByIndex["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexselectItem);
+                jABSetSelectionByIndexpropCount++;
+            }
+
+            if (jABSetSelectionByIndexclearSelectionFirst != null)
+            {
+                jABSetSelectionByIndex["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexclearSelectionFirst);
+                jABSetSelectionByIndexpropCount++;
+            }
+
+            if (jABSetSelectionByIndexrecoverOnFailure != null)
+            {
+                jABSetSelectionByIndex["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexrecoverOnFailure);
+                jABSetSelectionByIndexpropCount++;
+            }
+
+            jABSetSelectionByIndexpropCount++;
+            jABSetSelectionByIndex["Workflow"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexworkflow);
             if (jABSetSelectionByIndexpropCount > 0)
             {
                 callPayload.Body = jABSetSelectionByIndex;
@@ -3616,7 +3616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABSetSelectionByName(Expression<Func<int>> jABSetSelectionByNameSearchParentElementJABHandle, Expression<Func<string>> jABSetSelectionByNameItemName, Expression<Func<string>> jABSetSelectionByNameWorkflow, Expression<Func<string>> jABSetSelectionByNameSearchElementJABName = null, Expression<Func<string>> jABSetSelectionByNameSearchElementJABDescription = null, Expression<Func<string>> jABSetSelectionByNameSearchElementJABRole = null, Expression<Func<bool>> jABSetSelectionByNameSearchSubTree = null, Expression<Func<int>> jABSetSelectionByNameMaxRelativeDepth = null, Expression<Func<int>> jABSetSelectionByNameMatchIndex = null, Expression<Func<string>> jABSetSelectionByNameSearchFilter = null, Expression<Func<string>> jABSetSelectionByNameSortByColumn = null, Expression<Func<bool>> jABSetSelectionByNameMatchIndexAscending = null, Expression<Func<bool>> jABSetSelectionByNameCaseSensitiveSearch = null, Expression<Func<bool>> jABSetSelectionByNameOnlySearchVisibleElements = null, Expression<Func<bool>> jABSetSelectionByNameOnlySearchShowingElements = null, Expression<Func<string>> jABSetSelectionByNameElementRolesNotToTraverse = null, Expression<Func<int>> jABSetSelectionByNameMaximumElementsToSearch = null, Expression<Func<int>> jABSetSelectionByNameMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABSetSelectionByNameSelectItem = null, Expression<Func<bool>> jABSetSelectionByNameItemNameCaseSensitive = null, Expression<Func<bool>> jABSetSelectionByNameClearSelectionFirst = null, Expression<Func<bool>> jABSetSelectionByNameGetListOfOptionsBySelecting = null, Expression<Func<bool>> jABSetSelectionByNameGetListOfOptionsByReadingLabels = null, Expression<Func<bool>> jABSetSelectionByNameExpandFirst = null, Expression<Func<bool>> jABSetSelectionByNameCollapseAfter = null, Expression<Func<double>> jABSetSelectionByNameSecondsBetweenExpandCollapse = null, Expression<Func<bool>> jABSetSelectionByNameForceEvenIfInCorrectState = null, Expression<Func<bool>> jABSetSelectionByNameRecoverOnFailure = null)
+        public IWorkflowAction JABSetSelectionByName(Expression<Func<int>> jABSetSelectionByNamesearchParentElementJABHandle, Expression<Func<string>> jABSetSelectionByNameitemName, Expression<Func<string>> jABSetSelectionByNameworkflow, Expression<Func<string>> jABSetSelectionByNamesearchElementJABName = null, Expression<Func<string>> jABSetSelectionByNamesearchElementJABDescription = null, Expression<Func<string>> jABSetSelectionByNamesearchElementJABRole = null, Expression<Func<bool>> jABSetSelectionByNamesearchSubTree = null, Expression<Func<int>> jABSetSelectionByNamemaxRelativeDepth = null, Expression<Func<int>> jABSetSelectionByNamematchIndex = null, Expression<Func<string>> jABSetSelectionByNamesearchFilter = null, Expression<Func<string>> jABSetSelectionByNamesortByColumn = null, Expression<Func<bool>> jABSetSelectionByNamematchIndexAscending = null, Expression<Func<bool>> jABSetSelectionByNamecaseSensitiveSearch = null, Expression<Func<bool>> jABSetSelectionByNameonlySearchVisibleElements = null, Expression<Func<bool>> jABSetSelectionByNameonlySearchShowingElements = null, Expression<Func<string>> jABSetSelectionByNameelementRolesNotToTraverse = null, Expression<Func<int>> jABSetSelectionByNamemaximumElementsToSearch = null, Expression<Func<int>> jABSetSelectionByNamemaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABSetSelectionByNameselectItem = null, Expression<Func<bool>> jABSetSelectionByNameitemNameCaseSensitive = null, Expression<Func<bool>> jABSetSelectionByNameclearSelectionFirst = null, Expression<Func<bool>> jABSetSelectionByNamegetListOfOptionsBySelecting = null, Expression<Func<bool>> jABSetSelectionByNamegetListOfOptionsByReadingLabels = null, Expression<Func<bool>> jABSetSelectionByNameexpandFirst = null, Expression<Func<bool>> jABSetSelectionByNamecollapseAfter = null, Expression<Func<double>> jABSetSelectionByNamesecondsBetweenExpandCollapse = null, Expression<Func<bool>> jABSetSelectionByNameforceEvenIfInCorrectState = null, Expression<Func<bool>> jABSetSelectionByNamerecoverOnFailure = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABSetSelectionByName";
             var apiCallHttpMethod = "post";
@@ -3624,161 +3624,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABSetSelectionByName = new JObject();
             var jABSetSelectionByNamepropCount = 0;
             jABSetSelectionByNamepropCount++;
-            jABSetSelectionByName["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchParentElementJABHandle);
-            if (jABSetSelectionByNameSearchElementJABName != null)
+            jABSetSelectionByName["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchParentElementJABHandle);
+            if (jABSetSelectionByNamesearchElementJABName != null)
             {
-                jABSetSelectionByName["SearchElementJABName"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchElementJABName);
+                jABSetSelectionByName["SearchElementJABName"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchElementJABName);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameSearchElementJABDescription != null)
+            if (jABSetSelectionByNamesearchElementJABDescription != null)
             {
-                jABSetSelectionByName["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchElementJABDescription);
+                jABSetSelectionByName["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchElementJABDescription);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameSearchElementJABRole != null)
+            if (jABSetSelectionByNamesearchElementJABRole != null)
             {
-                jABSetSelectionByName["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchElementJABRole);
+                jABSetSelectionByName["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchElementJABRole);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameSearchSubTree != null)
+            if (jABSetSelectionByNamesearchSubTree != null)
             {
-                jABSetSelectionByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchSubTree);
+                jABSetSelectionByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchSubTree);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameMaxRelativeDepth != null)
+            if (jABSetSelectionByNamemaxRelativeDepth != null)
             {
-                jABSetSelectionByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByNameMaxRelativeDepth);
+                jABSetSelectionByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaxRelativeDepth);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameMatchIndex != null)
+            if (jABSetSelectionByNamematchIndex != null)
             {
-                jABSetSelectionByName["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByNameMatchIndex);
+                jABSetSelectionByName["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndex);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameSearchFilter != null)
+            if (jABSetSelectionByNamesearchFilter != null)
             {
-                jABSetSelectionByName["SearchFilter"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSearchFilter);
+                jABSetSelectionByName["SearchFilter"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchFilter);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameSortByColumn != null)
+            if (jABSetSelectionByNamesortByColumn != null)
             {
-                jABSetSelectionByName["SortByColumn"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSortByColumn);
+                jABSetSelectionByName["SortByColumn"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesortByColumn);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameMatchIndexAscending != null)
+            if (jABSetSelectionByNamematchIndexAscending != null)
             {
-                jABSetSelectionByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByNameMatchIndexAscending);
+                jABSetSelectionByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndexAscending);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameCaseSensitiveSearch != null)
+            if (jABSetSelectionByNamecaseSensitiveSearch != null)
             {
-                jABSetSelectionByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNameCaseSensitiveSearch);
+                jABSetSelectionByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecaseSensitiveSearch);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameOnlySearchVisibleElements != null)
+            if (jABSetSelectionByNameonlySearchVisibleElements != null)
             {
-                jABSetSelectionByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameOnlySearchVisibleElements);
+                jABSetSelectionByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchVisibleElements);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameOnlySearchShowingElements != null)
+            if (jABSetSelectionByNameonlySearchShowingElements != null)
             {
-                jABSetSelectionByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameOnlySearchShowingElements);
+                jABSetSelectionByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchShowingElements);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameElementRolesNotToTraverse != null)
+            if (jABSetSelectionByNameelementRolesNotToTraverse != null)
             {
-                jABSetSelectionByName["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABSetSelectionByNameElementRolesNotToTraverse);
+                jABSetSelectionByName["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABSetSelectionByNameelementRolesNotToTraverse);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameMaximumElementsToSearch != null)
+            if (jABSetSelectionByNamemaximumElementsToSearch != null)
             {
-                jABSetSelectionByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNameMaximumElementsToSearch);
+                jABSetSelectionByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumElementsToSearch);
                 jABSetSelectionByNamepropCount++;
             }
 
-            if (jABSetSelectionByNameMaximumChildElementsToSearchPerNode != null)
+            if (jABSetSelectionByNamemaximumChildElementsToSearchPerNode != null)
             {
-                jABSetSelectionByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByNameMaximumChildElementsToSearchPerNode);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            jABSetSelectionByNamepropCount++;
-            jABSetSelectionByName["ItemName"] = ExpressionConverter.ConvertO(jABSetSelectionByNameItemName);
-            if (jABSetSelectionByNameSelectItem != null)
-            {
-                jABSetSelectionByName["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSelectItem);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameItemNameCaseSensitive != null)
-            {
-                jABSetSelectionByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABSetSelectionByNameItemNameCaseSensitive);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameClearSelectionFirst != null)
-            {
-                jABSetSelectionByName["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameClearSelectionFirst);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameGetListOfOptionsBySelecting != null)
-            {
-                jABSetSelectionByName["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABSetSelectionByNameGetListOfOptionsBySelecting);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameGetListOfOptionsByReadingLabels != null)
-            {
-                jABSetSelectionByName["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABSetSelectionByNameGetListOfOptionsByReadingLabels);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameExpandFirst != null)
-            {
-                jABSetSelectionByName["ExpandFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameExpandFirst);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameCollapseAfter != null)
-            {
-                jABSetSelectionByName["CollapseAfter"] = ExpressionConverter.ConvertO(jABSetSelectionByNameCollapseAfter);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameSecondsBetweenExpandCollapse != null)
-            {
-                jABSetSelectionByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABSetSelectionByNameSecondsBetweenExpandCollapse);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameForceEvenIfInCorrectState != null)
-            {
-                jABSetSelectionByName["ForceEvenIfInCorrectState"] = ExpressionConverter.ConvertO(jABSetSelectionByNameForceEvenIfInCorrectState);
-                jABSetSelectionByNamepropCount++;
-            }
-
-            if (jABSetSelectionByNameRecoverOnFailure != null)
-            {
-                jABSetSelectionByName["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByNameRecoverOnFailure);
+                jABSetSelectionByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumChildElementsToSearchPerNode);
                 jABSetSelectionByNamepropCount++;
             }
 
             jABSetSelectionByNamepropCount++;
-            jABSetSelectionByName["Workflow"] = ExpressionConverter.ConvertO(jABSetSelectionByNameWorkflow);
+            jABSetSelectionByName["ItemName"] = ExpressionConverter.ConvertO(jABSetSelectionByNameitemName);
+            if (jABSetSelectionByNameselectItem != null)
+            {
+                jABSetSelectionByName["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByNameselectItem);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNameitemNameCaseSensitive != null)
+            {
+                jABSetSelectionByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABSetSelectionByNameitemNameCaseSensitive);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNameclearSelectionFirst != null)
+            {
+                jABSetSelectionByName["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameclearSelectionFirst);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNamegetListOfOptionsBySelecting != null)
+            {
+                jABSetSelectionByName["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsBySelecting);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNamegetListOfOptionsByReadingLabels != null)
+            {
+                jABSetSelectionByName["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsByReadingLabels);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNameexpandFirst != null)
+            {
+                jABSetSelectionByName["ExpandFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameexpandFirst);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNamecollapseAfter != null)
+            {
+                jABSetSelectionByName["CollapseAfter"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecollapseAfter);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNamesecondsBetweenExpandCollapse != null)
+            {
+                jABSetSelectionByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesecondsBetweenExpandCollapse);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNameforceEvenIfInCorrectState != null)
+            {
+                jABSetSelectionByName["ForceEvenIfInCorrectState"] = ExpressionConverter.ConvertO(jABSetSelectionByNameforceEvenIfInCorrectState);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            if (jABSetSelectionByNamerecoverOnFailure != null)
+            {
+                jABSetSelectionByName["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByNamerecoverOnFailure);
+                jABSetSelectionByNamepropCount++;
+            }
+
+            jABSetSelectionByNamepropCount++;
+            jABSetSelectionByName["Workflow"] = ExpressionConverter.ConvertO(jABSetSelectionByNameworkflow);
             if (jABSetSelectionByNamepropCount > 0)
             {
                 callPayload.Body = jABSetSelectionByName;
@@ -3788,7 +3788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABExpandSelection(Expression<Func<int>> jABExpandSelectionSearchParentElementJABHandle, Expression<Func<string>> jABExpandSelectionWorkflow, Expression<Func<string>> jABExpandSelectionSearchElementJABName = null, Expression<Func<string>> jABExpandSelectionSearchElementJABDescription = null, Expression<Func<string>> jABExpandSelectionSearchElementJABRole = null, Expression<Func<bool>> jABExpandSelectionSearchSubTree = null, Expression<Func<int>> jABExpandSelectionMaxRelativeDepth = null, Expression<Func<int>> jABExpandSelectionMatchIndex = null, Expression<Func<string>> jABExpandSelectionSearchFilter = null, Expression<Func<string>> jABExpandSelectionSortByColumn = null, Expression<Func<bool>> jABExpandSelectionMatchIndexAscending = null, Expression<Func<bool>> jABExpandSelectionCaseSensitiveSearch = null, Expression<Func<bool>> jABExpandSelectionOnlySearchVisibleElements = null, Expression<Func<bool>> jABExpandSelectionOnlySearchShowingElements = null, Expression<Func<string>> jABExpandSelectionElementRolesNotToTraverse = null, Expression<Func<int>> jABExpandSelectionMaximumElementsToSearch = null, Expression<Func<int>> jABExpandSelectionMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABExpandSelectionExpand = null, Expression<Func<bool>> jABExpandSelectionVerifyElementState = null, Expression<Func<double>> jABExpandSelectionSecondsToWaitForStateChange = null)
+        public IWorkflowAction JABExpandSelection(Expression<Func<int>> jABExpandSelectionsearchParentElementJABHandle, Expression<Func<string>> jABExpandSelectionworkflow, Expression<Func<string>> jABExpandSelectionsearchElementJABName = null, Expression<Func<string>> jABExpandSelectionsearchElementJABDescription = null, Expression<Func<string>> jABExpandSelectionsearchElementJABRole = null, Expression<Func<bool>> jABExpandSelectionsearchSubTree = null, Expression<Func<int>> jABExpandSelectionmaxRelativeDepth = null, Expression<Func<int>> jABExpandSelectionmatchIndex = null, Expression<Func<string>> jABExpandSelectionsearchFilter = null, Expression<Func<string>> jABExpandSelectionsortByColumn = null, Expression<Func<bool>> jABExpandSelectionmatchIndexAscending = null, Expression<Func<bool>> jABExpandSelectioncaseSensitiveSearch = null, Expression<Func<bool>> jABExpandSelectiononlySearchVisibleElements = null, Expression<Func<bool>> jABExpandSelectiononlySearchShowingElements = null, Expression<Func<string>> jABExpandSelectionelementRolesNotToTraverse = null, Expression<Func<int>> jABExpandSelectionmaximumElementsToSearch = null, Expression<Func<int>> jABExpandSelectionmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABExpandSelectionexpand = null, Expression<Func<bool>> jABExpandSelectionverifyElementState = null, Expression<Func<double>> jABExpandSelectionsecondsToWaitForStateChange = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABExpandSelection";
             var apiCallHttpMethod = "post";
@@ -3796,117 +3796,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABExpandSelection = new JObject();
             var jABExpandSelectionpropCount = 0;
             jABExpandSelectionpropCount++;
-            jABExpandSelection["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchParentElementJABHandle);
-            if (jABExpandSelectionSearchElementJABName != null)
+            jABExpandSelection["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchParentElementJABHandle);
+            if (jABExpandSelectionsearchElementJABName != null)
             {
-                jABExpandSelection["SearchElementJABName"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchElementJABName);
+                jABExpandSelection["SearchElementJABName"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchElementJABName);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSearchElementJABDescription != null)
+            if (jABExpandSelectionsearchElementJABDescription != null)
             {
-                jABExpandSelection["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchElementJABDescription);
+                jABExpandSelection["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchElementJABDescription);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSearchElementJABRole != null)
+            if (jABExpandSelectionsearchElementJABRole != null)
             {
-                jABExpandSelection["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchElementJABRole);
+                jABExpandSelection["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchElementJABRole);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSearchSubTree != null)
+            if (jABExpandSelectionsearchSubTree != null)
             {
-                jABExpandSelection["SearchSubTree"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchSubTree);
+                jABExpandSelection["SearchSubTree"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchSubTree);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionMaxRelativeDepth != null)
+            if (jABExpandSelectionmaxRelativeDepth != null)
             {
-                jABExpandSelection["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABExpandSelectionMaxRelativeDepth);
+                jABExpandSelection["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABExpandSelectionmaxRelativeDepth);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionMatchIndex != null)
+            if (jABExpandSelectionmatchIndex != null)
             {
-                jABExpandSelection["MatchIndex"] = ExpressionConverter.ConvertO(jABExpandSelectionMatchIndex);
+                jABExpandSelection["MatchIndex"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndex);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSearchFilter != null)
+            if (jABExpandSelectionsearchFilter != null)
             {
-                jABExpandSelection["SearchFilter"] = ExpressionConverter.ConvertO(jABExpandSelectionSearchFilter);
+                jABExpandSelection["SearchFilter"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchFilter);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSortByColumn != null)
+            if (jABExpandSelectionsortByColumn != null)
             {
-                jABExpandSelection["SortByColumn"] = ExpressionConverter.ConvertO(jABExpandSelectionSortByColumn);
+                jABExpandSelection["SortByColumn"] = ExpressionConverter.ConvertO(jABExpandSelectionsortByColumn);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionMatchIndexAscending != null)
+            if (jABExpandSelectionmatchIndexAscending != null)
             {
-                jABExpandSelection["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABExpandSelectionMatchIndexAscending);
+                jABExpandSelection["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndexAscending);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionCaseSensitiveSearch != null)
+            if (jABExpandSelectioncaseSensitiveSearch != null)
             {
-                jABExpandSelection["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABExpandSelectionCaseSensitiveSearch);
+                jABExpandSelection["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABExpandSelectioncaseSensitiveSearch);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionOnlySearchVisibleElements != null)
+            if (jABExpandSelectiononlySearchVisibleElements != null)
             {
-                jABExpandSelection["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABExpandSelectionOnlySearchVisibleElements);
+                jABExpandSelection["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchVisibleElements);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionOnlySearchShowingElements != null)
+            if (jABExpandSelectiononlySearchShowingElements != null)
             {
-                jABExpandSelection["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABExpandSelectionOnlySearchShowingElements);
+                jABExpandSelection["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchShowingElements);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionElementRolesNotToTraverse != null)
+            if (jABExpandSelectionelementRolesNotToTraverse != null)
             {
-                jABExpandSelection["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABExpandSelectionElementRolesNotToTraverse);
+                jABExpandSelection["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABExpandSelectionelementRolesNotToTraverse);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionMaximumElementsToSearch != null)
+            if (jABExpandSelectionmaximumElementsToSearch != null)
             {
-                jABExpandSelection["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABExpandSelectionMaximumElementsToSearch);
+                jABExpandSelection["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumElementsToSearch);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionMaximumChildElementsToSearchPerNode != null)
+            if (jABExpandSelectionmaximumChildElementsToSearchPerNode != null)
             {
-                jABExpandSelection["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABExpandSelectionMaximumChildElementsToSearchPerNode);
+                jABExpandSelection["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumChildElementsToSearchPerNode);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionExpand != null)
+            if (jABExpandSelectionexpand != null)
             {
-                jABExpandSelection["Expand"] = ExpressionConverter.ConvertO(jABExpandSelectionExpand);
+                jABExpandSelection["Expand"] = ExpressionConverter.ConvertO(jABExpandSelectionexpand);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionVerifyElementState != null)
+            if (jABExpandSelectionverifyElementState != null)
             {
-                jABExpandSelection["VerifyElementState"] = ExpressionConverter.ConvertO(jABExpandSelectionVerifyElementState);
+                jABExpandSelection["VerifyElementState"] = ExpressionConverter.ConvertO(jABExpandSelectionverifyElementState);
                 jABExpandSelectionpropCount++;
             }
 
-            if (jABExpandSelectionSecondsToWaitForStateChange != null)
+            if (jABExpandSelectionsecondsToWaitForStateChange != null)
             {
-                jABExpandSelection["SecondsToWaitForStateChange"] = ExpressionConverter.ConvertO(jABExpandSelectionSecondsToWaitForStateChange);
+                jABExpandSelection["SecondsToWaitForStateChange"] = ExpressionConverter.ConvertO(jABExpandSelectionsecondsToWaitForStateChange);
                 jABExpandSelectionpropCount++;
             }
 
             jABExpandSelectionpropCount++;
-            jABExpandSelection["Workflow"] = ExpressionConverter.ConvertO(jABExpandSelectionWorkflow);
+            jABExpandSelection["Workflow"] = ExpressionConverter.ConvertO(jABExpandSelectionworkflow);
             if (jABExpandSelectionpropCount > 0)
             {
                 callPayload.Body = jABExpandSelection;
@@ -3916,7 +3916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionStateByIndexResponse> JABGetSelectionStateByIndex(Expression<Func<int>> jABGetSelectionStateByIndexSearchParentElementJABHandle, Expression<Func<int>> jABGetSelectionStateByIndexItemIndex, Expression<Func<string>> jABGetSelectionStateByIndexWorkflow, Expression<Func<string>> jABGetSelectionStateByIndexSearchElementJABName = null, Expression<Func<string>> jABGetSelectionStateByIndexSearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionStateByIndexSearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionStateByIndexSearchSubTree = null, Expression<Func<int>> jABGetSelectionStateByIndexMaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionStateByIndexMatchIndex = null, Expression<Func<string>> jABGetSelectionStateByIndexSearchFilter = null, Expression<Func<string>> jABGetSelectionStateByIndexSortByColumn = null, Expression<Func<bool>> jABGetSelectionStateByIndexMatchIndexAscending = null, Expression<Func<bool>> jABGetSelectionStateByIndexCaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionStateByIndexOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionStateByIndexOnlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionStateByIndexElementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionStateByIndexMaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionStateByIndexMaximumChildElementsToSearchPerNode = null)
+        public IBodyWorkflowAction<JABGetSelectionStateByIndexResponse> JABGetSelectionStateByIndex(Expression<Func<int>> jABGetSelectionStateByIndexsearchParentElementJABHandle, Expression<Func<int>> jABGetSelectionStateByIndexitemIndex, Expression<Func<string>> jABGetSelectionStateByIndexworkflow, Expression<Func<string>> jABGetSelectionStateByIndexsearchElementJABName = null, Expression<Func<string>> jABGetSelectionStateByIndexsearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionStateByIndexsearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionStateByIndexsearchSubTree = null, Expression<Func<int>> jABGetSelectionStateByIndexmaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionStateByIndexmatchIndex = null, Expression<Func<string>> jABGetSelectionStateByIndexsearchFilter = null, Expression<Func<string>> jABGetSelectionStateByIndexsortByColumn = null, Expression<Func<bool>> jABGetSelectionStateByIndexmatchIndexAscending = null, Expression<Func<bool>> jABGetSelectionStateByIndexcaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionStateByIndexonlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionStateByIndexonlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionStateByIndexelementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionStateByIndexmaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByIndex";
             var apiCallHttpMethod = "post";
@@ -3924,101 +3924,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetSelectionStateByIndex = new JObject();
             var jABGetSelectionStateByIndexpropCount = 0;
             jABGetSelectionStateByIndexpropCount++;
-            jABGetSelectionStateByIndex["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchParentElementJABHandle);
-            if (jABGetSelectionStateByIndexSearchElementJABName != null)
+            jABGetSelectionStateByIndex["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchParentElementJABHandle);
+            if (jABGetSelectionStateByIndexsearchElementJABName != null)
             {
-                jABGetSelectionStateByIndex["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchElementJABName);
+                jABGetSelectionStateByIndex["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchElementJABName);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexSearchElementJABDescription != null)
+            if (jABGetSelectionStateByIndexsearchElementJABDescription != null)
             {
-                jABGetSelectionStateByIndex["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchElementJABDescription);
+                jABGetSelectionStateByIndex["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchElementJABDescription);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexSearchElementJABRole != null)
+            if (jABGetSelectionStateByIndexsearchElementJABRole != null)
             {
-                jABGetSelectionStateByIndex["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchElementJABRole);
+                jABGetSelectionStateByIndex["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchElementJABRole);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexSearchSubTree != null)
+            if (jABGetSelectionStateByIndexsearchSubTree != null)
             {
-                jABGetSelectionStateByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchSubTree);
+                jABGetSelectionStateByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchSubTree);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexMaxRelativeDepth != null)
+            if (jABGetSelectionStateByIndexmaxRelativeDepth != null)
             {
-                jABGetSelectionStateByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexMaxRelativeDepth);
+                jABGetSelectionStateByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaxRelativeDepth);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexMatchIndex != null)
+            if (jABGetSelectionStateByIndexmatchIndex != null)
             {
-                jABGetSelectionStateByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexMatchIndex);
+                jABGetSelectionStateByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndex);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexSearchFilter != null)
+            if (jABGetSelectionStateByIndexsearchFilter != null)
             {
-                jABGetSelectionStateByIndex["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSearchFilter);
+                jABGetSelectionStateByIndex["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchFilter);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexSortByColumn != null)
+            if (jABGetSelectionStateByIndexsortByColumn != null)
             {
-                jABGetSelectionStateByIndex["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexSortByColumn);
+                jABGetSelectionStateByIndex["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsortByColumn);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexMatchIndexAscending != null)
+            if (jABGetSelectionStateByIndexmatchIndexAscending != null)
             {
-                jABGetSelectionStateByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexMatchIndexAscending);
+                jABGetSelectionStateByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndexAscending);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexCaseSensitiveSearch != null)
+            if (jABGetSelectionStateByIndexcaseSensitiveSearch != null)
             {
-                jABGetSelectionStateByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexCaseSensitiveSearch);
+                jABGetSelectionStateByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexcaseSensitiveSearch);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexOnlySearchVisibleElements != null)
+            if (jABGetSelectionStateByIndexonlySearchVisibleElements != null)
             {
-                jABGetSelectionStateByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexOnlySearchVisibleElements);
+                jABGetSelectionStateByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchVisibleElements);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexOnlySearchShowingElements != null)
+            if (jABGetSelectionStateByIndexonlySearchShowingElements != null)
             {
-                jABGetSelectionStateByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexOnlySearchShowingElements);
+                jABGetSelectionStateByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchShowingElements);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexElementRolesNotToTraverse != null)
+            if (jABGetSelectionStateByIndexelementRolesNotToTraverse != null)
             {
-                jABGetSelectionStateByIndex["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexElementRolesNotToTraverse);
+                jABGetSelectionStateByIndex["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexelementRolesNotToTraverse);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexMaximumElementsToSearch != null)
+            if (jABGetSelectionStateByIndexmaximumElementsToSearch != null)
             {
-                jABGetSelectionStateByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexMaximumElementsToSearch);
+                jABGetSelectionStateByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumElementsToSearch);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
-            if (jABGetSelectionStateByIndexMaximumChildElementsToSearchPerNode != null)
+            if (jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionStateByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexMaximumChildElementsToSearchPerNode);
+                jABGetSelectionStateByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode);
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             jABGetSelectionStateByIndexpropCount++;
-            jABGetSelectionStateByIndex["ItemIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexItemIndex);
+            jABGetSelectionStateByIndex["ItemIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexitemIndex);
             jABGetSelectionStateByIndexpropCount++;
-            jABGetSelectionStateByIndex["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexWorkflow);
+            jABGetSelectionStateByIndex["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexworkflow);
             if (jABGetSelectionStateByIndexpropCount > 0)
             {
                 callPayload.Body = jABGetSelectionStateByIndex;
@@ -4028,7 +4028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionStateByNameResponse> JABGetSelectionStateByName(Expression<Func<int>> jABGetSelectionStateByNameSearchParentElementJABHandle, Expression<Func<string>> jABGetSelectionStateByNameItemName, Expression<Func<string>> jABGetSelectionStateByNameWorkflow, Expression<Func<string>> jABGetSelectionStateByNameSearchElementJABName = null, Expression<Func<string>> jABGetSelectionStateByNameSearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionStateByNameSearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionStateByNameSearchSubTree = null, Expression<Func<int>> jABGetSelectionStateByNameMaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionStateByNameMatchIndex = null, Expression<Func<string>> jABGetSelectionStateByNameSearchFilter = null, Expression<Func<string>> jABGetSelectionStateByNameSortByColumn = null, Expression<Func<bool>> jABGetSelectionStateByNameMatchIndexAscending = null, Expression<Func<bool>> jABGetSelectionStateByNameCaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionStateByNameOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionStateByNameOnlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionStateByNameElementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionStateByNameMaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionStateByNameMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetSelectionStateByNameItemNameCaseSensitive = null)
+        public IBodyWorkflowAction<JABGetSelectionStateByNameResponse> JABGetSelectionStateByName(Expression<Func<int>> jABGetSelectionStateByNamesearchParentElementJABHandle, Expression<Func<string>> jABGetSelectionStateByNameitemName, Expression<Func<string>> jABGetSelectionStateByNameworkflow, Expression<Func<string>> jABGetSelectionStateByNamesearchElementJABName = null, Expression<Func<string>> jABGetSelectionStateByNamesearchElementJABDescription = null, Expression<Func<string>> jABGetSelectionStateByNamesearchElementJABRole = null, Expression<Func<bool>> jABGetSelectionStateByNamesearchSubTree = null, Expression<Func<int>> jABGetSelectionStateByNamemaxRelativeDepth = null, Expression<Func<int>> jABGetSelectionStateByNamematchIndex = null, Expression<Func<string>> jABGetSelectionStateByNamesearchFilter = null, Expression<Func<string>> jABGetSelectionStateByNamesortByColumn = null, Expression<Func<bool>> jABGetSelectionStateByNamematchIndexAscending = null, Expression<Func<bool>> jABGetSelectionStateByNamecaseSensitiveSearch = null, Expression<Func<bool>> jABGetSelectionStateByNameonlySearchVisibleElements = null, Expression<Func<bool>> jABGetSelectionStateByNameonlySearchShowingElements = null, Expression<Func<string>> jABGetSelectionStateByNameelementRolesNotToTraverse = null, Expression<Func<int>> jABGetSelectionStateByNamemaximumElementsToSearch = null, Expression<Func<int>> jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetSelectionStateByNameitemNameCaseSensitive = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByName";
             var apiCallHttpMethod = "post";
@@ -4036,107 +4036,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetSelectionStateByName = new JObject();
             var jABGetSelectionStateByNamepropCount = 0;
             jABGetSelectionStateByNamepropCount++;
-            jABGetSelectionStateByName["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchParentElementJABHandle);
-            if (jABGetSelectionStateByNameSearchElementJABName != null)
+            jABGetSelectionStateByName["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchParentElementJABHandle);
+            if (jABGetSelectionStateByNamesearchElementJABName != null)
             {
-                jABGetSelectionStateByName["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchElementJABName);
+                jABGetSelectionStateByName["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchElementJABName);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameSearchElementJABDescription != null)
+            if (jABGetSelectionStateByNamesearchElementJABDescription != null)
             {
-                jABGetSelectionStateByName["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchElementJABDescription);
+                jABGetSelectionStateByName["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchElementJABDescription);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameSearchElementJABRole != null)
+            if (jABGetSelectionStateByNamesearchElementJABRole != null)
             {
-                jABGetSelectionStateByName["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchElementJABRole);
+                jABGetSelectionStateByName["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchElementJABRole);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameSearchSubTree != null)
+            if (jABGetSelectionStateByNamesearchSubTree != null)
             {
-                jABGetSelectionStateByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchSubTree);
+                jABGetSelectionStateByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchSubTree);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameMaxRelativeDepth != null)
+            if (jABGetSelectionStateByNamemaxRelativeDepth != null)
             {
-                jABGetSelectionStateByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameMaxRelativeDepth);
+                jABGetSelectionStateByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaxRelativeDepth);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameMatchIndex != null)
+            if (jABGetSelectionStateByNamematchIndex != null)
             {
-                jABGetSelectionStateByName["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameMatchIndex);
+                jABGetSelectionStateByName["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndex);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameSearchFilter != null)
+            if (jABGetSelectionStateByNamesearchFilter != null)
             {
-                jABGetSelectionStateByName["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSearchFilter);
+                jABGetSelectionStateByName["SearchFilter"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchFilter);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameSortByColumn != null)
+            if (jABGetSelectionStateByNamesortByColumn != null)
             {
-                jABGetSelectionStateByName["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameSortByColumn);
+                jABGetSelectionStateByName["SortByColumn"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesortByColumn);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameMatchIndexAscending != null)
+            if (jABGetSelectionStateByNamematchIndexAscending != null)
             {
-                jABGetSelectionStateByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameMatchIndexAscending);
+                jABGetSelectionStateByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndexAscending);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameCaseSensitiveSearch != null)
+            if (jABGetSelectionStateByNamecaseSensitiveSearch != null)
             {
-                jABGetSelectionStateByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameCaseSensitiveSearch);
+                jABGetSelectionStateByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamecaseSensitiveSearch);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameOnlySearchVisibleElements != null)
+            if (jABGetSelectionStateByNameonlySearchVisibleElements != null)
             {
-                jABGetSelectionStateByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameOnlySearchVisibleElements);
+                jABGetSelectionStateByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchVisibleElements);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameOnlySearchShowingElements != null)
+            if (jABGetSelectionStateByNameonlySearchShowingElements != null)
             {
-                jABGetSelectionStateByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameOnlySearchShowingElements);
+                jABGetSelectionStateByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchShowingElements);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameElementRolesNotToTraverse != null)
+            if (jABGetSelectionStateByNameelementRolesNotToTraverse != null)
             {
-                jABGetSelectionStateByName["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameElementRolesNotToTraverse);
+                jABGetSelectionStateByName["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameelementRolesNotToTraverse);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameMaximumElementsToSearch != null)
+            if (jABGetSelectionStateByNamemaximumElementsToSearch != null)
             {
-                jABGetSelectionStateByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameMaximumElementsToSearch);
+                jABGetSelectionStateByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumElementsToSearch);
                 jABGetSelectionStateByNamepropCount++;
             }
 
-            if (jABGetSelectionStateByNameMaximumChildElementsToSearchPerNode != null)
+            if (jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionStateByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameMaximumChildElementsToSearchPerNode);
-                jABGetSelectionStateByNamepropCount++;
-            }
-
-            jABGetSelectionStateByNamepropCount++;
-            jABGetSelectionStateByName["ItemName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameItemName);
-            if (jABGetSelectionStateByNameItemNameCaseSensitive != null)
-            {
-                jABGetSelectionStateByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameItemNameCaseSensitive);
+                jABGetSelectionStateByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode);
                 jABGetSelectionStateByNamepropCount++;
             }
 
             jABGetSelectionStateByNamepropCount++;
-            jABGetSelectionStateByName["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameWorkflow);
+            jABGetSelectionStateByName["ItemName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameitemName);
+            if (jABGetSelectionStateByNameitemNameCaseSensitive != null)
+            {
+                jABGetSelectionStateByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameitemNameCaseSensitive);
+                jABGetSelectionStateByNamepropCount++;
+            }
+
+            jABGetSelectionStateByNamepropCount++;
+            jABGetSelectionStateByName["Workflow"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameworkflow);
             if (jABGetSelectionStateByNamepropCount > 0)
             {
                 callPayload.Body = jABGetSelectionStateByName;
@@ -4146,7 +4146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTablePropertiesResponse> JABGetTableProperties(Expression<Func<int>> jABGetTablePropertiesSearchParentElementJABHandle, Expression<Func<string>> jABGetTablePropertiesWorkflow, Expression<Func<string>> jABGetTablePropertiesSearchElementJABName = null, Expression<Func<string>> jABGetTablePropertiesSearchElementJABDescription = null, Expression<Func<string>> jABGetTablePropertiesSearchElementJABRole = null, Expression<Func<bool>> jABGetTablePropertiesSearchSubTree = null, Expression<Func<int>> jABGetTablePropertiesMaxRelativeDepth = null, Expression<Func<int>> jABGetTablePropertiesMatchIndex = null, Expression<Func<string>> jABGetTablePropertiesSearchFilter = null, Expression<Func<string>> jABGetTablePropertiesSortByColumn = null, Expression<Func<bool>> jABGetTablePropertiesMatchIndexAscending = null, Expression<Func<bool>> jABGetTablePropertiesCaseSensitiveSearch = null, Expression<Func<bool>> jABGetTablePropertiesOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetTablePropertiesOnlySearchShowingElements = null, Expression<Func<string>> jABGetTablePropertiesElementRolesNotToTraverse = null, Expression<Func<int>> jABGetTablePropertiesMaximumElementsToSearch = null, Expression<Func<int>> jABGetTablePropertiesMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetTablePropertiesEnumerateViewport = null, Expression<Func<bool>> jABGetTablePropertiesProcessViewportParents = null, Expression<Func<int>> jABGetTablePropertiesMaxViewportParentsToProcess = null, Expression<Func<string>> jABGetTablePropertiesViewportParentElementRolesToConsider = null, Expression<Func<int>> jABGetTablePropertiesViewportLeftMargin = null, Expression<Func<int>> jABGetTablePropertiesViewportTopMargin = null, Expression<Func<int>> jABGetTablePropertiesViewportRightMargin = null, Expression<Func<int>> jABGetTablePropertiesViewportBottomMargin = null)
+        public IBodyWorkflowAction<JABGetTablePropertiesResponse> JABGetTableProperties(Expression<Func<int>> jABGetTablePropertiessearchParentElementJABHandle, Expression<Func<string>> jABGetTablePropertiesworkflow, Expression<Func<string>> jABGetTablePropertiessearchElementJABName = null, Expression<Func<string>> jABGetTablePropertiessearchElementJABDescription = null, Expression<Func<string>> jABGetTablePropertiessearchElementJABRole = null, Expression<Func<bool>> jABGetTablePropertiessearchSubTree = null, Expression<Func<int>> jABGetTablePropertiesmaxRelativeDepth = null, Expression<Func<int>> jABGetTablePropertiesmatchIndex = null, Expression<Func<string>> jABGetTablePropertiessearchFilter = null, Expression<Func<string>> jABGetTablePropertiessortByColumn = null, Expression<Func<bool>> jABGetTablePropertiesmatchIndexAscending = null, Expression<Func<bool>> jABGetTablePropertiescaseSensitiveSearch = null, Expression<Func<bool>> jABGetTablePropertiesonlySearchVisibleElements = null, Expression<Func<bool>> jABGetTablePropertiesonlySearchShowingElements = null, Expression<Func<string>> jABGetTablePropertieselementRolesNotToTraverse = null, Expression<Func<int>> jABGetTablePropertiesmaximumElementsToSearch = null, Expression<Func<int>> jABGetTablePropertiesmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetTablePropertiesenumerateViewport = null, Expression<Func<bool>> jABGetTablePropertiesprocessViewportParents = null, Expression<Func<int>> jABGetTablePropertiesmaxViewportParentsToProcess = null, Expression<Func<string>> jABGetTablePropertiesviewportParentElementRolesToConsider = null, Expression<Func<int>> jABGetTablePropertiesviewportLeftMargin = null, Expression<Func<int>> jABGetTablePropertiesviewportTopMargin = null, Expression<Func<int>> jABGetTablePropertiesviewportRightMargin = null, Expression<Func<int>> jABGetTablePropertiesviewportBottomMargin = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetTableProperties";
             var apiCallHttpMethod = "post";
@@ -4154,147 +4154,147 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetTableProperties = new JObject();
             var jABGetTablePropertiespropCount = 0;
             jABGetTablePropertiespropCount++;
-            jABGetTableProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchParentElementJABHandle);
-            if (jABGetTablePropertiesSearchElementJABName != null)
+            jABGetTableProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchParentElementJABHandle);
+            if (jABGetTablePropertiessearchElementJABName != null)
             {
-                jABGetTableProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchElementJABName);
+                jABGetTableProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchElementJABName);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesSearchElementJABDescription != null)
+            if (jABGetTablePropertiessearchElementJABDescription != null)
             {
-                jABGetTableProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchElementJABDescription);
+                jABGetTableProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchElementJABDescription);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesSearchElementJABRole != null)
+            if (jABGetTablePropertiessearchElementJABRole != null)
             {
-                jABGetTableProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchElementJABRole);
+                jABGetTableProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchElementJABRole);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesSearchSubTree != null)
+            if (jABGetTablePropertiessearchSubTree != null)
             {
-                jABGetTableProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchSubTree);
+                jABGetTableProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchSubTree);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMaxRelativeDepth != null)
+            if (jABGetTablePropertiesmaxRelativeDepth != null)
             {
-                jABGetTableProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMaxRelativeDepth);
+                jABGetTableProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxRelativeDepth);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMatchIndex != null)
+            if (jABGetTablePropertiesmatchIndex != null)
             {
-                jABGetTableProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMatchIndex);
+                jABGetTableProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndex);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesSearchFilter != null)
+            if (jABGetTablePropertiessearchFilter != null)
             {
-                jABGetTableProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSearchFilter);
+                jABGetTableProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchFilter);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesSortByColumn != null)
+            if (jABGetTablePropertiessortByColumn != null)
             {
-                jABGetTableProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTablePropertiesSortByColumn);
+                jABGetTableProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTablePropertiessortByColumn);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMatchIndexAscending != null)
+            if (jABGetTablePropertiesmatchIndexAscending != null)
             {
-                jABGetTableProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMatchIndexAscending);
+                jABGetTableProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndexAscending);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesCaseSensitiveSearch != null)
+            if (jABGetTablePropertiescaseSensitiveSearch != null)
             {
-                jABGetTableProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiesCaseSensitiveSearch);
+                jABGetTableProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiescaseSensitiveSearch);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesOnlySearchVisibleElements != null)
+            if (jABGetTablePropertiesonlySearchVisibleElements != null)
             {
-                jABGetTableProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesOnlySearchVisibleElements);
+                jABGetTableProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchVisibleElements);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesOnlySearchShowingElements != null)
+            if (jABGetTablePropertiesonlySearchShowingElements != null)
             {
-                jABGetTableProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesOnlySearchShowingElements);
+                jABGetTableProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchShowingElements);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesElementRolesNotToTraverse != null)
+            if (jABGetTablePropertieselementRolesNotToTraverse != null)
             {
-                jABGetTableProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTablePropertiesElementRolesNotToTraverse);
+                jABGetTableProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTablePropertieselementRolesNotToTraverse);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMaximumElementsToSearch != null)
+            if (jABGetTablePropertiesmaximumElementsToSearch != null)
             {
-                jABGetTableProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMaximumElementsToSearch);
+                jABGetTableProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumElementsToSearch);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMaximumChildElementsToSearchPerNode != null)
+            if (jABGetTablePropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMaximumChildElementsToSearchPerNode);
+                jABGetTableProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumChildElementsToSearchPerNode);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesEnumerateViewport != null)
+            if (jABGetTablePropertiesenumerateViewport != null)
             {
-                jABGetTableProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTablePropertiesEnumerateViewport);
+                jABGetTableProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTablePropertiesenumerateViewport);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesProcessViewportParents != null)
+            if (jABGetTablePropertiesprocessViewportParents != null)
             {
-                jABGetTableProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTablePropertiesProcessViewportParents);
+                jABGetTableProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTablePropertiesprocessViewportParents);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesMaxViewportParentsToProcess != null)
+            if (jABGetTablePropertiesmaxViewportParentsToProcess != null)
             {
-                jABGetTableProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTablePropertiesMaxViewportParentsToProcess);
+                jABGetTableProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxViewportParentsToProcess);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesViewportParentElementRolesToConsider != null)
+            if (jABGetTablePropertiesviewportParentElementRolesToConsider != null)
             {
-                jABGetTableProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTablePropertiesViewportParentElementRolesToConsider);
+                jABGetTableProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportParentElementRolesToConsider);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesViewportLeftMargin != null)
+            if (jABGetTablePropertiesviewportLeftMargin != null)
             {
-                jABGetTableProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesViewportLeftMargin);
+                jABGetTableProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportLeftMargin);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesViewportTopMargin != null)
+            if (jABGetTablePropertiesviewportTopMargin != null)
             {
-                jABGetTableProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesViewportTopMargin);
+                jABGetTableProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportTopMargin);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesViewportRightMargin != null)
+            if (jABGetTablePropertiesviewportRightMargin != null)
             {
-                jABGetTableProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesViewportRightMargin);
+                jABGetTableProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportRightMargin);
                 jABGetTablePropertiespropCount++;
             }
 
-            if (jABGetTablePropertiesViewportBottomMargin != null)
+            if (jABGetTablePropertiesviewportBottomMargin != null)
             {
-                jABGetTableProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesViewportBottomMargin);
+                jABGetTableProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportBottomMargin);
                 jABGetTablePropertiespropCount++;
             }
 
             jABGetTablePropertiespropCount++;
-            jABGetTableProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetTablePropertiesWorkflow);
+            jABGetTableProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetTablePropertiesworkflow);
             if (jABGetTablePropertiespropCount > 0)
             {
                 callPayload.Body = jABGetTableProperties;
@@ -4304,7 +4304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableCellPropertiesResponse> JABGetTableCellProperties(Expression<Func<int>> jABGetTableCellPropertiesSearchParentElementJABHandle, Expression<Func<int>> jABGetTableCellPropertiesRowIndex, Expression<Func<int>> jABGetTableCellPropertiesColumnIndex, Expression<Func<string>> jABGetTableCellPropertiesWorkflow, Expression<Func<string>> jABGetTableCellPropertiesSearchElementJABName = null, Expression<Func<string>> jABGetTableCellPropertiesSearchElementJABDescription = null, Expression<Func<string>> jABGetTableCellPropertiesSearchElementJABRole = null, Expression<Func<bool>> jABGetTableCellPropertiesSearchSubTree = null, Expression<Func<int>> jABGetTableCellPropertiesMaxRelativeDepth = null, Expression<Func<int>> jABGetTableCellPropertiesMatchIndex = null, Expression<Func<string>> jABGetTableCellPropertiesSearchFilter = null, Expression<Func<string>> jABGetTableCellPropertiesSortByColumn = null, Expression<Func<bool>> jABGetTableCellPropertiesMatchIndexAscending = null, Expression<Func<bool>> jABGetTableCellPropertiesCaseSensitiveSearch = null, Expression<Func<bool>> jABGetTableCellPropertiesOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetTableCellPropertiesOnlySearchShowingElements = null, Expression<Func<string>> jABGetTableCellPropertiesElementRolesNotToTraverse = null, Expression<Func<int>> jABGetTableCellPropertiesMaximumElementsToSearch = null, Expression<Func<int>> jABGetTableCellPropertiesMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetTableCellPropertiesReturnJABHandle = null, Expression<Func<bool>> jABGetTableCellPropertiesEnumerateViewport = null, Expression<Func<bool>> jABGetTableCellPropertiesProcessViewportParents = null, Expression<Func<int>> jABGetTableCellPropertiesMaxViewportParentsToProcess = null, Expression<Func<string>> jABGetTableCellPropertiesViewportParentElementRolesToConsider = null, Expression<Func<int>> jABGetTableCellPropertiesViewportLeftMargin = null, Expression<Func<int>> jABGetTableCellPropertiesViewportTopMargin = null, Expression<Func<int>> jABGetTableCellPropertiesViewportRightMargin = null, Expression<Func<int>> jABGetTableCellPropertiesViewportBottomMargin = null)
+        public IBodyWorkflowAction<JABGetTableCellPropertiesResponse> JABGetTableCellProperties(Expression<Func<int>> jABGetTableCellPropertiessearchParentElementJABHandle, Expression<Func<int>> jABGetTableCellPropertiesrowIndex, Expression<Func<int>> jABGetTableCellPropertiescolumnIndex, Expression<Func<string>> jABGetTableCellPropertiesworkflow, Expression<Func<string>> jABGetTableCellPropertiessearchElementJABName = null, Expression<Func<string>> jABGetTableCellPropertiessearchElementJABDescription = null, Expression<Func<string>> jABGetTableCellPropertiessearchElementJABRole = null, Expression<Func<bool>> jABGetTableCellPropertiessearchSubTree = null, Expression<Func<int>> jABGetTableCellPropertiesmaxRelativeDepth = null, Expression<Func<int>> jABGetTableCellPropertiesmatchIndex = null, Expression<Func<string>> jABGetTableCellPropertiessearchFilter = null, Expression<Func<string>> jABGetTableCellPropertiessortByColumn = null, Expression<Func<bool>> jABGetTableCellPropertiesmatchIndexAscending = null, Expression<Func<bool>> jABGetTableCellPropertiescaseSensitiveSearch = null, Expression<Func<bool>> jABGetTableCellPropertiesonlySearchVisibleElements = null, Expression<Func<bool>> jABGetTableCellPropertiesonlySearchShowingElements = null, Expression<Func<string>> jABGetTableCellPropertieselementRolesNotToTraverse = null, Expression<Func<int>> jABGetTableCellPropertiesmaximumElementsToSearch = null, Expression<Func<int>> jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetTableCellPropertiesreturnJABHandle = null, Expression<Func<bool>> jABGetTableCellPropertiesenumerateViewport = null, Expression<Func<bool>> jABGetTableCellPropertiesprocessViewportParents = null, Expression<Func<int>> jABGetTableCellPropertiesmaxViewportParentsToProcess = null, Expression<Func<string>> jABGetTableCellPropertiesviewportParentElementRolesToConsider = null, Expression<Func<int>> jABGetTableCellPropertiesviewportLeftMargin = null, Expression<Func<int>> jABGetTableCellPropertiesviewportTopMargin = null, Expression<Func<int>> jABGetTableCellPropertiesviewportRightMargin = null, Expression<Func<int>> jABGetTableCellPropertiesviewportBottomMargin = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetTableCellProperties";
             var apiCallHttpMethod = "post";
@@ -4312,157 +4312,157 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetTableCellProperties = new JObject();
             var jABGetTableCellPropertiespropCount = 0;
             jABGetTableCellPropertiespropCount++;
-            jABGetTableCellProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchParentElementJABHandle);
-            if (jABGetTableCellPropertiesSearchElementJABName != null)
+            jABGetTableCellProperties["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchParentElementJABHandle);
+            if (jABGetTableCellPropertiessearchElementJABName != null)
             {
-                jABGetTableCellProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchElementJABName);
+                jABGetTableCellProperties["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchElementJABName);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesSearchElementJABDescription != null)
+            if (jABGetTableCellPropertiessearchElementJABDescription != null)
             {
-                jABGetTableCellProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchElementJABDescription);
+                jABGetTableCellProperties["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchElementJABDescription);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesSearchElementJABRole != null)
+            if (jABGetTableCellPropertiessearchElementJABRole != null)
             {
-                jABGetTableCellProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchElementJABRole);
+                jABGetTableCellProperties["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchElementJABRole);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesSearchSubTree != null)
+            if (jABGetTableCellPropertiessearchSubTree != null)
             {
-                jABGetTableCellProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchSubTree);
+                jABGetTableCellProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchSubTree);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesMaxRelativeDepth != null)
+            if (jABGetTableCellPropertiesmaxRelativeDepth != null)
             {
-                jABGetTableCellProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMaxRelativeDepth);
+                jABGetTableCellProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxRelativeDepth);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesMatchIndex != null)
+            if (jABGetTableCellPropertiesmatchIndex != null)
             {
-                jABGetTableCellProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMatchIndex);
+                jABGetTableCellProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndex);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesSearchFilter != null)
+            if (jABGetTableCellPropertiessearchFilter != null)
             {
-                jABGetTableCellProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSearchFilter);
+                jABGetTableCellProperties["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchFilter);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesSortByColumn != null)
+            if (jABGetTableCellPropertiessortByColumn != null)
             {
-                jABGetTableCellProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesSortByColumn);
+                jABGetTableCellProperties["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessortByColumn);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesMatchIndexAscending != null)
+            if (jABGetTableCellPropertiesmatchIndexAscending != null)
             {
-                jABGetTableCellProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMatchIndexAscending);
+                jABGetTableCellProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndexAscending);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesCaseSensitiveSearch != null)
+            if (jABGetTableCellPropertiescaseSensitiveSearch != null)
             {
-                jABGetTableCellProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesCaseSensitiveSearch);
+                jABGetTableCellProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiescaseSensitiveSearch);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesOnlySearchVisibleElements != null)
+            if (jABGetTableCellPropertiesonlySearchVisibleElements != null)
             {
-                jABGetTableCellProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesOnlySearchVisibleElements);
+                jABGetTableCellProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchVisibleElements);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesOnlySearchShowingElements != null)
+            if (jABGetTableCellPropertiesonlySearchShowingElements != null)
             {
-                jABGetTableCellProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesOnlySearchShowingElements);
+                jABGetTableCellProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchShowingElements);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesElementRolesNotToTraverse != null)
+            if (jABGetTableCellPropertieselementRolesNotToTraverse != null)
             {
-                jABGetTableCellProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesElementRolesNotToTraverse);
+                jABGetTableCellProperties["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTableCellPropertieselementRolesNotToTraverse);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesMaximumElementsToSearch != null)
+            if (jABGetTableCellPropertiesmaximumElementsToSearch != null)
             {
-                jABGetTableCellProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMaximumElementsToSearch);
+                jABGetTableCellProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumElementsToSearch);
                 jABGetTableCellPropertiespropCount++;
             }
 
-            if (jABGetTableCellPropertiesMaximumChildElementsToSearchPerNode != null)
+            if (jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableCellProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMaximumChildElementsToSearchPerNode);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            jABGetTableCellPropertiespropCount++;
-            jABGetTableCellProperties["RowIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesRowIndex);
-            jABGetTableCellPropertiespropCount++;
-            jABGetTableCellProperties["ColumnIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesColumnIndex);
-            if (jABGetTableCellPropertiesReturnJABHandle != null)
-            {
-                jABGetTableCellProperties["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesReturnJABHandle);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesEnumerateViewport != null)
-            {
-                jABGetTableCellProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesEnumerateViewport);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesProcessViewportParents != null)
-            {
-                jABGetTableCellProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesProcessViewportParents);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesMaxViewportParentsToProcess != null)
-            {
-                jABGetTableCellProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesMaxViewportParentsToProcess);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesViewportParentElementRolesToConsider != null)
-            {
-                jABGetTableCellProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesViewportParentElementRolesToConsider);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesViewportLeftMargin != null)
-            {
-                jABGetTableCellProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesViewportLeftMargin);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesViewportTopMargin != null)
-            {
-                jABGetTableCellProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesViewportTopMargin);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesViewportRightMargin != null)
-            {
-                jABGetTableCellProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesViewportRightMargin);
-                jABGetTableCellPropertiespropCount++;
-            }
-
-            if (jABGetTableCellPropertiesViewportBottomMargin != null)
-            {
-                jABGetTableCellProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesViewportBottomMargin);
+                jABGetTableCellProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode);
                 jABGetTableCellPropertiespropCount++;
             }
 
             jABGetTableCellPropertiespropCount++;
-            jABGetTableCellProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesWorkflow);
+            jABGetTableCellProperties["RowIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesrowIndex);
+            jABGetTableCellPropertiespropCount++;
+            jABGetTableCellProperties["ColumnIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiescolumnIndex);
+            if (jABGetTableCellPropertiesreturnJABHandle != null)
+            {
+                jABGetTableCellProperties["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesreturnJABHandle);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesenumerateViewport != null)
+            {
+                jABGetTableCellProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesenumerateViewport);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesprocessViewportParents != null)
+            {
+                jABGetTableCellProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesprocessViewportParents);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesmaxViewportParentsToProcess != null)
+            {
+                jABGetTableCellProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxViewportParentsToProcess);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesviewportParentElementRolesToConsider != null)
+            {
+                jABGetTableCellProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportParentElementRolesToConsider);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesviewportLeftMargin != null)
+            {
+                jABGetTableCellProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportLeftMargin);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesviewportTopMargin != null)
+            {
+                jABGetTableCellProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportTopMargin);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesviewportRightMargin != null)
+            {
+                jABGetTableCellProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportRightMargin);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            if (jABGetTableCellPropertiesviewportBottomMargin != null)
+            {
+                jABGetTableCellProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportBottomMargin);
+                jABGetTableCellPropertiespropCount++;
+            }
+
+            jABGetTableCellPropertiespropCount++;
+            jABGetTableCellProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesworkflow);
             if (jABGetTableCellPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetTableCellProperties;
@@ -4472,7 +4472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableContentsResponse> JABGetTableContents(Expression<Func<int>> jABGetTableContentsSearchParentElementJABHandle, Expression<Func<string>> jABGetTableContentsWorkflow, Expression<Func<string>> jABGetTableContentsSearchElementJABName = null, Expression<Func<string>> jABGetTableContentsSearchElementJABDescription = null, Expression<Func<string>> jABGetTableContentsSearchElementJABRole = null, Expression<Func<bool>> jABGetTableContentsSearchSubTree = null, Expression<Func<int>> jABGetTableContentsMaxRelativeDepth = null, Expression<Func<int>> jABGetTableContentsMatchIndex = null, Expression<Func<string>> jABGetTableContentsSearchFilter = null, Expression<Func<string>> jABGetTableContentsSortByColumn = null, Expression<Func<bool>> jABGetTableContentsMatchIndexAscending = null, Expression<Func<bool>> jABGetTableContentsCaseSensitiveSearch = null, Expression<Func<bool>> jABGetTableContentsOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetTableContentsOnlySearchShowingElements = null, Expression<Func<string>> jABGetTableContentsElementRolesNotToTraverse = null, Expression<Func<int>> jABGetTableContentsMaximumElementsToSearch = null, Expression<Func<int>> jABGetTableContentsMaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetTableContentsFirstRowToReturn = null, Expression<Func<int>> jABGetTableContentsMaxRowsToReturn = null, Expression<Func<int>> jABGetTableContentsFirstColumnToReturn = null, Expression<Func<int>> jABGetTableContentsMaxColumnsToReturn = null, Expression<Func<bool>> jABGetTableContentsUseColumnHeadersFromTable = null, Expression<Func<bool>> jABGetTableContentsReturnRowIndexInOutputCollection = null, Expression<Func<string>> jABGetTableContentsNameOfColumnToStoreRowIndex = null)
+        public IBodyWorkflowAction<JABGetTableContentsResponse> JABGetTableContents(Expression<Func<int>> jABGetTableContentssearchParentElementJABHandle, Expression<Func<string>> jABGetTableContentsworkflow, Expression<Func<string>> jABGetTableContentssearchElementJABName = null, Expression<Func<string>> jABGetTableContentssearchElementJABDescription = null, Expression<Func<string>> jABGetTableContentssearchElementJABRole = null, Expression<Func<bool>> jABGetTableContentssearchSubTree = null, Expression<Func<int>> jABGetTableContentsmaxRelativeDepth = null, Expression<Func<int>> jABGetTableContentsmatchIndex = null, Expression<Func<string>> jABGetTableContentssearchFilter = null, Expression<Func<string>> jABGetTableContentssortByColumn = null, Expression<Func<bool>> jABGetTableContentsmatchIndexAscending = null, Expression<Func<bool>> jABGetTableContentscaseSensitiveSearch = null, Expression<Func<bool>> jABGetTableContentsonlySearchVisibleElements = null, Expression<Func<bool>> jABGetTableContentsonlySearchShowingElements = null, Expression<Func<string>> jABGetTableContentselementRolesNotToTraverse = null, Expression<Func<int>> jABGetTableContentsmaximumElementsToSearch = null, Expression<Func<int>> jABGetTableContentsmaximumChildElementsToSearchPerNode = null, Expression<Func<int>> jABGetTableContentsfirstRowToReturn = null, Expression<Func<int>> jABGetTableContentsmaxRowsToReturn = null, Expression<Func<int>> jABGetTableContentsfirstColumnToReturn = null, Expression<Func<int>> jABGetTableContentsmaxColumnsToReturn = null, Expression<Func<bool>> jABGetTableContentsuseColumnHeadersFromTable = null, Expression<Func<bool>> jABGetTableContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> jABGetTableContentsnameOfColumnToStoreRowIndex = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetTableContents";
             var apiCallHttpMethod = "post";
@@ -4480,141 +4480,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetTableContents = new JObject();
             var jABGetTableContentspropCount = 0;
             jABGetTableContentspropCount++;
-            jABGetTableContents["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchParentElementJABHandle);
-            if (jABGetTableContentsSearchElementJABName != null)
+            jABGetTableContents["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableContentssearchParentElementJABHandle);
+            if (jABGetTableContentssearchElementJABName != null)
             {
-                jABGetTableContents["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchElementJABName);
+                jABGetTableContents["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetTableContentssearchElementJABName);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsSearchElementJABDescription != null)
+            if (jABGetTableContentssearchElementJABDescription != null)
             {
-                jABGetTableContents["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchElementJABDescription);
+                jABGetTableContents["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetTableContentssearchElementJABDescription);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsSearchElementJABRole != null)
+            if (jABGetTableContentssearchElementJABRole != null)
             {
-                jABGetTableContents["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchElementJABRole);
+                jABGetTableContents["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetTableContentssearchElementJABRole);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsSearchSubTree != null)
+            if (jABGetTableContentssearchSubTree != null)
             {
-                jABGetTableContents["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchSubTree);
+                jABGetTableContents["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableContentssearchSubTree);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMaxRelativeDepth != null)
+            if (jABGetTableContentsmaxRelativeDepth != null)
             {
-                jABGetTableContents["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableContentsMaxRelativeDepth);
+                jABGetTableContents["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRelativeDepth);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMatchIndex != null)
+            if (jABGetTableContentsmatchIndex != null)
             {
-                jABGetTableContents["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsMatchIndex);
+                jABGetTableContents["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndex);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsSearchFilter != null)
+            if (jABGetTableContentssearchFilter != null)
             {
-                jABGetTableContents["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTableContentsSearchFilter);
+                jABGetTableContents["SearchFilter"] = ExpressionConverter.ConvertO(jABGetTableContentssearchFilter);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsSortByColumn != null)
+            if (jABGetTableContentssortByColumn != null)
             {
-                jABGetTableContents["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTableContentsSortByColumn);
+                jABGetTableContents["SortByColumn"] = ExpressionConverter.ConvertO(jABGetTableContentssortByColumn);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMatchIndexAscending != null)
+            if (jABGetTableContentsmatchIndexAscending != null)
             {
-                jABGetTableContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableContentsMatchIndexAscending);
+                jABGetTableContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndexAscending);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsCaseSensitiveSearch != null)
+            if (jABGetTableContentscaseSensitiveSearch != null)
             {
-                jABGetTableContents["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableContentsCaseSensitiveSearch);
+                jABGetTableContents["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableContentscaseSensitiveSearch);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsOnlySearchVisibleElements != null)
+            if (jABGetTableContentsonlySearchVisibleElements != null)
             {
-                jABGetTableContents["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableContentsOnlySearchVisibleElements);
+                jABGetTableContents["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchVisibleElements);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsOnlySearchShowingElements != null)
+            if (jABGetTableContentsonlySearchShowingElements != null)
             {
-                jABGetTableContents["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableContentsOnlySearchShowingElements);
+                jABGetTableContents["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchShowingElements);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsElementRolesNotToTraverse != null)
+            if (jABGetTableContentselementRolesNotToTraverse != null)
             {
-                jABGetTableContents["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTableContentsElementRolesNotToTraverse);
+                jABGetTableContents["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetTableContentselementRolesNotToTraverse);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMaximumElementsToSearch != null)
+            if (jABGetTableContentsmaximumElementsToSearch != null)
             {
-                jABGetTableContents["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableContentsMaximumElementsToSearch);
+                jABGetTableContents["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumElementsToSearch);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMaximumChildElementsToSearchPerNode != null)
+            if (jABGetTableContentsmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableContents["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableContentsMaximumChildElementsToSearchPerNode);
+                jABGetTableContents["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumChildElementsToSearchPerNode);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsFirstRowToReturn != null)
+            if (jABGetTableContentsfirstRowToReturn != null)
             {
-                jABGetTableContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsFirstRowToReturn);
+                jABGetTableContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstRowToReturn);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMaxRowsToReturn != null)
+            if (jABGetTableContentsmaxRowsToReturn != null)
             {
-                jABGetTableContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsMaxRowsToReturn);
+                jABGetTableContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRowsToReturn);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsFirstColumnToReturn != null)
+            if (jABGetTableContentsfirstColumnToReturn != null)
             {
-                jABGetTableContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsFirstColumnToReturn);
+                jABGetTableContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstColumnToReturn);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsMaxColumnsToReturn != null)
+            if (jABGetTableContentsmaxColumnsToReturn != null)
             {
-                jABGetTableContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsMaxColumnsToReturn);
+                jABGetTableContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxColumnsToReturn);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsUseColumnHeadersFromTable != null)
+            if (jABGetTableContentsuseColumnHeadersFromTable != null)
             {
-                jABGetTableContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(jABGetTableContentsUseColumnHeadersFromTable);
+                jABGetTableContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(jABGetTableContentsuseColumnHeadersFromTable);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsReturnRowIndexInOutputCollection != null)
+            if (jABGetTableContentsreturnRowIndexInOutputCollection != null)
             {
-                jABGetTableContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(jABGetTableContentsReturnRowIndexInOutputCollection);
+                jABGetTableContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(jABGetTableContentsreturnRowIndexInOutputCollection);
                 jABGetTableContentspropCount++;
             }
 
-            if (jABGetTableContentsNameOfColumnToStoreRowIndex != null)
+            if (jABGetTableContentsnameOfColumnToStoreRowIndex != null)
             {
-                jABGetTableContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsNameOfColumnToStoreRowIndex);
+                jABGetTableContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsnameOfColumnToStoreRowIndex);
                 jABGetTableContentspropCount++;
             }
 
             jABGetTableContentspropCount++;
-            jABGetTableContents["Workflow"] = ExpressionConverter.ConvertO(jABGetTableContentsWorkflow);
+            jABGetTableContents["Workflow"] = ExpressionConverter.ConvertO(jABGetTableContentsworkflow);
             if (jABGetTableContentspropCount > 0)
             {
                 callPayload.Body = jABGetTableContents;
@@ -4624,7 +4624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsTableCellVisibleOnscreenResponse> JABIsTableCellVisibleOnscreen(Expression<Func<int>> jABIsTableCellVisibleOnscreenSearchParentElementJABHandle, Expression<Func<int>> jABIsTableCellVisibleOnscreenCellRowIndex, Expression<Func<int>> jABIsTableCellVisibleOnscreenCellColumnIndex, Expression<Func<string>> jABIsTableCellVisibleOnscreenWorkflow, Expression<Func<string>> jABIsTableCellVisibleOnscreenSearchElementJABName = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenSearchElementJABDescription = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenSearchElementJABRole = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenSearchSubTree = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenMaxRelativeDepth = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenMatchIndex = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenSearchFilter = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenSortByColumn = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenMatchIndexAscending = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenCaseSensitiveSearch = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenOnlySearchVisibleElements = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenOnlySearchShowingElements = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenElementRolesNotToTraverse = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenMaximumElementsToSearch = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenProcessViewportParents = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenMaxViewportParentsToProcess = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenViewportParentElementRolesToConsider = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenViewportLeftMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenViewportTopMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenViewportRightMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenViewportBottomMargin = null)
+        public IBodyWorkflowAction<JABIsTableCellVisibleOnscreenResponse> JABIsTableCellVisibleOnscreen(Expression<Func<int>> jABIsTableCellVisibleOnscreensearchParentElementJABHandle, Expression<Func<int>> jABIsTableCellVisibleOnscreencellRowIndex, Expression<Func<int>> jABIsTableCellVisibleOnscreencellColumnIndex, Expression<Func<string>> jABIsTableCellVisibleOnscreenworkflow, Expression<Func<string>> jABIsTableCellVisibleOnscreensearchElementJABName = null, Expression<Func<string>> jABIsTableCellVisibleOnscreensearchElementJABDescription = null, Expression<Func<string>> jABIsTableCellVisibleOnscreensearchElementJABRole = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreensearchSubTree = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenmaxRelativeDepth = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenmatchIndex = null, Expression<Func<string>> jABIsTableCellVisibleOnscreensearchFilter = null, Expression<Func<string>> jABIsTableCellVisibleOnscreensortByColumn = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenmatchIndexAscending = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreencaseSensitiveSearch = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenonlySearchVisibleElements = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenonlySearchShowingElements = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenelementRolesNotToTraverse = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenmaximumElementsToSearch = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABIsTableCellVisibleOnscreenprocessViewportParents = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess = null, Expression<Func<string>> jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenviewportLeftMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenviewportTopMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenviewportRightMargin = null, Expression<Func<int>> jABIsTableCellVisibleOnscreenviewportBottomMargin = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABIsTableCellVisibleOnscreen";
             var apiCallHttpMethod = "post";
@@ -4632,145 +4632,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABIsTableCellVisibleOnscreen = new JObject();
             var jABIsTableCellVisibleOnscreenpropCount = 0;
             jABIsTableCellVisibleOnscreenpropCount++;
-            jABIsTableCellVisibleOnscreen["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchParentElementJABHandle);
-            if (jABIsTableCellVisibleOnscreenSearchElementJABName != null)
+            jABIsTableCellVisibleOnscreen["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchParentElementJABHandle);
+            if (jABIsTableCellVisibleOnscreensearchElementJABName != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchElementJABName"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchElementJABName);
+                jABIsTableCellVisibleOnscreen["SearchElementJABName"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchElementJABName);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenSearchElementJABDescription != null)
+            if (jABIsTableCellVisibleOnscreensearchElementJABDescription != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchElementJABDescription);
+                jABIsTableCellVisibleOnscreen["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchElementJABDescription);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenSearchElementJABRole != null)
+            if (jABIsTableCellVisibleOnscreensearchElementJABRole != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchElementJABRole);
+                jABIsTableCellVisibleOnscreen["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchElementJABRole);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenSearchSubTree != null)
+            if (jABIsTableCellVisibleOnscreensearchSubTree != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchSubTree);
+                jABIsTableCellVisibleOnscreen["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchSubTree);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMaxRelativeDepth != null)
+            if (jABIsTableCellVisibleOnscreenmaxRelativeDepth != null)
             {
-                jABIsTableCellVisibleOnscreen["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMaxRelativeDepth);
+                jABIsTableCellVisibleOnscreen["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxRelativeDepth);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMatchIndex != null)
+            if (jABIsTableCellVisibleOnscreenmatchIndex != null)
             {
-                jABIsTableCellVisibleOnscreen["MatchIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMatchIndex);
+                jABIsTableCellVisibleOnscreen["MatchIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndex);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenSearchFilter != null)
+            if (jABIsTableCellVisibleOnscreensearchFilter != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchFilter"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSearchFilter);
+                jABIsTableCellVisibleOnscreen["SearchFilter"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchFilter);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenSortByColumn != null)
+            if (jABIsTableCellVisibleOnscreensortByColumn != null)
             {
-                jABIsTableCellVisibleOnscreen["SortByColumn"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenSortByColumn);
+                jABIsTableCellVisibleOnscreen["SortByColumn"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensortByColumn);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMatchIndexAscending != null)
+            if (jABIsTableCellVisibleOnscreenmatchIndexAscending != null)
             {
-                jABIsTableCellVisibleOnscreen["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMatchIndexAscending);
+                jABIsTableCellVisibleOnscreen["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndexAscending);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenCaseSensitiveSearch != null)
+            if (jABIsTableCellVisibleOnscreencaseSensitiveSearch != null)
             {
-                jABIsTableCellVisibleOnscreen["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenCaseSensitiveSearch);
+                jABIsTableCellVisibleOnscreen["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreencaseSensitiveSearch);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenOnlySearchVisibleElements != null)
+            if (jABIsTableCellVisibleOnscreenonlySearchVisibleElements != null)
             {
-                jABIsTableCellVisibleOnscreen["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenOnlySearchVisibleElements);
+                jABIsTableCellVisibleOnscreen["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchVisibleElements);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenOnlySearchShowingElements != null)
+            if (jABIsTableCellVisibleOnscreenonlySearchShowingElements != null)
             {
-                jABIsTableCellVisibleOnscreen["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenOnlySearchShowingElements);
+                jABIsTableCellVisibleOnscreen["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchShowingElements);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenElementRolesNotToTraverse != null)
+            if (jABIsTableCellVisibleOnscreenelementRolesNotToTraverse != null)
             {
-                jABIsTableCellVisibleOnscreen["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenElementRolesNotToTraverse);
+                jABIsTableCellVisibleOnscreen["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenelementRolesNotToTraverse);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMaximumElementsToSearch != null)
+            if (jABIsTableCellVisibleOnscreenmaximumElementsToSearch != null)
             {
-                jABIsTableCellVisibleOnscreen["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMaximumElementsToSearch);
+                jABIsTableCellVisibleOnscreen["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumElementsToSearch);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMaximumChildElementsToSearchPerNode != null)
+            if (jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode != null)
             {
-                jABIsTableCellVisibleOnscreen["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMaximumChildElementsToSearchPerNode);
+                jABIsTableCellVisibleOnscreen["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenProcessViewportParents != null)
+            if (jABIsTableCellVisibleOnscreenprocessViewportParents != null)
             {
-                jABIsTableCellVisibleOnscreen["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenProcessViewportParents);
+                jABIsTableCellVisibleOnscreen["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenprocessViewportParents);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenMaxViewportParentsToProcess != null)
+            if (jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess != null)
             {
-                jABIsTableCellVisibleOnscreen["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenMaxViewportParentsToProcess);
+                jABIsTableCellVisibleOnscreen["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenViewportParentElementRolesToConsider != null)
+            if (jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenViewportParentElementRolesToConsider);
+                jABIsTableCellVisibleOnscreen["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenViewportLeftMargin != null)
+            if (jABIsTableCellVisibleOnscreenviewportLeftMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenViewportLeftMargin);
+                jABIsTableCellVisibleOnscreen["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportLeftMargin);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenViewportTopMargin != null)
+            if (jABIsTableCellVisibleOnscreenviewportTopMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenViewportTopMargin);
+                jABIsTableCellVisibleOnscreen["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportTopMargin);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenViewportRightMargin != null)
+            if (jABIsTableCellVisibleOnscreenviewportRightMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenViewportRightMargin);
+                jABIsTableCellVisibleOnscreen["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportRightMargin);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
-            if (jABIsTableCellVisibleOnscreenViewportBottomMargin != null)
+            if (jABIsTableCellVisibleOnscreenviewportBottomMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenViewportBottomMargin);
+                jABIsTableCellVisibleOnscreen["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportBottomMargin);
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             jABIsTableCellVisibleOnscreenpropCount++;
-            jABIsTableCellVisibleOnscreen["CellRowIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenCellRowIndex);
+            jABIsTableCellVisibleOnscreen["CellRowIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreencellRowIndex);
             jABIsTableCellVisibleOnscreenpropCount++;
-            jABIsTableCellVisibleOnscreen["CellColumnIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenCellColumnIndex);
+            jABIsTableCellVisibleOnscreen["CellColumnIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreencellColumnIndex);
             jABIsTableCellVisibleOnscreenpropCount++;
-            jABIsTableCellVisibleOnscreen["Workflow"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenWorkflow);
+            jABIsTableCellVisibleOnscreen["Workflow"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenworkflow);
             if (jABIsTableCellVisibleOnscreenpropCount > 0)
             {
                 callPayload.Body = jABIsTableCellVisibleOnscreen;
@@ -4780,7 +4780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsJABHandleSameObjectResponse> JABIsJABHandleSameObject(Expression<Func<int>> jABIsJABHandleSameObjectElement1JABHandle, Expression<Func<int>> jABIsJABHandleSameObjectElement2JABHandle, Expression<Func<string>> jABIsJABHandleSameObjectWorkflow)
+        public IBodyWorkflowAction<JABIsJABHandleSameObjectResponse> JABIsJABHandleSameObject(Expression<Func<int>> jABIsJABHandleSameObjectelement1JABHandle, Expression<Func<int>> jABIsJABHandleSameObjectelement2JABHandle, Expression<Func<string>> jABIsJABHandleSameObjectworkflow)
         {
             var apiCallPath = "/JavaAccessBridge/JABIsJABHandleSameObject";
             var apiCallHttpMethod = "post";
@@ -4788,11 +4788,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABIsJABHandleSameObject = new JObject();
             var jABIsJABHandleSameObjectpropCount = 0;
             jABIsJABHandleSameObjectpropCount++;
-            jABIsJABHandleSameObject["Element1JABHandle"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectElement1JABHandle);
+            jABIsJABHandleSameObject["Element1JABHandle"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectelement1JABHandle);
             jABIsJABHandleSameObjectpropCount++;
-            jABIsJABHandleSameObject["Element2JABHandle"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectElement2JABHandle);
+            jABIsJABHandleSameObject["Element2JABHandle"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectelement2JABHandle);
             jABIsJABHandleSameObjectpropCount++;
-            jABIsJABHandleSameObject["Workflow"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectWorkflow);
+            jABIsJABHandleSameObject["Workflow"] = ExpressionConverter.ConvertO(jABIsJABHandleSameObjectworkflow);
             if (jABIsJABHandleSameObjectpropCount > 0)
             {
                 callPayload.Body = jABIsJABHandleSameObject;
@@ -4802,7 +4802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse> JABGetVisibleBoundingRectangleOfElementOnscreen(Expression<Func<int>> jABGetVisibleBoundingRectangleOfElementOnscreenElementJABHandle, Expression<Func<string>> jABGetVisibleBoundingRectangleOfElementOnscreenWorkflow, Expression<Func<int>> jABGetVisibleBoundingRectangleOfElementOnscreenMaxParentsToProcess = null, Expression<Func<string>> jABGetVisibleBoundingRectangleOfElementOnscreenParentElementRolesToConsider = null, Expression<Func<bool>> jABGetVisibleBoundingRectangleOfElementOnscreenDrawRectangle = null)
+        public IBodyWorkflowAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse> JABGetVisibleBoundingRectangleOfElementOnscreen(Expression<Func<int>> jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle, Expression<Func<string>> jABGetVisibleBoundingRectangleOfElementOnscreenworkflow, Expression<Func<int>> jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess = null, Expression<Func<string>> jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider = null, Expression<Func<bool>> jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetVisibleBoundingRectangleOfElementOnscreen";
             var apiCallHttpMethod = "post";
@@ -4810,27 +4810,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetVisibleBoundingRectangleOfElementOnscreen = new JObject();
             var jABGetVisibleBoundingRectangleOfElementOnscreenpropCount = 0;
             jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
-            jABGetVisibleBoundingRectangleOfElementOnscreen["ElementJABHandle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenElementJABHandle);
-            if (jABGetVisibleBoundingRectangleOfElementOnscreenMaxParentsToProcess != null)
+            jABGetVisibleBoundingRectangleOfElementOnscreen["ElementJABHandle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle);
+            if (jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenMaxParentsToProcess);
+                jABGetVisibleBoundingRectangleOfElementOnscreen["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess);
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
-            if (jABGetVisibleBoundingRectangleOfElementOnscreenParentElementRolesToConsider != null)
+            if (jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["ParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenParentElementRolesToConsider);
+                jABGetVisibleBoundingRectangleOfElementOnscreen["ParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider);
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
-            if (jABGetVisibleBoundingRectangleOfElementOnscreenDrawRectangle != null)
+            if (jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["DrawRectangle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenDrawRectangle);
+                jABGetVisibleBoundingRectangleOfElementOnscreen["DrawRectangle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle);
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
             jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
-            jABGetVisibleBoundingRectangleOfElementOnscreen["Workflow"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenWorkflow);
+            jABGetVisibleBoundingRectangleOfElementOnscreen["Workflow"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenworkflow);
             if (jABGetVisibleBoundingRectangleOfElementOnscreenpropCount > 0)
             {
                 callPayload.Body = jABGetVisibleBoundingRectangleOfElementOnscreen;
@@ -4840,7 +4840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABCreateHandleForJABElementAtScreenCoordinateResponse> JABCreateHandleForJABElementAtScreenCoordinate(Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinateParentElementJABHandle, Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinateScreenX, Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinateScreenY, Expression<Func<string>> jABCreateHandleForJABElementAtScreenCoordinateWorkflow)
+        public IBodyWorkflowAction<JABCreateHandleForJABElementAtScreenCoordinateResponse> JABCreateHandleForJABElementAtScreenCoordinate(Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinateparentElementJABHandle, Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinatescreenX, Expression<Func<int>> jABCreateHandleForJABElementAtScreenCoordinatescreenY, Expression<Func<string>> jABCreateHandleForJABElementAtScreenCoordinateworkflow)
         {
             var apiCallPath = "/JavaAccessBridge/JABCreateHandleForJABElementAtScreenCoordinate";
             var apiCallHttpMethod = "post";
@@ -4848,13 +4848,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABCreateHandleForJABElementAtScreenCoordinate = new JObject();
             var jABCreateHandleForJABElementAtScreenCoordinatepropCount = 0;
             jABCreateHandleForJABElementAtScreenCoordinatepropCount++;
-            jABCreateHandleForJABElementAtScreenCoordinate["ParentElementJABHandle"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateParentElementJABHandle);
+            jABCreateHandleForJABElementAtScreenCoordinate["ParentElementJABHandle"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateparentElementJABHandle);
             jABCreateHandleForJABElementAtScreenCoordinatepropCount++;
-            jABCreateHandleForJABElementAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateScreenX);
+            jABCreateHandleForJABElementAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinatescreenX);
             jABCreateHandleForJABElementAtScreenCoordinatepropCount++;
-            jABCreateHandleForJABElementAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateScreenY);
+            jABCreateHandleForJABElementAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinatescreenY);
             jABCreateHandleForJABElementAtScreenCoordinatepropCount++;
-            jABCreateHandleForJABElementAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateWorkflow);
+            jABCreateHandleForJABElementAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(jABCreateHandleForJABElementAtScreenCoordinateworkflow);
             if (jABCreateHandleForJABElementAtScreenCoordinatepropCount > 0)
             {
                 callPayload.Body = jABCreateHandleForJABElementAtScreenCoordinate;
@@ -4864,7 +4864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableCellAtScreenCoordinateResponse> JABGetTableCellAtScreenCoordinate(Expression<Func<int>> jABGetTableCellAtScreenCoordinateTableElementJABHandle, Expression<Func<int>> jABGetTableCellAtScreenCoordinateScreenX, Expression<Func<int>> jABGetTableCellAtScreenCoordinateScreenY, Expression<Func<string>> jABGetTableCellAtScreenCoordinateWorkflow, Expression<Func<bool>> jABGetTableCellAtScreenCoordinateReturnJABHandle = null)
+        public IBodyWorkflowAction<JABGetTableCellAtScreenCoordinateResponse> JABGetTableCellAtScreenCoordinate(Expression<Func<int>> jABGetTableCellAtScreenCoordinatetableElementJABHandle, Expression<Func<int>> jABGetTableCellAtScreenCoordinatescreenX, Expression<Func<int>> jABGetTableCellAtScreenCoordinatescreenY, Expression<Func<string>> jABGetTableCellAtScreenCoordinateworkflow, Expression<Func<bool>> jABGetTableCellAtScreenCoordinatereturnJABHandle = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetTableCellAtScreenCoordinate";
             var apiCallHttpMethod = "post";
@@ -4872,19 +4872,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetTableCellAtScreenCoordinate = new JObject();
             var jABGetTableCellAtScreenCoordinatepropCount = 0;
             jABGetTableCellAtScreenCoordinatepropCount++;
-            jABGetTableCellAtScreenCoordinate["TableElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateTableElementJABHandle);
+            jABGetTableCellAtScreenCoordinate["TableElementJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatetableElementJABHandle);
             jABGetTableCellAtScreenCoordinatepropCount++;
-            jABGetTableCellAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateScreenX);
+            jABGetTableCellAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatescreenX);
             jABGetTableCellAtScreenCoordinatepropCount++;
-            jABGetTableCellAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateScreenY);
-            if (jABGetTableCellAtScreenCoordinateReturnJABHandle != null)
+            jABGetTableCellAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatescreenY);
+            if (jABGetTableCellAtScreenCoordinatereturnJABHandle != null)
             {
-                jABGetTableCellAtScreenCoordinate["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateReturnJABHandle);
+                jABGetTableCellAtScreenCoordinate["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatereturnJABHandle);
                 jABGetTableCellAtScreenCoordinatepropCount++;
             }
 
             jABGetTableCellAtScreenCoordinatepropCount++;
-            jABGetTableCellAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateWorkflow);
+            jABGetTableCellAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinateworkflow);
             if (jABGetTableCellAtScreenCoordinatepropCount > 0)
             {
                 callPayload.Body = jABGetTableCellAtScreenCoordinate;
@@ -4894,7 +4894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetMultipleParentJABElementPropertiesResponse> JABGetMultipleParentJABElementProperties(Expression<Func<int>> jABGetMultipleParentJABElementPropertiesSearchElementJABHandle, Expression<Func<string>> jABGetMultipleParentJABElementPropertiesWorkflow, Expression<Func<int>> jABGetMultipleParentJABElementPropertiesMaxStringLength = null, Expression<Func<int>> jABGetMultipleParentJABElementPropertiesMaxParentsToProcess = null)
+        public IBodyWorkflowAction<JABGetMultipleParentJABElementPropertiesResponse> JABGetMultipleParentJABElementProperties(Expression<Func<int>> jABGetMultipleParentJABElementPropertiessearchElementJABHandle, Expression<Func<string>> jABGetMultipleParentJABElementPropertiesworkflow, Expression<Func<int>> jABGetMultipleParentJABElementPropertiesmaxStringLength = null, Expression<Func<int>> jABGetMultipleParentJABElementPropertiesmaxParentsToProcess = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetMultipleParentJABElementProperties";
             var apiCallHttpMethod = "post";
@@ -4902,21 +4902,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetMultipleParentJABElementProperties = new JObject();
             var jABGetMultipleParentJABElementPropertiespropCount = 0;
             jABGetMultipleParentJABElementPropertiespropCount++;
-            jABGetMultipleParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesSearchElementJABHandle);
-            if (jABGetMultipleParentJABElementPropertiesMaxStringLength != null)
+            jABGetMultipleParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiessearchElementJABHandle);
+            if (jABGetMultipleParentJABElementPropertiesmaxStringLength != null)
             {
-                jABGetMultipleParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesMaxStringLength);
+                jABGetMultipleParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxStringLength);
                 jABGetMultipleParentJABElementPropertiespropCount++;
             }
 
-            if (jABGetMultipleParentJABElementPropertiesMaxParentsToProcess != null)
+            if (jABGetMultipleParentJABElementPropertiesmaxParentsToProcess != null)
             {
-                jABGetMultipleParentJABElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesMaxParentsToProcess);
+                jABGetMultipleParentJABElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxParentsToProcess);
                 jABGetMultipleParentJABElementPropertiespropCount++;
             }
 
             jABGetMultipleParentJABElementPropertiespropCount++;
-            jABGetMultipleParentJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesWorkflow);
+            jABGetMultipleParentJABElementProperties["Workflow"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesworkflow);
             if (jABGetMultipleParentJABElementPropertiespropCount > 0)
             {
                 callPayload.Body = jABGetMultipleParentJABElementProperties;
@@ -4926,7 +4926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction JABGlobalMouseClickOnTableCell(Expression<Func<int>> jABGlobalMouseClickOnTableCellSearchParentElementJABHandle, Expression<Func<int>> jABGlobalMouseClickOnTableCellRowIndex, Expression<Func<int>> jABGlobalMouseClickOnTableCellColumnIndex, Expression<Func<int>> jABGlobalMouseClickOnTableCellMouseButton, Expression<Func<string>> jABGlobalMouseClickOnTableCellWorkflow, Expression<Func<string>> jABGlobalMouseClickOnTableCellSearchElementJABName = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellSearchElementJABDescription = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellSearchElementJABRole = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellSearchSubTree = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellMaxRelativeDepth = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellMatchIndex = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellSearchFilter = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellSortByColumn = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellMatchIndexAscending = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellCaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellOnlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellOnlySearchShowingElements = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellElementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellMaximumElementsToSearch = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellEnumerateViewport = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellProcessViewportParents = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellMaxViewportParentsToProcess = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellViewportParentElementRolesToConsider = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellViewportLeftMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellViewportTopMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellViewportRightMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellViewportBottomMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellClickOffsetX = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellClickOffsetY = null, Expression<Func<jABGlobalMouseClickOnTableCellOffsetRelativeToInput>> jABGlobalMouseClickOnTableCellOffsetRelativeTo = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellDelayInMilliseconds = null)
+        public IWorkflowAction JABGlobalMouseClickOnTableCell(Expression<Func<int>> jABGlobalMouseClickOnTableCellsearchParentElementJABHandle, Expression<Func<int>> jABGlobalMouseClickOnTableCellrowIndex, Expression<Func<int>> jABGlobalMouseClickOnTableCellcolumnIndex, Expression<Func<int>> jABGlobalMouseClickOnTableCellmouseButton, Expression<Func<string>> jABGlobalMouseClickOnTableCellworkflow, Expression<Func<string>> jABGlobalMouseClickOnTableCellsearchElementJABName = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellsearchElementJABDescription = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellsearchElementJABRole = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellsearchSubTree = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellmaxRelativeDepth = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellmatchIndex = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellsearchFilter = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellsortByColumn = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellmatchIndexAscending = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellcaseSensitiveSearch = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellonlySearchVisibleElements = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellonlySearchShowingElements = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellelementRolesNotToTraverse = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellmaximumElementsToSearch = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellenumerateViewport = null, Expression<Func<bool>> jABGlobalMouseClickOnTableCellprocessViewportParents = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess = null, Expression<Func<string>> jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellviewportLeftMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellviewportTopMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellviewportRightMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellviewportBottomMargin = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellclickOffsetX = null, Expression<Func<int>> jABGlobalMouseClickOnTableCellclickOffsetY = null, Expression<Func<jABGlobalMouseClickOnTableCelloffsetRelativeToInput>> jABGlobalMouseClickOnTableCelloffsetRelativeTo = null, Expression<Func<int>> jABGlobalMouseClickOnTableCelldelayInMilliseconds = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGlobalMouseClickOnTableCell";
             var apiCallHttpMethod = "post";
@@ -4934,177 +4934,177 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGlobalMouseClickOnTableCell = new JObject();
             var jABGlobalMouseClickOnTableCellpropCount = 0;
             jABGlobalMouseClickOnTableCellpropCount++;
-            jABGlobalMouseClickOnTableCell["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchParentElementJABHandle);
-            if (jABGlobalMouseClickOnTableCellSearchElementJABName != null)
+            jABGlobalMouseClickOnTableCell["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchParentElementJABHandle);
+            if (jABGlobalMouseClickOnTableCellsearchElementJABName != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchElementJABName);
+                jABGlobalMouseClickOnTableCell["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchElementJABName);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellSearchElementJABDescription != null)
+            if (jABGlobalMouseClickOnTableCellsearchElementJABDescription != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchElementJABDescription);
+                jABGlobalMouseClickOnTableCell["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchElementJABDescription);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellSearchElementJABRole != null)
+            if (jABGlobalMouseClickOnTableCellsearchElementJABRole != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchElementJABRole);
+                jABGlobalMouseClickOnTableCell["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchElementJABRole);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellSearchSubTree != null)
+            if (jABGlobalMouseClickOnTableCellsearchSubTree != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchSubTree);
+                jABGlobalMouseClickOnTableCell["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchSubTree);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellMaxRelativeDepth != null)
+            if (jABGlobalMouseClickOnTableCellmaxRelativeDepth != null)
             {
-                jABGlobalMouseClickOnTableCell["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMaxRelativeDepth);
+                jABGlobalMouseClickOnTableCell["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxRelativeDepth);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellMatchIndex != null)
+            if (jABGlobalMouseClickOnTableCellmatchIndex != null)
             {
-                jABGlobalMouseClickOnTableCell["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMatchIndex);
+                jABGlobalMouseClickOnTableCell["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndex);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellSearchFilter != null)
+            if (jABGlobalMouseClickOnTableCellsearchFilter != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSearchFilter);
+                jABGlobalMouseClickOnTableCell["SearchFilter"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchFilter);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellSortByColumn != null)
+            if (jABGlobalMouseClickOnTableCellsortByColumn != null)
             {
-                jABGlobalMouseClickOnTableCell["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellSortByColumn);
+                jABGlobalMouseClickOnTableCell["SortByColumn"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsortByColumn);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellMatchIndexAscending != null)
+            if (jABGlobalMouseClickOnTableCellmatchIndexAscending != null)
             {
-                jABGlobalMouseClickOnTableCell["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMatchIndexAscending);
+                jABGlobalMouseClickOnTableCell["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndexAscending);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellCaseSensitiveSearch != null)
+            if (jABGlobalMouseClickOnTableCellcaseSensitiveSearch != null)
             {
-                jABGlobalMouseClickOnTableCell["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellCaseSensitiveSearch);
+                jABGlobalMouseClickOnTableCell["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellcaseSensitiveSearch);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellOnlySearchVisibleElements != null)
+            if (jABGlobalMouseClickOnTableCellonlySearchVisibleElements != null)
             {
-                jABGlobalMouseClickOnTableCell["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellOnlySearchVisibleElements);
+                jABGlobalMouseClickOnTableCell["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchVisibleElements);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellOnlySearchShowingElements != null)
+            if (jABGlobalMouseClickOnTableCellonlySearchShowingElements != null)
             {
-                jABGlobalMouseClickOnTableCell["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellOnlySearchShowingElements);
+                jABGlobalMouseClickOnTableCell["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchShowingElements);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellElementRolesNotToTraverse != null)
+            if (jABGlobalMouseClickOnTableCellelementRolesNotToTraverse != null)
             {
-                jABGlobalMouseClickOnTableCell["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellElementRolesNotToTraverse);
+                jABGlobalMouseClickOnTableCell["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellelementRolesNotToTraverse);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellMaximumElementsToSearch != null)
+            if (jABGlobalMouseClickOnTableCellmaximumElementsToSearch != null)
             {
-                jABGlobalMouseClickOnTableCell["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMaximumElementsToSearch);
+                jABGlobalMouseClickOnTableCell["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumElementsToSearch);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellMaximumChildElementsToSearchPerNode != null)
+            if (jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalMouseClickOnTableCell["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMaximumChildElementsToSearchPerNode);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            jABGlobalMouseClickOnTableCellpropCount++;
-            jABGlobalMouseClickOnTableCell["RowIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellRowIndex);
-            jABGlobalMouseClickOnTableCellpropCount++;
-            jABGlobalMouseClickOnTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellColumnIndex);
-            if (jABGlobalMouseClickOnTableCellEnumerateViewport != null)
-            {
-                jABGlobalMouseClickOnTableCell["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellEnumerateViewport);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellProcessViewportParents != null)
-            {
-                jABGlobalMouseClickOnTableCell["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellProcessViewportParents);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellMaxViewportParentsToProcess != null)
-            {
-                jABGlobalMouseClickOnTableCell["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMaxViewportParentsToProcess);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellViewportParentElementRolesToConsider != null)
-            {
-                jABGlobalMouseClickOnTableCell["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellViewportParentElementRolesToConsider);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellViewportLeftMargin != null)
-            {
-                jABGlobalMouseClickOnTableCell["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellViewportLeftMargin);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellViewportTopMargin != null)
-            {
-                jABGlobalMouseClickOnTableCell["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellViewportTopMargin);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellViewportRightMargin != null)
-            {
-                jABGlobalMouseClickOnTableCell["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellViewportRightMargin);
-                jABGlobalMouseClickOnTableCellpropCount++;
-            }
-
-            if (jABGlobalMouseClickOnTableCellViewportBottomMargin != null)
-            {
-                jABGlobalMouseClickOnTableCell["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellViewportBottomMargin);
+                jABGlobalMouseClickOnTableCell["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             jABGlobalMouseClickOnTableCellpropCount++;
-            jABGlobalMouseClickOnTableCell["MouseButton"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellMouseButton);
-            if (jABGlobalMouseClickOnTableCellClickOffsetX != null)
+            jABGlobalMouseClickOnTableCell["RowIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellrowIndex);
+            jABGlobalMouseClickOnTableCellpropCount++;
+            jABGlobalMouseClickOnTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellcolumnIndex);
+            if (jABGlobalMouseClickOnTableCellenumerateViewport != null)
             {
-                jABGlobalMouseClickOnTableCell["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellClickOffsetX);
+                jABGlobalMouseClickOnTableCell["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellenumerateViewport);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellClickOffsetY != null)
+            if (jABGlobalMouseClickOnTableCellprocessViewportParents != null)
             {
-                jABGlobalMouseClickOnTableCell["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellClickOffsetY);
+                jABGlobalMouseClickOnTableCell["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellprocessViewportParents);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellOffsetRelativeTo != null)
+            if (jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess != null)
             {
-                jABGlobalMouseClickOnTableCell["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellOffsetRelativeTo);
+                jABGlobalMouseClickOnTableCell["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
-            if (jABGlobalMouseClickOnTableCellDelayInMilliseconds != null)
+            if (jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider != null)
             {
-                jABGlobalMouseClickOnTableCell["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellDelayInMilliseconds);
+                jABGlobalMouseClickOnTableCell["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCellviewportLeftMargin != null)
+            {
+                jABGlobalMouseClickOnTableCell["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportLeftMargin);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCellviewportTopMargin != null)
+            {
+                jABGlobalMouseClickOnTableCell["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportTopMargin);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCellviewportRightMargin != null)
+            {
+                jABGlobalMouseClickOnTableCell["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportRightMargin);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCellviewportBottomMargin != null)
+            {
+                jABGlobalMouseClickOnTableCell["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportBottomMargin);
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             jABGlobalMouseClickOnTableCellpropCount++;
-            jABGlobalMouseClickOnTableCell["Workflow"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellWorkflow);
+            jABGlobalMouseClickOnTableCell["MouseButton"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmouseButton);
+            if (jABGlobalMouseClickOnTableCellclickOffsetX != null)
+            {
+                jABGlobalMouseClickOnTableCell["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetX);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCellclickOffsetY != null)
+            {
+                jABGlobalMouseClickOnTableCell["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetY);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCelloffsetRelativeTo != null)
+            {
+                jABGlobalMouseClickOnTableCell["OffsetRelativeTo"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCelloffsetRelativeTo);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            if (jABGlobalMouseClickOnTableCelldelayInMilliseconds != null)
+            {
+                jABGlobalMouseClickOnTableCell["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCelldelayInMilliseconds);
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+
+            jABGlobalMouseClickOnTableCellpropCount++;
+            jABGlobalMouseClickOnTableCell["Workflow"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellworkflow);
             if (jABGlobalMouseClickOnTableCellpropCount > 0)
             {
                 callPayload.Body = jABGlobalMouseClickOnTableCell;
@@ -5114,7 +5114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetRoleCSVFromElementSearchResponse> JABGetRoleCSVFromElementSearch(Expression<Func<int>> jABGetRoleCSVFromElementSearchSearchParentElementJABHandle, Expression<Func<string>> jABGetRoleCSVFromElementSearchWorkflow, Expression<Func<string>> jABGetRoleCSVFromElementSearchSearchElementJABName = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchSearchElementJABDescription = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchSearchElementJABRole = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchSearchSubTree = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchMaxRelativeDepth = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchMatchIndex = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchSearchFilter = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchSortByColumn = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchMatchIndexAscending = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchCaseSensitiveSearch = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchOnlySearchShowingElements = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchElementRolesNotToTraverse = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchMaximumElementsToSearch = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchIndentRoleInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchIncludeDescriptionInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchIncludeDimensionsInCSV = null)
+        public IBodyWorkflowAction<JABGetRoleCSVFromElementSearchResponse> JABGetRoleCSVFromElementSearch(Expression<Func<int>> jABGetRoleCSVFromElementSearchsearchParentElementJABHandle, Expression<Func<string>> jABGetRoleCSVFromElementSearchworkflow, Expression<Func<string>> jABGetRoleCSVFromElementSearchsearchElementJABName = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchsearchElementJABDescription = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchsearchElementJABRole = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchsearchSubTree = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchmaxRelativeDepth = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchmatchIndex = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchsearchFilter = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchsortByColumn = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchmatchIndexAscending = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchcaseSensitiveSearch = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchonlySearchVisibleElements = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchonlySearchShowingElements = null, Expression<Func<string>> jABGetRoleCSVFromElementSearchelementRolesNotToTraverse = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchmaximumElementsToSearch = null, Expression<Func<int>> jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchindentRoleInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchincludeDescriptionInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementSearchincludeDimensionsInCSV = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementSearch";
             var apiCallHttpMethod = "post";
@@ -5122,117 +5122,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetRoleCSVFromElementSearch = new JObject();
             var jABGetRoleCSVFromElementSearchpropCount = 0;
             jABGetRoleCSVFromElementSearchpropCount++;
-            jABGetRoleCSVFromElementSearch["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchParentElementJABHandle);
-            if (jABGetRoleCSVFromElementSearchSearchElementJABName != null)
+            jABGetRoleCSVFromElementSearch["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchParentElementJABHandle);
+            if (jABGetRoleCSVFromElementSearchsearchElementJABName != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchElementJABName);
+                jABGetRoleCSVFromElementSearch["SearchElementJABName"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchElementJABName);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchSearchElementJABDescription != null)
+            if (jABGetRoleCSVFromElementSearchsearchElementJABDescription != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchElementJABDescription);
+                jABGetRoleCSVFromElementSearch["SearchElementJABDescription"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchElementJABDescription);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchSearchElementJABRole != null)
+            if (jABGetRoleCSVFromElementSearchsearchElementJABRole != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchElementJABRole);
+                jABGetRoleCSVFromElementSearch["SearchElementJABRole"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchElementJABRole);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchSearchSubTree != null)
+            if (jABGetRoleCSVFromElementSearchsearchSubTree != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchSubTree);
+                jABGetRoleCSVFromElementSearch["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchSubTree);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchMaxRelativeDepth != null)
+            if (jABGetRoleCSVFromElementSearchmaxRelativeDepth != null)
             {
-                jABGetRoleCSVFromElementSearch["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchMaxRelativeDepth);
+                jABGetRoleCSVFromElementSearch["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaxRelativeDepth);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchMatchIndex != null)
+            if (jABGetRoleCSVFromElementSearchmatchIndex != null)
             {
-                jABGetRoleCSVFromElementSearch["MatchIndex"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchMatchIndex);
+                jABGetRoleCSVFromElementSearch["MatchIndex"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndex);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchSearchFilter != null)
+            if (jABGetRoleCSVFromElementSearchsearchFilter != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchFilter"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSearchFilter);
+                jABGetRoleCSVFromElementSearch["SearchFilter"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchFilter);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchSortByColumn != null)
+            if (jABGetRoleCSVFromElementSearchsortByColumn != null)
             {
-                jABGetRoleCSVFromElementSearch["SortByColumn"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchSortByColumn);
+                jABGetRoleCSVFromElementSearch["SortByColumn"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsortByColumn);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchMatchIndexAscending != null)
+            if (jABGetRoleCSVFromElementSearchmatchIndexAscending != null)
             {
-                jABGetRoleCSVFromElementSearch["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchMatchIndexAscending);
+                jABGetRoleCSVFromElementSearch["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndexAscending);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchCaseSensitiveSearch != null)
+            if (jABGetRoleCSVFromElementSearchcaseSensitiveSearch != null)
             {
-                jABGetRoleCSVFromElementSearch["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchCaseSensitiveSearch);
+                jABGetRoleCSVFromElementSearch["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchcaseSensitiveSearch);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchOnlySearchVisibleElements != null)
+            if (jABGetRoleCSVFromElementSearchonlySearchVisibleElements != null)
             {
-                jABGetRoleCSVFromElementSearch["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchOnlySearchVisibleElements);
+                jABGetRoleCSVFromElementSearch["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchVisibleElements);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchOnlySearchShowingElements != null)
+            if (jABGetRoleCSVFromElementSearchonlySearchShowingElements != null)
             {
-                jABGetRoleCSVFromElementSearch["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchOnlySearchShowingElements);
+                jABGetRoleCSVFromElementSearch["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchShowingElements);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchElementRolesNotToTraverse != null)
+            if (jABGetRoleCSVFromElementSearchelementRolesNotToTraverse != null)
             {
-                jABGetRoleCSVFromElementSearch["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchElementRolesNotToTraverse);
+                jABGetRoleCSVFromElementSearch["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchelementRolesNotToTraverse);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchMaximumElementsToSearch != null)
+            if (jABGetRoleCSVFromElementSearchmaximumElementsToSearch != null)
             {
-                jABGetRoleCSVFromElementSearch["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchMaximumElementsToSearch);
+                jABGetRoleCSVFromElementSearch["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumElementsToSearch);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchMaximumChildElementsToSearchPerNode != null)
+            if (jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetRoleCSVFromElementSearch["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchMaximumChildElementsToSearchPerNode);
+                jABGetRoleCSVFromElementSearch["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchIndentRoleInCSV != null)
+            if (jABGetRoleCSVFromElementSearchindentRoleInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchIndentRoleInCSV);
+                jABGetRoleCSVFromElementSearch["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchindentRoleInCSV);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchIncludeDescriptionInCSV != null)
+            if (jABGetRoleCSVFromElementSearchincludeDescriptionInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchIncludeDescriptionInCSV);
+                jABGetRoleCSVFromElementSearch["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDescriptionInCSV);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
-            if (jABGetRoleCSVFromElementSearchIncludeDimensionsInCSV != null)
+            if (jABGetRoleCSVFromElementSearchincludeDimensionsInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchIncludeDimensionsInCSV);
+                jABGetRoleCSVFromElementSearch["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDimensionsInCSV);
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             jABGetRoleCSVFromElementSearchpropCount++;
-            jABGetRoleCSVFromElementSearch["Workflow"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchWorkflow);
+            jABGetRoleCSVFromElementSearch["Workflow"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchworkflow);
             if (jABGetRoleCSVFromElementSearchpropCount > 0)
             {
                 callPayload.Body = jABGetRoleCSVFromElementSearch;
@@ -5242,7 +5242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetRoleCSVFromElementHandleResponse> JABGetRoleCSVFromElementHandle(Expression<Func<int>> jABGetRoleCSVFromElementHandleSearchParentElementJABHandle, Expression<Func<string>> jABGetRoleCSVFromElementHandleWorkflow, Expression<Func<bool>> jABGetRoleCSVFromElementHandleSearchSubTree = null, Expression<Func<int>> jABGetRoleCSVFromElementHandleMaxRelativeDepth = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleOnlySearchVisibleElements = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleOnlySearchShowingElements = null, Expression<Func<string>> jABGetRoleCSVFromElementHandleElementRolesNotToTraverse = null, Expression<Func<int>> jABGetRoleCSVFromElementHandleMaximumElementsToSearch = null, Expression<Func<int>> jABGetRoleCSVFromElementHandleMaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleIndentRoleInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleIncludeDescriptionInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleIncludeDimensionsInCSV = null)
+        public IBodyWorkflowAction<JABGetRoleCSVFromElementHandleResponse> JABGetRoleCSVFromElementHandle(Expression<Func<int>> jABGetRoleCSVFromElementHandlesearchParentElementJABHandle, Expression<Func<string>> jABGetRoleCSVFromElementHandleworkflow, Expression<Func<bool>> jABGetRoleCSVFromElementHandlesearchSubTree = null, Expression<Func<int>> jABGetRoleCSVFromElementHandlemaxRelativeDepth = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleonlySearchVisibleElements = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleonlySearchShowingElements = null, Expression<Func<string>> jABGetRoleCSVFromElementHandleelementRolesNotToTraverse = null, Expression<Func<int>> jABGetRoleCSVFromElementHandlemaximumElementsToSearch = null, Expression<Func<int>> jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleindentRoleInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleincludeDescriptionInCSV = null, Expression<Func<bool>> jABGetRoleCSVFromElementHandleincludeDimensionsInCSV = null)
         {
             var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementHandle";
             var apiCallHttpMethod = "post";
@@ -5250,69 +5250,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABGetRoleCSVFromElementHandle = new JObject();
             var jABGetRoleCSVFromElementHandlepropCount = 0;
             jABGetRoleCSVFromElementHandlepropCount++;
-            jABGetRoleCSVFromElementHandle["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleSearchParentElementJABHandle);
-            if (jABGetRoleCSVFromElementHandleSearchSubTree != null)
+            jABGetRoleCSVFromElementHandle["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlesearchParentElementJABHandle);
+            if (jABGetRoleCSVFromElementHandlesearchSubTree != null)
             {
-                jABGetRoleCSVFromElementHandle["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleSearchSubTree);
+                jABGetRoleCSVFromElementHandle["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlesearchSubTree);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleMaxRelativeDepth != null)
+            if (jABGetRoleCSVFromElementHandlemaxRelativeDepth != null)
             {
-                jABGetRoleCSVFromElementHandle["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleMaxRelativeDepth);
+                jABGetRoleCSVFromElementHandle["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaxRelativeDepth);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleOnlySearchVisibleElements != null)
+            if (jABGetRoleCSVFromElementHandleonlySearchVisibleElements != null)
             {
-                jABGetRoleCSVFromElementHandle["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleOnlySearchVisibleElements);
+                jABGetRoleCSVFromElementHandle["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchVisibleElements);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleOnlySearchShowingElements != null)
+            if (jABGetRoleCSVFromElementHandleonlySearchShowingElements != null)
             {
-                jABGetRoleCSVFromElementHandle["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleOnlySearchShowingElements);
+                jABGetRoleCSVFromElementHandle["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchShowingElements);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleElementRolesNotToTraverse != null)
+            if (jABGetRoleCSVFromElementHandleelementRolesNotToTraverse != null)
             {
-                jABGetRoleCSVFromElementHandle["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleElementRolesNotToTraverse);
+                jABGetRoleCSVFromElementHandle["ElementRolesNotToTraverse"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleelementRolesNotToTraverse);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleMaximumElementsToSearch != null)
+            if (jABGetRoleCSVFromElementHandlemaximumElementsToSearch != null)
             {
-                jABGetRoleCSVFromElementHandle["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleMaximumElementsToSearch);
+                jABGetRoleCSVFromElementHandle["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumElementsToSearch);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleMaximumChildElementsToSearchPerNode != null)
+            if (jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetRoleCSVFromElementHandle["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleMaximumChildElementsToSearchPerNode);
+                jABGetRoleCSVFromElementHandle["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleIndentRoleInCSV != null)
+            if (jABGetRoleCSVFromElementHandleindentRoleInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleIndentRoleInCSV);
+                jABGetRoleCSVFromElementHandle["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleindentRoleInCSV);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleIncludeDescriptionInCSV != null)
+            if (jABGetRoleCSVFromElementHandleincludeDescriptionInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleIncludeDescriptionInCSV);
+                jABGetRoleCSVFromElementHandle["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDescriptionInCSV);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
-            if (jABGetRoleCSVFromElementHandleIncludeDimensionsInCSV != null)
+            if (jABGetRoleCSVFromElementHandleincludeDimensionsInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleIncludeDimensionsInCSV);
+                jABGetRoleCSVFromElementHandle["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDimensionsInCSV);
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             jABGetRoleCSVFromElementHandlepropCount++;
-            jABGetRoleCSVFromElementHandle["Workflow"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleWorkflow);
+            jABGetRoleCSVFromElementHandle["Workflow"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleworkflow);
             if (jABGetRoleCSVFromElementHandlepropCount > 0)
             {
                 callPayload.Body = jABGetRoleCSVFromElementHandle;
@@ -5607,7 +5607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
-    public enum jABGlobalLeftMouseClickOnElementOffsetRelativeToInput
+    public enum jABGlobalLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -5624,7 +5624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public enum jABGlobalRightMouseClickOnElementOffsetRelativeToInput
+    public enum jABGlobalRightMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -5641,7 +5641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public enum jABGlobalMiddleMouseClickOnElementOffsetRelativeToInput
+    public enum jABGlobalMiddleMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -5658,7 +5658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public enum jABGlobalDoubleLeftMouseClickOnElementOffsetRelativeToInput
+    public enum jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -5821,7 +5821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int NumberOfParentElementsReturned { get; set; }
     }
 
-    public enum jABGlobalMouseClickOnTableCellOffsetRelativeToInput
+    public enum jABGlobalMouseClickOnTableCelloffsetRelativeToInput
     {
         Center,
         Left,

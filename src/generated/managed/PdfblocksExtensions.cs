@@ -143,11 +143,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
         [EnumMember(Value = "270")]
         _270,
         [EnumMember(Value = "-90")]
-        _-90,
+        Negative90,
         [EnumMember(Value = "-180")]
-        _-180,
+        Negative180,
         [EnumMember(Value = "-270")]
-        _-270
+        Negative270
     }
 }
 

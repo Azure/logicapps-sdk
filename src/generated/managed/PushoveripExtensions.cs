@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public enum bodypriorityInput
     {
         [EnumMember(Value = "-2")]
-        _-2,
+        Negative2,
         [EnumMember(Value = "-1")]
-        _-1,
+        Negative1,
         [EnumMember(Value = "0")]
         _0,
         [EnumMember(Value = "1")]

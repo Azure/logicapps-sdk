@@ -19,91 +19,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            var origin_addressObject = new JObject();
-            var origin_addressObjectpropCount = 0;
+            var originAddressObject = new JObject();
+            var originAddressObjectpropCount = 0;
             if (bodyoriginAddressline1 != null)
             {
-                origin_addressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
-                origin_addressObjectpropCount++;
+                originAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressline2 != null)
             {
-                origin_addressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
-                origin_addressObjectpropCount++;
+                originAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressstate != null)
             {
-                origin_addressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
-                origin_addressObjectpropCount++;
+                originAddressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscity != null)
             {
-                origin_addressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
-                origin_addressObjectpropCount++;
+                originAddressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresspostalCode != null)
             {
-                origin_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
-                origin_addressObjectpropCount++;
+                originAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscountryAlpha2 != null)
             {
-                origin_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
-                origin_addressObjectpropCount++;
+                originAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
+                originAddressObjectpropCount++;
             }
 
-            if (origin_addressObjectpropCount > 0)
+            if (originAddressObjectpropCount > 0)
             {
-                body["origin_address"] = origin_addressObject;
+                body["origin_address"] = originAddressObject;
                 bodypropCount++;
             }
 
-            var destination_addressObject = new JObject();
-            var destination_addressObjectpropCount = 0;
+            var destinationAddressObject = new JObject();
+            var destinationAddressObjectpropCount = 0;
             if (bodydestinationAddressline1 != null)
             {
-                destination_addressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressline2 != null)
             {
-                destination_addressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressstate != null)
             {
-                destination_addressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscity != null)
             {
-                destination_addressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresspostalCode != null)
             {
-                destination_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscountryAlpha2 != null)
             {
-                destination_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
+                destinationAddressObjectpropCount++;
             }
 
-            if (destination_addressObjectpropCount > 0)
+            if (destinationAddressObjectpropCount > 0)
             {
-                body["destination_address"] = destination_addressObject;
+                body["destination_address"] = destinationAddressObject;
                 bodypropCount++;
             }
 
@@ -139,22 +139,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 bodypropCount++;
             }
 
-            var courier_selectionObject = new JObject();
-            var courier_selectionObjectpropCount = 0;
+            var courierSelectionObject = new JObject();
+            var courierSelectionObjectpropCount = 0;
             if (bodycourierSelectionapplyShippingRules != null)
             {
-                courier_selectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
-                courier_selectionObjectpropCount++;
+                courierSelectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
+                courierSelectionObjectpropCount++;
             }
 
-            if (courier_selectionObjectpropCount > 0)
+            if (courierSelectionObjectpropCount > 0)
             {
-                body["courier_selection"] = courier_selectionObject;
+                body["courier_selection"] = courierSelectionObject;
                 bodypropCount++;
             }
 
-            var shipping_settingsObject = new JObject();
-            var shipping_settingsObjectpropCount = 0;
+            var shippingSettingsObject = new JObject();
+            var shippingSettingsObjectpropCount = 0;
             var unitsObject = new JObject();
             var unitsObjectpropCount = 0;
             if (bodyshippingSettingsunitsweight != null)
@@ -171,19 +171,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (unitsObjectpropCount > 0)
             {
-                shipping_settingsObject["units"] = unitsObject;
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["units"] = unitsObject;
+                shippingSettingsObjectpropCount++;
             }
 
             if (bodyshippingSettingsoutputCurrency != null)
             {
-                shipping_settingsObject["output_currency"] = ExpressionConverter.ConvertO(bodyshippingSettingsoutputCurrency);
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["output_currency"] = ExpressionConverter.ConvertO(bodyshippingSettingsoutputCurrency);
+                shippingSettingsObjectpropCount++;
             }
 
-            if (shipping_settingsObjectpropCount > 0)
+            if (shippingSettingsObjectpropCount > 0)
             {
-                body["shipping_settings"] = shipping_settingsObject;
+                body["shipping_settings"] = shippingSettingsObject;
                 bodypropCount++;
             }
 
@@ -248,275 +248,275 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            var origin_addressObject = new JObject();
-            var origin_addressObjectpropCount = 0;
+            var originAddressObject = new JObject();
+            var originAddressObjectpropCount = 0;
             if (bodyoriginAddressline1 != null)
             {
-                origin_addressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
-                origin_addressObjectpropCount++;
+                originAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyoriginAddressline1);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressline2 != null)
             {
-                origin_addressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
-                origin_addressObjectpropCount++;
+                originAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyoriginAddressline2);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddressstate != null)
             {
-                origin_addressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
-                origin_addressObjectpropCount++;
+                originAddressObject["state"] = ExpressionConverter.ConvertO(bodyoriginAddressstate);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscity != null)
             {
-                origin_addressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
-                origin_addressObjectpropCount++;
+                originAddressObject["city"] = ExpressionConverter.ConvertO(bodyoriginAddresscity);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresspostalCode != null)
             {
-                origin_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
-                origin_addressObjectpropCount++;
+                originAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyoriginAddresspostalCode);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscountryAlpha2 != null)
             {
-                origin_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
-                origin_addressObjectpropCount++;
+                originAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyoriginAddresscountryAlpha2);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactName != null)
             {
-                origin_addressObject["contact_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactName);
-                origin_addressObjectpropCount++;
+                originAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactName);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscompanyName != null)
             {
-                origin_addressObject["company_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscompanyName);
-                origin_addressObjectpropCount++;
+                originAddressObject["company_name"] = ExpressionConverter.ConvertO(bodyoriginAddresscompanyName);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactPhone != null)
             {
-                origin_addressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactPhone);
-                origin_addressObjectpropCount++;
+                originAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactPhone);
+                originAddressObjectpropCount++;
             }
 
             if (bodyoriginAddresscontactEmail != null)
             {
-                origin_addressObject["contact_email"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactEmail);
-                origin_addressObjectpropCount++;
+                originAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodyoriginAddresscontactEmail);
+                originAddressObjectpropCount++;
             }
 
-            if (origin_addressObjectpropCount > 0)
+            if (originAddressObjectpropCount > 0)
             {
-                body["origin_address"] = origin_addressObject;
+                body["origin_address"] = originAddressObject;
                 bodypropCount++;
             }
 
-            var sender_addressObject = new JObject();
-            var sender_addressObjectpropCount = 0;
+            var senderAddressObject = new JObject();
+            var senderAddressObjectpropCount = 0;
             if (bodysenderAddressline1 != null)
             {
-                sender_addressObject["line_1"] = ExpressionConverter.ConvertO(bodysenderAddressline1);
-                sender_addressObjectpropCount++;
+                senderAddressObject["line_1"] = ExpressionConverter.ConvertO(bodysenderAddressline1);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddressline2 != null)
             {
-                sender_addressObject["line_2"] = ExpressionConverter.ConvertO(bodysenderAddressline2);
-                sender_addressObjectpropCount++;
+                senderAddressObject["line_2"] = ExpressionConverter.ConvertO(bodysenderAddressline2);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddressstate != null)
             {
-                sender_addressObject["state"] = ExpressionConverter.ConvertO(bodysenderAddressstate);
-                sender_addressObjectpropCount++;
+                senderAddressObject["state"] = ExpressionConverter.ConvertO(bodysenderAddressstate);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscity != null)
             {
-                sender_addressObject["city"] = ExpressionConverter.ConvertO(bodysenderAddresscity);
-                sender_addressObjectpropCount++;
+                senderAddressObject["city"] = ExpressionConverter.ConvertO(bodysenderAddresscity);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresspostalCode != null)
             {
-                sender_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodysenderAddresspostalCode);
-                sender_addressObjectpropCount++;
+                senderAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodysenderAddresspostalCode);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscountryAlpha2 != null)
             {
-                sender_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodysenderAddresscountryAlpha2);
-                sender_addressObjectpropCount++;
+                senderAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodysenderAddresscountryAlpha2);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactName != null)
             {
-                sender_addressObject["contact_name"] = ExpressionConverter.ConvertO(bodysenderAddresscontactName);
-                sender_addressObjectpropCount++;
+                senderAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodysenderAddresscontactName);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscompanyName != null)
             {
-                sender_addressObject["company_name"] = ExpressionConverter.ConvertO(bodysenderAddresscompanyName);
-                sender_addressObjectpropCount++;
+                senderAddressObject["company_name"] = ExpressionConverter.ConvertO(bodysenderAddresscompanyName);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactPhone != null)
             {
-                sender_addressObject["contact_phone"] = ExpressionConverter.ConvertO(bodysenderAddresscontactPhone);
-                sender_addressObjectpropCount++;
+                senderAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodysenderAddresscontactPhone);
+                senderAddressObjectpropCount++;
             }
 
             if (bodysenderAddresscontactEmail != null)
             {
-                sender_addressObject["contact_email"] = ExpressionConverter.ConvertO(bodysenderAddresscontactEmail);
-                sender_addressObjectpropCount++;
+                senderAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodysenderAddresscontactEmail);
+                senderAddressObjectpropCount++;
             }
 
-            if (sender_addressObjectpropCount > 0)
+            if (senderAddressObjectpropCount > 0)
             {
-                body["sender_address"] = sender_addressObject;
+                body["sender_address"] = senderAddressObject;
                 bodypropCount++;
             }
 
-            var return_addressObject = new JObject();
-            var return_addressObjectpropCount = 0;
+            var returnAddressObject = new JObject();
+            var returnAddressObjectpropCount = 0;
             if (bodyreturnAddressline1 != null)
             {
-                return_addressObject["line_1"] = ExpressionConverter.ConvertO(bodyreturnAddressline1);
-                return_addressObjectpropCount++;
+                returnAddressObject["line_1"] = ExpressionConverter.ConvertO(bodyreturnAddressline1);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddressline2 != null)
             {
-                return_addressObject["line_2"] = ExpressionConverter.ConvertO(bodyreturnAddressline2);
-                return_addressObjectpropCount++;
+                returnAddressObject["line_2"] = ExpressionConverter.ConvertO(bodyreturnAddressline2);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddressstate != null)
             {
-                return_addressObject["state"] = ExpressionConverter.ConvertO(bodyreturnAddressstate);
-                return_addressObjectpropCount++;
+                returnAddressObject["state"] = ExpressionConverter.ConvertO(bodyreturnAddressstate);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscity != null)
             {
-                return_addressObject["city"] = ExpressionConverter.ConvertO(bodyreturnAddresscity);
-                return_addressObjectpropCount++;
+                returnAddressObject["city"] = ExpressionConverter.ConvertO(bodyreturnAddresscity);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresspostalCode != null)
             {
-                return_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodyreturnAddresspostalCode);
-                return_addressObjectpropCount++;
+                returnAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodyreturnAddresspostalCode);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscountryAlpha2 != null)
             {
-                return_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyreturnAddresscountryAlpha2);
-                return_addressObjectpropCount++;
+                returnAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodyreturnAddresscountryAlpha2);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactName != null)
             {
-                return_addressObject["contact_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactName);
-                return_addressObjectpropCount++;
+                returnAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactName);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscompanyName != null)
             {
-                return_addressObject["company_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscompanyName);
-                return_addressObjectpropCount++;
+                returnAddressObject["company_name"] = ExpressionConverter.ConvertO(bodyreturnAddresscompanyName);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactPhone != null)
             {
-                return_addressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactPhone);
-                return_addressObjectpropCount++;
+                returnAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactPhone);
+                returnAddressObjectpropCount++;
             }
 
             if (bodyreturnAddresscontactEmail != null)
             {
-                return_addressObject["contact_email"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactEmail);
-                return_addressObjectpropCount++;
+                returnAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodyreturnAddresscontactEmail);
+                returnAddressObjectpropCount++;
             }
 
-            if (return_addressObjectpropCount > 0)
+            if (returnAddressObjectpropCount > 0)
             {
-                body["return_address"] = return_addressObject;
+                body["return_address"] = returnAddressObject;
                 bodypropCount++;
             }
 
-            var destination_addressObject = new JObject();
-            var destination_addressObjectpropCount = 0;
+            var destinationAddressObject = new JObject();
+            var destinationAddressObjectpropCount = 0;
             if (bodydestinationAddressline1 != null)
             {
-                destination_addressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["line_1"] = ExpressionConverter.ConvertO(bodydestinationAddressline1);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressline2 != null)
             {
-                destination_addressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["line_2"] = ExpressionConverter.ConvertO(bodydestinationAddressline2);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddressstate != null)
             {
-                destination_addressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["state"] = ExpressionConverter.ConvertO(bodydestinationAddressstate);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscity != null)
             {
-                destination_addressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["city"] = ExpressionConverter.ConvertO(bodydestinationAddresscity);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresspostalCode != null)
             {
-                destination_addressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["postal_code"] = ExpressionConverter.ConvertO(bodydestinationAddresspostalCode);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscountryAlpha2 != null)
             {
-                destination_addressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["country_alpha2"] = ExpressionConverter.ConvertO(bodydestinationAddresscountryAlpha2);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactName != null)
             {
-                destination_addressObject["contact_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactName);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["contact_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactName);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscompanyName != null)
             {
-                destination_addressObject["company_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscompanyName);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["company_name"] = ExpressionConverter.ConvertO(bodydestinationAddresscompanyName);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactPhone != null)
             {
-                destination_addressObject["contact_phone"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactPhone);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["contact_phone"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactPhone);
+                destinationAddressObjectpropCount++;
             }
 
             if (bodydestinationAddresscontactEmail != null)
             {
-                destination_addressObject["contact_email"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactEmail);
-                destination_addressObjectpropCount++;
+                destinationAddressObject["contact_email"] = ExpressionConverter.ConvertO(bodydestinationAddresscontactEmail);
+                destinationAddressObjectpropCount++;
             }
 
-            if (destination_addressObjectpropCount > 0)
+            if (destinationAddressObjectpropCount > 0)
             {
-                body["destination_address"] = destination_addressObject;
+                body["destination_address"] = destinationAddressObject;
                 bodypropCount++;
             }
 
@@ -578,72 +578,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 bodypropCount++;
             }
 
-            var order_dataObject = new JObject();
-            var order_dataObjectpropCount = 0;
+            var orderDataObject = new JObject();
+            var orderDataObjectpropCount = 0;
             if (bodyorderDataplatformName != null)
             {
-                order_dataObject["platform_name"] = ExpressionConverter.ConvertO(bodyorderDataplatformName);
-                order_dataObjectpropCount++;
+                orderDataObject["platform_name"] = ExpressionConverter.ConvertO(bodyorderDataplatformName);
+                orderDataObjectpropCount++;
             }
 
             if (bodyorderDataplatformOrderNumber != null)
             {
-                order_dataObject["platform_order_number"] = ExpressionConverter.ConvertO(bodyorderDataplatformOrderNumber);
-                order_dataObjectpropCount++;
+                orderDataObject["platform_order_number"] = ExpressionConverter.ConvertO(bodyorderDataplatformOrderNumber);
+                orderDataObjectpropCount++;
             }
 
             if (bodyorderDataorderTagList != null)
             {
-                order_dataObject["order_tag_list"] = ExpressionConverter.ConvertO(bodyorderDataorderTagList);
-                order_dataObjectpropCount++;
+                orderDataObject["order_tag_list"] = ExpressionConverter.ConvertO(bodyorderDataorderTagList);
+                orderDataObjectpropCount++;
             }
 
             if (bodyorderDatasellerNotes != null)
             {
-                order_dataObject["seller_notes"] = ExpressionConverter.ConvertO(bodyorderDatasellerNotes);
-                order_dataObjectpropCount++;
+                orderDataObject["seller_notes"] = ExpressionConverter.ConvertO(bodyorderDatasellerNotes);
+                orderDataObjectpropCount++;
             }
 
             if (bodyorderDatabuyerNotes != null)
             {
-                order_dataObject["buyer_notes"] = ExpressionConverter.ConvertO(bodyorderDatabuyerNotes);
-                order_dataObjectpropCount++;
+                orderDataObject["buyer_notes"] = ExpressionConverter.ConvertO(bodyorderDatabuyerNotes);
+                orderDataObjectpropCount++;
             }
 
-            if (order_dataObjectpropCount > 0)
+            if (orderDataObjectpropCount > 0)
             {
-                body["order_data"] = order_dataObject;
+                body["order_data"] = orderDataObject;
                 bodypropCount++;
             }
 
-            var courier_selectionObject = new JObject();
-            var courier_selectionObjectpropCount = 0;
+            var courierSelectionObject = new JObject();
+            var courierSelectionObjectpropCount = 0;
             if (bodycourierSelectionselectedCourierId != null)
             {
-                courier_selectionObject["selected_courier_id"] = ExpressionConverter.ConvertO(bodycourierSelectionselectedCourierId);
-                courier_selectionObjectpropCount++;
+                courierSelectionObject["selected_courier_id"] = ExpressionConverter.ConvertO(bodycourierSelectionselectedCourierId);
+                courierSelectionObjectpropCount++;
             }
 
             if (bodycourierSelectionallowCourierFallback != null)
             {
-                courier_selectionObject["allow_courier_fallback"] = ExpressionConverter.ConvertO(bodycourierSelectionallowCourierFallback);
-                courier_selectionObjectpropCount++;
+                courierSelectionObject["allow_courier_fallback"] = ExpressionConverter.ConvertO(bodycourierSelectionallowCourierFallback);
+                courierSelectionObjectpropCount++;
             }
 
             if (bodycourierSelectionapplyShippingRules != null)
             {
-                courier_selectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
-                courier_selectionObjectpropCount++;
+                courierSelectionObject["apply_shipping_rules"] = ExpressionConverter.ConvertO(bodycourierSelectionapplyShippingRules);
+                courierSelectionObjectpropCount++;
             }
 
-            if (courier_selectionObjectpropCount > 0)
+            if (courierSelectionObjectpropCount > 0)
             {
-                body["courier_selection"] = courier_selectionObject;
+                body["courier_selection"] = courierSelectionObject;
                 bodypropCount++;
             }
 
-            var shipping_settingsObject = new JObject();
-            var shipping_settingsObjectpropCount = 0;
+            var shippingSettingsObject = new JObject();
+            var shippingSettingsObjectpropCount = 0;
             var unitsObject = new JObject();
             var unitsObjectpropCount = 0;
             if (bodyshippingSettingsunitsweight != null)
@@ -660,57 +660,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
             if (unitsObjectpropCount > 0)
             {
-                shipping_settingsObject["units"] = unitsObject;
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["units"] = unitsObject;
+                shippingSettingsObjectpropCount++;
             }
 
-            var printing_optionsObject = new JObject();
-            var printing_optionsObjectpropCount = 0;
+            var printingOptionsObject = new JObject();
+            var printingOptionsObjectpropCount = 0;
             if (bodyshippingSettingsprintingOptionsformat != null)
             {
-                printing_optionsObject["format"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionsformat);
-                printing_optionsObjectpropCount++;
+                printingOptionsObject["format"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionsformat);
+                printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionslabel != null)
             {
-                printing_optionsObject["label"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionslabel);
-                printing_optionsObjectpropCount++;
+                printingOptionsObject["label"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionslabel);
+                printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionscommercialInvoice != null)
             {
-                printing_optionsObject["commercial_invoice"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionscommercialInvoice);
-                printing_optionsObjectpropCount++;
+                printingOptionsObject["commercial_invoice"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionscommercialInvoice);
+                printingOptionsObjectpropCount++;
             }
 
             if (bodyshippingSettingsprintingOptionspackingSlip != null)
             {
-                printing_optionsObject["packing_slip"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionspackingSlip);
-                printing_optionsObjectpropCount++;
+                printingOptionsObject["packing_slip"] = ExpressionConverter.ConvertO(bodyshippingSettingsprintingOptionspackingSlip);
+                printingOptionsObjectpropCount++;
             }
 
-            if (printing_optionsObjectpropCount > 0)
+            if (printingOptionsObjectpropCount > 0)
             {
-                shipping_settingsObject["printing_options"] = printing_optionsObject;
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["printing_options"] = printingOptionsObject;
+                shippingSettingsObjectpropCount++;
             }
 
             if (bodyshippingSettingsbuyLabel != null)
             {
-                shipping_settingsObject["buy_label"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabel);
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["buy_label"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabel);
+                shippingSettingsObjectpropCount++;
             }
 
             if (bodyshippingSettingsbuyLabelSynchronous != null)
             {
-                shipping_settingsObject["buy_label_synchronous"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabelSynchronous);
-                shipping_settingsObjectpropCount++;
+                shippingSettingsObject["buy_label_synchronous"] = ExpressionConverter.ConvertO(bodyshippingSettingsbuyLabelSynchronous);
+                shippingSettingsObjectpropCount++;
             }
 
-            if (shipping_settingsObjectpropCount > 0)
+            if (shippingSettingsObjectpropCount > 0)
             {
-                body["shipping_settings"] = shipping_settingsObject;
+                body["shipping_settings"] = shippingSettingsObject;
                 bodypropCount++;
             }
 

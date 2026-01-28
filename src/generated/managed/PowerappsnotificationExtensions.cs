@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
                 payloadpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                payload["params"] = paramsObject;
+                payload["params"] = @paramsObject;
                 payloadpropCount++;
             }
 

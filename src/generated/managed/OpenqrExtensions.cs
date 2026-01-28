@@ -66,6 +66,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
+        public IBodyWorkflowAction<QRPostResponse> QRPost(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydataurl = null)
+        {
+            var apiCallPath = "/qr-codes";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["name"] = ExpressionConverter.ConvertO(bodyname);
+            bodypropCount++;
+            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (bodydataurl != null)
+            {
+                dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
+                dataObjectpropCount++;
+            }
+
+            if (dataObjectpropCount > 0)
+            {
+                body["data"] = dataObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<QRPostResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> qrCodeId)
         {
             var apiCallPath = String.Format("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
@@ -301,6 +335,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         public string PrevCursor { get; set; }
     }
 
+    public class QRPostResponse
+    {
+        [JsonProperty("data")]
+        public QRPostResponseDataType Data { get; set; }
+    }
+
+    public class QRPostResponseDataType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("dynamic")]
+        public bool Dynamic { get; set; }
+
+        [JsonProperty("qr_code_folder_id")]
+        public int QrCodeFolderId { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+    }
+
+    public enum bodytypeInput
+    {
+        [EnumMember(Value = "url")]
+        Url,
+        [EnumMember(Value = "call")]
+        Call,
+        [EnumMember(Value = "call_static")]
+        CallStatic,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "email_static")]
+        EmailStatic,
+        [EnumMember(Value = "event")]
+        Event,
+        [EnumMember(Value = "event_static")]
+        EventStatic,
+        [EnumMember(Value = "geo")]
+        Geo,
+        [EnumMember(Value = "geo_static")]
+        GeoStatic,
+        [EnumMember(Value = "sms")]
+        Sms,
+        [EnumMember(Value = "sms_static")]
+        SmsStatic,
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "text_static")]
+        TextStatic,
+        [EnumMember(Value = "url_static")]
+        UrlStatic,
+        [EnumMember(Value = "vcard")]
+        Vcard,
+        [EnumMember(Value = "vcard_static")]
+        VcardStatic,
+        [EnumMember(Value = "wifi")]
+        Wifi,
+        [EnumMember(Value = "wifi_static")]
+        WifiStatic
+    }
+
     public class QRGetResponse
     {
         [JsonProperty("data")]
@@ -371,46 +481,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
-    }
-
-    public enum bodytypeInput
-    {
-        [EnumMember(Value = "url")]
-        Url,
-        [EnumMember(Value = "call")]
-        Call,
-        [EnumMember(Value = "call_static")]
-        CallStatic,
-        [EnumMember(Value = "email")]
-        Email,
-        [EnumMember(Value = "email_static")]
-        EmailStatic,
-        [EnumMember(Value = "event")]
-        Event,
-        [EnumMember(Value = "event_static")]
-        EventStatic,
-        [EnumMember(Value = "geo")]
-        Geo,
-        [EnumMember(Value = "geo_static")]
-        GeoStatic,
-        [EnumMember(Value = "sms")]
-        Sms,
-        [EnumMember(Value = "sms_static")]
-        SmsStatic,
-        [EnumMember(Value = "text")]
-        Text,
-        [EnumMember(Value = "text_static")]
-        TextStatic,
-        [EnumMember(Value = "url_static")]
-        UrlStatic,
-        [EnumMember(Value = "vcard")]
-        Vcard,
-        [EnumMember(Value = "vcard_static")]
-        VcardStatic,
-        [EnumMember(Value = "wifi")]
-        Wifi,
-        [EnumMember(Value = "wifi_static")]
-        WifiStatic
     }
 
     public class FilesGetResponse

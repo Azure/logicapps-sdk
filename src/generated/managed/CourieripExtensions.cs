@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudiencePutResponse> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilteroperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
+        public IBodyWorkflowAction<AudiencePutResponse> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilterOperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
         {
             var apiCallPath = String.Format("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(audienceId, 1));
             var apiCallHttpMethod = "put";
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 filterObjectpropCount++;
             }
 
-            if (bodyfilteroperator != null)
+            if (bodyfilterOperator != null)
             {
-                filterObject["operator"] = ExpressionConverter.ConvertO(bodyfilteroperator);
+                filterObject["operator"] = ExpressionConverter.ConvertO(bodyfilterOperator);
                 filterObjectpropCount++;
             }
 
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BulkJobPostResponse> BulkJobPost(Expression<Func<string>> bodymessageevent = null, Expression<Func<string>> bodymessagebrand = null, Expression<Func<string>> bodymessagetemplate = null, Expression<Func<string>> bodymessagebrandId = null, Expression<Func<string>> bodymessageroutingmethod = null, Expression<Func<string[]>> bodymessageroutingchannels = null, Expression<Func<string>> bodymessagemetadataevent = null, Expression<Func<string[]>> bodymessagemetadatatags = null, Expression<Func<string>> bodymessagemetadatatraceId = null, Expression<Func<string>> bodymessagemetadatautmcampaign = null, Expression<Func<string>> bodymessagemetadatautmcontent = null, Expression<Func<string>> bodymessagemetadatautmmedium = null, Expression<Func<string>> bodymessagemetadatautmsource = null, Expression<Func<string>> bodymessagemetadatautmterm = null)
+        public IBodyWorkflowAction<BulkJobPostResponse> BulkJobPost(Expression<Func<string>> bodymessageEvent = null, Expression<Func<string>> bodymessagebrand = null, Expression<Func<string>> bodymessagetemplate = null, Expression<Func<string>> bodymessagebrandId = null, Expression<Func<string>> bodymessageroutingmethod = null, Expression<Func<string[]>> bodymessageroutingchannels = null, Expression<Func<string>> bodymessagemetadataEvent = null, Expression<Func<string[]>> bodymessagemetadatatags = null, Expression<Func<string>> bodymessagemetadatatraceId = null, Expression<Func<string>> bodymessagemetadatautmcampaign = null, Expression<Func<string>> bodymessagemetadatautmcontent = null, Expression<Func<string>> bodymessagemetadatautmmedium = null, Expression<Func<string>> bodymessagemetadatautmsource = null, Expression<Func<string>> bodymessagemetadatautmterm = null)
         {
             var apiCallPath = "/bulk";
             var apiCallHttpMethod = "post";
@@ -614,9 +614,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var bodypropCount = 0;
             var messageObject = new JObject();
             var messageObjectpropCount = 0;
-            if (bodymessageevent != null)
+            if (bodymessageEvent != null)
             {
-                messageObject["event"] = ExpressionConverter.ConvertO(bodymessageevent);
+                messageObject["event"] = ExpressionConverter.ConvertO(bodymessageEvent);
                 messageObjectpropCount++;
             }
 
@@ -692,9 +692,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 
             var metadataObject = new JObject();
             var metadataObjectpropCount = 0;
-            if (bodymessagemetadataevent != null)
+            if (bodymessagemetadataEvent != null)
             {
-                metadataObject["event"] = ExpressionConverter.ConvertO(bodymessagemetadataevent);
+                metadataObject["event"] = ExpressionConverter.ConvertO(bodymessagemetadataEvent);
                 metadataObjectpropCount++;
             }
 
@@ -1313,35 +1313,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 airshipObjectpropCount++;
             }
 
-            var ms_teamsObject = new JObject();
-            var ms_teamsObjectpropCount = 0;
+            var msTeamsObject = new JObject();
+            var msTeamsObjectpropCount = 0;
             if (bodyprofileairshipmsTeamsuserId != null)
             {
-                ms_teamsObject["user_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsuserId);
-                ms_teamsObjectpropCount++;
+                msTeamsObject["user_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsuserId);
+                msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamsconversationId != null)
             {
-                ms_teamsObject["conversation_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsconversationId);
-                ms_teamsObjectpropCount++;
+                msTeamsObject["conversation_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsconversationId);
+                msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamstenantId != null)
             {
-                ms_teamsObject["tenant_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamstenantId);
-                ms_teamsObjectpropCount++;
+                msTeamsObject["tenant_id"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamstenantId);
+                msTeamsObjectpropCount++;
             }
 
             if (bodyprofileairshipmsTeamsserviceUrl != null)
             {
-                ms_teamsObject["service_url"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsserviceUrl);
-                ms_teamsObjectpropCount++;
+                msTeamsObject["service_url"] = ExpressionConverter.ConvertO(bodyprofileairshipmsTeamsserviceUrl);
+                msTeamsObjectpropCount++;
             }
 
-            if (ms_teamsObjectpropCount > 0)
+            if (msTeamsObjectpropCount > 0)
             {
-                airshipObject["ms_teams"] = ms_teamsObject;
+                airshipObject["ms_teams"] = msTeamsObject;
                 airshipObjectpropCount++;
             }
 
@@ -1377,17 +1377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 slackObjectpropCount++;
             }
 
-            var incoming_webhookObject = new JObject();
-            var incoming_webhookObjectpropCount = 0;
+            var incomingWebhookObject = new JObject();
+            var incomingWebhookObjectpropCount = 0;
             if (bodyprofileairshipslackincomingWebhookurl != null)
             {
-                incoming_webhookObject["url"] = ExpressionConverter.ConvertO(bodyprofileairshipslackincomingWebhookurl);
-                incoming_webhookObjectpropCount++;
+                incomingWebhookObject["url"] = ExpressionConverter.ConvertO(bodyprofileairshipslackincomingWebhookurl);
+                incomingWebhookObjectpropCount++;
             }
 
-            if (incoming_webhookObjectpropCount > 0)
+            if (incomingWebhookObjectpropCount > 0)
             {
-                slackObject["incoming_webhook"] = incoming_webhookObject;
+                slackObject["incoming_webhook"] = incomingWebhookObject;
                 slackObjectpropCount++;
             }
 

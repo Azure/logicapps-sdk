@@ -23,22 +23,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyUnixTimeStamp = null, Expression<Func<string>> bodyTimezone = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
         {
             var apiCallPath = "/fromunixtimestamp";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyUnixTimeStamp != null)
+            if (bodyunixTimeStamp != null)
             {
-                body["UnixTimeStamp"] = ExpressionConverter.ConvertO(bodyUnixTimeStamp);
+                body["UnixTimeStamp"] = ExpressionConverter.ConvertO(bodyunixTimeStamp);
                 bodypropCount++;
             }
 
-            if (bodyTimezone != null)
+            if (bodytimezone != null)
             {
-                body["Timezone"] = ExpressionConverter.ConvertO(bodyTimezone);
+                body["Timezone"] = ExpressionConverter.ConvertO(bodytimezone);
                 bodypropCount++;
             }
 

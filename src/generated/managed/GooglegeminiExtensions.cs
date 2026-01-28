@@ -260,6 +260,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
+        public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
+        {
+            var apiCallPath = String.Format("/{0}/models/{1}:embedContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["model"] = ExpressionConverter.ConvertO(bodymodelResourceName);
+            var contentObject = new JObject();
+            var contentObjectpropCount = 0;
+            if (bodycontentparts != null)
+            {
+                contentObject["parts"] = ExpressionConverter.ConvertO(bodycontentparts);
+                contentObjectpropCount++;
+            }
+
+            if (contentObjectpropCount > 0)
+            {
+                body["content"] = contentObject;
+                bodypropCount++;
+            }
+
+            if (bodytaskType != null)
+            {
+                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                bodypropCount++;
+            }
+
+            if (bodytitle != null)
+            {
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<GenerateEmbeddingResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
+        public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
+        {
+            var apiCallPath = String.Format("/{0}/models/{1}:batchEmbedContents", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<BatchEmbedContentsResponse>(callPayload);
+        }
     }
 
     public class GooglegeminiTriggers([ConnectionName] string connectionId)
@@ -558,6 +620,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 
         [JsonProperty("topK")]
         public double TopK { get; set; }
+    }
+
+    public class GenerateEmbeddingResponse
+    {
+        [JsonProperty("embedding")]
+        public GenerateEmbeddingResponseEmbeddingType Embedding { get; set; }
+    }
+
+    public class GenerateEmbeddingResponseEmbeddingType
+    {
+        [JsonProperty("values")]
+        public double[] Values { get; set; }
+    }
+
+    public class bodycontentpartsInputItem
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public enum bodytaskTypeInput
+    {
+        [EnumMember(Value = "RETRIEVAL_QUERY")]
+        RETRIEVALQUERY,
+        [EnumMember(Value = "RETRIEVAL_DOCUMENT")]
+        RETRIEVALDOCUMENT,
+        [EnumMember(Value = "SEMANTIC_SIMILARITY")]
+        SEMANTICSIMILARITY,
+        CLASSIFICATION,
+        CLUSTERING,
+        [EnumMember(Value = "TASK_TYPE_UNSPECIFIED")]
+        TASKTYPEUNSPECIFIED
+    }
+
+    public class BatchEmbedContentsResponse
+    {
+        [JsonProperty("embeddings")]
+        public BatchEmbedContentsResponseEmbeddingsTypeItem[] Embeddings { get; set; }
+    }
+
+    public class BatchEmbedContentsResponseEmbeddingsTypeItem
+    {
+        [JsonProperty("values")]
+        public double[] Values { get; set; }
+    }
+
+    public class bodyrequestsInputItem
+    {
+        [JsonProperty("model")]
+        public string Model { get; set; }
+
+        [JsonProperty("content")]
+        public bodyrequestsInputItemContentType Content { get; set; }
+    }
+
+    public class bodyrequestsInputItemContentType
+    {
+        [JsonProperty("parts")]
+        public bodyrequestsInputItemContentTypePartsTypeItem[] Parts { get; set; }
+    }
+
+    public class bodyrequestsInputItemContentTypePartsTypeItem
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 }
 

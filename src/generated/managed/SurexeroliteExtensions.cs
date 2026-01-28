@@ -47,6 +47,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
+        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<string>> bodytype, Expression<Func<bodylineItemsInputItem[]>> bodylineItems, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycontactcontactID = null, Expression<Func<string>> bodylineAmountTypes = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodycurrencyCode = null, Expression<Func<double>> bodycurrencyRate = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyexpectedPaymentDate = null)
+        {
+            var apiCallPath = "/api.xro/2.0/Invoices";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(xeroTenantId);
+            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodydate != null)
+            {
+                body["Date"] = ExpressionConverter.ConvertO(bodydate);
+                bodypropCount++;
+            }
+
+            if (bodydueDate != null)
+            {
+                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["Type"] = ExpressionConverter.ConvertO(bodytype);
+            if (bodyreference != null)
+            {
+                body["Reference"] = ExpressionConverter.ConvertO(bodyreference);
+                bodypropCount++;
+            }
+
+            var contactObject = new JObject();
+            var contactObjectpropCount = 0;
+            if (bodycontactcontactID != null)
+            {
+                contactObject["ContactID"] = ExpressionConverter.ConvertO(bodycontactcontactID);
+                contactObjectpropCount++;
+            }
+
+            if (contactObjectpropCount > 0)
+            {
+                body["Contact"] = contactObject;
+                bodypropCount++;
+            }
+
+            if (bodylineAmountTypes != null)
+            {
+                body["LineAmountTypes"] = ExpressionConverter.ConvertO(bodylineAmountTypes);
+                bodypropCount++;
+            }
+
+            if (bodyinvoiceNumber != null)
+            {
+                body["InvoiceNumber"] = ExpressionConverter.ConvertO(bodyinvoiceNumber);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["LineItems"] = ExpressionConverter.ConvertO(bodylineItems);
+            if (bodycurrencyCode != null)
+            {
+                body["CurrencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+                bodypropCount++;
+            }
+
+            if (bodycurrencyRate != null)
+            {
+                body["CurrencyRate"] = ExpressionConverter.ConvertO(bodycurrencyRate);
+                bodypropCount++;
+            }
+
+            if (bodystatus != null)
+            {
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                bodypropCount++;
+            }
+
+            if (bodyexpectedPaymentDate != null)
+            {
+                body["ExpectedPaymentDate"] = ExpressionConverter.ConvertO(bodyexpectedPaymentDate);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<PostInvoiceResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
         {
             var apiCallPath = "/api.xro/2.0/Contacts";
@@ -70,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostContactsResponse> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodyContactsInputItem[]>> bodyContacts)
+        public IBodyWorkflowAction<PostContactsResponse> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodycontactsInputItem[]>> bodycontacts)
         {
             var apiCallPath = "/api.xro/2.0/Contacts";
             var apiCallHttpMethod = "post";
@@ -80,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Contacts"] = ExpressionConverter.ConvertO(bodyContacts);
+            body["Contacts"] = ExpressionConverter.ConvertO(bodycontacts);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -175,6 +266,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public double CurrencyRate { get; set; }
     }
 
+    public class PostInvoiceResponse
+    {
+        public PostInvoiceResponseInvoicesTypeItem[] Invoices { get; set; }
+    }
+
+    public class PostInvoiceResponseInvoicesTypeItem
+    {
+        public PostInvoiceResponseInvoicesTypeItemContactType Contact { get; set; }
+        public string Date { get; set; }
+        public string DueDate { get; set; }
+        public string Status { get; set; }
+        public string LineAmountTypes { get; set; }
+        public PostInvoiceResponseInvoicesTypeItemLineItemsTypeItem[] LineItems { get; set; }
+        public double SubTotal { get; set; }
+        public double TotalTax { get; set; }
+        public double Total { get; set; }
+        public string UpdatedDateUTC { get; set; }
+        public string CurrencyCode { get; set; }
+        public string Type { get; set; }
+        public string InvoiceID { get; set; }
+        public string InvoiceNumber { get; set; }
+        public double AmountDue { get; set; }
+        public double AmountPaid { get; set; }
+        public double AmountCredited { get; set; }
+        public double CurrencyRate { get; set; }
+    }
+
+    public class PostInvoiceResponseInvoicesTypeItemContactType
+    {
+        public string ContactID { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class PostInvoiceResponseInvoicesTypeItemLineItemsTypeItem
+    {
+        public string Description { get; set; }
+        public double UnitAmount { get; set; }
+        public string TaxType { get; set; }
+        public double TaxAmount { get; set; }
+        public double LineAmount { get; set; }
+        public string AccountCode { get; set; }
+        public string AccountId { get; set; }
+        public double Quantity { get; set; }
+        public string LineItemID { get; set; }
+    }
+
+    public class bodylineItemsInputItem
+    {
+        public string Description { get; set; }
+        public double Quantity { get; set; }
+        public double UnitAmount { get; set; }
+        public string AccountCode { get; set; }
+        public double DiscountRate { get; set; }
+    }
+
     public class GetContactsResponse
     {
         public GetContactsResponseContactsTypeItem[] Contacts { get; set; }
@@ -266,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string EmailAddress { get; set; }
     }
 
-    public class bodyContactsInputItem
+    public class bodycontactsInputItem
     {
         public string Name { get; set; }
         public string FirstName { get; set; }

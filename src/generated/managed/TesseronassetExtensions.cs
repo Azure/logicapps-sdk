@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class TesseronassetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<AddAssetResponse> AddAsset(Expression<Func<int>> bodyAssetTemplateId, Expression<Func<bodyFieldsInputItem[]>> bodyFields, Expression<Func<int>> bodyEnterpriseId = null, Expression<Func<int>> bodyStatus = null, Expression<Func<string>> bodyReferenceNumber = null, Expression<Func<int>> bodyDocumentationId = null, Expression<Func<string>> bodyDocumentationName = null, Expression<Func<string>> bodyLiveCycleName = null, Expression<Func<bodyAttachmentsInputItem[]>> bodyAttachments = null)
+        public IBodyWorkflowAction<AddAssetResponse> AddAsset(Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<string>> bodyliveCycleName = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
             var apiCallPath = "/AddAsset";
             var apiCallHttpMethod = "post";
@@ -20,48 +20,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyAssetTemplateId);
-            if (bodyEnterpriseId != null)
+            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyEnterpriseId);
+                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyReferenceNumber != null)
+            if (bodyreferenceNumber != null)
             {
-                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyReferenceNumber);
+                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
                 bodypropCount++;
             }
 
-            if (bodyDocumentationId != null)
+            if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodyDocumentationId);
+                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentationName != null)
+            if (bodydocumentationName != null)
             {
-                body["DocumentationName"] = ExpressionConverter.ConvertO(bodyDocumentationName);
+                body["DocumentationName"] = ExpressionConverter.ConvertO(bodydocumentationName);
                 bodypropCount++;
             }
 
-            if (bodyLiveCycleName != null)
+            if (bodyliveCycleName != null)
             {
-                body["LiveCycleName"] = ExpressionConverter.ConvertO(bodyLiveCycleName);
+                body["LiveCycleName"] = ExpressionConverter.ConvertO(bodyliveCycleName);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Fields"] = ExpressionConverter.ConvertO(bodyFields);
-            if (bodyAttachments != null)
+            body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
+            if (bodyattachments != null)
             {
-                body["Attachments"] = ExpressionConverter.ConvertO(bodyAttachments);
+                body["Attachments"] = ExpressionConverter.ConvertO(bodyattachments);
                 bodypropCount++;
             }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<int>> bodyAssetId, Expression<Func<int>> bodyAssetTemplateId, Expression<Func<bodyFieldsInputItem[]>> bodyFields, Expression<Func<string>> bodyReferenceNumber = null, Expression<Func<int>> bodyEnterpriseId = null, Expression<Func<int>> bodyDocumentationId = null, Expression<Func<string>> bodyDocumentationName = null, Expression<Func<int>> bodyStatus = null, Expression<Func<string>> bodyLiveCycleState = null, Expression<Func<bodyAttachmentsInputItem[]>> bodyAttachments = null)
+        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
             var apiCallPath = "/UpdateAsset";
             var apiCallHttpMethod = "post";
@@ -82,50 +82,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetId"] = ExpressionConverter.ConvertO(bodyAssetId);
+            body["AssetId"] = ExpressionConverter.ConvertO(bodyassetId);
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyAssetTemplateId);
-            if (bodyReferenceNumber != null)
+            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            if (bodyreferenceNumber != null)
             {
-                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyReferenceNumber);
+                body["ReferenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
                 bodypropCount++;
             }
 
-            if (bodyEnterpriseId != null)
+            if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyEnterpriseId);
+                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentationId != null)
+            if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodyDocumentationId);
+                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentationName != null)
+            if (bodydocumentationName != null)
             {
-                body["DocumentationName"] = ExpressionConverter.ConvertO(bodyDocumentationName);
+                body["DocumentationName"] = ExpressionConverter.ConvertO(bodydocumentationName);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyLiveCycleState != null)
+            if (bodyliveCycleState != null)
             {
-                body["LiveCycleState"] = ExpressionConverter.ConvertO(bodyLiveCycleState);
+                body["LiveCycleState"] = ExpressionConverter.ConvertO(bodyliveCycleState);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Fields"] = ExpressionConverter.ConvertO(bodyFields);
-            if (bodyAttachments != null)
+            body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
+            if (bodyattachments != null)
             {
-                body["Attachments"] = ExpressionConverter.ConvertO(bodyAttachments);
+                body["Attachments"] = ExpressionConverter.ConvertO(bodyattachments);
                 bodypropCount++;
             }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch(Expression<Func<int>> bodySkip, Expression<Func<int>> bodyPageSize, Expression<Func<int>> bodyAssetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyEnterpriseId = null, Expression<Func<int>> bodyDocumentationId = null, Expression<Func<int>> bodyAssetStatus = null, Expression<Func<bool>> bodyIsDeprecated = null, Expression<Func<string>> bodyLastUpdateDateStart = null, Expression<Func<string>> bodyLastUpdateDateEnd = null, Expression<Func<int>> bodyResponseType = null, Expression<Func<bool>> bodyIncludeAccessAuditedFieldValues = null)
+        public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch(Expression<Func<int>> bodyskip, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyassetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<int>> bodyassetStatus = null, Expression<Func<bool>> bodyisDeprecated = null, Expression<Func<string>> bodylastUpdateDateStart = null, Expression<Func<string>> bodylastUpdateDateEnd = null, Expression<Func<int>> bodyresponseType = null, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null)
         {
             var apiCallPath = "/GetAssetSearch";
             var apiCallHttpMethod = "post";
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodySkip);
+            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
             bodypropCount++;
-            body["PageSize"] = ExpressionConverter.ConvertO(bodyPageSize);
+            body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
             if (bodysearch != null)
             {
                 body["search"] = ExpressionConverter.ConvertO(bodysearch);
@@ -156,52 +156,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             }
 
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyAssetTemplateId);
-            if (bodyEnterpriseId != null)
+            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyEnterpriseId);
+                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentationId != null)
+            if (bodydocumentationId != null)
             {
-                body["DocumentationId"] = ExpressionConverter.ConvertO(bodyDocumentationId);
+                body["DocumentationId"] = ExpressionConverter.ConvertO(bodydocumentationId);
                 bodypropCount++;
             }
 
-            if (bodyAssetStatus != null)
+            if (bodyassetStatus != null)
             {
-                body["AssetStatus"] = ExpressionConverter.ConvertO(bodyAssetStatus);
+                body["AssetStatus"] = ExpressionConverter.ConvertO(bodyassetStatus);
                 bodypropCount++;
             }
 
-            if (bodyIsDeprecated != null)
+            if (bodyisDeprecated != null)
             {
-                body["IsDeprecated"] = ExpressionConverter.ConvertO(bodyIsDeprecated);
+                body["IsDeprecated"] = ExpressionConverter.ConvertO(bodyisDeprecated);
                 bodypropCount++;
             }
 
-            if (bodyLastUpdateDateStart != null)
+            if (bodylastUpdateDateStart != null)
             {
-                body["LastUpdateDateStart"] = ExpressionConverter.ConvertO(bodyLastUpdateDateStart);
+                body["LastUpdateDateStart"] = ExpressionConverter.ConvertO(bodylastUpdateDateStart);
                 bodypropCount++;
             }
 
-            if (bodyLastUpdateDateEnd != null)
+            if (bodylastUpdateDateEnd != null)
             {
-                body["LastUpdateDateEnd"] = ExpressionConverter.ConvertO(bodyLastUpdateDateEnd);
+                body["LastUpdateDateEnd"] = ExpressionConverter.ConvertO(bodylastUpdateDateEnd);
                 bodypropCount++;
             }
 
-            if (bodyResponseType != null)
+            if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyResponseType);
+                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
                 bodypropCount++;
             }
 
-            if (bodyIncludeAccessAuditedFieldValues != null)
+            if (bodyincludeAccessAuditedFieldValues != null)
             {
-                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyIncludeAccessAuditedFieldValues);
+                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyincludeAccessAuditedFieldValues);
                 bodypropCount++;
             }
 
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo(Expression<Func<int>> bodyAssetId, Expression<Func<bool>> bodyIncludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyResponseType = null)
+        public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo(Expression<Func<int>> bodyassetId, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyresponseType = null)
         {
             var apiCallPath = "/GetAssetInfo";
             var apiCallHttpMethod = "post";
@@ -222,16 +222,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetId"] = ExpressionConverter.ConvertO(bodyAssetId);
-            if (bodyIncludeAccessAuditedFieldValues != null)
+            body["AssetId"] = ExpressionConverter.ConvertO(bodyassetId);
+            if (bodyincludeAccessAuditedFieldValues != null)
             {
-                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyIncludeAccessAuditedFieldValues);
+                body["IncludeAccessAuditedFieldValues"] = ExpressionConverter.ConvertO(bodyincludeAccessAuditedFieldValues);
                 bodypropCount++;
             }
 
-            if (bodyResponseType != null)
+            if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyResponseType);
+                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
                 bodypropCount++;
             }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetConfigResponse> GetConfig(Expression<Func<int>> bodyAssetTemplateId, Expression<Func<int>> bodyEnterpriseId = null)
+        public IBodyWorkflowAction<GetConfigResponse> GetConfig(Expression<Func<int>> bodyassetTemplateId, Expression<Func<int>> bodyenterpriseId = null)
         {
             var apiCallPath = "/GetConfig";
             var apiCallHttpMethod = "post";
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyAssetTemplateId);
-            if (bodyEnterpriseId != null)
+            body["AssetTemplateId"] = ExpressionConverter.ConvertO(bodyassetTemplateId);
+            if (bodyenterpriseId != null)
             {
-                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyEnterpriseId);
+                body["EnterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
                 bodypropCount++;
             }
 
@@ -283,13 +283,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public bool Success { get; set; }
     }
 
-    public class bodyFieldsInputItem
+    public class bodyfieldsInputItem
     {
         public string FieldName { get; set; }
         public string Value { get; set; }
     }
 
-    public class bodyAttachmentsInputItem
+    public class bodyattachmentsInputItem
     {
         public string FileName { get; set; }
         public string Data { get; set; }

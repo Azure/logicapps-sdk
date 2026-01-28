@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyPhoneNumber, Expression<Func<string>> bodyMessageText, Expression<Func<string>> bodyExternalId = null, Expression<Func<string>> bodyMessageType = null, Expression<Func<string>> bodySenderId = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
         {
             var apiCallPath = "/api/SMS";
             var apiCallHttpMethod = "post";
@@ -20,24 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyPhoneNumber);
-            if (bodyExternalId != null)
+            body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+            if (bodyexternalId != null)
             {
-                body["ExternalId"] = ExpressionConverter.ConvertO(bodyExternalId);
+                body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodyMessageText);
-            if (bodyMessageType != null)
+            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
+            if (bodymessageType != null)
             {
-                body["MessageType"] = ExpressionConverter.ConvertO(bodyMessageType);
+                body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
                 bodypropCount++;
             }
 
-            if (bodySenderId != null)
+            if (bodysenderId != null)
             {
-                body["SenderId"] = ExpressionConverter.ConvertO(bodySenderId);
+                body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
                 bodypropCount++;
             }
 

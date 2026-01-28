@@ -12,17 +12,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
     public class IntuneActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intune")]
-        public IWorkflowAction GetTotalAssignedDeviceCountForPayload(Expression<Func<string>> bodyFilter)
+        public IWorkflowAction AssignDCv2Policy(Expression<Func<string>> policyId, Expression<Func<bodygroupAssignmentsInputItem[]>> bodygroupAssignments)
         {
-            var apiCallPath = "/beta/deviceManagement/reports/getHistoricalReport";
+            var apiCallPath = String.Format("/beta/deviceManagement/configurationPolicies('{0}')/assign", ExpressionConverter.ConvertWithUrlEncoding(policyId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["name"] = "TotalTargetedDeviceCountForPayload";
             bodypropCount++;
-            bodypropCount++;
-            body["Filter"] = ExpressionConverter.ConvertO(bodyFilter);
+            body["assignments"] = ExpressionConverter.ConvertO(bodygroupAssignments);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -32,7 +30,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intune")]
-        public IWorkflowAction GetAppStatusOverviewReport(Expression<Func<string>> bodyFilter)
+        public IWorkflowAction GetTotalAssignedDeviceCountForPayload(Expression<Func<string>> bodyfilter)
+        {
+            var apiCallPath = "/beta/deviceManagement/reports/getHistoricalReport";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["name"] = "TotalTargetedDeviceCountForPayload";
+            bodypropCount++;
+            bodypropCount++;
+            body["Filter"] = ExpressionConverter.ConvertO(bodyfilter);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intune")]
+        public IWorkflowAction GetAppStatusOverviewReport(Expression<Func<string>> bodyfilter)
         {
             var apiCallPath = "/beta/deviceManagement/reports/getAppStatusOverviewReport";
             var apiCallHttpMethod = "post";
@@ -40,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Filter"] = ExpressionConverter.ConvertO(bodyFilter);
+            body["Filter"] = ExpressionConverter.ConvertO(bodyfilter);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -88,6 +106,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
             var bodypropCount = 0;
             bodypropCount++;
             body["reviewerJustification"] = ExpressionConverter.ConvertO(bodyreviewerJustification);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intune")]
+        public IWorkflowAction AssignWindowsQualityUpdate(Expression<Func<string>> profileId, Expression<Func<bodygroupAssignmentInputItem[]>> bodygroupAssignment)
+        {
+            var apiCallPath = String.Format("/beta/deviceManagement/windowsQualityUpdateProfiles/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["assignments"] = ExpressionConverter.ConvertO(bodygroupAssignment);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -281,6 +317,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
         }
     }
 
+    public class bodygroupAssignmentsInputItem
+    {
+        [JsonProperty("target")]
+        public bodygroupAssignmentsInputItemTargetType Target { get; set; }
+    }
+
+    public class bodygroupAssignmentsInputItemTargetType
+    {
+        [JsonProperty("@odata.type")]
+        public bodygroupAssignmentsInputItemTargetTypeTypeType Type { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+    }
+
+    public enum bodygroupAssignmentsInputItemTargetTypeTypeType
+    {
+        [EnumMember(Value = "#microsoft.graph.groupAssignmentTarget")]
+        Include,
+        [EnumMember(Value = "#microsoft.graph.exclusionGroupAssignmentTarget")]
+        ExcludeCannotBeAllDevicesOrAllUsers
+    }
+
     public class GetElevationRequestsResponse
     {
         [JsonProperty("@odata.context")]
@@ -369,6 +428,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intune
 
         [JsonProperty("productVersion")]
         public string ProductVersion { get; set; }
+    }
+
+    public class bodygroupAssignmentInputItem
+    {
+        [JsonProperty("target")]
+        public bodygroupAssignmentInputItemTargetType Target { get; set; }
+    }
+
+    public class bodygroupAssignmentInputItemTargetType
+    {
+        [JsonProperty("@odata.type")]
+        public bodygroupAssignmentInputItemTargetTypeTypeType Type { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+    }
+
+    public enum bodygroupAssignmentInputItemTargetTypeTypeType
+    {
+        [EnumMember(Value = "#microsoft.graph.groupAssignmentTarget")]
+        Include,
+        [EnumMember(Value = "#microsoft.graph.exclusionGroupAssignmentTarget")]
+        ExcludeCannotBeAllDevicesOrAllUsers
     }
 
     public enum bodyobliterationBehaviorInput

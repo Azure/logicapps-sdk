@@ -60,23 +60,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                 bodypropCount++;
             }
 
-            var modified_dateObject = new JObject();
-            var modified_dateObjectpropCount = 0;
+            var modifiedDateObject = new JObject();
+            var modifiedDateObjectpropCount = 0;
             if (bodymodifiedDategreaterThan != null)
             {
-                modified_dateObject["gt"] = ExpressionConverter.ConvertO(bodymodifiedDategreaterThan);
-                modified_dateObjectpropCount++;
+                modifiedDateObject["gt"] = ExpressionConverter.ConvertO(bodymodifiedDategreaterThan);
+                modifiedDateObjectpropCount++;
             }
 
             if (bodymodifiedDatelessThan != null)
             {
-                modified_dateObject["lt"] = ExpressionConverter.ConvertO(bodymodifiedDatelessThan);
-                modified_dateObjectpropCount++;
+                modifiedDateObject["lt"] = ExpressionConverter.ConvertO(bodymodifiedDatelessThan);
+                modifiedDateObjectpropCount++;
             }
 
-            if (modified_dateObjectpropCount > 0)
+            if (modifiedDateObjectpropCount > 0)
             {
-                body["modified_date"] = modified_dateObject;
+                body["modified_date"] = modifiedDateObject;
                 bodypropCount++;
             }
 

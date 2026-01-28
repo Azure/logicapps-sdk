@@ -62,22 +62,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
-        public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull> NetworkThreatDetectionDetectSsrfUrl(Expression<Func<string>> requestURL = null, Expression<Func<string[]>> requestBlockedDomains = null)
+        public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull> NetworkThreatDetectionDetectSsrfUrl(Expression<Func<string>> requestuRL = null, Expression<Func<string[]>> requestblockedDomains = null)
         {
             var apiCallPath = "/security/threat-detection/network/url/ssrf/detect";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestURL != null)
+            if (requestuRL != null)
             {
-                request["URL"] = ExpressionConverter.ConvertO(requestURL);
+                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
                 requestpropCount++;
             }
 
-            if (requestBlockedDomains != null)
+            if (requestblockedDomains != null)
             {
-                request["BlockedDomains"] = ExpressionConverter.ConvertO(requestBlockedDomains);
+                request["BlockedDomains"] = ExpressionConverter.ConvertO(requestblockedDomains);
                 requestpropCount++;
             }
 

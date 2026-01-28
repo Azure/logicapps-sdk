@@ -19,6 +19,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<GetTimeSlotsResponseItem[]>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
+        public IWorkflowAction BookATimeSlot(Expression<Func<string>> id, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyguestTimeZone, Expression<Func<string>> bodybookingFormname = null, Expression<Func<string>> bodybookingFormemail = null, Expression<Func<bodylocationTypeInput>> bodylocationType = null, Expression<Func<string>> bodylocationValue = null)
+        {
+            var apiCallPath = String.Format("/v2/booking-calendars/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+            bodypropCount++;
+            body["guest_time_zone"] = ExpressionConverter.ConvertO(bodyguestTimeZone);
+            var bookingFormObject = new JObject();
+            var bookingFormObjectpropCount = 0;
+            if (bodybookingFormname != null)
+            {
+                bookingFormObject["name"] = ExpressionConverter.ConvertO(bodybookingFormname);
+                bookingFormObjectpropCount++;
+            }
+
+            if (bodybookingFormemail != null)
+            {
+                bookingFormObject["email"] = ExpressionConverter.ConvertO(bodybookingFormemail);
+                bookingFormObjectpropCount++;
+            }
+
+            if (bookingFormObjectpropCount > 0)
+            {
+                body["booking_form"] = bookingFormObject;
+                bodypropCount++;
+            }
+
+            if (bodylocationType != null)
+            {
+                body["location_type"] = ExpressionConverter.ConvertO(bodylocationType);
+                bodypropCount++;
+            }
+
+            if (bodylocationValue != null)
+            {
+                body["location_value"] = ExpressionConverter.ConvertO(bodylocationValue);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
     }
 
     public class OncehubTriggers([ConnectionName] string connectionId)
@@ -47,6 +99,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
     }
 
     public enum GetTimeSlotsResponseItemLocationsTypeItemTypeType
+    {
+        [EnumMember(Value = "physical")]
+        Physical,
+        [EnumMember(Value = "virtual")]
+        Virtual,
+        [EnumMember(Value = "phone")]
+        Phone
+    }
+
+    public enum bodylocationTypeInput
     {
         [EnumMember(Value = "physical")]
         Physical,

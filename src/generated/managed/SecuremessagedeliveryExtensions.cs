@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
     public class SecuremessagedeliveryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync(Expression<Func<string>> requestFrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestTo = null, Expression<Func<string[]>> requestCc = null, Expression<Func<string[]>> requestBcc = null, Expression<Func<string>> requestSubject = null, Expression<Func<Attachment[]>> requestAttachments = null, Expression<Func<string>> requestHtmlBody = null, Expression<Func<string>> requestTextBody = null)
+        public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync(Expression<Func<string>> requestfrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestto = null, Expression<Func<string[]>> requestcc = null, Expression<Func<string[]>> requestbcc = null, Expression<Func<string>> requestsubject = null, Expression<Func<Attachment[]>> requestattachments = null, Expression<Func<string>> requesthtmlBody = null, Expression<Func<string>> requesttextBody = null)
         {
             var apiCallPath = String.Format("/v{0}/Email", ExpressionConverter.ConvertWithUrlEncoding(v, 1));
             var apiCallHttpMethod = "post";
@@ -22,46 +22,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["From"] = ExpressionConverter.ConvertO(requestFrom);
-            if (requestTo != null)
+            request["From"] = ExpressionConverter.ConvertO(requestfrom);
+            if (requestto != null)
             {
-                request["To"] = ExpressionConverter.ConvertO(requestTo);
+                request["To"] = ExpressionConverter.ConvertO(requestto);
                 requestpropCount++;
             }
 
-            if (requestCc != null)
+            if (requestcc != null)
             {
-                request["Cc"] = ExpressionConverter.ConvertO(requestCc);
+                request["Cc"] = ExpressionConverter.ConvertO(requestcc);
                 requestpropCount++;
             }
 
-            if (requestBcc != null)
+            if (requestbcc != null)
             {
-                request["Bcc"] = ExpressionConverter.ConvertO(requestBcc);
+                request["Bcc"] = ExpressionConverter.ConvertO(requestbcc);
                 requestpropCount++;
             }
 
-            if (requestSubject != null)
+            if (requestsubject != null)
             {
-                request["Subject"] = ExpressionConverter.ConvertO(requestSubject);
+                request["Subject"] = ExpressionConverter.ConvertO(requestsubject);
                 requestpropCount++;
             }
 
-            if (requestAttachments != null)
+            if (requestattachments != null)
             {
-                request["Attachments"] = ExpressionConverter.ConvertO(requestAttachments);
+                request["Attachments"] = ExpressionConverter.ConvertO(requestattachments);
                 requestpropCount++;
             }
 
-            if (requestHtmlBody != null)
+            if (requesthtmlBody != null)
             {
-                request["HtmlBody"] = ExpressionConverter.ConvertO(requestHtmlBody);
+                request["HtmlBody"] = ExpressionConverter.ConvertO(requesthtmlBody);
                 requestpropCount++;
             }
 
-            if (requestTextBody != null)
+            if (requesttextBody != null)
             {
-                request["TextBody"] = ExpressionConverter.ConvertO(requestTextBody);
+                request["TextBody"] = ExpressionConverter.ConvertO(requesttextBody);
                 requestpropCount++;
             }
 

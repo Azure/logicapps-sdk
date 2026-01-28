@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<AlertResponse> Alert(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyalertToEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodymessage, Expression<Func<bodyresourceNameInput>> bodyresourceName = null, Expression<Func<string>> bodyResourceUrl = null)
+        public IBodyWorkflowAction<AlertResponse> Alert(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyalertToEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodymessage, Expression<Func<bodyresourceNameInput>> bodyresourceName = null, Expression<Func<string>> bodyresourceUrl = null)
         {
             var apiCallPath = "/api/services/app/ExternalTask/PushNotificationFromExternal";
             var apiCallHttpMethod = "post";
@@ -167,9 +167,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 bodypropCount++;
             }
 
-            if (bodyResourceUrl != null)
+            if (bodyresourceUrl != null)
             {
-                body["ResourceUrl"] = ExpressionConverter.ConvertO(bodyResourceUrl);
+                body["ResourceUrl"] = ExpressionConverter.ConvertO(bodyresourceUrl);
                 bodypropCount++;
             }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytaskID, Expression<Func<string>> bodytoEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<bodyTaskStatusInput>> bodyTaskStatus = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem22[]>> bodyfiles = null)
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytaskID, Expression<Func<string>> bodytoEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<bodytaskStatusInput>> bodytaskStatus = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem22[]>> bodyfiles = null)
         {
             var apiCallPath = "/api/services/app/ExternalTask/UpdateExternalTask";
             var apiCallHttpMethod = "put";
@@ -279,9 +279,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
             bodypropCount++;
             body["toEmail"] = ExpressionConverter.ConvertO(bodytoEmail);
-            if (bodyTaskStatus != null)
+            if (bodytaskStatus != null)
             {
-                body["TaskStatus"] = ExpressionConverter.ConvertO(bodyTaskStatus);
+                body["TaskStatus"] = ExpressionConverter.ConvertO(bodytaskStatus);
                 bodypropCount++;
             }
 
@@ -1428,7 +1428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
-    public enum bodyTaskStatusInput
+    public enum bodytaskStatusInput
     {
         Completed,
         Unfinished

@@ -232,6 +232,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyuserName, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyactive, Expression<Func<bodyuserTypeInput>> bodyuserType, Expression<Func<bodyauthTypeInput>> bodyauthType, Expression<Func<string>> bodynamegivenName = null, Expression<Func<string>> bodynamefamilyName = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodysendInvite = null, Expression<Func<bool>> bodyisServiceAccount = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodyidpUserId = null, Expression<Func<string>> bodyuserPrincipalName = null)
+        {
+            var apiCallPath = "/api-proxy/CreateUser";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+            bodypropCount++;
+            body["email"] = ExpressionConverter.ConvertO(bodyemail);
+            var nameObject = new JObject();
+            var nameObjectpropCount = 0;
+            if (bodynamegivenName != null)
+            {
+                nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
+                nameObjectpropCount++;
+            }
+
+            if (bodynamefamilyName != null)
+            {
+                nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
+                nameObjectpropCount++;
+            }
+
+            if (nameObjectpropCount > 0)
+            {
+                body["name"] = nameObject;
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["active"] = ExpressionConverter.ConvertO(bodyactive);
+            bodypropCount++;
+            body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
+            bodypropCount++;
+            body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+            if (bodyexternalId != null)
+            {
+                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                bodypropCount++;
+            }
+
+            if (bodysendInvite != null)
+            {
+                body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                bodypropCount++;
+            }
+
+            if (bodyisServiceAccount != null)
+            {
+                body["isServiceAccount"] = ExpressionConverter.ConvertO(bodyisServiceAccount);
+                bodypropCount++;
+            }
+
+            if (bodylanguage != null)
+            {
+                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                bodypropCount++;
+            }
+
+            if (bodyrole != null)
+            {
+                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                bodypropCount++;
+            }
+
+            if (bodyidpUserId != null)
+            {
+                body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                bodypropCount++;
+            }
+
+            if (bodyuserPrincipalName != null)
+            {
+                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteUser(Expression<Func<int>> bodyid)
         {
             var apiCallPath = "/api-proxy/DeleteUser";
@@ -679,23 +767,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 bodypropCount++;
             }
 
-            var email_preferencesObject = new JObject();
-            var email_preferencesObjectpropCount = 0;
+            var emailPreferencesObject = new JObject();
+            var emailPreferencesObjectpropCount = 0;
             if (bodyemailPreferencescontentUpdates != null)
             {
-                email_preferencesObject["content_updates"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentUpdates);
-                email_preferencesObjectpropCount++;
+                emailPreferencesObject["content_updates"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentUpdates);
+                emailPreferencesObjectpropCount++;
             }
 
             if (bodyemailPreferencescontentAccessed != null)
             {
-                email_preferencesObject["content_accessed"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentAccessed);
-                email_preferencesObjectpropCount++;
+                emailPreferencesObject["content_accessed"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentAccessed);
+                emailPreferencesObjectpropCount++;
             }
 
-            if (email_preferencesObjectpropCount > 0)
+            if (emailPreferencesObjectpropCount > 0)
             {
-                body["email_preferences"] = email_preferencesObject;
+                body["email_preferences"] = emailPreferencesObject;
                 bodypropCount++;
             }
 
@@ -958,7 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes(Expression<Func<string>> bodynamespace, Expression<Func<string>> bodydisplayName = null)
+        public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodydisplayName = null)
         {
             var apiCallPath = "/api-proxy/UpdateNamespaceAttributes";
             var apiCallHttpMethod = "post";
@@ -966,7 +1054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             if (bodydisplayName != null)
             {
                 body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
@@ -990,7 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem> GetNamespace(Expression<Func<string>> bodynamespace)
+        public IBodyWorkflowAction<NamespaceItem> GetNamespace(Expression<Func<string>> bodyNamespace)
         {
             var apiCallPath = "/api-proxy/GetNamespace";
             var apiCallHttpMethod = "post";
@@ -998,7 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1008,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteNamespaceResponse> DeleteNamespace(Expression<Func<string>> bodynamespace, Expression<Func<bool>> bodyforce = null)
+        public IBodyWorkflowAction<DeleteNamespaceResponse> DeleteNamespace(Expression<Func<string>> bodyNamespace, Expression<Func<bool>> bodyforce = null)
         {
             var apiCallPath = "/api-proxy/DeleteNamespace";
             var apiCallHttpMethod = "post";
@@ -1016,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             if (bodyforce != null)
             {
                 body["force"] = ExpressionConverter.ConvertO(bodyforce);
@@ -1354,7 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction CreateMetadataKey(Expression<Func<string>> bodynamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodyhelpText = null, Expression<Func<string[]>> bodydata = null)
+        public IWorkflowAction CreateMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodyhelpText = null, Expression<Func<string[]>> bodydata = null)
         {
             var apiCallPath = "/api-proxy/CreateMetadataKey";
             var apiCallHttpMethod = "post";
@@ -1362,7 +1450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             bodypropCount++;
             body["key"] = ExpressionConverter.ConvertO(bodykey);
             bodypropCount++;
@@ -1400,7 +1488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteMetadataKeyResponse> DeleteMetadataKey(Expression<Func<string>> bodynamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
+        public IBodyWorkflowAction<DeleteMetadataKeyResponse> DeleteMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
         {
             var apiCallPath = "/api-proxy/DeleteMetadataKey";
             var apiCallHttpMethod = "post";
@@ -1408,7 +1496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             bodypropCount++;
             body["key"] = ExpressionConverter.ConvertO(bodykey);
             if (bodyforce != null)
@@ -1426,7 +1514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodynamespace)
+        public IWorkflowAction GetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodyNamespace)
         {
             var apiCallPath = "/api-proxy/GetMetadataByFileId";
             var apiCallHttpMethod = "post";
@@ -1436,7 +1524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             bodypropCount++;
             body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1446,7 +1534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodynamespace)
+        public IWorkflowAction GetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyNamespace)
         {
             var apiCallPath = "/api-proxy/GetMetadataByFolderId";
             var apiCallHttpMethod = "post";
@@ -1456,7 +1544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             bodypropCount++;
             body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
             bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodynamespace);
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -3064,6 +3152,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     public enum bodyuserTypeInput
+    {
+        [EnumMember(Value = "admin")]
+        Admin,
+        [EnumMember(Value = "power")]
+        Power,
+        [EnumMember(Value = "standard")]
+        Standard
+    }
+
+    public class CreateUserResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("userName")]
+        public string UserName { get; set; }
+
+        [JsonProperty("externalId")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("emailChangePending")]
+        public bool EmailChangePending { get; set; }
+
+        [JsonProperty("name")]
+        public CreateUserResponseNameType Name { get; set; }
+
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
+        [JsonProperty("locked")]
+        public bool Locked { get; set; }
+
+        [JsonProperty("authType")]
+        public CreateUserResponseAuthTypeType AuthType { get; set; }
+
+        [JsonProperty("userType")]
+        public CreateUserResponseUserTypeType UserType { get; set; }
+
+        [JsonProperty("idpUserId")]
+        public string IdpUserId { get; set; }
+
+        [JsonProperty("userPrincipalName")]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("role")]
+        public string Role { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("lastModificationDate")]
+        public string LastModificationDate { get; set; }
+
+        [JsonProperty("lastActiveDate")]
+        public string LastActiveDate { get; set; }
+
+        [JsonProperty("expiryDate")]
+        public string ExpiryDate { get; set; }
+    }
+
+    public class CreateUserResponseNameType
+    {
+        [JsonProperty("givenName")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("familyName")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("formatted")]
+        public string Formatted { get; set; }
+    }
+
+    public enum CreateUserResponseAuthTypeType
+    {
+        [EnumMember(Value = "ad")]
+        Ad,
+        [EnumMember(Value = "sso")]
+        Sso,
+        [EnumMember(Value = "egnyte")]
+        Egnyte
+    }
+
+    public enum CreateUserResponseUserTypeType
     {
         [EnumMember(Value = "admin")]
         Admin,

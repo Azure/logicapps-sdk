@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodyWhen = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribewebhook";
             var apiCallHttpMethod = "post";
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
             bodypropCount++;
             bodypropCount++;
             body["Name"] = ExpressionConverter.ConvertO(bodytriggerName);
-            if (bodyWhen != null)
+            if (bodywhen != null)
             {
-                body["When"] = ExpressionConverter.ConvertO(bodyWhen);
+                body["When"] = ExpressionConverter.ConvertO(bodywhen);
                 bodypropCount++;
             }
 

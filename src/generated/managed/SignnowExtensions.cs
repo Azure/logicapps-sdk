@@ -350,16 +350,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<JToken> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyRoleInputItem[]>> bodyRole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
+        public IBodyWorkflowAction<JToken> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
         {
             var apiCallPath = String.Format("/document/{0}/invite-user-defined-schema", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyRole != null)
+            if (bodyrole != null)
             {
-                body["Role"] = ExpressionConverter.ConvertO(bodyRole);
+                body["Role"] = ExpressionConverter.ConvertO(bodyrole);
                 bodypropCount++;
             }
 
@@ -799,6 +799,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class SignnowTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<TriggersV2Response> TriggersV2(Expression<Func<string>> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/multievent";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["entity_id"] = "00000000-0000-0000-0000-000000000000";
+            bodypropCount++;
+            body["action"] = "callback";
+            bodypropCount++;
+            var attributesObject = new JObject();
+            var attributesObjectpropCount = 0;
+            attributesObject["callback"] = "@listCallbackUrl()";
+            attributesObjectpropCount++;
+            if (attributesObjectpropCount > 0)
+            {
+                body["attributes"] = attributesObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<TriggersV2Response>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class CreateDocGroupEmbeddedInvitesResponse
@@ -1222,7 +1252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string URL { get; set; }
     }
 
-    public class bodyRoleInputItem
+    public class bodyroleInputItem
     {
         [JsonProperty("role")]
         public string Name { get; set; }
@@ -1243,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string PersonalizedMessage { get; set; }
 
         [JsonProperty("authentication_type")]
-        public bodyRoleInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public bodyroleInputItemAuthenticationTypeType AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1267,7 +1297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public bool ShowDeclineOnSignature { get; set; }
     }
 
-    public enum bodyRoleInputItemAuthenticationTypeType
+    public enum bodyroleInputItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone Call")]
@@ -1925,6 +1955,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class TriggersV2Response
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+
+        [JsonProperty("updated")]
+        public string Updated { get; set; }
     }
 }
 

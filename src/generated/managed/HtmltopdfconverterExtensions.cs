@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
     public class HtmltopdfconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
-        public IWorkflowAction ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyHtmlBody = null, Expression<Func<string>> bodyCipher = null)
+        public IWorkflowAction ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyhtmlBody = null, Expression<Func<string>> bodycipher = null)
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "post";
@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyHtmlBody != null)
+            if (bodyhtmlBody != null)
             {
-                body["HtmlBody"] = ExpressionConverter.ConvertO(bodyHtmlBody);
+                body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
                 bodypropCount++;
             }
 
-            if (bodyCipher != null)
+            if (bodycipher != null)
             {
-                body["Cipher"] = ExpressionConverter.ConvertO(bodyCipher);
+                body["Cipher"] = ExpressionConverter.ConvertO(bodycipher);
                 bodypropCount++;
             }
 

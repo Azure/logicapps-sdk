@@ -1682,6 +1682,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
+        public IWorkflowAction NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlquerynetworkLocationsInputItem[]>> bodyrlquerynetworkLocations, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        {
+            var apiCallPath = String.Format("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var rlObject = new JObject();
+            var rlObjectpropCount = 0;
+            var queryObject = new JObject();
+            var queryObjectpropCount = 0;
+            queryObjectpropCount++;
+            queryObject["network_locations"] = ExpressionConverter.ConvertO(bodyrlquerynetworkLocations);
+            if (bodyrlqueryresponseFormat != null)
+            {
+                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                queryObjectpropCount++;
+            }
+
+            if (queryObjectpropCount > 0)
+            {
+                rlObject["query"] = queryObject;
+                rlObjectpropCount++;
+            }
+
+            if (rlObjectpropCount > 0)
+            {
+                body["rl"] = rlObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListUserOverride(Expression<Func<string>> format = null, Expression<Func<string>> nextNetworkLocation = null)
         {
             var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
@@ -1692,6 +1732,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 callPayload.Queries["format"] = ExpressionConverter.Convert(format);
             if (nextNetworkLocation != null)
                 callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(nextNetworkLocation);
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
+        public IWorkflowAction NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]>> bodyrlqueryuserOverrideoverrideNetworkLocations = null, Expression<Func<string>> bodyrlresponseFormat = null)
+        {
+            var apiCallPath = String.Format("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var rlObject = new JObject();
+            var rlObjectpropCount = 0;
+            var queryObject = new JObject();
+            var queryObjectpropCount = 0;
+            var userOverrideObject = new JObject();
+            var userOverrideObjectpropCount = 0;
+            if (bodyrlqueryuserOverrideoverrideNetworkLocations != null)
+            {
+                userOverrideObject["override_network_locations"] = ExpressionConverter.ConvertO(bodyrlqueryuserOverrideoverrideNetworkLocations);
+                userOverrideObjectpropCount++;
+            }
+
+            if (userOverrideObjectpropCount > 0)
+            {
+                queryObject["user_override"] = userOverrideObject;
+                queryObjectpropCount++;
+            }
+
+            if (queryObjectpropCount > 0)
+            {
+                rlObject["query"] = queryObject;
+                rlObjectpropCount++;
+            }
+
+            if (bodyrlresponseFormat != null)
+            {
+                rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                rlObjectpropCount++;
+            }
+
+            if (rlObjectpropCount > 0)
+            {
+                body["rl"] = rlObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
 
@@ -2088,10 +2180,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
     public enum bodyrlqueryresponseFormatInput
     {
-        [EnumMember(Value = "xml")]
-        Xml,
         [EnumMember(Value = "json")]
-        Json
+        Json,
+        [EnumMember(Value = "xml")]
+        Xml
+    }
+
+    public class bodyrlquerynetworkLocationsInputItem
+    {
+        [JsonProperty("network_location")]
+        public string NetworkLocation { get; set; }
+
+        [JsonProperty("type")]
+        public bodyrlquerynetworkLocationsInputItemTypeType Type { get; set; }
+    }
+
+    public enum bodyrlquerynetworkLocationsInputItemTypeType
+    {
+        [EnumMember(Value = "url")]
+        Url,
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "domain")]
+        Domain
+    }
+
+    public class bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem
+    {
+        [JsonProperty("network_location")]
+        public string NetworkLocation { get; set; }
+
+        [JsonProperty("type")]
+        public bodyrlqueryuserOverrideoverrideNetworkLocationsInputItemTypeType Type { get; set; }
+
+        [JsonProperty("classification")]
+        public string Classification { get; set; }
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+    }
+
+    public enum bodyrlqueryuserOverrideoverrideNetworkLocationsInputItemTypeType
+    {
+        [EnumMember(Value = "url")]
+        Url
     }
 
     public class bodyqueryInputItem

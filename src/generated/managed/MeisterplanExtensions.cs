@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction UpdatePriorities(Expression<Func<string>> scenarioId, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems, Expression<Func<prioritiesUpdateRequestbelowCutOffpositionInput>> prioritiesUpdateRequestbelowCutOffposition = null, Expression<Func<prioritiesUpdateRequestbelowCutOffpositionInput>> prioritiesUpdateRequestbelowCutOffposition = null, Expression<Func<prioritiesUpdateRequestbelowCutOffpositionInput>> prioritiesUpdateRequestbelowCutOffposition = null)
+        public IWorkflowAction UpdatePriorities(Expression<Func<string>> scenarioId, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems2, Expression<Func<PriorityEntry[]>> prioritiesUpdateRequestbelowCutOffitems3, Expression<Func<prioritiesUpdateRequestbelowCutOffpositionInput>> prioritiesUpdateRequestbelowCutOffposition = null, Expression<Func<prioritiesUpdateRequestbelowCutOffposition2Input>> prioritiesUpdateRequestbelowCutOffposition2 = null, Expression<Func<prioritiesUpdateRequestbelowCutOffposition3Input>> prioritiesUpdateRequestbelowCutOffposition3 = null)
         {
             var apiCallPath = String.Format("/v1/scenarios/{0}/priorities", ExpressionConverter.ConvertWithUrlEncoding(scenarioId, 1));
             var apiCallHttpMethod = "post";
@@ -3273,6 +3273,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     public enum prioritiesUpdateRequestbelowCutOffpositionInput
+    {
+        FIRST,
+        LAST
+    }
+
+    public enum prioritiesUpdateRequestbelowCutOffposition2Input
+    {
+        FIRST,
+        LAST
+    }
+
+    public enum prioritiesUpdateRequestbelowCutOffposition3Input
     {
         FIRST,
         LAST

@@ -12,21 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
     public class IaconnectmsofficeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordCreateInstanceResponse> MSWordCreateInstance(Expression<Func<string>> mSWordCreateInstanceWorkflow, Expression<Func<bool>> mSWordCreateInstanceShowWord = null)
+        public IBodyWorkflowAction<MSWordCreateInstanceResponse> MSWordCreateInstance(Expression<Func<string>> mSWordCreateInstanceworkflow, Expression<Func<bool>> mSWordCreateInstanceshowWord = null)
         {
             var apiCallPath = "/MSWord/CreateInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordCreateInstance = new JObject();
             var mSWordCreateInstancepropCount = 0;
-            if (mSWordCreateInstanceShowWord != null)
+            if (mSWordCreateInstanceshowWord != null)
             {
-                mSWordCreateInstance["ShowWord"] = ExpressionConverter.ConvertO(mSWordCreateInstanceShowWord);
+                mSWordCreateInstance["ShowWord"] = ExpressionConverter.ConvertO(mSWordCreateInstanceshowWord);
                 mSWordCreateInstancepropCount++;
             }
 
             mSWordCreateInstancepropCount++;
-            mSWordCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateInstanceWorkflow);
+            mSWordCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateInstanceworkflow);
             if (mSWordCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSWordCreateInstance;
@@ -36,21 +36,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordCloseInstance(Expression<Func<string>> mSWordCloseInstanceWorkflow, Expression<Func<int>> mSWordCloseInstanceHandle = null)
+        public IWorkflowAction MSWordCloseInstance(Expression<Func<string>> mSWordCloseInstanceworkflow, Expression<Func<int>> mSWordCloseInstancehandle = null)
         {
             var apiCallPath = "/MSWord/CloseInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordCloseInstance = new JObject();
             var mSWordCloseInstancepropCount = 0;
-            if (mSWordCloseInstanceHandle != null)
+            if (mSWordCloseInstancehandle != null)
             {
-                mSWordCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSWordCloseInstanceHandle);
+                mSWordCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSWordCloseInstancehandle);
                 mSWordCloseInstancepropCount++;
             }
 
             mSWordCloseInstancepropCount++;
-            mSWordCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseInstanceWorkflow);
+            mSWordCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseInstanceworkflow);
             if (mSWordCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSWordCloseInstance;
@@ -60,21 +60,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordDetachFromInstance(Expression<Func<string>> mSWordDetachFromInstanceWorkflow, Expression<Func<int>> mSWordDetachFromInstanceHandle = null)
+        public IWorkflowAction MSWordDetachFromInstance(Expression<Func<string>> mSWordDetachFromInstanceworkflow, Expression<Func<int>> mSWordDetachFromInstancehandle = null)
         {
             var apiCallPath = "/MSWord/DetachFromInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordDetachFromInstance = new JObject();
             var mSWordDetachFromInstancepropCount = 0;
-            if (mSWordDetachFromInstanceHandle != null)
+            if (mSWordDetachFromInstancehandle != null)
             {
-                mSWordDetachFromInstance["Handle"] = ExpressionConverter.ConvertO(mSWordDetachFromInstanceHandle);
+                mSWordDetachFromInstance["Handle"] = ExpressionConverter.ConvertO(mSWordDetachFromInstancehandle);
                 mSWordDetachFromInstancepropCount++;
             }
 
             mSWordDetachFromInstancepropCount++;
-            mSWordDetachFromInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordDetachFromInstanceWorkflow);
+            mSWordDetachFromInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordDetachFromInstanceworkflow);
             if (mSWordDetachFromInstancepropCount > 0)
             {
                 callPayload.Body = mSWordDetachFromInstance;
@@ -84,39 +84,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordAttachToExistingInstanceResponse> MSWordAttachToExistingInstance(Expression<Func<string>> mSWordAttachToExistingInstanceWorkflow, Expression<Func<string>> mSWordAttachToExistingInstanceFilename = null, Expression<Func<bool>> mSWordAttachToExistingInstanceToggleWindow = null, Expression<Func<bool>> mSWordAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSWordAttachToExistingInstanceToggleDelay = null)
+        public IBodyWorkflowAction<MSWordAttachToExistingInstanceResponse> MSWordAttachToExistingInstance(Expression<Func<string>> mSWordAttachToExistingInstanceworkflow, Expression<Func<string>> mSWordAttachToExistingInstancefilename = null, Expression<Func<bool>> mSWordAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSWordAttachToExistingInstancetoggleDelay = null)
         {
             var apiCallPath = "/MSWord/AttachToExistingInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordAttachToExistingInstance = new JObject();
             var mSWordAttachToExistingInstancepropCount = 0;
-            if (mSWordAttachToExistingInstanceFilename != null)
+            if (mSWordAttachToExistingInstancefilename != null)
             {
-                mSWordAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceFilename);
+                mSWordAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancefilename);
                 mSWordAttachToExistingInstancepropCount++;
             }
 
-            if (mSWordAttachToExistingInstanceToggleWindow != null)
+            if (mSWordAttachToExistingInstancetoggleWindow != null)
             {
-                mSWordAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceToggleWindow);
+                mSWordAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleWindow);
                 mSWordAttachToExistingInstancepropCount++;
             }
 
-            if (mSWordAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent != null)
+            if (mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                mSWordAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent);
+                mSWordAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                 mSWordAttachToExistingInstancepropCount++;
             }
 
-            if (mSWordAttachToExistingInstanceToggleDelay != null)
+            if (mSWordAttachToExistingInstancetoggleDelay != null)
             {
-                mSWordAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceToggleDelay);
+                mSWordAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstancetoggleDelay);
                 mSWordAttachToExistingInstancepropCount++;
             }
 
             mSWordAttachToExistingInstancepropCount++;
-            mSWordAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceWorkflow);
+            mSWordAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSWordAttachToExistingInstanceworkflow);
             if (mSWordAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSWordAttachToExistingInstance;
@@ -126,21 +126,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordShowWord(Expression<Func<string>> mSWordShowWordWorkflow, Expression<Func<int>> mSWordShowWordHandle = null)
+        public IWorkflowAction MSWordShowWord(Expression<Func<string>> mSWordShowWordworkflow, Expression<Func<int>> mSWordShowWordhandle = null)
         {
             var apiCallPath = "/MSWord/ShowWord";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordShowWord = new JObject();
             var mSWordShowWordpropCount = 0;
-            if (mSWordShowWordHandle != null)
+            if (mSWordShowWordhandle != null)
             {
-                mSWordShowWord["Handle"] = ExpressionConverter.ConvertO(mSWordShowWordHandle);
+                mSWordShowWord["Handle"] = ExpressionConverter.ConvertO(mSWordShowWordhandle);
                 mSWordShowWordpropCount++;
             }
 
             mSWordShowWordpropCount++;
-            mSWordShowWord["Workflow"] = ExpressionConverter.ConvertO(mSWordShowWordWorkflow);
+            mSWordShowWord["Workflow"] = ExpressionConverter.ConvertO(mSWordShowWordworkflow);
             if (mSWordShowWordpropCount > 0)
             {
                 callPayload.Body = mSWordShowWord;
@@ -150,21 +150,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordHideWord(Expression<Func<string>> mSWordHideWordWorkflow, Expression<Func<int>> mSWordHideWordHandle = null)
+        public IWorkflowAction MSWordHideWord(Expression<Func<string>> mSWordHideWordworkflow, Expression<Func<int>> mSWordHideWordhandle = null)
         {
             var apiCallPath = "/MSWord/HideWord";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordHideWord = new JObject();
             var mSWordHideWordpropCount = 0;
-            if (mSWordHideWordHandle != null)
+            if (mSWordHideWordhandle != null)
             {
-                mSWordHideWord["Handle"] = ExpressionConverter.ConvertO(mSWordHideWordHandle);
+                mSWordHideWord["Handle"] = ExpressionConverter.ConvertO(mSWordHideWordhandle);
                 mSWordHideWordpropCount++;
             }
 
             mSWordHideWordpropCount++;
-            mSWordHideWord["Workflow"] = ExpressionConverter.ConvertO(mSWordHideWordWorkflow);
+            mSWordHideWord["Workflow"] = ExpressionConverter.ConvertO(mSWordHideWordworkflow);
             if (mSWordHideWordpropCount > 0)
             {
                 callPayload.Body = mSWordHideWord;
@@ -174,21 +174,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordCreateDocumentResponse> MSWordCreateDocument(Expression<Func<string>> mSWordCreateDocumentWorkflow, Expression<Func<int>> mSWordCreateDocumentHandle = null)
+        public IBodyWorkflowAction<MSWordCreateDocumentResponse> MSWordCreateDocument(Expression<Func<string>> mSWordCreateDocumentworkflow, Expression<Func<int>> mSWordCreateDocumenthandle = null)
         {
             var apiCallPath = "/MSWord/CreateDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordCreateDocument = new JObject();
             var mSWordCreateDocumentpropCount = 0;
-            if (mSWordCreateDocumentHandle != null)
+            if (mSWordCreateDocumenthandle != null)
             {
-                mSWordCreateDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCreateDocumentHandle);
+                mSWordCreateDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCreateDocumenthandle);
                 mSWordCreateDocumentpropCount++;
             }
 
             mSWordCreateDocumentpropCount++;
-            mSWordCreateDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateDocumentWorkflow);
+            mSWordCreateDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCreateDocumentworkflow);
             if (mSWordCreateDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordCreateDocument;
@@ -198,47 +198,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordOpenDocumentResponse> MSWordOpenDocument(Expression<Func<string>> mSWordOpenDocumentFilename, Expression<Func<string>> mSWordOpenDocumentWorkflow, Expression<Func<int>> mSWordOpenDocumentHandle = null, Expression<Func<bool>> mSWordOpenDocumentOpenReadOnly = null, Expression<Func<bool>> mSWordOpenDocumentAddToRecentFiles = null, Expression<Func<string>> mSWordOpenDocumentPassword = null, Expression<Func<bool>> mSWordOpenDocumentOpenAndRepair = null)
+        public IBodyWorkflowAction<MSWordOpenDocumentResponse> MSWordOpenDocument(Expression<Func<string>> mSWordOpenDocumentfilename, Expression<Func<string>> mSWordOpenDocumentworkflow, Expression<Func<int>> mSWordOpenDocumenthandle = null, Expression<Func<bool>> mSWordOpenDocumentopenReadOnly = null, Expression<Func<bool>> mSWordOpenDocumentaddToRecentFiles = null, Expression<Func<string>> mSWordOpenDocumentpassword = null, Expression<Func<bool>> mSWordOpenDocumentopenAndRepair = null)
         {
             var apiCallPath = "/MSWord/OpenDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordOpenDocument = new JObject();
             var mSWordOpenDocumentpropCount = 0;
-            if (mSWordOpenDocumentHandle != null)
+            if (mSWordOpenDocumenthandle != null)
             {
-                mSWordOpenDocument["Handle"] = ExpressionConverter.ConvertO(mSWordOpenDocumentHandle);
+                mSWordOpenDocument["Handle"] = ExpressionConverter.ConvertO(mSWordOpenDocumenthandle);
                 mSWordOpenDocumentpropCount++;
             }
 
             mSWordOpenDocumentpropCount++;
-            mSWordOpenDocument["Filename"] = ExpressionConverter.ConvertO(mSWordOpenDocumentFilename);
-            if (mSWordOpenDocumentOpenReadOnly != null)
+            mSWordOpenDocument["Filename"] = ExpressionConverter.ConvertO(mSWordOpenDocumentfilename);
+            if (mSWordOpenDocumentopenReadOnly != null)
             {
-                mSWordOpenDocument["OpenReadOnly"] = ExpressionConverter.ConvertO(mSWordOpenDocumentOpenReadOnly);
+                mSWordOpenDocument["OpenReadOnly"] = ExpressionConverter.ConvertO(mSWordOpenDocumentopenReadOnly);
                 mSWordOpenDocumentpropCount++;
             }
 
-            if (mSWordOpenDocumentAddToRecentFiles != null)
+            if (mSWordOpenDocumentaddToRecentFiles != null)
             {
-                mSWordOpenDocument["AddToRecentFiles"] = ExpressionConverter.ConvertO(mSWordOpenDocumentAddToRecentFiles);
+                mSWordOpenDocument["AddToRecentFiles"] = ExpressionConverter.ConvertO(mSWordOpenDocumentaddToRecentFiles);
                 mSWordOpenDocumentpropCount++;
             }
 
-            if (mSWordOpenDocumentPassword != null)
+            if (mSWordOpenDocumentpassword != null)
             {
-                mSWordOpenDocument["Password"] = ExpressionConverter.ConvertO(mSWordOpenDocumentPassword);
+                mSWordOpenDocument["Password"] = ExpressionConverter.ConvertO(mSWordOpenDocumentpassword);
                 mSWordOpenDocumentpropCount++;
             }
 
-            if (mSWordOpenDocumentOpenAndRepair != null)
+            if (mSWordOpenDocumentopenAndRepair != null)
             {
-                mSWordOpenDocument["OpenAndRepair"] = ExpressionConverter.ConvertO(mSWordOpenDocumentOpenAndRepair);
+                mSWordOpenDocument["OpenAndRepair"] = ExpressionConverter.ConvertO(mSWordOpenDocumentopenAndRepair);
                 mSWordOpenDocumentpropCount++;
             }
 
             mSWordOpenDocumentpropCount++;
-            mSWordOpenDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordOpenDocumentWorkflow);
+            mSWordOpenDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordOpenDocumentworkflow);
             if (mSWordOpenDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordOpenDocument;
@@ -248,27 +248,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSaveDocument(Expression<Func<string>> mSWordSaveDocumentWorkflow, Expression<Func<int>> mSWordSaveDocumentHandle = null, Expression<Func<string>> mSWordSaveDocumentDocumentName = null)
+        public IWorkflowAction MSWordSaveDocument(Expression<Func<string>> mSWordSaveDocumentworkflow, Expression<Func<int>> mSWordSaveDocumenthandle = null, Expression<Func<string>> mSWordSaveDocumentdocumentName = null)
         {
             var apiCallPath = "/MSWord/Save";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSaveDocument = new JObject();
             var mSWordSaveDocumentpropCount = 0;
-            if (mSWordSaveDocumentHandle != null)
+            if (mSWordSaveDocumenthandle != null)
             {
-                mSWordSaveDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveDocumentHandle);
+                mSWordSaveDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveDocumenthandle);
                 mSWordSaveDocumentpropCount++;
             }
 
-            if (mSWordSaveDocumentDocumentName != null)
+            if (mSWordSaveDocumentdocumentName != null)
             {
-                mSWordSaveDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveDocumentDocumentName);
+                mSWordSaveDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveDocumentdocumentName);
                 mSWordSaveDocumentpropCount++;
             }
 
             mSWordSaveDocumentpropCount++;
-            mSWordSaveDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveDocumentWorkflow);
+            mSWordSaveDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveDocumentworkflow);
             if (mSWordSaveDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordSaveDocument;
@@ -278,29 +278,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordSaveAsDocumentResponse> MSWordSaveAsDocument(Expression<Func<string>> mSWordSaveAsDocumentSaveFilename, Expression<Func<string>> mSWordSaveAsDocumentWorkflow, Expression<Func<int>> mSWordSaveAsDocumentHandle = null, Expression<Func<string>> mSWordSaveAsDocumentDocumentName = null)
+        public IBodyWorkflowAction<MSWordSaveAsDocumentResponse> MSWordSaveAsDocument(Expression<Func<string>> mSWordSaveAsDocumentsaveFilename, Expression<Func<string>> mSWordSaveAsDocumentworkflow, Expression<Func<int>> mSWordSaveAsDocumenthandle = null, Expression<Func<string>> mSWordSaveAsDocumentdocumentName = null)
         {
             var apiCallPath = "/MSWord/SaveAs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSaveAsDocument = new JObject();
             var mSWordSaveAsDocumentpropCount = 0;
-            if (mSWordSaveAsDocumentHandle != null)
+            if (mSWordSaveAsDocumenthandle != null)
             {
-                mSWordSaveAsDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentHandle);
+                mSWordSaveAsDocument["Handle"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumenthandle);
                 mSWordSaveAsDocumentpropCount++;
             }
 
-            if (mSWordSaveAsDocumentDocumentName != null)
+            if (mSWordSaveAsDocumentdocumentName != null)
             {
-                mSWordSaveAsDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentDocumentName);
+                mSWordSaveAsDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentdocumentName);
                 mSWordSaveAsDocumentpropCount++;
             }
 
             mSWordSaveAsDocumentpropCount++;
-            mSWordSaveAsDocument["SaveFilename"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentSaveFilename);
+            mSWordSaveAsDocument["SaveFilename"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentsaveFilename);
             mSWordSaveAsDocumentpropCount++;
-            mSWordSaveAsDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentWorkflow);
+            mSWordSaveAsDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordSaveAsDocumentworkflow);
             if (mSWordSaveAsDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordSaveAsDocument;
@@ -310,27 +310,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordCloseDocument(Expression<Func<string>> mSWordCloseDocumentWorkflow, Expression<Func<int>> mSWordCloseDocumentHandle = null, Expression<Func<string>> mSWordCloseDocumentDocumentName = null)
+        public IWorkflowAction MSWordCloseDocument(Expression<Func<string>> mSWordCloseDocumentworkflow, Expression<Func<int>> mSWordCloseDocumenthandle = null, Expression<Func<string>> mSWordCloseDocumentdocumentName = null)
         {
             var apiCallPath = "/MSWord/CloseDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordCloseDocument = new JObject();
             var mSWordCloseDocumentpropCount = 0;
-            if (mSWordCloseDocumentHandle != null)
+            if (mSWordCloseDocumenthandle != null)
             {
-                mSWordCloseDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCloseDocumentHandle);
+                mSWordCloseDocument["Handle"] = ExpressionConverter.ConvertO(mSWordCloseDocumenthandle);
                 mSWordCloseDocumentpropCount++;
             }
 
-            if (mSWordCloseDocumentDocumentName != null)
+            if (mSWordCloseDocumentdocumentName != null)
             {
-                mSWordCloseDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordCloseDocumentDocumentName);
+                mSWordCloseDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordCloseDocumentdocumentName);
                 mSWordCloseDocumentpropCount++;
             }
 
             mSWordCloseDocumentpropCount++;
-            mSWordCloseDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseDocumentWorkflow);
+            mSWordCloseDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordCloseDocumentworkflow);
             if (mSWordCloseDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordCloseDocument;
@@ -340,23 +340,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordTypeText(Expression<Func<string>> mSWordTypeTextText, Expression<Func<string>> mSWordTypeTextWorkflow, Expression<Func<int>> mSWordTypeTextHandle = null)
+        public IWorkflowAction MSWordTypeText(Expression<Func<string>> mSWordTypeTexttext, Expression<Func<string>> mSWordTypeTextworkflow, Expression<Func<int>> mSWordTypeTexthandle = null)
         {
             var apiCallPath = "/MSWord/TypeText";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordTypeText = new JObject();
             var mSWordTypeTextpropCount = 0;
-            if (mSWordTypeTextHandle != null)
+            if (mSWordTypeTexthandle != null)
             {
-                mSWordTypeText["Handle"] = ExpressionConverter.ConvertO(mSWordTypeTextHandle);
+                mSWordTypeText["Handle"] = ExpressionConverter.ConvertO(mSWordTypeTexthandle);
                 mSWordTypeTextpropCount++;
             }
 
             mSWordTypeTextpropCount++;
-            mSWordTypeText["Text"] = ExpressionConverter.ConvertO(mSWordTypeTextText);
+            mSWordTypeText["Text"] = ExpressionConverter.ConvertO(mSWordTypeTexttext);
             mSWordTypeTextpropCount++;
-            mSWordTypeText["Workflow"] = ExpressionConverter.ConvertO(mSWordTypeTextWorkflow);
+            mSWordTypeText["Workflow"] = ExpressionConverter.ConvertO(mSWordTypeTextworkflow);
             if (mSWordTypeTextpropCount > 0)
             {
                 callPayload.Body = mSWordTypeText;
@@ -366,27 +366,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSelectAll(Expression<Func<string>> mSWordSelectAllWorkflow, Expression<Func<int>> mSWordSelectAllHandle = null, Expression<Func<string>> mSWordSelectAllDocumentName = null)
+        public IWorkflowAction MSWordSelectAll(Expression<Func<string>> mSWordSelectAllworkflow, Expression<Func<int>> mSWordSelectAllhandle = null, Expression<Func<string>> mSWordSelectAlldocumentName = null)
         {
             var apiCallPath = "/MSWord/SelectAll";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSelectAll = new JObject();
             var mSWordSelectAllpropCount = 0;
-            if (mSWordSelectAllHandle != null)
+            if (mSWordSelectAllhandle != null)
             {
-                mSWordSelectAll["Handle"] = ExpressionConverter.ConvertO(mSWordSelectAllHandle);
+                mSWordSelectAll["Handle"] = ExpressionConverter.ConvertO(mSWordSelectAllhandle);
                 mSWordSelectAllpropCount++;
             }
 
-            if (mSWordSelectAllDocumentName != null)
+            if (mSWordSelectAlldocumentName != null)
             {
-                mSWordSelectAll["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectAllDocumentName);
+                mSWordSelectAll["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectAlldocumentName);
                 mSWordSelectAllpropCount++;
             }
 
             mSWordSelectAllpropCount++;
-            mSWordSelectAll["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectAllWorkflow);
+            mSWordSelectAll["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectAllworkflow);
             if (mSWordSelectAllpropCount > 0)
             {
                 callPayload.Body = mSWordSelectAll;
@@ -396,31 +396,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSelectRange(Expression<Func<int>> mSWordSelectRangeStart, Expression<Func<int>> mSWordSelectRangeFinish, Expression<Func<string>> mSWordSelectRangeWorkflow, Expression<Func<int>> mSWordSelectRangeHandle = null, Expression<Func<string>> mSWordSelectRangeDocumentName = null)
+        public IWorkflowAction MSWordSelectRange(Expression<Func<int>> mSWordSelectRangestart, Expression<Func<int>> mSWordSelectRangefinish, Expression<Func<string>> mSWordSelectRangeworkflow, Expression<Func<int>> mSWordSelectRangehandle = null, Expression<Func<string>> mSWordSelectRangedocumentName = null)
         {
             var apiCallPath = "/MSWord/SelectRange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSelectRange = new JObject();
             var mSWordSelectRangepropCount = 0;
-            if (mSWordSelectRangeHandle != null)
+            if (mSWordSelectRangehandle != null)
             {
-                mSWordSelectRange["Handle"] = ExpressionConverter.ConvertO(mSWordSelectRangeHandle);
+                mSWordSelectRange["Handle"] = ExpressionConverter.ConvertO(mSWordSelectRangehandle);
                 mSWordSelectRangepropCount++;
             }
 
-            if (mSWordSelectRangeDocumentName != null)
+            if (mSWordSelectRangedocumentName != null)
             {
-                mSWordSelectRange["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectRangeDocumentName);
+                mSWordSelectRange["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectRangedocumentName);
                 mSWordSelectRangepropCount++;
             }
 
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Start"] = ExpressionConverter.ConvertO(mSWordSelectRangeStart);
+            mSWordSelectRange["Start"] = ExpressionConverter.ConvertO(mSWordSelectRangestart);
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Finish"] = ExpressionConverter.ConvertO(mSWordSelectRangeFinish);
+            mSWordSelectRange["Finish"] = ExpressionConverter.ConvertO(mSWordSelectRangefinish);
             mSWordSelectRangepropCount++;
-            mSWordSelectRange["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectRangeWorkflow);
+            mSWordSelectRange["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectRangeworkflow);
             if (mSWordSelectRangepropCount > 0)
             {
                 callPayload.Body = mSWordSelectRange;
@@ -430,21 +430,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordCopyToClipboard(Expression<Func<string>> mSWordCopyToClipboardWorkflow, Expression<Func<int>> mSWordCopyToClipboardHandle = null)
+        public IWorkflowAction MSWordCopyToClipboard(Expression<Func<string>> mSWordCopyToClipboardworkflow, Expression<Func<int>> mSWordCopyToClipboardhandle = null)
         {
             var apiCallPath = "/MSWord/CopyToClipboard";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordCopyToClipboard = new JObject();
             var mSWordCopyToClipboardpropCount = 0;
-            if (mSWordCopyToClipboardHandle != null)
+            if (mSWordCopyToClipboardhandle != null)
             {
-                mSWordCopyToClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardHandle);
+                mSWordCopyToClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardhandle);
                 mSWordCopyToClipboardpropCount++;
             }
 
             mSWordCopyToClipboardpropCount++;
-            mSWordCopyToClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardWorkflow);
+            mSWordCopyToClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordCopyToClipboardworkflow);
             if (mSWordCopyToClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordCopyToClipboard;
@@ -454,21 +454,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordPasteFromClipboard(Expression<Func<string>> mSWordPasteFromClipboardWorkflow, Expression<Func<int>> mSWordPasteFromClipboardHandle = null)
+        public IWorkflowAction MSWordPasteFromClipboard(Expression<Func<string>> mSWordPasteFromClipboardworkflow, Expression<Func<int>> mSWordPasteFromClipboardhandle = null)
         {
             var apiCallPath = "/MSWord/PasteFromClipboard";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordPasteFromClipboard = new JObject();
             var mSWordPasteFromClipboardpropCount = 0;
-            if (mSWordPasteFromClipboardHandle != null)
+            if (mSWordPasteFromClipboardhandle != null)
             {
-                mSWordPasteFromClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardHandle);
+                mSWordPasteFromClipboard["Handle"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardhandle);
                 mSWordPasteFromClipboardpropCount++;
             }
 
             mSWordPasteFromClipboardpropCount++;
-            mSWordPasteFromClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardWorkflow);
+            mSWordPasteFromClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordPasteFromClipboardworkflow);
             if (mSWordPasteFromClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordPasteFromClipboard;
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordClearClipboard(Expression<Func<string>> mSWordClearClipboardWorkflow)
+        public IWorkflowAction MSWordClearClipboard(Expression<Func<string>> mSWordClearClipboardworkflow)
         {
             var apiCallPath = "/MSWord/ClearClipboard";
             var apiCallHttpMethod = "post";
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSWordClearClipboard = new JObject();
             var mSWordClearClipboardpropCount = 0;
             mSWordClearClipboardpropCount++;
-            mSWordClearClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordClearClipboardWorkflow);
+            mSWordClearClipboard["Workflow"] = ExpressionConverter.ConvertO(mSWordClearClipboardworkflow);
             if (mSWordClearClipboardpropCount > 0)
             {
                 callPayload.Body = mSWordClearClipboard;
@@ -496,31 +496,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetDocumentBodyTextResponse> MSWordGetDocumentBodyText(Expression<Func<int>> mSWordGetDocumentBodyTextStart, Expression<Func<int>> mSWordGetDocumentBodyTextFinish, Expression<Func<string>> mSWordGetDocumentBodyTextWorkflow, Expression<Func<int>> mSWordGetDocumentBodyTextHandle = null, Expression<Func<string>> mSWordGetDocumentBodyTextDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetDocumentBodyTextResponse> MSWordGetDocumentBodyText(Expression<Func<int>> mSWordGetDocumentBodyTextstart, Expression<Func<int>> mSWordGetDocumentBodyTextfinish, Expression<Func<string>> mSWordGetDocumentBodyTextworkflow, Expression<Func<int>> mSWordGetDocumentBodyTexthandle = null, Expression<Func<string>> mSWordGetDocumentBodyTextdocumentName = null)
         {
             var apiCallPath = "/MSWord/GetDocumentBodyText";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetDocumentBodyText = new JObject();
             var mSWordGetDocumentBodyTextpropCount = 0;
-            if (mSWordGetDocumentBodyTextHandle != null)
+            if (mSWordGetDocumentBodyTexthandle != null)
             {
-                mSWordGetDocumentBodyText["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextHandle);
+                mSWordGetDocumentBodyText["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTexthandle);
                 mSWordGetDocumentBodyTextpropCount++;
             }
 
-            if (mSWordGetDocumentBodyTextDocumentName != null)
+            if (mSWordGetDocumentBodyTextdocumentName != null)
             {
-                mSWordGetDocumentBodyText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextDocumentName);
+                mSWordGetDocumentBodyText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextdocumentName);
                 mSWordGetDocumentBodyTextpropCount++;
             }
 
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Start"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextStart);
+            mSWordGetDocumentBodyText["Start"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextstart);
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Finish"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextFinish);
+            mSWordGetDocumentBodyText["Finish"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextfinish);
             mSWordGetDocumentBodyTextpropCount++;
-            mSWordGetDocumentBodyText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextWorkflow);
+            mSWordGetDocumentBodyText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentBodyTextworkflow);
             if (mSWordGetDocumentBodyTextpropCount > 0)
             {
                 callPayload.Body = mSWordGetDocumentBodyText;
@@ -530,27 +530,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetNumberOfTablesInDocumentResponse> MSWordGetNumberOfTablesInDocument(Expression<Func<string>> mSWordGetNumberOfTablesInDocumentWorkflow, Expression<Func<int>> mSWordGetNumberOfTablesInDocumentHandle = null, Expression<Func<string>> mSWordGetNumberOfTablesInDocumentDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetNumberOfTablesInDocumentResponse> MSWordGetNumberOfTablesInDocument(Expression<Func<string>> mSWordGetNumberOfTablesInDocumentworkflow, Expression<Func<int>> mSWordGetNumberOfTablesInDocumenthandle = null, Expression<Func<string>> mSWordGetNumberOfTablesInDocumentdocumentName = null)
         {
             var apiCallPath = "/MSWord/GetNumberOfTablesInDocument";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetNumberOfTablesInDocument = new JObject();
             var mSWordGetNumberOfTablesInDocumentpropCount = 0;
-            if (mSWordGetNumberOfTablesInDocumentHandle != null)
+            if (mSWordGetNumberOfTablesInDocumenthandle != null)
             {
-                mSWordGetNumberOfTablesInDocument["Handle"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentHandle);
+                mSWordGetNumberOfTablesInDocument["Handle"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumenthandle);
                 mSWordGetNumberOfTablesInDocumentpropCount++;
             }
 
-            if (mSWordGetNumberOfTablesInDocumentDocumentName != null)
+            if (mSWordGetNumberOfTablesInDocumentdocumentName != null)
             {
-                mSWordGetNumberOfTablesInDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentDocumentName);
+                mSWordGetNumberOfTablesInDocument["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentdocumentName);
                 mSWordGetNumberOfTablesInDocumentpropCount++;
             }
 
             mSWordGetNumberOfTablesInDocumentpropCount++;
-            mSWordGetNumberOfTablesInDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentWorkflow);
+            mSWordGetNumberOfTablesInDocument["Workflow"] = ExpressionConverter.ConvertO(mSWordGetNumberOfTablesInDocumentworkflow);
             if (mSWordGetNumberOfTablesInDocumentpropCount > 0)
             {
                 callPayload.Body = mSWordGetNumberOfTablesInDocument;
@@ -560,35 +560,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordUpdateBookmark(Expression<Func<string>> mSWordUpdateBookmarkBookmarkName, Expression<Func<string>> mSWordUpdateBookmarkWorkflow, Expression<Func<int>> mSWordUpdateBookmarkHandle = null, Expression<Func<string>> mSWordUpdateBookmarkDocumentName = null, Expression<Func<string>> mSWordUpdateBookmarkNewValue = null)
+        public IWorkflowAction MSWordUpdateBookmark(Expression<Func<string>> mSWordUpdateBookmarkbookmarkName, Expression<Func<string>> mSWordUpdateBookmarkworkflow, Expression<Func<int>> mSWordUpdateBookmarkhandle = null, Expression<Func<string>> mSWordUpdateBookmarkdocumentName = null, Expression<Func<string>> mSWordUpdateBookmarknewValue = null)
         {
             var apiCallPath = "/MSWord/UpdateBookmark";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordUpdateBookmark = new JObject();
             var mSWordUpdateBookmarkpropCount = 0;
-            if (mSWordUpdateBookmarkHandle != null)
+            if (mSWordUpdateBookmarkhandle != null)
             {
-                mSWordUpdateBookmark["Handle"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkHandle);
+                mSWordUpdateBookmark["Handle"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkhandle);
                 mSWordUpdateBookmarkpropCount++;
             }
 
-            if (mSWordUpdateBookmarkDocumentName != null)
+            if (mSWordUpdateBookmarkdocumentName != null)
             {
-                mSWordUpdateBookmark["DocumentName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkDocumentName);
-                mSWordUpdateBookmarkpropCount++;
-            }
-
-            mSWordUpdateBookmarkpropCount++;
-            mSWordUpdateBookmark["BookmarkName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkBookmarkName);
-            if (mSWordUpdateBookmarkNewValue != null)
-            {
-                mSWordUpdateBookmark["NewValue"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkNewValue);
+                mSWordUpdateBookmark["DocumentName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkdocumentName);
                 mSWordUpdateBookmarkpropCount++;
             }
 
             mSWordUpdateBookmarkpropCount++;
-            mSWordUpdateBookmark["Workflow"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkWorkflow);
+            mSWordUpdateBookmark["BookmarkName"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkbookmarkName);
+            if (mSWordUpdateBookmarknewValue != null)
+            {
+                mSWordUpdateBookmark["NewValue"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarknewValue);
+                mSWordUpdateBookmarkpropCount++;
+            }
+
+            mSWordUpdateBookmarkpropCount++;
+            mSWordUpdateBookmark["Workflow"] = ExpressionConverter.ConvertO(mSWordUpdateBookmarkworkflow);
             if (mSWordUpdateBookmarkpropCount > 0)
             {
                 callPayload.Body = mSWordUpdateBookmark;
@@ -598,29 +598,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSelectTable(Expression<Func<int>> mSWordSelectTableTableIndex, Expression<Func<string>> mSWordSelectTableWorkflow, Expression<Func<int>> mSWordSelectTableHandle = null, Expression<Func<string>> mSWordSelectTableDocumentName = null)
+        public IWorkflowAction MSWordSelectTable(Expression<Func<int>> mSWordSelectTabletableIndex, Expression<Func<string>> mSWordSelectTableworkflow, Expression<Func<int>> mSWordSelectTablehandle = null, Expression<Func<string>> mSWordSelectTabledocumentName = null)
         {
             var apiCallPath = "/MSWord/SelectTable";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSelectTable = new JObject();
             var mSWordSelectTablepropCount = 0;
-            if (mSWordSelectTableHandle != null)
+            if (mSWordSelectTablehandle != null)
             {
-                mSWordSelectTable["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTableHandle);
+                mSWordSelectTable["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTablehandle);
                 mSWordSelectTablepropCount++;
             }
 
-            if (mSWordSelectTableDocumentName != null)
+            if (mSWordSelectTabledocumentName != null)
             {
-                mSWordSelectTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTableDocumentName);
+                mSWordSelectTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTabledocumentName);
                 mSWordSelectTablepropCount++;
             }
 
             mSWordSelectTablepropCount++;
-            mSWordSelectTable["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableTableIndex);
+            mSWordSelectTable["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTabletableIndex);
             mSWordSelectTablepropCount++;
-            mSWordSelectTable["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableWorkflow);
+            mSWordSelectTable["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableworkflow);
             if (mSWordSelectTablepropCount > 0)
             {
                 callPayload.Body = mSWordSelectTable;
@@ -630,29 +630,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetTableBoundsResponse> MSWordGetTableBounds(Expression<Func<int>> mSWordGetTableBoundsTableIndex, Expression<Func<string>> mSWordGetTableBoundsWorkflow, Expression<Func<int>> mSWordGetTableBoundsHandle = null, Expression<Func<string>> mSWordGetTableBoundsDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetTableBoundsResponse> MSWordGetTableBounds(Expression<Func<int>> mSWordGetTableBoundstableIndex, Expression<Func<string>> mSWordGetTableBoundsworkflow, Expression<Func<int>> mSWordGetTableBoundshandle = null, Expression<Func<string>> mSWordGetTableBoundsdocumentName = null)
         {
             var apiCallPath = "/MSWord/GetTableBounds";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetTableBounds = new JObject();
             var mSWordGetTableBoundspropCount = 0;
-            if (mSWordGetTableBoundsHandle != null)
+            if (mSWordGetTableBoundshandle != null)
             {
-                mSWordGetTableBounds["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsHandle);
+                mSWordGetTableBounds["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableBoundshandle);
                 mSWordGetTableBoundspropCount++;
             }
 
-            if (mSWordGetTableBoundsDocumentName != null)
+            if (mSWordGetTableBoundsdocumentName != null)
             {
-                mSWordGetTableBounds["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsDocumentName);
+                mSWordGetTableBounds["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsdocumentName);
                 mSWordGetTableBoundspropCount++;
             }
 
             mSWordGetTableBoundspropCount++;
-            mSWordGetTableBounds["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsTableIndex);
+            mSWordGetTableBounds["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableBoundstableIndex);
             mSWordGetTableBoundspropCount++;
-            mSWordGetTableBounds["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsWorkflow);
+            mSWordGetTableBounds["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableBoundsworkflow);
             if (mSWordGetTableBoundspropCount > 0)
             {
                 callPayload.Body = mSWordGetTableBounds;
@@ -662,33 +662,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSelectTableCell(Expression<Func<int>> mSWordSelectTableCellTableIndex, Expression<Func<int>> mSWordSelectTableCellRowIndex, Expression<Func<int>> mSWordSelectTableCellColumnIndex, Expression<Func<string>> mSWordSelectTableCellWorkflow, Expression<Func<int>> mSWordSelectTableCellHandle = null, Expression<Func<string>> mSWordSelectTableCellDocumentName = null)
+        public IWorkflowAction MSWordSelectTableCell(Expression<Func<int>> mSWordSelectTableCelltableIndex, Expression<Func<int>> mSWordSelectTableCellrowIndex, Expression<Func<int>> mSWordSelectTableCellcolumnIndex, Expression<Func<string>> mSWordSelectTableCellworkflow, Expression<Func<int>> mSWordSelectTableCellhandle = null, Expression<Func<string>> mSWordSelectTableCelldocumentName = null)
         {
             var apiCallPath = "/MSWord/SelectTableCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSelectTableCell = new JObject();
             var mSWordSelectTableCellpropCount = 0;
-            if (mSWordSelectTableCellHandle != null)
+            if (mSWordSelectTableCellhandle != null)
             {
-                mSWordSelectTableCell["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTableCellHandle);
+                mSWordSelectTableCell["Handle"] = ExpressionConverter.ConvertO(mSWordSelectTableCellhandle);
                 mSWordSelectTableCellpropCount++;
             }
 
-            if (mSWordSelectTableCellDocumentName != null)
+            if (mSWordSelectTableCelldocumentName != null)
             {
-                mSWordSelectTableCell["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTableCellDocumentName);
+                mSWordSelectTableCell["DocumentName"] = ExpressionConverter.ConvertO(mSWordSelectTableCelldocumentName);
                 mSWordSelectTableCellpropCount++;
             }
 
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellTableIndex);
+            mSWordSelectTableCell["TableIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCelltableIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["RowIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellRowIndex);
+            mSWordSelectTableCell["RowIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellrowIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellColumnIndex);
+            mSWordSelectTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSelectTableCellcolumnIndex);
             mSWordSelectTableCellpropCount++;
-            mSWordSelectTableCell["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableCellWorkflow);
+            mSWordSelectTableCell["Workflow"] = ExpressionConverter.ConvertO(mSWordSelectTableCellworkflow);
             if (mSWordSelectTableCellpropCount > 0)
             {
                 callPayload.Body = mSWordSelectTableCell;
@@ -698,33 +698,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetTableCellTextValueResponse> MSWordGetTableCellTextValue(Expression<Func<int>> mSWordGetTableCellTextValueTableIndex, Expression<Func<int>> mSWordGetTableCellTextValueRowIndex, Expression<Func<int>> mSWordGetTableCellTextValueColumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueWorkflow, Expression<Func<int>> mSWordGetTableCellTextValueHandle = null, Expression<Func<string>> mSWordGetTableCellTextValueDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetTableCellTextValueResponse> MSWordGetTableCellTextValue(Expression<Func<int>> mSWordGetTableCellTextValuetableIndex, Expression<Func<int>> mSWordGetTableCellTextValuerowIndex, Expression<Func<int>> mSWordGetTableCellTextValuecolumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueworkflow, Expression<Func<int>> mSWordGetTableCellTextValuehandle = null, Expression<Func<string>> mSWordGetTableCellTextValuedocumentName = null)
         {
             var apiCallPath = "/MSWord/GetTableCellTextValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetTableCellTextValue = new JObject();
             var mSWordGetTableCellTextValuepropCount = 0;
-            if (mSWordGetTableCellTextValueHandle != null)
+            if (mSWordGetTableCellTextValuehandle != null)
             {
-                mSWordGetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueHandle);
+                mSWordGetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuehandle);
                 mSWordGetTableCellTextValuepropCount++;
             }
 
-            if (mSWordGetTableCellTextValueDocumentName != null)
+            if (mSWordGetTableCellTextValuedocumentName != null)
             {
-                mSWordGetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueDocumentName);
+                mSWordGetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuedocumentName);
                 mSWordGetTableCellTextValuepropCount++;
             }
 
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTableIndex);
+            mSWordGetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuetableIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueRowIndex);
+            mSWordGetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuerowIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueColumnIndex);
+            mSWordGetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValuecolumnIndex);
             mSWordGetTableCellTextValuepropCount++;
-            mSWordGetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueWorkflow);
+            mSWordGetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueworkflow);
             if (mSWordGetTableCellTextValuepropCount > 0)
             {
                 callPayload.Body = mSWordGetTableCellTextValue;
@@ -734,33 +734,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetTableCellTextValueTrimmedResponse> MSWordGetTableCellTextValueTrimmed(Expression<Func<int>> mSWordGetTableCellTextValueTrimmedTableIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedRowIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedColumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueTrimmedWorkflow, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedHandle = null, Expression<Func<string>> mSWordGetTableCellTextValueTrimmedDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetTableCellTextValueTrimmedResponse> MSWordGetTableCellTextValueTrimmed(Expression<Func<int>> mSWordGetTableCellTextValueTrimmedtableIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedrowIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedcolumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueTrimmedworkflow, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedhandle = null, Expression<Func<string>> mSWordGetTableCellTextValueTrimmeddocumentName = null)
         {
             var apiCallPath = "/MSWord/GetTableCellTextValueTrimmed";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetTableCellTextValueTrimmed = new JObject();
             var mSWordGetTableCellTextValueTrimmedpropCount = 0;
-            if (mSWordGetTableCellTextValueTrimmedHandle != null)
+            if (mSWordGetTableCellTextValueTrimmedhandle != null)
             {
-                mSWordGetTableCellTextValueTrimmed["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedHandle);
+                mSWordGetTableCellTextValueTrimmed["Handle"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedhandle);
                 mSWordGetTableCellTextValueTrimmedpropCount++;
             }
 
-            if (mSWordGetTableCellTextValueTrimmedDocumentName != null)
+            if (mSWordGetTableCellTextValueTrimmeddocumentName != null)
             {
-                mSWordGetTableCellTextValueTrimmed["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedDocumentName);
+                mSWordGetTableCellTextValueTrimmed["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmeddocumentName);
                 mSWordGetTableCellTextValueTrimmedpropCount++;
             }
 
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedTableIndex);
+            mSWordGetTableCellTextValueTrimmed["TableIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedtableIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedRowIndex);
+            mSWordGetTableCellTextValueTrimmed["RowIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedrowIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedColumnIndex);
+            mSWordGetTableCellTextValueTrimmed["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedcolumnIndex);
             mSWordGetTableCellTextValueTrimmedpropCount++;
-            mSWordGetTableCellTextValueTrimmed["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedWorkflow);
+            mSWordGetTableCellTextValueTrimmed["Workflow"] = ExpressionConverter.ConvertO(mSWordGetTableCellTextValueTrimmedworkflow);
             if (mSWordGetTableCellTextValueTrimmedpropCount > 0)
             {
                 callPayload.Body = mSWordGetTableCellTextValueTrimmed;
@@ -770,39 +770,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordSetTableCellTextValue(Expression<Func<int>> mSWordSetTableCellTextValueTableIndex, Expression<Func<int>> mSWordSetTableCellTextValueRowIndex, Expression<Func<int>> mSWordSetTableCellTextValueColumnIndex, Expression<Func<string>> mSWordSetTableCellTextValueWorkflow, Expression<Func<int>> mSWordSetTableCellTextValueHandle = null, Expression<Func<string>> mSWordSetTableCellTextValueDocumentName = null, Expression<Func<string>> mSWordSetTableCellTextValueNewCellText = null)
+        public IWorkflowAction MSWordSetTableCellTextValue(Expression<Func<int>> mSWordSetTableCellTextValuetableIndex, Expression<Func<int>> mSWordSetTableCellTextValuerowIndex, Expression<Func<int>> mSWordSetTableCellTextValuecolumnIndex, Expression<Func<string>> mSWordSetTableCellTextValueworkflow, Expression<Func<int>> mSWordSetTableCellTextValuehandle = null, Expression<Func<string>> mSWordSetTableCellTextValuedocumentName = null, Expression<Func<string>> mSWordSetTableCellTextValuenewCellText = null)
         {
             var apiCallPath = "/MSWord/SetTableCellTextValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSetTableCellTextValue = new JObject();
             var mSWordSetTableCellTextValuepropCount = 0;
-            if (mSWordSetTableCellTextValueHandle != null)
+            if (mSWordSetTableCellTextValuehandle != null)
             {
-                mSWordSetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueHandle);
+                mSWordSetTableCellTextValue["Handle"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuehandle);
                 mSWordSetTableCellTextValuepropCount++;
             }
 
-            if (mSWordSetTableCellTextValueDocumentName != null)
+            if (mSWordSetTableCellTextValuedocumentName != null)
             {
-                mSWordSetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueDocumentName);
-                mSWordSetTableCellTextValuepropCount++;
-            }
-
-            mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueTableIndex);
-            mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueRowIndex);
-            mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueColumnIndex);
-            if (mSWordSetTableCellTextValueNewCellText != null)
-            {
-                mSWordSetTableCellTextValue["NewCellText"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueNewCellText);
+                mSWordSetTableCellTextValue["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuedocumentName);
                 mSWordSetTableCellTextValuepropCount++;
             }
 
             mSWordSetTableCellTextValuepropCount++;
-            mSWordSetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueWorkflow);
+            mSWordSetTableCellTextValue["TableIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuetableIndex);
+            mSWordSetTableCellTextValuepropCount++;
+            mSWordSetTableCellTextValue["RowIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuerowIndex);
+            mSWordSetTableCellTextValuepropCount++;
+            mSWordSetTableCellTextValue["ColumnIndex"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuecolumnIndex);
+            if (mSWordSetTableCellTextValuenewCellText != null)
+            {
+                mSWordSetTableCellTextValue["NewCellText"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValuenewCellText);
+                mSWordSetTableCellTextValuepropCount++;
+            }
+
+            mSWordSetTableCellTextValuepropCount++;
+            mSWordSetTableCellTextValue["Workflow"] = ExpressionConverter.ConvertO(mSWordSetTableCellTextValueworkflow);
             if (mSWordSetTableCellTextValuepropCount > 0)
             {
                 callPayload.Body = mSWordSetTableCellTextValue;
@@ -812,29 +812,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordExportDocumentAsPDF(Expression<Func<string>> mSWordExportDocumentAsPDFSaveFileName, Expression<Func<string>> mSWordExportDocumentAsPDFWorkflow, Expression<Func<int>> mSWordExportDocumentAsPDFHandle = null, Expression<Func<string>> mSWordExportDocumentAsPDFDocumentName = null)
+        public IWorkflowAction MSWordExportDocumentAsPDF(Expression<Func<string>> mSWordExportDocumentAsPDFsaveFileName, Expression<Func<string>> mSWordExportDocumentAsPDFworkflow, Expression<Func<int>> mSWordExportDocumentAsPDFhandle = null, Expression<Func<string>> mSWordExportDocumentAsPDFdocumentName = null)
         {
             var apiCallPath = "/MSWord/ExportDocumentAsPDF";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordExportDocumentAsPDF = new JObject();
             var mSWordExportDocumentAsPDFpropCount = 0;
-            if (mSWordExportDocumentAsPDFHandle != null)
+            if (mSWordExportDocumentAsPDFhandle != null)
             {
-                mSWordExportDocumentAsPDF["Handle"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFHandle);
+                mSWordExportDocumentAsPDF["Handle"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFhandle);
                 mSWordExportDocumentAsPDFpropCount++;
             }
 
-            if (mSWordExportDocumentAsPDFDocumentName != null)
+            if (mSWordExportDocumentAsPDFdocumentName != null)
             {
-                mSWordExportDocumentAsPDF["DocumentName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFDocumentName);
+                mSWordExportDocumentAsPDF["DocumentName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFdocumentName);
                 mSWordExportDocumentAsPDFpropCount++;
             }
 
             mSWordExportDocumentAsPDFpropCount++;
-            mSWordExportDocumentAsPDF["SaveFileName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFSaveFileName);
+            mSWordExportDocumentAsPDF["SaveFileName"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFsaveFileName);
             mSWordExportDocumentAsPDFpropCount++;
-            mSWordExportDocumentAsPDF["Workflow"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFWorkflow);
+            mSWordExportDocumentAsPDF["Workflow"] = ExpressionConverter.ConvertO(mSWordExportDocumentAsPDFworkflow);
             if (mSWordExportDocumentAsPDFpropCount > 0)
             {
                 callPayload.Body = mSWordExportDocumentAsPDF;
@@ -844,37 +844,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordAddTable(Expression<Func<int>> mSWordAddTableNumberOfRows, Expression<Func<int>> mSWordAddTableNumberOfColumns, Expression<Func<string>> mSWordAddTableWorkflow, Expression<Func<int>> mSWordAddTableHandle = null, Expression<Func<string>> mSWordAddTableDocumentName = null, Expression<Func<int>> mSWordAddTableAutoFitBehaviour = null)
+        public IWorkflowAction MSWordAddTable(Expression<Func<int>> mSWordAddTablenumberOfRows, Expression<Func<int>> mSWordAddTablenumberOfColumns, Expression<Func<string>> mSWordAddTableworkflow, Expression<Func<int>> mSWordAddTablehandle = null, Expression<Func<string>> mSWordAddTabledocumentName = null, Expression<Func<int>> mSWordAddTableautoFitBehaviour = null)
         {
             var apiCallPath = "/MSWord/AddTable";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordAddTable = new JObject();
             var mSWordAddTablepropCount = 0;
-            if (mSWordAddTableHandle != null)
+            if (mSWordAddTablehandle != null)
             {
-                mSWordAddTable["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableHandle);
+                mSWordAddTable["Handle"] = ExpressionConverter.ConvertO(mSWordAddTablehandle);
                 mSWordAddTablepropCount++;
             }
 
-            if (mSWordAddTableDocumentName != null)
+            if (mSWordAddTabledocumentName != null)
             {
-                mSWordAddTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableDocumentName);
-                mSWordAddTablepropCount++;
-            }
-
-            mSWordAddTablepropCount++;
-            mSWordAddTable["NumberOfRows"] = ExpressionConverter.ConvertO(mSWordAddTableNumberOfRows);
-            mSWordAddTablepropCount++;
-            mSWordAddTable["NumberOfColumns"] = ExpressionConverter.ConvertO(mSWordAddTableNumberOfColumns);
-            if (mSWordAddTableAutoFitBehaviour != null)
-            {
-                mSWordAddTable["AutoFitBehaviour"] = ExpressionConverter.ConvertO(mSWordAddTableAutoFitBehaviour);
+                mSWordAddTable["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTabledocumentName);
                 mSWordAddTablepropCount++;
             }
 
             mSWordAddTablepropCount++;
-            mSWordAddTable["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableWorkflow);
+            mSWordAddTable["NumberOfRows"] = ExpressionConverter.ConvertO(mSWordAddTablenumberOfRows);
+            mSWordAddTablepropCount++;
+            mSWordAddTable["NumberOfColumns"] = ExpressionConverter.ConvertO(mSWordAddTablenumberOfColumns);
+            if (mSWordAddTableautoFitBehaviour != null)
+            {
+                mSWordAddTable["AutoFitBehaviour"] = ExpressionConverter.ConvertO(mSWordAddTableautoFitBehaviour);
+                mSWordAddTablepropCount++;
+            }
+
+            mSWordAddTablepropCount++;
+            mSWordAddTable["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableworkflow);
             if (mSWordAddTablepropCount > 0)
             {
                 callPayload.Body = mSWordAddTable;
@@ -884,29 +884,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordAddTableRow(Expression<Func<int>> mSWordAddTableRowTableIndex, Expression<Func<string>> mSWordAddTableRowWorkflow, Expression<Func<int>> mSWordAddTableRowHandle = null, Expression<Func<string>> mSWordAddTableRowDocumentName = null)
+        public IWorkflowAction MSWordAddTableRow(Expression<Func<int>> mSWordAddTableRowtableIndex, Expression<Func<string>> mSWordAddTableRowworkflow, Expression<Func<int>> mSWordAddTableRowhandle = null, Expression<Func<string>> mSWordAddTableRowdocumentName = null)
         {
             var apiCallPath = "/MSWord/AddTableRow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordAddTableRow = new JObject();
             var mSWordAddTableRowpropCount = 0;
-            if (mSWordAddTableRowHandle != null)
+            if (mSWordAddTableRowhandle != null)
             {
-                mSWordAddTableRow["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableRowHandle);
+                mSWordAddTableRow["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableRowhandle);
                 mSWordAddTableRowpropCount++;
             }
 
-            if (mSWordAddTableRowDocumentName != null)
+            if (mSWordAddTableRowdocumentName != null)
             {
-                mSWordAddTableRow["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableRowDocumentName);
+                mSWordAddTableRow["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableRowdocumentName);
                 mSWordAddTableRowpropCount++;
             }
 
             mSWordAddTableRowpropCount++;
-            mSWordAddTableRow["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableRowTableIndex);
+            mSWordAddTableRow["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableRowtableIndex);
             mSWordAddTableRowpropCount++;
-            mSWordAddTableRow["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableRowWorkflow);
+            mSWordAddTableRow["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableRowworkflow);
             if (mSWordAddTableRowpropCount > 0)
             {
                 callPayload.Body = mSWordAddTableRow;
@@ -916,29 +916,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSWordAddTableColumn(Expression<Func<int>> mSWordAddTableColumnTableIndex, Expression<Func<string>> mSWordAddTableColumnWorkflow, Expression<Func<int>> mSWordAddTableColumnHandle = null, Expression<Func<string>> mSWordAddTableColumnDocumentName = null)
+        public IWorkflowAction MSWordAddTableColumn(Expression<Func<int>> mSWordAddTableColumntableIndex, Expression<Func<string>> mSWordAddTableColumnworkflow, Expression<Func<int>> mSWordAddTableColumnhandle = null, Expression<Func<string>> mSWordAddTableColumndocumentName = null)
         {
             var apiCallPath = "/MSWord/AddTableColumn";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordAddTableColumn = new JObject();
             var mSWordAddTableColumnpropCount = 0;
-            if (mSWordAddTableColumnHandle != null)
+            if (mSWordAddTableColumnhandle != null)
             {
-                mSWordAddTableColumn["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableColumnHandle);
+                mSWordAddTableColumn["Handle"] = ExpressionConverter.ConvertO(mSWordAddTableColumnhandle);
                 mSWordAddTableColumnpropCount++;
             }
 
-            if (mSWordAddTableColumnDocumentName != null)
+            if (mSWordAddTableColumndocumentName != null)
             {
-                mSWordAddTableColumn["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableColumnDocumentName);
+                mSWordAddTableColumn["DocumentName"] = ExpressionConverter.ConvertO(mSWordAddTableColumndocumentName);
                 mSWordAddTableColumnpropCount++;
             }
 
             mSWordAddTableColumnpropCount++;
-            mSWordAddTableColumn["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableColumnTableIndex);
+            mSWordAddTableColumn["TableIndex"] = ExpressionConverter.ConvertO(mSWordAddTableColumntableIndex);
             mSWordAddTableColumnpropCount++;
-            mSWordAddTableColumn["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableColumnWorkflow);
+            mSWordAddTableColumn["Workflow"] = ExpressionConverter.ConvertO(mSWordAddTableColumnworkflow);
             if (mSWordAddTableColumnpropCount > 0)
             {
                 callPayload.Body = mSWordAddTableColumn;
@@ -948,27 +948,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetHighlightedTextResponse> MSWordGetHighlightedText(Expression<Func<string>> mSWordGetHighlightedTextWorkflow, Expression<Func<int>> mSWordGetHighlightedTextHandle = null, Expression<Func<string>> mSWordGetHighlightedTextDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetHighlightedTextResponse> MSWordGetHighlightedText(Expression<Func<string>> mSWordGetHighlightedTextworkflow, Expression<Func<int>> mSWordGetHighlightedTexthandle = null, Expression<Func<string>> mSWordGetHighlightedTextdocumentName = null)
         {
             var apiCallPath = "/MSWord/GetHighlightedText";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetHighlightedText = new JObject();
             var mSWordGetHighlightedTextpropCount = 0;
-            if (mSWordGetHighlightedTextHandle != null)
+            if (mSWordGetHighlightedTexthandle != null)
             {
-                mSWordGetHighlightedText["Handle"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextHandle);
+                mSWordGetHighlightedText["Handle"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTexthandle);
                 mSWordGetHighlightedTextpropCount++;
             }
 
-            if (mSWordGetHighlightedTextDocumentName != null)
+            if (mSWordGetHighlightedTextdocumentName != null)
             {
-                mSWordGetHighlightedText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextDocumentName);
+                mSWordGetHighlightedText["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextdocumentName);
                 mSWordGetHighlightedTextpropCount++;
             }
 
             mSWordGetHighlightedTextpropCount++;
-            mSWordGetHighlightedText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextWorkflow);
+            mSWordGetHighlightedText["Workflow"] = ExpressionConverter.ConvertO(mSWordGetHighlightedTextworkflow);
             if (mSWordGetHighlightedTextpropCount > 0)
             {
                 callPayload.Body = mSWordGetHighlightedText;
@@ -978,29 +978,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordExecuteCommandBarObjectResponse> MSWordExecuteCommandBarObject(Expression<Func<string>> mSWordExecuteCommandBarObjectObjectId, Expression<Func<string>> mSWordExecuteCommandBarObjectWorkflow, Expression<Func<int>> mSWordExecuteCommandBarObjectHandle = null, Expression<Func<bool>> mSWordExecuteCommandBarObjectRunInBackground = null)
+        public IBodyWorkflowAction<MSWordExecuteCommandBarObjectResponse> MSWordExecuteCommandBarObject(Expression<Func<string>> mSWordExecuteCommandBarObjectobjectId, Expression<Func<string>> mSWordExecuteCommandBarObjectworkflow, Expression<Func<int>> mSWordExecuteCommandBarObjecthandle = null, Expression<Func<bool>> mSWordExecuteCommandBarObjectrunInBackground = null)
         {
             var apiCallPath = "/MSWord/ExecuteCommandBarObject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordExecuteCommandBarObject = new JObject();
             var mSWordExecuteCommandBarObjectpropCount = 0;
-            if (mSWordExecuteCommandBarObjectHandle != null)
+            if (mSWordExecuteCommandBarObjecthandle != null)
             {
-                mSWordExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectHandle);
+                mSWordExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjecthandle);
                 mSWordExecuteCommandBarObjectpropCount++;
             }
 
             mSWordExecuteCommandBarObjectpropCount++;
-            mSWordExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectObjectId);
-            if (mSWordExecuteCommandBarObjectRunInBackground != null)
+            mSWordExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectobjectId);
+            if (mSWordExecuteCommandBarObjectrunInBackground != null)
             {
-                mSWordExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectRunInBackground);
+                mSWordExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectrunInBackground);
                 mSWordExecuteCommandBarObjectpropCount++;
             }
 
             mSWordExecuteCommandBarObjectpropCount++;
-            mSWordExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectWorkflow);
+            mSWordExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSWordExecuteCommandBarObjectworkflow);
             if (mSWordExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSWordExecuteCommandBarObject;
@@ -1010,49 +1010,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordSetDocumentSensitivityLabelResponse> MSWordSetDocumentSensitivityLabel(Expression<Func<mSWordSetDocumentSensitivityLabelAssignmentMethodInput>> mSWordSetDocumentSensitivityLabelAssignmentMethod, Expression<Func<string>> mSWordSetDocumentSensitivityLabelLabelId, Expression<Func<string>> mSWordSetDocumentSensitivityLabelWorkflow, Expression<Func<int>> mSWordSetDocumentSensitivityLabelHandle = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelDocumentName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelLabelName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelSiteId = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelJustification = null)
+        public IBodyWorkflowAction<MSWordSetDocumentSensitivityLabelResponse> MSWordSetDocumentSensitivityLabel(Expression<Func<mSWordSetDocumentSensitivityLabelassignmentMethodInput>> mSWordSetDocumentSensitivityLabelassignmentMethod, Expression<Func<string>> mSWordSetDocumentSensitivityLabellabelId, Expression<Func<string>> mSWordSetDocumentSensitivityLabelworkflow, Expression<Func<int>> mSWordSetDocumentSensitivityLabelhandle = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabeldocumentName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabellabelName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelsiteId = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabeljustification = null)
         {
             var apiCallPath = "/MSWord/MSWordSetDocumentSensitivityLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordSetDocumentSensitivityLabel = new JObject();
             var mSWordSetDocumentSensitivityLabelpropCount = 0;
-            if (mSWordSetDocumentSensitivityLabelHandle != null)
+            if (mSWordSetDocumentSensitivityLabelhandle != null)
             {
-                mSWordSetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelHandle);
+                mSWordSetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelhandle);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
-            if (mSWordSetDocumentSensitivityLabelDocumentName != null)
+            if (mSWordSetDocumentSensitivityLabeldocumentName != null)
             {
-                mSWordSetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelDocumentName);
-                mSWordSetDocumentSensitivityLabelpropCount++;
-            }
-
-            mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelAssignmentMethod);
-            mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelLabelId);
-            if (mSWordSetDocumentSensitivityLabelLabelName != null)
-            {
-                mSWordSetDocumentSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelLabelName);
-                mSWordSetDocumentSensitivityLabelpropCount++;
-            }
-
-            if (mSWordSetDocumentSensitivityLabelSiteId != null)
-            {
-                mSWordSetDocumentSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelSiteId);
-                mSWordSetDocumentSensitivityLabelpropCount++;
-            }
-
-            if (mSWordSetDocumentSensitivityLabelJustification != null)
-            {
-                mSWordSetDocumentSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelJustification);
+                mSWordSetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabeldocumentName);
                 mSWordSetDocumentSensitivityLabelpropCount++;
             }
 
             mSWordSetDocumentSensitivityLabelpropCount++;
-            mSWordSetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelWorkflow);
+            mSWordSetDocumentSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelassignmentMethod);
+            mSWordSetDocumentSensitivityLabelpropCount++;
+            mSWordSetDocumentSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabellabelId);
+            if (mSWordSetDocumentSensitivityLabellabelName != null)
+            {
+                mSWordSetDocumentSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabellabelName);
+                mSWordSetDocumentSensitivityLabelpropCount++;
+            }
+
+            if (mSWordSetDocumentSensitivityLabelsiteId != null)
+            {
+                mSWordSetDocumentSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelsiteId);
+                mSWordSetDocumentSensitivityLabelpropCount++;
+            }
+
+            if (mSWordSetDocumentSensitivityLabeljustification != null)
+            {
+                mSWordSetDocumentSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabeljustification);
+                mSWordSetDocumentSensitivityLabelpropCount++;
+            }
+
+            mSWordSetDocumentSensitivityLabelpropCount++;
+            mSWordSetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordSetDocumentSensitivityLabelworkflow);
             if (mSWordSetDocumentSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSWordSetDocumentSensitivityLabel;
@@ -1062,27 +1062,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSWordGetDocumentSensitivityLabelResponse> MSWordGetDocumentSensitivityLabel(Expression<Func<string>> mSWordGetDocumentSensitivityLabelWorkflow, Expression<Func<int>> mSWordGetDocumentSensitivityLabelHandle = null, Expression<Func<string>> mSWordGetDocumentSensitivityLabelDocumentName = null)
+        public IBodyWorkflowAction<MSWordGetDocumentSensitivityLabelResponse> MSWordGetDocumentSensitivityLabel(Expression<Func<string>> mSWordGetDocumentSensitivityLabelworkflow, Expression<Func<int>> mSWordGetDocumentSensitivityLabelhandle = null, Expression<Func<string>> mSWordGetDocumentSensitivityLabeldocumentName = null)
         {
             var apiCallPath = "/MSWord/MSWordGetDocumentSensitivityLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSWordGetDocumentSensitivityLabel = new JObject();
             var mSWordGetDocumentSensitivityLabelpropCount = 0;
-            if (mSWordGetDocumentSensitivityLabelHandle != null)
+            if (mSWordGetDocumentSensitivityLabelhandle != null)
             {
-                mSWordGetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelHandle);
+                mSWordGetDocumentSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelhandle);
                 mSWordGetDocumentSensitivityLabelpropCount++;
             }
 
-            if (mSWordGetDocumentSensitivityLabelDocumentName != null)
+            if (mSWordGetDocumentSensitivityLabeldocumentName != null)
             {
-                mSWordGetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelDocumentName);
+                mSWordGetDocumentSensitivityLabel["DocumentName"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabeldocumentName);
                 mSWordGetDocumentSensitivityLabelpropCount++;
             }
 
             mSWordGetDocumentSensitivityLabelpropCount++;
-            mSWordGetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelWorkflow);
+            mSWordGetDocumentSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSWordGetDocumentSensitivityLabelworkflow);
             if (mSWordGetDocumentSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSWordGetDocumentSensitivityLabel;
@@ -1092,27 +1092,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCreateInstanceResponse> MSExcelCreateInstance(Expression<Func<string>> mSExcelCreateInstanceWorkflow, Expression<Func<bool>> mSExcelCreateInstanceEnableEvents = null, Expression<Func<bool>> mSExcelCreateInstanceShowExcel = null)
+        public IBodyWorkflowAction<MSExcelCreateInstanceResponse> MSExcelCreateInstance(Expression<Func<string>> mSExcelCreateInstanceworkflow, Expression<Func<bool>> mSExcelCreateInstanceenableEvents = null, Expression<Func<bool>> mSExcelCreateInstanceshowExcel = null)
         {
             var apiCallPath = "/MSExcel/CreateInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCreateInstance = new JObject();
             var mSExcelCreateInstancepropCount = 0;
-            if (mSExcelCreateInstanceEnableEvents != null)
+            if (mSExcelCreateInstanceenableEvents != null)
             {
-                mSExcelCreateInstance["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceEnableEvents);
+                mSExcelCreateInstance["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceenableEvents);
                 mSExcelCreateInstancepropCount++;
             }
 
-            if (mSExcelCreateInstanceShowExcel != null)
+            if (mSExcelCreateInstanceshowExcel != null)
             {
-                mSExcelCreateInstance["ShowExcel"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceShowExcel);
+                mSExcelCreateInstance["ShowExcel"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceshowExcel);
                 mSExcelCreateInstancepropCount++;
             }
 
             mSExcelCreateInstancepropCount++;
-            mSExcelCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceWorkflow);
+            mSExcelCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateInstanceworkflow);
             if (mSExcelCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelCreateInstance;
@@ -1122,21 +1122,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCloseInstance(Expression<Func<string>> mSExcelCloseInstanceWorkflow, Expression<Func<int>> mSExcelCloseInstanceHandle = null)
+        public IWorkflowAction MSExcelCloseInstance(Expression<Func<string>> mSExcelCloseInstanceworkflow, Expression<Func<int>> mSExcelCloseInstancehandle = null)
         {
             var apiCallPath = "/MSExcel/CloseInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCloseInstance = new JObject();
             var mSExcelCloseInstancepropCount = 0;
-            if (mSExcelCloseInstanceHandle != null)
+            if (mSExcelCloseInstancehandle != null)
             {
-                mSExcelCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseInstanceHandle);
+                mSExcelCloseInstance["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseInstancehandle);
                 mSExcelCloseInstancepropCount++;
             }
 
             mSExcelCloseInstancepropCount++;
-            mSExcelCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseInstanceWorkflow);
+            mSExcelCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseInstanceworkflow);
             if (mSExcelCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelCloseInstance;
@@ -1146,39 +1146,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelAttachToExistingInstanceResponse> MSExcelAttachToExistingInstance(Expression<Func<string>> mSExcelAttachToExistingInstanceWorkflow, Expression<Func<string>> mSExcelAttachToExistingInstanceFilename = null, Expression<Func<bool>> mSExcelAttachToExistingInstanceToggleWindow = null, Expression<Func<bool>> mSExcelAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSExcelAttachToExistingInstanceToggleDelay = null)
+        public IBodyWorkflowAction<MSExcelAttachToExistingInstanceResponse> MSExcelAttachToExistingInstance(Expression<Func<string>> mSExcelAttachToExistingInstanceworkflow, Expression<Func<string>> mSExcelAttachToExistingInstancefilename = null, Expression<Func<bool>> mSExcelAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSExcelAttachToExistingInstancetoggleDelay = null)
         {
             var apiCallPath = "/MSExcel/MSExcelAttachToExistingInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelAttachToExistingInstance = new JObject();
             var mSExcelAttachToExistingInstancepropCount = 0;
-            if (mSExcelAttachToExistingInstanceFilename != null)
+            if (mSExcelAttachToExistingInstancefilename != null)
             {
-                mSExcelAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceFilename);
+                mSExcelAttachToExistingInstance["Filename"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancefilename);
                 mSExcelAttachToExistingInstancepropCount++;
             }
 
-            if (mSExcelAttachToExistingInstanceToggleWindow != null)
+            if (mSExcelAttachToExistingInstancetoggleWindow != null)
             {
-                mSExcelAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceToggleWindow);
+                mSExcelAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleWindow);
                 mSExcelAttachToExistingInstancepropCount++;
             }
 
-            if (mSExcelAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent != null)
+            if (mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                mSExcelAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent);
+                mSExcelAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                 mSExcelAttachToExistingInstancepropCount++;
             }
 
-            if (mSExcelAttachToExistingInstanceToggleDelay != null)
+            if (mSExcelAttachToExistingInstancetoggleDelay != null)
             {
-                mSExcelAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceToggleDelay);
+                mSExcelAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstancetoggleDelay);
                 mSExcelAttachToExistingInstancepropCount++;
             }
 
             mSExcelAttachToExistingInstancepropCount++;
-            mSExcelAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceWorkflow);
+            mSExcelAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSExcelAttachToExistingInstanceworkflow);
             if (mSExcelAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSExcelAttachToExistingInstance;
@@ -1188,21 +1188,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelShowExcel(Expression<Func<string>> mSExcelShowExcelWorkflow, Expression<Func<int>> mSExcelShowExcelHandle = null)
+        public IWorkflowAction MSExcelShowExcel(Expression<Func<string>> mSExcelShowExcelworkflow, Expression<Func<int>> mSExcelShowExcelhandle = null)
         {
             var apiCallPath = "/MSExcel/ShowExcel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelShowExcel = new JObject();
             var mSExcelShowExcelpropCount = 0;
-            if (mSExcelShowExcelHandle != null)
+            if (mSExcelShowExcelhandle != null)
             {
-                mSExcelShowExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelShowExcelHandle);
+                mSExcelShowExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelShowExcelhandle);
                 mSExcelShowExcelpropCount++;
             }
 
             mSExcelShowExcelpropCount++;
-            mSExcelShowExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelShowExcelWorkflow);
+            mSExcelShowExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelShowExcelworkflow);
             if (mSExcelShowExcelpropCount > 0)
             {
                 callPayload.Body = mSExcelShowExcel;
@@ -1212,21 +1212,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelHideExcel(Expression<Func<string>> mSExcelHideExcelWorkflow, Expression<Func<int>> mSExcelHideExcelHandle = null)
+        public IWorkflowAction MSExcelHideExcel(Expression<Func<string>> mSExcelHideExcelworkflow, Expression<Func<int>> mSExcelHideExcelhandle = null)
         {
             var apiCallPath = "/MSExcel/HideExcel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelHideExcel = new JObject();
             var mSExcelHideExcelpropCount = 0;
-            if (mSExcelHideExcelHandle != null)
+            if (mSExcelHideExcelhandle != null)
             {
-                mSExcelHideExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelHideExcelHandle);
+                mSExcelHideExcel["Handle"] = ExpressionConverter.ConvertO(mSExcelHideExcelhandle);
                 mSExcelHideExcelpropCount++;
             }
 
             mSExcelHideExcelpropCount++;
-            mSExcelHideExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelHideExcelWorkflow);
+            mSExcelHideExcel["Workflow"] = ExpressionConverter.ConvertO(mSExcelHideExcelworkflow);
             if (mSExcelHideExcelpropCount > 0)
             {
                 callPayload.Body = mSExcelHideExcel;
@@ -1236,63 +1236,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelOpenWorkbookResponse> MSExcelOpenWorkbook(Expression<Func<string>> mSExcelOpenWorkbookWorkflow, Expression<Func<int>> mSExcelOpenWorkbookHandle = null, Expression<Func<string>> mSExcelOpenWorkbookFilename = null, Expression<Func<bool>> mSExcelOpenWorkbookReadOnly = null, Expression<Func<bool>> mSExcelOpenWorkbookUpdateLinks = null, Expression<Func<string>> mSExcelOpenWorkbookPassword = null, Expression<Func<bool>> mSExcelOpenWorkbookEnableEvents = null, Expression<Func<bool>> mSExcelOpenWorkbookPutHTTPWorkbooksIntoEditMode = null, Expression<Func<bool>> mSExcelOpenWorkbookPutFilePathWorkbooksIntoEditMode = null)
+        public IBodyWorkflowAction<MSExcelOpenWorkbookResponse> MSExcelOpenWorkbook(Expression<Func<string>> mSExcelOpenWorkbookworkflow, Expression<Func<int>> mSExcelOpenWorkbookhandle = null, Expression<Func<string>> mSExcelOpenWorkbookfilename = null, Expression<Func<bool>> mSExcelOpenWorkbookreadOnly = null, Expression<Func<bool>> mSExcelOpenWorkbookupdateLinks = null, Expression<Func<string>> mSExcelOpenWorkbookpassword = null, Expression<Func<bool>> mSExcelOpenWorkbookenableEvents = null, Expression<Func<bool>> mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = null, Expression<Func<bool>> mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = null)
         {
             var apiCallPath = "/MSExcel/OpenWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelOpenWorkbook = new JObject();
             var mSExcelOpenWorkbookpropCount = 0;
-            if (mSExcelOpenWorkbookHandle != null)
+            if (mSExcelOpenWorkbookhandle != null)
             {
-                mSExcelOpenWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookHandle);
+                mSExcelOpenWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookhandle);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookFilename != null)
+            if (mSExcelOpenWorkbookfilename != null)
             {
-                mSExcelOpenWorkbook["Filename"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookFilename);
+                mSExcelOpenWorkbook["Filename"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookfilename);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookReadOnly != null)
+            if (mSExcelOpenWorkbookreadOnly != null)
             {
-                mSExcelOpenWorkbook["ReadOnly"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookReadOnly);
+                mSExcelOpenWorkbook["ReadOnly"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookreadOnly);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookUpdateLinks != null)
+            if (mSExcelOpenWorkbookupdateLinks != null)
             {
-                mSExcelOpenWorkbook["UpdateLinks"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookUpdateLinks);
+                mSExcelOpenWorkbook["UpdateLinks"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookupdateLinks);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookPassword != null)
+            if (mSExcelOpenWorkbookpassword != null)
             {
-                mSExcelOpenWorkbook["Password"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookPassword);
+                mSExcelOpenWorkbook["Password"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookpassword);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookEnableEvents != null)
+            if (mSExcelOpenWorkbookenableEvents != null)
             {
-                mSExcelOpenWorkbook["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookEnableEvents);
+                mSExcelOpenWorkbook["EnableEvents"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookenableEvents);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookPutHTTPWorkbooksIntoEditMode != null)
+            if (mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode != null)
             {
-                mSExcelOpenWorkbook["PutHTTPWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookPutHTTPWorkbooksIntoEditMode);
+                mSExcelOpenWorkbook["PutHTTPWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode);
                 mSExcelOpenWorkbookpropCount++;
             }
 
-            if (mSExcelOpenWorkbookPutFilePathWorkbooksIntoEditMode != null)
+            if (mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode != null)
             {
-                mSExcelOpenWorkbook["PutFilePathWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookPutFilePathWorkbooksIntoEditMode);
+                mSExcelOpenWorkbook["PutFilePathWorkbooksIntoEditMode"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode);
                 mSExcelOpenWorkbookpropCount++;
             }
 
             mSExcelOpenWorkbookpropCount++;
-            mSExcelOpenWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookWorkflow);
+            mSExcelOpenWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelOpenWorkbookworkflow);
             if (mSExcelOpenWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelOpenWorkbook;
@@ -1302,33 +1302,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelPutWorkbookInEditModeResponse> MSExcelPutWorkbookInEditMode(Expression<Func<string>> mSExcelPutWorkbookInEditModeWorkflow, Expression<Func<int>> mSExcelPutWorkbookInEditModeHandle = null, Expression<Func<string>> mSExcelPutWorkbookInEditModeWorkbookName = null, Expression<Func<bool>> mSExcelPutWorkbookInEditModeForce = null)
+        public IBodyWorkflowAction<MSExcelPutWorkbookInEditModeResponse> MSExcelPutWorkbookInEditMode(Expression<Func<string>> mSExcelPutWorkbookInEditModeworkflow, Expression<Func<int>> mSExcelPutWorkbookInEditModehandle = null, Expression<Func<string>> mSExcelPutWorkbookInEditModeworkbookName = null, Expression<Func<bool>> mSExcelPutWorkbookInEditModeforce = null)
         {
             var apiCallPath = "/MSExcel/PutWorkbookInEditMode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelPutWorkbookInEditMode = new JObject();
             var mSExcelPutWorkbookInEditModepropCount = 0;
-            if (mSExcelPutWorkbookInEditModeHandle != null)
+            if (mSExcelPutWorkbookInEditModehandle != null)
             {
-                mSExcelPutWorkbookInEditMode["Handle"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeHandle);
+                mSExcelPutWorkbookInEditMode["Handle"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModehandle);
                 mSExcelPutWorkbookInEditModepropCount++;
             }
 
-            if (mSExcelPutWorkbookInEditModeWorkbookName != null)
+            if (mSExcelPutWorkbookInEditModeworkbookName != null)
             {
-                mSExcelPutWorkbookInEditMode["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeWorkbookName);
+                mSExcelPutWorkbookInEditMode["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeworkbookName);
                 mSExcelPutWorkbookInEditModepropCount++;
             }
 
-            if (mSExcelPutWorkbookInEditModeForce != null)
+            if (mSExcelPutWorkbookInEditModeforce != null)
             {
-                mSExcelPutWorkbookInEditMode["Force"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeForce);
+                mSExcelPutWorkbookInEditMode["Force"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeforce);
                 mSExcelPutWorkbookInEditModepropCount++;
             }
 
             mSExcelPutWorkbookInEditModepropCount++;
-            mSExcelPutWorkbookInEditMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeWorkflow);
+            mSExcelPutWorkbookInEditMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelPutWorkbookInEditModeworkflow);
             if (mSExcelPutWorkbookInEditModepropCount > 0)
             {
                 callPayload.Body = mSExcelPutWorkbookInEditMode;
@@ -1338,21 +1338,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCreateWorkbookResponse> MSExcelCreateWorkbook(Expression<Func<string>> mSExcelCreateWorkbookWorkflow, Expression<Func<int>> mSExcelCreateWorkbookHandle = null)
+        public IBodyWorkflowAction<MSExcelCreateWorkbookResponse> MSExcelCreateWorkbook(Expression<Func<string>> mSExcelCreateWorkbookworkflow, Expression<Func<int>> mSExcelCreateWorkbookhandle = null)
         {
             var apiCallPath = "/MSExcel/CreateWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCreateWorkbook = new JObject();
             var mSExcelCreateWorkbookpropCount = 0;
-            if (mSExcelCreateWorkbookHandle != null)
+            if (mSExcelCreateWorkbookhandle != null)
             {
-                mSExcelCreateWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookHandle);
+                mSExcelCreateWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookhandle);
                 mSExcelCreateWorkbookpropCount++;
             }
 
             mSExcelCreateWorkbookpropCount++;
-            mSExcelCreateWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookWorkflow);
+            mSExcelCreateWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorkbookworkflow);
             if (mSExcelCreateWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCreateWorkbook;
@@ -1362,33 +1362,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCloseWorkbook(Expression<Func<string>> mSExcelCloseWorkbookWorkflow, Expression<Func<int>> mSExcelCloseWorkbookHandle = null, Expression<Func<string>> mSExcelCloseWorkbookWorkbookName = null, Expression<Func<bool>> mSExcelCloseWorkbookSaveData = null)
+        public IWorkflowAction MSExcelCloseWorkbook(Expression<Func<string>> mSExcelCloseWorkbookworkflow, Expression<Func<int>> mSExcelCloseWorkbookhandle = null, Expression<Func<string>> mSExcelCloseWorkbookworkbookName = null, Expression<Func<bool>> mSExcelCloseWorkbooksaveData = null)
         {
             var apiCallPath = "/MSExcel/CloseWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCloseWorkbook = new JObject();
             var mSExcelCloseWorkbookpropCount = 0;
-            if (mSExcelCloseWorkbookHandle != null)
+            if (mSExcelCloseWorkbookhandle != null)
             {
-                mSExcelCloseWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookHandle);
+                mSExcelCloseWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookhandle);
                 mSExcelCloseWorkbookpropCount++;
             }
 
-            if (mSExcelCloseWorkbookWorkbookName != null)
+            if (mSExcelCloseWorkbookworkbookName != null)
             {
-                mSExcelCloseWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookWorkbookName);
+                mSExcelCloseWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookworkbookName);
                 mSExcelCloseWorkbookpropCount++;
             }
 
-            if (mSExcelCloseWorkbookSaveData != null)
+            if (mSExcelCloseWorkbooksaveData != null)
             {
-                mSExcelCloseWorkbook["SaveData"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookSaveData);
+                mSExcelCloseWorkbook["SaveData"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbooksaveData);
                 mSExcelCloseWorkbookpropCount++;
             }
 
             mSExcelCloseWorkbookpropCount++;
-            mSExcelCloseWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookWorkflow);
+            mSExcelCloseWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseWorkbookworkflow);
             if (mSExcelCloseWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCloseWorkbook;
@@ -1398,21 +1398,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCloseCurrentWorkbook(Expression<Func<string>> mSExcelCloseCurrentWorkbookWorkflow, Expression<Func<int>> mSExcelCloseCurrentWorkbookHandle = null)
+        public IWorkflowAction MSExcelCloseCurrentWorkbook(Expression<Func<string>> mSExcelCloseCurrentWorkbookworkflow, Expression<Func<int>> mSExcelCloseCurrentWorkbookhandle = null)
         {
             var apiCallPath = "/MSExcel/CloseCurrentWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCloseCurrentWorkbook = new JObject();
             var mSExcelCloseCurrentWorkbookpropCount = 0;
-            if (mSExcelCloseCurrentWorkbookHandle != null)
+            if (mSExcelCloseCurrentWorkbookhandle != null)
             {
-                mSExcelCloseCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookHandle);
+                mSExcelCloseCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookhandle);
                 mSExcelCloseCurrentWorkbookpropCount++;
             }
 
             mSExcelCloseCurrentWorkbookpropCount++;
-            mSExcelCloseCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookWorkflow);
+            mSExcelCloseCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelCloseCurrentWorkbookworkflow);
             if (mSExcelCloseCurrentWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelCloseCurrentWorkbook;
@@ -1422,35 +1422,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelGoToCell(Expression<Func<string>> mSExcelGoToCellCellReference, Expression<Func<string>> mSExcelGoToCellWorkflow, Expression<Func<int>> mSExcelGoToCellHandle = null, Expression<Func<string>> mSExcelGoToCellWorkbookName = null, Expression<Func<string>> mSExcelGoToCellWorksheetName = null)
+        public IWorkflowAction MSExcelGoToCell(Expression<Func<string>> mSExcelGoToCellcellReference, Expression<Func<string>> mSExcelGoToCellworkflow, Expression<Func<int>> mSExcelGoToCellhandle = null, Expression<Func<string>> mSExcelGoToCellworkbookName = null, Expression<Func<string>> mSExcelGoToCellworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GoToCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGoToCell = new JObject();
             var mSExcelGoToCellpropCount = 0;
-            if (mSExcelGoToCellHandle != null)
+            if (mSExcelGoToCellhandle != null)
             {
-                mSExcelGoToCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGoToCellHandle);
+                mSExcelGoToCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGoToCellhandle);
                 mSExcelGoToCellpropCount++;
             }
 
-            if (mSExcelGoToCellWorkbookName != null)
+            if (mSExcelGoToCellworkbookName != null)
             {
-                mSExcelGoToCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGoToCellWorkbookName);
+                mSExcelGoToCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGoToCellworkbookName);
                 mSExcelGoToCellpropCount++;
             }
 
-            if (mSExcelGoToCellWorksheetName != null)
+            if (mSExcelGoToCellworksheetName != null)
             {
-                mSExcelGoToCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGoToCellWorksheetName);
+                mSExcelGoToCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGoToCellworksheetName);
                 mSExcelGoToCellpropCount++;
             }
 
             mSExcelGoToCellpropCount++;
-            mSExcelGoToCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelGoToCellCellReference);
+            mSExcelGoToCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelGoToCellcellReference);
             mSExcelGoToCellpropCount++;
-            mSExcelGoToCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGoToCellWorkflow);
+            mSExcelGoToCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGoToCellworkflow);
             if (mSExcelGoToCellpropCount > 0)
             {
                 callPayload.Body = mSExcelGoToCell;
@@ -1460,35 +1460,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetCellValueResponse> MSExcelGetCellValue(Expression<Func<string>> mSExcelGetCellValueCellReference, Expression<Func<string>> mSExcelGetCellValueWorkflow, Expression<Func<int>> mSExcelGetCellValueHandle = null, Expression<Func<string>> mSExcelGetCellValueWorkbookName = null, Expression<Func<string>> mSExcelGetCellValueWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetCellValueResponse> MSExcelGetCellValue(Expression<Func<string>> mSExcelGetCellValuecellReference, Expression<Func<string>> mSExcelGetCellValueworkflow, Expression<Func<int>> mSExcelGetCellValuehandle = null, Expression<Func<string>> mSExcelGetCellValueworkbookName = null, Expression<Func<string>> mSExcelGetCellValueworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetCellValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetCellValue = new JObject();
             var mSExcelGetCellValuepropCount = 0;
-            if (mSExcelGetCellValueHandle != null)
+            if (mSExcelGetCellValuehandle != null)
             {
-                mSExcelGetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValueHandle);
+                mSExcelGetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValuehandle);
                 mSExcelGetCellValuepropCount++;
             }
 
-            if (mSExcelGetCellValueWorkbookName != null)
+            if (mSExcelGetCellValueworkbookName != null)
             {
-                mSExcelGetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueWorkbookName);
+                mSExcelGetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworkbookName);
                 mSExcelGetCellValuepropCount++;
             }
 
-            if (mSExcelGetCellValueWorksheetName != null)
+            if (mSExcelGetCellValueworksheetName != null)
             {
-                mSExcelGetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueWorksheetName);
+                mSExcelGetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworksheetName);
                 mSExcelGetCellValuepropCount++;
             }
 
             mSExcelGetCellValuepropCount++;
-            mSExcelGetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValueCellReference);
+            mSExcelGetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValuecellReference);
             mSExcelGetCellValuepropCount++;
-            mSExcelGetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValueWorkflow);
+            mSExcelGetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValueworkflow);
             if (mSExcelGetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellValue;
@@ -1498,35 +1498,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetCellValue2Response> MSExcelGetCellValue2(Expression<Func<string>> mSExcelGetCellValue2CellReference, Expression<Func<string>> mSExcelGetCellValue2Workflow, Expression<Func<int>> mSExcelGetCellValue2Handle = null, Expression<Func<string>> mSExcelGetCellValue2WorkbookName = null, Expression<Func<string>> mSExcelGetCellValue2WorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetCellValue2Response> MSExcelGetCellValue2(Expression<Func<string>> mSExcelGetCellValue2cellReference, Expression<Func<string>> mSExcelGetCellValue2workflow, Expression<Func<int>> mSExcelGetCellValue2handle = null, Expression<Func<string>> mSExcelGetCellValue2workbookName = null, Expression<Func<string>> mSExcelGetCellValue2worksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetCellValue2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetCellValue2 = new JObject();
             var mSExcelGetCellValue2propCount = 0;
-            if (mSExcelGetCellValue2Handle != null)
+            if (mSExcelGetCellValue2handle != null)
             {
-                mSExcelGetCellValue2["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2Handle);
+                mSExcelGetCellValue2["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2handle);
                 mSExcelGetCellValue2propCount++;
             }
 
-            if (mSExcelGetCellValue2WorkbookName != null)
+            if (mSExcelGetCellValue2workbookName != null)
             {
-                mSExcelGetCellValue2["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2WorkbookName);
+                mSExcelGetCellValue2["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2workbookName);
                 mSExcelGetCellValue2propCount++;
             }
 
-            if (mSExcelGetCellValue2WorksheetName != null)
+            if (mSExcelGetCellValue2worksheetName != null)
             {
-                mSExcelGetCellValue2["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2WorksheetName);
+                mSExcelGetCellValue2["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2worksheetName);
                 mSExcelGetCellValue2propCount++;
             }
 
             mSExcelGetCellValue2propCount++;
-            mSExcelGetCellValue2["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2CellReference);
+            mSExcelGetCellValue2["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2cellReference);
             mSExcelGetCellValue2propCount++;
-            mSExcelGetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2Workflow);
+            mSExcelGetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellValue2workflow);
             if (mSExcelGetCellValue2propCount > 0)
             {
                 callPayload.Body = mSExcelGetCellValue2;
@@ -1536,35 +1536,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetCellTextResponse> MSExcelGetCellText(Expression<Func<string>> mSExcelGetCellTextCellReference, Expression<Func<string>> mSExcelGetCellTextWorkflow, Expression<Func<int>> mSExcelGetCellTextHandle = null, Expression<Func<string>> mSExcelGetCellTextWorkbookName = null, Expression<Func<string>> mSExcelGetCellTextWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetCellTextResponse> MSExcelGetCellText(Expression<Func<string>> mSExcelGetCellTextcellReference, Expression<Func<string>> mSExcelGetCellTextworkflow, Expression<Func<int>> mSExcelGetCellTexthandle = null, Expression<Func<string>> mSExcelGetCellTextworkbookName = null, Expression<Func<string>> mSExcelGetCellTextworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetCellText";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetCellText = new JObject();
             var mSExcelGetCellTextpropCount = 0;
-            if (mSExcelGetCellTextHandle != null)
+            if (mSExcelGetCellTexthandle != null)
             {
-                mSExcelGetCellText["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellTextHandle);
+                mSExcelGetCellText["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellTexthandle);
                 mSExcelGetCellTextpropCount++;
             }
 
-            if (mSExcelGetCellTextWorkbookName != null)
+            if (mSExcelGetCellTextworkbookName != null)
             {
-                mSExcelGetCellText["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextWorkbookName);
+                mSExcelGetCellText["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworkbookName);
                 mSExcelGetCellTextpropCount++;
             }
 
-            if (mSExcelGetCellTextWorksheetName != null)
+            if (mSExcelGetCellTextworksheetName != null)
             {
-                mSExcelGetCellText["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextWorksheetName);
+                mSExcelGetCellText["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworksheetName);
                 mSExcelGetCellTextpropCount++;
             }
 
             mSExcelGetCellTextpropCount++;
-            mSExcelGetCellText["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellTextCellReference);
+            mSExcelGetCellText["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellTextcellReference);
             mSExcelGetCellTextpropCount++;
-            mSExcelGetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellTextWorkflow);
+            mSExcelGetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellTextworkflow);
             if (mSExcelGetCellTextpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellText;
@@ -1574,47 +1574,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelSetCellValue(Expression<Func<string>> mSExcelSetCellValueCellReference, Expression<Func<string>> mSExcelSetCellValueWorkflow, Expression<Func<int>> mSExcelSetCellValueHandle = null, Expression<Func<string>> mSExcelSetCellValueWorkbookName = null, Expression<Func<string>> mSExcelSetCellValueWorksheetName = null, Expression<Func<string>> mSExcelSetCellValueCellValue = null, Expression<Func<bool>> mSExcelSetCellValueCellValueContainsStoredPassword = null)
+        public IWorkflowAction MSExcelSetCellValue(Expression<Func<string>> mSExcelSetCellValuecellReference, Expression<Func<string>> mSExcelSetCellValueworkflow, Expression<Func<int>> mSExcelSetCellValuehandle = null, Expression<Func<string>> mSExcelSetCellValueworkbookName = null, Expression<Func<string>> mSExcelSetCellValueworksheetName = null, Expression<Func<string>> mSExcelSetCellValuecellValue = null, Expression<Func<bool>> mSExcelSetCellValuecellValueContainsStoredPassword = null)
         {
             var apiCallPath = "/MSExcel/SetCellValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSetCellValue = new JObject();
             var mSExcelSetCellValuepropCount = 0;
-            if (mSExcelSetCellValueHandle != null)
+            if (mSExcelSetCellValuehandle != null)
             {
-                mSExcelSetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellValueHandle);
+                mSExcelSetCellValue["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellValuehandle);
                 mSExcelSetCellValuepropCount++;
             }
 
-            if (mSExcelSetCellValueWorkbookName != null)
+            if (mSExcelSetCellValueworkbookName != null)
             {
-                mSExcelSetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueWorkbookName);
+                mSExcelSetCellValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworkbookName);
                 mSExcelSetCellValuepropCount++;
             }
 
-            if (mSExcelSetCellValueWorksheetName != null)
+            if (mSExcelSetCellValueworksheetName != null)
             {
-                mSExcelSetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueWorksheetName);
-                mSExcelSetCellValuepropCount++;
-            }
-
-            mSExcelSetCellValuepropCount++;
-            mSExcelSetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellValueCellReference);
-            if (mSExcelSetCellValueCellValue != null)
-            {
-                mSExcelSetCellValue["CellValue"] = ExpressionConverter.ConvertO(mSExcelSetCellValueCellValue);
-                mSExcelSetCellValuepropCount++;
-            }
-
-            if (mSExcelSetCellValueCellValueContainsStoredPassword != null)
-            {
-                mSExcelSetCellValue["CellValueContainsStoredPassword"] = ExpressionConverter.ConvertO(mSExcelSetCellValueCellValueContainsStoredPassword);
+                mSExcelSetCellValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworksheetName);
                 mSExcelSetCellValuepropCount++;
             }
 
             mSExcelSetCellValuepropCount++;
-            mSExcelSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellValueWorkflow);
+            mSExcelSetCellValue["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellReference);
+            if (mSExcelSetCellValuecellValue != null)
+            {
+                mSExcelSetCellValue["CellValue"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellValue);
+                mSExcelSetCellValuepropCount++;
+            }
+
+            if (mSExcelSetCellValuecellValueContainsStoredPassword != null)
+            {
+                mSExcelSetCellValue["CellValueContainsStoredPassword"] = ExpressionConverter.ConvertO(mSExcelSetCellValuecellValueContainsStoredPassword);
+                mSExcelSetCellValuepropCount++;
+            }
+
+            mSExcelSetCellValuepropCount++;
+            mSExcelSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellValueworkflow);
             if (mSExcelSetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelSetCellValue;
@@ -1624,61 +1624,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelFindNextCellWithValueResponse> MSExcelFindNextCellWithValue(Expression<Func<mSExcelFindNextCellWithValueDirectionInput>> mSExcelFindNextCellWithValueDirection, Expression<Func<string>> mSExcelFindNextCellWithValueSearchValue, Expression<Func<string>> mSExcelFindNextCellWithValueWorkflow, Expression<Func<int>> mSExcelFindNextCellWithValueHandle = null, Expression<Func<string>> mSExcelFindNextCellWithValueWorkbookName = null, Expression<Func<string>> mSExcelFindNextCellWithValueWorksheetName = null, Expression<Func<bool>> mSExcelFindNextCellWithValueCaseSensitive = null, Expression<Func<mSExcelFindNextCellWithValueComparisonTypeInput>> mSExcelFindNextCellWithValueComparisonType = null, Expression<Func<int>> mSExcelFindNextCellWithValueMaxCellsToSearch = null, Expression<Func<bool>> mSExcelFindNextCellWithValueActivateCell = null)
+        public IBodyWorkflowAction<MSExcelFindNextCellWithValueResponse> MSExcelFindNextCellWithValue(Expression<Func<mSExcelFindNextCellWithValuedirectionInput>> mSExcelFindNextCellWithValuedirection, Expression<Func<string>> mSExcelFindNextCellWithValuesearchValue, Expression<Func<string>> mSExcelFindNextCellWithValueworkflow, Expression<Func<int>> mSExcelFindNextCellWithValuehandle = null, Expression<Func<string>> mSExcelFindNextCellWithValueworkbookName = null, Expression<Func<string>> mSExcelFindNextCellWithValueworksheetName = null, Expression<Func<bool>> mSExcelFindNextCellWithValuecaseSensitive = null, Expression<Func<mSExcelFindNextCellWithValuecomparisonTypeInput>> mSExcelFindNextCellWithValuecomparisonType = null, Expression<Func<int>> mSExcelFindNextCellWithValuemaxCellsToSearch = null, Expression<Func<bool>> mSExcelFindNextCellWithValueactivateCell = null)
         {
             var apiCallPath = "/MSExcel/FindNextCellWithValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelFindNextCellWithValue = new JObject();
             var mSExcelFindNextCellWithValuepropCount = 0;
-            if (mSExcelFindNextCellWithValueHandle != null)
+            if (mSExcelFindNextCellWithValuehandle != null)
             {
-                mSExcelFindNextCellWithValue["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueHandle);
+                mSExcelFindNextCellWithValue["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuehandle);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
-            if (mSExcelFindNextCellWithValueWorkbookName != null)
+            if (mSExcelFindNextCellWithValueworkbookName != null)
             {
-                mSExcelFindNextCellWithValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueWorkbookName);
+                mSExcelFindNextCellWithValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworkbookName);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
-            if (mSExcelFindNextCellWithValueWorksheetName != null)
+            if (mSExcelFindNextCellWithValueworksheetName != null)
             {
-                mSExcelFindNextCellWithValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueWorksheetName);
-                mSExcelFindNextCellWithValuepropCount++;
-            }
-
-            mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueDirection);
-            mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["SearchValue"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueSearchValue);
-            if (mSExcelFindNextCellWithValueCaseSensitive != null)
-            {
-                mSExcelFindNextCellWithValue["CaseSensitive"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueCaseSensitive);
-                mSExcelFindNextCellWithValuepropCount++;
-            }
-
-            if (mSExcelFindNextCellWithValueComparisonType != null)
-            {
-                mSExcelFindNextCellWithValue["ComparisonType"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueComparisonType);
-                mSExcelFindNextCellWithValuepropCount++;
-            }
-
-            if (mSExcelFindNextCellWithValueMaxCellsToSearch != null)
-            {
-                mSExcelFindNextCellWithValue["MaxCellsToSearch"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueMaxCellsToSearch);
-                mSExcelFindNextCellWithValuepropCount++;
-            }
-
-            if (mSExcelFindNextCellWithValueActivateCell != null)
-            {
-                mSExcelFindNextCellWithValue["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueActivateCell);
+                mSExcelFindNextCellWithValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworksheetName);
                 mSExcelFindNextCellWithValuepropCount++;
             }
 
             mSExcelFindNextCellWithValuepropCount++;
-            mSExcelFindNextCellWithValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueWorkflow);
+            mSExcelFindNextCellWithValue["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuedirection);
+            mSExcelFindNextCellWithValuepropCount++;
+            mSExcelFindNextCellWithValue["SearchValue"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuesearchValue);
+            if (mSExcelFindNextCellWithValuecaseSensitive != null)
+            {
+                mSExcelFindNextCellWithValue["CaseSensitive"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuecaseSensitive);
+                mSExcelFindNextCellWithValuepropCount++;
+            }
+
+            if (mSExcelFindNextCellWithValuecomparisonType != null)
+            {
+                mSExcelFindNextCellWithValue["ComparisonType"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuecomparisonType);
+                mSExcelFindNextCellWithValuepropCount++;
+            }
+
+            if (mSExcelFindNextCellWithValuemaxCellsToSearch != null)
+            {
+                mSExcelFindNextCellWithValue["MaxCellsToSearch"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValuemaxCellsToSearch);
+                mSExcelFindNextCellWithValuepropCount++;
+            }
+
+            if (mSExcelFindNextCellWithValueactivateCell != null)
+            {
+                mSExcelFindNextCellWithValue["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueactivateCell);
+                mSExcelFindNextCellWithValuepropCount++;
+            }
+
+            mSExcelFindNextCellWithValuepropCount++;
+            mSExcelFindNextCellWithValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextCellWithValueworkflow);
             if (mSExcelFindNextCellWithValuepropCount > 0)
             {
                 callPayload.Body = mSExcelFindNextCellWithValue;
@@ -1688,41 +1688,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelFindNextEmptyCellResponse> MSExcelFindNextEmptyCell(Expression<Func<mSExcelFindNextEmptyCellDirectionInput>> mSExcelFindNextEmptyCellDirection, Expression<Func<string>> mSExcelFindNextEmptyCellWorkflow, Expression<Func<int>> mSExcelFindNextEmptyCellHandle = null, Expression<Func<string>> mSExcelFindNextEmptyCellWorkbookName = null, Expression<Func<string>> mSExcelFindNextEmptyCellWorksheetName = null, Expression<Func<bool>> mSExcelFindNextEmptyCellActivateCell = null)
+        public IBodyWorkflowAction<MSExcelFindNextEmptyCellResponse> MSExcelFindNextEmptyCell(Expression<Func<mSExcelFindNextEmptyCelldirectionInput>> mSExcelFindNextEmptyCelldirection, Expression<Func<string>> mSExcelFindNextEmptyCellworkflow, Expression<Func<int>> mSExcelFindNextEmptyCellhandle = null, Expression<Func<string>> mSExcelFindNextEmptyCellworkbookName = null, Expression<Func<string>> mSExcelFindNextEmptyCellworksheetName = null, Expression<Func<bool>> mSExcelFindNextEmptyCellactivateCell = null)
         {
             var apiCallPath = "/MSExcel/FindNextEmptyCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelFindNextEmptyCell = new JObject();
             var mSExcelFindNextEmptyCellpropCount = 0;
-            if (mSExcelFindNextEmptyCellHandle != null)
+            if (mSExcelFindNextEmptyCellhandle != null)
             {
-                mSExcelFindNextEmptyCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellHandle);
+                mSExcelFindNextEmptyCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellhandle);
                 mSExcelFindNextEmptyCellpropCount++;
             }
 
-            if (mSExcelFindNextEmptyCellWorkbookName != null)
+            if (mSExcelFindNextEmptyCellworkbookName != null)
             {
-                mSExcelFindNextEmptyCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellWorkbookName);
+                mSExcelFindNextEmptyCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworkbookName);
                 mSExcelFindNextEmptyCellpropCount++;
             }
 
-            if (mSExcelFindNextEmptyCellWorksheetName != null)
+            if (mSExcelFindNextEmptyCellworksheetName != null)
             {
-                mSExcelFindNextEmptyCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellWorksheetName);
-                mSExcelFindNextEmptyCellpropCount++;
-            }
-
-            mSExcelFindNextEmptyCellpropCount++;
-            mSExcelFindNextEmptyCell["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellDirection);
-            if (mSExcelFindNextEmptyCellActivateCell != null)
-            {
-                mSExcelFindNextEmptyCell["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellActivateCell);
+                mSExcelFindNextEmptyCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworksheetName);
                 mSExcelFindNextEmptyCellpropCount++;
             }
 
             mSExcelFindNextEmptyCellpropCount++;
-            mSExcelFindNextEmptyCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellWorkflow);
+            mSExcelFindNextEmptyCell["Direction"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCelldirection);
+            if (mSExcelFindNextEmptyCellactivateCell != null)
+            {
+                mSExcelFindNextEmptyCell["ActivateCell"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellactivateCell);
+                mSExcelFindNextEmptyCellpropCount++;
+            }
+
+            mSExcelFindNextEmptyCellpropCount++;
+            mSExcelFindNextEmptyCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFindNextEmptyCellworkflow);
             if (mSExcelFindNextEmptyCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFindNextEmptyCell;
@@ -1732,33 +1732,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellLeftResponse> MSExcelGotoNextEmptyCellLeft(Expression<Func<string>> mSExcelGotoNextEmptyCellLeftWorkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellLeftHandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftWorkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellLeftResponse> MSExcelGotoNextEmptyCellLeft(Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellLefthandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GotoNextEmptyCellLeft";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGotoNextEmptyCellLeft = new JObject();
             var mSExcelGotoNextEmptyCellLeftpropCount = 0;
-            if (mSExcelGotoNextEmptyCellLeftHandle != null)
+            if (mSExcelGotoNextEmptyCellLefthandle != null)
             {
-                mSExcelGotoNextEmptyCellLeft["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftHandle);
+                mSExcelGotoNextEmptyCellLeft["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLefthandle);
                 mSExcelGotoNextEmptyCellLeftpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellLeftWorkbookName != null)
+            if (mSExcelGotoNextEmptyCellLeftworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellLeft["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftWorkbookName);
+                mSExcelGotoNextEmptyCellLeft["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworkbookName);
                 mSExcelGotoNextEmptyCellLeftpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellLeftWorksheetName != null)
+            if (mSExcelGotoNextEmptyCellLeftworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellLeft["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftWorksheetName);
+                mSExcelGotoNextEmptyCellLeft["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworksheetName);
                 mSExcelGotoNextEmptyCellLeftpropCount++;
             }
 
             mSExcelGotoNextEmptyCellLeftpropCount++;
-            mSExcelGotoNextEmptyCellLeft["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftWorkflow);
+            mSExcelGotoNextEmptyCellLeft["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellLeftworkflow);
             if (mSExcelGotoNextEmptyCellLeftpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellLeft;
@@ -1768,33 +1768,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellRightResponse> MSExcelGotoNextEmptyCellRight(Expression<Func<string>> mSExcelGotoNextEmptyCellRightWorkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellRightHandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightWorkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellRightResponse> MSExcelGotoNextEmptyCellRight(Expression<Func<string>> mSExcelGotoNextEmptyCellRightworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellRighthandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GotoNextEmptyCellRight";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGotoNextEmptyCellRight = new JObject();
             var mSExcelGotoNextEmptyCellRightpropCount = 0;
-            if (mSExcelGotoNextEmptyCellRightHandle != null)
+            if (mSExcelGotoNextEmptyCellRighthandle != null)
             {
-                mSExcelGotoNextEmptyCellRight["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightHandle);
+                mSExcelGotoNextEmptyCellRight["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRighthandle);
                 mSExcelGotoNextEmptyCellRightpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellRightWorkbookName != null)
+            if (mSExcelGotoNextEmptyCellRightworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellRight["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightWorkbookName);
+                mSExcelGotoNextEmptyCellRight["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworkbookName);
                 mSExcelGotoNextEmptyCellRightpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellRightWorksheetName != null)
+            if (mSExcelGotoNextEmptyCellRightworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellRight["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightWorksheetName);
+                mSExcelGotoNextEmptyCellRight["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworksheetName);
                 mSExcelGotoNextEmptyCellRightpropCount++;
             }
 
             mSExcelGotoNextEmptyCellRightpropCount++;
-            mSExcelGotoNextEmptyCellRight["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightWorkflow);
+            mSExcelGotoNextEmptyCellRight["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellRightworkflow);
             if (mSExcelGotoNextEmptyCellRightpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellRight;
@@ -1804,33 +1804,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellUpResponse> MSExcelGotoNextEmptyCellUp(Expression<Func<string>> mSExcelGotoNextEmptyCellUpWorkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellUpHandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpWorkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellUpResponse> MSExcelGotoNextEmptyCellUp(Expression<Func<string>> mSExcelGotoNextEmptyCellUpworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellUphandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GotoNextEmptyCellUp";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGotoNextEmptyCellUp = new JObject();
             var mSExcelGotoNextEmptyCellUppropCount = 0;
-            if (mSExcelGotoNextEmptyCellUpHandle != null)
+            if (mSExcelGotoNextEmptyCellUphandle != null)
             {
-                mSExcelGotoNextEmptyCellUp["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpHandle);
+                mSExcelGotoNextEmptyCellUp["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUphandle);
                 mSExcelGotoNextEmptyCellUppropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellUpWorkbookName != null)
+            if (mSExcelGotoNextEmptyCellUpworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellUp["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpWorkbookName);
+                mSExcelGotoNextEmptyCellUp["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworkbookName);
                 mSExcelGotoNextEmptyCellUppropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellUpWorksheetName != null)
+            if (mSExcelGotoNextEmptyCellUpworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellUp["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpWorksheetName);
+                mSExcelGotoNextEmptyCellUp["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworksheetName);
                 mSExcelGotoNextEmptyCellUppropCount++;
             }
 
             mSExcelGotoNextEmptyCellUppropCount++;
-            mSExcelGotoNextEmptyCellUp["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpWorkflow);
+            mSExcelGotoNextEmptyCellUp["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellUpworkflow);
             if (mSExcelGotoNextEmptyCellUppropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellUp;
@@ -1840,33 +1840,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellDownResponse> MSExcelGotoNextEmptyCellDown(Expression<Func<string>> mSExcelGotoNextEmptyCellDownWorkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellDownHandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownWorkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGotoNextEmptyCellDownResponse> MSExcelGotoNextEmptyCellDown(Expression<Func<string>> mSExcelGotoNextEmptyCellDownworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellDownhandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GotoNextEmptyCellDown";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGotoNextEmptyCellDown = new JObject();
             var mSExcelGotoNextEmptyCellDownpropCount = 0;
-            if (mSExcelGotoNextEmptyCellDownHandle != null)
+            if (mSExcelGotoNextEmptyCellDownhandle != null)
             {
-                mSExcelGotoNextEmptyCellDown["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownHandle);
+                mSExcelGotoNextEmptyCellDown["Handle"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownhandle);
                 mSExcelGotoNextEmptyCellDownpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellDownWorkbookName != null)
+            if (mSExcelGotoNextEmptyCellDownworkbookName != null)
             {
-                mSExcelGotoNextEmptyCellDown["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownWorkbookName);
+                mSExcelGotoNextEmptyCellDown["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworkbookName);
                 mSExcelGotoNextEmptyCellDownpropCount++;
             }
 
-            if (mSExcelGotoNextEmptyCellDownWorksheetName != null)
+            if (mSExcelGotoNextEmptyCellDownworksheetName != null)
             {
-                mSExcelGotoNextEmptyCellDown["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownWorksheetName);
+                mSExcelGotoNextEmptyCellDown["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworksheetName);
                 mSExcelGotoNextEmptyCellDownpropCount++;
             }
 
             mSExcelGotoNextEmptyCellDownpropCount++;
-            mSExcelGotoNextEmptyCellDown["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownWorkflow);
+            mSExcelGotoNextEmptyCellDown["Workflow"] = ExpressionConverter.ConvertO(mSExcelGotoNextEmptyCellDownworkflow);
             if (mSExcelGotoNextEmptyCellDownpropCount > 0)
             {
                 callPayload.Body = mSExcelGotoNextEmptyCellDown;
@@ -1876,27 +1876,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveWorkbookResponse> MSExcelSaveWorkbook(Expression<Func<string>> mSExcelSaveWorkbookWorkflow, Expression<Func<int>> mSExcelSaveWorkbookHandle = null, Expression<Func<string>> mSExcelSaveWorkbookWorkbookName = null)
+        public IBodyWorkflowAction<MSExcelSaveWorkbookResponse> MSExcelSaveWorkbook(Expression<Func<string>> mSExcelSaveWorkbookworkflow, Expression<Func<int>> mSExcelSaveWorkbookhandle = null, Expression<Func<string>> mSExcelSaveWorkbookworkbookName = null)
         {
             var apiCallPath = "/MSExcel/SaveWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveWorkbook = new JObject();
             var mSExcelSaveWorkbookpropCount = 0;
-            if (mSExcelSaveWorkbookHandle != null)
+            if (mSExcelSaveWorkbookhandle != null)
             {
-                mSExcelSaveWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookHandle);
+                mSExcelSaveWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookhandle);
                 mSExcelSaveWorkbookpropCount++;
             }
 
-            if (mSExcelSaveWorkbookWorkbookName != null)
+            if (mSExcelSaveWorkbookworkbookName != null)
             {
-                mSExcelSaveWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookWorkbookName);
+                mSExcelSaveWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookworkbookName);
                 mSExcelSaveWorkbookpropCount++;
             }
 
             mSExcelSaveWorkbookpropCount++;
-            mSExcelSaveWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookWorkflow);
+            mSExcelSaveWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookworkflow);
             if (mSExcelSaveWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbook;
@@ -1906,41 +1906,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveWorkbookAsResponse> MSExcelSaveWorkbookAs(Expression<Func<string>> mSExcelSaveWorkbookAsSaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsWorkflow, Expression<Func<int>> mSExcelSaveWorkbookAsHandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsWorkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsDeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsExcelFileFormatInput>> mSExcelSaveWorkbookAsExcelFileFormat = null)
+        public IBodyWorkflowAction<MSExcelSaveWorkbookAsResponse> MSExcelSaveWorkbookAs(Expression<Func<string>> mSExcelSaveWorkbookAssaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsworkflow, Expression<Func<int>> mSExcelSaveWorkbookAshandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsdeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsexcelFileFormatInput>> mSExcelSaveWorkbookAsexcelFileFormat = null)
         {
             var apiCallPath = "/MSExcel/SaveWorkbookAs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveWorkbookAs = new JObject();
             var mSExcelSaveWorkbookAspropCount = 0;
-            if (mSExcelSaveWorkbookAsHandle != null)
+            if (mSExcelSaveWorkbookAshandle != null)
             {
-                mSExcelSaveWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsHandle);
+                mSExcelSaveWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAshandle);
                 mSExcelSaveWorkbookAspropCount++;
             }
 
-            if (mSExcelSaveWorkbookAsWorkbookName != null)
+            if (mSExcelSaveWorkbookAsworkbookName != null)
             {
-                mSExcelSaveWorkbookAs["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWorkbookName);
-                mSExcelSaveWorkbookAspropCount++;
-            }
-
-            mSExcelSaveWorkbookAspropCount++;
-            mSExcelSaveWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsSaveFilename);
-            if (mSExcelSaveWorkbookAsDeleteExistingSaveFilename != null)
-            {
-                mSExcelSaveWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsDeleteExistingSaveFilename);
-                mSExcelSaveWorkbookAspropCount++;
-            }
-
-            if (mSExcelSaveWorkbookAsExcelFileFormat != null)
-            {
-                mSExcelSaveWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsExcelFileFormat);
+                mSExcelSaveWorkbookAs["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsworkbookName);
                 mSExcelSaveWorkbookAspropCount++;
             }
 
             mSExcelSaveWorkbookAspropCount++;
-            mSExcelSaveWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWorkflow);
+            mSExcelSaveWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAssaveFilename);
+            if (mSExcelSaveWorkbookAsdeleteExistingSaveFilename != null)
+            {
+                mSExcelSaveWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsdeleteExistingSaveFilename);
+                mSExcelSaveWorkbookAspropCount++;
+            }
+
+            if (mSExcelSaveWorkbookAsexcelFileFormat != null)
+            {
+                mSExcelSaveWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsexcelFileFormat);
+                mSExcelSaveWorkbookAspropCount++;
+            }
+
+            mSExcelSaveWorkbookAspropCount++;
+            mSExcelSaveWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsworkflow);
             if (mSExcelSaveWorkbookAspropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAs;
@@ -1950,35 +1950,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveWorkbookAsCSVResponse> MSExcelSaveWorkbookAsCSV(Expression<Func<string>> mSExcelSaveWorkbookAsCSVSaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsCSVWorkflow, Expression<Func<int>> mSExcelSaveWorkbookAsCSVHandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsCSVWorkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsCSVDeleteExistingSaveFilename = null)
+        public IBodyWorkflowAction<MSExcelSaveWorkbookAsCSVResponse> MSExcelSaveWorkbookAsCSV(Expression<Func<string>> mSExcelSaveWorkbookAsCSVsaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsCSVworkflow, Expression<Func<int>> mSExcelSaveWorkbookAsCSVhandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsCSVworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
             var apiCallPath = "/MSExcel/SaveWorkbookAsCSV";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveWorkbookAsCSV = new JObject();
             var mSExcelSaveWorkbookAsCSVpropCount = 0;
-            if (mSExcelSaveWorkbookAsCSVHandle != null)
+            if (mSExcelSaveWorkbookAsCSVhandle != null)
             {
-                mSExcelSaveWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVHandle);
+                mSExcelSaveWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVhandle);
                 mSExcelSaveWorkbookAsCSVpropCount++;
             }
 
-            if (mSExcelSaveWorkbookAsCSVWorkbookName != null)
+            if (mSExcelSaveWorkbookAsCSVworkbookName != null)
             {
-                mSExcelSaveWorkbookAsCSV["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVWorkbookName);
-                mSExcelSaveWorkbookAsCSVpropCount++;
-            }
-
-            mSExcelSaveWorkbookAsCSVpropCount++;
-            mSExcelSaveWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVSaveFilename);
-            if (mSExcelSaveWorkbookAsCSVDeleteExistingSaveFilename != null)
-            {
-                mSExcelSaveWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVDeleteExistingSaveFilename);
+                mSExcelSaveWorkbookAsCSV["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVworkbookName);
                 mSExcelSaveWorkbookAsCSVpropCount++;
             }
 
             mSExcelSaveWorkbookAsCSVpropCount++;
-            mSExcelSaveWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVWorkflow);
+            mSExcelSaveWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVsaveFilename);
+            if (mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename != null)
+            {
+                mSExcelSaveWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename);
+                mSExcelSaveWorkbookAsCSVpropCount++;
+            }
+
+            mSExcelSaveWorkbookAsCSVpropCount++;
+            mSExcelSaveWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsCSVworkflow);
             if (mSExcelSaveWorkbookAsCSVpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAsCSV;
@@ -1988,43 +1988,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveWorkbookAsWithPasswordResponse> MSExcelSaveWorkbookAsWithPassword(Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordSaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordPassword, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordWorkflow, Expression<Func<int>> mSExcelSaveWorkbookAsWithPasswordHandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordWorkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsWithPasswordDeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsWithPasswordExcelFileFormatInput>> mSExcelSaveWorkbookAsWithPasswordExcelFileFormat = null)
+        public IBodyWorkflowAction<MSExcelSaveWorkbookAsWithPasswordResponse> MSExcelSaveWorkbookAsWithPassword(Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordsaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordpassword, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordworkflow, Expression<Func<int>> mSExcelSaveWorkbookAsWithPasswordhandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput>> mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = null)
         {
             var apiCallPath = "/MSExcel/SaveWorkbookAsWithPassword";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveWorkbookAsWithPassword = new JObject();
             var mSExcelSaveWorkbookAsWithPasswordpropCount = 0;
-            if (mSExcelSaveWorkbookAsWithPasswordHandle != null)
+            if (mSExcelSaveWorkbookAsWithPasswordhandle != null)
             {
-                mSExcelSaveWorkbookAsWithPassword["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordHandle);
+                mSExcelSaveWorkbookAsWithPassword["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordhandle);
                 mSExcelSaveWorkbookAsWithPasswordpropCount++;
             }
 
-            if (mSExcelSaveWorkbookAsWithPasswordWorkbookName != null)
+            if (mSExcelSaveWorkbookAsWithPasswordworkbookName != null)
             {
-                mSExcelSaveWorkbookAsWithPassword["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordWorkbookName);
-                mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            }
-
-            mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordSaveFilename);
-            mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["Password"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordPassword);
-            if (mSExcelSaveWorkbookAsWithPasswordDeleteExistingSaveFilename != null)
-            {
-                mSExcelSaveWorkbookAsWithPassword["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordDeleteExistingSaveFilename);
-                mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            }
-
-            if (mSExcelSaveWorkbookAsWithPasswordExcelFileFormat != null)
-            {
-                mSExcelSaveWorkbookAsWithPassword["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordExcelFileFormat);
+                mSExcelSaveWorkbookAsWithPassword["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordworkbookName);
                 mSExcelSaveWorkbookAsWithPasswordpropCount++;
             }
 
             mSExcelSaveWorkbookAsWithPasswordpropCount++;
-            mSExcelSaveWorkbookAsWithPassword["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordWorkflow);
+            mSExcelSaveWorkbookAsWithPassword["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordsaveFilename);
+            mSExcelSaveWorkbookAsWithPasswordpropCount++;
+            mSExcelSaveWorkbookAsWithPassword["Password"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordpassword);
+            if (mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename != null)
+            {
+                mSExcelSaveWorkbookAsWithPassword["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename);
+                mSExcelSaveWorkbookAsWithPasswordpropCount++;
+            }
+
+            if (mSExcelSaveWorkbookAsWithPasswordexcelFileFormat != null)
+            {
+                mSExcelSaveWorkbookAsWithPassword["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat);
+                mSExcelSaveWorkbookAsWithPasswordpropCount++;
+            }
+
+            mSExcelSaveWorkbookAsWithPasswordpropCount++;
+            mSExcelSaveWorkbookAsWithPassword["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveWorkbookAsWithPasswordworkflow);
             if (mSExcelSaveWorkbookAsWithPasswordpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveWorkbookAsWithPassword;
@@ -2034,21 +2034,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookResponse> MSExcelSaveCurrentWorkbook(Expression<Func<string>> mSExcelSaveCurrentWorkbookWorkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookHandle = null)
+        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookResponse> MSExcelSaveCurrentWorkbook(Expression<Func<string>> mSExcelSaveCurrentWorkbookworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookhandle = null)
         {
             var apiCallPath = "/MSExcel/SaveCurrentWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveCurrentWorkbook = new JObject();
             var mSExcelSaveCurrentWorkbookpropCount = 0;
-            if (mSExcelSaveCurrentWorkbookHandle != null)
+            if (mSExcelSaveCurrentWorkbookhandle != null)
             {
-                mSExcelSaveCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookHandle);
+                mSExcelSaveCurrentWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookhandle);
                 mSExcelSaveCurrentWorkbookpropCount++;
             }
 
             mSExcelSaveCurrentWorkbookpropCount++;
-            mSExcelSaveCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookWorkflow);
+            mSExcelSaveCurrentWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookworkflow);
             if (mSExcelSaveCurrentWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbook;
@@ -2058,39 +2058,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsResponse> MSExcelSaveCurrentWorkbookAs(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsWorkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAsHandle = null, Expression<Func<string>> mSExcelSaveCurrentWorkbookAsSaveFilename = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsDeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveCurrentWorkbookAsExcelFileFormatInput>> mSExcelSaveCurrentWorkbookAsExcelFileFormat = null)
+        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsResponse> MSExcelSaveCurrentWorkbookAs(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAshandle = null, Expression<Func<string>> mSExcelSaveCurrentWorkbookAssaveFilename = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveCurrentWorkbookAsexcelFileFormatInput>> mSExcelSaveCurrentWorkbookAsexcelFileFormat = null)
         {
             var apiCallPath = "/MSExcel/SaveCurrentWorkbookAs";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveCurrentWorkbookAs = new JObject();
             var mSExcelSaveCurrentWorkbookAspropCount = 0;
-            if (mSExcelSaveCurrentWorkbookAsHandle != null)
+            if (mSExcelSaveCurrentWorkbookAshandle != null)
             {
-                mSExcelSaveCurrentWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsHandle);
+                mSExcelSaveCurrentWorkbookAs["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAshandle);
                 mSExcelSaveCurrentWorkbookAspropCount++;
             }
 
-            if (mSExcelSaveCurrentWorkbookAsSaveFilename != null)
+            if (mSExcelSaveCurrentWorkbookAssaveFilename != null)
             {
-                mSExcelSaveCurrentWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsSaveFilename);
+                mSExcelSaveCurrentWorkbookAs["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAssaveFilename);
                 mSExcelSaveCurrentWorkbookAspropCount++;
             }
 
-            if (mSExcelSaveCurrentWorkbookAsDeleteExistingSaveFilename != null)
+            if (mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename != null)
             {
-                mSExcelSaveCurrentWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsDeleteExistingSaveFilename);
+                mSExcelSaveCurrentWorkbookAs["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename);
                 mSExcelSaveCurrentWorkbookAspropCount++;
             }
 
-            if (mSExcelSaveCurrentWorkbookAsExcelFileFormat != null)
+            if (mSExcelSaveCurrentWorkbookAsexcelFileFormat != null)
             {
-                mSExcelSaveCurrentWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsExcelFileFormat);
+                mSExcelSaveCurrentWorkbookAs["ExcelFileFormat"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsexcelFileFormat);
                 mSExcelSaveCurrentWorkbookAspropCount++;
             }
 
             mSExcelSaveCurrentWorkbookAspropCount++;
-            mSExcelSaveCurrentWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsWorkflow);
+            mSExcelSaveCurrentWorkbookAs["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsworkflow);
             if (mSExcelSaveCurrentWorkbookAspropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbookAs;
@@ -2100,29 +2100,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsCSVResponse> MSExcelSaveCurrentWorkbookAsCSV(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVSaveFilename, Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVWorkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAsCSVHandle = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsCSVDeleteExistingSaveFilename = null)
+        public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsCSVResponse> MSExcelSaveCurrentWorkbookAsCSV(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVsaveFilename, Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAsCSVhandle = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
             var apiCallPath = "/MSExcel/SaveCurrentWorkbookAsCSV";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSaveCurrentWorkbookAsCSV = new JObject();
             var mSExcelSaveCurrentWorkbookAsCSVpropCount = 0;
-            if (mSExcelSaveCurrentWorkbookAsCSVHandle != null)
+            if (mSExcelSaveCurrentWorkbookAsCSVhandle != null)
             {
-                mSExcelSaveCurrentWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVHandle);
+                mSExcelSaveCurrentWorkbookAsCSV["Handle"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVhandle);
                 mSExcelSaveCurrentWorkbookAsCSVpropCount++;
             }
 
             mSExcelSaveCurrentWorkbookAsCSVpropCount++;
-            mSExcelSaveCurrentWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVSaveFilename);
-            if (mSExcelSaveCurrentWorkbookAsCSVDeleteExistingSaveFilename != null)
+            mSExcelSaveCurrentWorkbookAsCSV["SaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVsaveFilename);
+            if (mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename != null)
             {
-                mSExcelSaveCurrentWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVDeleteExistingSaveFilename);
+                mSExcelSaveCurrentWorkbookAsCSV["DeleteExistingSaveFilename"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename);
                 mSExcelSaveCurrentWorkbookAsCSVpropCount++;
             }
 
             mSExcelSaveCurrentWorkbookAsCSVpropCount++;
-            mSExcelSaveCurrentWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVWorkflow);
+            mSExcelSaveCurrentWorkbookAsCSV["Workflow"] = ExpressionConverter.ConvertO(mSExcelSaveCurrentWorkbookAsCSVworkflow);
             if (mSExcelSaveCurrentWorkbookAsCSVpropCount > 0)
             {
                 callPayload.Body = mSExcelSaveCurrentWorkbookAsCSV;
@@ -2132,27 +2132,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetWorksheetNamesResponse> MSExcelGetWorksheetNames(Expression<Func<string>> mSExcelGetWorksheetNamesWorkflow, Expression<Func<int>> mSExcelGetWorksheetNamesHandle = null, Expression<Func<string>> mSExcelGetWorksheetNamesWorkbookName = null)
+        public IBodyWorkflowAction<MSExcelGetWorksheetNamesResponse> MSExcelGetWorksheetNames(Expression<Func<string>> mSExcelGetWorksheetNamesworkflow, Expression<Func<int>> mSExcelGetWorksheetNameshandle = null, Expression<Func<string>> mSExcelGetWorksheetNamesworkbookName = null)
         {
             var apiCallPath = "/MSExcel/GetWorksheetNames";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetWorksheetNames = new JObject();
             var mSExcelGetWorksheetNamespropCount = 0;
-            if (mSExcelGetWorksheetNamesHandle != null)
+            if (mSExcelGetWorksheetNameshandle != null)
             {
-                mSExcelGetWorksheetNames["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesHandle);
+                mSExcelGetWorksheetNames["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameshandle);
                 mSExcelGetWorksheetNamespropCount++;
             }
 
-            if (mSExcelGetWorksheetNamesWorkbookName != null)
+            if (mSExcelGetWorksheetNamesworkbookName != null)
             {
-                mSExcelGetWorksheetNames["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesWorkbookName);
+                mSExcelGetWorksheetNames["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesworkbookName);
                 mSExcelGetWorksheetNamespropCount++;
             }
 
             mSExcelGetWorksheetNamespropCount++;
-            mSExcelGetWorksheetNames["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesWorkflow);
+            mSExcelGetWorksheetNames["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamesworkflow);
             if (mSExcelGetWorksheetNamespropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetNames;
@@ -2162,33 +2162,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetWorksheetNameResponse> MSExcelGetWorksheetName(Expression<Func<string>> mSExcelGetWorksheetNameWorkflow, Expression<Func<int>> mSExcelGetWorksheetNameHandle = null, Expression<Func<string>> mSExcelGetWorksheetNameWorkbookName = null, Expression<Func<int>> mSExcelGetWorksheetNamePosition = null)
+        public IBodyWorkflowAction<MSExcelGetWorksheetNameResponse> MSExcelGetWorksheetName(Expression<Func<string>> mSExcelGetWorksheetNameworkflow, Expression<Func<int>> mSExcelGetWorksheetNamehandle = null, Expression<Func<string>> mSExcelGetWorksheetNameworkbookName = null, Expression<Func<int>> mSExcelGetWorksheetNameposition = null)
         {
             var apiCallPath = "/MSExcel/GetWorksheetName";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetWorksheetName = new JObject();
             var mSExcelGetWorksheetNamepropCount = 0;
-            if (mSExcelGetWorksheetNameHandle != null)
+            if (mSExcelGetWorksheetNamehandle != null)
             {
-                mSExcelGetWorksheetName["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameHandle);
+                mSExcelGetWorksheetName["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamehandle);
                 mSExcelGetWorksheetNamepropCount++;
             }
 
-            if (mSExcelGetWorksheetNameWorkbookName != null)
+            if (mSExcelGetWorksheetNameworkbookName != null)
             {
-                mSExcelGetWorksheetName["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameWorkbookName);
+                mSExcelGetWorksheetName["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameworkbookName);
                 mSExcelGetWorksheetNamepropCount++;
             }
 
-            if (mSExcelGetWorksheetNamePosition != null)
+            if (mSExcelGetWorksheetNameposition != null)
             {
-                mSExcelGetWorksheetName["Position"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNamePosition);
+                mSExcelGetWorksheetName["Position"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameposition);
                 mSExcelGetWorksheetNamepropCount++;
             }
 
             mSExcelGetWorksheetNamepropCount++;
-            mSExcelGetWorksheetName["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameWorkflow);
+            mSExcelGetWorksheetName["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetNameworkflow);
             if (mSExcelGetWorksheetNamepropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetName;
@@ -2198,39 +2198,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelActivateWorksheet(Expression<Func<string>> mSExcelActivateWorksheetWorkflow, Expression<Func<int>> mSExcelActivateWorksheetHandle = null, Expression<Func<string>> mSExcelActivateWorksheetWorkbookName = null, Expression<Func<string>> mSExcelActivateWorksheetWorksheetName = null, Expression<Func<bool>> mSExcelActivateWorksheetCreateIfMissing = null)
+        public IWorkflowAction MSExcelActivateWorksheet(Expression<Func<string>> mSExcelActivateWorksheetworkflow, Expression<Func<int>> mSExcelActivateWorksheethandle = null, Expression<Func<string>> mSExcelActivateWorksheetworkbookName = null, Expression<Func<string>> mSExcelActivateWorksheetworksheetName = null, Expression<Func<bool>> mSExcelActivateWorksheetcreateIfMissing = null)
         {
             var apiCallPath = "/MSExcel/ActivateWorksheet";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelActivateWorksheet = new JObject();
             var mSExcelActivateWorksheetpropCount = 0;
-            if (mSExcelActivateWorksheetHandle != null)
+            if (mSExcelActivateWorksheethandle != null)
             {
-                mSExcelActivateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetHandle);
+                mSExcelActivateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheethandle);
                 mSExcelActivateWorksheetpropCount++;
             }
 
-            if (mSExcelActivateWorksheetWorkbookName != null)
+            if (mSExcelActivateWorksheetworkbookName != null)
             {
-                mSExcelActivateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetWorkbookName);
+                mSExcelActivateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworkbookName);
                 mSExcelActivateWorksheetpropCount++;
             }
 
-            if (mSExcelActivateWorksheetWorksheetName != null)
+            if (mSExcelActivateWorksheetworksheetName != null)
             {
-                mSExcelActivateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetWorksheetName);
+                mSExcelActivateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworksheetName);
                 mSExcelActivateWorksheetpropCount++;
             }
 
-            if (mSExcelActivateWorksheetCreateIfMissing != null)
+            if (mSExcelActivateWorksheetcreateIfMissing != null)
             {
-                mSExcelActivateWorksheet["CreateIfMissing"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetCreateIfMissing);
+                mSExcelActivateWorksheet["CreateIfMissing"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetcreateIfMissing);
                 mSExcelActivateWorksheetpropCount++;
             }
 
             mSExcelActivateWorksheetpropCount++;
-            mSExcelActivateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetWorkflow);
+            mSExcelActivateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelActivateWorksheetworkflow);
             if (mSExcelActivateWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelActivateWorksheet;
@@ -2240,33 +2240,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCreateWorksheet(Expression<Func<string>> mSExcelCreateWorksheetWorkflow, Expression<Func<int>> mSExcelCreateWorksheetHandle = null, Expression<Func<string>> mSExcelCreateWorksheetWorkbookName = null, Expression<Func<string>> mSExcelCreateWorksheetWorksheetName = null)
+        public IWorkflowAction MSExcelCreateWorksheet(Expression<Func<string>> mSExcelCreateWorksheetworkflow, Expression<Func<int>> mSExcelCreateWorksheethandle = null, Expression<Func<string>> mSExcelCreateWorksheetworkbookName = null, Expression<Func<string>> mSExcelCreateWorksheetworksheetName = null)
         {
             var apiCallPath = "/MSExcel/CreateWorksheet";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCreateWorksheet = new JObject();
             var mSExcelCreateWorksheetpropCount = 0;
-            if (mSExcelCreateWorksheetHandle != null)
+            if (mSExcelCreateWorksheethandle != null)
             {
-                mSExcelCreateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetHandle);
+                mSExcelCreateWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheethandle);
                 mSExcelCreateWorksheetpropCount++;
             }
 
-            if (mSExcelCreateWorksheetWorkbookName != null)
+            if (mSExcelCreateWorksheetworkbookName != null)
             {
-                mSExcelCreateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetWorkbookName);
+                mSExcelCreateWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworkbookName);
                 mSExcelCreateWorksheetpropCount++;
             }
 
-            if (mSExcelCreateWorksheetWorksheetName != null)
+            if (mSExcelCreateWorksheetworksheetName != null)
             {
-                mSExcelCreateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetWorksheetName);
+                mSExcelCreateWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworksheetName);
                 mSExcelCreateWorksheetpropCount++;
             }
 
             mSExcelCreateWorksheetpropCount++;
-            mSExcelCreateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetWorkflow);
+            mSExcelCreateWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelCreateWorksheetworkflow);
             if (mSExcelCreateWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelCreateWorksheet;
@@ -2276,33 +2276,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelDeleteWorksheet(Expression<Func<string>> mSExcelDeleteWorksheetWorkflow, Expression<Func<int>> mSExcelDeleteWorksheetHandle = null, Expression<Func<string>> mSExcelDeleteWorksheetWorkbookName = null, Expression<Func<string>> mSExcelDeleteWorksheetWorksheetName = null)
+        public IWorkflowAction MSExcelDeleteWorksheet(Expression<Func<string>> mSExcelDeleteWorksheetworkflow, Expression<Func<int>> mSExcelDeleteWorksheethandle = null, Expression<Func<string>> mSExcelDeleteWorksheetworkbookName = null, Expression<Func<string>> mSExcelDeleteWorksheetworksheetName = null)
         {
             var apiCallPath = "/MSExcel/DeleteWorksheet";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelDeleteWorksheet = new JObject();
             var mSExcelDeleteWorksheetpropCount = 0;
-            if (mSExcelDeleteWorksheetHandle != null)
+            if (mSExcelDeleteWorksheethandle != null)
             {
-                mSExcelDeleteWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetHandle);
+                mSExcelDeleteWorksheet["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheethandle);
                 mSExcelDeleteWorksheetpropCount++;
             }
 
-            if (mSExcelDeleteWorksheetWorkbookName != null)
+            if (mSExcelDeleteWorksheetworkbookName != null)
             {
-                mSExcelDeleteWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetWorkbookName);
+                mSExcelDeleteWorksheet["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworkbookName);
                 mSExcelDeleteWorksheetpropCount++;
             }
 
-            if (mSExcelDeleteWorksheetWorksheetName != null)
+            if (mSExcelDeleteWorksheetworksheetName != null)
             {
-                mSExcelDeleteWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetWorksheetName);
+                mSExcelDeleteWorksheet["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworksheetName);
                 mSExcelDeleteWorksheetpropCount++;
             }
 
             mSExcelDeleteWorksheetpropCount++;
-            mSExcelDeleteWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetWorkflow);
+            mSExcelDeleteWorksheet["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteWorksheetworkflow);
             if (mSExcelDeleteWorksheetpropCount > 0)
             {
                 callPayload.Body = mSExcelDeleteWorksheet;
@@ -2312,99 +2312,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetWorksheetAsCollectionEnhancedResponse> MSExcelGetWorksheetAsCollectionEnhanced(Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedWorkflow, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedHandle = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedWorkbookName = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedWorksheetName = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedUseHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedStartCell = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedMaximumColumnNumber = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedSkipBlankRows = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedSkipColumnsWithNoHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedKeyColumn = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedGetRawData = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedIgnoreRowsWithLowCellCount = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedMaxConcurrentBlankRows = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedFirstDataRowToReturn = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedMaxNumberOfDataRowsToReturn = null)
+        public IBodyWorkflowAction<MSExcelGetWorksheetAsCollectionEnhancedResponse> MSExcelGetWorksheetAsCollectionEnhanced(Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworkflow, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedhandle = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworkbookName = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworksheetName = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhanceduseHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedstartCell = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedgetRawData = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = null)
         {
             var apiCallPath = "/MSExcel/GetWorksheetAsCollectionEnhanced";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetWorksheetAsCollectionEnhanced = new JObject();
             var mSExcelGetWorksheetAsCollectionEnhancedpropCount = 0;
-            if (mSExcelGetWorksheetAsCollectionEnhancedHandle != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedhandle != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedHandle);
+                mSExcelGetWorksheetAsCollectionEnhanced["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedhandle);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedWorkbookName != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedworkbookName != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedWorkbookName);
+                mSExcelGetWorksheetAsCollectionEnhanced["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworkbookName);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedWorksheetName != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedworksheetName != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedWorksheetName);
+                mSExcelGetWorksheetAsCollectionEnhanced["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworksheetName);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedUseHeader != null)
+            if (mSExcelGetWorksheetAsCollectionEnhanceduseHeader != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["UseHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedUseHeader);
+                mSExcelGetWorksheetAsCollectionEnhanced["UseHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhanceduseHeader);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedStartCell != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedstartCell != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["StartCell"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedStartCell);
+                mSExcelGetWorksheetAsCollectionEnhanced["StartCell"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedstartCell);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedMaximumColumnNumber != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["MaximumColumnNumber"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedMaximumColumnNumber);
+                mSExcelGetWorksheetAsCollectionEnhanced["MaximumColumnNumber"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedSkipBlankRows != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["SkipBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedSkipBlankRows);
+                mSExcelGetWorksheetAsCollectionEnhanced["SkipBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedSkipColumnsWithNoHeader != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["SkipColumnsWithNoHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedSkipColumnsWithNoHeader);
+                mSExcelGetWorksheetAsCollectionEnhanced["SkipColumnsWithNoHeader"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedKeyColumn != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedkeyColumn != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["KeyColumn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedKeyColumn);
+                mSExcelGetWorksheetAsCollectionEnhanced["KeyColumn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedGetRawData != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedgetRawData != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["GetRawData"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedGetRawData);
+                mSExcelGetWorksheetAsCollectionEnhanced["GetRawData"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedgetRawData);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedIgnoreRowsWithLowCellCount != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["IgnoreRowsWithLowCellCount"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedIgnoreRowsWithLowCellCount);
+                mSExcelGetWorksheetAsCollectionEnhanced["IgnoreRowsWithLowCellCount"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedMaxConcurrentBlankRows != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["MaxConcurrentBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedMaxConcurrentBlankRows);
+                mSExcelGetWorksheetAsCollectionEnhanced["MaxConcurrentBlankRows"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedFirstDataRowToReturn != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["FirstDataRowToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedFirstDataRowToReturn);
+                mSExcelGetWorksheetAsCollectionEnhanced["FirstDataRowToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
-            if (mSExcelGetWorksheetAsCollectionEnhancedMaxNumberOfDataRowsToReturn != null)
+            if (mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn != null)
             {
-                mSExcelGetWorksheetAsCollectionEnhanced["MaxNumberOfDataRowsToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedMaxNumberOfDataRowsToReturn);
+                mSExcelGetWorksheetAsCollectionEnhanced["MaxNumberOfDataRowsToReturn"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn);
                 mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
             }
 
             mSExcelGetWorksheetAsCollectionEnhancedpropCount++;
-            mSExcelGetWorksheetAsCollectionEnhanced["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedWorkflow);
+            mSExcelGetWorksheetAsCollectionEnhanced["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetAsCollectionEnhancedworkflow);
             if (mSExcelGetWorksheetAsCollectionEnhancedpropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetAsCollectionEnhanced;
@@ -2414,33 +2414,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetNumberOfRowsResponse> MSExcelGetNumberOfRows(Expression<Func<string>> mSExcelGetNumberOfRowsWorkflow, Expression<Func<int>> mSExcelGetNumberOfRowsHandle = null, Expression<Func<string>> mSExcelGetNumberOfRowsWorkbookName = null, Expression<Func<string>> mSExcelGetNumberOfRowsWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetNumberOfRowsResponse> MSExcelGetNumberOfRows(Expression<Func<string>> mSExcelGetNumberOfRowsworkflow, Expression<Func<int>> mSExcelGetNumberOfRowshandle = null, Expression<Func<string>> mSExcelGetNumberOfRowsworkbookName = null, Expression<Func<string>> mSExcelGetNumberOfRowsworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetNumberOfRows";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetNumberOfRows = new JObject();
             var mSExcelGetNumberOfRowspropCount = 0;
-            if (mSExcelGetNumberOfRowsHandle != null)
+            if (mSExcelGetNumberOfRowshandle != null)
             {
-                mSExcelGetNumberOfRows["Handle"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsHandle);
+                mSExcelGetNumberOfRows["Handle"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowshandle);
                 mSExcelGetNumberOfRowspropCount++;
             }
 
-            if (mSExcelGetNumberOfRowsWorkbookName != null)
+            if (mSExcelGetNumberOfRowsworkbookName != null)
             {
-                mSExcelGetNumberOfRows["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsWorkbookName);
+                mSExcelGetNumberOfRows["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworkbookName);
                 mSExcelGetNumberOfRowspropCount++;
             }
 
-            if (mSExcelGetNumberOfRowsWorksheetName != null)
+            if (mSExcelGetNumberOfRowsworksheetName != null)
             {
-                mSExcelGetNumberOfRows["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsWorksheetName);
+                mSExcelGetNumberOfRows["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworksheetName);
                 mSExcelGetNumberOfRowspropCount++;
             }
 
             mSExcelGetNumberOfRowspropCount++;
-            mSExcelGetNumberOfRows["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsWorkflow);
+            mSExcelGetNumberOfRows["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetNumberOfRowsworkflow);
             if (mSExcelGetNumberOfRowspropCount > 0)
             {
                 callPayload.Body = mSExcelGetNumberOfRows;
@@ -2450,23 +2450,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelEvaluateExpressionResponse> MSExcelEvaluateExpression(Expression<Func<string>> mSExcelEvaluateExpressionExpression, Expression<Func<string>> mSExcelEvaluateExpressionWorkflow, Expression<Func<int>> mSExcelEvaluateExpressionHandle = null)
+        public IBodyWorkflowAction<MSExcelEvaluateExpressionResponse> MSExcelEvaluateExpression(Expression<Func<string>> mSExcelEvaluateExpressionexpression, Expression<Func<string>> mSExcelEvaluateExpressionworkflow, Expression<Func<int>> mSExcelEvaluateExpressionhandle = null)
         {
             var apiCallPath = "/MSExcel/EvaluateExpression";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelEvaluateExpression = new JObject();
             var mSExcelEvaluateExpressionpropCount = 0;
-            if (mSExcelEvaluateExpressionHandle != null)
+            if (mSExcelEvaluateExpressionhandle != null)
             {
-                mSExcelEvaluateExpression["Handle"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionHandle);
+                mSExcelEvaluateExpression["Handle"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionhandle);
                 mSExcelEvaluateExpressionpropCount++;
             }
 
             mSExcelEvaluateExpressionpropCount++;
-            mSExcelEvaluateExpression["Expression"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionExpression);
+            mSExcelEvaluateExpression["Expression"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionexpression);
             mSExcelEvaluateExpressionpropCount++;
-            mSExcelEvaluateExpression["Workflow"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionWorkflow);
+            mSExcelEvaluateExpression["Workflow"] = ExpressionConverter.ConvertO(mSExcelEvaluateExpressionworkflow);
             if (mSExcelEvaluateExpressionpropCount > 0)
             {
                 callPayload.Body = mSExcelEvaluateExpression;
@@ -2476,33 +2476,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetWorksheetUsedRangeResponse> MSExcelGetWorksheetUsedRange(Expression<Func<string>> mSExcelGetWorksheetUsedRangeWorkflow, Expression<Func<int>> mSExcelGetWorksheetUsedRangeHandle = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeWorkbookName = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetWorksheetUsedRangeResponse> MSExcelGetWorksheetUsedRange(Expression<Func<string>> mSExcelGetWorksheetUsedRangeworkflow, Expression<Func<int>> mSExcelGetWorksheetUsedRangehandle = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeworkbookName = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetWorksheetUsedRange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetWorksheetUsedRange = new JObject();
             var mSExcelGetWorksheetUsedRangepropCount = 0;
-            if (mSExcelGetWorksheetUsedRangeHandle != null)
+            if (mSExcelGetWorksheetUsedRangehandle != null)
             {
-                mSExcelGetWorksheetUsedRange["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeHandle);
+                mSExcelGetWorksheetUsedRange["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangehandle);
                 mSExcelGetWorksheetUsedRangepropCount++;
             }
 
-            if (mSExcelGetWorksheetUsedRangeWorkbookName != null)
+            if (mSExcelGetWorksheetUsedRangeworkbookName != null)
             {
-                mSExcelGetWorksheetUsedRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeWorkbookName);
+                mSExcelGetWorksheetUsedRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworkbookName);
                 mSExcelGetWorksheetUsedRangepropCount++;
             }
 
-            if (mSExcelGetWorksheetUsedRangeWorksheetName != null)
+            if (mSExcelGetWorksheetUsedRangeworksheetName != null)
             {
-                mSExcelGetWorksheetUsedRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeWorksheetName);
+                mSExcelGetWorksheetUsedRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworksheetName);
                 mSExcelGetWorksheetUsedRangepropCount++;
             }
 
             mSExcelGetWorksheetUsedRangepropCount++;
-            mSExcelGetWorksheetUsedRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeWorkflow);
+            mSExcelGetWorksheetUsedRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetUsedRangeworkflow);
             if (mSExcelGetWorksheetUsedRangepropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetUsedRange;
@@ -2512,21 +2512,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetCountrySettingResponse> MSExcelGetCountrySetting(Expression<Func<string>> mSExcelGetCountrySettingWorkflow, Expression<Func<int>> mSExcelGetCountrySettingHandle = null)
+        public IBodyWorkflowAction<MSExcelGetCountrySettingResponse> MSExcelGetCountrySetting(Expression<Func<string>> mSExcelGetCountrySettingworkflow, Expression<Func<int>> mSExcelGetCountrySettinghandle = null)
         {
             var apiCallPath = "/MSExcel/GetCountrySetting";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetCountrySetting = new JObject();
             var mSExcelGetCountrySettingpropCount = 0;
-            if (mSExcelGetCountrySettingHandle != null)
+            if (mSExcelGetCountrySettinghandle != null)
             {
-                mSExcelGetCountrySetting["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettingHandle);
+                mSExcelGetCountrySetting["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettinghandle);
                 mSExcelGetCountrySettingpropCount++;
             }
 
             mSExcelGetCountrySettingpropCount++;
-            mSExcelGetCountrySetting["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettingWorkflow);
+            mSExcelGetCountrySetting["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCountrySettingworkflow);
             if (mSExcelGetCountrySettingpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCountrySetting;
@@ -2536,43 +2536,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelWriteCollection(Expression<Func<string>> mSExcelWriteCollectionCellReference, Expression<Func<string>> mSExcelWriteCollectionCollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionWorkflow, Expression<Func<int>> mSExcelWriteCollectionHandle = null, Expression<Func<string>> mSExcelWriteCollectionWorkbookName = null, Expression<Func<string>> mSExcelWriteCollectionWorksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionIncludeColumnNames = null)
+        public IWorkflowAction MSExcelWriteCollection(Expression<Func<string>> mSExcelWriteCollectioncellReference, Expression<Func<string>> mSExcelWriteCollectioncollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionworkflow, Expression<Func<int>> mSExcelWriteCollectionhandle = null, Expression<Func<string>> mSExcelWriteCollectionworkbookName = null, Expression<Func<string>> mSExcelWriteCollectionworksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionincludeColumnNames = null)
         {
             var apiCallPath = "/MSExcel/WriteCollection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelWriteCollection = new JObject();
             var mSExcelWriteCollectionpropCount = 0;
-            if (mSExcelWriteCollectionHandle != null)
+            if (mSExcelWriteCollectionhandle != null)
             {
-                mSExcelWriteCollection["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionHandle);
+                mSExcelWriteCollection["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionhandle);
                 mSExcelWriteCollectionpropCount++;
             }
 
-            if (mSExcelWriteCollectionWorkbookName != null)
+            if (mSExcelWriteCollectionworkbookName != null)
             {
-                mSExcelWriteCollection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWorkbookName);
+                mSExcelWriteCollection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworkbookName);
                 mSExcelWriteCollectionpropCount++;
             }
 
-            if (mSExcelWriteCollectionWorksheetName != null)
+            if (mSExcelWriteCollectionworksheetName != null)
             {
-                mSExcelWriteCollection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWorksheetName);
-                mSExcelWriteCollectionpropCount++;
-            }
-
-            mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionCellReference);
-            mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionCollectionToWriteJSON);
-            if (mSExcelWriteCollectionIncludeColumnNames != null)
-            {
-                mSExcelWriteCollection["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionIncludeColumnNames);
+                mSExcelWriteCollection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworksheetName);
                 mSExcelWriteCollectionpropCount++;
             }
 
             mSExcelWriteCollectionpropCount++;
-            mSExcelWriteCollection["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWorkflow);
+            mSExcelWriteCollection["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectioncellReference);
+            mSExcelWriteCollectionpropCount++;
+            mSExcelWriteCollection["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectioncollectionToWriteJSON);
+            if (mSExcelWriteCollectionincludeColumnNames != null)
+            {
+                mSExcelWriteCollection["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionincludeColumnNames);
+                mSExcelWriteCollectionpropCount++;
+            }
+
+            mSExcelWriteCollectionpropCount++;
+            mSExcelWriteCollection["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionworkflow);
             if (mSExcelWriteCollectionpropCount > 0)
             {
                 callPayload.Body = mSExcelWriteCollection;
@@ -2582,55 +2582,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelWriteCollectionWithDates(Expression<Func<string>> mSExcelWriteCollectionWithDatesCellReference, Expression<Func<string>> mSExcelWriteCollectionWithDatesCollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionWithDatesWorkflow, Expression<Func<int>> mSExcelWriteCollectionWithDatesHandle = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesWorkbookName = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesWorksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatesIncludeColumnNames = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatesTryToConvertAllFieldsToDate = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesColumnsToConvertToDateJSON = null)
+        public IWorkflowAction MSExcelWriteCollectionWithDates(Expression<Func<string>> mSExcelWriteCollectionWithDatescellReference, Expression<Func<string>> mSExcelWriteCollectionWithDatescollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionWithDatesworkflow, Expression<Func<int>> mSExcelWriteCollectionWithDateshandle = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesworkbookName = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesworksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatesincludeColumnNames = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = null, Expression<Func<string>> mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = null)
         {
             var apiCallPath = "/MSExcel/WriteCollectionWithDates";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelWriteCollectionWithDates = new JObject();
             var mSExcelWriteCollectionWithDatespropCount = 0;
-            if (mSExcelWriteCollectionWithDatesHandle != null)
+            if (mSExcelWriteCollectionWithDateshandle != null)
             {
-                mSExcelWriteCollectionWithDates["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesHandle);
+                mSExcelWriteCollectionWithDates["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDateshandle);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
-            if (mSExcelWriteCollectionWithDatesWorkbookName != null)
+            if (mSExcelWriteCollectionWithDatesworkbookName != null)
             {
-                mSExcelWriteCollectionWithDates["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesWorkbookName);
+                mSExcelWriteCollectionWithDates["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworkbookName);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
-            if (mSExcelWriteCollectionWithDatesWorksheetName != null)
+            if (mSExcelWriteCollectionWithDatesworksheetName != null)
             {
-                mSExcelWriteCollectionWithDates["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesWorksheetName);
-                mSExcelWriteCollectionWithDatespropCount++;
-            }
-
-            mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesCellReference);
-            mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesCollectionToWriteJSON);
-            if (mSExcelWriteCollectionWithDatesIncludeColumnNames != null)
-            {
-                mSExcelWriteCollectionWithDates["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesIncludeColumnNames);
-                mSExcelWriteCollectionWithDatespropCount++;
-            }
-
-            if (mSExcelWriteCollectionWithDatesTryToConvertAllFieldsToDate != null)
-            {
-                mSExcelWriteCollectionWithDates["TryToConvertAllFieldsToDate"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesTryToConvertAllFieldsToDate);
-                mSExcelWriteCollectionWithDatespropCount++;
-            }
-
-            if (mSExcelWriteCollectionWithDatesColumnsToConvertToDateJSON != null)
-            {
-                mSExcelWriteCollectionWithDates["ColumnsToConvertToDateJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesColumnsToConvertToDateJSON);
+                mSExcelWriteCollectionWithDates["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworksheetName);
                 mSExcelWriteCollectionWithDatespropCount++;
             }
 
             mSExcelWriteCollectionWithDatespropCount++;
-            mSExcelWriteCollectionWithDates["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesWorkflow);
+            mSExcelWriteCollectionWithDates["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescellReference);
+            mSExcelWriteCollectionWithDatespropCount++;
+            mSExcelWriteCollectionWithDates["CollectionToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescollectionToWriteJSON);
+            if (mSExcelWriteCollectionWithDatesincludeColumnNames != null)
+            {
+                mSExcelWriteCollectionWithDates["IncludeColumnNames"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesincludeColumnNames);
+                mSExcelWriteCollectionWithDatespropCount++;
+            }
+
+            if (mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate != null)
+            {
+                mSExcelWriteCollectionWithDates["TryToConvertAllFieldsToDate"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate);
+                mSExcelWriteCollectionWithDatespropCount++;
+            }
+
+            if (mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON != null)
+            {
+                mSExcelWriteCollectionWithDates["ColumnsToConvertToDateJSON"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON);
+                mSExcelWriteCollectionWithDatespropCount++;
+            }
+
+            mSExcelWriteCollectionWithDatespropCount++;
+            mSExcelWriteCollectionWithDates["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteCollectionWithDatesworkflow);
             if (mSExcelWriteCollectionWithDatespropCount > 0)
             {
                 callPayload.Body = mSExcelWriteCollectionWithDates;
@@ -2640,21 +2640,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetActiveCellResponse> MSExcelGetActiveCell(Expression<Func<string>> mSExcelGetActiveCellWorkflow, Expression<Func<int>> mSExcelGetActiveCellHandle = null)
+        public IBodyWorkflowAction<MSExcelGetActiveCellResponse> MSExcelGetActiveCell(Expression<Func<string>> mSExcelGetActiveCellworkflow, Expression<Func<int>> mSExcelGetActiveCellhandle = null)
         {
             var apiCallPath = "/MSExcel/GetActiveCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetActiveCell = new JObject();
             var mSExcelGetActiveCellpropCount = 0;
-            if (mSExcelGetActiveCellHandle != null)
+            if (mSExcelGetActiveCellhandle != null)
             {
-                mSExcelGetActiveCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellHandle);
+                mSExcelGetActiveCell["Handle"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellhandle);
                 mSExcelGetActiveCellpropCount++;
             }
 
             mSExcelGetActiveCellpropCount++;
-            mSExcelGetActiveCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellWorkflow);
+            mSExcelGetActiveCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetActiveCellworkflow);
             if (mSExcelGetActiveCellpropCount > 0)
             {
                 callPayload.Body = mSExcelGetActiveCell;
@@ -2664,37 +2664,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelFormatCell(Expression<Func<string>> mSExcelFormatCellCellReference, Expression<Func<string>> mSExcelFormatCellCellFormat, Expression<Func<string>> mSExcelFormatCellWorkflow, Expression<Func<int>> mSExcelFormatCellHandle = null, Expression<Func<string>> mSExcelFormatCellWorkbookName = null, Expression<Func<string>> mSExcelFormatCellWorksheetName = null)
+        public IWorkflowAction MSExcelFormatCell(Expression<Func<string>> mSExcelFormatCellcellReference, Expression<Func<string>> mSExcelFormatCellcellFormat, Expression<Func<string>> mSExcelFormatCellworkflow, Expression<Func<int>> mSExcelFormatCellhandle = null, Expression<Func<string>> mSExcelFormatCellworkbookName = null, Expression<Func<string>> mSExcelFormatCellworksheetName = null)
         {
             var apiCallPath = "/MSExcel/FormatCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelFormatCell = new JObject();
             var mSExcelFormatCellpropCount = 0;
-            if (mSExcelFormatCellHandle != null)
+            if (mSExcelFormatCellhandle != null)
             {
-                mSExcelFormatCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCellHandle);
+                mSExcelFormatCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCellhandle);
                 mSExcelFormatCellpropCount++;
             }
 
-            if (mSExcelFormatCellWorkbookName != null)
+            if (mSExcelFormatCellworkbookName != null)
             {
-                mSExcelFormatCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFormatCellWorkbookName);
+                mSExcelFormatCell["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelFormatCellworkbookName);
                 mSExcelFormatCellpropCount++;
             }
 
-            if (mSExcelFormatCellWorksheetName != null)
+            if (mSExcelFormatCellworksheetName != null)
             {
-                mSExcelFormatCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFormatCellWorksheetName);
+                mSExcelFormatCell["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelFormatCellworksheetName);
                 mSExcelFormatCellpropCount++;
             }
 
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelFormatCellCellReference);
+            mSExcelFormatCell["CellReference"] = ExpressionConverter.ConvertO(mSExcelFormatCellcellReference);
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCellCellFormat);
+            mSExcelFormatCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCellcellFormat);
             mSExcelFormatCellpropCount++;
-            mSExcelFormatCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCellWorkflow);
+            mSExcelFormatCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCellworkflow);
             if (mSExcelFormatCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFormatCell;
@@ -2704,23 +2704,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelFormatCurrentCell(Expression<Func<string>> mSExcelFormatCurrentCellCellFormat, Expression<Func<string>> mSExcelFormatCurrentCellWorkflow, Expression<Func<int>> mSExcelFormatCurrentCellHandle = null)
+        public IWorkflowAction MSExcelFormatCurrentCell(Expression<Func<string>> mSExcelFormatCurrentCellcellFormat, Expression<Func<string>> mSExcelFormatCurrentCellworkflow, Expression<Func<int>> mSExcelFormatCurrentCellhandle = null)
         {
             var apiCallPath = "/MSExcel/FormatCurrentCell";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelFormatCurrentCell = new JObject();
             var mSExcelFormatCurrentCellpropCount = 0;
-            if (mSExcelFormatCurrentCellHandle != null)
+            if (mSExcelFormatCurrentCellhandle != null)
             {
-                mSExcelFormatCurrentCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellHandle);
+                mSExcelFormatCurrentCell["Handle"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellhandle);
                 mSExcelFormatCurrentCellpropCount++;
             }
 
             mSExcelFormatCurrentCellpropCount++;
-            mSExcelFormatCurrentCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellCellFormat);
+            mSExcelFormatCurrentCell["CellFormat"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellcellFormat);
             mSExcelFormatCurrentCellpropCount++;
-            mSExcelFormatCurrentCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellWorkflow);
+            mSExcelFormatCurrentCell["Workflow"] = ExpressionConverter.ConvertO(mSExcelFormatCurrentCellworkflow);
             if (mSExcelFormatCurrentCellpropCount > 0)
             {
                 callPayload.Body = mSExcelFormatCurrentCell;
@@ -2730,47 +2730,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelSelectCellRange(Expression<Func<string>> mSExcelSelectCellRangeCellReference, Expression<Func<string>> mSExcelSelectCellRangeWorkflow, Expression<Func<int>> mSExcelSelectCellRangeHandle = null, Expression<Func<string>> mSExcelSelectCellRangeWorkbookName = null, Expression<Func<string>> mSExcelSelectCellRangeWorksheetName = null, Expression<Func<bool>> mSExcelSelectCellRangeEntireRow = null, Expression<Func<bool>> mSExcelSelectCellRangeEntireColumn = null)
+        public IWorkflowAction MSExcelSelectCellRange(Expression<Func<string>> mSExcelSelectCellRangecellReference, Expression<Func<string>> mSExcelSelectCellRangeworkflow, Expression<Func<int>> mSExcelSelectCellRangehandle = null, Expression<Func<string>> mSExcelSelectCellRangeworkbookName = null, Expression<Func<string>> mSExcelSelectCellRangeworksheetName = null, Expression<Func<bool>> mSExcelSelectCellRangeentireRow = null, Expression<Func<bool>> mSExcelSelectCellRangeentireColumn = null)
         {
             var apiCallPath = "/MSExcel/SelectCellRange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSelectCellRange = new JObject();
             var mSExcelSelectCellRangepropCount = 0;
-            if (mSExcelSelectCellRangeHandle != null)
+            if (mSExcelSelectCellRangehandle != null)
             {
-                mSExcelSelectCellRange["Handle"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeHandle);
+                mSExcelSelectCellRange["Handle"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangehandle);
                 mSExcelSelectCellRangepropCount++;
             }
 
-            if (mSExcelSelectCellRangeWorkbookName != null)
+            if (mSExcelSelectCellRangeworkbookName != null)
             {
-                mSExcelSelectCellRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeWorkbookName);
+                mSExcelSelectCellRange["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworkbookName);
                 mSExcelSelectCellRangepropCount++;
             }
 
-            if (mSExcelSelectCellRangeWorksheetName != null)
+            if (mSExcelSelectCellRangeworksheetName != null)
             {
-                mSExcelSelectCellRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeWorksheetName);
-                mSExcelSelectCellRangepropCount++;
-            }
-
-            mSExcelSelectCellRangepropCount++;
-            mSExcelSelectCellRange["CellReference"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeCellReference);
-            if (mSExcelSelectCellRangeEntireRow != null)
-            {
-                mSExcelSelectCellRange["EntireRow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeEntireRow);
-                mSExcelSelectCellRangepropCount++;
-            }
-
-            if (mSExcelSelectCellRangeEntireColumn != null)
-            {
-                mSExcelSelectCellRange["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeEntireColumn);
+                mSExcelSelectCellRange["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworksheetName);
                 mSExcelSelectCellRangepropCount++;
             }
 
             mSExcelSelectCellRangepropCount++;
-            mSExcelSelectCellRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeWorkflow);
+            mSExcelSelectCellRange["CellReference"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangecellReference);
+            if (mSExcelSelectCellRangeentireRow != null)
+            {
+                mSExcelSelectCellRange["EntireRow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeentireRow);
+                mSExcelSelectCellRangepropCount++;
+            }
+
+            if (mSExcelSelectCellRangeentireColumn != null)
+            {
+                mSExcelSelectCellRange["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeentireColumn);
+                mSExcelSelectCellRangepropCount++;
+            }
+
+            mSExcelSelectCellRangepropCount++;
+            mSExcelSelectCellRange["Workflow"] = ExpressionConverter.ConvertO(mSExcelSelectCellRangeworkflow);
             if (mSExcelSelectCellRangepropCount > 0)
             {
                 callPayload.Body = mSExcelSelectCellRange;
@@ -2780,51 +2780,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCopySelection(Expression<Func<string>> mSExcelCopySelectionWorkflow, Expression<Func<int>> mSExcelCopySelectionHandle = null, Expression<Func<string>> mSExcelCopySelectionWorkbookName = null, Expression<Func<string>> mSExcelCopySelectionWorksheetName = null, Expression<Func<string>> mSExcelCopySelectionCellReference = null, Expression<Func<bool>> mSExcelCopySelectionEntireRow = null, Expression<Func<bool>> mSExcelCopySelectionEntireColumn = null)
+        public IWorkflowAction MSExcelCopySelection(Expression<Func<string>> mSExcelCopySelectionworkflow, Expression<Func<int>> mSExcelCopySelectionhandle = null, Expression<Func<string>> mSExcelCopySelectionworkbookName = null, Expression<Func<string>> mSExcelCopySelectionworksheetName = null, Expression<Func<string>> mSExcelCopySelectioncellReference = null, Expression<Func<bool>> mSExcelCopySelectionentireRow = null, Expression<Func<bool>> mSExcelCopySelectionentireColumn = null)
         {
             var apiCallPath = "/MSExcel/CopySelection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCopySelection = new JObject();
             var mSExcelCopySelectionpropCount = 0;
-            if (mSExcelCopySelectionHandle != null)
+            if (mSExcelCopySelectionhandle != null)
             {
-                mSExcelCopySelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCopySelectionHandle);
+                mSExcelCopySelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCopySelectionhandle);
                 mSExcelCopySelectionpropCount++;
             }
 
-            if (mSExcelCopySelectionWorkbookName != null)
+            if (mSExcelCopySelectionworkbookName != null)
             {
-                mSExcelCopySelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionWorkbookName);
+                mSExcelCopySelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworkbookName);
                 mSExcelCopySelectionpropCount++;
             }
 
-            if (mSExcelCopySelectionWorksheetName != null)
+            if (mSExcelCopySelectionworksheetName != null)
             {
-                mSExcelCopySelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionWorksheetName);
+                mSExcelCopySelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworksheetName);
                 mSExcelCopySelectionpropCount++;
             }
 
-            if (mSExcelCopySelectionCellReference != null)
+            if (mSExcelCopySelectioncellReference != null)
             {
-                mSExcelCopySelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCopySelectionCellReference);
+                mSExcelCopySelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCopySelectioncellReference);
                 mSExcelCopySelectionpropCount++;
             }
 
-            if (mSExcelCopySelectionEntireRow != null)
+            if (mSExcelCopySelectionentireRow != null)
             {
-                mSExcelCopySelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionEntireRow);
+                mSExcelCopySelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionentireRow);
                 mSExcelCopySelectionpropCount++;
             }
 
-            if (mSExcelCopySelectionEntireColumn != null)
+            if (mSExcelCopySelectionentireColumn != null)
             {
-                mSExcelCopySelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopySelectionEntireColumn);
+                mSExcelCopySelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopySelectionentireColumn);
                 mSExcelCopySelectionpropCount++;
             }
 
             mSExcelCopySelectionpropCount++;
-            mSExcelCopySelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionWorkflow);
+            mSExcelCopySelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopySelectionworkflow);
             if (mSExcelCopySelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelCopySelection;
@@ -2834,51 +2834,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelCutSelection(Expression<Func<string>> mSExcelCutSelectionWorkflow, Expression<Func<int>> mSExcelCutSelectionHandle = null, Expression<Func<string>> mSExcelCutSelectionWorkbookName = null, Expression<Func<string>> mSExcelCutSelectionWorksheetName = null, Expression<Func<string>> mSExcelCutSelectionCellReference = null, Expression<Func<bool>> mSExcelCutSelectionEntireRow = null, Expression<Func<bool>> mSExcelCutSelectionEntireColumn = null)
+        public IWorkflowAction MSExcelCutSelection(Expression<Func<string>> mSExcelCutSelectionworkflow, Expression<Func<int>> mSExcelCutSelectionhandle = null, Expression<Func<string>> mSExcelCutSelectionworkbookName = null, Expression<Func<string>> mSExcelCutSelectionworksheetName = null, Expression<Func<string>> mSExcelCutSelectioncellReference = null, Expression<Func<bool>> mSExcelCutSelectionentireRow = null, Expression<Func<bool>> mSExcelCutSelectionentireColumn = null)
         {
             var apiCallPath = "/MSExcel/CutSelection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCutSelection = new JObject();
             var mSExcelCutSelectionpropCount = 0;
-            if (mSExcelCutSelectionHandle != null)
+            if (mSExcelCutSelectionhandle != null)
             {
-                mSExcelCutSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCutSelectionHandle);
+                mSExcelCutSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelCutSelectionhandle);
                 mSExcelCutSelectionpropCount++;
             }
 
-            if (mSExcelCutSelectionWorkbookName != null)
+            if (mSExcelCutSelectionworkbookName != null)
             {
-                mSExcelCutSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionWorkbookName);
+                mSExcelCutSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworkbookName);
                 mSExcelCutSelectionpropCount++;
             }
 
-            if (mSExcelCutSelectionWorksheetName != null)
+            if (mSExcelCutSelectionworksheetName != null)
             {
-                mSExcelCutSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionWorksheetName);
+                mSExcelCutSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworksheetName);
                 mSExcelCutSelectionpropCount++;
             }
 
-            if (mSExcelCutSelectionCellReference != null)
+            if (mSExcelCutSelectioncellReference != null)
             {
-                mSExcelCutSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCutSelectionCellReference);
+                mSExcelCutSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelCutSelectioncellReference);
                 mSExcelCutSelectionpropCount++;
             }
 
-            if (mSExcelCutSelectionEntireRow != null)
+            if (mSExcelCutSelectionentireRow != null)
             {
-                mSExcelCutSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionEntireRow);
+                mSExcelCutSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionentireRow);
                 mSExcelCutSelectionpropCount++;
             }
 
-            if (mSExcelCutSelectionEntireColumn != null)
+            if (mSExcelCutSelectionentireColumn != null)
             {
-                mSExcelCutSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutSelectionEntireColumn);
+                mSExcelCutSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutSelectionentireColumn);
                 mSExcelCutSelectionpropCount++;
             }
 
             mSExcelCutSelectionpropCount++;
-            mSExcelCutSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionWorkflow);
+            mSExcelCutSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutSelectionworkflow);
             if (mSExcelCutSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelCutSelection;
@@ -2888,63 +2888,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelPasteIntoSelection(Expression<Func<string>> mSExcelPasteIntoSelectionWorkflow, Expression<Func<int>> mSExcelPasteIntoSelectionHandle = null, Expression<Func<string>> mSExcelPasteIntoSelectionWorkbookName = null, Expression<Func<string>> mSExcelPasteIntoSelectionWorksheetName = null, Expression<Func<bool>> mSExcelPasteIntoSelectionValuesOnly = null, Expression<Func<bool>> mSExcelPasteIntoSelectionSimplePasteOnly = null, Expression<Func<string>> mSExcelPasteIntoSelectionCellReference = null, Expression<Func<bool>> mSExcelPasteIntoSelectionEntireRow = null, Expression<Func<bool>> mSExcelPasteIntoSelectionEntireColumn = null)
+        public IWorkflowAction MSExcelPasteIntoSelection(Expression<Func<string>> mSExcelPasteIntoSelectionworkflow, Expression<Func<int>> mSExcelPasteIntoSelectionhandle = null, Expression<Func<string>> mSExcelPasteIntoSelectionworkbookName = null, Expression<Func<string>> mSExcelPasteIntoSelectionworksheetName = null, Expression<Func<bool>> mSExcelPasteIntoSelectionvaluesOnly = null, Expression<Func<bool>> mSExcelPasteIntoSelectionsimplePasteOnly = null, Expression<Func<string>> mSExcelPasteIntoSelectioncellReference = null, Expression<Func<bool>> mSExcelPasteIntoSelectionentireRow = null, Expression<Func<bool>> mSExcelPasteIntoSelectionentireColumn = null)
         {
             var apiCallPath = "/MSExcel/PasteIntoSelection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelPasteIntoSelection = new JObject();
             var mSExcelPasteIntoSelectionpropCount = 0;
-            if (mSExcelPasteIntoSelectionHandle != null)
+            if (mSExcelPasteIntoSelectionhandle != null)
             {
-                mSExcelPasteIntoSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionHandle);
+                mSExcelPasteIntoSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionhandle);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionWorkbookName != null)
+            if (mSExcelPasteIntoSelectionworkbookName != null)
             {
-                mSExcelPasteIntoSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionWorkbookName);
+                mSExcelPasteIntoSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworkbookName);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionWorksheetName != null)
+            if (mSExcelPasteIntoSelectionworksheetName != null)
             {
-                mSExcelPasteIntoSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionWorksheetName);
+                mSExcelPasteIntoSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworksheetName);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionValuesOnly != null)
+            if (mSExcelPasteIntoSelectionvaluesOnly != null)
             {
-                mSExcelPasteIntoSelection["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionValuesOnly);
+                mSExcelPasteIntoSelection["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionvaluesOnly);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionSimplePasteOnly != null)
+            if (mSExcelPasteIntoSelectionsimplePasteOnly != null)
             {
-                mSExcelPasteIntoSelection["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionSimplePasteOnly);
+                mSExcelPasteIntoSelection["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionsimplePasteOnly);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionCellReference != null)
+            if (mSExcelPasteIntoSelectioncellReference != null)
             {
-                mSExcelPasteIntoSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionCellReference);
+                mSExcelPasteIntoSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectioncellReference);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionEntireRow != null)
+            if (mSExcelPasteIntoSelectionentireRow != null)
             {
-                mSExcelPasteIntoSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionEntireRow);
+                mSExcelPasteIntoSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionentireRow);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
-            if (mSExcelPasteIntoSelectionEntireColumn != null)
+            if (mSExcelPasteIntoSelectionentireColumn != null)
             {
-                mSExcelPasteIntoSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionEntireColumn);
+                mSExcelPasteIntoSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionentireColumn);
                 mSExcelPasteIntoSelectionpropCount++;
             }
 
             mSExcelPasteIntoSelectionpropCount++;
-            mSExcelPasteIntoSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionWorkflow);
+            mSExcelPasteIntoSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelPasteIntoSelectionworkflow);
             if (mSExcelPasteIntoSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelPasteIntoSelection;
@@ -2954,57 +2954,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelInsertOnSelection(Expression<Func<string>> mSExcelInsertOnSelectionWorkflow, Expression<Func<int>> mSExcelInsertOnSelectionHandle = null, Expression<Func<string>> mSExcelInsertOnSelectionWorkbookName = null, Expression<Func<string>> mSExcelInsertOnSelectionWorksheetName = null, Expression<Func<string>> mSExcelInsertOnSelectionCellReference = null, Expression<Func<bool>> mSExcelInsertOnSelectionEntireRow = null, Expression<Func<bool>> mSExcelInsertOnSelectionEntireColumn = null, Expression<Func<mSExcelInsertOnSelectionShiftInput>> mSExcelInsertOnSelectionShift = null)
+        public IWorkflowAction MSExcelInsertOnSelection(Expression<Func<string>> mSExcelInsertOnSelectionworkflow, Expression<Func<int>> mSExcelInsertOnSelectionhandle = null, Expression<Func<string>> mSExcelInsertOnSelectionworkbookName = null, Expression<Func<string>> mSExcelInsertOnSelectionworksheetName = null, Expression<Func<string>> mSExcelInsertOnSelectioncellReference = null, Expression<Func<bool>> mSExcelInsertOnSelectionentireRow = null, Expression<Func<bool>> mSExcelInsertOnSelectionentireColumn = null, Expression<Func<mSExcelInsertOnSelectionshiftInput>> mSExcelInsertOnSelectionshift = null)
         {
             var apiCallPath = "/MSExcel/InsertOnSelection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelInsertOnSelection = new JObject();
             var mSExcelInsertOnSelectionpropCount = 0;
-            if (mSExcelInsertOnSelectionHandle != null)
+            if (mSExcelInsertOnSelectionhandle != null)
             {
-                mSExcelInsertOnSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionHandle);
+                mSExcelInsertOnSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionhandle);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionWorkbookName != null)
+            if (mSExcelInsertOnSelectionworkbookName != null)
             {
-                mSExcelInsertOnSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionWorkbookName);
+                mSExcelInsertOnSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworkbookName);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionWorksheetName != null)
+            if (mSExcelInsertOnSelectionworksheetName != null)
             {
-                mSExcelInsertOnSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionWorksheetName);
+                mSExcelInsertOnSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworksheetName);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionCellReference != null)
+            if (mSExcelInsertOnSelectioncellReference != null)
             {
-                mSExcelInsertOnSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionCellReference);
+                mSExcelInsertOnSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectioncellReference);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionEntireRow != null)
+            if (mSExcelInsertOnSelectionentireRow != null)
             {
-                mSExcelInsertOnSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionEntireRow);
+                mSExcelInsertOnSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionentireRow);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionEntireColumn != null)
+            if (mSExcelInsertOnSelectionentireColumn != null)
             {
-                mSExcelInsertOnSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionEntireColumn);
+                mSExcelInsertOnSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionentireColumn);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
-            if (mSExcelInsertOnSelectionShift != null)
+            if (mSExcelInsertOnSelectionshift != null)
             {
-                mSExcelInsertOnSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionShift);
+                mSExcelInsertOnSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionshift);
                 mSExcelInsertOnSelectionpropCount++;
             }
 
             mSExcelInsertOnSelectionpropCount++;
-            mSExcelInsertOnSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionWorkflow);
+            mSExcelInsertOnSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelInsertOnSelectionworkflow);
             if (mSExcelInsertOnSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelInsertOnSelection;
@@ -3014,57 +3014,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelDeleteSelection(Expression<Func<string>> mSExcelDeleteSelectionWorkflow, Expression<Func<int>> mSExcelDeleteSelectionHandle = null, Expression<Func<string>> mSExcelDeleteSelectionWorkbookName = null, Expression<Func<string>> mSExcelDeleteSelectionWorksheetName = null, Expression<Func<string>> mSExcelDeleteSelectionCellReference = null, Expression<Func<bool>> mSExcelDeleteSelectionEntireRow = null, Expression<Func<bool>> mSExcelDeleteSelectionEntireColumn = null, Expression<Func<mSExcelDeleteSelectionShiftInput>> mSExcelDeleteSelectionShift = null)
+        public IWorkflowAction MSExcelDeleteSelection(Expression<Func<string>> mSExcelDeleteSelectionworkflow, Expression<Func<int>> mSExcelDeleteSelectionhandle = null, Expression<Func<string>> mSExcelDeleteSelectionworkbookName = null, Expression<Func<string>> mSExcelDeleteSelectionworksheetName = null, Expression<Func<string>> mSExcelDeleteSelectioncellReference = null, Expression<Func<bool>> mSExcelDeleteSelectionentireRow = null, Expression<Func<bool>> mSExcelDeleteSelectionentireColumn = null, Expression<Func<mSExcelDeleteSelectionshiftInput>> mSExcelDeleteSelectionshift = null)
         {
             var apiCallPath = "/MSExcel/DeleteSelection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelDeleteSelection = new JObject();
             var mSExcelDeleteSelectionpropCount = 0;
-            if (mSExcelDeleteSelectionHandle != null)
+            if (mSExcelDeleteSelectionhandle != null)
             {
-                mSExcelDeleteSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionHandle);
+                mSExcelDeleteSelection["Handle"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionhandle);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionWorkbookName != null)
+            if (mSExcelDeleteSelectionworkbookName != null)
             {
-                mSExcelDeleteSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionWorkbookName);
+                mSExcelDeleteSelection["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworkbookName);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionWorksheetName != null)
+            if (mSExcelDeleteSelectionworksheetName != null)
             {
-                mSExcelDeleteSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionWorksheetName);
+                mSExcelDeleteSelection["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworksheetName);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionCellReference != null)
+            if (mSExcelDeleteSelectioncellReference != null)
             {
-                mSExcelDeleteSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionCellReference);
+                mSExcelDeleteSelection["CellReference"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectioncellReference);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionEntireRow != null)
+            if (mSExcelDeleteSelectionentireRow != null)
             {
-                mSExcelDeleteSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionEntireRow);
+                mSExcelDeleteSelection["EntireRow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionentireRow);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionEntireColumn != null)
+            if (mSExcelDeleteSelectionentireColumn != null)
             {
-                mSExcelDeleteSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionEntireColumn);
+                mSExcelDeleteSelection["EntireColumn"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionentireColumn);
                 mSExcelDeleteSelectionpropCount++;
             }
 
-            if (mSExcelDeleteSelectionShift != null)
+            if (mSExcelDeleteSelectionshift != null)
             {
-                mSExcelDeleteSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionShift);
+                mSExcelDeleteSelection["Shift"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionshift);
                 mSExcelDeleteSelectionpropCount++;
             }
 
             mSExcelDeleteSelectionpropCount++;
-            mSExcelDeleteSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionWorkflow);
+            mSExcelDeleteSelection["Workflow"] = ExpressionConverter.ConvertO(mSExcelDeleteSelectionworkflow);
             if (mSExcelDeleteSelectionpropCount > 0)
             {
                 callPayload.Body = mSExcelDeleteSelection;
@@ -3074,21 +3074,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelClearExcelClipboard(Expression<Func<string>> mSExcelClearExcelClipboardWorkflow, Expression<Func<int>> mSExcelClearExcelClipboardHandle = null)
+        public IWorkflowAction MSExcelClearExcelClipboard(Expression<Func<string>> mSExcelClearExcelClipboardworkflow, Expression<Func<int>> mSExcelClearExcelClipboardhandle = null)
         {
             var apiCallPath = "/MSExcel/ClearExcelClipboard";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelClearExcelClipboard = new JObject();
             var mSExcelClearExcelClipboardpropCount = 0;
-            if (mSExcelClearExcelClipboardHandle != null)
+            if (mSExcelClearExcelClipboardhandle != null)
             {
-                mSExcelClearExcelClipboard["Handle"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardHandle);
+                mSExcelClearExcelClipboard["Handle"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardhandle);
                 mSExcelClearExcelClipboardpropCount++;
             }
 
             mSExcelClearExcelClipboardpropCount++;
-            mSExcelClearExcelClipboard["Workflow"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardWorkflow);
+            mSExcelClearExcelClipboard["Workflow"] = ExpressionConverter.ConvertO(mSExcelClearExcelClipboardworkflow);
             if (mSExcelClearExcelClipboardpropCount > 0)
             {
                 callPayload.Body = mSExcelClearExcelClipboard;
@@ -3098,95 +3098,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelRunMacroResponse> MSExcelRunMacro(Expression<Func<string>> mSExcelRunMacroMacroName, Expression<Func<string>> mSExcelRunMacroWorkflow, Expression<Func<int>> mSExcelRunMacroHandle = null, Expression<Func<int>> mSExcelRunMacroNumberOfArguments = null, Expression<Func<string>> mSExcelRunMacroArgument1 = null, Expression<Func<string>> mSExcelRunMacroArgument2 = null, Expression<Func<string>> mSExcelRunMacroArgument3 = null, Expression<Func<string>> mSExcelRunMacroArgument4 = null, Expression<Func<string>> mSExcelRunMacroArgument5 = null, Expression<Func<string>> mSExcelRunMacroArgument6 = null, Expression<Func<string>> mSExcelRunMacroArgument7 = null, Expression<Func<string>> mSExcelRunMacroArgument8 = null, Expression<Func<string>> mSExcelRunMacroArgument9 = null, Expression<Func<string>> mSExcelRunMacroArgument10 = null, Expression<Func<bool>> mSExcelRunMacroRunInBackground = null)
+        public IBodyWorkflowAction<MSExcelRunMacroResponse> MSExcelRunMacro(Expression<Func<string>> mSExcelRunMacromacroName, Expression<Func<string>> mSExcelRunMacroworkflow, Expression<Func<int>> mSExcelRunMacrohandle = null, Expression<Func<int>> mSExcelRunMacronumberOfArguments = null, Expression<Func<string>> mSExcelRunMacroargument1 = null, Expression<Func<string>> mSExcelRunMacroargument2 = null, Expression<Func<string>> mSExcelRunMacroargument3 = null, Expression<Func<string>> mSExcelRunMacroargument4 = null, Expression<Func<string>> mSExcelRunMacroargument5 = null, Expression<Func<string>> mSExcelRunMacroargument6 = null, Expression<Func<string>> mSExcelRunMacroargument7 = null, Expression<Func<string>> mSExcelRunMacroargument8 = null, Expression<Func<string>> mSExcelRunMacroargument9 = null, Expression<Func<string>> mSExcelRunMacroargument10 = null, Expression<Func<bool>> mSExcelRunMacrorunInBackground = null)
         {
             var apiCallPath = "/MSExcel/RunMacro";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelRunMacro = new JObject();
             var mSExcelRunMacropropCount = 0;
-            if (mSExcelRunMacroHandle != null)
+            if (mSExcelRunMacrohandle != null)
             {
-                mSExcelRunMacro["Handle"] = ExpressionConverter.ConvertO(mSExcelRunMacroHandle);
+                mSExcelRunMacro["Handle"] = ExpressionConverter.ConvertO(mSExcelRunMacrohandle);
                 mSExcelRunMacropropCount++;
             }
 
             mSExcelRunMacropropCount++;
-            mSExcelRunMacro["MacroName"] = ExpressionConverter.ConvertO(mSExcelRunMacroMacroName);
-            if (mSExcelRunMacroNumberOfArguments != null)
+            mSExcelRunMacro["MacroName"] = ExpressionConverter.ConvertO(mSExcelRunMacromacroName);
+            if (mSExcelRunMacronumberOfArguments != null)
             {
-                mSExcelRunMacro["NumberOfArguments"] = ExpressionConverter.ConvertO(mSExcelRunMacroNumberOfArguments);
+                mSExcelRunMacro["NumberOfArguments"] = ExpressionConverter.ConvertO(mSExcelRunMacronumberOfArguments);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument1 != null)
+            if (mSExcelRunMacroargument1 != null)
             {
-                mSExcelRunMacro["Argument1"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument1);
+                mSExcelRunMacro["Argument1"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument1);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument2 != null)
+            if (mSExcelRunMacroargument2 != null)
             {
-                mSExcelRunMacro["Argument2"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument2);
+                mSExcelRunMacro["Argument2"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument2);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument3 != null)
+            if (mSExcelRunMacroargument3 != null)
             {
-                mSExcelRunMacro["Argument3"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument3);
+                mSExcelRunMacro["Argument3"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument3);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument4 != null)
+            if (mSExcelRunMacroargument4 != null)
             {
-                mSExcelRunMacro["Argument4"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument4);
+                mSExcelRunMacro["Argument4"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument4);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument5 != null)
+            if (mSExcelRunMacroargument5 != null)
             {
-                mSExcelRunMacro["Argument5"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument5);
+                mSExcelRunMacro["Argument5"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument5);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument6 != null)
+            if (mSExcelRunMacroargument6 != null)
             {
-                mSExcelRunMacro["Argument6"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument6);
+                mSExcelRunMacro["Argument6"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument6);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument7 != null)
+            if (mSExcelRunMacroargument7 != null)
             {
-                mSExcelRunMacro["Argument7"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument7);
+                mSExcelRunMacro["Argument7"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument7);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument8 != null)
+            if (mSExcelRunMacroargument8 != null)
             {
-                mSExcelRunMacro["Argument8"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument8);
+                mSExcelRunMacro["Argument8"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument8);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument9 != null)
+            if (mSExcelRunMacroargument9 != null)
             {
-                mSExcelRunMacro["Argument9"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument9);
+                mSExcelRunMacro["Argument9"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument9);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroArgument10 != null)
+            if (mSExcelRunMacroargument10 != null)
             {
-                mSExcelRunMacro["Argument10"] = ExpressionConverter.ConvertO(mSExcelRunMacroArgument10);
+                mSExcelRunMacro["Argument10"] = ExpressionConverter.ConvertO(mSExcelRunMacroargument10);
                 mSExcelRunMacropropCount++;
             }
 
-            if (mSExcelRunMacroRunInBackground != null)
+            if (mSExcelRunMacrorunInBackground != null)
             {
-                mSExcelRunMacro["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelRunMacroRunInBackground);
+                mSExcelRunMacro["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelRunMacrorunInBackground);
                 mSExcelRunMacropropCount++;
             }
 
             mSExcelRunMacropropCount++;
-            mSExcelRunMacro["Workflow"] = ExpressionConverter.ConvertO(mSExcelRunMacroWorkflow);
+            mSExcelRunMacro["Workflow"] = ExpressionConverter.ConvertO(mSExcelRunMacroworkflow);
             if (mSExcelRunMacropropCount > 0)
             {
                 callPayload.Body = mSExcelRunMacro;
@@ -3196,29 +3196,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelAddMacroToWorkbook(Expression<Func<string>> mSExcelAddMacroToWorkbookMacroCode, Expression<Func<string>> mSExcelAddMacroToWorkbookWorkflow, Expression<Func<int>> mSExcelAddMacroToWorkbookHandle = null, Expression<Func<string>> mSExcelAddMacroToWorkbookWorkbookName = null)
+        public IWorkflowAction MSExcelAddMacroToWorkbook(Expression<Func<string>> mSExcelAddMacroToWorkbookmacroCode, Expression<Func<string>> mSExcelAddMacroToWorkbookworkflow, Expression<Func<int>> mSExcelAddMacroToWorkbookhandle = null, Expression<Func<string>> mSExcelAddMacroToWorkbookworkbookName = null)
         {
             var apiCallPath = "/MSExcel/AddMacroToWorkbook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelAddMacroToWorkbook = new JObject();
             var mSExcelAddMacroToWorkbookpropCount = 0;
-            if (mSExcelAddMacroToWorkbookHandle != null)
+            if (mSExcelAddMacroToWorkbookhandle != null)
             {
-                mSExcelAddMacroToWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookHandle);
+                mSExcelAddMacroToWorkbook["Handle"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookhandle);
                 mSExcelAddMacroToWorkbookpropCount++;
             }
 
-            if (mSExcelAddMacroToWorkbookWorkbookName != null)
+            if (mSExcelAddMacroToWorkbookworkbookName != null)
             {
-                mSExcelAddMacroToWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookWorkbookName);
+                mSExcelAddMacroToWorkbook["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookworkbookName);
                 mSExcelAddMacroToWorkbookpropCount++;
             }
 
             mSExcelAddMacroToWorkbookpropCount++;
-            mSExcelAddMacroToWorkbook["MacroCode"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookMacroCode);
+            mSExcelAddMacroToWorkbook["MacroCode"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookmacroCode);
             mSExcelAddMacroToWorkbookpropCount++;
-            mSExcelAddMacroToWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookWorkflow);
+            mSExcelAddMacroToWorkbook["Workflow"] = ExpressionConverter.ConvertO(mSExcelAddMacroToWorkbookworkflow);
             if (mSExcelAddMacroToWorkbookpropCount > 0)
             {
                 callPayload.Body = mSExcelAddMacroToWorkbook;
@@ -3228,27 +3228,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelTrustVBOMInRegistry(Expression<Func<string>> mSExcelTrustVBOMInRegistryWorkflow, Expression<Func<int>> mSExcelTrustVBOMInRegistryExcelVersion = null, Expression<Func<bool>> mSExcelTrustVBOMInRegistryTrustVBOM = null)
+        public IWorkflowAction MSExcelTrustVBOMInRegistry(Expression<Func<string>> mSExcelTrustVBOMInRegistryworkflow, Expression<Func<int>> mSExcelTrustVBOMInRegistryexcelVersion = null, Expression<Func<bool>> mSExcelTrustVBOMInRegistrytrustVBOM = null)
         {
             var apiCallPath = "/MSExcel/TrustVBOMInRegistry";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelTrustVBOMInRegistry = new JObject();
             var mSExcelTrustVBOMInRegistrypropCount = 0;
-            if (mSExcelTrustVBOMInRegistryExcelVersion != null)
+            if (mSExcelTrustVBOMInRegistryexcelVersion != null)
             {
-                mSExcelTrustVBOMInRegistry["ExcelVersion"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryExcelVersion);
+                mSExcelTrustVBOMInRegistry["ExcelVersion"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryexcelVersion);
                 mSExcelTrustVBOMInRegistrypropCount++;
             }
 
-            if (mSExcelTrustVBOMInRegistryTrustVBOM != null)
+            if (mSExcelTrustVBOMInRegistrytrustVBOM != null)
             {
-                mSExcelTrustVBOMInRegistry["TrustVBOM"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryTrustVBOM);
+                mSExcelTrustVBOMInRegistry["TrustVBOM"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistrytrustVBOM);
                 mSExcelTrustVBOMInRegistrypropCount++;
             }
 
             mSExcelTrustVBOMInRegistrypropCount++;
-            mSExcelTrustVBOMInRegistry["Workflow"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryWorkflow);
+            mSExcelTrustVBOMInRegistry["Workflow"] = ExpressionConverter.ConvertO(mSExcelTrustVBOMInRegistryworkflow);
             if (mSExcelTrustVBOMInRegistrypropCount > 0)
             {
                 callPayload.Body = mSExcelTrustVBOMInRegistry;
@@ -3258,23 +3258,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelSetCalculationMode(Expression<Func<int>> mSExcelSetCalculationModeCalculationMode, Expression<Func<string>> mSExcelSetCalculationModeWorkflow, Expression<Func<int>> mSExcelSetCalculationModeHandle = null)
+        public IWorkflowAction MSExcelSetCalculationMode(Expression<Func<int>> mSExcelSetCalculationModecalculationMode, Expression<Func<string>> mSExcelSetCalculationModeworkflow, Expression<Func<int>> mSExcelSetCalculationModehandle = null)
         {
             var apiCallPath = "/MSExcel/SetCalculationMode";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSetCalculationMode = new JObject();
             var mSExcelSetCalculationModepropCount = 0;
-            if (mSExcelSetCalculationModeHandle != null)
+            if (mSExcelSetCalculationModehandle != null)
             {
-                mSExcelSetCalculationMode["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModeHandle);
+                mSExcelSetCalculationMode["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModehandle);
                 mSExcelSetCalculationModepropCount++;
             }
 
             mSExcelSetCalculationModepropCount++;
-            mSExcelSetCalculationMode["CalculationMode"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModeCalculationMode);
+            mSExcelSetCalculationMode["CalculationMode"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModecalculationMode);
             mSExcelSetCalculationModepropCount++;
-            mSExcelSetCalculationMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModeWorkflow);
+            mSExcelSetCalculationMode["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCalculationModeworkflow);
             if (mSExcelSetCalculationModepropCount > 0)
             {
                 callPayload.Body = mSExcelSetCalculationMode;
@@ -3284,29 +3284,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSExcelExecuteCommandBarObject(Expression<Func<string>> mSExcelExecuteCommandBarObjectObjectId, Expression<Func<string>> mSExcelExecuteCommandBarObjectWorkflow, Expression<Func<int>> mSExcelExecuteCommandBarObjectHandle = null, Expression<Func<bool>> mSExcelExecuteCommandBarObjectRunInBackground = null)
+        public IWorkflowAction MSExcelExecuteCommandBarObject(Expression<Func<string>> mSExcelExecuteCommandBarObjectobjectId, Expression<Func<string>> mSExcelExecuteCommandBarObjectworkflow, Expression<Func<int>> mSExcelExecuteCommandBarObjecthandle = null, Expression<Func<bool>> mSExcelExecuteCommandBarObjectrunInBackground = null)
         {
             var apiCallPath = "/MSExcel/ExecuteCommandBarObject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelExecuteCommandBarObject = new JObject();
             var mSExcelExecuteCommandBarObjectpropCount = 0;
-            if (mSExcelExecuteCommandBarObjectHandle != null)
+            if (mSExcelExecuteCommandBarObjecthandle != null)
             {
-                mSExcelExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectHandle);
+                mSExcelExecuteCommandBarObject["Handle"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjecthandle);
                 mSExcelExecuteCommandBarObjectpropCount++;
             }
 
             mSExcelExecuteCommandBarObjectpropCount++;
-            mSExcelExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectObjectId);
-            if (mSExcelExecuteCommandBarObjectRunInBackground != null)
+            mSExcelExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectobjectId);
+            if (mSExcelExecuteCommandBarObjectrunInBackground != null)
             {
-                mSExcelExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectRunInBackground);
+                mSExcelExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectrunInBackground);
                 mSExcelExecuteCommandBarObjectpropCount++;
             }
 
             mSExcelExecuteCommandBarObjectpropCount++;
-            mSExcelExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectWorkflow);
+            mSExcelExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelExecuteCommandBarObjectworkflow);
             if (mSExcelExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelExecuteCommandBarObject;
@@ -3316,91 +3316,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCopyBetweenCellsResponse> MSExcelCopyBetweenCells(Expression<Func<string>> mSExcelCopyBetweenCellsSourceCellReference, Expression<Func<string>> mSExcelCopyBetweenCellsTargetCellReference, Expression<Func<string>> mSExcelCopyBetweenCellsWorkflow, Expression<Func<int>> mSExcelCopyBetweenCellsSourceHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellsSourceWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellsSourceWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellsSourceEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellsSourceEntireColumn = null, Expression<Func<int>> mSExcelCopyBetweenCellsTargetHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellsTargetWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellsTargetWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellsTargetEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellsTargetEntireColumn = null, Expression<Func<bool>> mSExcelCopyBetweenCellsValuesOnly = null, Expression<Func<bool>> mSExcelCopyBetweenCellsSimplePasteOnly = null)
+        public IBodyWorkflowAction<MSExcelCopyBetweenCellsResponse> MSExcelCopyBetweenCells(Expression<Func<string>> mSExcelCopyBetweenCellssourceCellReference, Expression<Func<string>> mSExcelCopyBetweenCellstargetCellReference, Expression<Func<string>> mSExcelCopyBetweenCellsworkflow, Expression<Func<int>> mSExcelCopyBetweenCellssourceHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellssourceWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellssourceWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellssourceEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellssourceEntireColumn = null, Expression<Func<int>> mSExcelCopyBetweenCellstargetHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellstargetWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellstargetWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellstargetEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellstargetEntireColumn = null, Expression<Func<bool>> mSExcelCopyBetweenCellsvaluesOnly = null, Expression<Func<bool>> mSExcelCopyBetweenCellssimplePasteOnly = null)
         {
             var apiCallPath = "/MSExcel/CopyBetweenCells";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCopyBetweenCells = new JObject();
             var mSExcelCopyBetweenCellspropCount = 0;
-            if (mSExcelCopyBetweenCellsSourceHandle != null)
+            if (mSExcelCopyBetweenCellssourceHandle != null)
             {
-                mSExcelCopyBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceHandle);
+                mSExcelCopyBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceHandle);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
-            if (mSExcelCopyBetweenCellsSourceWorkbookName != null)
+            if (mSExcelCopyBetweenCellssourceWorkbookName != null)
             {
-                mSExcelCopyBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceWorkbookName);
+                mSExcelCopyBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceWorkbookName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
-            if (mSExcelCopyBetweenCellsSourceWorksheetName != null)
+            if (mSExcelCopyBetweenCellssourceWorksheetName != null)
             {
-                mSExcelCopyBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceWorksheetName);
-                mSExcelCopyBetweenCellspropCount++;
-            }
-
-            mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceCellReference);
-            if (mSExcelCopyBetweenCellsSourceEntireRow != null)
-            {
-                mSExcelCopyBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceEntireRow);
-                mSExcelCopyBetweenCellspropCount++;
-            }
-
-            if (mSExcelCopyBetweenCellsSourceEntireColumn != null)
-            {
-                mSExcelCopyBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSourceEntireColumn);
-                mSExcelCopyBetweenCellspropCount++;
-            }
-
-            if (mSExcelCopyBetweenCellsTargetHandle != null)
-            {
-                mSExcelCopyBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetHandle);
-                mSExcelCopyBetweenCellspropCount++;
-            }
-
-            if (mSExcelCopyBetweenCellsTargetWorkbookName != null)
-            {
-                mSExcelCopyBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetWorkbookName);
-                mSExcelCopyBetweenCellspropCount++;
-            }
-
-            if (mSExcelCopyBetweenCellsTargetWorksheetName != null)
-            {
-                mSExcelCopyBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetWorksheetName);
+                mSExcelCopyBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceWorksheetName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetCellReference);
-            if (mSExcelCopyBetweenCellsTargetEntireRow != null)
+            mSExcelCopyBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceCellReference);
+            if (mSExcelCopyBetweenCellssourceEntireRow != null)
             {
-                mSExcelCopyBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetEntireRow);
+                mSExcelCopyBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceEntireRow);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
-            if (mSExcelCopyBetweenCellsTargetEntireColumn != null)
+            if (mSExcelCopyBetweenCellssourceEntireColumn != null)
             {
-                mSExcelCopyBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsTargetEntireColumn);
+                mSExcelCopyBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssourceEntireColumn);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
-            if (mSExcelCopyBetweenCellsValuesOnly != null)
+            if (mSExcelCopyBetweenCellstargetHandle != null)
             {
-                mSExcelCopyBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsValuesOnly);
+                mSExcelCopyBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetHandle);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
-            if (mSExcelCopyBetweenCellsSimplePasteOnly != null)
+            if (mSExcelCopyBetweenCellstargetWorkbookName != null)
             {
-                mSExcelCopyBetweenCells["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsSimplePasteOnly);
+                mSExcelCopyBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetWorkbookName);
+                mSExcelCopyBetweenCellspropCount++;
+            }
+
+            if (mSExcelCopyBetweenCellstargetWorksheetName != null)
+            {
+                mSExcelCopyBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetWorksheetName);
                 mSExcelCopyBetweenCellspropCount++;
             }
 
             mSExcelCopyBetweenCellspropCount++;
-            mSExcelCopyBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsWorkflow);
+            mSExcelCopyBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetCellReference);
+            if (mSExcelCopyBetweenCellstargetEntireRow != null)
+            {
+                mSExcelCopyBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetEntireRow);
+                mSExcelCopyBetweenCellspropCount++;
+            }
+
+            if (mSExcelCopyBetweenCellstargetEntireColumn != null)
+            {
+                mSExcelCopyBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellstargetEntireColumn);
+                mSExcelCopyBetweenCellspropCount++;
+            }
+
+            if (mSExcelCopyBetweenCellsvaluesOnly != null)
+            {
+                mSExcelCopyBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsvaluesOnly);
+                mSExcelCopyBetweenCellspropCount++;
+            }
+
+            if (mSExcelCopyBetweenCellssimplePasteOnly != null)
+            {
+                mSExcelCopyBetweenCells["SimplePasteOnly"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellssimplePasteOnly);
+                mSExcelCopyBetweenCellspropCount++;
+            }
+
+            mSExcelCopyBetweenCellspropCount++;
+            mSExcelCopyBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCopyBetweenCellsworkflow);
             if (mSExcelCopyBetweenCellspropCount > 0)
             {
                 callPayload.Body = mSExcelCopyBetweenCells;
@@ -3410,85 +3410,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCutBetweenCellsResponse> MSExcelCutBetweenCells(Expression<Func<string>> mSExcelCutBetweenCellsSourceCellReference, Expression<Func<string>> mSExcelCutBetweenCellsTargetCellReference, Expression<Func<string>> mSExcelCutBetweenCellsWorkflow, Expression<Func<int>> mSExcelCutBetweenCellsSourceHandle = null, Expression<Func<string>> mSExcelCutBetweenCellsSourceWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellsSourceWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellsSourceEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellsSourceEntireColumn = null, Expression<Func<int>> mSExcelCutBetweenCellsTargetHandle = null, Expression<Func<string>> mSExcelCutBetweenCellsTargetWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellsTargetWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellsTargetEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellsTargetEntireColumn = null, Expression<Func<bool>> mSExcelCutBetweenCellsValuesOnly = null)
+        public IBodyWorkflowAction<MSExcelCutBetweenCellsResponse> MSExcelCutBetweenCells(Expression<Func<string>> mSExcelCutBetweenCellssourceCellReference, Expression<Func<string>> mSExcelCutBetweenCellstargetCellReference, Expression<Func<string>> mSExcelCutBetweenCellsworkflow, Expression<Func<int>> mSExcelCutBetweenCellssourceHandle = null, Expression<Func<string>> mSExcelCutBetweenCellssourceWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellssourceWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellssourceEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellssourceEntireColumn = null, Expression<Func<int>> mSExcelCutBetweenCellstargetHandle = null, Expression<Func<string>> mSExcelCutBetweenCellstargetWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellstargetWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellstargetEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellstargetEntireColumn = null, Expression<Func<bool>> mSExcelCutBetweenCellsvaluesOnly = null)
         {
             var apiCallPath = "/MSExcel/CutBetweenCells";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCutBetweenCells = new JObject();
             var mSExcelCutBetweenCellspropCount = 0;
-            if (mSExcelCutBetweenCellsSourceHandle != null)
+            if (mSExcelCutBetweenCellssourceHandle != null)
             {
-                mSExcelCutBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceHandle);
+                mSExcelCutBetweenCells["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceHandle);
                 mSExcelCutBetweenCellspropCount++;
             }
 
-            if (mSExcelCutBetweenCellsSourceWorkbookName != null)
+            if (mSExcelCutBetweenCellssourceWorkbookName != null)
             {
-                mSExcelCutBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceWorkbookName);
+                mSExcelCutBetweenCells["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceWorkbookName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
-            if (mSExcelCutBetweenCellsSourceWorksheetName != null)
+            if (mSExcelCutBetweenCellssourceWorksheetName != null)
             {
-                mSExcelCutBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceWorksheetName);
-                mSExcelCutBetweenCellspropCount++;
-            }
-
-            mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceCellReference);
-            if (mSExcelCutBetweenCellsSourceEntireRow != null)
-            {
-                mSExcelCutBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceEntireRow);
-                mSExcelCutBetweenCellspropCount++;
-            }
-
-            if (mSExcelCutBetweenCellsSourceEntireColumn != null)
-            {
-                mSExcelCutBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsSourceEntireColumn);
-                mSExcelCutBetweenCellspropCount++;
-            }
-
-            if (mSExcelCutBetweenCellsTargetHandle != null)
-            {
-                mSExcelCutBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetHandle);
-                mSExcelCutBetweenCellspropCount++;
-            }
-
-            if (mSExcelCutBetweenCellsTargetWorkbookName != null)
-            {
-                mSExcelCutBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetWorkbookName);
-                mSExcelCutBetweenCellspropCount++;
-            }
-
-            if (mSExcelCutBetweenCellsTargetWorksheetName != null)
-            {
-                mSExcelCutBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetWorksheetName);
+                mSExcelCutBetweenCells["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceWorksheetName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetCellReference);
-            if (mSExcelCutBetweenCellsTargetEntireRow != null)
+            mSExcelCutBetweenCells["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceCellReference);
+            if (mSExcelCutBetweenCellssourceEntireRow != null)
             {
-                mSExcelCutBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetEntireRow);
+                mSExcelCutBetweenCells["SourceEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceEntireRow);
                 mSExcelCutBetweenCellspropCount++;
             }
 
-            if (mSExcelCutBetweenCellsTargetEntireColumn != null)
+            if (mSExcelCutBetweenCellssourceEntireColumn != null)
             {
-                mSExcelCutBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsTargetEntireColumn);
+                mSExcelCutBetweenCells["SourceEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellssourceEntireColumn);
                 mSExcelCutBetweenCellspropCount++;
             }
 
-            if (mSExcelCutBetweenCellsValuesOnly != null)
+            if (mSExcelCutBetweenCellstargetHandle != null)
             {
-                mSExcelCutBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsValuesOnly);
+                mSExcelCutBetweenCells["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetHandle);
+                mSExcelCutBetweenCellspropCount++;
+            }
+
+            if (mSExcelCutBetweenCellstargetWorkbookName != null)
+            {
+                mSExcelCutBetweenCells["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetWorkbookName);
+                mSExcelCutBetweenCellspropCount++;
+            }
+
+            if (mSExcelCutBetweenCellstargetWorksheetName != null)
+            {
+                mSExcelCutBetweenCells["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetWorksheetName);
                 mSExcelCutBetweenCellspropCount++;
             }
 
             mSExcelCutBetweenCellspropCount++;
-            mSExcelCutBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsWorkflow);
+            mSExcelCutBetweenCells["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetCellReference);
+            if (mSExcelCutBetweenCellstargetEntireRow != null)
+            {
+                mSExcelCutBetweenCells["TargetEntireRow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetEntireRow);
+                mSExcelCutBetweenCellspropCount++;
+            }
+
+            if (mSExcelCutBetweenCellstargetEntireColumn != null)
+            {
+                mSExcelCutBetweenCells["TargetEntireColumn"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellstargetEntireColumn);
+                mSExcelCutBetweenCellspropCount++;
+            }
+
+            if (mSExcelCutBetweenCellsvaluesOnly != null)
+            {
+                mSExcelCutBetweenCells["ValuesOnly"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsvaluesOnly);
+                mSExcelCutBetweenCellspropCount++;
+            }
+
+            mSExcelCutBetweenCellspropCount++;
+            mSExcelCutBetweenCells["Workflow"] = ExpressionConverter.ConvertO(mSExcelCutBetweenCellsworkflow);
             if (mSExcelCutBetweenCellspropCount > 0)
             {
                 callPayload.Body = mSExcelCutBetweenCells;
@@ -3498,21 +3498,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelMinimiseWindowResponse> MSExcelMinimiseWindow(Expression<Func<string>> mSExcelMinimiseWindowWorkflow, Expression<Func<int>> mSExcelMinimiseWindowHandle = null)
+        public IBodyWorkflowAction<MSExcelMinimiseWindowResponse> MSExcelMinimiseWindow(Expression<Func<string>> mSExcelMinimiseWindowworkflow, Expression<Func<int>> mSExcelMinimiseWindowhandle = null)
         {
             var apiCallPath = "/MSExcel/MinimiseWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelMinimiseWindow = new JObject();
             var mSExcelMinimiseWindowpropCount = 0;
-            if (mSExcelMinimiseWindowHandle != null)
+            if (mSExcelMinimiseWindowhandle != null)
             {
-                mSExcelMinimiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowHandle);
+                mSExcelMinimiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowhandle);
                 mSExcelMinimiseWindowpropCount++;
             }
 
             mSExcelMinimiseWindowpropCount++;
-            mSExcelMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowWorkflow);
+            mSExcelMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMinimiseWindowworkflow);
             if (mSExcelMinimiseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelMinimiseWindow;
@@ -3522,21 +3522,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelMaximiseWindowResponse> MSExcelMaximiseWindow(Expression<Func<string>> mSExcelMaximiseWindowWorkflow, Expression<Func<int>> mSExcelMaximiseWindowHandle = null)
+        public IBodyWorkflowAction<MSExcelMaximiseWindowResponse> MSExcelMaximiseWindow(Expression<Func<string>> mSExcelMaximiseWindowworkflow, Expression<Func<int>> mSExcelMaximiseWindowhandle = null)
         {
             var apiCallPath = "/MSExcel/MaximiseWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelMaximiseWindow = new JObject();
             var mSExcelMaximiseWindowpropCount = 0;
-            if (mSExcelMaximiseWindowHandle != null)
+            if (mSExcelMaximiseWindowhandle != null)
             {
-                mSExcelMaximiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowHandle);
+                mSExcelMaximiseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowhandle);
                 mSExcelMaximiseWindowpropCount++;
             }
 
             mSExcelMaximiseWindowpropCount++;
-            mSExcelMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowWorkflow);
+            mSExcelMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelMaximiseWindowworkflow);
             if (mSExcelMaximiseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelMaximiseWindow;
@@ -3546,21 +3546,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelNormaliseWindowResponse> MSExcelNormaliseWindow(Expression<Func<string>> mSExcelNormaliseWindowWorkflow, Expression<Func<int>> mSExcelNormaliseWindowHandle = null)
+        public IBodyWorkflowAction<MSExcelNormaliseWindowResponse> MSExcelNormaliseWindow(Expression<Func<string>> mSExcelNormaliseWindowworkflow, Expression<Func<int>> mSExcelNormaliseWindowhandle = null)
         {
             var apiCallPath = "/MSExcel/NormaliseWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelNormaliseWindow = new JObject();
             var mSExcelNormaliseWindowpropCount = 0;
-            if (mSExcelNormaliseWindowHandle != null)
+            if (mSExcelNormaliseWindowhandle != null)
             {
-                mSExcelNormaliseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowHandle);
+                mSExcelNormaliseWindow["Handle"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowhandle);
                 mSExcelNormaliseWindowpropCount++;
             }
 
             mSExcelNormaliseWindowpropCount++;
-            mSExcelNormaliseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowWorkflow);
+            mSExcelNormaliseWindow["Workflow"] = ExpressionConverter.ConvertO(mSExcelNormaliseWindowworkflow);
             if (mSExcelNormaliseWindowpropCount > 0)
             {
                 callPayload.Body = mSExcelNormaliseWindow;
@@ -3570,55 +3570,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetAndSetCellValueResponse> MSExcelGetAndSetCellValue(Expression<Func<string>> mSExcelGetAndSetCellValueSourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValueTargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValueWorkflow, Expression<Func<int>> mSExcelGetAndSetCellValueSourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValueSourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValueSourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValueTargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValueTargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValueTargetWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetAndSetCellValueResponse> MSExcelGetAndSetCellValue(Expression<Func<string>> mSExcelGetAndSetCellValuesourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValuetargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValueworkflow, Expression<Func<int>> mSExcelGetAndSetCellValuesourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValuesourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValuesourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValuetargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValuetargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValuetargetWorksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetAndSetCellValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetAndSetCellValue = new JObject();
             var mSExcelGetAndSetCellValuepropCount = 0;
-            if (mSExcelGetAndSetCellValueSourceHandle != null)
+            if (mSExcelGetAndSetCellValuesourceHandle != null)
             {
-                mSExcelGetAndSetCellValue["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueSourceHandle);
+                mSExcelGetAndSetCellValue["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceHandle);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
-            if (mSExcelGetAndSetCellValueSourceWorkbookName != null)
+            if (mSExcelGetAndSetCellValuesourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueSourceWorkbookName);
+                mSExcelGetAndSetCellValue["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceWorkbookName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
-            if (mSExcelGetAndSetCellValueSourceWorksheetName != null)
+            if (mSExcelGetAndSetCellValuesourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueSourceWorksheetName);
-                mSExcelGetAndSetCellValuepropCount++;
-            }
-
-            mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueSourceCellReference);
-            if (mSExcelGetAndSetCellValueTargetHandle != null)
-            {
-                mSExcelGetAndSetCellValue["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueTargetHandle);
-                mSExcelGetAndSetCellValuepropCount++;
-            }
-
-            if (mSExcelGetAndSetCellValueTargetWorkbookName != null)
-            {
-                mSExcelGetAndSetCellValue["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueTargetWorkbookName);
-                mSExcelGetAndSetCellValuepropCount++;
-            }
-
-            if (mSExcelGetAndSetCellValueTargetWorksheetName != null)
-            {
-                mSExcelGetAndSetCellValue["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueTargetWorksheetName);
+                mSExcelGetAndSetCellValue["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceWorksheetName);
                 mSExcelGetAndSetCellValuepropCount++;
             }
 
             mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueTargetCellReference);
+            mSExcelGetAndSetCellValue["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuesourceCellReference);
+            if (mSExcelGetAndSetCellValuetargetHandle != null)
+            {
+                mSExcelGetAndSetCellValue["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetHandle);
+                mSExcelGetAndSetCellValuepropCount++;
+            }
+
+            if (mSExcelGetAndSetCellValuetargetWorkbookName != null)
+            {
+                mSExcelGetAndSetCellValue["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetWorkbookName);
+                mSExcelGetAndSetCellValuepropCount++;
+            }
+
+            if (mSExcelGetAndSetCellValuetargetWorksheetName != null)
+            {
+                mSExcelGetAndSetCellValue["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetWorksheetName);
+                mSExcelGetAndSetCellValuepropCount++;
+            }
+
             mSExcelGetAndSetCellValuepropCount++;
-            mSExcelGetAndSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueWorkflow);
+            mSExcelGetAndSetCellValue["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValuetargetCellReference);
+            mSExcelGetAndSetCellValuepropCount++;
+            mSExcelGetAndSetCellValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValueworkflow);
             if (mSExcelGetAndSetCellValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellValue;
@@ -3628,55 +3628,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetAndSetCellValue2Response> MSExcelGetAndSetCellValue2(Expression<Func<string>> mSExcelGetAndSetCellValue2SourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2TargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2Workflow, Expression<Func<int>> mSExcelGetAndSetCellValue2SourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2SourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2SourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValue2TargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2TargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2TargetWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetAndSetCellValue2Response> MSExcelGetAndSetCellValue2(Expression<Func<string>> mSExcelGetAndSetCellValue2sourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2targetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2workflow, Expression<Func<int>> mSExcelGetAndSetCellValue2sourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2sourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2sourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValue2targetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2targetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2targetWorksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetAndSetCellValue2";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetAndSetCellValue2 = new JObject();
             var mSExcelGetAndSetCellValue2propCount = 0;
-            if (mSExcelGetAndSetCellValue2SourceHandle != null)
+            if (mSExcelGetAndSetCellValue2sourceHandle != null)
             {
-                mSExcelGetAndSetCellValue2["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2SourceHandle);
+                mSExcelGetAndSetCellValue2["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceHandle);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
-            if (mSExcelGetAndSetCellValue2SourceWorkbookName != null)
+            if (mSExcelGetAndSetCellValue2sourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellValue2["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2SourceWorkbookName);
+                mSExcelGetAndSetCellValue2["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceWorkbookName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
-            if (mSExcelGetAndSetCellValue2SourceWorksheetName != null)
+            if (mSExcelGetAndSetCellValue2sourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellValue2["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2SourceWorksheetName);
-                mSExcelGetAndSetCellValue2propCount++;
-            }
-
-            mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2SourceCellReference);
-            if (mSExcelGetAndSetCellValue2TargetHandle != null)
-            {
-                mSExcelGetAndSetCellValue2["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2TargetHandle);
-                mSExcelGetAndSetCellValue2propCount++;
-            }
-
-            if (mSExcelGetAndSetCellValue2TargetWorkbookName != null)
-            {
-                mSExcelGetAndSetCellValue2["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2TargetWorkbookName);
-                mSExcelGetAndSetCellValue2propCount++;
-            }
-
-            if (mSExcelGetAndSetCellValue2TargetWorksheetName != null)
-            {
-                mSExcelGetAndSetCellValue2["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2TargetWorksheetName);
+                mSExcelGetAndSetCellValue2["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceWorksheetName);
                 mSExcelGetAndSetCellValue2propCount++;
             }
 
             mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2TargetCellReference);
+            mSExcelGetAndSetCellValue2["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2sourceCellReference);
+            if (mSExcelGetAndSetCellValue2targetHandle != null)
+            {
+                mSExcelGetAndSetCellValue2["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetHandle);
+                mSExcelGetAndSetCellValue2propCount++;
+            }
+
+            if (mSExcelGetAndSetCellValue2targetWorkbookName != null)
+            {
+                mSExcelGetAndSetCellValue2["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetWorkbookName);
+                mSExcelGetAndSetCellValue2propCount++;
+            }
+
+            if (mSExcelGetAndSetCellValue2targetWorksheetName != null)
+            {
+                mSExcelGetAndSetCellValue2["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetWorksheetName);
+                mSExcelGetAndSetCellValue2propCount++;
+            }
+
             mSExcelGetAndSetCellValue2propCount++;
-            mSExcelGetAndSetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2Workflow);
+            mSExcelGetAndSetCellValue2["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2targetCellReference);
+            mSExcelGetAndSetCellValue2propCount++;
+            mSExcelGetAndSetCellValue2["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellValue2workflow);
             if (mSExcelGetAndSetCellValue2propCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellValue2;
@@ -3686,55 +3686,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetAndSetCellTextResponse> MSExcelGetAndSetCellText(Expression<Func<string>> mSExcelGetAndSetCellTextSourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellTextTargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellTextWorkflow, Expression<Func<int>> mSExcelGetAndSetCellTextSourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTextSourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTextSourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellTextTargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTextTargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTextTargetWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetAndSetCellTextResponse> MSExcelGetAndSetCellText(Expression<Func<string>> mSExcelGetAndSetCellTextsourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellTexttargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellTextworkflow, Expression<Func<int>> mSExcelGetAndSetCellTextsourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTextsourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTextsourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellTexttargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTexttargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTexttargetWorksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetAndSetCellText";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetAndSetCellText = new JObject();
             var mSExcelGetAndSetCellTextpropCount = 0;
-            if (mSExcelGetAndSetCellTextSourceHandle != null)
+            if (mSExcelGetAndSetCellTextsourceHandle != null)
             {
-                mSExcelGetAndSetCellText["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextSourceHandle);
+                mSExcelGetAndSetCellText["SourceHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceHandle);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
-            if (mSExcelGetAndSetCellTextSourceWorkbookName != null)
+            if (mSExcelGetAndSetCellTextsourceWorkbookName != null)
             {
-                mSExcelGetAndSetCellText["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextSourceWorkbookName);
+                mSExcelGetAndSetCellText["SourceWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceWorkbookName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
-            if (mSExcelGetAndSetCellTextSourceWorksheetName != null)
+            if (mSExcelGetAndSetCellTextsourceWorksheetName != null)
             {
-                mSExcelGetAndSetCellText["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextSourceWorksheetName);
-                mSExcelGetAndSetCellTextpropCount++;
-            }
-
-            mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextSourceCellReference);
-            if (mSExcelGetAndSetCellTextTargetHandle != null)
-            {
-                mSExcelGetAndSetCellText["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextTargetHandle);
-                mSExcelGetAndSetCellTextpropCount++;
-            }
-
-            if (mSExcelGetAndSetCellTextTargetWorkbookName != null)
-            {
-                mSExcelGetAndSetCellText["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextTargetWorkbookName);
-                mSExcelGetAndSetCellTextpropCount++;
-            }
-
-            if (mSExcelGetAndSetCellTextTargetWorksheetName != null)
-            {
-                mSExcelGetAndSetCellText["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextTargetWorksheetName);
+                mSExcelGetAndSetCellText["SourceWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceWorksheetName);
                 mSExcelGetAndSetCellTextpropCount++;
             }
 
             mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextTargetCellReference);
+            mSExcelGetAndSetCellText["SourceCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextsourceCellReference);
+            if (mSExcelGetAndSetCellTexttargetHandle != null)
+            {
+                mSExcelGetAndSetCellText["TargetHandle"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetHandle);
+                mSExcelGetAndSetCellTextpropCount++;
+            }
+
+            if (mSExcelGetAndSetCellTexttargetWorkbookName != null)
+            {
+                mSExcelGetAndSetCellText["TargetWorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetWorkbookName);
+                mSExcelGetAndSetCellTextpropCount++;
+            }
+
+            if (mSExcelGetAndSetCellTexttargetWorksheetName != null)
+            {
+                mSExcelGetAndSetCellText["TargetWorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetWorksheetName);
+                mSExcelGetAndSetCellTextpropCount++;
+            }
+
             mSExcelGetAndSetCellTextpropCount++;
-            mSExcelGetAndSetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextWorkflow);
+            mSExcelGetAndSetCellText["TargetCellReference"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTexttargetCellReference);
+            mSExcelGetAndSetCellTextpropCount++;
+            mSExcelGetAndSetCellText["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetAndSetCellTextworkflow);
             if (mSExcelGetAndSetCellTextpropCount > 0)
             {
                 callPayload.Body = mSExcelGetAndSetCellText;
@@ -3744,47 +3744,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse> MSExcelCheckOLEObject(Expression<Func<string>> mSExcelCheckOLEObjectOLEObjectName, Expression<Func<string>> mSExcelCheckOLEObjectWorkflow, Expression<Func<int>> mSExcelCheckOLEObjectHandle = null, Expression<Func<string>> mSExcelCheckOLEObjectWorkbookName = null, Expression<Func<string>> mSExcelCheckOLEObjectWorksheetName = null, Expression<Func<bool>> mSExcelCheckOLEObjectChecked = null, Expression<Func<bool>> mSExcelCheckOLEObjectRunInBackground = null)
+        public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse> MSExcelCheckOLEObject(Expression<Func<string>> mSExcelCheckOLEObjectoLEObjectName, Expression<Func<string>> mSExcelCheckOLEObjectworkflow, Expression<Func<int>> mSExcelCheckOLEObjecthandle = null, Expression<Func<string>> mSExcelCheckOLEObjectworkbookName = null, Expression<Func<string>> mSExcelCheckOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelCheckOLEObjectchecked = null, Expression<Func<bool>> mSExcelCheckOLEObjectrunInBackground = null)
         {
             var apiCallPath = "/MSExcel/CheckOLEObject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelCheckOLEObject = new JObject();
             var mSExcelCheckOLEObjectpropCount = 0;
-            if (mSExcelCheckOLEObjectHandle != null)
+            if (mSExcelCheckOLEObjecthandle != null)
             {
-                mSExcelCheckOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectHandle);
+                mSExcelCheckOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjecthandle);
                 mSExcelCheckOLEObjectpropCount++;
             }
 
-            if (mSExcelCheckOLEObjectWorkbookName != null)
+            if (mSExcelCheckOLEObjectworkbookName != null)
             {
-                mSExcelCheckOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectWorkbookName);
+                mSExcelCheckOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworkbookName);
                 mSExcelCheckOLEObjectpropCount++;
             }
 
-            if (mSExcelCheckOLEObjectWorksheetName != null)
+            if (mSExcelCheckOLEObjectworksheetName != null)
             {
-                mSExcelCheckOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectWorksheetName);
-                mSExcelCheckOLEObjectpropCount++;
-            }
-
-            mSExcelCheckOLEObjectpropCount++;
-            mSExcelCheckOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectOLEObjectName);
-            if (mSExcelCheckOLEObjectChecked != null)
-            {
-                mSExcelCheckOLEObject["Checked"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectChecked);
-                mSExcelCheckOLEObjectpropCount++;
-            }
-
-            if (mSExcelCheckOLEObjectRunInBackground != null)
-            {
-                mSExcelCheckOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectRunInBackground);
+                mSExcelCheckOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworksheetName);
                 mSExcelCheckOLEObjectpropCount++;
             }
 
             mSExcelCheckOLEObjectpropCount++;
-            mSExcelCheckOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectWorkflow);
+            mSExcelCheckOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectoLEObjectName);
+            if (mSExcelCheckOLEObjectchecked != null)
+            {
+                mSExcelCheckOLEObject["Checked"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectchecked);
+                mSExcelCheckOLEObjectpropCount++;
+            }
+
+            if (mSExcelCheckOLEObjectrunInBackground != null)
+            {
+                mSExcelCheckOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectrunInBackground);
+                mSExcelCheckOLEObjectpropCount++;
+            }
+
+            mSExcelCheckOLEObjectpropCount++;
+            mSExcelCheckOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelCheckOLEObjectworkflow);
             if (mSExcelCheckOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelCheckOLEObject;
@@ -3794,47 +3794,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelInputTextIntoOLEObjectResponse> MSExcelInputTextIntoOLEObject(Expression<Func<string>> mSExcelInputTextIntoOLEObjectOLEObjectName, Expression<Func<string>> mSExcelInputTextIntoOLEObjectWorkflow, Expression<Func<int>> mSExcelInputTextIntoOLEObjectHandle = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectWorkbookName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectWorksheetName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectTextToInput = null, Expression<Func<bool>> mSExcelInputTextIntoOLEObjectRunInBackground = null)
+        public IBodyWorkflowAction<MSExcelInputTextIntoOLEObjectResponse> MSExcelInputTextIntoOLEObject(Expression<Func<string>> mSExcelInputTextIntoOLEObjectoLEObjectName, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworkflow, Expression<Func<int>> mSExcelInputTextIntoOLEObjecthandle = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworkbookName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworksheetName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjecttextToInput = null, Expression<Func<bool>> mSExcelInputTextIntoOLEObjectrunInBackground = null)
         {
             var apiCallPath = "/MSExcel/InputTextIntoOLEObject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelInputTextIntoOLEObject = new JObject();
             var mSExcelInputTextIntoOLEObjectpropCount = 0;
-            if (mSExcelInputTextIntoOLEObjectHandle != null)
+            if (mSExcelInputTextIntoOLEObjecthandle != null)
             {
-                mSExcelInputTextIntoOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectHandle);
+                mSExcelInputTextIntoOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjecthandle);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
-            if (mSExcelInputTextIntoOLEObjectWorkbookName != null)
+            if (mSExcelInputTextIntoOLEObjectworkbookName != null)
             {
-                mSExcelInputTextIntoOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectWorkbookName);
+                mSExcelInputTextIntoOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworkbookName);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
-            if (mSExcelInputTextIntoOLEObjectWorksheetName != null)
+            if (mSExcelInputTextIntoOLEObjectworksheetName != null)
             {
-                mSExcelInputTextIntoOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectWorksheetName);
-                mSExcelInputTextIntoOLEObjectpropCount++;
-            }
-
-            mSExcelInputTextIntoOLEObjectpropCount++;
-            mSExcelInputTextIntoOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectOLEObjectName);
-            if (mSExcelInputTextIntoOLEObjectTextToInput != null)
-            {
-                mSExcelInputTextIntoOLEObject["TextToInput"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectTextToInput);
-                mSExcelInputTextIntoOLEObjectpropCount++;
-            }
-
-            if (mSExcelInputTextIntoOLEObjectRunInBackground != null)
-            {
-                mSExcelInputTextIntoOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectRunInBackground);
+                mSExcelInputTextIntoOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworksheetName);
                 mSExcelInputTextIntoOLEObjectpropCount++;
             }
 
             mSExcelInputTextIntoOLEObjectpropCount++;
-            mSExcelInputTextIntoOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectWorkflow);
+            mSExcelInputTextIntoOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectoLEObjectName);
+            if (mSExcelInputTextIntoOLEObjecttextToInput != null)
+            {
+                mSExcelInputTextIntoOLEObject["TextToInput"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjecttextToInput);
+                mSExcelInputTextIntoOLEObjectpropCount++;
+            }
+
+            if (mSExcelInputTextIntoOLEObjectrunInBackground != null)
+            {
+                mSExcelInputTextIntoOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectrunInBackground);
+                mSExcelInputTextIntoOLEObjectpropCount++;
+            }
+
+            mSExcelInputTextIntoOLEObjectpropCount++;
+            mSExcelInputTextIntoOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelInputTextIntoOLEObjectworkflow);
             if (mSExcelInputTextIntoOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelInputTextIntoOLEObject;
@@ -3844,37 +3844,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSetCellBackgroundColourResponse> MSExcelSetCellBackgroundColour(Expression<Func<string>> mSExcelSetCellBackgroundColourCellReference, Expression<Func<int>> mSExcelSetCellBackgroundColourColourIndex, Expression<Func<string>> mSExcelSetCellBackgroundColourWorkflow, Expression<Func<int>> mSExcelSetCellBackgroundColourHandle = null, Expression<Func<string>> mSExcelSetCellBackgroundColourWorkbookName = null, Expression<Func<string>> mSExcelSetCellBackgroundColourWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelSetCellBackgroundColourResponse> MSExcelSetCellBackgroundColour(Expression<Func<string>> mSExcelSetCellBackgroundColourcellReference, Expression<Func<int>> mSExcelSetCellBackgroundColourcolourIndex, Expression<Func<string>> mSExcelSetCellBackgroundColourworkflow, Expression<Func<int>> mSExcelSetCellBackgroundColourhandle = null, Expression<Func<string>> mSExcelSetCellBackgroundColourworkbookName = null, Expression<Func<string>> mSExcelSetCellBackgroundColourworksheetName = null)
         {
             var apiCallPath = "/MSExcel/SetCellBackgroundColour";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSetCellBackgroundColour = new JObject();
             var mSExcelSetCellBackgroundColourpropCount = 0;
-            if (mSExcelSetCellBackgroundColourHandle != null)
+            if (mSExcelSetCellBackgroundColourhandle != null)
             {
-                mSExcelSetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourHandle);
+                mSExcelSetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourhandle);
                 mSExcelSetCellBackgroundColourpropCount++;
             }
 
-            if (mSExcelSetCellBackgroundColourWorkbookName != null)
+            if (mSExcelSetCellBackgroundColourworkbookName != null)
             {
-                mSExcelSetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourWorkbookName);
+                mSExcelSetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworkbookName);
                 mSExcelSetCellBackgroundColourpropCount++;
             }
 
-            if (mSExcelSetCellBackgroundColourWorksheetName != null)
+            if (mSExcelSetCellBackgroundColourworksheetName != null)
             {
-                mSExcelSetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourWorksheetName);
+                mSExcelSetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworksheetName);
                 mSExcelSetCellBackgroundColourpropCount++;
             }
 
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourCellReference);
+            mSExcelSetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourcellReference);
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["ColourIndex"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourColourIndex);
+            mSExcelSetCellBackgroundColour["ColourIndex"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourcolourIndex);
             mSExcelSetCellBackgroundColourpropCount++;
-            mSExcelSetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourWorkflow);
+            mSExcelSetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetCellBackgroundColourworkflow);
             if (mSExcelSetCellBackgroundColourpropCount > 0)
             {
                 callPayload.Body = mSExcelSetCellBackgroundColour;
@@ -3884,35 +3884,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetCellBackgroundColourResponse> MSExcelGetCellBackgroundColour(Expression<Func<string>> mSExcelGetCellBackgroundColourCellReference, Expression<Func<string>> mSExcelGetCellBackgroundColourWorkflow, Expression<Func<int>> mSExcelGetCellBackgroundColourHandle = null, Expression<Func<string>> mSExcelGetCellBackgroundColourWorkbookName = null, Expression<Func<string>> mSExcelGetCellBackgroundColourWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetCellBackgroundColourResponse> MSExcelGetCellBackgroundColour(Expression<Func<string>> mSExcelGetCellBackgroundColourcellReference, Expression<Func<string>> mSExcelGetCellBackgroundColourworkflow, Expression<Func<int>> mSExcelGetCellBackgroundColourhandle = null, Expression<Func<string>> mSExcelGetCellBackgroundColourworkbookName = null, Expression<Func<string>> mSExcelGetCellBackgroundColourworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetCellBackgroundColour";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetCellBackgroundColour = new JObject();
             var mSExcelGetCellBackgroundColourpropCount = 0;
-            if (mSExcelGetCellBackgroundColourHandle != null)
+            if (mSExcelGetCellBackgroundColourhandle != null)
             {
-                mSExcelGetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourHandle);
+                mSExcelGetCellBackgroundColour["Handle"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourhandle);
                 mSExcelGetCellBackgroundColourpropCount++;
             }
 
-            if (mSExcelGetCellBackgroundColourWorkbookName != null)
+            if (mSExcelGetCellBackgroundColourworkbookName != null)
             {
-                mSExcelGetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourWorkbookName);
+                mSExcelGetCellBackgroundColour["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworkbookName);
                 mSExcelGetCellBackgroundColourpropCount++;
             }
 
-            if (mSExcelGetCellBackgroundColourWorksheetName != null)
+            if (mSExcelGetCellBackgroundColourworksheetName != null)
             {
-                mSExcelGetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourWorksheetName);
+                mSExcelGetCellBackgroundColour["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworksheetName);
                 mSExcelGetCellBackgroundColourpropCount++;
             }
 
             mSExcelGetCellBackgroundColourpropCount++;
-            mSExcelGetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourCellReference);
+            mSExcelGetCellBackgroundColour["CellReference"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourcellReference);
             mSExcelGetCellBackgroundColourpropCount++;
-            mSExcelGetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourWorkflow);
+            mSExcelGetCellBackgroundColour["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetCellBackgroundColourworkflow);
             if (mSExcelGetCellBackgroundColourpropCount > 0)
             {
                 callPayload.Body = mSExcelGetCellBackgroundColour;
@@ -3922,35 +3922,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetOLEObjectValueResponse> MSExcelGetOLEObjectValue(Expression<Func<string>> mSExcelGetOLEObjectValueOLEObjectName, Expression<Func<string>> mSExcelGetOLEObjectValueWorkflow, Expression<Func<int>> mSExcelGetOLEObjectValueHandle = null, Expression<Func<string>> mSExcelGetOLEObjectValueWorkbookName = null, Expression<Func<string>> mSExcelGetOLEObjectValueWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelGetOLEObjectValueResponse> MSExcelGetOLEObjectValue(Expression<Func<string>> mSExcelGetOLEObjectValueoLEObjectName, Expression<Func<string>> mSExcelGetOLEObjectValueworkflow, Expression<Func<int>> mSExcelGetOLEObjectValuehandle = null, Expression<Func<string>> mSExcelGetOLEObjectValueworkbookName = null, Expression<Func<string>> mSExcelGetOLEObjectValueworksheetName = null)
         {
             var apiCallPath = "/MSExcel/GetOLEObjectValue";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetOLEObjectValue = new JObject();
             var mSExcelGetOLEObjectValuepropCount = 0;
-            if (mSExcelGetOLEObjectValueHandle != null)
+            if (mSExcelGetOLEObjectValuehandle != null)
             {
-                mSExcelGetOLEObjectValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueHandle);
+                mSExcelGetOLEObjectValue["Handle"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValuehandle);
                 mSExcelGetOLEObjectValuepropCount++;
             }
 
-            if (mSExcelGetOLEObjectValueWorkbookName != null)
+            if (mSExcelGetOLEObjectValueworkbookName != null)
             {
-                mSExcelGetOLEObjectValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueWorkbookName);
+                mSExcelGetOLEObjectValue["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworkbookName);
                 mSExcelGetOLEObjectValuepropCount++;
             }
 
-            if (mSExcelGetOLEObjectValueWorksheetName != null)
+            if (mSExcelGetOLEObjectValueworksheetName != null)
             {
-                mSExcelGetOLEObjectValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueWorksheetName);
+                mSExcelGetOLEObjectValue["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworksheetName);
                 mSExcelGetOLEObjectValuepropCount++;
             }
 
             mSExcelGetOLEObjectValuepropCount++;
-            mSExcelGetOLEObjectValue["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueOLEObjectName);
+            mSExcelGetOLEObjectValue["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueoLEObjectName);
             mSExcelGetOLEObjectValuepropCount++;
-            mSExcelGetOLEObjectValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueWorkflow);
+            mSExcelGetOLEObjectValue["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetOLEObjectValueworkflow);
             if (mSExcelGetOLEObjectValuepropCount > 0)
             {
                 callPayload.Body = mSExcelGetOLEObjectValue;
@@ -3960,35 +3960,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelDoesOLEObjectExistResponse> MSExcelDoesOLEObjectExist(Expression<Func<string>> mSExcelDoesOLEObjectExistOLEObjectName, Expression<Func<string>> mSExcelDoesOLEObjectExistWorkflow, Expression<Func<int>> mSExcelDoesOLEObjectExistHandle = null, Expression<Func<string>> mSExcelDoesOLEObjectExistWorkbookName = null, Expression<Func<string>> mSExcelDoesOLEObjectExistWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelDoesOLEObjectExistResponse> MSExcelDoesOLEObjectExist(Expression<Func<string>> mSExcelDoesOLEObjectExistoLEObjectName, Expression<Func<string>> mSExcelDoesOLEObjectExistworkflow, Expression<Func<int>> mSExcelDoesOLEObjectExisthandle = null, Expression<Func<string>> mSExcelDoesOLEObjectExistworkbookName = null, Expression<Func<string>> mSExcelDoesOLEObjectExistworksheetName = null)
         {
             var apiCallPath = "/MSExcel/DoesOLEObjectExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelDoesOLEObjectExist = new JObject();
             var mSExcelDoesOLEObjectExistpropCount = 0;
-            if (mSExcelDoesOLEObjectExistHandle != null)
+            if (mSExcelDoesOLEObjectExisthandle != null)
             {
-                mSExcelDoesOLEObjectExist["Handle"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistHandle);
+                mSExcelDoesOLEObjectExist["Handle"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExisthandle);
                 mSExcelDoesOLEObjectExistpropCount++;
             }
 
-            if (mSExcelDoesOLEObjectExistWorkbookName != null)
+            if (mSExcelDoesOLEObjectExistworkbookName != null)
             {
-                mSExcelDoesOLEObjectExist["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistWorkbookName);
+                mSExcelDoesOLEObjectExist["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworkbookName);
                 mSExcelDoesOLEObjectExistpropCount++;
             }
 
-            if (mSExcelDoesOLEObjectExistWorksheetName != null)
+            if (mSExcelDoesOLEObjectExistworksheetName != null)
             {
-                mSExcelDoesOLEObjectExist["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistWorksheetName);
+                mSExcelDoesOLEObjectExist["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworksheetName);
                 mSExcelDoesOLEObjectExistpropCount++;
             }
 
             mSExcelDoesOLEObjectExistpropCount++;
-            mSExcelDoesOLEObjectExist["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistOLEObjectName);
+            mSExcelDoesOLEObjectExist["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistoLEObjectName);
             mSExcelDoesOLEObjectExistpropCount++;
-            mSExcelDoesOLEObjectExist["Workflow"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistWorkflow);
+            mSExcelDoesOLEObjectExist["Workflow"] = ExpressionConverter.ConvertO(mSExcelDoesOLEObjectExistworkflow);
             if (mSExcelDoesOLEObjectExistpropCount > 0)
             {
                 callPayload.Body = mSExcelDoesOLEObjectExist;
@@ -3998,41 +3998,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelPressOLEObjectResponse> MSExcelPressOLEObject(Expression<Func<string>> mSExcelPressOLEObjectOLEObjectName, Expression<Func<string>> mSExcelPressOLEObjectWorkflow, Expression<Func<int>> mSExcelPressOLEObjectHandle = null, Expression<Func<string>> mSExcelPressOLEObjectWorkbookName = null, Expression<Func<string>> mSExcelPressOLEObjectWorksheetName = null, Expression<Func<bool>> mSExcelPressOLEObjectRunInBackground = null)
+        public IBodyWorkflowAction<MSExcelPressOLEObjectResponse> MSExcelPressOLEObject(Expression<Func<string>> mSExcelPressOLEObjectoLEObjectName, Expression<Func<string>> mSExcelPressOLEObjectworkflow, Expression<Func<int>> mSExcelPressOLEObjecthandle = null, Expression<Func<string>> mSExcelPressOLEObjectworkbookName = null, Expression<Func<string>> mSExcelPressOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelPressOLEObjectrunInBackground = null)
         {
             var apiCallPath = "/MSExcel/PressOLEObject";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelPressOLEObject = new JObject();
             var mSExcelPressOLEObjectpropCount = 0;
-            if (mSExcelPressOLEObjectHandle != null)
+            if (mSExcelPressOLEObjecthandle != null)
             {
-                mSExcelPressOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectHandle);
+                mSExcelPressOLEObject["Handle"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjecthandle);
                 mSExcelPressOLEObjectpropCount++;
             }
 
-            if (mSExcelPressOLEObjectWorkbookName != null)
+            if (mSExcelPressOLEObjectworkbookName != null)
             {
-                mSExcelPressOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectWorkbookName);
+                mSExcelPressOLEObject["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworkbookName);
                 mSExcelPressOLEObjectpropCount++;
             }
 
-            if (mSExcelPressOLEObjectWorksheetName != null)
+            if (mSExcelPressOLEObjectworksheetName != null)
             {
-                mSExcelPressOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectWorksheetName);
-                mSExcelPressOLEObjectpropCount++;
-            }
-
-            mSExcelPressOLEObjectpropCount++;
-            mSExcelPressOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectOLEObjectName);
-            if (mSExcelPressOLEObjectRunInBackground != null)
-            {
-                mSExcelPressOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectRunInBackground);
+                mSExcelPressOLEObject["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworksheetName);
                 mSExcelPressOLEObjectpropCount++;
             }
 
             mSExcelPressOLEObjectpropCount++;
-            mSExcelPressOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectWorkflow);
+            mSExcelPressOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectoLEObjectName);
+            if (mSExcelPressOLEObjectrunInBackground != null)
+            {
+                mSExcelPressOLEObject["RunInBackground"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectrunInBackground);
+                mSExcelPressOLEObjectpropCount++;
+            }
+
+            mSExcelPressOLEObjectpropCount++;
+            mSExcelPressOLEObject["Workflow"] = ExpressionConverter.ConvertO(mSExcelPressOLEObjectworkflow);
             if (mSExcelPressOLEObjectpropCount > 0)
             {
                 callPayload.Body = mSExcelPressOLEObject;
@@ -4042,49 +4042,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelSetWorksheetSensitivityLabelResponse> MSExcelSetWorksheetSensitivityLabel(Expression<Func<mSExcelSetWorksheetSensitivityLabelAssignmentMethodInput>> mSExcelSetWorksheetSensitivityLabelAssignmentMethod, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelLabelId, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelWorkflow, Expression<Func<int>> mSExcelSetWorksheetSensitivityLabelHandle = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelWorkbookName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelLabelName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelSiteId = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelJustification = null)
+        public IBodyWorkflowAction<MSExcelSetWorksheetSensitivityLabelResponse> MSExcelSetWorksheetSensitivityLabel(Expression<Func<mSExcelSetWorksheetSensitivityLabelassignmentMethodInput>> mSExcelSetWorksheetSensitivityLabelassignmentMethod, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabellabelId, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelworkflow, Expression<Func<int>> mSExcelSetWorksheetSensitivityLabelhandle = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelworkbookName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabellabelName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelsiteId = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabeljustification = null)
         {
             var apiCallPath = "/MSExcel/SetWorksheetSensitivityLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelSetWorksheetSensitivityLabel = new JObject();
             var mSExcelSetWorksheetSensitivityLabelpropCount = 0;
-            if (mSExcelSetWorksheetSensitivityLabelHandle != null)
+            if (mSExcelSetWorksheetSensitivityLabelhandle != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelHandle);
+                mSExcelSetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelhandle);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
-            if (mSExcelSetWorksheetSensitivityLabelWorkbookName != null)
+            if (mSExcelSetWorksheetSensitivityLabelworkbookName != null)
             {
-                mSExcelSetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelWorkbookName);
-                mSExcelSetWorksheetSensitivityLabelpropCount++;
-            }
-
-            mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelAssignmentMethod);
-            mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelLabelId);
-            if (mSExcelSetWorksheetSensitivityLabelLabelName != null)
-            {
-                mSExcelSetWorksheetSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelLabelName);
-                mSExcelSetWorksheetSensitivityLabelpropCount++;
-            }
-
-            if (mSExcelSetWorksheetSensitivityLabelSiteId != null)
-            {
-                mSExcelSetWorksheetSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelSiteId);
-                mSExcelSetWorksheetSensitivityLabelpropCount++;
-            }
-
-            if (mSExcelSetWorksheetSensitivityLabelJustification != null)
-            {
-                mSExcelSetWorksheetSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelJustification);
+                mSExcelSetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelworkbookName);
                 mSExcelSetWorksheetSensitivityLabelpropCount++;
             }
 
             mSExcelSetWorksheetSensitivityLabelpropCount++;
-            mSExcelSetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelWorkflow);
+            mSExcelSetWorksheetSensitivityLabel["AssignmentMethod"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelassignmentMethod);
+            mSExcelSetWorksheetSensitivityLabelpropCount++;
+            mSExcelSetWorksheetSensitivityLabel["LabelId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabellabelId);
+            if (mSExcelSetWorksheetSensitivityLabellabelName != null)
+            {
+                mSExcelSetWorksheetSensitivityLabel["LabelName"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabellabelName);
+                mSExcelSetWorksheetSensitivityLabelpropCount++;
+            }
+
+            if (mSExcelSetWorksheetSensitivityLabelsiteId != null)
+            {
+                mSExcelSetWorksheetSensitivityLabel["SiteId"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelsiteId);
+                mSExcelSetWorksheetSensitivityLabelpropCount++;
+            }
+
+            if (mSExcelSetWorksheetSensitivityLabeljustification != null)
+            {
+                mSExcelSetWorksheetSensitivityLabel["Justification"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabeljustification);
+                mSExcelSetWorksheetSensitivityLabelpropCount++;
+            }
+
+            mSExcelSetWorksheetSensitivityLabelpropCount++;
+            mSExcelSetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelSetWorksheetSensitivityLabelworkflow);
             if (mSExcelSetWorksheetSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSExcelSetWorksheetSensitivityLabel;
@@ -4094,27 +4094,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelGetWorksheetSensitivityLabelResponse> MSExcelGetWorksheetSensitivityLabel(Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelWorkflow, Expression<Func<int>> mSExcelGetWorksheetSensitivityLabelHandle = null, Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelWorkbookName = null)
+        public IBodyWorkflowAction<MSExcelGetWorksheetSensitivityLabelResponse> MSExcelGetWorksheetSensitivityLabel(Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelworkflow, Expression<Func<int>> mSExcelGetWorksheetSensitivityLabelhandle = null, Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelworkbookName = null)
         {
             var apiCallPath = "/MSExcel/GetWorksheetSensitivityLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelGetWorksheetSensitivityLabel = new JObject();
             var mSExcelGetWorksheetSensitivityLabelpropCount = 0;
-            if (mSExcelGetWorksheetSensitivityLabelHandle != null)
+            if (mSExcelGetWorksheetSensitivityLabelhandle != null)
             {
-                mSExcelGetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelHandle);
+                mSExcelGetWorksheetSensitivityLabel["Handle"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelhandle);
                 mSExcelGetWorksheetSensitivityLabelpropCount++;
             }
 
-            if (mSExcelGetWorksheetSensitivityLabelWorkbookName != null)
+            if (mSExcelGetWorksheetSensitivityLabelworkbookName != null)
             {
-                mSExcelGetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelWorkbookName);
+                mSExcelGetWorksheetSensitivityLabel["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelworkbookName);
                 mSExcelGetWorksheetSensitivityLabelpropCount++;
             }
 
             mSExcelGetWorksheetSensitivityLabelpropCount++;
-            mSExcelGetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelWorkflow);
+            mSExcelGetWorksheetSensitivityLabel["Workflow"] = ExpressionConverter.ConvertO(mSExcelGetWorksheetSensitivityLabelworkflow);
             if (mSExcelGetWorksheetSensitivityLabelpropCount > 0)
             {
                 callPayload.Body = mSExcelGetWorksheetSensitivityLabel;
@@ -4124,39 +4124,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelWriteArrayResponse> MSExcelWriteArray(Expression<Func<string>> mSExcelWriteArrayCellReference, Expression<Func<string>> mSExcelWriteArrayArrayToWriteJSON, Expression<Func<mSExcelWriteArrayDirectionInput>> mSExcelWriteArrayDirection, Expression<Func<string>> mSExcelWriteArrayWorkflow, Expression<Func<int>> mSExcelWriteArrayHandle = null, Expression<Func<string>> mSExcelWriteArrayWorkbookName = null, Expression<Func<string>> mSExcelWriteArrayWorksheetName = null)
+        public IBodyWorkflowAction<MSExcelWriteArrayResponse> MSExcelWriteArray(Expression<Func<string>> mSExcelWriteArraycellReference, Expression<Func<string>> mSExcelWriteArrayarrayToWriteJSON, Expression<Func<mSExcelWriteArraydirectionInput>> mSExcelWriteArraydirection, Expression<Func<string>> mSExcelWriteArrayworkflow, Expression<Func<int>> mSExcelWriteArrayhandle = null, Expression<Func<string>> mSExcelWriteArrayworkbookName = null, Expression<Func<string>> mSExcelWriteArrayworksheetName = null)
         {
             var apiCallPath = "/MSExcel/WriteArray";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSExcelWriteArray = new JObject();
             var mSExcelWriteArraypropCount = 0;
-            if (mSExcelWriteArrayHandle != null)
+            if (mSExcelWriteArrayhandle != null)
             {
-                mSExcelWriteArray["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteArrayHandle);
+                mSExcelWriteArray["Handle"] = ExpressionConverter.ConvertO(mSExcelWriteArrayhandle);
                 mSExcelWriteArraypropCount++;
             }
 
-            if (mSExcelWriteArrayWorkbookName != null)
+            if (mSExcelWriteArrayworkbookName != null)
             {
-                mSExcelWriteArray["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayWorkbookName);
+                mSExcelWriteArray["WorkbookName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworkbookName);
                 mSExcelWriteArraypropCount++;
             }
 
-            if (mSExcelWriteArrayWorksheetName != null)
+            if (mSExcelWriteArrayworksheetName != null)
             {
-                mSExcelWriteArray["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayWorksheetName);
+                mSExcelWriteArray["WorksheetName"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworksheetName);
                 mSExcelWriteArraypropCount++;
             }
 
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteArrayCellReference);
+            mSExcelWriteArray["CellReference"] = ExpressionConverter.ConvertO(mSExcelWriteArraycellReference);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["ArrayToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteArrayArrayToWriteJSON);
+            mSExcelWriteArray["ArrayToWriteJSON"] = ExpressionConverter.ConvertO(mSExcelWriteArrayarrayToWriteJSON);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["Direction"] = ExpressionConverter.ConvertO(mSExcelWriteArrayDirection);
+            mSExcelWriteArray["Direction"] = ExpressionConverter.ConvertO(mSExcelWriteArraydirection);
             mSExcelWriteArraypropCount++;
-            mSExcelWriteArray["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteArrayWorkflow);
+            mSExcelWriteArray["Workflow"] = ExpressionConverter.ConvertO(mSExcelWriteArrayworkflow);
             if (mSExcelWriteArraypropCount > 0)
             {
                 callPayload.Body = mSExcelWriteArray;
@@ -4166,27 +4166,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookCreateInstanceResponse> MSOutlookCreateInstance(Expression<Func<string>> mSOutlookCreateInstanceWorkflow, Expression<Func<string>> mSOutlookCreateInstanceProfileName = null, Expression<Func<bool>> mSOutlookCreateInstanceShowOutlook = null)
+        public IBodyWorkflowAction<MSOutlookCreateInstanceResponse> MSOutlookCreateInstance(Expression<Func<string>> mSOutlookCreateInstanceworkflow, Expression<Func<string>> mSOutlookCreateInstanceprofileName = null, Expression<Func<bool>> mSOutlookCreateInstanceshowOutlook = null)
         {
             var apiCallPath = "/MSOutlook/CreateInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookCreateInstance = new JObject();
             var mSOutlookCreateInstancepropCount = 0;
-            if (mSOutlookCreateInstanceProfileName != null)
+            if (mSOutlookCreateInstanceprofileName != null)
             {
-                mSOutlookCreateInstance["ProfileName"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceProfileName);
+                mSOutlookCreateInstance["ProfileName"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceprofileName);
                 mSOutlookCreateInstancepropCount++;
             }
 
-            if (mSOutlookCreateInstanceShowOutlook != null)
+            if (mSOutlookCreateInstanceshowOutlook != null)
             {
-                mSOutlookCreateInstance["ShowOutlook"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceShowOutlook);
+                mSOutlookCreateInstance["ShowOutlook"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceshowOutlook);
                 mSOutlookCreateInstancepropCount++;
             }
 
             mSOutlookCreateInstancepropCount++;
-            mSOutlookCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceWorkflow);
+            mSOutlookCreateInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateInstanceworkflow);
             if (mSOutlookCreateInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookCreateInstance;
@@ -4196,21 +4196,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookCloseInstance(Expression<Func<string>> mSOutlookCloseInstanceWorkflow, Expression<Func<int>> mSOutlookCloseInstanceSecondsToWaitForProcessToClose = null)
+        public IWorkflowAction MSOutlookCloseInstance(Expression<Func<string>> mSOutlookCloseInstanceworkflow, Expression<Func<int>> mSOutlookCloseInstancesecondsToWaitForProcessToClose = null)
         {
             var apiCallPath = "/MSOutlook/CloseInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookCloseInstance = new JObject();
             var mSOutlookCloseInstancepropCount = 0;
-            if (mSOutlookCloseInstanceSecondsToWaitForProcessToClose != null)
+            if (mSOutlookCloseInstancesecondsToWaitForProcessToClose != null)
             {
-                mSOutlookCloseInstance["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceSecondsToWaitForProcessToClose);
+                mSOutlookCloseInstance["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstancesecondsToWaitForProcessToClose);
                 mSOutlookCloseInstancepropCount++;
             }
 
             mSOutlookCloseInstancepropCount++;
-            mSOutlookCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceWorkflow);
+            mSOutlookCloseInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceworkflow);
             if (mSOutlookCloseInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookCloseInstance;
@@ -4220,33 +4220,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookCloseInstanceUsingWindow(Expression<Func<string>> mSOutlookCloseInstanceUsingWindowWorkflow, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowUseNativeWindow = null, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowUseUIA = null, Expression<Func<int>> mSOutlookCloseInstanceUsingWindowSecondsToWaitForProcessToClose = null)
+        public IWorkflowAction MSOutlookCloseInstanceUsingWindow(Expression<Func<string>> mSOutlookCloseInstanceUsingWindowworkflow, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowuseNativeWindow = null, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowuseUIA = null, Expression<Func<int>> mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = null)
         {
             var apiCallPath = "/MSOutlook/CloseInstanceUsingWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookCloseInstanceUsingWindow = new JObject();
             var mSOutlookCloseInstanceUsingWindowpropCount = 0;
-            if (mSOutlookCloseInstanceUsingWindowUseNativeWindow != null)
+            if (mSOutlookCloseInstanceUsingWindowuseNativeWindow != null)
             {
-                mSOutlookCloseInstanceUsingWindow["UseNativeWindow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowUseNativeWindow);
+                mSOutlookCloseInstanceUsingWindow["UseNativeWindow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowuseNativeWindow);
                 mSOutlookCloseInstanceUsingWindowpropCount++;
             }
 
-            if (mSOutlookCloseInstanceUsingWindowUseUIA != null)
+            if (mSOutlookCloseInstanceUsingWindowuseUIA != null)
             {
-                mSOutlookCloseInstanceUsingWindow["UseUIA"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowUseUIA);
+                mSOutlookCloseInstanceUsingWindow["UseUIA"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowuseUIA);
                 mSOutlookCloseInstanceUsingWindowpropCount++;
             }
 
-            if (mSOutlookCloseInstanceUsingWindowSecondsToWaitForProcessToClose != null)
+            if (mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose != null)
             {
-                mSOutlookCloseInstanceUsingWindow["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowSecondsToWaitForProcessToClose);
+                mSOutlookCloseInstanceUsingWindow["SecondsToWaitForProcessToClose"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose);
                 mSOutlookCloseInstanceUsingWindowpropCount++;
             }
 
             mSOutlookCloseInstanceUsingWindowpropCount++;
-            mSOutlookCloseInstanceUsingWindow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowWorkflow);
+            mSOutlookCloseInstanceUsingWindow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCloseInstanceUsingWindowworkflow);
             if (mSOutlookCloseInstanceUsingWindowpropCount > 0)
             {
                 callPayload.Body = mSOutlookCloseInstanceUsingWindow;
@@ -4256,33 +4256,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookAttachToExistingInstanceResponse> MSOutlookAttachToExistingInstance(Expression<Func<string>> mSOutlookAttachToExistingInstanceWorkflow, Expression<Func<bool>> mSOutlookAttachToExistingInstanceToggleWindow = null, Expression<Func<bool>> mSOutlookAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSOutlookAttachToExistingInstanceToggleDelay = null)
+        public IBodyWorkflowAction<MSOutlookAttachToExistingInstanceResponse> MSOutlookAttachToExistingInstance(Expression<Func<string>> mSOutlookAttachToExistingInstanceworkflow, Expression<Func<bool>> mSOutlookAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSOutlookAttachToExistingInstancetoggleDelay = null)
         {
             var apiCallPath = "/MSOutlook/MSOutlookAttachToExistingInstance";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookAttachToExistingInstance = new JObject();
             var mSOutlookAttachToExistingInstancepropCount = 0;
-            if (mSOutlookAttachToExistingInstanceToggleWindow != null)
+            if (mSOutlookAttachToExistingInstancetoggleWindow != null)
             {
-                mSOutlookAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceToggleWindow);
+                mSOutlookAttachToExistingInstance["ToggleWindow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleWindow);
                 mSOutlookAttachToExistingInstancepropCount++;
             }
 
-            if (mSOutlookAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent != null)
+            if (mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                mSOutlookAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceToggleUsesGlobalLeftMouseClickAgent);
+                mSOutlookAttachToExistingInstance["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
                 mSOutlookAttachToExistingInstancepropCount++;
             }
 
-            if (mSOutlookAttachToExistingInstanceToggleDelay != null)
+            if (mSOutlookAttachToExistingInstancetoggleDelay != null)
             {
-                mSOutlookAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceToggleDelay);
+                mSOutlookAttachToExistingInstance["ToggleDelay"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstancetoggleDelay);
                 mSOutlookAttachToExistingInstancepropCount++;
             }
 
             mSOutlookAttachToExistingInstancepropCount++;
-            mSOutlookAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceWorkflow);
+            mSOutlookAttachToExistingInstance["Workflow"] = ExpressionConverter.ConvertO(mSOutlookAttachToExistingInstanceworkflow);
             if (mSOutlookAttachToExistingInstancepropCount > 0)
             {
                 callPayload.Body = mSOutlookAttachToExistingInstance;
@@ -4292,7 +4292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookIsConnectedResponse> MSOutlookIsConnected(Expression<Func<string>> mSOutlookIsConnectedWorkflow)
+        public IBodyWorkflowAction<MSOutlookIsConnectedResponse> MSOutlookIsConnected(Expression<Func<string>> mSOutlookIsConnectedworkflow)
         {
             var apiCallPath = "/MSOutlook/IsOutlookConnected";
             var apiCallHttpMethod = "post";
@@ -4300,7 +4300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookIsConnected = new JObject();
             var mSOutlookIsConnectedpropCount = 0;
             mSOutlookIsConnectedpropCount++;
-            mSOutlookIsConnected["Workflow"] = ExpressionConverter.ConvertO(mSOutlookIsConnectedWorkflow);
+            mSOutlookIsConnected["Workflow"] = ExpressionConverter.ConvertO(mSOutlookIsConnectedworkflow);
             if (mSOutlookIsConnectedpropCount > 0)
             {
                 callPayload.Body = mSOutlookIsConnected;
@@ -4310,7 +4310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookShow(Expression<Func<string>> mSOutlookShowWorkflow)
+        public IWorkflowAction MSOutlookShow(Expression<Func<string>> mSOutlookShowworkflow)
         {
             var apiCallPath = "/MSOutlook/ShowOutlook";
             var apiCallHttpMethod = "post";
@@ -4318,7 +4318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookShow = new JObject();
             var mSOutlookShowpropCount = 0;
             mSOutlookShowpropCount++;
-            mSOutlookShow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookShowWorkflow);
+            mSOutlookShow["Workflow"] = ExpressionConverter.ConvertO(mSOutlookShowworkflow);
             if (mSOutlookShowpropCount > 0)
             {
                 callPayload.Body = mSOutlookShow;
@@ -4328,7 +4328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetNameSpaceInformationResponse> MSOutlookGetNameSpaceInformation(Expression<Func<string>> mSOutlookGetNameSpaceInformationWorkflow)
+        public IBodyWorkflowAction<MSOutlookGetNameSpaceInformationResponse> MSOutlookGetNameSpaceInformation(Expression<Func<string>> mSOutlookGetNameSpaceInformationworkflow)
         {
             var apiCallPath = "/MSOutlook/GetNameSpaceInformation";
             var apiCallHttpMethod = "post";
@@ -4336,7 +4336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetNameSpaceInformation = new JObject();
             var mSOutlookGetNameSpaceInformationpropCount = 0;
             mSOutlookGetNameSpaceInformationpropCount++;
-            mSOutlookGetNameSpaceInformation["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNameSpaceInformationWorkflow);
+            mSOutlookGetNameSpaceInformation["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNameSpaceInformationworkflow);
             if (mSOutlookGetNameSpaceInformationpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetNameSpaceInformation;
@@ -4346,27 +4346,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetMailFoldersResponse> MSOutlookGetMailFolders(Expression<Func<string>> mSOutlookGetMailFoldersWorkflow, Expression<Func<string>> mSOutlookGetMailFoldersFolderPath = null, Expression<Func<bool>> mSOutlookGetMailFoldersSubFolders = null)
+        public IBodyWorkflowAction<MSOutlookGetMailFoldersResponse> MSOutlookGetMailFolders(Expression<Func<string>> mSOutlookGetMailFoldersworkflow, Expression<Func<string>> mSOutlookGetMailFoldersfolderPath = null, Expression<Func<bool>> mSOutlookGetMailFolderssubFolders = null)
         {
             var apiCallPath = "/MSOutlook/GetMailFolders";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookGetMailFolders = new JObject();
             var mSOutlookGetMailFolderspropCount = 0;
-            if (mSOutlookGetMailFoldersFolderPath != null)
+            if (mSOutlookGetMailFoldersfolderPath != null)
             {
-                mSOutlookGetMailFolders["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersFolderPath);
+                mSOutlookGetMailFolders["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersfolderPath);
                 mSOutlookGetMailFolderspropCount++;
             }
 
-            if (mSOutlookGetMailFoldersSubFolders != null)
+            if (mSOutlookGetMailFolderssubFolders != null)
             {
-                mSOutlookGetMailFolders["SubFolders"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersSubFolders);
+                mSOutlookGetMailFolders["SubFolders"] = ExpressionConverter.ConvertO(mSOutlookGetMailFolderssubFolders);
                 mSOutlookGetMailFolderspropCount++;
             }
 
             mSOutlookGetMailFolderspropCount++;
-            mSOutlookGetMailFolders["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersWorkflow);
+            mSOutlookGetMailFolders["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMailFoldersworkflow);
             if (mSOutlookGetMailFolderspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetMailFolders;
@@ -4376,7 +4376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookMarkEmailAsRead(Expression<Func<string>> mSOutlookMarkEmailAsReadEntryID, Expression<Func<string>> mSOutlookMarkEmailAsReadWorkflow, Expression<Func<bool>> mSOutlookMarkEmailAsReadRead = null)
+        public IWorkflowAction MSOutlookMarkEmailAsRead(Expression<Func<string>> mSOutlookMarkEmailAsReadentryID, Expression<Func<string>> mSOutlookMarkEmailAsReadworkflow, Expression<Func<bool>> mSOutlookMarkEmailAsReadread = null)
         {
             var apiCallPath = "/MSOutlook/MarkEmailAsRead";
             var apiCallHttpMethod = "post";
@@ -4384,15 +4384,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookMarkEmailAsRead = new JObject();
             var mSOutlookMarkEmailAsReadpropCount = 0;
             mSOutlookMarkEmailAsReadpropCount++;
-            mSOutlookMarkEmailAsRead["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadEntryID);
-            if (mSOutlookMarkEmailAsReadRead != null)
+            mSOutlookMarkEmailAsRead["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadentryID);
+            if (mSOutlookMarkEmailAsReadread != null)
             {
-                mSOutlookMarkEmailAsRead["Read"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadRead);
+                mSOutlookMarkEmailAsRead["Read"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadread);
                 mSOutlookMarkEmailAsReadpropCount++;
             }
 
             mSOutlookMarkEmailAsReadpropCount++;
-            mSOutlookMarkEmailAsRead["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadWorkflow);
+            mSOutlookMarkEmailAsRead["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMarkEmailAsReadworkflow);
             if (mSOutlookMarkEmailAsReadpropCount > 0)
             {
                 callPayload.Body = mSOutlookMarkEmailAsRead;
@@ -4402,7 +4402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse> MSOutlookGetEmailBody(Expression<Func<string>> mSOutlookGetEmailBodyEntryID, Expression<Func<string>> mSOutlookGetEmailBodyWorkflow, Expression<Func<bool>> mSOutlookGetEmailBodyClickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse> MSOutlookGetEmailBody(Expression<Func<string>> mSOutlookGetEmailBodyentryID, Expression<Func<string>> mSOutlookGetEmailBodyworkflow, Expression<Func<bool>> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
         {
             var apiCallPath = "/MSOutlook/GetEmailBody";
             var apiCallHttpMethod = "post";
@@ -4410,15 +4410,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetEmailBody = new JObject();
             var mSOutlookGetEmailBodypropCount = 0;
             mSOutlookGetEmailBodypropCount++;
-            mSOutlookGetEmailBody["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyEntryID);
-            if (mSOutlookGetEmailBodyClickAllowButtonIfRequired != null)
+            mSOutlookGetEmailBody["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyentryID);
+            if (mSOutlookGetEmailBodyclickAllowButtonIfRequired != null)
             {
-                mSOutlookGetEmailBody["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyClickAllowButtonIfRequired);
+                mSOutlookGetEmailBody["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyclickAllowButtonIfRequired);
                 mSOutlookGetEmailBodypropCount++;
             }
 
             mSOutlookGetEmailBodypropCount++;
-            mSOutlookGetEmailBody["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyWorkflow);
+            mSOutlookGetEmailBody["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailBodyworkflow);
             if (mSOutlookGetEmailBodypropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmailBody;
@@ -4428,7 +4428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse> MSOutlookGetEmailAttachmentFilenames(Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesEntryID, Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesWorkflow, Expression<Func<bool>> mSOutlookGetEmailAttachmentFilenamesClickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse> MSOutlookGetEmailAttachmentFilenames(Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesentryID, Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesworkflow, Expression<Func<bool>> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
         {
             var apiCallPath = "/MSOutlook/GetEmailAttachmentFilenames";
             var apiCallHttpMethod = "post";
@@ -4436,15 +4436,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetEmailAttachmentFilenames = new JObject();
             var mSOutlookGetEmailAttachmentFilenamespropCount = 0;
             mSOutlookGetEmailAttachmentFilenamespropCount++;
-            mSOutlookGetEmailAttachmentFilenames["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesEntryID);
-            if (mSOutlookGetEmailAttachmentFilenamesClickAllowButtonIfRequired != null)
+            mSOutlookGetEmailAttachmentFilenames["EntryID"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesentryID);
+            if (mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired != null)
             {
-                mSOutlookGetEmailAttachmentFilenames["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesClickAllowButtonIfRequired);
+                mSOutlookGetEmailAttachmentFilenames["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired);
                 mSOutlookGetEmailAttachmentFilenamespropCount++;
             }
 
             mSOutlookGetEmailAttachmentFilenamespropCount++;
-            mSOutlookGetEmailAttachmentFilenames["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesWorkflow);
+            mSOutlookGetEmailAttachmentFilenames["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailAttachmentFilenamesworkflow);
             if (mSOutlookGetEmailAttachmentFilenamespropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmailAttachmentFilenames;
@@ -4454,7 +4454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse> MSOutlookSaveEmailAttachmentsAsFile(Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileEntryID, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileWorkflow, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileSaveFolderPath = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileCreateFolder = null, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileOnlySaveAttachmentsMatchingWildcard = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileSaveHiddenAttachments = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileClickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse> MSOutlookSaveEmailAttachmentsAsFile(Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileentryID, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileworkflow, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
         {
             var apiCallPath = "/MSOutlook/SaveEmailAttachmentsAsFile";
             var apiCallHttpMethod = "post";
@@ -4462,39 +4462,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookSaveEmailAttachmentsAsFile = new JObject();
             var mSOutlookSaveEmailAttachmentsAsFilepropCount = 0;
             mSOutlookSaveEmailAttachmentsAsFilepropCount++;
-            mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileEntryID);
-            if (mSOutlookSaveEmailAttachmentsAsFileSaveFolderPath != null)
+            mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileentryID);
+            if (mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["SaveFolderPath"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileSaveFolderPath);
+                mSOutlookSaveEmailAttachmentsAsFile["SaveFolderPath"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
-            if (mSOutlookSaveEmailAttachmentsAsFileCreateFolder != null)
+            if (mSOutlookSaveEmailAttachmentsAsFilecreateFolder != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["CreateFolder"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileCreateFolder);
+                mSOutlookSaveEmailAttachmentsAsFile["CreateFolder"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilecreateFolder);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
-            if (mSOutlookSaveEmailAttachmentsAsFileOnlySaveAttachmentsMatchingWildcard != null)
+            if (mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["OnlySaveAttachmentsMatchingWildcard"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileOnlySaveAttachmentsMatchingWildcard);
+                mSOutlookSaveEmailAttachmentsAsFile["OnlySaveAttachmentsMatchingWildcard"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
-            if (mSOutlookSaveEmailAttachmentsAsFileSaveHiddenAttachments != null)
+            if (mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["SaveHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileSaveHiddenAttachments);
+                mSOutlookSaveEmailAttachmentsAsFile["SaveHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
-            if (mSOutlookSaveEmailAttachmentsAsFileClickAllowButtonIfRequired != null)
+            if (mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired != null)
             {
-                mSOutlookSaveEmailAttachmentsAsFile["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileClickAllowButtonIfRequired);
+                mSOutlookSaveEmailAttachmentsAsFile["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired);
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
             }
 
             mSOutlookSaveEmailAttachmentsAsFilepropCount++;
-            mSOutlookSaveEmailAttachmentsAsFile["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileWorkflow);
+            mSOutlookSaveEmailAttachmentsAsFile["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSaveEmailAttachmentsAsFileworkflow);
             if (mSOutlookSaveEmailAttachmentsAsFilepropCount > 0)
             {
                 callPayload.Body = mSOutlookSaveEmailAttachmentsAsFile;
@@ -4504,7 +4504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookDeleteEmail(Expression<Func<string>> mSOutlookDeleteEmailEntryID, Expression<Func<string>> mSOutlookDeleteEmailWorkflow)
+        public IWorkflowAction MSOutlookDeleteEmail(Expression<Func<string>> mSOutlookDeleteEmailentryID, Expression<Func<string>> mSOutlookDeleteEmailworkflow)
         {
             var apiCallPath = "/MSOutlook/DeleteEmail";
             var apiCallHttpMethod = "post";
@@ -4512,9 +4512,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookDeleteEmail = new JObject();
             var mSOutlookDeleteEmailpropCount = 0;
             mSOutlookDeleteEmailpropCount++;
-            mSOutlookDeleteEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailEntryID);
+            mSOutlookDeleteEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailentryID);
             mSOutlookDeleteEmailpropCount++;
-            mSOutlookDeleteEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailWorkflow);
+            mSOutlookDeleteEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookDeleteEmailworkflow);
             if (mSOutlookDeleteEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookDeleteEmail;
@@ -4524,7 +4524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookMoveEmail(Expression<Func<string>> mSOutlookMoveEmailEntryID, Expression<Func<string>> mSOutlookMoveEmailWorkflow, Expression<Func<string>> mSOutlookMoveEmailDestinationFolder = null)
+        public IWorkflowAction MSOutlookMoveEmail(Expression<Func<string>> mSOutlookMoveEmailentryID, Expression<Func<string>> mSOutlookMoveEmailworkflow, Expression<Func<string>> mSOutlookMoveEmaildestinationFolder = null)
         {
             var apiCallPath = "/MSOutlook/MoveEmail";
             var apiCallHttpMethod = "post";
@@ -4532,15 +4532,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookMoveEmail = new JObject();
             var mSOutlookMoveEmailpropCount = 0;
             mSOutlookMoveEmailpropCount++;
-            mSOutlookMoveEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailEntryID);
-            if (mSOutlookMoveEmailDestinationFolder != null)
+            mSOutlookMoveEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailentryID);
+            if (mSOutlookMoveEmaildestinationFolder != null)
             {
-                mSOutlookMoveEmail["DestinationFolder"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailDestinationFolder);
+                mSOutlookMoveEmail["DestinationFolder"] = ExpressionConverter.ConvertO(mSOutlookMoveEmaildestinationFolder);
                 mSOutlookMoveEmailpropCount++;
             }
 
             mSOutlookMoveEmailpropCount++;
-            mSOutlookMoveEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailWorkflow);
+            mSOutlookMoveEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookMoveEmailworkflow);
             if (mSOutlookMoveEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookMoveEmail;
@@ -4550,99 +4550,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookSendEmail(Expression<Func<string>> mSOutlookSendEmailWorkflow, Expression<Func<string>> mSOutlookSendEmailTo = null, Expression<Func<string>> mSOutlookSendEmailCC = null, Expression<Func<string>> mSOutlookSendEmailBCC = null, Expression<Func<string>> mSOutlookSendEmailSubject = null, Expression<Func<mSOutlookSendEmailBodyFormatInput>> mSOutlookSendEmailBodyFormat = null, Expression<Func<string>> mSOutlookSendEmailBody = null, Expression<Func<string>> mSOutlookSendEmailHTMLBody = null, Expression<Func<string>> mSOutlookSendEmailRTFBody = null, Expression<Func<string>> mSOutlookSendEmailAttachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookSendEmailDontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookSendEmailClickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookSendEmailVotingOptions = null, Expression<Func<string>> mSOutlookSendEmailSendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookSendEmailBodyContainsStoredPassword = null)
+        public IWorkflowAction MSOutlookSendEmail(Expression<Func<string>> mSOutlookSendEmailworkflow, Expression<Func<string>> mSOutlookSendEmailto = null, Expression<Func<string>> mSOutlookSendEmailcC = null, Expression<Func<string>> mSOutlookSendEmailbCC = null, Expression<Func<string>> mSOutlookSendEmailsubject = null, Expression<Func<mSOutlookSendEmailbodyFormatInput>> mSOutlookSendEmailbodyFormat = null, Expression<Func<string>> mSOutlookSendEmailbody = null, Expression<Func<string>> mSOutlookSendEmailhTMLBody = null, Expression<Func<string>> mSOutlookSendEmailrTFBody = null, Expression<Func<string>> mSOutlookSendEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookSendEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookSendEmailvotingOptions = null, Expression<Func<string>> mSOutlookSendEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookSendEmailbodyContainsStoredPassword = null)
         {
             var apiCallPath = "/MSOutlook/SendEmail";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookSendEmail = new JObject();
             var mSOutlookSendEmailpropCount = 0;
-            if (mSOutlookSendEmailTo != null)
+            if (mSOutlookSendEmailto != null)
             {
-                mSOutlookSendEmail["To"] = ExpressionConverter.ConvertO(mSOutlookSendEmailTo);
+                mSOutlookSendEmail["To"] = ExpressionConverter.ConvertO(mSOutlookSendEmailto);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailCC != null)
+            if (mSOutlookSendEmailcC != null)
             {
-                mSOutlookSendEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailCC);
+                mSOutlookSendEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailcC);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailBCC != null)
+            if (mSOutlookSendEmailbCC != null)
             {
-                mSOutlookSendEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailBCC);
+                mSOutlookSendEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbCC);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailSubject != null)
+            if (mSOutlookSendEmailsubject != null)
             {
-                mSOutlookSendEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookSendEmailSubject);
+                mSOutlookSendEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookSendEmailsubject);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailBodyFormat != null)
+            if (mSOutlookSendEmailbodyFormat != null)
             {
-                mSOutlookSendEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookSendEmailBodyFormat);
+                mSOutlookSendEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbodyFormat);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailBody != null)
+            if (mSOutlookSendEmailbody != null)
             {
-                mSOutlookSendEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookSendEmailBody);
+                mSOutlookSendEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbody);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailHTMLBody != null)
+            if (mSOutlookSendEmailhTMLBody != null)
             {
-                mSOutlookSendEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailHTMLBody);
+                mSOutlookSendEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailhTMLBody);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailRTFBody != null)
+            if (mSOutlookSendEmailrTFBody != null)
             {
-                mSOutlookSendEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailRTFBody);
+                mSOutlookSendEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookSendEmailrTFBody);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailAttachmentFilenamesJSON != null)
+            if (mSOutlookSendEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookSendEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookSendEmailAttachmentFilenamesJSON);
+                mSOutlookSendEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookSendEmailattachmentFilenamesJSON);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailDontSendIfAttachmentFilenameMissing != null)
+            if (mSOutlookSendEmaildontSendIfAttachmentFilenameMissing != null)
             {
-                mSOutlookSendEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookSendEmailDontSendIfAttachmentFilenameMissing);
+                mSOutlookSendEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailClickAllowButtonIfRequired != null)
+            if (mSOutlookSendEmailclickAllowButtonIfRequired != null)
             {
-                mSOutlookSendEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSendEmailClickAllowButtonIfRequired);
+                mSOutlookSendEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookSendEmailclickAllowButtonIfRequired);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailVotingOptions != null)
+            if (mSOutlookSendEmailvotingOptions != null)
             {
-                mSOutlookSendEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookSendEmailVotingOptions);
+                mSOutlookSendEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookSendEmailvotingOptions);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailSendAsSMTPAddress != null)
+            if (mSOutlookSendEmailsendAsSMTPAddress != null)
             {
-                mSOutlookSendEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookSendEmailSendAsSMTPAddress);
+                mSOutlookSendEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookSendEmailsendAsSMTPAddress);
                 mSOutlookSendEmailpropCount++;
             }
 
-            if (mSOutlookSendEmailBodyContainsStoredPassword != null)
+            if (mSOutlookSendEmailbodyContainsStoredPassword != null)
             {
-                mSOutlookSendEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookSendEmailBodyContainsStoredPassword);
+                mSOutlookSendEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookSendEmailbodyContainsStoredPassword);
                 mSOutlookSendEmailpropCount++;
             }
 
             mSOutlookSendEmailpropCount++;
-            mSOutlookSendEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSendEmailWorkflow);
+            mSOutlookSendEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSendEmailworkflow);
             if (mSOutlookSendEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookSendEmail;
@@ -4652,27 +4652,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookCreateMailFolder(Expression<Func<string>> mSOutlookCreateMailFolderWorkflow, Expression<Func<string>> mSOutlookCreateMailFolderParentFolderPath = null, Expression<Func<string>> mSOutlookCreateMailFolderNewFolderName = null)
+        public IWorkflowAction MSOutlookCreateMailFolder(Expression<Func<string>> mSOutlookCreateMailFolderworkflow, Expression<Func<string>> mSOutlookCreateMailFolderparentFolderPath = null, Expression<Func<string>> mSOutlookCreateMailFoldernewFolderName = null)
         {
             var apiCallPath = "/MSOutlook/CreateMailFolder";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookCreateMailFolder = new JObject();
             var mSOutlookCreateMailFolderpropCount = 0;
-            if (mSOutlookCreateMailFolderParentFolderPath != null)
+            if (mSOutlookCreateMailFolderparentFolderPath != null)
             {
-                mSOutlookCreateMailFolder["ParentFolderPath"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderParentFolderPath);
+                mSOutlookCreateMailFolder["ParentFolderPath"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderparentFolderPath);
                 mSOutlookCreateMailFolderpropCount++;
             }
 
-            if (mSOutlookCreateMailFolderNewFolderName != null)
+            if (mSOutlookCreateMailFoldernewFolderName != null)
             {
-                mSOutlookCreateMailFolder["NewFolderName"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderNewFolderName);
+                mSOutlookCreateMailFolder["NewFolderName"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFoldernewFolderName);
                 mSOutlookCreateMailFolderpropCount++;
             }
 
             mSOutlookCreateMailFolderpropCount++;
-            mSOutlookCreateMailFolder["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderWorkflow);
+            mSOutlookCreateMailFolder["Workflow"] = ExpressionConverter.ConvertO(mSOutlookCreateMailFolderworkflow);
             if (mSOutlookCreateMailFolderpropCount > 0)
             {
                 callPayload.Body = mSOutlookCreateMailFolder;
@@ -4682,7 +4682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookReplyToEmail(Expression<Func<string>> mSOutlookReplyToEmailEntryID, Expression<Func<string>> mSOutlookReplyToEmailWorkflow, Expression<Func<bool>> mSOutlookReplyToEmailReplyToAll = null, Expression<Func<mSOutlookReplyToEmailBodyFormatInput>> mSOutlookReplyToEmailBodyFormat = null, Expression<Func<string>> mSOutlookReplyToEmailBody = null, Expression<Func<string>> mSOutlookReplyToEmailHTMLBody = null, Expression<Func<string>> mSOutlookReplyToEmailRTFBody = null, Expression<Func<string>> mSOutlookReplyToEmailAttachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookReplyToEmailDontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookReplyToEmailClickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookReplyToEmailVotingOptions = null, Expression<Func<string>> mSOutlookReplyToEmailSendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookReplyToEmailBodyContainsStoredPassword = null)
+        public IWorkflowAction MSOutlookReplyToEmail(Expression<Func<string>> mSOutlookReplyToEmailentryID, Expression<Func<string>> mSOutlookReplyToEmailworkflow, Expression<Func<bool>> mSOutlookReplyToEmailreplyToAll = null, Expression<Func<mSOutlookReplyToEmailbodyFormatInput>> mSOutlookReplyToEmailbodyFormat = null, Expression<Func<string>> mSOutlookReplyToEmailbody = null, Expression<Func<string>> mSOutlookReplyToEmailhTMLBody = null, Expression<Func<string>> mSOutlookReplyToEmailrTFBody = null, Expression<Func<string>> mSOutlookReplyToEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookReplyToEmailvotingOptions = null, Expression<Func<string>> mSOutlookReplyToEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
         {
             var apiCallPath = "/MSOutlook/ReplyToEmail";
             var apiCallHttpMethod = "post";
@@ -4690,75 +4690,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookReplyToEmail = new JObject();
             var mSOutlookReplyToEmailpropCount = 0;
             mSOutlookReplyToEmailpropCount++;
-            mSOutlookReplyToEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailEntryID);
-            if (mSOutlookReplyToEmailReplyToAll != null)
+            mSOutlookReplyToEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailentryID);
+            if (mSOutlookReplyToEmailreplyToAll != null)
             {
-                mSOutlookReplyToEmail["ReplyToAll"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailReplyToAll);
+                mSOutlookReplyToEmail["ReplyToAll"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailreplyToAll);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailBodyFormat != null)
+            if (mSOutlookReplyToEmailbodyFormat != null)
             {
-                mSOutlookReplyToEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailBodyFormat);
+                mSOutlookReplyToEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbodyFormat);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailBody != null)
+            if (mSOutlookReplyToEmailbody != null)
             {
-                mSOutlookReplyToEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailBody);
+                mSOutlookReplyToEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailHTMLBody != null)
+            if (mSOutlookReplyToEmailhTMLBody != null)
             {
-                mSOutlookReplyToEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailHTMLBody);
+                mSOutlookReplyToEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailhTMLBody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailRTFBody != null)
+            if (mSOutlookReplyToEmailrTFBody != null)
             {
-                mSOutlookReplyToEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailRTFBody);
+                mSOutlookReplyToEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailrTFBody);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailAttachmentFilenamesJSON != null)
+            if (mSOutlookReplyToEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookReplyToEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailAttachmentFilenamesJSON);
+                mSOutlookReplyToEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailattachmentFilenamesJSON);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailDontSendIfAttachmentFilenameMissing != null)
+            if (mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing != null)
             {
-                mSOutlookReplyToEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailDontSendIfAttachmentFilenameMissing);
+                mSOutlookReplyToEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailClickAllowButtonIfRequired != null)
+            if (mSOutlookReplyToEmailclickAllowButtonIfRequired != null)
             {
-                mSOutlookReplyToEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailClickAllowButtonIfRequired);
+                mSOutlookReplyToEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailclickAllowButtonIfRequired);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailVotingOptions != null)
+            if (mSOutlookReplyToEmailvotingOptions != null)
             {
-                mSOutlookReplyToEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailVotingOptions);
+                mSOutlookReplyToEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailvotingOptions);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailSendAsSMTPAddress != null)
+            if (mSOutlookReplyToEmailsendAsSMTPAddress != null)
             {
-                mSOutlookReplyToEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailSendAsSMTPAddress);
+                mSOutlookReplyToEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailsendAsSMTPAddress);
                 mSOutlookReplyToEmailpropCount++;
             }
 
-            if (mSOutlookReplyToEmailBodyContainsStoredPassword != null)
+            if (mSOutlookReplyToEmailbodyContainsStoredPassword != null)
             {
-                mSOutlookReplyToEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailBodyContainsStoredPassword);
+                mSOutlookReplyToEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailbodyContainsStoredPassword);
                 mSOutlookReplyToEmailpropCount++;
             }
 
             mSOutlookReplyToEmailpropCount++;
-            mSOutlookReplyToEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailWorkflow);
+            mSOutlookReplyToEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookReplyToEmailworkflow);
             if (mSOutlookReplyToEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookReplyToEmail;
@@ -4768,7 +4768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookForwardEmail(Expression<Func<string>> mSOutlookForwardEmailEntryID, Expression<Func<string>> mSOutlookForwardEmailWorkflow, Expression<Func<string>> mSOutlookForwardEmailTo = null, Expression<Func<string>> mSOutlookForwardEmailCC = null, Expression<Func<string>> mSOutlookForwardEmailBCC = null, Expression<Func<bool>> mSOutlookForwardEmailOverrideSubject = null, Expression<Func<string>> mSOutlookForwardEmailSubject = null, Expression<Func<bool>> mSOutlookForwardEmailOverrideBody = null, Expression<Func<mSOutlookForwardEmailBodyFormatInput>> mSOutlookForwardEmailBodyFormat = null, Expression<Func<string>> mSOutlookForwardEmailBody = null, Expression<Func<string>> mSOutlookForwardEmailHTMLBody = null, Expression<Func<string>> mSOutlookForwardEmailRTFBody = null, Expression<Func<bool>> mSOutlookForwardEmailClickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookForwardEmailVotingOptions = null, Expression<Func<string>> mSOutlookForwardEmailSendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookForwardEmailIncludeExistingHiddenAttachments = null, Expression<Func<bool>> mSOutlookForwardEmailIncludeExistingVisibleAttachments = null, Expression<Func<string>> mSOutlookForwardEmailAttachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookForwardEmailDontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookForwardEmailBodyContainsStoredPassword = null)
+        public IWorkflowAction MSOutlookForwardEmail(Expression<Func<string>> mSOutlookForwardEmailentryID, Expression<Func<string>> mSOutlookForwardEmailworkflow, Expression<Func<string>> mSOutlookForwardEmailto = null, Expression<Func<string>> mSOutlookForwardEmailcC = null, Expression<Func<string>> mSOutlookForwardEmailbCC = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideSubject = null, Expression<Func<string>> mSOutlookForwardEmailsubject = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideBody = null, Expression<Func<mSOutlookForwardEmailbodyFormatInput>> mSOutlookForwardEmailbodyFormat = null, Expression<Func<string>> mSOutlookForwardEmailbody = null, Expression<Func<string>> mSOutlookForwardEmailhTMLBody = null, Expression<Func<string>> mSOutlookForwardEmailrTFBody = null, Expression<Func<bool>> mSOutlookForwardEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookForwardEmailvotingOptions = null, Expression<Func<string>> mSOutlookForwardEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, Expression<Func<string>> mSOutlookForwardEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookForwardEmailbodyContainsStoredPassword = null)
         {
             var apiCallPath = "/MSOutlook/MSOutlookForwardEmail";
             var apiCallHttpMethod = "post";
@@ -4776,117 +4776,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookForwardEmail = new JObject();
             var mSOutlookForwardEmailpropCount = 0;
             mSOutlookForwardEmailpropCount++;
-            mSOutlookForwardEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailEntryID);
-            if (mSOutlookForwardEmailTo != null)
+            mSOutlookForwardEmail["EntryID"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailentryID);
+            if (mSOutlookForwardEmailto != null)
             {
-                mSOutlookForwardEmail["To"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailTo);
+                mSOutlookForwardEmail["To"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailto);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailCC != null)
+            if (mSOutlookForwardEmailcC != null)
             {
-                mSOutlookForwardEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailCC);
+                mSOutlookForwardEmail["CC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailcC);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailBCC != null)
+            if (mSOutlookForwardEmailbCC != null)
             {
-                mSOutlookForwardEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailBCC);
+                mSOutlookForwardEmail["BCC"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbCC);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailOverrideSubject != null)
+            if (mSOutlookForwardEmailoverrideSubject != null)
             {
-                mSOutlookForwardEmail["OverrideSubject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailOverrideSubject);
+                mSOutlookForwardEmail["OverrideSubject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailoverrideSubject);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailSubject != null)
+            if (mSOutlookForwardEmailsubject != null)
             {
-                mSOutlookForwardEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailSubject);
+                mSOutlookForwardEmail["Subject"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailsubject);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailOverrideBody != null)
+            if (mSOutlookForwardEmailoverrideBody != null)
             {
-                mSOutlookForwardEmail["OverrideBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailOverrideBody);
+                mSOutlookForwardEmail["OverrideBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailoverrideBody);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailBodyFormat != null)
+            if (mSOutlookForwardEmailbodyFormat != null)
             {
-                mSOutlookForwardEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailBodyFormat);
+                mSOutlookForwardEmail["BodyFormat"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbodyFormat);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailBody != null)
+            if (mSOutlookForwardEmailbody != null)
             {
-                mSOutlookForwardEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailBody);
+                mSOutlookForwardEmail["Body"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbody);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailHTMLBody != null)
+            if (mSOutlookForwardEmailhTMLBody != null)
             {
-                mSOutlookForwardEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailHTMLBody);
+                mSOutlookForwardEmail["HTMLBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailhTMLBody);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailRTFBody != null)
+            if (mSOutlookForwardEmailrTFBody != null)
             {
-                mSOutlookForwardEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailRTFBody);
+                mSOutlookForwardEmail["RTFBody"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailrTFBody);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailClickAllowButtonIfRequired != null)
+            if (mSOutlookForwardEmailclickAllowButtonIfRequired != null)
             {
-                mSOutlookForwardEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailClickAllowButtonIfRequired);
+                mSOutlookForwardEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailclickAllowButtonIfRequired);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailVotingOptions != null)
+            if (mSOutlookForwardEmailvotingOptions != null)
             {
-                mSOutlookForwardEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailVotingOptions);
+                mSOutlookForwardEmail["VotingOptions"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailvotingOptions);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailSendAsSMTPAddress != null)
+            if (mSOutlookForwardEmailsendAsSMTPAddress != null)
             {
-                mSOutlookForwardEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailSendAsSMTPAddress);
+                mSOutlookForwardEmail["SendAsSMTPAddress"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailsendAsSMTPAddress);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailIncludeExistingHiddenAttachments != null)
+            if (mSOutlookForwardEmailincludeExistingHiddenAttachments != null)
             {
-                mSOutlookForwardEmail["IncludeExistingHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailIncludeExistingHiddenAttachments);
+                mSOutlookForwardEmail["IncludeExistingHiddenAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailincludeExistingHiddenAttachments);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailIncludeExistingVisibleAttachments != null)
+            if (mSOutlookForwardEmailincludeExistingVisibleAttachments != null)
             {
-                mSOutlookForwardEmail["IncludeExistingVisibleAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailIncludeExistingVisibleAttachments);
+                mSOutlookForwardEmail["IncludeExistingVisibleAttachments"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailincludeExistingVisibleAttachments);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailAttachmentFilenamesJSON != null)
+            if (mSOutlookForwardEmailattachmentFilenamesJSON != null)
             {
-                mSOutlookForwardEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailAttachmentFilenamesJSON);
+                mSOutlookForwardEmail["AttachmentFilenamesJSON"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailattachmentFilenamesJSON);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailDontSendIfAttachmentFilenameMissing != null)
+            if (mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing != null)
             {
-                mSOutlookForwardEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailDontSendIfAttachmentFilenameMissing);
+                mSOutlookForwardEmail["DontSendIfAttachmentFilenameMissing"] = ExpressionConverter.ConvertO(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing);
                 mSOutlookForwardEmailpropCount++;
             }
 
-            if (mSOutlookForwardEmailBodyContainsStoredPassword != null)
+            if (mSOutlookForwardEmailbodyContainsStoredPassword != null)
             {
-                mSOutlookForwardEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailBodyContainsStoredPassword);
+                mSOutlookForwardEmail["BodyContainsStoredPassword"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailbodyContainsStoredPassword);
                 mSOutlookForwardEmailpropCount++;
             }
 
             mSOutlookForwardEmailpropCount++;
-            mSOutlookForwardEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailWorkflow);
+            mSOutlookForwardEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookForwardEmailworkflow);
             if (mSOutlookForwardEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookForwardEmail;
@@ -4896,7 +4896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetMAPIProfilesResponse> MSOutlookGetMAPIProfiles(Expression<Func<string>> mSOutlookGetMAPIProfilesWorkflow)
+        public IBodyWorkflowAction<MSOutlookGetMAPIProfilesResponse> MSOutlookGetMAPIProfiles(Expression<Func<string>> mSOutlookGetMAPIProfilesworkflow)
         {
             var apiCallPath = "/MSOutlook/GetMAPIProfiles";
             var apiCallHttpMethod = "post";
@@ -4904,7 +4904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetMAPIProfiles = new JObject();
             var mSOutlookGetMAPIProfilespropCount = 0;
             mSOutlookGetMAPIProfilespropCount++;
-            mSOutlookGetMAPIProfiles["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMAPIProfilesWorkflow);
+            mSOutlookGetMAPIProfiles["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetMAPIProfilesworkflow);
             if (mSOutlookGetMAPIProfilespropCount > 0)
             {
                 callPayload.Body = mSOutlookGetMAPIProfiles;
@@ -4914,7 +4914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetOutlookProcessIdResponse> MSOutlookGetOutlookProcessId(Expression<Func<string>> mSOutlookGetOutlookProcessIdWorkflow)
+        public IBodyWorkflowAction<MSOutlookGetOutlookProcessIdResponse> MSOutlookGetOutlookProcessId(Expression<Func<string>> mSOutlookGetOutlookProcessIdworkflow)
         {
             var apiCallPath = "/MSOutlook/GetOutlookProcessId";
             var apiCallHttpMethod = "post";
@@ -4922,7 +4922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookGetOutlookProcessId = new JObject();
             var mSOutlookGetOutlookProcessIdpropCount = 0;
             mSOutlookGetOutlookProcessIdpropCount++;
-            mSOutlookGetOutlookProcessId["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetOutlookProcessIdWorkflow);
+            mSOutlookGetOutlookProcessId["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetOutlookProcessIdworkflow);
             if (mSOutlookGetOutlookProcessIdpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetOutlookProcessId;
@@ -4932,39 +4932,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookBackgroundMonitorForAllowPopup(Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupWorkflow, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForDialog = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButton = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButtonToBeEnabled = null, Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupOutlookAllowButtonName = null)
+        public IWorkflowAction MSOutlookBackgroundMonitorForAllowPopup(Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupworkflow, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = null, Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = null)
         {
             var apiCallPath = "/MSOutlook/BackgroundMonitorForAllowPopup";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookBackgroundMonitorForAllowPopup = new JObject();
             var mSOutlookBackgroundMonitorForAllowPopuppropCount = 0;
-            if (mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForDialog != null)
+            if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog != null)
             {
-                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForDialog"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForDialog);
+                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForDialog"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog);
                 mSOutlookBackgroundMonitorForAllowPopuppropCount++;
             }
 
-            if (mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButton != null)
+            if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton != null)
             {
-                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButton"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButton);
+                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButton"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton);
                 mSOutlookBackgroundMonitorForAllowPopuppropCount++;
             }
 
-            if (mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButtonToBeEnabled != null)
+            if (mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled != null)
             {
-                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButtonToBeEnabled"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupSecondsToWaitForAllowButtonToBeEnabled);
+                mSOutlookBackgroundMonitorForAllowPopup["SecondsToWaitForAllowButtonToBeEnabled"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled);
                 mSOutlookBackgroundMonitorForAllowPopuppropCount++;
             }
 
-            if (mSOutlookBackgroundMonitorForAllowPopupOutlookAllowButtonName != null)
+            if (mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName != null)
             {
-                mSOutlookBackgroundMonitorForAllowPopup["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupOutlookAllowButtonName);
+                mSOutlookBackgroundMonitorForAllowPopup["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName);
                 mSOutlookBackgroundMonitorForAllowPopuppropCount++;
             }
 
             mSOutlookBackgroundMonitorForAllowPopuppropCount++;
-            mSOutlookBackgroundMonitorForAllowPopup["Workflow"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupWorkflow);
+            mSOutlookBackgroundMonitorForAllowPopup["Workflow"] = ExpressionConverter.ConvertO(mSOutlookBackgroundMonitorForAllowPopupworkflow);
             if (mSOutlookBackgroundMonitorForAllowPopuppropCount > 0)
             {
                 callPayload.Body = mSOutlookBackgroundMonitorForAllowPopup;
@@ -4974,33 +4974,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction MSOutlookSetAllowPopupDetails(Expression<Func<string>> mSOutlookSetAllowPopupDetailsWorkflow, Expression<Func<string>> mSOutlookSetAllowPopupDetailsOutlookAllowButtonName = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsOutlookAllowButtonAutomationId = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsOutlookAllowCheckboxAutomationId = null)
+        public IWorkflowAction MSOutlookSetAllowPopupDetails(Expression<Func<string>> mSOutlookSetAllowPopupDetailsworkflow, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = null)
         {
             var apiCallPath = "/MSOutlook/MSOutlookSetAllowPopupDetails";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookSetAllowPopupDetails = new JObject();
             var mSOutlookSetAllowPopupDetailspropCount = 0;
-            if (mSOutlookSetAllowPopupDetailsOutlookAllowButtonName != null)
+            if (mSOutlookSetAllowPopupDetailsoutlookAllowButtonName != null)
             {
-                mSOutlookSetAllowPopupDetails["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsOutlookAllowButtonName);
+                mSOutlookSetAllowPopupDetails["OutlookAllowButtonName"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName);
                 mSOutlookSetAllowPopupDetailspropCount++;
             }
 
-            if (mSOutlookSetAllowPopupDetailsOutlookAllowButtonAutomationId != null)
+            if (mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId != null)
             {
-                mSOutlookSetAllowPopupDetails["OutlookAllowButtonAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsOutlookAllowButtonAutomationId);
+                mSOutlookSetAllowPopupDetails["OutlookAllowButtonAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId);
                 mSOutlookSetAllowPopupDetailspropCount++;
             }
 
-            if (mSOutlookSetAllowPopupDetailsOutlookAllowCheckboxAutomationId != null)
+            if (mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId != null)
             {
-                mSOutlookSetAllowPopupDetails["OutlookAllowCheckboxAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsOutlookAllowCheckboxAutomationId);
+                mSOutlookSetAllowPopupDetails["OutlookAllowCheckboxAutomationId"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId);
                 mSOutlookSetAllowPopupDetailspropCount++;
             }
 
             mSOutlookSetAllowPopupDetailspropCount++;
-            mSOutlookSetAllowPopupDetails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsWorkflow);
+            mSOutlookSetAllowPopupDetails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookSetAllowPopupDetailsworkflow);
             if (mSOutlookSetAllowPopupDetailspropCount > 0)
             {
                 callPayload.Body = mSOutlookSetAllowPopupDetails;
@@ -5010,7 +5010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookExecuteCommandBarObjectResponse> MSOutlookExecuteCommandBarObject(Expression<Func<string>> mSOutlookExecuteCommandBarObjectObjectId, Expression<Func<string>> mSOutlookExecuteCommandBarObjectWorkflow, Expression<Func<bool>> mSOutlookExecuteCommandBarObjectRunInBackground = null)
+        public IBodyWorkflowAction<MSOutlookExecuteCommandBarObjectResponse> MSOutlookExecuteCommandBarObject(Expression<Func<string>> mSOutlookExecuteCommandBarObjectobjectId, Expression<Func<string>> mSOutlookExecuteCommandBarObjectworkflow, Expression<Func<bool>> mSOutlookExecuteCommandBarObjectrunInBackground = null)
         {
             var apiCallPath = "/MSOutlook/MSOutlookExecuteCommandBarObject";
             var apiCallHttpMethod = "post";
@@ -5018,15 +5018,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
             var mSOutlookExecuteCommandBarObject = new JObject();
             var mSOutlookExecuteCommandBarObjectpropCount = 0;
             mSOutlookExecuteCommandBarObjectpropCount++;
-            mSOutlookExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectObjectId);
-            if (mSOutlookExecuteCommandBarObjectRunInBackground != null)
+            mSOutlookExecuteCommandBarObject["ObjectId"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectobjectId);
+            if (mSOutlookExecuteCommandBarObjectrunInBackground != null)
             {
-                mSOutlookExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectRunInBackground);
+                mSOutlookExecuteCommandBarObject["RunInBackground"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectrunInBackground);
                 mSOutlookExecuteCommandBarObjectpropCount++;
             }
 
             mSOutlookExecuteCommandBarObjectpropCount++;
-            mSOutlookExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectWorkflow);
+            mSOutlookExecuteCommandBarObject["Workflow"] = ExpressionConverter.ConvertO(mSOutlookExecuteCommandBarObjectworkflow);
             if (mSOutlookExecuteCommandBarObjectpropCount > 0)
             {
                 callPayload.Body = mSOutlookExecuteCommandBarObject;
@@ -5036,87 +5036,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetEmailsResponse> MSOutlookGetEmails(Expression<Func<string>> mSOutlookGetEmailsWorkflow, Expression<Func<string>> mSOutlookGetEmailsFolderPath = null, Expression<Func<bool>> mSOutlookGetEmailsSearchRead = null, Expression<Func<bool>> mSOutlookGetEmailsSearchUnread = null, Expression<Func<string>> mSOutlookGetEmailsSearchSubject = null, Expression<Func<string>> mSOutlookGetEmailsSearchFromSMTP = null, Expression<Func<string>> mSOutlookGetEmailsSearchFromName = null, Expression<Func<string>> mSOutlookGetEmailsSearchQuery = null, Expression<Func<int>> mSOutlookGetEmailsSearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetEmailsSearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetEmailsSearchEndDateTimeAsString = null, Expression<Func<int>> mSOutlookGetEmailsMaxResultsToReturn = null, Expression<Func<bool>> mSOutlookGetEmailsClickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetEmailsResponse> MSOutlookGetEmails(Expression<Func<string>> mSOutlookGetEmailsworkflow, Expression<Func<string>> mSOutlookGetEmailsfolderPath = null, Expression<Func<bool>> mSOutlookGetEmailssearchRead = null, Expression<Func<bool>> mSOutlookGetEmailssearchUnread = null, Expression<Func<string>> mSOutlookGetEmailssearchSubject = null, Expression<Func<string>> mSOutlookGetEmailssearchFromSMTP = null, Expression<Func<string>> mSOutlookGetEmailssearchFromName = null, Expression<Func<string>> mSOutlookGetEmailssearchQuery = null, Expression<Func<int>> mSOutlookGetEmailssearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetEmailssearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetEmailssearchEndDateTimeAsString = null, Expression<Func<int>> mSOutlookGetEmailsmaxResultsToReturn = null, Expression<Func<bool>> mSOutlookGetEmailsclickAllowButtonIfRequired = null)
         {
             var apiCallPath = "/MSOutlook/GetEmails";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookGetEmails = new JObject();
             var mSOutlookGetEmailspropCount = 0;
-            if (mSOutlookGetEmailsFolderPath != null)
+            if (mSOutlookGetEmailsfolderPath != null)
             {
-                mSOutlookGetEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsFolderPath);
+                mSOutlookGetEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsfolderPath);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchRead != null)
+            if (mSOutlookGetEmailssearchRead != null)
             {
-                mSOutlookGetEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchRead);
+                mSOutlookGetEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchRead);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchUnread != null)
+            if (mSOutlookGetEmailssearchUnread != null)
             {
-                mSOutlookGetEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchUnread);
+                mSOutlookGetEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchUnread);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchSubject != null)
+            if (mSOutlookGetEmailssearchSubject != null)
             {
-                mSOutlookGetEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchSubject);
+                mSOutlookGetEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchSubject);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchFromSMTP != null)
+            if (mSOutlookGetEmailssearchFromSMTP != null)
             {
-                mSOutlookGetEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchFromSMTP);
+                mSOutlookGetEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchFromSMTP);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchFromName != null)
+            if (mSOutlookGetEmailssearchFromName != null)
             {
-                mSOutlookGetEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchFromName);
+                mSOutlookGetEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchFromName);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchQuery != null)
+            if (mSOutlookGetEmailssearchQuery != null)
             {
-                mSOutlookGetEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchQuery);
+                mSOutlookGetEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchQuery);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchMaxAgeInDays != null)
+            if (mSOutlookGetEmailssearchMaxAgeInDays != null)
             {
-                mSOutlookGetEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchMaxAgeInDays);
+                mSOutlookGetEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchMaxAgeInDays);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchStartDateTimeAsString != null)
+            if (mSOutlookGetEmailssearchStartDateTimeAsString != null)
             {
-                mSOutlookGetEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchStartDateTimeAsString);
+                mSOutlookGetEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchStartDateTimeAsString);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsSearchEndDateTimeAsString != null)
+            if (mSOutlookGetEmailssearchEndDateTimeAsString != null)
             {
-                mSOutlookGetEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsSearchEndDateTimeAsString);
+                mSOutlookGetEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetEmailssearchEndDateTimeAsString);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsMaxResultsToReturn != null)
+            if (mSOutlookGetEmailsmaxResultsToReturn != null)
             {
-                mSOutlookGetEmails["MaxResultsToReturn"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsMaxResultsToReturn);
+                mSOutlookGetEmails["MaxResultsToReturn"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsmaxResultsToReturn);
                 mSOutlookGetEmailspropCount++;
             }
 
-            if (mSOutlookGetEmailsClickAllowButtonIfRequired != null)
+            if (mSOutlookGetEmailsclickAllowButtonIfRequired != null)
             {
-                mSOutlookGetEmails["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsClickAllowButtonIfRequired);
+                mSOutlookGetEmails["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsclickAllowButtonIfRequired);
                 mSOutlookGetEmailspropCount++;
             }
 
             mSOutlookGetEmailspropCount++;
-            mSOutlookGetEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsWorkflow);
+            mSOutlookGetEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetEmailsworkflow);
             if (mSOutlookGetEmailspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetEmails;
@@ -5126,81 +5126,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetFirstEmailResponse> MSOutlookGetFirstEmail(Expression<Func<string>> mSOutlookGetFirstEmailWorkflow, Expression<Func<string>> mSOutlookGetFirstEmailFolderPath = null, Expression<Func<bool>> mSOutlookGetFirstEmailSearchRead = null, Expression<Func<bool>> mSOutlookGetFirstEmailSearchUnread = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchSubject = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchFromSMTP = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchFromName = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchQuery = null, Expression<Func<int>> mSOutlookGetFirstEmailSearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetFirstEmailSearchEndDateTimeAsString = null, Expression<Func<bool>> mSOutlookGetFirstEmailClickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetFirstEmailResponse> MSOutlookGetFirstEmail(Expression<Func<string>> mSOutlookGetFirstEmailworkflow, Expression<Func<string>> mSOutlookGetFirstEmailfolderPath = null, Expression<Func<bool>> mSOutlookGetFirstEmailsearchRead = null, Expression<Func<bool>> mSOutlookGetFirstEmailsearchUnread = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchSubject = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchFromSMTP = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchFromName = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchQuery = null, Expression<Func<int>> mSOutlookGetFirstEmailsearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchEndDateTimeAsString = null, Expression<Func<bool>> mSOutlookGetFirstEmailclickAllowButtonIfRequired = null)
         {
             var apiCallPath = "/MSOutlook/GetFirstEmail";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookGetFirstEmail = new JObject();
             var mSOutlookGetFirstEmailpropCount = 0;
-            if (mSOutlookGetFirstEmailFolderPath != null)
+            if (mSOutlookGetFirstEmailfolderPath != null)
             {
-                mSOutlookGetFirstEmail["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailFolderPath);
+                mSOutlookGetFirstEmail["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailfolderPath);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchRead != null)
+            if (mSOutlookGetFirstEmailsearchRead != null)
             {
-                mSOutlookGetFirstEmail["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchRead);
+                mSOutlookGetFirstEmail["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchRead);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchUnread != null)
+            if (mSOutlookGetFirstEmailsearchUnread != null)
             {
-                mSOutlookGetFirstEmail["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchUnread);
+                mSOutlookGetFirstEmail["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchUnread);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchSubject != null)
+            if (mSOutlookGetFirstEmailsearchSubject != null)
             {
-                mSOutlookGetFirstEmail["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchSubject);
+                mSOutlookGetFirstEmail["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchSubject);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchFromSMTP != null)
+            if (mSOutlookGetFirstEmailsearchFromSMTP != null)
             {
-                mSOutlookGetFirstEmail["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchFromSMTP);
+                mSOutlookGetFirstEmail["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchFromSMTP);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchFromName != null)
+            if (mSOutlookGetFirstEmailsearchFromName != null)
             {
-                mSOutlookGetFirstEmail["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchFromName);
+                mSOutlookGetFirstEmail["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchFromName);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchQuery != null)
+            if (mSOutlookGetFirstEmailsearchQuery != null)
             {
-                mSOutlookGetFirstEmail["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchQuery);
+                mSOutlookGetFirstEmail["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchQuery);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchMaxAgeInDays != null)
+            if (mSOutlookGetFirstEmailsearchMaxAgeInDays != null)
             {
-                mSOutlookGetFirstEmail["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchMaxAgeInDays);
+                mSOutlookGetFirstEmail["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchMaxAgeInDays);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchStartDateTimeAsString != null)
+            if (mSOutlookGetFirstEmailsearchStartDateTimeAsString != null)
             {
-                mSOutlookGetFirstEmail["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchStartDateTimeAsString);
+                mSOutlookGetFirstEmail["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchStartDateTimeAsString);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailSearchEndDateTimeAsString != null)
+            if (mSOutlookGetFirstEmailsearchEndDateTimeAsString != null)
             {
-                mSOutlookGetFirstEmail["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailSearchEndDateTimeAsString);
+                mSOutlookGetFirstEmail["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailsearchEndDateTimeAsString);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
-            if (mSOutlookGetFirstEmailClickAllowButtonIfRequired != null)
+            if (mSOutlookGetFirstEmailclickAllowButtonIfRequired != null)
             {
-                mSOutlookGetFirstEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailClickAllowButtonIfRequired);
+                mSOutlookGetFirstEmail["ClickAllowButtonIfRequired"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailclickAllowButtonIfRequired);
                 mSOutlookGetFirstEmailpropCount++;
             }
 
             mSOutlookGetFirstEmailpropCount++;
-            mSOutlookGetFirstEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailWorkflow);
+            mSOutlookGetFirstEmail["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetFirstEmailworkflow);
             if (mSOutlookGetFirstEmailpropCount > 0)
             {
                 callPayload.Body = mSOutlookGetFirstEmail;
@@ -5210,75 +5210,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetNumberOfEmailsResponse> MSOutlookGetNumberOfEmails(Expression<Func<string>> mSOutlookGetNumberOfEmailsWorkflow, Expression<Func<string>> mSOutlookGetNumberOfEmailsFolderPath = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailsSearchRead = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailsSearchUnread = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchSubject = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchFromSMTP = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchFromName = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchQuery = null, Expression<Func<int>> mSOutlookGetNumberOfEmailsSearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetNumberOfEmailsSearchEndDateTimeAsString = null)
+        public IBodyWorkflowAction<MSOutlookGetNumberOfEmailsResponse> MSOutlookGetNumberOfEmails(Expression<Func<string>> mSOutlookGetNumberOfEmailsworkflow, Expression<Func<string>> mSOutlookGetNumberOfEmailsfolderPath = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailssearchRead = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailssearchUnread = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchSubject = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchFromSMTP = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchFromName = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchQuery = null, Expression<Func<int>> mSOutlookGetNumberOfEmailssearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = null)
         {
             var apiCallPath = "/MSOutlook/GetNumberOfEmails";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var mSOutlookGetNumberOfEmails = new JObject();
             var mSOutlookGetNumberOfEmailspropCount = 0;
-            if (mSOutlookGetNumberOfEmailsFolderPath != null)
+            if (mSOutlookGetNumberOfEmailsfolderPath != null)
             {
-                mSOutlookGetNumberOfEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsFolderPath);
+                mSOutlookGetNumberOfEmails["FolderPath"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsfolderPath);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchRead != null)
+            if (mSOutlookGetNumberOfEmailssearchRead != null)
             {
-                mSOutlookGetNumberOfEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchRead);
+                mSOutlookGetNumberOfEmails["SearchRead"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchRead);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchUnread != null)
+            if (mSOutlookGetNumberOfEmailssearchUnread != null)
             {
-                mSOutlookGetNumberOfEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchUnread);
+                mSOutlookGetNumberOfEmails["SearchUnread"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchUnread);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchSubject != null)
+            if (mSOutlookGetNumberOfEmailssearchSubject != null)
             {
-                mSOutlookGetNumberOfEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchSubject);
+                mSOutlookGetNumberOfEmails["SearchSubject"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchSubject);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchFromSMTP != null)
+            if (mSOutlookGetNumberOfEmailssearchFromSMTP != null)
             {
-                mSOutlookGetNumberOfEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchFromSMTP);
+                mSOutlookGetNumberOfEmails["SearchFromSMTP"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchFromSMTP);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchFromName != null)
+            if (mSOutlookGetNumberOfEmailssearchFromName != null)
             {
-                mSOutlookGetNumberOfEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchFromName);
+                mSOutlookGetNumberOfEmails["SearchFromName"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchFromName);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchQuery != null)
+            if (mSOutlookGetNumberOfEmailssearchQuery != null)
             {
-                mSOutlookGetNumberOfEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchQuery);
+                mSOutlookGetNumberOfEmails["SearchQuery"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchQuery);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchMaxAgeInDays != null)
+            if (mSOutlookGetNumberOfEmailssearchMaxAgeInDays != null)
             {
-                mSOutlookGetNumberOfEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchMaxAgeInDays);
+                mSOutlookGetNumberOfEmails["SearchMaxAgeInDays"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchMaxAgeInDays);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchStartDateTimeAsString != null)
+            if (mSOutlookGetNumberOfEmailssearchStartDateTimeAsString != null)
             {
-                mSOutlookGetNumberOfEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchStartDateTimeAsString);
+                mSOutlookGetNumberOfEmails["SearchStartDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
-            if (mSOutlookGetNumberOfEmailsSearchEndDateTimeAsString != null)
+            if (mSOutlookGetNumberOfEmailssearchEndDateTimeAsString != null)
             {
-                mSOutlookGetNumberOfEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsSearchEndDateTimeAsString);
+                mSOutlookGetNumberOfEmails["SearchEndDateTimeAsString"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString);
                 mSOutlookGetNumberOfEmailspropCount++;
             }
 
             mSOutlookGetNumberOfEmailspropCount++;
-            mSOutlookGetNumberOfEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsWorkflow);
+            mSOutlookGetNumberOfEmails["Workflow"] = ExpressionConverter.ConvertO(mSOutlookGetNumberOfEmailsworkflow);
             if (mSOutlookGetNumberOfEmailspropCount > 0)
             {
                 callPayload.Body = mSOutlookGetNumberOfEmails;
@@ -5360,7 +5360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
-    public enum mSWordSetDocumentSensitivityLabelAssignmentMethodInput
+    public enum mSWordSetDocumentSensitivityLabelassignmentMethodInput
     {
         [EnumMember(Value = "NOT_SET")]
         NotSet,
@@ -5430,7 +5430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
-    public enum mSExcelFindNextCellWithValueDirectionInput
+    public enum mSExcelFindNextCellWithValuedirectionInput
     {
         U,
         D,
@@ -5438,7 +5438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         R
     }
 
-    public enum mSExcelFindNextCellWithValueComparisonTypeInput
+    public enum mSExcelFindNextCellWithValuecomparisonTypeInput
     {
         Equals,
         Contains,
@@ -5453,7 +5453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
-    public enum mSExcelFindNextEmptyCellDirectionInput
+    public enum mSExcelFindNextEmptyCelldirectionInput
     {
         U,
         D,
@@ -5499,7 +5499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
-    public enum mSExcelSaveWorkbookAsExcelFileFormatInput
+    public enum mSExcelSaveWorkbookAsexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
         AutomaticFromFileExtension,
@@ -5534,7 +5534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
-    public enum mSExcelSaveWorkbookAsWithPasswordExcelFileFormatInput
+    public enum mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
         AutomaticFromFileExtension,
@@ -5564,7 +5564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
-    public enum mSExcelSaveCurrentWorkbookAsExcelFileFormatInput
+    public enum mSExcelSaveCurrentWorkbookAsexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
         AutomaticFromFileExtension,
@@ -5644,13 +5644,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
-    public enum mSExcelInsertOnSelectionShiftInput
+    public enum mSExcelInsertOnSelectionshiftInput
     {
         R,
         D
     }
 
-    public enum mSExcelDeleteSelectionShiftInput
+    public enum mSExcelDeleteSelectionshiftInput
     {
         L,
         U
@@ -5754,7 +5754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
-    public enum mSExcelSetWorksheetSensitivityLabelAssignmentMethodInput
+    public enum mSExcelSetWorksheetSensitivityLabelassignmentMethodInput
     {
         [EnumMember(Value = "NOT_SET")]
         NotSet,
@@ -5782,7 +5782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
-    public enum mSExcelWriteArrayDirectionInput
+    public enum mSExcelWriteArraydirectionInput
     {
         U,
         D,
@@ -5844,21 +5844,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string EmailAttachmentSaveAsFilenamesJSON { get; set; }
     }
 
-    public enum mSOutlookSendEmailBodyFormatInput
+    public enum mSOutlookSendEmailbodyFormatInput
     {
         HTML,
         Plain,
         RTF
     }
 
-    public enum mSOutlookReplyToEmailBodyFormatInput
+    public enum mSOutlookReplyToEmailbodyFormatInput
     {
         HTML,
         Plain,
         RTF
     }
 
-    public enum mSOutlookForwardEmailBodyFormatInput
+    public enum mSOutlookForwardEmailbodyFormatInput
     {
         HTML,
         Plain,

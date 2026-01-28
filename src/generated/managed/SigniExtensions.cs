@@ -50,6 +50,167 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
+        public IBodyWorkflowAction<SignContractFromTemplateV2Response> SignContractFromTemplateV2(Expression<Func<string>> workspaceId, Expression<Func<bodypersonTypeInput>> bodypersonType, Expression<Func<string>> bodyemailSigner, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontractName, Expression<Func<bool>> bodynegotiatorSign, Expression<Func<bool>> bodyproposerSign, Expression<Func<string>> bodyemailAuthor, Expression<Func<string>> bodystreet = null, Expression<Func<string>> bodylastnameSigner = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodydic = null, Expression<Func<object>> bodyparameters = null, Expression<Func<string>> bodyic = null, Expression<Func<string>> bodysignDate = null, Expression<Func<string>> bodysignPlace = null, Expression<Func<string>> bodyfirstnameSigner = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodyphoneSigner = null, Expression<Func<string>> bodydateOfBirth = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycontractNumber = null)
+        {
+            var apiCallPath = "/v2/contract/sign/template";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodystreet != null)
+            {
+                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["person_type"] = ExpressionConverter.ConvertO(bodypersonType);
+            bodypropCount++;
+            body["email_signer"] = ExpressionConverter.ConvertO(bodyemailSigner);
+            if (bodylastnameSigner != null)
+            {
+                body["lastname_signer"] = ExpressionConverter.ConvertO(bodylastnameSigner);
+                bodypropCount++;
+            }
+
+            var webhooksObject = new JObject();
+            var webhooksObjectpropCount = 0;
+            var _2Object = new JObject();
+            var _2ObjectpropCount = 0;
+            _2Object["state"] = "expired";
+            _2ObjectpropCount++;
+            _2Object["url"] = "@listCallbackUrl()";
+            _2ObjectpropCount++;
+            if (_2ObjectpropCount > 0)
+            {
+                webhooksObject["2"] = _2Object;
+                webhooksObjectpropCount++;
+            }
+
+            var _1Object = new JObject();
+            var _1ObjectpropCount = 0;
+            _1Object["state"] = "rejected";
+            _1ObjectpropCount++;
+            _1Object["url"] = "@listCallbackUrl()";
+            _1ObjectpropCount++;
+            if (_1ObjectpropCount > 0)
+            {
+                webhooksObject["1"] = _1Object;
+                webhooksObjectpropCount++;
+            }
+
+            var _0Object = new JObject();
+            var _0ObjectpropCount = 0;
+            _0Object["state"] = "signed";
+            _0ObjectpropCount++;
+            _0Object["url"] = "@listCallbackUrl()";
+            _0ObjectpropCount++;
+            if (_0ObjectpropCount > 0)
+            {
+                webhooksObject["0"] = _0Object;
+                webhooksObjectpropCount++;
+            }
+
+            if (webhooksObjectpropCount > 0)
+            {
+                body["webhooks"] = webhooksObject;
+                bodypropCount++;
+            }
+
+            body["last_document"] = true;
+            bodypropCount++;
+            if (bodycompanyName != null)
+            {
+                body["company_name"] = ExpressionConverter.ConvertO(bodycompanyName);
+                bodypropCount++;
+            }
+
+            if (bodydic != null)
+            {
+                body["dic"] = ExpressionConverter.ConvertO(bodydic);
+                bodypropCount++;
+            }
+
+            if (bodyparameters != null)
+            {
+                body["parameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+            if (bodyic != null)
+            {
+                body["ic"] = ExpressionConverter.ConvertO(bodyic);
+                bodypropCount++;
+            }
+
+            if (bodysignDate != null)
+            {
+                body["sign_date"] = ExpressionConverter.ConvertO(bodysignDate);
+                bodypropCount++;
+            }
+
+            if (bodysignPlace != null)
+            {
+                body["sign_place"] = ExpressionConverter.ConvertO(bodysignPlace);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["contract_name"] = ExpressionConverter.ConvertO(bodycontractName);
+            bodypropCount++;
+            body["negotiator_sign"] = ExpressionConverter.ConvertO(bodynegotiatorSign);
+            if (bodyfirstnameSigner != null)
+            {
+                body["firstname_signer"] = ExpressionConverter.ConvertO(bodyfirstnameSigner);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["proposer_sign"] = ExpressionConverter.ConvertO(bodyproposerSign);
+            if (bodycity != null)
+            {
+                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                bodypropCount++;
+            }
+
+            if (bodyphoneSigner != null)
+            {
+                body["phone_signer"] = ExpressionConverter.ConvertO(bodyphoneSigner);
+                bodypropCount++;
+            }
+
+            if (bodydateOfBirth != null)
+            {
+                body["date_of_birth"] = ExpressionConverter.ConvertO(bodydateOfBirth);
+                bodypropCount++;
+            }
+
+            if (bodyzipCode != null)
+            {
+                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                bodypropCount++;
+            }
+
+            if (bodycontractNumber != null)
+            {
+                body["contract_number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["email_author"] = ExpressionConverter.ConvertO(bodyemailAuthor);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<SignContractFromTemplateV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> SignContractFromProvidedFileV2New(Expression<Func<string>> workspaceId, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent, Expression<Func<bodypeopleInputItem[]>> bodypeople, Expression<Func<string>> bodycontractNumber = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodysettingsrulesForSendingEMailsAndSignaturesInput>> bodysettingsrulesForSendingEMailsAndSignatures = null, Expression<Func<string>> bodysettingsautosignByProposer = null, Expression<Func<bodysettingsautomaticSignPlacementInput>> bodysettingsautomaticSignPlacement = null)
         {
             var apiCallPath = "/v2.1/contract/sign/provided";
@@ -367,6 +528,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Name { get; set; }
     }
 
+    public class SignContractFromTemplateV2Response
+    {
+        [JsonProperty("contract_id")]
+        public string ContractID { get; set; }
+    }
+
+    public enum bodypersonTypeInput
+    {
+        [EnumMember(Value = "legal")]
+        Legal,
+        [EnumMember(Value = "nature")]
+        Nature,
+        [EnumMember(Value = "citizen")]
+        Citizen
+    }
+
     public class SignContractFromProvidedFileV2NewResponse
     {
         [JsonProperty("notifications")]
@@ -421,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public bodypeopleInputItemPositionsTypeItem[] Positions { get; set; }
 
         [JsonProperty("contract_role")]
-        public bodypeopleInputItemContractRoleIfSignIsChosenPositionMustBeFilledInType ContractRoleIfSignIsChosenPositionMustBeFilledIn { get; set; }
+        public bodypeopleInputItemContractRoleType ContractRole { get; set; }
 
         [JsonProperty("person_type")]
         public bodypeopleInputItemTypeOfPersonType TypeOfPerson { get; set; }
@@ -454,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     public class bodypeopleInputItemPositionsTypeItem
     {
         [JsonProperty("y")]
-        public double PositionOfSignatureGivenInFromTheLengthOfTheDocument { get; set; }
+        public double Y { get; set; }
 
         [JsonProperty("page")]
         public double NumberOfPage { get; set; }
@@ -463,10 +640,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Anchor { get; set; }
 
         [JsonProperty("x")]
-        public double PositionOfSignatureGivenInFromTheWidthOfTheDocument { get; set; }
+        public double X { get; set; }
     }
 
-    public enum bodypeopleInputItemContractRoleIfSignIsChosenPositionMustBeFilledInType
+    public enum bodypeopleInputItemContractRoleType
     {
         [EnumMember(Value = "sign")]
         Sign,
@@ -670,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public bodypeopleInputItemPositionsTypeItem[] Positions { get; set; }
 
         [JsonProperty("contract_role")]
-        public bodypeopleInputItemContractRoleIfSignIsChosenPositionMustBeFilledInType ContractRoleIfSignIsChosenPositionMustBeFilledIn { get; set; }
+        public bodypeopleInputItemContractRoleType ContractRole { get; set; }
 
         [JsonProperty("person_type")]
         public bodypeopleInputItemTypeOfPersonType TypeOfPerson { get; set; }

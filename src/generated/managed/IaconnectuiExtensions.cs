@@ -12,45 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     public class IaconnectuiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesTopLevelWindowExistResponse> UIADoesTopLevelWindowExist(Expression<Func<string>> uIADoesTopLevelWindowExistWorkflow, Expression<Func<string>> uIADoesTopLevelWindowExistSearchClassName = null, Expression<Func<string>> uIADoesTopLevelWindowExistSearchWindowTitle = null, Expression<Func<int>> uIADoesTopLevelWindowExistSearchProcessId = null, Expression<Func<int>> uIADoesTopLevelWindowExistMatchIndex = null, Expression<Func<string>> uIADoesTopLevelWindowExistSearchFilter = null)
+        public IBodyWorkflowAction<UIADoesTopLevelWindowExistResponse> UIADoesTopLevelWindowExist(Expression<Func<string>> uIADoesTopLevelWindowExistworkflow, Expression<Func<string>> uIADoesTopLevelWindowExistsearchClassName = null, Expression<Func<string>> uIADoesTopLevelWindowExistsearchWindowTitle = null, Expression<Func<int>> uIADoesTopLevelWindowExistsearchProcessId = null, Expression<Func<int>> uIADoesTopLevelWindowExistmatchIndex = null, Expression<Func<string>> uIADoesTopLevelWindowExistsearchFilter = null)
         {
             var apiCallPath = "/UIAControl/DoesTopLevelWindowExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIADoesTopLevelWindowExist = new JObject();
             var uIADoesTopLevelWindowExistpropCount = 0;
-            if (uIADoesTopLevelWindowExistSearchClassName != null)
+            if (uIADoesTopLevelWindowExistsearchClassName != null)
             {
-                uIADoesTopLevelWindowExist["SearchClassName"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistSearchClassName);
+                uIADoesTopLevelWindowExist["SearchClassName"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchClassName);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
-            if (uIADoesTopLevelWindowExistSearchWindowTitle != null)
+            if (uIADoesTopLevelWindowExistsearchWindowTitle != null)
             {
-                uIADoesTopLevelWindowExist["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistSearchWindowTitle);
+                uIADoesTopLevelWindowExist["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchWindowTitle);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
-            if (uIADoesTopLevelWindowExistSearchProcessId != null)
+            if (uIADoesTopLevelWindowExistsearchProcessId != null)
             {
-                uIADoesTopLevelWindowExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistSearchProcessId);
+                uIADoesTopLevelWindowExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchProcessId);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
-            if (uIADoesTopLevelWindowExistMatchIndex != null)
+            if (uIADoesTopLevelWindowExistmatchIndex != null)
             {
-                uIADoesTopLevelWindowExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistMatchIndex);
+                uIADoesTopLevelWindowExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistmatchIndex);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
-            if (uIADoesTopLevelWindowExistSearchFilter != null)
+            if (uIADoesTopLevelWindowExistsearchFilter != null)
             {
-                uIADoesTopLevelWindowExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistSearchFilter);
+                uIADoesTopLevelWindowExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistsearchFilter);
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
             uIADoesTopLevelWindowExistpropCount++;
-            uIADoesTopLevelWindowExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistWorkflow);
+            uIADoesTopLevelWindowExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistworkflow);
             if (uIADoesTopLevelWindowExistpropCount > 0)
             {
                 callPayload.Body = uIADoesTopLevelWindowExist;
@@ -60,57 +60,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForTopLevelWindowResponse> UIAGetHandleForTopLevelWindow(Expression<Func<string>> uIAGetHandleForTopLevelWindowWorkflow, Expression<Func<string>> uIAGetHandleForTopLevelWindowSearchClassName = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowSearchWindowTitle = null, Expression<Func<int>> uIAGetHandleForTopLevelWindowSearchProcessId = null, Expression<Func<int>> uIAGetHandleForTopLevelWindowMatchIndex = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowSearchFilter = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowSortByColumn = null, Expression<Func<bool>> uIAGetHandleForTopLevelWindowMatchIndexAscending = null)
+        public IBodyWorkflowAction<UIAGetHandleForTopLevelWindowResponse> UIAGetHandleForTopLevelWindow(Expression<Func<string>> uIAGetHandleForTopLevelWindowworkflow, Expression<Func<string>> uIAGetHandleForTopLevelWindowsearchClassName = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowsearchWindowTitle = null, Expression<Func<int>> uIAGetHandleForTopLevelWindowsearchProcessId = null, Expression<Func<int>> uIAGetHandleForTopLevelWindowmatchIndex = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowsearchFilter = null, Expression<Func<string>> uIAGetHandleForTopLevelWindowsortByColumn = null, Expression<Func<bool>> uIAGetHandleForTopLevelWindowmatchIndexAscending = null)
         {
             var apiCallPath = "/UIAControl/GetHandleForTopLevelWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetHandleForTopLevelWindow = new JObject();
             var uIAGetHandleForTopLevelWindowpropCount = 0;
-            if (uIAGetHandleForTopLevelWindowSearchClassName != null)
+            if (uIAGetHandleForTopLevelWindowsearchClassName != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowSearchClassName);
+                uIAGetHandleForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchClassName);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowSearchWindowTitle != null)
+            if (uIAGetHandleForTopLevelWindowsearchWindowTitle != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowSearchWindowTitle);
+                uIAGetHandleForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchWindowTitle);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowSearchProcessId != null)
+            if (uIAGetHandleForTopLevelWindowsearchProcessId != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowSearchProcessId);
+                uIAGetHandleForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchProcessId);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowMatchIndex != null)
+            if (uIAGetHandleForTopLevelWindowmatchIndex != null)
             {
-                uIAGetHandleForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowMatchIndex);
+                uIAGetHandleForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndex);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowSearchFilter != null)
+            if (uIAGetHandleForTopLevelWindowsearchFilter != null)
             {
-                uIAGetHandleForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowSearchFilter);
+                uIAGetHandleForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsearchFilter);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowSortByColumn != null)
+            if (uIAGetHandleForTopLevelWindowsortByColumn != null)
             {
-                uIAGetHandleForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowSortByColumn);
+                uIAGetHandleForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowsortByColumn);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
-            if (uIAGetHandleForTopLevelWindowMatchIndexAscending != null)
+            if (uIAGetHandleForTopLevelWindowmatchIndexAscending != null)
             {
-                uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowMatchIndexAscending);
+                uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndexAscending);
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
             uIAGetHandleForTopLevelWindowpropCount++;
-            uIAGetHandleForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowWorkflow);
+            uIAGetHandleForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowworkflow);
             if (uIAGetHandleForTopLevelWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForTopLevelWindow;
@@ -120,65 +120,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForTopLevelWindowResponse> UIAWaitForTopLevelWindow(Expression<Func<int>> uIAWaitForTopLevelWindowSecondsToWait, Expression<Func<string>> uIAWaitForTopLevelWindowWorkflow, Expression<Func<string>> uIAWaitForTopLevelWindowSearchClassName = null, Expression<Func<string>> uIAWaitForTopLevelWindowSearchWindowTitle = null, Expression<Func<int>> uIAWaitForTopLevelWindowSearchProcessId = null, Expression<Func<int>> uIAWaitForTopLevelWindowMatchIndex = null, Expression<Func<string>> uIAWaitForTopLevelWindowSearchFilter = null, Expression<Func<string>> uIAWaitForTopLevelWindowSortByColumn = null, Expression<Func<bool>> uIAWaitForTopLevelWindowMatchIndexAscending = null, Expression<Func<bool>> uIAWaitForTopLevelWindowRaiseExceptionIfWindowNotFound = null)
+        public IBodyWorkflowAction<UIAWaitForTopLevelWindowResponse> UIAWaitForTopLevelWindow(Expression<Func<int>> uIAWaitForTopLevelWindowsecondsToWait, Expression<Func<string>> uIAWaitForTopLevelWindowworkflow, Expression<Func<string>> uIAWaitForTopLevelWindowsearchClassName = null, Expression<Func<string>> uIAWaitForTopLevelWindowsearchWindowTitle = null, Expression<Func<int>> uIAWaitForTopLevelWindowsearchProcessId = null, Expression<Func<int>> uIAWaitForTopLevelWindowmatchIndex = null, Expression<Func<string>> uIAWaitForTopLevelWindowsearchFilter = null, Expression<Func<string>> uIAWaitForTopLevelWindowsortByColumn = null, Expression<Func<bool>> uIAWaitForTopLevelWindowmatchIndexAscending = null, Expression<Func<bool>> uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound = null)
         {
             var apiCallPath = "/UIAControl/WaitForTopLevelWindow";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAWaitForTopLevelWindow = new JObject();
             var uIAWaitForTopLevelWindowpropCount = 0;
-            if (uIAWaitForTopLevelWindowSearchClassName != null)
+            if (uIAWaitForTopLevelWindowsearchClassName != null)
             {
-                uIAWaitForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSearchClassName);
+                uIAWaitForTopLevelWindow["SearchClassName"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchClassName);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
-            if (uIAWaitForTopLevelWindowSearchWindowTitle != null)
+            if (uIAWaitForTopLevelWindowsearchWindowTitle != null)
             {
-                uIAWaitForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSearchWindowTitle);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            uIAWaitForTopLevelWindowpropCount++;
-            uIAWaitForTopLevelWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSecondsToWait);
-            if (uIAWaitForTopLevelWindowSearchProcessId != null)
-            {
-                uIAWaitForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSearchProcessId);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            if (uIAWaitForTopLevelWindowMatchIndex != null)
-            {
-                uIAWaitForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowMatchIndex);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            if (uIAWaitForTopLevelWindowSearchFilter != null)
-            {
-                uIAWaitForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSearchFilter);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            if (uIAWaitForTopLevelWindowSortByColumn != null)
-            {
-                uIAWaitForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowSortByColumn);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            if (uIAWaitForTopLevelWindowMatchIndexAscending != null)
-            {
-                uIAWaitForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowMatchIndexAscending);
-                uIAWaitForTopLevelWindowpropCount++;
-            }
-
-            if (uIAWaitForTopLevelWindowRaiseExceptionIfWindowNotFound != null)
-            {
-                uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowRaiseExceptionIfWindowNotFound);
+                uIAWaitForTopLevelWindow["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchWindowTitle);
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
             uIAWaitForTopLevelWindowpropCount++;
-            uIAWaitForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowWorkflow);
+            uIAWaitForTopLevelWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsecondsToWait);
+            if (uIAWaitForTopLevelWindowsearchProcessId != null)
+            {
+                uIAWaitForTopLevelWindow["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchProcessId);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            if (uIAWaitForTopLevelWindowmatchIndex != null)
+            {
+                uIAWaitForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndex);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            if (uIAWaitForTopLevelWindowsearchFilter != null)
+            {
+                uIAWaitForTopLevelWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsearchFilter);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            if (uIAWaitForTopLevelWindowsortByColumn != null)
+            {
+                uIAWaitForTopLevelWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowsortByColumn);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            if (uIAWaitForTopLevelWindowmatchIndexAscending != null)
+            {
+                uIAWaitForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndexAscending);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            if (uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound != null)
+            {
+                uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound);
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+
+            uIAWaitForTopLevelWindowpropCount++;
+            uIAWaitForTopLevelWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowworkflow);
             if (uIAWaitForTopLevelWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForTopLevelWindow;
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesProcessHaveWindowResponse> UIADoesProcessHaveWindow(Expression<Func<string>> uIADoesProcessHaveWindowSearchProcessName, Expression<Func<string>> uIADoesProcessHaveWindowWorkflow)
+        public IBodyWorkflowAction<UIADoesProcessHaveWindowResponse> UIADoesProcessHaveWindow(Expression<Func<string>> uIADoesProcessHaveWindowsearchProcessName, Expression<Func<string>> uIADoesProcessHaveWindowworkflow)
         {
             var apiCallPath = "/UIAControl/DoesProcessHaveWindow";
             var apiCallHttpMethod = "post";
@@ -196,9 +196,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesProcessHaveWindow = new JObject();
             var uIADoesProcessHaveWindowpropCount = 0;
             uIADoesProcessHaveWindowpropCount++;
-            uIADoesProcessHaveWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowSearchProcessName);
+            uIADoesProcessHaveWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowsearchProcessName);
             uIADoesProcessHaveWindowpropCount++;
-            uIADoesProcessHaveWindow["Workflow"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowWorkflow);
+            uIADoesProcessHaveWindow["Workflow"] = ExpressionConverter.ConvertO(uIADoesProcessHaveWindowworkflow);
             if (uIADoesProcessHaveWindowpropCount > 0)
             {
                 callPayload.Body = uIADoesProcessHaveWindow;
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForProcessMainWindowResponse> UIAGetHandleForProcessMainWindow(Expression<Func<string>> uIAGetHandleForProcessMainWindowSearchProcessName, Expression<Func<string>> uIAGetHandleForProcessMainWindowWorkflow)
+        public IBodyWorkflowAction<UIAGetHandleForProcessMainWindowResponse> UIAGetHandleForProcessMainWindow(Expression<Func<string>> uIAGetHandleForProcessMainWindowsearchProcessName, Expression<Func<string>> uIAGetHandleForProcessMainWindowworkflow)
         {
             var apiCallPath = "/UIAControl/GetHandleForProcessMainWindow";
             var apiCallHttpMethod = "post";
@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForProcessMainWindow = new JObject();
             var uIAGetHandleForProcessMainWindowpropCount = 0;
             uIAGetHandleForProcessMainWindowpropCount++;
-            uIAGetHandleForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowSearchProcessName);
+            uIAGetHandleForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowsearchProcessName);
             uIAGetHandleForProcessMainWindowpropCount++;
-            uIAGetHandleForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowWorkflow);
+            uIAGetHandleForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessMainWindowworkflow);
             if (uIAGetHandleForProcessMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForProcessMainWindow;
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForProcessMainWindowResponse> UIAWaitForProcessMainWindow(Expression<Func<string>> uIAWaitForProcessMainWindowSearchProcessName, Expression<Func<int>> uIAWaitForProcessMainWindowSecondsToWait, Expression<Func<string>> uIAWaitForProcessMainWindowWorkflow)
+        public IBodyWorkflowAction<UIAWaitForProcessMainWindowResponse> UIAWaitForProcessMainWindow(Expression<Func<string>> uIAWaitForProcessMainWindowsearchProcessName, Expression<Func<int>> uIAWaitForProcessMainWindowsecondsToWait, Expression<Func<string>> uIAWaitForProcessMainWindowworkflow)
         {
             var apiCallPath = "/UIAControl/WaitForProcessMainWindow";
             var apiCallHttpMethod = "post";
@@ -236,11 +236,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForProcessMainWindow = new JObject();
             var uIAWaitForProcessMainWindowpropCount = 0;
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowSearchProcessName);
+            uIAWaitForProcessMainWindow["SearchProcessName"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowsearchProcessName);
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowSecondsToWait);
+            uIAWaitForProcessMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowsecondsToWait);
             uIAWaitForProcessMainWindowpropCount++;
-            uIAWaitForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowWorkflow);
+            uIAWaitForProcessMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessMainWindowworkflow);
             if (uIAWaitForProcessMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForProcessMainWindow;
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForProcessIdMainWindowResponse> UIAGetHandleForProcessIdMainWindow(Expression<Func<int>> uIAGetHandleForProcessIdMainWindowProcessId, Expression<Func<string>> uIAGetHandleForProcessIdMainWindowWorkflow)
+        public IBodyWorkflowAction<UIAGetHandleForProcessIdMainWindowResponse> UIAGetHandleForProcessIdMainWindow(Expression<Func<int>> uIAGetHandleForProcessIdMainWindowprocessId, Expression<Func<string>> uIAGetHandleForProcessIdMainWindowworkflow)
         {
             var apiCallPath = "/UIAControl/GetHandleForProcessIdMainWindow";
             var apiCallHttpMethod = "post";
@@ -258,9 +258,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForProcessIdMainWindow = new JObject();
             var uIAGetHandleForProcessIdMainWindowpropCount = 0;
             uIAGetHandleForProcessIdMainWindowpropCount++;
-            uIAGetHandleForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowProcessId);
+            uIAGetHandleForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowprocessId);
             uIAGetHandleForProcessIdMainWindowpropCount++;
-            uIAGetHandleForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowWorkflow);
+            uIAGetHandleForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForProcessIdMainWindowworkflow);
             if (uIAGetHandleForProcessIdMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForProcessIdMainWindow;
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForProcessIdMainWindowResponse> UIAWaitForProcessIdMainWindow(Expression<Func<int>> uIAWaitForProcessIdMainWindowProcessId, Expression<Func<int>> uIAWaitForProcessIdMainWindowSecondsToWait, Expression<Func<string>> uIAWaitForProcessIdMainWindowWorkflow)
+        public IBodyWorkflowAction<UIAWaitForProcessIdMainWindowResponse> UIAWaitForProcessIdMainWindow(Expression<Func<int>> uIAWaitForProcessIdMainWindowprocessId, Expression<Func<int>> uIAWaitForProcessIdMainWindowsecondsToWait, Expression<Func<string>> uIAWaitForProcessIdMainWindowworkflow)
         {
             var apiCallPath = "/UIAControl/WaitForProcessIdMainWindow";
             var apiCallHttpMethod = "post";
@@ -278,11 +278,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForProcessIdMainWindow = new JObject();
             var uIAWaitForProcessIdMainWindowpropCount = 0;
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowProcessId);
+            uIAWaitForProcessIdMainWindow["ProcessId"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowprocessId);
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowSecondsToWait);
+            uIAWaitForProcessIdMainWindow["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowsecondsToWait);
             uIAWaitForProcessIdMainWindowpropCount++;
-            uIAWaitForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowWorkflow);
+            uIAWaitForProcessIdMainWindow["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForProcessIdMainWindowworkflow);
             if (uIAWaitForProcessIdMainWindowpropCount > 0)
             {
                 callPayload.Body = uIAWaitForProcessIdMainWindow;
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForFocussedElementResponse> UIAGetHandleForFocussedElement(Expression<Func<string>> uIAGetHandleForFocussedElementWorkflow)
+        public IBodyWorkflowAction<UIAGetHandleForFocussedElementResponse> UIAGetHandleForFocussedElement(Expression<Func<string>> uIAGetHandleForFocussedElementworkflow)
         {
             var apiCallPath = "/UIAControl/GetHandleForFocussedElement";
             var apiCallHttpMethod = "post";
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForFocussedElement = new JObject();
             var uIAGetHandleForFocussedElementpropCount = 0;
             uIAGetHandleForFocussedElementpropCount++;
-            uIAGetHandleForFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForFocussedElementWorkflow);
+            uIAGetHandleForFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForFocussedElementworkflow);
             if (uIAGetHandleForFocussedElementpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForFocussedElement;
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForMainWindowOfFocussedElementResponse> UIAGetHandleForMainWindowOfFocussedElement(Expression<Func<string>> uIAGetHandleForMainWindowOfFocussedElementWorkflow)
+        public IBodyWorkflowAction<UIAGetHandleForMainWindowOfFocussedElementResponse> UIAGetHandleForMainWindowOfFocussedElement(Expression<Func<string>> uIAGetHandleForMainWindowOfFocussedElementworkflow)
         {
             var apiCallPath = "/UIAControl/GetHandleForMainWindowOfFocussedElement";
             var apiCallHttpMethod = "post";
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForMainWindowOfFocussedElement = new JObject();
             var uIAGetHandleForMainWindowOfFocussedElementpropCount = 0;
             uIAGetHandleForMainWindowOfFocussedElementpropCount++;
-            uIAGetHandleForMainWindowOfFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForMainWindowOfFocussedElementWorkflow);
+            uIAGetHandleForMainWindowOfFocussedElement["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForMainWindowOfFocussedElementworkflow);
             if (uIAGetHandleForMainWindowOfFocussedElementpropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForMainWindowOfFocussedElement;
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForDesktopResponse> UIAGetHandleForDesktop(Expression<Func<string>> uIAGetHandleForDesktopWorkflow)
+        public IBodyWorkflowAction<UIAGetHandleForDesktopResponse> UIAGetHandleForDesktop(Expression<Func<string>> uIAGetHandleForDesktopworkflow)
         {
             var apiCallPath = "/UIAControl/GetHandleForDesktop";
             var apiCallHttpMethod = "post";
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetHandleForDesktop = new JObject();
             var uIAGetHandleForDesktoppropCount = 0;
             uIAGetHandleForDesktoppropCount++;
-            uIAGetHandleForDesktop["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForDesktopWorkflow);
+            uIAGetHandleForDesktop["Workflow"] = ExpressionConverter.ConvertO(uIAGetHandleForDesktopworkflow);
             if (uIAGetHandleForDesktoppropCount > 0)
             {
                 callPayload.Body = uIAGetHandleForDesktop;
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASetForegroundWindow(Expression<Func<int>> uIASetForegroundWindowWindowHandle, Expression<Func<string>> uIASetForegroundWindowWorkflow, Expression<Func<bool>> uIASetForegroundWindowToggleWindow = null, Expression<Func<bool>> uIASetForegroundWindowToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> uIASetForegroundWindowToggleDelay = null)
+        public IWorkflowAction UIASetForegroundWindow(Expression<Func<int>> uIASetForegroundWindowwindowHandle, Expression<Func<string>> uIASetForegroundWindowworkflow, Expression<Func<bool>> uIASetForegroundWindowtoggleWindow = null, Expression<Func<bool>> uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> uIASetForegroundWindowtoggleDelay = null)
         {
             var apiCallPath = "/UIAControl/SetForegroundWindow";
             var apiCallHttpMethod = "post";
@@ -354,27 +354,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetForegroundWindow = new JObject();
             var uIASetForegroundWindowpropCount = 0;
             uIASetForegroundWindowpropCount++;
-            uIASetForegroundWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIASetForegroundWindowWindowHandle);
-            if (uIASetForegroundWindowToggleWindow != null)
+            uIASetForegroundWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIASetForegroundWindowwindowHandle);
+            if (uIASetForegroundWindowtoggleWindow != null)
             {
-                uIASetForegroundWindow["ToggleWindow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowToggleWindow);
+                uIASetForegroundWindow["ToggleWindow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleWindow);
                 uIASetForegroundWindowpropCount++;
             }
 
-            if (uIASetForegroundWindowToggleUsesGlobalLeftMouseClickAgent != null)
+            if (uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(uIASetForegroundWindowToggleUsesGlobalLeftMouseClickAgent);
+                uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent);
                 uIASetForegroundWindowpropCount++;
             }
 
-            if (uIASetForegroundWindowToggleDelay != null)
+            if (uIASetForegroundWindowtoggleDelay != null)
             {
-                uIASetForegroundWindow["ToggleDelay"] = ExpressionConverter.ConvertO(uIASetForegroundWindowToggleDelay);
+                uIASetForegroundWindow["ToggleDelay"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleDelay);
                 uIASetForegroundWindowpropCount++;
             }
 
             uIASetForegroundWindowpropCount++;
-            uIASetForegroundWindow["Workflow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowWorkflow);
+            uIASetForegroundWindow["Workflow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowworkflow);
             if (uIASetForegroundWindowpropCount > 0)
             {
                 callPayload.Body = uIASetForegroundWindow;
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAMaximiseWindow(Expression<Func<int>> uIAMaximiseWindowWindowHandle, Expression<Func<string>> uIAMaximiseWindowWorkflow)
+        public IWorkflowAction UIAMaximiseWindow(Expression<Func<int>> uIAMaximiseWindowwindowHandle, Expression<Func<string>> uIAMaximiseWindowworkflow)
         {
             var apiCallPath = "/UIAControl/MaximiseWindow";
             var apiCallHttpMethod = "post";
@@ -392,9 +392,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMaximiseWindow = new JObject();
             var uIAMaximiseWindowpropCount = 0;
             uIAMaximiseWindowpropCount++;
-            uIAMaximiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMaximiseWindowWindowHandle);
+            uIAMaximiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMaximiseWindowwindowHandle);
             uIAMaximiseWindowpropCount++;
-            uIAMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMaximiseWindowWorkflow);
+            uIAMaximiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMaximiseWindowworkflow);
             if (uIAMaximiseWindowpropCount > 0)
             {
                 callPayload.Body = uIAMaximiseWindow;
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAMinimiseWindow(Expression<Func<int>> uIAMinimiseWindowWindowHandle, Expression<Func<string>> uIAMinimiseWindowWorkflow)
+        public IWorkflowAction UIAMinimiseWindow(Expression<Func<int>> uIAMinimiseWindowwindowHandle, Expression<Func<string>> uIAMinimiseWindowworkflow)
         {
             var apiCallPath = "/UIAControl/MinimiseWindow";
             var apiCallHttpMethod = "post";
@@ -412,9 +412,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMinimiseWindow = new JObject();
             var uIAMinimiseWindowpropCount = 0;
             uIAMinimiseWindowpropCount++;
-            uIAMinimiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMinimiseWindowWindowHandle);
+            uIAMinimiseWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIAMinimiseWindowwindowHandle);
             uIAMinimiseWindowpropCount++;
-            uIAMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMinimiseWindowWorkflow);
+            uIAMinimiseWindow["Workflow"] = ExpressionConverter.ConvertO(uIAMinimiseWindowworkflow);
             if (uIAMinimiseWindowpropCount > 0)
             {
                 callPayload.Body = uIAMinimiseWindow;
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASetWindowToNormal(Expression<Func<int>> uIASetWindowToNormalWindowHandle, Expression<Func<string>> uIASetWindowToNormalWorkflow)
+        public IWorkflowAction UIASetWindowToNormal(Expression<Func<int>> uIASetWindowToNormalwindowHandle, Expression<Func<string>> uIASetWindowToNormalworkflow)
         {
             var apiCallPath = "/UIAControl/SetWindowToNormal";
             var apiCallHttpMethod = "post";
@@ -432,9 +432,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetWindowToNormal = new JObject();
             var uIASetWindowToNormalpropCount = 0;
             uIASetWindowToNormalpropCount++;
-            uIASetWindowToNormal["WindowHandle"] = ExpressionConverter.ConvertO(uIASetWindowToNormalWindowHandle);
+            uIASetWindowToNormal["WindowHandle"] = ExpressionConverter.ConvertO(uIASetWindowToNormalwindowHandle);
             uIASetWindowToNormalpropCount++;
-            uIASetWindowToNormal["Workflow"] = ExpressionConverter.ConvertO(uIASetWindowToNormalWorkflow);
+            uIASetWindowToNormal["Workflow"] = ExpressionConverter.ConvertO(uIASetWindowToNormalworkflow);
             if (uIASetWindowToNormalpropCount > 0)
             {
                 callPayload.Body = uIASetWindowToNormal;
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesElementExistResponse> UIADoesElementExist(Expression<Func<int>> uIADoesElementExistParentWindowHandle, Expression<Func<string>> uIADoesElementExistWorkflow, Expression<Func<string>> uIADoesElementExistSearchElementName = null, Expression<Func<string>> uIADoesElementExistSearchElementClassName = null, Expression<Func<string>> uIADoesElementExistSearchElementAutomationId = null, Expression<Func<string>> uIADoesElementExistSearchLocalizedControlType = null, Expression<Func<int>> uIADoesElementExistSearchProcessId = null, Expression<Func<bool>> uIADoesElementExistSearchSubTree = null, Expression<Func<bool>> uIADoesElementExistReturnElementHandle = null, Expression<Func<int>> uIADoesElementExistMatchIndex = null, Expression<Func<string>> uIADoesElementExistSearchFilter = null, Expression<Func<string>> uIADoesElementExistSortByColumn = null, Expression<Func<bool>> uIADoesElementExistMatchIndexAscending = null, Expression<Func<bool>> uIADoesElementExistIncludeChildProcesses = null, Expression<Func<int>> uIADoesElementExistMaxElementsToSearch = null, Expression<Func<int>> uIADoesElementExistMaxRelativeSearchDepth = null, Expression<Func<int>> uIADoesElementExistMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADoesElementExistElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIADoesElementExistResponse> UIADoesElementExist(Expression<Func<int>> uIADoesElementExistparentWindowHandle, Expression<Func<string>> uIADoesElementExistworkflow, Expression<Func<string>> uIADoesElementExistsearchElementName = null, Expression<Func<string>> uIADoesElementExistsearchElementClassName = null, Expression<Func<string>> uIADoesElementExistsearchElementAutomationId = null, Expression<Func<string>> uIADoesElementExistsearchLocalizedControlType = null, Expression<Func<int>> uIADoesElementExistsearchProcessId = null, Expression<Func<bool>> uIADoesElementExistsearchSubTree = null, Expression<Func<bool>> uIADoesElementExistreturnElementHandle = null, Expression<Func<int>> uIADoesElementExistmatchIndex = null, Expression<Func<string>> uIADoesElementExistsearchFilter = null, Expression<Func<string>> uIADoesElementExistsortByColumn = null, Expression<Func<bool>> uIADoesElementExistmatchIndexAscending = null, Expression<Func<bool>> uIADoesElementExistincludeChildProcesses = null, Expression<Func<int>> uIADoesElementExistmaxElementsToSearch = null, Expression<Func<int>> uIADoesElementExistmaxRelativeSearchDepth = null, Expression<Func<int>> uIADoesElementExistmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADoesElementExistelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/DoesElementExist";
             var apiCallHttpMethod = "post";
@@ -452,105 +452,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADoesElementExist = new JObject();
             var uIADoesElementExistpropCount = 0;
             uIADoesElementExistpropCount++;
-            uIADoesElementExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistParentWindowHandle);
-            if (uIADoesElementExistSearchElementName != null)
+            uIADoesElementExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistparentWindowHandle);
+            if (uIADoesElementExistsearchElementName != null)
             {
-                uIADoesElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchElementName);
+                uIADoesElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementName);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchElementClassName != null)
+            if (uIADoesElementExistsearchElementClassName != null)
             {
-                uIADoesElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchElementClassName);
+                uIADoesElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementClassName);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchElementAutomationId != null)
+            if (uIADoesElementExistsearchElementAutomationId != null)
             {
-                uIADoesElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchElementAutomationId);
+                uIADoesElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchElementAutomationId);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchLocalizedControlType != null)
+            if (uIADoesElementExistsearchLocalizedControlType != null)
             {
-                uIADoesElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchLocalizedControlType);
+                uIADoesElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchLocalizedControlType);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchProcessId != null)
+            if (uIADoesElementExistsearchProcessId != null)
             {
-                uIADoesElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchProcessId);
+                uIADoesElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchProcessId);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchSubTree != null)
+            if (uIADoesElementExistsearchSubTree != null)
             {
-                uIADoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchSubTree);
+                uIADoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchSubTree);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistReturnElementHandle != null)
+            if (uIADoesElementExistreturnElementHandle != null)
             {
-                uIADoesElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistReturnElementHandle);
+                uIADoesElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistreturnElementHandle);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistMatchIndex != null)
+            if (uIADoesElementExistmatchIndex != null)
             {
-                uIADoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesElementExistMatchIndex);
+                uIADoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndex);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSearchFilter != null)
+            if (uIADoesElementExistsearchFilter != null)
             {
-                uIADoesElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesElementExistSearchFilter);
+                uIADoesElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchFilter);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistSortByColumn != null)
+            if (uIADoesElementExistsortByColumn != null)
             {
-                uIADoesElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesElementExistSortByColumn);
+                uIADoesElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesElementExistsortByColumn);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistMatchIndexAscending != null)
+            if (uIADoesElementExistmatchIndexAscending != null)
             {
-                uIADoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesElementExistMatchIndexAscending);
+                uIADoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndexAscending);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistIncludeChildProcesses != null)
+            if (uIADoesElementExistincludeChildProcesses != null)
             {
-                uIADoesElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesElementExistIncludeChildProcesses);
+                uIADoesElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesElementExistincludeChildProcesses);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistMaxElementsToSearch != null)
+            if (uIADoesElementExistmaxElementsToSearch != null)
             {
-                uIADoesElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesElementExistMaxElementsToSearch);
+                uIADoesElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxElementsToSearch);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistMaxRelativeSearchDepth != null)
+            if (uIADoesElementExistmaxRelativeSearchDepth != null)
             {
-                uIADoesElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesElementExistMaxRelativeSearchDepth);
+                uIADoesElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxRelativeSearchDepth);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistMaxChildElementsToSearchPerNode != null)
+            if (uIADoesElementExistmaxChildElementsToSearchPerNode != null)
             {
-                uIADoesElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesElementExistMaxChildElementsToSearchPerNode);
+                uIADoesElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxChildElementsToSearchPerNode);
                 uIADoesElementExistpropCount++;
             }
 
-            if (uIADoesElementExistElementLocalizedControlTypesNotToTraverse != null)
+            if (uIADoesElementExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADoesElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesElementExistElementLocalizedControlTypesNotToTraverse);
+                uIADoesElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesElementExistelementLocalizedControlTypesNotToTraverse);
                 uIADoesElementExistpropCount++;
             }
 
             uIADoesElementExistpropCount++;
-            uIADoesElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesElementExistWorkflow);
+            uIADoesElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesElementExistworkflow);
             if (uIADoesElementExistpropCount > 0)
             {
                 callPayload.Body = uIADoesElementExist;
@@ -560,111 +560,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesDesktopElementExistResponse> UIADoesDesktopElementExist(Expression<Func<string>> uIADoesDesktopElementExistWorkflow, Expression<Func<string>> uIADoesDesktopElementExistSearchElementName = null, Expression<Func<string>> uIADoesDesktopElementExistSearchElementClassName = null, Expression<Func<string>> uIADoesDesktopElementExistSearchElementAutomationId = null, Expression<Func<string>> uIADoesDesktopElementExistSearchLocalizedControlType = null, Expression<Func<int>> uIADoesDesktopElementExistSearchProcessId = null, Expression<Func<bool>> uIADoesDesktopElementExistSearchSubTree = null, Expression<Func<bool>> uIADoesDesktopElementExistReturnElementHandle = null, Expression<Func<int>> uIADoesDesktopElementExistMatchIndex = null, Expression<Func<string>> uIADoesDesktopElementExistSearchFilter = null, Expression<Func<string>> uIADoesDesktopElementExistSortByColumn = null, Expression<Func<bool>> uIADoesDesktopElementExistMatchIndexAscending = null, Expression<Func<bool>> uIADoesDesktopElementExistIncludeChildProcesses = null, Expression<Func<int>> uIADoesDesktopElementExistMaxElementsToSearch = null, Expression<Func<int>> uIADoesDesktopElementExistMaxRelativeSearchDepth = null, Expression<Func<int>> uIADoesDesktopElementExistMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADoesDesktopElementExistElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIADoesDesktopElementExistResponse> UIADoesDesktopElementExist(Expression<Func<string>> uIADoesDesktopElementExistworkflow, Expression<Func<string>> uIADoesDesktopElementExistsearchElementName = null, Expression<Func<string>> uIADoesDesktopElementExistsearchElementClassName = null, Expression<Func<string>> uIADoesDesktopElementExistsearchElementAutomationId = null, Expression<Func<string>> uIADoesDesktopElementExistsearchLocalizedControlType = null, Expression<Func<int>> uIADoesDesktopElementExistsearchProcessId = null, Expression<Func<bool>> uIADoesDesktopElementExistsearchSubTree = null, Expression<Func<bool>> uIADoesDesktopElementExistreturnElementHandle = null, Expression<Func<int>> uIADoesDesktopElementExistmatchIndex = null, Expression<Func<string>> uIADoesDesktopElementExistsearchFilter = null, Expression<Func<string>> uIADoesDesktopElementExistsortByColumn = null, Expression<Func<bool>> uIADoesDesktopElementExistmatchIndexAscending = null, Expression<Func<bool>> uIADoesDesktopElementExistincludeChildProcesses = null, Expression<Func<int>> uIADoesDesktopElementExistmaxElementsToSearch = null, Expression<Func<int>> uIADoesDesktopElementExistmaxRelativeSearchDepth = null, Expression<Func<int>> uIADoesDesktopElementExistmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/DoesDesktopElementExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIADoesDesktopElementExist = new JObject();
             var uIADoesDesktopElementExistpropCount = 0;
-            if (uIADoesDesktopElementExistSearchElementName != null)
+            if (uIADoesDesktopElementExistsearchElementName != null)
             {
-                uIADoesDesktopElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchElementName);
+                uIADoesDesktopElementExist["SearchElementName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementName);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchElementClassName != null)
+            if (uIADoesDesktopElementExistsearchElementClassName != null)
             {
-                uIADoesDesktopElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchElementClassName);
+                uIADoesDesktopElementExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementClassName);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchElementAutomationId != null)
+            if (uIADoesDesktopElementExistsearchElementAutomationId != null)
             {
-                uIADoesDesktopElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchElementAutomationId);
+                uIADoesDesktopElementExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchElementAutomationId);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchLocalizedControlType != null)
+            if (uIADoesDesktopElementExistsearchLocalizedControlType != null)
             {
-                uIADoesDesktopElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchLocalizedControlType);
+                uIADoesDesktopElementExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchLocalizedControlType);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchProcessId != null)
+            if (uIADoesDesktopElementExistsearchProcessId != null)
             {
-                uIADoesDesktopElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchProcessId);
+                uIADoesDesktopElementExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchProcessId);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchSubTree != null)
+            if (uIADoesDesktopElementExistsearchSubTree != null)
             {
-                uIADoesDesktopElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchSubTree);
+                uIADoesDesktopElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchSubTree);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistReturnElementHandle != null)
+            if (uIADoesDesktopElementExistreturnElementHandle != null)
             {
-                uIADoesDesktopElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistReturnElementHandle);
+                uIADoesDesktopElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistreturnElementHandle);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistMatchIndex != null)
+            if (uIADoesDesktopElementExistmatchIndex != null)
             {
-                uIADoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistMatchIndex);
+                uIADoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndex);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSearchFilter != null)
+            if (uIADoesDesktopElementExistsearchFilter != null)
             {
-                uIADoesDesktopElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSearchFilter);
+                uIADoesDesktopElementExist["SearchFilter"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchFilter);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistSortByColumn != null)
+            if (uIADoesDesktopElementExistsortByColumn != null)
             {
-                uIADoesDesktopElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistSortByColumn);
+                uIADoesDesktopElementExist["SortByColumn"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsortByColumn);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistMatchIndexAscending != null)
+            if (uIADoesDesktopElementExistmatchIndexAscending != null)
             {
-                uIADoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistMatchIndexAscending);
+                uIADoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndexAscending);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistIncludeChildProcesses != null)
+            if (uIADoesDesktopElementExistincludeChildProcesses != null)
             {
-                uIADoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistIncludeChildProcesses);
+                uIADoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistincludeChildProcesses);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistMaxElementsToSearch != null)
+            if (uIADoesDesktopElementExistmaxElementsToSearch != null)
             {
-                uIADoesDesktopElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistMaxElementsToSearch);
+                uIADoesDesktopElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxElementsToSearch);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistMaxRelativeSearchDepth != null)
+            if (uIADoesDesktopElementExistmaxRelativeSearchDepth != null)
             {
-                uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistMaxRelativeSearchDepth);
+                uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxRelativeSearchDepth);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistMaxChildElementsToSearchPerNode != null)
+            if (uIADoesDesktopElementExistmaxChildElementsToSearchPerNode != null)
             {
-                uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistMaxChildElementsToSearchPerNode);
+                uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode);
                 uIADoesDesktopElementExistpropCount++;
             }
 
-            if (uIADoesDesktopElementExistElementLocalizedControlTypesNotToTraverse != null)
+            if (uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADoesDesktopElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistElementLocalizedControlTypesNotToTraverse);
+                uIADoesDesktopElementExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistelementLocalizedControlTypesNotToTraverse);
                 uIADoesDesktopElementExistpropCount++;
             }
 
             uIADoesDesktopElementExistpropCount++;
-            uIADoesDesktopElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistWorkflow);
+            uIADoesDesktopElementExist["Workflow"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistworkflow);
             if (uIADoesDesktopElementExistpropCount > 0)
             {
                 callPayload.Body = uIADoesDesktopElementExist;
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForElementResponse> UIAWaitForElement(Expression<Func<int>> uIAWaitForElementParentWindowHandle, Expression<Func<int>> uIAWaitForElementSecondsToWait, Expression<Func<string>> uIAWaitForElementWorkflow, Expression<Func<string>> uIAWaitForElementSearchElementName = null, Expression<Func<string>> uIAWaitForElementSearchElementClassName = null, Expression<Func<string>> uIAWaitForElementSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForElementSearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForElementSearchProcessId = null, Expression<Func<bool>> uIAWaitForElementSearchSubTree = null, Expression<Func<bool>> uIAWaitForElementReturnElementHandle = null, Expression<Func<int>> uIAWaitForElementMatchIndex = null, Expression<Func<string>> uIAWaitForElementSearchFilter = null, Expression<Func<string>> uIAWaitForElementSortByColumn = null, Expression<Func<bool>> uIAWaitForElementMatchIndexAscending = null, Expression<Func<bool>> uIAWaitForElementIncludeChildProcesses = null, Expression<Func<bool>> uIAWaitForElementRaiseExceptionIfElementNotFound = null, Expression<Func<int>> uIAWaitForElementMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForElementElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAWaitForElementResponse> UIAWaitForElement(Expression<Func<int>> uIAWaitForElementparentWindowHandle, Expression<Func<int>> uIAWaitForElementsecondsToWait, Expression<Func<string>> uIAWaitForElementworkflow, Expression<Func<string>> uIAWaitForElementsearchElementName = null, Expression<Func<string>> uIAWaitForElementsearchElementClassName = null, Expression<Func<string>> uIAWaitForElementsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForElementsearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForElementsearchProcessId = null, Expression<Func<bool>> uIAWaitForElementsearchSubTree = null, Expression<Func<bool>> uIAWaitForElementreturnElementHandle = null, Expression<Func<int>> uIAWaitForElementmatchIndex = null, Expression<Func<string>> uIAWaitForElementsearchFilter = null, Expression<Func<string>> uIAWaitForElementsortByColumn = null, Expression<Func<bool>> uIAWaitForElementmatchIndexAscending = null, Expression<Func<bool>> uIAWaitForElementincludeChildProcesses = null, Expression<Func<bool>> uIAWaitForElementraiseExceptionIfElementNotFound = null, Expression<Func<int>> uIAWaitForElementmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/WaitForElement";
             var apiCallHttpMethod = "post";
@@ -682,113 +682,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForElement = new JObject();
             var uIAWaitForElementpropCount = 0;
             uIAWaitForElementpropCount++;
-            uIAWaitForElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementParentWindowHandle);
-            if (uIAWaitForElementSearchElementName != null)
+            uIAWaitForElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementparentWindowHandle);
+            if (uIAWaitForElementsearchElementName != null)
             {
-                uIAWaitForElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchElementName);
+                uIAWaitForElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementName);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementSearchElementClassName != null)
+            if (uIAWaitForElementsearchElementClassName != null)
             {
-                uIAWaitForElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchElementClassName);
+                uIAWaitForElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementClassName);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementSearchElementAutomationId != null)
+            if (uIAWaitForElementsearchElementAutomationId != null)
             {
-                uIAWaitForElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchElementAutomationId);
+                uIAWaitForElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchElementAutomationId);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementSearchLocalizedControlType != null)
+            if (uIAWaitForElementsearchLocalizedControlType != null)
             {
-                uIAWaitForElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchLocalizedControlType);
+                uIAWaitForElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchLocalizedControlType);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementSearchProcessId != null)
+            if (uIAWaitForElementsearchProcessId != null)
             {
-                uIAWaitForElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchProcessId);
+                uIAWaitForElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchProcessId);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementSearchSubTree != null)
+            if (uIAWaitForElementsearchSubTree != null)
             {
-                uIAWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchSubTree);
+                uIAWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchSubTree);
                 uIAWaitForElementpropCount++;
             }
 
-            if (uIAWaitForElementReturnElementHandle != null)
+            if (uIAWaitForElementreturnElementHandle != null)
             {
-                uIAWaitForElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementReturnElementHandle);
-                uIAWaitForElementpropCount++;
-            }
-
-            uIAWaitForElementpropCount++;
-            uIAWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementSecondsToWait);
-            if (uIAWaitForElementMatchIndex != null)
-            {
-                uIAWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementMatchIndex);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementSearchFilter != null)
-            {
-                uIAWaitForElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementSearchFilter);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementSortByColumn != null)
-            {
-                uIAWaitForElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementSortByColumn);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementMatchIndexAscending != null)
-            {
-                uIAWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementMatchIndexAscending);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementIncludeChildProcesses != null)
-            {
-                uIAWaitForElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementIncludeChildProcesses);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementRaiseExceptionIfElementNotFound != null)
-            {
-                uIAWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForElementRaiseExceptionIfElementNotFound);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementMaxElementsToSearch != null)
-            {
-                uIAWaitForElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementMaxElementsToSearch);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementMaxRelativeSearchDepth != null)
-            {
-                uIAWaitForElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementMaxRelativeSearchDepth);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementMaxChildElementsToSearchPerNode != null)
-            {
-                uIAWaitForElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementMaxChildElementsToSearchPerNode);
-                uIAWaitForElementpropCount++;
-            }
-
-            if (uIAWaitForElementElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAWaitForElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementreturnElementHandle);
                 uIAWaitForElementpropCount++;
             }
 
             uIAWaitForElementpropCount++;
-            uIAWaitForElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementWorkflow);
+            uIAWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementsecondsToWait);
+            if (uIAWaitForElementmatchIndex != null)
+            {
+                uIAWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndex);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementsearchFilter != null)
+            {
+                uIAWaitForElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchFilter);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementsortByColumn != null)
+            {
+                uIAWaitForElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementsortByColumn);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementmatchIndexAscending != null)
+            {
+                uIAWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndexAscending);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementincludeChildProcesses != null)
+            {
+                uIAWaitForElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementincludeChildProcesses);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementraiseExceptionIfElementNotFound != null)
+            {
+                uIAWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForElementraiseExceptionIfElementNotFound);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementmaxElementsToSearch != null)
+            {
+                uIAWaitForElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxElementsToSearch);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementmaxRelativeSearchDepth != null)
+            {
+                uIAWaitForElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxRelativeSearchDepth);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementmaxChildElementsToSearchPerNode != null)
+            {
+                uIAWaitForElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxChildElementsToSearchPerNode);
+                uIAWaitForElementpropCount++;
+            }
+
+            if (uIAWaitForElementelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAWaitForElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElementpropCount++;
+            }
+
+            uIAWaitForElementpropCount++;
+            uIAWaitForElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementworkflow);
             if (uIAWaitForElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForElement;
@@ -798,119 +798,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForDesktopElementResponse> UIAWaitForDesktopElement(Expression<Func<int>> uIAWaitForDesktopElementSecondsToWait, Expression<Func<string>> uIAWaitForDesktopElementWorkflow, Expression<Func<string>> uIAWaitForDesktopElementSearchElementName = null, Expression<Func<string>> uIAWaitForDesktopElementSearchElementClassName = null, Expression<Func<string>> uIAWaitForDesktopElementSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForDesktopElementSearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForDesktopElementSearchProcessId = null, Expression<Func<bool>> uIAWaitForDesktopElementSearchSubTree = null, Expression<Func<bool>> uIAWaitForDesktopElementReturnElementHandle = null, Expression<Func<int>> uIAWaitForDesktopElementMatchIndex = null, Expression<Func<string>> uIAWaitForDesktopElementSearchFilter = null, Expression<Func<string>> uIAWaitForDesktopElementSortByColumn = null, Expression<Func<bool>> uIAWaitForDesktopElementMatchIndexAscending = null, Expression<Func<bool>> uIAWaitForDesktopElementIncludeChildProcesses = null, Expression<Func<bool>> uIAWaitForDesktopElementRaiseExceptionIfElementNotFound = null, Expression<Func<int>> uIAWaitForDesktopElementMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForDesktopElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForDesktopElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForDesktopElementElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAWaitForDesktopElementResponse> UIAWaitForDesktopElement(Expression<Func<int>> uIAWaitForDesktopElementsecondsToWait, Expression<Func<string>> uIAWaitForDesktopElementworkflow, Expression<Func<string>> uIAWaitForDesktopElementsearchElementName = null, Expression<Func<string>> uIAWaitForDesktopElementsearchElementClassName = null, Expression<Func<string>> uIAWaitForDesktopElementsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForDesktopElementsearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForDesktopElementsearchProcessId = null, Expression<Func<bool>> uIAWaitForDesktopElementsearchSubTree = null, Expression<Func<bool>> uIAWaitForDesktopElementreturnElementHandle = null, Expression<Func<int>> uIAWaitForDesktopElementmatchIndex = null, Expression<Func<string>> uIAWaitForDesktopElementsearchFilter = null, Expression<Func<string>> uIAWaitForDesktopElementsortByColumn = null, Expression<Func<bool>> uIAWaitForDesktopElementmatchIndexAscending = null, Expression<Func<bool>> uIAWaitForDesktopElementincludeChildProcesses = null, Expression<Func<bool>> uIAWaitForDesktopElementraiseExceptionIfElementNotFound = null, Expression<Func<int>> uIAWaitForDesktopElementmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForDesktopElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForDesktopElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/WaitForDesktopElement";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAWaitForDesktopElement = new JObject();
             var uIAWaitForDesktopElementpropCount = 0;
-            if (uIAWaitForDesktopElementSearchElementName != null)
+            if (uIAWaitForDesktopElementsearchElementName != null)
             {
-                uIAWaitForDesktopElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchElementName);
+                uIAWaitForDesktopElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementName);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementSearchElementClassName != null)
+            if (uIAWaitForDesktopElementsearchElementClassName != null)
             {
-                uIAWaitForDesktopElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchElementClassName);
+                uIAWaitForDesktopElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementClassName);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementSearchElementAutomationId != null)
+            if (uIAWaitForDesktopElementsearchElementAutomationId != null)
             {
-                uIAWaitForDesktopElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchElementAutomationId);
+                uIAWaitForDesktopElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchElementAutomationId);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementSearchLocalizedControlType != null)
+            if (uIAWaitForDesktopElementsearchLocalizedControlType != null)
             {
-                uIAWaitForDesktopElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchLocalizedControlType);
+                uIAWaitForDesktopElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchLocalizedControlType);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementSearchProcessId != null)
+            if (uIAWaitForDesktopElementsearchProcessId != null)
             {
-                uIAWaitForDesktopElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchProcessId);
+                uIAWaitForDesktopElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchProcessId);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementSearchSubTree != null)
+            if (uIAWaitForDesktopElementsearchSubTree != null)
             {
-                uIAWaitForDesktopElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchSubTree);
+                uIAWaitForDesktopElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchSubTree);
                 uIAWaitForDesktopElementpropCount++;
             }
 
-            if (uIAWaitForDesktopElementReturnElementHandle != null)
+            if (uIAWaitForDesktopElementreturnElementHandle != null)
             {
-                uIAWaitForDesktopElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementReturnElementHandle);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            uIAWaitForDesktopElementpropCount++;
-            uIAWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSecondsToWait);
-            if (uIAWaitForDesktopElementMatchIndex != null)
-            {
-                uIAWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementMatchIndex);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementSearchFilter != null)
-            {
-                uIAWaitForDesktopElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSearchFilter);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementSortByColumn != null)
-            {
-                uIAWaitForDesktopElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementSortByColumn);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementMatchIndexAscending != null)
-            {
-                uIAWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementMatchIndexAscending);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementIncludeChildProcesses != null)
-            {
-                uIAWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementIncludeChildProcesses);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementRaiseExceptionIfElementNotFound != null)
-            {
-                uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementRaiseExceptionIfElementNotFound);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementMaxElementsToSearch != null)
-            {
-                uIAWaitForDesktopElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementMaxElementsToSearch);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementMaxRelativeSearchDepth != null)
-            {
-                uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementMaxRelativeSearchDepth);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementMaxChildElementsToSearchPerNode != null)
-            {
-                uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementMaxChildElementsToSearchPerNode);
-                uIAWaitForDesktopElementpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAWaitForDesktopElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementreturnElementHandle);
                 uIAWaitForDesktopElementpropCount++;
             }
 
             uIAWaitForDesktopElementpropCount++;
-            uIAWaitForDesktopElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementWorkflow);
+            uIAWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsecondsToWait);
+            if (uIAWaitForDesktopElementmatchIndex != null)
+            {
+                uIAWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndex);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementsearchFilter != null)
+            {
+                uIAWaitForDesktopElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchFilter);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementsortByColumn != null)
+            {
+                uIAWaitForDesktopElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsortByColumn);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementmatchIndexAscending != null)
+            {
+                uIAWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndexAscending);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementincludeChildProcesses != null)
+            {
+                uIAWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementincludeChildProcesses);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementraiseExceptionIfElementNotFound != null)
+            {
+                uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementraiseExceptionIfElementNotFound);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementmaxElementsToSearch != null)
+            {
+                uIAWaitForDesktopElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxElementsToSearch);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementmaxRelativeSearchDepth != null)
+            {
+                uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxRelativeSearchDepth);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementmaxChildElementsToSearchPerNode != null)
+            {
+                uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAWaitForDesktopElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElementpropCount++;
+            }
+
+            uIAWaitForDesktopElementpropCount++;
+            uIAWaitForDesktopElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementworkflow);
             if (uIAWaitForDesktopElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForDesktopElement;
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForElementToNotExistResponse> UIAWaitForElementToNotExist(Expression<Func<int>> uIAWaitForElementToNotExistParentWindowHandle, Expression<Func<int>> uIAWaitForElementToNotExistSecondsToWait, Expression<Func<string>> uIAWaitForElementToNotExistWorkflow, Expression<Func<string>> uIAWaitForElementToNotExistSearchElementName = null, Expression<Func<string>> uIAWaitForElementToNotExistSearchElementClassName = null, Expression<Func<string>> uIAWaitForElementToNotExistSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForElementToNotExistSearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForElementToNotExistSearchProcessId = null, Expression<Func<bool>> uIAWaitForElementToNotExistSearchSubTree = null, Expression<Func<int>> uIAWaitForElementToNotExistMatchIndex = null, Expression<Func<string>> uIAWaitForElementToNotExistSearchFilter = null, Expression<Func<string>> uIAWaitForElementToNotExistSortByColumn = null, Expression<Func<bool>> uIAWaitForElementToNotExistMatchIndexAscending = null, Expression<Func<bool>> uIAWaitForElementToNotExistIncludeChildProcesses = null, Expression<Func<bool>> uIAWaitForElementToNotExistRaiseExceptionIfElementStillExists = null, Expression<Func<int>> uIAWaitForElementToNotExistMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForElementToNotExistMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForElementToNotExistMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForElementToNotExistElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAWaitForElementToNotExistResponse> UIAWaitForElementToNotExist(Expression<Func<int>> uIAWaitForElementToNotExistparentWindowHandle, Expression<Func<int>> uIAWaitForElementToNotExistsecondsToWait, Expression<Func<string>> uIAWaitForElementToNotExistworkflow, Expression<Func<string>> uIAWaitForElementToNotExistsearchElementName = null, Expression<Func<string>> uIAWaitForElementToNotExistsearchElementClassName = null, Expression<Func<string>> uIAWaitForElementToNotExistsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForElementToNotExistsearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForElementToNotExistsearchProcessId = null, Expression<Func<bool>> uIAWaitForElementToNotExistsearchSubTree = null, Expression<Func<int>> uIAWaitForElementToNotExistmatchIndex = null, Expression<Func<string>> uIAWaitForElementToNotExistsearchFilter = null, Expression<Func<string>> uIAWaitForElementToNotExistsortByColumn = null, Expression<Func<bool>> uIAWaitForElementToNotExistmatchIndexAscending = null, Expression<Func<bool>> uIAWaitForElementToNotExistincludeChildProcesses = null, Expression<Func<bool>> uIAWaitForElementToNotExistraiseExceptionIfElementStillExists = null, Expression<Func<int>> uIAWaitForElementToNotExistmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForElementToNotExistmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAWaitForElementToNotExist";
             var apiCallHttpMethod = "post";
@@ -928,107 +928,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAWaitForElementToNotExist = new JObject();
             var uIAWaitForElementToNotExistpropCount = 0;
             uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistParentWindowHandle);
-            if (uIAWaitForElementToNotExistSearchElementName != null)
+            uIAWaitForElementToNotExist["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistparentWindowHandle);
+            if (uIAWaitForElementToNotExistsearchElementName != null)
             {
-                uIAWaitForElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchElementName);
+                uIAWaitForElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementName);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForElementToNotExistSearchElementClassName != null)
+            if (uIAWaitForElementToNotExistsearchElementClassName != null)
             {
-                uIAWaitForElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchElementClassName);
+                uIAWaitForElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementClassName);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForElementToNotExistSearchElementAutomationId != null)
+            if (uIAWaitForElementToNotExistsearchElementAutomationId != null)
             {
-                uIAWaitForElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchElementAutomationId);
+                uIAWaitForElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchElementAutomationId);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForElementToNotExistSearchLocalizedControlType != null)
+            if (uIAWaitForElementToNotExistsearchLocalizedControlType != null)
             {
-                uIAWaitForElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchLocalizedControlType);
+                uIAWaitForElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchLocalizedControlType);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForElementToNotExistSearchProcessId != null)
+            if (uIAWaitForElementToNotExistsearchProcessId != null)
             {
-                uIAWaitForElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchProcessId);
+                uIAWaitForElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchProcessId);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForElementToNotExistSearchSubTree != null)
+            if (uIAWaitForElementToNotExistsearchSubTree != null)
             {
-                uIAWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchSubTree);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSecondsToWait);
-            if (uIAWaitForElementToNotExistMatchIndex != null)
-            {
-                uIAWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistMatchIndex);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistSearchFilter != null)
-            {
-                uIAWaitForElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSearchFilter);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistSortByColumn != null)
-            {
-                uIAWaitForElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistSortByColumn);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistMatchIndexAscending != null)
-            {
-                uIAWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistMatchIndexAscending);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistIncludeChildProcesses != null)
-            {
-                uIAWaitForElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistIncludeChildProcesses);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistRaiseExceptionIfElementStillExists != null)
-            {
-                uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistRaiseExceptionIfElementStillExists);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistMaxElementsToSearch != null)
-            {
-                uIAWaitForElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistMaxElementsToSearch);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistMaxRelativeSearchDepth != null)
-            {
-                uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistMaxRelativeSearchDepth);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistMaxChildElementsToSearchPerNode != null)
-            {
-                uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistMaxChildElementsToSearchPerNode);
-                uIAWaitForElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForElementToNotExistElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAWaitForElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchSubTree);
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             uIAWaitForElementToNotExistpropCount++;
-            uIAWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistWorkflow);
+            uIAWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsecondsToWait);
+            if (uIAWaitForElementToNotExistmatchIndex != null)
+            {
+                uIAWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndex);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistsearchFilter != null)
+            {
+                uIAWaitForElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchFilter);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistsortByColumn != null)
+            {
+                uIAWaitForElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsortByColumn);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistmatchIndexAscending != null)
+            {
+                uIAWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndexAscending);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistincludeChildProcesses != null)
+            {
+                uIAWaitForElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistincludeChildProcesses);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
+            {
+                uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistmaxElementsToSearch != null)
+            {
+                uIAWaitForElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxElementsToSearch);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistmaxRelativeSearchDepth != null)
+            {
+                uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxRelativeSearchDepth);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode != null)
+            {
+                uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAWaitForElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForElementToNotExistpropCount++;
+            }
+
+            uIAWaitForElementToNotExistpropCount++;
+            uIAWaitForElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistworkflow);
             if (uIAWaitForElementToNotExistpropCount > 0)
             {
                 callPayload.Body = uIAWaitForElementToNotExist;
@@ -1038,113 +1038,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForDesktopElementToNotExistResponse> UIAWaitForDesktopElementToNotExist(Expression<Func<int>> uIAWaitForDesktopElementToNotExistSecondsToWait, Expression<Func<string>> uIAWaitForDesktopElementToNotExistWorkflow, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSearchElementName = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSearchElementClassName = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistSearchProcessId = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistSearchSubTree = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistMatchIndex = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSearchFilter = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistSortByColumn = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistMatchIndexAscending = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistIncludeChildProcesses = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAWaitForDesktopElementToNotExistResponse> UIAWaitForDesktopElementToNotExist(Expression<Func<int>> uIAWaitForDesktopElementToNotExistsecondsToWait, Expression<Func<string>> uIAWaitForDesktopElementToNotExistworkflow, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsearchElementName = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsearchElementClassName = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsearchLocalizedControlType = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistsearchProcessId = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistsearchSubTree = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistmatchIndex = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsearchFilter = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistsortByColumn = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistmatchIndexAscending = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistincludeChildProcesses = null, Expression<Func<bool>> uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAWaitForDesktopElementToNotExist";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAWaitForDesktopElementToNotExist = new JObject();
             var uIAWaitForDesktopElementToNotExistpropCount = 0;
-            if (uIAWaitForDesktopElementToNotExistSearchElementName != null)
+            if (uIAWaitForDesktopElementToNotExistsearchElementName != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchElementName);
+                uIAWaitForDesktopElementToNotExist["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementName);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForDesktopElementToNotExistSearchElementClassName != null)
+            if (uIAWaitForDesktopElementToNotExistsearchElementClassName != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchElementClassName);
+                uIAWaitForDesktopElementToNotExist["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementClassName);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForDesktopElementToNotExistSearchElementAutomationId != null)
+            if (uIAWaitForDesktopElementToNotExistsearchElementAutomationId != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchElementAutomationId);
+                uIAWaitForDesktopElementToNotExist["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchElementAutomationId);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForDesktopElementToNotExistSearchLocalizedControlType != null)
+            if (uIAWaitForDesktopElementToNotExistsearchLocalizedControlType != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchLocalizedControlType);
+                uIAWaitForDesktopElementToNotExist["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchLocalizedControlType);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForDesktopElementToNotExistSearchProcessId != null)
+            if (uIAWaitForDesktopElementToNotExistsearchProcessId != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchProcessId);
+                uIAWaitForDesktopElementToNotExist["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchProcessId);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
-            if (uIAWaitForDesktopElementToNotExistSearchSubTree != null)
+            if (uIAWaitForDesktopElementToNotExistsearchSubTree != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchSubTree);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            uIAWaitForDesktopElementToNotExistpropCount++;
-            uIAWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSecondsToWait);
-            if (uIAWaitForDesktopElementToNotExistMatchIndex != null)
-            {
-                uIAWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistMatchIndex);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistSearchFilter != null)
-            {
-                uIAWaitForDesktopElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSearchFilter);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistSortByColumn != null)
-            {
-                uIAWaitForDesktopElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistSortByColumn);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistMatchIndexAscending != null)
-            {
-                uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistMatchIndexAscending);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistIncludeChildProcesses != null)
-            {
-                uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistIncludeChildProcesses);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists != null)
-            {
-                uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistRaiseExceptionIfElementStillExists);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistMaxElementsToSearch != null)
-            {
-                uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistMaxElementsToSearch);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistMaxRelativeSearchDepth != null)
-            {
-                uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistMaxRelativeSearchDepth);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistMaxChildElementsToSearchPerNode != null)
-            {
-                uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistMaxChildElementsToSearchPerNode);
-                uIAWaitForDesktopElementToNotExistpropCount++;
-            }
-
-            if (uIAWaitForDesktopElementToNotExistElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAWaitForDesktopElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchSubTree);
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             uIAWaitForDesktopElementToNotExistpropCount++;
-            uIAWaitForDesktopElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistWorkflow);
+            uIAWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsecondsToWait);
+            if (uIAWaitForDesktopElementToNotExistmatchIndex != null)
+            {
+                uIAWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndex);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistsearchFilter != null)
+            {
+                uIAWaitForDesktopElementToNotExist["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchFilter);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistsortByColumn != null)
+            {
+                uIAWaitForDesktopElementToNotExist["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsortByColumn);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistmatchIndexAscending != null)
+            {
+                uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndexAscending);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistincludeChildProcesses != null)
+            {
+                uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistincludeChildProcesses);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
+            {
+                uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistmaxElementsToSearch != null)
+            {
+                uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxElementsToSearch);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth != null)
+            {
+                uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode != null)
+            {
+                uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            if (uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAWaitForDesktopElementToNotExist["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistelementLocalizedControlTypesNotToTraverse);
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+
+            uIAWaitForDesktopElementToNotExistpropCount++;
+            uIAWaitForDesktopElementToNotExist["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistworkflow);
             if (uIAWaitForDesktopElementToNotExistpropCount > 0)
             {
                 callPayload.Body = uIAWaitForDesktopElementToNotExist;
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAPressElement(Expression<Func<int>> uIAPressElementParentWindowHandle, Expression<Func<string>> uIAPressElementWorkflow, Expression<Func<string>> uIAPressElementSearchElementName = null, Expression<Func<string>> uIAPressElementSearchElementClassName = null, Expression<Func<string>> uIAPressElementSearchElementAutomationId = null, Expression<Func<string>> uIAPressElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAPressElementSearchSubTree = null, Expression<Func<bool>> uIAPressElementWait = null, Expression<Func<bool>> uIAPressElementWin32ClickButton = null, Expression<Func<int>> uIAPressElementMatchIndex = null, Expression<Func<string>> uIAPressElementSearchFilter = null, Expression<Func<string>> uIAPressElementSortByColumn = null, Expression<Func<bool>> uIAPressElementMatchIndexAscending = null, Expression<Func<int>> uIAPressElementMaxElementsToSearch = null, Expression<Func<int>> uIAPressElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAPressElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAPressElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAPressElementTryInvokePattern = null, Expression<Func<bool>> uIAPressElementTryLegacyPattern = null)
+        public IWorkflowAction UIAPressElement(Expression<Func<int>> uIAPressElementparentWindowHandle, Expression<Func<string>> uIAPressElementworkflow, Expression<Func<string>> uIAPressElementsearchElementName = null, Expression<Func<string>> uIAPressElementsearchElementClassName = null, Expression<Func<string>> uIAPressElementsearchElementAutomationId = null, Expression<Func<string>> uIAPressElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAPressElementsearchSubTree = null, Expression<Func<bool>> uIAPressElementwait = null, Expression<Func<bool>> uIAPressElementwin32ClickButton = null, Expression<Func<int>> uIAPressElementmatchIndex = null, Expression<Func<string>> uIAPressElementsearchFilter = null, Expression<Func<string>> uIAPressElementsortByColumn = null, Expression<Func<bool>> uIAPressElementmatchIndexAscending = null, Expression<Func<int>> uIAPressElementmaxElementsToSearch = null, Expression<Func<int>> uIAPressElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAPressElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAPressElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAPressElementtryInvokePattern = null, Expression<Func<bool>> uIAPressElementtryLegacyPattern = null)
         {
             var apiCallPath = "/UIAControl/PressElement";
             var apiCallHttpMethod = "post";
@@ -1162,111 +1162,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAPressElement = new JObject();
             var uIAPressElementpropCount = 0;
             uIAPressElementpropCount++;
-            uIAPressElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAPressElementParentWindowHandle);
-            if (uIAPressElementSearchElementName != null)
+            uIAPressElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAPressElementparentWindowHandle);
+            if (uIAPressElementsearchElementName != null)
             {
-                uIAPressElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAPressElementSearchElementName);
+                uIAPressElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementName);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSearchElementClassName != null)
+            if (uIAPressElementsearchElementClassName != null)
             {
-                uIAPressElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAPressElementSearchElementClassName);
+                uIAPressElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementClassName);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSearchElementAutomationId != null)
+            if (uIAPressElementsearchElementAutomationId != null)
             {
-                uIAPressElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAPressElementSearchElementAutomationId);
+                uIAPressElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAPressElementsearchElementAutomationId);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSearchLocalizedControlType != null)
+            if (uIAPressElementsearchLocalizedControlType != null)
             {
-                uIAPressElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAPressElementSearchLocalizedControlType);
+                uIAPressElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAPressElementsearchLocalizedControlType);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSearchSubTree != null)
+            if (uIAPressElementsearchSubTree != null)
             {
-                uIAPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAPressElementSearchSubTree);
+                uIAPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAPressElementsearchSubTree);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementWait != null)
+            if (uIAPressElementwait != null)
             {
-                uIAPressElement["Wait"] = ExpressionConverter.ConvertO(uIAPressElementWait);
+                uIAPressElement["Wait"] = ExpressionConverter.ConvertO(uIAPressElementwait);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementWin32ClickButton != null)
+            if (uIAPressElementwin32ClickButton != null)
             {
-                uIAPressElement["Win32ClickButton"] = ExpressionConverter.ConvertO(uIAPressElementWin32ClickButton);
+                uIAPressElement["Win32ClickButton"] = ExpressionConverter.ConvertO(uIAPressElementwin32ClickButton);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementMatchIndex != null)
+            if (uIAPressElementmatchIndex != null)
             {
-                uIAPressElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAPressElementMatchIndex);
+                uIAPressElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndex);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSearchFilter != null)
+            if (uIAPressElementsearchFilter != null)
             {
-                uIAPressElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAPressElementSearchFilter);
+                uIAPressElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAPressElementsearchFilter);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementSortByColumn != null)
+            if (uIAPressElementsortByColumn != null)
             {
-                uIAPressElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAPressElementSortByColumn);
+                uIAPressElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAPressElementsortByColumn);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementMatchIndexAscending != null)
+            if (uIAPressElementmatchIndexAscending != null)
             {
-                uIAPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAPressElementMatchIndexAscending);
+                uIAPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndexAscending);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementMaxElementsToSearch != null)
+            if (uIAPressElementmaxElementsToSearch != null)
             {
-                uIAPressElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAPressElementMaxElementsToSearch);
+                uIAPressElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAPressElementmaxElementsToSearch);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementMaxRelativeSearchDepth != null)
+            if (uIAPressElementmaxRelativeSearchDepth != null)
             {
-                uIAPressElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAPressElementMaxRelativeSearchDepth);
+                uIAPressElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAPressElementmaxRelativeSearchDepth);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementMaxChildElementsToSearchPerNode != null)
+            if (uIAPressElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAPressElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAPressElementMaxChildElementsToSearchPerNode);
+                uIAPressElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAPressElementmaxChildElementsToSearchPerNode);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAPressElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAPressElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAPressElementElementLocalizedControlTypesNotToTraverse);
+                uIAPressElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAPressElementelementLocalizedControlTypesNotToTraverse);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementTryInvokePattern != null)
+            if (uIAPressElementtryInvokePattern != null)
             {
-                uIAPressElement["TryInvokePattern"] = ExpressionConverter.ConvertO(uIAPressElementTryInvokePattern);
+                uIAPressElement["TryInvokePattern"] = ExpressionConverter.ConvertO(uIAPressElementtryInvokePattern);
                 uIAPressElementpropCount++;
             }
 
-            if (uIAPressElementTryLegacyPattern != null)
+            if (uIAPressElementtryLegacyPattern != null)
             {
-                uIAPressElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAPressElementTryLegacyPattern);
+                uIAPressElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAPressElementtryLegacyPattern);
                 uIAPressElementpropCount++;
             }
 
             uIAPressElementpropCount++;
-            uIAPressElement["Workflow"] = ExpressionConverter.ConvertO(uIAPressElementWorkflow);
+            uIAPressElement["Workflow"] = ExpressionConverter.ConvertO(uIAPressElementworkflow);
             if (uIAPressElementpropCount > 0)
             {
                 callPayload.Body = uIAPressElement;
@@ -1276,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalMouseClickOnElement(Expression<Func<int>> uIAGlobalMouseClickOnElementParentWindowHandle, Expression<Func<string>> uIAGlobalMouseClickOnElementWorkflow, Expression<Func<string>> uIAGlobalMouseClickOnElementSearchElementName = null, Expression<Func<string>> uIAGlobalMouseClickOnElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalMouseClickOnElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMouseClickOnElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementSearchSubTree = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementFocusElementFirst = null, Expression<Func<int>> uIAGlobalMouseClickOnElementMatchIndex = null, Expression<Func<string>> uIAGlobalMouseClickOnElementSearchFilter = null, Expression<Func<string>> uIAGlobalMouseClickOnElementSortByColumn = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementMatchIndexAscending = null, Expression<Func<int>> uIAGlobalMouseClickOnElementClickOffsetX = null, Expression<Func<int>> uIAGlobalMouseClickOnElementClickOffsetY = null, Expression<Func<uIAGlobalMouseClickOnElementOffsetRelativeToInput>> uIAGlobalMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMouseClickOnElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMouseClickOnElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMouseClickOnElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMouseClickOnElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalMouseClickOnElement(Expression<Func<int>> uIAGlobalMouseClickOnElementparentWindowHandle, Expression<Func<string>> uIAGlobalMouseClickOnElementworkflow, Expression<Func<string>> uIAGlobalMouseClickOnElementsearchElementName = null, Expression<Func<string>> uIAGlobalMouseClickOnElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalMouseClickOnElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMouseClickOnElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementsearchSubTree = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementfocusElementFirst = null, Expression<Func<int>> uIAGlobalMouseClickOnElementmatchIndex = null, Expression<Func<string>> uIAGlobalMouseClickOnElementsearchFilter = null, Expression<Func<string>> uIAGlobalMouseClickOnElementsortByColumn = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementmatchIndexAscending = null, Expression<Func<int>> uIAGlobalMouseClickOnElementclickOffsetX = null, Expression<Func<int>> uIAGlobalMouseClickOnElementclickOffsetY = null, Expression<Func<uIAGlobalMouseClickOnElementoffsetRelativeToInput>> uIAGlobalMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMouseClickOnElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMouseClickOnElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/GlobalMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1284,117 +1284,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMouseClickOnElement = new JObject();
             var uIAGlobalMouseClickOnElementpropCount = 0;
             uIAGlobalMouseClickOnElementpropCount++;
-            uIAGlobalMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementParentWindowHandle);
-            if (uIAGlobalMouseClickOnElementSearchElementName != null)
+            uIAGlobalMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementparentWindowHandle);
+            if (uIAGlobalMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchElementName);
+                uIAGlobalMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementName);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSearchElementClassName != null)
+            if (uIAGlobalMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchElementClassName);
+                uIAGlobalMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementClassName);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSearchElementAutomationId != null)
+            if (uIAGlobalMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchElementAutomationId);
+                uIAGlobalMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSearchLocalizedControlType != null)
+            if (uIAGlobalMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchLocalizedControlType);
+                uIAGlobalMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSearchSubTree != null)
+            if (uIAGlobalMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchSubTree);
+                uIAGlobalMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchSubTree);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementFocusElementFirst != null)
+            if (uIAGlobalMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementFocusElementFirst);
+                uIAGlobalMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementfocusElementFirst);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementMatchIndex != null)
+            if (uIAGlobalMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementMatchIndex);
+                uIAGlobalMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndex);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSearchFilter != null)
+            if (uIAGlobalMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSearchFilter);
+                uIAGlobalMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchFilter);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementSortByColumn != null)
+            if (uIAGlobalMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementSortByColumn);
+                uIAGlobalMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsortByColumn);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementMatchIndexAscending != null)
+            if (uIAGlobalMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementMatchIndexAscending);
+                uIAGlobalMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndexAscending);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementClickOffsetX != null)
+            if (uIAGlobalMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementClickOffsetX);
+                uIAGlobalMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetX);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementClickOffsetY != null)
+            if (uIAGlobalMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementClickOffsetY);
+                uIAGlobalMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetY);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementOffsetRelativeTo != null)
+            if (uIAGlobalMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementOffsetRelativeTo);
+                uIAGlobalMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementMaxElementsToSearch != null)
+            if (uIAGlobalMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementMaxElementsToSearch);
+                uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxElementsToSearch);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementMaxRelativeSearchDepth != null)
+            if (uIAGlobalMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementMaxRelativeSearchDepth);
+                uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementMaxChildElementsToSearchPerNode != null)
+            if (uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementMaxChildElementsToSearchPerNode);
+                uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMouseClickOnElementValidateClickablePointWithinElementBoundary != null)
+            if (uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             uIAGlobalMouseClickOnElementpropCount++;
-            uIAGlobalMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementWorkflow);
+            uIAGlobalMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementworkflow);
             if (uIAGlobalMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMouseClickOnElement;
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalRightMouseClickOnElement(Expression<Func<int>> uIAGlobalRightMouseClickOnElementParentWindowHandle, Expression<Func<string>> uIAGlobalRightMouseClickOnElementWorkflow, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSearchElementName = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementSearchSubTree = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementFocusElementFirst = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementMatchIndex = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSearchFilter = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementSortByColumn = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementMatchIndexAscending = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementClickOffsetX = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementClickOffsetY = null, Expression<Func<uIAGlobalRightMouseClickOnElementOffsetRelativeToInput>> uIAGlobalRightMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalRightMouseClickOnElement(Expression<Func<int>> uIAGlobalRightMouseClickOnElementparentWindowHandle, Expression<Func<string>> uIAGlobalRightMouseClickOnElementworkflow, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsearchElementName = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementsearchSubTree = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementfocusElementFirst = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementmatchIndex = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsearchFilter = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementsortByColumn = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementmatchIndexAscending = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementclickOffsetX = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementclickOffsetY = null, Expression<Func<uIAGlobalRightMouseClickOnElementoffsetRelativeToInput>> uIAGlobalRightMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/GlobalRightMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1412,117 +1412,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalRightMouseClickOnElement = new JObject();
             var uIAGlobalRightMouseClickOnElementpropCount = 0;
             uIAGlobalRightMouseClickOnElementpropCount++;
-            uIAGlobalRightMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementParentWindowHandle);
-            if (uIAGlobalRightMouseClickOnElementSearchElementName != null)
+            uIAGlobalRightMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementparentWindowHandle);
+            if (uIAGlobalRightMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchElementName);
+                uIAGlobalRightMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementName);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSearchElementClassName != null)
+            if (uIAGlobalRightMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchElementClassName);
+                uIAGlobalRightMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementClassName);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSearchElementAutomationId != null)
+            if (uIAGlobalRightMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchElementAutomationId);
+                uIAGlobalRightMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSearchLocalizedControlType != null)
+            if (uIAGlobalRightMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchLocalizedControlType);
+                uIAGlobalRightMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSearchSubTree != null)
+            if (uIAGlobalRightMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchSubTree);
+                uIAGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchSubTree);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementFocusElementFirst != null)
+            if (uIAGlobalRightMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementFocusElementFirst);
+                uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementfocusElementFirst);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementMatchIndex != null)
+            if (uIAGlobalRightMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementMatchIndex);
+                uIAGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndex);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSearchFilter != null)
+            if (uIAGlobalRightMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSearchFilter);
+                uIAGlobalRightMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchFilter);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementSortByColumn != null)
+            if (uIAGlobalRightMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalRightMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementSortByColumn);
+                uIAGlobalRightMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsortByColumn);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementMatchIndexAscending != null)
+            if (uIAGlobalRightMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementMatchIndexAscending);
+                uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndexAscending);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementClickOffsetX != null)
+            if (uIAGlobalRightMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementClickOffsetX);
+                uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetX);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementClickOffsetY != null)
+            if (uIAGlobalRightMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementClickOffsetY);
+                uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetY);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementOffsetRelativeTo != null)
+            if (uIAGlobalRightMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalRightMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementOffsetRelativeTo);
+                uIAGlobalRightMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementMaxElementsToSearch != null)
+            if (uIAGlobalRightMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementMaxElementsToSearch);
+                uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxElementsToSearch);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementMaxRelativeSearchDepth != null)
+            if (uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementMaxRelativeSearchDepth);
+                uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementMaxChildElementsToSearchPerNode != null)
+            if (uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementMaxChildElementsToSearchPerNode);
+                uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalRightMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalRightMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalRightMouseClickOnElementValidateClickablePointWithinElementBoundary != null)
+            if (uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             uIAGlobalRightMouseClickOnElementpropCount++;
-            uIAGlobalRightMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementWorkflow);
+            uIAGlobalRightMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementworkflow);
             if (uIAGlobalRightMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalRightMouseClickOnElement;
@@ -1532,7 +1532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalMiddleMouseClickOnElement(Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementParentWindowHandle, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementWorkflow, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSearchElementName = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementSearchSubTree = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementFocusElementFirst = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementMatchIndex = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSearchFilter = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementSortByColumn = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementMatchIndexAscending = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementClickOffsetX = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementClickOffsetY = null, Expression<Func<uIAGlobalMiddleMouseClickOnElementOffsetRelativeToInput>> uIAGlobalMiddleMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalMiddleMouseClickOnElement(Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementparentWindowHandle, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementworkflow, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsearchElementName = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementsearchSubTree = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementfocusElementFirst = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementmatchIndex = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsearchFilter = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementsortByColumn = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementmatchIndexAscending = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementclickOffsetX = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementclickOffsetY = null, Expression<Func<uIAGlobalMiddleMouseClickOnElementoffsetRelativeToInput>> uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/GlobalMiddleMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1540,117 +1540,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMiddleMouseClickOnElement = new JObject();
             var uIAGlobalMiddleMouseClickOnElementpropCount = 0;
             uIAGlobalMiddleMouseClickOnElementpropCount++;
-            uIAGlobalMiddleMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementParentWindowHandle);
-            if (uIAGlobalMiddleMouseClickOnElementSearchElementName != null)
+            uIAGlobalMiddleMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementparentWindowHandle);
+            if (uIAGlobalMiddleMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchElementName);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementName);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSearchElementClassName != null)
+            if (uIAGlobalMiddleMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchElementClassName);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementClassName);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSearchElementAutomationId != null)
+            if (uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchElementAutomationId);
+                uIAGlobalMiddleMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSearchLocalizedControlType != null)
+            if (uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchLocalizedControlType);
+                uIAGlobalMiddleMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSearchSubTree != null)
+            if (uIAGlobalMiddleMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchSubTree);
+                uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchSubTree);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementFocusElementFirst != null)
+            if (uIAGlobalMiddleMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementFocusElementFirst);
+                uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementfocusElementFirst);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementMatchIndex != null)
+            if (uIAGlobalMiddleMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementMatchIndex);
+                uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndex);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSearchFilter != null)
+            if (uIAGlobalMiddleMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSearchFilter);
+                uIAGlobalMiddleMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchFilter);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementSortByColumn != null)
+            if (uIAGlobalMiddleMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementSortByColumn);
+                uIAGlobalMiddleMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsortByColumn);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementMatchIndexAscending != null)
+            if (uIAGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementMatchIndexAscending);
+                uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementClickOffsetX != null)
+            if (uIAGlobalMiddleMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementClickOffsetX);
+                uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetX);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementClickOffsetY != null)
+            if (uIAGlobalMiddleMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementClickOffsetY);
+                uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetY);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementOffsetRelativeTo != null)
+            if (uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementOffsetRelativeTo);
+                uIAGlobalMiddleMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementMaxElementsToSearch != null)
+            if (uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementMaxElementsToSearch);
+                uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementMaxRelativeSearchDepth != null)
+            if (uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementMaxRelativeSearchDepth);
+                uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementMaxChildElementsToSearchPerNode != null)
+            if (uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementMaxChildElementsToSearchPerNode);
+                uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMiddleMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalMiddleMouseClickOnElementValidateClickablePointWithinElementBoundary != null)
+            if (uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             uIAGlobalMiddleMouseClickOnElementpropCount++;
-            uIAGlobalMiddleMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementWorkflow);
+            uIAGlobalMiddleMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementworkflow);
             if (uIAGlobalMiddleMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMiddleMouseClickOnElement;
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalDoubleLeftMouseClickOnElement(Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementParentWindowHandle, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementWorkflow, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSearchElementName = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementSearchSubTree = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementFocusElementFirst = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementMatchIndex = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSearchFilter = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementSortByColumn = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementMatchIndexAscending = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementClickOffsetX = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementClickOffsetY = null, Expression<Func<uIAGlobalDoubleLeftMouseClickOnElementOffsetRelativeToInput>> uIAGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalDoubleLeftMouseClickOnElement(Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementworkflow, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsearchElementName = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementmatchIndex = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsearchFilter = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementsortByColumn = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY = null, Expression<Func<uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput>> uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/GlobalDoubleLeftMouseClickOnElement";
             var apiCallHttpMethod = "post";
@@ -1668,123 +1668,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalDoubleLeftMouseClickOnElement = new JObject();
             var uIAGlobalDoubleLeftMouseClickOnElementpropCount = 0;
             uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
-            uIAGlobalDoubleLeftMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementParentWindowHandle);
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchElementName != null)
+            uIAGlobalDoubleLeftMouseClickOnElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementparentWindowHandle);
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementName != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchElementName);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementName);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchElementClassName != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchElementClassName);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementClassName);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchElementAutomationId != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchElementAutomationId);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchElementAutomationId);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchLocalizedControlType != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchLocalizedControlType);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchLocalizedControlType);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchSubTree != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchSubTree);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementDelayInMilliseconds);
+                uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementFocusElementFirst != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementFocusElementFirst);
+                uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementMatchIndex != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementMatchIndex);
+                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSearchFilter != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsearchFilter != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSearchFilter);
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchFilter);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementSortByColumn != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementsortByColumn != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementSortByColumn);
+                uIAGlobalDoubleLeftMouseClickOnElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsortByColumn);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementMatchIndexAscending != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementMatchIndexAscending);
+                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementClickOffsetX != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementClickOffsetX);
+                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementClickOffsetY != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementClickOffsetY);
+                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementOffsetRelativeTo);
+                uIAGlobalDoubleLeftMouseClickOnElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeTo);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementMaxElementsToSearch != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementMaxElementsToSearch);
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementMaxRelativeSearchDepth != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementMaxRelativeSearchDepth);
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementMaxChildElementsToSearchPerNode != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementMaxChildElementsToSearchPerNode);
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalDoubleLeftMouseClickOnElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
-            if (uIAGlobalDoubleLeftMouseClickOnElementValidateClickablePointWithinElementBoundary != null)
+            if (uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary);
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
-            uIAGlobalDoubleLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementWorkflow);
+            uIAGlobalDoubleLeftMouseClickOnElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementworkflow);
             if (uIAGlobalDoubleLeftMouseClickOnElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalDoubleLeftMouseClickOnElement;
@@ -1794,7 +1794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASelectElement(Expression<Func<int>> uIASelectElementParentWindowHandle, Expression<Func<string>> uIASelectElementWorkflow, Expression<Func<string>> uIASelectElementSearchElementName = null, Expression<Func<string>> uIASelectElementSearchElementClassName = null, Expression<Func<string>> uIASelectElementSearchElementAutomationId = null, Expression<Func<string>> uIASelectElementSearchLocalizedControlType = null, Expression<Func<bool>> uIASelectElementSearchSubTree = null, Expression<Func<int>> uIASelectElementMatchIndex = null, Expression<Func<string>> uIASelectElementSearchFilter = null, Expression<Func<string>> uIASelectElementSortByColumn = null, Expression<Func<bool>> uIASelectElementMatchIndexAscending = null, Expression<Func<int>> uIASelectElementMaxElementsToSearch = null, Expression<Func<int>> uIASelectElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIASelectElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASelectElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIASelectElement(Expression<Func<int>> uIASelectElementparentWindowHandle, Expression<Func<string>> uIASelectElementworkflow, Expression<Func<string>> uIASelectElementsearchElementName = null, Expression<Func<string>> uIASelectElementsearchElementClassName = null, Expression<Func<string>> uIASelectElementsearchElementAutomationId = null, Expression<Func<string>> uIASelectElementsearchLocalizedControlType = null, Expression<Func<bool>> uIASelectElementsearchSubTree = null, Expression<Func<int>> uIASelectElementmatchIndex = null, Expression<Func<string>> uIASelectElementsearchFilter = null, Expression<Func<string>> uIASelectElementsortByColumn = null, Expression<Func<bool>> uIASelectElementmatchIndexAscending = null, Expression<Func<int>> uIASelectElementmaxElementsToSearch = null, Expression<Func<int>> uIASelectElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIASelectElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASelectElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/SelectElement";
             var apiCallHttpMethod = "post";
@@ -1802,87 +1802,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASelectElement = new JObject();
             var uIASelectElementpropCount = 0;
             uIASelectElementpropCount++;
-            uIASelectElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASelectElementParentWindowHandle);
-            if (uIASelectElementSearchElementName != null)
+            uIASelectElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASelectElementparentWindowHandle);
+            if (uIASelectElementsearchElementName != null)
             {
-                uIASelectElement["SearchElementName"] = ExpressionConverter.ConvertO(uIASelectElementSearchElementName);
+                uIASelectElement["SearchElementName"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementName);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSearchElementClassName != null)
+            if (uIASelectElementsearchElementClassName != null)
             {
-                uIASelectElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASelectElementSearchElementClassName);
+                uIASelectElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementClassName);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSearchElementAutomationId != null)
+            if (uIASelectElementsearchElementAutomationId != null)
             {
-                uIASelectElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASelectElementSearchElementAutomationId);
+                uIASelectElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASelectElementsearchElementAutomationId);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSearchLocalizedControlType != null)
+            if (uIASelectElementsearchLocalizedControlType != null)
             {
-                uIASelectElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASelectElementSearchLocalizedControlType);
+                uIASelectElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASelectElementsearchLocalizedControlType);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSearchSubTree != null)
+            if (uIASelectElementsearchSubTree != null)
             {
-                uIASelectElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIASelectElementSearchSubTree);
+                uIASelectElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIASelectElementsearchSubTree);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementMatchIndex != null)
+            if (uIASelectElementmatchIndex != null)
             {
-                uIASelectElement["MatchIndex"] = ExpressionConverter.ConvertO(uIASelectElementMatchIndex);
+                uIASelectElement["MatchIndex"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndex);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSearchFilter != null)
+            if (uIASelectElementsearchFilter != null)
             {
-                uIASelectElement["SearchFilter"] = ExpressionConverter.ConvertO(uIASelectElementSearchFilter);
+                uIASelectElement["SearchFilter"] = ExpressionConverter.ConvertO(uIASelectElementsearchFilter);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementSortByColumn != null)
+            if (uIASelectElementsortByColumn != null)
             {
-                uIASelectElement["SortByColumn"] = ExpressionConverter.ConvertO(uIASelectElementSortByColumn);
+                uIASelectElement["SortByColumn"] = ExpressionConverter.ConvertO(uIASelectElementsortByColumn);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementMatchIndexAscending != null)
+            if (uIASelectElementmatchIndexAscending != null)
             {
-                uIASelectElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASelectElementMatchIndexAscending);
+                uIASelectElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndexAscending);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementMaxElementsToSearch != null)
+            if (uIASelectElementmaxElementsToSearch != null)
             {
-                uIASelectElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASelectElementMaxElementsToSearch);
+                uIASelectElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASelectElementmaxElementsToSearch);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementMaxRelativeSearchDepth != null)
+            if (uIASelectElementmaxRelativeSearchDepth != null)
             {
-                uIASelectElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASelectElementMaxRelativeSearchDepth);
+                uIASelectElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASelectElementmaxRelativeSearchDepth);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementMaxChildElementsToSearchPerNode != null)
+            if (uIASelectElementmaxChildElementsToSearchPerNode != null)
             {
-                uIASelectElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASelectElementMaxChildElementsToSearchPerNode);
+                uIASelectElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASelectElementmaxChildElementsToSearchPerNode);
                 uIASelectElementpropCount++;
             }
 
-            if (uIASelectElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIASelectElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASelectElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASelectElementElementLocalizedControlTypesNotToTraverse);
+                uIASelectElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASelectElementelementLocalizedControlTypesNotToTraverse);
                 uIASelectElementpropCount++;
             }
 
             uIASelectElementpropCount++;
-            uIASelectElement["Workflow"] = ExpressionConverter.ConvertO(uIASelectElementWorkflow);
+            uIASelectElement["Workflow"] = ExpressionConverter.ConvertO(uIASelectElementworkflow);
             if (uIASelectElementpropCount > 0)
             {
                 callPayload.Body = uIASelectElement;
@@ -1892,7 +1892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAInputPasswordIntoElement(Expression<Func<int>> uIAInputPasswordIntoElementParentWindowHandle, Expression<Func<string>> uIAInputPasswordIntoElementPasswordToInput, Expression<Func<string>> uIAInputPasswordIntoElementWorkflow, Expression<Func<string>> uIAInputPasswordIntoElementSearchElementName = null, Expression<Func<string>> uIAInputPasswordIntoElementSearchElementClassName = null, Expression<Func<string>> uIAInputPasswordIntoElementSearchElementAutomationId = null, Expression<Func<string>> uIAInputPasswordIntoElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAInputPasswordIntoElementSearchSubTree = null, Expression<Func<int>> uIAInputPasswordIntoElementMatchIndex = null, Expression<Func<string>> uIAInputPasswordIntoElementSearchFilter = null, Expression<Func<string>> uIAInputPasswordIntoElementSortByColumn = null, Expression<Func<bool>> uIAInputPasswordIntoElementMatchIndexAscending = null, Expression<Func<bool>> uIAInputPasswordIntoElementPasswordContainsStoredPassword = null, Expression<Func<int>> uIAInputPasswordIntoElementMaxElementsToSearch = null, Expression<Func<int>> uIAInputPasswordIntoElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputPasswordIntoElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputPasswordIntoElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputPasswordIntoElementTryValuePattern = null, Expression<Func<bool>> uIAInputPasswordIntoElementTryLegacyPattern = null)
+        public IWorkflowAction UIAInputPasswordIntoElement(Expression<Func<int>> uIAInputPasswordIntoElementparentWindowHandle, Expression<Func<string>> uIAInputPasswordIntoElementpasswordToInput, Expression<Func<string>> uIAInputPasswordIntoElementworkflow, Expression<Func<string>> uIAInputPasswordIntoElementsearchElementName = null, Expression<Func<string>> uIAInputPasswordIntoElementsearchElementClassName = null, Expression<Func<string>> uIAInputPasswordIntoElementsearchElementAutomationId = null, Expression<Func<string>> uIAInputPasswordIntoElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAInputPasswordIntoElementsearchSubTree = null, Expression<Func<int>> uIAInputPasswordIntoElementmatchIndex = null, Expression<Func<string>> uIAInputPasswordIntoElementsearchFilter = null, Expression<Func<string>> uIAInputPasswordIntoElementsortByColumn = null, Expression<Func<bool>> uIAInputPasswordIntoElementmatchIndexAscending = null, Expression<Func<bool>> uIAInputPasswordIntoElementpasswordContainsStoredPassword = null, Expression<Func<int>> uIAInputPasswordIntoElementmaxElementsToSearch = null, Expression<Func<int>> uIAInputPasswordIntoElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputPasswordIntoElementtryValuePattern = null, Expression<Func<bool>> uIAInputPasswordIntoElementtryLegacyPattern = null)
         {
             var apiCallPath = "/UIAControl/InputPasswordIntoElement";
             var apiCallHttpMethod = "post";
@@ -1900,107 +1900,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputPasswordIntoElement = new JObject();
             var uIAInputPasswordIntoElementpropCount = 0;
             uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementParentWindowHandle);
-            if (uIAInputPasswordIntoElementSearchElementName != null)
+            uIAInputPasswordIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementparentWindowHandle);
+            if (uIAInputPasswordIntoElementsearchElementName != null)
             {
-                uIAInputPasswordIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchElementName);
+                uIAInputPasswordIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementName);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
-            if (uIAInputPasswordIntoElementSearchElementClassName != null)
+            if (uIAInputPasswordIntoElementsearchElementClassName != null)
             {
-                uIAInputPasswordIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchElementClassName);
+                uIAInputPasswordIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementClassName);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
-            if (uIAInputPasswordIntoElementSearchElementAutomationId != null)
+            if (uIAInputPasswordIntoElementsearchElementAutomationId != null)
             {
-                uIAInputPasswordIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchElementAutomationId);
+                uIAInputPasswordIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchElementAutomationId);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
-            if (uIAInputPasswordIntoElementSearchLocalizedControlType != null)
+            if (uIAInputPasswordIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputPasswordIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchLocalizedControlType);
+                uIAInputPasswordIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchLocalizedControlType);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
-            if (uIAInputPasswordIntoElementSearchSubTree != null)
+            if (uIAInputPasswordIntoElementsearchSubTree != null)
             {
-                uIAInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchSubTree);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementPasswordToInput);
-            if (uIAInputPasswordIntoElementMatchIndex != null)
-            {
-                uIAInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementMatchIndex);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementSearchFilter != null)
-            {
-                uIAInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSearchFilter);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementSortByColumn != null)
-            {
-                uIAInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementSortByColumn);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementMatchIndexAscending != null)
-            {
-                uIAInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementMatchIndexAscending);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementPasswordContainsStoredPassword != null)
-            {
-                uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementPasswordContainsStoredPassword);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementMaxElementsToSearch != null)
-            {
-                uIAInputPasswordIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementMaxElementsToSearch);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementMaxRelativeSearchDepth != null)
-            {
-                uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementMaxRelativeSearchDepth);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementMaxChildElementsToSearchPerNode != null)
-            {
-                uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementMaxChildElementsToSearchPerNode);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAInputPasswordIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementElementLocalizedControlTypesNotToTraverse);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementTryValuePattern != null)
-            {
-                uIAInputPasswordIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementTryValuePattern);
-                uIAInputPasswordIntoElementpropCount++;
-            }
-
-            if (uIAInputPasswordIntoElementTryLegacyPattern != null)
-            {
-                uIAInputPasswordIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementTryLegacyPattern);
+                uIAInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchSubTree);
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             uIAInputPasswordIntoElementpropCount++;
-            uIAInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementWorkflow);
+            uIAInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordToInput);
+            if (uIAInputPasswordIntoElementmatchIndex != null)
+            {
+                uIAInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndex);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementsearchFilter != null)
+            {
+                uIAInputPasswordIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchFilter);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementsortByColumn != null)
+            {
+                uIAInputPasswordIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsortByColumn);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementmatchIndexAscending != null)
+            {
+                uIAInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndexAscending);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementpasswordContainsStoredPassword != null)
+            {
+                uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordContainsStoredPassword);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementmaxElementsToSearch != null)
+            {
+                uIAInputPasswordIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxElementsToSearch);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementmaxRelativeSearchDepth != null)
+            {
+                uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxRelativeSearchDepth);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode != null)
+            {
+                uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAInputPasswordIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementtryValuePattern != null)
+            {
+                uIAInputPasswordIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryValuePattern);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            if (uIAInputPasswordIntoElementtryLegacyPattern != null)
+            {
+                uIAInputPasswordIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryLegacyPattern);
+                uIAInputPasswordIntoElementpropCount++;
+            }
+
+            uIAInputPasswordIntoElementpropCount++;
+            uIAInputPasswordIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementworkflow);
             if (uIAInputPasswordIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputPasswordIntoElement;
@@ -2010,7 +2010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAInputTextIntoElement(Expression<Func<int>> uIAInputTextIntoElementParentWindowHandle, Expression<Func<string>> uIAInputTextIntoElementWorkflow, Expression<Func<string>> uIAInputTextIntoElementSearchElementName = null, Expression<Func<string>> uIAInputTextIntoElementSearchElementClassName = null, Expression<Func<string>> uIAInputTextIntoElementSearchElementAutomationId = null, Expression<Func<string>> uIAInputTextIntoElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAInputTextIntoElementSearchSubTree = null, Expression<Func<string>> uIAInputTextIntoElementTextToInput = null, Expression<Func<int>> uIAInputTextIntoElementMatchIndex = null, Expression<Func<string>> uIAInputTextIntoElementSearchFilter = null, Expression<Func<string>> uIAInputTextIntoElementSortByColumn = null, Expression<Func<bool>> uIAInputTextIntoElementMatchIndexAscending = null, Expression<Func<bool>> uIAInputTextIntoElementReplaceExistingValue = null, Expression<Func<int>> uIAInputTextIntoElementInsertPosition = null, Expression<Func<int>> uIAInputTextIntoElementMaxElementsToSearch = null, Expression<Func<int>> uIAInputTextIntoElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputTextIntoElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputTextIntoElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputTextIntoElementRaiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIAInputTextIntoElementTryValuePattern = null, Expression<Func<bool>> uIAInputTextIntoElementTryLegacyPattern = null)
+        public IWorkflowAction UIAInputTextIntoElement(Expression<Func<int>> uIAInputTextIntoElementparentWindowHandle, Expression<Func<string>> uIAInputTextIntoElementworkflow, Expression<Func<string>> uIAInputTextIntoElementsearchElementName = null, Expression<Func<string>> uIAInputTextIntoElementsearchElementClassName = null, Expression<Func<string>> uIAInputTextIntoElementsearchElementAutomationId = null, Expression<Func<string>> uIAInputTextIntoElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAInputTextIntoElementsearchSubTree = null, Expression<Func<string>> uIAInputTextIntoElementtextToInput = null, Expression<Func<int>> uIAInputTextIntoElementmatchIndex = null, Expression<Func<string>> uIAInputTextIntoElementsearchFilter = null, Expression<Func<string>> uIAInputTextIntoElementsortByColumn = null, Expression<Func<bool>> uIAInputTextIntoElementmatchIndexAscending = null, Expression<Func<bool>> uIAInputTextIntoElementreplaceExistingValue = null, Expression<Func<int>> uIAInputTextIntoElementinsertPosition = null, Expression<Func<int>> uIAInputTextIntoElementmaxElementsToSearch = null, Expression<Func<int>> uIAInputTextIntoElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputTextIntoElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputTextIntoElementraiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIAInputTextIntoElementtryValuePattern = null, Expression<Func<bool>> uIAInputTextIntoElementtryLegacyPattern = null)
         {
             var apiCallPath = "/UIAControl/InputTextIntoElement";
             var apiCallHttpMethod = "post";
@@ -2018,123 +2018,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputTextIntoElement = new JObject();
             var uIAInputTextIntoElementpropCount = 0;
             uIAInputTextIntoElementpropCount++;
-            uIAInputTextIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementParentWindowHandle);
-            if (uIAInputTextIntoElementSearchElementName != null)
+            uIAInputTextIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementparentWindowHandle);
+            if (uIAInputTextIntoElementsearchElementName != null)
             {
-                uIAInputTextIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchElementName);
+                uIAInputTextIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementName);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSearchElementClassName != null)
+            if (uIAInputTextIntoElementsearchElementClassName != null)
             {
-                uIAInputTextIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchElementClassName);
+                uIAInputTextIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementClassName);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSearchElementAutomationId != null)
+            if (uIAInputTextIntoElementsearchElementAutomationId != null)
             {
-                uIAInputTextIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchElementAutomationId);
+                uIAInputTextIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchElementAutomationId);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSearchLocalizedControlType != null)
+            if (uIAInputTextIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputTextIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchLocalizedControlType);
+                uIAInputTextIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchLocalizedControlType);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSearchSubTree != null)
+            if (uIAInputTextIntoElementsearchSubTree != null)
             {
-                uIAInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchSubTree);
+                uIAInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchSubTree);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementTextToInput != null)
+            if (uIAInputTextIntoElementtextToInput != null)
             {
-                uIAInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementTextToInput);
+                uIAInputTextIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtextToInput);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementMatchIndex != null)
+            if (uIAInputTextIntoElementmatchIndex != null)
             {
-                uIAInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementMatchIndex);
+                uIAInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndex);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSearchFilter != null)
+            if (uIAInputTextIntoElementsearchFilter != null)
             {
-                uIAInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSearchFilter);
+                uIAInputTextIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchFilter);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementSortByColumn != null)
+            if (uIAInputTextIntoElementsortByColumn != null)
             {
-                uIAInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementSortByColumn);
+                uIAInputTextIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsortByColumn);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementMatchIndexAscending != null)
+            if (uIAInputTextIntoElementmatchIndexAscending != null)
             {
-                uIAInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementMatchIndexAscending);
+                uIAInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndexAscending);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementReplaceExistingValue != null)
+            if (uIAInputTextIntoElementreplaceExistingValue != null)
             {
-                uIAInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementReplaceExistingValue);
+                uIAInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementreplaceExistingValue);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementInsertPosition != null)
+            if (uIAInputTextIntoElementinsertPosition != null)
             {
-                uIAInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementInsertPosition);
+                uIAInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementinsertPosition);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementMaxElementsToSearch != null)
+            if (uIAInputTextIntoElementmaxElementsToSearch != null)
             {
-                uIAInputTextIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementMaxElementsToSearch);
+                uIAInputTextIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxElementsToSearch);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementMaxRelativeSearchDepth != null)
+            if (uIAInputTextIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAInputTextIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementMaxRelativeSearchDepth);
+                uIAInputTextIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxRelativeSearchDepth);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementMaxChildElementsToSearchPerNode != null)
+            if (uIAInputTextIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementMaxChildElementsToSearchPerNode);
+                uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxChildElementsToSearchPerNode);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAInputTextIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementElementLocalizedControlTypesNotToTraverse);
+                uIAInputTextIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementRaiseExceptionIfInputValidationFails != null)
+            if (uIAInputTextIntoElementraiseExceptionIfInputValidationFails != null)
             {
-                uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementRaiseExceptionIfInputValidationFails);
+                uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementraiseExceptionIfInputValidationFails);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementTryValuePattern != null)
+            if (uIAInputTextIntoElementtryValuePattern != null)
             {
-                uIAInputTextIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementTryValuePattern);
+                uIAInputTextIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryValuePattern);
                 uIAInputTextIntoElementpropCount++;
             }
 
-            if (uIAInputTextIntoElementTryLegacyPattern != null)
+            if (uIAInputTextIntoElementtryLegacyPattern != null)
             {
-                uIAInputTextIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementTryLegacyPattern);
+                uIAInputTextIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryLegacyPattern);
                 uIAInputTextIntoElementpropCount++;
             }
 
             uIAInputTextIntoElementpropCount++;
-            uIAInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementWorkflow);
+            uIAInputTextIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementworkflow);
             if (uIAInputTextIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputTextIntoElement;
@@ -2144,7 +2144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAInputTextIntoMultipleElements(Expression<Func<string>> uIAInputTextIntoMultipleElementsInputElementsJSON, Expression<Func<string>> uIAInputTextIntoMultipleElementsWorkflow)
+        public IWorkflowAction UIAInputTextIntoMultipleElements(Expression<Func<string>> uIAInputTextIntoMultipleElementsinputElementsJSON, Expression<Func<string>> uIAInputTextIntoMultipleElementsworkflow)
         {
             var apiCallPath = "/UIAControl/UIAInputTextIntoMultipleElements";
             var apiCallHttpMethod = "post";
@@ -2152,9 +2152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputTextIntoMultipleElements = new JObject();
             var uIAInputTextIntoMultipleElementspropCount = 0;
             uIAInputTextIntoMultipleElementspropCount++;
-            uIAInputTextIntoMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsInputElementsJSON);
+            uIAInputTextIntoMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsinputElementsJSON);
             uIAInputTextIntoMultipleElementspropCount++;
-            uIAInputTextIntoMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsWorkflow);
+            uIAInputTextIntoMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIAInputTextIntoMultipleElementsworkflow);
             if (uIAInputTextIntoMultipleElementspropCount > 0)
             {
                 callPayload.Body = uIAInputTextIntoMultipleElements;
@@ -2164,7 +2164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAInputReturnIntoElement(Expression<Func<int>> uIAInputReturnIntoElementParentWindowHandle, Expression<Func<string>> uIAInputReturnIntoElementWorkflow, Expression<Func<string>> uIAInputReturnIntoElementSearchElementName = null, Expression<Func<string>> uIAInputReturnIntoElementSearchElementClassName = null, Expression<Func<string>> uIAInputReturnIntoElementSearchElementAutomationId = null, Expression<Func<string>> uIAInputReturnIntoElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAInputReturnIntoElementSearchSubTree = null, Expression<Func<int>> uIAInputReturnIntoElementMatchIndex = null, Expression<Func<string>> uIAInputReturnIntoElementSearchFilter = null, Expression<Func<string>> uIAInputReturnIntoElementSortByColumn = null, Expression<Func<bool>> uIAInputReturnIntoElementMatchIndexAscending = null, Expression<Func<bool>> uIAInputReturnIntoElementReplaceExistingValue = null, Expression<Func<int>> uIAInputReturnIntoElementInsertPosition = null, Expression<Func<int>> uIAInputReturnIntoElementMaxElementsToSearch = null, Expression<Func<int>> uIAInputReturnIntoElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputReturnIntoElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputReturnIntoElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputReturnIntoElementRaiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIAInputReturnIntoElementTryValuePattern = null, Expression<Func<bool>> uIAInputReturnIntoElementTryLegacyPattern = null)
+        public IWorkflowAction UIAInputReturnIntoElement(Expression<Func<int>> uIAInputReturnIntoElementparentWindowHandle, Expression<Func<string>> uIAInputReturnIntoElementworkflow, Expression<Func<string>> uIAInputReturnIntoElementsearchElementName = null, Expression<Func<string>> uIAInputReturnIntoElementsearchElementClassName = null, Expression<Func<string>> uIAInputReturnIntoElementsearchElementAutomationId = null, Expression<Func<string>> uIAInputReturnIntoElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAInputReturnIntoElementsearchSubTree = null, Expression<Func<int>> uIAInputReturnIntoElementmatchIndex = null, Expression<Func<string>> uIAInputReturnIntoElementsearchFilter = null, Expression<Func<string>> uIAInputReturnIntoElementsortByColumn = null, Expression<Func<bool>> uIAInputReturnIntoElementmatchIndexAscending = null, Expression<Func<bool>> uIAInputReturnIntoElementreplaceExistingValue = null, Expression<Func<int>> uIAInputReturnIntoElementinsertPosition = null, Expression<Func<int>> uIAInputReturnIntoElementmaxElementsToSearch = null, Expression<Func<int>> uIAInputReturnIntoElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAInputReturnIntoElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAInputReturnIntoElementraiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIAInputReturnIntoElementtryValuePattern = null, Expression<Func<bool>> uIAInputReturnIntoElementtryLegacyPattern = null)
         {
             var apiCallPath = "/UIAControl/InputReturnIntoElement";
             var apiCallHttpMethod = "post";
@@ -2172,117 +2172,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAInputReturnIntoElement = new JObject();
             var uIAInputReturnIntoElementpropCount = 0;
             uIAInputReturnIntoElementpropCount++;
-            uIAInputReturnIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementParentWindowHandle);
-            if (uIAInputReturnIntoElementSearchElementName != null)
+            uIAInputReturnIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementparentWindowHandle);
+            if (uIAInputReturnIntoElementsearchElementName != null)
             {
-                uIAInputReturnIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchElementName);
+                uIAInputReturnIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementName);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSearchElementClassName != null)
+            if (uIAInputReturnIntoElementsearchElementClassName != null)
             {
-                uIAInputReturnIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchElementClassName);
+                uIAInputReturnIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementClassName);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSearchElementAutomationId != null)
+            if (uIAInputReturnIntoElementsearchElementAutomationId != null)
             {
-                uIAInputReturnIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchElementAutomationId);
+                uIAInputReturnIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchElementAutomationId);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSearchLocalizedControlType != null)
+            if (uIAInputReturnIntoElementsearchLocalizedControlType != null)
             {
-                uIAInputReturnIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchLocalizedControlType);
+                uIAInputReturnIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchLocalizedControlType);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSearchSubTree != null)
+            if (uIAInputReturnIntoElementsearchSubTree != null)
             {
-                uIAInputReturnIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchSubTree);
+                uIAInputReturnIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchSubTree);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementMatchIndex != null)
+            if (uIAInputReturnIntoElementmatchIndex != null)
             {
-                uIAInputReturnIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementMatchIndex);
+                uIAInputReturnIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndex);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSearchFilter != null)
+            if (uIAInputReturnIntoElementsearchFilter != null)
             {
-                uIAInputReturnIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSearchFilter);
+                uIAInputReturnIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchFilter);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementSortByColumn != null)
+            if (uIAInputReturnIntoElementsortByColumn != null)
             {
-                uIAInputReturnIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementSortByColumn);
+                uIAInputReturnIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsortByColumn);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementMatchIndexAscending != null)
+            if (uIAInputReturnIntoElementmatchIndexAscending != null)
             {
-                uIAInputReturnIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementMatchIndexAscending);
+                uIAInputReturnIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndexAscending);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementReplaceExistingValue != null)
+            if (uIAInputReturnIntoElementreplaceExistingValue != null)
             {
-                uIAInputReturnIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementReplaceExistingValue);
+                uIAInputReturnIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementreplaceExistingValue);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementInsertPosition != null)
+            if (uIAInputReturnIntoElementinsertPosition != null)
             {
-                uIAInputReturnIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementInsertPosition);
+                uIAInputReturnIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementinsertPosition);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementMaxElementsToSearch != null)
+            if (uIAInputReturnIntoElementmaxElementsToSearch != null)
             {
-                uIAInputReturnIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementMaxElementsToSearch);
+                uIAInputReturnIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxElementsToSearch);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementMaxRelativeSearchDepth != null)
+            if (uIAInputReturnIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementMaxRelativeSearchDepth);
+                uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxRelativeSearchDepth);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementMaxChildElementsToSearchPerNode != null)
+            if (uIAInputReturnIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementMaxChildElementsToSearchPerNode);
+                uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAInputReturnIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementElementLocalizedControlTypesNotToTraverse);
+                uIAInputReturnIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementRaiseExceptionIfInputValidationFails != null)
+            if (uIAInputReturnIntoElementraiseExceptionIfInputValidationFails != null)
             {
-                uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementRaiseExceptionIfInputValidationFails);
+                uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementTryValuePattern != null)
+            if (uIAInputReturnIntoElementtryValuePattern != null)
             {
-                uIAInputReturnIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementTryValuePattern);
+                uIAInputReturnIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryValuePattern);
                 uIAInputReturnIntoElementpropCount++;
             }
 
-            if (uIAInputReturnIntoElementTryLegacyPattern != null)
+            if (uIAInputReturnIntoElementtryLegacyPattern != null)
             {
-                uIAInputReturnIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementTryLegacyPattern);
+                uIAInputReturnIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryLegacyPattern);
                 uIAInputReturnIntoElementpropCount++;
             }
 
             uIAInputReturnIntoElementpropCount++;
-            uIAInputReturnIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementWorkflow);
+            uIAInputReturnIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementworkflow);
             if (uIAInputReturnIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAInputReturnIntoElement;
@@ -2292,7 +2292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAFocusElement(Expression<Func<int>> uIAFocusElementParentWindowHandle, Expression<Func<string>> uIAFocusElementWorkflow, Expression<Func<string>> uIAFocusElementSearchElementName = null, Expression<Func<string>> uIAFocusElementSearchElementClassName = null, Expression<Func<string>> uIAFocusElementSearchElementAutomationId = null, Expression<Func<string>> uIAFocusElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAFocusElementSearchSubTree = null, Expression<Func<int>> uIAFocusElementMatchIndex = null, Expression<Func<string>> uIAFocusElementSearchFilter = null, Expression<Func<string>> uIAFocusElementSortByColumn = null, Expression<Func<bool>> uIAFocusElementMatchIndexAscending = null, Expression<Func<int>> uIAFocusElementMaxElementsToSearch = null, Expression<Func<int>> uIAFocusElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAFocusElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAFocusElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIAFocusElement(Expression<Func<int>> uIAFocusElementparentWindowHandle, Expression<Func<string>> uIAFocusElementworkflow, Expression<Func<string>> uIAFocusElementsearchElementName = null, Expression<Func<string>> uIAFocusElementsearchElementClassName = null, Expression<Func<string>> uIAFocusElementsearchElementAutomationId = null, Expression<Func<string>> uIAFocusElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAFocusElementsearchSubTree = null, Expression<Func<int>> uIAFocusElementmatchIndex = null, Expression<Func<string>> uIAFocusElementsearchFilter = null, Expression<Func<string>> uIAFocusElementsortByColumn = null, Expression<Func<bool>> uIAFocusElementmatchIndexAscending = null, Expression<Func<int>> uIAFocusElementmaxElementsToSearch = null, Expression<Func<int>> uIAFocusElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAFocusElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAFocusElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/FocusElement";
             var apiCallHttpMethod = "post";
@@ -2300,87 +2300,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAFocusElement = new JObject();
             var uIAFocusElementpropCount = 0;
             uIAFocusElementpropCount++;
-            uIAFocusElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAFocusElementParentWindowHandle);
-            if (uIAFocusElementSearchElementName != null)
+            uIAFocusElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAFocusElementparentWindowHandle);
+            if (uIAFocusElementsearchElementName != null)
             {
-                uIAFocusElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAFocusElementSearchElementName);
+                uIAFocusElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementName);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSearchElementClassName != null)
+            if (uIAFocusElementsearchElementClassName != null)
             {
-                uIAFocusElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAFocusElementSearchElementClassName);
+                uIAFocusElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementClassName);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSearchElementAutomationId != null)
+            if (uIAFocusElementsearchElementAutomationId != null)
             {
-                uIAFocusElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAFocusElementSearchElementAutomationId);
+                uIAFocusElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAFocusElementsearchElementAutomationId);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSearchLocalizedControlType != null)
+            if (uIAFocusElementsearchLocalizedControlType != null)
             {
-                uIAFocusElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAFocusElementSearchLocalizedControlType);
+                uIAFocusElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAFocusElementsearchLocalizedControlType);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSearchSubTree != null)
+            if (uIAFocusElementsearchSubTree != null)
             {
-                uIAFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAFocusElementSearchSubTree);
+                uIAFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAFocusElementsearchSubTree);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementMatchIndex != null)
+            if (uIAFocusElementmatchIndex != null)
             {
-                uIAFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAFocusElementMatchIndex);
+                uIAFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndex);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSearchFilter != null)
+            if (uIAFocusElementsearchFilter != null)
             {
-                uIAFocusElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAFocusElementSearchFilter);
+                uIAFocusElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAFocusElementsearchFilter);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementSortByColumn != null)
+            if (uIAFocusElementsortByColumn != null)
             {
-                uIAFocusElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAFocusElementSortByColumn);
+                uIAFocusElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAFocusElementsortByColumn);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementMatchIndexAscending != null)
+            if (uIAFocusElementmatchIndexAscending != null)
             {
-                uIAFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAFocusElementMatchIndexAscending);
+                uIAFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndexAscending);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementMaxElementsToSearch != null)
+            if (uIAFocusElementmaxElementsToSearch != null)
             {
-                uIAFocusElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAFocusElementMaxElementsToSearch);
+                uIAFocusElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAFocusElementmaxElementsToSearch);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementMaxRelativeSearchDepth != null)
+            if (uIAFocusElementmaxRelativeSearchDepth != null)
             {
-                uIAFocusElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAFocusElementMaxRelativeSearchDepth);
+                uIAFocusElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAFocusElementmaxRelativeSearchDepth);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementMaxChildElementsToSearchPerNode != null)
+            if (uIAFocusElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAFocusElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAFocusElementMaxChildElementsToSearchPerNode);
+                uIAFocusElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAFocusElementmaxChildElementsToSearchPerNode);
                 uIAFocusElementpropCount++;
             }
 
-            if (uIAFocusElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAFocusElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAFocusElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAFocusElementElementLocalizedControlTypesNotToTraverse);
+                uIAFocusElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAFocusElementelementLocalizedControlTypesNotToTraverse);
                 uIAFocusElementpropCount++;
             }
 
             uIAFocusElementpropCount++;
-            uIAFocusElement["Workflow"] = ExpressionConverter.ConvertO(uIAFocusElementWorkflow);
+            uIAFocusElement["Workflow"] = ExpressionConverter.ConvertO(uIAFocusElementworkflow);
             if (uIAFocusElementpropCount > 0)
             {
                 callPayload.Body = uIAFocusElement;
@@ -2390,7 +2390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAToggleElement(Expression<Func<int>> uIAToggleElementParentWindowHandle, Expression<Func<string>> uIAToggleElementWorkflow, Expression<Func<string>> uIAToggleElementSearchElementName = null, Expression<Func<string>> uIAToggleElementSearchElementClassName = null, Expression<Func<string>> uIAToggleElementSearchElementAutomationId = null, Expression<Func<string>> uIAToggleElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAToggleElementSearchSubTree = null, Expression<Func<int>> uIAToggleElementMatchIndex = null, Expression<Func<string>> uIAToggleElementSearchFilter = null, Expression<Func<string>> uIAToggleElementSortByColumn = null, Expression<Func<bool>> uIAToggleElementMatchIndexAscending = null, Expression<Func<int>> uIAToggleElementMaxElementsToSearch = null, Expression<Func<int>> uIAToggleElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAToggleElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAToggleElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIAToggleElement(Expression<Func<int>> uIAToggleElementparentWindowHandle, Expression<Func<string>> uIAToggleElementworkflow, Expression<Func<string>> uIAToggleElementsearchElementName = null, Expression<Func<string>> uIAToggleElementsearchElementClassName = null, Expression<Func<string>> uIAToggleElementsearchElementAutomationId = null, Expression<Func<string>> uIAToggleElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAToggleElementsearchSubTree = null, Expression<Func<int>> uIAToggleElementmatchIndex = null, Expression<Func<string>> uIAToggleElementsearchFilter = null, Expression<Func<string>> uIAToggleElementsortByColumn = null, Expression<Func<bool>> uIAToggleElementmatchIndexAscending = null, Expression<Func<int>> uIAToggleElementmaxElementsToSearch = null, Expression<Func<int>> uIAToggleElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAToggleElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAToggleElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/ToggleElement";
             var apiCallHttpMethod = "post";
@@ -2398,87 +2398,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAToggleElement = new JObject();
             var uIAToggleElementpropCount = 0;
             uIAToggleElementpropCount++;
-            uIAToggleElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAToggleElementParentWindowHandle);
-            if (uIAToggleElementSearchElementName != null)
+            uIAToggleElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAToggleElementparentWindowHandle);
+            if (uIAToggleElementsearchElementName != null)
             {
-                uIAToggleElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAToggleElementSearchElementName);
+                uIAToggleElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementName);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSearchElementClassName != null)
+            if (uIAToggleElementsearchElementClassName != null)
             {
-                uIAToggleElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAToggleElementSearchElementClassName);
+                uIAToggleElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementClassName);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSearchElementAutomationId != null)
+            if (uIAToggleElementsearchElementAutomationId != null)
             {
-                uIAToggleElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAToggleElementSearchElementAutomationId);
+                uIAToggleElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAToggleElementsearchElementAutomationId);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSearchLocalizedControlType != null)
+            if (uIAToggleElementsearchLocalizedControlType != null)
             {
-                uIAToggleElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAToggleElementSearchLocalizedControlType);
+                uIAToggleElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAToggleElementsearchLocalizedControlType);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSearchSubTree != null)
+            if (uIAToggleElementsearchSubTree != null)
             {
-                uIAToggleElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAToggleElementSearchSubTree);
+                uIAToggleElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAToggleElementsearchSubTree);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementMatchIndex != null)
+            if (uIAToggleElementmatchIndex != null)
             {
-                uIAToggleElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAToggleElementMatchIndex);
+                uIAToggleElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndex);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSearchFilter != null)
+            if (uIAToggleElementsearchFilter != null)
             {
-                uIAToggleElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAToggleElementSearchFilter);
+                uIAToggleElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAToggleElementsearchFilter);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementSortByColumn != null)
+            if (uIAToggleElementsortByColumn != null)
             {
-                uIAToggleElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAToggleElementSortByColumn);
+                uIAToggleElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAToggleElementsortByColumn);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementMatchIndexAscending != null)
+            if (uIAToggleElementmatchIndexAscending != null)
             {
-                uIAToggleElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAToggleElementMatchIndexAscending);
+                uIAToggleElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndexAscending);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementMaxElementsToSearch != null)
+            if (uIAToggleElementmaxElementsToSearch != null)
             {
-                uIAToggleElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAToggleElementMaxElementsToSearch);
+                uIAToggleElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAToggleElementmaxElementsToSearch);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementMaxRelativeSearchDepth != null)
+            if (uIAToggleElementmaxRelativeSearchDepth != null)
             {
-                uIAToggleElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAToggleElementMaxRelativeSearchDepth);
+                uIAToggleElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAToggleElementmaxRelativeSearchDepth);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementMaxChildElementsToSearchPerNode != null)
+            if (uIAToggleElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAToggleElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAToggleElementMaxChildElementsToSearchPerNode);
+                uIAToggleElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAToggleElementmaxChildElementsToSearchPerNode);
                 uIAToggleElementpropCount++;
             }
 
-            if (uIAToggleElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAToggleElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAToggleElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAToggleElementElementLocalizedControlTypesNotToTraverse);
+                uIAToggleElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAToggleElementelementLocalizedControlTypesNotToTraverse);
                 uIAToggleElementpropCount++;
             }
 
             uIAToggleElementpropCount++;
-            uIAToggleElement["Workflow"] = ExpressionConverter.ConvertO(uIAToggleElementWorkflow);
+            uIAToggleElement["Workflow"] = ExpressionConverter.ConvertO(uIAToggleElementworkflow);
             if (uIAToggleElementpropCount > 0)
             {
                 callPayload.Body = uIAToggleElement;
@@ -2488,7 +2488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIACheckElement(Expression<Func<int>> uIACheckElementParentWindowHandle, Expression<Func<string>> uIACheckElementWorkflow, Expression<Func<string>> uIACheckElementSearchElementName = null, Expression<Func<string>> uIACheckElementSearchElementClassName = null, Expression<Func<string>> uIACheckElementSearchElementAutomationId = null, Expression<Func<string>> uIACheckElementSearchLocalizedControlType = null, Expression<Func<bool>> uIACheckElementSearchSubTree = null, Expression<Func<bool>> uIACheckElementCheckElement = null, Expression<Func<int>> uIACheckElementMatchIndex = null, Expression<Func<string>> uIACheckElementSearchFilter = null, Expression<Func<string>> uIACheckElementSortByColumn = null, Expression<Func<bool>> uIACheckElementMatchIndexAscending = null, Expression<Func<int>> uIACheckElementMaxElementsToSearch = null, Expression<Func<int>> uIACheckElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIACheckElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACheckElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIACheckElement(Expression<Func<int>> uIACheckElementparentWindowHandle, Expression<Func<string>> uIACheckElementworkflow, Expression<Func<string>> uIACheckElementsearchElementName = null, Expression<Func<string>> uIACheckElementsearchElementClassName = null, Expression<Func<string>> uIACheckElementsearchElementAutomationId = null, Expression<Func<string>> uIACheckElementsearchLocalizedControlType = null, Expression<Func<bool>> uIACheckElementsearchSubTree = null, Expression<Func<bool>> uIACheckElementcheckElement = null, Expression<Func<int>> uIACheckElementmatchIndex = null, Expression<Func<string>> uIACheckElementsearchFilter = null, Expression<Func<string>> uIACheckElementsortByColumn = null, Expression<Func<bool>> uIACheckElementmatchIndexAscending = null, Expression<Func<int>> uIACheckElementmaxElementsToSearch = null, Expression<Func<int>> uIACheckElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIACheckElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACheckElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/CheckElement";
             var apiCallHttpMethod = "post";
@@ -2496,93 +2496,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACheckElement = new JObject();
             var uIACheckElementpropCount = 0;
             uIACheckElementpropCount++;
-            uIACheckElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACheckElementParentWindowHandle);
-            if (uIACheckElementSearchElementName != null)
+            uIACheckElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACheckElementparentWindowHandle);
+            if (uIACheckElementsearchElementName != null)
             {
-                uIACheckElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACheckElementSearchElementName);
+                uIACheckElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementName);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSearchElementClassName != null)
+            if (uIACheckElementsearchElementClassName != null)
             {
-                uIACheckElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACheckElementSearchElementClassName);
+                uIACheckElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementClassName);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSearchElementAutomationId != null)
+            if (uIACheckElementsearchElementAutomationId != null)
             {
-                uIACheckElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACheckElementSearchElementAutomationId);
+                uIACheckElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACheckElementsearchElementAutomationId);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSearchLocalizedControlType != null)
+            if (uIACheckElementsearchLocalizedControlType != null)
             {
-                uIACheckElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACheckElementSearchLocalizedControlType);
+                uIACheckElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACheckElementsearchLocalizedControlType);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSearchSubTree != null)
+            if (uIACheckElementsearchSubTree != null)
             {
-                uIACheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACheckElementSearchSubTree);
+                uIACheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACheckElementsearchSubTree);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementCheckElement != null)
+            if (uIACheckElementcheckElement != null)
             {
-                uIACheckElement["CheckElement"] = ExpressionConverter.ConvertO(uIACheckElementCheckElement);
+                uIACheckElement["CheckElement"] = ExpressionConverter.ConvertO(uIACheckElementcheckElement);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementMatchIndex != null)
+            if (uIACheckElementmatchIndex != null)
             {
-                uIACheckElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACheckElementMatchIndex);
+                uIACheckElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndex);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSearchFilter != null)
+            if (uIACheckElementsearchFilter != null)
             {
-                uIACheckElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACheckElementSearchFilter);
+                uIACheckElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACheckElementsearchFilter);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementSortByColumn != null)
+            if (uIACheckElementsortByColumn != null)
             {
-                uIACheckElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACheckElementSortByColumn);
+                uIACheckElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACheckElementsortByColumn);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementMatchIndexAscending != null)
+            if (uIACheckElementmatchIndexAscending != null)
             {
-                uIACheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACheckElementMatchIndexAscending);
+                uIACheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndexAscending);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementMaxElementsToSearch != null)
+            if (uIACheckElementmaxElementsToSearch != null)
             {
-                uIACheckElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACheckElementMaxElementsToSearch);
+                uIACheckElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACheckElementmaxElementsToSearch);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementMaxRelativeSearchDepth != null)
+            if (uIACheckElementmaxRelativeSearchDepth != null)
             {
-                uIACheckElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACheckElementMaxRelativeSearchDepth);
+                uIACheckElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACheckElementmaxRelativeSearchDepth);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementMaxChildElementsToSearchPerNode != null)
+            if (uIACheckElementmaxChildElementsToSearchPerNode != null)
             {
-                uIACheckElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACheckElementMaxChildElementsToSearchPerNode);
+                uIACheckElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACheckElementmaxChildElementsToSearchPerNode);
                 uIACheckElementpropCount++;
             }
 
-            if (uIACheckElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIACheckElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACheckElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACheckElementElementLocalizedControlTypesNotToTraverse);
+                uIACheckElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACheckElementelementLocalizedControlTypesNotToTraverse);
                 uIACheckElementpropCount++;
             }
 
             uIACheckElementpropCount++;
-            uIACheckElement["Workflow"] = ExpressionConverter.ConvertO(uIACheckElementWorkflow);
+            uIACheckElement["Workflow"] = ExpressionConverter.ConvertO(uIACheckElementworkflow);
             if (uIACheckElementpropCount > 0)
             {
                 callPayload.Body = uIACheckElement;
@@ -2592,7 +2592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIACheckMultipleElements(Expression<Func<string>> uIACheckMultipleElementsInputElementsJSON, Expression<Func<string>> uIACheckMultipleElementsWorkflow)
+        public IWorkflowAction UIACheckMultipleElements(Expression<Func<string>> uIACheckMultipleElementsinputElementsJSON, Expression<Func<string>> uIACheckMultipleElementsworkflow)
         {
             var apiCallPath = "/UIAControl/UIACheckMultipleElements";
             var apiCallHttpMethod = "post";
@@ -2600,9 +2600,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACheckMultipleElements = new JObject();
             var uIACheckMultipleElementspropCount = 0;
             uIACheckMultipleElementspropCount++;
-            uIACheckMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsInputElementsJSON);
+            uIACheckMultipleElements["InputElementsJSON"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsinputElementsJSON);
             uIACheckMultipleElementspropCount++;
-            uIACheckMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsWorkflow);
+            uIACheckMultipleElements["Workflow"] = ExpressionConverter.ConvertO(uIACheckMultipleElementsworkflow);
             if (uIACheckMultipleElementspropCount > 0)
             {
                 callPayload.Body = uIACheckMultipleElements;
@@ -2612,7 +2612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAIsElementCheckedResponse> UIAIsElementChecked(Expression<Func<int>> uIAIsElementCheckedParentWindowHandle, Expression<Func<string>> uIAIsElementCheckedWorkflow, Expression<Func<string>> uIAIsElementCheckedSearchElementName = null, Expression<Func<string>> uIAIsElementCheckedSearchElementClassName = null, Expression<Func<string>> uIAIsElementCheckedSearchElementAutomationId = null, Expression<Func<string>> uIAIsElementCheckedSearchLocalizedControlType = null, Expression<Func<bool>> uIAIsElementCheckedSearchSubTree = null, Expression<Func<int>> uIAIsElementCheckedMatchIndex = null, Expression<Func<string>> uIAIsElementCheckedSearchFilter = null, Expression<Func<string>> uIAIsElementCheckedSortByColumn = null, Expression<Func<bool>> uIAIsElementCheckedMatchIndexAscending = null, Expression<Func<int>> uIAIsElementCheckedMaxElementsToSearch = null, Expression<Func<int>> uIAIsElementCheckedMaxRelativeSearchDepth = null, Expression<Func<int>> uIAIsElementCheckedMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAIsElementCheckedElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAIsElementCheckedResponse> UIAIsElementChecked(Expression<Func<int>> uIAIsElementCheckedparentWindowHandle, Expression<Func<string>> uIAIsElementCheckedworkflow, Expression<Func<string>> uIAIsElementCheckedsearchElementName = null, Expression<Func<string>> uIAIsElementCheckedsearchElementClassName = null, Expression<Func<string>> uIAIsElementCheckedsearchElementAutomationId = null, Expression<Func<string>> uIAIsElementCheckedsearchLocalizedControlType = null, Expression<Func<bool>> uIAIsElementCheckedsearchSubTree = null, Expression<Func<int>> uIAIsElementCheckedmatchIndex = null, Expression<Func<string>> uIAIsElementCheckedsearchFilter = null, Expression<Func<string>> uIAIsElementCheckedsortByColumn = null, Expression<Func<bool>> uIAIsElementCheckedmatchIndexAscending = null, Expression<Func<int>> uIAIsElementCheckedmaxElementsToSearch = null, Expression<Func<int>> uIAIsElementCheckedmaxRelativeSearchDepth = null, Expression<Func<int>> uIAIsElementCheckedmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAIsElementChecked";
             var apiCallHttpMethod = "post";
@@ -2620,87 +2620,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAIsElementChecked = new JObject();
             var uIAIsElementCheckedpropCount = 0;
             uIAIsElementCheckedpropCount++;
-            uIAIsElementChecked["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAIsElementCheckedParentWindowHandle);
-            if (uIAIsElementCheckedSearchElementName != null)
+            uIAIsElementChecked["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAIsElementCheckedparentWindowHandle);
+            if (uIAIsElementCheckedsearchElementName != null)
             {
-                uIAIsElementChecked["SearchElementName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchElementName);
+                uIAIsElementChecked["SearchElementName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementName);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSearchElementClassName != null)
+            if (uIAIsElementCheckedsearchElementClassName != null)
             {
-                uIAIsElementChecked["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchElementClassName);
+                uIAIsElementChecked["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementClassName);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSearchElementAutomationId != null)
+            if (uIAIsElementCheckedsearchElementAutomationId != null)
             {
-                uIAIsElementChecked["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchElementAutomationId);
+                uIAIsElementChecked["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchElementAutomationId);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSearchLocalizedControlType != null)
+            if (uIAIsElementCheckedsearchLocalizedControlType != null)
             {
-                uIAIsElementChecked["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchLocalizedControlType);
+                uIAIsElementChecked["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchLocalizedControlType);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSearchSubTree != null)
+            if (uIAIsElementCheckedsearchSubTree != null)
             {
-                uIAIsElementChecked["SearchSubTree"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchSubTree);
+                uIAIsElementChecked["SearchSubTree"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchSubTree);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedMatchIndex != null)
+            if (uIAIsElementCheckedmatchIndex != null)
             {
-                uIAIsElementChecked["MatchIndex"] = ExpressionConverter.ConvertO(uIAIsElementCheckedMatchIndex);
+                uIAIsElementChecked["MatchIndex"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndex);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSearchFilter != null)
+            if (uIAIsElementCheckedsearchFilter != null)
             {
-                uIAIsElementChecked["SearchFilter"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSearchFilter);
+                uIAIsElementChecked["SearchFilter"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchFilter);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedSortByColumn != null)
+            if (uIAIsElementCheckedsortByColumn != null)
             {
-                uIAIsElementChecked["SortByColumn"] = ExpressionConverter.ConvertO(uIAIsElementCheckedSortByColumn);
+                uIAIsElementChecked["SortByColumn"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsortByColumn);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedMatchIndexAscending != null)
+            if (uIAIsElementCheckedmatchIndexAscending != null)
             {
-                uIAIsElementChecked["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAIsElementCheckedMatchIndexAscending);
+                uIAIsElementChecked["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndexAscending);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedMaxElementsToSearch != null)
+            if (uIAIsElementCheckedmaxElementsToSearch != null)
             {
-                uIAIsElementChecked["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAIsElementCheckedMaxElementsToSearch);
+                uIAIsElementChecked["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxElementsToSearch);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedMaxRelativeSearchDepth != null)
+            if (uIAIsElementCheckedmaxRelativeSearchDepth != null)
             {
-                uIAIsElementChecked["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAIsElementCheckedMaxRelativeSearchDepth);
+                uIAIsElementChecked["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxRelativeSearchDepth);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedMaxChildElementsToSearchPerNode != null)
+            if (uIAIsElementCheckedmaxChildElementsToSearchPerNode != null)
             {
-                uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAIsElementCheckedMaxChildElementsToSearchPerNode);
+                uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxChildElementsToSearchPerNode);
                 uIAIsElementCheckedpropCount++;
             }
 
-            if (uIAIsElementCheckedElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAIsElementChecked["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAIsElementCheckedElementLocalizedControlTypesNotToTraverse);
+                uIAIsElementChecked["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAIsElementCheckedelementLocalizedControlTypesNotToTraverse);
                 uIAIsElementCheckedpropCount++;
             }
 
             uIAIsElementCheckedpropCount++;
-            uIAIsElementChecked["Workflow"] = ExpressionConverter.ConvertO(uIAIsElementCheckedWorkflow);
+            uIAIsElementChecked["Workflow"] = ExpressionConverter.ConvertO(uIAIsElementCheckedworkflow);
             if (uIAIsElementCheckedpropCount > 0)
             {
                 callPayload.Body = uIAIsElementChecked;
@@ -2710,7 +2710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIACloseElementWindow(Expression<Func<int>> uIACloseElementWindowParentWindowHandle, Expression<Func<string>> uIACloseElementWindowWorkflow, Expression<Func<string>> uIACloseElementWindowSearchElementName = null, Expression<Func<string>> uIACloseElementWindowSearchElementClassName = null, Expression<Func<string>> uIACloseElementWindowSearchElementAutomationId = null, Expression<Func<string>> uIACloseElementWindowSearchLocalizedControlType = null, Expression<Func<bool>> uIACloseElementWindowSearchSubTree = null, Expression<Func<int>> uIACloseElementWindowMatchIndex = null, Expression<Func<string>> uIACloseElementWindowSearchFilter = null, Expression<Func<string>> uIACloseElementWindowSortByColumn = null, Expression<Func<bool>> uIACloseElementWindowMatchIndexAscending = null, Expression<Func<int>> uIACloseElementWindowMaxElementsToSearch = null, Expression<Func<int>> uIACloseElementWindowMaxRelativeSearchDepth = null, Expression<Func<int>> uIACloseElementWindowMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACloseElementWindowElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIACloseElementWindow(Expression<Func<int>> uIACloseElementWindowparentWindowHandle, Expression<Func<string>> uIACloseElementWindowworkflow, Expression<Func<string>> uIACloseElementWindowsearchElementName = null, Expression<Func<string>> uIACloseElementWindowsearchElementClassName = null, Expression<Func<string>> uIACloseElementWindowsearchElementAutomationId = null, Expression<Func<string>> uIACloseElementWindowsearchLocalizedControlType = null, Expression<Func<bool>> uIACloseElementWindowsearchSubTree = null, Expression<Func<int>> uIACloseElementWindowmatchIndex = null, Expression<Func<string>> uIACloseElementWindowsearchFilter = null, Expression<Func<string>> uIACloseElementWindowsortByColumn = null, Expression<Func<bool>> uIACloseElementWindowmatchIndexAscending = null, Expression<Func<int>> uIACloseElementWindowmaxElementsToSearch = null, Expression<Func<int>> uIACloseElementWindowmaxRelativeSearchDepth = null, Expression<Func<int>> uIACloseElementWindowmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACloseElementWindowelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/CloseElementWindow";
             var apiCallHttpMethod = "post";
@@ -2718,87 +2718,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACloseElementWindow = new JObject();
             var uIACloseElementWindowpropCount = 0;
             uIACloseElementWindowpropCount++;
-            uIACloseElementWindow["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACloseElementWindowParentWindowHandle);
-            if (uIACloseElementWindowSearchElementName != null)
+            uIACloseElementWindow["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACloseElementWindowparentWindowHandle);
+            if (uIACloseElementWindowsearchElementName != null)
             {
-                uIACloseElementWindow["SearchElementName"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchElementName);
+                uIACloseElementWindow["SearchElementName"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementName);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSearchElementClassName != null)
+            if (uIACloseElementWindowsearchElementClassName != null)
             {
-                uIACloseElementWindow["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchElementClassName);
+                uIACloseElementWindow["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementClassName);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSearchElementAutomationId != null)
+            if (uIACloseElementWindowsearchElementAutomationId != null)
             {
-                uIACloseElementWindow["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchElementAutomationId);
+                uIACloseElementWindow["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchElementAutomationId);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSearchLocalizedControlType != null)
+            if (uIACloseElementWindowsearchLocalizedControlType != null)
             {
-                uIACloseElementWindow["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchLocalizedControlType);
+                uIACloseElementWindow["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchLocalizedControlType);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSearchSubTree != null)
+            if (uIACloseElementWindowsearchSubTree != null)
             {
-                uIACloseElementWindow["SearchSubTree"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchSubTree);
+                uIACloseElementWindow["SearchSubTree"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchSubTree);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowMatchIndex != null)
+            if (uIACloseElementWindowmatchIndex != null)
             {
-                uIACloseElementWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIACloseElementWindowMatchIndex);
+                uIACloseElementWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndex);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSearchFilter != null)
+            if (uIACloseElementWindowsearchFilter != null)
             {
-                uIACloseElementWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIACloseElementWindowSearchFilter);
+                uIACloseElementWindow["SearchFilter"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchFilter);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowSortByColumn != null)
+            if (uIACloseElementWindowsortByColumn != null)
             {
-                uIACloseElementWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIACloseElementWindowSortByColumn);
+                uIACloseElementWindow["SortByColumn"] = ExpressionConverter.ConvertO(uIACloseElementWindowsortByColumn);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowMatchIndexAscending != null)
+            if (uIACloseElementWindowmatchIndexAscending != null)
             {
-                uIACloseElementWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACloseElementWindowMatchIndexAscending);
+                uIACloseElementWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndexAscending);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowMaxElementsToSearch != null)
+            if (uIACloseElementWindowmaxElementsToSearch != null)
             {
-                uIACloseElementWindow["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACloseElementWindowMaxElementsToSearch);
+                uIACloseElementWindow["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxElementsToSearch);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowMaxRelativeSearchDepth != null)
+            if (uIACloseElementWindowmaxRelativeSearchDepth != null)
             {
-                uIACloseElementWindow["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACloseElementWindowMaxRelativeSearchDepth);
+                uIACloseElementWindow["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxRelativeSearchDepth);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowMaxChildElementsToSearchPerNode != null)
+            if (uIACloseElementWindowmaxChildElementsToSearchPerNode != null)
             {
-                uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACloseElementWindowMaxChildElementsToSearchPerNode);
+                uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxChildElementsToSearchPerNode);
                 uIACloseElementWindowpropCount++;
             }
 
-            if (uIACloseElementWindowElementLocalizedControlTypesNotToTraverse != null)
+            if (uIACloseElementWindowelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACloseElementWindow["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACloseElementWindowElementLocalizedControlTypesNotToTraverse);
+                uIACloseElementWindow["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACloseElementWindowelementLocalizedControlTypesNotToTraverse);
                 uIACloseElementWindowpropCount++;
             }
 
             uIACloseElementWindowpropCount++;
-            uIACloseElementWindow["Workflow"] = ExpressionConverter.ConvertO(uIACloseElementWindowWorkflow);
+            uIACloseElementWindow["Workflow"] = ExpressionConverter.ConvertO(uIACloseElementWindowworkflow);
             if (uIACloseElementWindowpropCount > 0)
             {
                 callPayload.Body = uIACloseElementWindow;
@@ -2808,7 +2808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementTextValueResponse> UIAGetElementTextValue(Expression<Func<int>> uIAGetElementTextValueParentWindowHandle, Expression<Func<string>> uIAGetElementTextValueWorkflow, Expression<Func<string>> uIAGetElementTextValueSearchElementName = null, Expression<Func<string>> uIAGetElementTextValueSearchElementClassName = null, Expression<Func<string>> uIAGetElementTextValueSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementTextValueSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementTextValueSearchSubTree = null, Expression<Func<int>> uIAGetElementTextValueMatchIndex = null, Expression<Func<string>> uIAGetElementTextValueSearchFilter = null, Expression<Func<string>> uIAGetElementTextValueSortByColumn = null, Expression<Func<bool>> uIAGetElementTextValueMatchIndexAscending = null, Expression<Func<int>> uIAGetElementTextValueMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementTextValueMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementTextValueMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementTextValueElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetElementTextValueResponse> UIAGetElementTextValue(Expression<Func<int>> uIAGetElementTextValueparentWindowHandle, Expression<Func<string>> uIAGetElementTextValueworkflow, Expression<Func<string>> uIAGetElementTextValuesearchElementName = null, Expression<Func<string>> uIAGetElementTextValuesearchElementClassName = null, Expression<Func<string>> uIAGetElementTextValuesearchElementAutomationId = null, Expression<Func<string>> uIAGetElementTextValuesearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementTextValuesearchSubTree = null, Expression<Func<int>> uIAGetElementTextValuematchIndex = null, Expression<Func<string>> uIAGetElementTextValuesearchFilter = null, Expression<Func<string>> uIAGetElementTextValuesortByColumn = null, Expression<Func<bool>> uIAGetElementTextValuematchIndexAscending = null, Expression<Func<int>> uIAGetElementTextValuemaxElementsToSearch = null, Expression<Func<int>> uIAGetElementTextValuemaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementTextValuemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetElementTextValue";
             var apiCallHttpMethod = "post";
@@ -2816,87 +2816,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementTextValue = new JObject();
             var uIAGetElementTextValuepropCount = 0;
             uIAGetElementTextValuepropCount++;
-            uIAGetElementTextValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementTextValueParentWindowHandle);
-            if (uIAGetElementTextValueSearchElementName != null)
+            uIAGetElementTextValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementTextValueparentWindowHandle);
+            if (uIAGetElementTextValuesearchElementName != null)
             {
-                uIAGetElementTextValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchElementName);
+                uIAGetElementTextValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementName);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSearchElementClassName != null)
+            if (uIAGetElementTextValuesearchElementClassName != null)
             {
-                uIAGetElementTextValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchElementClassName);
+                uIAGetElementTextValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementClassName);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSearchElementAutomationId != null)
+            if (uIAGetElementTextValuesearchElementAutomationId != null)
             {
-                uIAGetElementTextValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchElementAutomationId);
+                uIAGetElementTextValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchElementAutomationId);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSearchLocalizedControlType != null)
+            if (uIAGetElementTextValuesearchLocalizedControlType != null)
             {
-                uIAGetElementTextValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchLocalizedControlType);
+                uIAGetElementTextValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchLocalizedControlType);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSearchSubTree != null)
+            if (uIAGetElementTextValuesearchSubTree != null)
             {
-                uIAGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchSubTree);
+                uIAGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchSubTree);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueMatchIndex != null)
+            if (uIAGetElementTextValuematchIndex != null)
             {
-                uIAGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementTextValueMatchIndex);
+                uIAGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndex);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSearchFilter != null)
+            if (uIAGetElementTextValuesearchFilter != null)
             {
-                uIAGetElementTextValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSearchFilter);
+                uIAGetElementTextValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchFilter);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueSortByColumn != null)
+            if (uIAGetElementTextValuesortByColumn != null)
             {
-                uIAGetElementTextValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementTextValueSortByColumn);
+                uIAGetElementTextValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesortByColumn);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueMatchIndexAscending != null)
+            if (uIAGetElementTextValuematchIndexAscending != null)
             {
-                uIAGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementTextValueMatchIndexAscending);
+                uIAGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndexAscending);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueMaxElementsToSearch != null)
+            if (uIAGetElementTextValuemaxElementsToSearch != null)
             {
-                uIAGetElementTextValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementTextValueMaxElementsToSearch);
+                uIAGetElementTextValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxElementsToSearch);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueMaxRelativeSearchDepth != null)
+            if (uIAGetElementTextValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementTextValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementTextValueMaxRelativeSearchDepth);
+                uIAGetElementTextValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxRelativeSearchDepth);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueMaxChildElementsToSearchPerNode != null)
+            if (uIAGetElementTextValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementTextValueMaxChildElementsToSearchPerNode);
+                uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxChildElementsToSearchPerNode);
                 uIAGetElementTextValuepropCount++;
             }
 
-            if (uIAGetElementTextValueElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementTextValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementTextValueElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementTextValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementTextValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementTextValuepropCount++;
             }
 
             uIAGetElementTextValuepropCount++;
-            uIAGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementTextValueWorkflow);
+            uIAGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementTextValueworkflow);
             if (uIAGetElementTextValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementTextValue;
@@ -2906,7 +2906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementValueResponse> UIAGetElementValue(Expression<Func<int>> uIAGetElementValueParentWindowHandle, Expression<Func<string>> uIAGetElementValueWorkflow, Expression<Func<string>> uIAGetElementValueSearchElementName = null, Expression<Func<string>> uIAGetElementValueSearchElementClassName = null, Expression<Func<string>> uIAGetElementValueSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementValueSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementValueSearchSubTree = null, Expression<Func<int>> uIAGetElementValueMatchIndex = null, Expression<Func<string>> uIAGetElementValueSearchFilter = null, Expression<Func<string>> uIAGetElementValueSortByColumn = null, Expression<Func<bool>> uIAGetElementValueMatchIndexAscending = null, Expression<Func<int>> uIAGetElementValueMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementValueMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementValueMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementValueElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetElementValueResponse> UIAGetElementValue(Expression<Func<int>> uIAGetElementValueparentWindowHandle, Expression<Func<string>> uIAGetElementValueworkflow, Expression<Func<string>> uIAGetElementValuesearchElementName = null, Expression<Func<string>> uIAGetElementValuesearchElementClassName = null, Expression<Func<string>> uIAGetElementValuesearchElementAutomationId = null, Expression<Func<string>> uIAGetElementValuesearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementValuesearchSubTree = null, Expression<Func<int>> uIAGetElementValuematchIndex = null, Expression<Func<string>> uIAGetElementValuesearchFilter = null, Expression<Func<string>> uIAGetElementValuesortByColumn = null, Expression<Func<bool>> uIAGetElementValuematchIndexAscending = null, Expression<Func<int>> uIAGetElementValuemaxElementsToSearch = null, Expression<Func<int>> uIAGetElementValuemaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementValuemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementValueelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetElementValue";
             var apiCallHttpMethod = "post";
@@ -2914,87 +2914,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementValue = new JObject();
             var uIAGetElementValuepropCount = 0;
             uIAGetElementValuepropCount++;
-            uIAGetElementValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementValueParentWindowHandle);
-            if (uIAGetElementValueSearchElementName != null)
+            uIAGetElementValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementValueparentWindowHandle);
+            if (uIAGetElementValuesearchElementName != null)
             {
-                uIAGetElementValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchElementName);
+                uIAGetElementValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementName);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSearchElementClassName != null)
+            if (uIAGetElementValuesearchElementClassName != null)
             {
-                uIAGetElementValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchElementClassName);
+                uIAGetElementValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementClassName);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSearchElementAutomationId != null)
+            if (uIAGetElementValuesearchElementAutomationId != null)
             {
-                uIAGetElementValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchElementAutomationId);
+                uIAGetElementValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchElementAutomationId);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSearchLocalizedControlType != null)
+            if (uIAGetElementValuesearchLocalizedControlType != null)
             {
-                uIAGetElementValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchLocalizedControlType);
+                uIAGetElementValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchLocalizedControlType);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSearchSubTree != null)
+            if (uIAGetElementValuesearchSubTree != null)
             {
-                uIAGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchSubTree);
+                uIAGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchSubTree);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueMatchIndex != null)
+            if (uIAGetElementValuematchIndex != null)
             {
-                uIAGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementValueMatchIndex);
+                uIAGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndex);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSearchFilter != null)
+            if (uIAGetElementValuesearchFilter != null)
             {
-                uIAGetElementValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementValueSearchFilter);
+                uIAGetElementValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchFilter);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueSortByColumn != null)
+            if (uIAGetElementValuesortByColumn != null)
             {
-                uIAGetElementValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementValueSortByColumn);
+                uIAGetElementValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementValuesortByColumn);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueMatchIndexAscending != null)
+            if (uIAGetElementValuematchIndexAscending != null)
             {
-                uIAGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementValueMatchIndexAscending);
+                uIAGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndexAscending);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueMaxElementsToSearch != null)
+            if (uIAGetElementValuemaxElementsToSearch != null)
             {
-                uIAGetElementValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementValueMaxElementsToSearch);
+                uIAGetElementValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxElementsToSearch);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueMaxRelativeSearchDepth != null)
+            if (uIAGetElementValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementValueMaxRelativeSearchDepth);
+                uIAGetElementValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxRelativeSearchDepth);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueMaxChildElementsToSearchPerNode != null)
+            if (uIAGetElementValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementValueMaxChildElementsToSearchPerNode);
+                uIAGetElementValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxChildElementsToSearchPerNode);
                 uIAGetElementValuepropCount++;
             }
 
-            if (uIAGetElementValueElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetElementValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementValueElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementValuepropCount++;
             }
 
             uIAGetElementValuepropCount++;
-            uIAGetElementValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementValueWorkflow);
+            uIAGetElementValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementValueworkflow);
             if (uIAGetElementValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementValue;
@@ -3004,7 +3004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementLabelValueResponse> UIAGetElementLabelValue(Expression<Func<int>> uIAGetElementLabelValueParentWindowHandle, Expression<Func<string>> uIAGetElementLabelValueWorkflow, Expression<Func<string>> uIAGetElementLabelValueSearchElementName = null, Expression<Func<string>> uIAGetElementLabelValueSearchElementClassName = null, Expression<Func<string>> uIAGetElementLabelValueSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementLabelValueSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementLabelValueSearchSubTree = null, Expression<Func<int>> uIAGetElementLabelValueMatchIndex = null, Expression<Func<string>> uIAGetElementLabelValueSearchFilter = null, Expression<Func<string>> uIAGetElementLabelValueSortByColumn = null, Expression<Func<bool>> uIAGetElementLabelValueMatchIndexAscending = null, Expression<Func<int>> uIAGetElementLabelValueMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementLabelValueMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementLabelValueMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementLabelValueElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetElementLabelValueResponse> UIAGetElementLabelValue(Expression<Func<int>> uIAGetElementLabelValueparentWindowHandle, Expression<Func<string>> uIAGetElementLabelValueworkflow, Expression<Func<string>> uIAGetElementLabelValuesearchElementName = null, Expression<Func<string>> uIAGetElementLabelValuesearchElementClassName = null, Expression<Func<string>> uIAGetElementLabelValuesearchElementAutomationId = null, Expression<Func<string>> uIAGetElementLabelValuesearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementLabelValuesearchSubTree = null, Expression<Func<int>> uIAGetElementLabelValuematchIndex = null, Expression<Func<string>> uIAGetElementLabelValuesearchFilter = null, Expression<Func<string>> uIAGetElementLabelValuesortByColumn = null, Expression<Func<bool>> uIAGetElementLabelValuematchIndexAscending = null, Expression<Func<int>> uIAGetElementLabelValuemaxElementsToSearch = null, Expression<Func<int>> uIAGetElementLabelValuemaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementLabelValuemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetElementLabelValue";
             var apiCallHttpMethod = "post";
@@ -3012,87 +3012,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementLabelValue = new JObject();
             var uIAGetElementLabelValuepropCount = 0;
             uIAGetElementLabelValuepropCount++;
-            uIAGetElementLabelValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueParentWindowHandle);
-            if (uIAGetElementLabelValueSearchElementName != null)
+            uIAGetElementLabelValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueparentWindowHandle);
+            if (uIAGetElementLabelValuesearchElementName != null)
             {
-                uIAGetElementLabelValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchElementName);
+                uIAGetElementLabelValue["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementName);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSearchElementClassName != null)
+            if (uIAGetElementLabelValuesearchElementClassName != null)
             {
-                uIAGetElementLabelValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchElementClassName);
+                uIAGetElementLabelValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementClassName);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSearchElementAutomationId != null)
+            if (uIAGetElementLabelValuesearchElementAutomationId != null)
             {
-                uIAGetElementLabelValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchElementAutomationId);
+                uIAGetElementLabelValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchElementAutomationId);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSearchLocalizedControlType != null)
+            if (uIAGetElementLabelValuesearchLocalizedControlType != null)
             {
-                uIAGetElementLabelValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchLocalizedControlType);
+                uIAGetElementLabelValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchLocalizedControlType);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSearchSubTree != null)
+            if (uIAGetElementLabelValuesearchSubTree != null)
             {
-                uIAGetElementLabelValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchSubTree);
+                uIAGetElementLabelValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchSubTree);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueMatchIndex != null)
+            if (uIAGetElementLabelValuematchIndex != null)
             {
-                uIAGetElementLabelValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueMatchIndex);
+                uIAGetElementLabelValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndex);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSearchFilter != null)
+            if (uIAGetElementLabelValuesearchFilter != null)
             {
-                uIAGetElementLabelValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSearchFilter);
+                uIAGetElementLabelValue["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchFilter);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueSortByColumn != null)
+            if (uIAGetElementLabelValuesortByColumn != null)
             {
-                uIAGetElementLabelValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueSortByColumn);
+                uIAGetElementLabelValue["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesortByColumn);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueMatchIndexAscending != null)
+            if (uIAGetElementLabelValuematchIndexAscending != null)
             {
-                uIAGetElementLabelValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueMatchIndexAscending);
+                uIAGetElementLabelValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndexAscending);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueMaxElementsToSearch != null)
+            if (uIAGetElementLabelValuemaxElementsToSearch != null)
             {
-                uIAGetElementLabelValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueMaxElementsToSearch);
+                uIAGetElementLabelValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxElementsToSearch);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueMaxRelativeSearchDepth != null)
+            if (uIAGetElementLabelValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementLabelValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueMaxRelativeSearchDepth);
+                uIAGetElementLabelValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxRelativeSearchDepth);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueMaxChildElementsToSearchPerNode != null)
+            if (uIAGetElementLabelValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueMaxChildElementsToSearchPerNode);
+                uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxChildElementsToSearchPerNode);
                 uIAGetElementLabelValuepropCount++;
             }
 
-            if (uIAGetElementLabelValueElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementLabelValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementLabelValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueelementLocalizedControlTypesNotToTraverse);
                 uIAGetElementLabelValuepropCount++;
             }
 
             uIAGetElementLabelValuepropCount++;
-            uIAGetElementLabelValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueWorkflow);
+            uIAGetElementLabelValue["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementLabelValueworkflow);
             if (uIAGetElementLabelValuepropCount > 0)
             {
                 callPayload.Body = uIAGetElementLabelValue;
@@ -3102,7 +3102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPropertiesResponse> UIAGetElementProperties(Expression<Func<int>> uIAGetElementPropertiesParentWindowHandle, Expression<Func<string>> uIAGetElementPropertiesWorkflow, Expression<Func<string>> uIAGetElementPropertiesSearchElementName = null, Expression<Func<string>> uIAGetElementPropertiesSearchElementClassName = null, Expression<Func<string>> uIAGetElementPropertiesSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementPropertiesSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementPropertiesSearchSubTree = null, Expression<Func<bool>> uIAGetElementPropertiesReturnElementHandle = null, Expression<Func<bool>> uIAGetElementPropertiesReturnElementValue = null, Expression<Func<int>> uIAGetElementPropertiesMatchIndex = null, Expression<Func<string>> uIAGetElementPropertiesSearchFilter = null, Expression<Func<string>> uIAGetElementPropertiesSortByColumn = null, Expression<Func<bool>> uIAGetElementPropertiesMatchIndexAscending = null, Expression<Func<int>> uIAGetElementPropertiesMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementPropertiesMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementPropertiesMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementPropertiesElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGetElementPropertiesValidateClickablePointWithinElementBoundary = null)
+        public IBodyWorkflowAction<UIAGetElementPropertiesResponse> UIAGetElementProperties(Expression<Func<int>> uIAGetElementPropertiesparentWindowHandle, Expression<Func<string>> uIAGetElementPropertiesworkflow, Expression<Func<string>> uIAGetElementPropertiessearchElementName = null, Expression<Func<string>> uIAGetElementPropertiessearchElementClassName = null, Expression<Func<string>> uIAGetElementPropertiessearchElementAutomationId = null, Expression<Func<string>> uIAGetElementPropertiessearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementPropertiessearchSubTree = null, Expression<Func<bool>> uIAGetElementPropertiesreturnElementHandle = null, Expression<Func<bool>> uIAGetElementPropertiesreturnElementValue = null, Expression<Func<int>> uIAGetElementPropertiesmatchIndex = null, Expression<Func<string>> uIAGetElementPropertiessearchFilter = null, Expression<Func<string>> uIAGetElementPropertiessortByColumn = null, Expression<Func<bool>> uIAGetElementPropertiesmatchIndexAscending = null, Expression<Func<int>> uIAGetElementPropertiesmaxElementsToSearch = null, Expression<Func<int>> uIAGetElementPropertiesmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementPropertiesmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/GetElementProperties";
             var apiCallHttpMethod = "post";
@@ -3110,105 +3110,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementProperties = new JObject();
             var uIAGetElementPropertiespropCount = 0;
             uIAGetElementPropertiespropCount++;
-            uIAGetElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesParentWindowHandle);
-            if (uIAGetElementPropertiesSearchElementName != null)
+            uIAGetElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesparentWindowHandle);
+            if (uIAGetElementPropertiessearchElementName != null)
             {
-                uIAGetElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchElementName);
+                uIAGetElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementName);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSearchElementClassName != null)
+            if (uIAGetElementPropertiessearchElementClassName != null)
             {
-                uIAGetElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchElementClassName);
+                uIAGetElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementClassName);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSearchElementAutomationId != null)
+            if (uIAGetElementPropertiessearchElementAutomationId != null)
             {
-                uIAGetElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchElementAutomationId);
+                uIAGetElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchElementAutomationId);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSearchLocalizedControlType != null)
+            if (uIAGetElementPropertiessearchLocalizedControlType != null)
             {
-                uIAGetElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchLocalizedControlType);
+                uIAGetElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchLocalizedControlType);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSearchSubTree != null)
+            if (uIAGetElementPropertiessearchSubTree != null)
             {
-                uIAGetElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchSubTree);
+                uIAGetElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchSubTree);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesReturnElementHandle != null)
+            if (uIAGetElementPropertiesreturnElementHandle != null)
             {
-                uIAGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesReturnElementHandle);
+                uIAGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementHandle);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesReturnElementValue != null)
+            if (uIAGetElementPropertiesreturnElementValue != null)
             {
-                uIAGetElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesReturnElementValue);
+                uIAGetElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementValue);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesMatchIndex != null)
+            if (uIAGetElementPropertiesmatchIndex != null)
             {
-                uIAGetElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesMatchIndex);
+                uIAGetElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndex);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSearchFilter != null)
+            if (uIAGetElementPropertiessearchFilter != null)
             {
-                uIAGetElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSearchFilter);
+                uIAGetElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchFilter);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesSortByColumn != null)
+            if (uIAGetElementPropertiessortByColumn != null)
             {
-                uIAGetElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesSortByColumn);
+                uIAGetElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessortByColumn);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesMatchIndexAscending != null)
+            if (uIAGetElementPropertiesmatchIndexAscending != null)
             {
-                uIAGetElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesMatchIndexAscending);
+                uIAGetElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndexAscending);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesMaxElementsToSearch != null)
+            if (uIAGetElementPropertiesmaxElementsToSearch != null)
             {
-                uIAGetElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesMaxElementsToSearch);
+                uIAGetElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxElementsToSearch);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesMaxRelativeSearchDepth != null)
+            if (uIAGetElementPropertiesmaxRelativeSearchDepth != null)
             {
-                uIAGetElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesMaxRelativeSearchDepth);
+                uIAGetElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxRelativeSearchDepth);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesMaxChildElementsToSearchPerNode != null)
+            if (uIAGetElementPropertiesmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesMaxChildElementsToSearchPerNode);
+                uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxChildElementsToSearchPerNode);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPropertieselementLocalizedControlTypesNotToTraverse);
                 uIAGetElementPropertiespropCount++;
             }
 
-            if (uIAGetElementPropertiesValidateClickablePointWithinElementBoundary != null)
+            if (uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesValidateClickablePointWithinElementBoundary);
+                uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary);
                 uIAGetElementPropertiespropCount++;
             }
 
             uIAGetElementPropertiespropCount++;
-            uIAGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesWorkflow);
+            uIAGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesworkflow);
             if (uIAGetElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetElementProperties;
@@ -3218,7 +3218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleElementPropertiesResponse> UIAGetMultipleElementProperties(Expression<Func<int>> uIAGetMultipleElementPropertiesParentWindowHandle, Expression<Func<string>> uIAGetMultipleElementPropertiesWorkflow, Expression<Func<string>> uIAGetMultipleElementPropertiesSearchElementLocalizedControlType = null, Expression<Func<bool>> uIAGetMultipleElementPropertiesSearchDescendants = null, Expression<Func<bool>> uIAGetMultipleElementPropertiesReturnElementHandle = null, Expression<Func<bool>> uIAGetMultipleElementPropertiesReturnElementValue = null, Expression<Func<int>> uIAGetMultipleElementPropertiesFirstItemToReturn = null, Expression<Func<int>> uIAGetMultipleElementPropertiesMaxItemsToReturn = null)
+        public IBodyWorkflowAction<UIAGetMultipleElementPropertiesResponse> UIAGetMultipleElementProperties(Expression<Func<int>> uIAGetMultipleElementPropertiesparentWindowHandle, Expression<Func<string>> uIAGetMultipleElementPropertiesworkflow, Expression<Func<string>> uIAGetMultipleElementPropertiessearchElementLocalizedControlType = null, Expression<Func<bool>> uIAGetMultipleElementPropertiessearchDescendants = null, Expression<Func<bool>> uIAGetMultipleElementPropertiesreturnElementHandle = null, Expression<Func<bool>> uIAGetMultipleElementPropertiesreturnElementValue = null, Expression<Func<int>> uIAGetMultipleElementPropertiesfirstItemToReturn = null, Expression<Func<int>> uIAGetMultipleElementPropertiesmaxItemsToReturn = null)
         {
             var apiCallPath = "/UIAControl/GetMultipleElementProperties";
             var apiCallHttpMethod = "post";
@@ -3226,45 +3226,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetMultipleElementProperties = new JObject();
             var uIAGetMultipleElementPropertiespropCount = 0;
             uIAGetMultipleElementPropertiespropCount++;
-            uIAGetMultipleElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesParentWindowHandle);
-            if (uIAGetMultipleElementPropertiesSearchElementLocalizedControlType != null)
+            uIAGetMultipleElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesparentWindowHandle);
+            if (uIAGetMultipleElementPropertiessearchElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementProperties["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesSearchElementLocalizedControlType);
+                uIAGetMultipleElementProperties["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchElementLocalizedControlType);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
-            if (uIAGetMultipleElementPropertiesSearchDescendants != null)
+            if (uIAGetMultipleElementPropertiessearchDescendants != null)
             {
-                uIAGetMultipleElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesSearchDescendants);
+                uIAGetMultipleElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchDescendants);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
-            if (uIAGetMultipleElementPropertiesReturnElementHandle != null)
+            if (uIAGetMultipleElementPropertiesreturnElementHandle != null)
             {
-                uIAGetMultipleElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesReturnElementHandle);
+                uIAGetMultipleElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementHandle);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
-            if (uIAGetMultipleElementPropertiesReturnElementValue != null)
+            if (uIAGetMultipleElementPropertiesreturnElementValue != null)
             {
-                uIAGetMultipleElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesReturnElementValue);
+                uIAGetMultipleElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementValue);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
-            if (uIAGetMultipleElementPropertiesFirstItemToReturn != null)
+            if (uIAGetMultipleElementPropertiesfirstItemToReturn != null)
             {
-                uIAGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesFirstItemToReturn);
+                uIAGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesfirstItemToReturn);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
-            if (uIAGetMultipleElementPropertiesMaxItemsToReturn != null)
+            if (uIAGetMultipleElementPropertiesmaxItemsToReturn != null)
             {
-                uIAGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesMaxItemsToReturn);
+                uIAGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesmaxItemsToReturn);
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
             uIAGetMultipleElementPropertiespropCount++;
-            uIAGetMultipleElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesWorkflow);
+            uIAGetMultipleElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesworkflow);
             if (uIAGetMultipleElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleElementProperties;
@@ -3274,51 +3274,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDesktopElementsResponse> UIAGetDesktopElements(Expression<Func<string>> uIAGetDesktopElementsWorkflow, Expression<Func<string>> uIAGetDesktopElementsSearchElementLocalizedControlType = null, Expression<Func<int>> uIAGetDesktopElementsSearchProcessID = null, Expression<Func<bool>> uIAGetDesktopElementsReturnElementHandle = null, Expression<Func<int>> uIAGetDesktopElementsFirstItemToReturn = null, Expression<Func<int>> uIAGetDesktopElementsMaxItemsToReturn = null, Expression<Func<bool>> uIAGetDesktopElementsIncludeChildProcesses = null)
+        public IBodyWorkflowAction<UIAGetDesktopElementsResponse> UIAGetDesktopElements(Expression<Func<string>> uIAGetDesktopElementsworkflow, Expression<Func<string>> uIAGetDesktopElementssearchElementLocalizedControlType = null, Expression<Func<int>> uIAGetDesktopElementssearchProcessID = null, Expression<Func<bool>> uIAGetDesktopElementsreturnElementHandle = null, Expression<Func<int>> uIAGetDesktopElementsfirstItemToReturn = null, Expression<Func<int>> uIAGetDesktopElementsmaxItemsToReturn = null, Expression<Func<bool>> uIAGetDesktopElementsincludeChildProcesses = null)
         {
             var apiCallPath = "/UIAControl/GetDesktopElements";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetDesktopElements = new JObject();
             var uIAGetDesktopElementspropCount = 0;
-            if (uIAGetDesktopElementsSearchElementLocalizedControlType != null)
+            if (uIAGetDesktopElementssearchElementLocalizedControlType != null)
             {
-                uIAGetDesktopElements["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsSearchElementLocalizedControlType);
+                uIAGetDesktopElements["SearchElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchElementLocalizedControlType);
                 uIAGetDesktopElementspropCount++;
             }
 
-            if (uIAGetDesktopElementsSearchProcessID != null)
+            if (uIAGetDesktopElementssearchProcessID != null)
             {
-                uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsSearchProcessID);
+                uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchProcessID);
                 uIAGetDesktopElementspropCount++;
             }
 
-            if (uIAGetDesktopElementsReturnElementHandle != null)
+            if (uIAGetDesktopElementsreturnElementHandle != null)
             {
-                uIAGetDesktopElements["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsReturnElementHandle);
+                uIAGetDesktopElements["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsreturnElementHandle);
                 uIAGetDesktopElementspropCount++;
             }
 
-            if (uIAGetDesktopElementsFirstItemToReturn != null)
+            if (uIAGetDesktopElementsfirstItemToReturn != null)
             {
-                uIAGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsFirstItemToReturn);
+                uIAGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsfirstItemToReturn);
                 uIAGetDesktopElementspropCount++;
             }
 
-            if (uIAGetDesktopElementsMaxItemsToReturn != null)
+            if (uIAGetDesktopElementsmaxItemsToReturn != null)
             {
-                uIAGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsMaxItemsToReturn);
+                uIAGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsmaxItemsToReturn);
                 uIAGetDesktopElementspropCount++;
             }
 
-            if (uIAGetDesktopElementsIncludeChildProcesses != null)
+            if (uIAGetDesktopElementsincludeChildProcesses != null)
             {
-                uIAGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsIncludeChildProcesses);
+                uIAGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsincludeChildProcesses);
                 uIAGetDesktopElementspropCount++;
             }
 
             uIAGetDesktopElementspropCount++;
-            uIAGetDesktopElements["Workflow"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsWorkflow);
+            uIAGetDesktopElements["Workflow"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsworkflow);
             if (uIAGetDesktopElementspropCount > 0)
             {
                 callPayload.Body = uIAGetDesktopElements;
@@ -3328,7 +3328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAExpandElement(Expression<Func<int>> uIAExpandElementParentWindowHandle, Expression<Func<string>> uIAExpandElementWorkflow, Expression<Func<string>> uIAExpandElementSearchElementName = null, Expression<Func<string>> uIAExpandElementSearchElementClassName = null, Expression<Func<string>> uIAExpandElementSearchElementAutomationId = null, Expression<Func<string>> uIAExpandElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAExpandElementSearchSubTree = null, Expression<Func<int>> uIAExpandElementMatchIndex = null, Expression<Func<string>> uIAExpandElementSearchFilter = null, Expression<Func<string>> uIAExpandElementSortByColumn = null, Expression<Func<bool>> uIAExpandElementMatchIndexAscending = null, Expression<Func<int>> uIAExpandElementMaxElementsToSearch = null, Expression<Func<int>> uIAExpandElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAExpandElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAExpandElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIAExpandElement(Expression<Func<int>> uIAExpandElementparentWindowHandle, Expression<Func<string>> uIAExpandElementworkflow, Expression<Func<string>> uIAExpandElementsearchElementName = null, Expression<Func<string>> uIAExpandElementsearchElementClassName = null, Expression<Func<string>> uIAExpandElementsearchElementAutomationId = null, Expression<Func<string>> uIAExpandElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAExpandElementsearchSubTree = null, Expression<Func<int>> uIAExpandElementmatchIndex = null, Expression<Func<string>> uIAExpandElementsearchFilter = null, Expression<Func<string>> uIAExpandElementsortByColumn = null, Expression<Func<bool>> uIAExpandElementmatchIndexAscending = null, Expression<Func<int>> uIAExpandElementmaxElementsToSearch = null, Expression<Func<int>> uIAExpandElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAExpandElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAExpandElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/ExpandElement";
             var apiCallHttpMethod = "post";
@@ -3336,87 +3336,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAExpandElement = new JObject();
             var uIAExpandElementpropCount = 0;
             uIAExpandElementpropCount++;
-            uIAExpandElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAExpandElementParentWindowHandle);
-            if (uIAExpandElementSearchElementName != null)
+            uIAExpandElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAExpandElementparentWindowHandle);
+            if (uIAExpandElementsearchElementName != null)
             {
-                uIAExpandElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAExpandElementSearchElementName);
+                uIAExpandElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementName);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSearchElementClassName != null)
+            if (uIAExpandElementsearchElementClassName != null)
             {
-                uIAExpandElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAExpandElementSearchElementClassName);
+                uIAExpandElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementClassName);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSearchElementAutomationId != null)
+            if (uIAExpandElementsearchElementAutomationId != null)
             {
-                uIAExpandElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAExpandElementSearchElementAutomationId);
+                uIAExpandElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAExpandElementsearchElementAutomationId);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSearchLocalizedControlType != null)
+            if (uIAExpandElementsearchLocalizedControlType != null)
             {
-                uIAExpandElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAExpandElementSearchLocalizedControlType);
+                uIAExpandElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAExpandElementsearchLocalizedControlType);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSearchSubTree != null)
+            if (uIAExpandElementsearchSubTree != null)
             {
-                uIAExpandElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAExpandElementSearchSubTree);
+                uIAExpandElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAExpandElementsearchSubTree);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementMatchIndex != null)
+            if (uIAExpandElementmatchIndex != null)
             {
-                uIAExpandElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAExpandElementMatchIndex);
+                uIAExpandElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndex);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSearchFilter != null)
+            if (uIAExpandElementsearchFilter != null)
             {
-                uIAExpandElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAExpandElementSearchFilter);
+                uIAExpandElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAExpandElementsearchFilter);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementSortByColumn != null)
+            if (uIAExpandElementsortByColumn != null)
             {
-                uIAExpandElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAExpandElementSortByColumn);
+                uIAExpandElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAExpandElementsortByColumn);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementMatchIndexAscending != null)
+            if (uIAExpandElementmatchIndexAscending != null)
             {
-                uIAExpandElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAExpandElementMatchIndexAscending);
+                uIAExpandElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndexAscending);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementMaxElementsToSearch != null)
+            if (uIAExpandElementmaxElementsToSearch != null)
             {
-                uIAExpandElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAExpandElementMaxElementsToSearch);
+                uIAExpandElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAExpandElementmaxElementsToSearch);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementMaxRelativeSearchDepth != null)
+            if (uIAExpandElementmaxRelativeSearchDepth != null)
             {
-                uIAExpandElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAExpandElementMaxRelativeSearchDepth);
+                uIAExpandElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAExpandElementmaxRelativeSearchDepth);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementMaxChildElementsToSearchPerNode != null)
+            if (uIAExpandElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAExpandElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAExpandElementMaxChildElementsToSearchPerNode);
+                uIAExpandElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAExpandElementmaxChildElementsToSearchPerNode);
                 uIAExpandElementpropCount++;
             }
 
-            if (uIAExpandElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAExpandElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAExpandElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAExpandElementElementLocalizedControlTypesNotToTraverse);
+                uIAExpandElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAExpandElementelementLocalizedControlTypesNotToTraverse);
                 uIAExpandElementpropCount++;
             }
 
             uIAExpandElementpropCount++;
-            uIAExpandElement["Workflow"] = ExpressionConverter.ConvertO(uIAExpandElementWorkflow);
+            uIAExpandElement["Workflow"] = ExpressionConverter.ConvertO(uIAExpandElementworkflow);
             if (uIAExpandElementpropCount > 0)
             {
                 callPayload.Body = uIAExpandElement;
@@ -3426,7 +3426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIACollapseElement(Expression<Func<int>> uIACollapseElementParentWindowHandle, Expression<Func<string>> uIACollapseElementWorkflow, Expression<Func<string>> uIACollapseElementSearchElementName = null, Expression<Func<string>> uIACollapseElementSearchElementClassName = null, Expression<Func<string>> uIACollapseElementSearchElementAutomationId = null, Expression<Func<string>> uIACollapseElementSearchLocalizedControlType = null, Expression<Func<bool>> uIACollapseElementSearchSubTree = null, Expression<Func<int>> uIACollapseElementMatchIndex = null, Expression<Func<string>> uIACollapseElementSearchFilter = null, Expression<Func<string>> uIACollapseElementSortByColumn = null, Expression<Func<bool>> uIACollapseElementMatchIndexAscending = null, Expression<Func<int>> uIACollapseElementMaxElementsToSearch = null, Expression<Func<int>> uIACollapseElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIACollapseElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACollapseElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIACollapseElement(Expression<Func<int>> uIACollapseElementparentWindowHandle, Expression<Func<string>> uIACollapseElementworkflow, Expression<Func<string>> uIACollapseElementsearchElementName = null, Expression<Func<string>> uIACollapseElementsearchElementClassName = null, Expression<Func<string>> uIACollapseElementsearchElementAutomationId = null, Expression<Func<string>> uIACollapseElementsearchLocalizedControlType = null, Expression<Func<bool>> uIACollapseElementsearchSubTree = null, Expression<Func<int>> uIACollapseElementmatchIndex = null, Expression<Func<string>> uIACollapseElementsearchFilter = null, Expression<Func<string>> uIACollapseElementsortByColumn = null, Expression<Func<bool>> uIACollapseElementmatchIndexAscending = null, Expression<Func<int>> uIACollapseElementmaxElementsToSearch = null, Expression<Func<int>> uIACollapseElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIACollapseElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIACollapseElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/CollapseElement";
             var apiCallHttpMethod = "post";
@@ -3434,87 +3434,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIACollapseElement = new JObject();
             var uIACollapseElementpropCount = 0;
             uIACollapseElementpropCount++;
-            uIACollapseElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACollapseElementParentWindowHandle);
-            if (uIACollapseElementSearchElementName != null)
+            uIACollapseElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIACollapseElementparentWindowHandle);
+            if (uIACollapseElementsearchElementName != null)
             {
-                uIACollapseElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACollapseElementSearchElementName);
+                uIACollapseElement["SearchElementName"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementName);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSearchElementClassName != null)
+            if (uIACollapseElementsearchElementClassName != null)
             {
-                uIACollapseElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACollapseElementSearchElementClassName);
+                uIACollapseElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementClassName);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSearchElementAutomationId != null)
+            if (uIACollapseElementsearchElementAutomationId != null)
             {
-                uIACollapseElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACollapseElementSearchElementAutomationId);
+                uIACollapseElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIACollapseElementsearchElementAutomationId);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSearchLocalizedControlType != null)
+            if (uIACollapseElementsearchLocalizedControlType != null)
             {
-                uIACollapseElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACollapseElementSearchLocalizedControlType);
+                uIACollapseElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIACollapseElementsearchLocalizedControlType);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSearchSubTree != null)
+            if (uIACollapseElementsearchSubTree != null)
             {
-                uIACollapseElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACollapseElementSearchSubTree);
+                uIACollapseElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACollapseElementsearchSubTree);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementMatchIndex != null)
+            if (uIACollapseElementmatchIndex != null)
             {
-                uIACollapseElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACollapseElementMatchIndex);
+                uIACollapseElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndex);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSearchFilter != null)
+            if (uIACollapseElementsearchFilter != null)
             {
-                uIACollapseElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACollapseElementSearchFilter);
+                uIACollapseElement["SearchFilter"] = ExpressionConverter.ConvertO(uIACollapseElementsearchFilter);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementSortByColumn != null)
+            if (uIACollapseElementsortByColumn != null)
             {
-                uIACollapseElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACollapseElementSortByColumn);
+                uIACollapseElement["SortByColumn"] = ExpressionConverter.ConvertO(uIACollapseElementsortByColumn);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementMatchIndexAscending != null)
+            if (uIACollapseElementmatchIndexAscending != null)
             {
-                uIACollapseElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACollapseElementMatchIndexAscending);
+                uIACollapseElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndexAscending);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementMaxElementsToSearch != null)
+            if (uIACollapseElementmaxElementsToSearch != null)
             {
-                uIACollapseElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACollapseElementMaxElementsToSearch);
+                uIACollapseElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACollapseElementmaxElementsToSearch);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementMaxRelativeSearchDepth != null)
+            if (uIACollapseElementmaxRelativeSearchDepth != null)
             {
-                uIACollapseElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACollapseElementMaxRelativeSearchDepth);
+                uIACollapseElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACollapseElementmaxRelativeSearchDepth);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementMaxChildElementsToSearchPerNode != null)
+            if (uIACollapseElementmaxChildElementsToSearchPerNode != null)
             {
-                uIACollapseElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACollapseElementMaxChildElementsToSearchPerNode);
+                uIACollapseElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACollapseElementmaxChildElementsToSearchPerNode);
                 uIACollapseElementpropCount++;
             }
 
-            if (uIACollapseElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIACollapseElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIACollapseElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACollapseElementElementLocalizedControlTypesNotToTraverse);
+                uIACollapseElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIACollapseElementelementLocalizedControlTypesNotToTraverse);
                 uIACollapseElementpropCount++;
             }
 
             uIACollapseElementpropCount++;
-            uIACollapseElement["Workflow"] = ExpressionConverter.ConvertO(uIACollapseElementWorkflow);
+            uIACollapseElement["Workflow"] = ExpressionConverter.ConvertO(uIACollapseElementworkflow);
             if (uIACollapseElementpropCount > 0)
             {
                 callPayload.Body = uIACollapseElement;
@@ -3524,7 +3524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIATakeScreenShotOfElementLocationResponse> UIATakeScreenShotOfElementLocation(Expression<Func<int>> uIATakeScreenShotOfElementLocationParentWindowHandle, Expression<Func<string>> uIATakeScreenShotOfElementLocationWorkflow, Expression<Func<string>> uIATakeScreenShotOfElementLocationSearchElementName = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationSearchElementClassName = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationSearchElementAutomationId = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationSearchLocalizedControlType = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationSearchSubTree = null, Expression<Func<uIATakeScreenShotOfElementLocationImageFormatInput>> uIATakeScreenShotOfElementLocationImageFormat = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationMatchIndex = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationSearchFilter = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationSortByColumn = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationMatchIndexAscending = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationHideAgent = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationMaxElementsToSearch = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationMaxRelativeSearchDepth = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIATakeScreenShotOfElementLocationResponse> UIATakeScreenShotOfElementLocation(Expression<Func<int>> uIATakeScreenShotOfElementLocationparentWindowHandle, Expression<Func<string>> uIATakeScreenShotOfElementLocationworkflow, Expression<Func<string>> uIATakeScreenShotOfElementLocationsearchElementName = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationsearchElementClassName = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationsearchElementAutomationId = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationsearchLocalizedControlType = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationsearchSubTree = null, Expression<Func<uIATakeScreenShotOfElementLocationimageFormatInput>> uIATakeScreenShotOfElementLocationimageFormat = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationmatchIndex = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationsearchFilter = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationsortByColumn = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationmatchIndexAscending = null, Expression<Func<bool>> uIATakeScreenShotOfElementLocationhideAgent = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationmaxElementsToSearch = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth = null, Expression<Func<int>> uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/TakeScreenShotOfElementLocation";
             var apiCallHttpMethod = "post";
@@ -3532,99 +3532,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIATakeScreenShotOfElementLocation = new JObject();
             var uIATakeScreenShotOfElementLocationpropCount = 0;
             uIATakeScreenShotOfElementLocationpropCount++;
-            uIATakeScreenShotOfElementLocation["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationParentWindowHandle);
-            if (uIATakeScreenShotOfElementLocationSearchElementName != null)
+            uIATakeScreenShotOfElementLocation["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationparentWindowHandle);
+            if (uIATakeScreenShotOfElementLocationsearchElementName != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchElementName);
+                uIATakeScreenShotOfElementLocation["SearchElementName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementName);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSearchElementClassName != null)
+            if (uIATakeScreenShotOfElementLocationsearchElementClassName != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementClassName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchElementClassName);
+                uIATakeScreenShotOfElementLocation["SearchElementClassName"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementClassName);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSearchElementAutomationId != null)
+            if (uIATakeScreenShotOfElementLocationsearchElementAutomationId != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchElementAutomationId);
+                uIATakeScreenShotOfElementLocation["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchElementAutomationId);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSearchLocalizedControlType != null)
+            if (uIATakeScreenShotOfElementLocationsearchLocalizedControlType != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchLocalizedControlType);
+                uIATakeScreenShotOfElementLocation["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchLocalizedControlType);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSearchSubTree != null)
+            if (uIATakeScreenShotOfElementLocationsearchSubTree != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchSubTree"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchSubTree);
+                uIATakeScreenShotOfElementLocation["SearchSubTree"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchSubTree);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationImageFormat != null)
+            if (uIATakeScreenShotOfElementLocationimageFormat != null)
             {
-                uIATakeScreenShotOfElementLocation["ImageFormat"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationImageFormat);
+                uIATakeScreenShotOfElementLocation["ImageFormat"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationimageFormat);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationMatchIndex != null)
+            if (uIATakeScreenShotOfElementLocationmatchIndex != null)
             {
-                uIATakeScreenShotOfElementLocation["MatchIndex"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationMatchIndex);
+                uIATakeScreenShotOfElementLocation["MatchIndex"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndex);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSearchFilter != null)
+            if (uIATakeScreenShotOfElementLocationsearchFilter != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchFilter"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSearchFilter);
+                uIATakeScreenShotOfElementLocation["SearchFilter"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchFilter);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationSortByColumn != null)
+            if (uIATakeScreenShotOfElementLocationsortByColumn != null)
             {
-                uIATakeScreenShotOfElementLocation["SortByColumn"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationSortByColumn);
+                uIATakeScreenShotOfElementLocation["SortByColumn"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsortByColumn);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationMatchIndexAscending != null)
+            if (uIATakeScreenShotOfElementLocationmatchIndexAscending != null)
             {
-                uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationMatchIndexAscending);
+                uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndexAscending);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationHideAgent != null)
+            if (uIATakeScreenShotOfElementLocationhideAgent != null)
             {
-                uIATakeScreenShotOfElementLocation["HideAgent"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationHideAgent);
+                uIATakeScreenShotOfElementLocation["HideAgent"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationhideAgent);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationMaxElementsToSearch != null)
+            if (uIATakeScreenShotOfElementLocationmaxElementsToSearch != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationMaxElementsToSearch);
+                uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxElementsToSearch);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationMaxRelativeSearchDepth != null)
+            if (uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationMaxRelativeSearchDepth);
+                uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationMaxChildElementsToSearchPerNode != null)
+            if (uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationMaxChildElementsToSearchPerNode);
+                uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
-            if (uIATakeScreenShotOfElementLocationElementLocalizedControlTypesNotToTraverse != null)
+            if (uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIATakeScreenShotOfElementLocation["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationElementLocalizedControlTypesNotToTraverse);
+                uIATakeScreenShotOfElementLocation["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationelementLocalizedControlTypesNotToTraverse);
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             uIATakeScreenShotOfElementLocationpropCount++;
-            uIATakeScreenShotOfElementLocation["Workflow"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationWorkflow);
+            uIATakeScreenShotOfElementLocation["Workflow"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationworkflow);
             if (uIATakeScreenShotOfElementLocationpropCount > 0)
             {
                 callPayload.Body = uIATakeScreenShotOfElementLocation;
@@ -3634,7 +3634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIADrawRectangleAroundElement(Expression<Func<int>> uIADrawRectangleAroundElementParentWindowHandle, Expression<Func<string>> uIADrawRectangleAroundElementWorkflow, Expression<Func<string>> uIADrawRectangleAroundElementSearchElementName = null, Expression<Func<string>> uIADrawRectangleAroundElementSearchElementClassName = null, Expression<Func<string>> uIADrawRectangleAroundElementSearchElementAutomationId = null, Expression<Func<string>> uIADrawRectangleAroundElementSearchLocalizedControlType = null, Expression<Func<bool>> uIADrawRectangleAroundElementSearchSubTree = null, Expression<Func<string>> uIADrawRectangleAroundElementPenColour = null, Expression<Func<int>> uIADrawRectangleAroundElementPenThicknessPixels = null, Expression<Func<int>> uIADrawRectangleAroundElementMatchIndex = null, Expression<Func<string>> uIADrawRectangleAroundElementSearchFilter = null, Expression<Func<string>> uIADrawRectangleAroundElementSortByColumn = null, Expression<Func<bool>> uIADrawRectangleAroundElementMatchIndexAscending = null, Expression<Func<int>> uIADrawRectangleAroundElementMaxElementsToSearch = null, Expression<Func<int>> uIADrawRectangleAroundElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIADrawRectangleAroundElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADrawRectangleAroundElementElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIADrawRectangleAroundElement(Expression<Func<int>> uIADrawRectangleAroundElementparentWindowHandle, Expression<Func<string>> uIADrawRectangleAroundElementworkflow, Expression<Func<string>> uIADrawRectangleAroundElementsearchElementName = null, Expression<Func<string>> uIADrawRectangleAroundElementsearchElementClassName = null, Expression<Func<string>> uIADrawRectangleAroundElementsearchElementAutomationId = null, Expression<Func<string>> uIADrawRectangleAroundElementsearchLocalizedControlType = null, Expression<Func<bool>> uIADrawRectangleAroundElementsearchSubTree = null, Expression<Func<string>> uIADrawRectangleAroundElementpenColour = null, Expression<Func<int>> uIADrawRectangleAroundElementpenThicknessPixels = null, Expression<Func<int>> uIADrawRectangleAroundElementmatchIndex = null, Expression<Func<string>> uIADrawRectangleAroundElementsearchFilter = null, Expression<Func<string>> uIADrawRectangleAroundElementsortByColumn = null, Expression<Func<bool>> uIADrawRectangleAroundElementmatchIndexAscending = null, Expression<Func<int>> uIADrawRectangleAroundElementmaxElementsToSearch = null, Expression<Func<int>> uIADrawRectangleAroundElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/DrawRectangleAroundElement";
             var apiCallHttpMethod = "post";
@@ -3642,99 +3642,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIADrawRectangleAroundElement = new JObject();
             var uIADrawRectangleAroundElementpropCount = 0;
             uIADrawRectangleAroundElementpropCount++;
-            uIADrawRectangleAroundElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementParentWindowHandle);
-            if (uIADrawRectangleAroundElementSearchElementName != null)
+            uIADrawRectangleAroundElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementparentWindowHandle);
+            if (uIADrawRectangleAroundElementsearchElementName != null)
             {
-                uIADrawRectangleAroundElement["SearchElementName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchElementName);
+                uIADrawRectangleAroundElement["SearchElementName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementName);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSearchElementClassName != null)
+            if (uIADrawRectangleAroundElementsearchElementClassName != null)
             {
-                uIADrawRectangleAroundElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchElementClassName);
+                uIADrawRectangleAroundElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementClassName);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSearchElementAutomationId != null)
+            if (uIADrawRectangleAroundElementsearchElementAutomationId != null)
             {
-                uIADrawRectangleAroundElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchElementAutomationId);
+                uIADrawRectangleAroundElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchElementAutomationId);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSearchLocalizedControlType != null)
+            if (uIADrawRectangleAroundElementsearchLocalizedControlType != null)
             {
-                uIADrawRectangleAroundElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchLocalizedControlType);
+                uIADrawRectangleAroundElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchLocalizedControlType);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSearchSubTree != null)
+            if (uIADrawRectangleAroundElementsearchSubTree != null)
             {
-                uIADrawRectangleAroundElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchSubTree);
+                uIADrawRectangleAroundElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchSubTree);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementPenColour != null)
+            if (uIADrawRectangleAroundElementpenColour != null)
             {
-                uIADrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementPenColour);
+                uIADrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenColour);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementPenThicknessPixels != null)
+            if (uIADrawRectangleAroundElementpenThicknessPixels != null)
             {
-                uIADrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementPenThicknessPixels);
+                uIADrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenThicknessPixels);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementMatchIndex != null)
+            if (uIADrawRectangleAroundElementmatchIndex != null)
             {
-                uIADrawRectangleAroundElement["MatchIndex"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementMatchIndex);
+                uIADrawRectangleAroundElement["MatchIndex"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndex);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSearchFilter != null)
+            if (uIADrawRectangleAroundElementsearchFilter != null)
             {
-                uIADrawRectangleAroundElement["SearchFilter"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSearchFilter);
+                uIADrawRectangleAroundElement["SearchFilter"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchFilter);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementSortByColumn != null)
+            if (uIADrawRectangleAroundElementsortByColumn != null)
             {
-                uIADrawRectangleAroundElement["SortByColumn"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementSortByColumn);
+                uIADrawRectangleAroundElement["SortByColumn"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsortByColumn);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementMatchIndexAscending != null)
+            if (uIADrawRectangleAroundElementmatchIndexAscending != null)
             {
-                uIADrawRectangleAroundElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementMatchIndexAscending);
+                uIADrawRectangleAroundElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndexAscending);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementMaxElementsToSearch != null)
+            if (uIADrawRectangleAroundElementmaxElementsToSearch != null)
             {
-                uIADrawRectangleAroundElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementMaxElementsToSearch);
+                uIADrawRectangleAroundElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxElementsToSearch);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementMaxRelativeSearchDepth != null)
+            if (uIADrawRectangleAroundElementmaxRelativeSearchDepth != null)
             {
-                uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementMaxRelativeSearchDepth);
+                uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxRelativeSearchDepth);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementMaxChildElementsToSearchPerNode != null)
+            if (uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode != null)
             {
-                uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementMaxChildElementsToSearchPerNode);
+                uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
-            if (uIADrawRectangleAroundElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIADrawRectangleAroundElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementElementLocalizedControlTypesNotToTraverse);
+                uIADrawRectangleAroundElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementelementLocalizedControlTypesNotToTraverse);
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             uIADrawRectangleAroundElementpropCount++;
-            uIADrawRectangleAroundElement["Workflow"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementWorkflow);
+            uIADrawRectangleAroundElement["Workflow"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementworkflow);
             if (uIADrawRectangleAroundElementpropCount > 0)
             {
                 callPayload.Body = uIADrawRectangleAroundElement;
@@ -3744,7 +3744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetParentElementHandleResponse> UIAGetParentElementHandle(Expression<Func<int>> uIAGetParentElementHandleElementHandle, Expression<Func<string>> uIAGetParentElementHandleWorkflow)
+        public IBodyWorkflowAction<UIAGetParentElementHandleResponse> UIAGetParentElementHandle(Expression<Func<int>> uIAGetParentElementHandleelementHandle, Expression<Func<string>> uIAGetParentElementHandleworkflow)
         {
             var apiCallPath = "/UIAControl/GetParentElementHandle";
             var apiCallHttpMethod = "post";
@@ -3752,9 +3752,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetParentElementHandle = new JObject();
             var uIAGetParentElementHandlepropCount = 0;
             uIAGetParentElementHandlepropCount++;
-            uIAGetParentElementHandle["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleElementHandle);
+            uIAGetParentElementHandle["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleelementHandle);
             uIAGetParentElementHandlepropCount++;
-            uIAGetParentElementHandle["Workflow"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleWorkflow);
+            uIAGetParentElementHandle["Workflow"] = ExpressionConverter.ConvertO(uIAGetParentElementHandleworkflow);
             if (uIAGetParentElementHandlepropCount > 0)
             {
                 callPayload.Body = uIAGetParentElementHandle;
@@ -3764,207 +3764,207 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDataGridElementContentsResponse> UIAGetDataGridElementContents(Expression<Func<string>> uIAGetDataGridElementContentsWorkflow, Expression<Func<int>> uIAGetDataGridElementContentsParentWindowHandle = null, Expression<Func<string>> uIAGetDataGridElementContentsSearchElementName = null, Expression<Func<string>> uIAGetDataGridElementContentsSearchElementClassName = null, Expression<Func<string>> uIAGetDataGridElementContentsSearchElementAutomationId = null, Expression<Func<string>> uIAGetDataGridElementContentsSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetDataGridElementContentsSearchSubTree = null, Expression<Func<bool>> uIAGetDataGridElementContentsOnScreenColumnsOnly = null, Expression<Func<bool>> uIAGetDataGridElementContentsOnScreenRowsOnly = null, Expression<Func<bool>> uIAGetDataGridElementContentsReturnNullValuesAsBlank = null, Expression<Func<string>> uIAGetDataGridElementContentsAlternativeHeaderRowName = null, Expression<Func<bool>> uIAGetDataGridElementContentsReturnRowUIAName = null, Expression<Func<string>> uIAGetDataGridElementContentsNameOfColumnToStoreRowUIAName = null, Expression<Func<int>> uIAGetDataGridElementContentsMatchIndex = null, Expression<Func<string>> uIAGetDataGridElementContentsSearchFilter = null, Expression<Func<string>> uIAGetDataGridElementContentsSortByColumn = null, Expression<Func<bool>> uIAGetDataGridElementContentsMatchIndexAscending = null, Expression<Func<int>> uIAGetDataGridElementContentsFirstItemToReturn = null, Expression<Func<int>> uIAGetDataGridElementContentsMaxItemsToReturn = null, Expression<Func<int>> uIAGetDataGridElementContentsScanFirstNRowsForEmptyRows = null, Expression<Func<bool>> uIAGetDataGridElementContentsReadTableAsThread = null, Expression<Func<int>> uIAGetDataGridElementContentsRetrieveOutputDataFromThreadId = null, Expression<Func<int>> uIAGetDataGridElementContentsSecondsToWaitForThread = null, Expression<Func<int>> uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNPercent = null, Expression<Func<int>> uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNRows = null, Expression<Func<int>> uIAGetDataGridElementContentsScrollDataGridVerticallyElementHandle = null, Expression<Func<int>> uIAGetDataGridElementContentsMinimumDataGridRowsForScrolling = null, Expression<Func<bool>> uIAGetDataGridElementContentsRaiseExceptionIfCannotScroll = null, Expression<Func<string>> uIAGetDataGridElementContentsAlternativeVerticalScrollbarName = null, Expression<Func<int>> uIAGetDataGridElementContentsMaxElementsToSearch = null, Expression<Func<int>> uIAGetDataGridElementContentsMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetDataGridElementContentsMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetDataGridElementContentsElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetDataGridElementContentsResponse> UIAGetDataGridElementContents(Expression<Func<string>> uIAGetDataGridElementContentsworkflow, Expression<Func<int>> uIAGetDataGridElementContentsparentWindowHandle = null, Expression<Func<string>> uIAGetDataGridElementContentssearchElementName = null, Expression<Func<string>> uIAGetDataGridElementContentssearchElementClassName = null, Expression<Func<string>> uIAGetDataGridElementContentssearchElementAutomationId = null, Expression<Func<string>> uIAGetDataGridElementContentssearchLocalizedControlType = null, Expression<Func<bool>> uIAGetDataGridElementContentssearchSubTree = null, Expression<Func<bool>> uIAGetDataGridElementContentsonScreenColumnsOnly = null, Expression<Func<bool>> uIAGetDataGridElementContentsonScreenRowsOnly = null, Expression<Func<bool>> uIAGetDataGridElementContentsreturnNullValuesAsBlank = null, Expression<Func<string>> uIAGetDataGridElementContentsalternativeHeaderRowName = null, Expression<Func<bool>> uIAGetDataGridElementContentsreturnRowUIAName = null, Expression<Func<string>> uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName = null, Expression<Func<int>> uIAGetDataGridElementContentsmatchIndex = null, Expression<Func<string>> uIAGetDataGridElementContentssearchFilter = null, Expression<Func<string>> uIAGetDataGridElementContentssortByColumn = null, Expression<Func<bool>> uIAGetDataGridElementContentsmatchIndexAscending = null, Expression<Func<int>> uIAGetDataGridElementContentsfirstItemToReturn = null, Expression<Func<int>> uIAGetDataGridElementContentsmaxItemsToReturn = null, Expression<Func<int>> uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows = null, Expression<Func<bool>> uIAGetDataGridElementContentsreadTableAsThread = null, Expression<Func<int>> uIAGetDataGridElementContentsretrieveOutputDataFromThreadId = null, Expression<Func<int>> uIAGetDataGridElementContentssecondsToWaitForThread = null, Expression<Func<int>> uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent = null, Expression<Func<int>> uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows = null, Expression<Func<int>> uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle = null, Expression<Func<int>> uIAGetDataGridElementContentsminimumDataGridRowsForScrolling = null, Expression<Func<bool>> uIAGetDataGridElementContentsraiseExceptionIfCannotScroll = null, Expression<Func<string>> uIAGetDataGridElementContentsalternativeVerticalScrollbarName = null, Expression<Func<int>> uIAGetDataGridElementContentsmaxElementsToSearch = null, Expression<Func<int>> uIAGetDataGridElementContentsmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetDataGridElementContents";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetDataGridElementContents = new JObject();
             var uIAGetDataGridElementContentspropCount = 0;
-            if (uIAGetDataGridElementContentsParentWindowHandle != null)
+            if (uIAGetDataGridElementContentsparentWindowHandle != null)
             {
-                uIAGetDataGridElementContents["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsParentWindowHandle);
+                uIAGetDataGridElementContents["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsparentWindowHandle);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchElementName != null)
+            if (uIAGetDataGridElementContentssearchElementName != null)
             {
-                uIAGetDataGridElementContents["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchElementName);
+                uIAGetDataGridElementContents["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchElementClassName != null)
+            if (uIAGetDataGridElementContentssearchElementClassName != null)
             {
-                uIAGetDataGridElementContents["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchElementClassName);
+                uIAGetDataGridElementContents["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementClassName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchElementAutomationId != null)
+            if (uIAGetDataGridElementContentssearchElementAutomationId != null)
             {
-                uIAGetDataGridElementContents["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchElementAutomationId);
+                uIAGetDataGridElementContents["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchElementAutomationId);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchLocalizedControlType != null)
+            if (uIAGetDataGridElementContentssearchLocalizedControlType != null)
             {
-                uIAGetDataGridElementContents["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchLocalizedControlType);
+                uIAGetDataGridElementContents["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchLocalizedControlType);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchSubTree != null)
+            if (uIAGetDataGridElementContentssearchSubTree != null)
             {
-                uIAGetDataGridElementContents["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchSubTree);
+                uIAGetDataGridElementContents["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchSubTree);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsOnScreenColumnsOnly != null)
+            if (uIAGetDataGridElementContentsonScreenColumnsOnly != null)
             {
-                uIAGetDataGridElementContents["OnScreenColumnsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsOnScreenColumnsOnly);
+                uIAGetDataGridElementContents["OnScreenColumnsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenColumnsOnly);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsOnScreenRowsOnly != null)
+            if (uIAGetDataGridElementContentsonScreenRowsOnly != null)
             {
-                uIAGetDataGridElementContents["OnScreenRowsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsOnScreenRowsOnly);
+                uIAGetDataGridElementContents["OnScreenRowsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenRowsOnly);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsReturnNullValuesAsBlank != null)
+            if (uIAGetDataGridElementContentsreturnNullValuesAsBlank != null)
             {
-                uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsReturnNullValuesAsBlank);
+                uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnNullValuesAsBlank);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsAlternativeHeaderRowName != null)
+            if (uIAGetDataGridElementContentsalternativeHeaderRowName != null)
             {
-                uIAGetDataGridElementContents["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsAlternativeHeaderRowName);
+                uIAGetDataGridElementContents["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsalternativeHeaderRowName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsReturnRowUIAName != null)
+            if (uIAGetDataGridElementContentsreturnRowUIAName != null)
             {
-                uIAGetDataGridElementContents["ReturnRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsReturnRowUIAName);
+                uIAGetDataGridElementContents["ReturnRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnRowUIAName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsNameOfColumnToStoreRowUIAName != null)
+            if (uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName != null)
             {
-                uIAGetDataGridElementContents["NameOfColumnToStoreRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsNameOfColumnToStoreRowUIAName);
+                uIAGetDataGridElementContents["NameOfColumnToStoreRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsnameOfColumnToStoreRowUIAName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMatchIndex != null)
+            if (uIAGetDataGridElementContentsmatchIndex != null)
             {
-                uIAGetDataGridElementContents["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMatchIndex);
+                uIAGetDataGridElementContents["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndex);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSearchFilter != null)
+            if (uIAGetDataGridElementContentssearchFilter != null)
             {
-                uIAGetDataGridElementContents["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSearchFilter);
+                uIAGetDataGridElementContents["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchFilter);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSortByColumn != null)
+            if (uIAGetDataGridElementContentssortByColumn != null)
             {
-                uIAGetDataGridElementContents["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSortByColumn);
+                uIAGetDataGridElementContents["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssortByColumn);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMatchIndexAscending != null)
+            if (uIAGetDataGridElementContentsmatchIndexAscending != null)
             {
-                uIAGetDataGridElementContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMatchIndexAscending);
+                uIAGetDataGridElementContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndexAscending);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsFirstItemToReturn != null)
+            if (uIAGetDataGridElementContentsfirstItemToReturn != null)
             {
-                uIAGetDataGridElementContents["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsFirstItemToReturn);
+                uIAGetDataGridElementContents["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsfirstItemToReturn);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMaxItemsToReturn != null)
+            if (uIAGetDataGridElementContentsmaxItemsToReturn != null)
             {
-                uIAGetDataGridElementContents["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMaxItemsToReturn);
+                uIAGetDataGridElementContents["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxItemsToReturn);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsScanFirstNRowsForEmptyRows != null)
+            if (uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows != null)
             {
-                uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsScanFirstNRowsForEmptyRows);
+                uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsReadTableAsThread != null)
+            if (uIAGetDataGridElementContentsreadTableAsThread != null)
             {
-                uIAGetDataGridElementContents["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsReadTableAsThread);
+                uIAGetDataGridElementContents["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreadTableAsThread);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsRetrieveOutputDataFromThreadId != null)
+            if (uIAGetDataGridElementContentsretrieveOutputDataFromThreadId != null)
             {
-                uIAGetDataGridElementContents["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsRetrieveOutputDataFromThreadId);
+                uIAGetDataGridElementContents["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsretrieveOutputDataFromThreadId);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsSecondsToWaitForThread != null)
+            if (uIAGetDataGridElementContentssecondsToWaitForThread != null)
             {
-                uIAGetDataGridElementContents["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsSecondsToWaitForThread);
+                uIAGetDataGridElementContents["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssecondsToWaitForThread);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNPercent != null)
+            if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNPercent);
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNRows != null)
+            if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsScrollDataGridVerticallyEveryNRows);
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsScrollDataGridVerticallyElementHandle != null)
+            if (uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsScrollDataGridVerticallyElementHandle);
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMinimumDataGridRowsForScrolling != null)
+            if (uIAGetDataGridElementContentsminimumDataGridRowsForScrolling != null)
             {
-                uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMinimumDataGridRowsForScrolling);
+                uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsRaiseExceptionIfCannotScroll != null)
+            if (uIAGetDataGridElementContentsraiseExceptionIfCannotScroll != null)
             {
-                uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsRaiseExceptionIfCannotScroll);
+                uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsAlternativeVerticalScrollbarName != null)
+            if (uIAGetDataGridElementContentsalternativeVerticalScrollbarName != null)
             {
-                uIAGetDataGridElementContents["AlternativeVerticalScrollbarName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsAlternativeVerticalScrollbarName);
+                uIAGetDataGridElementContents["AlternativeVerticalScrollbarName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsalternativeVerticalScrollbarName);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMaxElementsToSearch != null)
+            if (uIAGetDataGridElementContentsmaxElementsToSearch != null)
             {
-                uIAGetDataGridElementContents["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMaxElementsToSearch);
+                uIAGetDataGridElementContents["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxElementsToSearch);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMaxRelativeSearchDepth != null)
+            if (uIAGetDataGridElementContentsmaxRelativeSearchDepth != null)
             {
-                uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMaxRelativeSearchDepth);
+                uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxRelativeSearchDepth);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsMaxChildElementsToSearchPerNode != null)
+            if (uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsMaxChildElementsToSearchPerNode);
+                uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode);
                 uIAGetDataGridElementContentspropCount++;
             }
 
-            if (uIAGetDataGridElementContentsElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetDataGridElementContents["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsElementLocalizedControlTypesNotToTraverse);
+                uIAGetDataGridElementContents["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentselementLocalizedControlTypesNotToTraverse);
                 uIAGetDataGridElementContentspropCount++;
             }
 
             uIAGetDataGridElementContentspropCount++;
-            uIAGetDataGridElementContents["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsWorkflow);
+            uIAGetDataGridElementContents["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsworkflow);
             if (uIAGetDataGridElementContentspropCount > 0)
             {
                 callPayload.Body = uIAGetDataGridElementContents;
@@ -3974,7 +3974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDataGridElementPropertiesResponse> UIAGetDataGridElementProperties(Expression<Func<int>> uIAGetDataGridElementPropertiesParentWindowHandle, Expression<Func<string>> uIAGetDataGridElementPropertiesWorkflow, Expression<Func<string>> uIAGetDataGridElementPropertiesSearchElementName = null, Expression<Func<string>> uIAGetDataGridElementPropertiesSearchElementClassName = null, Expression<Func<string>> uIAGetDataGridElementPropertiesSearchElementAutomationId = null, Expression<Func<string>> uIAGetDataGridElementPropertiesSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetDataGridElementPropertiesSearchSubTree = null, Expression<Func<string>> uIAGetDataGridElementPropertiesAlternativeHeaderRowName = null, Expression<Func<int>> uIAGetDataGridElementPropertiesMatchIndex = null, Expression<Func<string>> uIAGetDataGridElementPropertiesSearchFilter = null, Expression<Func<string>> uIAGetDataGridElementPropertiesSortByColumn = null, Expression<Func<bool>> uIAGetDataGridElementPropertiesMatchIndexAscending = null, Expression<Func<int>> uIAGetDataGridElementPropertiesMaxElementsToSearch = null, Expression<Func<int>> uIAGetDataGridElementPropertiesMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetDataGridElementPropertiesMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetDataGridElementPropertiesElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetDataGridElementPropertiesResponse> UIAGetDataGridElementProperties(Expression<Func<int>> uIAGetDataGridElementPropertiesparentWindowHandle, Expression<Func<string>> uIAGetDataGridElementPropertiesworkflow, Expression<Func<string>> uIAGetDataGridElementPropertiessearchElementName = null, Expression<Func<string>> uIAGetDataGridElementPropertiessearchElementClassName = null, Expression<Func<string>> uIAGetDataGridElementPropertiessearchElementAutomationId = null, Expression<Func<string>> uIAGetDataGridElementPropertiessearchLocalizedControlType = null, Expression<Func<bool>> uIAGetDataGridElementPropertiessearchSubTree = null, Expression<Func<string>> uIAGetDataGridElementPropertiesalternativeHeaderRowName = null, Expression<Func<int>> uIAGetDataGridElementPropertiesmatchIndex = null, Expression<Func<string>> uIAGetDataGridElementPropertiessearchFilter = null, Expression<Func<string>> uIAGetDataGridElementPropertiessortByColumn = null, Expression<Func<bool>> uIAGetDataGridElementPropertiesmatchIndexAscending = null, Expression<Func<int>> uIAGetDataGridElementPropertiesmaxElementsToSearch = null, Expression<Func<int>> uIAGetDataGridElementPropertiesmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetDataGridElementProperties";
             var apiCallHttpMethod = "post";
@@ -3982,93 +3982,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetDataGridElementProperties = new JObject();
             var uIAGetDataGridElementPropertiespropCount = 0;
             uIAGetDataGridElementPropertiespropCount++;
-            uIAGetDataGridElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesParentWindowHandle);
-            if (uIAGetDataGridElementPropertiesSearchElementName != null)
+            uIAGetDataGridElementProperties["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesparentWindowHandle);
+            if (uIAGetDataGridElementPropertiessearchElementName != null)
             {
-                uIAGetDataGridElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchElementName);
+                uIAGetDataGridElementProperties["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSearchElementClassName != null)
+            if (uIAGetDataGridElementPropertiessearchElementClassName != null)
             {
-                uIAGetDataGridElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchElementClassName);
+                uIAGetDataGridElementProperties["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementClassName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSearchElementAutomationId != null)
+            if (uIAGetDataGridElementPropertiessearchElementAutomationId != null)
             {
-                uIAGetDataGridElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchElementAutomationId);
+                uIAGetDataGridElementProperties["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchElementAutomationId);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSearchLocalizedControlType != null)
+            if (uIAGetDataGridElementPropertiessearchLocalizedControlType != null)
             {
-                uIAGetDataGridElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchLocalizedControlType);
+                uIAGetDataGridElementProperties["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchLocalizedControlType);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSearchSubTree != null)
+            if (uIAGetDataGridElementPropertiessearchSubTree != null)
             {
-                uIAGetDataGridElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchSubTree);
+                uIAGetDataGridElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchSubTree);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesAlternativeHeaderRowName != null)
+            if (uIAGetDataGridElementPropertiesalternativeHeaderRowName != null)
             {
-                uIAGetDataGridElementProperties["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesAlternativeHeaderRowName);
+                uIAGetDataGridElementProperties["AlternativeHeaderRowName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesalternativeHeaderRowName);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesMatchIndex != null)
+            if (uIAGetDataGridElementPropertiesmatchIndex != null)
             {
-                uIAGetDataGridElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesMatchIndex);
+                uIAGetDataGridElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndex);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSearchFilter != null)
+            if (uIAGetDataGridElementPropertiessearchFilter != null)
             {
-                uIAGetDataGridElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSearchFilter);
+                uIAGetDataGridElementProperties["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchFilter);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesSortByColumn != null)
+            if (uIAGetDataGridElementPropertiessortByColumn != null)
             {
-                uIAGetDataGridElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesSortByColumn);
+                uIAGetDataGridElementProperties["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessortByColumn);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesMatchIndexAscending != null)
+            if (uIAGetDataGridElementPropertiesmatchIndexAscending != null)
             {
-                uIAGetDataGridElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesMatchIndexAscending);
+                uIAGetDataGridElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndexAscending);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesMaxElementsToSearch != null)
+            if (uIAGetDataGridElementPropertiesmaxElementsToSearch != null)
             {
-                uIAGetDataGridElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesMaxElementsToSearch);
+                uIAGetDataGridElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxElementsToSearch);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesMaxRelativeSearchDepth != null)
+            if (uIAGetDataGridElementPropertiesmaxRelativeSearchDepth != null)
             {
-                uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesMaxRelativeSearchDepth);
+                uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesMaxChildElementsToSearchPerNode != null)
+            if (uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesMaxChildElementsToSearchPerNode);
+                uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
-            if (uIAGetDataGridElementPropertiesElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetDataGridElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesElementLocalizedControlTypesNotToTraverse);
+                uIAGetDataGridElementProperties["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertieselementLocalizedControlTypesNotToTraverse);
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             uIAGetDataGridElementPropertiespropCount++;
-            uIAGetDataGridElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesWorkflow);
+            uIAGetDataGridElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesworkflow);
             if (uIAGetDataGridElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetDataGridElementProperties;
@@ -4078,7 +4078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetListElementItemsResponse> UIAGetListElementItems(Expression<Func<int>> uIAGetListElementItemsParentWindowHandle, Expression<Func<string>> uIAGetListElementItemsWorkflow, Expression<Func<string>> uIAGetListElementItemsSearchElementName = null, Expression<Func<string>> uIAGetListElementItemsSearchElementClassName = null, Expression<Func<string>> uIAGetListElementItemsSearchElementAutomationId = null, Expression<Func<string>> uIAGetListElementItemsSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetListElementItemsSearchSubTree = null, Expression<Func<bool>> uIAGetListElementItemsExpandFirst = null, Expression<Func<bool>> uIAGetListElementItemsCollapseAfter = null, Expression<Func<bool>> uIAGetListElementItemsCheckForSelectedItems = null, Expression<Func<double>> uIAGetListElementItemsSecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAGetListElementItemsMatchIndex = null, Expression<Func<string>> uIAGetListElementItemsSearchFilter = null, Expression<Func<string>> uIAGetListElementItemsSortByColumn = null, Expression<Func<bool>> uIAGetListElementItemsMatchIndexAscending = null, Expression<Func<int>> uIAGetListElementItemsMaxElementsToSearch = null, Expression<Func<int>> uIAGetListElementItemsMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetListElementItemsMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetListElementItemsElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetListElementItemsResponse> UIAGetListElementItems(Expression<Func<int>> uIAGetListElementItemsparentWindowHandle, Expression<Func<string>> uIAGetListElementItemsworkflow, Expression<Func<string>> uIAGetListElementItemssearchElementName = null, Expression<Func<string>> uIAGetListElementItemssearchElementClassName = null, Expression<Func<string>> uIAGetListElementItemssearchElementAutomationId = null, Expression<Func<string>> uIAGetListElementItemssearchLocalizedControlType = null, Expression<Func<bool>> uIAGetListElementItemssearchSubTree = null, Expression<Func<bool>> uIAGetListElementItemsexpandFirst = null, Expression<Func<bool>> uIAGetListElementItemscollapseAfter = null, Expression<Func<bool>> uIAGetListElementItemscheckForSelectedItems = null, Expression<Func<double>> uIAGetListElementItemssecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAGetListElementItemsmatchIndex = null, Expression<Func<string>> uIAGetListElementItemssearchFilter = null, Expression<Func<string>> uIAGetListElementItemssortByColumn = null, Expression<Func<bool>> uIAGetListElementItemsmatchIndexAscending = null, Expression<Func<int>> uIAGetListElementItemsmaxElementsToSearch = null, Expression<Func<int>> uIAGetListElementItemsmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetListElementItemsmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetListElementItemselementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/GetListElementItems";
             var apiCallHttpMethod = "post";
@@ -4086,111 +4086,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetListElementItems = new JObject();
             var uIAGetListElementItemspropCount = 0;
             uIAGetListElementItemspropCount++;
-            uIAGetListElementItems["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetListElementItemsParentWindowHandle);
-            if (uIAGetListElementItemsSearchElementName != null)
+            uIAGetListElementItems["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetListElementItemsparentWindowHandle);
+            if (uIAGetListElementItemssearchElementName != null)
             {
-                uIAGetListElementItems["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchElementName);
+                uIAGetListElementItems["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementName);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSearchElementClassName != null)
+            if (uIAGetListElementItemssearchElementClassName != null)
             {
-                uIAGetListElementItems["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchElementClassName);
+                uIAGetListElementItems["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementClassName);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSearchElementAutomationId != null)
+            if (uIAGetListElementItemssearchElementAutomationId != null)
             {
-                uIAGetListElementItems["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchElementAutomationId);
+                uIAGetListElementItems["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchElementAutomationId);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSearchLocalizedControlType != null)
+            if (uIAGetListElementItemssearchLocalizedControlType != null)
             {
-                uIAGetListElementItems["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchLocalizedControlType);
+                uIAGetListElementItems["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchLocalizedControlType);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSearchSubTree != null)
+            if (uIAGetListElementItemssearchSubTree != null)
             {
-                uIAGetListElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchSubTree);
+                uIAGetListElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchSubTree);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsExpandFirst != null)
+            if (uIAGetListElementItemsexpandFirst != null)
             {
-                uIAGetListElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(uIAGetListElementItemsExpandFirst);
+                uIAGetListElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(uIAGetListElementItemsexpandFirst);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsCollapseAfter != null)
+            if (uIAGetListElementItemscollapseAfter != null)
             {
-                uIAGetListElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(uIAGetListElementItemsCollapseAfter);
+                uIAGetListElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(uIAGetListElementItemscollapseAfter);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsCheckForSelectedItems != null)
+            if (uIAGetListElementItemscheckForSelectedItems != null)
             {
-                uIAGetListElementItems["CheckForSelectedItems"] = ExpressionConverter.ConvertO(uIAGetListElementItemsCheckForSelectedItems);
+                uIAGetListElementItems["CheckForSelectedItems"] = ExpressionConverter.ConvertO(uIAGetListElementItemscheckForSelectedItems);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSecondsBetweenExpandCollapse != null)
+            if (uIAGetListElementItemssecondsBetweenExpandCollapse != null)
             {
-                uIAGetListElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSecondsBetweenExpandCollapse);
+                uIAGetListElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAGetListElementItemssecondsBetweenExpandCollapse);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsMatchIndex != null)
+            if (uIAGetListElementItemsmatchIndex != null)
             {
-                uIAGetListElementItems["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetListElementItemsMatchIndex);
+                uIAGetListElementItems["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndex);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSearchFilter != null)
+            if (uIAGetListElementItemssearchFilter != null)
             {
-                uIAGetListElementItems["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSearchFilter);
+                uIAGetListElementItems["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchFilter);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsSortByColumn != null)
+            if (uIAGetListElementItemssortByColumn != null)
             {
-                uIAGetListElementItems["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetListElementItemsSortByColumn);
+                uIAGetListElementItems["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetListElementItemssortByColumn);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsMatchIndexAscending != null)
+            if (uIAGetListElementItemsmatchIndexAscending != null)
             {
-                uIAGetListElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetListElementItemsMatchIndexAscending);
+                uIAGetListElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndexAscending);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsMaxElementsToSearch != null)
+            if (uIAGetListElementItemsmaxElementsToSearch != null)
             {
-                uIAGetListElementItems["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetListElementItemsMaxElementsToSearch);
+                uIAGetListElementItems["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxElementsToSearch);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsMaxRelativeSearchDepth != null)
+            if (uIAGetListElementItemsmaxRelativeSearchDepth != null)
             {
-                uIAGetListElementItems["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetListElementItemsMaxRelativeSearchDepth);
+                uIAGetListElementItems["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxRelativeSearchDepth);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsMaxChildElementsToSearchPerNode != null)
+            if (uIAGetListElementItemsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetListElementItemsMaxChildElementsToSearchPerNode);
+                uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxChildElementsToSearchPerNode);
                 uIAGetListElementItemspropCount++;
             }
 
-            if (uIAGetListElementItemsElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetListElementItemselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetListElementItems["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetListElementItemsElementLocalizedControlTypesNotToTraverse);
+                uIAGetListElementItems["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetListElementItemselementLocalizedControlTypesNotToTraverse);
                 uIAGetListElementItemspropCount++;
             }
 
             uIAGetListElementItemspropCount++;
-            uIAGetListElementItems["Workflow"] = ExpressionConverter.ConvertO(uIAGetListElementItemsWorkflow);
+            uIAGetListElementItems["Workflow"] = ExpressionConverter.ConvertO(uIAGetListElementItemsworkflow);
             if (uIAGetListElementItemspropCount > 0)
             {
                 callPayload.Body = uIAGetListElementItems;
@@ -4200,7 +4200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAClickListElementItemByName(Expression<Func<int>> uIAClickListElementItemByNameParentWindowHandle, Expression<Func<string>> uIAClickListElementItemByNameWorkflow, Expression<Func<string>> uIAClickListElementItemByNameSearchElementName = null, Expression<Func<string>> uIAClickListElementItemByNameSearchElementClassName = null, Expression<Func<string>> uIAClickListElementItemByNameSearchElementAutomationId = null, Expression<Func<string>> uIAClickListElementItemByNameSearchLocalizedControlType = null, Expression<Func<bool>> uIAClickListElementItemByNameSearchSubTree = null, Expression<Func<bool>> uIAClickListElementItemByNameExpandFirst = null, Expression<Func<bool>> uIAClickListElementItemByNameCollapseAfter = null, Expression<Func<string>> uIAClickListElementItemByNameItemName = null, Expression<Func<double>> uIAClickListElementItemByNameSecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAClickListElementItemByNameMatchIndex = null, Expression<Func<string>> uIAClickListElementItemByNameSearchFilter = null, Expression<Func<string>> uIAClickListElementItemByNameSortByColumn = null, Expression<Func<bool>> uIAClickListElementItemByNameMatchIndexAscending = null, Expression<Func<int>> uIAClickListElementItemByNameMaxElementsToSearch = null, Expression<Func<int>> uIAClickListElementItemByNameMaxRelativeSearchDepth = null, Expression<Func<int>> uIAClickListElementItemByNameMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAClickListElementItemByNameElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIAClickListElementItemByName(Expression<Func<int>> uIAClickListElementItemByNameparentWindowHandle, Expression<Func<string>> uIAClickListElementItemByNameworkflow, Expression<Func<string>> uIAClickListElementItemByNamesearchElementName = null, Expression<Func<string>> uIAClickListElementItemByNamesearchElementClassName = null, Expression<Func<string>> uIAClickListElementItemByNamesearchElementAutomationId = null, Expression<Func<string>> uIAClickListElementItemByNamesearchLocalizedControlType = null, Expression<Func<bool>> uIAClickListElementItemByNamesearchSubTree = null, Expression<Func<bool>> uIAClickListElementItemByNameexpandFirst = null, Expression<Func<bool>> uIAClickListElementItemByNamecollapseAfter = null, Expression<Func<string>> uIAClickListElementItemByNameitemName = null, Expression<Func<double>> uIAClickListElementItemByNamesecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAClickListElementItemByNamematchIndex = null, Expression<Func<string>> uIAClickListElementItemByNamesearchFilter = null, Expression<Func<string>> uIAClickListElementItemByNamesortByColumn = null, Expression<Func<bool>> uIAClickListElementItemByNamematchIndexAscending = null, Expression<Func<int>> uIAClickListElementItemByNamemaxElementsToSearch = null, Expression<Func<int>> uIAClickListElementItemByNamemaxRelativeSearchDepth = null, Expression<Func<int>> uIAClickListElementItemByNamemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/ClickListElementItemByName";
             var apiCallHttpMethod = "post";
@@ -4208,111 +4208,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAClickListElementItemByName = new JObject();
             var uIAClickListElementItemByNamepropCount = 0;
             uIAClickListElementItemByNamepropCount++;
-            uIAClickListElementItemByName["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameParentWindowHandle);
-            if (uIAClickListElementItemByNameSearchElementName != null)
+            uIAClickListElementItemByName["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameparentWindowHandle);
+            if (uIAClickListElementItemByNamesearchElementName != null)
             {
-                uIAClickListElementItemByName["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchElementName);
+                uIAClickListElementItemByName["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSearchElementClassName != null)
+            if (uIAClickListElementItemByNamesearchElementClassName != null)
             {
-                uIAClickListElementItemByName["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchElementClassName);
+                uIAClickListElementItemByName["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementClassName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSearchElementAutomationId != null)
+            if (uIAClickListElementItemByNamesearchElementAutomationId != null)
             {
-                uIAClickListElementItemByName["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchElementAutomationId);
+                uIAClickListElementItemByName["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchElementAutomationId);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSearchLocalizedControlType != null)
+            if (uIAClickListElementItemByNamesearchLocalizedControlType != null)
             {
-                uIAClickListElementItemByName["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchLocalizedControlType);
+                uIAClickListElementItemByName["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchLocalizedControlType);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSearchSubTree != null)
+            if (uIAClickListElementItemByNamesearchSubTree != null)
             {
-                uIAClickListElementItemByName["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchSubTree);
+                uIAClickListElementItemByName["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchSubTree);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameExpandFirst != null)
+            if (uIAClickListElementItemByNameexpandFirst != null)
             {
-                uIAClickListElementItemByName["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameExpandFirst);
+                uIAClickListElementItemByName["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameexpandFirst);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameCollapseAfter != null)
+            if (uIAClickListElementItemByNamecollapseAfter != null)
             {
-                uIAClickListElementItemByName["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameCollapseAfter);
+                uIAClickListElementItemByName["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamecollapseAfter);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameItemName != null)
+            if (uIAClickListElementItemByNameitemName != null)
             {
-                uIAClickListElementItemByName["ItemName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameItemName);
+                uIAClickListElementItemByName["ItemName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameitemName);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSecondsBetweenExpandCollapse != null)
+            if (uIAClickListElementItemByNamesecondsBetweenExpandCollapse != null)
             {
-                uIAClickListElementItemByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSecondsBetweenExpandCollapse);
+                uIAClickListElementItemByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesecondsBetweenExpandCollapse);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameMatchIndex != null)
+            if (uIAClickListElementItemByNamematchIndex != null)
             {
-                uIAClickListElementItemByName["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameMatchIndex);
+                uIAClickListElementItemByName["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndex);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSearchFilter != null)
+            if (uIAClickListElementItemByNamesearchFilter != null)
             {
-                uIAClickListElementItemByName["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSearchFilter);
+                uIAClickListElementItemByName["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchFilter);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameSortByColumn != null)
+            if (uIAClickListElementItemByNamesortByColumn != null)
             {
-                uIAClickListElementItemByName["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameSortByColumn);
+                uIAClickListElementItemByName["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesortByColumn);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameMatchIndexAscending != null)
+            if (uIAClickListElementItemByNamematchIndexAscending != null)
             {
-                uIAClickListElementItemByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameMatchIndexAscending);
+                uIAClickListElementItemByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndexAscending);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameMaxElementsToSearch != null)
+            if (uIAClickListElementItemByNamemaxElementsToSearch != null)
             {
-                uIAClickListElementItemByName["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameMaxElementsToSearch);
+                uIAClickListElementItemByName["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxElementsToSearch);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameMaxRelativeSearchDepth != null)
+            if (uIAClickListElementItemByNamemaxRelativeSearchDepth != null)
             {
-                uIAClickListElementItemByName["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameMaxRelativeSearchDepth);
+                uIAClickListElementItemByName["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxRelativeSearchDepth);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameMaxChildElementsToSearchPerNode != null)
+            if (uIAClickListElementItemByNamemaxChildElementsToSearchPerNode != null)
             {
-                uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameMaxChildElementsToSearchPerNode);
+                uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode);
                 uIAClickListElementItemByNamepropCount++;
             }
 
-            if (uIAClickListElementItemByNameElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAClickListElementItemByName["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameElementLocalizedControlTypesNotToTraverse);
+                uIAClickListElementItemByName["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameelementLocalizedControlTypesNotToTraverse);
                 uIAClickListElementItemByNamepropCount++;
             }
 
             uIAClickListElementItemByNamepropCount++;
-            uIAClickListElementItemByName["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameWorkflow);
+            uIAClickListElementItemByName["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameworkflow);
             if (uIAClickListElementItemByNamepropCount > 0)
             {
                 callPayload.Body = uIAClickListElementItemByName;
@@ -4322,7 +4322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAClickListElementItemByIndex(Expression<Func<int>> uIAClickListElementItemByIndexParentWindowHandle, Expression<Func<string>> uIAClickListElementItemByIndexWorkflow, Expression<Func<string>> uIAClickListElementItemByIndexSearchElementName = null, Expression<Func<string>> uIAClickListElementItemByIndexSearchElementClassName = null, Expression<Func<string>> uIAClickListElementItemByIndexSearchElementAutomationId = null, Expression<Func<string>> uIAClickListElementItemByIndexSearchLocalizedControlType = null, Expression<Func<bool>> uIAClickListElementItemByIndexSearchSubTree = null, Expression<Func<bool>> uIAClickListElementItemByIndexExpandFirst = null, Expression<Func<bool>> uIAClickListElementItemByIndexCollapseAfter = null, Expression<Func<int>> uIAClickListElementItemByIndexItemIndex = null, Expression<Func<double>> uIAClickListElementItemByIndexSecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAClickListElementItemByIndexMatchIndex = null, Expression<Func<string>> uIAClickListElementItemByIndexSearchFilter = null, Expression<Func<string>> uIAClickListElementItemByIndexSortByColumn = null, Expression<Func<bool>> uIAClickListElementItemByIndexMatchIndexAscending = null, Expression<Func<int>> uIAClickListElementItemByIndexMaxElementsToSearch = null, Expression<Func<int>> uIAClickListElementItemByIndexMaxRelativeSearchDepth = null, Expression<Func<int>> uIAClickListElementItemByIndexMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAClickListElementItemByIndexElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIAClickListElementItemByIndex(Expression<Func<int>> uIAClickListElementItemByIndexparentWindowHandle, Expression<Func<string>> uIAClickListElementItemByIndexworkflow, Expression<Func<string>> uIAClickListElementItemByIndexsearchElementName = null, Expression<Func<string>> uIAClickListElementItemByIndexsearchElementClassName = null, Expression<Func<string>> uIAClickListElementItemByIndexsearchElementAutomationId = null, Expression<Func<string>> uIAClickListElementItemByIndexsearchLocalizedControlType = null, Expression<Func<bool>> uIAClickListElementItemByIndexsearchSubTree = null, Expression<Func<bool>> uIAClickListElementItemByIndexexpandFirst = null, Expression<Func<bool>> uIAClickListElementItemByIndexcollapseAfter = null, Expression<Func<int>> uIAClickListElementItemByIndexitemIndex = null, Expression<Func<double>> uIAClickListElementItemByIndexsecondsBetweenExpandCollapse = null, Expression<Func<int>> uIAClickListElementItemByIndexmatchIndex = null, Expression<Func<string>> uIAClickListElementItemByIndexsearchFilter = null, Expression<Func<string>> uIAClickListElementItemByIndexsortByColumn = null, Expression<Func<bool>> uIAClickListElementItemByIndexmatchIndexAscending = null, Expression<Func<int>> uIAClickListElementItemByIndexmaxElementsToSearch = null, Expression<Func<int>> uIAClickListElementItemByIndexmaxRelativeSearchDepth = null, Expression<Func<int>> uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/ClickListElementItemByIndex";
             var apiCallHttpMethod = "post";
@@ -4330,111 +4330,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAClickListElementItemByIndex = new JObject();
             var uIAClickListElementItemByIndexpropCount = 0;
             uIAClickListElementItemByIndexpropCount++;
-            uIAClickListElementItemByIndex["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexParentWindowHandle);
-            if (uIAClickListElementItemByIndexSearchElementName != null)
+            uIAClickListElementItemByIndex["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexparentWindowHandle);
+            if (uIAClickListElementItemByIndexsearchElementName != null)
             {
-                uIAClickListElementItemByIndex["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchElementName);
+                uIAClickListElementItemByIndex["SearchElementName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementName);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSearchElementClassName != null)
+            if (uIAClickListElementItemByIndexsearchElementClassName != null)
             {
-                uIAClickListElementItemByIndex["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchElementClassName);
+                uIAClickListElementItemByIndex["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementClassName);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSearchElementAutomationId != null)
+            if (uIAClickListElementItemByIndexsearchElementAutomationId != null)
             {
-                uIAClickListElementItemByIndex["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchElementAutomationId);
+                uIAClickListElementItemByIndex["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchElementAutomationId);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSearchLocalizedControlType != null)
+            if (uIAClickListElementItemByIndexsearchLocalizedControlType != null)
             {
-                uIAClickListElementItemByIndex["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchLocalizedControlType);
+                uIAClickListElementItemByIndex["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchLocalizedControlType);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSearchSubTree != null)
+            if (uIAClickListElementItemByIndexsearchSubTree != null)
             {
-                uIAClickListElementItemByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchSubTree);
+                uIAClickListElementItemByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchSubTree);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexExpandFirst != null)
+            if (uIAClickListElementItemByIndexexpandFirst != null)
             {
-                uIAClickListElementItemByIndex["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexExpandFirst);
+                uIAClickListElementItemByIndex["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexexpandFirst);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexCollapseAfter != null)
+            if (uIAClickListElementItemByIndexcollapseAfter != null)
             {
-                uIAClickListElementItemByIndex["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexCollapseAfter);
+                uIAClickListElementItemByIndex["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexcollapseAfter);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexItemIndex != null)
+            if (uIAClickListElementItemByIndexitemIndex != null)
             {
-                uIAClickListElementItemByIndex["ItemIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexItemIndex);
+                uIAClickListElementItemByIndex["ItemIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexitemIndex);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSecondsBetweenExpandCollapse != null)
+            if (uIAClickListElementItemByIndexsecondsBetweenExpandCollapse != null)
             {
-                uIAClickListElementItemByIndex["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSecondsBetweenExpandCollapse);
+                uIAClickListElementItemByIndex["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsecondsBetweenExpandCollapse);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexMatchIndex != null)
+            if (uIAClickListElementItemByIndexmatchIndex != null)
             {
-                uIAClickListElementItemByIndex["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexMatchIndex);
+                uIAClickListElementItemByIndex["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndex);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSearchFilter != null)
+            if (uIAClickListElementItemByIndexsearchFilter != null)
             {
-                uIAClickListElementItemByIndex["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSearchFilter);
+                uIAClickListElementItemByIndex["SearchFilter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchFilter);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexSortByColumn != null)
+            if (uIAClickListElementItemByIndexsortByColumn != null)
             {
-                uIAClickListElementItemByIndex["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexSortByColumn);
+                uIAClickListElementItemByIndex["SortByColumn"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsortByColumn);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexMatchIndexAscending != null)
+            if (uIAClickListElementItemByIndexmatchIndexAscending != null)
             {
-                uIAClickListElementItemByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexMatchIndexAscending);
+                uIAClickListElementItemByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndexAscending);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexMaxElementsToSearch != null)
+            if (uIAClickListElementItemByIndexmaxElementsToSearch != null)
             {
-                uIAClickListElementItemByIndex["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexMaxElementsToSearch);
+                uIAClickListElementItemByIndex["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxElementsToSearch);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexMaxRelativeSearchDepth != null)
+            if (uIAClickListElementItemByIndexmaxRelativeSearchDepth != null)
             {
-                uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexMaxRelativeSearchDepth);
+                uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxRelativeSearchDepth);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexMaxChildElementsToSearchPerNode != null)
+            if (uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode != null)
             {
-                uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexMaxChildElementsToSearchPerNode);
+                uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
-            if (uIAClickListElementItemByIndexElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAClickListElementItemByIndex["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexElementLocalizedControlTypesNotToTraverse);
+                uIAClickListElementItemByIndex["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexelementLocalizedControlTypesNotToTraverse);
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             uIAClickListElementItemByIndexpropCount++;
-            uIAClickListElementItemByIndex["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexWorkflow);
+            uIAClickListElementItemByIndex["Workflow"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexworkflow);
             if (uIAClickListElementItemByIndexpropCount > 0)
             {
                 callPayload.Body = uIAClickListElementItemByIndex;
@@ -4444,7 +4444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASetElementToNumericValue(Expression<Func<int>> uIASetElementToNumericValueParentWindowHandle, Expression<Func<int>> uIASetElementToNumericValueNewValue, Expression<Func<string>> uIASetElementToNumericValueWorkflow, Expression<Func<string>> uIASetElementToNumericValueSearchElementName = null, Expression<Func<string>> uIASetElementToNumericValueSearchElementClassName = null, Expression<Func<string>> uIASetElementToNumericValueSearchElementAutomationId = null, Expression<Func<string>> uIASetElementToNumericValueSearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementToNumericValueSearchSubTree = null, Expression<Func<int>> uIASetElementToNumericValueMatchIndex = null, Expression<Func<string>> uIASetElementToNumericValueSearchFilter = null, Expression<Func<string>> uIASetElementToNumericValueSortByColumn = null, Expression<Func<bool>> uIASetElementToNumericValueMatchIndexAscending = null, Expression<Func<int>> uIASetElementToNumericValueMaxElementsToSearch = null, Expression<Func<int>> uIASetElementToNumericValueMaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementToNumericValueMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementToNumericValueElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIASetElementToNumericValueRaiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIASetElementToNumericValueTryValuePattern = null, Expression<Func<bool>> uIASetElementToNumericValueTryLegacyPattern = null)
+        public IWorkflowAction UIASetElementToNumericValue(Expression<Func<int>> uIASetElementToNumericValueparentWindowHandle, Expression<Func<int>> uIASetElementToNumericValuenewValue, Expression<Func<string>> uIASetElementToNumericValueworkflow, Expression<Func<string>> uIASetElementToNumericValuesearchElementName = null, Expression<Func<string>> uIASetElementToNumericValuesearchElementClassName = null, Expression<Func<string>> uIASetElementToNumericValuesearchElementAutomationId = null, Expression<Func<string>> uIASetElementToNumericValuesearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementToNumericValuesearchSubTree = null, Expression<Func<int>> uIASetElementToNumericValuematchIndex = null, Expression<Func<string>> uIASetElementToNumericValuesearchFilter = null, Expression<Func<string>> uIASetElementToNumericValuesortByColumn = null, Expression<Func<bool>> uIASetElementToNumericValuematchIndexAscending = null, Expression<Func<int>> uIASetElementToNumericValuemaxElementsToSearch = null, Expression<Func<int>> uIASetElementToNumericValuemaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementToNumericValuemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIASetElementToNumericValueraiseExceptionIfInputValidationFails = null, Expression<Func<bool>> uIASetElementToNumericValuetryValuePattern = null, Expression<Func<bool>> uIASetElementToNumericValuetryLegacyPattern = null)
         {
             var apiCallPath = "/UIAControl/UIASetElementToNumericValue";
             var apiCallHttpMethod = "post";
@@ -4452,107 +4452,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementToNumericValue = new JObject();
             var uIASetElementToNumericValuepropCount = 0;
             uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueParentWindowHandle);
-            if (uIASetElementToNumericValueSearchElementName != null)
+            uIASetElementToNumericValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueparentWindowHandle);
+            if (uIASetElementToNumericValuesearchElementName != null)
             {
-                uIASetElementToNumericValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchElementName);
+                uIASetElementToNumericValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementName);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSearchElementClassName != null)
+            if (uIASetElementToNumericValuesearchElementClassName != null)
             {
-                uIASetElementToNumericValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchElementClassName);
+                uIASetElementToNumericValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementClassName);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSearchElementAutomationId != null)
+            if (uIASetElementToNumericValuesearchElementAutomationId != null)
             {
-                uIASetElementToNumericValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchElementAutomationId);
+                uIASetElementToNumericValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchElementAutomationId);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSearchLocalizedControlType != null)
+            if (uIASetElementToNumericValuesearchLocalizedControlType != null)
             {
-                uIASetElementToNumericValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchLocalizedControlType);
+                uIASetElementToNumericValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchLocalizedControlType);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSearchSubTree != null)
+            if (uIASetElementToNumericValuesearchSubTree != null)
             {
-                uIASetElementToNumericValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchSubTree);
+                uIASetElementToNumericValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchSubTree);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueMatchIndex != null)
+            if (uIASetElementToNumericValuematchIndex != null)
             {
-                uIASetElementToNumericValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueMatchIndex);
+                uIASetElementToNumericValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndex);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSearchFilter != null)
+            if (uIASetElementToNumericValuesearchFilter != null)
             {
-                uIASetElementToNumericValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSearchFilter);
+                uIASetElementToNumericValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchFilter);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueSortByColumn != null)
+            if (uIASetElementToNumericValuesortByColumn != null)
             {
-                uIASetElementToNumericValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueSortByColumn);
+                uIASetElementToNumericValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesortByColumn);
                 uIASetElementToNumericValuepropCount++;
             }
 
-            if (uIASetElementToNumericValueMatchIndexAscending != null)
+            if (uIASetElementToNumericValuematchIndexAscending != null)
             {
-                uIASetElementToNumericValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueMatchIndexAscending);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueNewValue);
-            if (uIASetElementToNumericValueMaxElementsToSearch != null)
-            {
-                uIASetElementToNumericValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueMaxElementsToSearch);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueMaxRelativeSearchDepth != null)
-            {
-                uIASetElementToNumericValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueMaxRelativeSearchDepth);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueMaxChildElementsToSearchPerNode != null)
-            {
-                uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueMaxChildElementsToSearchPerNode);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIASetElementToNumericValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueElementLocalizedControlTypesNotToTraverse);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueRaiseExceptionIfInputValidationFails != null)
-            {
-                uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueRaiseExceptionIfInputValidationFails);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueTryValuePattern != null)
-            {
-                uIASetElementToNumericValue["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueTryValuePattern);
-                uIASetElementToNumericValuepropCount++;
-            }
-
-            if (uIASetElementToNumericValueTryLegacyPattern != null)
-            {
-                uIASetElementToNumericValue["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueTryLegacyPattern);
+                uIASetElementToNumericValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndexAscending);
                 uIASetElementToNumericValuepropCount++;
             }
 
             uIASetElementToNumericValuepropCount++;
-            uIASetElementToNumericValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueWorkflow);
+            uIASetElementToNumericValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuenewValue);
+            if (uIASetElementToNumericValuemaxElementsToSearch != null)
+            {
+                uIASetElementToNumericValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxElementsToSearch);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValuemaxRelativeSearchDepth != null)
+            {
+                uIASetElementToNumericValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxRelativeSearchDepth);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValuemaxChildElementsToSearchPerNode != null)
+            {
+                uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxChildElementsToSearchPerNode);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIASetElementToNumericValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueelementLocalizedControlTypesNotToTraverse);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValueraiseExceptionIfInputValidationFails != null)
+            {
+                uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueraiseExceptionIfInputValidationFails);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValuetryValuePattern != null)
+            {
+                uIASetElementToNumericValue["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryValuePattern);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            if (uIASetElementToNumericValuetryLegacyPattern != null)
+            {
+                uIASetElementToNumericValue["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryLegacyPattern);
+                uIASetElementToNumericValuepropCount++;
+            }
+
+            uIASetElementToNumericValuepropCount++;
+            uIASetElementToNumericValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueworkflow);
             if (uIASetElementToNumericValuepropCount > 0)
             {
                 callPayload.Body = uIASetElementToNumericValue;
@@ -4562,7 +4562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASetElementToNumericRangeValue(Expression<Func<int>> uIASetElementToNumericRangeValueParentWindowHandle, Expression<Func<double>> uIASetElementToNumericRangeValueNewValue, Expression<Func<string>> uIASetElementToNumericRangeValueWorkflow, Expression<Func<string>> uIASetElementToNumericRangeValueSearchElementName = null, Expression<Func<string>> uIASetElementToNumericRangeValueSearchElementClassName = null, Expression<Func<string>> uIASetElementToNumericRangeValueSearchElementAutomationId = null, Expression<Func<string>> uIASetElementToNumericRangeValueSearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementToNumericRangeValueSearchSubTree = null, Expression<Func<int>> uIASetElementToNumericRangeValueMatchIndex = null, Expression<Func<string>> uIASetElementToNumericRangeValueSearchFilter = null, Expression<Func<string>> uIASetElementToNumericRangeValueSortByColumn = null, Expression<Func<bool>> uIASetElementToNumericRangeValueMatchIndexAscending = null, Expression<Func<bool>> uIASetElementToNumericRangeValueNewValueIsPercentage = null, Expression<Func<int>> uIASetElementToNumericRangeValueMaxElementsToSearch = null, Expression<Func<int>> uIASetElementToNumericRangeValueMaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementToNumericRangeValueMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementToNumericRangeValueElementLocalizedControlTypesNotToTraverse = null)
+        public IWorkflowAction UIASetElementToNumericRangeValue(Expression<Func<int>> uIASetElementToNumericRangeValueparentWindowHandle, Expression<Func<double>> uIASetElementToNumericRangeValuenewValue, Expression<Func<string>> uIASetElementToNumericRangeValueworkflow, Expression<Func<string>> uIASetElementToNumericRangeValuesearchElementName = null, Expression<Func<string>> uIASetElementToNumericRangeValuesearchElementClassName = null, Expression<Func<string>> uIASetElementToNumericRangeValuesearchElementAutomationId = null, Expression<Func<string>> uIASetElementToNumericRangeValuesearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementToNumericRangeValuesearchSubTree = null, Expression<Func<int>> uIASetElementToNumericRangeValuematchIndex = null, Expression<Func<string>> uIASetElementToNumericRangeValuesearchFilter = null, Expression<Func<string>> uIASetElementToNumericRangeValuesortByColumn = null, Expression<Func<bool>> uIASetElementToNumericRangeValuematchIndexAscending = null, Expression<Func<bool>> uIASetElementToNumericRangeValuenewValueIsPercentage = null, Expression<Func<int>> uIASetElementToNumericRangeValuemaxElementsToSearch = null, Expression<Func<int>> uIASetElementToNumericRangeValuemaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIASetElementToNumericRangeValue";
             var apiCallHttpMethod = "post";
@@ -4570,95 +4570,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementToNumericRangeValue = new JObject();
             var uIASetElementToNumericRangeValuepropCount = 0;
             uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueParentWindowHandle);
-            if (uIASetElementToNumericRangeValueSearchElementName != null)
+            uIASetElementToNumericRangeValue["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueparentWindowHandle);
+            if (uIASetElementToNumericRangeValuesearchElementName != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchElementName);
+                uIASetElementToNumericRangeValue["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementName);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSearchElementClassName != null)
+            if (uIASetElementToNumericRangeValuesearchElementClassName != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchElementClassName);
+                uIASetElementToNumericRangeValue["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementClassName);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSearchElementAutomationId != null)
+            if (uIASetElementToNumericRangeValuesearchElementAutomationId != null)
             {
-                uIASetElementToNumericRangeValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchElementAutomationId);
+                uIASetElementToNumericRangeValue["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchElementAutomationId);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSearchLocalizedControlType != null)
+            if (uIASetElementToNumericRangeValuesearchLocalizedControlType != null)
             {
-                uIASetElementToNumericRangeValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchLocalizedControlType);
+                uIASetElementToNumericRangeValue["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchLocalizedControlType);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSearchSubTree != null)
+            if (uIASetElementToNumericRangeValuesearchSubTree != null)
             {
-                uIASetElementToNumericRangeValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchSubTree);
+                uIASetElementToNumericRangeValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchSubTree);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueMatchIndex != null)
+            if (uIASetElementToNumericRangeValuematchIndex != null)
             {
-                uIASetElementToNumericRangeValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueMatchIndex);
+                uIASetElementToNumericRangeValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndex);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSearchFilter != null)
+            if (uIASetElementToNumericRangeValuesearchFilter != null)
             {
-                uIASetElementToNumericRangeValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSearchFilter);
+                uIASetElementToNumericRangeValue["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchFilter);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueSortByColumn != null)
+            if (uIASetElementToNumericRangeValuesortByColumn != null)
             {
-                uIASetElementToNumericRangeValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueSortByColumn);
+                uIASetElementToNumericRangeValue["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesortByColumn);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
-            if (uIASetElementToNumericRangeValueMatchIndexAscending != null)
+            if (uIASetElementToNumericRangeValuematchIndexAscending != null)
             {
-                uIASetElementToNumericRangeValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueMatchIndexAscending);
-                uIASetElementToNumericRangeValuepropCount++;
-            }
-
-            uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueNewValue);
-            if (uIASetElementToNumericRangeValueNewValueIsPercentage != null)
-            {
-                uIASetElementToNumericRangeValue["NewValueIsPercentage"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueNewValueIsPercentage);
-                uIASetElementToNumericRangeValuepropCount++;
-            }
-
-            if (uIASetElementToNumericRangeValueMaxElementsToSearch != null)
-            {
-                uIASetElementToNumericRangeValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueMaxElementsToSearch);
-                uIASetElementToNumericRangeValuepropCount++;
-            }
-
-            if (uIASetElementToNumericRangeValueMaxRelativeSearchDepth != null)
-            {
-                uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueMaxRelativeSearchDepth);
-                uIASetElementToNumericRangeValuepropCount++;
-            }
-
-            if (uIASetElementToNumericRangeValueMaxChildElementsToSearchPerNode != null)
-            {
-                uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueMaxChildElementsToSearchPerNode);
-                uIASetElementToNumericRangeValuepropCount++;
-            }
-
-            if (uIASetElementToNumericRangeValueElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIASetElementToNumericRangeValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueElementLocalizedControlTypesNotToTraverse);
+                uIASetElementToNumericRangeValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndexAscending);
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             uIASetElementToNumericRangeValuepropCount++;
-            uIASetElementToNumericRangeValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueWorkflow);
+            uIASetElementToNumericRangeValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValue);
+            if (uIASetElementToNumericRangeValuenewValueIsPercentage != null)
+            {
+                uIASetElementToNumericRangeValue["NewValueIsPercentage"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValueIsPercentage);
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+
+            if (uIASetElementToNumericRangeValuemaxElementsToSearch != null)
+            {
+                uIASetElementToNumericRangeValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxElementsToSearch);
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+
+            if (uIASetElementToNumericRangeValuemaxRelativeSearchDepth != null)
+            {
+                uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxRelativeSearchDepth);
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+
+            if (uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode != null)
+            {
+                uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode);
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+
+            if (uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIASetElementToNumericRangeValue["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueelementLocalizedControlTypesNotToTraverse);
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+
+            uIASetElementToNumericRangeValuepropCount++;
+            uIASetElementToNumericRangeValue["Workflow"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValueworkflow);
             if (uIASetElementToNumericRangeValuepropCount > 0)
             {
                 callPayload.Body = uIASetElementToNumericRangeValue;
@@ -4668,7 +4668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAResetAllElementHandles(Expression<Func<string>> uIAResetAllElementHandlesWorkflow)
+        public IWorkflowAction UIAResetAllElementHandles(Expression<Func<string>> uIAResetAllElementHandlesworkflow)
         {
             var apiCallPath = "/UIAControl/UIAResetAllElementHandles";
             var apiCallHttpMethod = "post";
@@ -4676,7 +4676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAResetAllElementHandles = new JObject();
             var uIAResetAllElementHandlespropCount = 0;
             uIAResetAllElementHandlespropCount++;
-            uIAResetAllElementHandles["Workflow"] = ExpressionConverter.ConvertO(uIAResetAllElementHandlesWorkflow);
+            uIAResetAllElementHandles["Workflow"] = ExpressionConverter.ConvertO(uIAResetAllElementHandlesworkflow);
             if (uIAResetAllElementHandlespropCount > 0)
             {
                 callPayload.Body = uIAResetAllElementHandles;
@@ -4686,7 +4686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalPasswordInputIntoElement(Expression<Func<int>> uIAGlobalPasswordInputIntoElementParentWindowHandle, Expression<Func<string>> uIAGlobalPasswordInputIntoElementPasswordToInput, Expression<Func<string>> uIAGlobalPasswordInputIntoElementWorkflow, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSearchElementName = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementSearchSubTree = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementMatchIndex = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSearchFilter = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementSortByColumn = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementMatchIndexAscending = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementFocusElement = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementGlobalMouseClickOnElement = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementSendKeyEvents = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementInterval = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementDontInterpretSymbols = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementPasswordContainsStoredPassword = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalPasswordInputIntoElement(Expression<Func<int>> uIAGlobalPasswordInputIntoElementparentWindowHandle, Expression<Func<string>> uIAGlobalPasswordInputIntoElementpasswordToInput, Expression<Func<string>> uIAGlobalPasswordInputIntoElementworkflow, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsearchElementName = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementsearchSubTree = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementmatchIndex = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsearchFilter = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementsortByColumn = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementmatchIndexAscending = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementfocusElement = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementsendKeyEvents = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementinterval = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementdontInterpretSymbols = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/UIAGlobalPasswordInputIntoElement";
             var apiCallHttpMethod = "post";
@@ -4694,143 +4694,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalPasswordInputIntoElement = new JObject();
             var uIAGlobalPasswordInputIntoElementpropCount = 0;
             uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementParentWindowHandle);
-            if (uIAGlobalPasswordInputIntoElementSearchElementName != null)
+            uIAGlobalPasswordInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementparentWindowHandle);
+            if (uIAGlobalPasswordInputIntoElementsearchElementName != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchElementName);
+                uIAGlobalPasswordInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementName);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSearchElementClassName != null)
+            if (uIAGlobalPasswordInputIntoElementsearchElementClassName != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchElementClassName);
+                uIAGlobalPasswordInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementClassName);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSearchElementAutomationId != null)
+            if (uIAGlobalPasswordInputIntoElementsearchElementAutomationId != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchElementAutomationId);
+                uIAGlobalPasswordInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchElementAutomationId);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSearchLocalizedControlType != null)
+            if (uIAGlobalPasswordInputIntoElementsearchLocalizedControlType != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchLocalizedControlType);
+                uIAGlobalPasswordInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchLocalizedControlType);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSearchSubTree != null)
+            if (uIAGlobalPasswordInputIntoElementsearchSubTree != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchSubTree);
+                uIAGlobalPasswordInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchSubTree);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementMatchIndex != null)
+            if (uIAGlobalPasswordInputIntoElementmatchIndex != null)
             {
-                uIAGlobalPasswordInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementMatchIndex);
+                uIAGlobalPasswordInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndex);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSearchFilter != null)
+            if (uIAGlobalPasswordInputIntoElementsearchFilter != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSearchFilter);
+                uIAGlobalPasswordInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchFilter);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementSortByColumn != null)
+            if (uIAGlobalPasswordInputIntoElementsortByColumn != null)
             {
-                uIAGlobalPasswordInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSortByColumn);
+                uIAGlobalPasswordInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsortByColumn);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementMatchIndexAscending != null)
+            if (uIAGlobalPasswordInputIntoElementmatchIndexAscending != null)
             {
-                uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementMatchIndexAscending);
+                uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndexAscending);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementFocusElement != null)
+            if (uIAGlobalPasswordInputIntoElementfocusElement != null)
             {
-                uIAGlobalPasswordInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementFocusElement);
+                uIAGlobalPasswordInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementfocusElement);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementGlobalMouseClickOnElement != null)
+            if (uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement != null)
             {
-                uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementGlobalMouseClickOnElement);
+                uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingDoubleClickDelete);
+                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingCTRLADelete != null)
+            if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementReplaceExistingValueUsingCTRLADelete);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementPasswordToInput);
-            if (uIAGlobalPasswordInputIntoElementSendKeyEvents != null)
-            {
-                uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementSendKeyEvents);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementInterval != null)
-            {
-                uIAGlobalPasswordInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementInterval);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementDontInterpretSymbols != null)
-            {
-                uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementDontInterpretSymbols);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementPasswordContainsStoredPassword != null)
-            {
-                uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementPasswordContainsStoredPassword);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementMaxElementsToSearch != null)
-            {
-                uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementMaxElementsToSearch);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementMaxRelativeSearchDepth != null)
-            {
-                uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementMaxRelativeSearchDepth);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementMaxChildElementsToSearchPerNode != null)
-            {
-                uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementMaxChildElementsToSearchPerNode);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAGlobalPasswordInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementElementLocalizedControlTypesNotToTraverse);
-                uIAGlobalPasswordInputIntoElementpropCount++;
-            }
-
-            if (uIAGlobalPasswordInputIntoElementValidateClickablePointWithinElementBoundary != null)
-            {
-                uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete);
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             uIAGlobalPasswordInputIntoElementpropCount++;
-            uIAGlobalPasswordInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementWorkflow);
+            uIAGlobalPasswordInputIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordToInput);
+            if (uIAGlobalPasswordInputIntoElementsendKeyEvents != null)
+            {
+                uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsendKeyEvents);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementinterval != null)
+            {
+                uIAGlobalPasswordInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementinterval);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementdontInterpretSymbols != null)
+            {
+                uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementdontInterpretSymbols);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword != null)
+            {
+                uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementmaxElementsToSearch != null)
+            {
+                uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxElementsToSearch);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth != null)
+            {
+                uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode != null)
+            {
+                uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAGlobalPasswordInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            if (uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary != null)
+            {
+                uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary);
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+
+            uIAGlobalPasswordInputIntoElementpropCount++;
+            uIAGlobalPasswordInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementworkflow);
             if (uIAGlobalPasswordInputIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalPasswordInputIntoElement;
@@ -4840,7 +4840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIAGlobalTextInputIntoElement(Expression<Func<int>> uIAGlobalTextInputIntoElementParentWindowHandle, Expression<Func<string>> uIAGlobalTextInputIntoElementWorkflow, Expression<Func<string>> uIAGlobalTextInputIntoElementSearchElementName = null, Expression<Func<string>> uIAGlobalTextInputIntoElementSearchElementClassName = null, Expression<Func<string>> uIAGlobalTextInputIntoElementSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalTextInputIntoElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementSearchSubTree = null, Expression<Func<int>> uIAGlobalTextInputIntoElementMatchIndex = null, Expression<Func<string>> uIAGlobalTextInputIntoElementSearchFilter = null, Expression<Func<string>> uIAGlobalTextInputIntoElementSortByColumn = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementMatchIndexAscending = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementFocusElement = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementGlobalMouseClickOnElement = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> uIAGlobalTextInputIntoElementTextToInput = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementSendKeyEvents = null, Expression<Func<int>> uIAGlobalTextInputIntoElementInterval = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementDontInterpretSymbols = null, Expression<Func<int>> uIAGlobalTextInputIntoElementMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalTextInputIntoElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalTextInputIntoElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalTextInputIntoElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementValidateClickablePointWithinElementBoundary = null)
+        public IWorkflowAction UIAGlobalTextInputIntoElement(Expression<Func<int>> uIAGlobalTextInputIntoElementparentWindowHandle, Expression<Func<string>> uIAGlobalTextInputIntoElementworkflow, Expression<Func<string>> uIAGlobalTextInputIntoElementsearchElementName = null, Expression<Func<string>> uIAGlobalTextInputIntoElementsearchElementClassName = null, Expression<Func<string>> uIAGlobalTextInputIntoElementsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalTextInputIntoElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementsearchSubTree = null, Expression<Func<int>> uIAGlobalTextInputIntoElementmatchIndex = null, Expression<Func<string>> uIAGlobalTextInputIntoElementsearchFilter = null, Expression<Func<string>> uIAGlobalTextInputIntoElementsortByColumn = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementmatchIndexAscending = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementfocusElement = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementglobalMouseClickOnElement = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> uIAGlobalTextInputIntoElementtextToInput = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementsendKeyEvents = null, Expression<Func<int>> uIAGlobalTextInputIntoElementinterval = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementdontInterpretSymbols = null, Expression<Func<int>> uIAGlobalTextInputIntoElementmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalTextInputIntoElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<bool>> uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary = null)
         {
             var apiCallPath = "/UIAControl/UIAGlobalTextInputIntoElement";
             var apiCallHttpMethod = "post";
@@ -4848,141 +4848,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalTextInputIntoElement = new JObject();
             var uIAGlobalTextInputIntoElementpropCount = 0;
             uIAGlobalTextInputIntoElementpropCount++;
-            uIAGlobalTextInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementParentWindowHandle);
-            if (uIAGlobalTextInputIntoElementSearchElementName != null)
+            uIAGlobalTextInputIntoElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementparentWindowHandle);
+            if (uIAGlobalTextInputIntoElementsearchElementName != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchElementName);
+                uIAGlobalTextInputIntoElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementName);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSearchElementClassName != null)
+            if (uIAGlobalTextInputIntoElementsearchElementClassName != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchElementClassName);
+                uIAGlobalTextInputIntoElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementClassName);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSearchElementAutomationId != null)
+            if (uIAGlobalTextInputIntoElementsearchElementAutomationId != null)
             {
-                uIAGlobalTextInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchElementAutomationId);
+                uIAGlobalTextInputIntoElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchElementAutomationId);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSearchLocalizedControlType != null)
+            if (uIAGlobalTextInputIntoElementsearchLocalizedControlType != null)
             {
-                uIAGlobalTextInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchLocalizedControlType);
+                uIAGlobalTextInputIntoElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchLocalizedControlType);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSearchSubTree != null)
+            if (uIAGlobalTextInputIntoElementsearchSubTree != null)
             {
-                uIAGlobalTextInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchSubTree);
+                uIAGlobalTextInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchSubTree);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementMatchIndex != null)
+            if (uIAGlobalTextInputIntoElementmatchIndex != null)
             {
-                uIAGlobalTextInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementMatchIndex);
+                uIAGlobalTextInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndex);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSearchFilter != null)
+            if (uIAGlobalTextInputIntoElementsearchFilter != null)
             {
-                uIAGlobalTextInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSearchFilter);
+                uIAGlobalTextInputIntoElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchFilter);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSortByColumn != null)
+            if (uIAGlobalTextInputIntoElementsortByColumn != null)
             {
-                uIAGlobalTextInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSortByColumn);
+                uIAGlobalTextInputIntoElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsortByColumn);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementMatchIndexAscending != null)
+            if (uIAGlobalTextInputIntoElementmatchIndexAscending != null)
             {
-                uIAGlobalTextInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementMatchIndexAscending);
+                uIAGlobalTextInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndexAscending);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementFocusElement != null)
+            if (uIAGlobalTextInputIntoElementfocusElement != null)
             {
-                uIAGlobalTextInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementFocusElement);
+                uIAGlobalTextInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementfocusElement);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementGlobalMouseClickOnElement != null)
+            if (uIAGlobalTextInputIntoElementglobalMouseClickOnElement != null)
             {
-                uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementGlobalMouseClickOnElement);
+                uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementglobalMouseClickOnElement);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementReplaceExistingValueUsingDoubleClickDelete);
+                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementReplaceExistingValueUsingCTRLADelete != null)
+            if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementReplaceExistingValueUsingCTRLADelete);
+                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementTextToInput != null)
+            if (uIAGlobalTextInputIntoElementtextToInput != null)
             {
-                uIAGlobalTextInputIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementTextToInput);
+                uIAGlobalTextInputIntoElement["TextToInput"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementtextToInput);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementSendKeyEvents != null)
+            if (uIAGlobalTextInputIntoElementsendKeyEvents != null)
             {
-                uIAGlobalTextInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementSendKeyEvents);
+                uIAGlobalTextInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsendKeyEvents);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementInterval != null)
+            if (uIAGlobalTextInputIntoElementinterval != null)
             {
-                uIAGlobalTextInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementInterval);
+                uIAGlobalTextInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementinterval);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementDontInterpretSymbols != null)
+            if (uIAGlobalTextInputIntoElementdontInterpretSymbols != null)
             {
-                uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementDontInterpretSymbols);
+                uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementdontInterpretSymbols);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementMaxElementsToSearch != null)
+            if (uIAGlobalTextInputIntoElementmaxElementsToSearch != null)
             {
-                uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementMaxElementsToSearch);
+                uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxElementsToSearch);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementMaxRelativeSearchDepth != null)
+            if (uIAGlobalTextInputIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementMaxRelativeSearchDepth);
+                uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementMaxChildElementsToSearchPerNode != null)
+            if (uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementMaxChildElementsToSearchPerNode);
+                uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGlobalTextInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalTextInputIntoElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementelementLocalizedControlTypesNotToTraverse);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
-            if (uIAGlobalTextInputIntoElementValidateClickablePointWithinElementBoundary != null)
+            if (uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementValidateClickablePointWithinElementBoundary);
+                uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary);
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             uIAGlobalTextInputIntoElementpropCount++;
-            uIAGlobalTextInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementWorkflow);
+            uIAGlobalTextInputIntoElement["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementworkflow);
             if (uIAGlobalTextInputIntoElementpropCount > 0)
             {
                 callPayload.Body = uIAGlobalTextInputIntoElement;
@@ -4992,7 +4992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPropertiesAsListResponse> UIAGetElementPropertiesAsList(Expression<Func<int>> uIAGetElementPropertiesAsListElementHandle, Expression<Func<string>> uIAGetElementPropertiesAsListWorkflow)
+        public IBodyWorkflowAction<UIAGetElementPropertiesAsListResponse> UIAGetElementPropertiesAsList(Expression<Func<int>> uIAGetElementPropertiesAsListelementHandle, Expression<Func<string>> uIAGetElementPropertiesAsListworkflow)
         {
             var apiCallPath = "/UIAControl/UIAGetElementPropertiesAsList";
             var apiCallHttpMethod = "post";
@@ -5000,9 +5000,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementPropertiesAsList = new JObject();
             var uIAGetElementPropertiesAsListpropCount = 0;
             uIAGetElementPropertiesAsListpropCount++;
-            uIAGetElementPropertiesAsList["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListElementHandle);
+            uIAGetElementPropertiesAsList["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListelementHandle);
             uIAGetElementPropertiesAsListpropCount++;
-            uIAGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListWorkflow);
+            uIAGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesAsListworkflow);
             if (uIAGetElementPropertiesAsListpropCount > 0)
             {
                 callPayload.Body = uIAGetElementPropertiesAsList;
@@ -5012,7 +5012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction UIASetTransactionTimeout(Expression<Func<double>> uIASetTransactionTimeoutTimeoutInSeconds, Expression<Func<string>> uIASetTransactionTimeoutWorkflow)
+        public IWorkflowAction UIASetTransactionTimeout(Expression<Func<double>> uIASetTransactionTimeouttimeoutInSeconds, Expression<Func<string>> uIASetTransactionTimeoutworkflow)
         {
             var apiCallPath = "/UIAControl/UIASetTransactionTimeout";
             var apiCallHttpMethod = "post";
@@ -5020,9 +5020,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetTransactionTimeout = new JObject();
             var uIASetTransactionTimeoutpropCount = 0;
             uIASetTransactionTimeoutpropCount++;
-            uIASetTransactionTimeout["TimeoutInSeconds"] = ExpressionConverter.ConvertO(uIASetTransactionTimeoutTimeoutInSeconds);
+            uIASetTransactionTimeout["TimeoutInSeconds"] = ExpressionConverter.ConvertO(uIASetTransactionTimeouttimeoutInSeconds);
             uIASetTransactionTimeoutpropCount++;
-            uIASetTransactionTimeout["Workflow"] = ExpressionConverter.ConvertO(uIASetTransactionTimeoutWorkflow);
+            uIASetTransactionTimeout["Workflow"] = ExpressionConverter.ConvertO(uIASetTransactionTimeoutworkflow);
             if (uIASetTransactionTimeoutpropCount > 0)
             {
                 callPayload.Body = uIASetTransactionTimeout;
@@ -5032,33 +5032,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementAtCoordinatesResponse> UIAGetElementAtCoordinates(Expression<Func<string>> uIAGetElementAtCoordinatesWorkflow, Expression<Func<int>> uIAGetElementAtCoordinatesXCoord = null, Expression<Func<int>> uIAGetElementAtCoordinatesYCoord = null, Expression<Func<bool>> uIAGetElementAtCoordinatesRaiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<UIAGetElementAtCoordinatesResponse> UIAGetElementAtCoordinates(Expression<Func<string>> uIAGetElementAtCoordinatesworkflow, Expression<Func<int>> uIAGetElementAtCoordinatesxCoord = null, Expression<Func<int>> uIAGetElementAtCoordinatesyCoord = null, Expression<Func<bool>> uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound = null)
         {
             var apiCallPath = "/UIAControl/UIAGetElementAtCoordinates";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetElementAtCoordinates = new JObject();
             var uIAGetElementAtCoordinatespropCount = 0;
-            if (uIAGetElementAtCoordinatesXCoord != null)
+            if (uIAGetElementAtCoordinatesxCoord != null)
             {
-                uIAGetElementAtCoordinates["XCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesXCoord);
+                uIAGetElementAtCoordinates["XCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesxCoord);
                 uIAGetElementAtCoordinatespropCount++;
             }
 
-            if (uIAGetElementAtCoordinatesYCoord != null)
+            if (uIAGetElementAtCoordinatesyCoord != null)
             {
-                uIAGetElementAtCoordinates["YCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesYCoord);
+                uIAGetElementAtCoordinates["YCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesyCoord);
                 uIAGetElementAtCoordinatespropCount++;
             }
 
-            if (uIAGetElementAtCoordinatesRaiseExceptionIfElementNotFound != null)
+            if (uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound != null)
             {
-                uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesRaiseExceptionIfElementNotFound);
+                uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound);
                 uIAGetElementAtCoordinatespropCount++;
             }
 
             uIAGetElementAtCoordinatespropCount++;
-            uIAGetElementAtCoordinates["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesWorkflow);
+            uIAGetElementAtCoordinates["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesworkflow);
             if (uIAGetElementAtCoordinatespropCount > 0)
             {
                 callPayload.Body = uIAGetElementAtCoordinates;
@@ -5068,7 +5068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleParentElementPropertiesResponse> UIAGetMultipleParentElementProperties(Expression<Func<int>> uIAGetMultipleParentElementPropertiesElementHandle, Expression<Func<string>> uIAGetMultipleParentElementPropertiesWorkflow, Expression<Func<int>> uIAGetMultipleParentElementPropertiesMaxParentsToProcess = null)
+        public IBodyWorkflowAction<UIAGetMultipleParentElementPropertiesResponse> UIAGetMultipleParentElementProperties(Expression<Func<int>> uIAGetMultipleParentElementPropertieselementHandle, Expression<Func<string>> uIAGetMultipleParentElementPropertiesworkflow, Expression<Func<int>> uIAGetMultipleParentElementPropertiesmaxParentsToProcess = null)
         {
             var apiCallPath = "/UIAControl/UIAGetMultipleParentElementProperties";
             var apiCallHttpMethod = "post";
@@ -5076,15 +5076,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetMultipleParentElementProperties = new JObject();
             var uIAGetMultipleParentElementPropertiespropCount = 0;
             uIAGetMultipleParentElementPropertiespropCount++;
-            uIAGetMultipleParentElementProperties["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesElementHandle);
-            if (uIAGetMultipleParentElementPropertiesMaxParentsToProcess != null)
+            uIAGetMultipleParentElementProperties["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertieselementHandle);
+            if (uIAGetMultipleParentElementPropertiesmaxParentsToProcess != null)
             {
-                uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesMaxParentsToProcess);
+                uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesmaxParentsToProcess);
                 uIAGetMultipleParentElementPropertiespropCount++;
             }
 
             uIAGetMultipleParentElementPropertiespropCount++;
-            uIAGetMultipleParentElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesWorkflow);
+            uIAGetMultipleParentElementProperties["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesworkflow);
             if (uIAGetMultipleParentElementPropertiespropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleParentElementProperties;
@@ -5094,7 +5094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIASearchForFirstParentElementResponse> UIASearchForFirstParentElement(Expression<Func<int>> uIASearchForFirstParentElementElementHandle, Expression<Func<string>> uIASearchForFirstParentElementWorkflow, Expression<Func<string>> uIASearchForFirstParentElementSearchParentLocalizedControlType = null, Expression<Func<int>> uIASearchForFirstParentElementSearchParentControlType = null, Expression<Func<int>> uIASearchForFirstParentElementMaxParentsToProcess = null, Expression<Func<bool>> uIASearchForFirstParentElementRaiseExceptionIfParentElementNotFound = null)
+        public IBodyWorkflowAction<UIASearchForFirstParentElementResponse> UIASearchForFirstParentElement(Expression<Func<int>> uIASearchForFirstParentElementelementHandle, Expression<Func<string>> uIASearchForFirstParentElementworkflow, Expression<Func<string>> uIASearchForFirstParentElementsearchParentLocalizedControlType = null, Expression<Func<int>> uIASearchForFirstParentElementsearchParentControlType = null, Expression<Func<int>> uIASearchForFirstParentElementmaxParentsToProcess = null, Expression<Func<bool>> uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound = null)
         {
             var apiCallPath = "/UIAControl/UIASearchForFirstParentElement";
             var apiCallHttpMethod = "post";
@@ -5102,33 +5102,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASearchForFirstParentElement = new JObject();
             var uIASearchForFirstParentElementpropCount = 0;
             uIASearchForFirstParentElementpropCount++;
-            uIASearchForFirstParentElement["ElementHandle"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementElementHandle);
-            if (uIASearchForFirstParentElementSearchParentLocalizedControlType != null)
+            uIASearchForFirstParentElement["ElementHandle"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementelementHandle);
+            if (uIASearchForFirstParentElementsearchParentLocalizedControlType != null)
             {
-                uIASearchForFirstParentElement["SearchParentLocalizedControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementSearchParentLocalizedControlType);
+                uIASearchForFirstParentElement["SearchParentLocalizedControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementsearchParentLocalizedControlType);
                 uIASearchForFirstParentElementpropCount++;
             }
 
-            if (uIASearchForFirstParentElementSearchParentControlType != null)
+            if (uIASearchForFirstParentElementsearchParentControlType != null)
             {
-                uIASearchForFirstParentElement["SearchParentControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementSearchParentControlType);
+                uIASearchForFirstParentElement["SearchParentControlType"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementsearchParentControlType);
                 uIASearchForFirstParentElementpropCount++;
             }
 
-            if (uIASearchForFirstParentElementMaxParentsToProcess != null)
+            if (uIASearchForFirstParentElementmaxParentsToProcess != null)
             {
-                uIASearchForFirstParentElement["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementMaxParentsToProcess);
+                uIASearchForFirstParentElement["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementmaxParentsToProcess);
                 uIASearchForFirstParentElementpropCount++;
             }
 
-            if (uIASearchForFirstParentElementRaiseExceptionIfParentElementNotFound != null)
+            if (uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound != null)
             {
-                uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementRaiseExceptionIfParentElementNotFound);
+                uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound);
                 uIASearchForFirstParentElementpropCount++;
             }
 
             uIASearchForFirstParentElementpropCount++;
-            uIASearchForFirstParentElement["Workflow"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementWorkflow);
+            uIASearchForFirstParentElement["Workflow"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementworkflow);
             if (uIASearchForFirstParentElementpropCount > 0)
             {
                 callPayload.Body = uIASearchForFirstParentElement;
@@ -5138,231 +5138,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleElementsAsTableResponse> UIAGetMultipleElementsAsTable(Expression<Func<string>> uIAGetMultipleElementsAsTableWorkflow, Expression<Func<int>> uIAGetMultipleElementsAsTableParentWindowHandle = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchElementName = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchElementClassName = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchElementAutomationId = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetMultipleElementsAsTableSearchSubTree = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMatchIndex = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchFilter = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSortByColumn = null, Expression<Func<bool>> uIAGetMultipleElementsAsTableMatchIndexAscending = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchCellHeaderSubElementLocalizedControlType = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellHeaderSubElementControlType = null, Expression<Func<string>> uIAGetMultipleElementsAsTableSearchCellSubElementLocalizedControlType = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellSubElementControlType = null, Expression<Func<bool>> uIAGetMultipleElementsAsTableSearchDescendantsForCellSubElements = null, Expression<Func<int>> uIAGetMultipleElementsAsTableFirstCellHeaderSubElementToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMaxCellHeaderSubElementsToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTableFirstCellSubElementToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMaxCellSubElementsToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTableRequestedNumberOfColumns = null, Expression<Func<int>> uIAGetMultipleElementsAsTableCellSubElementValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTableCellSubElementTextValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTableCellSubElementNameValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMinimumCellSubElementWidth = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMinimumCellSubElementHeight = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxLeft = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxRight = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxTop = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxBottom = null, Expression<Func<bool>> uIAGetMultipleElementsAsTableReadTableAsThread = null, Expression<Func<int>> uIAGetMultipleElementsAsTableRetrieveOutputDataFromThreadId = null, Expression<Func<int>> uIAGetMultipleElementsAsTableSecondsToWaitForThread = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMaxElementsToSearch = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetMultipleElementsAsTableMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetMultipleElementsAsTableElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetMultipleElementsAsTableResponse> UIAGetMultipleElementsAsTable(Expression<Func<string>> uIAGetMultipleElementsAsTableworkflow, Expression<Func<int>> uIAGetMultipleElementsAsTableparentWindowHandle = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchElementName = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchElementClassName = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchElementAutomationId = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchLocalizedControlType = null, Expression<Func<bool>> uIAGetMultipleElementsAsTablesearchSubTree = null, Expression<Func<int>> uIAGetMultipleElementsAsTablematchIndex = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchFilter = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesortByColumn = null, Expression<Func<bool>> uIAGetMultipleElementsAsTablematchIndexAscending = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType = null, Expression<Func<string>> uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellSubElementControlType = null, Expression<Func<bool>> uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements = null, Expression<Func<int>> uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTablefirstCellSubElementToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn = null, Expression<Func<int>> uIAGetMultipleElementsAsTablerequestedNumberOfColumns = null, Expression<Func<int>> uIAGetMultipleElementsAsTablecellSubElementValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTablecellSubElementTextValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTablecellSubElementNameValuePriority = null, Expression<Func<int>> uIAGetMultipleElementsAsTableminimumCellSubElementWidth = null, Expression<Func<int>> uIAGetMultipleElementsAsTableminimumCellSubElementHeight = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom = null, Expression<Func<bool>> uIAGetMultipleElementsAsTablereadTableAsThread = null, Expression<Func<int>> uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId = null, Expression<Func<int>> uIAGetMultipleElementsAsTablesecondsToWaitForThread = null, Expression<Func<int>> uIAGetMultipleElementsAsTablemaxElementsToSearch = null, Expression<Func<int>> uIAGetMultipleElementsAsTablemaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAGetMultipleElementsAsTable";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetMultipleElementsAsTable = new JObject();
             var uIAGetMultipleElementsAsTablepropCount = 0;
-            if (uIAGetMultipleElementsAsTableParentWindowHandle != null)
+            if (uIAGetMultipleElementsAsTableparentWindowHandle != null)
             {
-                uIAGetMultipleElementsAsTable["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableParentWindowHandle);
+                uIAGetMultipleElementsAsTable["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableparentWindowHandle);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchElementName != null)
+            if (uIAGetMultipleElementsAsTablesearchElementName != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchElementName);
+                uIAGetMultipleElementsAsTable["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementName);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchElementClassName != null)
+            if (uIAGetMultipleElementsAsTablesearchElementClassName != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchElementClassName);
+                uIAGetMultipleElementsAsTable["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementClassName);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchElementAutomationId != null)
+            if (uIAGetMultipleElementsAsTablesearchElementAutomationId != null)
             {
-                uIAGetMultipleElementsAsTable["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchElementAutomationId);
+                uIAGetMultipleElementsAsTable["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchElementAutomationId);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchLocalizedControlType != null)
+            if (uIAGetMultipleElementsAsTablesearchLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchSubTree != null)
+            if (uIAGetMultipleElementsAsTablesearchSubTree != null)
             {
-                uIAGetMultipleElementsAsTable["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchSubTree);
+                uIAGetMultipleElementsAsTable["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchSubTree);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMatchIndex != null)
+            if (uIAGetMultipleElementsAsTablematchIndex != null)
             {
-                uIAGetMultipleElementsAsTable["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMatchIndex);
+                uIAGetMultipleElementsAsTable["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndex);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchFilter != null)
+            if (uIAGetMultipleElementsAsTablesearchFilter != null)
             {
-                uIAGetMultipleElementsAsTable["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchFilter);
+                uIAGetMultipleElementsAsTable["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchFilter);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSortByColumn != null)
+            if (uIAGetMultipleElementsAsTablesortByColumn != null)
             {
-                uIAGetMultipleElementsAsTable["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSortByColumn);
+                uIAGetMultipleElementsAsTable["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesortByColumn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMatchIndexAscending != null)
+            if (uIAGetMultipleElementsAsTablematchIndexAscending != null)
             {
-                uIAGetMultipleElementsAsTable["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMatchIndexAscending);
+                uIAGetMultipleElementsAsTable["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndexAscending);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellHeaderSubElementLocalizedControlType != null)
+            if (uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellHeaderSubElementLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellHeaderSubElementControlType != null)
+            if (uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellHeaderSubElementControlType);
+                uIAGetMultipleElementsAsTable["SearchCellHeaderSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellHeaderSubElementControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementLocalizedControlType != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementLocalizedControlType);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementLocalizedControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementControlType != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementControlType != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementControlType);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementControlType"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementControlType);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchDescendantsForCellSubElements != null)
+            if (uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements != null)
             {
-                uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchDescendantsForCellSubElements);
+                uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableFirstCellHeaderSubElementToReturn != null)
+            if (uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableFirstCellHeaderSubElementToReturn);
+                uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMaxCellHeaderSubElementsToReturn != null)
+            if (uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMaxCellHeaderSubElementsToReturn);
+                uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableFirstCellSubElementToReturn != null)
+            if (uIAGetMultipleElementsAsTablefirstCellSubElementToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableFirstCellSubElementToReturn);
+                uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMaxCellSubElementsToReturn != null)
+            if (uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMaxCellSubElementsToReturn);
+                uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableRequestedNumberOfColumns != null)
+            if (uIAGetMultipleElementsAsTablerequestedNumberOfColumns != null)
             {
-                uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableRequestedNumberOfColumns);
+                uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablerequestedNumberOfColumns);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableCellSubElementValuePriority != null)
+            if (uIAGetMultipleElementsAsTablecellSubElementValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableCellSubElementValuePriority);
+                uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementValuePriority);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableCellSubElementTextValuePriority != null)
+            if (uIAGetMultipleElementsAsTablecellSubElementTextValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableCellSubElementTextValuePriority);
+                uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableCellSubElementNameValuePriority != null)
+            if (uIAGetMultipleElementsAsTablecellSubElementNameValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableCellSubElementNameValuePriority);
+                uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMinimumCellSubElementWidth != null)
+            if (uIAGetMultipleElementsAsTableminimumCellSubElementWidth != null)
             {
-                uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMinimumCellSubElementWidth);
+                uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementWidth);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMinimumCellSubElementHeight != null)
+            if (uIAGetMultipleElementsAsTableminimumCellSubElementHeight != null)
             {
-                uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMinimumCellSubElementHeight);
+                uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementHeight);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxLeft != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxLeft);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxRight != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxRight);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxTop != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxTop);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxBottom != null)
+            if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSearchCellSubElementBoundingBoxBottom);
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableReadTableAsThread != null)
+            if (uIAGetMultipleElementsAsTablereadTableAsThread != null)
             {
-                uIAGetMultipleElementsAsTable["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableReadTableAsThread);
+                uIAGetMultipleElementsAsTable["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablereadTableAsThread);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableRetrieveOutputDataFromThreadId != null)
+            if (uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId != null)
             {
-                uIAGetMultipleElementsAsTable["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableRetrieveOutputDataFromThreadId);
+                uIAGetMultipleElementsAsTable["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableretrieveOutputDataFromThreadId);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableSecondsToWaitForThread != null)
+            if (uIAGetMultipleElementsAsTablesecondsToWaitForThread != null)
             {
-                uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableSecondsToWaitForThread);
+                uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesecondsToWaitForThread);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMaxElementsToSearch != null)
+            if (uIAGetMultipleElementsAsTablemaxElementsToSearch != null)
             {
-                uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMaxElementsToSearch);
+                uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxElementsToSearch);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMaxRelativeSearchDepth != null)
+            if (uIAGetMultipleElementsAsTablemaxRelativeSearchDepth != null)
             {
-                uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMaxRelativeSearchDepth);
+                uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableMaxChildElementsToSearchPerNode != null)
+            if (uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableMaxChildElementsToSearchPerNode);
+                uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
-            if (uIAGetMultipleElementsAsTableElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetMultipleElementsAsTable["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableElementLocalizedControlTypesNotToTraverse);
+                uIAGetMultipleElementsAsTable["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableelementLocalizedControlTypesNotToTraverse);
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             uIAGetMultipleElementsAsTablepropCount++;
-            uIAGetMultipleElementsAsTable["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableWorkflow);
+            uIAGetMultipleElementsAsTable["Workflow"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableworkflow);
             if (uIAGetMultipleElementsAsTablepropCount > 0)
             {
                 callPayload.Body = uIAGetMultipleElementsAsTable;
@@ -5372,7 +5372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIASetElementScrollPercentageResponse> UIASetElementScrollPercentage(Expression<Func<int>> uIASetElementScrollPercentageParentWindowHandle, Expression<Func<string>> uIASetElementScrollPercentageWorkflow, Expression<Func<string>> uIASetElementScrollPercentageSearchElementName = null, Expression<Func<string>> uIASetElementScrollPercentageSearchElementClassName = null, Expression<Func<string>> uIASetElementScrollPercentageSearchElementAutomationId = null, Expression<Func<string>> uIASetElementScrollPercentageSearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementScrollPercentageSearchSubTree = null, Expression<Func<int>> uIASetElementScrollPercentageMatchIndex = null, Expression<Func<string>> uIASetElementScrollPercentageSearchFilter = null, Expression<Func<string>> uIASetElementScrollPercentageSortByColumn = null, Expression<Func<bool>> uIASetElementScrollPercentageMatchIndexAscending = null, Expression<Func<double>> uIASetElementScrollPercentageHorizontalScrollPercentage = null, Expression<Func<double>> uIASetElementScrollPercentageVerticalScrollPercentage = null, Expression<Func<bool>> uIASetElementScrollPercentageTryScrollPattern = null, Expression<Func<bool>> uIASetElementScrollPercentageTryRangeValuePattern = null, Expression<Func<bool>> uIASetElementScrollPercentageTryValuePattern = null, Expression<Func<int>> uIASetElementScrollPercentageMaxElementsToSearch = null, Expression<Func<int>> uIASetElementScrollPercentageMaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementScrollPercentageMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementScrollPercentageElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIASetElementScrollPercentageResponse> UIASetElementScrollPercentage(Expression<Func<int>> uIASetElementScrollPercentageparentWindowHandle, Expression<Func<string>> uIASetElementScrollPercentageworkflow, Expression<Func<string>> uIASetElementScrollPercentagesearchElementName = null, Expression<Func<string>> uIASetElementScrollPercentagesearchElementClassName = null, Expression<Func<string>> uIASetElementScrollPercentagesearchElementAutomationId = null, Expression<Func<string>> uIASetElementScrollPercentagesearchLocalizedControlType = null, Expression<Func<bool>> uIASetElementScrollPercentagesearchSubTree = null, Expression<Func<int>> uIASetElementScrollPercentagematchIndex = null, Expression<Func<string>> uIASetElementScrollPercentagesearchFilter = null, Expression<Func<string>> uIASetElementScrollPercentagesortByColumn = null, Expression<Func<bool>> uIASetElementScrollPercentagematchIndexAscending = null, Expression<Func<double>> uIASetElementScrollPercentagehorizontalScrollPercentage = null, Expression<Func<double>> uIASetElementScrollPercentageverticalScrollPercentage = null, Expression<Func<bool>> uIASetElementScrollPercentagetryScrollPattern = null, Expression<Func<bool>> uIASetElementScrollPercentagetryRangeValuePattern = null, Expression<Func<bool>> uIASetElementScrollPercentagetryValuePattern = null, Expression<Func<int>> uIASetElementScrollPercentagemaxElementsToSearch = null, Expression<Func<int>> uIASetElementScrollPercentagemaxRelativeSearchDepth = null, Expression<Func<int>> uIASetElementScrollPercentagemaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIASetElementScrollPercentage";
             var apiCallHttpMethod = "post";
@@ -5380,117 +5380,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIASetElementScrollPercentage = new JObject();
             var uIASetElementScrollPercentagepropCount = 0;
             uIASetElementScrollPercentagepropCount++;
-            uIASetElementScrollPercentage["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageParentWindowHandle);
-            if (uIASetElementScrollPercentageSearchElementName != null)
+            uIASetElementScrollPercentage["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageparentWindowHandle);
+            if (uIASetElementScrollPercentagesearchElementName != null)
             {
-                uIASetElementScrollPercentage["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchElementName);
+                uIASetElementScrollPercentage["SearchElementName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementName);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSearchElementClassName != null)
+            if (uIASetElementScrollPercentagesearchElementClassName != null)
             {
-                uIASetElementScrollPercentage["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchElementClassName);
+                uIASetElementScrollPercentage["SearchElementClassName"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementClassName);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSearchElementAutomationId != null)
+            if (uIASetElementScrollPercentagesearchElementAutomationId != null)
             {
-                uIASetElementScrollPercentage["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchElementAutomationId);
+                uIASetElementScrollPercentage["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchElementAutomationId);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSearchLocalizedControlType != null)
+            if (uIASetElementScrollPercentagesearchLocalizedControlType != null)
             {
-                uIASetElementScrollPercentage["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchLocalizedControlType);
+                uIASetElementScrollPercentage["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchLocalizedControlType);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSearchSubTree != null)
+            if (uIASetElementScrollPercentagesearchSubTree != null)
             {
-                uIASetElementScrollPercentage["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchSubTree);
+                uIASetElementScrollPercentage["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchSubTree);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageMatchIndex != null)
+            if (uIASetElementScrollPercentagematchIndex != null)
             {
-                uIASetElementScrollPercentage["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageMatchIndex);
+                uIASetElementScrollPercentage["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndex);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSearchFilter != null)
+            if (uIASetElementScrollPercentagesearchFilter != null)
             {
-                uIASetElementScrollPercentage["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSearchFilter);
+                uIASetElementScrollPercentage["SearchFilter"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchFilter);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageSortByColumn != null)
+            if (uIASetElementScrollPercentagesortByColumn != null)
             {
-                uIASetElementScrollPercentage["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageSortByColumn);
+                uIASetElementScrollPercentage["SortByColumn"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesortByColumn);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageMatchIndexAscending != null)
+            if (uIASetElementScrollPercentagematchIndexAscending != null)
             {
-                uIASetElementScrollPercentage["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageMatchIndexAscending);
+                uIASetElementScrollPercentage["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndexAscending);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageHorizontalScrollPercentage != null)
+            if (uIASetElementScrollPercentagehorizontalScrollPercentage != null)
             {
-                uIASetElementScrollPercentage["HorizontalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageHorizontalScrollPercentage);
+                uIASetElementScrollPercentage["HorizontalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagehorizontalScrollPercentage);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageVerticalScrollPercentage != null)
+            if (uIASetElementScrollPercentageverticalScrollPercentage != null)
             {
-                uIASetElementScrollPercentage["VerticalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageVerticalScrollPercentage);
+                uIASetElementScrollPercentage["VerticalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageverticalScrollPercentage);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageTryScrollPattern != null)
+            if (uIASetElementScrollPercentagetryScrollPattern != null)
             {
-                uIASetElementScrollPercentage["TryScrollPattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageTryScrollPattern);
+                uIASetElementScrollPercentage["TryScrollPattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryScrollPattern);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageTryRangeValuePattern != null)
+            if (uIASetElementScrollPercentagetryRangeValuePattern != null)
             {
-                uIASetElementScrollPercentage["TryRangeValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageTryRangeValuePattern);
+                uIASetElementScrollPercentage["TryRangeValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryRangeValuePattern);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageTryValuePattern != null)
+            if (uIASetElementScrollPercentagetryValuePattern != null)
             {
-                uIASetElementScrollPercentage["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageTryValuePattern);
+                uIASetElementScrollPercentage["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryValuePattern);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageMaxElementsToSearch != null)
+            if (uIASetElementScrollPercentagemaxElementsToSearch != null)
             {
-                uIASetElementScrollPercentage["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageMaxElementsToSearch);
+                uIASetElementScrollPercentage["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxElementsToSearch);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageMaxRelativeSearchDepth != null)
+            if (uIASetElementScrollPercentagemaxRelativeSearchDepth != null)
             {
-                uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageMaxRelativeSearchDepth);
+                uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxRelativeSearchDepth);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageMaxChildElementsToSearchPerNode != null)
+            if (uIASetElementScrollPercentagemaxChildElementsToSearchPerNode != null)
             {
-                uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageMaxChildElementsToSearchPerNode);
+                uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode);
                 uIASetElementScrollPercentagepropCount++;
             }
 
-            if (uIASetElementScrollPercentageElementLocalizedControlTypesNotToTraverse != null)
+            if (uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIASetElementScrollPercentage["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageElementLocalizedControlTypesNotToTraverse);
+                uIASetElementScrollPercentage["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageelementLocalizedControlTypesNotToTraverse);
                 uIASetElementScrollPercentagepropCount++;
             }
 
             uIASetElementScrollPercentagepropCount++;
-            uIASetElementScrollPercentage["Workflow"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageWorkflow);
+            uIASetElementScrollPercentage["Workflow"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageworkflow);
             if (uIASetElementScrollPercentagepropCount > 0)
             {
                 callPayload.Body = uIASetElementScrollPercentage;
@@ -5500,7 +5500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementSearchColourRegionResponse> UIAGetElementSearchColourRegion(Expression<Func<int>> uIAGetElementSearchColourRegionParentWindowHandle, Expression<Func<string>> uIAGetElementSearchColourRegionSearchColour, Expression<Func<int>> uIAGetElementSearchColourRegionMaxColourDeviation, Expression<Func<string>> uIAGetElementSearchColourRegionWorkflow, Expression<Func<string>> uIAGetElementSearchColourRegionSearchElementName = null, Expression<Func<string>> uIAGetElementSearchColourRegionSearchElementClassName = null, Expression<Func<string>> uIAGetElementSearchColourRegionSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementSearchColourRegionSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementSearchColourRegionSearchSubTree = null, Expression<Func<int>> uIAGetElementSearchColourRegionMatchIndex = null, Expression<Func<string>> uIAGetElementSearchColourRegionSearchFilter = null, Expression<Func<string>> uIAGetElementSearchColourRegionSortByColumn = null, Expression<Func<bool>> uIAGetElementSearchColourRegionMatchIndexAscending = null, Expression<Func<int>> uIAGetElementSearchColourRegionLeftPixelXOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegionRightPixelXOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegionTopPixelYOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegionBottomPixelYOffset = null, Expression<Func<bool>> uIAGetElementSearchColourRegionHideAgent = null, Expression<Func<bool>> uIAGetElementSearchColourRegionReturnPhysicalCoordinates = null, Expression<Func<int>> uIAGetElementSearchColourRegionMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementSearchColourRegionMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementSearchColourRegionMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementSearchColourRegionElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetElementSearchColourRegionResponse> UIAGetElementSearchColourRegion(Expression<Func<int>> uIAGetElementSearchColourRegionparentWindowHandle, Expression<Func<string>> uIAGetElementSearchColourRegionsearchColour, Expression<Func<int>> uIAGetElementSearchColourRegionmaxColourDeviation, Expression<Func<string>> uIAGetElementSearchColourRegionworkflow, Expression<Func<string>> uIAGetElementSearchColourRegionsearchElementName = null, Expression<Func<string>> uIAGetElementSearchColourRegionsearchElementClassName = null, Expression<Func<string>> uIAGetElementSearchColourRegionsearchElementAutomationId = null, Expression<Func<string>> uIAGetElementSearchColourRegionsearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementSearchColourRegionsearchSubTree = null, Expression<Func<int>> uIAGetElementSearchColourRegionmatchIndex = null, Expression<Func<string>> uIAGetElementSearchColourRegionsearchFilter = null, Expression<Func<string>> uIAGetElementSearchColourRegionsortByColumn = null, Expression<Func<bool>> uIAGetElementSearchColourRegionmatchIndexAscending = null, Expression<Func<int>> uIAGetElementSearchColourRegionleftPixelXOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegionrightPixelXOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegiontopPixelYOffset = null, Expression<Func<int>> uIAGetElementSearchColourRegionbottomPixelYOffset = null, Expression<Func<bool>> uIAGetElementSearchColourRegionhideAgent = null, Expression<Func<bool>> uIAGetElementSearchColourRegionreturnPhysicalCoordinates = null, Expression<Func<int>> uIAGetElementSearchColourRegionmaxElementsToSearch = null, Expression<Func<int>> uIAGetElementSearchColourRegionmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAGetElementSearchColourRegion";
             var apiCallHttpMethod = "post";
@@ -5508,127 +5508,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementSearchColourRegion = new JObject();
             var uIAGetElementSearchColourRegionpropCount = 0;
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionParentWindowHandle);
-            if (uIAGetElementSearchColourRegionSearchElementName != null)
+            uIAGetElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionparentWindowHandle);
+            if (uIAGetElementSearchColourRegionsearchElementName != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchElementName);
+                uIAGetElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementName);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSearchElementClassName != null)
+            if (uIAGetElementSearchColourRegionsearchElementClassName != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchElementClassName);
+                uIAGetElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementClassName);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSearchElementAutomationId != null)
+            if (uIAGetElementSearchColourRegionsearchElementAutomationId != null)
             {
-                uIAGetElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchElementAutomationId);
+                uIAGetElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchElementAutomationId);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSearchLocalizedControlType != null)
+            if (uIAGetElementSearchColourRegionsearchLocalizedControlType != null)
             {
-                uIAGetElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchLocalizedControlType);
+                uIAGetElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchLocalizedControlType);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSearchSubTree != null)
+            if (uIAGetElementSearchColourRegionsearchSubTree != null)
             {
-                uIAGetElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchSubTree);
+                uIAGetElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchSubTree);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionMatchIndex != null)
+            if (uIAGetElementSearchColourRegionmatchIndex != null)
             {
-                uIAGetElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMatchIndex);
+                uIAGetElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndex);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSearchFilter != null)
+            if (uIAGetElementSearchColourRegionsearchFilter != null)
             {
-                uIAGetElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchFilter);
+                uIAGetElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchFilter);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionSortByColumn != null)
+            if (uIAGetElementSearchColourRegionsortByColumn != null)
             {
-                uIAGetElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSortByColumn);
+                uIAGetElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsortByColumn);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGetElementSearchColourRegionMatchIndexAscending != null)
+            if (uIAGetElementSearchColourRegionmatchIndexAscending != null)
             {
-                uIAGetElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMatchIndexAscending);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionSearchColour);
-            uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMaxColourDeviation);
-            if (uIAGetElementSearchColourRegionLeftPixelXOffset != null)
-            {
-                uIAGetElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionLeftPixelXOffset);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionRightPixelXOffset != null)
-            {
-                uIAGetElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionRightPixelXOffset);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionTopPixelYOffset != null)
-            {
-                uIAGetElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionTopPixelYOffset);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionBottomPixelYOffset != null)
-            {
-                uIAGetElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionBottomPixelYOffset);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionHideAgent != null)
-            {
-                uIAGetElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionHideAgent);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionReturnPhysicalCoordinates != null)
-            {
-                uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionReturnPhysicalCoordinates);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionMaxElementsToSearch != null)
-            {
-                uIAGetElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMaxElementsToSearch);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionMaxRelativeSearchDepth != null)
-            {
-                uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMaxRelativeSearchDepth);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionMaxChildElementsToSearchPerNode != null)
-            {
-                uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionMaxChildElementsToSearchPerNode);
-                uIAGetElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGetElementSearchColourRegionElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAGetElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndexAscending);
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             uIAGetElementSearchColourRegionpropCount++;
-            uIAGetElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionWorkflow);
+            uIAGetElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchColour);
+            uIAGetElementSearchColourRegionpropCount++;
+            uIAGetElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxColourDeviation);
+            if (uIAGetElementSearchColourRegionleftPixelXOffset != null)
+            {
+                uIAGetElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionleftPixelXOffset);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionrightPixelXOffset != null)
+            {
+                uIAGetElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionrightPixelXOffset);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegiontopPixelYOffset != null)
+            {
+                uIAGetElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegiontopPixelYOffset);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionbottomPixelYOffset != null)
+            {
+                uIAGetElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionbottomPixelYOffset);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionhideAgent != null)
+            {
+                uIAGetElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionhideAgent);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionreturnPhysicalCoordinates != null)
+            {
+                uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionreturnPhysicalCoordinates);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionmaxElementsToSearch != null)
+            {
+                uIAGetElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxElementsToSearch);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionmaxRelativeSearchDepth != null)
+            {
+                uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxRelativeSearchDepth);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
+            {
+                uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAGetElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+
+            uIAGetElementSearchColourRegionpropCount++;
+            uIAGetElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionworkflow);
             if (uIAGetElementSearchColourRegionpropCount > 0)
             {
                 callPayload.Body = uIAGetElementSearchColourRegion;
@@ -5638,7 +5638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGlobalMouseClickElementSearchColourRegionResponse> UIAGlobalMouseClickElementSearchColourRegion(Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionParentWindowHandle, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchColour, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionMaxColourDeviation, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionWorkflow, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchElementName = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchElementClassName = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionSearchSubTree = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionMatchIndex = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSearchFilter = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionSortByColumn = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionMatchIndexAscending = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionLeftPixelXOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionRightPixelXOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionTopPixelYOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionBottomPixelYOffset = null, Expression<Func<uIAGlobalMouseClickElementSearchColourRegionMouseButtonInput>> uIAGlobalMouseClickElementSearchColourRegionMouseButton = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionClickOffsetX = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionClickOffsetY = null, Expression<Func<uIAGlobalMouseClickElementSearchColourRegionOffsetRelativeToInput>> uIAGlobalMouseClickElementSearchColourRegionOffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionDelayInMilliseconds = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionHideAgent = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionMaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGlobalMouseClickElementSearchColourRegionResponse> UIAGlobalMouseClickElementSearchColourRegion(Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchColour, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionworkflow, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchElementName = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionsearchSubTree = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionmatchIndex = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsearchFilter = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionsortByColumn = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset = null, Expression<Func<uIAGlobalMouseClickElementSearchColourRegionmouseButtonInput>> uIAGlobalMouseClickElementSearchColourRegionmouseButton = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionclickOffsetX = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionclickOffsetY = null, Expression<Func<uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeToInput>> uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds = null, Expression<Func<bool>> uIAGlobalMouseClickElementSearchColourRegionhideAgent = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAGlobalMouseClickElementSearchColourRegion";
             var apiCallHttpMethod = "post";
@@ -5646,151 +5646,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGlobalMouseClickElementSearchColourRegion = new JObject();
             var uIAGlobalMouseClickElementSearchColourRegionpropCount = 0;
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionParentWindowHandle);
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchElementName != null)
+            uIAGlobalMouseClickElementSearchColourRegion["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionparentWindowHandle);
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchElementName != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchElementName);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementName);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchElementClassName != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchElementClassName);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementClassName);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchElementAutomationId != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchElementAutomationId);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchElementAutomationId);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchLocalizedControlType != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchLocalizedControlType);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchLocalizedControlType);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchSubTree != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchSubTree != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchSubTree);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionMatchIndex != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionmatchIndex != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMatchIndex);
+                uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndex);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSearchFilter != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsearchFilter != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchFilter);
+                uIAGlobalMouseClickElementSearchColourRegion["SearchFilter"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchFilter);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionSortByColumn != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionsortByColumn != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSortByColumn);
+                uIAGlobalMouseClickElementSearchColourRegion["SortByColumn"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsortByColumn);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
-            if (uIAGlobalMouseClickElementSearchColourRegionMatchIndexAscending != null)
+            if (uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMatchIndexAscending);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionSearchColour);
-            uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMaxColourDeviation);
-            if (uIAGlobalMouseClickElementSearchColourRegionLeftPixelXOffset != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionLeftPixelXOffset);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionRightPixelXOffset != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionRightPixelXOffset);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionTopPixelYOffset != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionTopPixelYOffset);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionBottomPixelYOffset != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionBottomPixelYOffset);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionMouseButton != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMouseButton);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionClickOffsetX != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionClickOffsetX);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionClickOffsetY != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionClickOffsetY);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionOffsetRelativeTo != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionOffsetRelativeTo);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionDelayInMilliseconds != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionDelayInMilliseconds);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionHideAgent != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionHideAgent);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionMaxElementsToSearch != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMaxElementsToSearch);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionMaxRelativeSearchDepth != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMaxRelativeSearchDepth);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionMaxChildElementsToSearchPerNode != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionMaxChildElementsToSearchPerNode);
-                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            }
-
-            if (uIAGlobalMouseClickElementSearchColourRegionElementLocalizedControlTypesNotToTraverse != null)
-            {
-                uIAGlobalMouseClickElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionElementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending);
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             uIAGlobalMouseClickElementSearchColourRegionpropCount++;
-            uIAGlobalMouseClickElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionWorkflow);
+            uIAGlobalMouseClickElementSearchColourRegion["SearchColour"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchColour);
+            uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            uIAGlobalMouseClickElementSearchColourRegion["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxColourDeviation);
+            if (uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionleftPixelXOffset);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionrightPixelXOffset);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiontopPixelYOffset);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionbottomPixelYOffset);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionmouseButton != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmouseButton);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetX != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetY != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionhideAgent != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionhideAgent);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            if (uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse != null)
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionelementLocalizedControlTypesNotToTraverse);
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+
+            uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            uIAGlobalMouseClickElementSearchColourRegion["Workflow"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionworkflow);
             if (uIAGlobalMouseClickElementSearchColourRegionpropCount > 0)
             {
                 callPayload.Body = uIAGlobalMouseClickElementSearchColourRegion;
@@ -5800,99 +5800,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetWin32WindowsResponse> UIAGetWin32Windows(Expression<Func<string>> uIAGetWin32WindowsWorkflow, Expression<Func<string>> uIAGetWin32WindowsSearchClassName = null, Expression<Func<string>> uIAGetWin32WindowsSearchWindowTitle = null, Expression<Func<bool>> uIAGetWin32WindowsTopLevelWindowsOnly = null, Expression<Func<bool>> uIAGetWin32WindowsVisibleWindowsOnly = null, Expression<Func<bool>> uIAGetWin32WindowsWindowsWithTitlebarOnly = null, Expression<Func<bool>> uIAGetWin32WindowsWindowsWithTitleOnly = null, Expression<Func<bool>> uIAGetWin32WindowsIgnoreTransparentWindows = null, Expression<Func<int>> uIAGetWin32WindowsSearchProcessId = null, Expression<Func<string>> uIAGetWin32WindowsSearchFilter = null, Expression<Func<string>> uIAGetWin32WindowsSortByColumn = null, Expression<Func<bool>> uIAGetWin32WindowsMatchIndexAscending = null, Expression<Func<bool>> uIAGetWin32WindowsReturnElementHandle = null, Expression<Func<int>> uIAGetWin32WindowsFirstItemToReturn = null, Expression<Func<int>> uIAGetWin32WindowsMaxItemsToReturn = null)
+        public IBodyWorkflowAction<UIAGetWin32WindowsResponse> UIAGetWin32Windows(Expression<Func<string>> uIAGetWin32Windowsworkflow, Expression<Func<string>> uIAGetWin32WindowssearchClassName = null, Expression<Func<string>> uIAGetWin32WindowssearchWindowTitle = null, Expression<Func<bool>> uIAGetWin32WindowstopLevelWindowsOnly = null, Expression<Func<bool>> uIAGetWin32WindowsvisibleWindowsOnly = null, Expression<Func<bool>> uIAGetWin32WindowswindowsWithTitlebarOnly = null, Expression<Func<bool>> uIAGetWin32WindowswindowsWithTitleOnly = null, Expression<Func<bool>> uIAGetWin32WindowsignoreTransparentWindows = null, Expression<Func<int>> uIAGetWin32WindowssearchProcessId = null, Expression<Func<string>> uIAGetWin32WindowssearchFilter = null, Expression<Func<string>> uIAGetWin32WindowssortByColumn = null, Expression<Func<bool>> uIAGetWin32WindowsmatchIndexAscending = null, Expression<Func<bool>> uIAGetWin32WindowsreturnElementHandle = null, Expression<Func<int>> uIAGetWin32WindowsfirstItemToReturn = null, Expression<Func<int>> uIAGetWin32WindowsmaxItemsToReturn = null)
         {
             var apiCallPath = "/UIAControl/GetWin32Windows";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAGetWin32Windows = new JObject();
             var uIAGetWin32WindowspropCount = 0;
-            if (uIAGetWin32WindowsSearchClassName != null)
+            if (uIAGetWin32WindowssearchClassName != null)
             {
-                uIAGetWin32Windows["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsSearchClassName);
+                uIAGetWin32Windows["SearchClassName"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchClassName);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsSearchWindowTitle != null)
+            if (uIAGetWin32WindowssearchWindowTitle != null)
             {
-                uIAGetWin32Windows["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsSearchWindowTitle);
+                uIAGetWin32Windows["SearchWindowTitle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchWindowTitle);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsTopLevelWindowsOnly != null)
+            if (uIAGetWin32WindowstopLevelWindowsOnly != null)
             {
-                uIAGetWin32Windows["TopLevelWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsTopLevelWindowsOnly);
+                uIAGetWin32Windows["TopLevelWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowstopLevelWindowsOnly);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsVisibleWindowsOnly != null)
+            if (uIAGetWin32WindowsvisibleWindowsOnly != null)
             {
-                uIAGetWin32Windows["VisibleWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsVisibleWindowsOnly);
+                uIAGetWin32Windows["VisibleWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsvisibleWindowsOnly);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsWindowsWithTitlebarOnly != null)
+            if (uIAGetWin32WindowswindowsWithTitlebarOnly != null)
             {
-                uIAGetWin32Windows["WindowsWithTitlebarOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsWindowsWithTitlebarOnly);
+                uIAGetWin32Windows["WindowsWithTitlebarOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitlebarOnly);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsWindowsWithTitleOnly != null)
+            if (uIAGetWin32WindowswindowsWithTitleOnly != null)
             {
-                uIAGetWin32Windows["WindowsWithTitleOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsWindowsWithTitleOnly);
+                uIAGetWin32Windows["WindowsWithTitleOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitleOnly);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsIgnoreTransparentWindows != null)
+            if (uIAGetWin32WindowsignoreTransparentWindows != null)
             {
-                uIAGetWin32Windows["IgnoreTransparentWindows"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsIgnoreTransparentWindows);
+                uIAGetWin32Windows["IgnoreTransparentWindows"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsignoreTransparentWindows);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsSearchProcessId != null)
+            if (uIAGetWin32WindowssearchProcessId != null)
             {
-                uIAGetWin32Windows["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsSearchProcessId);
+                uIAGetWin32Windows["SearchProcessId"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchProcessId);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsSearchFilter != null)
+            if (uIAGetWin32WindowssearchFilter != null)
             {
-                uIAGetWin32Windows["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsSearchFilter);
+                uIAGetWin32Windows["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssearchFilter);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsSortByColumn != null)
+            if (uIAGetWin32WindowssortByColumn != null)
             {
-                uIAGetWin32Windows["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsSortByColumn);
+                uIAGetWin32Windows["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowssortByColumn);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsMatchIndexAscending != null)
+            if (uIAGetWin32WindowsmatchIndexAscending != null)
             {
-                uIAGetWin32Windows["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsMatchIndexAscending);
+                uIAGetWin32Windows["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmatchIndexAscending);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsReturnElementHandle != null)
+            if (uIAGetWin32WindowsreturnElementHandle != null)
             {
-                uIAGetWin32Windows["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsReturnElementHandle);
+                uIAGetWin32Windows["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsreturnElementHandle);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsFirstItemToReturn != null)
+            if (uIAGetWin32WindowsfirstItemToReturn != null)
             {
-                uIAGetWin32Windows["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsFirstItemToReturn);
+                uIAGetWin32Windows["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsfirstItemToReturn);
                 uIAGetWin32WindowspropCount++;
             }
 
-            if (uIAGetWin32WindowsMaxItemsToReturn != null)
+            if (uIAGetWin32WindowsmaxItemsToReturn != null)
             {
-                uIAGetWin32Windows["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsMaxItemsToReturn);
+                uIAGetWin32Windows["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmaxItemsToReturn);
                 uIAGetWin32WindowspropCount++;
             }
 
             uIAGetWin32WindowspropCount++;
-            uIAGetWin32Windows["Workflow"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsWorkflow);
+            uIAGetWin32Windows["Workflow"] = ExpressionConverter.ConvertO(uIAGetWin32Windowsworkflow);
             if (uIAGetWin32WindowspropCount > 0)
             {
                 callPayload.Body = uIAGetWin32Windows;
@@ -5902,7 +5902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<SetUIAElementSearchModeResponse> SetUIAElementSearchMode(Expression<Func<setUIAElementSearchModeUIAElementSearchModeInput>> setUIAElementSearchModeUIAElementSearchMode, Expression<Func<string>> setUIAElementSearchModeWorkflow)
+        public IBodyWorkflowAction<SetUIAElementSearchModeResponse> SetUIAElementSearchMode(Expression<Func<setUIAElementSearchModeuIAElementSearchModeInput>> setUIAElementSearchModeuIAElementSearchMode, Expression<Func<string>> setUIAElementSearchModeworkflow)
         {
             var apiCallPath = "/UIAControl/SetUIAElementSearchMode";
             var apiCallHttpMethod = "post";
@@ -5910,9 +5910,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var setUIAElementSearchMode = new JObject();
             var setUIAElementSearchModepropCount = 0;
             setUIAElementSearchModepropCount++;
-            setUIAElementSearchMode["UIAElementSearchMode"] = ExpressionConverter.ConvertO(setUIAElementSearchModeUIAElementSearchMode);
+            setUIAElementSearchMode["UIAElementSearchMode"] = ExpressionConverter.ConvertO(setUIAElementSearchModeuIAElementSearchMode);
             setUIAElementSearchModepropCount++;
-            setUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(setUIAElementSearchModeWorkflow);
+            setUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(setUIAElementSearchModeworkflow);
             if (setUIAElementSearchModepropCount > 0)
             {
                 callPayload.Body = setUIAElementSearchMode;
@@ -5922,7 +5922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<GetUIAElementSearchModeResponse> GetUIAElementSearchMode(Expression<Func<string>> getUIAElementSearchModeWorkflow)
+        public IBodyWorkflowAction<GetUIAElementSearchModeResponse> GetUIAElementSearchMode(Expression<Func<string>> getUIAElementSearchModeworkflow)
         {
             var apiCallPath = "/UIAControl/GetUIAElementSearchMode";
             var apiCallHttpMethod = "post";
@@ -5930,7 +5930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var getUIAElementSearchMode = new JObject();
             var getUIAElementSearchModepropCount = 0;
             getUIAElementSearchModepropCount++;
-            getUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(getUIAElementSearchModeWorkflow);
+            getUIAElementSearchMode["Workflow"] = ExpressionConverter.ConvertO(getUIAElementSearchModeworkflow);
             if (getUIAElementSearchModepropCount > 0)
             {
                 callPayload.Body = getUIAElementSearchMode;
@@ -5940,7 +5940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPatternsResponse> UIAGetElementPatterns(Expression<Func<int>> uIAGetElementPatternsParentWindowHandle, Expression<Func<string>> uIAGetElementPatternsWorkflow, Expression<Func<string>> uIAGetElementPatternsSearchElementName = null, Expression<Func<string>> uIAGetElementPatternsSearchElementClassName = null, Expression<Func<string>> uIAGetElementPatternsSearchElementAutomationId = null, Expression<Func<string>> uIAGetElementPatternsSearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementPatternsSearchSubTree = null, Expression<Func<int>> uIAGetElementPatternsMatchIndex = null, Expression<Func<string>> uIAGetElementPatternsSearchFilter = null, Expression<Func<string>> uIAGetElementPatternsSortByColumn = null, Expression<Func<bool>> uIAGetElementPatternsMatchIndexAscending = null, Expression<Func<int>> uIAGetElementPatternsMaxElementsToSearch = null, Expression<Func<int>> uIAGetElementPatternsMaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementPatternsMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementPatternsElementLocalizedControlTypesNotToTraverse = null)
+        public IBodyWorkflowAction<UIAGetElementPatternsResponse> UIAGetElementPatterns(Expression<Func<int>> uIAGetElementPatternsparentWindowHandle, Expression<Func<string>> uIAGetElementPatternsworkflow, Expression<Func<string>> uIAGetElementPatternssearchElementName = null, Expression<Func<string>> uIAGetElementPatternssearchElementClassName = null, Expression<Func<string>> uIAGetElementPatternssearchElementAutomationId = null, Expression<Func<string>> uIAGetElementPatternssearchLocalizedControlType = null, Expression<Func<bool>> uIAGetElementPatternssearchSubTree = null, Expression<Func<int>> uIAGetElementPatternsmatchIndex = null, Expression<Func<string>> uIAGetElementPatternssearchFilter = null, Expression<Func<string>> uIAGetElementPatternssortByColumn = null, Expression<Func<bool>> uIAGetElementPatternsmatchIndexAscending = null, Expression<Func<int>> uIAGetElementPatternsmaxElementsToSearch = null, Expression<Func<int>> uIAGetElementPatternsmaxRelativeSearchDepth = null, Expression<Func<int>> uIAGetElementPatternsmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAGetElementPatternselementLocalizedControlTypesNotToTraverse = null)
         {
             var apiCallPath = "/UIAControl/UIAGetElementPatterns";
             var apiCallHttpMethod = "post";
@@ -5948,87 +5948,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementPatterns = new JObject();
             var uIAGetElementPatternspropCount = 0;
             uIAGetElementPatternspropCount++;
-            uIAGetElementPatterns["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPatternsParentWindowHandle);
-            if (uIAGetElementPatternsSearchElementName != null)
+            uIAGetElementPatterns["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAGetElementPatternsparentWindowHandle);
+            if (uIAGetElementPatternssearchElementName != null)
             {
-                uIAGetElementPatterns["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchElementName);
+                uIAGetElementPatterns["SearchElementName"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementName);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSearchElementClassName != null)
+            if (uIAGetElementPatternssearchElementClassName != null)
             {
-                uIAGetElementPatterns["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchElementClassName);
+                uIAGetElementPatterns["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementClassName);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSearchElementAutomationId != null)
+            if (uIAGetElementPatternssearchElementAutomationId != null)
             {
-                uIAGetElementPatterns["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchElementAutomationId);
+                uIAGetElementPatterns["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchElementAutomationId);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSearchLocalizedControlType != null)
+            if (uIAGetElementPatternssearchLocalizedControlType != null)
             {
-                uIAGetElementPatterns["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchLocalizedControlType);
+                uIAGetElementPatterns["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchLocalizedControlType);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSearchSubTree != null)
+            if (uIAGetElementPatternssearchSubTree != null)
             {
-                uIAGetElementPatterns["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchSubTree);
+                uIAGetElementPatterns["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchSubTree);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsMatchIndex != null)
+            if (uIAGetElementPatternsmatchIndex != null)
             {
-                uIAGetElementPatterns["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPatternsMatchIndex);
+                uIAGetElementPatterns["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndex);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSearchFilter != null)
+            if (uIAGetElementPatternssearchFilter != null)
             {
-                uIAGetElementPatterns["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSearchFilter);
+                uIAGetElementPatterns["SearchFilter"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchFilter);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsSortByColumn != null)
+            if (uIAGetElementPatternssortByColumn != null)
             {
-                uIAGetElementPatterns["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPatternsSortByColumn);
+                uIAGetElementPatterns["SortByColumn"] = ExpressionConverter.ConvertO(uIAGetElementPatternssortByColumn);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsMatchIndexAscending != null)
+            if (uIAGetElementPatternsmatchIndexAscending != null)
             {
-                uIAGetElementPatterns["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPatternsMatchIndexAscending);
+                uIAGetElementPatterns["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndexAscending);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsMaxElementsToSearch != null)
+            if (uIAGetElementPatternsmaxElementsToSearch != null)
             {
-                uIAGetElementPatterns["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPatternsMaxElementsToSearch);
+                uIAGetElementPatterns["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxElementsToSearch);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsMaxRelativeSearchDepth != null)
+            if (uIAGetElementPatternsmaxRelativeSearchDepth != null)
             {
-                uIAGetElementPatterns["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPatternsMaxRelativeSearchDepth);
+                uIAGetElementPatterns["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxRelativeSearchDepth);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsMaxChildElementsToSearchPerNode != null)
+            if (uIAGetElementPatternsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPatternsMaxChildElementsToSearchPerNode);
+                uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxChildElementsToSearchPerNode);
                 uIAGetElementPatternspropCount++;
             }
 
-            if (uIAGetElementPatternsElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAGetElementPatternselementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAGetElementPatterns["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPatternsElementLocalizedControlTypesNotToTraverse);
+                uIAGetElementPatterns["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAGetElementPatternselementLocalizedControlTypesNotToTraverse);
                 uIAGetElementPatternspropCount++;
             }
 
             uIAGetElementPatternspropCount++;
-            uIAGetElementPatterns["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPatternsWorkflow);
+            uIAGetElementPatterns["Workflow"] = ExpressionConverter.ConvertO(uIAGetElementPatternsworkflow);
             if (uIAGetElementPatternspropCount > 0)
             {
                 callPayload.Body = uIAGetElementPatterns;
@@ -6038,7 +6038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAMoveElementResponse> UIAMoveElement(Expression<Func<int>> uIAMoveElementParentWindowHandle, Expression<Func<int>> uIAMoveElementHorizontalPosition, Expression<Func<int>> uIAMoveElementVerticalPosition, Expression<Func<string>> uIAMoveElementWorkflow, Expression<Func<string>> uIAMoveElementSearchElementName = null, Expression<Func<string>> uIAMoveElementSearchElementClassName = null, Expression<Func<string>> uIAMoveElementSearchElementAutomationId = null, Expression<Func<string>> uIAMoveElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAMoveElementSearchSubTree = null, Expression<Func<int>> uIAMoveElementMatchIndex = null, Expression<Func<string>> uIAMoveElementSearchFilter = null, Expression<Func<string>> uIAMoveElementSortByColumn = null, Expression<Func<bool>> uIAMoveElementMatchIndexAscending = null, Expression<Func<int>> uIAMoveElementMaxElementsToSearch = null, Expression<Func<int>> uIAMoveElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAMoveElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAMoveElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAMoveElementHorizontalMovementTypeInput>> uIAMoveElementHorizontalMovementType = null, Expression<Func<uIAMoveElementVerticalMovementTypeInput>> uIAMoveElementVerticalMovementType = null)
+        public IBodyWorkflowAction<UIAMoveElementResponse> UIAMoveElement(Expression<Func<int>> uIAMoveElementparentWindowHandle, Expression<Func<int>> uIAMoveElementhorizontalPosition, Expression<Func<int>> uIAMoveElementverticalPosition, Expression<Func<string>> uIAMoveElementworkflow, Expression<Func<string>> uIAMoveElementsearchElementName = null, Expression<Func<string>> uIAMoveElementsearchElementClassName = null, Expression<Func<string>> uIAMoveElementsearchElementAutomationId = null, Expression<Func<string>> uIAMoveElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAMoveElementsearchSubTree = null, Expression<Func<int>> uIAMoveElementmatchIndex = null, Expression<Func<string>> uIAMoveElementsearchFilter = null, Expression<Func<string>> uIAMoveElementsortByColumn = null, Expression<Func<bool>> uIAMoveElementmatchIndexAscending = null, Expression<Func<int>> uIAMoveElementmaxElementsToSearch = null, Expression<Func<int>> uIAMoveElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAMoveElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAMoveElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAMoveElementhorizontalMovementTypeInput>> uIAMoveElementhorizontalMovementType = null, Expression<Func<uIAMoveElementverticalMovementTypeInput>> uIAMoveElementverticalMovementType = null)
         {
             var apiCallPath = "/UIAControl/UIAMoveElement";
             var apiCallHttpMethod = "post";
@@ -6046,103 +6046,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAMoveElement = new JObject();
             var uIAMoveElementpropCount = 0;
             uIAMoveElementpropCount++;
-            uIAMoveElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAMoveElementParentWindowHandle);
-            if (uIAMoveElementSearchElementName != null)
+            uIAMoveElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAMoveElementparentWindowHandle);
+            if (uIAMoveElementsearchElementName != null)
             {
-                uIAMoveElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAMoveElementSearchElementName);
+                uIAMoveElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementName);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSearchElementClassName != null)
+            if (uIAMoveElementsearchElementClassName != null)
             {
-                uIAMoveElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAMoveElementSearchElementClassName);
+                uIAMoveElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementClassName);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSearchElementAutomationId != null)
+            if (uIAMoveElementsearchElementAutomationId != null)
             {
-                uIAMoveElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAMoveElementSearchElementAutomationId);
+                uIAMoveElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAMoveElementsearchElementAutomationId);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSearchLocalizedControlType != null)
+            if (uIAMoveElementsearchLocalizedControlType != null)
             {
-                uIAMoveElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAMoveElementSearchLocalizedControlType);
+                uIAMoveElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAMoveElementsearchLocalizedControlType);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSearchSubTree != null)
+            if (uIAMoveElementsearchSubTree != null)
             {
-                uIAMoveElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAMoveElementSearchSubTree);
+                uIAMoveElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAMoveElementsearchSubTree);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementMatchIndex != null)
+            if (uIAMoveElementmatchIndex != null)
             {
-                uIAMoveElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAMoveElementMatchIndex);
+                uIAMoveElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndex);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSearchFilter != null)
+            if (uIAMoveElementsearchFilter != null)
             {
-                uIAMoveElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAMoveElementSearchFilter);
+                uIAMoveElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAMoveElementsearchFilter);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementSortByColumn != null)
+            if (uIAMoveElementsortByColumn != null)
             {
-                uIAMoveElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAMoveElementSortByColumn);
+                uIAMoveElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAMoveElementsortByColumn);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementMatchIndexAscending != null)
+            if (uIAMoveElementmatchIndexAscending != null)
             {
-                uIAMoveElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAMoveElementMatchIndexAscending);
+                uIAMoveElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndexAscending);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementMaxElementsToSearch != null)
+            if (uIAMoveElementmaxElementsToSearch != null)
             {
-                uIAMoveElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAMoveElementMaxElementsToSearch);
+                uIAMoveElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAMoveElementmaxElementsToSearch);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementMaxRelativeSearchDepth != null)
+            if (uIAMoveElementmaxRelativeSearchDepth != null)
             {
-                uIAMoveElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAMoveElementMaxRelativeSearchDepth);
+                uIAMoveElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAMoveElementmaxRelativeSearchDepth);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementMaxChildElementsToSearchPerNode != null)
+            if (uIAMoveElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAMoveElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAMoveElementMaxChildElementsToSearchPerNode);
+                uIAMoveElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAMoveElementmaxChildElementsToSearchPerNode);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAMoveElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAMoveElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAMoveElementElementLocalizedControlTypesNotToTraverse);
+                uIAMoveElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAMoveElementelementLocalizedControlTypesNotToTraverse);
                 uIAMoveElementpropCount++;
             }
 
-            if (uIAMoveElementHorizontalMovementType != null)
+            if (uIAMoveElementhorizontalMovementType != null)
             {
-                uIAMoveElement["HorizontalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementHorizontalMovementType);
-                uIAMoveElementpropCount++;
-            }
-
-            uIAMoveElementpropCount++;
-            uIAMoveElement["HorizontalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementHorizontalPosition);
-            if (uIAMoveElementVerticalMovementType != null)
-            {
-                uIAMoveElement["VerticalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementVerticalMovementType);
+                uIAMoveElement["HorizontalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalMovementType);
                 uIAMoveElementpropCount++;
             }
 
             uIAMoveElementpropCount++;
-            uIAMoveElement["VerticalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementVerticalPosition);
+            uIAMoveElement["HorizontalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalPosition);
+            if (uIAMoveElementverticalMovementType != null)
+            {
+                uIAMoveElement["VerticalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementverticalMovementType);
+                uIAMoveElementpropCount++;
+            }
+
             uIAMoveElementpropCount++;
-            uIAMoveElement["Workflow"] = ExpressionConverter.ConvertO(uIAMoveElementWorkflow);
+            uIAMoveElement["VerticalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementverticalPosition);
+            uIAMoveElementpropCount++;
+            uIAMoveElement["Workflow"] = ExpressionConverter.ConvertO(uIAMoveElementworkflow);
             if (uIAMoveElementpropCount > 0)
             {
                 callPayload.Body = uIAMoveElement;
@@ -6152,7 +6152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAResizeElementResponse> UIAResizeElement(Expression<Func<int>> uIAResizeElementParentWindowHandle, Expression<Func<int>> uIAResizeElementNewWidth, Expression<Func<int>> uIAResizeElementNewHeight, Expression<Func<string>> uIAResizeElementWorkflow, Expression<Func<string>> uIAResizeElementSearchElementName = null, Expression<Func<string>> uIAResizeElementSearchElementClassName = null, Expression<Func<string>> uIAResizeElementSearchElementAutomationId = null, Expression<Func<string>> uIAResizeElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAResizeElementSearchSubTree = null, Expression<Func<int>> uIAResizeElementMatchIndex = null, Expression<Func<string>> uIAResizeElementSearchFilter = null, Expression<Func<string>> uIAResizeElementSortByColumn = null, Expression<Func<bool>> uIAResizeElementMatchIndexAscending = null, Expression<Func<int>> uIAResizeElementMaxElementsToSearch = null, Expression<Func<int>> uIAResizeElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAResizeElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAResizeElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAResizeElementResizeWidthTypeInput>> uIAResizeElementResizeWidthType = null, Expression<Func<uIAResizeElementResizeHeightTypeInput>> uIAResizeElementResizeHeightType = null)
+        public IBodyWorkflowAction<UIAResizeElementResponse> UIAResizeElement(Expression<Func<int>> uIAResizeElementparentWindowHandle, Expression<Func<int>> uIAResizeElementnewWidth, Expression<Func<int>> uIAResizeElementnewHeight, Expression<Func<string>> uIAResizeElementworkflow, Expression<Func<string>> uIAResizeElementsearchElementName = null, Expression<Func<string>> uIAResizeElementsearchElementClassName = null, Expression<Func<string>> uIAResizeElementsearchElementAutomationId = null, Expression<Func<string>> uIAResizeElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAResizeElementsearchSubTree = null, Expression<Func<int>> uIAResizeElementmatchIndex = null, Expression<Func<string>> uIAResizeElementsearchFilter = null, Expression<Func<string>> uIAResizeElementsortByColumn = null, Expression<Func<bool>> uIAResizeElementmatchIndexAscending = null, Expression<Func<int>> uIAResizeElementmaxElementsToSearch = null, Expression<Func<int>> uIAResizeElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAResizeElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAResizeElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAResizeElementresizeWidthTypeInput>> uIAResizeElementresizeWidthType = null, Expression<Func<uIAResizeElementresizeHeightTypeInput>> uIAResizeElementresizeHeightType = null)
         {
             var apiCallPath = "/UIAControl/UIAResizeElement";
             var apiCallHttpMethod = "post";
@@ -6160,103 +6160,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAResizeElement = new JObject();
             var uIAResizeElementpropCount = 0;
             uIAResizeElementpropCount++;
-            uIAResizeElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAResizeElementParentWindowHandle);
-            if (uIAResizeElementSearchElementName != null)
+            uIAResizeElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAResizeElementparentWindowHandle);
+            if (uIAResizeElementsearchElementName != null)
             {
-                uIAResizeElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAResizeElementSearchElementName);
+                uIAResizeElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementName);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSearchElementClassName != null)
+            if (uIAResizeElementsearchElementClassName != null)
             {
-                uIAResizeElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAResizeElementSearchElementClassName);
+                uIAResizeElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementClassName);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSearchElementAutomationId != null)
+            if (uIAResizeElementsearchElementAutomationId != null)
             {
-                uIAResizeElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAResizeElementSearchElementAutomationId);
+                uIAResizeElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAResizeElementsearchElementAutomationId);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSearchLocalizedControlType != null)
+            if (uIAResizeElementsearchLocalizedControlType != null)
             {
-                uIAResizeElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAResizeElementSearchLocalizedControlType);
+                uIAResizeElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAResizeElementsearchLocalizedControlType);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSearchSubTree != null)
+            if (uIAResizeElementsearchSubTree != null)
             {
-                uIAResizeElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAResizeElementSearchSubTree);
+                uIAResizeElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAResizeElementsearchSubTree);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementMatchIndex != null)
+            if (uIAResizeElementmatchIndex != null)
             {
-                uIAResizeElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAResizeElementMatchIndex);
+                uIAResizeElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndex);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSearchFilter != null)
+            if (uIAResizeElementsearchFilter != null)
             {
-                uIAResizeElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAResizeElementSearchFilter);
+                uIAResizeElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAResizeElementsearchFilter);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementSortByColumn != null)
+            if (uIAResizeElementsortByColumn != null)
             {
-                uIAResizeElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAResizeElementSortByColumn);
+                uIAResizeElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAResizeElementsortByColumn);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementMatchIndexAscending != null)
+            if (uIAResizeElementmatchIndexAscending != null)
             {
-                uIAResizeElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAResizeElementMatchIndexAscending);
+                uIAResizeElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndexAscending);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementMaxElementsToSearch != null)
+            if (uIAResizeElementmaxElementsToSearch != null)
             {
-                uIAResizeElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAResizeElementMaxElementsToSearch);
+                uIAResizeElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAResizeElementmaxElementsToSearch);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementMaxRelativeSearchDepth != null)
+            if (uIAResizeElementmaxRelativeSearchDepth != null)
             {
-                uIAResizeElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAResizeElementMaxRelativeSearchDepth);
+                uIAResizeElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAResizeElementmaxRelativeSearchDepth);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementMaxChildElementsToSearchPerNode != null)
+            if (uIAResizeElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAResizeElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAResizeElementMaxChildElementsToSearchPerNode);
+                uIAResizeElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAResizeElementmaxChildElementsToSearchPerNode);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAResizeElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAResizeElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAResizeElementElementLocalizedControlTypesNotToTraverse);
+                uIAResizeElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAResizeElementelementLocalizedControlTypesNotToTraverse);
                 uIAResizeElementpropCount++;
             }
 
-            if (uIAResizeElementResizeWidthType != null)
+            if (uIAResizeElementresizeWidthType != null)
             {
-                uIAResizeElement["ResizeWidthType"] = ExpressionConverter.ConvertO(uIAResizeElementResizeWidthType);
-                uIAResizeElementpropCount++;
-            }
-
-            uIAResizeElementpropCount++;
-            uIAResizeElement["NewWidth"] = ExpressionConverter.ConvertO(uIAResizeElementNewWidth);
-            if (uIAResizeElementResizeHeightType != null)
-            {
-                uIAResizeElement["ResizeHeightType"] = ExpressionConverter.ConvertO(uIAResizeElementResizeHeightType);
+                uIAResizeElement["ResizeWidthType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeWidthType);
                 uIAResizeElementpropCount++;
             }
 
             uIAResizeElementpropCount++;
-            uIAResizeElement["NewHeight"] = ExpressionConverter.ConvertO(uIAResizeElementNewHeight);
+            uIAResizeElement["NewWidth"] = ExpressionConverter.ConvertO(uIAResizeElementnewWidth);
+            if (uIAResizeElementresizeHeightType != null)
+            {
+                uIAResizeElement["ResizeHeightType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeHeightType);
+                uIAResizeElementpropCount++;
+            }
+
             uIAResizeElementpropCount++;
-            uIAResizeElement["Workflow"] = ExpressionConverter.ConvertO(uIAResizeElementWorkflow);
+            uIAResizeElement["NewHeight"] = ExpressionConverter.ConvertO(uIAResizeElementnewHeight);
+            uIAResizeElementpropCount++;
+            uIAResizeElement["Workflow"] = ExpressionConverter.ConvertO(uIAResizeElementworkflow);
             if (uIAResizeElementpropCount > 0)
             {
                 callPayload.Body = uIAResizeElement;
@@ -6266,7 +6266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIALocateVisibleSearchImageWithinElementResponse> UIALocateVisibleSearchImageWithinElement(Expression<Func<int>> uIALocateVisibleSearchImageWithinElementParentWindowHandle, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementWorkflow, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchElementName = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchElementClassName = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchElementAutomationId = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchLocalizedControlType = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementSearchSubTree = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMatchIndex = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchFilter = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSortByColumn = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementMatchIndexAscending = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxElementsToSearch = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIALocateVisibleSearchImageWithinElementSearchImageTypeInput>> uIALocateVisibleSearchImageWithinElementSearchImageType = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementSearchImage = null, Expression<Func<uIALocateVisibleSearchImageWithinElementAltSearchImageTypeInput>> uIALocateVisibleSearchImageWithinElementAltSearchImageType = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementAltSearchImage = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxColourDeviation = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxPixelDifferences = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementMaxConsecutivePixelDifferences = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementLeftPixelXOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementRightPixelXOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementTopPixelYOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementBottomPixelYOffset = null, Expression<Func<uIALocateVisibleSearchImageWithinElementPixelXOffsetsUnitInput>> uIALocateVisibleSearchImageWithinElementPixelXOffsetsUnit = null, Expression<Func<uIALocateVisibleSearchImageWithinElementPixelYOffsetsUnitInput>> uIALocateVisibleSearchImageWithinElementPixelYOffsetsUnit = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementSearchImageIndex = null, Expression<Func<uIALocateVisibleSearchImageWithinElementImageSearchDirectionInput>> uIALocateVisibleSearchImageWithinElementImageSearchDirection = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementHideAgent = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementReturnPhysicalCoordinates = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementShowHighlightRectangle = null)
+        public IBodyWorkflowAction<UIALocateVisibleSearchImageWithinElementResponse> UIALocateVisibleSearchImageWithinElement(Expression<Func<int>> uIALocateVisibleSearchImageWithinElementparentWindowHandle, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementworkflow, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchElementName = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchElementClassName = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchElementAutomationId = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementsearchSubTree = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmatchIndex = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchFilter = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsortByColumn = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementmatchIndexAscending = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxElementsToSearch = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIALocateVisibleSearchImageWithinElementsearchImageTypeInput>> uIALocateVisibleSearchImageWithinElementsearchImageType = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementsearchImage = null, Expression<Func<uIALocateVisibleSearchImageWithinElementaltSearchImageTypeInput>> uIALocateVisibleSearchImageWithinElementaltSearchImageType = null, Expression<Func<string>> uIALocateVisibleSearchImageWithinElementaltSearchImage = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxColourDeviation = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxPixelDifferences = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementleftPixelXOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementrightPixelXOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementtopPixelYOffset = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementbottomPixelYOffset = null, Expression<Func<uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnitInput>> uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit = null, Expression<Func<uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnitInput>> uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit = null, Expression<Func<int>> uIALocateVisibleSearchImageWithinElementsearchImageIndex = null, Expression<Func<uIALocateVisibleSearchImageWithinElementimageSearchDirectionInput>> uIALocateVisibleSearchImageWithinElementimageSearchDirection = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementhideAgent = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates = null, Expression<Func<bool>> uIALocateVisibleSearchImageWithinElementshowHighlightRectangle = null)
         {
             var apiCallPath = "/UIAControl/UIALocateVisibleSearchImageWithinElement";
             var apiCallHttpMethod = "post";
@@ -6274,195 +6274,195 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIALocateVisibleSearchImageWithinElement = new JObject();
             var uIALocateVisibleSearchImageWithinElementpropCount = 0;
             uIALocateVisibleSearchImageWithinElementpropCount++;
-            uIALocateVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementParentWindowHandle);
-            if (uIALocateVisibleSearchImageWithinElementSearchElementName != null)
+            uIALocateVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementparentWindowHandle);
+            if (uIALocateVisibleSearchImageWithinElementsearchElementName != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchElementName);
+                uIALocateVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementName);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchElementClassName != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchElementClassName != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchElementClassName);
+                uIALocateVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementClassName);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchElementAutomationId != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchElementAutomationId != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchElementAutomationId);
+                uIALocateVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchElementAutomationId);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchLocalizedControlType != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchLocalizedControlType);
+                uIALocateVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchLocalizedControlType);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchSubTree != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchSubTree != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchSubTree);
+                uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchSubTree);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMatchIndex != null)
+            if (uIALocateVisibleSearchImageWithinElementmatchIndex != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMatchIndex);
+                uIALocateVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndex);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchFilter != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchFilter != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchFilter);
+                uIALocateVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchFilter);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSortByColumn != null)
+            if (uIALocateVisibleSearchImageWithinElementsortByColumn != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSortByColumn);
+                uIALocateVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsortByColumn);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMatchIndexAscending != null)
+            if (uIALocateVisibleSearchImageWithinElementmatchIndexAscending != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMatchIndexAscending);
+                uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndexAscending);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxElementsToSearch != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxElementsToSearch != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxElementsToSearch);
+                uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxRelativeSearchDepth != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxRelativeSearchDepth);
+                uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode);
+                uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse);
+                uIALocateVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchImageType != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchImageType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchImageType);
+                uIALocateVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageType);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchImage != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchImage != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchImage);
+                uIALocateVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImage);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementAltSearchImageType != null)
+            if (uIALocateVisibleSearchImageWithinElementaltSearchImageType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementAltSearchImageType);
+                uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImageType);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementAltSearchImage != null)
+            if (uIALocateVisibleSearchImageWithinElementaltSearchImage != null)
             {
-                uIALocateVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementAltSearchImage);
+                uIALocateVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImage);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxColourDeviation != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxColourDeviation != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxColourDeviation);
+                uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxColourDeviation);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxPixelDifferences != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxPixelDifferences != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxPixelDifferences);
+                uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementMaxConsecutivePixelDifferences != null)
+            if (uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementMaxConsecutivePixelDifferences);
+                uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementLeftPixelXOffset != null)
+            if (uIALocateVisibleSearchImageWithinElementleftPixelXOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementLeftPixelXOffset);
+                uIALocateVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementleftPixelXOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementRightPixelXOffset != null)
+            if (uIALocateVisibleSearchImageWithinElementrightPixelXOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementRightPixelXOffset);
+                uIALocateVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementrightPixelXOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementTopPixelYOffset != null)
+            if (uIALocateVisibleSearchImageWithinElementtopPixelYOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementTopPixelYOffset);
+                uIALocateVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementtopPixelYOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementBottomPixelYOffset != null)
+            if (uIALocateVisibleSearchImageWithinElementbottomPixelYOffset != null)
             {
-                uIALocateVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementBottomPixelYOffset);
+                uIALocateVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementbottomPixelYOffset);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementPixelXOffsetsUnit != null)
+            if (uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
             {
-                uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementPixelXOffsetsUnit);
+                uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementPixelYOffsetsUnit != null)
+            if (uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
             {
-                uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementPixelYOffsetsUnit);
+                uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementSearchImageIndex != null)
+            if (uIALocateVisibleSearchImageWithinElementsearchImageIndex != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementSearchImageIndex);
+                uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageIndex);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementImageSearchDirection != null)
+            if (uIALocateVisibleSearchImageWithinElementimageSearchDirection != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementImageSearchDirection);
+                uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementimageSearchDirection);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementHideAgent != null)
+            if (uIALocateVisibleSearchImageWithinElementhideAgent != null)
             {
-                uIALocateVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementHideAgent);
+                uIALocateVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementhideAgent);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementReturnPhysicalCoordinates != null)
+            if (uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementReturnPhysicalCoordinates);
+                uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIALocateVisibleSearchImageWithinElementShowHighlightRectangle != null)
+            if (uIALocateVisibleSearchImageWithinElementshowHighlightRectangle != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementShowHighlightRectangle);
+                uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle);
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             uIALocateVisibleSearchImageWithinElementpropCount++;
-            uIALocateVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementWorkflow);
+            uIALocateVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementworkflow);
             if (uIALocateVisibleSearchImageWithinElementpropCount > 0)
             {
                 callPayload.Body = uIALocateVisibleSearchImageWithinElement;
@@ -6472,237 +6472,237 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageWithinElementResponse> UIAWaitForVisibleSearchImageWithinElement(Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementWorkflow, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementParentWindowHandle = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchElementName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchElementClassName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementSearchSubTree = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMatchIndex = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchFilter = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSortByColumn = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementMatchIndexAscending = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementSearchImageTypeInput>> uIAWaitForVisibleSearchImageWithinElementSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementSearchImage = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementAltSearchImageTypeInput>> uIAWaitForVisibleSearchImageWithinElementAltSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementAltSearchImage = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxColourDeviation = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxPixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMaxConsecutivePixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementLeftPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementRightPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementTopPixelYOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementBottomPixelYOffset = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementPixelXOffsetsUnitInput>> uIAWaitForVisibleSearchImageWithinElementPixelXOffsetsUnit = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementPixelYOffsetsUnitInput>> uIAWaitForVisibleSearchImageWithinElementPixelYOffsetsUnit = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementSearchImageIndex = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementImageSearchDirectionInput>> uIAWaitForVisibleSearchImageWithinElementImageSearchDirection = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementHideAgent = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementReturnPhysicalCoordinates = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementShowHighlightRectangle = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementSecondsToWait = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementMillisecondsBetweenSearches = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementRaiseExceptionIfImageNotFound = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementRetrieveOutputDataFromThreadId = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementWaitForThread = null)
+        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageWithinElementResponse> UIAWaitForVisibleSearchImageWithinElement(Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementworkflow, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementparentWindowHandle = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchElementName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchElementClassName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementsearchSubTree = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmatchIndex = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchFilter = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsortByColumn = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementsearchImageTypeInput>> uIAWaitForVisibleSearchImageWithinElementsearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementsearchImage = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementaltSearchImageTypeInput>> uIAWaitForVisibleSearchImageWithinElementaltSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageWithinElementaltSearchImage = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnitInput>> uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnitInput>> uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementsearchImageIndex = null, Expression<Func<uIAWaitForVisibleSearchImageWithinElementimageSearchDirectionInput>> uIAWaitForVisibleSearchImageWithinElementimageSearchDirection = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementhideAgent = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementsecondsToWait = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound = null, Expression<Func<int>> uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageWithinElementwaitForThread = null)
         {
             var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageWithinElement";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAWaitForVisibleSearchImageWithinElement = new JObject();
             var uIAWaitForVisibleSearchImageWithinElementpropCount = 0;
-            if (uIAWaitForVisibleSearchImageWithinElementParentWindowHandle != null)
+            if (uIAWaitForVisibleSearchImageWithinElementparentWindowHandle != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementParentWindowHandle);
+                uIAWaitForVisibleSearchImageWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementparentWindowHandle);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchElementName != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchElementName != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchElementName);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementName);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchElementClassName != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchElementClassName != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchElementClassName);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementClassName);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchElementAutomationId != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchElementAutomationId);
+                uIAWaitForVisibleSearchImageWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchElementAutomationId);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchLocalizedControlType != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchLocalizedControlType);
+                uIAWaitForVisibleSearchImageWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchLocalizedControlType);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchSubTree != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchSubTree != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchSubTree);
+                uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchSubTree);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMatchIndex != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmatchIndex != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMatchIndex);
+                uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndex);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchFilter != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchFilter != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchFilter);
+                uIAWaitForVisibleSearchImageWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchFilter);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSortByColumn != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsortByColumn != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSortByColumn);
+                uIAWaitForVisibleSearchImageWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsortByColumn);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMatchIndexAscending != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMatchIndexAscending);
+                uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxElementsToSearch != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxElementsToSearch);
+                uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxRelativeSearchDepth != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxRelativeSearchDepth);
+                uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxChildElementsToSearchPerNode);
+                uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForVisibleSearchImageWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchImageType != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchImageType);
+                uIAWaitForVisibleSearchImageWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageType);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchImage != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchImage != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchImage);
+                uIAWaitForVisibleSearchImageWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImage);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementAltSearchImageType != null)
+            if (uIAWaitForVisibleSearchImageWithinElementaltSearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementAltSearchImageType);
+                uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementAltSearchImage != null)
+            if (uIAWaitForVisibleSearchImageWithinElementaltSearchImage != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementAltSearchImage);
+                uIAWaitForVisibleSearchImageWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImage);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxColourDeviation != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxColourDeviation);
+                uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxPixelDifferences != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxPixelDifferences);
+                uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMaxConsecutivePixelDifferences != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMaxConsecutivePixelDifferences);
+                uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementLeftPixelXOffset != null)
+            if (uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementLeftPixelXOffset);
+                uIAWaitForVisibleSearchImageWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementleftPixelXOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementRightPixelXOffset != null)
+            if (uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementRightPixelXOffset);
+                uIAWaitForVisibleSearchImageWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementrightPixelXOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementTopPixelYOffset != null)
+            if (uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementTopPixelYOffset);
+                uIAWaitForVisibleSearchImageWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementtopPixelYOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementBottomPixelYOffset != null)
+            if (uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementBottomPixelYOffset);
+                uIAWaitForVisibleSearchImageWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementbottomPixelYOffset);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementPixelXOffsetsUnit != null)
+            if (uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementPixelXOffsetsUnit);
+                uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementPixelYOffsetsUnit != null)
+            if (uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementPixelYOffsetsUnit);
+                uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSearchImageIndex != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsearchImageIndex != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSearchImageIndex);
+                uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementImageSearchDirection != null)
+            if (uIAWaitForVisibleSearchImageWithinElementimageSearchDirection != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementImageSearchDirection);
+                uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementHideAgent != null)
+            if (uIAWaitForVisibleSearchImageWithinElementhideAgent != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementHideAgent);
+                uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementhideAgent);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementReturnPhysicalCoordinates != null)
+            if (uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementReturnPhysicalCoordinates);
+                uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementShowHighlightRectangle != null)
+            if (uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementShowHighlightRectangle);
+                uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementSecondsToWait != null)
+            if (uIAWaitForVisibleSearchImageWithinElementsecondsToWait != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementSecondsToWait);
+                uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsecondsToWait);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementMillisecondsBetweenSearches != null)
+            if (uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementMillisecondsBetweenSearches);
+                uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementRaiseExceptionIfImageNotFound != null)
+            if (uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementRaiseExceptionIfImageNotFound);
+                uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementRetrieveOutputDataFromThreadId != null)
+            if (uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementRetrieveOutputDataFromThreadId);
+                uIAWaitForVisibleSearchImageWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementretrieveOutputDataFromThreadId);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageWithinElementWaitForThread != null)
+            if (uIAWaitForVisibleSearchImageWithinElementwaitForThread != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementWaitForThread);
+                uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementwaitForThread);
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             uIAWaitForVisibleSearchImageWithinElementpropCount++;
-            uIAWaitForVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementWorkflow);
+            uIAWaitForVisibleSearchImageWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementworkflow);
             if (uIAWaitForVisibleSearchImageWithinElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForVisibleSearchImageWithinElement;
@@ -6712,231 +6712,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse> UIAWaitForVisibleSearchImageToNotExistWithinElement(Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementWorkflow, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementParentWindowHandle = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementClassName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementAutomationId = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchLocalizedControlType = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchSubTree = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndex = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchFilter = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSortByColumn = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndexAscending = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxElementsToSearch = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementElementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageTypeInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImage = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImageTypeInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImage = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxColourDeviation = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxPixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMaxConsecutivePixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementLeftPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementRightPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementTopPixelYOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementBottomPixelYOffset = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementPixelXOffsetsUnitInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementPixelXOffsetsUnit = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementPixelYOffsetsUnitInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementPixelYOffsetsUnit = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageIndex = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementImageSearchDirectionInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementImageSearchDirection = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementHideAgent = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementShowHighlightRectangle = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementSecondsToWait = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementMillisecondsBetweenSearches = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementRaiseExceptionIfImageStillPresent = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementRetrieveOutputDataFromThreadId = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementWaitForThread = null)
+        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse> UIAWaitForVisibleSearchImageToNotExistWithinElement(Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageTypeInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageTypeInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType = null, Expression<Func<string>> uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnitInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnitInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex = null, Expression<Func<uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirectionInput>> uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent = null, Expression<Func<int>> uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId = null, Expression<Func<bool>> uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread = null)
         {
             var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageToNotExistWithinElement";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var uIAWaitForVisibleSearchImageToNotExistWithinElement = new JObject();
             var uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount = 0;
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementParentWindowHandle != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementParentWindowHandle);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ParentWindowHandle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementparentWindowHandle);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementName != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementName);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementName);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementClassName != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementClassName);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementClassName"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementClassName);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementAutomationId != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchElementAutomationId);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchElementAutomationId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchElementAutomationId);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchLocalizedControlType != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchLocalizedControlType);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchLocalizedControlType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchLocalizedControlType);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchSubTree != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchSubTree);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndex != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndex);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchFilter != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchFilter);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchFilter"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchFilter);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSortByColumn != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSortByColumn);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SortByColumn"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsortByColumn);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndexAscending != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMatchIndexAscending);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxElementsToSearch != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxElementsToSearch);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxRelativeSearchDepth != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxRelativeSearchDepth);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxChildElementsToSearchPerNode != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxChildElementsToSearchPerNode);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementElementLocalizedControlTypesNotToTraverse != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementElementLocalizedControlTypesNotToTraverse);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ElementLocalizedControlTypesNotToTraverse"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementelementLocalizedControlTypesNotToTraverse);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageType != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageType);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageType);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImage != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImage);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImage);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImageType != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImageType);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImage != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImage);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImage"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImage);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxColourDeviation != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxColourDeviation);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxPixelDifferences != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxPixelDifferences);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMaxConsecutivePixelDifferences != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMaxConsecutivePixelDifferences);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementLeftPixelXOffset != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementLeftPixelXOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["LeftPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementleftPixelXOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementRightPixelXOffset != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementRightPixelXOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RightPixelXOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementrightPixelXOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementTopPixelYOffset != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementTopPixelYOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["TopPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementtopPixelYOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementBottomPixelYOffset != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementBottomPixelYOffset);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["BottomPixelYOffset"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementbottomPixelYOffset);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementPixelXOffsetsUnit != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementPixelXOffsetsUnit);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementPixelYOffsetsUnit != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementPixelYOffsetsUnit);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageIndex != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageIndex);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementImageSearchDirection != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementImageSearchDirection);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementHideAgent != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementHideAgent);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementShowHighlightRectangle != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementShowHighlightRectangle);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementSecondsToWait != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementSecondsToWait);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementMillisecondsBetweenSearches != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementMillisecondsBetweenSearches);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementRaiseExceptionIfImageStillPresent != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementRaiseExceptionIfImageStillPresent);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementRetrieveOutputDataFromThreadId != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementRetrieveOutputDataFromThreadId);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementretrieveOutputDataFromThreadId);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
-            if (uIAWaitForVisibleSearchImageToNotExistWithinElementWaitForThread != null)
+            if (uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementWaitForThread);
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread);
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
-            uIAWaitForVisibleSearchImageToNotExistWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementWorkflow);
+            uIAWaitForVisibleSearchImageToNotExistWithinElement["Workflow"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementworkflow);
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount > 0)
             {
                 callPayload.Body = uIAWaitForVisibleSearchImageToNotExistWithinElement;
@@ -7096,7 +7096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool ElementExistsAfterWait { get; set; }
     }
 
-    public enum uIAGlobalMouseClickOnElementOffsetRelativeToInput
+    public enum uIAGlobalMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -7113,7 +7113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public enum uIAGlobalRightMouseClickOnElementOffsetRelativeToInput
+    public enum uIAGlobalRightMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -7130,7 +7130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public enum uIAGlobalMiddleMouseClickOnElementOffsetRelativeToInput
+    public enum uIAGlobalMiddleMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -7147,7 +7147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public enum uIAGlobalDoubleLeftMouseClickOnElementOffsetRelativeToInput
+    public enum uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -7230,7 +7230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ScreenBitmapBase64 { get; set; }
     }
 
-    public enum uIATakeScreenShotOfElementLocationImageFormatInput
+    public enum uIATakeScreenShotOfElementLocationimageFormatInput
     {
         PNG,
         JPG,
@@ -7344,7 +7344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
-    public enum uIAGlobalMouseClickElementSearchColourRegionMouseButtonInput
+    public enum uIAGlobalMouseClickElementSearchColourRegionmouseButtonInput
     {
         Left,
         Right,
@@ -7353,7 +7353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         DoubleLeft
     }
 
-    public enum uIAGlobalMouseClickElementSearchColourRegionOffsetRelativeToInput
+    public enum uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeToInput
     {
         Center,
         Centre,
@@ -7384,7 +7384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
-    public enum setUIAElementSearchModeUIAElementSearchModeInput
+    public enum setUIAElementSearchModeuIAElementSearchModeInput
     {
         FindAll,
         TreeWalkRaw
@@ -7425,13 +7425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
-    public enum uIAMoveElementHorizontalMovementTypeInput
+    public enum uIAMoveElementhorizontalMovementTypeInput
     {
         Absolute,
         Relative
     }
 
-    public enum uIAMoveElementVerticalMovementTypeInput
+    public enum uIAMoveElementverticalMovementTypeInput
     {
         Absolute,
         Relative
@@ -7443,13 +7443,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
-    public enum uIAResizeElementResizeWidthTypeInput
+    public enum uIAResizeElementresizeWidthTypeInput
     {
         Absolute,
         Relative
     }
 
-    public enum uIAResizeElementResizeHeightTypeInput
+    public enum uIAResizeElementresizeHeightTypeInput
     {
         Absolute,
         Relative
@@ -7473,7 +7473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int SearchImageBoundingBoxScreenCenterPixelYCoord { get; set; }
     }
 
-    public enum uIALocateVisibleSearchImageWithinElementSearchImageTypeInput
+    public enum uIALocateVisibleSearchImageWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -7482,7 +7482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIALocateVisibleSearchImageWithinElementAltSearchImageTypeInput
+    public enum uIALocateVisibleSearchImageWithinElementaltSearchImageTypeInput
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -7492,19 +7492,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIALocateVisibleSearchImageWithinElementPixelXOffsetsUnitInput
+    public enum uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIALocateVisibleSearchImageWithinElementPixelYOffsetsUnitInput
+    public enum uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIALocateVisibleSearchImageWithinElementImageSearchDirectionInput
+    public enum uIALocateVisibleSearchImageWithinElementimageSearchDirectionInput
     {
         FromTop,
         FromBottom,
@@ -7531,7 +7531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
-    public enum uIAWaitForVisibleSearchImageWithinElementSearchImageTypeInput
+    public enum uIAWaitForVisibleSearchImageWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -7540,7 +7540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIAWaitForVisibleSearchImageWithinElementAltSearchImageTypeInput
+    public enum uIAWaitForVisibleSearchImageWithinElementaltSearchImageTypeInput
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -7550,19 +7550,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIAWaitForVisibleSearchImageWithinElementPixelXOffsetsUnitInput
+    public enum uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIAWaitForVisibleSearchImageWithinElementPixelYOffsetsUnitInput
+    public enum uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIAWaitForVisibleSearchImageWithinElementImageSearchDirectionInput
+    public enum uIAWaitForVisibleSearchImageWithinElementimageSearchDirectionInput
     {
         FromTop,
         FromBottom,
@@ -7578,7 +7578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
-    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementSearchImageTypeInput
+    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -7587,7 +7587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementAltSearchImageTypeInput
+    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageTypeInput
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -7597,19 +7597,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
-    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementPixelXOffsetsUnitInput
+    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementPixelYOffsetsUnitInput
+    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
-    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementImageSearchDirectionInput
+    public enum uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirectionInput
     {
         FromTop,
         FromBottom,

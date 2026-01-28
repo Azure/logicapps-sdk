@@ -21,95 +21,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
             var bodypropCount = 0;
             bodypropCount++;
             body["diagram_source"] = ExpressionConverter.ConvertO(bodydiagramSource);
-            var diagram_optionsObject = new JObject();
-            var diagram_optionsObjectpropCount = 0;
+            var diagramOptionsObject = new JObject();
+            var diagramOptionsObjectpropCount = 0;
             if (bodydiagramOptionskey != null)
             {
-                diagram_optionsObject["key"] = ExpressionConverter.ConvertO(bodydiagramOptionskey);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["key"] = ExpressionConverter.ConvertO(bodydiagramOptionskey);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsantialias != null)
             {
-                diagram_optionsObject["antialias"] = ExpressionConverter.ConvertO(bodydiagramOptionsantialias);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["antialias"] = ExpressionConverter.ConvertO(bodydiagramOptionsantialias);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsnoTransparency != null)
             {
-                diagram_optionsObject["no-transparency"] = ExpressionConverter.ConvertO(bodydiagramOptionsnoTransparency);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["no-transparency"] = ExpressionConverter.ConvertO(bodydiagramOptionsnoTransparency);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionssize != null)
             {
-                diagram_optionsObject["size"] = ExpressionConverter.ConvertO(bodydiagramOptionssize);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["size"] = ExpressionConverter.ConvertO(bodydiagramOptionssize);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsnoDoctype != null)
             {
-                diagram_optionsObject["no-doctype"] = ExpressionConverter.ConvertO(bodydiagramOptionsnoDoctype);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["no-doctype"] = ExpressionConverter.ConvertO(bodydiagramOptionsnoDoctype);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionstheme != null)
             {
-                diagram_optionsObject["theme"] = ExpressionConverter.ConvertO(bodydiagramOptionstheme);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["theme"] = ExpressionConverter.ConvertO(bodydiagramOptionstheme);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionssketch != null)
             {
-                diagram_optionsObject["sketch"] = ExpressionConverter.ConvertO(bodydiagramOptionssketch);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["sketch"] = ExpressionConverter.ConvertO(bodydiagramOptionssketch);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionslayout != null)
             {
-                diagram_optionsObject["layout"] = ExpressionConverter.ConvertO(bodydiagramOptionslayout);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["layout"] = ExpressionConverter.ConvertO(bodydiagramOptionslayout);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsscale != null)
             {
-                diagram_optionsObject["scale"] = ExpressionConverter.ConvertO(bodydiagramOptionsscale);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["scale"] = ExpressionConverter.ConvertO(bodydiagramOptionsscale);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsviewKey != null)
             {
-                diagram_optionsObject["view-key"] = ExpressionConverter.ConvertO(bodydiagramOptionsviewKey);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["view-key"] = ExpressionConverter.ConvertO(bodydiagramOptionsviewKey);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsbackground != null)
             {
-                diagram_optionsObject["background"] = ExpressionConverter.ConvertO(bodydiagramOptionsbackground);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["background"] = ExpressionConverter.ConvertO(bodydiagramOptionsbackground);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsfontFamily != null)
             {
-                diagram_optionsObject["font-family"] = ExpressionConverter.ConvertO(bodydiagramOptionsfontFamily);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["font-family"] = ExpressionConverter.ConvertO(bodydiagramOptionsfontFamily);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsfontSize != null)
             {
-                diagram_optionsObject["font-size"] = ExpressionConverter.ConvertO(bodydiagramOptionsfontSize);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["font-size"] = ExpressionConverter.ConvertO(bodydiagramOptionsfontSize);
+                diagramOptionsObjectpropCount++;
             }
 
             if (bodydiagramOptionsstrokeWidth != null)
             {
-                diagram_optionsObject["stroke-width"] = ExpressionConverter.ConvertO(bodydiagramOptionsstrokeWidth);
-                diagram_optionsObjectpropCount++;
+                diagramOptionsObject["stroke-width"] = ExpressionConverter.ConvertO(bodydiagramOptionsstrokeWidth);
+                diagramOptionsObjectpropCount++;
             }
 
-            if (diagram_optionsObjectpropCount > 0)
+            if (diagramOptionsObjectpropCount > 0)
             {
-                body["diagram_options"] = diagram_optionsObject;
+                body["diagram_options"] = diagramOptionsObject;
                 bodypropCount++;
             }
 

@@ -82,6 +82,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
             return new ApiConnectionAction(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
+        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
+        {
+            var apiCallPath = "/v3/pa_send_envelope";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            if (bodysubject != null)
+            {
+                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                bodypropCount++;
+            }
+
+            if (bodydescription != null)
+            {
+                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+            bodypropCount++;
+            body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+            var envelopeOptionsObject = new JObject();
+            var envelopeOptionsObjectpropCount = 0;
+            if (bodyenvelopeOptionssignInSequentialOrder != null)
+            {
+                envelopeOptionsObject["sign_in_sequential_order"] = ExpressionConverter.ConvertO(bodyenvelopeOptionssignInSequentialOrder);
+                envelopeOptionsObjectpropCount++;
+            }
+
+            if (envelopeOptionsObjectpropCount > 0)
+            {
+                body["envelope_options"] = envelopeOptionsObject;
+                bodypropCount++;
+            }
+
+            if (bodycarbonCopies != null)
+            {
+                body["carbon_copies"] = ExpressionConverter.ConvertO(bodycarbonCopies);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateEnvelopeResponse>(callPayload);
+        }
     }
 
     public class EsignTriggers([ConnectionName] string connectionId)
@@ -538,6 +593,493 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     }
 
     public class bodysignersInputItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class CreateEnvelopeResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("envelope_status")]
+        public string EnvelopeStatus { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public string Thumbnail { get; set; }
+
+        [JsonProperty("documents")]
+        public CreateEnvelopeResponseDocumentsTypeItem[] Documents { get; set; }
+
+        [JsonProperty("signers")]
+        public CreateEnvelopeResponseSignersTypeItem[] Signers { get; set; }
+
+        [JsonProperty("envelope_options")]
+        public CreateEnvelopeResponseEnvelopeOptionsType EnvelopeOptions { get; set; }
+
+        [JsonProperty("envelope_meta")]
+        public CreateEnvelopeResponseEnvelopeMetaType EnvelopeMeta { get; set; }
+
+        [JsonProperty("tags")]
+        public CreateEnvelopeResponseTagsTypeItem[] Tags { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("document_status")]
+        public string DocumentStatus { get; set; }
+
+        [JsonProperty("upload_file")]
+        public CreateEnvelopeResponseDocumentsTypeItemUploadFileType UploadFile { get; set; }
+
+        [JsonProperty("document_file")]
+        public CreateEnvelopeResponseDocumentsTypeItemDocumentFileType DocumentFile { get; set; }
+
+        [JsonProperty("attachment_files")]
+        public CreateEnvelopeResponseDocumentsTypeItemAttachmentFilesTypeItem[] AttachmentFiles { get; set; }
+
+        [JsonProperty("last_interaction")]
+        public string LastInteraction { get; set; }
+
+        [JsonProperty("document_fields")]
+        public CreateEnvelopeResponseDocumentsTypeItemDocumentFieldsTypeItem[] DocumentFields { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemUploadFileType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_size")]
+        public int FileSize { get; set; }
+
+        [JsonProperty("processing")]
+        public bool Processing { get; set; }
+
+        [JsonProperty("date_created")]
+        public string DateCreated { get; set; }
+
+        [JsonProperty("pages")]
+        public int Pages { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public string Thumbnail { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("images")]
+        public CreateEnvelopeResponseDocumentsTypeItemUploadFileTypeImagesTypeItem[] Images { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemUploadFileTypeImagesTypeItem
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("thumb_url")]
+        public string ThumbUrl { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemDocumentFileType
+    {
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
+
+        [JsonProperty("pages")]
+        public int Pages { get; set; }
+
+        [JsonProperty("signature_certificate_page")]
+        public int SignatureCertificatePage { get; set; }
+
+        [JsonProperty("images")]
+        public CreateEnvelopeResponseDocumentsTypeItemDocumentFileTypeImagesTypeItem[] Images { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemDocumentFileTypeImagesTypeItem
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("thumb_url")]
+        public string ThumbUrl { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemAttachmentFilesTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_size")]
+        public int FileSize { get; set; }
+
+        [JsonProperty("processing")]
+        public bool Processing { get; set; }
+
+        [JsonProperty("date_created")]
+        public string DateCreated { get; set; }
+
+        [JsonProperty("pages")]
+        public int Pages { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public string Thumbnail { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("images")]
+        public CreateEnvelopeResponseDocumentsTypeItemAttachmentFilesTypeItemImagesTypeItem[] Images { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemAttachmentFilesTypeItemImagesTypeItem
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("thumb_url")]
+        public string ThumbUrl { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemDocumentFieldsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("signer_email")]
+        public string SignerEmail { get; set; }
+
+        [JsonProperty("signer_id")]
+        public string SignerId { get; set; }
+
+        [JsonProperty("field_type")]
+        public string FieldType { get; set; }
+
+        [JsonProperty("field_required")]
+        public bool FieldRequired { get; set; }
+
+        [JsonProperty("field_placeholder")]
+        public string FieldPlaceholder { get; set; }
+
+        [JsonProperty("field_amount")]
+        public string FieldAmount { get; set; }
+
+        [JsonProperty("field_value")]
+        public string FieldValue { get; set; }
+
+        [JsonProperty("field_dropdown_options")]
+        public string[] FieldDropdownOptions { get; set; }
+
+        [JsonProperty("document_position")]
+        public CreateEnvelopeResponseDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType DocumentPosition { get; set; }
+    }
+
+    public class CreateEnvelopeResponseDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType
+    {
+        [JsonProperty("x")]
+        public string X { get; set; }
+
+        [JsonProperty("y")]
+        public string Y { get; set; }
+
+        [JsonProperty("width")]
+        public string Width { get; set; }
+
+        [JsonProperty("height")]
+        public string Height { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("page")]
+        public int Page { get; set; }
+    }
+
+    public class CreateEnvelopeResponseSignersTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("viewed")]
+        public CreateEnvelopeResponseSignersTypeItemViewedType Viewed { get; set; }
+
+        [JsonProperty("envelope_status")]
+        public CreateEnvelopeResponseSignersTypeItemEnvelopeStatusType EnvelopeStatus { get; set; }
+
+        [JsonProperty("individual_document_status")]
+        public CreateEnvelopeResponseSignersTypeItemIndividualDocumentStatusTypeItem[] IndividualDocumentStatus { get; set; }
+
+        [JsonProperty("signer_details")]
+        public CreateEnvelopeResponseSignersTypeItemSignerDetailsType SignerDetails { get; set; }
+    }
+
+    public class CreateEnvelopeResponseSignersTypeItemViewedType
+    {
+        [JsonProperty("last")]
+        public string Last { get; set; }
+
+        [JsonProperty("amount_of_times")]
+        public int AmountOfTimes { get; set; }
+    }
+
+    public class CreateEnvelopeResponseSignersTypeItemEnvelopeStatusType
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("signed_at")]
+        public string SignedAt { get; set; }
+
+        [JsonProperty("declined_at")]
+        public string DeclinedAt { get; set; }
+    }
+
+    public class CreateEnvelopeResponseSignersTypeItemIndividualDocumentStatusTypeItem
+    {
+        [JsonProperty("document_id")]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("signed_at")]
+        public string SignedAt { get; set; }
+
+        [JsonProperty("declined_at")]
+        public string DeclinedAt { get; set; }
+
+        [JsonProperty("declined_reason")]
+        public string DeclinedReason { get; set; }
+    }
+
+    public class CreateEnvelopeResponseSignersTypeItemSignerDetailsType
+    {
+        [JsonProperty("authenticated_user")]
+        public bool AuthenticatedUser { get; set; }
+
+        [JsonProperty("current_sequential_signer")]
+        public bool CurrentSequentialSigner { get; set; }
+
+        [JsonProperty("registered_user")]
+        public bool RegisteredUser { get; set; }
+
+        [JsonProperty("id_checker_document")]
+        public string IdCheckerDocument { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeOptionsType
+    {
+        [JsonProperty("dont_send_signing_emails")]
+        public bool DontSendSigningEmails { get; set; }
+
+        [JsonProperty("sign_in_sequential_order")]
+        public bool SignInSequentialOrder { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeMetaType
+    {
+        [JsonProperty("last_interaction")]
+        public string LastInteraction { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("audit_trail")]
+        public CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItem[] AuditTrail { get; set; }
+
+        [JsonProperty("author")]
+        public CreateEnvelopeResponseEnvelopeMetaTypeAuthorType Author { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("datetime")]
+        public string Datetime { get; set; }
+
+        [JsonProperty("action")]
+        public string Action { get; set; }
+
+        [JsonProperty("concern")]
+        public CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItemConcernType Concern { get; set; }
+
+        [JsonProperty("resource")]
+        public CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItemResourceType Resource { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItemConcernType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeMetaTypeAuditTrailTypeItemResourceType
+    {
+        [JsonProperty("instance")]
+        public string Instance { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class CreateEnvelopeResponseEnvelopeMetaTypeAuthorType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class CreateEnvelopeResponseTagsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class bodydocumentsInputItem
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("upload_file")]
+        public bodydocumentsInputItemUploadFileType UploadFile { get; set; }
+
+        [JsonProperty("attachment_files")]
+        public bodydocumentsInputItemAttachmentFilesTypeItem[] AttachmentFiles { get; set; }
+
+        [JsonProperty("document_fields")]
+        public bodydocumentsInputItemDocumentFieldsTypeItem[] DocumentFields { get; set; }
+    }
+
+    public class bodydocumentsInputItemUploadFileType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class bodydocumentsInputItemAttachmentFilesTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class bodydocumentsInputItemDocumentFieldsTypeItem
+    {
+        [JsonProperty("signer_email")]
+        public string SignerEmail { get; set; }
+
+        [JsonProperty("field_type")]
+        public bodydocumentsInputItemDocumentFieldsTypeItemFieldTypeType FieldType { get; set; }
+
+        [JsonProperty("field_required")]
+        public bool FieldRequired { get; set; }
+
+        [JsonProperty("field_placeholder")]
+        public string FieldPlaceholder { get; set; }
+
+        [JsonProperty("field_value")]
+        public string FieldValue { get; set; }
+
+        [JsonProperty("document_position")]
+        public bodydocumentsInputItemDocumentFieldsTypeItemDocumentPositionType DocumentPosition { get; set; }
+    }
+
+    public enum bodydocumentsInputItemDocumentFieldsTypeItemFieldTypeType
+    {
+        [EnumMember(Value = "request-text")]
+        RequestText,
+        [EnumMember(Value = "checkbox")]
+        Checkbox,
+        [EnumMember(Value = "signature")]
+        Signature,
+        [EnumMember(Value = "initials")]
+        Initials,
+        [EnumMember(Value = "date")]
+        Date,
+        [EnumMember(Value = "dropdown")]
+        Dropdown,
+        [EnumMember(Value = "qrcode")]
+        Qrcode,
+        [EnumMember(Value = "add-text")]
+        AddText,
+        [EnumMember(Value = "payment")]
+        Payment
+    }
+
+    public class bodydocumentsInputItemDocumentFieldsTypeItemDocumentPositionType
+    {
+        [JsonProperty("x")]
+        public string X { get; set; }
+
+        [JsonProperty("y")]
+        public string Y { get; set; }
+
+        [JsonProperty("page")]
+        public int Page { get; set; }
+    }
+
+    public class bodycarbonCopiesInputItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     public class AnttextautomationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anttextautomation")]
-        public IBodyWorkflowAction<string> PostAntTextEmail(Expression<Func<string>> postBodyParameteremailForAntTextBusiness, Expression<Func<string>> postBodyParameterantTextBusinessLicenseKey, Expression<Func<string>> postBodyParameterkeyPhraseConfirmation, Expression<Func<string>> postBodyParameterTemplateID, Expression<Func<string>> postBodyParameterTo, Expression<Func<postBodyParameterSaveCopyToSentItemsInput>> postBodyParameterSaveCopyToSentItems = null, Expression<Func<postBodyParameterImportanceInput>> postBodyParameterImportance = null, Expression<Func<string>> postBodyParameterFlowField1 = null, Expression<Func<string>> postBodyParameterFlowField2 = null, Expression<Func<string>> postBodyParameterFlowField3 = null, Expression<Func<string>> postBodyParameterFlowField4 = null, Expression<Func<string>> postBodyParameterFlowField5 = null, Expression<Func<string>> postBodyParameterFlowField6 = null, Expression<Func<string>> postBodyParameterFlowField7 = null, Expression<Func<string>> postBodyParameterFlowField8 = null, Expression<Func<string>> postBodyParameterFlowField9 = null, Expression<Func<string>> postBodyParameterFlowField10 = null, Expression<Func<string>> postBodyParameterFlowField11 = null, Expression<Func<string>> postBodyParameterFlowField12 = null, Expression<Func<string>> postBodyParameterFlowField13 = null, Expression<Func<string>> postBodyParameterFlowField14 = null, Expression<Func<string>> postBodyParameterFlowField15 = null, Expression<Func<string>> postBodyParameterFlowField16 = null, Expression<Func<string>> postBodyParameterFlowField17 = null, Expression<Func<string>> postBodyParameterFlowField18 = null, Expression<Func<string>> postBodyParameterFlowField19 = null, Expression<Func<string>> postBodyParameterFlowField20 = null, Expression<Func<postBodyParameterIncludeAntTextSignatureInput>> postBodyParameterIncludeAntTextSignature = null)
+        public IBodyWorkflowAction<string> PostAntTextEmail(Expression<Func<string>> postBodyParameteremailForAntTextBusiness, Expression<Func<string>> postBodyParameterantTextBusinessLicenseKey, Expression<Func<string>> postBodyParameterkeyPhraseConfirmation, Expression<Func<string>> postBodyParametertemplateID, Expression<Func<string>> postBodyParameterto, Expression<Func<postBodyParametersaveCopyToSentItemsInput>> postBodyParametersaveCopyToSentItems = null, Expression<Func<postBodyParameterimportanceInput>> postBodyParameterimportance = null, Expression<Func<string>> postBodyParameterflowField1 = null, Expression<Func<string>> postBodyParameterflowField2 = null, Expression<Func<string>> postBodyParameterflowField3 = null, Expression<Func<string>> postBodyParameterflowField4 = null, Expression<Func<string>> postBodyParameterflowField5 = null, Expression<Func<string>> postBodyParameterflowField6 = null, Expression<Func<string>> postBodyParameterflowField7 = null, Expression<Func<string>> postBodyParameterflowField8 = null, Expression<Func<string>> postBodyParameterflowField9 = null, Expression<Func<string>> postBodyParameterflowField10 = null, Expression<Func<string>> postBodyParameterflowField11 = null, Expression<Func<string>> postBodyParameterflowField12 = null, Expression<Func<string>> postBodyParameterflowField13 = null, Expression<Func<string>> postBodyParameterflowField14 = null, Expression<Func<string>> postBodyParameterflowField15 = null, Expression<Func<string>> postBodyParameterflowField16 = null, Expression<Func<string>> postBodyParameterflowField17 = null, Expression<Func<string>> postBodyParameterflowField18 = null, Expression<Func<string>> postBodyParameterflowField19 = null, Expression<Func<string>> postBodyParameterflowField20 = null, Expression<Func<postBodyParameterincludeAntTextSignatureInput>> postBodyParameterincludeAntTextSignature = null)
         {
             var apiCallPath = "/templates";
             var apiCallHttpMethod = "post";
@@ -26,144 +26,144 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
             postBodyParameterpropCount++;
             postBodyParameter["CalledFrom"] = ExpressionConverter.ConvertO(postBodyParameterkeyPhraseConfirmation);
             postBodyParameterpropCount++;
-            postBodyParameter["TemplateID"] = ExpressionConverter.ConvertO(postBodyParameterTemplateID);
+            postBodyParameter["TemplateID"] = ExpressionConverter.ConvertO(postBodyParametertemplateID);
             postBodyParameterpropCount++;
-            postBodyParameter["To"] = ExpressionConverter.ConvertO(postBodyParameterTo);
-            if (postBodyParameterSaveCopyToSentItems != null)
+            postBodyParameter["To"] = ExpressionConverter.ConvertO(postBodyParameterto);
+            if (postBodyParametersaveCopyToSentItems != null)
             {
-                postBodyParameter["SaveCopyToSentItems"] = ExpressionConverter.ConvertO(postBodyParameterSaveCopyToSentItems);
+                postBodyParameter["SaveCopyToSentItems"] = ExpressionConverter.ConvertO(postBodyParametersaveCopyToSentItems);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterImportance != null)
+            if (postBodyParameterimportance != null)
             {
-                postBodyParameter["Importance"] = ExpressionConverter.ConvertO(postBodyParameterImportance);
+                postBodyParameter["Importance"] = ExpressionConverter.ConvertO(postBodyParameterimportance);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField1 != null)
+            if (postBodyParameterflowField1 != null)
             {
-                postBodyParameter["FlowField1"] = ExpressionConverter.ConvertO(postBodyParameterFlowField1);
+                postBodyParameter["FlowField1"] = ExpressionConverter.ConvertO(postBodyParameterflowField1);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField2 != null)
+            if (postBodyParameterflowField2 != null)
             {
-                postBodyParameter["FlowField2"] = ExpressionConverter.ConvertO(postBodyParameterFlowField2);
+                postBodyParameter["FlowField2"] = ExpressionConverter.ConvertO(postBodyParameterflowField2);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField3 != null)
+            if (postBodyParameterflowField3 != null)
             {
-                postBodyParameter["FlowField3"] = ExpressionConverter.ConvertO(postBodyParameterFlowField3);
+                postBodyParameter["FlowField3"] = ExpressionConverter.ConvertO(postBodyParameterflowField3);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField4 != null)
+            if (postBodyParameterflowField4 != null)
             {
-                postBodyParameter["FlowField4"] = ExpressionConverter.ConvertO(postBodyParameterFlowField4);
+                postBodyParameter["FlowField4"] = ExpressionConverter.ConvertO(postBodyParameterflowField4);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField5 != null)
+            if (postBodyParameterflowField5 != null)
             {
-                postBodyParameter["FlowField5"] = ExpressionConverter.ConvertO(postBodyParameterFlowField5);
+                postBodyParameter["FlowField5"] = ExpressionConverter.ConvertO(postBodyParameterflowField5);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField6 != null)
+            if (postBodyParameterflowField6 != null)
             {
-                postBodyParameter["FlowField6"] = ExpressionConverter.ConvertO(postBodyParameterFlowField6);
+                postBodyParameter["FlowField6"] = ExpressionConverter.ConvertO(postBodyParameterflowField6);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField7 != null)
+            if (postBodyParameterflowField7 != null)
             {
-                postBodyParameter["FlowField7"] = ExpressionConverter.ConvertO(postBodyParameterFlowField7);
+                postBodyParameter["FlowField7"] = ExpressionConverter.ConvertO(postBodyParameterflowField7);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField8 != null)
+            if (postBodyParameterflowField8 != null)
             {
-                postBodyParameter["FlowField8"] = ExpressionConverter.ConvertO(postBodyParameterFlowField8);
+                postBodyParameter["FlowField8"] = ExpressionConverter.ConvertO(postBodyParameterflowField8);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField9 != null)
+            if (postBodyParameterflowField9 != null)
             {
-                postBodyParameter["FlowField9"] = ExpressionConverter.ConvertO(postBodyParameterFlowField9);
+                postBodyParameter["FlowField9"] = ExpressionConverter.ConvertO(postBodyParameterflowField9);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField10 != null)
+            if (postBodyParameterflowField10 != null)
             {
-                postBodyParameter["FlowField10"] = ExpressionConverter.ConvertO(postBodyParameterFlowField10);
+                postBodyParameter["FlowField10"] = ExpressionConverter.ConvertO(postBodyParameterflowField10);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField11 != null)
+            if (postBodyParameterflowField11 != null)
             {
-                postBodyParameter["FlowField11"] = ExpressionConverter.ConvertO(postBodyParameterFlowField11);
+                postBodyParameter["FlowField11"] = ExpressionConverter.ConvertO(postBodyParameterflowField11);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField12 != null)
+            if (postBodyParameterflowField12 != null)
             {
-                postBodyParameter["FlowField12"] = ExpressionConverter.ConvertO(postBodyParameterFlowField12);
+                postBodyParameter["FlowField12"] = ExpressionConverter.ConvertO(postBodyParameterflowField12);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField13 != null)
+            if (postBodyParameterflowField13 != null)
             {
-                postBodyParameter["FlowField13"] = ExpressionConverter.ConvertO(postBodyParameterFlowField13);
+                postBodyParameter["FlowField13"] = ExpressionConverter.ConvertO(postBodyParameterflowField13);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField14 != null)
+            if (postBodyParameterflowField14 != null)
             {
-                postBodyParameter["FlowField14"] = ExpressionConverter.ConvertO(postBodyParameterFlowField14);
+                postBodyParameter["FlowField14"] = ExpressionConverter.ConvertO(postBodyParameterflowField14);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField15 != null)
+            if (postBodyParameterflowField15 != null)
             {
-                postBodyParameter["FlowField15"] = ExpressionConverter.ConvertO(postBodyParameterFlowField15);
+                postBodyParameter["FlowField15"] = ExpressionConverter.ConvertO(postBodyParameterflowField15);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField16 != null)
+            if (postBodyParameterflowField16 != null)
             {
-                postBodyParameter["FlowField16"] = ExpressionConverter.ConvertO(postBodyParameterFlowField16);
+                postBodyParameter["FlowField16"] = ExpressionConverter.ConvertO(postBodyParameterflowField16);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField17 != null)
+            if (postBodyParameterflowField17 != null)
             {
-                postBodyParameter["FlowField17"] = ExpressionConverter.ConvertO(postBodyParameterFlowField17);
+                postBodyParameter["FlowField17"] = ExpressionConverter.ConvertO(postBodyParameterflowField17);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField18 != null)
+            if (postBodyParameterflowField18 != null)
             {
-                postBodyParameter["FlowField18"] = ExpressionConverter.ConvertO(postBodyParameterFlowField18);
+                postBodyParameter["FlowField18"] = ExpressionConverter.ConvertO(postBodyParameterflowField18);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField19 != null)
+            if (postBodyParameterflowField19 != null)
             {
-                postBodyParameter["FlowField19"] = ExpressionConverter.ConvertO(postBodyParameterFlowField19);
+                postBodyParameter["FlowField19"] = ExpressionConverter.ConvertO(postBodyParameterflowField19);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterFlowField20 != null)
+            if (postBodyParameterflowField20 != null)
             {
-                postBodyParameter["FlowField20"] = ExpressionConverter.ConvertO(postBodyParameterFlowField20);
+                postBodyParameter["FlowField20"] = ExpressionConverter.ConvertO(postBodyParameterflowField20);
                 postBodyParameterpropCount++;
             }
 
-            if (postBodyParameterIncludeAntTextSignature != null)
+            if (postBodyParameterincludeAntTextSignature != null)
             {
-                postBodyParameter["IncludeAntTextSignature"] = ExpressionConverter.ConvertO(postBodyParameterIncludeAntTextSignature);
+                postBodyParameter["IncludeAntTextSignature"] = ExpressionConverter.ConvertO(postBodyParameterincludeAntTextSignature);
                 postBodyParameterpropCount++;
             }
 
@@ -180,20 +180,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     {
     }
 
-    public enum postBodyParameterSaveCopyToSentItemsInput
+    public enum postBodyParametersaveCopyToSentItemsInput
     {
         Yes,
         No
     }
 
-    public enum postBodyParameterImportanceInput
+    public enum postBodyParameterimportanceInput
     {
         High,
         Normal,
         Low
     }
 
-    public enum postBodyParameterIncludeAntTextSignatureInput
+    public enum postBodyParameterincludeAntTextSignatureInput
     {
         Yes,
         No

@@ -381,6 +381,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class ArcgisTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<WebhookFLCreatedResponse> WebhookFLCreated(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/featuresCreated";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookFLCreatedResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookFLDeletedResponse> WebhookFLDeleted(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/featuresDeleted";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookFLDeletedResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookFLEditedResponse> WebhookFLEdited(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/featuresUpdated";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookFLEditedResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse> WebhookAttachmentCreated(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/attachmentsCreated";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookAttachmentCreatedResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse> WebhookAttachmentUpdated(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/attachmentsUpdated";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookAttachmentUpdatedResponse>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse> WebhookAttachmentDeleted(Expression<Func<string>> userLayer, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhook/createWebhook/attachmentsDeleted";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["userLayer"] = ExpressionConverter.Convert(userLayer);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookAttachmentDeletedResponse>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class AddAttachmentResponse
@@ -634,6 +789,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
     {
         [JsonProperty("text")]
         public string DirectionText { get; set; }
+    }
+
+    public class WebhookFLCreatedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WebhookFLDeletedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WebhookFLEditedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WebhookAttachmentCreatedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WebhookAttachmentUpdatedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WebhookAttachmentDeletedResponse
+    {
+        [JsonProperty("id")]
+        public double WebhookID { get; set; }
+
+        [JsonProperty("url")]
+        public string TriggerURL { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
 

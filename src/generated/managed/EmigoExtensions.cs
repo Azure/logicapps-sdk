@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageIdOperationalUnit, Expression<Func<string>> sendMessageMessage)
+        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
         {
             var apiCallPath = "/OperationalUnit/SendMessage";
             var apiCallHttpMethod = "post";
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var sendMessage = new JObject();
             var sendMessagepropCount = 0;
             sendMessagepropCount++;
-            sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(sendMessageIdOperationalUnit);
+            sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(sendMessageidOperationalUnit);
             sendMessagepropCount++;
-            sendMessage["Message"] = ExpressionConverter.ConvertO(sendMessageMessage);
+            sendMessage["Message"] = ExpressionConverter.ConvertO(sendMessagemessage);
             if (sendMessagepropCount > 0)
             {
                 callPayload.Body = sendMessage;
@@ -120,6 +120,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var requestBodyOfWebhook = new JObject();
+            var requestBodyOfWebhookpropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                requestBodyOfWebhook["config"] = configObject;
+                requestBodyOfWebhookpropCount++;
+            }
+
+            if (requestBodyOfWebhookpropCount > 0)
+            {
+                callPayload.Body = requestBodyOfWebhook;
+            }
+
+            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class TablesList
@@ -272,6 +296,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [JsonProperty("Id Status")]
         public int IdStatus { get; set; }
         public string OpuStatus { get; set; }
+    }
+
+    public class WebhookCreationResponse
+    {
+        [JsonProperty("config")]
+        public WebhookCreationResponseConfigType Config { get; set; }
+    }
+
+    public class WebhookCreationResponseConfigType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
 

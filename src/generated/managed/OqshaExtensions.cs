@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
     public class OqshaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodyLocation = null, Expression<Func<string>> bodyLocationId = null, Expression<Func<double>> bodyLatitude = null, Expression<Func<double>> bodyLongitude = null, Expression<Func<string>> bodyDivisionId = null, Expression<Func<string>> bodyUserId = null, Expression<Func<bool>> bodyAnonymouslyReported = null, Expression<Func<bodyCheckListDataInputItem[]>> bodyCheckListData = null)
+        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
         {
             var apiCallPath = "/Organisations/3/Incidents";
             var apiCallHttpMethod = "post";
@@ -24,51 +24,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyLocation != null)
+            if (bodylocation != null)
             {
-                body["Location"] = ExpressionConverter.ConvertO(bodyLocation);
+                body["Location"] = ExpressionConverter.ConvertO(bodylocation);
                 bodypropCount++;
             }
 
-            if (bodyLocationId != null)
+            if (bodylocationId != null)
             {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodyLocationId);
+                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
                 bodypropCount++;
             }
 
-            if (bodyLatitude != null)
+            if (bodylatitude != null)
             {
-                body["Latitude"] = ExpressionConverter.ConvertO(bodyLatitude);
+                body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
                 bodypropCount++;
             }
 
-            if (bodyLongitude != null)
+            if (bodylongitude != null)
             {
-                body["Longitude"] = ExpressionConverter.ConvertO(bodyLongitude);
+                body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
                 bodypropCount++;
             }
 
-            if (bodyDivisionId != null)
+            if (bodydivisionId != null)
             {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodyDivisionId);
+                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
                 bodypropCount++;
             }
 
-            if (bodyUserId != null)
+            if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyUserId);
+                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
                 bodypropCount++;
             }
 
-            if (bodyAnonymouslyReported != null)
+            if (bodyanonymouslyReported != null)
             {
-                body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyAnonymouslyReported);
+                body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
                 bodypropCount++;
             }
 
-            if (bodyCheckListData != null)
+            if (bodycheckListData != null)
             {
-                body["CheckListData"] = ExpressionConverter.ConvertO(bodyCheckListData);
+                body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
                 bodypropCount++;
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyUserUid = null, Expression<Func<string>> bodyAppPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyIsOqsha = null)
+        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
         {
             var apiCallPath = "/App/Login";
             var apiCallHttpMethod = "post";
@@ -91,15 +91,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyUserUid != null)
+            if (bodyuserUid != null)
             {
-                body["UserUid"] = ExpressionConverter.ConvertO(bodyUserUid);
+                body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
                 bodypropCount++;
             }
 
-            if (bodyAppPassword != null)
+            if (bodyappPassword != null)
             {
-                body["AppPassword"] = ExpressionConverter.ConvertO(bodyAppPassword);
+                body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
                 bodypropCount++;
             }
 
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 bodypropCount++;
             }
 
-            if (bodyIsOqsha != null)
+            if (bodyisOqsha != null)
             {
-                body["IsOqsha"] = ExpressionConverter.ConvertO(bodyIsOqsha);
+                body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
                 bodypropCount++;
             }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public int OrgOwnerId { get; set; }
     }
 
-    public class bodyCheckListDataInputItem
+    public class bodycheckListDataInputItem
     {
         [JsonProperty("checkListId")]
         public string CheckListId { get; set; }

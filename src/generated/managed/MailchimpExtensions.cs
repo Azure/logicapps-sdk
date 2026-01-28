@@ -34,23 +34,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var recipientsObjectpropCount = 0;
             recipientsObjectpropCount++;
             recipientsObject["list_id"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientslistId);
-            var segment_optsObject = new JObject();
-            var segment_optsObjectpropCount = 0;
+            var segmentOptsObject = new JObject();
+            var segmentOptsObjectpropCount = 0;
             if (newCampaignRequestrecipientssegmentOptssavedSegmentID != null)
             {
-                segment_optsObject["saved_segment_id"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptssavedSegmentID);
-                segment_optsObjectpropCount++;
+                segmentOptsObject["saved_segment_id"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptssavedSegmentID);
+                segmentOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrecipientssegmentOptsmatchType != null)
             {
-                segment_optsObject["match"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptsmatchType);
-                segment_optsObjectpropCount++;
+                segmentOptsObject["match"] = ExpressionConverter.ConvertO(newCampaignRequestrecipientssegmentOptsmatchType);
+                segmentOptsObjectpropCount++;
             }
 
-            if (segment_optsObjectpropCount > 0)
+            if (segmentOptsObjectpropCount > 0)
             {
-                recipientsObject["segment_opts"] = segment_optsObject;
+                recipientsObject["segment_opts"] = segmentOptsObject;
                 recipientsObjectpropCount++;
             }
 
@@ -134,53 +134,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 newCampaignRequestpropCount++;
             }
 
-            var variate_settingsObject = new JObject();
-            var variate_settingsObjectpropCount = 0;
+            var variateSettingsObject = new JObject();
+            var variateSettingsObjectpropCount = 0;
             if (newCampaignRequestvariateSettingswinningCriteria != null)
             {
-                variate_settingsObject["winner_criteria"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswinningCriteria);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["winner_criteria"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswinningCriteria);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingswaitTime != null)
             {
-                variate_settingsObject["wait_time"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswaitTime);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["wait_time"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingswaitTime);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingstestSize != null)
             {
-                variate_settingsObject["test_size"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingstestSize);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["test_size"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingstestSize);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingssubjectLines != null)
             {
-                variate_settingsObject["subject_lines"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssubjectLines);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["subject_lines"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssubjectLines);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingssendTimes != null)
             {
-                variate_settingsObject["send_times"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssendTimes);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["send_times"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingssendTimes);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingsfromNames != null)
             {
-                variate_settingsObject["from_names"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsfromNames);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["from_names"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsfromNames);
+                variateSettingsObjectpropCount++;
             }
 
             if (newCampaignRequestvariateSettingsreplyToAddresses != null)
             {
-                variate_settingsObject["reply_to_addresses"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsreplyToAddresses);
-                variate_settingsObjectpropCount++;
+                variateSettingsObject["reply_to_addresses"] = ExpressionConverter.ConvertO(newCampaignRequestvariateSettingsreplyToAddresses);
+                variateSettingsObjectpropCount++;
             }
 
-            if (variate_settingsObjectpropCount > 0)
+            if (variateSettingsObjectpropCount > 0)
             {
-                newCampaignRequest["variate_settings"] = variate_settingsObject;
+                newCampaignRequest["variate_settings"] = variateSettingsObject;
                 newCampaignRequestpropCount++;
             }
 
@@ -288,24 +288,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 newCampaignRequestpropCount++;
             }
 
-            var rss_optsObject = new JObject();
-            var rss_optsObjectpropCount = 0;
+            var rssOptsObject = new JObject();
+            var rssOptsObjectpropCount = 0;
             if (newCampaignRequestrssOptsfeedURL != null)
             {
-                rss_optsObject["feed_url"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfeedURL);
-                rss_optsObjectpropCount++;
+                rssOptsObject["feed_url"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfeedURL);
+                rssOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsfrequency != null)
             {
-                rss_optsObject["frequency"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfrequency);
-                rss_optsObjectpropCount++;
+                rssOptsObject["frequency"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsfrequency);
+                rssOptsObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsconstrainRSSImages != null)
             {
-                rss_optsObject["constrain_rss_img"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsconstrainRSSImages);
-                rss_optsObjectpropCount++;
+                rssOptsObject["constrain_rss_img"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsconstrainRSSImages);
+                rssOptsObjectpropCount++;
             }
 
             var scheduleObject = new JObject();
@@ -316,53 +316,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 scheduleObjectpropCount++;
             }
 
-            var daily_sendObject = new JObject();
-            var daily_sendObjectpropCount = 0;
+            var dailySendObject = new JObject();
+            var dailySendObjectpropCount = 0;
             if (newCampaignRequestrssOptsscheduledailySendsunday != null)
             {
-                daily_sendObject["sunday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsunday);
-                daily_sendObjectpropCount++;
+                dailySendObject["sunday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsunday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendmonday != null)
             {
-                daily_sendObject["monday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendmonday);
-                daily_sendObjectpropCount++;
+                dailySendObject["monday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendmonday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendtuesday != null)
             {
-                daily_sendObject["tuesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendtuesday);
-                daily_sendObjectpropCount++;
+                dailySendObject["tuesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendtuesday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendwednesday != null)
             {
-                daily_sendObject["wednesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendwednesday);
-                daily_sendObjectpropCount++;
+                dailySendObject["wednesday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendwednesday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendthursday != null)
             {
-                daily_sendObject["thursday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendthursday);
-                daily_sendObjectpropCount++;
+                dailySendObject["thursday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendthursday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendfriday != null)
             {
-                daily_sendObject["friday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendfriday);
-                daily_sendObjectpropCount++;
+                dailySendObject["friday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendfriday);
+                dailySendObjectpropCount++;
             }
 
             if (newCampaignRequestrssOptsscheduledailySendsaturday != null)
             {
-                daily_sendObject["saturday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsaturday);
-                daily_sendObjectpropCount++;
+                dailySendObject["saturday"] = ExpressionConverter.ConvertO(newCampaignRequestrssOptsscheduledailySendsaturday);
+                dailySendObjectpropCount++;
             }
 
-            if (daily_sendObjectpropCount > 0)
+            if (dailySendObjectpropCount > 0)
             {
-                scheduleObject["daily_send"] = daily_sendObject;
+                scheduleObject["daily_send"] = dailySendObject;
                 scheduleObjectpropCount++;
             }
 
@@ -380,39 +380,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             if (scheduleObjectpropCount > 0)
             {
-                rss_optsObject["schedule"] = scheduleObject;
-                rss_optsObjectpropCount++;
+                rssOptsObject["schedule"] = scheduleObject;
+                rssOptsObjectpropCount++;
             }
 
-            if (rss_optsObjectpropCount > 0)
+            if (rssOptsObjectpropCount > 0)
             {
-                newCampaignRequest["rss_opts"] = rss_optsObject;
+                newCampaignRequest["rss_opts"] = rssOptsObject;
                 newCampaignRequestpropCount++;
             }
 
-            var social_cardObject = new JObject();
-            var social_cardObjectpropCount = 0;
+            var socialCardObject = new JObject();
+            var socialCardObjectpropCount = 0;
             if (newCampaignRequestsocialCardimageURL != null)
             {
-                social_cardObject["image_url"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardimageURL);
-                social_cardObjectpropCount++;
+                socialCardObject["image_url"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardimageURL);
+                socialCardObjectpropCount++;
             }
 
             if (newCampaignRequestsocialCardcampaignDescription != null)
             {
-                social_cardObject["description"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardcampaignDescription);
-                social_cardObjectpropCount++;
+                socialCardObject["description"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardcampaignDescription);
+                socialCardObjectpropCount++;
             }
 
             if (newCampaignRequestsocialCardtitle != null)
             {
-                social_cardObject["title"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardtitle);
-                social_cardObjectpropCount++;
+                socialCardObject["title"] = ExpressionConverter.ConvertO(newCampaignRequestsocialCardtitle);
+                socialCardObjectpropCount++;
             }
 
-            if (social_cardObjectpropCount > 0)
+            if (socialCardObjectpropCount > 0)
             {
-                newCampaignRequest["social_card"] = social_cardObject;
+                newCampaignRequest["social_card"] = socialCardObject;
                 newCampaignRequestpropCount++;
             }
 
@@ -494,19 +494,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 newListRequestpropCount++;
             }
 
-            var campaign_defaultsObject = new JObject();
-            var campaign_defaultsObjectpropCount = 0;
-            campaign_defaultsObjectpropCount++;
-            campaign_defaultsObject["from_name"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSName);
-            campaign_defaultsObjectpropCount++;
-            campaign_defaultsObject["from_email"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSEmailAddress);
-            campaign_defaultsObjectpropCount++;
-            campaign_defaultsObject["subject"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssubject);
-            campaign_defaultsObjectpropCount++;
-            campaign_defaultsObject["language"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultslanguage);
-            if (campaign_defaultsObjectpropCount > 0)
+            var campaignDefaultsObject = new JObject();
+            var campaignDefaultsObjectpropCount = 0;
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["from_name"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSName);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["from_email"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSEmailAddress);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["subject"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssubject);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["language"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultslanguage);
+            if (campaignDefaultsObjectpropCount > 0)
             {
-                newListRequest["campaign_defaults"] = campaign_defaultsObject;
+                newListRequest["campaign_defaults"] = campaignDefaultsObject;
                 newListRequestpropCount++;
             }
 
@@ -597,23 +597,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             newMemberInListpropCount++;
             newMemberInList["status"] = ExpressionConverter.ConvertO(newMemberInListstatus);
-            var merge_fieldsObject = new JObject();
-            var merge_fieldsObjectpropCount = 0;
+            var mergeFieldsObject = new JObject();
+            var mergeFieldsObjectpropCount = 0;
             if (newMemberInListmergeFieldsfirstName != null)
             {
-                merge_fieldsObject["FNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldsfirstName);
-                merge_fieldsObjectpropCount++;
+                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldsfirstName);
+                mergeFieldsObjectpropCount++;
             }
 
             if (newMemberInListmergeFieldslastName != null)
             {
-                merge_fieldsObject["LNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldslastName);
-                merge_fieldsObjectpropCount++;
+                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldslastName);
+                mergeFieldsObjectpropCount++;
             }
 
-            if (merge_fieldsObjectpropCount > 0)
+            if (mergeFieldsObjectpropCount > 0)
             {
-                newMemberInList["merge_fields"] = merge_fieldsObject;
+                newMemberInList["merge_fields"] = mergeFieldsObject;
                 newMemberInListpropCount++;
             }
 
@@ -686,23 +686,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
             updateMemberInListRequestpropCount++;
             updateMemberInListRequest["status"] = ExpressionConverter.ConvertO(updateMemberInListRequeststatus);
-            var merge_fieldsObject = new JObject();
-            var merge_fieldsObjectpropCount = 0;
+            var mergeFieldsObject = new JObject();
+            var mergeFieldsObjectpropCount = 0;
             if (updateMemberInListRequestmergeFieldsfirstName != null)
             {
-                merge_fieldsObject["FNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldsfirstName);
-                merge_fieldsObjectpropCount++;
+                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldsfirstName);
+                mergeFieldsObjectpropCount++;
             }
 
             if (updateMemberInListRequestmergeFieldslastName != null)
             {
-                merge_fieldsObject["LNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldslastName);
-                merge_fieldsObjectpropCount++;
+                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(updateMemberInListRequestmergeFieldslastName);
+                mergeFieldsObjectpropCount++;
             }
 
-            if (merge_fieldsObjectpropCount > 0)
+            if (mergeFieldsObjectpropCount > 0)
             {
-                updateMemberInListRequest["merge_fields"] = merge_fieldsObject;
+                updateMemberInListRequest["merge_fields"] = mergeFieldsObject;
                 updateMemberInListRequestpropCount++;
             }
 

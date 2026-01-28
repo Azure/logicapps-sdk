@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfDatapropCount++;
             inputPdfDatapropCount++;
             inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputPdfData["sharepoint_file"] = sharepoint_fileObject;
+                inputPdfData["sharepoint_file"] = sharepointFileObject;
                 inputPdfDatapropCount++;
             }
 
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 

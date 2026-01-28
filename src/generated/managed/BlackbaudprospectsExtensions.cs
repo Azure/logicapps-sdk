@@ -124,17 +124,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var ask_amountObject = new JObject();
-            var ask_amountObjectpropCount = 0;
+            var askAmountObject = new JObject();
+            var askAmountObjectpropCount = 0;
             if (bodyaskAmountvalue != null)
             {
-                ask_amountObject["value"] = ExpressionConverter.ConvertO(bodyaskAmountvalue);
-                ask_amountObjectpropCount++;
+                askAmountObject["value"] = ExpressionConverter.ConvertO(bodyaskAmountvalue);
+                askAmountObjectpropCount++;
             }
 
-            if (ask_amountObjectpropCount > 0)
+            if (askAmountObjectpropCount > 0)
             {
-                body["ask_amount"] = ask_amountObject;
+                body["ask_amount"] = askAmountObject;
                 bodypropCount++;
             }
 
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var expected_amountObject = new JObject();
-            var expected_amountObjectpropCount = 0;
+            var expectedAmountObject = new JObject();
+            var expectedAmountObjectpropCount = 0;
             if (bodyexpectedAmountvalue != null)
             {
-                expected_amountObject["value"] = ExpressionConverter.ConvertO(bodyexpectedAmountvalue);
-                expected_amountObjectpropCount++;
+                expectedAmountObject["value"] = ExpressionConverter.ConvertO(bodyexpectedAmountvalue);
+                expectedAmountObjectpropCount++;
             }
 
-            if (expected_amountObjectpropCount > 0)
+            if (expectedAmountObjectpropCount > 0)
             {
-                body["expected_amount"] = expected_amountObject;
+                body["expected_amount"] = expectedAmountObject;
                 bodypropCount++;
             }
 
@@ -164,17 +164,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var funded_amountObject = new JObject();
-            var funded_amountObjectpropCount = 0;
+            var fundedAmountObject = new JObject();
+            var fundedAmountObjectpropCount = 0;
             if (bodyfundedAmountvalue != null)
             {
-                funded_amountObject["value"] = ExpressionConverter.ConvertO(bodyfundedAmountvalue);
-                funded_amountObjectpropCount++;
+                fundedAmountObject["value"] = ExpressionConverter.ConvertO(bodyfundedAmountvalue);
+                fundedAmountObjectpropCount++;
             }
 
-            if (funded_amountObjectpropCount > 0)
+            if (fundedAmountObjectpropCount > 0)
             {
-                body["funded_amount"] = funded_amountObject;
+                body["funded_amount"] = fundedAmountObject;
                 bodypropCount++;
             }
 
@@ -257,17 +257,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var ask_amountObject = new JObject();
-            var ask_amountObjectpropCount = 0;
+            var askAmountObject = new JObject();
+            var askAmountObjectpropCount = 0;
             if (bodyaskAmountvalue != null)
             {
-                ask_amountObject["value"] = ExpressionConverter.ConvertO(bodyaskAmountvalue);
-                ask_amountObjectpropCount++;
+                askAmountObject["value"] = ExpressionConverter.ConvertO(bodyaskAmountvalue);
+                askAmountObjectpropCount++;
             }
 
-            if (ask_amountObjectpropCount > 0)
+            if (askAmountObjectpropCount > 0)
             {
-                body["ask_amount"] = ask_amountObject;
+                body["ask_amount"] = askAmountObject;
                 bodypropCount++;
             }
 
@@ -277,17 +277,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var expected_amountObject = new JObject();
-            var expected_amountObjectpropCount = 0;
+            var expectedAmountObject = new JObject();
+            var expectedAmountObjectpropCount = 0;
             if (bodyexpectedAmountvalue != null)
             {
-                expected_amountObject["value"] = ExpressionConverter.ConvertO(bodyexpectedAmountvalue);
-                expected_amountObjectpropCount++;
+                expectedAmountObject["value"] = ExpressionConverter.ConvertO(bodyexpectedAmountvalue);
+                expectedAmountObjectpropCount++;
             }
 
-            if (expected_amountObjectpropCount > 0)
+            if (expectedAmountObjectpropCount > 0)
             {
-                body["expected_amount"] = expected_amountObject;
+                body["expected_amount"] = expectedAmountObject;
                 bodypropCount++;
             }
 
@@ -297,17 +297,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
                 bodypropCount++;
             }
 
-            var funded_amountObject = new JObject();
-            var funded_amountObjectpropCount = 0;
+            var fundedAmountObject = new JObject();
+            var fundedAmountObjectpropCount = 0;
             if (bodyfundedAmountvalue != null)
             {
-                funded_amountObject["value"] = ExpressionConverter.ConvertO(bodyfundedAmountvalue);
-                funded_amountObjectpropCount++;
+                fundedAmountObject["value"] = ExpressionConverter.ConvertO(bodyfundedAmountvalue);
+                fundedAmountObjectpropCount++;
             }
 
-            if (funded_amountObjectpropCount > 0)
+            if (fundedAmountObjectpropCount > 0)
             {
-                body["funded_amount"] = funded_amountObject;
+                body["funded_amount"] = fundedAmountObject;
                 bodypropCount++;
             }
 

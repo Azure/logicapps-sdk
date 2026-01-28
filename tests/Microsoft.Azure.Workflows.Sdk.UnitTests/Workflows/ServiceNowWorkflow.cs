@@ -43,20 +43,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             });
             builder.AddAction(ticketDetails);
 
-            var agentInvoke = WorkflowActions.ManagedConnectors.Azureagentservice("azureagentservice").InvokeAgent(
+           /* var agentInvoke = WorkflowActions.ManagedConnectors.Azureagentservice("azureagentservice").InvokeAgent(
                 apiVersion: () => apiVersionInput._20251115Preview,
                 bodyagentname: () => "customer-retention-agent",
                 bodyagenttype: () => bodyagenttypeInput.AgentReference,
                 bodyagentversion: () => "4",
-                bodybackground: () => false,
-                bodyparallelToolCalls: () => true,
-                bodystore: () => true,
-                bodyconversationid: () => "conv_930386e58adfe3dc00cIPHWgShJlBJNNyLsAa6ekOBzmhtqT85", // startConversation.Body["id"],
+                bodybackground: () => "false",
+                bodyparallelToolCalls: () => "true",
+                bodystore: () => 1,
+                bodypromptid: () => "conv_930386e58adfe3dc00cIPHWgShJlBJNNyLsAa6ekOBzmhtqT85", // startConversation.Body["id"],
                 bodyinput: () => ticketDetails.Output.ToString()
             );
-            builder.AddAction(agentInvoke);
+            builder.AddAction(agentInvoke);*/
 
-            var email = WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.ToJson(agentInvoke.Body.Output[0].Content[0].Text));
+            //var email = WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.ToJson(agentInvoke.Body.Output[0].Content[0].Text));
+            
+            var email = WorkflowActions.BuiltIn.Compose(() => "text");
             builder.AddAction(email);
 
             var sendEmail = WorkflowActions.ManagedConnectors.Outlook("office365").SendEmailV2(

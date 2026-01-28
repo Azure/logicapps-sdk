@@ -143,63 +143,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 searchActionsBodypropCount++;
             }
 
-            var created_atObject = new JObject();
-            var created_atObjectpropCount = 0;
+            var createdAtObject = new JObject();
+            var createdAtObjectpropCount = 0;
             if (searchActionsBodycreatedafterDate != null)
             {
-                created_atObject["from"] = ExpressionConverter.ConvertO(searchActionsBodycreatedafterDate);
-                created_atObjectpropCount++;
+                createdAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodycreatedafterDate);
+                createdAtObjectpropCount++;
             }
 
             if (searchActionsBodycreatedbeforeDate != null)
             {
-                created_atObject["to"] = ExpressionConverter.ConvertO(searchActionsBodycreatedbeforeDate);
-                created_atObjectpropCount++;
+                createdAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodycreatedbeforeDate);
+                createdAtObjectpropCount++;
             }
 
-            if (created_atObjectpropCount > 0)
+            if (createdAtObjectpropCount > 0)
             {
-                searchActionsBody["created_at"] = created_atObject;
+                searchActionsBody["created_at"] = createdAtObject;
                 searchActionsBodypropCount++;
             }
 
-            var modified_atObject = new JObject();
-            var modified_atObjectpropCount = 0;
+            var modifiedAtObject = new JObject();
+            var modifiedAtObjectpropCount = 0;
             if (searchActionsBodymodifiedafterDate != null)
             {
-                modified_atObject["from"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedafterDate);
-                modified_atObjectpropCount++;
+                modifiedAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedafterDate);
+                modifiedAtObjectpropCount++;
             }
 
             if (searchActionsBodymodifiedbeforeDate != null)
             {
-                modified_atObject["to"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedbeforeDate);
-                modified_atObjectpropCount++;
+                modifiedAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedbeforeDate);
+                modifiedAtObjectpropCount++;
             }
 
-            if (modified_atObjectpropCount > 0)
+            if (modifiedAtObjectpropCount > 0)
             {
-                searchActionsBody["modified_at"] = modified_atObject;
+                searchActionsBody["modified_at"] = modifiedAtObject;
                 searchActionsBodypropCount++;
             }
 
-            var due_atObject = new JObject();
-            var due_atObjectpropCount = 0;
+            var dueAtObject = new JObject();
+            var dueAtObjectpropCount = 0;
             if (searchActionsBodydueafterDate != null)
             {
-                due_atObject["from"] = ExpressionConverter.ConvertO(searchActionsBodydueafterDate);
-                due_atObjectpropCount++;
+                dueAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodydueafterDate);
+                dueAtObjectpropCount++;
             }
 
             if (searchActionsBodyduebeforeDate != null)
             {
-                due_atObject["to"] = ExpressionConverter.ConvertO(searchActionsBodyduebeforeDate);
-                due_atObjectpropCount++;
+                dueAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodyduebeforeDate);
+                dueAtObjectpropCount++;
             }
 
-            if (due_atObjectpropCount > 0)
+            if (dueAtObjectpropCount > 0)
             {
-                searchActionsBody["due_at"] = due_atObject;
+                searchActionsBody["due_at"] = dueAtObject;
                 searchActionsBodypropCount++;
             }
 

@@ -80,17 +80,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
                 bodypropCount++;
             }
 
-            var color_temperatureObject = new JObject();
-            var color_temperatureObjectpropCount = 0;
+            var colorTemperatureObject = new JObject();
+            var colorTemperatureObjectpropCount = 0;
             if (bodycolorTemperaturemirek != null)
             {
-                color_temperatureObject["mirek"] = ExpressionConverter.ConvertO(bodycolorTemperaturemirek);
-                color_temperatureObjectpropCount++;
+                colorTemperatureObject["mirek"] = ExpressionConverter.ConvertO(bodycolorTemperaturemirek);
+                colorTemperatureObjectpropCount++;
             }
 
-            if (color_temperatureObjectpropCount > 0)
+            if (colorTemperatureObjectpropCount > 0)
             {
-                body["color_temperature"] = color_temperatureObject;
+                body["color_temperature"] = colorTemperatureObject;
                 bodypropCount++;
             }
 

@@ -148,6 +148,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class AutentiesignatureworTriggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger DocumentChange(Expression<Func<string>> bodycallbackAdapterId, Expression<Func<string>> responseVariant = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/applications/callbacks";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["responseVariant"] = Convert.ToString("microsoft_power_automate");
+            if (responseVariant != null)
+                callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(responseVariant);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["callbackAdapterId"] = ExpressionConverter.ConvertO(bodycallbackAdapterId);
+            var callbackParametersObject = new JObject();
+            var callbackParametersObjectpropCount = 0;
+            callbackParametersObject["callbackUrl"] = "@listCallbackUrl()";
+            callbackParametersObjectpropCount++;
+            if (callbackParametersObjectpropCount > 0)
+            {
+                body["callbackParameters"] = callbackParametersObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class ListDocumentsResponseItem

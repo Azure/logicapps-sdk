@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
     public class Dynamics365ratingsreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
-        public IBodyWorkflowAction<string> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyRating, Expression<Func<string>> bodyTitle, Expression<Func<string>> bodyReviewText, Expression<Func<string>> bodyProductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodySku = null, Expression<Func<string>> bodyLegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
+        public IBodyWorkflowAction<string> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
         {
             var apiCallPath = String.Format("/v2.0/reviews/product/{0}/user", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "post";
@@ -27,30 +27,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Rating"] = ExpressionConverter.ConvertO(bodyRating);
+            body["Rating"] = ExpressionConverter.ConvertO(bodyrating);
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyReviewText);
-            if (bodySku != null)
+            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+            if (bodysku != null)
             {
-                body["Sku"] = ExpressionConverter.ConvertO(bodySku);
+                body["Sku"] = ExpressionConverter.ConvertO(bodysku);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ProductName"] = ExpressionConverter.ConvertO(bodyProductName);
-            if (bodyLegalEntity != null)
+            body["ProductName"] = ExpressionConverter.ConvertO(bodyproductName);
+            if (bodylegalEntity != null)
             {
-                body["LegalEntity"] = ExpressionConverter.ConvertO(bodyLegalEntity);
+                body["LegalEntity"] = ExpressionConverter.ConvertO(bodylegalEntity);
                 bodypropCount++;
             }
 
-            var ExtendedPropertiesObject = new JObject();
-            var ExtendedPropertiesObjectpropCount = 0;
-            if (ExtendedPropertiesObjectpropCount > 0)
+            var extendedPropertiesObject = new JObject();
+            var extendedPropertiesObjectpropCount = 0;
+            if (extendedPropertiesObjectpropCount > 0)
             {
-                body["ExtendedProperties"] = ExtendedPropertiesObject;
+                body["ExtendedProperties"] = extendedPropertiesObject;
                 bodypropCount++;
             }
 

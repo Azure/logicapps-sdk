@@ -31,43 +31,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
             bodypropCount++;
             body["actual_date"] = ExpressionConverter.ConvertO(bodyactualDate);
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -135,43 +135,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -720,43 +720,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var expected_start_timeObject = new JObject();
-            var expected_start_timeObjectpropCount = 0;
+            var expectedStartTimeObject = new JObject();
+            var expectedStartTimeObjectpropCount = 0;
             if (bodyexpectedStarthour != null)
             {
-                expected_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
+                expectedStartTimeObjectpropCount++;
             }
 
             if (bodyexpectedStartminute != null)
             {
-                expected_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
+                expectedStartTimeObjectpropCount++;
             }
 
-            if (expected_start_timeObjectpropCount > 0)
+            if (expectedStartTimeObjectpropCount > 0)
             {
-                body["expected_start_time"] = expected_start_timeObject;
+                body["expected_start_time"] = expectedStartTimeObject;
                 bodypropCount++;
             }
 
-            var expected_end_timeObject = new JObject();
-            var expected_end_timeObjectpropCount = 0;
+            var expectedEndTimeObject = new JObject();
+            var expectedEndTimeObjectpropCount = 0;
             if (bodyexpectedEndhour != null)
             {
-                expected_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
+                expectedEndTimeObjectpropCount++;
             }
 
             if (bodyexpectedEndminute != null)
             {
-                expected_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
+                expectedEndTimeObjectpropCount++;
             }
 
-            if (expected_end_timeObjectpropCount > 0)
+            if (expectedEndTimeObjectpropCount > 0)
             {
-                body["expected_end_time"] = expected_end_timeObject;
+                body["expected_end_time"] = expectedEndTimeObject;
                 bodypropCount++;
             }
 
@@ -772,43 +772,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -922,43 +922,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var expected_start_timeObject = new JObject();
-            var expected_start_timeObjectpropCount = 0;
+            var expectedStartTimeObject = new JObject();
+            var expectedStartTimeObjectpropCount = 0;
             if (bodyexpectedStarthour != null)
             {
-                expected_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedStarthour);
+                expectedStartTimeObjectpropCount++;
             }
 
             if (bodyexpectedStartminute != null)
             {
-                expected_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
-                expected_start_timeObjectpropCount++;
+                expectedStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedStartminute);
+                expectedStartTimeObjectpropCount++;
             }
 
-            if (expected_start_timeObjectpropCount > 0)
+            if (expectedStartTimeObjectpropCount > 0)
             {
-                body["expected_start_time"] = expected_start_timeObject;
+                body["expected_start_time"] = expectedStartTimeObject;
                 bodypropCount++;
             }
 
-            var expected_end_timeObject = new JObject();
-            var expected_end_timeObjectpropCount = 0;
+            var expectedEndTimeObject = new JObject();
+            var expectedEndTimeObjectpropCount = 0;
             if (bodyexpectedEndhour != null)
             {
-                expected_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyexpectedEndhour);
+                expectedEndTimeObjectpropCount++;
             }
 
             if (bodyexpectedEndminute != null)
             {
-                expected_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
-                expected_end_timeObjectpropCount++;
+                expectedEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyexpectedEndminute);
+                expectedEndTimeObjectpropCount++;
             }
 
-            if (expected_end_timeObjectpropCount > 0)
+            if (expectedEndTimeObjectpropCount > 0)
             {
-                body["expected_end_time"] = expected_end_timeObject;
+                body["expected_end_time"] = expectedEndTimeObject;
                 bodypropCount++;
             }
 
@@ -974,43 +974,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -1119,43 +1119,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var target_start_timeObject = new JObject();
-            var target_start_timeObjectpropCount = 0;
+            var targetStartTimeObject = new JObject();
+            var targetStartTimeObjectpropCount = 0;
             if (bodytargetStarthour != null)
             {
-                target_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodytargetStarthour);
-                target_start_timeObjectpropCount++;
+                targetStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodytargetStarthour);
+                targetStartTimeObjectpropCount++;
             }
 
             if (bodytargetStartminute != null)
             {
-                target_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodytargetStartminute);
-                target_start_timeObjectpropCount++;
+                targetStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodytargetStartminute);
+                targetStartTimeObjectpropCount++;
             }
 
-            if (target_start_timeObjectpropCount > 0)
+            if (targetStartTimeObjectpropCount > 0)
             {
-                body["target_start_time"] = target_start_timeObject;
+                body["target_start_time"] = targetStartTimeObject;
                 bodypropCount++;
             }
 
-            var target_end_timeObject = new JObject();
-            var target_end_timeObjectpropCount = 0;
+            var targetEndTimeObject = new JObject();
+            var targetEndTimeObjectpropCount = 0;
             if (bodytargetEndhour != null)
             {
-                target_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodytargetEndhour);
-                target_end_timeObjectpropCount++;
+                targetEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodytargetEndhour);
+                targetEndTimeObjectpropCount++;
             }
 
             if (bodytargetEndminute != null)
             {
-                target_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodytargetEndminute);
-                target_end_timeObjectpropCount++;
+                targetEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodytargetEndminute);
+                targetEndTimeObjectpropCount++;
             }
 
-            if (target_end_timeObjectpropCount > 0)
+            if (targetEndTimeObjectpropCount > 0)
             {
-                body["target_end_time"] = target_end_timeObject;
+                body["target_end_time"] = targetEndTimeObject;
                 bodypropCount++;
             }
 
@@ -1239,43 +1239,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 
@@ -1340,43 +1340,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var target_start_timeObject = new JObject();
-            var target_start_timeObjectpropCount = 0;
+            var targetStartTimeObject = new JObject();
+            var targetStartTimeObjectpropCount = 0;
             if (bodytargetStarthour != null)
             {
-                target_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodytargetStarthour);
-                target_start_timeObjectpropCount++;
+                targetStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodytargetStarthour);
+                targetStartTimeObjectpropCount++;
             }
 
             if (bodytargetStartminute != null)
             {
-                target_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodytargetStartminute);
-                target_start_timeObjectpropCount++;
+                targetStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodytargetStartminute);
+                targetStartTimeObjectpropCount++;
             }
 
-            if (target_start_timeObjectpropCount > 0)
+            if (targetStartTimeObjectpropCount > 0)
             {
-                body["target_start_time"] = target_start_timeObject;
+                body["target_start_time"] = targetStartTimeObject;
                 bodypropCount++;
             }
 
-            var target_end_timeObject = new JObject();
-            var target_end_timeObjectpropCount = 0;
+            var targetEndTimeObject = new JObject();
+            var targetEndTimeObjectpropCount = 0;
             if (bodytargetEndhour != null)
             {
-                target_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodytargetEndhour);
-                target_end_timeObjectpropCount++;
+                targetEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodytargetEndhour);
+                targetEndTimeObjectpropCount++;
             }
 
             if (bodytargetEndminute != null)
             {
-                target_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodytargetEndminute);
-                target_end_timeObjectpropCount++;
+                targetEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodytargetEndminute);
+                targetEndTimeObjectpropCount++;
             }
 
-            if (target_end_timeObjectpropCount > 0)
+            if (targetEndTimeObjectpropCount > 0)
             {
-                body["target_end_time"] = target_end_timeObject;
+                body["target_end_time"] = targetEndTimeObject;
                 bodypropCount++;
             }
 
@@ -1464,43 +1464,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 bodypropCount++;
             }
 
-            var actual_start_timeObject = new JObject();
-            var actual_start_timeObjectpropCount = 0;
+            var actualStartTimeObject = new JObject();
+            var actualStartTimeObjectpropCount = 0;
             if (bodyactualStarthour != null)
             {
-                actual_start_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualStarthour);
+                actualStartTimeObjectpropCount++;
             }
 
             if (bodyactualStartminute != null)
             {
-                actual_start_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
-                actual_start_timeObjectpropCount++;
+                actualStartTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualStartminute);
+                actualStartTimeObjectpropCount++;
             }
 
-            if (actual_start_timeObjectpropCount > 0)
+            if (actualStartTimeObjectpropCount > 0)
             {
-                body["actual_start_time"] = actual_start_timeObject;
+                body["actual_start_time"] = actualStartTimeObject;
                 bodypropCount++;
             }
 
-            var actual_end_timeObject = new JObject();
-            var actual_end_timeObjectpropCount = 0;
+            var actualEndTimeObject = new JObject();
+            var actualEndTimeObjectpropCount = 0;
             if (bodyactualEndhour != null)
             {
-                actual_end_timeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["hour"] = ExpressionConverter.ConvertO(bodyactualEndhour);
+                actualEndTimeObjectpropCount++;
             }
 
             if (bodyactualEndminute != null)
             {
-                actual_end_timeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
-                actual_end_timeObjectpropCount++;
+                actualEndTimeObject["minute"] = ExpressionConverter.ConvertO(bodyactualEndminute);
+                actualEndTimeObjectpropCount++;
             }
 
-            if (actual_end_timeObjectpropCount > 0)
+            if (actualEndTimeObjectpropCount > 0)
             {
-                body["actual_end_time"] = actual_end_timeObject;
+                body["actual_end_time"] = actualEndTimeObject;
                 bodypropCount++;
             }
 

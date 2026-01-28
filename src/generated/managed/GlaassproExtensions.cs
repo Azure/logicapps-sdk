@@ -62,34 +62,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object> CasePrintPost(Expression<Func<string>> id, Expression<Func<bool>> bodyAsynchronous = null, Expression<Func<bool>> bodyUseCustom = null, Expression<Func<bodyDisplayGalleryInput>> bodyDisplayGallery = null, Expression<Func<bodyDisplayTextInput>> bodyDisplayText = null)
+        public IBodyWorkflowAction<object> CasePrintPost(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
             var apiCallPath = String.Format("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAsynchronous != null)
+            if (bodyasynchronous != null)
             {
-                body["Asynchronous"] = ExpressionConverter.ConvertO(bodyAsynchronous);
+                body["Asynchronous"] = ExpressionConverter.ConvertO(bodyasynchronous);
                 bodypropCount++;
             }
 
-            if (bodyUseCustom != null)
+            if (bodyuseCustom != null)
             {
-                body["UseCustom"] = ExpressionConverter.ConvertO(bodyUseCustom);
+                body["UseCustom"] = ExpressionConverter.ConvertO(bodyuseCustom);
                 bodypropCount++;
             }
 
-            if (bodyDisplayGallery != null)
+            if (bodydisplayGallery != null)
             {
-                body["DisplayGallery"] = ExpressionConverter.ConvertO(bodyDisplayGallery);
+                body["DisplayGallery"] = ExpressionConverter.ConvertO(bodydisplayGallery);
                 bodypropCount++;
             }
 
-            if (bodyDisplayText != null)
+            if (bodydisplayText != null)
             {
-                body["DisplayText"] = ExpressionConverter.ConvertO(bodyDisplayText);
+                body["DisplayText"] = ExpressionConverter.ConvertO(bodydisplayText);
                 bodypropCount++;
             }
 
@@ -120,21 +120,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReplyPost(Expression<Func<string>> id, Expression<Func<bool>> bodyWithoutNotification, Expression<Func<string>> bodyMessage = null)
+        public IBodyWorkflowAction<CaseReplyResponse> CaseReplyPost(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
             var apiCallPath = String.Format("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyMessage != null)
+            if (bodymessage != null)
             {
-                body["Message"] = ExpressionConverter.ConvertO(bodyMessage);
+                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["WithoutNotification"] = ExpressionConverter.ConvertO(bodyWithoutNotification);
+            body["WithoutNotification"] = ExpressionConverter.ConvertO(bodywithoutNotification);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -146,22 +146,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/t/casecreated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTemplateId != null)
+            if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodyTemplateId);
+                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
                 bodypropCount++;
             }
 
-            if (bodyScope != null)
+            if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyScope);
+                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
                 bodypropCount++;
             }
 
@@ -175,22 +175,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/t/caseupdated";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTemplateId != null)
+            if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodyTemplateId);
+                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
                 bodypropCount++;
             }
 
-            if (bodyScope != null)
+            if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyScope);
+                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
                 bodypropCount++;
             }
 
@@ -204,22 +204,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodyTemplateId = null, Expression<Func<bodyScopeInput>> bodyScope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/t/caseclosed";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTemplateId != null)
+            if (bodytemplateId != null)
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodyTemplateId);
+                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
                 bodypropCount++;
             }
 
-            if (bodyScope != null)
+            if (bodyscope != null)
             {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyScope);
+                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
                 bodypropCount++;
             }
 
@@ -306,13 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Text { get; set; }
     }
 
-    public enum bodyDisplayGalleryInput
+    public enum bodydisplayGalleryInput
     {
         Gallery,
         List
     }
 
-    public enum bodyDisplayTextInput
+    public enum bodydisplayTextInput
     {
         Beside,
         Below
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public ProjectUserResponse[] RecipientsCc { get; set; }
     }
 
-    public enum bodyScopeInput
+    public enum bodyscopeInput
     {
         ByMe,
         ForMe,

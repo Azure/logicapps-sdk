@@ -11,6 +11,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
     public class CluedinActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
+        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
+        {
+            var apiCallPath = "/callback";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (dataObjectpropCount > 0)
+            {
+                body["data"] = dataObject;
+                bodypropCount++;
+            }
+
+            var workflowMetadataObject = new JObject();
+            var workflowMetadataObjectpropCount = 0;
+            if (workflowMetadataObjectpropCount > 0)
+            {
+                body["workflowMetadata"] = workflowMetadataObject;
+                bodypropCount++;
+            }
+
+            var resultObject = new JObject();
+            var resultObjectpropCount = 0;
+            if (bodyresultapproval != null)
+            {
+                resultObject["approval"] = ExpressionConverter.ConvertO(bodyresultapproval);
+                resultObjectpropCount++;
+            }
+
+            if (bodyresultreason != null)
+            {
+                resultObject["reason"] = ExpressionConverter.ConvertO(bodyresultreason);
+                resultObjectpropCount++;
+            }
+
+            if (bodyresultreviewedBy != null)
+            {
+                resultObject["reviewedBy"] = ExpressionConverter.ConvertO(bodyresultreviewedBy);
+                resultObjectpropCount++;
+            }
+
+            if (resultObjectpropCount > 0)
+            {
+                body["result"] = resultObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ApprovalResponseResponse>(callPayload);
+        }
     }
 
     public class CluedinTriggers([ConnectionName] string connectionId)
@@ -150,6 +207,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
+    }
+
+    public class ApprovalResponseResponse
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("isSuccess")]
+        public bool IsSuccess { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
 

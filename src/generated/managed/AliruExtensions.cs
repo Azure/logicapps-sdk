@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
     public class AliruActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNews(Expression<Func<string>> bodyHeadline, Expression<Func<string>> bodyText, Expression<Func<string>> bodyURL = null, Expression<Func<string>> bodyPictureURL = null, Expression<Func<string>> bodyTags = null, Expression<Func<int>> bodyTimeToLiveInDays = null, Expression<Func<string>> bodyUserId = null)
+        public IWorkflowAction SendNews(Expression<Func<string>> bodyheadline, Expression<Func<string>> bodytext, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodypictureURL = null, Expression<Func<string>> bodytags = null, Expression<Func<int>> bodytimeToLiveInDays = null, Expression<Func<string>> bodyuserId = null)
         {
             var apiCallPath = "/api/SendNews";
             var apiCallHttpMethod = "post";
@@ -20,36 +20,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Headline"] = ExpressionConverter.ConvertO(bodyHeadline);
+            body["Headline"] = ExpressionConverter.ConvertO(bodyheadline);
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodyText);
-            if (bodyURL != null)
+            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            if (bodyuRL != null)
             {
-                body["URL"] = ExpressionConverter.ConvertO(bodyURL);
+                body["URL"] = ExpressionConverter.ConvertO(bodyuRL);
                 bodypropCount++;
             }
 
-            if (bodyPictureURL != null)
+            if (bodypictureURL != null)
             {
-                body["PictureURL"] = ExpressionConverter.ConvertO(bodyPictureURL);
+                body["PictureURL"] = ExpressionConverter.ConvertO(bodypictureURL);
                 bodypropCount++;
             }
 
-            if (bodyTags != null)
+            if (bodytags != null)
             {
-                body["Tags"] = ExpressionConverter.ConvertO(bodyTags);
+                body["Tags"] = ExpressionConverter.ConvertO(bodytags);
                 bodypropCount++;
             }
 
-            if (bodyTimeToLiveInDays != null)
+            if (bodytimeToLiveInDays != null)
             {
-                body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodyTimeToLiveInDays);
+                body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodytimeToLiveInDays);
                 bodypropCount++;
             }
 
-            if (bodyUserId != null)
+            if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyUserId);
+                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
                 bodypropCount++;
             }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> bodyText, Expression<Func<string>> bodyUserId = null)
+        public IWorkflowAction SendNotification(Expression<Func<string>> bodytext, Expression<Func<string>> bodyuserId = null)
         {
             var apiCallPath = "/api/SendNotification";
             var apiCallHttpMethod = "post";
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodyText);
-            if (bodyUserId != null)
+            body["Text"] = ExpressionConverter.ConvertO(bodytext);
+            if (bodyuserId != null)
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyUserId);
+                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
                 bodypropCount++;
             }
 

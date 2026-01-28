@@ -102,6 +102,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
+        public IBodyWorkflowAction<JToken> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null)
+        {
+            var apiCallPath = String.Format("/{0}/models/{1}:generateMessage", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var promptObject = new JObject();
+            var promptObjectpropCount = 0;
+            if (bodypromptmessages != null)
+            {
+                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
+                promptObjectpropCount++;
+            }
+
+            if (promptObjectpropCount > 0)
+            {
+                body["prompt"] = promptObject;
+                bodypropCount++;
+            }
+
+            if (bodytemperature != null)
+            {
+                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                bodypropCount++;
+            }
+
+            if (bodytopP != null)
+            {
+                body["topP"] = ExpressionConverter.ConvertO(bodytopP);
+                bodypropCount++;
+            }
+
+            if (bodytopK != null)
+            {
+                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
+        public IBodyWorkflowAction<JToken> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodyprompttext = null)
+        {
+            var apiCallPath = String.Format("/{0}/models/{1}:countTextTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var promptObject = new JObject();
+            var promptObjectpropCount = 0;
+            if (bodyprompttext != null)
+            {
+                promptObject["text"] = ExpressionConverter.ConvertO(bodyprompttext);
+                promptObjectpropCount++;
+            }
+
+            if (promptObjectpropCount > 0)
+            {
+                body["prompt"] = promptObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
+        public IBodyWorkflowAction<JToken> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null)
+        {
+            var apiCallPath = String.Format("/{0}/models/{1}:countMessageTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var promptObject = new JObject();
+            var promptObjectpropCount = 0;
+            if (bodypromptmessages != null)
+            {
+                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
+                promptObjectpropCount++;
+            }
+
+            if (promptObjectpropCount > 0)
+            {
+                body["prompt"] = promptObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<EmbedTextResponse> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodytext)
         {
             var apiCallPath = String.Format("/{0}/models/{1}:embedText", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
@@ -122,6 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 
     public class GooglepalmTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class bodypromptmessagesInputItem
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 
     public class EmbedTextResponse

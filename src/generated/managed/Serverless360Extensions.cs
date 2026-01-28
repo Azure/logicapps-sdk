@@ -23,19 +23,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             callPayload.Headers["SL360-StageActivityId"] = ExpressionConverter.Convert(sL360StageActivityId);
             var body = new JObject();
             var bodypropCount = 0;
-            var MessageBodyObject = new JObject();
-            var MessageBodyObjectpropCount = 0;
-            if (MessageBodyObjectpropCount > 0)
+            var messageBodyObject = new JObject();
+            var messageBodyObjectpropCount = 0;
+            if (messageBodyObjectpropCount > 0)
             {
-                body["MessageBody"] = MessageBodyObject;
+                body["MessageBody"] = messageBodyObject;
                 bodypropCount++;
             }
 
-            var MessageHeaderObject = new JObject();
-            var MessageHeaderObjectpropCount = 0;
-            if (MessageHeaderObjectpropCount > 0)
+            var messageHeaderObject = new JObject();
+            var messageHeaderObjectpropCount = 0;
+            if (messageHeaderObjectpropCount > 0)
             {
-                body["MessageHeader"] = MessageHeaderObject;
+                body["MessageHeader"] = messageHeaderObject;
                 bodypropCount++;
             }
 
@@ -79,19 +79,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
                 callPayload.Headers["SL360-BatchId"] = ExpressionConverter.Convert(sL360BatchId);
             var body = new JObject();
             var bodypropCount = 0;
-            var MessageBodyObject = new JObject();
-            var MessageBodyObjectpropCount = 0;
-            if (MessageBodyObjectpropCount > 0)
+            var messageBodyObject = new JObject();
+            var messageBodyObjectpropCount = 0;
+            if (messageBodyObjectpropCount > 0)
             {
-                body["MessageBody"] = MessageBodyObject;
+                body["MessageBody"] = messageBodyObject;
                 bodypropCount++;
             }
 
-            var MessageHeaderObject = new JObject();
-            var MessageHeaderObjectpropCount = 0;
-            if (MessageHeaderObjectpropCount > 0)
+            var messageHeaderObject = new JObject();
+            var messageHeaderObjectpropCount = 0;
+            if (messageHeaderObjectpropCount > 0)
             {
-                body["MessageHeader"] = MessageHeaderObject;
+                body["MessageHeader"] = messageHeaderObject;
                 bodypropCount++;
             }
 
@@ -121,19 +121,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
                 callPayload.Headers["SL360-ArchiveMessage"] = ExpressionConverter.Convert(sL360ArchiveMessage);
             var body = new JObject();
             var bodypropCount = 0;
-            var MessageBodyObject = new JObject();
-            var MessageBodyObjectpropCount = 0;
-            if (MessageBodyObjectpropCount > 0)
+            var messageBodyObject = new JObject();
+            var messageBodyObjectpropCount = 0;
+            if (messageBodyObjectpropCount > 0)
             {
-                body["MessageBody"] = MessageBodyObject;
+                body["MessageBody"] = messageBodyObject;
                 bodypropCount++;
             }
 
-            var MessageHeaderObject = new JObject();
-            var MessageHeaderObjectpropCount = 0;
-            if (MessageHeaderObjectpropCount > 0)
+            var messageHeaderObject = new JObject();
+            var messageHeaderObjectpropCount = 0;
+            if (messageHeaderObjectpropCount > 0)
             {
-                body["MessageHeader"] = MessageHeaderObject;
+                body["MessageHeader"] = messageHeaderObject;
                 bodypropCount++;
             }
 

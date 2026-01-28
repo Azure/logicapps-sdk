@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodyCampaignID, Expression<Func<int[]>> bodyAddressBookIDs = null, Expression<Func<int[]>> bodyContactIDs = null, Expression<Func<string>> bodySendDate = null)
+        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<int[]>> bodyaddressBookIDs = null, Expression<Func<int[]>> bodycontactIDs = null, Expression<Func<string>> bodysendDate = null)
         {
             var apiCallPath = "/v2/campaigns/send";
             var apiCallHttpMethod = "post";
@@ -82,23 +82,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAddressBookIDs != null)
+            if (bodyaddressBookIDs != null)
             {
-                body["AddressBookIDs"] = ExpressionConverter.ConvertO(bodyAddressBookIDs);
+                body["AddressBookIDs"] = ExpressionConverter.ConvertO(bodyaddressBookIDs);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["CampaignID"] = ExpressionConverter.ConvertO(bodyCampaignID);
-            if (bodyContactIDs != null)
+            body["CampaignID"] = ExpressionConverter.ConvertO(bodycampaignID);
+            if (bodycontactIDs != null)
             {
-                body["ContactIDs"] = ExpressionConverter.ConvertO(bodyContactIDs);
+                body["ContactIDs"] = ExpressionConverter.ConvertO(bodycontactIDs);
                 bodypropCount++;
             }
 
-            if (bodySendDate != null)
+            if (bodysendDate != null)
             {
-                body["SendDate"] = ExpressionConverter.ConvertO(bodySendDate);
+                body["SendDate"] = ExpressionConverter.ConvertO(bodysendDate);
                 bodypropCount++;
             }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodyCampaignID, Expression<Func<string[]>> bodyToAddresses, Expression<Func<bodyPersonalizationValuesInputItem[]>> bodyPersonalizationValues = null)
+        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<string[]>> bodytoAddresses, Expression<Func<bodypersonalizationValuesInputItem[]>> bodypersonalizationValues = null)
         {
             var apiCallPath = "/v2/email/triggered-campaign";
             var apiCallHttpMethod = "post";
@@ -120,15 +120,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["CampaignID"] = ExpressionConverter.ConvertO(bodyCampaignID);
-            if (bodyPersonalizationValues != null)
+            body["CampaignID"] = ExpressionConverter.ConvertO(bodycampaignID);
+            if (bodypersonalizationValues != null)
             {
-                body["PersonalizationValues"] = ExpressionConverter.ConvertO(bodyPersonalizationValues);
+                body["PersonalizationValues"] = ExpressionConverter.ConvertO(bodypersonalizationValues);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ToAddresses"] = ExpressionConverter.ConvertO(bodyToAddresses);
+            body["ToAddresses"] = ExpressionConverter.ConvertO(bodytoAddresses);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyProgramID, Expression<Func<int[]>> bodyAddressBooks = null, Expression<Func<int[]>> bodyContacts = null)
+        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyprogramID, Expression<Func<int[]>> bodyaddressBooks = null, Expression<Func<int[]>> bodycontacts = null)
         {
             var apiCallPath = "/v2/programs/enrolments";
             var apiCallHttpMethod = "post";
@@ -146,20 +146,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAddressBooks != null)
+            if (bodyaddressBooks != null)
             {
-                body["AddressBooks"] = ExpressionConverter.ConvertO(bodyAddressBooks);
+                body["AddressBooks"] = ExpressionConverter.ConvertO(bodyaddressBooks);
                 bodypropCount++;
             }
 
-            if (bodyContacts != null)
+            if (bodycontacts != null)
             {
-                body["Contacts"] = ExpressionConverter.ConvertO(bodyContacts);
+                body["Contacts"] = ExpressionConverter.ConvertO(bodycontacts);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ProgramID"] = ExpressionConverter.ConvertO(bodyProgramID);
+            body["ProgramID"] = ExpressionConverter.ConvertO(bodyprogramID);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<regionInput>> region, Expression<Func<string>> bodyMessage)
+        public IWorkflowAction SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<regionInput>> region, Expression<Func<string>> bodymessage)
         {
             var apiCallPath = String.Format("/v2/sms-messages/send-to/{0}", ExpressionConverter.ConvertWithUrlEncoding(telephoneNumber, 1));
             var apiCallHttpMethod = "post";
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodyMessage);
+            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public int TestPeriodHours { get; set; }
     }
 
-    public class bodyPersonalizationValuesInputItem
+    public class bodypersonalizationValuesInputItem
     {
         public string Name { get; set; }
         public string Value { get; set; }

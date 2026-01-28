@@ -11,10 +11,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
 
     public class AzureeventgridpublishActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureeventgridpublish")]
+        public IWorkflowAction PublishEvent(Expression<Func<bodyInputItem[]>> body = null)
+        {
+            var apiCallPath = "/eventGrid/api/events";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Body = ExpressionConverter.ConvertO(body);
+            return new ApiConnectionAction(callPayload);
+        }
     }
 
     public class AzureeventgridpublishTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class bodyInputItem
+    {
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("eventType")]
+        public string EventType { get; set; }
+
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
+
+        [JsonProperty("eventTime")]
+        public string EventTime { get; set; }
     }
 }
 

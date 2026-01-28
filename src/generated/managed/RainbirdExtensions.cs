@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyobject = null)
+        public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
         {
             var apiCallPath = String.Format("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 
             bodypropCount++;
             body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
-            if (bodyobject != null)
+            if (bodyObject != null)
             {
-                body["object"] = ExpressionConverter.ConvertO(bodyobject);
+                body["object"] = ExpressionConverter.ConvertO(bodyObject);
                 bodypropCount++;
             }
 

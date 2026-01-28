@@ -12,33 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
     public class IaconnectsapguiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPEnableScripting(Expression<Func<string>> sAPEnableScriptingWorkflow, Expression<Func<bool>> sAPEnableScriptingNotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPEnableScriptingNotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPEnableScriptingShowNativeWindowsDialogs = null)
+        public IWorkflowAction SAPEnableScripting(Expression<Func<string>> sAPEnableScriptingworkflow, Expression<Func<bool>> sAPEnableScriptingnotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPEnableScriptingnotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPEnableScriptingshowNativeWindowsDialogs = null)
         {
             var apiCallPath = "/SAPGUI/SAPEnableScripting";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPEnableScripting = new JObject();
             var sAPEnableScriptingpropCount = 0;
-            if (sAPEnableScriptingNotifyWhenScriptAttachesToGUI != null)
+            if (sAPEnableScriptingnotifyWhenScriptAttachesToGUI != null)
             {
-                sAPEnableScripting["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPEnableScriptingNotifyWhenScriptAttachesToGUI);
+                sAPEnableScripting["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptAttachesToGUI);
                 sAPEnableScriptingpropCount++;
             }
 
-            if (sAPEnableScriptingNotifyWhenScriptOpensConnection != null)
+            if (sAPEnableScriptingnotifyWhenScriptOpensConnection != null)
             {
-                sAPEnableScripting["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPEnableScriptingNotifyWhenScriptOpensConnection);
+                sAPEnableScripting["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptOpensConnection);
                 sAPEnableScriptingpropCount++;
             }
 
-            if (sAPEnableScriptingShowNativeWindowsDialogs != null)
+            if (sAPEnableScriptingshowNativeWindowsDialogs != null)
             {
-                sAPEnableScripting["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPEnableScriptingShowNativeWindowsDialogs);
+                sAPEnableScripting["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPEnableScriptingshowNativeWindowsDialogs);
                 sAPEnableScriptingpropCount++;
             }
 
             sAPEnableScriptingpropCount++;
-            sAPEnableScripting["Workflow"] = ExpressionConverter.ConvertO(sAPEnableScriptingWorkflow);
+            sAPEnableScripting["Workflow"] = ExpressionConverter.ConvertO(sAPEnableScriptingworkflow);
             if (sAPEnableScriptingpropCount > 0)
             {
                 callPayload.Body = sAPEnableScripting;
@@ -48,75 +48,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPLaunchSAPGUIResponse> SAPLaunchSAPGUI(Expression<Func<string>> sAPLaunchSAPGUIWorkflow, Expression<Func<string>> sAPLaunchSAPGUISAPLogonEXE = null, Expression<Func<string>> sAPLaunchSAPGUISAPLogonArguments = null, Expression<Func<bool>> sAPLaunchSAPGUIEnableSAPScripting = null, Expression<Func<bool>> sAPLaunchSAPGUINotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPLaunchSAPGUINotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPLaunchSAPGUIShowNativeWindowsDialogs = null, Expression<Func<bool>> sAPLaunchSAPGUIAttachAfterLaunch = null, Expression<Func<double>> sAPLaunchSAPGUISecondsToWait = null, Expression<Func<string>> sAPLaunchSAPGUISAPProgId = null, Expression<Func<bool>> sAPLaunchSAPGUIDisableSystemMessages = null)
+        public IBodyWorkflowAction<SAPLaunchSAPGUIResponse> SAPLaunchSAPGUI(Expression<Func<string>> sAPLaunchSAPGUIworkflow, Expression<Func<string>> sAPLaunchSAPGUIsAPLogonEXE = null, Expression<Func<string>> sAPLaunchSAPGUIsAPLogonArguments = null, Expression<Func<bool>> sAPLaunchSAPGUIenableSAPScripting = null, Expression<Func<bool>> sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPLaunchSAPGUInotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPLaunchSAPGUIshowNativeWindowsDialogs = null, Expression<Func<bool>> sAPLaunchSAPGUIattachAfterLaunch = null, Expression<Func<double>> sAPLaunchSAPGUIsecondsToWait = null, Expression<Func<string>> sAPLaunchSAPGUIsAPProgId = null, Expression<Func<bool>> sAPLaunchSAPGUIdisableSystemMessages = null)
         {
             var apiCallPath = "/SAPGUI/SAPLaunchSAPGUI";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPLaunchSAPGUI = new JObject();
             var sAPLaunchSAPGUIpropCount = 0;
-            if (sAPLaunchSAPGUISAPLogonEXE != null)
+            if (sAPLaunchSAPGUIsAPLogonEXE != null)
             {
-                sAPLaunchSAPGUI["SAPLogonEXE"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUISAPLogonEXE);
+                sAPLaunchSAPGUI["SAPLogonEXE"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsAPLogonEXE);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUISAPLogonArguments != null)
+            if (sAPLaunchSAPGUIsAPLogonArguments != null)
             {
-                sAPLaunchSAPGUI["SAPLogonArguments"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUISAPLogonArguments);
+                sAPLaunchSAPGUI["SAPLogonArguments"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsAPLogonArguments);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUIEnableSAPScripting != null)
+            if (sAPLaunchSAPGUIenableSAPScripting != null)
             {
-                sAPLaunchSAPGUI["EnableSAPScripting"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIEnableSAPScripting);
+                sAPLaunchSAPGUI["EnableSAPScripting"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIenableSAPScripting);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUINotifyWhenScriptAttachesToGUI != null)
+            if (sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI != null)
             {
-                sAPLaunchSAPGUI["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUINotifyWhenScriptAttachesToGUI);
+                sAPLaunchSAPGUI["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUINotifyWhenScriptOpensConnection != null)
+            if (sAPLaunchSAPGUInotifyWhenScriptOpensConnection != null)
             {
-                sAPLaunchSAPGUI["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUINotifyWhenScriptOpensConnection);
+                sAPLaunchSAPGUI["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptOpensConnection);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUIShowNativeWindowsDialogs != null)
+            if (sAPLaunchSAPGUIshowNativeWindowsDialogs != null)
             {
-                sAPLaunchSAPGUI["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIShowNativeWindowsDialogs);
+                sAPLaunchSAPGUI["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIshowNativeWindowsDialogs);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUIAttachAfterLaunch != null)
+            if (sAPLaunchSAPGUIattachAfterLaunch != null)
             {
-                sAPLaunchSAPGUI["AttachAfterLaunch"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIAttachAfterLaunch);
+                sAPLaunchSAPGUI["AttachAfterLaunch"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIattachAfterLaunch);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUISecondsToWait != null)
+            if (sAPLaunchSAPGUIsecondsToWait != null)
             {
-                sAPLaunchSAPGUI["SecondsToWait"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUISecondsToWait);
+                sAPLaunchSAPGUI["SecondsToWait"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsecondsToWait);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUISAPProgId != null)
+            if (sAPLaunchSAPGUIsAPProgId != null)
             {
-                sAPLaunchSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUISAPProgId);
+                sAPLaunchSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsAPProgId);
                 sAPLaunchSAPGUIpropCount++;
             }
 
-            if (sAPLaunchSAPGUIDisableSystemMessages != null)
+            if (sAPLaunchSAPGUIdisableSystemMessages != null)
             {
-                sAPLaunchSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIDisableSystemMessages);
+                sAPLaunchSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIdisableSystemMessages);
                 sAPLaunchSAPGUIpropCount++;
             }
 
             sAPLaunchSAPGUIpropCount++;
-            sAPLaunchSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIWorkflow);
+            sAPLaunchSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIworkflow);
             if (sAPLaunchSAPGUIpropCount > 0)
             {
                 callPayload.Body = sAPLaunchSAPGUI;
@@ -126,27 +126,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPAttachToSAPGUIResponse> SAPAttachToSAPGUI(Expression<Func<string>> sAPAttachToSAPGUIWorkflow, Expression<Func<string>> sAPAttachToSAPGUISAPProgId = null, Expression<Func<bool>> sAPAttachToSAPGUIDisableSystemMessages = null)
+        public IBodyWorkflowAction<SAPAttachToSAPGUIResponse> SAPAttachToSAPGUI(Expression<Func<string>> sAPAttachToSAPGUIworkflow, Expression<Func<string>> sAPAttachToSAPGUIsAPProgId = null, Expression<Func<bool>> sAPAttachToSAPGUIdisableSystemMessages = null)
         {
             var apiCallPath = "/SAPGUI/SAPAttachToSAPGUI";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPAttachToSAPGUI = new JObject();
             var sAPAttachToSAPGUIpropCount = 0;
-            if (sAPAttachToSAPGUISAPProgId != null)
+            if (sAPAttachToSAPGUIsAPProgId != null)
             {
-                sAPAttachToSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUISAPProgId);
+                sAPAttachToSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIsAPProgId);
                 sAPAttachToSAPGUIpropCount++;
             }
 
-            if (sAPAttachToSAPGUIDisableSystemMessages != null)
+            if (sAPAttachToSAPGUIdisableSystemMessages != null)
             {
-                sAPAttachToSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIDisableSystemMessages);
+                sAPAttachToSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIdisableSystemMessages);
                 sAPAttachToSAPGUIpropCount++;
             }
 
             sAPAttachToSAPGUIpropCount++;
-            sAPAttachToSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIWorkflow);
+            sAPAttachToSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIworkflow);
             if (sAPAttachToSAPGUIpropCount > 0)
             {
                 callPayload.Body = sAPAttachToSAPGUI;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDetachFromSAPGUI(Expression<Func<string>> sAPDetachFromSAPGUIWorkflow)
+        public IWorkflowAction SAPDetachFromSAPGUI(Expression<Func<string>> sAPDetachFromSAPGUIworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPDetachFromSAPGUI";
             var apiCallHttpMethod = "post";
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDetachFromSAPGUI = new JObject();
             var sAPDetachFromSAPGUIpropCount = 0;
             sAPDetachFromSAPGUIpropCount++;
-            sAPDetachFromSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPDetachFromSAPGUIWorkflow);
+            sAPDetachFromSAPGUI["Workflow"] = ExpressionConverter.ConvertO(sAPDetachFromSAPGUIworkflow);
             if (sAPDetachFromSAPGUIpropCount > 0)
             {
                 callPayload.Body = sAPDetachFromSAPGUI;
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse> SAPGetSAPGUIStatus(Expression<Func<string>> sAPGetSAPGUIStatusWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse> SAPGetSAPGUIStatus(Expression<Func<string>> sAPGetSAPGUIStatusworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPGUIStatus";
             var apiCallHttpMethod = "post";
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPGUIStatus = new JObject();
             var sAPGetSAPGUIStatuspropCount = 0;
             sAPGetSAPGUIStatuspropCount++;
-            sAPGetSAPGUIStatus["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGUIStatusWorkflow);
+            sAPGetSAPGUIStatus["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGUIStatusworkflow);
             if (sAPGetSAPGUIStatuspropCount > 0)
             {
                 callPayload.Body = sAPGetSAPGUIStatus;
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPSessionsResponse> SAPGetSAPSessions(Expression<Func<string>> sAPGetSAPSessionsWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPSessionsResponse> SAPGetSAPSessions(Expression<Func<string>> sAPGetSAPSessionsworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPSessions";
             var apiCallHttpMethod = "post";
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPSessions = new JObject();
             var sAPGetSAPSessionspropCount = 0;
             sAPGetSAPSessionspropCount++;
-            sAPGetSAPSessions["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPSessionsWorkflow);
+            sAPGetSAPSessions["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPSessionsworkflow);
             if (sAPGetSAPSessionspropCount > 0)
             {
                 callPayload.Body = sAPGetSAPSessions;
@@ -210,27 +210,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPAttachToSessionResponse> SAPAttachToSession(Expression<Func<string>> sAPAttachToSessionWorkflow, Expression<Func<string>> sAPAttachToSessionSearchConnectionName = null, Expression<Func<string>> sAPAttachToSessionSearchSessionName = null)
+        public IBodyWorkflowAction<SAPAttachToSessionResponse> SAPAttachToSession(Expression<Func<string>> sAPAttachToSessionworkflow, Expression<Func<string>> sAPAttachToSessionsearchConnectionName = null, Expression<Func<string>> sAPAttachToSessionsearchSessionName = null)
         {
             var apiCallPath = "/SAPGUI/SAPAttachToSession";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPAttachToSession = new JObject();
             var sAPAttachToSessionpropCount = 0;
-            if (sAPAttachToSessionSearchConnectionName != null)
+            if (sAPAttachToSessionsearchConnectionName != null)
             {
-                sAPAttachToSession["SearchConnectionName"] = ExpressionConverter.ConvertO(sAPAttachToSessionSearchConnectionName);
+                sAPAttachToSession["SearchConnectionName"] = ExpressionConverter.ConvertO(sAPAttachToSessionsearchConnectionName);
                 sAPAttachToSessionpropCount++;
             }
 
-            if (sAPAttachToSessionSearchSessionName != null)
+            if (sAPAttachToSessionsearchSessionName != null)
             {
-                sAPAttachToSession["SearchSessionName"] = ExpressionConverter.ConvertO(sAPAttachToSessionSearchSessionName);
+                sAPAttachToSession["SearchSessionName"] = ExpressionConverter.ConvertO(sAPAttachToSessionsearchSessionName);
                 sAPAttachToSessionpropCount++;
             }
 
             sAPAttachToSessionpropCount++;
-            sAPAttachToSession["Workflow"] = ExpressionConverter.ConvertO(sAPAttachToSessionWorkflow);
+            sAPAttachToSession["Workflow"] = ExpressionConverter.ConvertO(sAPAttachToSessionworkflow);
             if (sAPAttachToSessionpropCount > 0)
             {
                 callPayload.Body = sAPAttachToSession;
@@ -240,33 +240,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPCloseSession(Expression<Func<string>> sAPCloseSessionWorkflow, Expression<Func<bool>> sAPCloseSessionCloseAttachedSession = null, Expression<Func<string>> sAPCloseSessionSearchConnectionName = null, Expression<Func<string>> sAPCloseSessionSearchSessionName = null)
+        public IWorkflowAction SAPCloseSession(Expression<Func<string>> sAPCloseSessionworkflow, Expression<Func<bool>> sAPCloseSessioncloseAttachedSession = null, Expression<Func<string>> sAPCloseSessionsearchConnectionName = null, Expression<Func<string>> sAPCloseSessionsearchSessionName = null)
         {
             var apiCallPath = "/SAPGUI/SAPCloseSession";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPCloseSession = new JObject();
             var sAPCloseSessionpropCount = 0;
-            if (sAPCloseSessionCloseAttachedSession != null)
+            if (sAPCloseSessioncloseAttachedSession != null)
             {
-                sAPCloseSession["CloseAttachedSession"] = ExpressionConverter.ConvertO(sAPCloseSessionCloseAttachedSession);
+                sAPCloseSession["CloseAttachedSession"] = ExpressionConverter.ConvertO(sAPCloseSessioncloseAttachedSession);
                 sAPCloseSessionpropCount++;
             }
 
-            if (sAPCloseSessionSearchConnectionName != null)
+            if (sAPCloseSessionsearchConnectionName != null)
             {
-                sAPCloseSession["SearchConnectionName"] = ExpressionConverter.ConvertO(sAPCloseSessionSearchConnectionName);
+                sAPCloseSession["SearchConnectionName"] = ExpressionConverter.ConvertO(sAPCloseSessionsearchConnectionName);
                 sAPCloseSessionpropCount++;
             }
 
-            if (sAPCloseSessionSearchSessionName != null)
+            if (sAPCloseSessionsearchSessionName != null)
             {
-                sAPCloseSession["SearchSessionName"] = ExpressionConverter.ConvertO(sAPCloseSessionSearchSessionName);
+                sAPCloseSession["SearchSessionName"] = ExpressionConverter.ConvertO(sAPCloseSessionsearchSessionName);
                 sAPCloseSessionpropCount++;
             }
 
             sAPCloseSessionpropCount++;
-            sAPCloseSession["Workflow"] = ExpressionConverter.ConvertO(sAPCloseSessionWorkflow);
+            sAPCloseSession["Workflow"] = ExpressionConverter.ConvertO(sAPCloseSessionworkflow);
             if (sAPCloseSessionpropCount > 0)
             {
                 callPayload.Body = sAPCloseSession;
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse> SAPGetAttachedSessionProperties(Expression<Func<string>> sAPGetAttachedSessionPropertiesWorkflow)
+        public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse> SAPGetAttachedSessionProperties(Expression<Func<string>> sAPGetAttachedSessionPropertiesworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetAttachedSessionProperties";
             var apiCallHttpMethod = "post";
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetAttachedSessionProperties = new JObject();
             var sAPGetAttachedSessionPropertiespropCount = 0;
             sAPGetAttachedSessionPropertiespropCount++;
-            sAPGetAttachedSessionProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetAttachedSessionPropertiesWorkflow);
+            sAPGetAttachedSessionProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetAttachedSessionPropertiesworkflow);
             if (sAPGetAttachedSessionPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetAttachedSessionProperties;
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse> SAPWaitForAttachedSessionNotBusy(Expression<Func<double>> sAPWaitForAttachedSessionNotBusySecondsToWait, Expression<Func<string>> sAPWaitForAttachedSessionNotBusyWorkflow, Expression<Func<bool>> sAPWaitForAttachedSessionNotBusyRaiseExceptionIfBusyAfterWait = null)
+        public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse> SAPWaitForAttachedSessionNotBusy(Expression<Func<double>> sAPWaitForAttachedSessionNotBusysecondsToWait, Expression<Func<string>> sAPWaitForAttachedSessionNotBusyworkflow, Expression<Func<bool>> sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = null)
         {
             var apiCallPath = "/SAPGUI/SAPWaitForAttachedSessionNotBusy";
             var apiCallHttpMethod = "post";
@@ -302,15 +302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWaitForAttachedSessionNotBusy = new JObject();
             var sAPWaitForAttachedSessionNotBusypropCount = 0;
             sAPWaitForAttachedSessionNotBusypropCount++;
-            sAPWaitForAttachedSessionNotBusy["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusySecondsToWait);
-            if (sAPWaitForAttachedSessionNotBusyRaiseExceptionIfBusyAfterWait != null)
+            sAPWaitForAttachedSessionNotBusy["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusysecondsToWait);
+            if (sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait != null)
             {
-                sAPWaitForAttachedSessionNotBusy["RaiseExceptionIfBusyAfterWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyRaiseExceptionIfBusyAfterWait);
+                sAPWaitForAttachedSessionNotBusy["RaiseExceptionIfBusyAfterWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait);
                 sAPWaitForAttachedSessionNotBusypropCount++;
             }
 
             sAPWaitForAttachedSessionNotBusypropCount++;
-            sAPWaitForAttachedSessionNotBusy["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyWorkflow);
+            sAPWaitForAttachedSessionNotBusy["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyworkflow);
             if (sAPWaitForAttachedSessionNotBusypropCount > 0)
             {
                 callPayload.Body = sAPWaitForAttachedSessionNotBusy;
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPInputTextIntoSAPElement(Expression<Func<string>> sAPInputTextIntoSAPElementSearchSAPElementId, Expression<Func<string>> sAPInputTextIntoSAPElementWorkflow, Expression<Func<string>> sAPInputTextIntoSAPElementTextToInput = null, Expression<Func<bool>> sAPInputTextIntoSAPElementReplaceExistingValue = null, Expression<Func<int>> sAPInputTextIntoSAPElementInsertPosition = null)
+        public IWorkflowAction SAPInputTextIntoSAPElement(Expression<Func<string>> sAPInputTextIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPInputTextIntoSAPElementworkflow, Expression<Func<string>> sAPInputTextIntoSAPElementtextToInput = null, Expression<Func<bool>> sAPInputTextIntoSAPElementreplaceExistingValue = null, Expression<Func<int>> sAPInputTextIntoSAPElementinsertPosition = null)
         {
             var apiCallPath = "/SAPGUI/SAPInputTextIntoSAPElement";
             var apiCallHttpMethod = "post";
@@ -328,27 +328,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPInputTextIntoSAPElement = new JObject();
             var sAPInputTextIntoSAPElementpropCount = 0;
             sAPInputTextIntoSAPElementpropCount++;
-            sAPInputTextIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementSearchSAPElementId);
-            if (sAPInputTextIntoSAPElementTextToInput != null)
+            sAPInputTextIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementsearchSAPElementId);
+            if (sAPInputTextIntoSAPElementtextToInput != null)
             {
-                sAPInputTextIntoSAPElement["TextToInput"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementTextToInput);
+                sAPInputTextIntoSAPElement["TextToInput"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementtextToInput);
                 sAPInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPInputTextIntoSAPElementReplaceExistingValue != null)
+            if (sAPInputTextIntoSAPElementreplaceExistingValue != null)
             {
-                sAPInputTextIntoSAPElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementReplaceExistingValue);
+                sAPInputTextIntoSAPElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementreplaceExistingValue);
                 sAPInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPInputTextIntoSAPElementInsertPosition != null)
+            if (sAPInputTextIntoSAPElementinsertPosition != null)
             {
-                sAPInputTextIntoSAPElement["InsertPosition"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementInsertPosition);
+                sAPInputTextIntoSAPElement["InsertPosition"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementinsertPosition);
                 sAPInputTextIntoSAPElementpropCount++;
             }
 
             sAPInputTextIntoSAPElementpropCount++;
-            sAPInputTextIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementWorkflow);
+            sAPInputTextIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementworkflow);
             if (sAPInputTextIntoSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPInputTextIntoSAPElement;
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPInputPasswordIntoSAPElement(Expression<Func<string>> sAPInputPasswordIntoSAPElementSearchSAPElementId, Expression<Func<string>> sAPInputPasswordIntoSAPElementPasswordToInput, Expression<Func<string>> sAPInputPasswordIntoSAPElementWorkflow)
+        public IWorkflowAction SAPInputPasswordIntoSAPElement(Expression<Func<string>> sAPInputPasswordIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPInputPasswordIntoSAPElementpasswordToInput, Expression<Func<string>> sAPInputPasswordIntoSAPElementworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPInputPasswordIntoSAPElement";
             var apiCallHttpMethod = "post";
@@ -366,11 +366,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPInputPasswordIntoSAPElement = new JObject();
             var sAPInputPasswordIntoSAPElementpropCount = 0;
             sAPInputPasswordIntoSAPElementpropCount++;
-            sAPInputPasswordIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementSearchSAPElementId);
+            sAPInputPasswordIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementsearchSAPElementId);
             sAPInputPasswordIntoSAPElementpropCount++;
-            sAPInputPasswordIntoSAPElement["PasswordToInput"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementPasswordToInput);
+            sAPInputPasswordIntoSAPElement["PasswordToInput"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementpasswordToInput);
             sAPInputPasswordIntoSAPElementpropCount++;
-            sAPInputPasswordIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementWorkflow);
+            sAPInputPasswordIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPInputPasswordIntoSAPElementworkflow);
             if (sAPInputPasswordIntoSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPInputPasswordIntoSAPElement;
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementPropertiesResponse> SAPGetElementProperties(Expression<Func<string>> sAPGetElementPropertiesSearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesWorkflow)
+        public IBodyWorkflowAction<SAPGetElementPropertiesResponse> SAPGetElementProperties(Expression<Func<string>> sAPGetElementPropertiessearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetElementProperties";
             var apiCallHttpMethod = "post";
@@ -388,9 +388,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetElementProperties = new JObject();
             var sAPGetElementPropertiespropCount = 0;
             sAPGetElementPropertiespropCount++;
-            sAPGetElementProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesSearchSAPElementId);
+            sAPGetElementProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementPropertiessearchSAPElementId);
             sAPGetElementPropertiespropCount++;
-            sAPGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesWorkflow);
+            sAPGetElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesworkflow);
             if (sAPGetElementPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetElementProperties;
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForElementIdResponse> SAPWaitForElementId(Expression<Func<string>> sAPWaitForElementIdSearchSAPElementId, Expression<Func<string>> sAPWaitForElementIdWorkflow, Expression<Func<double>> sAPWaitForElementIdSecondsToWait = null, Expression<Func<bool>> sAPWaitForElementIdRaiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<SAPWaitForElementIdResponse> SAPWaitForElementId(Expression<Func<string>> sAPWaitForElementIdsearchSAPElementId, Expression<Func<string>> sAPWaitForElementIdworkflow, Expression<Func<double>> sAPWaitForElementIdsecondsToWait = null, Expression<Func<bool>> sAPWaitForElementIdraiseExceptionIfElementNotFound = null)
         {
             var apiCallPath = "/SAPGUI/SAPWaitForElementId";
             var apiCallHttpMethod = "post";
@@ -408,21 +408,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWaitForElementId = new JObject();
             var sAPWaitForElementIdpropCount = 0;
             sAPWaitForElementIdpropCount++;
-            sAPWaitForElementId["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWaitForElementIdSearchSAPElementId);
-            if (sAPWaitForElementIdSecondsToWait != null)
+            sAPWaitForElementId["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWaitForElementIdsearchSAPElementId);
+            if (sAPWaitForElementIdsecondsToWait != null)
             {
-                sAPWaitForElementId["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForElementIdSecondsToWait);
+                sAPWaitForElementId["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForElementIdsecondsToWait);
                 sAPWaitForElementIdpropCount++;
             }
 
-            if (sAPWaitForElementIdRaiseExceptionIfElementNotFound != null)
+            if (sAPWaitForElementIdraiseExceptionIfElementNotFound != null)
             {
-                sAPWaitForElementId["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForElementIdRaiseExceptionIfElementNotFound);
+                sAPWaitForElementId["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForElementIdraiseExceptionIfElementNotFound);
                 sAPWaitForElementIdpropCount++;
             }
 
             sAPWaitForElementIdpropCount++;
-            sAPWaitForElementId["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForElementIdWorkflow);
+            sAPWaitForElementId["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForElementIdworkflow);
             if (sAPWaitForElementIdpropCount > 0)
             {
                 callPayload.Body = sAPWaitForElementId;
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPWaitForWindowResponse> SAPWaitForWindow(Expression<Func<string>> sAPWaitForWindowSearchSAPWindowTitle, Expression<Func<string>> sAPWaitForWindowWorkflow, Expression<Func<bool>> sAPWaitForWindowSearchIsRegularExpression = null, Expression<Func<bool>> sAPWaitForWindowSearchIsCaseSensitive = null, Expression<Func<double>> sAPWaitForWindowSecondsToWait = null, Expression<Func<bool>> sAPWaitForWindowRaiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<SAPWaitForWindowResponse> SAPWaitForWindow(Expression<Func<string>> sAPWaitForWindowsearchSAPWindowTitle, Expression<Func<string>> sAPWaitForWindowworkflow, Expression<Func<bool>> sAPWaitForWindowsearchIsRegularExpression = null, Expression<Func<bool>> sAPWaitForWindowsearchIsCaseSensitive = null, Expression<Func<double>> sAPWaitForWindowsecondsToWait = null, Expression<Func<bool>> sAPWaitForWindowraiseExceptionIfElementNotFound = null)
         {
             var apiCallPath = "/SAPGUI/SAPWaitForWindow";
             var apiCallHttpMethod = "post";
@@ -440,33 +440,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWaitForWindow = new JObject();
             var sAPWaitForWindowpropCount = 0;
             sAPWaitForWindowpropCount++;
-            sAPWaitForWindow["SearchSAPWindowTitle"] = ExpressionConverter.ConvertO(sAPWaitForWindowSearchSAPWindowTitle);
-            if (sAPWaitForWindowSearchIsRegularExpression != null)
+            sAPWaitForWindow["SearchSAPWindowTitle"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchSAPWindowTitle);
+            if (sAPWaitForWindowsearchIsRegularExpression != null)
             {
-                sAPWaitForWindow["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(sAPWaitForWindowSearchIsRegularExpression);
+                sAPWaitForWindow["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsRegularExpression);
                 sAPWaitForWindowpropCount++;
             }
 
-            if (sAPWaitForWindowSearchIsCaseSensitive != null)
+            if (sAPWaitForWindowsearchIsCaseSensitive != null)
             {
-                sAPWaitForWindow["SearchIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPWaitForWindowSearchIsCaseSensitive);
+                sAPWaitForWindow["SearchIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsCaseSensitive);
                 sAPWaitForWindowpropCount++;
             }
 
-            if (sAPWaitForWindowSecondsToWait != null)
+            if (sAPWaitForWindowsecondsToWait != null)
             {
-                sAPWaitForWindow["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForWindowSecondsToWait);
+                sAPWaitForWindow["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForWindowsecondsToWait);
                 sAPWaitForWindowpropCount++;
             }
 
-            if (sAPWaitForWindowRaiseExceptionIfElementNotFound != null)
+            if (sAPWaitForWindowraiseExceptionIfElementNotFound != null)
             {
-                sAPWaitForWindow["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForWindowRaiseExceptionIfElementNotFound);
+                sAPWaitForWindow["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForWindowraiseExceptionIfElementNotFound);
                 sAPWaitForWindowpropCount++;
             }
 
             sAPWaitForWindowpropCount++;
-            sAPWaitForWindow["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForWindowWorkflow);
+            sAPWaitForWindow["Workflow"] = ExpressionConverter.ConvertO(sAPWaitForWindowworkflow);
             if (sAPWaitForWindowpropCount > 0)
             {
                 callPayload.Body = sAPWaitForWindow;
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementTextValueResponse> SAPGetElementTextValue(Expression<Func<string>> sAPGetElementTextValueSearchSAPElementId, Expression<Func<string>> sAPGetElementTextValueWorkflow)
+        public IBodyWorkflowAction<SAPGetElementTextValueResponse> SAPGetElementTextValue(Expression<Func<string>> sAPGetElementTextValuesearchSAPElementId, Expression<Func<string>> sAPGetElementTextValueworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetElementTextValue";
             var apiCallHttpMethod = "post";
@@ -484,9 +484,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetElementTextValue = new JObject();
             var sAPGetElementTextValuepropCount = 0;
             sAPGetElementTextValuepropCount++;
-            sAPGetElementTextValue["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementTextValueSearchSAPElementId);
+            sAPGetElementTextValue["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementTextValuesearchSAPElementId);
             sAPGetElementTextValuepropCount++;
-            sAPGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementTextValueWorkflow);
+            sAPGetElementTextValue["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementTextValueworkflow);
             if (sAPGetElementTextValuepropCount > 0)
             {
                 callPayload.Body = sAPGetElementTextValue;
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressSAPElement(Expression<Func<string>> sAPPressSAPElementSearchSAPElementId, Expression<Func<string>> sAPPressSAPElementWorkflow)
+        public IWorkflowAction SAPPressSAPElement(Expression<Func<string>> sAPPressSAPElementsearchSAPElementId, Expression<Func<string>> sAPPressSAPElementworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPPressSAPElement";
             var apiCallHttpMethod = "post";
@@ -504,9 +504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressSAPElement = new JObject();
             var sAPPressSAPElementpropCount = 0;
             sAPPressSAPElementpropCount++;
-            sAPPressSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPElementSearchSAPElementId);
+            sAPPressSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPElementsearchSAPElementId);
             sAPPressSAPElementpropCount++;
-            sAPPressSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPElementWorkflow);
+            sAPPressSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPElementworkflow);
             if (sAPPressSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPPressSAPElement;
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPElement(Expression<Func<string>> sAPSelectSAPElementSearchSAPElementId, Expression<Func<string>> sAPSelectSAPElementWorkflow)
+        public IWorkflowAction SAPSelectSAPElement(Expression<Func<string>> sAPSelectSAPElementsearchSAPElementId, Expression<Func<string>> sAPSelectSAPElementworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPElement";
             var apiCallHttpMethod = "post";
@@ -524,9 +524,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPElement = new JObject();
             var sAPSelectSAPElementpropCount = 0;
             sAPSelectSAPElementpropCount++;
-            sAPSelectSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPElementSearchSAPElementId);
+            sAPSelectSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPElementsearchSAPElementId);
             sAPSelectSAPElementpropCount++;
-            sAPSelectSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPElementWorkflow);
+            sAPSelectSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPElementworkflow);
             if (sAPSelectSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPElement;
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPFocusSAPElement(Expression<Func<string>> sAPFocusSAPElementSearchSAPElementId, Expression<Func<string>> sAPFocusSAPElementWorkflow)
+        public IWorkflowAction SAPFocusSAPElement(Expression<Func<string>> sAPFocusSAPElementsearchSAPElementId, Expression<Func<string>> sAPFocusSAPElementworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPFocusSAPElement";
             var apiCallHttpMethod = "post";
@@ -544,9 +544,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPFocusSAPElement = new JObject();
             var sAPFocusSAPElementpropCount = 0;
             sAPFocusSAPElementpropCount++;
-            sAPFocusSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPFocusSAPElementSearchSAPElementId);
+            sAPFocusSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPFocusSAPElementsearchSAPElementId);
             sAPFocusSAPElementpropCount++;
-            sAPFocusSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPFocusSAPElementWorkflow);
+            sAPFocusSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPFocusSAPElementworkflow);
             if (sAPFocusSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPFocusSAPElement;
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPCheckSAPElement(Expression<Func<string>> sAPCheckSAPElementSearchSAPElementId, Expression<Func<string>> sAPCheckSAPElementWorkflow, Expression<Func<bool>> sAPCheckSAPElementCheckElement = null)
+        public IWorkflowAction SAPCheckSAPElement(Expression<Func<string>> sAPCheckSAPElementsearchSAPElementId, Expression<Func<string>> sAPCheckSAPElementworkflow, Expression<Func<bool>> sAPCheckSAPElementcheckElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPCheckSAPElement";
             var apiCallHttpMethod = "post";
@@ -564,15 +564,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPCheckSAPElement = new JObject();
             var sAPCheckSAPElementpropCount = 0;
             sAPCheckSAPElementpropCount++;
-            sAPCheckSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPElementSearchSAPElementId);
-            if (sAPCheckSAPElementCheckElement != null)
+            sAPCheckSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPElementsearchSAPElementId);
+            if (sAPCheckSAPElementcheckElement != null)
             {
-                sAPCheckSAPElement["CheckElement"] = ExpressionConverter.ConvertO(sAPCheckSAPElementCheckElement);
+                sAPCheckSAPElement["CheckElement"] = ExpressionConverter.ConvertO(sAPCheckSAPElementcheckElement);
                 sAPCheckSAPElementpropCount++;
             }
 
             sAPCheckSAPElementpropCount++;
-            sAPCheckSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPElementWorkflow);
+            sAPCheckSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPElementworkflow);
             if (sAPCheckSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPCheckSAPElement;
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPVisualiseSAPElement(Expression<Func<string>> sAPVisualiseSAPElementSearchSAPElementId, Expression<Func<string>> sAPVisualiseSAPElementWorkflow, Expression<Func<bool>> sAPVisualiseSAPElementVisualiseOn = null)
+        public IWorkflowAction SAPVisualiseSAPElement(Expression<Func<string>> sAPVisualiseSAPElementsearchSAPElementId, Expression<Func<string>> sAPVisualiseSAPElementworkflow, Expression<Func<bool>> sAPVisualiseSAPElementvisualiseOn = null)
         {
             var apiCallPath = "/SAPGUI/SAPVisualiseSAPElement";
             var apiCallHttpMethod = "post";
@@ -590,15 +590,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPVisualiseSAPElement = new JObject();
             var sAPVisualiseSAPElementpropCount = 0;
             sAPVisualiseSAPElementpropCount++;
-            sAPVisualiseSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementSearchSAPElementId);
-            if (sAPVisualiseSAPElementVisualiseOn != null)
+            sAPVisualiseSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementsearchSAPElementId);
+            if (sAPVisualiseSAPElementvisualiseOn != null)
             {
-                sAPVisualiseSAPElement["VisualiseOn"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementVisualiseOn);
+                sAPVisualiseSAPElement["VisualiseOn"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementvisualiseOn);
                 sAPVisualiseSAPElementpropCount++;
             }
 
             sAPVisualiseSAPElementpropCount++;
-            sAPVisualiseSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementWorkflow);
+            sAPVisualiseSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementworkflow);
             if (sAPVisualiseSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPVisualiseSAPElement;
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDrawRectangleAroundSAPElement(Expression<Func<string>> sAPDrawRectangleAroundSAPElementSearchSAPElementId, Expression<Func<string>> sAPDrawRectangleAroundSAPElementWorkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPElementPenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPElementPenThicknessPixels = null)
+        public IWorkflowAction SAPDrawRectangleAroundSAPElement(Expression<Func<string>> sAPDrawRectangleAroundSAPElementsearchSAPElementId, Expression<Func<string>> sAPDrawRectangleAroundSAPElementworkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPElementpenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPElementpenThicknessPixels = null)
         {
             var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPElement";
             var apiCallHttpMethod = "post";
@@ -616,21 +616,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDrawRectangleAroundSAPElement = new JObject();
             var sAPDrawRectangleAroundSAPElementpropCount = 0;
             sAPDrawRectangleAroundSAPElementpropCount++;
-            sAPDrawRectangleAroundSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementSearchSAPElementId);
-            if (sAPDrawRectangleAroundSAPElementPenColour != null)
+            sAPDrawRectangleAroundSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementsearchSAPElementId);
+            if (sAPDrawRectangleAroundSAPElementpenColour != null)
             {
-                sAPDrawRectangleAroundSAPElement["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementPenColour);
+                sAPDrawRectangleAroundSAPElement["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenColour);
                 sAPDrawRectangleAroundSAPElementpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPElementPenThicknessPixels != null)
+            if (sAPDrawRectangleAroundSAPElementpenThicknessPixels != null)
             {
-                sAPDrawRectangleAroundSAPElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementPenThicknessPixels);
+                sAPDrawRectangleAroundSAPElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenThicknessPixels);
                 sAPDrawRectangleAroundSAPElementpropCount++;
             }
 
             sAPDrawRectangleAroundSAPElementpropCount++;
-            sAPDrawRectangleAroundSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementWorkflow);
+            sAPDrawRectangleAroundSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementworkflow);
             if (sAPDrawRectangleAroundSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPDrawRectangleAroundSAPElement;
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSendCommand(Expression<Func<string>> sAPSendCommandSAPCommand, Expression<Func<string>> sAPSendCommandWorkflow)
+        public IWorkflowAction SAPSendCommand(Expression<Func<string>> sAPSendCommandsAPCommand, Expression<Func<string>> sAPSendCommandworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSendCommand";
             var apiCallHttpMethod = "post";
@@ -648,9 +648,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSendCommand = new JObject();
             var sAPSendCommandpropCount = 0;
             sAPSendCommandpropCount++;
-            sAPSendCommand["SAPCommand"] = ExpressionConverter.ConvertO(sAPSendCommandSAPCommand);
+            sAPSendCommand["SAPCommand"] = ExpressionConverter.ConvertO(sAPSendCommandsAPCommand);
             sAPSendCommandpropCount++;
-            sAPSendCommand["Workflow"] = ExpressionConverter.ConvertO(sAPSendCommandWorkflow);
+            sAPSendCommand["Workflow"] = ExpressionConverter.ConvertO(sAPSendCommandworkflow);
             if (sAPSendCommandpropCount > 0)
             {
                 callPayload.Body = sAPSendCommand;
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPEnterTCode(Expression<Func<string>> sAPEnterTCodeSAPTCode, Expression<Func<string>> sAPEnterTCodeWorkflow)
+        public IWorkflowAction SAPEnterTCode(Expression<Func<string>> sAPEnterTCodesAPTCode, Expression<Func<string>> sAPEnterTCodeworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPEnterTCode";
             var apiCallHttpMethod = "post";
@@ -668,9 +668,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPEnterTCode = new JObject();
             var sAPEnterTCodepropCount = 0;
             sAPEnterTCodepropCount++;
-            sAPEnterTCode["SAPTCode"] = ExpressionConverter.ConvertO(sAPEnterTCodeSAPTCode);
+            sAPEnterTCode["SAPTCode"] = ExpressionConverter.ConvertO(sAPEnterTCodesAPTCode);
             sAPEnterTCodepropCount++;
-            sAPEnterTCode["Workflow"] = ExpressionConverter.ConvertO(sAPEnterTCodeWorkflow);
+            sAPEnterTCode["Workflow"] = ExpressionConverter.ConvertO(sAPEnterTCodeworkflow);
             if (sAPEnterTCodepropCount > 0)
             {
                 callPayload.Body = sAPEnterTCode;
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSendVKey(Expression<Func<string>> sAPSendVKeySearchSAPElementId, Expression<Func<int>> sAPSendVKeySAPVKey, Expression<Func<string>> sAPSendVKeyWorkflow, Expression<Func<bool>> sAPSendVKeyDetectParentWindowElement = null)
+        public IWorkflowAction SAPSendVKey(Expression<Func<string>> sAPSendVKeysearchSAPElementId, Expression<Func<int>> sAPSendVKeysAPVKey, Expression<Func<string>> sAPSendVKeyworkflow, Expression<Func<bool>> sAPSendVKeydetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPSendVKey";
             var apiCallHttpMethod = "post";
@@ -688,17 +688,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSendVKey = new JObject();
             var sAPSendVKeypropCount = 0;
             sAPSendVKeypropCount++;
-            sAPSendVKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSendVKeySearchSAPElementId);
+            sAPSendVKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSendVKeysearchSAPElementId);
             sAPSendVKeypropCount++;
-            sAPSendVKey["SAPVKey"] = ExpressionConverter.ConvertO(sAPSendVKeySAPVKey);
-            if (sAPSendVKeyDetectParentWindowElement != null)
+            sAPSendVKey["SAPVKey"] = ExpressionConverter.ConvertO(sAPSendVKeysAPVKey);
+            if (sAPSendVKeydetectParentWindowElement != null)
             {
-                sAPSendVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendVKeyDetectParentWindowElement);
+                sAPSendVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendVKeydetectParentWindowElement);
                 sAPSendVKeypropCount++;
             }
 
             sAPSendVKeypropCount++;
-            sAPSendVKey["Workflow"] = ExpressionConverter.ConvertO(sAPSendVKeyWorkflow);
+            sAPSendVKey["Workflow"] = ExpressionConverter.ConvertO(sAPSendVKeyworkflow);
             if (sAPSendVKeypropCount > 0)
             {
                 callPayload.Body = sAPSendVKey;
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSendEnterVKey(Expression<Func<string>> sAPSendEnterVKeySearchSAPElementId, Expression<Func<string>> sAPSendEnterVKeyWorkflow, Expression<Func<bool>> sAPSendEnterVKeyDetectParentWindowElement = null)
+        public IWorkflowAction SAPSendEnterVKey(Expression<Func<string>> sAPSendEnterVKeysearchSAPElementId, Expression<Func<string>> sAPSendEnterVKeyworkflow, Expression<Func<bool>> sAPSendEnterVKeydetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPSendEnterVKey";
             var apiCallHttpMethod = "post";
@@ -716,15 +716,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSendEnterVKey = new JObject();
             var sAPSendEnterVKeypropCount = 0;
             sAPSendEnterVKeypropCount++;
-            sAPSendEnterVKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSendEnterVKeySearchSAPElementId);
-            if (sAPSendEnterVKeyDetectParentWindowElement != null)
+            sAPSendEnterVKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSendEnterVKeysearchSAPElementId);
+            if (sAPSendEnterVKeydetectParentWindowElement != null)
             {
-                sAPSendEnterVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendEnterVKeyDetectParentWindowElement);
+                sAPSendEnterVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendEnterVKeydetectParentWindowElement);
                 sAPSendEnterVKeypropCount++;
             }
 
             sAPSendEnterVKeypropCount++;
-            sAPSendEnterVKey["Workflow"] = ExpressionConverter.ConvertO(sAPSendEnterVKeyWorkflow);
+            sAPSendEnterVKey["Workflow"] = ExpressionConverter.ConvertO(sAPSendEnterVKeyworkflow);
             if (sAPSendEnterVKeypropCount > 0)
             {
                 callPayload.Body = sAPSendEnterVKey;
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPWindowRestore(Expression<Func<string>> sAPWindowRestoreSearchSAPElementId, Expression<Func<string>> sAPWindowRestoreWorkflow, Expression<Func<bool>> sAPWindowRestoreDetectParentWindowElement = null)
+        public IWorkflowAction SAPWindowRestore(Expression<Func<string>> sAPWindowRestoresearchSAPElementId, Expression<Func<string>> sAPWindowRestoreworkflow, Expression<Func<bool>> sAPWindowRestoredetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPWindowRestore";
             var apiCallHttpMethod = "post";
@@ -742,15 +742,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWindowRestore = new JObject();
             var sAPWindowRestorepropCount = 0;
             sAPWindowRestorepropCount++;
-            sAPWindowRestore["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowRestoreSearchSAPElementId);
-            if (sAPWindowRestoreDetectParentWindowElement != null)
+            sAPWindowRestore["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowRestoresearchSAPElementId);
+            if (sAPWindowRestoredetectParentWindowElement != null)
             {
-                sAPWindowRestore["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowRestoreDetectParentWindowElement);
+                sAPWindowRestore["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowRestoredetectParentWindowElement);
                 sAPWindowRestorepropCount++;
             }
 
             sAPWindowRestorepropCount++;
-            sAPWindowRestore["Workflow"] = ExpressionConverter.ConvertO(sAPWindowRestoreWorkflow);
+            sAPWindowRestore["Workflow"] = ExpressionConverter.ConvertO(sAPWindowRestoreworkflow);
             if (sAPWindowRestorepropCount > 0)
             {
                 callPayload.Body = sAPWindowRestore;
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPWindowMaximise(Expression<Func<string>> sAPWindowMaximiseSearchSAPElementId, Expression<Func<string>> sAPWindowMaximiseWorkflow, Expression<Func<bool>> sAPWindowMaximiseDetectParentWindowElement = null)
+        public IWorkflowAction SAPWindowMaximise(Expression<Func<string>> sAPWindowMaximisesearchSAPElementId, Expression<Func<string>> sAPWindowMaximiseworkflow, Expression<Func<bool>> sAPWindowMaximisedetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPWindowMaximise";
             var apiCallHttpMethod = "post";
@@ -768,15 +768,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWindowMaximise = new JObject();
             var sAPWindowMaximisepropCount = 0;
             sAPWindowMaximisepropCount++;
-            sAPWindowMaximise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMaximiseSearchSAPElementId);
-            if (sAPWindowMaximiseDetectParentWindowElement != null)
+            sAPWindowMaximise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMaximisesearchSAPElementId);
+            if (sAPWindowMaximisedetectParentWindowElement != null)
             {
-                sAPWindowMaximise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMaximiseDetectParentWindowElement);
+                sAPWindowMaximise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMaximisedetectParentWindowElement);
                 sAPWindowMaximisepropCount++;
             }
 
             sAPWindowMaximisepropCount++;
-            sAPWindowMaximise["Workflow"] = ExpressionConverter.ConvertO(sAPWindowMaximiseWorkflow);
+            sAPWindowMaximise["Workflow"] = ExpressionConverter.ConvertO(sAPWindowMaximiseworkflow);
             if (sAPWindowMaximisepropCount > 0)
             {
                 callPayload.Body = sAPWindowMaximise;
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPWindowMinimise(Expression<Func<string>> sAPWindowMinimiseSearchSAPElementId, Expression<Func<string>> sAPWindowMinimiseWorkflow, Expression<Func<bool>> sAPWindowMinimiseDetectParentWindowElement = null)
+        public IWorkflowAction SAPWindowMinimise(Expression<Func<string>> sAPWindowMinimisesearchSAPElementId, Expression<Func<string>> sAPWindowMinimiseworkflow, Expression<Func<bool>> sAPWindowMinimisedetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPWindowMinimise";
             var apiCallHttpMethod = "post";
@@ -794,15 +794,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWindowMinimise = new JObject();
             var sAPWindowMinimisepropCount = 0;
             sAPWindowMinimisepropCount++;
-            sAPWindowMinimise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMinimiseSearchSAPElementId);
-            if (sAPWindowMinimiseDetectParentWindowElement != null)
+            sAPWindowMinimise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMinimisesearchSAPElementId);
+            if (sAPWindowMinimisedetectParentWindowElement != null)
             {
-                sAPWindowMinimise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMinimiseDetectParentWindowElement);
+                sAPWindowMinimise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMinimisedetectParentWindowElement);
                 sAPWindowMinimisepropCount++;
             }
 
             sAPWindowMinimisepropCount++;
-            sAPWindowMinimise["Workflow"] = ExpressionConverter.ConvertO(sAPWindowMinimiseWorkflow);
+            sAPWindowMinimise["Workflow"] = ExpressionConverter.ConvertO(sAPWindowMinimiseworkflow);
             if (sAPWindowMinimisepropCount > 0)
             {
                 callPayload.Body = sAPWindowMinimise;
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPWindowClose(Expression<Func<string>> sAPWindowCloseSearchSAPElementId, Expression<Func<string>> sAPWindowCloseWorkflow, Expression<Func<bool>> sAPWindowCloseDetectParentWindowElement = null)
+        public IWorkflowAction SAPWindowClose(Expression<Func<string>> sAPWindowClosesearchSAPElementId, Expression<Func<string>> sAPWindowCloseworkflow, Expression<Func<bool>> sAPWindowClosedetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPWindowClose";
             var apiCallHttpMethod = "post";
@@ -820,15 +820,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPWindowClose = new JObject();
             var sAPWindowClosepropCount = 0;
             sAPWindowClosepropCount++;
-            sAPWindowClose["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowCloseSearchSAPElementId);
-            if (sAPWindowCloseDetectParentWindowElement != null)
+            sAPWindowClose["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowClosesearchSAPElementId);
+            if (sAPWindowClosedetectParentWindowElement != null)
             {
-                sAPWindowClose["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowCloseDetectParentWindowElement);
+                sAPWindowClose["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowClosedetectParentWindowElement);
                 sAPWindowClosepropCount++;
             }
 
             sAPWindowClosepropCount++;
-            sAPWindowClose["Workflow"] = ExpressionConverter.ConvertO(sAPWindowCloseWorkflow);
+            sAPWindowClose["Workflow"] = ExpressionConverter.ConvertO(sAPWindowCloseworkflow);
             if (sAPWindowClosepropCount > 0)
             {
                 callPayload.Body = sAPWindowClose;
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPBringWindowToFront(Expression<Func<string>> sAPBringWindowToFrontSearchSAPElementId, Expression<Func<string>> sAPBringWindowToFrontWorkflow, Expression<Func<bool>> sAPBringWindowToFrontToggleWindow = null, Expression<Func<bool>> sAPBringWindowToFrontToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPBringWindowToFrontToggleDelay = null, Expression<Func<bool>> sAPBringWindowToFrontDetectParentWindowElement = null)
+        public IWorkflowAction SAPBringWindowToFront(Expression<Func<string>> sAPBringWindowToFrontsearchSAPElementId, Expression<Func<string>> sAPBringWindowToFrontworkflow, Expression<Func<bool>> sAPBringWindowToFronttoggleWindow = null, Expression<Func<bool>> sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPBringWindowToFronttoggleDelay = null, Expression<Func<bool>> sAPBringWindowToFrontdetectParentWindowElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPBringWindowToFront";
             var apiCallHttpMethod = "post";
@@ -846,33 +846,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPBringWindowToFront = new JObject();
             var sAPBringWindowToFrontpropCount = 0;
             sAPBringWindowToFrontpropCount++;
-            sAPBringWindowToFront["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontSearchSAPElementId);
-            if (sAPBringWindowToFrontToggleWindow != null)
+            sAPBringWindowToFront["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontsearchSAPElementId);
+            if (sAPBringWindowToFronttoggleWindow != null)
             {
-                sAPBringWindowToFront["ToggleWindow"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontToggleWindow);
+                sAPBringWindowToFront["ToggleWindow"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleWindow);
                 sAPBringWindowToFrontpropCount++;
             }
 
-            if (sAPBringWindowToFrontToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPBringWindowToFront["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontToggleUsesGlobalLeftMouseClickAgent);
+                sAPBringWindowToFront["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent);
                 sAPBringWindowToFrontpropCount++;
             }
 
-            if (sAPBringWindowToFrontToggleDelay != null)
+            if (sAPBringWindowToFronttoggleDelay != null)
             {
-                sAPBringWindowToFront["ToggleDelay"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontToggleDelay);
+                sAPBringWindowToFront["ToggleDelay"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleDelay);
                 sAPBringWindowToFrontpropCount++;
             }
 
-            if (sAPBringWindowToFrontDetectParentWindowElement != null)
+            if (sAPBringWindowToFrontdetectParentWindowElement != null)
             {
-                sAPBringWindowToFront["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontDetectParentWindowElement);
+                sAPBringWindowToFront["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontdetectParentWindowElement);
                 sAPBringWindowToFrontpropCount++;
             }
 
             sAPBringWindowToFrontpropCount++;
-            sAPBringWindowToFront["Workflow"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontWorkflow);
+            sAPBringWindowToFront["Workflow"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontworkflow);
             if (sAPBringWindowToFrontpropCount > 0)
             {
                 callPayload.Body = sAPBringWindowToFront;
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementWorkflow, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftMouseClickOnSAPElementToggleDelay = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementClickOffsetX = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementClickOffsetY = null, Expression<Func<sAPGlobalLeftMouseClickOnSAPElementOffsetRelativeToInput>> sAPGlobalLeftMouseClickOnSAPElementOffsetRelativeTo = null)
+        public IWorkflowAction SAPGlobalLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalLeftMouseClickOnSAPElement";
             var apiCallHttpMethod = "post";
@@ -890,57 +890,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalLeftMouseClickOnSAPElement = new JObject();
             var sAPGlobalLeftMouseClickOnSAPElementpropCount = 0;
             sAPGlobalLeftMouseClickOnSAPElementpropCount++;
-            sAPGlobalLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementSearchSAPElementId);
-            if (sAPGlobalLeftMouseClickOnSAPElementSetElementWindowTopMost != null)
+            sAPGlobalLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId);
+            if (sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementSetElementWindowTopMost);
+                sAPGlobalLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementBringElementWindowToFront);
+                sAPGlobalLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementToggleWindow != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementToggleWindow);
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementToggleDelay != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementToggleDelay);
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementClickOffsetX != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementClickOffsetX);
+                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementClickOffsetY != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementClickOffsetY);
+                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalLeftMouseClickOnSAPElementOffsetRelativeTo != null)
+            if (sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementOffsetRelativeTo);
+                sAPGlobalLeftMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo);
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             sAPGlobalLeftMouseClickOnSAPElementpropCount++;
-            sAPGlobalLeftMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementWorkflow);
+            sAPGlobalLeftMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementworkflow);
             if (sAPGlobalLeftMouseClickOnSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalLeftMouseClickOnSAPElement;
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalRightMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementWorkflow, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightMouseClickOnSAPElementToggleDelay = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementClickOffsetX = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementClickOffsetY = null, Expression<Func<sAPGlobalRightMouseClickOnSAPElementOffsetRelativeToInput>> sAPGlobalRightMouseClickOnSAPElementOffsetRelativeTo = null)
+        public IWorkflowAction SAPGlobalRightMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalRightMouseClickOnSAPElement";
             var apiCallHttpMethod = "post";
@@ -958,57 +958,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalRightMouseClickOnSAPElement = new JObject();
             var sAPGlobalRightMouseClickOnSAPElementpropCount = 0;
             sAPGlobalRightMouseClickOnSAPElementpropCount++;
-            sAPGlobalRightMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementSearchSAPElementId);
-            if (sAPGlobalRightMouseClickOnSAPElementSetElementWindowTopMost != null)
+            sAPGlobalRightMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId);
+            if (sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementSetElementWindowTopMost);
+                sAPGlobalRightMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementBringElementWindowToFront);
+                sAPGlobalRightMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementToggleWindow != null)
+            if (sAPGlobalRightMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementToggleWindow);
+                sAPGlobalRightMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleWindow);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalRightMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementToggleDelay != null)
+            if (sAPGlobalRightMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementToggleDelay);
+                sAPGlobalRightMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleDelay);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementClickOffsetX != null)
+            if (sAPGlobalRightMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementClickOffsetX);
+                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetX);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementClickOffsetY != null)
+            if (sAPGlobalRightMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementClickOffsetY);
+                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetY);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalRightMouseClickOnSAPElementOffsetRelativeTo != null)
+            if (sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementOffsetRelativeTo);
+                sAPGlobalRightMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo);
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             sAPGlobalRightMouseClickOnSAPElementpropCount++;
-            sAPGlobalRightMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementWorkflow);
+            sAPGlobalRightMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementworkflow);
             if (sAPGlobalRightMouseClickOnSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalRightMouseClickOnSAPElement;
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalMiddleMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementWorkflow, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalMiddleMouseClickOnSAPElementToggleDelay = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementClickOffsetX = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementClickOffsetY = null, Expression<Func<sAPGlobalMiddleMouseClickOnSAPElementOffsetRelativeToInput>> sAPGlobalMiddleMouseClickOnSAPElementOffsetRelativeTo = null)
+        public IWorkflowAction SAPGlobalMiddleMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalMiddleMouseClickOnSAPElement";
             var apiCallHttpMethod = "post";
@@ -1026,57 +1026,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalMiddleMouseClickOnSAPElement = new JObject();
             var sAPGlobalMiddleMouseClickOnSAPElementpropCount = 0;
             sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
-            sAPGlobalMiddleMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementSearchSAPElementId);
-            if (sAPGlobalMiddleMouseClickOnSAPElementSetElementWindowTopMost != null)
+            sAPGlobalMiddleMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId);
+            if (sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementSetElementWindowTopMost);
+                sAPGlobalMiddleMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementBringElementWindowToFront);
+                sAPGlobalMiddleMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementToggleWindow != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementToggleWindow);
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementToggleDelay != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementToggleDelay);
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementClickOffsetX != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementClickOffsetX);
+                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementClickOffsetY != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementClickOffsetY);
+                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalMiddleMouseClickOnSAPElementOffsetRelativeTo != null)
+            if (sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementOffsetRelativeTo);
+                sAPGlobalMiddleMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo);
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
-            sAPGlobalMiddleMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementWorkflow);
+            sAPGlobalMiddleMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementworkflow);
             if (sAPGlobalMiddleMouseClickOnSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalMiddleMouseClickOnSAPElement;
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalDoubleLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementWorkflow, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftMouseClickOnSAPElementToggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftMouseClickOnSAPElementOffsetRelativeToInput>> sAPGlobalDoubleLeftMouseClickOnSAPElementOffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementDoubleClickDelayInMilliseconds = null)
+        public IWorkflowAction SAPGlobalDoubleLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftMouseClickOnSAPElement";
             var apiCallHttpMethod = "post";
@@ -1094,63 +1094,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalDoubleLeftMouseClickOnSAPElement = new JObject();
             var sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount = 0;
             sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
-            sAPGlobalDoubleLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementSearchSAPElementId);
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementSetElementWindowTopMost != null)
+            sAPGlobalDoubleLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId);
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementSetElementWindowTopMost);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementBringElementWindowToFront);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementToggleWindow != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementToggleWindow);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementToggleDelay != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementToggleDelay);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetX != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetX);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetY != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementClickOffsetY);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementOffsetRelativeTo != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementOffsetRelativeTo);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftMouseClickOnSAPElementDoubleClickDelayInMilliseconds != null)
+            if (sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementDoubleClickDelayInMilliseconds);
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds);
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
-            sAPGlobalDoubleLeftMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementWorkflow);
+            sAPGlobalDoubleLeftMouseClickOnSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow);
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalDoubleLeftMouseClickOnSAPElement;
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalInputTextIntoSAPElement(Expression<Func<string>> sAPGlobalInputTextIntoSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementWorkflow, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputTextIntoSAPElementToggleDelay = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementGlobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementTextToInput = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementSendKeyEvents = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementKeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementDoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementDontInterpretSymbols = null)
+        public IWorkflowAction SAPGlobalInputTextIntoSAPElement(Expression<Func<string>> sAPGlobalInputTextIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementworkflow, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputTextIntoSAPElementtoggleDelay = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementtextToInput = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementsendKeyEvents = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalInputTextIntoSAPElement";
             var apiCallHttpMethod = "post";
@@ -1168,87 +1168,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalInputTextIntoSAPElement = new JObject();
             var sAPGlobalInputTextIntoSAPElementpropCount = 0;
             sAPGlobalInputTextIntoSAPElementpropCount++;
-            sAPGlobalInputTextIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementSearchSAPElementId);
-            if (sAPGlobalInputTextIntoSAPElementSetElementWindowTopMost != null)
+            sAPGlobalInputTextIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsearchSAPElementId);
+            if (sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalInputTextIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementSetElementWindowTopMost);
+                sAPGlobalInputTextIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalInputTextIntoSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalInputTextIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementBringElementWindowToFront);
+                sAPGlobalInputTextIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementToggleWindow != null)
+            if (sAPGlobalInputTextIntoSAPElementtoggleWindow != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementToggleWindow);
+                sAPGlobalInputTextIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleWindow);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalInputTextIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementToggleDelay != null)
+            if (sAPGlobalInputTextIntoSAPElementtoggleDelay != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementToggleDelay);
+                sAPGlobalInputTextIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleDelay);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementGlobalMouseClickOnElement != null)
+            if (sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement != null)
             {
-                sAPGlobalInputTextIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementGlobalMouseClickOnElement);
+                sAPGlobalInputTextIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingDoubleClickDelete);
+                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingCTRLADelete != null)
+            if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementReplaceExistingValueUsingCTRLADelete);
+                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementTextToInput != null)
+            if (sAPGlobalInputTextIntoSAPElementtextToInput != null)
             {
-                sAPGlobalInputTextIntoSAPElement["TextToInput"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementTextToInput);
+                sAPGlobalInputTextIntoSAPElement["TextToInput"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtextToInput);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementSendKeyEvents != null)
+            if (sAPGlobalInputTextIntoSAPElementsendKeyEvents != null)
             {
-                sAPGlobalInputTextIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementSendKeyEvents);
+                sAPGlobalInputTextIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsendKeyEvents);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementKeyIntervalInMilliseconds != null)
+            if (sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds != null)
             {
-                sAPGlobalInputTextIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementKeyIntervalInMilliseconds);
+                sAPGlobalInputTextIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementDoubleClickIntervalInMilliseconds != null)
+            if (sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds != null)
             {
-                sAPGlobalInputTextIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementDoubleClickIntervalInMilliseconds);
+                sAPGlobalInputTextIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputTextIntoSAPElementDontInterpretSymbols != null)
+            if (sAPGlobalInputTextIntoSAPElementdontInterpretSymbols != null)
             {
-                sAPGlobalInputTextIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementDontInterpretSymbols);
+                sAPGlobalInputTextIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols);
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             sAPGlobalInputTextIntoSAPElementpropCount++;
-            sAPGlobalInputTextIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementWorkflow);
+            sAPGlobalInputTextIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementworkflow);
             if (sAPGlobalInputTextIntoSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalInputTextIntoSAPElement;
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalInputPasswordIntoSAPElement(Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementSearchSAPElementId, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementPasswordToInput, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementWorkflow, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementToggleWindow = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputPasswordIntoSAPElementToggleDelay = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementGlobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementSendKeyEvents = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementKeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementDoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementDontInterpretSymbols = null)
+        public IWorkflowAction SAPGlobalInputPasswordIntoSAPElement(Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementpasswordToInput, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementworkflow, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputPasswordIntoSAPElementtoggleDelay = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalInputPasswordIntoSAPElement";
             var apiCallHttpMethod = "post";
@@ -1266,83 +1266,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalInputPasswordIntoSAPElement = new JObject();
             var sAPGlobalInputPasswordIntoSAPElementpropCount = 0;
             sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            sAPGlobalInputPasswordIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementSearchSAPElementId);
-            if (sAPGlobalInputPasswordIntoSAPElementSetElementWindowTopMost != null)
+            sAPGlobalInputPasswordIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId);
+            if (sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementSetElementWindowTopMost);
+                sAPGlobalInputPasswordIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementBringElementWindowToFront != null)
+            if (sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementBringElementWindowToFront);
+                sAPGlobalInputPasswordIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementToggleWindow != null)
+            if (sAPGlobalInputPasswordIntoSAPElementtoggleWindow != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementToggleWindow);
+                sAPGlobalInputPasswordIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleWindow);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalInputPasswordIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementToggleDelay != null)
+            if (sAPGlobalInputPasswordIntoSAPElementtoggleDelay != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementToggleDelay);
+                sAPGlobalInputPasswordIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleDelay);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementGlobalMouseClickOnElement != null)
+            if (sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementGlobalMouseClickOnElement);
+                sAPGlobalInputPasswordIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingDoubleClickDelete != null)
+            if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingDoubleClickDelete);
+                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
-            if (sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingCTRLADelete != null)
+            if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementReplaceExistingValueUsingCTRLADelete);
-                sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            }
-
-            sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            sAPGlobalInputPasswordIntoSAPElement["PasswordToInput"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementPasswordToInput);
-            if (sAPGlobalInputPasswordIntoSAPElementSendKeyEvents != null)
-            {
-                sAPGlobalInputPasswordIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementSendKeyEvents);
-                sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            }
-
-            if (sAPGlobalInputPasswordIntoSAPElementKeyIntervalInMilliseconds != null)
-            {
-                sAPGlobalInputPasswordIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementKeyIntervalInMilliseconds);
-                sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            }
-
-            if (sAPGlobalInputPasswordIntoSAPElementDoubleClickIntervalInMilliseconds != null)
-            {
-                sAPGlobalInputPasswordIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementDoubleClickIntervalInMilliseconds);
-                sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            }
-
-            if (sAPGlobalInputPasswordIntoSAPElementDontInterpretSymbols != null)
-            {
-                sAPGlobalInputPasswordIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementDontInterpretSymbols);
+                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete);
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             sAPGlobalInputPasswordIntoSAPElementpropCount++;
-            sAPGlobalInputPasswordIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementWorkflow);
+            sAPGlobalInputPasswordIntoSAPElement["PasswordToInput"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementpasswordToInput);
+            if (sAPGlobalInputPasswordIntoSAPElementsendKeyEvents != null)
+            {
+                sAPGlobalInputPasswordIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents);
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+
+            if (sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds != null)
+            {
+                sAPGlobalInputPasswordIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds);
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+
+            if (sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds != null)
+            {
+                sAPGlobalInputPasswordIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds);
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+
+            if (sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols != null)
+            {
+                sAPGlobalInputPasswordIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols);
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+
+            sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            sAPGlobalInputPasswordIntoSAPElement["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementworkflow);
             if (sAPGlobalInputPasswordIntoSAPElementpropCount > 0)
             {
                 callPayload.Body = sAPGlobalInputPasswordIntoSAPElement;
@@ -1352,7 +1352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetListSelectionByName(Expression<Func<string>> sAPSetListSelectionByNameSearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByNameListItemName, Expression<Func<string>> sAPSetListSelectionByNameWorkflow)
+        public IWorkflowAction SAPSetListSelectionByName(Expression<Func<string>> sAPSetListSelectionByNamesearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByNamelistItemName, Expression<Func<string>> sAPSetListSelectionByNameworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSetListSelectionByName";
             var apiCallHttpMethod = "post";
@@ -1360,11 +1360,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetListSelectionByName = new JObject();
             var sAPSetListSelectionByNamepropCount = 0;
             sAPSetListSelectionByNamepropCount++;
-            sAPSetListSelectionByName["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNameSearchSAPElementId);
+            sAPSetListSelectionByName["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNamesearchSAPElementId);
             sAPSetListSelectionByNamepropCount++;
-            sAPSetListSelectionByName["ListItemName"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNameListItemName);
+            sAPSetListSelectionByName["ListItemName"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNamelistItemName);
             sAPSetListSelectionByNamepropCount++;
-            sAPSetListSelectionByName["Workflow"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNameWorkflow);
+            sAPSetListSelectionByName["Workflow"] = ExpressionConverter.ConvertO(sAPSetListSelectionByNameworkflow);
             if (sAPSetListSelectionByNamepropCount > 0)
             {
                 callPayload.Body = sAPSetListSelectionByName;
@@ -1374,7 +1374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetListSelectionByKey(Expression<Func<string>> sAPSetListSelectionByKeySearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByKeyListItemKey, Expression<Func<string>> sAPSetListSelectionByKeyWorkflow)
+        public IWorkflowAction SAPSetListSelectionByKey(Expression<Func<string>> sAPSetListSelectionByKeysearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByKeylistItemKey, Expression<Func<string>> sAPSetListSelectionByKeyworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSetListSelectionByKey";
             var apiCallHttpMethod = "post";
@@ -1382,11 +1382,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetListSelectionByKey = new JObject();
             var sAPSetListSelectionByKeypropCount = 0;
             sAPSetListSelectionByKeypropCount++;
-            sAPSetListSelectionByKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeySearchSAPElementId);
+            sAPSetListSelectionByKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeysearchSAPElementId);
             sAPSetListSelectionByKeypropCount++;
-            sAPSetListSelectionByKey["ListItemKey"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeyListItemKey);
+            sAPSetListSelectionByKey["ListItemKey"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeylistItemKey);
             sAPSetListSelectionByKeypropCount++;
-            sAPSetListSelectionByKey["Workflow"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeyWorkflow);
+            sAPSetListSelectionByKey["Workflow"] = ExpressionConverter.ConvertO(sAPSetListSelectionByKeyworkflow);
             if (sAPSetListSelectionByKeypropCount > 0)
             {
                 callPayload.Body = sAPSetListSelectionByKey;
@@ -1396,7 +1396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse> SAPGetListSelectionElementItems(Expression<Func<string>> sAPGetListSelectionElementItemsSearchSAPElementId, Expression<Func<string>> sAPGetListSelectionElementItemsWorkflow)
+        public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse> SAPGetListSelectionElementItems(Expression<Func<string>> sAPGetListSelectionElementItemssearchSAPElementId, Expression<Func<string>> sAPGetListSelectionElementItemsworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetListSelectionElementItems";
             var apiCallHttpMethod = "post";
@@ -1404,9 +1404,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetListSelectionElementItems = new JObject();
             var sAPGetListSelectionElementItemspropCount = 0;
             sAPGetListSelectionElementItemspropCount++;
-            sAPGetListSelectionElementItems["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetListSelectionElementItemsSearchSAPElementId);
+            sAPGetListSelectionElementItems["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetListSelectionElementItemssearchSAPElementId);
             sAPGetListSelectionElementItemspropCount++;
-            sAPGetListSelectionElementItems["Workflow"] = ExpressionConverter.ConvertO(sAPGetListSelectionElementItemsWorkflow);
+            sAPGetListSelectionElementItems["Workflow"] = ExpressionConverter.ConvertO(sAPGetListSelectionElementItemsworkflow);
             if (sAPGetListSelectionElementItemspropCount > 0)
             {
                 callPayload.Body = sAPGetListSelectionElementItems;
@@ -1416,7 +1416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse> SAPGetAllChildSAPElementProperties(Expression<Func<string>> sAPGetAllChildSAPElementPropertiesSearchSAPElementId, Expression<Func<string>> sAPGetAllChildSAPElementPropertiesWorkflow, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesFirstItemToReturn = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesMaxItemsToReturn = null, Expression<Func<string>> sAPGetAllChildSAPElementPropertiesSearchSAPElementType = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesMaxTextLength = null)
+        public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse> SAPGetAllChildSAPElementProperties(Expression<Func<string>> sAPGetAllChildSAPElementPropertiessearchSAPElementId, Expression<Func<string>> sAPGetAllChildSAPElementPropertiesworkflow, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesfirstItemToReturn = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = null, Expression<Func<string>> sAPGetAllChildSAPElementPropertiessearchSAPElementType = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesmaxTextLength = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetAllChildSAPElementProperties";
             var apiCallHttpMethod = "post";
@@ -1424,33 +1424,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetAllChildSAPElementProperties = new JObject();
             var sAPGetAllChildSAPElementPropertiespropCount = 0;
             sAPGetAllChildSAPElementPropertiespropCount++;
-            sAPGetAllChildSAPElementProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesSearchSAPElementId);
-            if (sAPGetAllChildSAPElementPropertiesFirstItemToReturn != null)
+            sAPGetAllChildSAPElementProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiessearchSAPElementId);
+            if (sAPGetAllChildSAPElementPropertiesfirstItemToReturn != null)
             {
-                sAPGetAllChildSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesFirstItemToReturn);
+                sAPGetAllChildSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesfirstItemToReturn);
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetAllChildSAPElementPropertiesMaxItemsToReturn != null)
+            if (sAPGetAllChildSAPElementPropertiesmaxItemsToReturn != null)
             {
-                sAPGetAllChildSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesMaxItemsToReturn);
+                sAPGetAllChildSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn);
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetAllChildSAPElementPropertiesSearchSAPElementType != null)
+            if (sAPGetAllChildSAPElementPropertiessearchSAPElementType != null)
             {
-                sAPGetAllChildSAPElementProperties["SearchSAPElementType"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesSearchSAPElementType);
+                sAPGetAllChildSAPElementProperties["SearchSAPElementType"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiessearchSAPElementType);
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetAllChildSAPElementPropertiesMaxTextLength != null)
+            if (sAPGetAllChildSAPElementPropertiesmaxTextLength != null)
             {
-                sAPGetAllChildSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesMaxTextLength);
+                sAPGetAllChildSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxTextLength);
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
             sAPGetAllChildSAPElementPropertiespropCount++;
-            sAPGetAllChildSAPElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesWorkflow);
+            sAPGetAllChildSAPElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesworkflow);
             if (sAPGetAllChildSAPElementPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetAllChildSAPElementProperties;
@@ -1460,39 +1460,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse> SAPGetSAPSessionTopLevelSAPElementProperties(Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiesWorkflow, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesFirstItemToReturn = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesMaxItemsToReturn = null, Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiesSearchSAPElementType = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesMaxTextLength = null)
+        public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse> SAPGetSAPSessionTopLevelSAPElementProperties(Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = null, Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPSessionTopLevelSAPElementProperties";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPGetSAPSessionTopLevelSAPElementProperties = new JObject();
             var sAPGetSAPSessionTopLevelSAPElementPropertiespropCount = 0;
-            if (sAPGetSAPSessionTopLevelSAPElementPropertiesFirstItemToReturn != null)
+            if (sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesFirstItemToReturn);
+                sAPGetSAPSessionTopLevelSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn);
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetSAPSessionTopLevelSAPElementPropertiesMaxItemsToReturn != null)
+            if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesMaxItemsToReturn);
+                sAPGetSAPSessionTopLevelSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn);
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetSAPSessionTopLevelSAPElementPropertiesSearchSAPElementType != null)
+            if (sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["SearchSAPElementType"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesSearchSAPElementType);
+                sAPGetSAPSessionTopLevelSAPElementProperties["SearchSAPElementType"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType);
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
-            if (sAPGetSAPSessionTopLevelSAPElementPropertiesMaxTextLength != null)
+            if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesMaxTextLength);
+                sAPGetSAPSessionTopLevelSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength);
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
             sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
-            sAPGetSAPSessionTopLevelSAPElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesWorkflow);
+            sAPGetSAPSessionTopLevelSAPElementProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow);
             if (sAPGetSAPSessionTopLevelSAPElementPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetSAPSessionTopLevelSAPElementProperties;
@@ -1502,7 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse> SAPGetSAPElementParentId(Expression<Func<string>> sAPGetSAPElementParentIdSearchSAPElementId, Expression<Func<string>> sAPGetSAPElementParentIdWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse> SAPGetSAPElementParentId(Expression<Func<string>> sAPGetSAPElementParentIdsearchSAPElementId, Expression<Func<string>> sAPGetSAPElementParentIdworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPElementParentId";
             var apiCallHttpMethod = "post";
@@ -1510,9 +1510,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPElementParentId = new JObject();
             var sAPGetSAPElementParentIdpropCount = 0;
             sAPGetSAPElementParentIdpropCount++;
-            sAPGetSAPElementParentId["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPElementParentIdSearchSAPElementId);
+            sAPGetSAPElementParentId["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPElementParentIdsearchSAPElementId);
             sAPGetSAPElementParentIdpropCount++;
-            sAPGetSAPElementParentId["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPElementParentIdWorkflow);
+            sAPGetSAPElementParentId["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPElementParentIdworkflow);
             if (sAPGetSAPElementParentIdpropCount > 0)
             {
                 callPayload.Body = sAPGetSAPElementParentId;
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse> SAPGetElementPropertiesAsList(Expression<Func<string>> sAPGetElementPropertiesAsListSearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesAsListWorkflow, Expression<Func<int>> sAPGetElementPropertiesAsListMaxTextLength = null)
+        public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse> SAPGetElementPropertiesAsList(Expression<Func<string>> sAPGetElementPropertiesAsListsearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesAsListworkflow, Expression<Func<int>> sAPGetElementPropertiesAsListmaxTextLength = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetElementPropertiesAsList";
             var apiCallHttpMethod = "post";
@@ -1530,15 +1530,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetElementPropertiesAsList = new JObject();
             var sAPGetElementPropertiesAsListpropCount = 0;
             sAPGetElementPropertiesAsListpropCount++;
-            sAPGetElementPropertiesAsList["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListSearchSAPElementId);
-            if (sAPGetElementPropertiesAsListMaxTextLength != null)
+            sAPGetElementPropertiesAsList["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListsearchSAPElementId);
+            if (sAPGetElementPropertiesAsListmaxTextLength != null)
             {
-                sAPGetElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListMaxTextLength);
+                sAPGetElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListmaxTextLength);
                 sAPGetElementPropertiesAsListpropCount++;
             }
 
             sAPGetElementPropertiesAsListpropCount++;
-            sAPGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListWorkflow);
+            sAPGetElementPropertiesAsList["Workflow"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListworkflow);
             if (sAPGetElementPropertiesAsListpropCount > 0)
             {
                 callPayload.Body = sAPGetElementPropertiesAsList;
@@ -1548,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse> SAPGetSAPElementAtScreenCoordinate(Expression<Func<int>> sAPGetSAPElementAtScreenCoordinateScreenX, Expression<Func<int>> sAPGetSAPElementAtScreenCoordinateScreenY, Expression<Func<string>> sAPGetSAPElementAtScreenCoordinateWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse> SAPGetSAPElementAtScreenCoordinate(Expression<Func<int>> sAPGetSAPElementAtScreenCoordinatescreenX, Expression<Func<int>> sAPGetSAPElementAtScreenCoordinatescreenY, Expression<Func<string>> sAPGetSAPElementAtScreenCoordinateworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPElementAtScreenCoordinate";
             var apiCallHttpMethod = "post";
@@ -1556,11 +1556,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPElementAtScreenCoordinate = new JObject();
             var sAPGetSAPElementAtScreenCoordinatepropCount = 0;
             sAPGetSAPElementAtScreenCoordinatepropCount++;
-            sAPGetSAPElementAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinateScreenX);
+            sAPGetSAPElementAtScreenCoordinate["ScreenX"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinatescreenX);
             sAPGetSAPElementAtScreenCoordinatepropCount++;
-            sAPGetSAPElementAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinateScreenY);
+            sAPGetSAPElementAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinatescreenY);
             sAPGetSAPElementAtScreenCoordinatepropCount++;
-            sAPGetSAPElementAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinateWorkflow);
+            sAPGetSAPElementAtScreenCoordinate["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPElementAtScreenCoordinateworkflow);
             if (sAPGetSAPElementAtScreenCoordinatepropCount > 0)
             {
                 callPayload.Body = sAPGetSAPElementAtScreenCoordinate;
@@ -1570,39 +1570,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPOpenConnectionResponse> SAPOpenConnection(Expression<Func<string>> sAPOpenConnectionWorkflow, Expression<Func<string>> sAPOpenConnectionSAPConnectionDescription = null, Expression<Func<string>> sAPOpenConnectionSAPConnectionAddress = null, Expression<Func<bool>> sAPOpenConnectionConnectSynchronous = null, Expression<Func<bool>> sAPOpenConnectionConnectToSession = null)
+        public IBodyWorkflowAction<SAPOpenConnectionResponse> SAPOpenConnection(Expression<Func<string>> sAPOpenConnectionworkflow, Expression<Func<string>> sAPOpenConnectionsAPConnectionDescription = null, Expression<Func<string>> sAPOpenConnectionsAPConnectionAddress = null, Expression<Func<bool>> sAPOpenConnectionconnectSynchronous = null, Expression<Func<bool>> sAPOpenConnectionconnectToSession = null)
         {
             var apiCallPath = "/SAPGUI/SAPOpenConnection";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var sAPOpenConnection = new JObject();
             var sAPOpenConnectionpropCount = 0;
-            if (sAPOpenConnectionSAPConnectionDescription != null)
+            if (sAPOpenConnectionsAPConnectionDescription != null)
             {
-                sAPOpenConnection["SAPConnectionDescription"] = ExpressionConverter.ConvertO(sAPOpenConnectionSAPConnectionDescription);
+                sAPOpenConnection["SAPConnectionDescription"] = ExpressionConverter.ConvertO(sAPOpenConnectionsAPConnectionDescription);
                 sAPOpenConnectionpropCount++;
             }
 
-            if (sAPOpenConnectionSAPConnectionAddress != null)
+            if (sAPOpenConnectionsAPConnectionAddress != null)
             {
-                sAPOpenConnection["SAPConnectionAddress"] = ExpressionConverter.ConvertO(sAPOpenConnectionSAPConnectionAddress);
+                sAPOpenConnection["SAPConnectionAddress"] = ExpressionConverter.ConvertO(sAPOpenConnectionsAPConnectionAddress);
                 sAPOpenConnectionpropCount++;
             }
 
-            if (sAPOpenConnectionConnectSynchronous != null)
+            if (sAPOpenConnectionconnectSynchronous != null)
             {
-                sAPOpenConnection["ConnectSynchronous"] = ExpressionConverter.ConvertO(sAPOpenConnectionConnectSynchronous);
+                sAPOpenConnection["ConnectSynchronous"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectSynchronous);
                 sAPOpenConnectionpropCount++;
             }
 
-            if (sAPOpenConnectionConnectToSession != null)
+            if (sAPOpenConnectionconnectToSession != null)
             {
-                sAPOpenConnection["ConnectToSession"] = ExpressionConverter.ConvertO(sAPOpenConnectionConnectToSession);
+                sAPOpenConnection["ConnectToSession"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectToSession);
                 sAPOpenConnectionpropCount++;
             }
 
             sAPOpenConnectionpropCount++;
-            sAPOpenConnection["Workflow"] = ExpressionConverter.ConvertO(sAPOpenConnectionWorkflow);
+            sAPOpenConnection["Workflow"] = ExpressionConverter.ConvertO(sAPOpenConnectionworkflow);
             if (sAPOpenConnectionpropCount > 0)
             {
                 callPayload.Body = sAPOpenConnection;
@@ -1612,7 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse> SAPGetSAPTableProperties(Expression<Func<string>> sAPGetSAPTablePropertiesSearchSAPElementId, Expression<Func<string>> sAPGetSAPTablePropertiesWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse> SAPGetSAPTableProperties(Expression<Func<string>> sAPGetSAPTablePropertiessearchSAPElementId, Expression<Func<string>> sAPGetSAPTablePropertiesworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPTableProperties";
             var apiCallHttpMethod = "post";
@@ -1620,9 +1620,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPTableProperties = new JObject();
             var sAPGetSAPTablePropertiespropCount = 0;
             sAPGetSAPTablePropertiespropCount++;
-            sAPGetSAPTableProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTablePropertiesSearchSAPElementId);
+            sAPGetSAPTableProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTablePropertiessearchSAPElementId);
             sAPGetSAPTablePropertiespropCount++;
-            sAPGetSAPTableProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTablePropertiesWorkflow);
+            sAPGetSAPTableProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTablePropertiesworkflow);
             if (sAPGetSAPTablePropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetSAPTableProperties;
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse> SAPGetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexSearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexWorkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex = null, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexCheckedElementValue = null)
+        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse> SAPGetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellTextContentsAtIndex";
             var apiCallHttpMethod = "post";
@@ -1640,27 +1640,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPTableVisibleCellTextContentsAtIndex = new JObject();
             var sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount = 0;
             sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
-            sAPGetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexSearchSAPElementId);
-            if (sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex != null)
+            sAPGetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
+            if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex);
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex != null)
+            if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex);
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPGetSAPTableVisibleCellTextContentsAtIndexCheckedElementValue != null)
+            if (sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexCheckedElementValue);
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue);
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
-            sAPGetSAPTableVisibleCellTextContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexWorkflow);
+            sAPGetSAPTableVisibleCellTextContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow);
             if (sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGetSAPTableVisibleCellTextContentsAtIndex;
@@ -1670,7 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse> SAPGetSAPTableVisibleCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexSearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexWorkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleColumnIndex = null)
+        public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse> SAPGetSAPTableVisibleCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellPropertiesAtIndex";
             var apiCallHttpMethod = "post";
@@ -1678,21 +1678,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPTableVisibleCellPropertiesAtIndex = new JObject();
             var sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount = 0;
             sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
-            sAPGetSAPTableVisibleCellPropertiesAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexSearchSAPElementId);
-            if (sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleRowIndex != null)
+            sAPGetSAPTableVisibleCellPropertiesAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId);
+            if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex != null)
             {
-                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleRowIndex);
+                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex);
                 sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
             }
 
-            if (sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleColumnIndex != null)
+            if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex != null)
             {
-                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexVisibleColumnIndex);
+                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex);
                 sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
             }
 
             sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
-            sAPGetSAPTableVisibleCellPropertiesAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexWorkflow);
+            sAPGetSAPTableVisibleCellPropertiesAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow);
             if (sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGetSAPTableVisibleCellPropertiesAtIndex;
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexSearchSAPElementId, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexWorkflow, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex = null, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexTextToInput = null, Expression<Func<bool>> sAPSetSAPTableVisibleCellTextContentsAtIndexReplaceExistingValue = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexInsertPosition = null)
+        public IWorkflowAction SAPSetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = null, Expression<Func<bool>> sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = null)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPTableVisibleCellTextContentsAtIndex";
             var apiCallHttpMethod = "post";
@@ -1710,39 +1710,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPTableVisibleCellTextContentsAtIndex = new JObject();
             var sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount = 0;
             sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
-            sAPSetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexSearchSAPElementId);
-            if (sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex != null)
+            sAPSetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
+            if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleRowIndex);
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex != null)
+            if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexVisibleColumnIndex);
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPSetSAPTableVisibleCellTextContentsAtIndexTextToInput != null)
+            if (sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["TextToInput"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexTextToInput);
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["TextToInput"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput);
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPSetSAPTableVisibleCellTextContentsAtIndexReplaceExistingValue != null)
+            if (sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexReplaceExistingValue);
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue);
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
-            if (sAPSetSAPTableVisibleCellTextContentsAtIndexInsertPosition != null)
+            if (sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["InsertPosition"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexInsertPosition);
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["InsertPosition"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition);
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
-            sAPSetSAPTableVisibleCellTextContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexWorkflow);
+            sAPSetSAPTableVisibleCellTextContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow);
             if (sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPTableVisibleCellTextContentsAtIndex;
@@ -1752,7 +1752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPCheckSAPTableVisibleCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexSearchSAPElementId, Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexWorkflow, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleRowIndex = null, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleColumnIndex = null, Expression<Func<bool>> sAPCheckSAPTableVisibleCellCheckboxAtIndexCheckCellElement = null)
+        public IWorkflowAction SAPCheckSAPTableVisibleCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = null, Expression<Func<bool>> sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPCheckSAPTableVisibleCellCheckboxAtIndex";
             var apiCallHttpMethod = "post";
@@ -1760,27 +1760,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPCheckSAPTableVisibleCellCheckboxAtIndex = new JObject();
             var sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount = 0;
             sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
-            sAPCheckSAPTableVisibleCellCheckboxAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexSearchSAPElementId);
-            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleRowIndex != null)
+            sAPCheckSAPTableVisibleCellCheckboxAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId);
+            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleRowIndex);
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex);
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleColumnIndex != null)
+            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexVisibleColumnIndex);
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex);
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexCheckCellElement != null)
+            if (sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexCheckCellElement);
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement);
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
             sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
-            sAPCheckSAPTableVisibleCellCheckboxAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexWorkflow);
+            sAPCheckSAPTableVisibleCellCheckboxAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow);
             if (sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPCheckSAPTableVisibleCellCheckboxAtIndex;
@@ -1790,7 +1790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressSAPTableVisibleCellAtIndex(Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexSearchSAPElementId, Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexWorkflow, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexVisibleRowIndex = null, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexVisibleColumnIndex = null)
+        public IWorkflowAction SAPPressSAPTableVisibleCellAtIndex(Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexworkflow, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressSAPTableVisibleCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -1798,21 +1798,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressSAPTableVisibleCellAtIndex = new JObject();
             var sAPPressSAPTableVisibleCellAtIndexpropCount = 0;
             sAPPressSAPTableVisibleCellAtIndexpropCount++;
-            sAPPressSAPTableVisibleCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexSearchSAPElementId);
-            if (sAPPressSAPTableVisibleCellAtIndexVisibleRowIndex != null)
+            sAPPressSAPTableVisibleCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId);
+            if (sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex != null)
             {
-                sAPPressSAPTableVisibleCellAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexVisibleRowIndex);
+                sAPPressSAPTableVisibleCellAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex);
                 sAPPressSAPTableVisibleCellAtIndexpropCount++;
             }
 
-            if (sAPPressSAPTableVisibleCellAtIndexVisibleColumnIndex != null)
+            if (sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex != null)
             {
-                sAPPressSAPTableVisibleCellAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexVisibleColumnIndex);
+                sAPPressSAPTableVisibleCellAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex);
                 sAPPressSAPTableVisibleCellAtIndexpropCount++;
             }
 
             sAPPressSAPTableVisibleCellAtIndexpropCount++;
-            sAPPressSAPTableVisibleCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexWorkflow);
+            sAPPressSAPTableVisibleCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexworkflow);
             if (sAPPressSAPTableVisibleCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPPressSAPTableVisibleCellAtIndex;
@@ -1822,7 +1822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPScrollSAPTable(Expression<Func<string>> sAPScrollSAPTableSearchSAPElementId, Expression<Func<string>> sAPScrollSAPTableWorkflow, Expression<Func<bool>> sAPScrollSAPTableMoveHorizontalScrollbar = null, Expression<Func<int>> sAPScrollSAPTableHorizontalScrollbarPosition = null, Expression<Func<bool>> sAPScrollSAPTableMoveVerticalScrollbar = null, Expression<Func<int>> sAPScrollSAPTableVerticalScrollbarPosition = null)
+        public IWorkflowAction SAPScrollSAPTable(Expression<Func<string>> sAPScrollSAPTablesearchSAPElementId, Expression<Func<string>> sAPScrollSAPTableworkflow, Expression<Func<bool>> sAPScrollSAPTablemoveHorizontalScrollbar = null, Expression<Func<int>> sAPScrollSAPTablehorizontalScrollbarPosition = null, Expression<Func<bool>> sAPScrollSAPTablemoveVerticalScrollbar = null, Expression<Func<int>> sAPScrollSAPTableverticalScrollbarPosition = null)
         {
             var apiCallPath = "/SAPGUI/SAPScrollSAPTable";
             var apiCallHttpMethod = "post";
@@ -1830,33 +1830,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPScrollSAPTable = new JObject();
             var sAPScrollSAPTablepropCount = 0;
             sAPScrollSAPTablepropCount++;
-            sAPScrollSAPTable["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPScrollSAPTableSearchSAPElementId);
-            if (sAPScrollSAPTableMoveHorizontalScrollbar != null)
+            sAPScrollSAPTable["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPScrollSAPTablesearchSAPElementId);
+            if (sAPScrollSAPTablemoveHorizontalScrollbar != null)
             {
-                sAPScrollSAPTable["MoveHorizontalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTableMoveHorizontalScrollbar);
+                sAPScrollSAPTable["MoveHorizontalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveHorizontalScrollbar);
                 sAPScrollSAPTablepropCount++;
             }
 
-            if (sAPScrollSAPTableHorizontalScrollbarPosition != null)
+            if (sAPScrollSAPTablehorizontalScrollbarPosition != null)
             {
-                sAPScrollSAPTable["HorizontalScrollbarPosition"] = ExpressionConverter.ConvertO(sAPScrollSAPTableHorizontalScrollbarPosition);
+                sAPScrollSAPTable["HorizontalScrollbarPosition"] = ExpressionConverter.ConvertO(sAPScrollSAPTablehorizontalScrollbarPosition);
                 sAPScrollSAPTablepropCount++;
             }
 
-            if (sAPScrollSAPTableMoveVerticalScrollbar != null)
+            if (sAPScrollSAPTablemoveVerticalScrollbar != null)
             {
-                sAPScrollSAPTable["MoveVerticalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTableMoveVerticalScrollbar);
+                sAPScrollSAPTable["MoveVerticalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveVerticalScrollbar);
                 sAPScrollSAPTablepropCount++;
             }
 
-            if (sAPScrollSAPTableVerticalScrollbarPosition != null)
+            if (sAPScrollSAPTableverticalScrollbarPosition != null)
             {
-                sAPScrollSAPTable["VerticalScrollbarPosition"] = ExpressionConverter.ConvertO(sAPScrollSAPTableVerticalScrollbarPosition);
+                sAPScrollSAPTable["VerticalScrollbarPosition"] = ExpressionConverter.ConvertO(sAPScrollSAPTableverticalScrollbarPosition);
                 sAPScrollSAPTablepropCount++;
             }
 
             sAPScrollSAPTablepropCount++;
-            sAPScrollSAPTable["Workflow"] = ExpressionConverter.ConvertO(sAPScrollSAPTableWorkflow);
+            sAPScrollSAPTable["Workflow"] = ExpressionConverter.ConvertO(sAPScrollSAPTableworkflow);
             if (sAPScrollSAPTablepropCount > 0)
             {
                 callPayload.Body = sAPScrollSAPTable;
@@ -1866,7 +1866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse> SAPGetTableVisibleTextContents(Expression<Func<string>> sAPGetTableVisibleTextContentsSearchSAPElementId, Expression<Func<string>> sAPGetTableVisibleTextContentsWorkflow, Expression<Func<int>> sAPGetTableVisibleTextContentsFirstVisibleRowToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsMaxRowsToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsFirstVisibleColumnToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsMaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsUseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsReturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTableVisibleTextContentsNameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetTableVisibleTextContentsCheckedElementValue = null)
+        public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse> SAPGetTableVisibleTextContents(Expression<Func<string>> sAPGetTableVisibleTextContentssearchSAPElementId, Expression<Func<string>> sAPGetTableVisibleTextContentsworkflow, Expression<Func<int>> sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsmaxRowsToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetTableVisibleTextContentscheckedElementValue = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetTableVisibleTextContents";
             var apiCallHttpMethod = "post";
@@ -1874,57 +1874,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetTableVisibleTextContents = new JObject();
             var sAPGetTableVisibleTextContentspropCount = 0;
             sAPGetTableVisibleTextContentspropCount++;
-            sAPGetTableVisibleTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsSearchSAPElementId);
-            if (sAPGetTableVisibleTextContentsFirstVisibleRowToReturn != null)
+            sAPGetTableVisibleTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentssearchSAPElementId);
+            if (sAPGetTableVisibleTextContentsfirstVisibleRowToReturn != null)
             {
-                sAPGetTableVisibleTextContents["FirstVisibleRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsFirstVisibleRowToReturn);
+                sAPGetTableVisibleTextContents["FirstVisibleRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsMaxRowsToReturn != null)
+            if (sAPGetTableVisibleTextContentsmaxRowsToReturn != null)
             {
-                sAPGetTableVisibleTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsMaxRowsToReturn);
+                sAPGetTableVisibleTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxRowsToReturn);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsFirstVisibleColumnToReturn != null)
+            if (sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn != null)
             {
-                sAPGetTableVisibleTextContents["FirstVisibleColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsFirstVisibleColumnToReturn);
+                sAPGetTableVisibleTextContents["FirstVisibleColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsMaxColumnsToReturn != null)
+            if (sAPGetTableVisibleTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetTableVisibleTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsMaxColumnsToReturn);
+                sAPGetTableVisibleTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxColumnsToReturn);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsUseColumnHeadersFromTable != null)
+            if (sAPGetTableVisibleTextContentsuseColumnHeadersFromTable != null)
             {
-                sAPGetTableVisibleTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsUseColumnHeadersFromTable);
+                sAPGetTableVisibleTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsReturnRowIndexInOutputCollection != null)
+            if (sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetTableVisibleTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsReturnRowIndexInOutputCollection);
+                sAPGetTableVisibleTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsNameOfColumnToStoreRowIndex != null)
+            if (sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex != null)
             {
-                sAPGetTableVisibleTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsNameOfColumnToStoreRowIndex);
+                sAPGetTableVisibleTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
-            if (sAPGetTableVisibleTextContentsCheckedElementValue != null)
+            if (sAPGetTableVisibleTextContentscheckedElementValue != null)
             {
-                sAPGetTableVisibleTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsCheckedElementValue);
+                sAPGetTableVisibleTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentscheckedElementValue);
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             sAPGetTableVisibleTextContentspropCount++;
-            sAPGetTableVisibleTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsWorkflow);
+            sAPGetTableVisibleTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsworkflow);
             if (sAPGetTableVisibleTextContentspropCount > 0)
             {
                 callPayload.Body = sAPGetTableVisibleTextContents;
@@ -1934,7 +1934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPTableRow(Expression<Func<string>> sAPSelectSAPTableRowSearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableRowWorkflow, Expression<Func<int>> sAPSelectSAPTableRowVisibleRowIndex = null, Expression<Func<bool>> sAPSelectSAPTableRowSelect = null)
+        public IWorkflowAction SAPSelectSAPTableRow(Expression<Func<string>> sAPSelectSAPTableRowsearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableRowworkflow, Expression<Func<int>> sAPSelectSAPTableRowvisibleRowIndex = null, Expression<Func<bool>> sAPSelectSAPTableRowselect = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPTableRow";
             var apiCallHttpMethod = "post";
@@ -1942,21 +1942,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPTableRow = new JObject();
             var sAPSelectSAPTableRowpropCount = 0;
             sAPSelectSAPTableRowpropCount++;
-            sAPSelectSAPTableRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowSearchSAPElementId);
-            if (sAPSelectSAPTableRowVisibleRowIndex != null)
+            sAPSelectSAPTableRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowsearchSAPElementId);
+            if (sAPSelectSAPTableRowvisibleRowIndex != null)
             {
-                sAPSelectSAPTableRow["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowVisibleRowIndex);
+                sAPSelectSAPTableRow["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowvisibleRowIndex);
                 sAPSelectSAPTableRowpropCount++;
             }
 
-            if (sAPSelectSAPTableRowSelect != null)
+            if (sAPSelectSAPTableRowselect != null)
             {
-                sAPSelectSAPTableRow["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowSelect);
+                sAPSelectSAPTableRow["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowselect);
                 sAPSelectSAPTableRowpropCount++;
             }
 
             sAPSelectSAPTableRowpropCount++;
-            sAPSelectSAPTableRow["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowWorkflow);
+            sAPSelectSAPTableRow["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowworkflow);
             if (sAPSelectSAPTableRowpropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPTableRow;
@@ -1966,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPTableColumn(Expression<Func<string>> sAPSelectSAPTableColumnSearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableColumnWorkflow, Expression<Func<int>> sAPSelectSAPTableColumnVisibleColumnIndex = null, Expression<Func<bool>> sAPSelectSAPTableColumnSelect = null)
+        public IWorkflowAction SAPSelectSAPTableColumn(Expression<Func<string>> sAPSelectSAPTableColumnsearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableColumnworkflow, Expression<Func<int>> sAPSelectSAPTableColumnvisibleColumnIndex = null, Expression<Func<bool>> sAPSelectSAPTableColumnselect = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPTableColumn";
             var apiCallHttpMethod = "post";
@@ -1974,21 +1974,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPTableColumn = new JObject();
             var sAPSelectSAPTableColumnpropCount = 0;
             sAPSelectSAPTableColumnpropCount++;
-            sAPSelectSAPTableColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnSearchSAPElementId);
-            if (sAPSelectSAPTableColumnVisibleColumnIndex != null)
+            sAPSelectSAPTableColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnsearchSAPElementId);
+            if (sAPSelectSAPTableColumnvisibleColumnIndex != null)
             {
-                sAPSelectSAPTableColumn["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnVisibleColumnIndex);
+                sAPSelectSAPTableColumn["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnvisibleColumnIndex);
                 sAPSelectSAPTableColumnpropCount++;
             }
 
-            if (sAPSelectSAPTableColumnSelect != null)
+            if (sAPSelectSAPTableColumnselect != null)
             {
-                sAPSelectSAPTableColumn["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnSelect);
+                sAPSelectSAPTableColumn["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnselect);
                 sAPSelectSAPTableColumnpropCount++;
             }
 
             sAPSelectSAPTableColumnpropCount++;
-            sAPSelectSAPTableColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnWorkflow);
+            sAPSelectSAPTableColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnworkflow);
             if (sAPSelectSAPTableColumnpropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPTableColumn;
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeNodesResponse> SAPGetTreeNodes(Expression<Func<string>> sAPGetTreeNodesSearchSAPElementId, Expression<Func<string>> sAPGetTreeNodesWorkflow, Expression<Func<string>> sAPGetTreeNodesParentNodeKey = null, Expression<Func<bool>> sAPGetTreeNodesProcessSubNodes = null)
+        public IBodyWorkflowAction<SAPGetTreeNodesResponse> SAPGetTreeNodes(Expression<Func<string>> sAPGetTreeNodessearchSAPElementId, Expression<Func<string>> sAPGetTreeNodesworkflow, Expression<Func<string>> sAPGetTreeNodesparentNodeKey = null, Expression<Func<bool>> sAPGetTreeNodesprocessSubNodes = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetTreeNodes";
             var apiCallHttpMethod = "post";
@@ -2006,21 +2006,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetTreeNodes = new JObject();
             var sAPGetTreeNodespropCount = 0;
             sAPGetTreeNodespropCount++;
-            sAPGetTreeNodes["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeNodesSearchSAPElementId);
-            if (sAPGetTreeNodesParentNodeKey != null)
+            sAPGetTreeNodes["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeNodessearchSAPElementId);
+            if (sAPGetTreeNodesparentNodeKey != null)
             {
-                sAPGetTreeNodes["ParentNodeKey"] = ExpressionConverter.ConvertO(sAPGetTreeNodesParentNodeKey);
+                sAPGetTreeNodes["ParentNodeKey"] = ExpressionConverter.ConvertO(sAPGetTreeNodesparentNodeKey);
                 sAPGetTreeNodespropCount++;
             }
 
-            if (sAPGetTreeNodesProcessSubNodes != null)
+            if (sAPGetTreeNodesprocessSubNodes != null)
             {
-                sAPGetTreeNodes["ProcessSubNodes"] = ExpressionConverter.ConvertO(sAPGetTreeNodesProcessSubNodes);
+                sAPGetTreeNodes["ProcessSubNodes"] = ExpressionConverter.ConvertO(sAPGetTreeNodesprocessSubNodes);
                 sAPGetTreeNodespropCount++;
             }
 
             sAPGetTreeNodespropCount++;
-            sAPGetTreeNodes["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeNodesWorkflow);
+            sAPGetTreeNodes["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeNodesworkflow);
             if (sAPGetTreeNodespropCount > 0)
             {
                 callPayload.Body = sAPGetTreeNodes;
@@ -2030,7 +2030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDoubleClickTreeItem(Expression<Func<string>> sAPDoubleClickTreeItemSearchSAPElementId, Expression<Func<string>> sAPDoubleClickTreeItemWorkflow, Expression<Func<string>> sAPDoubleClickTreeItemSearchNodeKey = null, Expression<Func<string>> sAPDoubleClickTreeItemSearchNodePath = null, Expression<Func<string>> sAPDoubleClickTreeItemSearchNodeText = null, Expression<Func<bool>> sAPDoubleClickTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPDoubleClickTreeItemSearchColumnName = null, Expression<Func<string>> sAPDoubleClickTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPDoubleClickTreeItem(Expression<Func<string>> sAPDoubleClickTreeItemsearchSAPElementId, Expression<Func<string>> sAPDoubleClickTreeItemworkflow, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodeKey = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodePath = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodeText = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchColumnName = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPDoubleClickTreeItem";
             var apiCallHttpMethod = "post";
@@ -2038,63 +2038,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDoubleClickTreeItem = new JObject();
             var sAPDoubleClickTreeItempropCount = 0;
             sAPDoubleClickTreeItempropCount++;
-            sAPDoubleClickTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchSAPElementId);
-            if (sAPDoubleClickTreeItemSearchNodeKey != null)
+            sAPDoubleClickTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchSAPElementId);
+            if (sAPDoubleClickTreeItemsearchNodeKey != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchNodeKey);
+                sAPDoubleClickTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeKey);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchNodePath != null)
+            if (sAPDoubleClickTreeItemsearchNodePath != null)
             {
-                sAPDoubleClickTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchNodePath);
+                sAPDoubleClickTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodePath);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchNodeText != null)
+            if (sAPDoubleClickTreeItemsearchNodeText != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchNodeText);
+                sAPDoubleClickTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeText);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchNodeTextIsRegularExpression);
+                sAPDoubleClickTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchNodeTextIsCaseSensitive);
+                sAPDoubleClickTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchColumnName != null)
+            if (sAPDoubleClickTreeItemsearchColumnName != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchColumnName);
+                sAPDoubleClickTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnName);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchColumnTitle != null)
+            if (sAPDoubleClickTreeItemsearchColumnTitle != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchColumnTitle);
+                sAPDoubleClickTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitle);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchColumnTitleIsRegularExpression);
+                sAPDoubleClickTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression);
                 sAPDoubleClickTreeItempropCount++;
             }
 
-            if (sAPDoubleClickTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPDoubleClickTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPDoubleClickTreeItempropCount++;
             }
 
             sAPDoubleClickTreeItempropCount++;
-            sAPDoubleClickTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemWorkflow);
+            sAPDoubleClickTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemworkflow);
             if (sAPDoubleClickTreeItempropCount > 0)
             {
                 callPayload.Body = sAPDoubleClickTreeItem;
@@ -2104,7 +2104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectTreeItem(Expression<Func<string>> sAPSelectTreeItemSearchSAPElementId, Expression<Func<string>> sAPSelectTreeItemWorkflow, Expression<Func<string>> sAPSelectTreeItemSearchNodeKey = null, Expression<Func<string>> sAPSelectTreeItemSearchNodePath = null, Expression<Func<string>> sAPSelectTreeItemSearchNodeText = null, Expression<Func<bool>> sAPSelectTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPSelectTreeItemSearchColumnName = null, Expression<Func<string>> sAPSelectTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPSelectTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectTreeItemSelect = null, Expression<Func<bool>> sAPSelectTreeItemDeselectAllFirst = null)
+        public IWorkflowAction SAPSelectTreeItem(Expression<Func<string>> sAPSelectTreeItemsearchSAPElementId, Expression<Func<string>> sAPSelectTreeItemworkflow, Expression<Func<string>> sAPSelectTreeItemsearchNodeKey = null, Expression<Func<string>> sAPSelectTreeItemsearchNodePath = null, Expression<Func<string>> sAPSelectTreeItemsearchNodeText = null, Expression<Func<bool>> sAPSelectTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPSelectTreeItemsearchColumnName = null, Expression<Func<string>> sAPSelectTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPSelectTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectTreeItemselect = null, Expression<Func<bool>> sAPSelectTreeItemdeselectAllFirst = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectTreeItem";
             var apiCallHttpMethod = "post";
@@ -2112,75 +2112,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectTreeItem = new JObject();
             var sAPSelectTreeItempropCount = 0;
             sAPSelectTreeItempropCount++;
-            sAPSelectTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchSAPElementId);
-            if (sAPSelectTreeItemSearchNodeKey != null)
+            sAPSelectTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchSAPElementId);
+            if (sAPSelectTreeItemsearchNodeKey != null)
             {
-                sAPSelectTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchNodeKey);
+                sAPSelectTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeKey);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchNodePath != null)
+            if (sAPSelectTreeItemsearchNodePath != null)
             {
-                sAPSelectTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchNodePath);
+                sAPSelectTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodePath);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchNodeText != null)
+            if (sAPSelectTreeItemsearchNodeText != null)
             {
-                sAPSelectTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchNodeText);
+                sAPSelectTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeText);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPSelectTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPSelectTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchNodeTextIsRegularExpression);
+                sAPSelectTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsRegularExpression);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPSelectTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPSelectTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchNodeTextIsCaseSensitive);
+                sAPSelectTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsCaseSensitive);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchColumnName != null)
+            if (sAPSelectTreeItemsearchColumnName != null)
             {
-                sAPSelectTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchColumnName);
+                sAPSelectTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnName);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchColumnTitle != null)
+            if (sAPSelectTreeItemsearchColumnTitle != null)
             {
-                sAPSelectTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchColumnTitle);
+                sAPSelectTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitle);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPSelectTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSelectTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchColumnTitleIsRegularExpression);
+                sAPSelectTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsRegularExpression);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSelectTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSelectTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPSelectTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemSelect != null)
+            if (sAPSelectTreeItemselect != null)
             {
-                sAPSelectTreeItem["Select"] = ExpressionConverter.ConvertO(sAPSelectTreeItemSelect);
+                sAPSelectTreeItem["Select"] = ExpressionConverter.ConvertO(sAPSelectTreeItemselect);
                 sAPSelectTreeItempropCount++;
             }
 
-            if (sAPSelectTreeItemDeselectAllFirst != null)
+            if (sAPSelectTreeItemdeselectAllFirst != null)
             {
-                sAPSelectTreeItem["DeselectAllFirst"] = ExpressionConverter.ConvertO(sAPSelectTreeItemDeselectAllFirst);
+                sAPSelectTreeItem["DeselectAllFirst"] = ExpressionConverter.ConvertO(sAPSelectTreeItemdeselectAllFirst);
                 sAPSelectTreeItempropCount++;
             }
 
             sAPSelectTreeItempropCount++;
-            sAPSelectTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPSelectTreeItemWorkflow);
+            sAPSelectTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPSelectTreeItemworkflow);
             if (sAPSelectTreeItempropCount > 0)
             {
                 callPayload.Body = sAPSelectTreeItem;
@@ -2190,7 +2190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPExpandTreeNode(Expression<Func<string>> sAPExpandTreeNodeSearchSAPElementId, Expression<Func<string>> sAPExpandTreeNodeWorkflow, Expression<Func<string>> sAPExpandTreeNodeSearchNodeKey = null, Expression<Func<string>> sAPExpandTreeNodeSearchNodePath = null, Expression<Func<string>> sAPExpandTreeNodeSearchNodeText = null, Expression<Func<bool>> sAPExpandTreeNodeSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPExpandTreeNodeSearchNodeTextIsCaseSensitive = null, Expression<Func<bool>> sAPExpandTreeNodeExpand = null)
+        public IWorkflowAction SAPExpandTreeNode(Expression<Func<string>> sAPExpandTreeNodesearchSAPElementId, Expression<Func<string>> sAPExpandTreeNodeworkflow, Expression<Func<string>> sAPExpandTreeNodesearchNodeKey = null, Expression<Func<string>> sAPExpandTreeNodesearchNodePath = null, Expression<Func<string>> sAPExpandTreeNodesearchNodeText = null, Expression<Func<bool>> sAPExpandTreeNodesearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPExpandTreeNodesearchNodeTextIsCaseSensitive = null, Expression<Func<bool>> sAPExpandTreeNodeexpand = null)
         {
             var apiCallPath = "/SAPGUI/SAPExpandTreeNode";
             var apiCallHttpMethod = "post";
@@ -2198,45 +2198,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPExpandTreeNode = new JObject();
             var sAPExpandTreeNodepropCount = 0;
             sAPExpandTreeNodepropCount++;
-            sAPExpandTreeNode["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchSAPElementId);
-            if (sAPExpandTreeNodeSearchNodeKey != null)
+            sAPExpandTreeNode["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchSAPElementId);
+            if (sAPExpandTreeNodesearchNodeKey != null)
             {
-                sAPExpandTreeNode["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchNodeKey);
+                sAPExpandTreeNode["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeKey);
                 sAPExpandTreeNodepropCount++;
             }
 
-            if (sAPExpandTreeNodeSearchNodePath != null)
+            if (sAPExpandTreeNodesearchNodePath != null)
             {
-                sAPExpandTreeNode["SearchNodePath"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchNodePath);
+                sAPExpandTreeNode["SearchNodePath"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodePath);
                 sAPExpandTreeNodepropCount++;
             }
 
-            if (sAPExpandTreeNodeSearchNodeText != null)
+            if (sAPExpandTreeNodesearchNodeText != null)
             {
-                sAPExpandTreeNode["SearchNodeText"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchNodeText);
+                sAPExpandTreeNode["SearchNodeText"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeText);
                 sAPExpandTreeNodepropCount++;
             }
 
-            if (sAPExpandTreeNodeSearchNodeTextIsRegularExpression != null)
+            if (sAPExpandTreeNodesearchNodeTextIsRegularExpression != null)
             {
-                sAPExpandTreeNode["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchNodeTextIsRegularExpression);
+                sAPExpandTreeNode["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsRegularExpression);
                 sAPExpandTreeNodepropCount++;
             }
 
-            if (sAPExpandTreeNodeSearchNodeTextIsCaseSensitive != null)
+            if (sAPExpandTreeNodesearchNodeTextIsCaseSensitive != null)
             {
-                sAPExpandTreeNode["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeSearchNodeTextIsCaseSensitive);
+                sAPExpandTreeNode["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsCaseSensitive);
                 sAPExpandTreeNodepropCount++;
             }
 
-            if (sAPExpandTreeNodeExpand != null)
+            if (sAPExpandTreeNodeexpand != null)
             {
-                sAPExpandTreeNode["Expand"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeExpand);
+                sAPExpandTreeNode["Expand"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeexpand);
                 sAPExpandTreeNodepropCount++;
             }
 
             sAPExpandTreeNodepropCount++;
-            sAPExpandTreeNode["Workflow"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeWorkflow);
+            sAPExpandTreeNode["Workflow"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeworkflow);
             if (sAPExpandTreeNodepropCount > 0)
             {
                 callPayload.Body = sAPExpandTreeNode;
@@ -2246,7 +2246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDeselectAllTreeNodes(Expression<Func<string>> sAPDeselectAllTreeNodesSearchSAPElementId, Expression<Func<string>> sAPDeselectAllTreeNodesWorkflow)
+        public IWorkflowAction SAPDeselectAllTreeNodes(Expression<Func<string>> sAPDeselectAllTreeNodessearchSAPElementId, Expression<Func<string>> sAPDeselectAllTreeNodesworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPDeselectAllTreeNodes";
             var apiCallHttpMethod = "post";
@@ -2254,9 +2254,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDeselectAllTreeNodes = new JObject();
             var sAPDeselectAllTreeNodespropCount = 0;
             sAPDeselectAllTreeNodespropCount++;
-            sAPDeselectAllTreeNodes["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDeselectAllTreeNodesSearchSAPElementId);
+            sAPDeselectAllTreeNodes["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDeselectAllTreeNodessearchSAPElementId);
             sAPDeselectAllTreeNodespropCount++;
-            sAPDeselectAllTreeNodes["Workflow"] = ExpressionConverter.ConvertO(sAPDeselectAllTreeNodesWorkflow);
+            sAPDeselectAllTreeNodes["Workflow"] = ExpressionConverter.ConvertO(sAPDeselectAllTreeNodesworkflow);
             if (sAPDeselectAllTreeNodespropCount > 0)
             {
                 callPayload.Body = sAPDeselectAllTreeNodes;
@@ -2266,7 +2266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressKeyOnTree(Expression<Func<string>> sAPPressKeyOnTreeSearchSAPElementId, Expression<Func<string>> sAPPressKeyOnTreeKey, Expression<Func<string>> sAPPressKeyOnTreeWorkflow)
+        public IWorkflowAction SAPPressKeyOnTree(Expression<Func<string>> sAPPressKeyOnTreesearchSAPElementId, Expression<Func<string>> sAPPressKeyOnTreekey, Expression<Func<string>> sAPPressKeyOnTreeworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPPressKeyOnTree";
             var apiCallHttpMethod = "post";
@@ -2274,11 +2274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressKeyOnTree = new JObject();
             var sAPPressKeyOnTreepropCount = 0;
             sAPPressKeyOnTreepropCount++;
-            sAPPressKeyOnTree["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreeSearchSAPElementId);
+            sAPPressKeyOnTree["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreesearchSAPElementId);
             sAPPressKeyOnTreepropCount++;
-            sAPPressKeyOnTree["Key"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreeKey);
+            sAPPressKeyOnTree["Key"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreekey);
             sAPPressKeyOnTreepropCount++;
-            sAPPressKeyOnTree["Workflow"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreeWorkflow);
+            sAPPressKeyOnTree["Workflow"] = ExpressionConverter.ConvertO(sAPPressKeyOnTreeworkflow);
             if (sAPPressKeyOnTreepropCount > 0)
             {
                 callPayload.Body = sAPPressKeyOnTree;
@@ -2288,7 +2288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPOpenContextMenuOnTreeItem(Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchSAPElementId, Expression<Func<string>> sAPOpenContextMenuOnTreeItemWorkflow, Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchNodeKey = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchNodePath = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchNodeText = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchColumnName = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPOpenContextMenuOnTreeItem(Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPOpenContextMenuOnTreeItemworkflow, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPOpenContextMenuOnTreeItem";
             var apiCallHttpMethod = "post";
@@ -2296,63 +2296,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPOpenContextMenuOnTreeItem = new JObject();
             var sAPOpenContextMenuOnTreeItempropCount = 0;
             sAPOpenContextMenuOnTreeItempropCount++;
-            sAPOpenContextMenuOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchSAPElementId);
-            if (sAPOpenContextMenuOnTreeItemSearchNodeKey != null)
+            sAPOpenContextMenuOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchSAPElementId);
+            if (sAPOpenContextMenuOnTreeItemsearchNodeKey != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchNodeKey);
+                sAPOpenContextMenuOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeKey);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchNodePath != null)
+            if (sAPOpenContextMenuOnTreeItemsearchNodePath != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchNodePath);
+                sAPOpenContextMenuOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodePath);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchNodeText != null)
+            if (sAPOpenContextMenuOnTreeItemsearchNodeText != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchNodeText);
+                sAPOpenContextMenuOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeText);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchNodeTextIsRegularExpression);
+                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchNodeTextIsCaseSensitive);
+                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchColumnName != null)
+            if (sAPOpenContextMenuOnTreeItemsearchColumnName != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchColumnName);
+                sAPOpenContextMenuOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnName);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchColumnTitle != null)
+            if (sAPOpenContextMenuOnTreeItemsearchColumnTitle != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchColumnTitle);
+                sAPOpenContextMenuOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitle);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchColumnTitleIsRegularExpression);
+                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
-            if (sAPOpenContextMenuOnTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
             sAPOpenContextMenuOnTreeItempropCount++;
-            sAPOpenContextMenuOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemWorkflow);
+            sAPOpenContextMenuOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemworkflow);
             if (sAPOpenContextMenuOnTreeItempropCount > 0)
             {
                 callPayload.Body = sAPOpenContextMenuOnTreeItem;
@@ -2362,7 +2362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeTextContentsResponse> SAPGetTreeTextContents(Expression<Func<string>> sAPGetTreeTextContentsSearchSAPElementId, Expression<Func<string>> sAPGetTreeTextContentsWorkflow, Expression<Func<int>> sAPGetTreeTextContentsFirstRowToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsMaxRowsToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsFirstColumnToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsMaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTreeTextContentsUseColumnHeadersFromTree = null, Expression<Func<bool>> sAPGetTreeTextContentsReturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTreeTextContentsNameOfColumnToStoreRowIndex = null)
+        public IBodyWorkflowAction<SAPGetTreeTextContentsResponse> SAPGetTreeTextContents(Expression<Func<string>> sAPGetTreeTextContentssearchSAPElementId, Expression<Func<string>> sAPGetTreeTextContentsworkflow, Expression<Func<int>> sAPGetTreeTextContentsfirstRowToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsmaxRowsToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsfirstColumnToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTreeTextContentsuseColumnHeadersFromTree = null, Expression<Func<bool>> sAPGetTreeTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetTreeTextContents";
             var apiCallHttpMethod = "post";
@@ -2370,51 +2370,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetTreeTextContents = new JObject();
             var sAPGetTreeTextContentspropCount = 0;
             sAPGetTreeTextContentspropCount++;
-            sAPGetTreeTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsSearchSAPElementId);
-            if (sAPGetTreeTextContentsFirstRowToReturn != null)
+            sAPGetTreeTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentssearchSAPElementId);
+            if (sAPGetTreeTextContentsfirstRowToReturn != null)
             {
-                sAPGetTreeTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsFirstRowToReturn);
+                sAPGetTreeTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstRowToReturn);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsMaxRowsToReturn != null)
+            if (sAPGetTreeTextContentsmaxRowsToReturn != null)
             {
-                sAPGetTreeTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsMaxRowsToReturn);
+                sAPGetTreeTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxRowsToReturn);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsFirstColumnToReturn != null)
+            if (sAPGetTreeTextContentsfirstColumnToReturn != null)
             {
-                sAPGetTreeTextContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsFirstColumnToReturn);
+                sAPGetTreeTextContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstColumnToReturn);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsMaxColumnsToReturn != null)
+            if (sAPGetTreeTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetTreeTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsMaxColumnsToReturn);
+                sAPGetTreeTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxColumnsToReturn);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsUseColumnHeadersFromTree != null)
+            if (sAPGetTreeTextContentsuseColumnHeadersFromTree != null)
             {
-                sAPGetTreeTextContents["UseColumnHeadersFromTree"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsUseColumnHeadersFromTree);
+                sAPGetTreeTextContents["UseColumnHeadersFromTree"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsuseColumnHeadersFromTree);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsReturnRowIndexInOutputCollection != null)
+            if (sAPGetTreeTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetTreeTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsReturnRowIndexInOutputCollection);
+                sAPGetTreeTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsreturnRowIndexInOutputCollection);
                 sAPGetTreeTextContentspropCount++;
             }
 
-            if (sAPGetTreeTextContentsNameOfColumnToStoreRowIndex != null)
+            if (sAPGetTreeTextContentsnameOfColumnToStoreRowIndex != null)
             {
-                sAPGetTreeTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsNameOfColumnToStoreRowIndex);
+                sAPGetTreeTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex);
                 sAPGetTreeTextContentspropCount++;
             }
 
             sAPGetTreeTextContentspropCount++;
-            sAPGetTreeTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsWorkflow);
+            sAPGetTreeTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsworkflow);
             if (sAPGetTreeTextContentspropCount > 0)
             {
                 callPayload.Body = sAPGetTreeTextContents;
@@ -2424,7 +2424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetTreeColumnWidth(Expression<Func<string>> sAPSetTreeColumnWidthSearchSAPElementId, Expression<Func<string>> sAPSetTreeColumnWidthWorkflow, Expression<Func<string>> sAPSetTreeColumnWidthSearchColumnName = null, Expression<Func<string>> sAPSetTreeColumnWidthSearchColumnTitle = null, Expression<Func<bool>> sAPSetTreeColumnWidthSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetTreeColumnWidthSearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPSetTreeColumnWidthColumnWidthInPixels = null)
+        public IWorkflowAction SAPSetTreeColumnWidth(Expression<Func<string>> sAPSetTreeColumnWidthsearchSAPElementId, Expression<Func<string>> sAPSetTreeColumnWidthworkflow, Expression<Func<string>> sAPSetTreeColumnWidthsearchColumnName = null, Expression<Func<string>> sAPSetTreeColumnWidthsearchColumnTitle = null, Expression<Func<bool>> sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPSetTreeColumnWidthcolumnWidthInPixels = null)
         {
             var apiCallPath = "/SAPGUI/SAPSetTreeColumnWidth";
             var apiCallHttpMethod = "post";
@@ -2432,39 +2432,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetTreeColumnWidth = new JObject();
             var sAPSetTreeColumnWidthpropCount = 0;
             sAPSetTreeColumnWidthpropCount++;
-            sAPSetTreeColumnWidth["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthSearchSAPElementId);
-            if (sAPSetTreeColumnWidthSearchColumnName != null)
+            sAPSetTreeColumnWidth["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchSAPElementId);
+            if (sAPSetTreeColumnWidthsearchColumnName != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthSearchColumnName);
+                sAPSetTreeColumnWidth["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnName);
                 sAPSetTreeColumnWidthpropCount++;
             }
 
-            if (sAPSetTreeColumnWidthSearchColumnTitle != null)
+            if (sAPSetTreeColumnWidthsearchColumnTitle != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthSearchColumnTitle);
+                sAPSetTreeColumnWidth["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitle);
                 sAPSetTreeColumnWidthpropCount++;
             }
 
-            if (sAPSetTreeColumnWidthSearchColumnTitleIsRegularExpression != null)
+            if (sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthSearchColumnTitleIsRegularExpression);
+                sAPSetTreeColumnWidth["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression);
                 sAPSetTreeColumnWidthpropCount++;
             }
 
-            if (sAPSetTreeColumnWidthSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthSearchColumnTitleIsCaseSensitive);
+                sAPSetTreeColumnWidth["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive);
                 sAPSetTreeColumnWidthpropCount++;
             }
 
-            if (sAPSetTreeColumnWidthColumnWidthInPixels != null)
+            if (sAPSetTreeColumnWidthcolumnWidthInPixels != null)
             {
-                sAPSetTreeColumnWidth["ColumnWidthInPixels"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthColumnWidthInPixels);
+                sAPSetTreeColumnWidth["ColumnWidthInPixels"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthcolumnWidthInPixels);
                 sAPSetTreeColumnWidthpropCount++;
             }
 
             sAPSetTreeColumnWidthpropCount++;
-            sAPSetTreeColumnWidth["Workflow"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthWorkflow);
+            sAPSetTreeColumnWidth["Workflow"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthworkflow);
             if (sAPSetTreeColumnWidthpropCount > 0)
             {
                 callPayload.Body = sAPSetTreeColumnWidth;
@@ -2474,7 +2474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressButtonOnTreeItem(Expression<Func<string>> sAPPressButtonOnTreeItemSearchSAPElementId, Expression<Func<string>> sAPPressButtonOnTreeItemWorkflow, Expression<Func<string>> sAPPressButtonOnTreeItemSearchNodeKey = null, Expression<Func<string>> sAPPressButtonOnTreeItemSearchNodePath = null, Expression<Func<string>> sAPPressButtonOnTreeItemSearchNodeText = null, Expression<Func<bool>> sAPPressButtonOnTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPPressButtonOnTreeItemSearchColumnName = null, Expression<Func<string>> sAPPressButtonOnTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPPressButtonOnTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPPressButtonOnTreeItemForce = null)
+        public IWorkflowAction SAPPressButtonOnTreeItem(Expression<Func<string>> sAPPressButtonOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPPressButtonOnTreeItemworkflow, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPPressButtonOnTreeItemforce = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressButtonOnTreeItem";
             var apiCallHttpMethod = "post";
@@ -2482,69 +2482,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressButtonOnTreeItem = new JObject();
             var sAPPressButtonOnTreeItempropCount = 0;
             sAPPressButtonOnTreeItempropCount++;
-            sAPPressButtonOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchSAPElementId);
-            if (sAPPressButtonOnTreeItemSearchNodeKey != null)
+            sAPPressButtonOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchSAPElementId);
+            if (sAPPressButtonOnTreeItemsearchNodeKey != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchNodeKey);
+                sAPPressButtonOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeKey);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchNodePath != null)
+            if (sAPPressButtonOnTreeItemsearchNodePath != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchNodePath);
+                sAPPressButtonOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodePath);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchNodeText != null)
+            if (sAPPressButtonOnTreeItemsearchNodeText != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchNodeText);
+                sAPPressButtonOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeText);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchNodeTextIsRegularExpression);
+                sAPPressButtonOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchNodeTextIsCaseSensitive);
+                sAPPressButtonOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchColumnName != null)
+            if (sAPPressButtonOnTreeItemsearchColumnName != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchColumnName);
+                sAPPressButtonOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnName);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchColumnTitle != null)
+            if (sAPPressButtonOnTreeItemsearchColumnTitle != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchColumnTitle);
+                sAPPressButtonOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitle);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchColumnTitleIsRegularExpression);
+                sAPPressButtonOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPPressButtonOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
-            if (sAPPressButtonOnTreeItemForce != null)
+            if (sAPPressButtonOnTreeItemforce != null)
             {
-                sAPPressButtonOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemForce);
+                sAPPressButtonOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemforce);
                 sAPPressButtonOnTreeItempropCount++;
             }
 
             sAPPressButtonOnTreeItempropCount++;
-            sAPPressButtonOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemWorkflow);
+            sAPPressButtonOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemworkflow);
             if (sAPPressButtonOnTreeItempropCount > 0)
             {
                 callPayload.Body = sAPPressButtonOnTreeItem;
@@ -2554,7 +2554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPClickLinkOnTreeItem(Expression<Func<string>> sAPClickLinkOnTreeItemSearchSAPElementId, Expression<Func<string>> sAPClickLinkOnTreeItemWorkflow, Expression<Func<string>> sAPClickLinkOnTreeItemSearchNodeKey = null, Expression<Func<string>> sAPClickLinkOnTreeItemSearchNodePath = null, Expression<Func<string>> sAPClickLinkOnTreeItemSearchNodeText = null, Expression<Func<bool>> sAPClickLinkOnTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPClickLinkOnTreeItemSearchColumnName = null, Expression<Func<string>> sAPClickLinkOnTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPClickLinkOnTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPClickLinkOnTreeItemForce = null)
+        public IWorkflowAction SAPClickLinkOnTreeItem(Expression<Func<string>> sAPClickLinkOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPClickLinkOnTreeItemworkflow, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPClickLinkOnTreeItemforce = null)
         {
             var apiCallPath = "/SAPGUI/SAPClickLinkOnTreeItem";
             var apiCallHttpMethod = "post";
@@ -2562,69 +2562,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPClickLinkOnTreeItem = new JObject();
             var sAPClickLinkOnTreeItempropCount = 0;
             sAPClickLinkOnTreeItempropCount++;
-            sAPClickLinkOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchSAPElementId);
-            if (sAPClickLinkOnTreeItemSearchNodeKey != null)
+            sAPClickLinkOnTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchSAPElementId);
+            if (sAPClickLinkOnTreeItemsearchNodeKey != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchNodeKey);
+                sAPClickLinkOnTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeKey);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchNodePath != null)
+            if (sAPClickLinkOnTreeItemsearchNodePath != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchNodePath);
+                sAPClickLinkOnTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodePath);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchNodeText != null)
+            if (sAPClickLinkOnTreeItemsearchNodeText != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchNodeText);
+                sAPClickLinkOnTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeText);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchNodeTextIsRegularExpression);
+                sAPClickLinkOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchNodeTextIsCaseSensitive);
+                sAPClickLinkOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchColumnName != null)
+            if (sAPClickLinkOnTreeItemsearchColumnName != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchColumnName);
+                sAPClickLinkOnTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnName);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchColumnTitle != null)
+            if (sAPClickLinkOnTreeItemsearchColumnTitle != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchColumnTitle);
+                sAPClickLinkOnTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitle);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchColumnTitleIsRegularExpression);
+                sAPClickLinkOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPClickLinkOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
-            if (sAPClickLinkOnTreeItemForce != null)
+            if (sAPClickLinkOnTreeItemforce != null)
             {
-                sAPClickLinkOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemForce);
+                sAPClickLinkOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemforce);
                 sAPClickLinkOnTreeItempropCount++;
             }
 
             sAPClickLinkOnTreeItempropCount++;
-            sAPClickLinkOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemWorkflow);
+            sAPClickLinkOnTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemworkflow);
             if (sAPClickLinkOnTreeItempropCount > 0)
             {
                 callPayload.Body = sAPClickLinkOnTreeItem;
@@ -2634,7 +2634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPCheckTreeItem(Expression<Func<string>> sAPCheckTreeItemSearchSAPElementId, Expression<Func<string>> sAPCheckTreeItemWorkflow, Expression<Func<string>> sAPCheckTreeItemSearchNodeKey = null, Expression<Func<string>> sAPCheckTreeItemSearchNodePath = null, Expression<Func<string>> sAPCheckTreeItemSearchNodeText = null, Expression<Func<bool>> sAPCheckTreeItemSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPCheckTreeItemSearchColumnName = null, Expression<Func<string>> sAPCheckTreeItemSearchColumnTitle = null, Expression<Func<bool>> sAPCheckTreeItemSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckTreeItemCheckItem = null, Expression<Func<bool>> sAPCheckTreeItemForce = null)
+        public IWorkflowAction SAPCheckTreeItem(Expression<Func<string>> sAPCheckTreeItemsearchSAPElementId, Expression<Func<string>> sAPCheckTreeItemworkflow, Expression<Func<string>> sAPCheckTreeItemsearchNodeKey = null, Expression<Func<string>> sAPCheckTreeItemsearchNodePath = null, Expression<Func<string>> sAPCheckTreeItemsearchNodeText = null, Expression<Func<bool>> sAPCheckTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPCheckTreeItemsearchColumnName = null, Expression<Func<string>> sAPCheckTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPCheckTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckTreeItemcheckItem = null, Expression<Func<bool>> sAPCheckTreeItemforce = null)
         {
             var apiCallPath = "/SAPGUI/SAPCheckTreeItem";
             var apiCallHttpMethod = "post";
@@ -2642,75 +2642,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPCheckTreeItem = new JObject();
             var sAPCheckTreeItempropCount = 0;
             sAPCheckTreeItempropCount++;
-            sAPCheckTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchSAPElementId);
-            if (sAPCheckTreeItemSearchNodeKey != null)
+            sAPCheckTreeItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchSAPElementId);
+            if (sAPCheckTreeItemsearchNodeKey != null)
             {
-                sAPCheckTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchNodeKey);
+                sAPCheckTreeItem["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeKey);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchNodePath != null)
+            if (sAPCheckTreeItemsearchNodePath != null)
             {
-                sAPCheckTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchNodePath);
+                sAPCheckTreeItem["SearchNodePath"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodePath);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchNodeText != null)
+            if (sAPCheckTreeItemsearchNodeText != null)
             {
-                sAPCheckTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchNodeText);
+                sAPCheckTreeItem["SearchNodeText"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeText);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchNodeTextIsRegularExpression != null)
+            if (sAPCheckTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPCheckTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchNodeTextIsRegularExpression);
+                sAPCheckTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsRegularExpression);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchNodeTextIsCaseSensitive != null)
+            if (sAPCheckTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPCheckTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchNodeTextIsCaseSensitive);
+                sAPCheckTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsCaseSensitive);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchColumnName != null)
+            if (sAPCheckTreeItemsearchColumnName != null)
             {
-                sAPCheckTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchColumnName);
+                sAPCheckTreeItem["SearchColumnName"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnName);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchColumnTitle != null)
+            if (sAPCheckTreeItemsearchColumnTitle != null)
             {
-                sAPCheckTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchColumnTitle);
+                sAPCheckTreeItem["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitle);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchColumnTitleIsRegularExpression != null)
+            if (sAPCheckTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPCheckTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchColumnTitleIsRegularExpression);
+                sAPCheckTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsRegularExpression);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemSearchColumnTitleIsCaseSensitive != null)
+            if (sAPCheckTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPCheckTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemSearchColumnTitleIsCaseSensitive);
+                sAPCheckTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemCheckItem != null)
+            if (sAPCheckTreeItemcheckItem != null)
             {
-                sAPCheckTreeItem["CheckItem"] = ExpressionConverter.ConvertO(sAPCheckTreeItemCheckItem);
+                sAPCheckTreeItem["CheckItem"] = ExpressionConverter.ConvertO(sAPCheckTreeItemcheckItem);
                 sAPCheckTreeItempropCount++;
             }
 
-            if (sAPCheckTreeItemForce != null)
+            if (sAPCheckTreeItemforce != null)
             {
-                sAPCheckTreeItem["Force"] = ExpressionConverter.ConvertO(sAPCheckTreeItemForce);
+                sAPCheckTreeItem["Force"] = ExpressionConverter.ConvertO(sAPCheckTreeItemforce);
                 sAPCheckTreeItempropCount++;
             }
 
             sAPCheckTreeItempropCount++;
-            sAPCheckTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPCheckTreeItemWorkflow);
+            sAPCheckTreeItem["Workflow"] = ExpressionConverter.ConvertO(sAPCheckTreeItemworkflow);
             if (sAPCheckTreeItempropCount > 0)
             {
                 callPayload.Body = sAPCheckTreeItem;
@@ -2720,7 +2720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse> SAPGetTreeColumnHeaders(Expression<Func<string>> sAPGetTreeColumnHeadersSearchSAPElementId, Expression<Func<string>> sAPGetTreeColumnHeadersWorkflow)
+        public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse> SAPGetTreeColumnHeaders(Expression<Func<string>> sAPGetTreeColumnHeaderssearchSAPElementId, Expression<Func<string>> sAPGetTreeColumnHeadersworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetTreeColumnHeaders";
             var apiCallHttpMethod = "post";
@@ -2728,9 +2728,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetTreeColumnHeaders = new JObject();
             var sAPGetTreeColumnHeaderspropCount = 0;
             sAPGetTreeColumnHeaderspropCount++;
-            sAPGetTreeColumnHeaders["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeColumnHeadersSearchSAPElementId);
+            sAPGetTreeColumnHeaders["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeColumnHeaderssearchSAPElementId);
             sAPGetTreeColumnHeaderspropCount++;
-            sAPGetTreeColumnHeaders["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeColumnHeadersWorkflow);
+            sAPGetTreeColumnHeaders["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeColumnHeadersworkflow);
             if (sAPGetTreeColumnHeaderspropCount > 0)
             {
                 callPayload.Body = sAPGetTreeColumnHeaders;
@@ -2740,7 +2740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse> SAPGetTreeItemProperties(Expression<Func<string>> sAPGetTreeItemPropertiesSearchSAPElementId, Expression<Func<string>> sAPGetTreeItemPropertiesWorkflow, Expression<Func<string>> sAPGetTreeItemPropertiesSearchNodeKey = null, Expression<Func<string>> sAPGetTreeItemPropertiesSearchNodePath = null, Expression<Func<string>> sAPGetTreeItemPropertiesSearchNodeText = null, Expression<Func<bool>> sAPGetTreeItemPropertiesSearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiesSearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPGetTreeItemPropertiesSearchColumnName = null, Expression<Func<string>> sAPGetTreeItemPropertiesSearchColumnTitle = null, Expression<Func<bool>> sAPGetTreeItemPropertiesSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiesSearchColumnTitleIsCaseSensitive = null)
+        public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse> SAPGetTreeItemProperties(Expression<Func<string>> sAPGetTreeItemPropertiessearchSAPElementId, Expression<Func<string>> sAPGetTreeItemPropertiesworkflow, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodeKey = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodePath = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodeText = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchColumnName = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchColumnTitle = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetTreeItemProperties";
             var apiCallHttpMethod = "post";
@@ -2748,63 +2748,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetTreeItemProperties = new JObject();
             var sAPGetTreeItemPropertiespropCount = 0;
             sAPGetTreeItemPropertiespropCount++;
-            sAPGetTreeItemProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchSAPElementId);
-            if (sAPGetTreeItemPropertiesSearchNodeKey != null)
+            sAPGetTreeItemProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchSAPElementId);
+            if (sAPGetTreeItemPropertiessearchNodeKey != null)
             {
-                sAPGetTreeItemProperties["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchNodeKey);
+                sAPGetTreeItemProperties["SearchNodeKey"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeKey);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchNodePath != null)
+            if (sAPGetTreeItemPropertiessearchNodePath != null)
             {
-                sAPGetTreeItemProperties["SearchNodePath"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchNodePath);
+                sAPGetTreeItemProperties["SearchNodePath"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodePath);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchNodeText != null)
+            if (sAPGetTreeItemPropertiessearchNodeText != null)
             {
-                sAPGetTreeItemProperties["SearchNodeText"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchNodeText);
+                sAPGetTreeItemProperties["SearchNodeText"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeText);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchNodeTextIsRegularExpression != null)
+            if (sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression != null)
             {
-                sAPGetTreeItemProperties["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchNodeTextIsRegularExpression);
+                sAPGetTreeItemProperties["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchNodeTextIsCaseSensitive != null)
+            if (sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive != null)
             {
-                sAPGetTreeItemProperties["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchNodeTextIsCaseSensitive);
+                sAPGetTreeItemProperties["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchColumnName != null)
+            if (sAPGetTreeItemPropertiessearchColumnName != null)
             {
-                sAPGetTreeItemProperties["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchColumnName);
+                sAPGetTreeItemProperties["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnName);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchColumnTitle != null)
+            if (sAPGetTreeItemPropertiessearchColumnTitle != null)
             {
-                sAPGetTreeItemProperties["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchColumnTitle);
+                sAPGetTreeItemProperties["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitle);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchColumnTitleIsRegularExpression != null)
+            if (sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetTreeItemProperties["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchColumnTitleIsRegularExpression);
+                sAPGetTreeItemProperties["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
-            if (sAPGetTreeItemPropertiesSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetTreeItemProperties["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesSearchColumnTitleIsCaseSensitive);
+                sAPGetTreeItemProperties["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive);
                 sAPGetTreeItemPropertiespropCount++;
             }
 
             sAPGetTreeItemPropertiespropCount++;
-            sAPGetTreeItemProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesWorkflow);
+            sAPGetTreeItemProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiesworkflow);
             if (sAPGetTreeItemPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetTreeItemProperties;
@@ -2814,7 +2814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse> SAPGetShellToolbarElements(Expression<Func<string>> sAPGetShellToolbarElementsSearchSAPElementId, Expression<Func<string>> sAPGetShellToolbarElementsWorkflow)
+        public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse> SAPGetShellToolbarElements(Expression<Func<string>> sAPGetShellToolbarElementssearchSAPElementId, Expression<Func<string>> sAPGetShellToolbarElementsworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetShellToolbarElements";
             var apiCallHttpMethod = "post";
@@ -2822,9 +2822,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetShellToolbarElements = new JObject();
             var sAPGetShellToolbarElementspropCount = 0;
             sAPGetShellToolbarElementspropCount++;
-            sAPGetShellToolbarElements["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetShellToolbarElementsSearchSAPElementId);
+            sAPGetShellToolbarElements["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetShellToolbarElementssearchSAPElementId);
             sAPGetShellToolbarElementspropCount++;
-            sAPGetShellToolbarElements["Workflow"] = ExpressionConverter.ConvertO(sAPGetShellToolbarElementsWorkflow);
+            sAPGetShellToolbarElements["Workflow"] = ExpressionConverter.ConvertO(sAPGetShellToolbarElementsworkflow);
             if (sAPGetShellToolbarElementspropCount > 0)
             {
                 callPayload.Body = sAPGetShellToolbarElements;
@@ -2834,7 +2834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressShellToolbarElement(Expression<Func<string>> sAPPressShellToolbarElementSearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementWorkflow, Expression<Func<string>> sAPPressShellToolbarElementSearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementSearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementSearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementSearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementSearchToolbarTextIsCaseSensitive = null)
+        public IWorkflowAction SAPPressShellToolbarElement(Expression<Func<string>> sAPPressShellToolbarElementsearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementworkflow, Expression<Func<string>> sAPPressShellToolbarElementsearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementsearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementsearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressShellToolbarElement";
             var apiCallHttpMethod = "post";
@@ -2842,39 +2842,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressShellToolbarElement = new JObject();
             var sAPPressShellToolbarElementpropCount = 0;
             sAPPressShellToolbarElementpropCount++;
-            sAPPressShellToolbarElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchSAPElementId);
-            if (sAPPressShellToolbarElementSearchToolbarElementId != null)
+            sAPPressShellToolbarElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchSAPElementId);
+            if (sAPPressShellToolbarElementsearchToolbarElementId != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchToolbarElementId);
+                sAPPressShellToolbarElement["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarElementId);
                 sAPPressShellToolbarElementpropCount++;
             }
 
-            if (sAPPressShellToolbarElementSearchToolbarElementText != null)
+            if (sAPPressShellToolbarElementsearchToolbarElementText != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchToolbarElementText);
+                sAPPressShellToolbarElement["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarElementText);
                 sAPPressShellToolbarElementpropCount++;
             }
 
-            if (sAPPressShellToolbarElementSearchToolbarElementIndex != null)
+            if (sAPPressShellToolbarElementsearchToolbarElementIndex != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchToolbarElementIndex);
+                sAPPressShellToolbarElement["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarElementIndex);
                 sAPPressShellToolbarElementpropCount++;
             }
 
-            if (sAPPressShellToolbarElementSearchToolbarTextIsRegularExpression != null)
+            if (sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchToolbarTextIsRegularExpression);
+                sAPPressShellToolbarElement["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression);
                 sAPPressShellToolbarElementpropCount++;
             }
 
-            if (sAPPressShellToolbarElementSearchToolbarTextIsCaseSensitive != null)
+            if (sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementSearchToolbarTextIsCaseSensitive);
+                sAPPressShellToolbarElement["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive);
                 sAPPressShellToolbarElementpropCount++;
             }
 
             sAPPressShellToolbarElementpropCount++;
-            sAPPressShellToolbarElement["Workflow"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementWorkflow);
+            sAPPressShellToolbarElement["Workflow"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementworkflow);
             if (sAPPressShellToolbarElementpropCount > 0)
             {
                 callPayload.Body = sAPPressShellToolbarElement;
@@ -2884,7 +2884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressShellToolbarElementContextButton(Expression<Func<string>> sAPPressShellToolbarElementContextButtonSearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementContextButtonWorkflow, Expression<Func<string>> sAPPressShellToolbarElementContextButtonSearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementContextButtonSearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementContextButtonSearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonSearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonSearchToolbarTextIsCaseSensitive = null)
+        public IWorkflowAction SAPPressShellToolbarElementContextButton(Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementContextButtonworkflow, Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressShellToolbarElementContextButton";
             var apiCallHttpMethod = "post";
@@ -2892,39 +2892,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressShellToolbarElementContextButton = new JObject();
             var sAPPressShellToolbarElementContextButtonpropCount = 0;
             sAPPressShellToolbarElementContextButtonpropCount++;
-            sAPPressShellToolbarElementContextButton["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchSAPElementId);
-            if (sAPPressShellToolbarElementContextButtonSearchToolbarElementId != null)
+            sAPPressShellToolbarElementContextButton["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchSAPElementId);
+            if (sAPPressShellToolbarElementContextButtonsearchToolbarElementId != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchToolbarElementId);
+                sAPPressShellToolbarElementContextButton["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarElementId);
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
-            if (sAPPressShellToolbarElementContextButtonSearchToolbarElementText != null)
+            if (sAPPressShellToolbarElementContextButtonsearchToolbarElementText != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchToolbarElementText);
+                sAPPressShellToolbarElementContextButton["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarElementText);
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
-            if (sAPPressShellToolbarElementContextButtonSearchToolbarElementIndex != null)
+            if (sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchToolbarElementIndex);
+                sAPPressShellToolbarElementContextButton["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex);
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
-            if (sAPPressShellToolbarElementContextButtonSearchToolbarTextIsRegularExpression != null)
+            if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchToolbarTextIsRegularExpression);
+                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression);
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
-            if (sAPPressShellToolbarElementContextButtonSearchToolbarTextIsCaseSensitive != null)
+            if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonSearchToolbarTextIsCaseSensitive);
+                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive);
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
             sAPPressShellToolbarElementContextButtonpropCount++;
-            sAPPressShellToolbarElementContextButton["Workflow"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonWorkflow);
+            sAPPressShellToolbarElementContextButton["Workflow"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonworkflow);
             if (sAPPressShellToolbarElementContextButtonpropCount > 0)
             {
                 callPayload.Body = sAPPressShellToolbarElementContextButton;
@@ -2934,7 +2934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectShellToolbarMenuItem(Expression<Func<string>> sAPSelectShellToolbarMenuItemSearchSAPElementId, Expression<Func<string>> sAPSelectShellToolbarMenuItemWorkflow, Expression<Func<string>> sAPSelectShellToolbarMenuItemSearchToolbarElementId = null, Expression<Func<string>> sAPSelectShellToolbarMenuItemSearchToolbarElementText = null, Expression<Func<int>> sAPSelectShellToolbarMenuItemSearchToolbarElementIndex = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemSearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemSearchToolbarTextIsCaseSensitive = null)
+        public IWorkflowAction SAPSelectShellToolbarMenuItem(Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchSAPElementId, Expression<Func<string>> sAPSelectShellToolbarMenuItemworkflow, Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchToolbarElementId = null, Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchToolbarElementText = null, Expression<Func<int>> sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectShellToolbarMenuItem";
             var apiCallHttpMethod = "post";
@@ -2942,39 +2942,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectShellToolbarMenuItem = new JObject();
             var sAPSelectShellToolbarMenuItempropCount = 0;
             sAPSelectShellToolbarMenuItempropCount++;
-            sAPSelectShellToolbarMenuItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchSAPElementId);
-            if (sAPSelectShellToolbarMenuItemSearchToolbarElementId != null)
+            sAPSelectShellToolbarMenuItem["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchSAPElementId);
+            if (sAPSelectShellToolbarMenuItemsearchToolbarElementId != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchToolbarElementId);
+                sAPSelectShellToolbarMenuItem["SearchToolbarElementId"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarElementId);
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
-            if (sAPSelectShellToolbarMenuItemSearchToolbarElementText != null)
+            if (sAPSelectShellToolbarMenuItemsearchToolbarElementText != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchToolbarElementText);
+                sAPSelectShellToolbarMenuItem["SearchToolbarElementText"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarElementText);
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
-            if (sAPSelectShellToolbarMenuItemSearchToolbarElementIndex != null)
+            if (sAPSelectShellToolbarMenuItemsearchToolbarElementIndex != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchToolbarElementIndex);
+                sAPSelectShellToolbarMenuItem["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex);
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
-            if (sAPSelectShellToolbarMenuItemSearchToolbarTextIsRegularExpression != null)
+            if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchToolbarTextIsRegularExpression);
+                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression);
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
-            if (sAPSelectShellToolbarMenuItemSearchToolbarTextIsCaseSensitive != null)
+            if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemSearchToolbarTextIsCaseSensitive);
+                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive);
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
             sAPSelectShellToolbarMenuItempropCount++;
-            sAPSelectShellToolbarMenuItem["Workflow"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemWorkflow);
+            sAPSelectShellToolbarMenuItem["Workflow"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemworkflow);
             if (sAPSelectShellToolbarMenuItempropCount > 0)
             {
                 callPayload.Body = sAPSelectShellToolbarMenuItem;
@@ -2984,7 +2984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse> SAPGetSAPGridViewProperties(Expression<Func<string>> sAPGetSAPGridViewPropertiesSearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewPropertiesWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse> SAPGetSAPGridViewProperties(Expression<Func<string>> sAPGetSAPGridViewPropertiessearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewPropertiesworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPGridViewProperties";
             var apiCallHttpMethod = "post";
@@ -2992,9 +2992,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPGridViewProperties = new JObject();
             var sAPGetSAPGridViewPropertiespropCount = 0;
             sAPGetSAPGridViewPropertiespropCount++;
-            sAPGetSAPGridViewProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewPropertiesSearchSAPElementId);
+            sAPGetSAPGridViewProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewPropertiessearchSAPElementId);
             sAPGetSAPGridViewPropertiespropCount++;
-            sAPGetSAPGridViewProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewPropertiesWorkflow);
+            sAPGetSAPGridViewProperties["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewPropertiesworkflow);
             if (sAPGetSAPGridViewPropertiespropCount > 0)
             {
                 callPayload.Body = sAPGetSAPGridViewProperties;
@@ -3004,7 +3004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse> SAPGetSAPGridViewCellContentsAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexSearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellContentsAtIndexRowIndex, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexWorkflow, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexSearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsCaseSensitive = null)
+        public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse> SAPGetSAPGridViewCellContentsAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellContentsAtIndexrowIndex, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexworkflow, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellContentsAtIndex";
             var apiCallHttpMethod = "post";
@@ -3012,35 +3012,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPGridViewCellContentsAtIndex = new JObject();
             var sAPGetSAPGridViewCellContentsAtIndexpropCount = 0;
             sAPGetSAPGridViewCellContentsAtIndexpropCount++;
-            sAPGetSAPGridViewCellContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexSearchSAPElementId);
+            sAPGetSAPGridViewCellContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId);
             sAPGetSAPGridViewCellContentsAtIndexpropCount++;
-            sAPGetSAPGridViewCellContentsAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexRowIndex);
-            if (sAPGetSAPGridViewCellContentsAtIndexSearchColumnName != null)
+            sAPGetSAPGridViewCellContentsAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexrowIndex);
+            if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnName != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexSearchColumnName);
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName);
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitle != null)
+            if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitle);
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle);
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsRegularExpression);
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression);
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
             sAPGetSAPGridViewCellContentsAtIndexpropCount++;
-            sAPGetSAPGridViewCellContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexWorkflow);
+            sAPGetSAPGridViewCellContentsAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexworkflow);
             if (sAPGetSAPGridViewCellContentsAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGetSAPGridViewCellContentsAtIndex;
@@ -3050,7 +3050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse> SAPGetSAPGridViewCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexSearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellPropertiesAtIndexRowIndex, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexWorkflow, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsCaseSensitive = null)
+        public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse> SAPGetSAPGridViewCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexworkflow, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellPropertiesAtIndex";
             var apiCallHttpMethod = "post";
@@ -3058,35 +3058,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPGridViewCellPropertiesAtIndex = new JObject();
             var sAPGetSAPGridViewCellPropertiesAtIndexpropCount = 0;
             sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
-            sAPGetSAPGridViewCellPropertiesAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexSearchSAPElementId);
+            sAPGetSAPGridViewCellPropertiesAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId);
             sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
-            sAPGetSAPGridViewCellPropertiesAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexRowIndex);
-            if (sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnName != null)
+            sAPGetSAPGridViewCellPropertiesAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex);
+            if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnName);
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName);
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitle != null)
+            if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitle);
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle);
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsRegularExpression);
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression);
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
-            if (sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
             sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
-            sAPGetSAPGridViewCellPropertiesAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexWorkflow);
+            sAPGetSAPGridViewCellPropertiesAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexworkflow);
             if (sAPGetSAPGridViewCellPropertiesAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGetSAPGridViewCellPropertiesAtIndex;
@@ -3096,7 +3096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDrawRectangleAroundSAPGridViewCellAtIndex(Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexPenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexPenThicknessPixels = null)
+        public IWorkflowAction SAPDrawRectangleAroundSAPGridViewCellAtIndex(Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = null)
         {
             var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3104,47 +3104,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDrawRectangleAroundSAPGridViewCellAtIndex = new JObject();
             var sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount = 0;
             sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
-            sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId);
             sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
-            sAPDrawRectangleAroundSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexRowIndex);
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPDrawRectangleAroundSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex);
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnName);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexPenColour != null)
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexPenColour);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexPenThicknessPixels != null)
+            if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexPenThicknessPixels);
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels);
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
-            sAPDrawRectangleAroundSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexWorkflow);
+            sAPDrawRectangleAroundSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow);
             if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPDrawRectangleAroundSAPGridViewCellAtIndex;
@@ -3154,7 +3154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexToggleWindow = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftClickSAPGridViewCellAtIndexToggleDelay = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetX = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetY = null, Expression<Func<sAPGlobalLeftClickSAPGridViewCellAtIndexOffsetRelativeToInput>> sAPGlobalLeftClickSAPGridViewCellAtIndexOffsetRelativeTo = null)
+        public IWorkflowAction SAPGlobalLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalLeftClickSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3162,83 +3162,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalLeftClickSAPGridViewCellAtIndex = new JObject();
             var sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount = 0;
             sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId);
             sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalLeftClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexRowIndex);
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPGlobalLeftClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex);
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnName);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexBringElementWindowToFront != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexBringElementWindowToFront);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexToggleWindow != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexToggleWindow);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexToggleDelay != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexToggleDelay);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetX != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetX);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetY != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexClickOffsetY);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalLeftClickSAPGridViewCellAtIndexOffsetRelativeTo != null)
+            if (sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexOffsetRelativeTo);
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo);
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalLeftClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexWorkflow);
+            sAPGlobalLeftClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow);
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGlobalLeftClickSAPGridViewCellAtIndex;
@@ -3248,7 +3248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalRightClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexToggleWindow = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightClickSAPGridViewCellAtIndexToggleDelay = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetX = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetY = null, Expression<Func<sAPGlobalRightClickSAPGridViewCellAtIndexOffsetRelativeToInput>> sAPGlobalRightClickSAPGridViewCellAtIndexOffsetRelativeTo = null)
+        public IWorkflowAction SAPGlobalRightClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalRightClickSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3256,83 +3256,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalRightClickSAPGridViewCellAtIndex = new JObject();
             var sAPGlobalRightClickSAPGridViewCellAtIndexpropCount = 0;
             sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalRightClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPGlobalRightClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId);
             sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalRightClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexRowIndex);
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPGlobalRightClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex);
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnName);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexSetElementWindowTopMost != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexSetElementWindowTopMost);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexBringElementWindowToFront != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexBringElementWindowToFront);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexToggleWindow != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexToggleWindow);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexToggleDelay != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexToggleDelay);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetX != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetX);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetY != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexClickOffsetY);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalRightClickSAPGridViewCellAtIndexOffsetRelativeTo != null)
+            if (sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexOffsetRelativeTo);
+                sAPGlobalRightClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo);
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalRightClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexWorkflow);
+            sAPGlobalRightClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow);
             if (sAPGlobalRightClickSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGlobalRightClickSAPGridViewCellAtIndex;
@@ -3342,7 +3342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexBringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexOffsetRelativeToInput>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexOffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexDoubleClickDelayInMilliseconds = null)
+        public IWorkflowAction SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = null)
         {
             var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3350,89 +3350,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex = new JObject();
             var sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount = 0;
             sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId);
             sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexRowIndex);
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex);
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnName);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexSetElementWindowTopMost);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexBringElementWindowToFront != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexBringElementWindowToFront);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleWindow != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleWindow);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleUsesGlobalLeftMouseClickAgent);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleDelay != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexToggleDelay);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetX != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetX);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetY != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexClickOffsetY);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexOffsetRelativeTo != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexOffsetRelativeTo);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["OffsetRelativeTo"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexDoubleClickDelayInMilliseconds != null)
+            if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexDoubleClickDelayInMilliseconds);
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds);
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
-            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexWorkflow);
+            sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow);
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex;
@@ -3442,7 +3442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse> SAPGetSAPGridViewColumnHeaders(Expression<Func<string>> sAPGetSAPGridViewColumnHeadersSearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewColumnHeadersWorkflow)
+        public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse> SAPGetSAPGridViewColumnHeaders(Expression<Func<string>> sAPGetSAPGridViewColumnHeaderssearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewColumnHeadersworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGetSAPGridViewColumnHeaders";
             var apiCallHttpMethod = "post";
@@ -3450,9 +3450,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPGridViewColumnHeaders = new JObject();
             var sAPGetSAPGridViewColumnHeaderspropCount = 0;
             sAPGetSAPGridViewColumnHeaderspropCount++;
-            sAPGetSAPGridViewColumnHeaders["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewColumnHeadersSearchSAPElementId);
+            sAPGetSAPGridViewColumnHeaders["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewColumnHeaderssearchSAPElementId);
             sAPGetSAPGridViewColumnHeaderspropCount++;
-            sAPGetSAPGridViewColumnHeaders["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewColumnHeadersWorkflow);
+            sAPGetSAPGridViewColumnHeaders["Workflow"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewColumnHeadersworkflow);
             if (sAPGetSAPGridViewColumnHeaderspropCount > 0)
             {
                 callPayload.Body = sAPGetSAPGridViewColumnHeaders;
@@ -3462,7 +3462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPClickSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPClickSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPClickSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3470,35 +3470,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPClickSAPGridViewCellAtIndex = new JObject();
             var sAPClickSAPGridViewCellAtIndexpropCount = 0;
             sAPClickSAPGridViewCellAtIndexpropCount++;
-            sAPClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchSAPElementId);
             sAPClickSAPGridViewCellAtIndexpropCount++;
-            sAPClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexRowIndex);
-            if (sAPClickSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexrowIndex);
+            if (sAPClickSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexSearchColumnName);
+                sAPClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnName);
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPClickSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPClickSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPClickSAPGridViewCellAtIndexpropCount++;
-            sAPClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexWorkflow);
+            sAPClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexworkflow);
             if (sAPClickSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPClickSAPGridViewCellAtIndex;
@@ -3508,7 +3508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPDoubleClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPDoubleClickSAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPDoubleClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPDoubleClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPDoubleClickSAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3516,35 +3516,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPDoubleClickSAPGridViewCellAtIndex = new JObject();
             var sAPDoubleClickSAPGridViewCellAtIndexpropCount = 0;
             sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
-            sAPDoubleClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexSearchSAPElementId);
+            sAPDoubleClickSAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId);
             sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
-            sAPDoubleClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexRowIndex);
-            if (sAPDoubleClickSAPGridViewCellAtIndexSearchColumnName != null)
+            sAPDoubleClickSAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexrowIndex);
+            if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexSearchColumnName);
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName);
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitle);
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle);
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
             sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
-            sAPDoubleClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexWorkflow);
+            sAPDoubleClickSAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexworkflow);
             if (sAPDoubleClickSAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPDoubleClickSAPGridViewCellAtIndex;
@@ -3554,7 +3554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressSAPGridViewCellButtonAtIndex(Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexSearchSAPElementId, Expression<Func<int>> sAPPressSAPGridViewCellButtonAtIndexRowIndex, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexWorkflow, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexSearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPPressSAPGridViewCellButtonAtIndex(Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, Expression<Func<int>> sAPPressSAPGridViewCellButtonAtIndexrowIndex, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexworkflow, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressSAPGridViewCellButtonAtIndex";
             var apiCallHttpMethod = "post";
@@ -3562,35 +3562,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressSAPGridViewCellButtonAtIndex = new JObject();
             var sAPPressSAPGridViewCellButtonAtIndexpropCount = 0;
             sAPPressSAPGridViewCellButtonAtIndexpropCount++;
-            sAPPressSAPGridViewCellButtonAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexSearchSAPElementId);
+            sAPPressSAPGridViewCellButtonAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId);
             sAPPressSAPGridViewCellButtonAtIndexpropCount++;
-            sAPPressSAPGridViewCellButtonAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexRowIndex);
-            if (sAPPressSAPGridViewCellButtonAtIndexSearchColumnName != null)
+            sAPPressSAPGridViewCellButtonAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexrowIndex);
+            if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnName != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexSearchColumnName);
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName);
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
-            if (sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitle != null)
+            if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitle);
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle);
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
-            if (sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsRegularExpression);
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression);
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
-            if (sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
             sAPPressSAPGridViewCellButtonAtIndexpropCount++;
-            sAPPressSAPGridViewCellButtonAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexWorkflow);
+            sAPPressSAPGridViewCellButtonAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexworkflow);
             if (sAPPressSAPGridViewCellButtonAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPPressSAPGridViewCellButtonAtIndex;
@@ -3600,7 +3600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPCheckSAPGridViewCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexSearchSAPElementId, Expression<Func<int>> sAPCheckSAPGridViewCellCheckboxAtIndexRowIndex, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexWorkflow, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnName = null, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexCheckCellElement = null)
+        public IWorkflowAction SAPCheckSAPGridViewCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, Expression<Func<int>> sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = null, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = null)
         {
             var apiCallPath = "/SAPGUI/SAPCheckSAPGridViewCellCheckboxAtIndex";
             var apiCallHttpMethod = "post";
@@ -3608,41 +3608,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPCheckSAPGridViewCellCheckboxAtIndex = new JObject();
             var sAPCheckSAPGridViewCellCheckboxAtIndexpropCount = 0;
             sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
-            sAPCheckSAPGridViewCellCheckboxAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexSearchSAPElementId);
+            sAPCheckSAPGridViewCellCheckboxAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId);
             sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
-            sAPCheckSAPGridViewCellCheckboxAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexRowIndex);
-            if (sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnName != null)
+            sAPCheckSAPGridViewCellCheckboxAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex);
+            if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnName);
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName);
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitle != null)
+            if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitle);
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle);
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsRegularExpression);
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression);
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
-            if (sAPCheckSAPGridViewCellCheckboxAtIndexCheckCellElement != null)
+            if (sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexCheckCellElement);
+                sAPCheckSAPGridViewCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement);
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
             sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
-            sAPCheckSAPGridViewCellCheckboxAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexWorkflow);
+            sAPCheckSAPGridViewCellCheckboxAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow);
             if (sAPCheckSAPGridViewCellCheckboxAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPCheckSAPGridViewCellCheckboxAtIndex;
@@ -3652,7 +3652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse> SAPModifySAPGridViewCellAtIndex(Expression<Func<string>> sAPModifySAPGridViewCellAtIndexSearchSAPElementId, Expression<Func<int>> sAPModifySAPGridViewCellAtIndexRowIndex, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexWorkflow, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexSearchColumnName = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexSearchColumnTitle = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexNewValue = null)
+        public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse> SAPModifySAPGridViewCellAtIndex(Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPModifySAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexnewValue = null)
         {
             var apiCallPath = "/SAPGUI/SAPModifySAPGridViewCellAtIndex";
             var apiCallHttpMethod = "post";
@@ -3660,41 +3660,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPModifySAPGridViewCellAtIndex = new JObject();
             var sAPModifySAPGridViewCellAtIndexpropCount = 0;
             sAPModifySAPGridViewCellAtIndexpropCount++;
-            sAPModifySAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexSearchSAPElementId);
+            sAPModifySAPGridViewCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchSAPElementId);
             sAPModifySAPGridViewCellAtIndexpropCount++;
-            sAPModifySAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexRowIndex);
-            if (sAPModifySAPGridViewCellAtIndexSearchColumnName != null)
+            sAPModifySAPGridViewCellAtIndex["RowIndex"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexrowIndex);
+            if (sAPModifySAPGridViewCellAtIndexsearchColumnName != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexSearchColumnName);
+                sAPModifySAPGridViewCellAtIndex["SearchColumnName"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnName);
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPModifySAPGridViewCellAtIndexSearchColumnTitle != null)
+            if (sAPModifySAPGridViewCellAtIndexsearchColumnTitle != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexSearchColumnTitle);
+                sAPModifySAPGridViewCellAtIndex["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitle);
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression != null)
+            if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsRegularExpression);
+                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive != null)
+            if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexSearchColumnTitleIsCaseSensitive);
+                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
-            if (sAPModifySAPGridViewCellAtIndexNewValue != null)
+            if (sAPModifySAPGridViewCellAtIndexnewValue != null)
             {
-                sAPModifySAPGridViewCellAtIndex["NewValue"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexNewValue);
+                sAPModifySAPGridViewCellAtIndex["NewValue"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexnewValue);
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
             sAPModifySAPGridViewCellAtIndexpropCount++;
-            sAPModifySAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexWorkflow);
+            sAPModifySAPGridViewCellAtIndex["Workflow"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexworkflow);
             if (sAPModifySAPGridViewCellAtIndexpropCount > 0)
             {
                 callPayload.Body = sAPModifySAPGridViewCellAtIndex;
@@ -3704,7 +3704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetSAPGridViewCurrentRow(Expression<Func<string>> sAPSetSAPGridViewCurrentRowSearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentRowRowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentRowWorkflow)
+        public IWorkflowAction SAPSetSAPGridViewCurrentRow(Expression<Func<string>> sAPSetSAPGridViewCurrentRowsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentRowrowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentRowworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentRow";
             var apiCallHttpMethod = "post";
@@ -3712,11 +3712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPGridViewCurrentRow = new JObject();
             var sAPSetSAPGridViewCurrentRowpropCount = 0;
             sAPSetSAPGridViewCurrentRowpropCount++;
-            sAPSetSAPGridViewCurrentRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowSearchSAPElementId);
+            sAPSetSAPGridViewCurrentRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowsearchSAPElementId);
             sAPSetSAPGridViewCurrentRowpropCount++;
-            sAPSetSAPGridViewCurrentRow["RowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowRowIndex);
+            sAPSetSAPGridViewCurrentRow["RowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowrowIndex);
             sAPSetSAPGridViewCurrentRowpropCount++;
-            sAPSetSAPGridViewCurrentRow["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowWorkflow);
+            sAPSetSAPGridViewCurrentRow["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentRowworkflow);
             if (sAPSetSAPGridViewCurrentRowpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPGridViewCurrentRow;
@@ -3726,7 +3726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPPressSAPGridViewColumnHeader(Expression<Func<string>> sAPPressSAPGridViewColumnHeaderSearchSAPElementId, Expression<Func<string>> sAPPressSAPGridViewColumnHeaderWorkflow, Expression<Func<string>> sAPPressSAPGridViewColumnHeaderSearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewColumnHeaderSearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPPressSAPGridViewColumnHeader(Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchSAPElementId, Expression<Func<string>> sAPPressSAPGridViewColumnHeaderworkflow, Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPPressSAPGridViewColumnHeader";
             var apiCallHttpMethod = "post";
@@ -3734,33 +3734,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPPressSAPGridViewColumnHeader = new JObject();
             var sAPPressSAPGridViewColumnHeaderpropCount = 0;
             sAPPressSAPGridViewColumnHeaderpropCount++;
-            sAPPressSAPGridViewColumnHeader["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderSearchSAPElementId);
-            if (sAPPressSAPGridViewColumnHeaderSearchColumnName != null)
+            sAPPressSAPGridViewColumnHeader["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchSAPElementId);
+            if (sAPPressSAPGridViewColumnHeadersearchColumnName != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderSearchColumnName);
+                sAPPressSAPGridViewColumnHeader["SearchColumnName"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnName);
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
-            if (sAPPressSAPGridViewColumnHeaderSearchColumnTitle != null)
+            if (sAPPressSAPGridViewColumnHeadersearchColumnTitle != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderSearchColumnTitle);
+                sAPPressSAPGridViewColumnHeader["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitle);
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
-            if (sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsRegularExpression != null)
+            if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsRegularExpression);
+                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression);
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
-            if (sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsCaseSensitive != null)
+            if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderSearchColumnTitleIsCaseSensitive);
+                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive);
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
             sAPPressSAPGridViewColumnHeaderpropCount++;
-            sAPPressSAPGridViewColumnHeader["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderWorkflow);
+            sAPPressSAPGridViewColumnHeader["Workflow"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeaderworkflow);
             if (sAPPressSAPGridViewColumnHeaderpropCount > 0)
             {
                 callPayload.Body = sAPPressSAPGridViewColumnHeader;
@@ -3770,7 +3770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse> SAPSetSAPGridViewFirstVisibleRow(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowSearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewFirstVisibleRowFirstVisibleRowIndex, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowWorkflow)
+        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse> SAPSetSAPGridViewFirstVisibleRow(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleRow";
             var apiCallHttpMethod = "post";
@@ -3778,11 +3778,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPGridViewFirstVisibleRow = new JObject();
             var sAPSetSAPGridViewFirstVisibleRowpropCount = 0;
             sAPSetSAPGridViewFirstVisibleRowpropCount++;
-            sAPSetSAPGridViewFirstVisibleRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowSearchSAPElementId);
+            sAPSetSAPGridViewFirstVisibleRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId);
             sAPSetSAPGridViewFirstVisibleRowpropCount++;
-            sAPSetSAPGridViewFirstVisibleRow["FirstVisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowFirstVisibleRowIndex);
+            sAPSetSAPGridViewFirstVisibleRow["FirstVisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex);
             sAPSetSAPGridViewFirstVisibleRowpropCount++;
-            sAPSetSAPGridViewFirstVisibleRow["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowWorkflow);
+            sAPSetSAPGridViewFirstVisibleRow["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleRowworkflow);
             if (sAPSetSAPGridViewFirstVisibleRowpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPGridViewFirstVisibleRow;
@@ -3792,7 +3792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPGridViewRow(Expression<Func<string>> sAPSelectSAPGridViewRowSearchSAPElementId, Expression<Func<int>> sAPSelectSAPGridViewRowRowIndex, Expression<Func<string>> sAPSelectSAPGridViewRowWorkflow, Expression<Func<bool>> sAPSelectSAPGridViewRowSetAsCurrentRow = null)
+        public IWorkflowAction SAPSelectSAPGridViewRow(Expression<Func<string>> sAPSelectSAPGridViewRowsearchSAPElementId, Expression<Func<int>> sAPSelectSAPGridViewRowrowIndex, Expression<Func<string>> sAPSelectSAPGridViewRowworkflow, Expression<Func<bool>> sAPSelectSAPGridViewRowsetAsCurrentRow = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewRow";
             var apiCallHttpMethod = "post";
@@ -3800,17 +3800,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPGridViewRow = new JObject();
             var sAPSelectSAPGridViewRowpropCount = 0;
             sAPSelectSAPGridViewRowpropCount++;
-            sAPSelectSAPGridViewRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowSearchSAPElementId);
+            sAPSelectSAPGridViewRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowsearchSAPElementId);
             sAPSelectSAPGridViewRowpropCount++;
-            sAPSelectSAPGridViewRow["RowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowRowIndex);
-            if (sAPSelectSAPGridViewRowSetAsCurrentRow != null)
+            sAPSelectSAPGridViewRow["RowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowrowIndex);
+            if (sAPSelectSAPGridViewRowsetAsCurrentRow != null)
             {
-                sAPSelectSAPGridViewRow["SetAsCurrentRow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowSetAsCurrentRow);
+                sAPSelectSAPGridViewRow["SetAsCurrentRow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowsetAsCurrentRow);
                 sAPSelectSAPGridViewRowpropCount++;
             }
 
             sAPSelectSAPGridViewRowpropCount++;
-            sAPSelectSAPGridViewRow["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowWorkflow);
+            sAPSelectSAPGridViewRow["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowworkflow);
             if (sAPSelectSAPGridViewRowpropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPGridViewRow;
@@ -3820,7 +3820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPGridViewMultipleRows(Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsSearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsRowsToSelect, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsWorkflow)
+        public IWorkflowAction SAPSelectSAPGridViewMultipleRows(Expression<Func<string>> sAPSelectSAPGridViewMultipleRowssearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsrowsToSelect, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewMultipleRows";
             var apiCallHttpMethod = "post";
@@ -3828,11 +3828,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPGridViewMultipleRows = new JObject();
             var sAPSelectSAPGridViewMultipleRowspropCount = 0;
             sAPSelectSAPGridViewMultipleRowspropCount++;
-            sAPSelectSAPGridViewMultipleRows["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowsSearchSAPElementId);
+            sAPSelectSAPGridViewMultipleRows["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowssearchSAPElementId);
             sAPSelectSAPGridViewMultipleRowspropCount++;
-            sAPSelectSAPGridViewMultipleRows["RowsToSelect"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowsRowsToSelect);
+            sAPSelectSAPGridViewMultipleRows["RowsToSelect"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowsrowsToSelect);
             sAPSelectSAPGridViewMultipleRowspropCount++;
-            sAPSelectSAPGridViewMultipleRows["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowsWorkflow);
+            sAPSelectSAPGridViewMultipleRows["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewMultipleRowsworkflow);
             if (sAPSelectSAPGridViewMultipleRowspropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPGridViewMultipleRows;
@@ -3842,7 +3842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetSAPGridViewCurrentColumn(Expression<Func<string>> sAPSetSAPGridViewCurrentColumnSearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnWorkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnSearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnSearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPSetSAPGridViewCurrentColumn(Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnworkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentColumn";
             var apiCallHttpMethod = "post";
@@ -3850,33 +3850,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPGridViewCurrentColumn = new JObject();
             var sAPSetSAPGridViewCurrentColumnpropCount = 0;
             sAPSetSAPGridViewCurrentColumnpropCount++;
-            sAPSetSAPGridViewCurrentColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnSearchSAPElementId);
-            if (sAPSetSAPGridViewCurrentColumnSearchColumnName != null)
+            sAPSetSAPGridViewCurrentColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchSAPElementId);
+            if (sAPSetSAPGridViewCurrentColumnsearchColumnName != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnSearchColumnName);
+                sAPSetSAPGridViewCurrentColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnName);
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentColumnSearchColumnTitle != null)
+            if (sAPSetSAPGridViewCurrentColumnsearchColumnTitle != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnSearchColumnTitle);
+                sAPSetSAPGridViewCurrentColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitle);
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsRegularExpression != null)
+            if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsRegularExpression);
+                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression);
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnSearchColumnTitleIsCaseSensitive);
+                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive);
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
             sAPSetSAPGridViewCurrentColumnpropCount++;
-            sAPSetSAPGridViewCurrentColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnWorkflow);
+            sAPSetSAPGridViewCurrentColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnworkflow);
             if (sAPSetSAPGridViewCurrentColumnpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPGridViewCurrentColumn;
@@ -3886,7 +3886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSetSAPGridViewCurrentCell(Expression<Func<string>> sAPSetSAPGridViewCurrentCellSearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentCellRowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentCellWorkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentCellSearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentCellSearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPSetSAPGridViewCurrentCell(Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentCellrowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentCellworkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentCell";
             var apiCallHttpMethod = "post";
@@ -3894,35 +3894,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPGridViewCurrentCell = new JObject();
             var sAPSetSAPGridViewCurrentCellpropCount = 0;
             sAPSetSAPGridViewCurrentCellpropCount++;
-            sAPSetSAPGridViewCurrentCell["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellSearchSAPElementId);
+            sAPSetSAPGridViewCurrentCell["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchSAPElementId);
             sAPSetSAPGridViewCurrentCellpropCount++;
-            sAPSetSAPGridViewCurrentCell["RowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellRowIndex);
-            if (sAPSetSAPGridViewCurrentCellSearchColumnName != null)
+            sAPSetSAPGridViewCurrentCell["RowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellrowIndex);
+            if (sAPSetSAPGridViewCurrentCellsearchColumnName != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellSearchColumnName);
+                sAPSetSAPGridViewCurrentCell["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnName);
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentCellSearchColumnTitle != null)
+            if (sAPSetSAPGridViewCurrentCellsearchColumnTitle != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellSearchColumnTitle);
+                sAPSetSAPGridViewCurrentCell["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitle);
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentCellSearchColumnTitleIsRegularExpression != null)
+            if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellSearchColumnTitleIsRegularExpression);
+                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression);
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
-            if (sAPSetSAPGridViewCurrentCellSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellSearchColumnTitleIsCaseSensitive);
+                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive);
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
             sAPSetSAPGridViewCurrentCellpropCount++;
-            sAPSetSAPGridViewCurrentCell["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellWorkflow);
+            sAPSetSAPGridViewCurrentCell["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellworkflow);
             if (sAPSetSAPGridViewCurrentCellpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPGridViewCurrentCell;
@@ -3932,7 +3932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectSAPGridViewColumn(Expression<Func<string>> sAPSelectSAPGridViewColumnSearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewColumnWorkflow, Expression<Func<string>> sAPSelectSAPGridViewColumnSearchColumnName = null, Expression<Func<string>> sAPSelectSAPGridViewColumnSearchColumnTitle = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnSearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnSelectColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnSetAsCurrentColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnClearSelectionFirst = null)
+        public IWorkflowAction SAPSelectSAPGridViewColumn(Expression<Func<string>> sAPSelectSAPGridViewColumnsearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewColumnworkflow, Expression<Func<string>> sAPSelectSAPGridViewColumnsearchColumnName = null, Expression<Func<string>> sAPSelectSAPGridViewColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnselectColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsetAsCurrentColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnclearSelectionFirst = null)
         {
             var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewColumn";
             var apiCallHttpMethod = "post";
@@ -3940,51 +3940,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectSAPGridViewColumn = new JObject();
             var sAPSelectSAPGridViewColumnpropCount = 0;
             sAPSelectSAPGridViewColumnpropCount++;
-            sAPSelectSAPGridViewColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSearchSAPElementId);
-            if (sAPSelectSAPGridViewColumnSearchColumnName != null)
+            sAPSelectSAPGridViewColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchSAPElementId);
+            if (sAPSelectSAPGridViewColumnsearchColumnName != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSearchColumnName);
+                sAPSelectSAPGridViewColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnName);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnSearchColumnTitle != null)
+            if (sAPSelectSAPGridViewColumnsearchColumnTitle != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSearchColumnTitle);
+                sAPSelectSAPGridViewColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitle);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnSearchColumnTitleIsRegularExpression != null)
+            if (sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSearchColumnTitleIsRegularExpression);
+                sAPSelectSAPGridViewColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSearchColumnTitleIsCaseSensitive);
+                sAPSelectSAPGridViewColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnSelectColumn != null)
+            if (sAPSelectSAPGridViewColumnselectColumn != null)
             {
-                sAPSelectSAPGridViewColumn["SelectColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSelectColumn);
+                sAPSelectSAPGridViewColumn["SelectColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnselectColumn);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnSetAsCurrentColumn != null)
+            if (sAPSelectSAPGridViewColumnsetAsCurrentColumn != null)
             {
-                sAPSelectSAPGridViewColumn["SetAsCurrentColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnSetAsCurrentColumn);
+                sAPSelectSAPGridViewColumn["SetAsCurrentColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsetAsCurrentColumn);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
-            if (sAPSelectSAPGridViewColumnClearSelectionFirst != null)
+            if (sAPSelectSAPGridViewColumnclearSelectionFirst != null)
             {
-                sAPSelectSAPGridViewColumn["ClearSelectionFirst"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnClearSelectionFirst);
+                sAPSelectSAPGridViewColumn["ClearSelectionFirst"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnclearSelectionFirst);
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
             sAPSelectSAPGridViewColumnpropCount++;
-            sAPSelectSAPGridViewColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnWorkflow);
+            sAPSelectSAPGridViewColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnworkflow);
             if (sAPSelectSAPGridViewColumnpropCount > 0)
             {
                 callPayload.Body = sAPSelectSAPGridViewColumn;
@@ -3994,7 +3994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGridViewSelectAll(Expression<Func<string>> sAPGridViewSelectAllSearchSAPElementId, Expression<Func<string>> sAPGridViewSelectAllWorkflow)
+        public IWorkflowAction SAPGridViewSelectAll(Expression<Func<string>> sAPGridViewSelectAllsearchSAPElementId, Expression<Func<string>> sAPGridViewSelectAllworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGridViewSelectAll";
             var apiCallHttpMethod = "post";
@@ -4002,9 +4002,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGridViewSelectAll = new JObject();
             var sAPGridViewSelectAllpropCount = 0;
             sAPGridViewSelectAllpropCount++;
-            sAPGridViewSelectAll["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewSelectAllSearchSAPElementId);
+            sAPGridViewSelectAll["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewSelectAllsearchSAPElementId);
             sAPGridViewSelectAllpropCount++;
-            sAPGridViewSelectAll["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewSelectAllWorkflow);
+            sAPGridViewSelectAll["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewSelectAllworkflow);
             if (sAPGridViewSelectAllpropCount > 0)
             {
                 callPayload.Body = sAPGridViewSelectAll;
@@ -4014,7 +4014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGridViewDeselectAll(Expression<Func<string>> sAPGridViewDeselectAllSearchSAPElementId, Expression<Func<string>> sAPGridViewDeselectAllWorkflow)
+        public IWorkflowAction SAPGridViewDeselectAll(Expression<Func<string>> sAPGridViewDeselectAllsearchSAPElementId, Expression<Func<string>> sAPGridViewDeselectAllworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPGridViewDeselectAll";
             var apiCallHttpMethod = "post";
@@ -4022,9 +4022,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGridViewDeselectAll = new JObject();
             var sAPGridViewDeselectAllpropCount = 0;
             sAPGridViewDeselectAllpropCount++;
-            sAPGridViewDeselectAll["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewDeselectAllSearchSAPElementId);
+            sAPGridViewDeselectAll["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewDeselectAllsearchSAPElementId);
             sAPGridViewDeselectAllpropCount++;
-            sAPGridViewDeselectAll["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewDeselectAllWorkflow);
+            sAPGridViewDeselectAll["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewDeselectAllworkflow);
             if (sAPGridViewDeselectAllpropCount > 0)
             {
                 callPayload.Body = sAPGridViewDeselectAll;
@@ -4034,7 +4034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse> SAPSetSAPGridViewFirstVisibleColumn(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnSearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnWorkflow, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnSearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsCaseSensitive = null)
+        public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse> SAPSetSAPGridViewFirstVisibleColumn(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnworkflow, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleColumn";
             var apiCallHttpMethod = "post";
@@ -4042,33 +4042,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSetSAPGridViewFirstVisibleColumn = new JObject();
             var sAPSetSAPGridViewFirstVisibleColumnpropCount = 0;
             sAPSetSAPGridViewFirstVisibleColumnpropCount++;
-            sAPSetSAPGridViewFirstVisibleColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnSearchSAPElementId);
-            if (sAPSetSAPGridViewFirstVisibleColumnSearchColumnName != null)
+            sAPSetSAPGridViewFirstVisibleColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId);
+            if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnName != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnSearchColumnName);
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnName"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName);
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitle != null)
+            if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitle);
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle);
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsRegularExpression != null)
+            if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsRegularExpression);
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression);
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
-            if (sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsCaseSensitive != null)
+            if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnSearchColumnTitleIsCaseSensitive);
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive);
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
             sAPSetSAPGridViewFirstVisibleColumnpropCount++;
-            sAPSetSAPGridViewFirstVisibleColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnWorkflow);
+            sAPSetSAPGridViewFirstVisibleColumn["Workflow"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnworkflow);
             if (sAPSetSAPGridViewFirstVisibleColumnpropCount > 0)
             {
                 callPayload.Body = sAPSetSAPGridViewFirstVisibleColumn;
@@ -4078,7 +4078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPGridViewOpenContextMenu(Expression<Func<string>> sAPGridViewOpenContextMenuSearchSAPElementId, Expression<Func<int>> sAPGridViewOpenContextMenuRowIndex, Expression<Func<string>> sAPGridViewOpenContextMenuWorkflow, Expression<Func<string>> sAPGridViewOpenContextMenuSearchColumnName = null, Expression<Func<string>> sAPGridViewOpenContextMenuSearchColumnTitle = null, Expression<Func<bool>> sAPGridViewOpenContextMenuSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGridViewOpenContextMenuSearchColumnTitleIsCaseSensitive = null)
+        public IWorkflowAction SAPGridViewOpenContextMenu(Expression<Func<string>> sAPGridViewOpenContextMenusearchSAPElementId, Expression<Func<int>> sAPGridViewOpenContextMenurowIndex, Expression<Func<string>> sAPGridViewOpenContextMenuworkflow, Expression<Func<string>> sAPGridViewOpenContextMenusearchColumnName = null, Expression<Func<string>> sAPGridViewOpenContextMenusearchColumnTitle = null, Expression<Func<bool>> sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = null)
         {
             var apiCallPath = "/SAPGUI/SAPGridViewOpenContextMenu";
             var apiCallHttpMethod = "post";
@@ -4086,35 +4086,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGridViewOpenContextMenu = new JObject();
             var sAPGridViewOpenContextMenupropCount = 0;
             sAPGridViewOpenContextMenupropCount++;
-            sAPGridViewOpenContextMenu["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuSearchSAPElementId);
+            sAPGridViewOpenContextMenu["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchSAPElementId);
             sAPGridViewOpenContextMenupropCount++;
-            sAPGridViewOpenContextMenu["RowIndex"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuRowIndex);
-            if (sAPGridViewOpenContextMenuSearchColumnName != null)
+            sAPGridViewOpenContextMenu["RowIndex"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenurowIndex);
+            if (sAPGridViewOpenContextMenusearchColumnName != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuSearchColumnName);
+                sAPGridViewOpenContextMenu["SearchColumnName"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnName);
                 sAPGridViewOpenContextMenupropCount++;
             }
 
-            if (sAPGridViewOpenContextMenuSearchColumnTitle != null)
+            if (sAPGridViewOpenContextMenusearchColumnTitle != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuSearchColumnTitle);
+                sAPGridViewOpenContextMenu["SearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitle);
                 sAPGridViewOpenContextMenupropCount++;
             }
 
-            if (sAPGridViewOpenContextMenuSearchColumnTitleIsRegularExpression != null)
+            if (sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuSearchColumnTitleIsRegularExpression);
+                sAPGridViewOpenContextMenu["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression);
                 sAPGridViewOpenContextMenupropCount++;
             }
 
-            if (sAPGridViewOpenContextMenuSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuSearchColumnTitleIsCaseSensitive);
+                sAPGridViewOpenContextMenu["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive);
                 sAPGridViewOpenContextMenupropCount++;
             }
 
             sAPGridViewOpenContextMenupropCount++;
-            sAPGridViewOpenContextMenu["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuWorkflow);
+            sAPGridViewOpenContextMenu["Workflow"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenuworkflow);
             if (sAPGridViewOpenContextMenupropCount > 0)
             {
                 callPayload.Body = sAPGridViewOpenContextMenu;
@@ -4124,7 +4124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse> SAPGetGridViewTextContents(Expression<Func<string>> sAPGetGridViewTextContentsSearchSAPElementId, Expression<Func<string>> sAPGetGridViewTextContentsWorkflow, Expression<Func<int>> sAPGetGridViewTextContentsFirstRowToReturn = null, Expression<Func<int>> sAPGetGridViewTextContentsMaxRowsToReturn = null, Expression<Func<string>> sAPGetGridViewTextContentsFirstSearchColumnName = null, Expression<Func<string>> sAPGetGridViewTextContentsFirstSearchColumnTitle = null, Expression<Func<bool>> sAPGetGridViewTextContentsFirstSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetGridViewTextContentsFirstSearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPGetGridViewTextContentsMaxColumnsToReturn = null, Expression<Func<bool>> sAPGetGridViewTextContentsUseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetGridViewTextContentsReturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetGridViewTextContentsNameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetGridViewTextContentsCheckedElementValue = null)
+        public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse> SAPGetGridViewTextContents(Expression<Func<string>> sAPGetGridViewTextContentssearchSAPElementId, Expression<Func<string>> sAPGetGridViewTextContentsworkflow, Expression<Func<int>> sAPGetGridViewTextContentsfirstRowToReturn = null, Expression<Func<int>> sAPGetGridViewTextContentsmaxRowsToReturn = null, Expression<Func<string>> sAPGetGridViewTextContentsfirstSearchColumnName = null, Expression<Func<string>> sAPGetGridViewTextContentsfirstSearchColumnTitle = null, Expression<Func<bool>> sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPGetGridViewTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetGridViewTextContentsuseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetGridViewTextContentscheckedElementValue = null)
         {
             var apiCallPath = "/SAPGUI/SAPGetGridViewTextContents";
             var apiCallHttpMethod = "post";
@@ -4132,75 +4132,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetGridViewTextContents = new JObject();
             var sAPGetGridViewTextContentspropCount = 0;
             sAPGetGridViewTextContentspropCount++;
-            sAPGetGridViewTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsSearchSAPElementId);
-            if (sAPGetGridViewTextContentsFirstRowToReturn != null)
+            sAPGetGridViewTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentssearchSAPElementId);
+            if (sAPGetGridViewTextContentsfirstRowToReturn != null)
             {
-                sAPGetGridViewTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsFirstRowToReturn);
+                sAPGetGridViewTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstRowToReturn);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsMaxRowsToReturn != null)
+            if (sAPGetGridViewTextContentsmaxRowsToReturn != null)
             {
-                sAPGetGridViewTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsMaxRowsToReturn);
+                sAPGetGridViewTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxRowsToReturn);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsFirstSearchColumnName != null)
+            if (sAPGetGridViewTextContentsfirstSearchColumnName != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnName"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsFirstSearchColumnName);
+                sAPGetGridViewTextContents["FirstSearchColumnName"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnName);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsFirstSearchColumnTitle != null)
+            if (sAPGetGridViewTextContentsfirstSearchColumnTitle != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsFirstSearchColumnTitle);
+                sAPGetGridViewTextContents["FirstSearchColumnTitle"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitle);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsFirstSearchColumnTitleIsRegularExpression != null)
+            if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsFirstSearchColumnTitleIsRegularExpression);
+                sAPGetGridViewTextContents["FirstSearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsFirstSearchColumnTitleIsCaseSensitive != null)
+            if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsFirstSearchColumnTitleIsCaseSensitive);
+                sAPGetGridViewTextContents["FirstSearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsMaxColumnsToReturn != null)
+            if (sAPGetGridViewTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetGridViewTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsMaxColumnsToReturn);
+                sAPGetGridViewTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxColumnsToReturn);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsUseColumnHeadersFromTable != null)
+            if (sAPGetGridViewTextContentsuseColumnHeadersFromTable != null)
             {
-                sAPGetGridViewTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsUseColumnHeadersFromTable);
+                sAPGetGridViewTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsuseColumnHeadersFromTable);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsReturnRowIndexInOutputCollection != null)
+            if (sAPGetGridViewTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetGridViewTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsReturnRowIndexInOutputCollection);
+                sAPGetGridViewTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsNameOfColumnToStoreRowIndex != null)
+            if (sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex != null)
             {
-                sAPGetGridViewTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsNameOfColumnToStoreRowIndex);
+                sAPGetGridViewTextContents["NameOfColumnToStoreRowIndex"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex);
                 sAPGetGridViewTextContentspropCount++;
             }
 
-            if (sAPGetGridViewTextContentsCheckedElementValue != null)
+            if (sAPGetGridViewTextContentscheckedElementValue != null)
             {
-                sAPGetGridViewTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsCheckedElementValue);
+                sAPGetGridViewTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentscheckedElementValue);
                 sAPGetGridViewTextContentspropCount++;
             }
 
             sAPGetGridViewTextContentspropCount++;
-            sAPGetGridViewTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsWorkflow);
+            sAPGetGridViewTextContents["Workflow"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsworkflow);
             if (sAPGetGridViewTextContentspropCount > 0)
             {
                 callPayload.Body = sAPGetGridViewTextContents;
@@ -4210,7 +4210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectCalendarMonth(Expression<Func<string>> sAPSelectCalendarMonthSearchSAPElementId, Expression<Func<int>> sAPSelectCalendarMonthMonth, Expression<Func<int>> sAPSelectCalendarMonthYear, Expression<Func<string>> sAPSelectCalendarMonthWorkflow)
+        public IWorkflowAction SAPSelectCalendarMonth(Expression<Func<string>> sAPSelectCalendarMonthsearchSAPElementId, Expression<Func<int>> sAPSelectCalendarMonthmonth, Expression<Func<int>> sAPSelectCalendarMonthyear, Expression<Func<string>> sAPSelectCalendarMonthworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSelectCalendarMonth";
             var apiCallHttpMethod = "post";
@@ -4218,13 +4218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectCalendarMonth = new JObject();
             var sAPSelectCalendarMonthpropCount = 0;
             sAPSelectCalendarMonthpropCount++;
-            sAPSelectCalendarMonth["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthSearchSAPElementId);
+            sAPSelectCalendarMonth["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthsearchSAPElementId);
             sAPSelectCalendarMonthpropCount++;
-            sAPSelectCalendarMonth["Month"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthMonth);
+            sAPSelectCalendarMonth["Month"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthmonth);
             sAPSelectCalendarMonthpropCount++;
-            sAPSelectCalendarMonth["Year"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthYear);
+            sAPSelectCalendarMonth["Year"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthyear);
             sAPSelectCalendarMonthpropCount++;
-            sAPSelectCalendarMonth["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthWorkflow);
+            sAPSelectCalendarMonth["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarMonthworkflow);
             if (sAPSelectCalendarMonthpropCount > 0)
             {
                 callPayload.Body = sAPSelectCalendarMonth;
@@ -4234,7 +4234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectCalendarWeek(Expression<Func<string>> sAPSelectCalendarWeekSearchSAPElementId, Expression<Func<int>> sAPSelectCalendarWeekWeek, Expression<Func<int>> sAPSelectCalendarWeekYear, Expression<Func<string>> sAPSelectCalendarWeekWorkflow)
+        public IWorkflowAction SAPSelectCalendarWeek(Expression<Func<string>> sAPSelectCalendarWeeksearchSAPElementId, Expression<Func<int>> sAPSelectCalendarWeekweek, Expression<Func<int>> sAPSelectCalendarWeekyear, Expression<Func<string>> sAPSelectCalendarWeekworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSelectCalendarWeek";
             var apiCallHttpMethod = "post";
@@ -4242,13 +4242,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectCalendarWeek = new JObject();
             var sAPSelectCalendarWeekpropCount = 0;
             sAPSelectCalendarWeekpropCount++;
-            sAPSelectCalendarWeek["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekSearchSAPElementId);
+            sAPSelectCalendarWeek["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeeksearchSAPElementId);
             sAPSelectCalendarWeekpropCount++;
-            sAPSelectCalendarWeek["Week"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekWeek);
+            sAPSelectCalendarWeek["Week"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekweek);
             sAPSelectCalendarWeekpropCount++;
-            sAPSelectCalendarWeek["Year"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekYear);
+            sAPSelectCalendarWeek["Year"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekyear);
             sAPSelectCalendarWeekpropCount++;
-            sAPSelectCalendarWeek["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekWorkflow);
+            sAPSelectCalendarWeek["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarWeekworkflow);
             if (sAPSelectCalendarWeekpropCount > 0)
             {
                 callPayload.Body = sAPSelectCalendarWeek;
@@ -4258,7 +4258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPSelectCalendarRange(Expression<Func<string>> sAPSelectCalendarRangeSearchSAPElementId, Expression<Func<string>> sAPSelectCalendarRangeFromDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangeToDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangeWorkflow)
+        public IWorkflowAction SAPSelectCalendarRange(Expression<Func<string>> sAPSelectCalendarRangesearchSAPElementId, Expression<Func<string>> sAPSelectCalendarRangefromDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangetoDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangeworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPSelectCalendarRange";
             var apiCallHttpMethod = "post";
@@ -4266,13 +4266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPSelectCalendarRange = new JObject();
             var sAPSelectCalendarRangepropCount = 0;
             sAPSelectCalendarRangepropCount++;
-            sAPSelectCalendarRange["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangeSearchSAPElementId);
+            sAPSelectCalendarRange["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangesearchSAPElementId);
             sAPSelectCalendarRangepropCount++;
-            sAPSelectCalendarRange["FromDateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangeFromDateYYYYMMDD);
+            sAPSelectCalendarRange["FromDateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangefromDateYYYYMMDD);
             sAPSelectCalendarRangepropCount++;
-            sAPSelectCalendarRange["ToDateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangeToDateYYYYMMDD);
+            sAPSelectCalendarRange["ToDateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangetoDateYYYYMMDD);
             sAPSelectCalendarRangepropCount++;
-            sAPSelectCalendarRange["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangeWorkflow);
+            sAPSelectCalendarRange["Workflow"] = ExpressionConverter.ConvertO(sAPSelectCalendarRangeworkflow);
             if (sAPSelectCalendarRangepropCount > 0)
             {
                 callPayload.Body = sAPSelectCalendarRange;
@@ -4282,7 +4282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
-        public IWorkflowAction SAPFocusCalendarDate(Expression<Func<string>> sAPFocusCalendarDateSearchSAPElementId, Expression<Func<string>> sAPFocusCalendarDateDateYYYYMMDD, Expression<Func<string>> sAPFocusCalendarDateWorkflow)
+        public IWorkflowAction SAPFocusCalendarDate(Expression<Func<string>> sAPFocusCalendarDatesearchSAPElementId, Expression<Func<string>> sAPFocusCalendarDatedateYYYYMMDD, Expression<Func<string>> sAPFocusCalendarDateworkflow)
         {
             var apiCallPath = "/SAPGUI/SAPFocusCalendarDate";
             var apiCallHttpMethod = "post";
@@ -4290,11 +4290,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPFocusCalendarDate = new JObject();
             var sAPFocusCalendarDatepropCount = 0;
             sAPFocusCalendarDatepropCount++;
-            sAPFocusCalendarDate["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPFocusCalendarDateSearchSAPElementId);
+            sAPFocusCalendarDate["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPFocusCalendarDatesearchSAPElementId);
             sAPFocusCalendarDatepropCount++;
-            sAPFocusCalendarDate["DateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPFocusCalendarDateDateYYYYMMDD);
+            sAPFocusCalendarDate["DateYYYYMMDD"] = ExpressionConverter.ConvertO(sAPFocusCalendarDatedateYYYYMMDD);
             sAPFocusCalendarDatepropCount++;
-            sAPFocusCalendarDate["Workflow"] = ExpressionConverter.ConvertO(sAPFocusCalendarDateWorkflow);
+            sAPFocusCalendarDate["Workflow"] = ExpressionConverter.ConvertO(sAPFocusCalendarDateworkflow);
             if (sAPFocusCalendarDatepropCount > 0)
             {
                 callPayload.Body = sAPFocusCalendarDate;
@@ -4424,7 +4424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string SAPElementMessageType { get; set; }
     }
 
-    public enum sAPGlobalLeftMouseClickOnSAPElementOffsetRelativeToInput
+    public enum sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4441,7 +4441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public enum sAPGlobalRightMouseClickOnSAPElementOffsetRelativeToInput
+    public enum sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4458,7 +4458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public enum sAPGlobalMiddleMouseClickOnSAPElementOffsetRelativeToInput
+    public enum sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4475,7 +4475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public enum sAPGlobalDoubleLeftMouseClickOnSAPElementOffsetRelativeToInput
+    public enum sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4695,7 +4695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public bool CellIsLink { get; set; }
     }
 
-    public enum sAPGlobalLeftClickSAPGridViewCellAtIndexOffsetRelativeToInput
+    public enum sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4712,7 +4712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public enum sAPGlobalRightClickSAPGridViewCellAtIndexOffsetRelativeToInput
+    public enum sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,
         Left,
@@ -4729,7 +4729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
-    public enum sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexOffsetRelativeToInput
+    public enum sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,
         Left,

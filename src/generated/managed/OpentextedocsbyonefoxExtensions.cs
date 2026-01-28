@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
     public class OpentextedocsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentCreated";
             var apiCallHttpMethod = "post";
@@ -741,37 +741,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentContentUpdated";
             var apiCallHttpMethod = "post";
@@ -792,37 +792,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentPropertiesUpdated";
             var apiCallHttpMethod = "post";
@@ -843,37 +843,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/DocumentDeleted";
             var apiCallHttpMethod = "post";
@@ -894,37 +894,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderCreated";
             var apiCallHttpMethod = "post";
@@ -945,37 +945,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderUpdated";
             var apiCallHttpMethod = "post";
@@ -996,37 +996,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -1038,7 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyFilterparentparentID = null, Expression<Func<int>> bodyFilterparentparentDepth = null, Expression<Func<bodyFiltermetadataInputItem[]>> bodyFiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/FolderDeleted";
             var apiCallHttpMethod = "post";
@@ -1047,37 +1047,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             var bodypropCount = 0;
             body["WebHookUri"] = "@listCallbackUrl()";
             bodypropCount++;
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
             var parentObject = new JObject();
             var parentObjectpropCount = 0;
-            if (bodyFilterparentparentID != null)
+            if (bodyfilterparentparentID != null)
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyFilterparentparentID);
+                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
                 parentObjectpropCount++;
             }
 
-            if (bodyFilterparentparentDepth != null)
+            if (bodyfilterparentparentDepth != null)
             {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyFilterparentparentDepth);
+                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
                 parentObjectpropCount++;
             }
 
             if (parentObjectpropCount > 0)
             {
-                FilterObject["parent"] = parentObject;
-                FilterObjectpropCount++;
+                filterObject["parent"] = parentObject;
+                filterObjectpropCount++;
             }
 
-            if (bodyFiltermetadata != null)
+            if (bodyfiltermetadata != null)
             {
-                FilterObject["metadata"] = ExpressionConverter.ConvertO(bodyFiltermetadata);
-                FilterObjectpropCount++;
+                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class bodyFiltermetadataInputItem
+    public class bodyfiltermetadataInputItem
     {
         [JsonProperty("column")]
         public string Column { get; set; }

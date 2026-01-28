@@ -12,6 +12,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
+        public IBodyWorkflowAction<CommandPostResponse> CommandPost(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
+        {
+            var apiCallPath = "/v1/command";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var inputsObject = new JObject();
+            var inputsObjectpropCount = 0;
+            if (bodyinputscommand != null)
+            {
+                inputsObject["command"] = ExpressionConverter.ConvertO(bodyinputscommand);
+                inputsObjectpropCount++;
+            }
+
+            if (bodyinputscontext != null)
+            {
+                inputsObject["context"] = ExpressionConverter.ConvertO(bodyinputscontext);
+                inputsObjectpropCount++;
+            }
+
+            if (inputsObjectpropCount > 0)
+            {
+                body["inputs"] = inputsObject;
+                bodypropCount++;
+            }
+
+            var optionsObject = new JObject();
+            var optionsObjectpropCount = 0;
+            if (bodyoptionsoutputCount != null)
+            {
+                optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionsinputLanguage != null)
+            {
+                optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionsoutputLanguage != null)
+            {
+                optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionslanguageFormality != null)
+            {
+                optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionscompletionType != null)
+            {
+                optionsObject["completionType"] = ExpressionConverter.ConvertO(bodyoptionscompletionType);
+                optionsObjectpropCount++;
+            }
+
+            if (optionsObjectpropCount > 0)
+            {
+                body["options"] = optionsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CommandPostResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
+        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWritingPost(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        {
+            var apiCallPath = "/v1/keep-writing";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var inputsObject = new JObject();
+            var inputsObjectpropCount = 0;
+            if (bodyinputstype != null)
+            {
+                inputsObject["type"] = ExpressionConverter.ConvertO(bodyinputstype);
+                inputsObjectpropCount++;
+            }
+
+            if (bodyinputsvalue != null)
+            {
+                inputsObject["value"] = ExpressionConverter.ConvertO(bodyinputsvalue);
+                inputsObjectpropCount++;
+            }
+
+            if (inputsObjectpropCount > 0)
+            {
+                body["inputs"] = inputsObject;
+                bodypropCount++;
+            }
+
+            var optionsObject = new JObject();
+            var optionsObjectpropCount = 0;
+            if (bodyoptionsinputLanguage != null)
+            {
+                optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionsoutputLanguage != null)
+            {
+                optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                optionsObjectpropCount++;
+            }
+
+            if (bodyoptionslanguageFormality != null)
+            {
+                optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                optionsObjectpropCount++;
+            }
+
+            if (optionsObjectpropCount > 0)
+            {
+                body["options"] = optionsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatesGetResponse> TemplatesGet()
         {
             var apiCallPath = "/v1/templates";
@@ -332,6 +468,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     {
     }
 
+    public class CommandPostResponse
+    {
+        [JsonProperty("requestId")]
+        public string RequestId { get; set; }
+
+        [JsonProperty("resource")]
+        public string Resource { get; set; }
+
+        [JsonProperty("data")]
+        public CommandPostResponseDataTypeItem[] Data { get; set; }
+    }
+
+    public class CommandPostResponseDataTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public enum bodyoptionsinputLanguageInput
+    {
+        English,
+        French,
+        Italian,
+        Spanish,
+        Portuguese,
+        German
+    }
+
+    public enum bodyoptionsoutputLanguageInput
+    {
+        English,
+        French,
+        Italian,
+        Spanish,
+        Portuguese,
+        German
+    }
+
+    public enum bodyoptionslanguageFormalityInput
+    {
+        [EnumMember(Value = "default")]
+        Default,
+        [EnumMember(Value = "more")]
+        More,
+        [EnumMember(Value = "less")]
+        Less
+    }
+
+    public enum bodyoptionscompletionTypeInput
+    {
+        [EnumMember(Value = "performance")]
+        Performance,
+        [EnumMember(Value = "quality")]
+        Quality
+    }
+
+    public class KeepWritingPostResponse
+    {
+        [JsonProperty("data")]
+        public KeepWritingPostResponseDataTypeItem[] Data { get; set; }
+
+        [JsonProperty("requestId")]
+        public string RequestId { get; set; }
+
+        [JsonProperty("resource")]
+        public string Resource { get; set; }
+    }
+
+    public class KeepWritingPostResponseDataTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public enum bodyinputstypeInput
+    {
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "id")]
+        Id
+    }
+
     public class TemplatesGetResponse
     {
         [JsonProperty("data")]
@@ -450,36 +674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
         [JsonProperty("text")]
         public string Text { get; set; }
-    }
-
-    public enum bodyoptionsinputLanguageInput
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    public enum bodyoptionsoutputLanguageInput
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    public enum bodyoptionslanguageFormalityInput
-    {
-        [EnumMember(Value = "default")]
-        Default,
-        [EnumMember(Value = "more")]
-        More,
-        [EnumMember(Value = "less")]
-        Less
     }
 
     public class KnowledgesGetResponse

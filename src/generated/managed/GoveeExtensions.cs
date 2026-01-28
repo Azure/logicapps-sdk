@@ -12,6 +12,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        {
+            var apiCallPath = "/devices/control";
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
+            bodypropCount++;
+            body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
+            var cmdObject = new JObject();
+            var cmdObjectpropCount = 0;
+            if (bodycmdcommandName != null)
+            {
+                cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
+                cmdObjectpropCount++;
+            }
+
+            if (cmdObjectpropCount > 0)
+            {
+                body["cmd"] = cmdObject;
+                bodypropCount++;
+            }
+
+            if (bodyturn != null)
+            {
+                body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                bodypropCount++;
+            }
+
+            if (bodybrightness != null)
+            {
+                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                bodypropCount++;
+            }
+
+            var colorObject = new JObject();
+            var colorObjectpropCount = 0;
+            if (bodycolorcolorRed != null)
+            {
+                colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
+                colorObjectpropCount++;
+            }
+
+            if (bodycolorcolorGreen != null)
+            {
+                colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
+                colorObjectpropCount++;
+            }
+
+            if (bodycolorcolorBlue != null)
+            {
+                colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
+                colorObjectpropCount++;
+            }
+
+            if (colorObjectpropCount > 0)
+            {
+                body["color"] = colorObject;
+                bodypropCount++;
+            }
+
+            if (bodycolorTemperature != null)
+            {
+                body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
         {
             var apiCallPath = "/devices";
@@ -27,6 +105,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 
     public class GoveeTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class RunCommandOnDeviceResponse
+    {
+        [JsonProperty("code")]
+        public int StatusCode { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
+    }
+
+    public enum bodycmdcommandNameInput
+    {
+        [EnumMember(Value = "turn")]
+        Turn,
+        [EnumMember(Value = "brightness")]
+        Brightness,
+        [EnumMember(Value = "color")]
+        Color,
+        [EnumMember(Value = "colorTem")]
+        ColorTem
+    }
+
+    public enum bodyturnInput
+    {
+        [EnumMember(Value = "on")]
+        On,
+        [EnumMember(Value = "off")]
+        Off
     }
 
     public class GetDeviceInformationResponse

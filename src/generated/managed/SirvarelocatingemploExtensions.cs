@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyRelocationId, Expression<Func<string>> bodyQuery, Expression<Func<bodyTopicInput>> bodyTopic)
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
         {
             var apiCallPath = "/chat/topic";
             var apiCallHttpMethod = "post";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["RelocationId"] = ExpressionConverter.ConvertO(bodyRelocationId);
+            body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
             bodypropCount++;
-            body["Query"] = ExpressionConverter.ConvertO(bodyQuery);
+            body["Query"] = ExpressionConverter.ConvertO(bodyquery);
             bodypropCount++;
-            body["Topic"] = ExpressionConverter.ConvertO(bodyTopic);
+            body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string Answer { get; set; }
     }
 
-    public enum bodyTopicInput
+    public enum bodytopicInput
     {
         Counselor,
         Contacts,

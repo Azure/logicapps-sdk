@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponseFulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
+        public IWorkflowAction SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
         {
             var apiCallPath = "/runtime/api/flowconnector/response";
             var apiCallHttpMethod = "post";
@@ -181,9 +181,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
             var webhookResponseObject = new JObject();
             var webhookResponseObjectpropCount = 0;
-            if (bodywebhookResponseFulfillmentMessages != null)
+            if (bodywebhookResponsefulfillmentMessages != null)
             {
-                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponseFulfillmentMessages);
+                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
                 webhookResponseObjectpropCount++;
             }
 
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponseFulfillmentMessages = null)
+        public IWorkflowAction SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null)
         {
             var apiCallPath = "/runtime/api/flowconnector/proactive";
             var apiCallHttpMethod = "post";
@@ -235,9 +235,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
             var webhookResponseObject = new JObject();
             var webhookResponseObjectpropCount = 0;
-            if (bodywebhookResponseFulfillmentMessages != null)
+            if (bodywebhookResponsefulfillmentMessages != null)
             {
-                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponseFulfillmentMessages);
+                webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
                 webhookResponseObjectpropCount++;
             }
 

@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<TimeLog> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodyNote = null, Expression<Func<int>> bodyProjectId = null, Expression<Func<int>> bodyTaskId = null, Expression<Func<int>> bodyTagId = null)
+        public IBodyWorkflowAction<TimeLog> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
         {
             var apiCallPath = "/api/logs/powerautomate";
             var apiCallHttpMethod = "post";
@@ -187,27 +187,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 bodypropCount++;
             }
 
-            if (bodyNote != null)
+            if (bodynote != null)
             {
-                body["Note"] = ExpressionConverter.ConvertO(bodyNote);
+                body["Note"] = ExpressionConverter.ConvertO(bodynote);
                 bodypropCount++;
             }
 
-            if (bodyProjectId != null)
+            if (bodyprojectId != null)
             {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyProjectId);
+                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
                 bodypropCount++;
             }
 
-            if (bodyTaskId != null)
+            if (bodytaskId != null)
             {
-                body["TaskId"] = ExpressionConverter.ConvertO(bodyTaskId);
+                body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
                 bodypropCount++;
             }
 
-            if (bodyTagId != null)
+            if (bodytagId != null)
             {
-                body["TagId"] = ExpressionConverter.ConvertO(bodyTagId);
+                body["TagId"] = ExpressionConverter.ConvertO(bodytagId);
                 bodypropCount++;
             }
 

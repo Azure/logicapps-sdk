@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAdverseEventResponse> POSTAdverseEvent(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyeventcodingInputItem[]>> bodyeventcoding = null, Expression<Func<string>> bodyeventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<POSTAdverseEventResponse> POSTAdverseEvent(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
         {
             var apiCallPath = "/AdverseEvent";
             var apiCallHttpMethod = "post";
@@ -78,23 +78,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 bodypropCount++;
             }
 
-            var eventObject = new JObject();
-            var eventObjectpropCount = 0;
-            if (bodyeventcoding != null)
+            var @eventObject = new JObject();
+            var @eventObjectpropCount = 0;
+            if (bodyEventcoding != null)
             {
-                eventObject["coding"] = ExpressionConverter.ConvertO(bodyeventcoding);
-                eventObjectpropCount++;
+                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObjectpropCount++;
             }
 
-            if (bodyeventtext != null)
+            if (bodyEventtext != null)
             {
-                eventObject["text"] = ExpressionConverter.ConvertO(bodyeventtext);
-                eventObjectpropCount++;
+                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObjectpropCount++;
             }
 
-            if (eventObjectpropCount > 0)
+            if (@eventObjectpropCount > 0)
             {
-                body["event"] = eventObject;
+                body["event"] = @eventObject;
                 bodypropCount++;
             }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAdverseEventIDResponse> DELETEAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyeventcodingInputItem[]>> bodyeventcoding = null, Expression<Func<string>> bodyeventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<DELETEAdverseEventIDResponse> DELETEAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
         {
             var apiCallPath = String.Format("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -259,23 +259,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 bodypropCount++;
             }
 
-            var eventObject = new JObject();
-            var eventObjectpropCount = 0;
-            if (bodyeventcoding != null)
+            var @eventObject = new JObject();
+            var @eventObjectpropCount = 0;
+            if (bodyEventcoding != null)
             {
-                eventObject["coding"] = ExpressionConverter.ConvertO(bodyeventcoding);
-                eventObjectpropCount++;
+                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObjectpropCount++;
             }
 
-            if (bodyeventtext != null)
+            if (bodyEventtext != null)
             {
-                eventObject["text"] = ExpressionConverter.ConvertO(bodyeventtext);
-                eventObjectpropCount++;
+                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObjectpropCount++;
             }
 
-            if (eventObjectpropCount > 0)
+            if (@eventObjectpropCount > 0)
             {
-                body["event"] = eventObject;
+                body["event"] = @eventObject;
                 bodypropCount++;
             }
 
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAdverseEventIDResponse> PUTAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyeventcodingInputItem[]>> bodyeventcoding = null, Expression<Func<string>> bodyeventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
+        public IBodyWorkflowAction<PUTAdverseEventIDResponse> PUTAdverseEventID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodyidentifiersystem = null, Expression<Func<string>> bodyidentifiervalue = null, Expression<Func<string>> bodyactuality = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodyEventcodingInputItem[]>> bodyEventcoding = null, Expression<Func<string>> bodyEventtext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodydate = null, Expression<Func<bodyseriousnesscodingInputItem[]>> bodyseriousnesscoding = null, Expression<Func<bodyseveritycodingInputItem[]>> bodyseveritycoding = null, Expression<Func<string>> bodyrecorderreference = null, Expression<Func<bodysuspectEntityInputItem[]>> bodysuspectEntity = null)
         {
             var apiCallPath = String.Format("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -427,23 +427,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 bodypropCount++;
             }
 
-            var eventObject = new JObject();
-            var eventObjectpropCount = 0;
-            if (bodyeventcoding != null)
+            var @eventObject = new JObject();
+            var @eventObjectpropCount = 0;
+            if (bodyEventcoding != null)
             {
-                eventObject["coding"] = ExpressionConverter.ConvertO(bodyeventcoding);
-                eventObjectpropCount++;
+                @eventObject["coding"] = ExpressionConverter.ConvertO(bodyEventcoding);
+                @eventObjectpropCount++;
             }
 
-            if (bodyeventtext != null)
+            if (bodyEventtext != null)
             {
-                eventObject["text"] = ExpressionConverter.ConvertO(bodyeventtext);
-                eventObjectpropCount++;
+                @eventObject["text"] = ExpressionConverter.ConvertO(bodyEventtext);
+                @eventObjectpropCount++;
             }
 
-            if (eventObjectpropCount > 0)
+            if (@eventObjectpropCount > 0)
             {
-                body["event"] = eventObject;
+                body["event"] = @eventObject;
                 bodypropCount++;
             }
 
@@ -5968,7 +5968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class bodyeventcodingInputItem
+    public class bodyEventcodingInputItem
     {
         [JsonProperty("system")]
         public string System { get; set; }

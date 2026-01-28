@@ -235,17 +235,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 bodypropCount++;
             }
 
-            var voice_redirect_noObject = new JObject();
-            var voice_redirect_noObjectpropCount = 0;
+            var voiceRedirectNoObject = new JObject();
+            var voiceRedirectNoObjectpropCount = 0;
             if (bodyvoiceRedirectNonumber != null)
             {
-                voice_redirect_noObject["number"] = ExpressionConverter.ConvertO(bodyvoiceRedirectNonumber);
-                voice_redirect_noObjectpropCount++;
+                voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(bodyvoiceRedirectNonumber);
+                voiceRedirectNoObjectpropCount++;
             }
 
-            if (voice_redirect_noObjectpropCount > 0)
+            if (voiceRedirectNoObjectpropCount > 0)
             {
-                body["voice_redirect_no"] = voice_redirect_noObject;
+                body["voice_redirect_no"] = voiceRedirectNoObject;
                 bodypropCount++;
             }
 

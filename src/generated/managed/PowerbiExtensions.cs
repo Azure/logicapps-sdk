@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportPowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportPowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportPowerBIReportExportConfigurationidentities = null)
+        public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
             var apiCallPath = String.Format("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(reportid, 1));
             var apiCallHttpMethod = "post";
@@ -380,69 +380,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var exportPayloadPowerBIReportpropCount = 0;
             exportPayloadPowerBIReportpropCount++;
             exportPayloadPowerBIReport["format"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportformat);
-            var PowerBIReportExportConfigurationObject = new JObject();
-            var PowerBIReportExportConfigurationObjectpropCount = 0;
+            var powerBIReportExportConfigurationObject = new JObject();
+            var powerBIReportExportConfigurationObjectpropCount = 0;
             var settingsObject = new JObject();
             var settingsObjectpropCount = 0;
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingslocale != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale != null)
             {
-                settingsObject["locale"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingslocale);
+                settingsObject["locale"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
                 settingsObjectpropCount++;
             }
 
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingsincludeHiddenPages != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages != null)
             {
-                settingsObject["includeHiddenPages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationsettingsincludeHiddenPages);
+                settingsObject["includeHiddenPages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
                 settingsObjectpropCount++;
             }
 
             if (settingsObjectpropCount > 0)
             {
-                PowerBIReportExportConfigurationObject["settings"] = settingsObject;
-                PowerBIReportExportConfigurationObjectpropCount++;
+                powerBIReportExportConfigurationObject["settings"] = settingsObject;
+                powerBIReportExportConfigurationObjectpropCount++;
             }
 
             var defaultBookmarkObject = new JObject();
             var defaultBookmarkObjectpropCount = 0;
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkname != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname != null)
             {
-                defaultBookmarkObject["name"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkname);
+                defaultBookmarkObject["name"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
                 defaultBookmarkObjectpropCount++;
             }
 
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkstate != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate != null)
             {
-                defaultBookmarkObject["state"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationdefaultBookmarkstate);
+                defaultBookmarkObject["state"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
                 defaultBookmarkObjectpropCount++;
             }
 
             if (defaultBookmarkObjectpropCount > 0)
             {
-                PowerBIReportExportConfigurationObject["defaultBookmark"] = defaultBookmarkObject;
-                PowerBIReportExportConfigurationObjectpropCount++;
+                powerBIReportExportConfigurationObject["defaultBookmark"] = defaultBookmarkObject;
+                powerBIReportExportConfigurationObjectpropCount++;
             }
 
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationreportLevelFilters != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters != null)
             {
-                PowerBIReportExportConfigurationObject["reportLevelFilters"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationreportLevelFilters);
-                PowerBIReportExportConfigurationObjectpropCount++;
+                powerBIReportExportConfigurationObject["reportLevelFilters"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
+                powerBIReportExportConfigurationObjectpropCount++;
             }
 
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationpages != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationpages != null)
             {
-                PowerBIReportExportConfigurationObject["pages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationpages);
-                PowerBIReportExportConfigurationObjectpropCount++;
+                powerBIReportExportConfigurationObject["pages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
+                powerBIReportExportConfigurationObjectpropCount++;
             }
 
-            if (exportPayloadPowerBIReportPowerBIReportExportConfigurationidentities != null)
+            if (exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities != null)
             {
-                PowerBIReportExportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportPowerBIReportExportConfigurationidentities);
-                PowerBIReportExportConfigurationObjectpropCount++;
+                powerBIReportExportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
+                powerBIReportExportConfigurationObjectpropCount++;
             }
 
-            if (PowerBIReportExportConfigurationObjectpropCount > 0)
+            if (powerBIReportExportConfigurationObjectpropCount > 0)
             {
-                exportPayloadPowerBIReport["PowerBIReportExportConfiguration"] = PowerBIReportExportConfigurationObject;
+                exportPayloadPowerBIReport["PowerBIReportExportConfiguration"] = powerBIReportExportConfigurationObject;
                 exportPayloadPowerBIReportpropCount++;
             }
 

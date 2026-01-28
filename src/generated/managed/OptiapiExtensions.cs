@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyoperatorInput>> bodyoperator = null)
+        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyOperatorInput>> bodyOperator = null)
         {
             var apiCallPath = "/array/first-where";
             var apiCallHttpMethod = "post";
@@ -185,9 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             body["array"] = ExpressionConverter.ConvertO(bodyarray);
             bodypropCount++;
             body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodyoperator != null)
+            if (bodyOperator != null)
             {
-                body["operator"] = ExpressionConverter.ConvertO(bodyoperator);
+                body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
                 bodypropCount++;
             }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyoperatorInput>> bodyoperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
+        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyOperatorInput>> bodyOperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
         {
             var apiCallPath = "/datetime/add-or-subtract";
             var apiCallHttpMethod = "post";
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             bodypropCount++;
             body["datetime"] = ExpressionConverter.ConvertO(bodydatetime);
             bodypropCount++;
-            body["operator"] = ExpressionConverter.ConvertO(bodyoperator);
+            body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
             if (bodyoutputFormat != null)
             {
                 body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public enum bodyoperatorInput
+    public enum bodyOperatorInput
     {
         Add,
         Subtract

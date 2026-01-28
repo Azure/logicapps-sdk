@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class AlchemyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodyText)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
         {
             var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
             var apiCallHttpMethod = "post";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodyText);
+            body["Text"] = ExpressionConverter.ConvertO(bodytext);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

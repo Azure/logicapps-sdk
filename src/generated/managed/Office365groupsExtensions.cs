@@ -87,6 +87,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
+        public IBodyWorkflowAction<CreateCalendarEventResponse> CreateCalendarEventV2(Expression<Func<string>> groupId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
+        {
+            var apiCallPath = String.Format("/v2/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            var startObject = new JObject();
+            var startObjectpropCount = 0;
+            if (bodystartstartTime != null)
+            {
+                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                startObjectpropCount++;
+            }
+
+            startObject["timeZone"] = "UTC";
+            startObjectpropCount++;
+            if (startObjectpropCount > 0)
+            {
+                body["start"] = startObject;
+                bodypropCount++;
+            }
+
+            var endObject = new JObject();
+            var endObjectpropCount = 0;
+            if (bodyendendTime != null)
+            {
+                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObjectpropCount++;
+            }
+
+            endObject["timeZone"] = "UTC";
+            endObjectpropCount++;
+            if (endObjectpropCount > 0)
+            {
+                body["end"] = endObject;
+                bodypropCount++;
+            }
+
+            var bodyObject = new JObject();
+            var bodyObjectpropCount = 0;
+            if (bodybodybody != null)
+            {
+                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObjectpropCount++;
+            }
+
+            bodyObject["contentType"] = "Html";
+            bodyObjectpropCount++;
+            if (bodyObjectpropCount > 0)
+            {
+                body["body"] = bodyObject;
+                bodypropCount++;
+            }
+
+            var locationObject = new JObject();
+            var locationObjectpropCount = 0;
+            if (bodylocationlocation != null)
+            {
+                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
+                locationObjectpropCount++;
+            }
+
+            if (locationObjectpropCount > 0)
+            {
+                body["location"] = locationObject;
+                bodypropCount++;
+            }
+
+            if (bodyimportance != null)
+            {
+                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                bodypropCount++;
+            }
+
+            if (bodyisAllDay != null)
+            {
+                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                bodypropCount++;
+            }
+
+            if (bodyisReminderOn != null)
+            {
+                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                bodypropCount++;
+            }
+
+            if (bodyreminderStartDuration != null)
+            {
+                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
+                bodypropCount++;
+            }
+
+            if (bodyshowAs != null)
+            {
+                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
+                bodypropCount++;
+            }
+
+            if (bodyresponseRequested != null)
+            {
+                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction CalendarDeleteItemV2(Expression<Func<string>> groupId, Expression<Func<string>> @event)
         {
             var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
@@ -96,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject)
+        public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
             var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
             var apiCallHttpMethod = "patch";
@@ -105,6 +221,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
             var bodypropCount = 0;
             bodypropCount++;
             body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+            var startObject = new JObject();
+            var startObjectpropCount = 0;
+            if (bodystartstartTime != null)
+            {
+                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                startObjectpropCount++;
+            }
+
+            startObject["timeZone"] = "UTC";
+            startObjectpropCount++;
+            if (startObjectpropCount > 0)
+            {
+                body["start"] = startObject;
+                bodypropCount++;
+            }
+
+            var endObject = new JObject();
+            var endObjectpropCount = 0;
+            if (bodyendendTime != null)
+            {
+                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObjectpropCount++;
+            }
+
+            endObject["timeZone"] = "UTC";
+            endObjectpropCount++;
+            if (endObjectpropCount > 0)
+            {
+                body["end"] = endObject;
+                bodypropCount++;
+            }
+
+            var bodyObject = new JObject();
+            var bodyObjectpropCount = 0;
+            if (bodybodybody != null)
+            {
+                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObjectpropCount++;
+            }
+
+            bodyObject["contentType"] = "Html";
+            bodyObjectpropCount++;
+            if (bodyObjectpropCount > 0)
+            {
+                body["body"] = bodyObject;
+                bodypropCount++;
+            }
+
+            var locationObject = new JObject();
+            var locationObjectpropCount = 0;
+            if (bodylocationlocation != null)
+            {
+                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
+                locationObjectpropCount++;
+            }
+
+            if (locationObjectpropCount > 0)
+            {
+                body["location"] = locationObject;
+                bodypropCount++;
+            }
+
+            if (bodyimportance != null)
+            {
+                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                bodypropCount++;
+            }
+
+            if (bodyisAllDay != null)
+            {
+                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                bodypropCount++;
+            }
+
+            if (bodyisReminderOn != null)
+            {
+                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                bodypropCount++;
+            }
+
+            if (bodyreminderStartDuration != null)
+            {
+                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
+                bodypropCount++;
+            }
+
+            if (bodyshowAs != null)
+            {
+                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
+                bodypropCount++;
+            }
+
+            if (bodyresponseRequested != null)
+            {
+                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
+                bodypropCount++;
+            }
+
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -520,6 +734,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     {
         [JsonProperty("displayName")]
         public string Name { get; set; }
+    }
+
+    public enum bodyimportanceInput
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    public enum bodyshowAsInput
+    {
+        Free,
+        Tentative,
+        Busy,
+        Oof,
+        WorkingElsewhere,
+        Unknown
     }
 
     public enum methodInput

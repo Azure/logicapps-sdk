@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
                 eventDatapropCount++;
             }
 
-            var PropertiesObject = new JObject();
-            var PropertiesObjectpropCount = 0;
-            if (PropertiesObjectpropCount > 0)
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (propertiesObjectpropCount > 0)
             {
-                eventData["Properties"] = PropertiesObject;
+                eventData["Properties"] = propertiesObject;
                 eventDatapropCount++;
             }
 

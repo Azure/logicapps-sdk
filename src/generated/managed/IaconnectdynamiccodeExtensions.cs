@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
     public class IaconnectdynamiccodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction ImportAssemblyFromLocalFile(Expression<Func<string>> importAssemblyFromLocalFileLocalAssemblyFilePath, Expression<Func<string>> importAssemblyFromLocalFileAssemblyName, Expression<Func<string>> importAssemblyFromLocalFileWorkflow, Expression<Func<bool>> importAssemblyFromLocalFileCompress = null)
+        public IWorkflowAction ImportAssemblyFromLocalFile(Expression<Func<string>> importAssemblyFromLocalFilelocalAssemblyFilePath, Expression<Func<string>> importAssemblyFromLocalFileassemblyName, Expression<Func<string>> importAssemblyFromLocalFileworkflow, Expression<Func<bool>> importAssemblyFromLocalFilecompress = null)
         {
             var apiCallPath = "/DynamicCode/ImportAssemblyFromLocalFile";
             var apiCallHttpMethod = "post";
@@ -20,17 +20,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var importAssemblyFromLocalFile = new JObject();
             var importAssemblyFromLocalFilepropCount = 0;
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["LocalAssemblyFilePath"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileLocalAssemblyFilePath);
+            importAssemblyFromLocalFile["LocalAssemblyFilePath"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilelocalAssemblyFilePath);
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["AssemblyName"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileAssemblyName);
-            if (importAssemblyFromLocalFileCompress != null)
+            importAssemblyFromLocalFile["AssemblyName"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileassemblyName);
+            if (importAssemblyFromLocalFilecompress != null)
             {
-                importAssemblyFromLocalFile["Compress"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileCompress);
+                importAssemblyFromLocalFile["Compress"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilecompress);
                 importAssemblyFromLocalFilepropCount++;
             }
 
             importAssemblyFromLocalFilepropCount++;
-            importAssemblyFromLocalFile["Workflow"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileWorkflow);
+            importAssemblyFromLocalFile["Workflow"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileworkflow);
             if (importAssemblyFromLocalFilepropCount > 0)
             {
                 callPayload.Body = importAssemblyFromLocalFile;
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction AddAssemblySearchFolder(Expression<Func<string>> addAssemblySearchFolderFolderPath, Expression<Func<string>> addAssemblySearchFolderWorkflow)
+        public IWorkflowAction AddAssemblySearchFolder(Expression<Func<string>> addAssemblySearchFolderfolderPath, Expression<Func<string>> addAssemblySearchFolderworkflow)
         {
             var apiCallPath = "/DynamicCode/AddAssemblySearchFolder";
             var apiCallHttpMethod = "post";
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var addAssemblySearchFolder = new JObject();
             var addAssemblySearchFolderpropCount = 0;
             addAssemblySearchFolderpropCount++;
-            addAssemblySearchFolder["FolderPath"] = ExpressionConverter.ConvertO(addAssemblySearchFolderFolderPath);
+            addAssemblySearchFolder["FolderPath"] = ExpressionConverter.ConvertO(addAssemblySearchFolderfolderPath);
             addAssemblySearchFolderpropCount++;
-            addAssemblySearchFolder["Workflow"] = ExpressionConverter.ConvertO(addAssemblySearchFolderWorkflow);
+            addAssemblySearchFolder["Workflow"] = ExpressionConverter.ConvertO(addAssemblySearchFolderworkflow);
             if (addAssemblySearchFolderpropCount > 0)
             {
                 callPayload.Body = addAssemblySearchFolder;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction ClearAssemblySearchFolders(Expression<Func<string>> clearAssemblySearchFoldersWorkflow)
+        public IWorkflowAction ClearAssemblySearchFolders(Expression<Func<string>> clearAssemblySearchFoldersworkflow)
         {
             var apiCallPath = "/DynamicCode/ClearAssemblySearchFolders";
             var apiCallHttpMethod = "post";
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var clearAssemblySearchFolders = new JObject();
             var clearAssemblySearchFolderspropCount = 0;
             clearAssemblySearchFolderspropCount++;
-            clearAssemblySearchFolders["Workflow"] = ExpressionConverter.ConvertO(clearAssemblySearchFoldersWorkflow);
+            clearAssemblySearchFolders["Workflow"] = ExpressionConverter.ConvertO(clearAssemblySearchFoldersworkflow);
             if (clearAssemblySearchFolderspropCount > 0)
             {
                 callPayload.Body = clearAssemblySearchFolders;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse> IsPowerShellAutomationInstalled(Expression<Func<string>> isPowerShellAutomationInstalledWorkflow)
+        public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse> IsPowerShellAutomationInstalled(Expression<Func<string>> isPowerShellAutomationInstalledworkflow)
         {
             var apiCallPath = "/PowerShellAutomation/isPowerShellAutomationInstalled";
             var apiCallHttpMethod = "post";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var isPowerShellAutomationInstalled = new JObject();
             var isPowerShellAutomationInstalledpropCount = 0;
             isPowerShellAutomationInstalledpropCount++;
-            isPowerShellAutomationInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellAutomationInstalledWorkflow);
+            isPowerShellAutomationInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellAutomationInstalledworkflow);
             if (isPowerShellAutomationInstalledpropCount > 0)
             {
                 callPayload.Body = isPowerShellAutomationInstalled;
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse> IsPowerShellModuleInstalled(Expression<Func<string>> isPowerShellModuleInstalledPowerShellModuleName, Expression<Func<string>> isPowerShellModuleInstalledWorkflow)
+        public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse> IsPowerShellModuleInstalled(Expression<Func<string>> isPowerShellModuleInstalledpowerShellModuleName, Expression<Func<string>> isPowerShellModuleInstalledworkflow)
         {
             var apiCallPath = "/PowerShellAutomation/isPowerShellModuleInstalled";
             var apiCallHttpMethod = "post";
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var isPowerShellModuleInstalled = new JObject();
             var isPowerShellModuleInstalledpropCount = 0;
             isPowerShellModuleInstalledpropCount++;
-            isPowerShellModuleInstalled["PowerShellModuleName"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledPowerShellModuleName);
+            isPowerShellModuleInstalled["PowerShellModuleName"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledpowerShellModuleName);
             isPowerShellModuleInstalledpropCount++;
-            isPowerShellModuleInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledWorkflow);
+            isPowerShellModuleInstalled["Workflow"] = ExpressionConverter.ConvertO(isPowerShellModuleInstalledworkflow);
             if (isPowerShellModuleInstalledpropCount > 0)
             {
                 callPayload.Body = isPowerShellModuleInstalled;
@@ -116,141 +116,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse> RunPowerShellAutomationScript(Expression<Func<string>> runPowerShellAutomationScriptWorkflow, Expression<Func<string>> runPowerShellAutomationScriptPowerShellScriptContents = null, Expression<Func<string>> runPowerShellAutomationScriptComputerName = null, Expression<Func<bool>> runPowerShellAutomationScriptIsNoResultAnError = null, Expression<Func<bool>> runPowerShellAutomationScriptReturnComplexTypes = null, Expression<Func<bool>> runPowerShellAutomationScriptReturnBooleanAsBoolean = null, Expression<Func<bool>> runPowerShellAutomationScriptReturnNumericAsDecimal = null, Expression<Func<bool>> runPowerShellAutomationScriptReturnDateAsDate = null, Expression<Func<string>> runPowerShellAutomationScriptPropertiesToReturnAsCollectionJSON = null, Expression<Func<runPowerShellAutomationScriptAuthenticationMechanismInput>> runPowerShellAutomationScriptAuthenticationMechanism = null, Expression<Func<int>> runPowerShellAutomationScriptConnectionAttempts = null, Expression<Func<string>> runPowerShellAutomationScriptUsername = null, Expression<Func<string>> runPowerShellAutomationScriptPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptRunScriptAsThread = null, Expression<Func<int>> runPowerShellAutomationScriptRetrieveOutputDataFromThreadId = null, Expression<Func<int>> runPowerShellAutomationScriptSecondsToWaitForThread = null, Expression<Func<bool>> runPowerShellAutomationScriptScriptContainsStoredPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptLogVerboseOutput = null, Expression<Func<bool>> runPowerShellAutomationScriptReturnSecureStrings = null, Expression<Func<string>> runPowerShellAutomationScriptPropertyNamesToSerializeJSON = null, Expression<Func<string>> runPowerShellAutomationScriptPropertyTypesToSerializeJSON = null, Expression<Func<runPowerShellAutomationScriptPowerShellCommandParametersInputItem[]>> runPowerShellAutomationScriptPowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse> RunPowerShellAutomationScript(Expression<Func<string>> runPowerShellAutomationScriptworkflow, Expression<Func<string>> runPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<string>> runPowerShellAutomationScriptcomputerName = null, Expression<Func<bool>> runPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<runPowerShellAutomationScriptauthenticationMechanismInput>> runPowerShellAutomationScriptauthenticationMechanism = null, Expression<Func<int>> runPowerShellAutomationScriptconnectionAttempts = null, Expression<Func<string>> runPowerShellAutomationScriptusername = null, Expression<Func<string>> runPowerShellAutomationScriptpassword = null, Expression<Func<bool>> runPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnSecureStrings = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var apiCallPath = "/PowerShellAutomation/RunPowerShellScript";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var runPowerShellAutomationScript = new JObject();
             var runPowerShellAutomationScriptpropCount = 0;
-            if (runPowerShellAutomationScriptPowerShellScriptContents != null)
+            if (runPowerShellAutomationScriptpowerShellScriptContents != null)
             {
-                runPowerShellAutomationScript["PowerShellScriptContents"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPowerShellScriptContents);
+                runPowerShellAutomationScript["PowerShellScriptContents"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpowerShellScriptContents);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptComputerName != null)
+            if (runPowerShellAutomationScriptcomputerName != null)
             {
-                runPowerShellAutomationScript["ComputerName"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptComputerName);
+                runPowerShellAutomationScript["ComputerName"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptcomputerName);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptIsNoResultAnError != null)
+            if (runPowerShellAutomationScriptisNoResultAnError != null)
             {
-                runPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptIsNoResultAnError);
+                runPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptisNoResultAnError);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptReturnComplexTypes != null)
+            if (runPowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptReturnComplexTypes);
+                runPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnComplexTypes);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptReturnBooleanAsBoolean != null)
+            if (runPowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptReturnBooleanAsBoolean);
+                runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnBooleanAsBoolean);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptReturnNumericAsDecimal != null)
+            if (runPowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptReturnNumericAsDecimal);
+                runPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnNumericAsDecimal);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptReturnDateAsDate != null)
+            if (runPowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptReturnDateAsDate);
+                runPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnDateAsDate);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptPropertiesToReturnAsCollectionJSON != null)
+            if (runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON != null)
             {
-                runPowerShellAutomationScript["PropertiesToReturnAsCollectionJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPropertiesToReturnAsCollectionJSON);
+                runPowerShellAutomationScript["PropertiesToReturnAsCollectionJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptAuthenticationMechanism != null)
+            if (runPowerShellAutomationScriptauthenticationMechanism != null)
             {
-                runPowerShellAutomationScript["AuthenticationMechanism"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptAuthenticationMechanism);
+                runPowerShellAutomationScript["AuthenticationMechanism"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptauthenticationMechanism);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptConnectionAttempts != null)
+            if (runPowerShellAutomationScriptconnectionAttempts != null)
             {
-                runPowerShellAutomationScript["ConnectionAttempts"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptConnectionAttempts);
+                runPowerShellAutomationScript["ConnectionAttempts"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptconnectionAttempts);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptUsername != null)
+            if (runPowerShellAutomationScriptusername != null)
             {
-                runPowerShellAutomationScript["Username"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptUsername);
+                runPowerShellAutomationScript["Username"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptusername);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptPassword != null)
+            if (runPowerShellAutomationScriptpassword != null)
             {
-                runPowerShellAutomationScript["Password"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPassword);
+                runPowerShellAutomationScript["Password"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpassword);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptRunScriptAsThread != null)
+            if (runPowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptRunScriptAsThread);
+                runPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptrunScriptAsThread);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptRetrieveOutputDataFromThreadId != null)
+            if (runPowerShellAutomationScriptretrieveOutputDataFromThreadId != null)
             {
-                runPowerShellAutomationScript["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptRetrieveOutputDataFromThreadId);
+                runPowerShellAutomationScript["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptretrieveOutputDataFromThreadId);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptSecondsToWaitForThread != null)
+            if (runPowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptSecondsToWaitForThread);
+                runPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptsecondsToWaitForThread);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptScriptContainsStoredPassword != null)
+            if (runPowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptScriptContainsStoredPassword);
+                runPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptscriptContainsStoredPassword);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptLogVerboseOutput != null)
+            if (runPowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptLogVerboseOutput);
+                runPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptlogVerboseOutput);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptReturnSecureStrings != null)
+            if (runPowerShellAutomationScriptreturnSecureStrings != null)
             {
-                runPowerShellAutomationScript["ReturnSecureStrings"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptReturnSecureStrings);
+                runPowerShellAutomationScript["ReturnSecureStrings"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnSecureStrings);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptPropertyNamesToSerializeJSON != null)
+            if (runPowerShellAutomationScriptpropertyNamesToSerializeJSON != null)
             {
-                runPowerShellAutomationScript["PropertyNamesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPropertyNamesToSerializeJSON);
+                runPowerShellAutomationScript["PropertyNamesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertyNamesToSerializeJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptPropertyTypesToSerializeJSON != null)
+            if (runPowerShellAutomationScriptpropertyTypesToSerializeJSON != null)
             {
-                runPowerShellAutomationScript["PropertyTypesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPropertyTypesToSerializeJSON);
+                runPowerShellAutomationScript["PropertyTypesToSerializeJSON"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpropertyTypesToSerializeJSON);
                 runPowerShellAutomationScriptpropCount++;
             }
 
-            if (runPowerShellAutomationScriptPowerShellCommandParameters != null)
+            if (runPowerShellAutomationScriptpowerShellCommandParameters != null)
             {
-                runPowerShellAutomationScript["PowerShellCommandParameters"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptPowerShellCommandParameters);
+                runPowerShellAutomationScript["PowerShellCommandParameters"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptpowerShellCommandParameters);
                 runPowerShellAutomationScriptpropCount++;
             }
 
             runPowerShellAutomationScriptpropCount++;
-            runPowerShellAutomationScript["Workflow"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptWorkflow);
+            runPowerShellAutomationScript["Workflow"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptworkflow);
             if (runPowerShellAutomationScriptpropCount > 0)
             {
                 callPayload.Body = runPowerShellAutomationScript;
@@ -260,33 +260,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetPowerShellVersionResponse> GetPowerShellVersion(Expression<Func<string>> getPowerShellVersionWorkflow, Expression<Func<string>> getPowerShellVersionComputerName = null, Expression<Func<getPowerShellVersionAuthenticationMechanismInput>> getPowerShellVersionAuthenticationMechanism = null, Expression<Func<int>> getPowerShellVersionConnectionAttempts = null)
+        public IBodyWorkflowAction<GetPowerShellVersionResponse> GetPowerShellVersion(Expression<Func<string>> getPowerShellVersionworkflow, Expression<Func<string>> getPowerShellVersioncomputerName = null, Expression<Func<getPowerShellVersionauthenticationMechanismInput>> getPowerShellVersionauthenticationMechanism = null, Expression<Func<int>> getPowerShellVersionconnectionAttempts = null)
         {
             var apiCallPath = "/PowerShellAutomation/GetPowerShellVersion";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var getPowerShellVersion = new JObject();
             var getPowerShellVersionpropCount = 0;
-            if (getPowerShellVersionComputerName != null)
+            if (getPowerShellVersioncomputerName != null)
             {
-                getPowerShellVersion["ComputerName"] = ExpressionConverter.ConvertO(getPowerShellVersionComputerName);
+                getPowerShellVersion["ComputerName"] = ExpressionConverter.ConvertO(getPowerShellVersioncomputerName);
                 getPowerShellVersionpropCount++;
             }
 
-            if (getPowerShellVersionAuthenticationMechanism != null)
+            if (getPowerShellVersionauthenticationMechanism != null)
             {
-                getPowerShellVersion["AuthenticationMechanism"] = ExpressionConverter.ConvertO(getPowerShellVersionAuthenticationMechanism);
+                getPowerShellVersion["AuthenticationMechanism"] = ExpressionConverter.ConvertO(getPowerShellVersionauthenticationMechanism);
                 getPowerShellVersionpropCount++;
             }
 
-            if (getPowerShellVersionConnectionAttempts != null)
+            if (getPowerShellVersionconnectionAttempts != null)
             {
-                getPowerShellVersion["ConnectionAttempts"] = ExpressionConverter.ConvertO(getPowerShellVersionConnectionAttempts);
+                getPowerShellVersion["ConnectionAttempts"] = ExpressionConverter.ConvertO(getPowerShellVersionconnectionAttempts);
                 getPowerShellVersionpropCount++;
             }
 
             getPowerShellVersionpropCount++;
-            getPowerShellVersion["Workflow"] = ExpressionConverter.ConvertO(getPowerShellVersionWorkflow);
+            getPowerShellVersion["Workflow"] = ExpressionConverter.ConvertO(getPowerShellVersionworkflow);
             if (getPowerShellVersionpropCount > 0)
             {
                 callPayload.Body = getPowerShellVersion;
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexMatchResponse> GetRegexMatch(Expression<Func<string>> getRegexMatchTextToMatch, Expression<Func<string>> getRegexMatchRegex, Expression<Func<int>> getRegexMatchSearchIndex = null, Expression<Func<bool>> getRegexMatchCaseSensitive = null, Expression<Func<int>> getRegexMatchRegexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexMatchResponse> GetRegexMatch(Expression<Func<string>> getRegexMatchtextToMatch, Expression<Func<string>> getRegexMatchregex, Expression<Func<int>> getRegexMatchsearchIndex = null, Expression<Func<bool>> getRegexMatchcaseSensitive = null, Expression<Func<int>> getRegexMatchregexTimeoutInSeconds = null)
         {
             var apiCallPath = "/DynamicCode/GetRegexMatch";
             var apiCallHttpMethod = "post";
@@ -304,24 +304,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexMatch = new JObject();
             var getRegexMatchpropCount = 0;
             getRegexMatchpropCount++;
-            getRegexMatch["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchTextToMatch);
+            getRegexMatch["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchtextToMatch);
             getRegexMatchpropCount++;
-            getRegexMatch["Regex"] = ExpressionConverter.ConvertO(getRegexMatchRegex);
-            if (getRegexMatchSearchIndex != null)
+            getRegexMatch["Regex"] = ExpressionConverter.ConvertO(getRegexMatchregex);
+            if (getRegexMatchsearchIndex != null)
             {
-                getRegexMatch["SearchIndex"] = ExpressionConverter.ConvertO(getRegexMatchSearchIndex);
+                getRegexMatch["SearchIndex"] = ExpressionConverter.ConvertO(getRegexMatchsearchIndex);
                 getRegexMatchpropCount++;
             }
 
-            if (getRegexMatchCaseSensitive != null)
+            if (getRegexMatchcaseSensitive != null)
             {
-                getRegexMatch["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchCaseSensitive);
+                getRegexMatch["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchcaseSensitive);
                 getRegexMatchpropCount++;
             }
 
-            if (getRegexMatchRegexTimeoutInSeconds != null)
+            if (getRegexMatchregexTimeoutInSeconds != null)
             {
-                getRegexMatch["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchRegexTimeoutInSeconds);
+                getRegexMatch["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchregexTimeoutInSeconds);
                 getRegexMatchpropCount++;
             }
 
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexMatchesResponse> GetRegexMatches(Expression<Func<string>> getRegexMatchesTextToMatch, Expression<Func<string>> getRegexMatchesRegex, Expression<Func<int>> getRegexMatchesMaximumMatches = null, Expression<Func<bool>> getRegexMatchesCaseSensitive = null, Expression<Func<bool>> getRegexMatchesTrimResults = null, Expression<Func<bool>> getRegexMatchesRemoveEmptyResults = null, Expression<Func<int>> getRegexMatchesRegexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexMatchesResponse> GetRegexMatches(Expression<Func<string>> getRegexMatchestextToMatch, Expression<Func<string>> getRegexMatchesregex, Expression<Func<int>> getRegexMatchesmaximumMatches = null, Expression<Func<bool>> getRegexMatchescaseSensitive = null, Expression<Func<bool>> getRegexMatchestrimResults = null, Expression<Func<bool>> getRegexMatchesremoveEmptyResults = null, Expression<Func<int>> getRegexMatchesregexTimeoutInSeconds = null)
         {
             var apiCallPath = "/DynamicCode/GetRegexMatches";
             var apiCallHttpMethod = "post";
@@ -342,36 +342,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexMatches = new JObject();
             var getRegexMatchespropCount = 0;
             getRegexMatchespropCount++;
-            getRegexMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchesTextToMatch);
+            getRegexMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexMatchestextToMatch);
             getRegexMatchespropCount++;
-            getRegexMatches["Regex"] = ExpressionConverter.ConvertO(getRegexMatchesRegex);
-            if (getRegexMatchesMaximumMatches != null)
+            getRegexMatches["Regex"] = ExpressionConverter.ConvertO(getRegexMatchesregex);
+            if (getRegexMatchesmaximumMatches != null)
             {
-                getRegexMatches["MaximumMatches"] = ExpressionConverter.ConvertO(getRegexMatchesMaximumMatches);
+                getRegexMatches["MaximumMatches"] = ExpressionConverter.ConvertO(getRegexMatchesmaximumMatches);
                 getRegexMatchespropCount++;
             }
 
-            if (getRegexMatchesCaseSensitive != null)
+            if (getRegexMatchescaseSensitive != null)
             {
-                getRegexMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchesCaseSensitive);
+                getRegexMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchescaseSensitive);
                 getRegexMatchespropCount++;
             }
 
-            if (getRegexMatchesTrimResults != null)
+            if (getRegexMatchestrimResults != null)
             {
-                getRegexMatches["TrimResults"] = ExpressionConverter.ConvertO(getRegexMatchesTrimResults);
+                getRegexMatches["TrimResults"] = ExpressionConverter.ConvertO(getRegexMatchestrimResults);
                 getRegexMatchespropCount++;
             }
 
-            if (getRegexMatchesRemoveEmptyResults != null)
+            if (getRegexMatchesremoveEmptyResults != null)
             {
-                getRegexMatches["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexMatchesRemoveEmptyResults);
+                getRegexMatches["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexMatchesremoveEmptyResults);
                 getRegexMatchespropCount++;
             }
 
-            if (getRegexMatchesRegexTimeoutInSeconds != null)
+            if (getRegexMatchesregexTimeoutInSeconds != null)
             {
-                getRegexMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchesRegexTimeoutInSeconds);
+                getRegexMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchesregexTimeoutInSeconds);
                 getRegexMatchespropCount++;
             }
 
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexSplitResponse> GetRegexSplit(Expression<Func<string>> getRegexSplitTextToSplit, Expression<Func<string>> getRegexSplitRegex, Expression<Func<bool>> getRegexSplitCaseSensitive = null, Expression<Func<bool>> getRegexSplitTrimResults = null, Expression<Func<bool>> getRegexSplitRemoveEmptyResults = null, Expression<Func<int>> getRegexSplitRegexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexSplitResponse> GetRegexSplit(Expression<Func<string>> getRegexSplittextToSplit, Expression<Func<string>> getRegexSplitregex, Expression<Func<bool>> getRegexSplitcaseSensitive = null, Expression<Func<bool>> getRegexSplittrimResults = null, Expression<Func<bool>> getRegexSplitremoveEmptyResults = null, Expression<Func<int>> getRegexSplitregexTimeoutInSeconds = null)
         {
             var apiCallPath = "/DynamicCode/GetRegexSplit";
             var apiCallHttpMethod = "post";
@@ -392,30 +392,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexSplit = new JObject();
             var getRegexSplitpropCount = 0;
             getRegexSplitpropCount++;
-            getRegexSplit["TextToSplit"] = ExpressionConverter.ConvertO(getRegexSplitTextToSplit);
+            getRegexSplit["TextToSplit"] = ExpressionConverter.ConvertO(getRegexSplittextToSplit);
             getRegexSplitpropCount++;
-            getRegexSplit["Regex"] = ExpressionConverter.ConvertO(getRegexSplitRegex);
-            if (getRegexSplitCaseSensitive != null)
+            getRegexSplit["Regex"] = ExpressionConverter.ConvertO(getRegexSplitregex);
+            if (getRegexSplitcaseSensitive != null)
             {
-                getRegexSplit["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexSplitCaseSensitive);
+                getRegexSplit["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexSplitcaseSensitive);
                 getRegexSplitpropCount++;
             }
 
-            if (getRegexSplitTrimResults != null)
+            if (getRegexSplittrimResults != null)
             {
-                getRegexSplit["TrimResults"] = ExpressionConverter.ConvertO(getRegexSplitTrimResults);
+                getRegexSplit["TrimResults"] = ExpressionConverter.ConvertO(getRegexSplittrimResults);
                 getRegexSplitpropCount++;
             }
 
-            if (getRegexSplitRemoveEmptyResults != null)
+            if (getRegexSplitremoveEmptyResults != null)
             {
-                getRegexSplit["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexSplitRemoveEmptyResults);
+                getRegexSplit["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexSplitremoveEmptyResults);
                 getRegexSplitpropCount++;
             }
 
-            if (getRegexSplitRegexTimeoutInSeconds != null)
+            if (getRegexSplitregexTimeoutInSeconds != null)
             {
-                getRegexSplit["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexSplitRegexTimeoutInSeconds);
+                getRegexSplit["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexSplitregexTimeoutInSeconds);
                 getRegexSplitpropCount++;
             }
 
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexGroupMatchesResponse> GetRegexGroupMatches(Expression<Func<string>> getRegexGroupMatchesTextToMatch, Expression<Func<string>> getRegexGroupMatchesRegex, Expression<Func<string[]>> getRegexGroupMatchesGroupsToRetrieve = null, Expression<Func<int>> getRegexGroupMatchesSearchIndex = null, Expression<Func<bool>> getRegexGroupMatchesCaseSensitive = null, Expression<Func<int>> getRegexGroupMatchesRegexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexGroupMatchesResponse> GetRegexGroupMatches(Expression<Func<string>> getRegexGroupMatchestextToMatch, Expression<Func<string>> getRegexGroupMatchesregex, Expression<Func<string[]>> getRegexGroupMatchesgroupsToRetrieve = null, Expression<Func<int>> getRegexGroupMatchessearchIndex = null, Expression<Func<bool>> getRegexGroupMatchescaseSensitive = null, Expression<Func<int>> getRegexGroupMatchesregexTimeoutInSeconds = null)
         {
             var apiCallPath = "/DynamicCode/GetRegexGroupMatches";
             var apiCallHttpMethod = "post";
@@ -436,30 +436,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getRegexGroupMatches = new JObject();
             var getRegexGroupMatchespropCount = 0;
             getRegexGroupMatchespropCount++;
-            getRegexGroupMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexGroupMatchesTextToMatch);
+            getRegexGroupMatches["TextToMatch"] = ExpressionConverter.ConvertO(getRegexGroupMatchestextToMatch);
             getRegexGroupMatchespropCount++;
-            getRegexGroupMatches["Regex"] = ExpressionConverter.ConvertO(getRegexGroupMatchesRegex);
-            if (getRegexGroupMatchesGroupsToRetrieve != null)
+            getRegexGroupMatches["Regex"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregex);
+            if (getRegexGroupMatchesgroupsToRetrieve != null)
             {
-                getRegexGroupMatches["GroupsToRetrieve"] = ExpressionConverter.ConvertO(getRegexGroupMatchesGroupsToRetrieve);
+                getRegexGroupMatches["GroupsToRetrieve"] = ExpressionConverter.ConvertO(getRegexGroupMatchesgroupsToRetrieve);
                 getRegexGroupMatchespropCount++;
             }
 
-            if (getRegexGroupMatchesSearchIndex != null)
+            if (getRegexGroupMatchessearchIndex != null)
             {
-                getRegexGroupMatches["SearchIndex"] = ExpressionConverter.ConvertO(getRegexGroupMatchesSearchIndex);
+                getRegexGroupMatches["SearchIndex"] = ExpressionConverter.ConvertO(getRegexGroupMatchessearchIndex);
                 getRegexGroupMatchespropCount++;
             }
 
-            if (getRegexGroupMatchesCaseSensitive != null)
+            if (getRegexGroupMatchescaseSensitive != null)
             {
-                getRegexGroupMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexGroupMatchesCaseSensitive);
+                getRegexGroupMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexGroupMatchescaseSensitive);
                 getRegexGroupMatchespropCount++;
             }
 
-            if (getRegexGroupMatchesRegexTimeoutInSeconds != null)
+            if (getRegexGroupMatchesregexTimeoutInSeconds != null)
             {
-                getRegexGroupMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexGroupMatchesRegexTimeoutInSeconds);
+                getRegexGroupMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregexTimeoutInSeconds);
                 getRegexGroupMatchespropCount++;
             }
 
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse> CreateJSONFromInputVariables(Expression<Func<createJSONFromInputVariablesInputVariablesInputItem[]>> createJSONFromInputVariablesInputVariables, Expression<Func<bool>> createJSONFromInputVariablesReturnAsJSONTable)
+        public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse> CreateJSONFromInputVariables(Expression<Func<createJSONFromInputVariablesinputVariablesInputItem[]>> createJSONFromInputVariablesinputVariables, Expression<Func<bool>> createJSONFromInputVariablesreturnAsJSONTable)
         {
             var apiCallPath = "/DynamicCode/CreateJSONFromInputVariables";
             var apiCallHttpMethod = "post";
@@ -480,9 +480,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var createJSONFromInputVariables = new JObject();
             var createJSONFromInputVariablespropCount = 0;
             createJSONFromInputVariablespropCount++;
-            createJSONFromInputVariables["InputVariables"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesInputVariables);
+            createJSONFromInputVariables["InputVariables"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesinputVariables);
             createJSONFromInputVariablespropCount++;
-            createJSONFromInputVariables["ReturnAsJSONTable"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesReturnAsJSONTable);
+            createJSONFromInputVariables["ReturnAsJSONTable"] = ExpressionConverter.ConvertO(createJSONFromInputVariablesreturnAsJSONTable);
             if (createJSONFromInputVariablespropCount > 0)
             {
                 callPayload.Body = createJSONFromInputVariables;
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse> GetJSONTableFromStringArray(Expression<Func<string[]>> getJSONTableFromStringArrayInputArray, Expression<Func<string>> getJSONTableFromStringArrayColumnName, Expression<Func<bool>> getJSONTableFromStringArrayDropEmptyItems = null)
+        public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse> GetJSONTableFromStringArray(Expression<Func<string[]>> getJSONTableFromStringArrayinputArray, Expression<Func<string>> getJSONTableFromStringArraycolumnName, Expression<Func<bool>> getJSONTableFromStringArraydropEmptyItems = null)
         {
             var apiCallPath = "/DynamicCode/GetJSONTableFromStringArray";
             var apiCallHttpMethod = "post";
@@ -500,12 +500,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getJSONTableFromStringArray = new JObject();
             var getJSONTableFromStringArraypropCount = 0;
             getJSONTableFromStringArraypropCount++;
-            getJSONTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getJSONTableFromStringArrayInputArray);
+            getJSONTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getJSONTableFromStringArrayinputArray);
             getJSONTableFromStringArraypropCount++;
-            getJSONTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getJSONTableFromStringArrayColumnName);
-            if (getJSONTableFromStringArrayDropEmptyItems != null)
+            getJSONTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraycolumnName);
+            if (getJSONTableFromStringArraydropEmptyItems != null)
             {
-                getJSONTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getJSONTableFromStringArrayDropEmptyItems);
+                getJSONTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraydropEmptyItems);
                 getJSONTableFromStringArraypropCount++;
             }
 
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterJSONTableResponse> FilterJSONTable(Expression<Func<string>> filterJSONTableJSONTable, Expression<Func<string>> filterJSONTableFilter, Expression<Func<string>> filterJSONTableSortColumnName = null, Expression<Func<bool>> filterJSONTableAscending = null, Expression<Func<string>> filterJSONTableSortColumnName2 = null, Expression<Func<bool>> filterJSONTableAscending2 = null, Expression<Func<string>> filterJSONTableSortColumnName3 = null, Expression<Func<bool>> filterJSONTableAscending3 = null)
+        public IBodyWorkflowAction<FilterJSONTableResponse> FilterJSONTable(Expression<Func<string>> filterJSONTablejSONTable, Expression<Func<string>> filterJSONTablefilter, Expression<Func<string>> filterJSONTablesortColumnName = null, Expression<Func<bool>> filterJSONTableascending = null, Expression<Func<string>> filterJSONTablesortColumnName2 = null, Expression<Func<bool>> filterJSONTableascending2 = null, Expression<Func<string>> filterJSONTablesortColumnName3 = null, Expression<Func<bool>> filterJSONTableascending3 = null)
         {
             var apiCallPath = "/DynamicCode/FilterJSONTable";
             var apiCallHttpMethod = "post";
@@ -526,42 +526,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterJSONTable = new JObject();
             var filterJSONTablepropCount = 0;
             filterJSONTablepropCount++;
-            filterJSONTable["JSONTable"] = ExpressionConverter.ConvertO(filterJSONTableJSONTable);
+            filterJSONTable["JSONTable"] = ExpressionConverter.ConvertO(filterJSONTablejSONTable);
             filterJSONTablepropCount++;
-            filterJSONTable["Filter"] = ExpressionConverter.ConvertO(filterJSONTableFilter);
-            if (filterJSONTableSortColumnName != null)
+            filterJSONTable["Filter"] = ExpressionConverter.ConvertO(filterJSONTablefilter);
+            if (filterJSONTablesortColumnName != null)
             {
-                filterJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(filterJSONTableSortColumnName);
+                filterJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName);
                 filterJSONTablepropCount++;
             }
 
-            if (filterJSONTableAscending != null)
+            if (filterJSONTableascending != null)
             {
-                filterJSONTable["Ascending"] = ExpressionConverter.ConvertO(filterJSONTableAscending);
+                filterJSONTable["Ascending"] = ExpressionConverter.ConvertO(filterJSONTableascending);
                 filterJSONTablepropCount++;
             }
 
-            if (filterJSONTableSortColumnName2 != null)
+            if (filterJSONTablesortColumnName2 != null)
             {
-                filterJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterJSONTableSortColumnName2);
+                filterJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName2);
                 filterJSONTablepropCount++;
             }
 
-            if (filterJSONTableAscending2 != null)
+            if (filterJSONTableascending2 != null)
             {
-                filterJSONTable["Ascending2"] = ExpressionConverter.ConvertO(filterJSONTableAscending2);
+                filterJSONTable["Ascending2"] = ExpressionConverter.ConvertO(filterJSONTableascending2);
                 filterJSONTablepropCount++;
             }
 
-            if (filterJSONTableSortColumnName3 != null)
+            if (filterJSONTablesortColumnName3 != null)
             {
-                filterJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterJSONTableSortColumnName3);
+                filterJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterJSONTablesortColumnName3);
                 filterJSONTablepropCount++;
             }
 
-            if (filterJSONTableAscending3 != null)
+            if (filterJSONTableascending3 != null)
             {
-                filterJSONTable["Ascending3"] = ExpressionConverter.ConvertO(filterJSONTableAscending3);
+                filterJSONTable["Ascending3"] = ExpressionConverter.ConvertO(filterJSONTableascending3);
                 filterJSONTablepropCount++;
             }
 
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterTableResponse> FilterTable(Expression<Func<JToken[]>> filterTableInputTable, Expression<Func<string>> filterTableFilter, Expression<Func<string>> filterTableSortColumnName = null, Expression<Func<bool>> filterTableAscending = null, Expression<Func<string>> filterTableSortColumnName2 = null, Expression<Func<bool>> filterTableAscending2 = null, Expression<Func<string>> filterTableSortColumnName3 = null, Expression<Func<bool>> filterTableAscending3 = null)
+        public IBodyWorkflowAction<FilterTableResponse> FilterTable(Expression<Func<JToken[]>> filterTableinputTable, Expression<Func<string>> filterTablefilter, Expression<Func<string>> filterTablesortColumnName = null, Expression<Func<bool>> filterTableascending = null, Expression<Func<string>> filterTablesortColumnName2 = null, Expression<Func<bool>> filterTableascending2 = null, Expression<Func<string>> filterTablesortColumnName3 = null, Expression<Func<bool>> filterTableascending3 = null)
         {
             var apiCallPath = "/DynamicCode/FilterTable";
             var apiCallHttpMethod = "post";
@@ -582,42 +582,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterTable = new JObject();
             var filterTablepropCount = 0;
             filterTablepropCount++;
-            filterTable["InputTable"] = ExpressionConverter.ConvertO(filterTableInputTable);
+            filterTable["InputTable"] = ExpressionConverter.ConvertO(filterTableinputTable);
             filterTablepropCount++;
-            filterTable["Filter"] = ExpressionConverter.ConvertO(filterTableFilter);
-            if (filterTableSortColumnName != null)
+            filterTable["Filter"] = ExpressionConverter.ConvertO(filterTablefilter);
+            if (filterTablesortColumnName != null)
             {
-                filterTable["SortColumnName"] = ExpressionConverter.ConvertO(filterTableSortColumnName);
+                filterTable["SortColumnName"] = ExpressionConverter.ConvertO(filterTablesortColumnName);
                 filterTablepropCount++;
             }
 
-            if (filterTableAscending != null)
+            if (filterTableascending != null)
             {
-                filterTable["Ascending"] = ExpressionConverter.ConvertO(filterTableAscending);
+                filterTable["Ascending"] = ExpressionConverter.ConvertO(filterTableascending);
                 filterTablepropCount++;
             }
 
-            if (filterTableSortColumnName2 != null)
+            if (filterTablesortColumnName2 != null)
             {
-                filterTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterTableSortColumnName2);
+                filterTable["SortColumnName2"] = ExpressionConverter.ConvertO(filterTablesortColumnName2);
                 filterTablepropCount++;
             }
 
-            if (filterTableAscending2 != null)
+            if (filterTableascending2 != null)
             {
-                filterTable["Ascending2"] = ExpressionConverter.ConvertO(filterTableAscending2);
+                filterTable["Ascending2"] = ExpressionConverter.ConvertO(filterTableascending2);
                 filterTablepropCount++;
             }
 
-            if (filterTableSortColumnName3 != null)
+            if (filterTablesortColumnName3 != null)
             {
-                filterTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterTableSortColumnName3);
+                filterTable["SortColumnName3"] = ExpressionConverter.ConvertO(filterTablesortColumnName3);
                 filterTablepropCount++;
             }
 
-            if (filterTableAscending3 != null)
+            if (filterTableascending3 != null)
             {
-                filterTable["Ascending3"] = ExpressionConverter.ConvertO(filterTableAscending3);
+                filterTable["Ascending3"] = ExpressionConverter.ConvertO(filterTableascending3);
                 filterTablepropCount++;
             }
 
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortTableResponse> SortTable(Expression<Func<JToken[]>> sortTableInputTable, Expression<Func<string>> sortTableSortColumnName, Expression<Func<bool>> sortTableAscending, Expression<Func<string>> sortTableSortColumnName2 = null, Expression<Func<bool>> sortTableAscending2 = null, Expression<Func<string>> sortTableSortColumnName3 = null, Expression<Func<bool>> sortTableAscending3 = null)
+        public IBodyWorkflowAction<SortTableResponse> SortTable(Expression<Func<JToken[]>> sortTableinputTable, Expression<Func<string>> sortTablesortColumnName, Expression<Func<bool>> sortTableascending, Expression<Func<string>> sortTablesortColumnName2 = null, Expression<Func<bool>> sortTableascending2 = null, Expression<Func<string>> sortTablesortColumnName3 = null, Expression<Func<bool>> sortTableascending3 = null)
         {
             var apiCallPath = "/DynamicCode/SortTable";
             var apiCallHttpMethod = "post";
@@ -638,32 +638,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortTable = new JObject();
             var sortTablepropCount = 0;
             sortTablepropCount++;
-            sortTable["InputTable"] = ExpressionConverter.ConvertO(sortTableInputTable);
+            sortTable["InputTable"] = ExpressionConverter.ConvertO(sortTableinputTable);
             sortTablepropCount++;
-            sortTable["SortColumnName"] = ExpressionConverter.ConvertO(sortTableSortColumnName);
+            sortTable["SortColumnName"] = ExpressionConverter.ConvertO(sortTablesortColumnName);
             sortTablepropCount++;
-            sortTable["Ascending"] = ExpressionConverter.ConvertO(sortTableAscending);
-            if (sortTableSortColumnName2 != null)
+            sortTable["Ascending"] = ExpressionConverter.ConvertO(sortTableascending);
+            if (sortTablesortColumnName2 != null)
             {
-                sortTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortTableSortColumnName2);
+                sortTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortTablesortColumnName2);
                 sortTablepropCount++;
             }
 
-            if (sortTableAscending2 != null)
+            if (sortTableascending2 != null)
             {
-                sortTable["Ascending2"] = ExpressionConverter.ConvertO(sortTableAscending2);
+                sortTable["Ascending2"] = ExpressionConverter.ConvertO(sortTableascending2);
                 sortTablepropCount++;
             }
 
-            if (sortTableSortColumnName3 != null)
+            if (sortTablesortColumnName3 != null)
             {
-                sortTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortTableSortColumnName3);
+                sortTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortTablesortColumnName3);
                 sortTablepropCount++;
             }
 
-            if (sortTableAscending3 != null)
+            if (sortTableascending3 != null)
             {
-                sortTable["Ascending3"] = ExpressionConverter.ConvertO(sortTableAscending3);
+                sortTable["Ascending3"] = ExpressionConverter.ConvertO(sortTableascending3);
                 sortTablepropCount++;
             }
 
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortJSONTableResponse> SortJSONTable(Expression<Func<string>> sortJSONTableJSONTable, Expression<Func<string>> sortJSONTableSortColumnName, Expression<Func<bool>> sortJSONTableAscending = null, Expression<Func<string>> sortJSONTableSortColumnName2 = null, Expression<Func<bool>> sortJSONTableAscending2 = null, Expression<Func<string>> sortJSONTableSortColumnName3 = null, Expression<Func<bool>> sortJSONTableAscending3 = null)
+        public IBodyWorkflowAction<SortJSONTableResponse> SortJSONTable(Expression<Func<string>> sortJSONTablejSONTable, Expression<Func<string>> sortJSONTablesortColumnName, Expression<Func<bool>> sortJSONTableascending = null, Expression<Func<string>> sortJSONTablesortColumnName2 = null, Expression<Func<bool>> sortJSONTableascending2 = null, Expression<Func<string>> sortJSONTablesortColumnName3 = null, Expression<Func<bool>> sortJSONTableascending3 = null)
         {
             var apiCallPath = "/DynamicCode/SortJSONTable";
             var apiCallHttpMethod = "post";
@@ -684,36 +684,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortJSONTable = new JObject();
             var sortJSONTablepropCount = 0;
             sortJSONTablepropCount++;
-            sortJSONTable["JSONTable"] = ExpressionConverter.ConvertO(sortJSONTableJSONTable);
+            sortJSONTable["JSONTable"] = ExpressionConverter.ConvertO(sortJSONTablejSONTable);
             sortJSONTablepropCount++;
-            sortJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(sortJSONTableSortColumnName);
-            if (sortJSONTableAscending != null)
+            sortJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName);
+            if (sortJSONTableascending != null)
             {
-                sortJSONTable["Ascending"] = ExpressionConverter.ConvertO(sortJSONTableAscending);
+                sortJSONTable["Ascending"] = ExpressionConverter.ConvertO(sortJSONTableascending);
                 sortJSONTablepropCount++;
             }
 
-            if (sortJSONTableSortColumnName2 != null)
+            if (sortJSONTablesortColumnName2 != null)
             {
-                sortJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortJSONTableSortColumnName2);
+                sortJSONTable["SortColumnName2"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName2);
                 sortJSONTablepropCount++;
             }
 
-            if (sortJSONTableAscending2 != null)
+            if (sortJSONTableascending2 != null)
             {
-                sortJSONTable["Ascending2"] = ExpressionConverter.ConvertO(sortJSONTableAscending2);
+                sortJSONTable["Ascending2"] = ExpressionConverter.ConvertO(sortJSONTableascending2);
                 sortJSONTablepropCount++;
             }
 
-            if (sortJSONTableSortColumnName3 != null)
+            if (sortJSONTablesortColumnName3 != null)
             {
-                sortJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortJSONTableSortColumnName3);
+                sortJSONTable["SortColumnName3"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName3);
                 sortJSONTablepropCount++;
             }
 
-            if (sortJSONTableAscending3 != null)
+            if (sortJSONTableascending3 != null)
             {
-                sortJSONTable["Ascending3"] = ExpressionConverter.ConvertO(sortJSONTableAscending3);
+                sortJSONTable["Ascending3"] = ExpressionConverter.ConvertO(sortJSONTableascending3);
                 sortJSONTablepropCount++;
             }
 
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetTableFromStringArrayResponse> GetTableFromStringArray(Expression<Func<string[]>> getTableFromStringArrayInputArray, Expression<Func<string>> getTableFromStringArrayColumnName, Expression<Func<bool>> getTableFromStringArrayDropEmptyItems = null)
+        public IBodyWorkflowAction<GetTableFromStringArrayResponse> GetTableFromStringArray(Expression<Func<string[]>> getTableFromStringArrayinputArray, Expression<Func<string>> getTableFromStringArraycolumnName, Expression<Func<bool>> getTableFromStringArraydropEmptyItems = null)
         {
             var apiCallPath = "/DynamicCode/GetTableFromStringArray";
             var apiCallHttpMethod = "post";
@@ -734,12 +734,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getTableFromStringArray = new JObject();
             var getTableFromStringArraypropCount = 0;
             getTableFromStringArraypropCount++;
-            getTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getTableFromStringArrayInputArray);
+            getTableFromStringArray["InputArray"] = ExpressionConverter.ConvertO(getTableFromStringArrayinputArray);
             getTableFromStringArraypropCount++;
-            getTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getTableFromStringArrayColumnName);
-            if (getTableFromStringArrayDropEmptyItems != null)
+            getTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getTableFromStringArraycolumnName);
+            if (getTableFromStringArraydropEmptyItems != null)
             {
-                getTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getTableFromStringArrayDropEmptyItems);
+                getTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getTableFromStringArraydropEmptyItems);
                 getTableFromStringArraypropCount++;
             }
 
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetTableFromJSONResponse> GetTableFromJSON(Expression<Func<string>> getTableFromJSONJSONTable, Expression<Func<int>> getTableFromJSONStartRowIndex, Expression<Func<int>> getTableFromJSONNumberOfRowsToRetrieve = null, Expression<Func<int>> getTableFromJSONStartColumnIndex = null, Expression<Func<string>> getTableFromJSONStartColumnName = null, Expression<Func<int>> getTableFromJSONNumberOfColumnsToRetrieve = null)
+        public IBodyWorkflowAction<GetTableFromJSONResponse> GetTableFromJSON(Expression<Func<string>> getTableFromJSONjSONTable, Expression<Func<int>> getTableFromJSONstartRowIndex, Expression<Func<int>> getTableFromJSONnumberOfRowsToRetrieve = null, Expression<Func<int>> getTableFromJSONstartColumnIndex = null, Expression<Func<string>> getTableFromJSONstartColumnName = null, Expression<Func<int>> getTableFromJSONnumberOfColumnsToRetrieve = null)
         {
             var apiCallPath = "/DynamicCode/GetTableFromJSON";
             var apiCallHttpMethod = "post";
@@ -760,30 +760,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getTableFromJSON = new JObject();
             var getTableFromJSONpropCount = 0;
             getTableFromJSONpropCount++;
-            getTableFromJSON["JSONTable"] = ExpressionConverter.ConvertO(getTableFromJSONJSONTable);
+            getTableFromJSON["JSONTable"] = ExpressionConverter.ConvertO(getTableFromJSONjSONTable);
             getTableFromJSONpropCount++;
-            getTableFromJSON["StartRowIndex"] = ExpressionConverter.ConvertO(getTableFromJSONStartRowIndex);
-            if (getTableFromJSONNumberOfRowsToRetrieve != null)
+            getTableFromJSON["StartRowIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartRowIndex);
+            if (getTableFromJSONnumberOfRowsToRetrieve != null)
             {
-                getTableFromJSON["NumberOfRowsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONNumberOfRowsToRetrieve);
+                getTableFromJSON["NumberOfRowsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONnumberOfRowsToRetrieve);
                 getTableFromJSONpropCount++;
             }
 
-            if (getTableFromJSONStartColumnIndex != null)
+            if (getTableFromJSONstartColumnIndex != null)
             {
-                getTableFromJSON["StartColumnIndex"] = ExpressionConverter.ConvertO(getTableFromJSONStartColumnIndex);
+                getTableFromJSON["StartColumnIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnIndex);
                 getTableFromJSONpropCount++;
             }
 
-            if (getTableFromJSONStartColumnName != null)
+            if (getTableFromJSONstartColumnName != null)
             {
-                getTableFromJSON["StartColumnName"] = ExpressionConverter.ConvertO(getTableFromJSONStartColumnName);
+                getTableFromJSON["StartColumnName"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnName);
                 getTableFromJSONpropCount++;
             }
 
-            if (getTableFromJSONNumberOfColumnsToRetrieve != null)
+            if (getTableFromJSONnumberOfColumnsToRetrieve != null)
             {
-                getTableFromJSON["NumberOfColumnsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONNumberOfColumnsToRetrieve);
+                getTableFromJSON["NumberOfColumnsToRetrieve"] = ExpressionConverter.ConvertO(getTableFromJSONnumberOfColumnsToRetrieve);
                 getTableFromJSONpropCount++;
             }
 
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortStringArrayResponse> SortStringArray(Expression<Func<string[]>> sortStringArrayInputArray, Expression<Func<bool>> sortStringArrayAscending = null, Expression<Func<bool>> sortStringArrayCaseSensitive = null)
+        public IBodyWorkflowAction<SortStringArrayResponse> SortStringArray(Expression<Func<string[]>> sortStringArrayinputArray, Expression<Func<bool>> sortStringArrayascending = null, Expression<Func<bool>> sortStringArraycaseSensitive = null)
         {
             var apiCallPath = "/DynamicCode/SortStringArray";
             var apiCallHttpMethod = "post";
@@ -804,16 +804,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var sortStringArray = new JObject();
             var sortStringArraypropCount = 0;
             sortStringArraypropCount++;
-            sortStringArray["InputArray"] = ExpressionConverter.ConvertO(sortStringArrayInputArray);
-            if (sortStringArrayAscending != null)
+            sortStringArray["InputArray"] = ExpressionConverter.ConvertO(sortStringArrayinputArray);
+            if (sortStringArrayascending != null)
             {
-                sortStringArray["Ascending"] = ExpressionConverter.ConvertO(sortStringArrayAscending);
+                sortStringArray["Ascending"] = ExpressionConverter.ConvertO(sortStringArrayascending);
                 sortStringArraypropCount++;
             }
 
-            if (sortStringArrayCaseSensitive != null)
+            if (sortStringArraycaseSensitive != null)
             {
-                sortStringArray["CaseSensitive"] = ExpressionConverter.ConvertO(sortStringArrayCaseSensitive);
+                sortStringArray["CaseSensitive"] = ExpressionConverter.ConvertO(sortStringArraycaseSensitive);
                 sortStringArraypropCount++;
             }
 
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterStringArrayResponse> FilterStringArray(Expression<Func<string[]>> filterStringArrayInputArray, Expression<Func<string>> filterStringArrayColumnName, Expression<Func<string>> filterStringArrayFilter)
+        public IBodyWorkflowAction<FilterStringArrayResponse> FilterStringArray(Expression<Func<string[]>> filterStringArrayinputArray, Expression<Func<string>> filterStringArraycolumnName, Expression<Func<string>> filterStringArrayfilter)
         {
             var apiCallPath = "/DynamicCode/FilterStringArray";
             var apiCallHttpMethod = "post";
@@ -834,11 +834,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var filterStringArray = new JObject();
             var filterStringArraypropCount = 0;
             filterStringArraypropCount++;
-            filterStringArray["InputArray"] = ExpressionConverter.ConvertO(filterStringArrayInputArray);
+            filterStringArray["InputArray"] = ExpressionConverter.ConvertO(filterStringArrayinputArray);
             filterStringArraypropCount++;
-            filterStringArray["ColumnName"] = ExpressionConverter.ConvertO(filterStringArrayColumnName);
+            filterStringArray["ColumnName"] = ExpressionConverter.ConvertO(filterStringArraycolumnName);
             filterStringArraypropCount++;
-            filterStringArray["Filter"] = ExpressionConverter.ConvertO(filterStringArrayFilter);
+            filterStringArray["Filter"] = ExpressionConverter.ConvertO(filterStringArrayfilter);
             if (filterStringArraypropCount > 0)
             {
                 callPayload.Body = filterStringArray;
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInStringArrayResponse> InsertRowInStringArray(Expression<Func<string[]>> insertRowInStringArrayInputArray, Expression<Func<int>> insertRowInStringArrayRowIndex, Expression<Func<string>> insertRowInStringArrayValueToInsert = null)
+        public IBodyWorkflowAction<InsertRowInStringArrayResponse> InsertRowInStringArray(Expression<Func<string[]>> insertRowInStringArrayinputArray, Expression<Func<int>> insertRowInStringArrayrowIndex, Expression<Func<string>> insertRowInStringArrayvalueToInsert = null)
         {
             var apiCallPath = "/DynamicCode/InsertRowInStringArray";
             var apiCallHttpMethod = "post";
@@ -856,12 +856,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInStringArray = new JObject();
             var insertRowInStringArraypropCount = 0;
             insertRowInStringArraypropCount++;
-            insertRowInStringArray["InputArray"] = ExpressionConverter.ConvertO(insertRowInStringArrayInputArray);
+            insertRowInStringArray["InputArray"] = ExpressionConverter.ConvertO(insertRowInStringArrayinputArray);
             insertRowInStringArraypropCount++;
-            insertRowInStringArray["RowIndex"] = ExpressionConverter.ConvertO(insertRowInStringArrayRowIndex);
-            if (insertRowInStringArrayValueToInsert != null)
+            insertRowInStringArray["RowIndex"] = ExpressionConverter.ConvertO(insertRowInStringArrayrowIndex);
+            if (insertRowInStringArrayvalueToInsert != null)
             {
-                insertRowInStringArray["ValueToInsert"] = ExpressionConverter.ConvertO(insertRowInStringArrayValueToInsert);
+                insertRowInStringArray["ValueToInsert"] = ExpressionConverter.ConvertO(insertRowInStringArrayvalueToInsert);
                 insertRowInStringArraypropCount++;
             }
 
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInTableResponse> InsertRowInTable(Expression<Func<JToken[]>> insertRowInTableInputTable, Expression<Func<int>> insertRowInTableRowIndex, Expression<Func<string>> insertRowInTableRowToInsertJSON = null)
+        public IBodyWorkflowAction<InsertRowInTableResponse> InsertRowInTable(Expression<Func<JToken[]>> insertRowInTableinputTable, Expression<Func<int>> insertRowInTablerowIndex, Expression<Func<string>> insertRowInTablerowToInsertJSON = null)
         {
             var apiCallPath = "/DynamicCode/InsertRowInTable";
             var apiCallHttpMethod = "post";
@@ -882,12 +882,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInTable = new JObject();
             var insertRowInTablepropCount = 0;
             insertRowInTablepropCount++;
-            insertRowInTable["InputTable"] = ExpressionConverter.ConvertO(insertRowInTableInputTable);
+            insertRowInTable["InputTable"] = ExpressionConverter.ConvertO(insertRowInTableinputTable);
             insertRowInTablepropCount++;
-            insertRowInTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInTableRowIndex);
-            if (insertRowInTableRowToInsertJSON != null)
+            insertRowInTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInTablerowIndex);
+            if (insertRowInTablerowToInsertJSON != null)
             {
-                insertRowInTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInTableRowToInsertJSON);
+                insertRowInTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInTablerowToInsertJSON);
                 insertRowInTablepropCount++;
             }
 
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableResponse> InsertRowInJSONTable(Expression<Func<string>> insertRowInJSONTableJSONTable, Expression<Func<int>> insertRowInJSONTableRowIndex, Expression<Func<string>> insertRowInJSONTableRowToInsertJSON = null)
+        public IBodyWorkflowAction<InsertRowInJSONTableResponse> InsertRowInJSONTable(Expression<Func<string>> insertRowInJSONTablejSONTable, Expression<Func<int>> insertRowInJSONTablerowIndex, Expression<Func<string>> insertRowInJSONTablerowToInsertJSON = null)
         {
             var apiCallPath = "/DynamicCode/InsertRowInJSONTable";
             var apiCallHttpMethod = "post";
@@ -908,12 +908,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInJSONTable = new JObject();
             var insertRowInJSONTablepropCount = 0;
             insertRowInJSONTablepropCount++;
-            insertRowInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTableJSONTable);
+            insertRowInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTablejSONTable);
             insertRowInJSONTablepropCount++;
-            insertRowInJSONTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTableRowIndex);
-            if (insertRowInJSONTableRowToInsertJSON != null)
+            insertRowInJSONTable["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTablerowIndex);
+            if (insertRowInJSONTablerowToInsertJSON != null)
             {
-                insertRowInJSONTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInJSONTableRowToInsertJSON);
+                insertRowInJSONTable["RowToInsertJSON"] = ExpressionConverter.ConvertO(insertRowInJSONTablerowToInsertJSON);
                 insertRowInJSONTablepropCount++;
             }
 
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse> InsertRowInJSONTableFromInputVariables(Expression<Func<string>> insertRowInJSONTableFromInputVariablesJSONTable, Expression<Func<int>> insertRowInJSONTableFromInputVariablesRowIndex, Expression<Func<insertRowInJSONTableFromInputVariablesRowToInsertInputVariablesInputItem[]>> insertRowInJSONTableFromInputVariablesRowToInsertInputVariables)
+        public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse> InsertRowInJSONTableFromInputVariables(Expression<Func<string>> insertRowInJSONTableFromInputVariablesjSONTable, Expression<Func<int>> insertRowInJSONTableFromInputVariablesrowIndex, Expression<Func<insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem[]>> insertRowInJSONTableFromInputVariablesrowToInsertInputVariables)
         {
             var apiCallPath = "/DynamicCode/InsertRowInJSONTableFromInputVariables";
             var apiCallHttpMethod = "post";
@@ -934,11 +934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var insertRowInJSONTableFromInputVariables = new JObject();
             var insertRowInJSONTableFromInputVariablespropCount = 0;
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesJSONTable);
+            insertRowInJSONTableFromInputVariables["JSONTable"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesjSONTable);
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesRowIndex);
+            insertRowInJSONTableFromInputVariables["RowIndex"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesrowIndex);
             insertRowInJSONTableFromInputVariablespropCount++;
-            insertRowInJSONTableFromInputVariables["RowToInsertInputVariables"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesRowToInsertInputVariables);
+            insertRowInJSONTableFromInputVariables["RowToInsertInputVariables"] = ExpressionConverter.ConvertO(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables);
             if (insertRowInJSONTableFromInputVariablespropCount > 0)
             {
                 callPayload.Body = insertRowInJSONTableFromInputVariables;
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteItemsInStringArrayResponse> DeleteItemsInStringArray(Expression<Func<string[]>> deleteItemsInStringArrayInputArray, Expression<Func<int>> deleteItemsInStringArrayStartItemIndex, Expression<Func<int>> deleteItemsInStringArrayNumberOfItemsToDelete)
+        public IBodyWorkflowAction<DeleteItemsInStringArrayResponse> DeleteItemsInStringArray(Expression<Func<string[]>> deleteItemsInStringArrayinputArray, Expression<Func<int>> deleteItemsInStringArraystartItemIndex, Expression<Func<int>> deleteItemsInStringArraynumberOfItemsToDelete)
         {
             var apiCallPath = "/DynamicCode/DeleteItemsInStringArray";
             var apiCallHttpMethod = "post";
@@ -956,11 +956,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteItemsInStringArray = new JObject();
             var deleteItemsInStringArraypropCount = 0;
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["InputArray"] = ExpressionConverter.ConvertO(deleteItemsInStringArrayInputArray);
+            deleteItemsInStringArray["InputArray"] = ExpressionConverter.ConvertO(deleteItemsInStringArrayinputArray);
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["StartItemIndex"] = ExpressionConverter.ConvertO(deleteItemsInStringArrayStartItemIndex);
+            deleteItemsInStringArray["StartItemIndex"] = ExpressionConverter.ConvertO(deleteItemsInStringArraystartItemIndex);
             deleteItemsInStringArraypropCount++;
-            deleteItemsInStringArray["NumberOfItemsToDelete"] = ExpressionConverter.ConvertO(deleteItemsInStringArrayNumberOfItemsToDelete);
+            deleteItemsInStringArray["NumberOfItemsToDelete"] = ExpressionConverter.ConvertO(deleteItemsInStringArraynumberOfItemsToDelete);
             if (deleteItemsInStringArraypropCount > 0)
             {
                 callPayload.Body = deleteItemsInStringArray;
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteRowsInTableResponse> DeleteRowsInTable(Expression<Func<JToken[]>> deleteRowsInTableInputTable, Expression<Func<int>> deleteRowsInTableStartRowIndex, Expression<Func<int>> deleteRowsInTableNumberOfRowsToDelete)
+        public IBodyWorkflowAction<DeleteRowsInTableResponse> DeleteRowsInTable(Expression<Func<JToken[]>> deleteRowsInTableinputTable, Expression<Func<int>> deleteRowsInTablestartRowIndex, Expression<Func<int>> deleteRowsInTablenumberOfRowsToDelete)
         {
             var apiCallPath = "/DynamicCode/DeleteRowsInTable";
             var apiCallHttpMethod = "post";
@@ -978,11 +978,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteRowsInTable = new JObject();
             var deleteRowsInTablepropCount = 0;
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteRowsInTableInputTable);
+            deleteRowsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteRowsInTableinputTable);
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInTableStartRowIndex);
+            deleteRowsInTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInTablestartRowIndex);
             deleteRowsInTablepropCount++;
-            deleteRowsInTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInTableNumberOfRowsToDelete);
+            deleteRowsInTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInTablenumberOfRowsToDelete);
             if (deleteRowsInTablepropCount > 0)
             {
                 callPayload.Body = deleteRowsInTable;
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteRowsInJSONTableResponse> DeleteRowsInJSONTable(Expression<Func<string>> deleteRowsInJSONTableJSONTable, Expression<Func<int>> deleteRowsInJSONTableStartRowIndex, Expression<Func<int>> deleteRowsInJSONTableNumberOfRowsToDelete)
+        public IBodyWorkflowAction<DeleteRowsInJSONTableResponse> DeleteRowsInJSONTable(Expression<Func<string>> deleteRowsInJSONTablejSONTable, Expression<Func<int>> deleteRowsInJSONTablestartRowIndex, Expression<Func<int>> deleteRowsInJSONTablenumberOfRowsToDelete)
         {
             var apiCallPath = "/DynamicCode/DeleteRowsInJSONTable";
             var apiCallHttpMethod = "post";
@@ -1000,11 +1000,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteRowsInJSONTable = new JObject();
             var deleteRowsInJSONTablepropCount = 0;
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteRowsInJSONTableJSONTable);
+            deleteRowsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablejSONTable);
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInJSONTableStartRowIndex);
+            deleteRowsInJSONTable["StartRowIndex"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablestartRowIndex);
             deleteRowsInJSONTablepropCount++;
-            deleteRowsInJSONTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInJSONTableNumberOfRowsToDelete);
+            deleteRowsInJSONTable["NumberOfRowsToDelete"] = ExpressionConverter.ConvertO(deleteRowsInJSONTablenumberOfRowsToDelete);
             if (deleteRowsInJSONTablepropCount > 0)
             {
                 callPayload.Body = deleteRowsInJSONTable;
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RenameColumnInTableResponse> RenameColumnInTable(Expression<Func<JToken[]>> renameColumnInTableInputTable, Expression<Func<string>> renameColumnInTableSourceColumnName, Expression<Func<string>> renameColumnInTableNewColumnName)
+        public IBodyWorkflowAction<RenameColumnInTableResponse> RenameColumnInTable(Expression<Func<JToken[]>> renameColumnInTableinputTable, Expression<Func<string>> renameColumnInTablesourceColumnName, Expression<Func<string>> renameColumnInTablenewColumnName)
         {
             var apiCallPath = "/DynamicCode/RenameColumnInTable";
             var apiCallHttpMethod = "post";
@@ -1022,11 +1022,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var renameColumnInTable = new JObject();
             var renameColumnInTablepropCount = 0;
             renameColumnInTablepropCount++;
-            renameColumnInTable["InputTable"] = ExpressionConverter.ConvertO(renameColumnInTableInputTable);
+            renameColumnInTable["InputTable"] = ExpressionConverter.ConvertO(renameColumnInTableinputTable);
             renameColumnInTablepropCount++;
-            renameColumnInTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInTableSourceColumnName);
+            renameColumnInTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInTablesourceColumnName);
             renameColumnInTablepropCount++;
-            renameColumnInTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInTableNewColumnName);
+            renameColumnInTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInTablenewColumnName);
             if (renameColumnInTablepropCount > 0)
             {
                 callPayload.Body = renameColumnInTable;
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RenameColumnInJSONTableResponse> RenameColumnInJSONTable(Expression<Func<string>> renameColumnInJSONTableJSONTable, Expression<Func<string>> renameColumnInJSONTableSourceColumnName, Expression<Func<string>> renameColumnInJSONTableNewColumnName)
+        public IBodyWorkflowAction<RenameColumnInJSONTableResponse> RenameColumnInJSONTable(Expression<Func<string>> renameColumnInJSONTablejSONTable, Expression<Func<string>> renameColumnInJSONTablesourceColumnName, Expression<Func<string>> renameColumnInJSONTablenewColumnName)
         {
             var apiCallPath = "/DynamicCode/RenameColumnInJSONTable";
             var apiCallHttpMethod = "post";
@@ -1044,11 +1044,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var renameColumnInJSONTable = new JObject();
             var renameColumnInJSONTablepropCount = 0;
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(renameColumnInJSONTableJSONTable);
+            renameColumnInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(renameColumnInJSONTablejSONTable);
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTableSourceColumnName);
+            renameColumnInJSONTable["SourceColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTablesourceColumnName);
             renameColumnInJSONTablepropCount++;
-            renameColumnInJSONTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTableNewColumnName);
+            renameColumnInJSONTable["NewColumnName"] = ExpressionConverter.ConvertO(renameColumnInJSONTablenewColumnName);
             if (renameColumnInJSONTablepropCount > 0)
             {
                 callPayload.Body = renameColumnInJSONTable;
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteColumnsInTableResponse> DeleteColumnsInTable(Expression<Func<JToken[]>> deleteColumnsInTableInputTable, Expression<Func<int>> deleteColumnsInTableNumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInTableStartColumnIndex = null, Expression<Func<string>> deleteColumnsInTableColumnNameToDelete = null)
+        public IBodyWorkflowAction<DeleteColumnsInTableResponse> DeleteColumnsInTable(Expression<Func<JToken[]>> deleteColumnsInTableinputTable, Expression<Func<int>> deleteColumnsInTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInTablecolumnNameToDelete = null)
         {
             var apiCallPath = "/DynamicCode/DeleteColumnsInTable";
             var apiCallHttpMethod = "post";
@@ -1066,21 +1066,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteColumnsInTable = new JObject();
             var deleteColumnsInTablepropCount = 0;
             deleteColumnsInTablepropCount++;
-            deleteColumnsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteColumnsInTableInputTable);
-            if (deleteColumnsInTableStartColumnIndex != null)
+            deleteColumnsInTable["InputTable"] = ExpressionConverter.ConvertO(deleteColumnsInTableinputTable);
+            if (deleteColumnsInTablestartColumnIndex != null)
             {
-                deleteColumnsInTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInTableStartColumnIndex);
+                deleteColumnsInTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInTablestartColumnIndex);
                 deleteColumnsInTablepropCount++;
             }
 
-            if (deleteColumnsInTableColumnNameToDelete != null)
+            if (deleteColumnsInTablecolumnNameToDelete != null)
             {
-                deleteColumnsInTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTableColumnNameToDelete);
+                deleteColumnsInTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTablecolumnNameToDelete);
                 deleteColumnsInTablepropCount++;
             }
 
             deleteColumnsInTablepropCount++;
-            deleteColumnsInTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTableNumberOfColumnsToDelete);
+            deleteColumnsInTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInTablenumberOfColumnsToDelete);
             if (deleteColumnsInTablepropCount > 0)
             {
                 callPayload.Body = deleteColumnsInTable;
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse> DeleteColumnsInJSONTable(Expression<Func<string>> deleteColumnsInJSONTableJSONTable, Expression<Func<int>> deleteColumnsInJSONTableNumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInJSONTableStartColumnIndex = null, Expression<Func<string>> deleteColumnsInJSONTableColumnNameToDelete = null)
+        public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse> DeleteColumnsInJSONTable(Expression<Func<string>> deleteColumnsInJSONTablejSONTable, Expression<Func<int>> deleteColumnsInJSONTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInJSONTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInJSONTablecolumnNameToDelete = null)
         {
             var apiCallPath = "/DynamicCode/DeleteColumnsInJSONTable";
             var apiCallHttpMethod = "post";
@@ -1098,21 +1098,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var deleteColumnsInJSONTable = new JObject();
             var deleteColumnsInJSONTablepropCount = 0;
             deleteColumnsInJSONTablepropCount++;
-            deleteColumnsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTableJSONTable);
-            if (deleteColumnsInJSONTableStartColumnIndex != null)
+            deleteColumnsInJSONTable["JSONTable"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablejSONTable);
+            if (deleteColumnsInJSONTablestartColumnIndex != null)
             {
-                deleteColumnsInJSONTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTableStartColumnIndex);
+                deleteColumnsInJSONTable["StartColumnIndex"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablestartColumnIndex);
                 deleteColumnsInJSONTablepropCount++;
             }
 
-            if (deleteColumnsInJSONTableColumnNameToDelete != null)
+            if (deleteColumnsInJSONTablecolumnNameToDelete != null)
             {
-                deleteColumnsInJSONTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTableColumnNameToDelete);
+                deleteColumnsInJSONTable["ColumnNameToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablecolumnNameToDelete);
                 deleteColumnsInJSONTablepropCount++;
             }
 
             deleteColumnsInJSONTablepropCount++;
-            deleteColumnsInJSONTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTableNumberOfColumnsToDelete);
+            deleteColumnsInJSONTable["NumberOfColumnsToDelete"] = ExpressionConverter.ConvertO(deleteColumnsInJSONTablenumberOfColumnsToDelete);
             if (deleteColumnsInJSONTablepropCount > 0)
             {
                 callPayload.Body = deleteColumnsInJSONTable;
@@ -1122,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse> GetStringArrayFromTableColumn(Expression<Func<JToken[]>> getStringArrayFromTableColumnInputTable, Expression<Func<int>> getStringArrayFromTableColumnColumnIndex = null, Expression<Func<string>> getStringArrayFromTableColumnColumnName = null)
+        public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse> GetStringArrayFromTableColumn(Expression<Func<JToken[]>> getStringArrayFromTableColumninputTable, Expression<Func<int>> getStringArrayFromTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromTableColumncolumnName = null)
         {
             var apiCallPath = "/DynamicCode/GetStringArrayFromTableColumn";
             var apiCallHttpMethod = "post";
@@ -1130,16 +1130,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringArrayFromTableColumn = new JObject();
             var getStringArrayFromTableColumnpropCount = 0;
             getStringArrayFromTableColumnpropCount++;
-            getStringArrayFromTableColumn["InputTable"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumnInputTable);
-            if (getStringArrayFromTableColumnColumnIndex != null)
+            getStringArrayFromTableColumn["InputTable"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumninputTable);
+            if (getStringArrayFromTableColumncolumnIndex != null)
             {
-                getStringArrayFromTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumnColumnIndex);
+                getStringArrayFromTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumncolumnIndex);
                 getStringArrayFromTableColumnpropCount++;
             }
 
-            if (getStringArrayFromTableColumnColumnName != null)
+            if (getStringArrayFromTableColumncolumnName != null)
             {
-                getStringArrayFromTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumnColumnName);
+                getStringArrayFromTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromTableColumncolumnName);
                 getStringArrayFromTableColumnpropCount++;
             }
 
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse> GetStringArrayFromJSONTableColumn(Expression<Func<string>> getStringArrayFromJSONTableColumnJSONTable, Expression<Func<int>> getStringArrayFromJSONTableColumnColumnIndex = null, Expression<Func<string>> getStringArrayFromJSONTableColumnColumnName = null)
+        public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse> GetStringArrayFromJSONTableColumn(Expression<Func<string>> getStringArrayFromJSONTableColumnjSONTable, Expression<Func<int>> getStringArrayFromJSONTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromJSONTableColumncolumnName = null)
         {
             var apiCallPath = "/DynamicCode/GetStringArrayFromJSONTableColumn";
             var apiCallHttpMethod = "post";
@@ -1160,16 +1160,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringArrayFromJSONTableColumn = new JObject();
             var getStringArrayFromJSONTableColumnpropCount = 0;
             getStringArrayFromJSONTableColumnpropCount++;
-            getStringArrayFromJSONTableColumn["JSONTable"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumnJSONTable);
-            if (getStringArrayFromJSONTableColumnColumnIndex != null)
+            getStringArrayFromJSONTableColumn["JSONTable"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumnjSONTable);
+            if (getStringArrayFromJSONTableColumncolumnIndex != null)
             {
-                getStringArrayFromJSONTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumnColumnIndex);
+                getStringArrayFromJSONTableColumn["ColumnIndex"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumncolumnIndex);
                 getStringArrayFromJSONTableColumnpropCount++;
             }
 
-            if (getStringArrayFromJSONTableColumnColumnName != null)
+            if (getStringArrayFromJSONTableColumncolumnName != null)
             {
-                getStringArrayFromJSONTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumnColumnName);
+                getStringArrayFromJSONTableColumn["ColumnName"] = ExpressionConverter.ConvertO(getStringArrayFromJSONTableColumncolumnName);
                 getStringArrayFromJSONTableColumnpropCount++;
             }
 
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringFromJSONTableCellResponse> GetStringFromJSONTableCell(Expression<Func<string>> getStringFromJSONTableCellJSONTable, Expression<Func<int>> getStringFromJSONTableCellRowIndex = null, Expression<Func<int>> getStringFromJSONTableCellColumnIndex = null, Expression<Func<string>> getStringFromJSONTableCellColumnName = null, Expression<Func<bool>> getStringFromJSONTableCellFallBackIfCellDoesNotExist = null, Expression<Func<string>> getStringFromJSONTableCellFallbackValue = null)
+        public IBodyWorkflowAction<GetStringFromJSONTableCellResponse> GetStringFromJSONTableCell(Expression<Func<string>> getStringFromJSONTableCelljSONTable, Expression<Func<int>> getStringFromJSONTableCellrowIndex = null, Expression<Func<int>> getStringFromJSONTableCellcolumnIndex = null, Expression<Func<string>> getStringFromJSONTableCellcolumnName = null, Expression<Func<bool>> getStringFromJSONTableCellfallBackIfCellDoesNotExist = null, Expression<Func<string>> getStringFromJSONTableCellfallbackValue = null)
         {
             var apiCallPath = "/DynamicCode/GetStringFromJSONTableCell";
             var apiCallHttpMethod = "post";
@@ -1190,34 +1190,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getStringFromJSONTableCell = new JObject();
             var getStringFromJSONTableCellpropCount = 0;
             getStringFromJSONTableCellpropCount++;
-            getStringFromJSONTableCell["JSONTable"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellJSONTable);
-            if (getStringFromJSONTableCellRowIndex != null)
+            getStringFromJSONTableCell["JSONTable"] = ExpressionConverter.ConvertO(getStringFromJSONTableCelljSONTable);
+            if (getStringFromJSONTableCellrowIndex != null)
             {
-                getStringFromJSONTableCell["RowIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellRowIndex);
+                getStringFromJSONTableCell["RowIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellrowIndex);
                 getStringFromJSONTableCellpropCount++;
             }
 
-            if (getStringFromJSONTableCellColumnIndex != null)
+            if (getStringFromJSONTableCellcolumnIndex != null)
             {
-                getStringFromJSONTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellColumnIndex);
+                getStringFromJSONTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellcolumnIndex);
                 getStringFromJSONTableCellpropCount++;
             }
 
-            if (getStringFromJSONTableCellColumnName != null)
+            if (getStringFromJSONTableCellcolumnName != null)
             {
-                getStringFromJSONTableCell["ColumnName"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellColumnName);
+                getStringFromJSONTableCell["ColumnName"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellcolumnName);
                 getStringFromJSONTableCellpropCount++;
             }
 
-            if (getStringFromJSONTableCellFallBackIfCellDoesNotExist != null)
+            if (getStringFromJSONTableCellfallBackIfCellDoesNotExist != null)
             {
-                getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellFallBackIfCellDoesNotExist);
+                getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
                 getStringFromJSONTableCellpropCount++;
             }
 
-            if (getStringFromJSONTableCellFallbackValue != null)
+            if (getStringFromJSONTableCellfallbackValue != null)
             {
-                getStringFromJSONTableCell["FallbackValue"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellFallbackValue);
+                getStringFromJSONTableCell["FallbackValue"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallbackValue);
                 getStringFromJSONTableCellpropCount++;
             }
 
@@ -1230,58 +1230,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringBetweenResponse> GetStringBetween(Expression<Func<string>> getStringBetweenInputString = null, Expression<Func<string>> getStringBetweenStartSearchString = null, Expression<Func<string>> getStringBetweenEndSearchString = null, Expression<Func<bool>> getStringBetweenSearchLineByLine = null, Expression<Func<bool>> getStringBetweenThrowExceptionIfNotFound = null, Expression<Func<bool>> getStringBetweenTrimResult = null, Expression<Func<bool>> getStringBetweenSearchIsRegularExpression = null, Expression<Func<bool>> getStringBetweenCaseSensitiveSearch = null)
+        public IBodyWorkflowAction<GetStringBetweenResponse> GetStringBetween(Expression<Func<string>> getStringBetweeninputString = null, Expression<Func<string>> getStringBetweenstartSearchString = null, Expression<Func<string>> getStringBetweenendSearchString = null, Expression<Func<bool>> getStringBetweensearchLineByLine = null, Expression<Func<bool>> getStringBetweenthrowExceptionIfNotFound = null, Expression<Func<bool>> getStringBetweentrimResult = null, Expression<Func<bool>> getStringBetweensearchIsRegularExpression = null, Expression<Func<bool>> getStringBetweencaseSensitiveSearch = null)
         {
             var apiCallPath = "/DynamicCode/GetStringBetween";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var getStringBetween = new JObject();
             var getStringBetweenpropCount = 0;
-            if (getStringBetweenInputString != null)
+            if (getStringBetweeninputString != null)
             {
-                getStringBetween["InputString"] = ExpressionConverter.ConvertO(getStringBetweenInputString);
+                getStringBetween["InputString"] = ExpressionConverter.ConvertO(getStringBetweeninputString);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenStartSearchString != null)
+            if (getStringBetweenstartSearchString != null)
             {
-                getStringBetween["StartSearchString"] = ExpressionConverter.ConvertO(getStringBetweenStartSearchString);
+                getStringBetween["StartSearchString"] = ExpressionConverter.ConvertO(getStringBetweenstartSearchString);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenEndSearchString != null)
+            if (getStringBetweenendSearchString != null)
             {
-                getStringBetween["EndSearchString"] = ExpressionConverter.ConvertO(getStringBetweenEndSearchString);
+                getStringBetween["EndSearchString"] = ExpressionConverter.ConvertO(getStringBetweenendSearchString);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenSearchLineByLine != null)
+            if (getStringBetweensearchLineByLine != null)
             {
-                getStringBetween["SearchLineByLine"] = ExpressionConverter.ConvertO(getStringBetweenSearchLineByLine);
+                getStringBetween["SearchLineByLine"] = ExpressionConverter.ConvertO(getStringBetweensearchLineByLine);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenThrowExceptionIfNotFound != null)
+            if (getStringBetweenthrowExceptionIfNotFound != null)
             {
-                getStringBetween["ThrowExceptionIfNotFound"] = ExpressionConverter.ConvertO(getStringBetweenThrowExceptionIfNotFound);
+                getStringBetween["ThrowExceptionIfNotFound"] = ExpressionConverter.ConvertO(getStringBetweenthrowExceptionIfNotFound);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenTrimResult != null)
+            if (getStringBetweentrimResult != null)
             {
-                getStringBetween["TrimResult"] = ExpressionConverter.ConvertO(getStringBetweenTrimResult);
+                getStringBetween["TrimResult"] = ExpressionConverter.ConvertO(getStringBetweentrimResult);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenSearchIsRegularExpression != null)
+            if (getStringBetweensearchIsRegularExpression != null)
             {
-                getStringBetween["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(getStringBetweenSearchIsRegularExpression);
+                getStringBetween["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(getStringBetweensearchIsRegularExpression);
                 getStringBetweenpropCount++;
             }
 
-            if (getStringBetweenCaseSensitiveSearch != null)
+            if (getStringBetweencaseSensitiveSearch != null)
             {
-                getStringBetween["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(getStringBetweenCaseSensitiveSearch);
+                getStringBetween["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(getStringBetweencaseSensitiveSearch);
                 getStringBetweenpropCount++;
             }
 
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LoadIAConnectLookupTableResponse> LoadIAConnectLookupTable(Expression<Func<string>> loadIAConnectLookupTablePath, Expression<Func<bool>> loadIAConnectLookupTableRaiseExceptionIfAnyTableFailsToLoad, Expression<Func<string>> loadIAConnectLookupTableWorkflow)
+        public IBodyWorkflowAction<LoadIAConnectLookupTableResponse> LoadIAConnectLookupTable(Expression<Func<string>> loadIAConnectLookupTablepath, Expression<Func<bool>> loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, Expression<Func<string>> loadIAConnectLookupTableworkflow)
         {
             var apiCallPath = "/DynamicCode/LoadIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1302,11 +1302,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var loadIAConnectLookupTable = new JObject();
             var loadIAConnectLookupTablepropCount = 0;
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["Path"] = ExpressionConverter.ConvertO(loadIAConnectLookupTablePath);
+            loadIAConnectLookupTable["Path"] = ExpressionConverter.ConvertO(loadIAConnectLookupTablepath);
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["RaiseExceptionIfAnyTableFailsToLoad"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableRaiseExceptionIfAnyTableFailsToLoad);
+            loadIAConnectLookupTable["RaiseExceptionIfAnyTableFailsToLoad"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad);
             loadIAConnectLookupTablepropCount++;
-            loadIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableWorkflow);
+            loadIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(loadIAConnectLookupTableworkflow);
             if (loadIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = loadIAConnectLookupTable;
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse> GetIAConnectLookupTableSummary(Expression<Func<string>> getIAConnectLookupTableSummaryWorkflow)
+        public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse> GetIAConnectLookupTableSummary(Expression<Func<string>> getIAConnectLookupTableSummaryworkflow)
         {
             var apiCallPath = "/DynamicCode/GetIAConnectLookupTableSummary";
             var apiCallHttpMethod = "post";
@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectLookupTableSummary = new JObject();
             var getIAConnectLookupTableSummarypropCount = 0;
             getIAConnectLookupTableSummarypropCount++;
-            getIAConnectLookupTableSummary["Workflow"] = ExpressionConverter.ConvertO(getIAConnectLookupTableSummaryWorkflow);
+            getIAConnectLookupTableSummary["Workflow"] = ExpressionConverter.ConvertO(getIAConnectLookupTableSummaryworkflow);
             if (getIAConnectLookupTableSummarypropCount > 0)
             {
                 callPayload.Body = getIAConnectLookupTableSummary;
@@ -1334,7 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse> RemoveIAConnectLookupTable(Expression<Func<string>> removeIAConnectLookupTableLookupTableName, Expression<Func<string>> removeIAConnectLookupTableWorkflow)
+        public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse> RemoveIAConnectLookupTable(Expression<Func<string>> removeIAConnectLookupTablelookupTableName, Expression<Func<string>> removeIAConnectLookupTableworkflow)
         {
             var apiCallPath = "/DynamicCode/RemoveIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1342,9 +1342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var removeIAConnectLookupTable = new JObject();
             var removeIAConnectLookupTablepropCount = 0;
             removeIAConnectLookupTablepropCount++;
-            removeIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(removeIAConnectLookupTableLookupTableName);
+            removeIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(removeIAConnectLookupTablelookupTableName);
             removeIAConnectLookupTablepropCount++;
-            removeIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(removeIAConnectLookupTableWorkflow);
+            removeIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(removeIAConnectLookupTableworkflow);
             if (removeIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = removeIAConnectLookupTable;
@@ -1354,7 +1354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse> RemoveAllIAConnectLookupTables(Expression<Func<string>> removeAllIAConnectLookupTablesWorkflow)
+        public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse> RemoveAllIAConnectLookupTables(Expression<Func<string>> removeAllIAConnectLookupTablesworkflow)
         {
             var apiCallPath = "/DynamicCode/RemoveAllIAConnectLookupTables";
             var apiCallHttpMethod = "post";
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var removeAllIAConnectLookupTables = new JObject();
             var removeAllIAConnectLookupTablespropCount = 0;
             removeAllIAConnectLookupTablespropCount++;
-            removeAllIAConnectLookupTables["Workflow"] = ExpressionConverter.ConvertO(removeAllIAConnectLookupTablesWorkflow);
+            removeAllIAConnectLookupTables["Workflow"] = ExpressionConverter.ConvertO(removeAllIAConnectLookupTablesworkflow);
             if (removeAllIAConnectLookupTablespropCount > 0)
             {
                 callPayload.Body = removeAllIAConnectLookupTables;
@@ -1372,7 +1372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse> LookupValueFromIAConnectLookupTable(Expression<Func<string>> lookupValueFromIAConnectLookupTableLookupTableName, Expression<Func<string>> lookupValueFromIAConnectLookupTableSearchResultValueColumnName, Expression<Func<string>> lookupValueFromIAConnectLookupTableWorkflow, Expression<Func<string>> lookupValueFromIAConnectLookupTableInputDataJSON = null, Expression<Func<int>> lookupValueFromIAConnectLookupTableSearchResultValueColumnIndex = null, Expression<Func<bool>> lookupValueFromIAConnectLookupTableRaiseExceptionIfNoMatch = null)
+        public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse> LookupValueFromIAConnectLookupTable(Expression<Func<string>> lookupValueFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupValueFromIAConnectLookupTablesearchResultValueColumnName, Expression<Func<string>> lookupValueFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupValueFromIAConnectLookupTableinputDataJSON = null, Expression<Func<int>> lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = null, Expression<Func<bool>> lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = null)
         {
             var apiCallPath = "/DynamicCode/LookupValueFromIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1380,29 +1380,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupValueFromIAConnectLookupTable = new JObject();
             var lookupValueFromIAConnectLookupTablepropCount = 0;
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableLookupTableName);
-            if (lookupValueFromIAConnectLookupTableInputDataJSON != null)
+            lookupValueFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablelookupTableName);
+            if (lookupValueFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupValueFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableInputDataJSON);
+                lookupValueFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableinputDataJSON);
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["SearchResultValueColumnName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableSearchResultValueColumnName);
-            if (lookupValueFromIAConnectLookupTableSearchResultValueColumnIndex != null)
+            lookupValueFromIAConnectLookupTable["SearchResultValueColumnName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnName);
+            if (lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex != null)
             {
-                lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableSearchResultValueColumnIndex);
+                lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupValueFromIAConnectLookupTableRaiseExceptionIfNoMatch != null)
+            if (lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableRaiseExceptionIfNoMatch);
+                lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
             lookupValueFromIAConnectLookupTablepropCount++;
-            lookupValueFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableWorkflow);
+            lookupValueFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableworkflow);
             if (lookupValueFromIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = lookupValueFromIAConnectLookupTable;
@@ -1412,7 +1412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse> LookupColumnsFromIAConnectLookupTable(Expression<Func<string>> lookupColumnsFromIAConnectLookupTableLookupTableName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableSearchResultTableColumnName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableWorkflow, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableInputDataJSON = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableRaiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableReturnBlankCells = null, Expression<Func<lookupColumnsFromIAConnectLookupTableReturnFormatInput>> lookupColumnsFromIAConnectLookupTableReturnFormat = null)
+        public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse> LookupColumnsFromIAConnectLookupTable(Expression<Func<string>> lookupColumnsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupColumnsFromIAConnectLookupTablereturnFormatInput>> lookupColumnsFromIAConnectLookupTablereturnFormat = null)
         {
             var apiCallPath = "/DynamicCode/LookupColumnsFromIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1420,35 +1420,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupColumnsFromIAConnectLookupTable = new JObject();
             var lookupColumnsFromIAConnectLookupTablepropCount = 0;
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableLookupTableName);
-            if (lookupColumnsFromIAConnectLookupTableInputDataJSON != null)
+            lookupColumnsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablelookupTableName);
+            if (lookupColumnsFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupColumnsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableInputDataJSON);
+                lookupColumnsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableinputDataJSON);
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["SearchResultTableColumnName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableSearchResultTableColumnName);
-            if (lookupColumnsFromIAConnectLookupTableRaiseExceptionIfNoMatch != null)
+            lookupColumnsFromIAConnectLookupTable["SearchResultTableColumnName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName);
+            if (lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableRaiseExceptionIfNoMatch);
+                lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupColumnsFromIAConnectLookupTableReturnBlankCells != null)
+            if (lookupColumnsFromIAConnectLookupTablereturnBlankCells != null)
             {
-                lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableReturnBlankCells);
+                lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupColumnsFromIAConnectLookupTableReturnFormat != null)
+            if (lookupColumnsFromIAConnectLookupTablereturnFormat != null)
             {
-                lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableReturnFormat);
+                lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnFormat);
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
             lookupColumnsFromIAConnectLookupTablepropCount++;
-            lookupColumnsFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableWorkflow);
+            lookupColumnsFromIAConnectLookupTable["Workflow"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableworkflow);
             if (lookupColumnsFromIAConnectLookupTablepropCount > 0)
             {
                 callPayload.Body = lookupColumnsFromIAConnectLookupTable;
@@ -1458,52 +1458,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveCharactersFromStringResponse> RemoveCharactersFromString(Expression<Func<string>> removeCharactersFromStringInputString = null, Expression<Func<string>> removeCharactersFromStringCharactersToRemoveFromInputString = null, Expression<Func<bool>> removeCharactersFromStringRemoveDiacriticsFromInputString = null, Expression<Func<bool>> removeCharactersFromStringRemoveNonAlphaNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringRemoveNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringRemoveLowercaseCharactersFromInputString = null, Expression<Func<bool>> removeCharactersFromStringRemoveUppercaseCharactersFromInputString = null)
+        public IBodyWorkflowAction<RemoveCharactersFromStringResponse> RemoveCharactersFromString(Expression<Func<string>> removeCharactersFromStringinputString = null, Expression<Func<string>> removeCharactersFromStringcharactersToRemoveFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveDiacriticsFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNonAlphaNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveLowercaseCharactersFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveUppercaseCharactersFromInputString = null)
         {
             var apiCallPath = "/DynamicCode/RemoveCharactersFromString";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var removeCharactersFromString = new JObject();
             var removeCharactersFromStringpropCount = 0;
-            if (removeCharactersFromStringInputString != null)
+            if (removeCharactersFromStringinputString != null)
             {
-                removeCharactersFromString["InputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringInputString);
+                removeCharactersFromString["InputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringinputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringCharactersToRemoveFromInputString != null)
+            if (removeCharactersFromStringcharactersToRemoveFromInputString != null)
             {
-                removeCharactersFromString["CharactersToRemoveFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringCharactersToRemoveFromInputString);
+                removeCharactersFromString["CharactersToRemoveFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringcharactersToRemoveFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringRemoveDiacriticsFromInputString != null)
+            if (removeCharactersFromStringremoveDiacriticsFromInputString != null)
             {
-                removeCharactersFromString["RemoveDiacriticsFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringRemoveDiacriticsFromInputString);
+                removeCharactersFromString["RemoveDiacriticsFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveDiacriticsFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringRemoveNonAlphaNumericFromInputString != null)
+            if (removeCharactersFromStringremoveNonAlphaNumericFromInputString != null)
             {
-                removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringRemoveNonAlphaNumericFromInputString);
+                removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringRemoveNumericFromInputString != null)
+            if (removeCharactersFromStringremoveNumericFromInputString != null)
             {
-                removeCharactersFromString["RemoveNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringRemoveNumericFromInputString);
+                removeCharactersFromString["RemoveNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNumericFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringRemoveLowercaseCharactersFromInputString != null)
+            if (removeCharactersFromStringremoveLowercaseCharactersFromInputString != null)
             {
-                removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringRemoveLowercaseCharactersFromInputString);
+                removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
-            if (removeCharactersFromStringRemoveUppercaseCharactersFromInputString != null)
+            if (removeCharactersFromStringremoveUppercaseCharactersFromInputString != null)
             {
-                removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringRemoveUppercaseCharactersFromInputString);
+                removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
                 removeCharactersFromStringpropCount++;
             }
 
@@ -1516,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetColumnFromIAConnectListResponse> GetColumnFromIAConnectList(Expression<Func<string>> getColumnFromIAConnectListListName, Expression<Func<int>> getColumnFromIAConnectListSearchColumnIndex = null, Expression<Func<string>> getColumnFromIAConnectListSearchColumnName = null, Expression<Func<bool>> getColumnFromIAConnectListReturnBlankCells = null, Expression<Func<bool>> getColumnFromIAConnectListFallBackIfListDoesNotExist = null, Expression<Func<string>> getColumnFromIAConnectListFallbackValue = null, Expression<Func<getColumnFromIAConnectListReturnFormatInput>> getColumnFromIAConnectListReturnFormat = null)
+        public IBodyWorkflowAction<GetColumnFromIAConnectListResponse> GetColumnFromIAConnectList(Expression<Func<string>> getColumnFromIAConnectListlistName, Expression<Func<int>> getColumnFromIAConnectListsearchColumnIndex = null, Expression<Func<string>> getColumnFromIAConnectListsearchColumnName = null, Expression<Func<bool>> getColumnFromIAConnectListreturnBlankCells = null, Expression<Func<bool>> getColumnFromIAConnectListfallBackIfListDoesNotExist = null, Expression<Func<string>> getColumnFromIAConnectListfallbackValue = null, Expression<Func<getColumnFromIAConnectListreturnFormatInput>> getColumnFromIAConnectListreturnFormat = null)
         {
             var apiCallPath = "/DynamicCode/GetColumnFromIAConnectList";
             var apiCallHttpMethod = "post";
@@ -1524,40 +1524,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getColumnFromIAConnectList = new JObject();
             var getColumnFromIAConnectListpropCount = 0;
             getColumnFromIAConnectListpropCount++;
-            getColumnFromIAConnectList["ListName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListListName);
-            if (getColumnFromIAConnectListSearchColumnIndex != null)
+            getColumnFromIAConnectList["ListName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListlistName);
+            if (getColumnFromIAConnectListsearchColumnIndex != null)
             {
-                getColumnFromIAConnectList["SearchColumnIndex"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListSearchColumnIndex);
+                getColumnFromIAConnectList["SearchColumnIndex"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnIndex);
                 getColumnFromIAConnectListpropCount++;
             }
 
-            if (getColumnFromIAConnectListSearchColumnName != null)
+            if (getColumnFromIAConnectListsearchColumnName != null)
             {
-                getColumnFromIAConnectList["SearchColumnName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListSearchColumnName);
+                getColumnFromIAConnectList["SearchColumnName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnName);
                 getColumnFromIAConnectListpropCount++;
             }
 
-            if (getColumnFromIAConnectListReturnBlankCells != null)
+            if (getColumnFromIAConnectListreturnBlankCells != null)
             {
-                getColumnFromIAConnectList["ReturnBlankCells"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListReturnBlankCells);
+                getColumnFromIAConnectList["ReturnBlankCells"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnBlankCells);
                 getColumnFromIAConnectListpropCount++;
             }
 
-            if (getColumnFromIAConnectListFallBackIfListDoesNotExist != null)
+            if (getColumnFromIAConnectListfallBackIfListDoesNotExist != null)
             {
-                getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListFallBackIfListDoesNotExist);
+                getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallBackIfListDoesNotExist);
                 getColumnFromIAConnectListpropCount++;
             }
 
-            if (getColumnFromIAConnectListFallbackValue != null)
+            if (getColumnFromIAConnectListfallbackValue != null)
             {
-                getColumnFromIAConnectList["FallbackValue"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListFallbackValue);
+                getColumnFromIAConnectList["FallbackValue"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallbackValue);
                 getColumnFromIAConnectListpropCount++;
             }
 
-            if (getColumnFromIAConnectListReturnFormat != null)
+            if (getColumnFromIAConnectListreturnFormat != null)
             {
-                getColumnFromIAConnectList["ReturnFormat"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListReturnFormat);
+                getColumnFromIAConnectList["ReturnFormat"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnFormat);
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -1570,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectListContentsResponse> GetIAConnectListContents(Expression<Func<string>> getIAConnectListContentsListName, Expression<Func<getIAConnectListContentsReturnFormatInput>> getIAConnectListContentsReturnFormat = null)
+        public IBodyWorkflowAction<GetIAConnectListContentsResponse> GetIAConnectListContents(Expression<Func<string>> getIAConnectListContentslistName, Expression<Func<getIAConnectListContentsreturnFormatInput>> getIAConnectListContentsreturnFormat = null)
         {
             var apiCallPath = "/DynamicCode/GetIAConnectListContents";
             var apiCallHttpMethod = "post";
@@ -1578,10 +1578,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectListContents = new JObject();
             var getIAConnectListContentspropCount = 0;
             getIAConnectListContentspropCount++;
-            getIAConnectListContents["ListName"] = ExpressionConverter.ConvertO(getIAConnectListContentsListName);
-            if (getIAConnectListContentsReturnFormat != null)
+            getIAConnectListContents["ListName"] = ExpressionConverter.ConvertO(getIAConnectListContentslistName);
+            if (getIAConnectListContentsreturnFormat != null)
             {
-                getIAConnectListContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectListContentsReturnFormat);
+                getIAConnectListContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectListContentsreturnFormat);
                 getIAConnectListContentspropCount++;
             }
 
@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse> LookupDataCellsFromIAConnectLookupTable(Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableLookupTableName, Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableInputDataJSON = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableRaiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableReturnBlankCells = null, Expression<Func<lookupDataCellsFromIAConnectLookupTableReturnFormatInput>> lookupDataCellsFromIAConnectLookupTableReturnFormat = null)
+        public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse> LookupDataCellsFromIAConnectLookupTable(Expression<Func<string>> lookupDataCellsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupDataCellsFromIAConnectLookupTablereturnFormatInput>> lookupDataCellsFromIAConnectLookupTablereturnFormat = null)
         {
             var apiCallPath = "/DynamicCode/LookupDataCellsFromIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1602,28 +1602,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var lookupDataCellsFromIAConnectLookupTable = new JObject();
             var lookupDataCellsFromIAConnectLookupTablepropCount = 0;
             lookupDataCellsFromIAConnectLookupTablepropCount++;
-            lookupDataCellsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableLookupTableName);
-            if (lookupDataCellsFromIAConnectLookupTableInputDataJSON != null)
+            lookupDataCellsFromIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablelookupTableName);
+            if (lookupDataCellsFromIAConnectLookupTableinputDataJSON != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableInputDataJSON);
+                lookupDataCellsFromIAConnectLookupTable["InputDataJSON"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableinputDataJSON);
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupDataCellsFromIAConnectLookupTableRaiseExceptionIfNoMatch != null)
+            if (lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableRaiseExceptionIfNoMatch);
+                lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupDataCellsFromIAConnectLookupTableReturnBlankCells != null)
+            if (lookupDataCellsFromIAConnectLookupTablereturnBlankCells != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableReturnBlankCells);
+                lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
-            if (lookupDataCellsFromIAConnectLookupTableReturnFormat != null)
+            if (lookupDataCellsFromIAConnectLookupTablereturnFormat != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableReturnFormat);
+                lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnFormat);
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse> GetIAConnectLookupTableContents(Expression<Func<string>> getIAConnectLookupTableContentsLookupTableName, Expression<Func<getIAConnectLookupTableContentsReturnFormatInput>> getIAConnectLookupTableContentsReturnFormat = null)
+        public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse> GetIAConnectLookupTableContents(Expression<Func<string>> getIAConnectLookupTableContentslookupTableName, Expression<Func<getIAConnectLookupTableContentsreturnFormatInput>> getIAConnectLookupTableContentsreturnFormat = null)
         {
             var apiCallPath = "/DynamicCode/GetIAConnectLookupTableContents";
             var apiCallHttpMethod = "post";
@@ -1644,10 +1644,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var getIAConnectLookupTableContents = new JObject();
             var getIAConnectLookupTableContentspropCount = 0;
             getIAConnectLookupTableContentspropCount++;
-            getIAConnectLookupTableContents["LookupTableName"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsLookupTableName);
-            if (getIAConnectLookupTableContentsReturnFormat != null)
+            getIAConnectLookupTableContents["LookupTableName"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentslookupTableName);
+            if (getIAConnectLookupTableContentsreturnFormat != null)
             {
-                getIAConnectLookupTableContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsReturnFormat);
+                getIAConnectLookupTableContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsreturnFormat);
                 getIAConnectLookupTableContentspropCount++;
             }
 
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse> UploadCSVToIAConnectLookupTable(Expression<Func<string>> uploadCSVToIAConnectLookupTableLookupTableName, Expression<Func<string>> uploadCSVToIAConnectLookupTableCSVData, Expression<Func<bool>> uploadCSVToIAConnectLookupTableCreateLookupTableIfNotExist = null)
+        public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse> UploadCSVToIAConnectLookupTable(Expression<Func<string>> uploadCSVToIAConnectLookupTablelookupTableName, Expression<Func<string>> uploadCSVToIAConnectLookupTablecSVData, Expression<Func<bool>> uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = null)
         {
             var apiCallPath = "/DynamicCode/UploadCSVToIAConnectLookupTable";
             var apiCallHttpMethod = "post";
@@ -1668,12 +1668,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var uploadCSVToIAConnectLookupTable = new JObject();
             var uploadCSVToIAConnectLookupTablepropCount = 0;
             uploadCSVToIAConnectLookupTablepropCount++;
-            uploadCSVToIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTableLookupTableName);
+            uploadCSVToIAConnectLookupTable["LookupTableName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablelookupTableName);
             uploadCSVToIAConnectLookupTablepropCount++;
-            uploadCSVToIAConnectLookupTable["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTableCSVData);
-            if (uploadCSVToIAConnectLookupTableCreateLookupTableIfNotExist != null)
+            uploadCSVToIAConnectLookupTable["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecSVData);
+            if (uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist != null)
             {
-                uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTableCreateLookupTableIfNotExist);
+                uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
                 uploadCSVToIAConnectLookupTablepropCount++;
             }
 
@@ -1686,7 +1686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectListResponse> UploadCSVToIAConnectList(Expression<Func<string>> uploadCSVToIAConnectListListName, Expression<Func<string>> uploadCSVToIAConnectListCSVData, Expression<Func<bool>> uploadCSVToIAConnectListCreateListIfNotExist = null)
+        public IBodyWorkflowAction<UploadCSVToIAConnectListResponse> UploadCSVToIAConnectList(Expression<Func<string>> uploadCSVToIAConnectListlistName, Expression<Func<string>> uploadCSVToIAConnectListcSVData, Expression<Func<bool>> uploadCSVToIAConnectListcreateListIfNotExist = null)
         {
             var apiCallPath = "/DynamicCode/UploadCSVToIAConnectList";
             var apiCallHttpMethod = "post";
@@ -1694,12 +1694,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var uploadCSVToIAConnectList = new JObject();
             var uploadCSVToIAConnectListpropCount = 0;
             uploadCSVToIAConnectListpropCount++;
-            uploadCSVToIAConnectList["ListName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListListName);
+            uploadCSVToIAConnectList["ListName"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListlistName);
             uploadCSVToIAConnectListpropCount++;
-            uploadCSVToIAConnectList["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListCSVData);
-            if (uploadCSVToIAConnectListCreateListIfNotExist != null)
+            uploadCSVToIAConnectList["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcSVData);
+            if (uploadCSVToIAConnectListcreateListIfNotExist != null)
             {
-                uploadCSVToIAConnectList["CreateListIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListCreateListIfNotExist);
+                uploadCSVToIAConnectList["CreateListIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcreateListIfNotExist);
                 uploadCSVToIAConnectListpropCount++;
             }
 
@@ -1712,7 +1712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<ConvertArrayToJSONResponse> ConvertArrayToJSON(Expression<Func<JToken[]>> convertArrayToJSONInputObject)
+        public IBodyWorkflowAction<ConvertArrayToJSONResponse> ConvertArrayToJSON(Expression<Func<JToken[]>> convertArrayToJSONinputObject)
         {
             var apiCallPath = "/DynamicCode/ConvertArrayToJSON";
             var apiCallHttpMethod = "post";
@@ -1720,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var convertArrayToJSON = new JObject();
             var convertArrayToJSONpropCount = 0;
             convertArrayToJSONpropCount++;
-            convertArrayToJSON["InputObject"] = ExpressionConverter.ConvertO(convertArrayToJSONInputObject);
+            convertArrayToJSON["InputObject"] = ExpressionConverter.ConvertO(convertArrayToJSONinputObject);
             if (convertArrayToJSONpropCount > 0)
             {
                 callPayload.Body = convertArrayToJSON;
@@ -1750,7 +1750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int ThreadId { get; set; }
     }
 
-    public enum runPowerShellAutomationScriptAuthenticationMechanismInput
+    public enum runPowerShellAutomationScriptauthenticationMechanismInput
     {
         Basic,
         Credssp,
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         Negotiate
     }
 
-    public class runPowerShellAutomationScriptPowerShellCommandParametersInputItem
+    public class runPowerShellAutomationScriptpowerShellCommandParametersInputItem
     {
         public string Name { get; set; }
         public string StringValue { get; set; }
@@ -1776,7 +1776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int PowerShellMinorVersion { get; set; }
     }
 
-    public enum getPowerShellVersionAuthenticationMechanismInput
+    public enum getPowerShellVersionauthenticationMechanismInput
     {
         Basic,
         Credssp,
@@ -1823,14 +1823,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string OutputJSON { get; set; }
     }
 
-    public class createJSONFromInputVariablesInputVariablesInputItem
+    public class createJSONFromInputVariablesinputVariablesInputItem
     {
         public string PropertyName { get; set; }
-        public createJSONFromInputVariablesInputVariablesInputItemDataTypeType DataType { get; set; }
+        public createJSONFromInputVariablesinputVariablesInputItemDataTypeType DataType { get; set; }
         public string Value { get; set; }
     }
 
-    public enum createJSONFromInputVariablesInputVariablesInputItemDataTypeType
+    public enum createJSONFromInputVariablesinputVariablesInputItemDataTypeType
     {
         String,
         Integer,
@@ -1926,14 +1926,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumns { get; set; }
     }
 
-    public class insertRowInJSONTableFromInputVariablesRowToInsertInputVariablesInputItem
+    public class insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem
     {
         public string PropertyName { get; set; }
-        public insertRowInJSONTableFromInputVariablesRowToInsertInputVariablesInputItemDataTypeType DataType { get; set; }
+        public insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItemDataTypeType DataType { get; set; }
         public string Value { get; set; }
     }
 
-    public enum insertRowInJSONTableFromInputVariablesRowToInsertInputVariablesInputItemDataTypeType
+    public enum insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItemDataTypeType
     {
         String,
         Integer,
@@ -2058,7 +2058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfRowsInOutput { get; set; }
     }
 
-    public enum lookupColumnsFromIAConnectLookupTableReturnFormatInput
+    public enum lookupColumnsFromIAConnectLookupTablereturnFormatInput
     {
         JSON,
         Array,
@@ -2078,7 +2078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfRowsInOutput { get; set; }
     }
 
-    public enum getColumnFromIAConnectListReturnFormatInput
+    public enum getColumnFromIAConnectListreturnFormatInput
     {
         JSON,
         Array,
@@ -2094,7 +2094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumnsInOutput { get; set; }
     }
 
-    public enum getIAConnectListContentsReturnFormatInput
+    public enum getIAConnectListContentsreturnFormatInput
     {
         JSON,
         Table,
@@ -2108,7 +2108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfCellsInOutput { get; set; }
     }
 
-    public enum lookupDataCellsFromIAConnectLookupTableReturnFormatInput
+    public enum lookupDataCellsFromIAConnectLookupTablereturnFormatInput
     {
         JSON,
         Table
@@ -2123,7 +2123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumnsInOutput { get; set; }
     }
 
-    public enum getIAConnectLookupTableContentsReturnFormatInput
+    public enum getIAConnectLookupTableContentsreturnFormatInput
     {
         JSON,
         Table,

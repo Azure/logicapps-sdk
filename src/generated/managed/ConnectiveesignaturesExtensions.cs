@@ -12,148 +12,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage(Expression<Func<string>> bodyDocument = null, Expression<Func<bodyDocumentLanguageInput>> bodyDocumentLanguage = null, Expression<Func<string>> bodyDocumentName = null, Expression<Func<string>> bodyExternalPackageData = null, Expression<Func<string>> bodyInitiator = null, Expression<Func<Stakeholder[]>> bodyStakeholders = null, Expression<Func<string>> bodyCallBackUrl = null, Expression<Func<string>> bodyCorrelationId = null, Expression<Func<string>> bodyDocumentGroupCode = null, Expression<Func<string>> bodyThemeCode = null, Expression<Func<bool>> bodyDownloadUnsignedFiles = null, Expression<Func<bool>> bodyReassignEnabled = null, Expression<Func<int>> bodyActionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyExpiryTimestamp = null, Expression<Func<string>> bodyExternalDocumentReference = null, Expression<Func<string>> bodyExternalPackageReference = null, Expression<Func<string>> bodyF2FRedirectUrl = null, Expression<Func<string>> bodyNotificationCallBackUrl = null, Expression<Func<string>> bodyPdfErrorHandling = null, Expression<Func<string>> bodyRepresentation = null, Expression<Func<string>> bodyRepresentationType = null, Expression<Func<string>> bodySigningTemplateCode = null, Expression<Func<string>> bodyTargetType = null)
+        public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
         {
             var apiCallPath = "/packages/instant";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDocument != null)
+            if (bodydocument != null)
             {
-                body["Document"] = ExpressionConverter.ConvertO(bodyDocument);
+                body["Document"] = ExpressionConverter.ConvertO(bodydocument);
                 bodypropCount++;
             }
 
-            if (bodyDocumentLanguage != null)
+            if (bodydocumentLanguage != null)
             {
-                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodyDocumentLanguage);
+                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
                 bodypropCount++;
             }
 
-            if (bodyDocumentName != null)
+            if (bodydocumentName != null)
             {
-                body["DocumentName"] = ExpressionConverter.ConvertO(bodyDocumentName);
+                body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
                 bodypropCount++;
             }
 
-            if (bodyExternalPackageData != null)
+            if (bodyexternalPackageData != null)
             {
-                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyExternalPackageData);
+                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
                 bodypropCount++;
             }
 
-            if (bodyInitiator != null)
+            if (bodyinitiator != null)
             {
-                body["Initiator"] = ExpressionConverter.ConvertO(bodyInitiator);
+                body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
                 bodypropCount++;
             }
 
-            if (bodyStakeholders != null)
+            if (bodystakeholders != null)
             {
-                body["Stakeholders"] = ExpressionConverter.ConvertO(bodyStakeholders);
+                body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
                 bodypropCount++;
             }
 
-            if (bodyCallBackUrl != null)
+            if (bodycallBackUrl != null)
             {
-                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodyCallBackUrl);
+                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
                 bodypropCount++;
             }
 
-            if (bodyCorrelationId != null)
+            if (bodycorrelationId != null)
             {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodyCorrelationId);
+                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentGroupCode != null)
+            if (bodydocumentGroupCode != null)
             {
-                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodyDocumentGroupCode);
+                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
                 bodypropCount++;
             }
 
-            if (bodyThemeCode != null)
+            if (bodythemeCode != null)
             {
-                body["ThemeCode"] = ExpressionConverter.ConvertO(bodyThemeCode);
+                body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
                 bodypropCount++;
             }
 
-            if (bodyDownloadUnsignedFiles != null)
+            if (bodydownloadUnsignedFiles != null)
             {
-                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodyDownloadUnsignedFiles);
+                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
                 bodypropCount++;
             }
 
-            if (bodyReassignEnabled != null)
+            if (bodyreassignEnabled != null)
             {
-                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyReassignEnabled);
+                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
                 bodypropCount++;
             }
 
-            if (bodyActionUrlExpirationPeriodInDays != null)
+            if (bodyactionUrlExpirationPeriodInDays != null)
             {
-                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyActionUrlExpirationPeriodInDays);
+                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
                 bodypropCount++;
             }
 
-            if (bodyExpiryTimestamp != null)
+            if (bodyexpiryTimestamp != null)
             {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyExpiryTimestamp);
+                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
                 bodypropCount++;
             }
 
-            if (bodyExternalDocumentReference != null)
+            if (bodyexternalDocumentReference != null)
             {
-                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyExternalDocumentReference);
+                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
                 bodypropCount++;
             }
 
-            if (bodyExternalPackageReference != null)
+            if (bodyexternalPackageReference != null)
             {
-                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyExternalPackageReference);
+                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
                 bodypropCount++;
             }
 
-            if (bodyF2FRedirectUrl != null)
+            if (bodyf2FRedirectUrl != null)
             {
-                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyF2FRedirectUrl);
+                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
                 bodypropCount++;
             }
 
-            if (bodyNotificationCallBackUrl != null)
+            if (bodynotificationCallBackUrl != null)
             {
-                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodyNotificationCallBackUrl);
+                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
                 bodypropCount++;
             }
 
-            if (bodyPdfErrorHandling != null)
+            if (bodypdfErrorHandling != null)
             {
-                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodyPdfErrorHandling);
+                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
                 bodypropCount++;
             }
 
-            if (bodyRepresentation != null)
+            if (bodyrepresentation != null)
             {
-                body["Representation"] = ExpressionConverter.ConvertO(bodyRepresentation);
+                body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
                 bodypropCount++;
             }
 
-            if (bodyRepresentationType != null)
+            if (bodyrepresentationType != null)
             {
-                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyRepresentationType);
+                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
                 bodypropCount++;
             }
 
-            if (bodySigningTemplateCode != null)
+            if (bodysigningTemplateCode != null)
             {
-                body["SigningTemplateCode"] = ExpressionConverter.ConvertO(bodySigningTemplateCode);
+                body["SigningTemplateCode"] = ExpressionConverter.ConvertO(bodysigningTemplateCode);
                 bodypropCount++;
             }
 
-            if (bodyTargetType != null)
+            if (bodytargetType != null)
             {
-                body["TargetType"] = ExpressionConverter.ConvertO(bodyTargetType);
+                body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
                 bodypropCount++;
             }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreatePackageResponse> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyInitiator = null, Expression<Func<string>> bodyPackageName = null, Expression<Func<string>> bodyCallBackUrl = null, Expression<Func<string>> bodyCorrelationId = null, Expression<Func<string>> bodyDocumentGroupCode = null, Expression<Func<string>> bodyThemeCode = null, Expression<Func<bool>> bodyDownloadUnsignedFiles = null, Expression<Func<bool>> bodyReassignEnabled = null, Expression<Func<int>> bodyActionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyExpiryTimestamp = null, Expression<Func<string>> bodyExternalPackageReference = null, Expression<Func<string>> bodyExternalPackageData = null, Expression<Func<string>> bodyF2FRedirectUrl = null, Expression<Func<string>> bodyNotificationCallBackUrl = null)
+        public IBodyWorkflowAction<CreatePackageResponse> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
         {
             var apiCallPath = "/packages";
             var apiCallHttpMethod = "post";
@@ -200,87 +200,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyInitiator != null)
+            if (bodyinitiator != null)
             {
-                body["Initiator"] = ExpressionConverter.ConvertO(bodyInitiator);
+                body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
                 bodypropCount++;
             }
 
-            if (bodyPackageName != null)
+            if (bodypackageName != null)
             {
-                body["PackageName"] = ExpressionConverter.ConvertO(bodyPackageName);
+                body["PackageName"] = ExpressionConverter.ConvertO(bodypackageName);
                 bodypropCount++;
             }
 
-            if (bodyCallBackUrl != null)
+            if (bodycallBackUrl != null)
             {
-                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodyCallBackUrl);
+                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
                 bodypropCount++;
             }
 
-            if (bodyCorrelationId != null)
+            if (bodycorrelationId != null)
             {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodyCorrelationId);
+                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentGroupCode != null)
+            if (bodydocumentGroupCode != null)
             {
-                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodyDocumentGroupCode);
+                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
                 bodypropCount++;
             }
 
-            if (bodyThemeCode != null)
+            if (bodythemeCode != null)
             {
-                body["ThemeCode"] = ExpressionConverter.ConvertO(bodyThemeCode);
+                body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
                 bodypropCount++;
             }
 
-            if (bodyDownloadUnsignedFiles != null)
+            if (bodydownloadUnsignedFiles != null)
             {
-                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodyDownloadUnsignedFiles);
+                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
                 bodypropCount++;
             }
 
-            if (bodyReassignEnabled != null)
+            if (bodyreassignEnabled != null)
             {
-                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyReassignEnabled);
+                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
                 bodypropCount++;
             }
 
-            if (bodyActionUrlExpirationPeriodInDays != null)
+            if (bodyactionUrlExpirationPeriodInDays != null)
             {
-                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyActionUrlExpirationPeriodInDays);
+                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
                 bodypropCount++;
             }
 
-            if (bodyExpiryTimestamp != null)
+            if (bodyexpiryTimestamp != null)
             {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyExpiryTimestamp);
+                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
                 bodypropCount++;
             }
 
-            if (bodyExternalPackageReference != null)
+            if (bodyexternalPackageReference != null)
             {
-                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyExternalPackageReference);
+                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
                 bodypropCount++;
             }
 
-            if (bodyExternalPackageData != null)
+            if (bodyexternalPackageData != null)
             {
-                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyExternalPackageData);
+                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
                 bodypropCount++;
             }
 
-            if (bodyF2FRedirectUrl != null)
+            if (bodyf2FRedirectUrl != null)
             {
-                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyF2FRedirectUrl);
+                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
                 bodypropCount++;
             }
 
-            if (bodyNotificationCallBackUrl != null)
+            if (bodynotificationCallBackUrl != null)
             {
-                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodyNotificationCallBackUrl);
+                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
                 bodypropCount++;
             }
 
@@ -293,76 +293,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodyDocument = null, Expression<Func<string>> bodyDocumentLanguage = null, Expression<Func<string>> bodyDocumentName = null, Expression<Func<SigningField[]>> bodySigningFields = null, Expression<Func<string>> bodyCorrelationId = null, Expression<Func<string>> bodyDocumentType = null, Expression<Func<string>> bodyExternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodyPdfErrorHandling = null, Expression<Func<string>> bodyRepresentation = null, Expression<Func<string>> bodyRepresentationType = null, Expression<Func<string>> bodyTargetType = null)
+        public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
         {
             var apiCallPath = String.Format("/packages/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDocument != null)
+            if (bodydocument != null)
             {
-                body["Document"] = ExpressionConverter.ConvertO(bodyDocument);
+                body["Document"] = ExpressionConverter.ConvertO(bodydocument);
                 bodypropCount++;
             }
 
-            if (bodyDocumentLanguage != null)
+            if (bodydocumentLanguage != null)
             {
-                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodyDocumentLanguage);
+                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
                 bodypropCount++;
             }
 
-            if (bodyDocumentName != null)
+            if (bodydocumentName != null)
             {
-                body["DocumentName"] = ExpressionConverter.ConvertO(bodyDocumentName);
+                body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
                 bodypropCount++;
             }
 
-            if (bodySigningFields != null)
+            if (bodysigningFields != null)
             {
-                body["SigningFields"] = ExpressionConverter.ConvertO(bodySigningFields);
+                body["SigningFields"] = ExpressionConverter.ConvertO(bodysigningFields);
                 bodypropCount++;
             }
 
-            if (bodyCorrelationId != null)
+            if (bodycorrelationId != null)
             {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodyCorrelationId);
+                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
                 bodypropCount++;
             }
 
-            if (bodyDocumentType != null)
+            if (bodydocumentType != null)
             {
-                body["DocumentType"] = ExpressionConverter.ConvertO(bodyDocumentType);
+                body["DocumentType"] = ExpressionConverter.ConvertO(bodydocumentType);
                 bodypropCount++;
             }
 
-            if (bodyExternalDocumentReference != null)
+            if (bodyexternalDocumentReference != null)
             {
-                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyExternalDocumentReference);
+                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
                 bodypropCount++;
             }
 
-            if (bodyPdfErrorHandling != null)
+            if (bodypdfErrorHandling != null)
             {
-                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodyPdfErrorHandling);
+                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
                 bodypropCount++;
             }
 
-            if (bodyRepresentation != null)
+            if (bodyrepresentation != null)
             {
-                body["Representation"] = ExpressionConverter.ConvertO(bodyRepresentation);
+                body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
                 bodypropCount++;
             }
 
-            if (bodyRepresentationType != null)
+            if (bodyrepresentationType != null)
             {
-                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyRepresentationType);
+                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
                 bodypropCount++;
             }
 
-            if (bodyTargetType != null)
+            if (bodytargetType != null)
             {
-                body["TargetType"] = ExpressionConverter.ConvertO(bodyTargetType);
+                body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
                 bodypropCount++;
             }
 
@@ -393,16 +393,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodyStatus = null)
+        public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
         {
             var apiCallPath = String.Format("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
@@ -442,16 +442,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyExpiryTimestamp = null)
+        public IWorkflowAction ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
         {
             var apiCallPath = String.Format("/packages/{0}/expirytimestamp", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyExpiryTimestamp != null)
+            if (bodyexpiryTimestamp != null)
             {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyExpiryTimestamp);
+                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
                 bodypropCount++;
             }
 
@@ -482,16 +482,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodyStakeholdersInputItem[]>> bodyStakeholders = null)
+        public IWorkflowAction SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
         {
             var apiCallPath = String.Format("/packages/{0}/process", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyStakeholders != null)
+            if (bodystakeholders != null)
             {
-                body["Stakeholders"] = ExpressionConverter.ConvertO(bodyStakeholders);
+                body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
                 bodypropCount++;
             }
 
@@ -540,46 +540,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodyContent = null, Expression<Func<string>> bodyLocationId = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyType = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodyIpAddress = null)
+        public IWorkflowAction ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
         {
             var apiCallPath = String.Format("/packages/{0}/auditproof/proofs", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyContent != null)
+            if (bodycontent != null)
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodyContent);
+                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
                 bodypropCount++;
             }
 
-            if (bodyLocationId != null)
+            if (bodylocationId != null)
             {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodyLocationId);
+                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
                 bodypropCount++;
             }
 
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyType != null)
+            if (bodytype != null)
             {
-                body["Type"] = ExpressionConverter.ConvertO(bodyType);
+                body["Type"] = ExpressionConverter.ConvertO(bodytype);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyIpAddress != null)
+            if (bodyipAddress != null)
             {
-                body["IpAddress"] = ExpressionConverter.ConvertO(bodyIpAddress);
+                body["IpAddress"] = ExpressionConverter.ConvertO(bodyipAddress);
                 bodypropCount++;
             }
 
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
-    public enum bodyDocumentLanguageInput
+    public enum bodydocumentLanguageInput
     {
         [EnumMember(Value = "en")]
         En,
@@ -777,9 +777,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string UsedSigningType { get; set; }
     }
 
-    public class bodyStakeholdersInputItem
+    public class bodystakeholdersInputItem
     {
-        public bodyStakeholdersInputItemActorsTypeItem[] Actors { get; set; }
+        public bodystakeholdersInputItemActorsTypeItem[] Actors { get; set; }
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }
         public string Language { get; set; }
@@ -788,27 +788,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalStakeholderReference { get; set; }
     }
 
-    public class bodyStakeholdersInputItemActorsTypeItem
+    public class bodystakeholdersInputItemActorsTypeItem
     {
-        public bodyStakeholdersInputItemActorsTypeItemTypeType Type { get; set; }
+        public bodystakeholdersInputItemActorsTypeItemTypeType Type { get; set; }
         public string OrderIndex { get; set; }
         public string[] LocationIds { get; set; }
         public SigningTypeInfo[] SigningTypes { get; set; }
         public string Phonenumber { get; set; }
         public string RedirectURL { get; set; }
         public bool SendNotifications { get; set; }
-        public bodyStakeholdersInputItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
+        public bodystakeholdersInputItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
         public string LegalNoticeCode { get; set; }
         public string LegalNoticetext { get; set; }
     }
 
-    public enum bodyStakeholdersInputItemActorsTypeItemTypeType
+    public enum bodystakeholdersInputItemActorsTypeItemTypeType
     {
         Signer,
         Receiver
     }
 
-    public enum bodyStakeholdersInputItemActorsTypeItemUserRolesTypeItem
+    public enum bodystakeholdersInputItemActorsTypeItemUserRolesTypeItem
     {
         LEGALNOTICE1,
         LEGALNOTICE2,

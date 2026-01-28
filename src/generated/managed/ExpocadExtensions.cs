@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassId, Expression<Func<int>> boothClassKeepWhenCombined, Expression<Func<int>> boothClassCountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassName = null, Expression<Func<string>> boothClassDescription = null, Expression<Func<string>> boothClassPrioritity = null, Expression<Func<int>> boothClassColor = null)
+        public IBodyWorkflowAction<BoothClass> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
             var apiCallPath = String.Format("/{0}/classes/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
             var apiCallHttpMethod = "post";
@@ -294,32 +294,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var boothClass = new JObject();
             var boothClasspropCount = 0;
             boothClasspropCount++;
-            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassId);
-            if (boothClassName != null)
+            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassid);
+            if (boothClassname != null)
             {
-                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassName);
+                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassname);
                 boothClasspropCount++;
             }
 
-            if (boothClassDescription != null)
+            if (boothClassdescription != null)
             {
-                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassDescription);
+                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassdescription);
                 boothClasspropCount++;
             }
 
             boothClasspropCount++;
-            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClassKeepWhenCombined);
+            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClasskeepWhenCombined);
             boothClasspropCount++;
-            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClassCountAsInventory);
-            if (boothClassPrioritity != null)
+            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClasscountAsInventory);
+            if (boothClassprioritity != null)
             {
-                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassPrioritity);
+                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassprioritity);
                 boothClasspropCount++;
             }
 
-            if (boothClassColor != null)
+            if (boothClasscolor != null)
             {
-                boothClass["Color"] = ExpressionConverter.ConvertO(boothClassColor);
+                boothClass["Color"] = ExpressionConverter.ConvertO(boothClasscolor);
                 boothClasspropCount++;
             }
 
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassId, Expression<Func<int>> boothClassKeepWhenCombined, Expression<Func<int>> boothClassCountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassName = null, Expression<Func<string>> boothClassDescription = null, Expression<Func<string>> boothClassPrioritity = null, Expression<Func<int>> boothClassColor = null)
+        public IBodyWorkflowAction<BoothClass> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
             var apiCallPath = String.Format("/{0}/classes/update", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
             var apiCallHttpMethod = "put";
@@ -342,32 +342,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var boothClass = new JObject();
             var boothClasspropCount = 0;
             boothClasspropCount++;
-            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassId);
-            if (boothClassName != null)
+            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassid);
+            if (boothClassname != null)
             {
-                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassName);
+                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassname);
                 boothClasspropCount++;
             }
 
-            if (boothClassDescription != null)
+            if (boothClassdescription != null)
             {
-                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassDescription);
+                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassdescription);
                 boothClasspropCount++;
             }
 
             boothClasspropCount++;
-            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClassKeepWhenCombined);
+            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClasskeepWhenCombined);
             boothClasspropCount++;
-            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClassCountAsInventory);
-            if (boothClassPrioritity != null)
+            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClasscountAsInventory);
+            if (boothClassprioritity != null)
             {
-                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassPrioritity);
+                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassprioritity);
                 boothClasspropCount++;
             }
 
-            if (boothClassColor != null)
+            if (boothClasscolor != null)
             {
-                boothClass["Color"] = ExpressionConverter.ConvertO(boothClassColor);
+                boothClass["Color"] = ExpressionConverter.ConvertO(boothClasscolor);
                 boothClasspropCount++;
             }
 
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorExhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorAddress1 = null, Expression<Func<string>> exhibitorAddress2 = null, Expression<Func<string>> exhibitorCity = null, Expression<Func<string>> exhibitorComments = null, Expression<Func<string>> exhibitorComments2 = null, Expression<Func<string>> exhibitorContact = null, Expression<Func<string>> exhibitorCountry = null, Expression<Func<string>> exhibitorCellPhone = null, Expression<Func<string>> exhibitorDisplayOnDrawing = null, Expression<Func<string>> exhibitorDoingBusinessAs = null, Expression<Func<string>> exhibitorDoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitorEmail = null, Expression<Func<string>> exhibitorExhibitorName = null, Expression<Func<string>> exhibitorExhibitorNameLine2 = null, Expression<Func<string>> exhibitorFax = null, Expression<Func<string>> exhibitorField1 = null, Expression<Func<string>> exhibitorField2 = null, Expression<Func<string>> exhibitorField3 = null, Expression<Func<string>> exhibitorField4 = null, Expression<Func<string>> exhibitorField5 = null, Expression<Func<string>> exhibitorField6 = null, Expression<Func<string>> exhibitorField7 = null, Expression<Func<string>> exhibitorField8 = null, Expression<Func<string>> exhibitorField9 = null, Expression<Func<string>> exhibitorNickName = null, Expression<Func<string>> exhibitorSalutation = null, Expression<Func<string>> exhibitorTitle = null, Expression<Func<string>> exhibitorPhone = null, Expression<Func<string>> exhibitorPostalCode = null, Expression<Func<string>> exhibitorPrimaryGroup = null, Expression<Func<string>> exhibitorPriorityPoints = null, Expression<Func<string>> exhibitorProductDescription = null, Expression<Func<string>> exhibitorState = null, Expression<Func<string>> exhibitorWebSite = null)
+        public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
             var apiCallPath = String.Format("/{0}/exhibitors/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
             var apiCallHttpMethod = "post";
@@ -449,209 +449,209 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
             var exhibitor = new JObject();
             var exhibitorpropCount = 0;
-            if (exhibitorAddress1 != null)
+            if (exhibitoraddress1 != null)
             {
-                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitorAddress1);
+                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitoraddress1);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorAddress2 != null)
+            if (exhibitoraddress2 != null)
             {
-                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitorAddress2);
+                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitoraddress2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCity != null)
+            if (exhibitorcity != null)
             {
-                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorCity);
+                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorcity);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorComments != null)
+            if (exhibitorcomments != null)
             {
-                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorComments);
+                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorcomments);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorComments2 != null)
+            if (exhibitorcomments2 != null)
             {
-                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorComments2);
+                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorcomments2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorContact != null)
+            if (exhibitorcontact != null)
             {
-                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorContact);
+                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorcontact);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCountry != null)
+            if (exhibitorcountry != null)
             {
-                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorCountry);
+                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorcountry);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCellPhone != null)
+            if (exhibitorcellPhone != null)
             {
-                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorCellPhone);
+                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorcellPhone);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDisplayOnDrawing != null)
+            if (exhibitordisplayOnDrawing != null)
             {
-                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitorDisplayOnDrawing);
+                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordisplayOnDrawing);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDoingBusinessAs != null)
+            if (exhibitordoingBusinessAs != null)
             {
-                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitorDoingBusinessAs);
+                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAs);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDoingBusinessAsDisplayOnDrawing != null)
+            if (exhibitordoingBusinessAsDisplayOnDrawing != null)
             {
-                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitorDoingBusinessAsDisplayOnDrawing);
+                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAsDisplayOnDrawing);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorEmail != null)
+            if (exhibitoremail != null)
             {
-                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitorEmail);
+                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitoremail);
                 exhibitorpropCount++;
             }
 
             exhibitorpropCount++;
-            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorExhibitorId);
-            if (exhibitorExhibitorName != null)
+            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorexhibitorId);
+            if (exhibitorexhibitorName != null)
             {
-                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorExhibitorName);
+                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorexhibitorName);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorExhibitorNameLine2 != null)
+            if (exhibitorexhibitorNameLine2 != null)
             {
-                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorExhibitorNameLine2);
+                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorexhibitorNameLine2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorFax != null)
+            if (exhibitorfax != null)
             {
-                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorFax);
+                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorfax);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField1 != null)
+            if (exhibitorfield1 != null)
             {
-                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorField1);
+                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorfield1);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField2 != null)
+            if (exhibitorfield2 != null)
             {
-                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorField2);
+                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorfield2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField3 != null)
+            if (exhibitorfield3 != null)
             {
-                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorField3);
+                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorfield3);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField4 != null)
+            if (exhibitorfield4 != null)
             {
-                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorField4);
+                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorfield4);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField5 != null)
+            if (exhibitorfield5 != null)
             {
-                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorField5);
+                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorfield5);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField6 != null)
+            if (exhibitorfield6 != null)
             {
-                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorField6);
+                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorfield6);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField7 != null)
+            if (exhibitorfield7 != null)
             {
-                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorField7);
+                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorfield7);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField8 != null)
+            if (exhibitorfield8 != null)
             {
-                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorField8);
+                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorfield8);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField9 != null)
+            if (exhibitorfield9 != null)
             {
-                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorField9);
+                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorfield9);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorNickName != null)
+            if (exhibitornickName != null)
             {
-                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitorNickName);
+                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitornickName);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorSalutation != null)
+            if (exhibitorsalutation != null)
             {
-                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorSalutation);
+                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorsalutation);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorTitle != null)
+            if (exhibitortitle != null)
             {
-                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitorTitle);
+                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitortitle);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPhone != null)
+            if (exhibitorphone != null)
             {
-                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorPhone);
+                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorphone);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPostalCode != null)
+            if (exhibitorpostalCode != null)
             {
-                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorPostalCode);
+                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorpostalCode);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPrimaryGroup != null)
+            if (exhibitorprimaryGroup != null)
             {
-                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorPrimaryGroup);
+                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorprimaryGroup);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPriorityPoints != null)
+            if (exhibitorpriorityPoints != null)
             {
-                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorPriorityPoints);
+                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorpriorityPoints);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorProductDescription != null)
+            if (exhibitorproductDescription != null)
             {
-                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorProductDescription);
+                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorproductDescription);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorState != null)
+            if (exhibitorstate != null)
             {
-                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorState);
+                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorstate);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorWebSite != null)
+            if (exhibitorwebSite != null)
             {
-                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorWebSite);
+                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorwebSite);
                 exhibitorpropCount++;
             }
 
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorExhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorAddress1 = null, Expression<Func<string>> exhibitorAddress2 = null, Expression<Func<string>> exhibitorCity = null, Expression<Func<string>> exhibitorComments = null, Expression<Func<string>> exhibitorComments2 = null, Expression<Func<string>> exhibitorContact = null, Expression<Func<string>> exhibitorCountry = null, Expression<Func<string>> exhibitorCellPhone = null, Expression<Func<string>> exhibitorDisplayOnDrawing = null, Expression<Func<string>> exhibitorDoingBusinessAs = null, Expression<Func<string>> exhibitorDoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitorEmail = null, Expression<Func<string>> exhibitorExhibitorName = null, Expression<Func<string>> exhibitorExhibitorNameLine2 = null, Expression<Func<string>> exhibitorFax = null, Expression<Func<string>> exhibitorField1 = null, Expression<Func<string>> exhibitorField2 = null, Expression<Func<string>> exhibitorField3 = null, Expression<Func<string>> exhibitorField4 = null, Expression<Func<string>> exhibitorField5 = null, Expression<Func<string>> exhibitorField6 = null, Expression<Func<string>> exhibitorField7 = null, Expression<Func<string>> exhibitorField8 = null, Expression<Func<string>> exhibitorField9 = null, Expression<Func<string>> exhibitorNickName = null, Expression<Func<string>> exhibitorSalutation = null, Expression<Func<string>> exhibitorTitle = null, Expression<Func<string>> exhibitorPhone = null, Expression<Func<string>> exhibitorPostalCode = null, Expression<Func<string>> exhibitorPrimaryGroup = null, Expression<Func<string>> exhibitorPriorityPoints = null, Expression<Func<string>> exhibitorProductDescription = null, Expression<Func<string>> exhibitorState = null, Expression<Func<string>> exhibitorWebSite = null)
+        public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
             var apiCallPath = String.Format("/{0}/exhibitors/update", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
             var apiCallHttpMethod = "put";
@@ -673,209 +673,209 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
             var exhibitor = new JObject();
             var exhibitorpropCount = 0;
-            if (exhibitorAddress1 != null)
+            if (exhibitoraddress1 != null)
             {
-                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitorAddress1);
+                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitoraddress1);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorAddress2 != null)
+            if (exhibitoraddress2 != null)
             {
-                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitorAddress2);
+                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitoraddress2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCity != null)
+            if (exhibitorcity != null)
             {
-                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorCity);
+                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorcity);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorComments != null)
+            if (exhibitorcomments != null)
             {
-                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorComments);
+                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorcomments);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorComments2 != null)
+            if (exhibitorcomments2 != null)
             {
-                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorComments2);
+                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorcomments2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorContact != null)
+            if (exhibitorcontact != null)
             {
-                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorContact);
+                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorcontact);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCountry != null)
+            if (exhibitorcountry != null)
             {
-                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorCountry);
+                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorcountry);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorCellPhone != null)
+            if (exhibitorcellPhone != null)
             {
-                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorCellPhone);
+                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorcellPhone);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDisplayOnDrawing != null)
+            if (exhibitordisplayOnDrawing != null)
             {
-                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitorDisplayOnDrawing);
+                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordisplayOnDrawing);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDoingBusinessAs != null)
+            if (exhibitordoingBusinessAs != null)
             {
-                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitorDoingBusinessAs);
+                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAs);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorDoingBusinessAsDisplayOnDrawing != null)
+            if (exhibitordoingBusinessAsDisplayOnDrawing != null)
             {
-                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitorDoingBusinessAsDisplayOnDrawing);
+                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAsDisplayOnDrawing);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorEmail != null)
+            if (exhibitoremail != null)
             {
-                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitorEmail);
+                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitoremail);
                 exhibitorpropCount++;
             }
 
             exhibitorpropCount++;
-            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorExhibitorId);
-            if (exhibitorExhibitorName != null)
+            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorexhibitorId);
+            if (exhibitorexhibitorName != null)
             {
-                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorExhibitorName);
+                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorexhibitorName);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorExhibitorNameLine2 != null)
+            if (exhibitorexhibitorNameLine2 != null)
             {
-                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorExhibitorNameLine2);
+                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorexhibitorNameLine2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorFax != null)
+            if (exhibitorfax != null)
             {
-                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorFax);
+                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorfax);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField1 != null)
+            if (exhibitorfield1 != null)
             {
-                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorField1);
+                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorfield1);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField2 != null)
+            if (exhibitorfield2 != null)
             {
-                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorField2);
+                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorfield2);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField3 != null)
+            if (exhibitorfield3 != null)
             {
-                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorField3);
+                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorfield3);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField4 != null)
+            if (exhibitorfield4 != null)
             {
-                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorField4);
+                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorfield4);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField5 != null)
+            if (exhibitorfield5 != null)
             {
-                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorField5);
+                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorfield5);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField6 != null)
+            if (exhibitorfield6 != null)
             {
-                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorField6);
+                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorfield6);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField7 != null)
+            if (exhibitorfield7 != null)
             {
-                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorField7);
+                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorfield7);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField8 != null)
+            if (exhibitorfield8 != null)
             {
-                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorField8);
+                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorfield8);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorField9 != null)
+            if (exhibitorfield9 != null)
             {
-                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorField9);
+                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorfield9);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorNickName != null)
+            if (exhibitornickName != null)
             {
-                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitorNickName);
+                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitornickName);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorSalutation != null)
+            if (exhibitorsalutation != null)
             {
-                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorSalutation);
+                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorsalutation);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorTitle != null)
+            if (exhibitortitle != null)
             {
-                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitorTitle);
+                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitortitle);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPhone != null)
+            if (exhibitorphone != null)
             {
-                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorPhone);
+                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorphone);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPostalCode != null)
+            if (exhibitorpostalCode != null)
             {
-                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorPostalCode);
+                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorpostalCode);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPrimaryGroup != null)
+            if (exhibitorprimaryGroup != null)
             {
-                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorPrimaryGroup);
+                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorprimaryGroup);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorPriorityPoints != null)
+            if (exhibitorpriorityPoints != null)
             {
-                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorPriorityPoints);
+                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorpriorityPoints);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorProductDescription != null)
+            if (exhibitorproductDescription != null)
             {
-                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorProductDescription);
+                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorproductDescription);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorState != null)
+            if (exhibitorstate != null)
             {
-                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorState);
+                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorstate);
                 exhibitorpropCount++;
             }
 
-            if (exhibitorWebSite != null)
+            if (exhibitorwebSite != null)
             {
-                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorWebSite);
+                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorwebSite);
                 exhibitorpropCount++;
             }
 
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanName, Expression<Func<string>> ratePlanShortCode, Expression<Func<double>> ratePlanGrossRate, Expression<Func<double>> ratePlanFixedDiscountRate, Expression<Func<double>> ratePlanPercentDiscountRate, Expression<Func<bool>> ratePlanIsFixed)
+        public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
         {
             var apiCallPath = String.Format("/{0}/rateplans/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
             var apiCallHttpMethod = "post";
@@ -1078,17 +1078,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var ratePlan = new JObject();
             var ratePlanpropCount = 0;
             ratePlanpropCount++;
-            ratePlan["Name"] = ExpressionConverter.ConvertO(ratePlanName);
+            ratePlan["Name"] = ExpressionConverter.ConvertO(ratePlanname);
             ratePlanpropCount++;
-            ratePlan["ShortCode"] = ExpressionConverter.ConvertO(ratePlanShortCode);
+            ratePlan["ShortCode"] = ExpressionConverter.ConvertO(ratePlanshortCode);
             ratePlanpropCount++;
-            ratePlan["GrossRate"] = ExpressionConverter.ConvertO(ratePlanGrossRate);
+            ratePlan["GrossRate"] = ExpressionConverter.ConvertO(ratePlangrossRate);
             ratePlanpropCount++;
-            ratePlan["FixedDiscountRate"] = ExpressionConverter.ConvertO(ratePlanFixedDiscountRate);
+            ratePlan["FixedDiscountRate"] = ExpressionConverter.ConvertO(ratePlanfixedDiscountRate);
             ratePlanpropCount++;
-            ratePlan["PercentDiscountRate"] = ExpressionConverter.ConvertO(ratePlanPercentDiscountRate);
+            ratePlan["PercentDiscountRate"] = ExpressionConverter.ConvertO(ratePlanpercentDiscountRate);
             ratePlanpropCount++;
-            ratePlan["IsFixed"] = ExpressionConverter.ConvertO(ratePlanIsFixed);
+            ratePlan["IsFixed"] = ExpressionConverter.ConvertO(ratePlanisFixed);
             if (ratePlanpropCount > 0)
             {
                 callPayload.Body = ratePlan;

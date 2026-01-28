@@ -91,101 +91,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            var CustomerIDObject = new JObject();
-            var CustomerIDObjectpropCount = 0;
+            var customerIDObject = new JObject();
+            var customerIDObjectpropCount = 0;
             if (bodycustomerIDvalue != null)
             {
-                CustomerIDObject["value"] = ExpressionConverter.ConvertO(bodycustomerIDvalue);
-                CustomerIDObjectpropCount++;
+                customerIDObject["value"] = ExpressionConverter.ConvertO(bodycustomerIDvalue);
+                customerIDObjectpropCount++;
             }
 
-            if (CustomerIDObjectpropCount > 0)
+            if (customerIDObjectpropCount > 0)
             {
-                body["CustomerID"] = CustomerIDObject;
+                body["CustomerID"] = customerIDObject;
                 bodypropCount++;
             }
 
-            var CustomerNameObject = new JObject();
-            var CustomerNameObjectpropCount = 0;
+            var customerNameObject = new JObject();
+            var customerNameObjectpropCount = 0;
             if (bodycustomerNamevalue != null)
             {
-                CustomerNameObject["value"] = ExpressionConverter.ConvertO(bodycustomerNamevalue);
-                CustomerNameObjectpropCount++;
+                customerNameObject["value"] = ExpressionConverter.ConvertO(bodycustomerNamevalue);
+                customerNameObjectpropCount++;
             }
 
-            if (CustomerNameObjectpropCount > 0)
+            if (customerNameObjectpropCount > 0)
             {
-                body["CustomerName"] = CustomerNameObject;
+                body["CustomerName"] = customerNameObject;
                 bodypropCount++;
             }
 
-            var StatusObject = new JObject();
-            var StatusObjectpropCount = 0;
+            var statusObject = new JObject();
+            var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                StatusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
-                StatusObjectpropCount++;
+                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObjectpropCount++;
             }
 
-            if (StatusObjectpropCount > 0)
+            if (statusObjectpropCount > 0)
             {
-                body["Status"] = StatusObject;
+                body["Status"] = statusObject;
                 bodypropCount++;
             }
 
-            var AccountRefObject = new JObject();
-            var AccountRefObjectpropCount = 0;
+            var accountRefObject = new JObject();
+            var accountRefObjectpropCount = 0;
             if (bodyaccountRefvalue != null)
             {
-                AccountRefObject["value"] = ExpressionConverter.ConvertO(bodyaccountRefvalue);
-                AccountRefObjectpropCount++;
+                accountRefObject["value"] = ExpressionConverter.ConvertO(bodyaccountRefvalue);
+                accountRefObjectpropCount++;
             }
 
-            if (AccountRefObjectpropCount > 0)
+            if (accountRefObjectpropCount > 0)
             {
-                body["AccountRef"] = AccountRefObject;
+                body["AccountRef"] = accountRefObject;
                 bodypropCount++;
             }
 
-            var CurrencyIDObject = new JObject();
-            var CurrencyIDObjectpropCount = 0;
+            var currencyIDObject = new JObject();
+            var currencyIDObjectpropCount = 0;
             if (bodycurrencyIDvalue != null)
             {
-                CurrencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
-                CurrencyIDObjectpropCount++;
+                currencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
+                currencyIDObjectpropCount++;
             }
 
-            if (CurrencyIDObjectpropCount > 0)
+            if (currencyIDObjectpropCount > 0)
             {
-                body["CurrencyID"] = CurrencyIDObject;
+                body["CurrencyID"] = currencyIDObject;
                 bodypropCount++;
             }
 
-            var CustomerClassObject = new JObject();
-            var CustomerClassObjectpropCount = 0;
+            var customerClassObject = new JObject();
+            var customerClassObjectpropCount = 0;
             if (bodycustomerClassvalue != null)
             {
-                CustomerClassObject["value"] = ExpressionConverter.ConvertO(bodycustomerClassvalue);
-                CustomerClassObjectpropCount++;
+                customerClassObject["value"] = ExpressionConverter.ConvertO(bodycustomerClassvalue);
+                customerClassObjectpropCount++;
             }
 
-            if (CustomerClassObjectpropCount > 0)
+            if (customerClassObjectpropCount > 0)
             {
-                body["CustomerClass"] = CustomerClassObject;
+                body["CustomerClass"] = customerClassObject;
                 bodypropCount++;
             }
 
-            var TermsObject = new JObject();
-            var TermsObjectpropCount = 0;
+            var termsObject = new JObject();
+            var termsObjectpropCount = 0;
             if (bodytermsvalue != null)
             {
-                TermsObject["value"] = ExpressionConverter.ConvertO(bodytermsvalue);
-                TermsObjectpropCount++;
+                termsObject["value"] = ExpressionConverter.ConvertO(bodytermsvalue);
+                termsObjectpropCount++;
             }
 
-            if (TermsObjectpropCount > 0)
+            if (termsObjectpropCount > 0)
             {
-                body["Terms"] = TermsObject;
+                body["Terms"] = termsObject;
                 bodypropCount++;
             }
 
@@ -226,185 +226,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            var OpportunityIDObject = new JObject();
-            var OpportunityIDObjectpropCount = 0;
+            var opportunityIDObject = new JObject();
+            var opportunityIDObjectpropCount = 0;
             if (bodyopportunityIDvalue != null)
             {
-                OpportunityIDObject["value"] = ExpressionConverter.ConvertO(bodyopportunityIDvalue);
-                OpportunityIDObjectpropCount++;
+                opportunityIDObject["value"] = ExpressionConverter.ConvertO(bodyopportunityIDvalue);
+                opportunityIDObjectpropCount++;
             }
 
-            if (OpportunityIDObjectpropCount > 0)
+            if (opportunityIDObjectpropCount > 0)
             {
-                body["OpportunityID"] = OpportunityIDObject;
+                body["OpportunityID"] = opportunityIDObject;
                 bodypropCount++;
             }
 
-            var SubjectObject = new JObject();
-            var SubjectObjectpropCount = 0;
+            var subjectObject = new JObject();
+            var subjectObjectpropCount = 0;
             if (bodysubjectvalue != null)
             {
-                SubjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
-                SubjectObjectpropCount++;
+                subjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
+                subjectObjectpropCount++;
             }
 
-            if (SubjectObjectpropCount > 0)
+            if (subjectObjectpropCount > 0)
             {
-                body["Subject"] = SubjectObject;
+                body["Subject"] = subjectObject;
                 bodypropCount++;
             }
 
-            var StatusObject = new JObject();
-            var StatusObjectpropCount = 0;
+            var statusObject = new JObject();
+            var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                StatusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
-                StatusObjectpropCount++;
+                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObjectpropCount++;
             }
 
-            if (StatusObjectpropCount > 0)
+            if (statusObjectpropCount > 0)
             {
-                body["Status"] = StatusObject;
+                body["Status"] = statusObject;
                 bodypropCount++;
             }
 
-            var StageObject = new JObject();
-            var StageObjectpropCount = 0;
+            var stageObject = new JObject();
+            var stageObjectpropCount = 0;
             if (bodystagevalue != null)
             {
-                StageObject["value"] = ExpressionConverter.ConvertO(bodystagevalue);
-                StageObjectpropCount++;
+                stageObject["value"] = ExpressionConverter.ConvertO(bodystagevalue);
+                stageObjectpropCount++;
             }
 
-            if (StageObjectpropCount > 0)
+            if (stageObjectpropCount > 0)
             {
-                body["Stage"] = StageObject;
+                body["Stage"] = stageObject;
                 bodypropCount++;
             }
 
-            var CurrencyIDObject = new JObject();
-            var CurrencyIDObjectpropCount = 0;
+            var currencyIDObject = new JObject();
+            var currencyIDObjectpropCount = 0;
             if (bodycurrencyIDvalue != null)
             {
-                CurrencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
-                CurrencyIDObjectpropCount++;
+                currencyIDObject["value"] = ExpressionConverter.ConvertO(bodycurrencyIDvalue);
+                currencyIDObjectpropCount++;
             }
 
-            if (CurrencyIDObjectpropCount > 0)
+            if (currencyIDObjectpropCount > 0)
             {
-                body["CurrencyID"] = CurrencyIDObject;
+                body["CurrencyID"] = currencyIDObject;
                 bodypropCount++;
             }
 
-            var BusinessAccountObject = new JObject();
-            var BusinessAccountObjectpropCount = 0;
+            var businessAccountObject = new JObject();
+            var businessAccountObjectpropCount = 0;
             if (bodybusinessAccountvalue != null)
             {
-                BusinessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
-                BusinessAccountObjectpropCount++;
+                businessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
+                businessAccountObjectpropCount++;
             }
 
-            if (BusinessAccountObjectpropCount > 0)
+            if (businessAccountObjectpropCount > 0)
             {
-                body["BusinessAccount"] = BusinessAccountObject;
+                body["BusinessAccount"] = businessAccountObject;
                 bodypropCount++;
             }
 
-            var ContactDisplayNameObject = new JObject();
-            var ContactDisplayNameObjectpropCount = 0;
+            var contactDisplayNameObject = new JObject();
+            var contactDisplayNameObjectpropCount = 0;
             if (bodycontactDisplayNamevalue != null)
             {
-                ContactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
-                ContactDisplayNameObjectpropCount++;
+                contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
+                contactDisplayNameObjectpropCount++;
             }
 
-            if (ContactDisplayNameObjectpropCount > 0)
+            if (contactDisplayNameObjectpropCount > 0)
             {
-                body["ContactDisplayName"] = ContactDisplayNameObject;
+                body["ContactDisplayName"] = contactDisplayNameObject;
                 bodypropCount++;
             }
 
-            var AmountObject = new JObject();
-            var AmountObjectpropCount = 0;
+            var amountObject = new JObject();
+            var amountObjectpropCount = 0;
             if (bodyamountvalue != null)
             {
-                AmountObject["value"] = ExpressionConverter.ConvertO(bodyamountvalue);
-                AmountObjectpropCount++;
+                amountObject["value"] = ExpressionConverter.ConvertO(bodyamountvalue);
+                amountObjectpropCount++;
             }
 
-            if (AmountObjectpropCount > 0)
+            if (amountObjectpropCount > 0)
             {
-                body["Amount"] = AmountObject;
+                body["Amount"] = amountObject;
                 bodypropCount++;
             }
 
-            var DiscountObject = new JObject();
-            var DiscountObjectpropCount = 0;
+            var discountObject = new JObject();
+            var discountObjectpropCount = 0;
             if (bodydiscountvalue != null)
             {
-                DiscountObject["value"] = ExpressionConverter.ConvertO(bodydiscountvalue);
-                DiscountObjectpropCount++;
+                discountObject["value"] = ExpressionConverter.ConvertO(bodydiscountvalue);
+                discountObjectpropCount++;
             }
 
-            if (DiscountObjectpropCount > 0)
+            if (discountObjectpropCount > 0)
             {
-                body["Discount"] = DiscountObject;
+                body["Discount"] = discountObject;
                 bodypropCount++;
             }
 
-            var TotalObject = new JObject();
-            var TotalObjectpropCount = 0;
+            var totalObject = new JObject();
+            var totalObjectpropCount = 0;
             if (bodytotalvalue != null)
             {
-                TotalObject["value"] = ExpressionConverter.ConvertO(bodytotalvalue);
-                TotalObjectpropCount++;
+                totalObject["value"] = ExpressionConverter.ConvertO(bodytotalvalue);
+                totalObjectpropCount++;
             }
 
-            if (TotalObjectpropCount > 0)
+            if (totalObjectpropCount > 0)
             {
-                body["Total"] = TotalObject;
+                body["Total"] = totalObject;
                 bodypropCount++;
             }
 
-            var SourceObject = new JObject();
-            var SourceObjectpropCount = 0;
+            var sourceObject = new JObject();
+            var sourceObjectpropCount = 0;
             if (bodysourcevalue != null)
             {
-                SourceObject["value"] = ExpressionConverter.ConvertO(bodysourcevalue);
-                SourceObjectpropCount++;
+                sourceObject["value"] = ExpressionConverter.ConvertO(bodysourcevalue);
+                sourceObjectpropCount++;
             }
 
-            if (SourceObjectpropCount > 0)
+            if (sourceObjectpropCount > 0)
             {
-                body["Source"] = SourceObject;
+                body["Source"] = sourceObject;
                 bodypropCount++;
             }
 
-            var ReasonObject = new JObject();
-            var ReasonObjectpropCount = 0;
+            var reasonObject = new JObject();
+            var reasonObjectpropCount = 0;
             if (bodyreasonvalue != null)
             {
-                ReasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
-                ReasonObjectpropCount++;
+                reasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
+                reasonObjectpropCount++;
             }
 
-            if (ReasonObjectpropCount > 0)
+            if (reasonObjectpropCount > 0)
             {
-                body["Reason"] = ReasonObject;
+                body["Reason"] = reasonObject;
                 bodypropCount++;
             }
 
-            var ProjectObject = new JObject();
-            var ProjectObjectpropCount = 0;
+            var projectObject = new JObject();
+            var projectObjectpropCount = 0;
             if (bodyprojectvalue != null)
             {
-                ProjectObject["value"] = ExpressionConverter.ConvertO(bodyprojectvalue);
-                ProjectObjectpropCount++;
+                projectObject["value"] = ExpressionConverter.ConvertO(bodyprojectvalue);
+                projectObjectpropCount++;
             }
 
-            if (ProjectObjectpropCount > 0)
+            if (projectObjectpropCount > 0)
             {
-                body["Project"] = ProjectObject;
+                body["Project"] = projectObject;
                 bodypropCount++;
             }
 
@@ -445,143 +445,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
             var body = new JObject();
             var bodypropCount = 0;
-            var CaseIDObject = new JObject();
-            var CaseIDObjectpropCount = 0;
+            var caseIDObject = new JObject();
+            var caseIDObjectpropCount = 0;
             if (bodycaseIDvalue != null)
             {
-                CaseIDObject["value"] = ExpressionConverter.ConvertO(bodycaseIDvalue);
-                CaseIDObjectpropCount++;
+                caseIDObject["value"] = ExpressionConverter.ConvertO(bodycaseIDvalue);
+                caseIDObjectpropCount++;
             }
 
-            if (CaseIDObjectpropCount > 0)
+            if (caseIDObjectpropCount > 0)
             {
-                body["CaseID"] = CaseIDObject;
+                body["CaseID"] = caseIDObject;
                 bodypropCount++;
             }
 
-            var SubjectObject = new JObject();
-            var SubjectObjectpropCount = 0;
+            var subjectObject = new JObject();
+            var subjectObjectpropCount = 0;
             if (bodysubjectvalue != null)
             {
-                SubjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
-                SubjectObjectpropCount++;
+                subjectObject["value"] = ExpressionConverter.ConvertO(bodysubjectvalue);
+                subjectObjectpropCount++;
             }
 
-            if (SubjectObjectpropCount > 0)
+            if (subjectObjectpropCount > 0)
             {
-                body["Subject"] = SubjectObject;
+                body["Subject"] = subjectObject;
                 bodypropCount++;
             }
 
-            var ClassIDObject = new JObject();
-            var ClassIDObjectpropCount = 0;
+            var classIDObject = new JObject();
+            var classIDObjectpropCount = 0;
             if (bodyclassIDvalue != null)
             {
-                ClassIDObject["value"] = ExpressionConverter.ConvertO(bodyclassIDvalue);
-                ClassIDObjectpropCount++;
+                classIDObject["value"] = ExpressionConverter.ConvertO(bodyclassIDvalue);
+                classIDObjectpropCount++;
             }
 
-            if (ClassIDObjectpropCount > 0)
+            if (classIDObjectpropCount > 0)
             {
-                body["ClassID"] = ClassIDObject;
+                body["ClassID"] = classIDObject;
                 bodypropCount++;
             }
 
-            var BusinessAccountObject = new JObject();
-            var BusinessAccountObjectpropCount = 0;
+            var businessAccountObject = new JObject();
+            var businessAccountObjectpropCount = 0;
             if (bodybusinessAccountvalue != null)
             {
-                BusinessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
-                BusinessAccountObjectpropCount++;
+                businessAccountObject["value"] = ExpressionConverter.ConvertO(bodybusinessAccountvalue);
+                businessAccountObjectpropCount++;
             }
 
-            if (BusinessAccountObjectpropCount > 0)
+            if (businessAccountObjectpropCount > 0)
             {
-                body["BusinessAccount"] = BusinessAccountObject;
+                body["BusinessAccount"] = businessAccountObject;
                 bodypropCount++;
             }
 
-            var DescriptionObject = new JObject();
-            var DescriptionObjectpropCount = 0;
+            var descriptionObject = new JObject();
+            var descriptionObjectpropCount = 0;
             if (bodydescriptionvalue != null)
             {
-                DescriptionObject["value"] = ExpressionConverter.ConvertO(bodydescriptionvalue);
-                DescriptionObjectpropCount++;
+                descriptionObject["value"] = ExpressionConverter.ConvertO(bodydescriptionvalue);
+                descriptionObjectpropCount++;
             }
 
-            if (DescriptionObjectpropCount > 0)
+            if (descriptionObjectpropCount > 0)
             {
-                body["Description"] = DescriptionObject;
+                body["Description"] = descriptionObject;
                 bodypropCount++;
             }
 
-            var ContactDisplayNameObject = new JObject();
-            var ContactDisplayNameObjectpropCount = 0;
+            var contactDisplayNameObject = new JObject();
+            var contactDisplayNameObjectpropCount = 0;
             if (bodycontactDisplayNamevalue != null)
             {
-                ContactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
-                ContactDisplayNameObjectpropCount++;
+                contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(bodycontactDisplayNamevalue);
+                contactDisplayNameObjectpropCount++;
             }
 
-            if (ContactDisplayNameObjectpropCount > 0)
+            if (contactDisplayNameObjectpropCount > 0)
             {
-                body["ContactDisplayName"] = ContactDisplayNameObject;
+                body["ContactDisplayName"] = contactDisplayNameObject;
                 bodypropCount++;
             }
 
-            var StatusObject = new JObject();
-            var StatusObjectpropCount = 0;
+            var statusObject = new JObject();
+            var statusObjectpropCount = 0;
             if (bodystatusvalue != null)
             {
-                StatusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
-                StatusObjectpropCount++;
+                statusObject["value"] = ExpressionConverter.ConvertO(bodystatusvalue);
+                statusObjectpropCount++;
             }
 
-            if (StatusObjectpropCount > 0)
+            if (statusObjectpropCount > 0)
             {
-                body["Status"] = StatusObject;
+                body["Status"] = statusObject;
                 bodypropCount++;
             }
 
-            var ReasonObject = new JObject();
-            var ReasonObjectpropCount = 0;
+            var reasonObject = new JObject();
+            var reasonObjectpropCount = 0;
             if (bodyreasonvalue != null)
             {
-                ReasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
-                ReasonObjectpropCount++;
+                reasonObject["value"] = ExpressionConverter.ConvertO(bodyreasonvalue);
+                reasonObjectpropCount++;
             }
 
-            if (ReasonObjectpropCount > 0)
+            if (reasonObjectpropCount > 0)
             {
-                body["Reason"] = ReasonObject;
+                body["Reason"] = reasonObject;
                 bodypropCount++;
             }
 
-            var SeverityObject = new JObject();
-            var SeverityObjectpropCount = 0;
+            var severityObject = new JObject();
+            var severityObjectpropCount = 0;
             if (bodyseverityvalue != null)
             {
-                SeverityObject["value"] = ExpressionConverter.ConvertO(bodyseverityvalue);
-                SeverityObjectpropCount++;
+                severityObject["value"] = ExpressionConverter.ConvertO(bodyseverityvalue);
+                severityObjectpropCount++;
             }
 
-            if (SeverityObjectpropCount > 0)
+            if (severityObjectpropCount > 0)
             {
-                body["Severity"] = SeverityObject;
+                body["Severity"] = severityObject;
                 bodypropCount++;
             }
 
-            var PriorityObject = new JObject();
-            var PriorityObjectpropCount = 0;
+            var priorityObject = new JObject();
+            var priorityObjectpropCount = 0;
             if (bodypriorityvalue != null)
             {
-                PriorityObject["value"] = ExpressionConverter.ConvertO(bodypriorityvalue);
-                PriorityObjectpropCount++;
+                priorityObject["value"] = ExpressionConverter.ConvertO(bodypriorityvalue);
+                priorityObjectpropCount++;
             }
 
-            if (PriorityObjectpropCount > 0)
+            if (priorityObjectpropCount > 0)
             {
-                body["Priority"] = PriorityObject;
+                body["Priority"] = priorityObject;
                 bodypropCount++;
             }
 

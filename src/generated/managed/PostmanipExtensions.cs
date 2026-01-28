@@ -116,6 +116,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
                 callPayload.Queries["access_key"] = ExpressionConverter.Convert(accessKey);
             return new ApiConnectionAction<GetCollectionResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
+        public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi(Expression<Func<string>> workspace = null)
+        {
+            var apiCallPath = "/import/openapi";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (workspace != null)
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["type"] = "json";
+            bodypropCount++;
+            var inputObject = new JObject();
+            var inputObjectpropCount = 0;
+            if (inputObjectpropCount > 0)
+            {
+                body["input"] = inputObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ImportOpenApiResponse>(callPayload);
+        }
     }
 
     public class PostmanipTriggers([ConnectionName] string connectionId)
@@ -451,6 +480,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     {
         [JsonProperty("collection")]
         public JToken Collection { get; set; }
+    }
+
+    public class ImportOpenApiResponse
+    {
+        [JsonProperty("collections")]
+        public ImportOpenApiResponseCollectionsTypeItem[] Collections { get; set; }
+    }
+
+    public class ImportOpenApiResponseCollectionsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("uid")]
+        public string Uid { get; set; }
     }
 }
 

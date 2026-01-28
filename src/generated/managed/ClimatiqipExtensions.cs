@@ -19,59 +19,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            var emission_factorObject = new JObject();
-            var emission_factorObjectpropCount = 0;
+            var emissionFactorObject = new JObject();
+            var emissionFactorObjectpropCount = 0;
             if (bodyemissionFactoruuid != null)
             {
-                emission_factorObject["uuid"] = ExpressionConverter.ConvertO(bodyemissionFactoruuid);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["uuid"] = ExpressionConverter.ConvertO(bodyemissionFactoruuid);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactoractivityId != null)
             {
-                emission_factorObject["activity_id"] = ExpressionConverter.ConvertO(bodyemissionFactoractivityId);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["activity_id"] = ExpressionConverter.ConvertO(bodyemissionFactoractivityId);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorsource != null)
             {
-                emission_factorObject["source"] = ExpressionConverter.ConvertO(bodyemissionFactorsource);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["source"] = ExpressionConverter.ConvertO(bodyemissionFactorsource);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorregion != null)
             {
-                emission_factorObject["region"] = ExpressionConverter.ConvertO(bodyemissionFactorregion);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["region"] = ExpressionConverter.ConvertO(bodyemissionFactorregion);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorregionFallback != null)
             {
-                emission_factorObject["region_fallback"] = ExpressionConverter.ConvertO(bodyemissionFactorregionFallback);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["region_fallback"] = ExpressionConverter.ConvertO(bodyemissionFactorregionFallback);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactoryear != null)
             {
-                emission_factorObject["year"] = ExpressionConverter.ConvertO(bodyemissionFactoryear);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["year"] = ExpressionConverter.ConvertO(bodyemissionFactoryear);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorlcaActivity != null)
             {
-                emission_factorObject["lca_activity"] = ExpressionConverter.ConvertO(bodyemissionFactorlcaActivity);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["lca_activity"] = ExpressionConverter.ConvertO(bodyemissionFactorlcaActivity);
+                emissionFactorObjectpropCount++;
             }
 
             if (bodyemissionFactorcalculationMethod != null)
             {
-                emission_factorObject["calculation_method"] = ExpressionConverter.ConvertO(bodyemissionFactorcalculationMethod);
-                emission_factorObjectpropCount++;
+                emissionFactorObject["calculation_method"] = ExpressionConverter.ConvertO(bodyemissionFactorcalculationMethod);
+                emissionFactorObjectpropCount++;
             }
 
-            if (emission_factorObjectpropCount > 0)
+            if (emissionFactorObjectpropCount > 0)
             {
-                body["emission_factor"] = emission_factorObject;
+                body["emission_factor"] = emissionFactorObject;
                 bodypropCount++;
             }
 
@@ -516,6 +516,186 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             }
 
             return new ApiConnectionAction<ClassificationResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        public IBodyWorkflowAction<CustomResponse> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        {
+            var apiCallPath = "/custom-activities/estimate";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var customActivityObject = new JObject();
+            var customActivityObjectpropCount = 0;
+            if (bodycustomActivitylabel != null)
+            {
+                customActivityObject["label"] = ExpressionConverter.ConvertO(bodycustomActivitylabel);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivitysource != null)
+            {
+                customActivityObject["source"] = ExpressionConverter.ConvertO(bodycustomActivitysource);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivityregion != null)
+            {
+                customActivityObject["region"] = ExpressionConverter.ConvertO(bodycustomActivityregion);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivityregionFallback != null)
+            {
+                customActivityObject["region_fallback"] = ExpressionConverter.ConvertO(bodycustomActivityregionFallback);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivityyear != null)
+            {
+                customActivityObject["year"] = ExpressionConverter.ConvertO(bodycustomActivityyear);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivitylcaActivity != null)
+            {
+                customActivityObject["lca_activity"] = ExpressionConverter.ConvertO(bodycustomActivitylcaActivity);
+                customActivityObjectpropCount++;
+            }
+
+            if (bodycustomActivitycalculationMethod != null)
+            {
+                customActivityObject["calculation_method"] = ExpressionConverter.ConvertO(bodycustomActivitycalculationMethod);
+                customActivityObjectpropCount++;
+            }
+
+            if (customActivityObjectpropCount > 0)
+            {
+                body["custom_activity"] = customActivityObject;
+                bodypropCount++;
+            }
+
+            var parametersObject = new JObject();
+            var parametersObjectpropCount = 0;
+            if (bodyparametersenergy != null)
+            {
+                parametersObject["energy"] = ExpressionConverter.ConvertO(bodyparametersenergy);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersenergyUnit != null)
+            {
+                parametersObject["energy_unit"] = ExpressionConverter.ConvertO(bodyparametersenergyUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersdata != null)
+            {
+                parametersObject["data"] = ExpressionConverter.ConvertO(bodyparametersdata);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersdataUnit != null)
+            {
+                parametersObject["data_unit"] = ExpressionConverter.ConvertO(bodyparametersdataUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersdistance != null)
+            {
+                parametersObject["distance"] = ExpressionConverter.ConvertO(bodyparametersdistance);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersdistanceUnit != null)
+            {
+                parametersObject["distance_unit"] = ExpressionConverter.ConvertO(bodyparametersdistanceUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersmoney != null)
+            {
+                parametersObject["money"] = ExpressionConverter.ConvertO(bodyparametersmoney);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersmoneyUnit != null)
+            {
+                parametersObject["money_unit"] = ExpressionConverter.ConvertO(bodyparametersmoneyUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersnumber != null)
+            {
+                parametersObject["number"] = ExpressionConverter.ConvertO(bodyparametersnumber);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparameterstime != null)
+            {
+                parametersObject["time"] = ExpressionConverter.ConvertO(bodyparameterstime);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparameterstimeUnit != null)
+            {
+                parametersObject["time_unit"] = ExpressionConverter.ConvertO(bodyparameterstimeUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparameterspassengers != null)
+            {
+                parametersObject["passengers"] = ExpressionConverter.ConvertO(bodyparameterspassengers);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersvolume != null)
+            {
+                parametersObject["volume"] = ExpressionConverter.ConvertO(bodyparametersvolume);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersvolumeUnit != null)
+            {
+                parametersObject["volume_unit"] = ExpressionConverter.ConvertO(bodyparametersvolumeUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersweight != null)
+            {
+                parametersObject["weight"] = ExpressionConverter.ConvertO(bodyparametersweight);
+                parametersObjectpropCount++;
+            }
+
+            if (bodyparametersweightUnit != null)
+            {
+                parametersObject["weight_unit"] = ExpressionConverter.ConvertO(bodyparametersweightUnit);
+                parametersObjectpropCount++;
+            }
+
+            if (parametersObjectpropCount > 0)
+            {
+                body["parameters"] = parametersObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CustomResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
+        public IBodyWorkflowAction<CustomBatchResponse> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
+        {
+            var apiCallPath = "/custom-activities/batch";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Body = ExpressionConverter.ConvertO(body);
+            return new ApiConnectionAction<CustomBatchResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -1506,6 +1686,240 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("n2o")]
         public double N2o { get; set; }
+    }
+
+    public class CustomResponse
+    {
+        [JsonProperty("co2e")]
+        public double Co2e { get; set; }
+
+        [JsonProperty("co2e_unit")]
+        public string Co2eUnit { get; set; }
+
+        [JsonProperty("co2e_calculation_method")]
+        public string Co2eCalculationMethod { get; set; }
+
+        [JsonProperty("co2e_calculation_origin")]
+        public string Co2eCalculationOrigin { get; set; }
+
+        [JsonProperty("emission_factor")]
+        public CustomResponseEmissionFactorType EmissionFactor { get; set; }
+
+        [JsonProperty("constituent_gases")]
+        public CustomResponseConstituentGasesType ConstituentGases { get; set; }
+    }
+
+    public class CustomResponseEmissionFactorType
+    {
+        [JsonProperty("activity_id")]
+        public string ActivityId { get; set; }
+
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("access_type")]
+        public string AccessType { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("data_quality_flags")]
+        public string[] DataQualityFlags { get; set; }
+    }
+
+    public class CustomResponseConstituentGasesType
+    {
+        [JsonProperty("co2e_total")]
+        public double Co2eTotal { get; set; }
+
+        [JsonProperty("co2e_other")]
+        public double Co2eOther { get; set; }
+
+        [JsonProperty("co2")]
+        public double Co2 { get; set; }
+
+        [JsonProperty("ch4")]
+        public double Ch4 { get; set; }
+
+        [JsonProperty("n2o")]
+        public double N2o { get; set; }
+    }
+
+    public class CustomBatchResponse
+    {
+        [JsonProperty("results")]
+        public CustomBatchResponseResultsTypeItem[] Results { get; set; }
+    }
+
+    public class CustomBatchResponseResultsTypeItem
+    {
+        [JsonProperty("co2e")]
+        public double Co2e { get; set; }
+
+        [JsonProperty("co2e_unit")]
+        public string Co2eUnit { get; set; }
+
+        [JsonProperty("co2e_calculation_method")]
+        public string Co2eCalculationMethod { get; set; }
+
+        [JsonProperty("co2e_calculation_origin")]
+        public string Co2eCalculationOrigin { get; set; }
+
+        [JsonProperty("emission_factor")]
+        public CustomBatchResponseResultsTypeItemEmissionFactorType EmissionFactor { get; set; }
+
+        [JsonProperty("constituent_gases")]
+        public CustomBatchResponseResultsTypeItemConstituentGasesType ConstituentGases { get; set; }
+    }
+
+    public class CustomBatchResponseResultsTypeItemEmissionFactorType
+    {
+        [JsonProperty("activity_id")]
+        public string ActivityId { get; set; }
+
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("access_type")]
+        public string AccessType { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("data_quality_flags")]
+        public JToken[] DataQualityFlags { get; set; }
+    }
+
+    public class CustomBatchResponseResultsTypeItemConstituentGasesType
+    {
+        [JsonProperty("co2e_total")]
+        public double Co2eTotal { get; set; }
+
+        [JsonProperty("co2e_other")]
+        public double Co2eOther { get; set; }
+
+        [JsonProperty("co2")]
+        public double Co2 { get; set; }
+
+        [JsonProperty("ch4")]
+        public double Ch4 { get; set; }
+
+        [JsonProperty("n2o")]
+        public double N2o { get; set; }
+    }
+
+    public class bodyInputItem2
+    {
+        [JsonProperty("custom_activity")]
+        public bodyInputItemCustomActivityType CustomActivity { get; set; }
+
+        [JsonProperty("parameters")]
+        public bodyInputItemParametersType Parameters { get; set; }
+    }
+
+    public class bodyInputItemCustomActivityType
+    {
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("region_fallback")]
+        public bool RegionFallback { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("calculation_method")]
+        public string CalculationMethod { get; set; }
+    }
+
+    public class bodyInputItemParametersType
+    {
+        [JsonProperty("energy")]
+        public int Energy { get; set; }
+
+        [JsonProperty("energy_unit")]
+        public string EnergyUnit { get; set; }
+
+        [JsonProperty("data")]
+        public int Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("distance")]
+        public int Distance { get; set; }
+
+        [JsonProperty("distance_unit")]
+        public string DistanceUnit { get; set; }
+
+        [JsonProperty("money")]
+        public int Money { get; set; }
+
+        [JsonProperty("money_unit")]
+        public string MoneyUnit { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("time")]
+        public int Time { get; set; }
+
+        [JsonProperty("time_unit")]
+        public string TimeUnit { get; set; }
+
+        [JsonProperty("passengers")]
+        public int Passengers { get; set; }
+
+        [JsonProperty("volume")]
+        public int Volume { get; set; }
+
+        [JsonProperty("volume_unit")]
+        public string VolumeUnit { get; set; }
+
+        [JsonProperty("weight")]
+        public int Weight { get; set; }
+
+        [JsonProperty("weight_unit")]
+        public string WeightUnit { get; set; }
     }
 
     public class FactorsSearchResponse

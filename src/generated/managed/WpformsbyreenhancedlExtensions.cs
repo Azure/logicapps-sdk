@@ -35,6 +35,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/resources/flows";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["form_id"] = ExpressionConverter.ConvertO(bodyformID);
+            var metaObject = new JObject();
+            var metaObjectpropCount = 0;
+            metaObject["powerAutomateUrl"] = "@listCallbackUrl()";
+            metaObjectpropCount++;
+            if (metaObjectpropCount > 0)
+            {
+                body["meta"] = metaObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class GetEntriesResponseItem

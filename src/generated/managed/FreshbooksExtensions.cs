@@ -20,6 +20,179 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             callPayload.Queries["per_page"] = Convert.ToString(100);
             return new ApiConnectionAction<Expense[]>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
+        public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        {
+            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["per_page"] = Convert.ToString(100);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var expenseObject = new JObject();
+            var expenseObjectpropCount = 0;
+            var amountObject = new JObject();
+            var amountObjectpropCount = 0;
+            amountObjectpropCount++;
+            amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
+            if (bodyexpenseamountcurrency != null)
+            {
+                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                amountObjectpropCount++;
+            }
+
+            if (amountObjectpropCount > 0)
+            {
+                expenseObject["amount"] = amountObject;
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensecategory != null)
+            {
+                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensestaff != null)
+            {
+                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensedate != null)
+            {
+                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensevendor != null)
+            {
+                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensenotes != null)
+            {
+                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                expenseObjectpropCount++;
+            }
+
+            if (expenseObjectpropCount > 0)
+            {
+                body["expense"] = expenseObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<Expense>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
+        public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        {
+            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["per_page"] = Convert.ToString(100);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var expenseObject = new JObject();
+            var expenseObjectpropCount = 0;
+            var amountObject = new JObject();
+            var amountObjectpropCount = 0;
+            if (bodyexpenseamountamount != null)
+            {
+                amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
+                amountObjectpropCount++;
+            }
+
+            if (bodyexpenseamountcurrency != null)
+            {
+                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                amountObjectpropCount++;
+            }
+
+            if (amountObjectpropCount > 0)
+            {
+                expenseObject["amount"] = amountObject;
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensecategory != null)
+            {
+                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensestaff != null)
+            {
+                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensedate != null)
+            {
+                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensevendor != null)
+            {
+                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                expenseObjectpropCount++;
+            }
+
+            if (bodyexpensenotes != null)
+            {
+                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                expenseObjectpropCount++;
+            }
+
+            if (expenseObjectpropCount > 0)
+            {
+                body["expense"] = expenseObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
+        public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
+        {
+            var apiCallPath = String.Format("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["per_page"] = Convert.ToString(100);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var expenseObject = new JObject();
+            var expenseObjectpropCount = 0;
+            expenseObject["vis_state"] = 1;
+            expenseObjectpropCount++;
+            if (expenseObjectpropCount > 0)
+            {
+                body["expense"] = expenseObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
     }
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
@@ -154,6 +327,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         [JsonProperty("code")]
         public string CurrencyCode { get; set; }
+    }
+
+    public enum bodyexpenseamountcurrencyInput
+    {
+        AED,
+        AMD,
+        ANG,
+        ARS,
+        AUD,
+        AWG,
+        AZN,
+        BAM,
+        BBD,
+        BDT,
+        BGN,
+        BHD,
+        BIF,
+        BMD,
+        BND,
+        BOB,
+        BOV,
+        BRL,
+        BSD,
+        BTN,
+        BWP,
+        BYN,
+        BYR,
+        BZD,
+        CAD,
+        CDF,
+        CHE,
+        CHF,
+        CHW,
+        CLF,
+        CLP,
+        CNY,
+        COP,
+        COU,
+        CRC,
+        CUC,
+        CUP,
+        CVE,
+        CZK,
+        DJF,
+        DKK,
+        DOP,
+        EGP,
+        ERN,
+        ETB,
+        EUR,
+        FJD,
+        FKP,
+        GBP,
+        GEL,
+        GHS,
+        GIP,
+        GMD,
+        GNF,
+        GTQ,
+        GYD,
+        HKD,
+        HNL,
+        HRK,
+        HTG,
+        HUF,
+        IDR,
+        ILS,
+        INR,
+        IQD,
+        IRR,
+        ISK,
+        JMD,
+        JOD,
+        JPY,
+        KES,
+        KGS,
+        KHR,
+        KMF,
+        KPW,
+        KRW,
+        KWD,
+        KYD,
+        KZT,
+        LAK,
+        LBP,
+        LKR,
+        LRD,
+        LSL,
+        LYD,
+        MAD,
+        MDL,
+        MGA,
+        MKD,
+        MMK,
+        MNT,
+        MOP,
+        MRO,
+        MUR,
+        MVR,
+        MWK,
+        MXN,
+        MXV,
+        MYR,
+        MZN,
+        NAD,
+        NGN,
+        NIO,
+        NOK,
+        NPR,
+        NZD,
+        OMR,
+        PAB,
+        PEN,
+        PGK,
+        PHP,
+        PKR,
+        PLN,
+        PYG,
+        QAR,
+        RON,
+        RSD,
+        RUB,
+        RWF,
+        SAR,
+        SBD,
+        SCR,
+        SDG,
+        SEK,
+        SGD,
+        SHP,
+        SLL,
+        SOS,
+        SRD,
+        SSP,
+        STD,
+        SVC,
+        SYP,
+        SZL,
+        THB,
+        TJS,
+        TMT,
+        TND,
+        TOP,
+        TRY,
+        TTD,
+        TWD,
+        TZS,
+        UAH,
+        UGX,
+        USD,
+        USN,
+        UYI,
+        UYU,
+        UZS,
+        VEF,
+        VND,
+        VUV,
+        WST,
+        XAF,
+        XAG,
+        XAU,
+        XBA,
+        XBB,
+        XBC,
+        XBD,
+        XCD,
+        XDR,
+        XOF,
+        XPD,
+        XPF,
+        XPT,
+        XSU,
+        XTS,
+        XUA,
+        XXX,
+        YER,
+        ZAR,
+        ZMW,
+        ZWL
     }
 
     public class Invoice

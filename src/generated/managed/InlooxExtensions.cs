@@ -38,118 +38,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiProject> PostProjects(Expression<Func<string>> bodyClientId = null, Expression<Func<string>> bodyDescriptionHTML = null, Expression<Func<string>> bodyDivisionId = null, Expression<Func<string>> bodyEndDate = null, Expression<Func<bool>> bodyIsArchived = null, Expression<Func<bool>> bodyIsRecycled = null, Expression<Func<int>> bodyLockMode = null, Expression<Func<string>> bodyName = null, Expression<Func<int>> bodyNumberIncremential = null, Expression<Func<string>> bodyNumberPrefix = null, Expression<Func<string>> bodyNumberSuffix = null, Expression<Func<string>> bodyPortfolioId = null, Expression<Func<int>> bodyPriority = null, Expression<Func<string>> bodyProjectStatusId = null, Expression<Func<int>> bodyRiskScore = null, Expression<Func<int>> bodySizeScore = null, Expression<Func<string>> bodyStartDate = null, Expression<Func<int>> bodyValueScore = null)
+        public IBodyWorkflowAction<ApiProject> PostProjects(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
         {
             var apiCallPath = "/Project";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyClientId != null)
+            if (bodyclientId != null)
             {
-                body["ClientId"] = ExpressionConverter.ConvertO(bodyClientId);
+                body["ClientId"] = ExpressionConverter.ConvertO(bodyclientId);
                 bodypropCount++;
             }
 
-            if (bodyDescriptionHTML != null)
+            if (bodydescriptionHTML != null)
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodyDescriptionHTML);
+                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
                 bodypropCount++;
             }
 
-            if (bodyDivisionId != null)
+            if (bodydivisionId != null)
             {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodyDivisionId);
+                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
                 bodypropCount++;
             }
 
-            if (bodyEndDate != null)
+            if (bodyendDate != null)
             {
-                body["EndDate"] = ExpressionConverter.ConvertO(bodyEndDate);
+                body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
                 bodypropCount++;
             }
 
-            if (bodyIsArchived != null)
+            if (bodyisArchived != null)
             {
-                body["IsArchived"] = ExpressionConverter.ConvertO(bodyIsArchived);
+                body["IsArchived"] = ExpressionConverter.ConvertO(bodyisArchived);
                 bodypropCount++;
             }
 
-            if (bodyIsRecycled != null)
+            if (bodyisRecycled != null)
             {
-                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyIsRecycled);
+                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyisRecycled);
                 bodypropCount++;
             }
 
-            if (bodyLockMode != null)
+            if (bodylockMode != null)
             {
-                body["LockMode"] = ExpressionConverter.ConvertO(bodyLockMode);
+                body["LockMode"] = ExpressionConverter.ConvertO(bodylockMode);
                 bodypropCount++;
             }
 
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyNumberIncremential != null)
+            if (bodynumberIncremential != null)
             {
-                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodyNumberIncremential);
+                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodynumberIncremential);
                 bodypropCount++;
             }
 
-            if (bodyNumberPrefix != null)
+            if (bodynumberPrefix != null)
             {
-                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodyNumberPrefix);
+                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodynumberPrefix);
                 bodypropCount++;
             }
 
-            if (bodyNumberSuffix != null)
+            if (bodynumberSuffix != null)
             {
-                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodyNumberSuffix);
+                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodynumberSuffix);
                 bodypropCount++;
             }
 
-            if (bodyPortfolioId != null)
+            if (bodyportfolioId != null)
             {
-                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyPortfolioId);
+                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyportfolioId);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyProjectStatusId != null)
+            if (bodyprojectStatusId != null)
             {
-                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyProjectStatusId);
+                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyprojectStatusId);
                 bodypropCount++;
             }
 
-            if (bodyRiskScore != null)
+            if (bodyriskScore != null)
             {
-                body["RiskScore"] = ExpressionConverter.ConvertO(bodyRiskScore);
+                body["RiskScore"] = ExpressionConverter.ConvertO(bodyriskScore);
                 bodypropCount++;
             }
 
-            if (bodySizeScore != null)
+            if (bodysizeScore != null)
             {
-                body["SizeScore"] = ExpressionConverter.ConvertO(bodySizeScore);
+                body["SizeScore"] = ExpressionConverter.ConvertO(bodysizeScore);
                 bodypropCount++;
             }
 
-            if (bodyStartDate != null)
+            if (bodystartDate != null)
             {
-                body["StartDate"] = ExpressionConverter.ConvertO(bodyStartDate);
+                body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
                 bodypropCount++;
             }
 
-            if (bodyValueScore != null)
+            if (bodyvalueScore != null)
             {
-                body["ValueScore"] = ExpressionConverter.ConvertO(bodyValueScore);
+                body["ValueScore"] = ExpressionConverter.ConvertO(bodyvalueScore);
                 bodypropCount++;
             }
 
@@ -180,118 +180,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject(Expression<Func<string>> projectId, Expression<Func<string>> bodyClientId = null, Expression<Func<string>> bodyDescriptionHTML = null, Expression<Func<string>> bodyDivisionId = null, Expression<Func<string>> bodyEndDate = null, Expression<Func<bool>> bodyIsArchived = null, Expression<Func<bool>> bodyIsRecycled = null, Expression<Func<int>> bodyLockMode = null, Expression<Func<string>> bodyName = null, Expression<Func<int>> bodyNumberIncremential = null, Expression<Func<string>> bodyNumberPrefix = null, Expression<Func<string>> bodyNumberSuffix = null, Expression<Func<string>> bodyPortfolioId = null, Expression<Func<int>> bodyPriority = null, Expression<Func<string>> bodyProjectStatusId = null, Expression<Func<int>> bodyRiskScore = null, Expression<Func<int>> bodySizeScore = null, Expression<Func<string>> bodyStartDate = null, Expression<Func<int>> bodyValueScore = null)
+        public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject(Expression<Func<string>> projectId, Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
         {
             var apiCallPath = String.Format("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyClientId != null)
+            if (bodyclientId != null)
             {
-                body["ClientId"] = ExpressionConverter.ConvertO(bodyClientId);
+                body["ClientId"] = ExpressionConverter.ConvertO(bodyclientId);
                 bodypropCount++;
             }
 
-            if (bodyDescriptionHTML != null)
+            if (bodydescriptionHTML != null)
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodyDescriptionHTML);
+                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
                 bodypropCount++;
             }
 
-            if (bodyDivisionId != null)
+            if (bodydivisionId != null)
             {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodyDivisionId);
+                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
                 bodypropCount++;
             }
 
-            if (bodyEndDate != null)
+            if (bodyendDate != null)
             {
-                body["EndDate"] = ExpressionConverter.ConvertO(bodyEndDate);
+                body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
                 bodypropCount++;
             }
 
-            if (bodyIsArchived != null)
+            if (bodyisArchived != null)
             {
-                body["IsArchived"] = ExpressionConverter.ConvertO(bodyIsArchived);
+                body["IsArchived"] = ExpressionConverter.ConvertO(bodyisArchived);
                 bodypropCount++;
             }
 
-            if (bodyIsRecycled != null)
+            if (bodyisRecycled != null)
             {
-                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyIsRecycled);
+                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyisRecycled);
                 bodypropCount++;
             }
 
-            if (bodyLockMode != null)
+            if (bodylockMode != null)
             {
-                body["LockMode"] = ExpressionConverter.ConvertO(bodyLockMode);
+                body["LockMode"] = ExpressionConverter.ConvertO(bodylockMode);
                 bodypropCount++;
             }
 
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyNumberIncremential != null)
+            if (bodynumberIncremential != null)
             {
-                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodyNumberIncremential);
+                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodynumberIncremential);
                 bodypropCount++;
             }
 
-            if (bodyNumberPrefix != null)
+            if (bodynumberPrefix != null)
             {
-                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodyNumberPrefix);
+                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodynumberPrefix);
                 bodypropCount++;
             }
 
-            if (bodyNumberSuffix != null)
+            if (bodynumberSuffix != null)
             {
-                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodyNumberSuffix);
+                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodynumberSuffix);
                 bodypropCount++;
             }
 
-            if (bodyPortfolioId != null)
+            if (bodyportfolioId != null)
             {
-                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyPortfolioId);
+                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyportfolioId);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyProjectStatusId != null)
+            if (bodyprojectStatusId != null)
             {
-                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyProjectStatusId);
+                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyprojectStatusId);
                 bodypropCount++;
             }
 
-            if (bodyRiskScore != null)
+            if (bodyriskScore != null)
             {
-                body["RiskScore"] = ExpressionConverter.ConvertO(bodyRiskScore);
+                body["RiskScore"] = ExpressionConverter.ConvertO(bodyriskScore);
                 bodypropCount++;
             }
 
-            if (bodySizeScore != null)
+            if (bodysizeScore != null)
             {
-                body["SizeScore"] = ExpressionConverter.ConvertO(bodySizeScore);
+                body["SizeScore"] = ExpressionConverter.ConvertO(bodysizeScore);
                 bodypropCount++;
             }
 
-            if (bodyStartDate != null)
+            if (bodystartDate != null)
             {
-                body["StartDate"] = ExpressionConverter.ConvertO(bodyStartDate);
+                body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
                 bodypropCount++;
             }
 
-            if (bodyValueScore != null)
+            if (bodyvalueScore != null)
             {
-                body["ValueScore"] = ExpressionConverter.ConvertO(bodyValueScore);
+                body["ValueScore"] = ExpressionConverter.ConvertO(bodyvalueScore);
                 bodypropCount++;
             }
 
@@ -337,52 +337,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiTask> PostTask(Expression<Func<string>> bodyDescriptionHTML = null, Expression<Func<string>> bodyEndDateTime = null, Expression<Func<string>> bodyGroupId = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyProjectId = null, Expression<Func<string>> bodyStartDateTime = null, Expression<Func<double>> bodyWorkAmount = null)
+        public IBodyWorkflowAction<ApiTask> PostTask(Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
         {
             var apiCallPath = "/Task";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDescriptionHTML != null)
+            if (bodydescriptionHTML != null)
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodyDescriptionHTML);
+                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
                 bodypropCount++;
             }
 
-            if (bodyEndDateTime != null)
+            if (bodyendDateTime != null)
             {
-                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyEndDateTime);
+                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyendDateTime);
                 bodypropCount++;
             }
 
-            if (bodyGroupId != null)
+            if (bodygroupId != null)
             {
-                body["GroupId"] = ExpressionConverter.ConvertO(bodyGroupId);
+                body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
                 bodypropCount++;
             }
 
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyProjectId != null)
+            if (bodyprojectId != null)
             {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyProjectId);
+                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
                 bodypropCount++;
             }
 
-            if (bodyStartDateTime != null)
+            if (bodystartDateTime != null)
             {
-                body["StartDateTime"] = ExpressionConverter.ConvertO(bodyStartDateTime);
+                body["StartDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
                 bodypropCount++;
             }
 
-            if (bodyWorkAmount != null)
+            if (bodyworkAmount != null)
             {
-                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyWorkAmount);
+                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyworkAmount);
                 bodypropCount++;
             }
 
@@ -413,52 +413,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodyDescriptionHTML = null, Expression<Func<string>> bodyEndDateTime = null, Expression<Func<string>> bodyGroupId = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyProjectId = null, Expression<Func<string>> bodyStartDateTime = null, Expression<Func<double>> bodyWorkAmount = null)
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
         {
             var apiCallPath = String.Format("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDescriptionHTML != null)
+            if (bodydescriptionHTML != null)
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodyDescriptionHTML);
+                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
                 bodypropCount++;
             }
 
-            if (bodyEndDateTime != null)
+            if (bodyendDateTime != null)
             {
-                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyEndDateTime);
+                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyendDateTime);
                 bodypropCount++;
             }
 
-            if (bodyGroupId != null)
+            if (bodygroupId != null)
             {
-                body["GroupId"] = ExpressionConverter.ConvertO(bodyGroupId);
+                body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
                 bodypropCount++;
             }
 
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyProjectId != null)
+            if (bodyprojectId != null)
             {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyProjectId);
+                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
                 bodypropCount++;
             }
 
-            if (bodyStartDateTime != null)
+            if (bodystartDateTime != null)
             {
-                body["StartDateTime"] = ExpressionConverter.ConvertO(bodyStartDateTime);
+                body["StartDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
                 bodypropCount++;
             }
 
-            if (bodyWorkAmount != null)
+            if (bodyworkAmount != null)
             {
-                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyWorkAmount);
+                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyworkAmount);
                 bodypropCount++;
             }
 

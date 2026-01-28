@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddReciept(Expression<Func<string>> addReceiptInputUserId, Expression<Func<string>> addReceiptInputReceiptContent, Expression<Func<string>> addReceiptInputReceiptName)
+        public IBodyWorkflowAction<BaseResult> AddReciept(Expression<Func<string>> addReceiptInputuserId, Expression<Func<string>> addReceiptInputreceiptContent, Expression<Func<string>> addReceiptInputreceiptName)
         {
             var apiCallPath = "/api/receipt/";
             var apiCallHttpMethod = "post";
@@ -122,11 +122,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var addReceiptInput = new JObject();
             var addReceiptInputpropCount = 0;
             addReceiptInputpropCount++;
-            addReceiptInput["UserId"] = ExpressionConverter.ConvertO(addReceiptInputUserId);
+            addReceiptInput["UserId"] = ExpressionConverter.ConvertO(addReceiptInputuserId);
             addReceiptInputpropCount++;
-            addReceiptInput["ReceiptContent"] = ExpressionConverter.ConvertO(addReceiptInputReceiptContent);
+            addReceiptInput["ReceiptContent"] = ExpressionConverter.ConvertO(addReceiptInputreceiptContent);
             addReceiptInputpropCount++;
-            addReceiptInput["ReceiptName"] = ExpressionConverter.ConvertO(addReceiptInputReceiptName);
+            addReceiptInput["ReceiptName"] = ExpressionConverter.ConvertO(addReceiptInputreceiptName);
             if (addReceiptInputpropCount > 0)
             {
                 callPayload.Body = addReceiptInput;
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectStateV2(Expression<Func<string[]>> updateProjectStateInputItemIds, Expression<Func<bool>> updateProjectStateInputProjectState)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectStateV2(Expression<Func<string[]>> updateProjectStateInputitemIds, Expression<Func<bool>> updateProjectStateInputprojectState)
         {
             var apiCallPath = "/api/v2/projects/states/";
             var apiCallHttpMethod = "put";
@@ -352,9 +352,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var updateProjectStateInput = new JObject();
             var updateProjectStateInputpropCount = 0;
             updateProjectStateInputpropCount++;
-            updateProjectStateInput["ItemIds"] = ExpressionConverter.ConvertO(updateProjectStateInputItemIds);
+            updateProjectStateInput["ItemIds"] = ExpressionConverter.ConvertO(updateProjectStateInputitemIds);
             updateProjectStateInputpropCount++;
-            updateProjectStateInput["ProjectState"] = ExpressionConverter.ConvertO(updateProjectStateInputProjectState);
+            updateProjectStateInput["ProjectState"] = ExpressionConverter.ConvertO(updateProjectStateInputprojectState);
             if (updateProjectStateInputpropCount > 0)
             {
                 callPayload.Body = updateProjectStateInput;
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddQuickExpenseV2(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputFileToSend, Expression<Func<string>> quickExpenseInputTitle = null, Expression<Func<double>> quickExpenseInputTransactionAmount = null, Expression<Func<string>> quickExpenseInputVatRates = null, Expression<Func<string>> quickExpenseInputVatAmounts = null, Expression<Func<string>> quickExpenseInputCurrencyCode = null, Expression<Func<string>> quickExpenseInputTransactionDate = null, Expression<Func<string>> quickExpenseInputMerchantName = null, Expression<Func<string>> quickExpenseInputLocationCountry = null, Expression<Func<string>> quickExpenseInputLocationCity = null, Expression<Func<string>> quickExpenseInputComment = null, Expression<Func<string>> quickExpenseInputMerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputIsEncrypted = null, Expression<Func<quickExpenseInputExpenseUseTypeInput>> quickExpenseInputExpenseUseType = null, Expression<Func<string>> quickExpenseInputPaymentTypeCode = null, Expression<Func<string>> quickExpenseInputExpenseTypeCode = null, Expression<Func<string>> quickExpenseInputFileType = null)
+        public IBodyWorkflowAction<BaseResult> AddQuickExpenseV2(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
         {
             var apiCallPath = String.Format("/api/v2/quickexpense/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "post";
@@ -372,100 +372,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var quickExpenseInput = new JObject();
             var quickExpenseInputpropCount = 0;
             quickExpenseInputpropCount++;
-            quickExpenseInput["FileToSend"] = ExpressionConverter.ConvertO(quickExpenseInputFileToSend);
-            if (quickExpenseInputTitle != null)
+            quickExpenseInput["FileToSend"] = ExpressionConverter.ConvertO(quickExpenseInputfileToSend);
+            if (quickExpenseInputtitle != null)
             {
-                quickExpenseInput["Title"] = ExpressionConverter.ConvertO(quickExpenseInputTitle);
+                quickExpenseInput["Title"] = ExpressionConverter.ConvertO(quickExpenseInputtitle);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputTransactionAmount != null)
+            if (quickExpenseInputtransactionAmount != null)
             {
-                quickExpenseInput["TransactionAmount"] = ExpressionConverter.ConvertO(quickExpenseInputTransactionAmount);
+                quickExpenseInput["TransactionAmount"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionAmount);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputVatRates != null)
+            if (quickExpenseInputvatRates != null)
             {
-                quickExpenseInput["VatRates"] = ExpressionConverter.ConvertO(quickExpenseInputVatRates);
+                quickExpenseInput["VatRates"] = ExpressionConverter.ConvertO(quickExpenseInputvatRates);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputVatAmounts != null)
+            if (quickExpenseInputvatAmounts != null)
             {
-                quickExpenseInput["VatAmounts"] = ExpressionConverter.ConvertO(quickExpenseInputVatAmounts);
+                quickExpenseInput["VatAmounts"] = ExpressionConverter.ConvertO(quickExpenseInputvatAmounts);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputCurrencyCode != null)
+            if (quickExpenseInputcurrencyCode != null)
             {
-                quickExpenseInput["CurrencyCode"] = ExpressionConverter.ConvertO(quickExpenseInputCurrencyCode);
+                quickExpenseInput["CurrencyCode"] = ExpressionConverter.ConvertO(quickExpenseInputcurrencyCode);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputTransactionDate != null)
+            if (quickExpenseInputtransactionDate != null)
             {
-                quickExpenseInput["TransactionDate"] = ExpressionConverter.ConvertO(quickExpenseInputTransactionDate);
+                quickExpenseInput["TransactionDate"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionDate);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputMerchantName != null)
+            if (quickExpenseInputmerchantName != null)
             {
-                quickExpenseInput["MerchantName"] = ExpressionConverter.ConvertO(quickExpenseInputMerchantName);
+                quickExpenseInput["MerchantName"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantName);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputLocationCountry != null)
+            if (quickExpenseInputlocationCountry != null)
             {
-                quickExpenseInput["LocationCountry"] = ExpressionConverter.ConvertO(quickExpenseInputLocationCountry);
+                quickExpenseInput["LocationCountry"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCountry);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputLocationCity != null)
+            if (quickExpenseInputlocationCity != null)
             {
-                quickExpenseInput["LocationCity"] = ExpressionConverter.ConvertO(quickExpenseInputLocationCity);
+                quickExpenseInput["LocationCity"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCity);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputComment != null)
+            if (quickExpenseInputcomment != null)
             {
-                quickExpenseInput["Comment"] = ExpressionConverter.ConvertO(quickExpenseInputComment);
+                quickExpenseInput["Comment"] = ExpressionConverter.ConvertO(quickExpenseInputcomment);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputMerchantExpenseId != null)
+            if (quickExpenseInputmerchantExpenseId != null)
             {
-                quickExpenseInput["MerchantExpenseId"] = ExpressionConverter.ConvertO(quickExpenseInputMerchantExpenseId);
+                quickExpenseInput["MerchantExpenseId"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantExpenseId);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputIsEncrypted != null)
+            if (quickExpenseInputisEncrypted != null)
             {
-                quickExpenseInput["IsEncrypted"] = ExpressionConverter.ConvertO(quickExpenseInputIsEncrypted);
+                quickExpenseInput["IsEncrypted"] = ExpressionConverter.ConvertO(quickExpenseInputisEncrypted);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputExpenseUseType != null)
+            if (quickExpenseInputexpenseUseType != null)
             {
-                quickExpenseInput["ExpenseUseType"] = ExpressionConverter.ConvertO(quickExpenseInputExpenseUseType);
+                quickExpenseInput["ExpenseUseType"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseUseType);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputPaymentTypeCode != null)
+            if (quickExpenseInputpaymentTypeCode != null)
             {
-                quickExpenseInput["PaymentTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputPaymentTypeCode);
+                quickExpenseInput["PaymentTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputpaymentTypeCode);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputExpenseTypeCode != null)
+            if (quickExpenseInputexpenseTypeCode != null)
             {
-                quickExpenseInput["ExpenseTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputExpenseTypeCode);
+                quickExpenseInput["ExpenseTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseTypeCode);
                 quickExpenseInputpropCount++;
             }
 
-            if (quickExpenseInputFileType != null)
+            if (quickExpenseInputfileType != null)
             {
-                quickExpenseInput["FileType"] = ExpressionConverter.ConvertO(quickExpenseInputFileType);
+                quickExpenseInput["FileType"] = ExpressionConverter.ConvertO(quickExpenseInputfileType);
                 quickExpenseInputpropCount++;
             }
 
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputOperationInput>> reportUpdateStatusInputOperation, Expression<Func<string>> reportUpdateStatusInputMessage, Expression<Func<string[]>> reportUpdateStatusInputInvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputAccountingPeriod = null)
+        public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
         {
             var apiCallPath = String.Format("/api/v2/report/{0}/updateStatus/", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
             var apiCallHttpMethod = "put";
@@ -495,18 +495,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var reportUpdateStatusInput = new JObject();
             var reportUpdateStatusInputpropCount = 0;
             reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Operation"] = ExpressionConverter.ConvertO(reportUpdateStatusInputOperation);
+            reportUpdateStatusInput["Operation"] = ExpressionConverter.ConvertO(reportUpdateStatusInputoperation);
             reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Message"] = ExpressionConverter.ConvertO(reportUpdateStatusInputMessage);
-            if (reportUpdateStatusInputInvoiceIdsToReject != null)
+            reportUpdateStatusInput["Message"] = ExpressionConverter.ConvertO(reportUpdateStatusInputmessage);
+            if (reportUpdateStatusInputinvoiceIdsToReject != null)
             {
-                reportUpdateStatusInput["InvoiceIdsToReject"] = ExpressionConverter.ConvertO(reportUpdateStatusInputInvoiceIdsToReject);
+                reportUpdateStatusInput["InvoiceIdsToReject"] = ExpressionConverter.ConvertO(reportUpdateStatusInputinvoiceIdsToReject);
                 reportUpdateStatusInputpropCount++;
             }
 
-            if (reportUpdateStatusInputAccountingPeriod != null)
+            if (reportUpdateStatusInputaccountingPeriod != null)
             {
-                reportUpdateStatusInput["AccountingPeriod"] = ExpressionConverter.ConvertO(reportUpdateStatusInputAccountingPeriod);
+                reportUpdateStatusInput["AccountingPeriod"] = ExpressionConverter.ConvertO(reportUpdateStatusInputaccountingPeriod);
                 reportUpdateStatusInputpropCount++;
             }
 
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> InviteUserV2(Expression<Func<string>> userInviteInputLastName, Expression<Func<string>> userInviteInputFirstName, Expression<Func<string>> userInviteInputMail, Expression<Func<string>> userInviteInputLanguage, Expression<Func<userInviteInputUserTypeInput>> userInviteInputUserType, Expression<Func<userInviteInputUserRoleInput>> userInviteInputUserRole, Expression<Func<string>> userInviteInputMailAlias = null, Expression<Func<string>> userInviteInputPayId = null, Expression<Func<string>> userInviteInputPayId2 = null, Expression<Func<string>> userInviteInputPayId3 = null, Expression<Func<string>> userInviteInputPayId4 = null, Expression<Func<string>> userInviteInputPayId5 = null, Expression<Func<string>> userInviteInputPayId6 = null, Expression<Func<string>> userInviteInputLocalCurrency = null, Expression<Func<string>> userInviteInputLocalCountry = null, Expression<Func<string>> userInviteInputManagerId = null, Expression<Func<string>> userInviteInputReviewerId = null, Expression<Func<string>> userInviteInputVendor = null, Expression<Func<string>> userInviteInputDefaultProjectId = null, Expression<Func<string>> userInviteInputIKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputAdditionalValidators = null, Expression<Func<string[]>> userInviteInputTagsToAssign = null)
+        public IBodyWorkflowAction<BaseResult> InviteUserV2(Expression<Func<string>> userInviteInputlastName, Expression<Func<string>> userInviteInputfirstName, Expression<Func<string>> userInviteInputmail, Expression<Func<string>> userInviteInputlanguage, Expression<Func<userInviteInputuserTypeInput>> userInviteInputuserType, Expression<Func<userInviteInputuserRoleInput>> userInviteInputuserRole, Expression<Func<string>> userInviteInputmailAlias = null, Expression<Func<string>> userInviteInputpayId = null, Expression<Func<string>> userInviteInputpayId2 = null, Expression<Func<string>> userInviteInputpayId3 = null, Expression<Func<string>> userInviteInputpayId4 = null, Expression<Func<string>> userInviteInputpayId5 = null, Expression<Func<string>> userInviteInputpayId6 = null, Expression<Func<string>> userInviteInputlocalCurrency = null, Expression<Func<string>> userInviteInputlocalCountry = null, Expression<Func<string>> userInviteInputmanagerId = null, Expression<Func<string>> userInviteInputreviewerId = null, Expression<Func<string>> userInviteInputvendor = null, Expression<Func<string>> userInviteInputdefaultProjectId = null, Expression<Func<string>> userInviteInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputadditionalValidators = null, Expression<Func<string[]>> userInviteInputtagsToAssign = null)
         {
             var apiCallPath = "/api/v2/user/";
             var apiCallHttpMethod = "post";
@@ -574,110 +574,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var userInviteInput = new JObject();
             var userInviteInputpropCount = 0;
             userInviteInputpropCount++;
-            userInviteInput["LastName"] = ExpressionConverter.ConvertO(userInviteInputLastName);
+            userInviteInput["LastName"] = ExpressionConverter.ConvertO(userInviteInputlastName);
             userInviteInputpropCount++;
-            userInviteInput["FirstName"] = ExpressionConverter.ConvertO(userInviteInputFirstName);
+            userInviteInput["FirstName"] = ExpressionConverter.ConvertO(userInviteInputfirstName);
             userInviteInputpropCount++;
-            userInviteInput["Mail"] = ExpressionConverter.ConvertO(userInviteInputMail);
-            if (userInviteInputMailAlias != null)
+            userInviteInput["Mail"] = ExpressionConverter.ConvertO(userInviteInputmail);
+            if (userInviteInputmailAlias != null)
             {
-                userInviteInput["MailAlias"] = ExpressionConverter.ConvertO(userInviteInputMailAlias);
+                userInviteInput["MailAlias"] = ExpressionConverter.ConvertO(userInviteInputmailAlias);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId != null)
+            if (userInviteInputpayId != null)
             {
-                userInviteInput["PayId"] = ExpressionConverter.ConvertO(userInviteInputPayId);
+                userInviteInput["PayId"] = ExpressionConverter.ConvertO(userInviteInputpayId);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId2 != null)
+            if (userInviteInputpayId2 != null)
             {
-                userInviteInput["PayId2"] = ExpressionConverter.ConvertO(userInviteInputPayId2);
+                userInviteInput["PayId2"] = ExpressionConverter.ConvertO(userInviteInputpayId2);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId3 != null)
+            if (userInviteInputpayId3 != null)
             {
-                userInviteInput["PayId3"] = ExpressionConverter.ConvertO(userInviteInputPayId3);
+                userInviteInput["PayId3"] = ExpressionConverter.ConvertO(userInviteInputpayId3);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId4 != null)
+            if (userInviteInputpayId4 != null)
             {
-                userInviteInput["PayId4"] = ExpressionConverter.ConvertO(userInviteInputPayId4);
+                userInviteInput["PayId4"] = ExpressionConverter.ConvertO(userInviteInputpayId4);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId5 != null)
+            if (userInviteInputpayId5 != null)
             {
-                userInviteInput["PayId5"] = ExpressionConverter.ConvertO(userInviteInputPayId5);
+                userInviteInput["PayId5"] = ExpressionConverter.ConvertO(userInviteInputpayId5);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputPayId6 != null)
+            if (userInviteInputpayId6 != null)
             {
-                userInviteInput["PayId6"] = ExpressionConverter.ConvertO(userInviteInputPayId6);
-                userInviteInputpropCount++;
-            }
-
-            userInviteInputpropCount++;
-            userInviteInput["Language"] = ExpressionConverter.ConvertO(userInviteInputLanguage);
-            if (userInviteInputLocalCurrency != null)
-            {
-                userInviteInput["LocalCurrency"] = ExpressionConverter.ConvertO(userInviteInputLocalCurrency);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputLocalCountry != null)
-            {
-                userInviteInput["LocalCountry"] = ExpressionConverter.ConvertO(userInviteInputLocalCountry);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputManagerId != null)
-            {
-                userInviteInput["ManagerId"] = ExpressionConverter.ConvertO(userInviteInputManagerId);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputReviewerId != null)
-            {
-                userInviteInput["ReviewerId"] = ExpressionConverter.ConvertO(userInviteInputReviewerId);
+                userInviteInput["PayId6"] = ExpressionConverter.ConvertO(userInviteInputpayId6);
                 userInviteInputpropCount++;
             }
 
             userInviteInputpropCount++;
-            userInviteInput["UserType"] = ExpressionConverter.ConvertO(userInviteInputUserType);
-            if (userInviteInputVendor != null)
+            userInviteInput["Language"] = ExpressionConverter.ConvertO(userInviteInputlanguage);
+            if (userInviteInputlocalCurrency != null)
             {
-                userInviteInput["Vendor"] = ExpressionConverter.ConvertO(userInviteInputVendor);
+                userInviteInput["LocalCurrency"] = ExpressionConverter.ConvertO(userInviteInputlocalCurrency);
+                userInviteInputpropCount++;
+            }
+
+            if (userInviteInputlocalCountry != null)
+            {
+                userInviteInput["LocalCountry"] = ExpressionConverter.ConvertO(userInviteInputlocalCountry);
+                userInviteInputpropCount++;
+            }
+
+            if (userInviteInputmanagerId != null)
+            {
+                userInviteInput["ManagerId"] = ExpressionConverter.ConvertO(userInviteInputmanagerId);
+                userInviteInputpropCount++;
+            }
+
+            if (userInviteInputreviewerId != null)
+            {
+                userInviteInput["ReviewerId"] = ExpressionConverter.ConvertO(userInviteInputreviewerId);
                 userInviteInputpropCount++;
             }
 
             userInviteInputpropCount++;
-            userInviteInput["UserRole"] = ExpressionConverter.ConvertO(userInviteInputUserRole);
-            if (userInviteInputDefaultProjectId != null)
+            userInviteInput["UserType"] = ExpressionConverter.ConvertO(userInviteInputuserType);
+            if (userInviteInputvendor != null)
             {
-                userInviteInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userInviteInputDefaultProjectId);
+                userInviteInput["Vendor"] = ExpressionConverter.ConvertO(userInviteInputvendor);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputIKRatesId != null)
+            userInviteInputpropCount++;
+            userInviteInput["UserRole"] = ExpressionConverter.ConvertO(userInviteInputuserRole);
+            if (userInviteInputdefaultProjectId != null)
             {
-                userInviteInput["IKRatesId"] = ExpressionConverter.ConvertO(userInviteInputIKRatesId);
+                userInviteInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userInviteInputdefaultProjectId);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputAdditionalValidators != null)
+            if (userInviteInputiKRatesId != null)
             {
-                userInviteInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userInviteInputAdditionalValidators);
+                userInviteInput["IKRatesId"] = ExpressionConverter.ConvertO(userInviteInputiKRatesId);
                 userInviteInputpropCount++;
             }
 
-            if (userInviteInputTagsToAssign != null)
+            if (userInviteInputadditionalValidators != null)
             {
-                userInviteInput["TagsToAssign"] = ExpressionConverter.ConvertO(userInviteInputTagsToAssign);
+                userInviteInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userInviteInputadditionalValidators);
+                userInviteInputpropCount++;
+            }
+
+            if (userInviteInputtagsToAssign != null)
+            {
+                userInviteInput["TagsToAssign"] = ExpressionConverter.ConvertO(userInviteInputtagsToAssign);
                 userInviteInputpropCount++;
             }
 
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpateUserV2(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputLastName = null, Expression<Func<string>> userUpdateInputFirstName = null, Expression<Func<string>> userUpdateInputMail = null, Expression<Func<string>> userUpdateInputMailAlias = null, Expression<Func<string>> userUpdateInputPayId = null, Expression<Func<string>> userUpdateInputPayId2 = null, Expression<Func<string>> userUpdateInputPayId3 = null, Expression<Func<string>> userUpdateInputPayId4 = null, Expression<Func<string>> userUpdateInputPayId5 = null, Expression<Func<string>> userUpdateInputPayId6 = null, Expression<Func<string>> userUpdateInputLanguage = null, Expression<Func<string>> userUpdateInputLocalCurrency = null, Expression<Func<string>> userUpdateInputLocalCountry = null, Expression<Func<string>> userUpdateInputManagerId = null, Expression<Func<string>> userUpdateInputReviewerId = null, Expression<Func<userUpdateInputUserTypeInput>> userUpdateInputUserType = null, Expression<Func<string>> userUpdateInputVendor = null, Expression<Func<userUpdateInputUserRoleInput>> userUpdateInputUserRole = null, Expression<Func<string>> userUpdateInputJobTitle = null, Expression<Func<bool>> userUpdateInputCanAddPurchase = null, Expression<Func<string>> userUpdateInputDefaultProjectId = null, Expression<Func<string>> userUpdateInputIKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputAdditionalValidators = null, Expression<Func<string[]>> userUpdateInputTagsToAssign = null, Expression<Func<string[]>> userUpdateInputTagsToUnassign = null)
+        public IBodyWorkflowAction<BaseResult> UpateUserV2(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
         {
             var apiCallPath = String.Format("/api/v2/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "put";
@@ -698,153 +698,153 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             callPayload.Queries["shouldUpdateValidators"] = ExpressionConverter.Convert(shouldUpdateValidators);
             var userUpdateInput = new JObject();
             var userUpdateInputpropCount = 0;
-            if (userUpdateInputLastName != null)
+            if (userUpdateInputlastName != null)
             {
-                userUpdateInput["LastName"] = ExpressionConverter.ConvertO(userUpdateInputLastName);
+                userUpdateInput["LastName"] = ExpressionConverter.ConvertO(userUpdateInputlastName);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputFirstName != null)
+            if (userUpdateInputfirstName != null)
             {
-                userUpdateInput["FirstName"] = ExpressionConverter.ConvertO(userUpdateInputFirstName);
+                userUpdateInput["FirstName"] = ExpressionConverter.ConvertO(userUpdateInputfirstName);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputMail != null)
+            if (userUpdateInputmail != null)
             {
-                userUpdateInput["Mail"] = ExpressionConverter.ConvertO(userUpdateInputMail);
+                userUpdateInput["Mail"] = ExpressionConverter.ConvertO(userUpdateInputmail);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputMailAlias != null)
+            if (userUpdateInputmailAlias != null)
             {
-                userUpdateInput["MailAlias"] = ExpressionConverter.ConvertO(userUpdateInputMailAlias);
+                userUpdateInput["MailAlias"] = ExpressionConverter.ConvertO(userUpdateInputmailAlias);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId != null)
+            if (userUpdateInputpayId != null)
             {
-                userUpdateInput["PayId"] = ExpressionConverter.ConvertO(userUpdateInputPayId);
+                userUpdateInput["PayId"] = ExpressionConverter.ConvertO(userUpdateInputpayId);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId2 != null)
+            if (userUpdateInputpayId2 != null)
             {
-                userUpdateInput["PayId2"] = ExpressionConverter.ConvertO(userUpdateInputPayId2);
+                userUpdateInput["PayId2"] = ExpressionConverter.ConvertO(userUpdateInputpayId2);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId3 != null)
+            if (userUpdateInputpayId3 != null)
             {
-                userUpdateInput["PayId3"] = ExpressionConverter.ConvertO(userUpdateInputPayId3);
+                userUpdateInput["PayId3"] = ExpressionConverter.ConvertO(userUpdateInputpayId3);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId4 != null)
+            if (userUpdateInputpayId4 != null)
             {
-                userUpdateInput["PayId4"] = ExpressionConverter.ConvertO(userUpdateInputPayId4);
+                userUpdateInput["PayId4"] = ExpressionConverter.ConvertO(userUpdateInputpayId4);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId5 != null)
+            if (userUpdateInputpayId5 != null)
             {
-                userUpdateInput["PayId5"] = ExpressionConverter.ConvertO(userUpdateInputPayId5);
+                userUpdateInput["PayId5"] = ExpressionConverter.ConvertO(userUpdateInputpayId5);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputPayId6 != null)
+            if (userUpdateInputpayId6 != null)
             {
-                userUpdateInput["PayId6"] = ExpressionConverter.ConvertO(userUpdateInputPayId6);
+                userUpdateInput["PayId6"] = ExpressionConverter.ConvertO(userUpdateInputpayId6);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputLanguage != null)
+            if (userUpdateInputlanguage != null)
             {
-                userUpdateInput["Language"] = ExpressionConverter.ConvertO(userUpdateInputLanguage);
+                userUpdateInput["Language"] = ExpressionConverter.ConvertO(userUpdateInputlanguage);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputLocalCurrency != null)
+            if (userUpdateInputlocalCurrency != null)
             {
-                userUpdateInput["LocalCurrency"] = ExpressionConverter.ConvertO(userUpdateInputLocalCurrency);
+                userUpdateInput["LocalCurrency"] = ExpressionConverter.ConvertO(userUpdateInputlocalCurrency);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputLocalCountry != null)
+            if (userUpdateInputlocalCountry != null)
             {
-                userUpdateInput["LocalCountry"] = ExpressionConverter.ConvertO(userUpdateInputLocalCountry);
+                userUpdateInput["LocalCountry"] = ExpressionConverter.ConvertO(userUpdateInputlocalCountry);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputManagerId != null)
+            if (userUpdateInputmanagerId != null)
             {
-                userUpdateInput["Manager_Id"] = ExpressionConverter.ConvertO(userUpdateInputManagerId);
+                userUpdateInput["Manager_Id"] = ExpressionConverter.ConvertO(userUpdateInputmanagerId);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputReviewerId != null)
+            if (userUpdateInputreviewerId != null)
             {
-                userUpdateInput["Reviewer_Id"] = ExpressionConverter.ConvertO(userUpdateInputReviewerId);
+                userUpdateInput["Reviewer_Id"] = ExpressionConverter.ConvertO(userUpdateInputreviewerId);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputUserType != null)
+            if (userUpdateInputuserType != null)
             {
-                userUpdateInput["UserType"] = ExpressionConverter.ConvertO(userUpdateInputUserType);
+                userUpdateInput["UserType"] = ExpressionConverter.ConvertO(userUpdateInputuserType);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputVendor != null)
+            if (userUpdateInputvendor != null)
             {
-                userUpdateInput["Vendor"] = ExpressionConverter.ConvertO(userUpdateInputVendor);
+                userUpdateInput["Vendor"] = ExpressionConverter.ConvertO(userUpdateInputvendor);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputUserRole != null)
+            if (userUpdateInputuserRole != null)
             {
-                userUpdateInput["UserRole"] = ExpressionConverter.ConvertO(userUpdateInputUserRole);
+                userUpdateInput["UserRole"] = ExpressionConverter.ConvertO(userUpdateInputuserRole);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputJobTitle != null)
+            if (userUpdateInputjobTitle != null)
             {
-                userUpdateInput["JobTitle"] = ExpressionConverter.ConvertO(userUpdateInputJobTitle);
+                userUpdateInput["JobTitle"] = ExpressionConverter.ConvertO(userUpdateInputjobTitle);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputCanAddPurchase != null)
+            if (userUpdateInputcanAddPurchase != null)
             {
-                userUpdateInput["CanAddPurchase"] = ExpressionConverter.ConvertO(userUpdateInputCanAddPurchase);
+                userUpdateInput["CanAddPurchase"] = ExpressionConverter.ConvertO(userUpdateInputcanAddPurchase);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputDefaultProjectId != null)
+            if (userUpdateInputdefaultProjectId != null)
             {
-                userUpdateInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userUpdateInputDefaultProjectId);
+                userUpdateInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userUpdateInputdefaultProjectId);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputIKRatesId != null)
+            if (userUpdateInputiKRatesId != null)
             {
-                userUpdateInput["IKRates_Id"] = ExpressionConverter.ConvertO(userUpdateInputIKRatesId);
+                userUpdateInput["IKRates_Id"] = ExpressionConverter.ConvertO(userUpdateInputiKRatesId);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputAdditionalValidators != null)
+            if (userUpdateInputadditionalValidators != null)
             {
-                userUpdateInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userUpdateInputAdditionalValidators);
+                userUpdateInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userUpdateInputadditionalValidators);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputTagsToAssign != null)
+            if (userUpdateInputtagsToAssign != null)
             {
-                userUpdateInput["TagsToAssign"] = ExpressionConverter.ConvertO(userUpdateInputTagsToAssign);
+                userUpdateInput["TagsToAssign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToAssign);
                 userUpdateInputpropCount++;
             }
 
-            if (userUpdateInputTagsToUnassign != null)
+            if (userUpdateInputtagsToUnassign != null)
             {
-                userUpdateInput["TagsToUnassign"] = ExpressionConverter.ConvertO(userUpdateInputTagsToUnassign);
+                userUpdateInput["TagsToUnassign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToUnassign);
                 userUpdateInputpropCount++;
             }
 
@@ -2157,7 +2157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [EnumMember(Value = "4")]
         _4,
         [EnumMember(Value = "-1")]
-        _-1
+        Negative1
     }
 
     public enum VehicleResponseCreationTypeType
@@ -2593,7 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
-    public enum quickExpenseInputExpenseUseTypeInput
+    public enum quickExpenseInputexpenseUseTypeInput
     {
         [EnumMember(Value = "1")]
         _1,
@@ -2741,7 +2741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
-    public enum reportUpdateStatusInputOperationInput
+    public enum reportUpdateStatusInputoperationInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3039,7 +3039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
-    public enum userInviteInputUserTypeInput
+    public enum userInviteInputuserTypeInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3059,7 +3059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56
     }
 
-    public enum userInviteInputUserRoleInput
+    public enum userInviteInputuserRoleInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3123,7 +3123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public double MinimumAmount { get; set; }
     }
 
-    public enum userUpdateInputUserTypeInput
+    public enum userUpdateInputuserTypeInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3143,7 +3143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56
     }
 
-    public enum userUpdateInputUserRoleInput
+    public enum userUpdateInputuserRoleInput
     {
         [EnumMember(Value = "0")]
         _0,

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription(Expression<Func<string>> bodyevent, Expression<Func<string>> bodyregistrationId, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodyvalues, Expression<Func<string>> bodycallbackUrl = null)
+        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyregistrationId, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodyvalues, Expression<Func<string>> bodycallbackUrl = null)
         {
             var apiCallPath = "/webhook/v1/subscription";
             var apiCallHttpMethod = "post";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
             bodypropCount++;
             body["registrationId"] = ExpressionConverter.ConvertO(bodyregistrationId);
             if (bodycallbackUrl != null)
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
 
     public class FedexdataworksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration(Expression<Func<string>> bodyevent, Expression<Func<string>> bodycallbackSignatureSecretKey, Expression<Func<string>> bodycallbackSignatureAlgorithm, Expression<Func<string>> bodycallbackAuthUrl = null, Expression<Func<string>> bodycallbackClientId = null, Expression<Func<string>> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodycallbackSignatureSecretKey, Expression<Func<string>> bodycallbackSignatureAlgorithm, Expression<Func<string>> bodycallbackAuthUrl = null, Expression<Func<string>> bodycallbackClientId = null, Expression<Func<string>> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/v1/register";
             var apiCallHttpMethod = "post";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyevent);
+            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
             bodypropCount++;
             body["callbackSignatureSecretKey"] = ExpressionConverter.ConvertO(bodycallbackSignatureSecretKey);
             if (bodycallbackAuthUrl != null)

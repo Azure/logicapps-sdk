@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
-        public IBodyWorkflowAction<LevenshteinDistanceResponse> LevenshteinDistance(Expression<Func<string>> bodybaseValue, Expression<Func<string[]>> bodycomparisonValues, Expression<Func<double>> bodySettingsratioThreshold = null, Expression<Func<bodySettingsapplyRatioThresholdToInput>> bodySettingsapplyRatioThresholdTo = null, Expression<Func<bodySettingsratioSelectionTypeInput>> bodySettingsratioSelectionType = null, Expression<Func<bodySettingstokenSortTypeInput>> bodySettingstokenSortType = null, Expression<Func<bool>> bodySettingscaseSensitive = null, Expression<Func<bool>> bodySettingsremoveWhitespace = null, Expression<Func<bool>> bodySettingsremoveSpecialCharacters = null)
+        public IBodyWorkflowAction<LevenshteinDistanceResponse> LevenshteinDistance(Expression<Func<string>> bodybaseValue, Expression<Func<string[]>> bodycomparisonValues, Expression<Func<double>> bodysettingsratioThreshold = null, Expression<Func<bodysettingsapplyRatioThresholdToInput>> bodysettingsapplyRatioThresholdTo = null, Expression<Func<bodysettingsratioSelectionTypeInput>> bodysettingsratioSelectionType = null, Expression<Func<bodysettingstokenSortTypeInput>> bodysettingstokenSortType = null, Expression<Func<bool>> bodysettingscaseSensitive = null, Expression<Func<bool>> bodysettingsremoveWhitespace = null, Expression<Func<bool>> bodysettingsremoveSpecialCharacters = null)
         {
             var apiCallPath = "/LevenshteinDistance";
             var apiCallHttpMethod = "post";
@@ -1053,53 +1053,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
             body["baseValue"] = ExpressionConverter.ConvertO(bodybaseValue);
             bodypropCount++;
             body["comparisonValues"] = ExpressionConverter.ConvertO(bodycomparisonValues);
-            var SettingsObject = new JObject();
-            var SettingsObjectpropCount = 0;
-            if (bodySettingsratioThreshold != null)
+            var settingsObject = new JObject();
+            var settingsObjectpropCount = 0;
+            if (bodysettingsratioThreshold != null)
             {
-                SettingsObject["ratioThreshold"] = ExpressionConverter.ConvertO(bodySettingsratioThreshold);
-                SettingsObjectpropCount++;
+                settingsObject["ratioThreshold"] = ExpressionConverter.ConvertO(bodysettingsratioThreshold);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingsapplyRatioThresholdTo != null)
+            if (bodysettingsapplyRatioThresholdTo != null)
             {
-                SettingsObject["applyRatioThresholdTo"] = ExpressionConverter.ConvertO(bodySettingsapplyRatioThresholdTo);
-                SettingsObjectpropCount++;
+                settingsObject["applyRatioThresholdTo"] = ExpressionConverter.ConvertO(bodysettingsapplyRatioThresholdTo);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingsratioSelectionType != null)
+            if (bodysettingsratioSelectionType != null)
             {
-                SettingsObject["ratioSelectionType"] = ExpressionConverter.ConvertO(bodySettingsratioSelectionType);
-                SettingsObjectpropCount++;
+                settingsObject["ratioSelectionType"] = ExpressionConverter.ConvertO(bodysettingsratioSelectionType);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingstokenSortType != null)
+            if (bodysettingstokenSortType != null)
             {
-                SettingsObject["tokenSortType"] = ExpressionConverter.ConvertO(bodySettingstokenSortType);
-                SettingsObjectpropCount++;
+                settingsObject["tokenSortType"] = ExpressionConverter.ConvertO(bodysettingstokenSortType);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingscaseSensitive != null)
+            if (bodysettingscaseSensitive != null)
             {
-                SettingsObject["caseSensitive"] = ExpressionConverter.ConvertO(bodySettingscaseSensitive);
-                SettingsObjectpropCount++;
+                settingsObject["caseSensitive"] = ExpressionConverter.ConvertO(bodysettingscaseSensitive);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingsremoveWhitespace != null)
+            if (bodysettingsremoveWhitespace != null)
             {
-                SettingsObject["removeWhitespace"] = ExpressionConverter.ConvertO(bodySettingsremoveWhitespace);
-                SettingsObjectpropCount++;
+                settingsObject["removeWhitespace"] = ExpressionConverter.ConvertO(bodysettingsremoveWhitespace);
+                settingsObjectpropCount++;
             }
 
-            if (bodySettingsremoveSpecialCharacters != null)
+            if (bodysettingsremoveSpecialCharacters != null)
             {
-                SettingsObject["removeSpecialCharacters"] = ExpressionConverter.ConvertO(bodySettingsremoveSpecialCharacters);
-                SettingsObjectpropCount++;
+                settingsObject["removeSpecialCharacters"] = ExpressionConverter.ConvertO(bodysettingsremoveSpecialCharacters);
+                settingsObjectpropCount++;
             }
 
-            if (SettingsObjectpropCount > 0)
+            if (settingsObjectpropCount > 0)
             {
-                body["Settings"] = SettingsObject;
+                body["Settings"] = settingsObject;
                 bodypropCount++;
             }
 
@@ -1791,20 +1791,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         public double AvgRatio { get; set; }
     }
 
-    public enum bodySettingsapplyRatioThresholdToInput
+    public enum bodysettingsapplyRatioThresholdToInput
     {
         Max,
         Avg
     }
 
-    public enum bodySettingsratioSelectionTypeInput
+    public enum bodysettingsratioSelectionTypeInput
     {
         All,
         Standard,
         Partial
     }
 
-    public enum bodySettingstokenSortTypeInput
+    public enum bodysettingstokenSortTypeInput
     {
         All,
         [EnumMember(Value = "Not Sorted")]

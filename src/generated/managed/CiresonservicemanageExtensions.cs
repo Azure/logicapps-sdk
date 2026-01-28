@@ -30,28 +30,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident(Expression<Func<string>> bodyclassification, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodyimpact, Expression<Func<string>> bodysource, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<int>> bodyPriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident(Expression<Func<string>> bodyclassification, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodyimpact, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = "/api/CloudConnector/Incident";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
@@ -96,28 +96,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<int>> bodyPriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = String.Format("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
@@ -178,22 +178,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest(Expression<Func<string>> bodyarea, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodysource, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest(Expression<Func<string>> bodyarea, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = "/api/CloudConnector/ServiceRequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -242,28 +242,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<int>> bodyPriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = String.Format("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
@@ -324,22 +324,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest(Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = "/api/CloudConnector/ChangeRequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -388,22 +388,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = String.Format("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -452,28 +452,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem(Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = "/api/CloudConnector/Problem";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
@@ -522,28 +522,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = String.Format("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
@@ -592,22 +592,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord(Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = "/api/CloudConnector/ReleaseRecord";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -662,22 +662,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodyTitle = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
             var apiCallPath = String.Format("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyTitle != null)
+            if (bodytitle != null)
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -732,34 +732,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodyEnteredBy = null, Expression<Func<bool>> bodyIsPrivate = null, Expression<Func<bodyActionTypeInput>> bodyActionType = null)
+        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyenteredBy = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null)
         {
             var apiCallPath = String.Format("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyEnteredBy != null)
+            if (bodyenteredBy != null)
             {
-                body["EnteredBy"] = ExpressionConverter.ConvertO(bodyEnteredBy);
+                body["EnteredBy"] = ExpressionConverter.ConvertO(bodyenteredBy);
                 bodypropCount++;
             }
 
-            if (bodyIsPrivate != null)
+            if (bodyisPrivate != null)
             {
-                body["IsPrivate"] = ExpressionConverter.ConvertO(bodyIsPrivate);
+                body["IsPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
                 bodypropCount++;
             }
 
-            if (bodyActionType != null)
+            if (bodyactionType != null)
             {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyActionType);
+                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
                 bodypropCount++;
             }
 
@@ -774,6 +774,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     public class CiresonservicemanageTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/platform/api/CreateWebhooks";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var webhookSettingsObject = new JObject();
+            var webhookSettingsObjectpropCount = 0;
+            webhookSettingsObject["Url"] = "@listCallbackUrl()";
+            webhookSettingsObjectpropCount++;
+            if (bodywebhookSettingsworkItemClassType != null)
+            {
+                webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                webhookSettingsObjectpropCount++;
+            }
+
+            if (webhookSettingsObjectpropCount > 0)
+            {
+                body["webhookSettings"] = webhookSettingsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/platform/api/CreateActionLogWebhooks";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var webhookSettingsObject = new JObject();
+            var webhookSettingsObjectpropCount = 0;
+            webhookSettingsObject["Url"] = "@listCallbackUrl()";
+            webhookSettingsObjectpropCount++;
+            if (bodywebhookSettingsworkItemClassType != null)
+            {
+                webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                webhookSettingsObjectpropCount++;
+            }
+
+            if (webhookSettingsObjectpropCount > 0)
+            {
+                body["webhookSettings"] = webhookSettingsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class WorkItemGetResponse
@@ -847,11 +910,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public JToken AppliesToWorkItem { get; set; }
     }
 
-    public enum bodyActionTypeInput
+    public enum bodyactionTypeInput
     {
         [EnumMember(Value = "Analyst Comment")]
         AnalystComment,
         [EnumMember(Value = "End User Comment")]
+        EndUserComment
+    }
+
+    public class WebhookSettings
+    {
+        [JsonProperty("Guid")]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string ActionType { get; set; }
+        public string SaveType { get; set; }
+        public bool Enable { get; set; }
+        public string WorkItemClassType { get; set; }
+        public int WebHookClass { get; set; }
+        public bool IsDeleted { get; set; }
+        public int ModifiedById { get; set; }
+        public string ModifiedDate { get; set; }
+        public int CreatedById { get; set; }
+        public string CreatedDate { get; set; }
+    }
+
+    public enum bodywebhookSettingsworkItemClassTypeInput
+    {
+        [EnumMember(Value = "Analyst Comment")]
+        AnalystComment,
+        [EnumMember(Value = "EndUser Comment")]
         EndUserComment
     }
 }

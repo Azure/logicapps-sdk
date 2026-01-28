@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesclass = null)
+        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
         {
             var apiCallPath = "/find-all";
             var apiCallHttpMethod = "post";
@@ -111,9 +111,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 attributesObjectpropCount++;
             }
 
-            if (bodyattributesclass != null)
+            if (bodyattributesClass != null)
             {
-                attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesclass);
+                attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesClass);
                 attributesObjectpropCount++;
             }
 

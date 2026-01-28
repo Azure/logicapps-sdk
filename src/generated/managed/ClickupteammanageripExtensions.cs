@@ -120,49 +120,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 
             var featuresObject = new JObject();
             var featuresObjectpropCount = 0;
-            var due_datesObject = new JObject();
-            var due_datesObjectpropCount = 0;
+            var dueDatesObject = new JObject();
+            var dueDatesObjectpropCount = 0;
             if (bodyfeaturesdueDatesdueDates != null)
             {
-                due_datesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesdueDates);
-                due_datesObjectpropCount++;
+                dueDatesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesdueDates);
+                dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesstartDate != null)
             {
-                due_datesObject["start_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesstartDate);
-                due_datesObjectpropCount++;
+                dueDatesObject["start_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesstartDate);
+                dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesremapDueDate != null)
             {
-                due_datesObject["remap_due_dates"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapDueDate);
-                due_datesObjectpropCount++;
+                dueDatesObject["remap_due_dates"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapDueDate);
+                dueDatesObjectpropCount++;
             }
 
             if (bodyfeaturesdueDatesremapClosedDueDate != null)
             {
-                due_datesObject["remap_closed_due_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapClosedDueDate);
-                due_datesObjectpropCount++;
+                dueDatesObject["remap_closed_due_date"] = ExpressionConverter.ConvertO(bodyfeaturesdueDatesremapClosedDueDate);
+                dueDatesObjectpropCount++;
             }
 
-            if (due_datesObjectpropCount > 0)
+            if (dueDatesObjectpropCount > 0)
             {
-                featuresObject["due_dates"] = due_datesObject;
+                featuresObject["due_dates"] = dueDatesObject;
                 featuresObjectpropCount++;
             }
 
-            var time_trackingObject = new JObject();
-            var time_trackingObjectpropCount = 0;
+            var timeTrackingObject = new JObject();
+            var timeTrackingObjectpropCount = 0;
             if (bodyfeaturestimeTrackingtimeTracking != null)
             {
-                time_trackingObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeTrackingtimeTracking);
-                time_trackingObjectpropCount++;
+                timeTrackingObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeTrackingtimeTracking);
+                timeTrackingObjectpropCount++;
             }
 
-            if (time_trackingObjectpropCount > 0)
+            if (timeTrackingObjectpropCount > 0)
             {
-                featuresObject["time_tracking"] = time_trackingObject;
+                featuresObject["time_tracking"] = timeTrackingObject;
                 featuresObjectpropCount++;
             }
 
@@ -180,17 +180,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 featuresObjectpropCount++;
             }
 
-            var time_estimatesObject = new JObject();
-            var time_estimatesObjectpropCount = 0;
+            var timeEstimatesObject = new JObject();
+            var timeEstimatesObjectpropCount = 0;
             if (bodyfeaturestimeEstimatestimeEstimates != null)
             {
-                time_estimatesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeEstimatestimeEstimates);
-                time_estimatesObjectpropCount++;
+                timeEstimatesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturestimeEstimatestimeEstimates);
+                timeEstimatesObjectpropCount++;
             }
 
-            if (time_estimatesObjectpropCount > 0)
+            if (timeEstimatesObjectpropCount > 0)
             {
-                featuresObject["time_estimates"] = time_estimatesObject;
+                featuresObject["time_estimates"] = timeEstimatesObject;
                 featuresObjectpropCount++;
             }
 
@@ -208,45 +208,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 featuresObjectpropCount++;
             }
 
-            var custom_fieldsObject = new JObject();
-            var custom_fieldsObjectpropCount = 0;
+            var customFieldsObject = new JObject();
+            var customFieldsObjectpropCount = 0;
             if (bodyfeaturescustomFieldscustomFields != null)
             {
-                custom_fieldsObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturescustomFieldscustomFields);
-                custom_fieldsObjectpropCount++;
+                customFieldsObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturescustomFieldscustomFields);
+                customFieldsObjectpropCount++;
             }
 
-            if (custom_fieldsObjectpropCount > 0)
+            if (customFieldsObjectpropCount > 0)
             {
-                featuresObject["custom_fields"] = custom_fieldsObject;
+                featuresObject["custom_fields"] = customFieldsObject;
                 featuresObjectpropCount++;
             }
 
-            var remap_dependenciesObject = new JObject();
-            var remap_dependenciesObjectpropCount = 0;
+            var remapDependenciesObject = new JObject();
+            var remapDependenciesObjectpropCount = 0;
             if (bodyfeaturesremapDependenciesremapDependencies != null)
             {
-                remap_dependenciesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesremapDependenciesremapDependencies);
-                remap_dependenciesObjectpropCount++;
+                remapDependenciesObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesremapDependenciesremapDependencies);
+                remapDependenciesObjectpropCount++;
             }
 
-            if (remap_dependenciesObjectpropCount > 0)
+            if (remapDependenciesObjectpropCount > 0)
             {
-                featuresObject["remap_dependencies"] = remap_dependenciesObject;
+                featuresObject["remap_dependencies"] = remapDependenciesObject;
                 featuresObjectpropCount++;
             }
 
-            var dependency_warningObject = new JObject();
-            var dependency_warningObjectpropCount = 0;
+            var dependencyWarningObject = new JObject();
+            var dependencyWarningObjectpropCount = 0;
             if (bodyfeaturesdependencyWarningdependencyWarning != null)
             {
-                dependency_warningObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdependencyWarningdependencyWarning);
-                dependency_warningObjectpropCount++;
+                dependencyWarningObject["enabled"] = ExpressionConverter.ConvertO(bodyfeaturesdependencyWarningdependencyWarning);
+                dependencyWarningObjectpropCount++;
             }
 
-            if (dependency_warningObjectpropCount > 0)
+            if (dependencyWarningObjectpropCount > 0)
             {
-                featuresObject["dependency_warning"] = dependency_warningObject;
+                featuresObject["dependency_warning"] = dependencyWarningObject;
                 featuresObjectpropCount++;
             }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateAListResponse> CreateAList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodydueDate = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<CreateAListResponse> CreateAList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodydueDate2 = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var apiCallPath = String.Format("/api/v2/folder/{0}/list", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
@@ -322,9 +322,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 bodypropCount++;
             }
 
-            if (bodydueDate != null)
+            if (bodydueDate2 != null)
             {
-                body["due_date_time"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["due_date_time"] = ExpressionConverter.ConvertO(bodydueDate2);
                 bodypropCount++;
             }
 

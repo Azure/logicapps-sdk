@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             var bodypropCount = 0;
             bodypropCount++;
             body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                body["params"] = paramsObject;
+                body["params"] = @paramsObject;
                 bodypropCount++;
             }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse> TemplatePost(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<TemplatePostResponse> TemplatePost(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
             var apiCallPath = "/templates/";
             var apiCallHttpMethod = "post";
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
             var bodypropCount = 0;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyparams != null)
+            if (bodyParams != null)
             {
-                body["params"] = ExpressionConverter.ConvertO(bodyparams);
+                body["params"] = ExpressionConverter.ConvertO(bodyParams);
                 bodypropCount++;
             }
 

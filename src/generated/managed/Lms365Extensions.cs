@@ -219,81 +219,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 bodypropCount++;
             }
 
-            var PublishingSettingsObject = new JObject();
-            var PublishingSettingsObjectpropCount = 0;
+            var publishingSettingsObject = new JObject();
+            var publishingSettingsObjectpropCount = 0;
             if (bodypublishingSettingsisEnabled != null)
             {
-                PublishingSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodypublishingSettingsisEnabled);
-                PublishingSettingsObjectpropCount++;
+                publishingSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodypublishingSettingsisEnabled);
+                publishingSettingsObjectpropCount++;
             }
 
             if (bodypublishingSettingsstartDate != null)
             {
-                PublishingSettingsObject["StartDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsstartDate);
-                PublishingSettingsObjectpropCount++;
+                publishingSettingsObject["StartDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsstartDate);
+                publishingSettingsObjectpropCount++;
             }
 
             if (bodypublishingSettingsendDate != null)
             {
-                PublishingSettingsObject["EndDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsendDate);
-                PublishingSettingsObjectpropCount++;
+                publishingSettingsObject["EndDate"] = ExpressionConverter.ConvertO(bodypublishingSettingsendDate);
+                publishingSettingsObjectpropCount++;
             }
 
-            if (PublishingSettingsObjectpropCount > 0)
+            if (publishingSettingsObjectpropCount > 0)
             {
-                body["PublishingSettings"] = PublishingSettingsObject;
+                body["PublishingSettings"] = publishingSettingsObject;
                 bodypropCount++;
             }
 
-            var ExpirySettingsObject = new JObject();
-            var ExpirySettingsObjectpropCount = 0;
+            var expirySettingsObject = new JObject();
+            var expirySettingsObjectpropCount = 0;
             if (bodyexpirySettingsisEnabled != null)
             {
-                ExpirySettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodyexpirySettingsisEnabled);
-                ExpirySettingsObjectpropCount++;
+                expirySettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodyexpirySettingsisEnabled);
+                expirySettingsObjectpropCount++;
             }
 
             if (bodyexpirySettingsfixedDate != null)
             {
-                ExpirySettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodyexpirySettingsfixedDate);
-                ExpirySettingsObjectpropCount++;
+                expirySettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodyexpirySettingsfixedDate);
+                expirySettingsObjectpropCount++;
             }
 
             if (bodyexpirySettingsdaysAfterCompletion != null)
             {
-                ExpirySettingsObject["DaysAfterCompletion"] = ExpressionConverter.ConvertO(bodyexpirySettingsdaysAfterCompletion);
-                ExpirySettingsObjectpropCount++;
+                expirySettingsObject["DaysAfterCompletion"] = ExpressionConverter.ConvertO(bodyexpirySettingsdaysAfterCompletion);
+                expirySettingsObjectpropCount++;
             }
 
-            if (ExpirySettingsObjectpropCount > 0)
+            if (expirySettingsObjectpropCount > 0)
             {
-                body["ExpirySettings"] = ExpirySettingsObject;
+                body["ExpirySettings"] = expirySettingsObject;
                 bodypropCount++;
             }
 
-            var DueDateSettingsObject = new JObject();
-            var DueDateSettingsObjectpropCount = 0;
+            var dueDateSettingsObject = new JObject();
+            var dueDateSettingsObjectpropCount = 0;
             if (bodydueDateSettingsisEnabled != null)
             {
-                DueDateSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodydueDateSettingsisEnabled);
-                DueDateSettingsObjectpropCount++;
+                dueDateSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodydueDateSettingsisEnabled);
+                dueDateSettingsObjectpropCount++;
             }
 
             if (bodydueDateSettingsfixedDate != null)
             {
-                DueDateSettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodydueDateSettingsfixedDate);
-                DueDateSettingsObjectpropCount++;
+                dueDateSettingsObject["FixedDate"] = ExpressionConverter.ConvertO(bodydueDateSettingsfixedDate);
+                dueDateSettingsObjectpropCount++;
             }
 
             if (bodydueDateSettingsdaysAfterEnrollment != null)
             {
-                DueDateSettingsObject["DaysAfterEnrollment"] = ExpressionConverter.ConvertO(bodydueDateSettingsdaysAfterEnrollment);
-                DueDateSettingsObjectpropCount++;
+                dueDateSettingsObject["DaysAfterEnrollment"] = ExpressionConverter.ConvertO(bodydueDateSettingsdaysAfterEnrollment);
+                dueDateSettingsObjectpropCount++;
             }
 
-            if (DueDateSettingsObjectpropCount > 0)
+            if (dueDateSettingsObjectpropCount > 0)
             {
-                body["DueDateSettings"] = DueDateSettingsObject;
+                body["DueDateSettings"] = dueDateSettingsObject;
                 bodypropCount++;
             }
 
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<string>> bodyTitle, Expression<Func<string>> bodyStartDate, Expression<Func<string>> bodyEndDate, Expression<Func<bodyTimeZoneInput>> bodyTimeZone, Expression<Func<string>> bodyEnrollmentDeadline = null, Expression<Func<string>> bodyRoomEmailAddress = null, Expression<Func<string>> bodyRoomTitle = null, Expression<Func<string>> bodyRoomLocation = null, Expression<Func<bodyRoomSourceInput>> bodyRoomSource = null, Expression<Func<string>> bodyMeetingUrl = null, Expression<Func<string>> bodyMaxAttendees = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyenrollmentDeadline = null, Expression<Func<string>> bodyroomemailAddress = null, Expression<Func<string>> bodyroomtitle = null, Expression<Func<string>> bodyroomlocation = null, Expression<Func<bodyroomsourceInput>> bodyroomsource = null, Expression<Func<string>> bodymeetingUrl = null, Expression<Func<string>> bodymaxAttendees = null, Expression<Func<string>> lMS365UserId = null)
         {
             var apiCallPath = String.Format("/odata/v2/Courses({0})/CourseSessions", ExpressionConverter.ConvertWithUrlEncoding(courseId, 1));
             var apiCallHttpMethod = "post";
@@ -494,60 +494,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodyTitle);
+            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
             bodypropCount++;
-            body["StartDate"] = ExpressionConverter.ConvertO(bodyStartDate);
+            body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
             bodypropCount++;
-            body["EndDate"] = ExpressionConverter.ConvertO(bodyEndDate);
+            body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
             bodypropCount++;
-            body["TimeZone"] = ExpressionConverter.ConvertO(bodyTimeZone);
-            if (bodyEnrollmentDeadline != null)
+            body["TimeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+            if (bodyenrollmentDeadline != null)
             {
-                body["EnrollmentDeadline"] = ExpressionConverter.ConvertO(bodyEnrollmentDeadline);
+                body["EnrollmentDeadline"] = ExpressionConverter.ConvertO(bodyenrollmentDeadline);
                 bodypropCount++;
             }
 
-            var RoomObject = new JObject();
-            var RoomObjectpropCount = 0;
-            if (bodyRoomEmailAddress != null)
+            var roomObject = new JObject();
+            var roomObjectpropCount = 0;
+            if (bodyroomemailAddress != null)
             {
-                RoomObject["EmailAddress"] = ExpressionConverter.ConvertO(bodyRoomEmailAddress);
-                RoomObjectpropCount++;
+                roomObject["EmailAddress"] = ExpressionConverter.ConvertO(bodyroomemailAddress);
+                roomObjectpropCount++;
             }
 
-            if (bodyRoomTitle != null)
+            if (bodyroomtitle != null)
             {
-                RoomObject["Title"] = ExpressionConverter.ConvertO(bodyRoomTitle);
-                RoomObjectpropCount++;
+                roomObject["Title"] = ExpressionConverter.ConvertO(bodyroomtitle);
+                roomObjectpropCount++;
             }
 
-            if (bodyRoomLocation != null)
+            if (bodyroomlocation != null)
             {
-                RoomObject["Location"] = ExpressionConverter.ConvertO(bodyRoomLocation);
-                RoomObjectpropCount++;
+                roomObject["Location"] = ExpressionConverter.ConvertO(bodyroomlocation);
+                roomObjectpropCount++;
             }
 
-            if (bodyRoomSource != null)
+            if (bodyroomsource != null)
             {
-                RoomObject["Source"] = ExpressionConverter.ConvertO(bodyRoomSource);
-                RoomObjectpropCount++;
+                roomObject["Source"] = ExpressionConverter.ConvertO(bodyroomsource);
+                roomObjectpropCount++;
             }
 
-            if (RoomObjectpropCount > 0)
+            if (roomObjectpropCount > 0)
             {
-                body["Room"] = RoomObject;
+                body["Room"] = roomObject;
                 bodypropCount++;
             }
 
-            if (bodyMeetingUrl != null)
+            if (bodymeetingUrl != null)
             {
-                body["MeetingUrl"] = ExpressionConverter.ConvertO(bodyMeetingUrl);
+                body["MeetingUrl"] = ExpressionConverter.ConvertO(bodymeetingUrl);
                 bodypropCount++;
             }
 
-            if (bodyMaxAttendees != null)
+            if (bodymaxAttendees != null)
             {
-                body["MaxAttendees"] = ExpressionConverter.ConvertO(bodyMaxAttendees);
+                body["MaxAttendees"] = ExpressionConverter.ConvertO(bodymaxAttendees);
                 bodypropCount++;
             }
 
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsExternal { get; set; }
     }
 
-    public enum bodyTimeZoneInput
+    public enum bodytimeZoneInput
     {
         [EnumMember(Value = "Afghanistan Standard Time")]
         AfghanistanStandardTime,
@@ -1571,7 +1571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         YakutskStandardTime
     }
 
-    public enum bodyRoomSourceInput
+    public enum bodyroomsourceInput
     {
         Unknown,
         Exchange

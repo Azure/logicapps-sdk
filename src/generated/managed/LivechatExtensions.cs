@@ -89,6 +89,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
+        public IBodyWorkflowAction<TicketResponse> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
+        {
+            var apiCallPath = "/tickets";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["message"] = ExpressionConverter.ConvertO(bodymessage);
+            var requesterObject = new JObject();
+            var requesterObjectpropCount = 0;
+            if (bodyrequesterrequesterSEmail != null)
+            {
+                requesterObject["mail"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSEmail);
+                requesterObjectpropCount++;
+            }
+
+            if (bodyrequesterrequesterSName != null)
+            {
+                requesterObject["name"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSName);
+                requesterObjectpropCount++;
+            }
+
+            if (requesterObjectpropCount > 0)
+            {
+                body["requester"] = requesterObject;
+                bodypropCount++;
+            }
+
+            if (bodysubject != null)
+            {
+                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                bodypropCount++;
+            }
+
+            var assigneeObject = new JObject();
+            var assigneeObjectpropCount = 0;
+            if (bodyassigneeassigneeId != null)
+            {
+                assigneeObject["id"] = ExpressionConverter.ConvertO(bodyassigneeassigneeId);
+                assigneeObjectpropCount++;
+            }
+
+            if (assigneeObjectpropCount > 0)
+            {
+                body["assignee"] = assigneeObject;
+                bodypropCount++;
+            }
+
+            var sourceObject = new JObject();
+            var sourceObjectpropCount = 0;
+            if (bodysourcesourceType != null)
+            {
+                sourceObject["type"] = ExpressionConverter.ConvertO(bodysourcesourceType);
+                sourceObjectpropCount++;
+            }
+
+            if (bodysourcesourceURL != null)
+            {
+                sourceObject["url"] = ExpressionConverter.ConvertO(bodysourcesourceURL);
+                sourceObjectpropCount++;
+            }
+
+            if (sourceObjectpropCount > 0)
+            {
+                body["source"] = sourceObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<TicketResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
             var apiCallPath = String.Format("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));

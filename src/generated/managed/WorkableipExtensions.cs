@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyevent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
+        public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
         {
             var apiCallPath = "/spi/v3/subscriptions";
             var apiCallHttpMethod = "post";
@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
                 bodypropCount++;
             }
 
-            if (bodyevent != null)
+            if (bodyEvent != null)
             {
-                body["event"] = ExpressionConverter.ConvertO(bodyevent);
+                body["event"] = ExpressionConverter.ConvertO(bodyEvent);
                 bodypropCount++;
             }
 

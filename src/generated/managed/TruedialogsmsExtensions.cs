@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyPhoneNumber = null, Expression<Func<string>> bodyEmail = null, Expression<Func<string>> bodyFirstName = null, Expression<Func<string>> bodyLastName = null)
+        public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
             var apiCallPath = String.Format("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -38,27 +38,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyPhoneNumber != null)
+            if (bodyphoneNumber != null)
             {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyPhoneNumber);
+                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
-            if (bodyFirstName != null)
+            if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyFirstName);
+                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
                 bodypropCount++;
             }
 
-            if (bodyLastName != null)
+            if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodyLastName);
+                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
                 bodypropCount++;
             }
 
@@ -71,34 +71,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyPhoneNumber = null, Expression<Func<string>> bodyEmail = null, Expression<Func<string>> bodyFirstName = null, Expression<Func<string>> bodyLastName = null)
+        public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
             var apiCallPath = String.Format("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyPhoneNumber != null)
+            if (bodyphoneNumber != null)
             {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyPhoneNumber);
+                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
-            if (bodyFirstName != null)
+            if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyFirstName);
+                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
                 bodypropCount++;
             }
 
-            if (bodyLastName != null)
+            if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodyLastName);
+                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
                 bodypropCount++;
             }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodyChannels, Expression<Func<string[]>> bodyTargets, Expression<Func<string>> bodyMessage, Expression<Func<bool>> bodyExecute, Expression<Func<string[]>> bodyContactListIds = null, Expression<Func<string[]>> bodyExcludeListIds = null, Expression<Func<int>> bodyMediaId = null, Expression<Func<bool>> bodyIgnoreSingleUse = null, Expression<Func<bool>> bodyForceOptIn = null, Expression<Func<string[]>> bodySchedules = null, Expression<Func<bool>> bodyIgnoreInvalidTargets = null)
+        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodychannels, Expression<Func<string[]>> bodytargets, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodyexecute, Expression<Func<string[]>> bodycontactListIds = null, Expression<Func<string[]>> bodyexcludeListIds = null, Expression<Func<int>> bodymediaId = null, Expression<Func<bool>> bodyignoreSingleUse = null, Expression<Func<bool>> bodyforceOptIn = null, Expression<Func<string[]>> bodyschedules = null, Expression<Func<bool>> bodyignoreInvalidTargets = null)
         {
             var apiCallPath = String.Format("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -120,54 +120,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Channels"] = ExpressionConverter.ConvertO(bodyChannels);
+            body["Channels"] = ExpressionConverter.ConvertO(bodychannels);
             bodypropCount++;
-            body["Targets"] = ExpressionConverter.ConvertO(bodyTargets);
-            if (bodyContactListIds != null)
+            body["Targets"] = ExpressionConverter.ConvertO(bodytargets);
+            if (bodycontactListIds != null)
             {
-                body["ContactListIds"] = ExpressionConverter.ConvertO(bodyContactListIds);
+                body["ContactListIds"] = ExpressionConverter.ConvertO(bodycontactListIds);
                 bodypropCount++;
             }
 
-            if (bodyExcludeListIds != null)
+            if (bodyexcludeListIds != null)
             {
-                body["ExcludeListIds"] = ExpressionConverter.ConvertO(bodyExcludeListIds);
+                body["ExcludeListIds"] = ExpressionConverter.ConvertO(bodyexcludeListIds);
                 bodypropCount++;
             }
 
             body["CampaignId"] = 0;
             bodypropCount++;
-            if (bodyMediaId != null)
+            if (bodymediaId != null)
             {
-                body["MediaId"] = ExpressionConverter.ConvertO(bodyMediaId);
+                body["MediaId"] = ExpressionConverter.ConvertO(bodymediaId);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodyMessage);
-            if (bodyIgnoreSingleUse != null)
+            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+            if (bodyignoreSingleUse != null)
             {
-                body["IgnoreSingleUse"] = ExpressionConverter.ConvertO(bodyIgnoreSingleUse);
+                body["IgnoreSingleUse"] = ExpressionConverter.ConvertO(bodyignoreSingleUse);
                 bodypropCount++;
             }
 
-            if (bodyForceOptIn != null)
+            if (bodyforceOptIn != null)
             {
-                body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyForceOptIn);
+                body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
                 bodypropCount++;
             }
 
-            if (bodySchedules != null)
+            if (bodyschedules != null)
             {
-                body["Schedules"] = ExpressionConverter.ConvertO(bodySchedules);
+                body["Schedules"] = ExpressionConverter.ConvertO(bodyschedules);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Execute"] = ExpressionConverter.ConvertO(bodyExecute);
-            if (bodyIgnoreInvalidTargets != null)
+            body["Execute"] = ExpressionConverter.ConvertO(bodyexecute);
+            if (bodyignoreInvalidTargets != null)
             {
-                body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyIgnoreInvalidTargets);
+                body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
                 bodypropCount++;
             }
 

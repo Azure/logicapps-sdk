@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycom
                 queryRequestpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                queryRequest["params"] = paramsObject;
+                queryRequest["params"] = @paramsObject;
                 queryRequestpropCount++;
             }
 

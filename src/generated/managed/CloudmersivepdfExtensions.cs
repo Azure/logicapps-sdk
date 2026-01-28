@@ -12,22 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class CloudmersivepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestAnnotationsToAdd = null, Expression<Func<string>> requestInputFileBytes = null)
+        public IBodyWorkflowAction<string> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<string>> requestinputFileBytes = null)
         {
             var apiCallPath = "/convert/edit/pdf/annotations/add-item";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestAnnotationsToAdd != null)
+            if (requestannotationsToAdd != null)
             {
-                request["AnnotationsToAdd"] = ExpressionConverter.ConvertO(requestAnnotationsToAdd);
+                request["AnnotationsToAdd"] = ExpressionConverter.ConvertO(requestannotationsToAdd);
                 requestpropCount++;
             }
 
-            if (requestInputFileBytes != null)
+            if (requestinputFileBytes != null)
             {
-                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestInputFileBytes);
+                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestinputFileBytes);
                 requestpropCount++;
             }
 
@@ -129,22 +129,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesFieldValues = null, Expression<Func<string>> fieldValuesInputFileBytes = null)
+        public IBodyWorkflowAction<string> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<string>> fieldValuesinputFileBytes = null)
         {
             var apiCallPath = "/convert/edit/pdf/form/set-fields";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var fieldValues = new JObject();
             var fieldValuespropCount = 0;
-            if (fieldValuesFieldValues != null)
+            if (fieldValuesfieldValues != null)
             {
-                fieldValues["FieldValues"] = ExpressionConverter.ConvertO(fieldValuesFieldValues);
+                fieldValues["FieldValues"] = ExpressionConverter.ConvertO(fieldValuesfieldValues);
                 fieldValuespropCount++;
             }
 
-            if (fieldValuesInputFileBytes != null)
+            if (fieldValuesinputFileBytes != null)
             {
-                fieldValues["InputFileBytes"] = ExpressionConverter.ConvertO(fieldValuesInputFileBytes);
+                fieldValues["InputFileBytes"] = ExpressionConverter.ConvertO(fieldValuesinputFileBytes);
                 fieldValuespropCount++;
             }
 
@@ -229,78 +229,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfSetMetadata(Expression<Func<string>> requestInputFileBytes = null, Expression<Func<string>> requestMetadataToSetAuthor = null, Expression<Func<string>> requestMetadataToSetCreator = null, Expression<Func<string>> requestMetadataToSetDateCreated = null, Expression<Func<string>> requestMetadataToSetDateModified = null, Expression<Func<string>> requestMetadataToSetKeywords = null, Expression<Func<int>> requestMetadataToSetPageCount = null, Expression<Func<string>> requestMetadataToSetSubject = null, Expression<Func<bool>> requestMetadataToSetSuccessful = null, Expression<Func<string>> requestMetadataToSetTitle = null)
+        public IBodyWorkflowAction<string> EditPdfSetMetadata(Expression<Func<string>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
         {
             var apiCallPath = "/convert/edit/pdf/set-metadata";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            if (requestInputFileBytes != null)
+            if (requestinputFileBytes != null)
             {
-                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestInputFileBytes);
+                request["InputFileBytes"] = ExpressionConverter.ConvertO(requestinputFileBytes);
                 requestpropCount++;
             }
 
-            var MetadataToSetObject = new JObject();
-            var MetadataToSetObjectpropCount = 0;
-            if (requestMetadataToSetAuthor != null)
+            var metadataToSetObject = new JObject();
+            var metadataToSetObjectpropCount = 0;
+            if (requestmetadataToSetauthor != null)
             {
-                MetadataToSetObject["Author"] = ExpressionConverter.ConvertO(requestMetadataToSetAuthor);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Author"] = ExpressionConverter.ConvertO(requestmetadataToSetauthor);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetCreator != null)
+            if (requestmetadataToSetcreator != null)
             {
-                MetadataToSetObject["Creator"] = ExpressionConverter.ConvertO(requestMetadataToSetCreator);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Creator"] = ExpressionConverter.ConvertO(requestmetadataToSetcreator);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetDateCreated != null)
+            if (requestmetadataToSetdateCreated != null)
             {
-                MetadataToSetObject["DateCreated"] = ExpressionConverter.ConvertO(requestMetadataToSetDateCreated);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["DateCreated"] = ExpressionConverter.ConvertO(requestmetadataToSetdateCreated);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetDateModified != null)
+            if (requestmetadataToSetdateModified != null)
             {
-                MetadataToSetObject["DateModified"] = ExpressionConverter.ConvertO(requestMetadataToSetDateModified);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["DateModified"] = ExpressionConverter.ConvertO(requestmetadataToSetdateModified);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetKeywords != null)
+            if (requestmetadataToSetkeywords != null)
             {
-                MetadataToSetObject["Keywords"] = ExpressionConverter.ConvertO(requestMetadataToSetKeywords);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Keywords"] = ExpressionConverter.ConvertO(requestmetadataToSetkeywords);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetPageCount != null)
+            if (requestmetadataToSetpageCount != null)
             {
-                MetadataToSetObject["PageCount"] = ExpressionConverter.ConvertO(requestMetadataToSetPageCount);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["PageCount"] = ExpressionConverter.ConvertO(requestmetadataToSetpageCount);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetSubject != null)
+            if (requestmetadataToSetsubject != null)
             {
-                MetadataToSetObject["Subject"] = ExpressionConverter.ConvertO(requestMetadataToSetSubject);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Subject"] = ExpressionConverter.ConvertO(requestmetadataToSetsubject);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetSuccessful != null)
+            if (requestmetadataToSetsuccessful != null)
             {
-                MetadataToSetObject["Successful"] = ExpressionConverter.ConvertO(requestMetadataToSetSuccessful);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Successful"] = ExpressionConverter.ConvertO(requestmetadataToSetsuccessful);
+                metadataToSetObjectpropCount++;
             }
 
-            if (requestMetadataToSetTitle != null)
+            if (requestmetadataToSettitle != null)
             {
-                MetadataToSetObject["Title"] = ExpressionConverter.ConvertO(requestMetadataToSetTitle);
-                MetadataToSetObjectpropCount++;
+                metadataToSetObject["Title"] = ExpressionConverter.ConvertO(requestmetadataToSettitle);
+                metadataToSetObjectpropCount++;
             }
 
-            if (MetadataToSetObjectpropCount > 0)
+            if (metadataToSetObjectpropCount > 0)
             {
-                request["MetadataToSet"] = MetadataToSetObject;
+                request["MetadataToSet"] = metadataToSetObject;
                 requestpropCount++;
             }
 

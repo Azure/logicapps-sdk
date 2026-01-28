@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 requestBodypropCount++;
             }
 
-            var tool_resourcesObject = new JObject();
-            var tool_resourcesObjectpropCount = 0;
-            if (tool_resourcesObjectpropCount > 0)
+            var toolResourcesObject = new JObject();
+            var toolResourcesObjectpropCount = 0;
+            if (toolResourcesObjectpropCount > 0)
             {
-                requestBody["tool_resources"] = tool_resourcesObject;
+                requestBody["tool_resources"] = toolResourcesObject;
                 requestBodypropCount++;
             }
 
@@ -139,27 +139,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 requestBodypropCount++;
             }
 
-            var truncation_strategyObject = new JObject();
-            var truncation_strategyObjectpropCount = 0;
-            if (truncation_strategyObjectpropCount > 0)
+            var truncationStrategyObject = new JObject();
+            var truncationStrategyObjectpropCount = 0;
+            if (truncationStrategyObjectpropCount > 0)
             {
-                requestBody["truncation_strategy"] = truncation_strategyObject;
+                requestBody["truncation_strategy"] = truncationStrategyObject;
                 requestBodypropCount++;
             }
 
-            var tool_choiceObject = new JObject();
-            var tool_choiceObjectpropCount = 0;
-            if (tool_choiceObjectpropCount > 0)
+            var toolChoiceObject = new JObject();
+            var toolChoiceObjectpropCount = 0;
+            if (toolChoiceObjectpropCount > 0)
             {
-                requestBody["tool_choice"] = tool_choiceObject;
+                requestBody["tool_choice"] = toolChoiceObject;
                 requestBodypropCount++;
             }
 
-            var response_formatObject = new JObject();
-            var response_formatObjectpropCount = 0;
-            if (response_formatObjectpropCount > 0)
+            var responseFormatObject = new JObject();
+            var responseFormatObjectpropCount = 0;
+            if (responseFormatObjectpropCount > 0)
             {
-                requestBody["response_format"] = response_formatObject;
+                requestBody["response_format"] = responseFormatObject;
                 requestBodypropCount++;
             }
 

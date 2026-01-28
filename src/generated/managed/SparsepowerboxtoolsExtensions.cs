@@ -286,6 +286,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
+        public IBodyWorkflowAction<Resp200CsvToJson> CsvToJson(Expression<Func<string>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
+        {
+            var apiCallPath = "/csv/to-json";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var reqCsvToJson = new JObject();
+            var reqCsvToJsonpropCount = 0;
+            reqCsvToJsonpropCount++;
+            reqCsvToJson["csv"] = ExpressionConverter.ConvertO(reqCsvToJsoncSV);
+            var optionsObject = new JObject();
+            var optionsObjectpropCount = 0;
+            if (reqCsvToJsonoptionshasHeaders != null)
+            {
+                optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionshasHeaders);
+                optionsObjectpropCount++;
+            }
+
+            if (reqCsvToJsonoptionsdelimiter != null)
+            {
+                optionsObject["delimiter"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionsdelimiter);
+                optionsObjectpropCount++;
+            }
+
+            if (optionsObjectpropCount > 0)
+            {
+                reqCsvToJson["options"] = optionsObject;
+                reqCsvToJsonpropCount++;
+            }
+
+            if (reqCsvToJsonpropCount > 0)
+            {
+                callPayload.Body = reqCsvToJson;
+            }
+
+            return new ApiConnectionAction<Resp200CsvToJson>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfCreateByUrl> PdfCreateByUrl(Expression<Func<string>> reqPdfCreateByUrlhTML, Expression<Func<string>> reqPdfCreateByUrloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByUrloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByUrloptionslandscape = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginBottom = null)
         {
             var apiCallPath = "/pdf/create/by-url";
@@ -666,6 +704,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     {
         [JsonProperty("result")]
         public string PDFFile { get; set; }
+    }
+
+    public class Resp200CsvToJson
+    {
+        [JsonProperty("records")]
+        public JToken[] Records { get; set; }
     }
 
     public class Resp200PdfCreateByUrl

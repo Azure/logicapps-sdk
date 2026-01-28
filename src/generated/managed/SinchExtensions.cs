@@ -86,6 +86,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SinchTriggers([ConnectionName] string connectionId)
     {
+        public IWorkflowTrigger MessageArrived(string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhooks/messages";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["url"] = "@listCallbackUrl()";
+            bodypropCount++;
+            body["method"] = "POST";
+            bodypropCount++;
+            body["encoding"] = "JSON";
+            bodypropCount++;
+            var headersObject = new JObject();
+            var headersObjectpropCount = 0;
+            headersObject["Platform"] = "PowerAutomate";
+            headersObjectpropCount++;
+            if (headersObjectpropCount > 0)
+            {
+                body["headers"] = headersObject;
+                bodypropCount++;
+            }
+
+            body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end\"message_id\": \"$messageId\",\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger GetDeliveryReceipt(string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v1/webhooks/deliveryreports";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["url"] = "@listCallbackUrl()";
+            bodypropCount++;
+            body["method"] = "POST";
+            bodypropCount++;
+            body["encoding"] = "JSON";
+            bodypropCount++;
+            var headersObject = new JObject();
+            var headersObjectpropCount = 0;
+            headersObject["Platform"] = "PowerAutomate";
+            headersObjectpropCount++;
+            if (headersObjectpropCount > 0)
+            {
+                body["headers"] = headersObject;
+                bodypropCount++;
+            }
+
+            body["template"] = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
+            bodypropCount++;
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        }
     }
 
     public class SendSmsResponse

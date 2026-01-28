@@ -128,6 +128,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
+        {
+            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            callPayload.Headers["Accept"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodyarticleNumber != null)
+            {
+                body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
+                bodypropCount++;
+            }
+
+            if (bodygtin != null)
+            {
+                body["gtin"] = ExpressionConverter.ConvertO(bodygtin);
+                bodypropCount++;
+            }
+
+            if (bodynote != null)
+            {
+                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                bodypropCount++;
+            }
+
+            var priceObject = new JObject();
+            var priceObjectpropCount = 0;
+            if (bodypricegrossPrice != null)
+            {
+                priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
+                priceObjectpropCount++;
+            }
+
+            if (bodypriceleadingPrice != null)
+            {
+                priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                priceObjectpropCount++;
+            }
+
+            if (bodypricenetPrice != null)
+            {
+                priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
+                priceObjectpropCount++;
+            }
+
+            if (bodypricetaxRate != null)
+            {
+                priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
+                priceObjectpropCount++;
+            }
+
+            if (priceObjectpropCount > 0)
+            {
+                body["price"] = priceObject;
+                bodypropCount++;
+            }
+
+            if (bodytitle != null)
+            {
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["type"] = ExpressionConverter.ConvertO(bodytype);
+            bodypropCount++;
+            body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
+            bodypropCount++;
+            body["version"] = ExpressionConverter.ConvertO(bodyversion);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts(Expression<Func<int>> number = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<bool>> vendor = null, Expression<Func<bool>> customer = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
             var apiCallPath = "/contacts";
@@ -1024,6 +1104,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
         [JsonProperty("taxRate")]
         public double TaxRate { get; set; }
+    }
+
+    public class ResponseArticlesIdGet
+    {
+        [JsonProperty("articleNumber")]
+        public string ArticleNumber { get; set; }
+
+        [JsonProperty("gtin")]
+        public string Gtin { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("price")]
+        public ResponseArticlesIdGetPriceType Price { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("unitName")]
+        public string UnitName { get; set; }
+
+        [JsonProperty("version")]
+        public int Version { get; set; }
+    }
+
+    public class ResponseArticlesIdGetPriceType
+    {
+        [JsonProperty("grossPrice")]
+        public double GrossPrice { get; set; }
+
+        [JsonProperty("leadingPrice")]
+        public string LeadingPrice { get; set; }
+
+        [JsonProperty("netPrice")]
+        public double NetPrice { get; set; }
+
+        [JsonProperty("taxRate")]
+        public double TaxRate { get; set; }
+    }
+
+    public enum bodypriceleadingPriceInput
+    {
+        GROSS,
+        NET
     }
 
     public class ResponseContactsGet
@@ -2220,7 +2351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     public enum acceptInput
     {
         [EnumMember(Value = "*/*")]
-        **,
+        Unnamed,
         [EnumMember(Value = "application/xml")]
         ApplicationXml,
         [EnumMember(Value = "application/pdf")]

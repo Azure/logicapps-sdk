@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     public class YeeflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<AddItemResponse> AddItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<object>> bodyData = null)
+        public IBodyWorkflowAction<AddItemResponse> AddItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<object>> bodydata = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             callPayload.Queries["application"] = ExpressionConverter.Convert(application);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyData != null)
+            if (bodydata != null)
             {
-                body["Data"] = ExpressionConverter.ConvertO(bodyData);
+                body["Data"] = ExpressionConverter.ConvertO(bodydata);
                 bodypropCount++;
             }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<UpdateItemResponse> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<int>> bodyRowVersion = null, Expression<Func<object>> bodyData = null)
+        public IBodyWorkflowAction<UpdateItemResponse> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<int>> bodyrowVersion = null, Expression<Func<object>> bodydata = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
@@ -63,15 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             callPayload.Queries["application"] = ExpressionConverter.Convert(application);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyRowVersion != null)
+            if (bodyrowVersion != null)
             {
-                body["RowVersion"] = ExpressionConverter.ConvertO(bodyRowVersion);
+                body["RowVersion"] = ExpressionConverter.ConvertO(bodyrowVersion);
                 bodypropCount++;
             }
 
-            if (bodyData != null)
+            if (bodydata != null)
             {
-                body["Data"] = ExpressionConverter.ConvertO(bodyData);
+                body["Data"] = ExpressionConverter.ConvertO(bodydata);
                 bodypropCount++;
             }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<string>> bodyApplicantID = null, Expression<Func<object>> bodyVariables = null)
+        public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<string>> bodyapplicantID = null, Expression<Func<object>> bodyvariables = null)
         {
             var apiCallPath = "/workflow/forms/start";
             var apiCallHttpMethod = "post";
@@ -103,15 +103,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             callPayload.Queries["key"] = ExpressionConverter.Convert(key);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyApplicantID != null)
+            if (bodyapplicantID != null)
             {
-                body["ApplicantID"] = ExpressionConverter.ConvertO(bodyApplicantID);
+                body["ApplicantID"] = ExpressionConverter.ConvertO(bodyapplicantID);
                 bodypropCount++;
             }
 
-            if (bodyVariables != null)
+            if (bodyvariables != null)
             {
-                body["Variables"] = ExpressionConverter.ConvertO(bodyVariables);
+                body["Variables"] = ExpressionConverter.ConvertO(bodyvariables);
                 bodypropCount++;
             }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<QueryItemsResponse> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string[]>> bodyFields = null, Expression<Func<ListDataWhereRequest[]>> bodyFilters = null, Expression<Func<bodySortsInputItem[]>> bodySorts = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null)
+        public IBodyWorkflowAction<QueryItemsResponse> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string[]>> bodyfields = null, Expression<Func<ListDataWhereRequest[]>> bodyfilters = null, Expression<Func<bodysortsInputItem[]>> bodysorts = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -153,21 +153,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             callPayload.Queries["application"] = ExpressionConverter.Convert(application);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyFields != null)
+            if (bodyfields != null)
             {
-                body["Fields"] = ExpressionConverter.ConvertO(bodyFields);
+                body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
                 bodypropCount++;
             }
 
-            if (bodyFilters != null)
+            if (bodyfilters != null)
             {
-                body["Filters"] = ExpressionConverter.ConvertO(bodyFilters);
+                body["Filters"] = ExpressionConverter.ConvertO(bodyfilters);
                 bodypropCount++;
             }
 
-            if (bodySorts != null)
+            if (bodysorts != null)
             {
-                body["Sorts"] = ExpressionConverter.ConvertO(bodySorts);
+                body["Sorts"] = ExpressionConverter.ConvertO(bodysorts);
                 bodypropCount++;
             }
 
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         Or
     }
 
-    public class bodySortsInputItem
+    public class bodysortsInputItem
     {
         public string Field { get; set; }
 

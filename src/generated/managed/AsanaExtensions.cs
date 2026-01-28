@@ -21,12 +21,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
+        public IBodyWorkflowAction<ProjectResponseV2> CreateProjectV2(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
+        {
+            var apiCallPath = "/v2/projects";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            if (team != null)
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+            var project = new JObject();
+            var projectpropCount = 0;
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (projectdataprojectName != null)
+            {
+                dataObject["name"] = ExpressionConverter.ConvertO(projectdataprojectName);
+                dataObjectpropCount++;
+            }
+
+            if (projectdatadueDate != null)
+            {
+                dataObject["due_date"] = ExpressionConverter.ConvertO(projectdatadueDate);
+                dataObjectpropCount++;
+            }
+
+            if (projectdatapublic != null)
+            {
+                dataObject["public"] = ExpressionConverter.ConvertO(projectdatapublic);
+                dataObjectpropCount++;
+            }
+
+            if (projectdataprojectColor != null)
+            {
+                dataObject["color"] = ExpressionConverter.ConvertO(projectdataprojectColor);
+                dataObjectpropCount++;
+            }
+
+            if (projectdataprojectNotes != null)
+            {
+                dataObject["notes"] = ExpressionConverter.ConvertO(projectdataprojectNotes);
+                dataObjectpropCount++;
+            }
+
+            if (projectdataowner != null)
+            {
+                dataObject["owner"] = ExpressionConverter.ConvertO(projectdataowner);
+                dataObjectpropCount++;
+            }
+
+            if (projectdataarchive != null)
+            {
+                dataObject["archived"] = ExpressionConverter.ConvertO(projectdataarchive);
+                dataObjectpropCount++;
+            }
+
+            if (dataObjectpropCount > 0)
+            {
+                project["data"] = dataObject;
+                projectpropCount++;
+            }
+
+            if (projectpropCount > 0)
+            {
+                callPayload.Body = project;
+            }
+
+            return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> GetProjectV2(Expression<Func<string>> projectId)
         {
             var apiCallPath = String.Format("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
+        public IBodyWorkflowAction<TaskResponseV2> CreateTaskV2(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
+        {
+            var apiCallPath = "/v2/tasks";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            callPayload.Queries["projects"] = ExpressionConverter.Convert(projects);
+            var task = new JObject();
+            var taskpropCount = 0;
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (taskdatataskName != null)
+            {
+                dataObject["name"] = ExpressionConverter.ConvertO(taskdatataskName);
+                dataObjectpropCount++;
+            }
+
+            if (taskdataassignee != null)
+            {
+                dataObject["assignee"] = ExpressionConverter.ConvertO(taskdataassignee);
+                dataObjectpropCount++;
+            }
+
+            if (taskdatadescription != null)
+            {
+                dataObject["notes"] = ExpressionConverter.ConvertO(taskdatadescription);
+                dataObjectpropCount++;
+            }
+
+            if (taskdataassigneeStatus != null)
+            {
+                dataObject["assignee_status"] = ExpressionConverter.ConvertO(taskdataassigneeStatus);
+                dataObjectpropCount++;
+            }
+
+            if (taskdatacompleted != null)
+            {
+                dataObject["completed"] = ExpressionConverter.ConvertO(taskdatacompleted);
+                dataObjectpropCount++;
+            }
+
+            if (taskdatadueDate != null)
+            {
+                dataObject["due_on"] = ExpressionConverter.ConvertO(taskdatadueDate);
+                dataObjectpropCount++;
+            }
+
+            if (dataObjectpropCount > 0)
+            {
+                task["data"] = dataObject;
+                taskpropCount++;
+            }
+
+            if (taskpropCount > 0)
+            {
+                callPayload.Body = task;
+            }
+
+            return new ApiConnectionAction<TaskResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -45,6 +176,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var apiCallHttpMethod = "put";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<TaskResponseV2>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
+        public IBodyWorkflowAction<AddCommentResponseV2> AddCommentV2(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
+        {
+            var apiCallPath = String.Format("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (bodydatacomment != null)
+            {
+                dataObject["text"] = ExpressionConverter.ConvertO(bodydatacomment);
+                dataObjectpropCount++;
+            }
+
+            if (dataObjectpropCount > 0)
+            {
+                body["data"] = dataObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -191,6 +352,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
+    public enum projectdataprojectColorInput
+    {
+        [EnumMember(Value = "dark-pink")]
+        DarkPink,
+        [EnumMember(Value = "dark-green")]
+        DarkGreen,
+        [EnumMember(Value = "dark-blue")]
+        DarkBlue,
+        [EnumMember(Value = "dark-red")]
+        DarkRed,
+        [EnumMember(Value = "dark-teal")]
+        DarkTeal,
+        [EnumMember(Value = "dark-brown")]
+        DarkBrown,
+        [EnumMember(Value = "dark-orange")]
+        DarkOrange,
+        [EnumMember(Value = "dark-purple")]
+        DarkPurple,
+        [EnumMember(Value = "dark-warm-gray")]
+        DarkWarmGray,
+        [EnumMember(Value = "light-pink")]
+        LightPink,
+        [EnumMember(Value = "light-green")]
+        LightGreen,
+        [EnumMember(Value = "light-blue")]
+        LightBlue,
+        [EnumMember(Value = "light-red")]
+        LightRed,
+        [EnumMember(Value = "light-teal")]
+        LightTeal,
+        [EnumMember(Value = "light-yellow")]
+        LightYellow,
+        [EnumMember(Value = "light-orange")]
+        LightOrange,
+        [EnumMember(Value = "light-purple")]
+        LightPurple,
+        [EnumMember(Value = "light-warm-gray")]
+        LightWarmGray
+    }
+
     public class TaskResponseV2
     {
         [JsonProperty("gid")]
@@ -240,6 +441,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     }
 
     public class AssigneeV2
+    {
+        [JsonProperty("gid")]
+        public string ID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public enum taskdataassigneeStatusInput
+    {
+        Inbox,
+        Later,
+        Today,
+        Upcoming
+    }
+
+    public class AddCommentResponseV2
+    {
+        [JsonProperty("data")]
+        public AddCommentResponseV2DataType Data { get; set; }
+    }
+
+    public class AddCommentResponseV2DataType
+    {
+        [JsonProperty("target")]
+        public TargetV2 Target { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreationDate { get; set; }
+
+        [JsonProperty("created_by")]
+        public CreatedByV2 CreatedBy { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("gid")]
+        public string CommentID { get; set; }
+    }
+
+    public class TargetV2
+    {
+        [JsonProperty("gid")]
+        public string ID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreatedByV2
     {
         [JsonProperty("gid")]
         public string ID { get; set; }

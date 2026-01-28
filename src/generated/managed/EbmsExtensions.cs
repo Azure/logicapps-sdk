@@ -12,108 +12,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
     public class EbmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken> CreateProduct(Expression<Func<string>> bodyTREEID, Expression<Func<string>> bodyID = null, Expression<Func<double>> bodyCTYPE = null, Expression<Func<string>> bodyDESCR1 = null, Expression<Func<string>> bodyDESCR2 = null, Expression<Func<string>> bodyDESCR3 = null, Expression<Func<string>> bodyTYPE = null, Expression<Func<string>> bodyMEMO = null, Expression<Func<string>> bodyUPC = null, Expression<Func<string>> bodyMFG = null, Expression<Func<string>> bodyMFGPART = null, Expression<Func<string>> bodyPRIVENDOR = null, Expression<Func<string>> bodyEACHUNIT = null, Expression<Func<double>> bodyWEIGHT = null, Expression<Func<double>> bodyCOST = null, Expression<Func<double>> bodyBASE = null, Expression<Func<string>> bodyEXTERNALID = null)
+        public IBodyWorkflowAction<JToken> CreateProduct(Expression<Func<string>> bodytREEID, Expression<Func<string>> bodyiD = null, Expression<Func<double>> bodycTYPE = null, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
             var apiCallPath = "/INVENTRY";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyID != null)
+            if (bodyiD != null)
             {
-                body["ID"] = ExpressionConverter.ConvertO(bodyID);
+                body["ID"] = ExpressionConverter.ConvertO(bodyiD);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["TREE_ID"] = ExpressionConverter.ConvertO(bodyTREEID);
-            if (bodyCTYPE != null)
+            body["TREE_ID"] = ExpressionConverter.ConvertO(bodytREEID);
+            if (bodycTYPE != null)
             {
-                body["C_TYPE"] = ExpressionConverter.ConvertO(bodyCTYPE);
+                body["C_TYPE"] = ExpressionConverter.ConvertO(bodycTYPE);
                 bodypropCount++;
             }
 
-            if (bodyDESCR1 != null)
+            if (bodydESCR1 != null)
             {
-                body["DESCR_1"] = ExpressionConverter.ConvertO(bodyDESCR1);
+                body["DESCR_1"] = ExpressionConverter.ConvertO(bodydESCR1);
                 bodypropCount++;
             }
 
-            if (bodyDESCR2 != null)
+            if (bodydESCR2 != null)
             {
-                body["DESCR_2"] = ExpressionConverter.ConvertO(bodyDESCR2);
+                body["DESCR_2"] = ExpressionConverter.ConvertO(bodydESCR2);
                 bodypropCount++;
             }
 
-            if (bodyDESCR3 != null)
+            if (bodydESCR3 != null)
             {
-                body["DESCR_3"] = ExpressionConverter.ConvertO(bodyDESCR3);
+                body["DESCR_3"] = ExpressionConverter.ConvertO(bodydESCR3);
                 bodypropCount++;
             }
 
-            if (bodyTYPE != null)
+            if (bodytYPE != null)
             {
-                body["TYPE"] = ExpressionConverter.ConvertO(bodyTYPE);
+                body["TYPE"] = ExpressionConverter.ConvertO(bodytYPE);
                 bodypropCount++;
             }
 
-            if (bodyMEMO != null)
+            if (bodymEMO != null)
             {
-                body["MEMO"] = ExpressionConverter.ConvertO(bodyMEMO);
+                body["MEMO"] = ExpressionConverter.ConvertO(bodymEMO);
                 bodypropCount++;
             }
 
-            if (bodyUPC != null)
+            if (bodyuPC != null)
             {
-                body["UPC"] = ExpressionConverter.ConvertO(bodyUPC);
+                body["UPC"] = ExpressionConverter.ConvertO(bodyuPC);
                 bodypropCount++;
             }
 
-            if (bodyMFG != null)
+            if (bodymFG != null)
             {
-                body["MFG"] = ExpressionConverter.ConvertO(bodyMFG);
+                body["MFG"] = ExpressionConverter.ConvertO(bodymFG);
                 bodypropCount++;
             }
 
-            if (bodyMFGPART != null)
+            if (bodymFGPART != null)
             {
-                body["MFG_PART"] = ExpressionConverter.ConvertO(bodyMFGPART);
+                body["MFG_PART"] = ExpressionConverter.ConvertO(bodymFGPART);
                 bodypropCount++;
             }
 
-            if (bodyPRIVENDOR != null)
+            if (bodypRIVENDOR != null)
             {
-                body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodyPRIVENDOR);
+                body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodypRIVENDOR);
                 bodypropCount++;
             }
 
-            if (bodyEACHUNIT != null)
+            if (bodyeACHUNIT != null)
             {
-                body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyEACHUNIT);
+                body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyeACHUNIT);
                 bodypropCount++;
             }
 
-            if (bodyWEIGHT != null)
+            if (bodywEIGHT != null)
             {
-                body["WEIGHT"] = ExpressionConverter.ConvertO(bodyWEIGHT);
+                body["WEIGHT"] = ExpressionConverter.ConvertO(bodywEIGHT);
                 bodypropCount++;
             }
 
-            if (bodyCOST != null)
+            if (bodycOST != null)
             {
-                body["COST"] = ExpressionConverter.ConvertO(bodyCOST);
+                body["COST"] = ExpressionConverter.ConvertO(bodycOST);
                 bodypropCount++;
             }
 
-            if (bodyBASE != null)
+            if (bodybASE != null)
             {
-                body["BASE"] = ExpressionConverter.ConvertO(bodyBASE);
+                body["BASE"] = ExpressionConverter.ConvertO(bodybASE);
                 bodypropCount++;
             }
 
-            if (bodyEXTERNALID != null)
+            if (bodyeXTERNALID != null)
             {
-                body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyEXTERNALID);
+                body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyeXTERNALID);
                 bodypropCount++;
             }
 
@@ -126,94 +126,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodyDESCR1 = null, Expression<Func<string>> bodyDESCR2 = null, Expression<Func<string>> bodyDESCR3 = null, Expression<Func<string>> bodyTYPE = null, Expression<Func<string>> bodyMEMO = null, Expression<Func<string>> bodyUPC = null, Expression<Func<string>> bodyMFG = null, Expression<Func<string>> bodyMFGPART = null, Expression<Func<string>> bodyPRIVENDOR = null, Expression<Func<string>> bodyEACHUNIT = null, Expression<Func<double>> bodyWEIGHT = null, Expression<Func<double>> bodyCOST = null, Expression<Func<double>> bodyBASE = null, Expression<Func<string>> bodyEXTERNALID = null)
+        public IBodyWorkflowAction<JToken> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
             var apiCallPath = String.Format("/INVENTRY(ID='{0}')", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
             var apiCallHttpMethod = "patch";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDESCR1 != null)
+            if (bodydESCR1 != null)
             {
-                body["DESCR_1"] = ExpressionConverter.ConvertO(bodyDESCR1);
+                body["DESCR_1"] = ExpressionConverter.ConvertO(bodydESCR1);
                 bodypropCount++;
             }
 
-            if (bodyDESCR2 != null)
+            if (bodydESCR2 != null)
             {
-                body["DESCR_2"] = ExpressionConverter.ConvertO(bodyDESCR2);
+                body["DESCR_2"] = ExpressionConverter.ConvertO(bodydESCR2);
                 bodypropCount++;
             }
 
-            if (bodyDESCR3 != null)
+            if (bodydESCR3 != null)
             {
-                body["DESCR_3"] = ExpressionConverter.ConvertO(bodyDESCR3);
+                body["DESCR_3"] = ExpressionConverter.ConvertO(bodydESCR3);
                 bodypropCount++;
             }
 
-            if (bodyTYPE != null)
+            if (bodytYPE != null)
             {
-                body["TYPE"] = ExpressionConverter.ConvertO(bodyTYPE);
+                body["TYPE"] = ExpressionConverter.ConvertO(bodytYPE);
                 bodypropCount++;
             }
 
-            if (bodyMEMO != null)
+            if (bodymEMO != null)
             {
-                body["MEMO"] = ExpressionConverter.ConvertO(bodyMEMO);
+                body["MEMO"] = ExpressionConverter.ConvertO(bodymEMO);
                 bodypropCount++;
             }
 
-            if (bodyUPC != null)
+            if (bodyuPC != null)
             {
-                body["UPC"] = ExpressionConverter.ConvertO(bodyUPC);
+                body["UPC"] = ExpressionConverter.ConvertO(bodyuPC);
                 bodypropCount++;
             }
 
-            if (bodyMFG != null)
+            if (bodymFG != null)
             {
-                body["MFG"] = ExpressionConverter.ConvertO(bodyMFG);
+                body["MFG"] = ExpressionConverter.ConvertO(bodymFG);
                 bodypropCount++;
             }
 
-            if (bodyMFGPART != null)
+            if (bodymFGPART != null)
             {
-                body["MFG_PART"] = ExpressionConverter.ConvertO(bodyMFGPART);
+                body["MFG_PART"] = ExpressionConverter.ConvertO(bodymFGPART);
                 bodypropCount++;
             }
 
-            if (bodyPRIVENDOR != null)
+            if (bodypRIVENDOR != null)
             {
-                body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodyPRIVENDOR);
+                body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodypRIVENDOR);
                 bodypropCount++;
             }
 
-            if (bodyEACHUNIT != null)
+            if (bodyeACHUNIT != null)
             {
-                body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyEACHUNIT);
+                body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyeACHUNIT);
                 bodypropCount++;
             }
 
-            if (bodyWEIGHT != null)
+            if (bodywEIGHT != null)
             {
-                body["WEIGHT"] = ExpressionConverter.ConvertO(bodyWEIGHT);
+                body["WEIGHT"] = ExpressionConverter.ConvertO(bodywEIGHT);
                 bodypropCount++;
             }
 
-            if (bodyCOST != null)
+            if (bodycOST != null)
             {
-                body["COST"] = ExpressionConverter.ConvertO(bodyCOST);
+                body["COST"] = ExpressionConverter.ConvertO(bodycOST);
                 bodypropCount++;
             }
 
-            if (bodyBASE != null)
+            if (bodybASE != null)
             {
-                body["BASE"] = ExpressionConverter.ConvertO(bodyBASE);
+                body["BASE"] = ExpressionConverter.ConvertO(bodybASE);
                 bodypropCount++;
             }
 
-            if (bodyEXTERNALID != null)
+            if (bodyeXTERNALID != null)
             {
-                body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyEXTERNALID);
+                body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyeXTERNALID);
                 bodypropCount++;
             }
 

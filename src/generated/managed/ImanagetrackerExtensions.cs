@@ -71,15 +71,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
                 bodypropCount++;
             }
 
-            var work_objectObject = new JObject();
-            var work_objectObjectpropCount = 0;
-            work_objectObjectpropCount++;
-            work_objectObject["w_wstype"] = ExpressionConverter.ConvertO(bodyworkObjectwWstype);
-            work_objectObjectpropCount++;
-            work_objectObject["w_id"] = ExpressionConverter.ConvertO(bodyworkObjectwId);
-            if (work_objectObjectpropCount > 0)
+            var workObjectObject = new JObject();
+            var workObjectObjectpropCount = 0;
+            workObjectObjectpropCount++;
+            workObjectObject["w_wstype"] = ExpressionConverter.ConvertO(bodyworkObjectwWstype);
+            workObjectObjectpropCount++;
+            workObjectObject["w_id"] = ExpressionConverter.ConvertO(bodyworkObjectwId);
+            if (workObjectObjectpropCount > 0)
             {
-                body["work_object"] = work_objectObject;
+                body["work_object"] = workObjectObject;
                 bodypropCount++;
             }
 

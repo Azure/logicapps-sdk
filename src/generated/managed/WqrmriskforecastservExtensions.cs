@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
     public class WqrmriskforecastservActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction GroupReportBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyTenantFirstName = null, Expression<Func<string>> bodyTenantLastName = null, Expression<Func<string>> bodyCompanyName = null, Expression<Func<string>> bodyEmail = null)
+        public IWorkflowAction GroupReportBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = "/play/371c4dca-f7af-48b7-8dfa-cd6864969ba5";
             var apiCallHttpMethod = "post";
@@ -25,33 +25,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyTenantFirstName != null)
+            if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodyTenantFirstName);
+                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
                 bodypropCount++;
             }
 
-            if (bodyTenantLastName != null)
+            if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodyTenantLastName);
+                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
                 bodypropCount++;
             }
 
-            if (bodyCompanyName != null)
+            if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodyCompanyName);
+                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction GroupReportCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyTenantFirstName = null, Expression<Func<string>> bodyTenantLastName = null, Expression<Func<string>> bodyCompanyName = null, Expression<Func<string>> bodyEmail = null)
+        public IWorkflowAction GroupReportCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = "/play/e5f00dbd-dc28-4b35-8550-1901efa36af7";
             var apiCallHttpMethod = "post";
@@ -77,33 +77,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyTenantFirstName != null)
+            if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodyTenantFirstName);
+                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
                 bodypropCount++;
             }
 
-            if (bodyTenantLastName != null)
+            if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodyTenantLastName);
+                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
                 bodypropCount++;
             }
 
-            if (bodyCompanyName != null)
+            if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodyCompanyName);
+                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction ReportManagementBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyTenantFirstName = null, Expression<Func<string>> bodyTenantLastName = null, Expression<Func<string>> bodyCompanyName = null, Expression<Func<string>> bodyEmail = null)
+        public IWorkflowAction ReportManagementBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = "/play/158ed27b-9e89-45d2-a216-617d0b2d4355";
             var apiCallHttpMethod = "post";
@@ -129,33 +129,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyTenantFirstName != null)
+            if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodyTenantFirstName);
+                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
                 bodypropCount++;
             }
 
-            if (bodyTenantLastName != null)
+            if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodyTenantLastName);
+                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
                 bodypropCount++;
             }
 
-            if (bodyCompanyName != null)
+            if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodyCompanyName);
+                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction ReportManagementCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyName = null, Expression<Func<string>> bodyTenantFirstName = null, Expression<Func<string>> bodyTenantLastName = null, Expression<Func<string>> bodyCompanyName = null, Expression<Func<string>> bodyEmail = null)
+        public IWorkflowAction ReportManagementCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = "/play/b60262a8-7cf2-4526-8e78-c7fc7bd21ae9";
             var apiCallHttpMethod = "post";
@@ -181,33 +181,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyName != null)
+            if (bodyname != null)
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyName);
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
             }
 
-            if (bodyTenantFirstName != null)
+            if (bodytenantFirstName != null)
             {
-                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodyTenantFirstName);
+                body["TenantFirstName"] = ExpressionConverter.ConvertO(bodytenantFirstName);
                 bodypropCount++;
             }
 
-            if (bodyTenantLastName != null)
+            if (bodytenantLastName != null)
             {
-                body["TenantLastName"] = ExpressionConverter.ConvertO(bodyTenantLastName);
+                body["TenantLastName"] = ExpressionConverter.ConvertO(bodytenantLastName);
                 bodypropCount++;
             }
 
-            if (bodyCompanyName != null)
+            if (bodycompanyName != null)
             {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodyCompanyName);
+                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
                 bodypropCount++;
             }
 
-            if (bodyEmail != null)
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 

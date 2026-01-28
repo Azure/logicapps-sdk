@@ -12,142 +12,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class WorkdayhcmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateAddressInformation(Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerIDTypeInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerIDType, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerID, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferenceCountryIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferenceCountryID = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferenceCountryRegionID = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateAddressInformation(Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
             var apiCallPath = "/Add_or_Update_Address_Information";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addOrUpdateAddressInformationForPersonEventRequest = new JObject();
             var addOrUpdateAddressInformationForPersonEventRequestpropCount = 0;
-            var add_or_Update_Address_Information_for_Person_Event_RequestObject = new JObject();
-            var add_or_Update_Address_Information_for_Person_Event_RequestObjectpropCount = 0;
-            var add_or_Update_Address_Information_DataObject = new JObject();
-            var add_or_Update_Address_Information_DataObjectpropCount = 0;
-            var worker_ReferenceObject = new JObject();
-            var worker_ReferenceObjectpropCount = 0;
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerIDType);
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerID);
-            if (worker_ReferenceObjectpropCount > 0)
+            var addOrUpdateAddressInformationForPersonEventRequestObject = new JObject();
+            var addOrUpdateAddressInformationForPersonEventRequestObjectpropCount = 0;
+            var addOrUpdateAddressInformationDataObject = new JObject();
+            var addOrUpdateAddressInformationDataObjectpropCount = 0;
+            var workerReferenceObject = new JObject();
+            var workerReferenceObjectpropCount = 0;
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerID);
+            if (workerReferenceObjectpropCount > 0)
             {
-                add_or_Update_Address_Information_DataObject["worker_Reference"] = worker_ReferenceObject;
-                add_or_Update_Address_Information_DataObjectpropCount++;
+                addOrUpdateAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                addOrUpdateAddressInformationDataObjectpropCount++;
             }
 
-            add_or_Update_Address_Information_DataObjectpropCount++;
-            add_or_Update_Address_Information_DataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
-            var address_Information_DataObject = new JObject();
-            var address_Information_DataObjectpropCount = 0;
-            var country_ReferenceObject = new JObject();
-            var country_ReferenceObjectpropCount = 0;
-            country_ReferenceObject["CountryIDType"] = "ISO 3166-1 Alpha-3 Code";
-            country_ReferenceObjectpropCount++;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferenceCountryID != null)
+            addOrUpdateAddressInformationDataObjectpropCount++;
+            addOrUpdateAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
+            var addressInformationDataObject = new JObject();
+            var addressInformationDataObjectpropCount = 0;
+            var countryReferenceObject = new JObject();
+            var countryReferenceObjectpropCount = 0;
+            countryReferenceObject["CountryIDType"] = "ISO 3166-1 Alpha-3 Code";
+            countryReferenceObjectpropCount++;
+            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID != null)
             {
-                country_ReferenceObject["CountryID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferenceCountryID);
-                country_ReferenceObjectpropCount++;
+                countryReferenceObject["CountryID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryID);
+                countryReferenceObjectpropCount++;
             }
 
-            if (country_ReferenceObjectpropCount > 0)
+            if (countryReferenceObjectpropCount > 0)
             {
-                address_Information_DataObject["country_Reference"] = country_ReferenceObject;
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["country_Reference"] = countryReferenceObject;
+                addressInformationDataObjectpropCount++;
             }
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData != null)
             {
-                address_Information_DataObject["address_Line_Data"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["address_Line_Data"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
+                addressInformationDataObjectpropCount++;
             }
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality != null)
             {
-                address_Information_DataObject["municipality"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["municipality"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
+                addressInformationDataObjectpropCount++;
             }
 
-            var country_Region_ReferenceObject = new JObject();
-            var country_Region_ReferenceObjectpropCount = 0;
-            country_Region_ReferenceObject["CountryRegionIDType"] = "ISO 3166-2 Code";
-            country_Region_ReferenceObjectpropCount++;
-            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferenceCountryRegionID != null)
+            var countryRegionReferenceObject = new JObject();
+            var countryRegionReferenceObjectpropCount = 0;
+            countryRegionReferenceObject["CountryRegionIDType"] = "ISO 3166-2 Code";
+            countryRegionReferenceObjectpropCount++;
+            if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID != null)
             {
-                country_Region_ReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferenceCountryRegionID);
-                country_Region_ReferenceObjectpropCount++;
+                countryRegionReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionID);
+                countryRegionReferenceObjectpropCount++;
             }
 
-            if (country_Region_ReferenceObjectpropCount > 0)
+            if (countryRegionReferenceObjectpropCount > 0)
             {
-                address_Information_DataObject["country_Region_Reference"] = country_Region_ReferenceObject;
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["country_Region_Reference"] = countryRegionReferenceObject;
+                addressInformationDataObjectpropCount++;
             }
 
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode != null)
             {
-                address_Information_DataObject["postal_Code"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["postal_Code"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
+                addressInformationDataObjectpropCount++;
             }
 
-            var usage_DataObject = new JObject();
-            var usage_DataObjectpropCount = 0;
+            var usageDataObject = new JObject();
+            var usageDataObjectpropCount = 0;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic != null)
             {
-                usage_DataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
-                usage_DataObjectpropCount++;
+                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
+                usageDataObjectpropCount++;
             }
 
-            var type_DataObject = new JObject();
-            var type_DataObjectpropCount = 0;
+            var typeDataObject = new JObject();
+            var typeDataObjectpropCount = 0;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                type_DataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
-                type_DataObjectpropCount++;
+                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObjectpropCount++;
             }
 
-            var type_ReferenceObject = new JObject();
-            var type_ReferenceObjectpropCount = 0;
-            type_ReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            type_ReferenceObjectpropCount++;
+            var typeReferenceObject = new JObject();
+            var typeReferenceObjectpropCount = 0;
+            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
+            typeReferenceObjectpropCount++;
             if (addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                type_ReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
-                type_ReferenceObjectpropCount++;
+                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObjectpropCount++;
             }
 
-            if (type_ReferenceObjectpropCount > 0)
+            if (typeReferenceObjectpropCount > 0)
             {
-                type_DataObject["type_Reference"] = type_ReferenceObject;
-                type_DataObjectpropCount++;
+                typeDataObject["type_Reference"] = typeReferenceObject;
+                typeDataObjectpropCount++;
             }
 
-            if (type_DataObjectpropCount > 0)
+            if (typeDataObjectpropCount > 0)
             {
-                usage_DataObject["type_Data"] = type_DataObject;
-                usage_DataObjectpropCount++;
+                usageDataObject["type_Data"] = typeDataObject;
+                usageDataObjectpropCount++;
             }
 
-            if (usage_DataObjectpropCount > 0)
+            if (usageDataObjectpropCount > 0)
             {
-                address_Information_DataObject["usage_Data"] = usage_DataObject;
-                address_Information_DataObjectpropCount++;
+                addressInformationDataObject["usage_Data"] = usageDataObject;
+                addressInformationDataObjectpropCount++;
             }
 
-            if (address_Information_DataObjectpropCount > 0)
+            if (addressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Address_Information_DataObject["address_Information_Data"] = address_Information_DataObject;
-                add_or_Update_Address_Information_DataObjectpropCount++;
+                addOrUpdateAddressInformationDataObject["address_Information_Data"] = addressInformationDataObject;
+                addOrUpdateAddressInformationDataObjectpropCount++;
             }
 
-            if (add_or_Update_Address_Information_DataObjectpropCount > 0)
+            if (addOrUpdateAddressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Address_Information_for_Person_Event_RequestObject["add_or_Update_Address_Information_Data"] = add_or_Update_Address_Information_DataObject;
-                add_or_Update_Address_Information_for_Person_Event_RequestObjectpropCount++;
+                addOrUpdateAddressInformationForPersonEventRequestObject["add_or_Update_Address_Information_Data"] = addOrUpdateAddressInformationDataObject;
+                addOrUpdateAddressInformationForPersonEventRequestObjectpropCount++;
             }
 
-            if (add_or_Update_Address_Information_for_Person_Event_RequestObjectpropCount > 0)
+            if (addOrUpdateAddressInformationForPersonEventRequestObjectpropCount > 0)
             {
-                addOrUpdateAddressInformationForPersonEventRequest["add_or_Update_Address_Information_for_Person_Event_Request"] = add_or_Update_Address_Information_for_Person_Event_RequestObject;
+                addOrUpdateAddressInformationForPersonEventRequest["add_or_Update_Address_Information_for_Person_Event_Request"] = addOrUpdateAddressInformationForPersonEventRequestObject;
                 addOrUpdateAddressInformationForPersonEventRequestpropCount++;
             }
 
@@ -160,132 +160,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdatePhoneInformation(Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerIDTypeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerIDType, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerID, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencePhoneDeviceTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencePhoneDeviceTypeID = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdatePhoneInformation(Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
             var apiCallPath = "/Add_or_Update_Phone_Information";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addOrUpdatePhoneInformationForPersonEventRequest = new JObject();
             var addOrUpdatePhoneInformationForPersonEventRequestpropCount = 0;
-            var add_or_Update_Phone_Information_for_Person_Event_RequestObject = new JObject();
-            var add_or_Update_Phone_Information_for_Person_Event_RequestObjectpropCount = 0;
-            var add_or_Update_Phone_Information_DataObject = new JObject();
-            var add_or_Update_Phone_Information_DataObjectpropCount = 0;
-            var worker_ReferenceObject = new JObject();
-            var worker_ReferenceObjectpropCount = 0;
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerIDType);
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerID);
-            if (worker_ReferenceObjectpropCount > 0)
+            var addOrUpdatePhoneInformationForPersonEventRequestObject = new JObject();
+            var addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount = 0;
+            var addOrUpdatePhoneInformationDataObject = new JObject();
+            var addOrUpdatePhoneInformationDataObjectpropCount = 0;
+            var workerReferenceObject = new JObject();
+            var workerReferenceObjectpropCount = 0;
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDType);
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerID);
+            if (workerReferenceObjectpropCount > 0)
             {
-                add_or_Update_Phone_Information_DataObject["worker_Reference"] = worker_ReferenceObject;
-                add_or_Update_Phone_Information_DataObjectpropCount++;
+                addOrUpdatePhoneInformationDataObject["worker_Reference"] = workerReferenceObject;
+                addOrUpdatePhoneInformationDataObjectpropCount++;
             }
 
-            add_or_Update_Phone_Information_DataObjectpropCount++;
-            add_or_Update_Phone_Information_DataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
-            var phone_Information_DataObject = new JObject();
-            var phone_Information_DataObjectpropCount = 0;
+            addOrUpdatePhoneInformationDataObjectpropCount++;
+            addOrUpdatePhoneInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
+            var phoneInformationDataObject = new JObject();
+            var phoneInformationDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode != null)
             {
-                phone_Information_DataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
+                phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode != null)
             {
-                phone_Information_DataObject["area_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["area_Code"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
+                phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber != null)
             {
-                phone_Information_DataObject["phone_Number"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["phone_Number"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
+                phoneInformationDataObjectpropCount++;
             }
 
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension != null)
             {
-                phone_Information_DataObject["phone_Extension"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["phone_Extension"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
+                phoneInformationDataObjectpropCount++;
             }
 
-            var phone_Device_Type_ReferenceObject = new JObject();
-            var phone_Device_Type_ReferenceObjectpropCount = 0;
-            phone_Device_Type_ReferenceObject["PhoneDeviceTypeIDType"] = "Phone_Device_Type_ID";
-            phone_Device_Type_ReferenceObjectpropCount++;
-            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencePhoneDeviceTypeID != null)
+            var phoneDeviceTypeReferenceObject = new JObject();
+            var phoneDeviceTypeReferenceObjectpropCount = 0;
+            phoneDeviceTypeReferenceObject["PhoneDeviceTypeIDType"] = "Phone_Device_Type_ID";
+            phoneDeviceTypeReferenceObjectpropCount++;
+            if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID != null)
             {
-                phone_Device_Type_ReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencePhoneDeviceTypeID);
-                phone_Device_Type_ReferenceObjectpropCount++;
+                phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeID);
+                phoneDeviceTypeReferenceObjectpropCount++;
             }
 
-            if (phone_Device_Type_ReferenceObjectpropCount > 0)
+            if (phoneDeviceTypeReferenceObjectpropCount > 0)
             {
-                phone_Information_DataObject["phone_Device_Type_Reference"] = phone_Device_Type_ReferenceObject;
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["phone_Device_Type_Reference"] = phoneDeviceTypeReferenceObject;
+                phoneInformationDataObjectpropCount++;
             }
 
-            var usage_DataObject = new JObject();
-            var usage_DataObjectpropCount = 0;
+            var usageDataObject = new JObject();
+            var usageDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic != null)
             {
-                usage_DataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
-                usage_DataObjectpropCount++;
+                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
+                usageDataObjectpropCount++;
             }
 
-            var type_DataObject = new JObject();
-            var type_DataObjectpropCount = 0;
+            var typeDataObject = new JObject();
+            var typeDataObjectpropCount = 0;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary != null)
             {
-                type_DataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
-                type_DataObjectpropCount++;
+                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
+                typeDataObjectpropCount++;
             }
 
-            var type_ReferenceObject = new JObject();
-            var type_ReferenceObjectpropCount = 0;
-            type_ReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            type_ReferenceObjectpropCount++;
+            var typeReferenceObject = new JObject();
+            var typeReferenceObjectpropCount = 0;
+            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
+            typeReferenceObjectpropCount++;
             if (addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                type_ReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
-                type_ReferenceObjectpropCount++;
+                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObjectpropCount++;
             }
 
-            if (type_ReferenceObjectpropCount > 0)
+            if (typeReferenceObjectpropCount > 0)
             {
-                type_DataObject["type_Reference"] = type_ReferenceObject;
-                type_DataObjectpropCount++;
+                typeDataObject["type_Reference"] = typeReferenceObject;
+                typeDataObjectpropCount++;
             }
 
-            if (type_DataObjectpropCount > 0)
+            if (typeDataObjectpropCount > 0)
             {
-                usage_DataObject["type_Data"] = type_DataObject;
-                usage_DataObjectpropCount++;
+                usageDataObject["type_Data"] = typeDataObject;
+                usageDataObjectpropCount++;
             }
 
-            if (usage_DataObjectpropCount > 0)
+            if (usageDataObjectpropCount > 0)
             {
-                phone_Information_DataObject["usage_Data"] = usage_DataObject;
-                phone_Information_DataObjectpropCount++;
+                phoneInformationDataObject["usage_Data"] = usageDataObject;
+                phoneInformationDataObjectpropCount++;
             }
 
-            if (phone_Information_DataObjectpropCount > 0)
+            if (phoneInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Phone_Information_DataObject["phone_Information_Data"] = phone_Information_DataObject;
-                add_or_Update_Phone_Information_DataObjectpropCount++;
+                addOrUpdatePhoneInformationDataObject["phone_Information_Data"] = phoneInformationDataObject;
+                addOrUpdatePhoneInformationDataObjectpropCount++;
             }
 
-            if (add_or_Update_Phone_Information_DataObjectpropCount > 0)
+            if (addOrUpdatePhoneInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Phone_Information_for_Person_Event_RequestObject["add_or_Update_Phone_Information_Data"] = add_or_Update_Phone_Information_DataObject;
-                add_or_Update_Phone_Information_for_Person_Event_RequestObjectpropCount++;
+                addOrUpdatePhoneInformationForPersonEventRequestObject["add_or_Update_Phone_Information_Data"] = addOrUpdatePhoneInformationDataObject;
+                addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount++;
             }
 
-            if (add_or_Update_Phone_Information_for_Person_Event_RequestObjectpropCount > 0)
+            if (addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount > 0)
             {
-                addOrUpdatePhoneInformationForPersonEventRequest["add_or_Update_Phone_Information_for_Person_Event_Request"] = add_or_Update_Phone_Information_for_Person_Event_RequestObject;
+                addOrUpdatePhoneInformationForPersonEventRequest["add_or_Update_Phone_Information_for_Person_Event_Request"] = addOrUpdatePhoneInformationForPersonEventRequestObject;
                 addOrUpdatePhoneInformationForPersonEventRequestpropCount++;
             }
 
@@ -298,98 +298,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateEmailAddressInformation(Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerIDTypeInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerIDType, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerID, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateEmailAddressInformation(Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
             var apiCallPath = "/Add_or_Update_Email_Address_Information";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addOrUpdateEmailAddressInformationForPersonEventRequest = new JObject();
             var addOrUpdateEmailAddressInformationForPersonEventRequestpropCount = 0;
-            var add_or_Update_Email_Address_Information_for_Person_Event_RequestObject = new JObject();
-            var add_or_Update_Email_Address_Information_for_Person_Event_RequestObjectpropCount = 0;
-            var add_or_Update_Email_Address_Information_DataObject = new JObject();
-            var add_or_Update_Email_Address_Information_DataObjectpropCount = 0;
-            var worker_ReferenceObject = new JObject();
-            var worker_ReferenceObjectpropCount = 0;
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerIDType);
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerID);
-            if (worker_ReferenceObjectpropCount > 0)
+            var addOrUpdateEmailAddressInformationForPersonEventRequestObject = new JObject();
+            var addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount = 0;
+            var addOrUpdateEmailAddressInformationDataObject = new JObject();
+            var addOrUpdateEmailAddressInformationDataObjectpropCount = 0;
+            var workerReferenceObject = new JObject();
+            var workerReferenceObjectpropCount = 0;
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerID);
+            if (workerReferenceObjectpropCount > 0)
             {
-                add_or_Update_Email_Address_Information_DataObject["worker_Reference"] = worker_ReferenceObject;
-                add_or_Update_Email_Address_Information_DataObjectpropCount++;
+                addOrUpdateEmailAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                addOrUpdateEmailAddressInformationDataObjectpropCount++;
             }
 
-            add_or_Update_Email_Address_Information_DataObjectpropCount++;
-            add_or_Update_Email_Address_Information_DataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
-            var email_Address_Information_DataObject = new JObject();
-            var email_Address_Information_DataObjectpropCount = 0;
+            addOrUpdateEmailAddressInformationDataObjectpropCount++;
+            addOrUpdateEmailAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
+            var emailAddressInformationDataObject = new JObject();
+            var emailAddressInformationDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress != null)
             {
-                email_Address_Information_DataObject["email_Address"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
-                email_Address_Information_DataObjectpropCount++;
+                emailAddressInformationDataObject["email_Address"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
+                emailAddressInformationDataObjectpropCount++;
             }
 
-            var usage_DataObject = new JObject();
-            var usage_DataObjectpropCount = 0;
+            var usageDataObject = new JObject();
+            var usageDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic != null)
             {
-                usage_DataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
-                usage_DataObjectpropCount++;
+                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
+                usageDataObjectpropCount++;
             }
 
-            var type_DataObject = new JObject();
-            var type_DataObjectpropCount = 0;
+            var typeDataObject = new JObject();
+            var typeDataObjectpropCount = 0;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                type_DataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
-                type_DataObjectpropCount++;
+                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObjectpropCount++;
             }
 
-            var type_ReferenceObject = new JObject();
-            var type_ReferenceObjectpropCount = 0;
-            type_ReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            type_ReferenceObjectpropCount++;
+            var typeReferenceObject = new JObject();
+            var typeReferenceObjectpropCount = 0;
+            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
+            typeReferenceObjectpropCount++;
             if (addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                type_ReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
-                type_ReferenceObjectpropCount++;
+                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObjectpropCount++;
             }
 
-            if (type_ReferenceObjectpropCount > 0)
+            if (typeReferenceObjectpropCount > 0)
             {
-                type_DataObject["type_Reference"] = type_ReferenceObject;
-                type_DataObjectpropCount++;
+                typeDataObject["type_Reference"] = typeReferenceObject;
+                typeDataObjectpropCount++;
             }
 
-            if (type_DataObjectpropCount > 0)
+            if (typeDataObjectpropCount > 0)
             {
-                usage_DataObject["type_Data"] = type_DataObject;
-                usage_DataObjectpropCount++;
+                usageDataObject["type_Data"] = typeDataObject;
+                usageDataObjectpropCount++;
             }
 
-            if (usage_DataObjectpropCount > 0)
+            if (usageDataObjectpropCount > 0)
             {
-                email_Address_Information_DataObject["usage_Data"] = usage_DataObject;
-                email_Address_Information_DataObjectpropCount++;
+                emailAddressInformationDataObject["usage_Data"] = usageDataObject;
+                emailAddressInformationDataObjectpropCount++;
             }
 
-            if (email_Address_Information_DataObjectpropCount > 0)
+            if (emailAddressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Email_Address_Information_DataObject["email_Address_Information_Data"] = email_Address_Information_DataObject;
-                add_or_Update_Email_Address_Information_DataObjectpropCount++;
+                addOrUpdateEmailAddressInformationDataObject["email_Address_Information_Data"] = emailAddressInformationDataObject;
+                addOrUpdateEmailAddressInformationDataObjectpropCount++;
             }
 
-            if (add_or_Update_Email_Address_Information_DataObjectpropCount > 0)
+            if (addOrUpdateEmailAddressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Email_Address_Information_for_Person_Event_RequestObject["add_or_Update_Email_Address_Information_Data"] = add_or_Update_Email_Address_Information_DataObject;
-                add_or_Update_Email_Address_Information_for_Person_Event_RequestObjectpropCount++;
+                addOrUpdateEmailAddressInformationForPersonEventRequestObject["add_or_Update_Email_Address_Information_Data"] = addOrUpdateEmailAddressInformationDataObject;
+                addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount++;
             }
 
-            if (add_or_Update_Email_Address_Information_for_Person_Event_RequestObjectpropCount > 0)
+            if (addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount > 0)
             {
-                addOrUpdateEmailAddressInformationForPersonEventRequest["add_or_Update_Email_Address_Information_for_Person_Event_Request"] = add_or_Update_Email_Address_Information_for_Person_Event_RequestObject;
+                addOrUpdateEmailAddressInformationForPersonEventRequest["add_or_Update_Email_Address_Information_for_Person_Event_Request"] = addOrUpdateEmailAddressInformationForPersonEventRequestObject;
                 addOrUpdateEmailAddressInformationForPersonEventRequestpropCount++;
             }
 
@@ -402,114 +402,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateInstantMessengerInformation(Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerIDTypeInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerIDType, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerID, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceInstantMessengerTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceInstantMessengerTypeID = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateInstantMessengerInformation(Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
             var apiCallPath = "/Add_or_Update_Instant_Messenger_Information";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addOrUpdateInstantMessengerInformationForPersonEventRequest = new JObject();
             var addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount = 0;
-            var add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObject = new JObject();
-            var add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObjectpropCount = 0;
-            var add_or_Update_Instant_Messenger_Information_DataObject = new JObject();
-            var add_or_Update_Instant_Messenger_Information_DataObjectpropCount = 0;
-            var worker_ReferenceObject = new JObject();
-            var worker_ReferenceObjectpropCount = 0;
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerIDType);
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerID);
-            if (worker_ReferenceObjectpropCount > 0)
+            var addOrUpdateInstantMessengerInformationForPersonEventRequestObject = new JObject();
+            var addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount = 0;
+            var addOrUpdateInstantMessengerInformationDataObject = new JObject();
+            var addOrUpdateInstantMessengerInformationDataObjectpropCount = 0;
+            var workerReferenceObject = new JObject();
+            var workerReferenceObjectpropCount = 0;
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDType);
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerID);
+            if (workerReferenceObjectpropCount > 0)
             {
-                add_or_Update_Instant_Messenger_Information_DataObject["worker_Reference"] = worker_ReferenceObject;
-                add_or_Update_Instant_Messenger_Information_DataObjectpropCount++;
+                addOrUpdateInstantMessengerInformationDataObject["worker_Reference"] = workerReferenceObject;
+                addOrUpdateInstantMessengerInformationDataObjectpropCount++;
             }
 
-            add_or_Update_Instant_Messenger_Information_DataObjectpropCount++;
-            add_or_Update_Instant_Messenger_Information_DataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
-            var instant_Messenger_Information_DataObject = new JObject();
-            var instant_Messenger_Information_DataObjectpropCount = 0;
+            addOrUpdateInstantMessengerInformationDataObjectpropCount++;
+            addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
+            var instantMessengerInformationDataObject = new JObject();
+            var instantMessengerInformationDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress != null)
             {
-                instant_Messenger_Information_DataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
-                instant_Messenger_Information_DataObjectpropCount++;
+                instantMessengerInformationDataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
+                instantMessengerInformationDataObjectpropCount++;
             }
 
-            var instant_Messenger_Type_ReferenceObject = new JObject();
-            var instant_Messenger_Type_ReferenceObjectpropCount = 0;
-            instant_Messenger_Type_ReferenceObject["InstantMessengerTypeIDType"] = "Instant_Messenger_Type_ID";
-            instant_Messenger_Type_ReferenceObjectpropCount++;
-            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceInstantMessengerTypeID != null)
+            var instantMessengerTypeReferenceObject = new JObject();
+            var instantMessengerTypeReferenceObjectpropCount = 0;
+            instantMessengerTypeReferenceObject["InstantMessengerTypeIDType"] = "Instant_Messenger_Type_ID";
+            instantMessengerTypeReferenceObjectpropCount++;
+            if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID != null)
             {
-                instant_Messenger_Type_ReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceInstantMessengerTypeID);
-                instant_Messenger_Type_ReferenceObjectpropCount++;
+                instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeID);
+                instantMessengerTypeReferenceObjectpropCount++;
             }
 
-            if (instant_Messenger_Type_ReferenceObjectpropCount > 0)
+            if (instantMessengerTypeReferenceObjectpropCount > 0)
             {
-                instant_Messenger_Information_DataObject["instant_Messenger_Type_Reference"] = instant_Messenger_Type_ReferenceObject;
-                instant_Messenger_Information_DataObjectpropCount++;
+                instantMessengerInformationDataObject["instant_Messenger_Type_Reference"] = instantMessengerTypeReferenceObject;
+                instantMessengerInformationDataObjectpropCount++;
             }
 
-            var usage_DataObject = new JObject();
-            var usage_DataObjectpropCount = 0;
+            var usageDataObject = new JObject();
+            var usageDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic != null)
             {
-                usage_DataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
-                usage_DataObjectpropCount++;
+                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
+                usageDataObjectpropCount++;
             }
 
-            var type_DataObject = new JObject();
-            var type_DataObjectpropCount = 0;
+            var typeDataObject = new JObject();
+            var typeDataObjectpropCount = 0;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary != null)
             {
-                type_DataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
-                type_DataObjectpropCount++;
+                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
+                typeDataObjectpropCount++;
             }
 
-            var type_ReferenceObject = new JObject();
-            var type_ReferenceObjectpropCount = 0;
-            type_ReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            type_ReferenceObjectpropCount++;
+            var typeReferenceObject = new JObject();
+            var typeReferenceObjectpropCount = 0;
+            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
+            typeReferenceObjectpropCount++;
             if (addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                type_ReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
-                type_ReferenceObjectpropCount++;
+                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObjectpropCount++;
             }
 
-            if (type_ReferenceObjectpropCount > 0)
+            if (typeReferenceObjectpropCount > 0)
             {
-                type_DataObject["type_Reference"] = type_ReferenceObject;
-                type_DataObjectpropCount++;
+                typeDataObject["type_Reference"] = typeReferenceObject;
+                typeDataObjectpropCount++;
             }
 
-            if (type_DataObjectpropCount > 0)
+            if (typeDataObjectpropCount > 0)
             {
-                usage_DataObject["type_Data"] = type_DataObject;
-                usage_DataObjectpropCount++;
+                usageDataObject["type_Data"] = typeDataObject;
+                usageDataObjectpropCount++;
             }
 
-            if (usage_DataObjectpropCount > 0)
+            if (usageDataObjectpropCount > 0)
             {
-                instant_Messenger_Information_DataObject["usage_Data"] = usage_DataObject;
-                instant_Messenger_Information_DataObjectpropCount++;
+                instantMessengerInformationDataObject["usage_Data"] = usageDataObject;
+                instantMessengerInformationDataObjectpropCount++;
             }
 
-            if (instant_Messenger_Information_DataObjectpropCount > 0)
+            if (instantMessengerInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Instant_Messenger_Information_DataObject["instant_Messenger_Information_Data"] = instant_Messenger_Information_DataObject;
-                add_or_Update_Instant_Messenger_Information_DataObjectpropCount++;
+                addOrUpdateInstantMessengerInformationDataObject["instant_Messenger_Information_Data"] = instantMessengerInformationDataObject;
+                addOrUpdateInstantMessengerInformationDataObjectpropCount++;
             }
 
-            if (add_or_Update_Instant_Messenger_Information_DataObjectpropCount > 0)
+            if (addOrUpdateInstantMessengerInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObject["add_or_Update_Instant_Messenger_Information_Data"] = add_or_Update_Instant_Messenger_Information_DataObject;
-                add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObjectpropCount++;
+                addOrUpdateInstantMessengerInformationForPersonEventRequestObject["add_or_Update_Instant_Messenger_Information_Data"] = addOrUpdateInstantMessengerInformationDataObject;
+                addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount++;
             }
 
-            if (add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObjectpropCount > 0)
+            if (addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount > 0)
             {
-                addOrUpdateInstantMessengerInformationForPersonEventRequest["add_or_Update_Instant_Messenger_Information_for_Person_Event_Request"] = add_or_Update_Instant_Messenger_Information_for_Person_Event_RequestObject;
+                addOrUpdateInstantMessengerInformationForPersonEventRequest["add_or_Update_Instant_Messenger_Information_for_Person_Event_Request"] = addOrUpdateInstantMessengerInformationForPersonEventRequestObject;
                 addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount++;
             }
 
@@ -522,98 +522,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateWebAddressInformation(Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerIDTypeInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerIDType, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerID, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo> AddOrUpdateWebAddressInformation(Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID = null)
         {
             var apiCallPath = "/Add_or_Update_Web_Address_Information";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var addOrUpdateWebAddressInformationForPersonEventRequest = new JObject();
             var addOrUpdateWebAddressInformationForPersonEventRequestpropCount = 0;
-            var add_or_Update_Web_Address_Information_for_Person_Event_RequestObject = new JObject();
-            var add_or_Update_Web_Address_Information_for_Person_Event_RequestObjectpropCount = 0;
-            var add_or_Update_Web_Address_Information_DataObject = new JObject();
-            var add_or_Update_Web_Address_Information_DataObjectpropCount = 0;
-            var worker_ReferenceObject = new JObject();
-            var worker_ReferenceObjectpropCount = 0;
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerIDType);
-            worker_ReferenceObjectpropCount++;
-            worker_ReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerID);
-            if (worker_ReferenceObjectpropCount > 0)
+            var addOrUpdateWebAddressInformationForPersonEventRequestObject = new JObject();
+            var addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount = 0;
+            var addOrUpdateWebAddressInformationDataObject = new JObject();
+            var addOrUpdateWebAddressInformationDataObjectpropCount = 0;
+            var workerReferenceObject = new JObject();
+            var workerReferenceObjectpropCount = 0;
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDType);
+            workerReferenceObjectpropCount++;
+            workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerID);
+            if (workerReferenceObjectpropCount > 0)
             {
-                add_or_Update_Web_Address_Information_DataObject["worker_Reference"] = worker_ReferenceObject;
-                add_or_Update_Web_Address_Information_DataObjectpropCount++;
+                addOrUpdateWebAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
+                addOrUpdateWebAddressInformationDataObjectpropCount++;
             }
 
-            add_or_Update_Web_Address_Information_DataObjectpropCount++;
-            add_or_Update_Web_Address_Information_DataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
-            var web_Address_Information_DataObject = new JObject();
-            var web_Address_Information_DataObjectpropCount = 0;
+            addOrUpdateWebAddressInformationDataObjectpropCount++;
+            addOrUpdateWebAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
+            var webAddressInformationDataObject = new JObject();
+            var webAddressInformationDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress != null)
             {
-                web_Address_Information_DataObject["web_Address"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
-                web_Address_Information_DataObjectpropCount++;
+                webAddressInformationDataObject["web_Address"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
+                webAddressInformationDataObjectpropCount++;
             }
 
-            var usage_DataObject = new JObject();
-            var usage_DataObjectpropCount = 0;
+            var usageDataObject = new JObject();
+            var usageDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic != null)
             {
-                usage_DataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
-                usage_DataObjectpropCount++;
+                usageDataObject["isPublic"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
+                usageDataObjectpropCount++;
             }
 
-            var type_DataObject = new JObject();
-            var type_DataObjectpropCount = 0;
+            var typeDataObject = new JObject();
+            var typeDataObjectpropCount = 0;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary != null)
             {
-                type_DataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
-                type_DataObjectpropCount++;
+                typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
+                typeDataObjectpropCount++;
             }
 
-            var type_ReferenceObject = new JObject();
-            var type_ReferenceObjectpropCount = 0;
-            type_ReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-            type_ReferenceObjectpropCount++;
+            var typeReferenceObject = new JObject();
+            var typeReferenceObjectpropCount = 0;
+            typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
+            typeReferenceObjectpropCount++;
             if (addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID != null)
             {
-                type_ReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
-                type_ReferenceObjectpropCount++;
+                typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeID);
+                typeReferenceObjectpropCount++;
             }
 
-            if (type_ReferenceObjectpropCount > 0)
+            if (typeReferenceObjectpropCount > 0)
             {
-                type_DataObject["type_Reference"] = type_ReferenceObject;
-                type_DataObjectpropCount++;
+                typeDataObject["type_Reference"] = typeReferenceObject;
+                typeDataObjectpropCount++;
             }
 
-            if (type_DataObjectpropCount > 0)
+            if (typeDataObjectpropCount > 0)
             {
-                usage_DataObject["type_Data"] = type_DataObject;
-                usage_DataObjectpropCount++;
+                usageDataObject["type_Data"] = typeDataObject;
+                usageDataObjectpropCount++;
             }
 
-            if (usage_DataObjectpropCount > 0)
+            if (usageDataObjectpropCount > 0)
             {
-                web_Address_Information_DataObject["usage_Data"] = usage_DataObject;
-                web_Address_Information_DataObjectpropCount++;
+                webAddressInformationDataObject["usage_Data"] = usageDataObject;
+                webAddressInformationDataObjectpropCount++;
             }
 
-            if (web_Address_Information_DataObjectpropCount > 0)
+            if (webAddressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Web_Address_Information_DataObject["web_Address_Information_Data"] = web_Address_Information_DataObject;
-                add_or_Update_Web_Address_Information_DataObjectpropCount++;
+                addOrUpdateWebAddressInformationDataObject["web_Address_Information_Data"] = webAddressInformationDataObject;
+                addOrUpdateWebAddressInformationDataObjectpropCount++;
             }
 
-            if (add_or_Update_Web_Address_Information_DataObjectpropCount > 0)
+            if (addOrUpdateWebAddressInformationDataObjectpropCount > 0)
             {
-                add_or_Update_Web_Address_Information_for_Person_Event_RequestObject["add_or_Update_Web_Address_Information_Data"] = add_or_Update_Web_Address_Information_DataObject;
-                add_or_Update_Web_Address_Information_for_Person_Event_RequestObjectpropCount++;
+                addOrUpdateWebAddressInformationForPersonEventRequestObject["add_or_Update_Web_Address_Information_Data"] = addOrUpdateWebAddressInformationDataObject;
+                addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount++;
             }
 
-            if (add_or_Update_Web_Address_Information_for_Person_Event_RequestObjectpropCount > 0)
+            if (addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount > 0)
             {
-                addOrUpdateWebAddressInformationForPersonEventRequest["add_or_Update_Web_Address_Information_for_Person_Event_Request"] = add_or_Update_Web_Address_Information_for_Person_Event_RequestObject;
+                addOrUpdateWebAddressInformationForPersonEventRequest["add_or_Update_Web_Address_Information_for_Person_Event_Request"] = addOrUpdateWebAddressInformationForPersonEventRequestObject;
                 addOrUpdateWebAddressInformationForPersonEventRequestpropCount++;
             }
 
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string PersonID { get; set; }
     }
 
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceWorkerIDTypeInput
+    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeID,
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferenceCountryIDInput
+    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput
     {
         USA,
         GBR,
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Business
     }
 
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceWorkerIDTypeInput
+    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeID,
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencePhoneDeviceTypeIDInput
+    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput
     {
         Mobile,
         Telephone,
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Business
     }
 
-    public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceWorkerIDTypeInput
+    public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeID,
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Business
     }
 
-    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceWorkerIDTypeInput
+    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeID,
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
-    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceInstantMessengerTypeIDInput
+    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput
     {
         AIM,
         [EnumMember(Value = "Google Talk")]
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Business
     }
 
-    public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceWorkerIDTypeInput
+    public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeID,

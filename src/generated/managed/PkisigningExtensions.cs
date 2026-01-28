@@ -369,6 +369,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class PkisigningTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<WebhookResponseModel> WebhooksCreateWebhook(Expression<Func<string[]>> modelevents, Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = String.Format("/organisations/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var model = new JObject();
+            var modelpropCount = 0;
+            modelpropCount++;
+            model["Events"] = ExpressionConverter.ConvertO(modelevents);
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["url"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                model["Config"] = configObject;
+                modelpropCount++;
+            }
+
+            model["Active"] = true;
+            modelpropCount++;
+            if (modelpropCount > 0)
+            {
+                callPayload.Body = model;
+            }
+
+            return new ApiConnectionTrigger<WebhookResponseModel>(callPayload, triggerName, recurrence);
+        }
     }
 
     public class ExtendedSignerModel
@@ -954,6 +982,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         CorporateTaxDeclaration,
         Incomplete,
         AnnualFinancialFiles
+    }
+
+    public class WebhookResponseModel
+    {
+        [JsonProperty("events")]
+        public string[] Events { get; set; }
+
+        [JsonProperty("config")]
+        public WebhookConfig Config { get; set; }
+
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+
+        [JsonProperty("lastUpdate")]
+        public string LastUpdate { get; set; }
+    }
+
+    public class WebhookConfig
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
 

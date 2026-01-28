@@ -84,129 +84,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 bodypropCount++;
             }
 
-            var heading_1Object = new JObject();
-            var heading_1ObjectpropCount = 0;
+            var heading1Object = new JObject();
+            var heading1ObjectpropCount = 0;
             if (bodyheading1richText != null)
             {
-                heading_1Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading1richText);
-                heading_1ObjectpropCount++;
+                heading1Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading1richText);
+                heading1ObjectpropCount++;
             }
 
             if (bodyheading1color != null)
             {
-                heading_1Object["color"] = ExpressionConverter.ConvertO(bodyheading1color);
-                heading_1ObjectpropCount++;
+                heading1Object["color"] = ExpressionConverter.ConvertO(bodyheading1color);
+                heading1ObjectpropCount++;
             }
 
-            if (heading_1ObjectpropCount > 0)
+            if (heading1ObjectpropCount > 0)
             {
-                body["heading_1"] = heading_1Object;
+                body["heading_1"] = heading1Object;
                 bodypropCount++;
             }
 
-            var heading_2Object = new JObject();
-            var heading_2ObjectpropCount = 0;
+            var heading2Object = new JObject();
+            var heading2ObjectpropCount = 0;
             if (bodyheading2richText != null)
             {
-                heading_2Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading2richText);
-                heading_2ObjectpropCount++;
+                heading2Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading2richText);
+                heading2ObjectpropCount++;
             }
 
             if (bodyheading2color != null)
             {
-                heading_2Object["color"] = ExpressionConverter.ConvertO(bodyheading2color);
-                heading_2ObjectpropCount++;
+                heading2Object["color"] = ExpressionConverter.ConvertO(bodyheading2color);
+                heading2ObjectpropCount++;
             }
 
-            if (heading_2ObjectpropCount > 0)
+            if (heading2ObjectpropCount > 0)
             {
-                body["heading_2"] = heading_2Object;
+                body["heading_2"] = heading2Object;
                 bodypropCount++;
             }
 
-            var heading_3Object = new JObject();
-            var heading_3ObjectpropCount = 0;
+            var heading3Object = new JObject();
+            var heading3ObjectpropCount = 0;
             if (bodyheading3richText != null)
             {
-                heading_3Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading3richText);
-                heading_3ObjectpropCount++;
+                heading3Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading3richText);
+                heading3ObjectpropCount++;
             }
 
             if (bodyheading3color != null)
             {
-                heading_3Object["color"] = ExpressionConverter.ConvertO(bodyheading3color);
-                heading_3ObjectpropCount++;
+                heading3Object["color"] = ExpressionConverter.ConvertO(bodyheading3color);
+                heading3ObjectpropCount++;
             }
 
-            if (heading_3ObjectpropCount > 0)
+            if (heading3ObjectpropCount > 0)
             {
-                body["heading_3"] = heading_3Object;
+                body["heading_3"] = heading3Object;
                 bodypropCount++;
             }
 
-            var bulleted_list_itemObject = new JObject();
-            var bulleted_list_itemObjectpropCount = 0;
+            var bulletedListItemObject = new JObject();
+            var bulletedListItemObjectpropCount = 0;
             if (bodybulletedListItemrichText != null)
             {
-                bulleted_list_itemObject["rich_text"] = ExpressionConverter.ConvertO(bodybulletedListItemrichText);
-                bulleted_list_itemObjectpropCount++;
+                bulletedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodybulletedListItemrichText);
+                bulletedListItemObjectpropCount++;
             }
 
             if (bodybulletedListItemcolor != null)
             {
-                bulleted_list_itemObject["color"] = ExpressionConverter.ConvertO(bodybulletedListItemcolor);
-                bulleted_list_itemObjectpropCount++;
+                bulletedListItemObject["color"] = ExpressionConverter.ConvertO(bodybulletedListItemcolor);
+                bulletedListItemObjectpropCount++;
             }
 
-            if (bulleted_list_itemObjectpropCount > 0)
+            if (bulletedListItemObjectpropCount > 0)
             {
-                body["bulleted_list_item"] = bulleted_list_itemObject;
+                body["bulleted_list_item"] = bulletedListItemObject;
                 bodypropCount++;
             }
 
-            var numbered_list_itemObject = new JObject();
-            var numbered_list_itemObjectpropCount = 0;
+            var numberedListItemObject = new JObject();
+            var numberedListItemObjectpropCount = 0;
             if (bodynumberedListItemrichText != null)
             {
-                numbered_list_itemObject["rich_text"] = ExpressionConverter.ConvertO(bodynumberedListItemrichText);
-                numbered_list_itemObjectpropCount++;
+                numberedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodynumberedListItemrichText);
+                numberedListItemObjectpropCount++;
             }
 
             if (bodynumberedListItemcolor != null)
             {
-                numbered_list_itemObject["color"] = ExpressionConverter.ConvertO(bodynumberedListItemcolor);
-                numbered_list_itemObjectpropCount++;
+                numberedListItemObject["color"] = ExpressionConverter.ConvertO(bodynumberedListItemcolor);
+                numberedListItemObjectpropCount++;
             }
 
-            if (numbered_list_itemObjectpropCount > 0)
+            if (numberedListItemObjectpropCount > 0)
             {
-                body["numbered_list_item"] = numbered_list_itemObject;
+                body["numbered_list_item"] = numberedListItemObject;
                 bodypropCount++;
             }
 
-            var to_doObject = new JObject();
-            var to_doObjectpropCount = 0;
+            var toDoObject = new JObject();
+            var toDoObjectpropCount = 0;
             if (bodytoDorichText != null)
             {
-                to_doObject["rich_text"] = ExpressionConverter.ConvertO(bodytoDorichText);
-                to_doObjectpropCount++;
+                toDoObject["rich_text"] = ExpressionConverter.ConvertO(bodytoDorichText);
+                toDoObjectpropCount++;
             }
 
             if (bodytoDochecked != null)
             {
-                to_doObject["checked"] = ExpressionConverter.ConvertO(bodytoDochecked);
-                to_doObjectpropCount++;
+                toDoObject["checked"] = ExpressionConverter.ConvertO(bodytoDochecked);
+                toDoObjectpropCount++;
             }
 
             if (bodytoDocolor != null)
             {
-                to_doObject["color"] = ExpressionConverter.ConvertO(bodytoDocolor);
-                to_doObjectpropCount++;
+                toDoObject["color"] = ExpressionConverter.ConvertO(bodytoDocolor);
+                toDoObjectpropCount++;
             }
 
-            if (to_doObjectpropCount > 0)
+            if (toDoObjectpropCount > 0)
             {
-                body["to_do"] = to_doObject;
+                body["to_do"] = toDoObject;
                 bodypropCount++;
             }
 
@@ -344,6 +344,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
             return new ApiConnectionAction<RetrieveapageResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
+        public IBodyWorkflowAction<CreateaPageResponse> CreateaPage(Expression<Func<string>> bodyparentdatabaseId = null, Expression<Func<string>> bodyiconemoji = null, Expression<Func<string>> bodycoverexternalurl = null)
+        {
+            var apiCallPath = "/pages";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+            callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
+            var body = new JObject();
+            var bodypropCount = 0;
+            var parentObject = new JObject();
+            var parentObjectpropCount = 0;
+            if (bodyparentdatabaseId != null)
+            {
+                parentObject["database_id"] = ExpressionConverter.ConvertO(bodyparentdatabaseId);
+                parentObjectpropCount++;
+            }
+
+            if (parentObjectpropCount > 0)
+            {
+                body["parent"] = parentObject;
+                bodypropCount++;
+            }
+
+            var iconObject = new JObject();
+            var iconObjectpropCount = 0;
+            if (bodyiconemoji != null)
+            {
+                iconObject["emoji"] = ExpressionConverter.ConvertO(bodyiconemoji);
+                iconObjectpropCount++;
+            }
+
+            if (iconObjectpropCount > 0)
+            {
+                body["icon"] = iconObject;
+                bodypropCount++;
+            }
+
+            var coverObject = new JObject();
+            var coverObjectpropCount = 0;
+            var externalObject = new JObject();
+            var externalObjectpropCount = 0;
+            if (bodycoverexternalurl != null)
+            {
+                externalObject["url"] = ExpressionConverter.ConvertO(bodycoverexternalurl);
+                externalObjectpropCount++;
+            }
+
+            if (externalObjectpropCount > 0)
+            {
+                coverObject["external"] = externalObject;
+                coverObjectpropCount++;
+            }
+
+            if (coverObjectpropCount > 0)
+            {
+                body["cover"] = coverObject;
+                bodypropCount++;
+            }
+
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (propertiesObjectpropCount > 0)
+            {
+                body["properties"] = propertiesObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateaPageResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -918,6 +994,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
     }
 
     public class RetrieveapageResponseParentType
+    {
+        [JsonProperty("database_id")]
+        public string DatabaseId { get; set; }
+    }
+
+    public class CreateaPageResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("created_time")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("last_edited_time")]
+        public string LastEditedTime { get; set; }
+
+        [JsonProperty("created_by")]
+        public CreateaPageResponseCreatedByType CreatedBy { get; set; }
+
+        [JsonProperty("last_edited_by")]
+        public CreateaPageResponseLastEditedByType LastEditedBy { get; set; }
+
+        [JsonProperty("cover")]
+        public CreateaPageResponseCoverType Cover { get; set; }
+
+        [JsonProperty("icon")]
+        public CreateaPageResponseIconType Icon { get; set; }
+
+        [JsonProperty("parent")]
+        public CreateaPageResponseParentType Parent { get; set; }
+
+        [JsonProperty("archived")]
+        public bool Archived { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class CreateaPageResponseCreatedByType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class CreateaPageResponseLastEditedByType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class CreateaPageResponseCoverType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class CreateaPageResponseIconType
+    {
+        [JsonProperty("emoji")]
+        public string Emoji { get; set; }
+    }
+
+    public class CreateaPageResponseParentType
     {
         [JsonProperty("database_id")]
         public string DatabaseId { get; set; }

@@ -125,23 +125,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 trackingObjectpropCount++;
             }
 
-            var custom_fieldsObject = new JObject();
-            var custom_fieldsObjectpropCount = 0;
+            var customFieldsObject = new JObject();
+            var customFieldsObjectpropCount = 0;
             if (bodytrackingcustomFieldsproductName != null)
             {
-                custom_fieldsObject["product_name"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductName);
-                custom_fieldsObjectpropCount++;
+                customFieldsObject["product_name"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductName);
+                customFieldsObjectpropCount++;
             }
 
             if (bodytrackingcustomFieldsproductPrice != null)
             {
-                custom_fieldsObject["product_price"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductPrice);
-                custom_fieldsObjectpropCount++;
+                customFieldsObject["product_price"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductPrice);
+                customFieldsObjectpropCount++;
             }
 
-            if (custom_fieldsObjectpropCount > 0)
+            if (customFieldsObjectpropCount > 0)
             {
-                trackingObject["custom_fields"] = custom_fieldsObject;
+                trackingObject["custom_fields"] = customFieldsObject;
                 trackingObjectpropCount++;
             }
 

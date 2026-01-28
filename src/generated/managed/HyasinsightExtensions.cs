@@ -131,6 +131,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
             callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
             return new ApiConnectionAction<OsIndicatorsItem[]>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
+        public IBodyWorkflowAction<WhoisCurrent> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
+        {
+            var apiCallPath = "/whois/v1";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var appliedFiltersObject = new JObject();
+            var appliedFiltersObjectpropCount = 0;
+            if (bodyappliedFiltersdomain != null)
+            {
+                appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(bodyappliedFiltersdomain);
+                appliedFiltersObjectpropCount++;
+            }
+
+            appliedFiltersObject["current"] = true;
+            appliedFiltersObjectpropCount++;
+            if (appliedFiltersObjectpropCount > 0)
+            {
+                body["applied_filters"] = appliedFiltersObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<WhoisCurrent>(callPayload);
+        }
     }
 
     public class HyasinsightTriggers([ConnectionName] string connectionId)
@@ -628,6 +660,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
+    }
+
+    public class WhoisCurrent
+    {
+        [JsonProperty("items")]
+        public WhoisCurrentItemsTypeItem[] Items { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("total_count")]
+        public double TotalCount { get; set; }
+    }
+
+    public class WhoisCurrentItemsTypeItem
+    {
+        [JsonProperty("abuse_emails")]
+        public string[] AbuseEmails { get; set; }
+
+        [JsonProperty("address")]
+        public string[] Address { get; set; }
+
+        [JsonProperty("city")]
+        public string[] City { get; set; }
+
+        [JsonProperty("country")]
+        public string[] Country { get; set; }
+
+        [JsonProperty("data")]
+        public string Data { get; set; }
+
+        [JsonProperty("datetime")]
+        public string Datetime { get; set; }
+
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
+
+        [JsonProperty("domain_2tld")]
+        public string Domain2tld { get; set; }
+
+        [JsonProperty("domain_created_datetime")]
+        public string DomainCreatedDatetime { get; set; }
+
+        [JsonProperty("domain_expires_datetime")]
+        public string DomainExpiresDatetime { get; set; }
+
+        [JsonProperty("domain_updated_datetime")]
+        public string DomainUpdatedDatetime { get; set; }
+
+        [JsonProperty("email")]
+        public string[] Email { get; set; }
+
+        [JsonProperty("idn_name")]
+        public string IdnName { get; set; }
+
+        [JsonProperty("meta_data")]
+        public string MetaData { get; set; }
+
+        [JsonProperty("name")]
+        public string[] Name { get; set; }
+
+        [JsonProperty("nameserver")]
+        public string[] Nameserver { get; set; }
+
+        [JsonProperty("organization")]
+        public string[] Organization { get; set; }
+
+        [JsonProperty("phone")]
+        public JToken[] Phone { get; set; }
+
+        [JsonProperty("registrar")]
+        public string Registrar { get; set; }
+
+        [JsonProperty("state")]
+        public JToken[] State { get; set; }
+
+        [JsonProperty("whois_hash")]
+        public string WhoisHash { get; set; }
+
+        [JsonProperty("whois_id")]
+        public string WhoisId { get; set; }
+
+        [JsonProperty("whois_nameserver")]
+        public WhoisCurrentItemsTypeItemWhoisNameserverTypeItem[] WhoisNameserver { get; set; }
+
+        [JsonProperty("whois_pii")]
+        public WhoisCurrentItemsTypeItemWhoisPiiTypeItem[] WhoisPii { get; set; }
+    }
+
+    public class WhoisCurrentItemsTypeItemWhoisNameserverTypeItem
+    {
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
+
+        [JsonProperty("domain_2tld")]
+        public string Domain2tld { get; set; }
+
+        [JsonProperty("whois_related_nameserver_id")]
+        public string WhoisRelatedNameserverId { get; set; }
+    }
+
+    public class WhoisCurrentItemsTypeItemWhoisPiiTypeItem
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("data")]
+        public string Data { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("geo_country_alpha_2")]
+        public string GeoCountryAlpha2 { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("organization")]
+        public string Organization { get; set; }
+
+        [JsonProperty("phone_e164")]
+        public string PhoneE164 { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("whois_related_pii_id")]
+        public string WhoisRelatedPiiId { get; set; }
+
+        [JsonProperty("whois_related_type")]
+        public string WhoisRelatedType { get; set; }
     }
 }
 

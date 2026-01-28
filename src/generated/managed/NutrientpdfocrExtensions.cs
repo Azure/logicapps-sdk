@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
             inputDatapropCount++;
             inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepoint_fileObject = new JObject();
-            var sharepoint_fileObjectpropCount = 0;
-            if (sharepoint_fileObjectpropCount > 0)
+            var sharepointFileObject = new JObject();
+            var sharepointFileObjectpropCount = 0;
+            if (sharepointFileObjectpropCount > 0)
             {
-                inputData["sharepoint_file"] = sharepoint_fileObject;
+                inputData["sharepoint_file"] = sharepointFileObject;
                 inputDatapropCount++;
             }
 

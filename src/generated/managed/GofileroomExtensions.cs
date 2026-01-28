@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     public class GofileroomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyAccessToApproveDocsOnly = null, Expression<Func<string>> bodyAllowAccessToReports = null, Expression<Func<string>> bodyComments = null, Expression<Func<string>> bodyEnableMfa = null, Expression<Func<string>> bodyEnforceMfaForUsers = null, Expression<Func<string>> bodyFirmFlowRoutingNotification = null, Expression<Func<string>> bodyFullAccessToDocTracking = null, Expression<Func<string>> bodyGroupName = null, Expression<Func<string>> bodyMfaRequired = null, Expression<Func<string>> bodyPermissonToApproveDocs = null, Expression<Func<bodyReportsInputItem[]>> bodyReports = null, Expression<Func<string>> bodyUploadLocation = null, Expression<Func<string[]>> bodyUsers = null)
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
             var apiCallPath = "/api/v1/administration/group/creategroup";
             var apiCallHttpMethod = "post";
@@ -21,81 +21,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAccessToApproveDocsOnly != null)
+            if (bodyaccessToApproveDocsOnly != null)
             {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyAccessToApproveDocsOnly);
+                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
                 bodypropCount++;
             }
 
-            if (bodyAllowAccessToReports != null)
+            if (bodyallowAccessToReports != null)
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyAllowAccessToReports);
+                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
                 bodypropCount++;
             }
 
-            if (bodyComments != null)
+            if (bodycomments != null)
             {
-                body["Comments"] = ExpressionConverter.ConvertO(bodyComments);
+                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
                 bodypropCount++;
             }
 
-            if (bodyEnableMfa != null)
+            if (bodyenableMfa != null)
             {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyEnableMfa);
+                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
                 bodypropCount++;
             }
 
-            if (bodyEnforceMfaForUsers != null)
+            if (bodyenforceMfaForUsers != null)
             {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyEnforceMfaForUsers);
+                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
                 bodypropCount++;
             }
 
-            if (bodyFirmFlowRoutingNotification != null)
+            if (bodyfirmFlowRoutingNotification != null)
             {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyFirmFlowRoutingNotification);
+                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
                 bodypropCount++;
             }
 
-            if (bodyFullAccessToDocTracking != null)
+            if (bodyfullAccessToDocTracking != null)
             {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyFullAccessToDocTracking);
+                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
                 bodypropCount++;
             }
 
-            if (bodyGroupName != null)
+            if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodyGroupName);
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
                 bodypropCount++;
             }
 
-            if (bodyMfaRequired != null)
+            if (bodymfaRequired != null)
             {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodyMfaRequired);
+                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
                 bodypropCount++;
             }
 
-            if (bodyPermissonToApproveDocs != null)
+            if (bodypermissonToApproveDocs != null)
             {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodyPermissonToApproveDocs);
+                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
                 bodypropCount++;
             }
 
-            if (bodyReports != null)
+            if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyReports);
+                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
                 bodypropCount++;
             }
 
-            if (bodyUploadLocation != null)
+            if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyUploadLocation);
+                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
                 bodypropCount++;
             }
 
-            if (bodyUsers != null)
+            if (bodyusers != null)
             {
-                body["Users"] = ExpressionConverter.ConvertO(bodyUsers);
+                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
                 bodypropCount++;
             }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyCabinetName = null, Expression<Func<bodyDocumentSecurityInputItem[]>> bodyDocumentSecurity = null, Expression<Func<string>> bodyDrawerName = null, Expression<Func<string>> bodyGroupName = null)
+        public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodygroupName = null)
         {
             var apiCallPath = "/api/v1/administration/group/documentsecurity";
             var apiCallHttpMethod = "post";
@@ -117,27 +117,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyCabinetName != null)
+            if (bodycabinetName != null)
             {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodyCabinetName);
+                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
                 bodypropCount++;
             }
 
-            if (bodyDocumentSecurity != null)
+            if (bodydocumentSecurity != null)
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodyDocumentSecurity);
+                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
                 bodypropCount++;
             }
 
-            if (bodyDrawerName != null)
+            if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodyDrawerName);
+                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
                 bodypropCount++;
             }
 
-            if (bodyGroupName != null)
+            if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodyGroupName);
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
                 bodypropCount++;
             }
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyAccessToApproveDocsOnly = null, Expression<Func<string>> bodyAllowAccessToReports = null, Expression<Func<string>> bodyComments = null, Expression<Func<string>> bodyEnableMfa = null, Expression<Func<string>> bodyEnforceMfaForUsers = null, Expression<Func<string>> bodyFirmFlowRoutingNotification = null, Expression<Func<string>> bodyFullAccessToDocTracking = null, Expression<Func<string>> bodyGroupName = null, Expression<Func<string>> bodyMfaRequired = null, Expression<Func<string>> bodyPermissonToApproveDocs = null, Expression<Func<string>> bodyRenameGroup = null, Expression<Func<bodyReportsInputItem[]>> bodyReports = null, Expression<Func<string>> bodyUploadLocation = null, Expression<Func<string[]>> bodyUsers = null)
+        public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<string>> bodyrenameGroup = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
             var apiCallPath = "/api/v1/administration/group/modifygroup";
             var apiCallHttpMethod = "post";
@@ -159,87 +159,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAccessToApproveDocsOnly != null)
+            if (bodyaccessToApproveDocsOnly != null)
             {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyAccessToApproveDocsOnly);
+                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
                 bodypropCount++;
             }
 
-            if (bodyAllowAccessToReports != null)
+            if (bodyallowAccessToReports != null)
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyAllowAccessToReports);
+                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
                 bodypropCount++;
             }
 
-            if (bodyComments != null)
+            if (bodycomments != null)
             {
-                body["Comments"] = ExpressionConverter.ConvertO(bodyComments);
+                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
                 bodypropCount++;
             }
 
-            if (bodyEnableMfa != null)
+            if (bodyenableMfa != null)
             {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyEnableMfa);
+                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
                 bodypropCount++;
             }
 
-            if (bodyEnforceMfaForUsers != null)
+            if (bodyenforceMfaForUsers != null)
             {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyEnforceMfaForUsers);
+                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
                 bodypropCount++;
             }
 
-            if (bodyFirmFlowRoutingNotification != null)
+            if (bodyfirmFlowRoutingNotification != null)
             {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyFirmFlowRoutingNotification);
+                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
                 bodypropCount++;
             }
 
-            if (bodyFullAccessToDocTracking != null)
+            if (bodyfullAccessToDocTracking != null)
             {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyFullAccessToDocTracking);
+                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
                 bodypropCount++;
             }
 
-            if (bodyGroupName != null)
+            if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodyGroupName);
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
                 bodypropCount++;
             }
 
-            if (bodyMfaRequired != null)
+            if (bodymfaRequired != null)
             {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodyMfaRequired);
+                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
                 bodypropCount++;
             }
 
-            if (bodyPermissonToApproveDocs != null)
+            if (bodypermissonToApproveDocs != null)
             {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodyPermissonToApproveDocs);
+                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
                 bodypropCount++;
             }
 
-            if (bodyRenameGroup != null)
+            if (bodyrenameGroup != null)
             {
-                body["RenameGroup"] = ExpressionConverter.ConvertO(bodyRenameGroup);
+                body["RenameGroup"] = ExpressionConverter.ConvertO(bodyrenameGroup);
                 bodypropCount++;
             }
 
-            if (bodyReports != null)
+            if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyReports);
+                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
                 bodypropCount++;
             }
 
-            if (bodyUploadLocation != null)
+            if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyUploadLocation);
+                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
                 bodypropCount++;
             }
 
-            if (bodyUsers != null)
+            if (bodyusers != null)
             {
-                body["Users"] = ExpressionConverter.ConvertO(bodyUsers);
+                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
                 bodypropCount++;
             }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyCabinet = null, Expression<Func<string>> bodyCabinetPermissionAdd = null, Expression<Func<string>> bodyCabinetPermissionDelete = null, Expression<Func<string>> bodyCabinetPermissionDeny = null, Expression<Func<string>> bodyCabinetPermissionEdit = null, Expression<Func<string>> bodyCabinetPermissionLookUp = null, Expression<Func<string>> bodyCabinetPermissionRead = null, Expression<Func<bodyDrawerPermissionsInputItem[]>> bodyDrawerPermissions = null, Expression<Func<string>> bodyGroupName = null)
+        public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodygroupName = null)
         {
             var apiCallPath = "/api/v1/administration/group/permissions";
             var apiCallHttpMethod = "post";
@@ -274,65 +274,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyCabinet != null)
+            if (bodycabinet != null)
             {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodyCabinet);
+                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
                 bodypropCount++;
             }
 
-            var CabinetPermissionObject = new JObject();
-            var CabinetPermissionObjectpropCount = 0;
-            if (bodyCabinetPermissionAdd != null)
+            var cabinetPermissionObject = new JObject();
+            var cabinetPermissionObjectpropCount = 0;
+            if (bodycabinetPermissionadd != null)
             {
-                CabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodyCabinetPermissionAdd);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionDelete != null)
+            if (bodycabinetPermissiondelete != null)
             {
-                CabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodyCabinetPermissionDelete);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionDeny != null)
+            if (bodycabinetPermissiondeny != null)
             {
-                CabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodyCabinetPermissionDeny);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionEdit != null)
+            if (bodycabinetPermissionedit != null)
             {
-                CabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodyCabinetPermissionEdit);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionLookUp != null)
+            if (bodycabinetPermissionlookUp != null)
             {
-                CabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodyCabinetPermissionLookUp);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionRead != null)
+            if (bodycabinetPermissionread != null)
             {
-                CabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodyCabinetPermissionRead);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (CabinetPermissionObjectpropCount > 0)
+            if (cabinetPermissionObjectpropCount > 0)
             {
-                body["CabinetPermission"] = CabinetPermissionObject;
+                body["CabinetPermission"] = cabinetPermissionObject;
                 bodypropCount++;
             }
 
-            if (bodyDrawerPermissions != null)
+            if (bodydrawerPermissions != null)
             {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodyDrawerPermissions);
+                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
                 bodypropCount++;
             }
 
-            if (bodyGroupName != null)
+            if (bodygroupName != null)
             {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodyGroupName);
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
                 bodypropCount++;
             }
 
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateUsersResponse> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyAccountExpiresDate = null, Expression<Func<string>> bodyDisabledComments = null, Expression<Func<string>> bodyFullName = null, Expression<Func<string[]>> bodyGroups = null, Expression<Func<string>> bodyIsAccountExpires = null, Expression<Func<string>> bodyIsAdvanceFlow = null, Expression<Func<string>> bodyIsAllowAccessToReports = null, Expression<Func<string>> bodyIsAllowOffline = null, Expression<Func<string>> bodyIsDisabled = null, Expression<Func<string>> bodyIsFirmFlow = null, Expression<Func<string>> bodyIsFirmFlowNotificationGroup = null, Expression<Func<string>> bodyIsFirmFlowNotificationUser = null, Expression<Func<string>> bodyIsMfa = null, Expression<Func<string>> bodyIsUserAdministration = null, Expression<Func<string>> bodyIsWorkflowManagerUser = null, Expression<Func<string>> bodyLicenseType = null, Expression<Func<string>> bodyLoginName = null, Expression<Func<string>> bodyManagerEmail = null, Expression<Func<string>> bodyPassword = null, Expression<Func<bodyReportsInputItem[]>> bodyReports = null, Expression<Func<string>> bodyUploadLocation = null)
+        public IBodyWorkflowAction<CreateUsersResponse> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
             var apiCallPath = "/api/v1/administration/user/createuser";
             var apiCallHttpMethod = "post";
@@ -379,129 +379,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAccountExpiresDate != null)
+            if (bodyaccountExpiresDate != null)
             {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyAccountExpiresDate);
+                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
                 bodypropCount++;
             }
 
-            if (bodyDisabledComments != null)
+            if (bodydisabledComments != null)
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodyDisabledComments);
+                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
                 bodypropCount++;
             }
 
-            if (bodyFullName != null)
+            if (bodyfullName != null)
             {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyFullName);
+                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
                 bodypropCount++;
             }
 
-            if (bodyGroups != null)
+            if (bodygroups != null)
             {
-                body["Groups"] = ExpressionConverter.ConvertO(bodyGroups);
+                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
                 bodypropCount++;
             }
 
-            if (bodyIsAccountExpires != null)
+            if (bodyisAccountExpires != null)
             {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyIsAccountExpires);
+                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
                 bodypropCount++;
             }
 
-            if (bodyIsAdvanceFlow != null)
+            if (bodyisAdvanceFlow != null)
             {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyIsAdvanceFlow);
+                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
                 bodypropCount++;
             }
 
-            if (bodyIsAllowAccessToReports != null)
+            if (bodyisAllowAccessToReports != null)
             {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyIsAllowAccessToReports);
+                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
                 bodypropCount++;
             }
 
-            if (bodyIsAllowOffline != null)
+            if (bodyisAllowOffline != null)
             {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyIsAllowOffline);
+                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
                 bodypropCount++;
             }
 
-            if (bodyIsDisabled != null)
+            if (bodyisDisabled != null)
             {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyIsDisabled);
+                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlow != null)
+            if (bodyisFirmFlow != null)
             {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyIsFirmFlow);
+                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlowNotificationGroup != null)
+            if (bodyisFirmFlowNotificationGroup != null)
             {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyIsFirmFlowNotificationGroup);
+                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlowNotificationUser != null)
+            if (bodyisFirmFlowNotificationUser != null)
             {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyIsFirmFlowNotificationUser);
+                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
                 bodypropCount++;
             }
 
-            if (bodyIsMfa != null)
+            if (bodyisMfa != null)
             {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyIsMfa);
+                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
                 bodypropCount++;
             }
 
-            if (bodyIsUserAdministration != null)
+            if (bodyisUserAdministration != null)
             {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyIsUserAdministration);
+                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
                 bodypropCount++;
             }
 
-            if (bodyIsWorkflowManagerUser != null)
+            if (bodyisWorkflowManagerUser != null)
             {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyIsWorkflowManagerUser);
+                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
                 bodypropCount++;
             }
 
-            if (bodyLicenseType != null)
+            if (bodylicenseType != null)
             {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodyLicenseType);
+                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
                 bodypropCount++;
             }
 
-            if (bodyLoginName != null)
+            if (bodyloginName != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyLoginName);
+                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
                 bodypropCount++;
             }
 
-            if (bodyManagerEmail != null)
+            if (bodymanagerEmail != null)
             {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodyManagerEmail);
+                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
                 bodypropCount++;
             }
 
-            if (bodyPassword != null)
+            if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodyPassword);
+                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
                 bodypropCount++;
             }
 
-            if (bodyReports != null)
+            if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyReports);
+                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
                 bodypropCount++;
             }
 
-            if (bodyUploadLocation != null)
+            if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyUploadLocation);
+                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
                 bodypropCount++;
             }
 
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteUserResponse> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyLoginId = null, Expression<Func<bodyUserTypeInput>> bodyUserType = null)
+        public IBodyWorkflowAction<DeleteUserResponse> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginId = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null)
         {
             var apiCallPath = "/api/v1/administration/user/delete";
             var apiCallHttpMethod = "post";
@@ -523,15 +523,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyLoginId != null)
+            if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyLoginId);
+                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
                 bodypropCount++;
             }
 
-            if (bodyUserType != null)
+            if (bodyuserType != null)
             {
-                body["UserType"] = ExpressionConverter.ConvertO(bodyUserType);
+                body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
                 bodypropCount++;
             }
 
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyCabinetName = null, Expression<Func<bodyDocumentSecurityInputItem2[]>> bodyDocumentSecurity = null, Expression<Func<string>> bodyDrawerName = null, Expression<Func<string>> bodyLoginId = null)
+        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem2[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodyloginId = null)
         {
             var apiCallPath = "/api/v1/administration/user/documentsecurity";
             var apiCallHttpMethod = "post";
@@ -553,27 +553,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyCabinetName != null)
+            if (bodycabinetName != null)
             {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodyCabinetName);
+                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
                 bodypropCount++;
             }
 
-            if (bodyDocumentSecurity != null)
+            if (bodydocumentSecurity != null)
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodyDocumentSecurity);
+                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
                 bodypropCount++;
             }
 
-            if (bodyDrawerName != null)
+            if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodyDrawerName);
+                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
                 bodypropCount++;
             }
 
-            if (bodyLoginId != null)
+            if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyLoginId);
+                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
                 bodypropCount++;
             }
 
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> bodyLoginName, Expression<Func<string>> bodyUserType, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodyuserType, Expression<Func<string>> xAuthorization = null)
         {
             var apiCallPath = "/api/v1/administration/user/getuser";
             var apiCallHttpMethod = "post";
@@ -596,9 +596,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyLoginName);
+            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
             bodypropCount++;
-            body["UserType"] = ExpressionConverter.ConvertO(bodyUserType);
+            body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyUserResponse> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyAccountExpiresDate = null, Expression<Func<string>> bodyDisabledComments = null, Expression<Func<string>> bodyFullName = null, Expression<Func<string[]>> bodyGroups = null, Expression<Func<string>> bodyIsAccountExpires = null, Expression<Func<string>> bodyIsAdvanceFlow = null, Expression<Func<string>> bodyIsAllowAccessToReports = null, Expression<Func<string>> bodyIsAllowOffline = null, Expression<Func<string>> bodyIsChangeNextLogin = null, Expression<Func<string>> bodyIsDisabled = null, Expression<Func<string>> bodyIsFirmFlow = null, Expression<Func<string>> bodyIsFirmFlowNotificationGroup = null, Expression<Func<string>> bodyIsFirmFlowNotificationUser = null, Expression<Func<string>> bodyIsMfa = null, Expression<Func<string>> bodyIsUserAdministration = null, Expression<Func<string>> bodyIsWorkflowManagerUser = null, Expression<Func<string>> bodyLicenseType = null, Expression<Func<string>> bodyLoginName = null, Expression<Func<string>> bodyManagerEmail = null, Expression<Func<string>> bodyPassword = null, Expression<Func<bodyReportsInputItem[]>> bodyReports = null, Expression<Func<string>> bodyUploadLocation = null)
+        public IBodyWorkflowAction<ModifyUserResponse> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisChangeNextLogin = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
             var apiCallPath = "/api/v1/administration/user/modifyuser";
             var apiCallHttpMethod = "post";
@@ -632,135 +632,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAccountExpiresDate != null)
+            if (bodyaccountExpiresDate != null)
             {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyAccountExpiresDate);
+                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
                 bodypropCount++;
             }
 
-            if (bodyDisabledComments != null)
+            if (bodydisabledComments != null)
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodyDisabledComments);
+                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
                 bodypropCount++;
             }
 
-            if (bodyFullName != null)
+            if (bodyfullName != null)
             {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyFullName);
+                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
                 bodypropCount++;
             }
 
-            if (bodyGroups != null)
+            if (bodygroups != null)
             {
-                body["Groups"] = ExpressionConverter.ConvertO(bodyGroups);
+                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
                 bodypropCount++;
             }
 
-            if (bodyIsAccountExpires != null)
+            if (bodyisAccountExpires != null)
             {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyIsAccountExpires);
+                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
                 bodypropCount++;
             }
 
-            if (bodyIsAdvanceFlow != null)
+            if (bodyisAdvanceFlow != null)
             {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyIsAdvanceFlow);
+                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
                 bodypropCount++;
             }
 
-            if (bodyIsAllowAccessToReports != null)
+            if (bodyisAllowAccessToReports != null)
             {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyIsAllowAccessToReports);
+                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
                 bodypropCount++;
             }
 
-            if (bodyIsAllowOffline != null)
+            if (bodyisAllowOffline != null)
             {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyIsAllowOffline);
+                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
                 bodypropCount++;
             }
 
-            if (bodyIsChangeNextLogin != null)
+            if (bodyisChangeNextLogin != null)
             {
-                body["IsChangeNextLogin"] = ExpressionConverter.ConvertO(bodyIsChangeNextLogin);
+                body["IsChangeNextLogin"] = ExpressionConverter.ConvertO(bodyisChangeNextLogin);
                 bodypropCount++;
             }
 
-            if (bodyIsDisabled != null)
+            if (bodyisDisabled != null)
             {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyIsDisabled);
+                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlow != null)
+            if (bodyisFirmFlow != null)
             {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyIsFirmFlow);
+                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlowNotificationGroup != null)
+            if (bodyisFirmFlowNotificationGroup != null)
             {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyIsFirmFlowNotificationGroup);
+                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
                 bodypropCount++;
             }
 
-            if (bodyIsFirmFlowNotificationUser != null)
+            if (bodyisFirmFlowNotificationUser != null)
             {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyIsFirmFlowNotificationUser);
+                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
                 bodypropCount++;
             }
 
-            if (bodyIsMfa != null)
+            if (bodyisMfa != null)
             {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyIsMfa);
+                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
                 bodypropCount++;
             }
 
-            if (bodyIsUserAdministration != null)
+            if (bodyisUserAdministration != null)
             {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyIsUserAdministration);
+                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
                 bodypropCount++;
             }
 
-            if (bodyIsWorkflowManagerUser != null)
+            if (bodyisWorkflowManagerUser != null)
             {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyIsWorkflowManagerUser);
+                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
                 bodypropCount++;
             }
 
-            if (bodyLicenseType != null)
+            if (bodylicenseType != null)
             {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodyLicenseType);
+                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
                 bodypropCount++;
             }
 
-            if (bodyLoginName != null)
+            if (bodyloginName != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyLoginName);
+                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
                 bodypropCount++;
             }
 
-            if (bodyManagerEmail != null)
+            if (bodymanagerEmail != null)
             {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodyManagerEmail);
+                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
                 bodypropCount++;
             }
 
-            if (bodyPassword != null)
+            if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodyPassword);
+                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
                 bodypropCount++;
             }
 
-            if (bodyReports != null)
+            if (bodyreports != null)
             {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyReports);
+                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
                 bodypropCount++;
             }
 
-            if (bodyUploadLocation != null)
+            if (bodyuploadLocation != null)
             {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyUploadLocation);
+                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
                 bodypropCount++;
             }
 
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyCabinet = null, Expression<Func<string>> bodyCabinetPermissionAdd = null, Expression<Func<string>> bodyCabinetPermissionDelete = null, Expression<Func<string>> bodyCabinetPermissionDeny = null, Expression<Func<string>> bodyCabinetPermissionEdit = null, Expression<Func<string>> bodyCabinetPermissionLookUp = null, Expression<Func<string>> bodyCabinetPermissionRead = null, Expression<Func<bodyDrawerPermissionsInputItem[]>> bodyDrawerPermissions = null, Expression<Func<string>> bodyLoginId = null)
+        public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodyloginId = null)
         {
             var apiCallPath = "/api/v1/administration/user/permissions";
             var apiCallHttpMethod = "post";
@@ -793,65 +793,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyCabinet != null)
+            if (bodycabinet != null)
             {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodyCabinet);
+                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
                 bodypropCount++;
             }
 
-            var CabinetPermissionObject = new JObject();
-            var CabinetPermissionObjectpropCount = 0;
-            if (bodyCabinetPermissionAdd != null)
+            var cabinetPermissionObject = new JObject();
+            var cabinetPermissionObjectpropCount = 0;
+            if (bodycabinetPermissionadd != null)
             {
-                CabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodyCabinetPermissionAdd);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionDelete != null)
+            if (bodycabinetPermissiondelete != null)
             {
-                CabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodyCabinetPermissionDelete);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionDeny != null)
+            if (bodycabinetPermissiondeny != null)
             {
-                CabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodyCabinetPermissionDeny);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionEdit != null)
+            if (bodycabinetPermissionedit != null)
             {
-                CabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodyCabinetPermissionEdit);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionLookUp != null)
+            if (bodycabinetPermissionlookUp != null)
             {
-                CabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodyCabinetPermissionLookUp);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (bodyCabinetPermissionRead != null)
+            if (bodycabinetPermissionread != null)
             {
-                CabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodyCabinetPermissionRead);
-                CabinetPermissionObjectpropCount++;
+                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                cabinetPermissionObjectpropCount++;
             }
 
-            if (CabinetPermissionObjectpropCount > 0)
+            if (cabinetPermissionObjectpropCount > 0)
             {
-                body["CabinetPermission"] = CabinetPermissionObject;
+                body["CabinetPermission"] = cabinetPermissionObject;
                 bodypropCount++;
             }
 
-            if (bodyDrawerPermissions != null)
+            if (bodydrawerPermissions != null)
             {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodyDrawerPermissions);
+                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
                 bodypropCount++;
             }
 
-            if (bodyLoginId != null)
+            if (bodyloginId != null)
             {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyLoginId);
+                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
                 bodypropCount++;
             }
 
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<bodyIndexesInputItem[]>> bodyIndexes = null)
+        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
             var apiCallPath = "/api/v1/documents";
             var apiCallHttpMethod = "post";
@@ -941,15 +941,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            if (bodyIndexes != null)
+            if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyIndexes);
+                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
                 bodypropCount++;
             }
 
@@ -962,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodyDocumentIds = null, Expression<Func<bodyIndexValuesInputItem[]>> bodyIndexValues = null)
+        public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
             var apiCallPath = "/api/v1/documents/copy";
             var apiCallHttpMethod = "post";
@@ -971,15 +971,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDocumentIds != null)
+            if (bodydocumentIds != null)
             {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodyDocumentIds);
+                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
                 bodypropCount++;
             }
 
-            if (bodyIndexValues != null)
+            if (bodyindexValues != null)
             {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyIndexValues);
+                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
                 bodypropCount++;
             }
 
@@ -1016,7 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodyDocumentIds = null, Expression<Func<bodyIndexValuesInputItem[]>> bodyIndexValues = null)
+        public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
             var apiCallPath = "/api/v1/documents/reindex";
             var apiCallHttpMethod = "post";
@@ -1025,15 +1025,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDocumentIds != null)
+            if (bodydocumentIds != null)
             {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodyDocumentIds);
+                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
                 bodypropCount++;
             }
 
-            if (bodyIndexValues != null)
+            if (bodyindexValues != null)
             {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyIndexValues);
+                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
                 bodypropCount++;
             }
 
@@ -1046,7 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<bodyFilterIndexValuesInputItem[]>> bodyFilterIndexValues = null, Expression<Func<int>> bodyNumberOfRows = null, Expression<Func<int>> bodyPageNumber = null, Expression<Func<string>> bodySortField = null, Expression<Func<bodySortOrderInput>> bodySortOrder = null)
+        public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyfilterindexValuesInputItem[]>> bodyfilterindexValues = null, Expression<Func<int>> bodynumberOfRows = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<string>> bodysortField = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
         {
             var apiCallPath = "/api/v1/documents/search";
             var apiCallHttpMethod = "post";
@@ -1055,47 +1055,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            var FilterObject = new JObject();
-            var FilterObjectpropCount = 0;
-            if (bodyFilterIndexValues != null)
+            var filterObject = new JObject();
+            var filterObjectpropCount = 0;
+            if (bodyfilterindexValues != null)
             {
-                FilterObject["IndexValues"] = ExpressionConverter.ConvertO(bodyFilterIndexValues);
-                FilterObjectpropCount++;
+                filterObject["IndexValues"] = ExpressionConverter.ConvertO(bodyfilterindexValues);
+                filterObjectpropCount++;
             }
 
-            if (FilterObjectpropCount > 0)
+            if (filterObjectpropCount > 0)
             {
-                body["Filter"] = FilterObject;
+                body["Filter"] = filterObject;
                 bodypropCount++;
             }
 
-            if (bodyNumberOfRows != null)
+            if (bodynumberOfRows != null)
             {
-                body["NumberOfRows"] = ExpressionConverter.ConvertO(bodyNumberOfRows);
+                body["NumberOfRows"] = ExpressionConverter.ConvertO(bodynumberOfRows);
                 bodypropCount++;
             }
 
-            if (bodyPageNumber != null)
+            if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodyPageNumber);
+                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
                 bodypropCount++;
             }
 
-            if (bodySortField != null)
+            if (bodysortField != null)
             {
-                body["SortField"] = ExpressionConverter.ConvertO(bodySortField);
+                body["SortField"] = ExpressionConverter.ConvertO(bodysortField);
                 bodypropCount++;
             }
 
-            if (bodySortOrder != null)
+            if (bodysortOrder != null)
             {
-                body["SortOrder"] = ExpressionConverter.ConvertO(bodySortOrder);
+                body["SortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
                 bodypropCount++;
             }
 
@@ -1164,7 +1164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyIsPublished, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
         {
             var apiCallPath = String.Format("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
             var apiCallHttpMethod = "post";
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["IsPublished"] = ExpressionConverter.ConvertO(bodyIsPublished);
+            body["IsPublished"] = ExpressionConverter.ConvertO(bodyisPublished);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1206,7 +1206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyAccountable = null, Expression<Func<string>> bodyAssignedOn = null, Expression<Func<string>> bodyAssignedTo = null, Expression<Func<string>> bodyAssignmentHistory = null, Expression<Func<string>> bodyCompletedBy = null, Expression<Func<string>> bodyCompletedOn = null, Expression<Func<string>> bodyCurrentDueDate = null, Expression<Func<string>> bodyCurrentStep = null, Expression<Func<string>> bodyDateExtended = null, Expression<Func<string>> bodyDaysAtStep = null, Expression<Func<string>> bodyDaysBetweenRoutings = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<string>> bodyEngagementType = null, Expression<Func<string>> bodyInProcessOnly = null, Expression<Func<string[]>> bodyIndexes = null, Expression<Func<string[]>> bodyInformationFields = null, Expression<Func<string>> bodyOriginalDueDate = null, Expression<Func<string>> bodyPIC = null, Expression<Func<string>> bodyPageNumber = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyReceivedFrom = null, Expression<Func<string>> bodyReceivedOn = null, Expression<Func<string>> bodyResponsible = null, Expression<Func<string>> bodyRoutingDetails = null, Expression<Func<string>> bodySentOn = null, Expression<Func<string>> bodySentTo = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyTotalDaysAtStep = null, Expression<Func<string>> bodyTotalDaysInProcess = null, Expression<Func<string>> bodyWorkflow = null, Expression<Func<string>> bodyWorkflowDescription = null)
+        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodypageNumber = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodyworkflowDescription = null)
         {
             var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
             var apiCallHttpMethod = "post";
@@ -1215,195 +1215,195 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAccountable != null)
+            if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyAccountable);
+                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
                 bodypropCount++;
             }
 
-            if (bodyAssignedOn != null)
+            if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyAssignedOn);
+                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
                 bodypropCount++;
             }
 
-            if (bodyAssignedTo != null)
+            if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyAssignedTo);
+                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
                 bodypropCount++;
             }
 
-            if (bodyAssignmentHistory != null)
+            if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyAssignmentHistory);
+                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
                 bodypropCount++;
             }
 
-            if (bodyCompletedBy != null)
+            if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodyCompletedBy);
+                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
                 bodypropCount++;
             }
 
-            if (bodyCompletedOn != null)
+            if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodyCompletedOn);
+                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
                 bodypropCount++;
             }
 
-            if (bodyCurrentDueDate != null)
+            if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodyCurrentDueDate);
+                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
                 bodypropCount++;
             }
 
-            if (bodyCurrentStep != null)
+            if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodyCurrentStep);
+                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
                 bodypropCount++;
             }
 
-            if (bodyDateExtended != null)
+            if (bodydateExtended != null)
             {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodyDateExtended);
+                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
                 bodypropCount++;
             }
 
-            if (bodyDaysAtStep != null)
+            if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodyDaysAtStep);
+                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyDaysBetweenRoutings != null)
+            if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodyDaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            if (bodyEngagementType != null)
+            if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyEngagementType);
+                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
                 bodypropCount++;
             }
 
-            if (bodyInProcessOnly != null)
+            if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyInProcessOnly);
+                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
                 bodypropCount++;
             }
 
-            if (bodyIndexes != null)
+            if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyIndexes);
+                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
                 bodypropCount++;
             }
 
-            if (bodyInformationFields != null)
+            if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyInformationFields);
+                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
                 bodypropCount++;
             }
 
-            if (bodyOriginalDueDate != null)
+            if (bodyoriginalDueDate != null)
             {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyOriginalDueDate);
+                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
                 bodypropCount++;
             }
 
-            if (bodyPIC != null)
+            if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodyPIC);
+                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
                 bodypropCount++;
             }
 
-            if (bodyPageNumber != null)
+            if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodyPageNumber);
+                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyReceivedFrom != null)
+            if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyReceivedFrom);
+                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
                 bodypropCount++;
             }
 
-            if (bodyReceivedOn != null)
+            if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyReceivedOn);
+                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
                 bodypropCount++;
             }
 
-            if (bodyResponsible != null)
+            if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyResponsible);
+                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
                 bodypropCount++;
             }
 
-            if (bodyRoutingDetails != null)
+            if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyRoutingDetails);
+                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
                 bodypropCount++;
             }
 
-            if (bodySentOn != null)
+            if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodySentOn);
+                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
                 bodypropCount++;
             }
 
-            if (bodySentTo != null)
+            if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodySentTo);
+                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
                 bodypropCount++;
             }
 
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysAtStep != null)
+            if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodyTotalDaysAtStep);
+                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysInProcess != null)
+            if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodyTotalDaysInProcess);
+                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
-            if (bodyWorkflow != null)
+            if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyWorkflow);
+                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
                 bodypropCount++;
             }
 
-            if (bodyWorkflowDescription != null)
+            if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyWorkflowDescription);
+                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
                 bodypropCount++;
             }
 
@@ -1416,7 +1416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<bodyIndexesInputItem[]>> bodyIndexes = null)
+        public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
             var apiCallPath = "/api/v1/indexes/validate";
             var apiCallHttpMethod = "post";
@@ -1425,15 +1425,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            if (bodyIndexes != null)
+            if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyIndexes);
+                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
                 bodypropCount++;
             }
 
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyActionTypeInput>> bodyActionType = null, Expression<Func<int>> bodyCount = null, Expression<Func<string>> bodyIndexValue = null, Expression<Func<bodySearchTypeInput>> bodySearchType = null)
+        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
         {
             var apiCallPath = String.Format("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
             var apiCallHttpMethod = "post";
@@ -1466,27 +1466,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyActionType != null)
+            if (bodyactionType != null)
             {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyActionType);
+                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
                 bodypropCount++;
             }
 
-            if (bodyCount != null)
+            if (bodycount != null)
             {
-                body["Count"] = ExpressionConverter.ConvertO(bodyCount);
+                body["Count"] = ExpressionConverter.ConvertO(bodycount);
                 bodypropCount++;
             }
 
-            if (bodyIndexValue != null)
+            if (bodyindexValue != null)
             {
-                body["IndexValue"] = ExpressionConverter.ConvertO(bodyIndexValue);
+                body["IndexValue"] = ExpressionConverter.ConvertO(bodyindexValue);
                 bodypropCount++;
             }
 
-            if (bodySearchType != null)
+            if (bodysearchType != null)
             {
-                body["SearchType"] = ExpressionConverter.ConvertO(bodySearchType);
+                body["SearchType"] = ExpressionConverter.ConvertO(bodysearchType);
                 bodypropCount++;
             }
 
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> bodyLoginName, Expression<Func<string>> bodyPassword)
+        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodypassword)
         {
             var apiCallPath = "/api/v1/user/login";
             var apiCallHttpMethod = "post";
@@ -1529,9 +1529,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyLoginName);
+            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
             bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodyPassword);
+            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -1563,7 +1563,237 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyDrawerName = null, Expression<Func<string[]>> bodyDeliverableNames = null)
+        public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawer = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodyfilingworkflowName = null, Expression<Func<string>> bodyfilingdescription = null, Expression<Func<string>> bodyfilingstatusName = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null)
+        {
+            var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (xAuthorization != null)
+                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodydrawer != null)
+            {
+                body["Drawer"] = ExpressionConverter.ConvertO(bodydrawer);
+                bodypropCount++;
+            }
+
+            if (bodyserviceType != null)
+            {
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                bodypropCount++;
+            }
+
+            if (bodyfolderId != null)
+            {
+                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+                bodypropCount++;
+            }
+
+            var headersObject = new JObject();
+            var headersObjectpropCount = 0;
+            if (bodyheadersclientName != null)
+            {
+                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                headersObjectpropCount++;
+            }
+
+            if (bodyheadersclientNumber != null)
+            {
+                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                headersObjectpropCount++;
+            }
+
+            if (bodyheadersengagementType != null)
+            {
+                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                headersObjectpropCount++;
+            }
+
+            if (bodyheaderspIC != null)
+            {
+                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                headersObjectpropCount++;
+            }
+
+            if (bodyheadersyear != null)
+            {
+                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                headersObjectpropCount++;
+            }
+
+            if (bodyheadersperiodEnd != null)
+            {
+                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                headersObjectpropCount++;
+            }
+
+            if (headersObjectpropCount > 0)
+            {
+                body["headers"] = headersObject;
+                bodypropCount++;
+            }
+
+            var filingObject = new JObject();
+            var filingObjectpropCount = 0;
+            if (bodyfilingworkflowName != null)
+            {
+                filingObject["workflowName"] = ExpressionConverter.ConvertO(bodyfilingworkflowName);
+                filingObjectpropCount++;
+            }
+
+            if (bodyfilingdescription != null)
+            {
+                filingObject["description"] = ExpressionConverter.ConvertO(bodyfilingdescription);
+                filingObjectpropCount++;
+            }
+
+            if (bodyfilingstatusName != null)
+            {
+                filingObject["statusName"] = ExpressionConverter.ConvertO(bodyfilingstatusName);
+                filingObjectpropCount++;
+            }
+
+            if (filingObjectpropCount > 0)
+            {
+                body["filing"] = filingObject;
+                bodypropCount++;
+            }
+
+            var deliverableObject = new JObject();
+            var deliverableObjectpropCount = 0;
+            if (bodydeliverableaction != null)
+            {
+                deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
+                deliverableObjectpropCount++;
+            }
+
+            if (bodydeliverablecurrentduedate != null)
+            {
+                deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
+                deliverableObjectpropCount++;
+            }
+
+            if (bodydeliverableoriginalduedate != null)
+            {
+                deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
+                deliverableObjectpropCount++;
+            }
+
+            if (bodydeliverableform != null)
+            {
+                deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
+                deliverableObjectpropCount++;
+            }
+
+            if (deliverableObjectpropCount > 0)
+            {
+                body["deliverable"] = deliverableObject;
+                bodypropCount++;
+            }
+
+            var deliveryInstructionsObject = new JObject();
+            var deliveryInstructionsObjectpropCount = 0;
+            if (bodydeliveryInstructionsdelivery != null)
+            {
+                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
+                deliveryInstructionsObjectpropCount++;
+            }
+
+            if (bodydeliveryInstructionsdestination != null)
+            {
+                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
+                deliveryInstructionsObjectpropCount++;
+            }
+
+            if (bodydeliveryInstructionssourceDocument != null)
+            {
+                deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
+                deliveryInstructionsObjectpropCount++;
+            }
+
+            if (deliveryInstructionsObjectpropCount > 0)
+            {
+                body["DeliveryInstructions"] = deliveryInstructionsObject;
+                bodypropCount++;
+            }
+
+            var notesObject = new JObject();
+            var notesObjectpropCount = 0;
+            if (bodynotesaction != null)
+            {
+                notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
+                notesObjectpropCount++;
+            }
+
+            if (bodynotesnoteType != null)
+            {
+                notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
+                notesObjectpropCount++;
+            }
+
+            if (bodynotesnote != null)
+            {
+                notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
+                notesObjectpropCount++;
+            }
+
+            if (notesObjectpropCount > 0)
+            {
+                body["notes"] = notesObject;
+                bodypropCount++;
+            }
+
+            var informationFieldsObject = new JObject();
+            var informationFieldsObjectpropCount = 0;
+            if (bodyinformationFieldsname != null)
+            {
+                informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
+                informationFieldsObjectpropCount++;
+            }
+
+            if (bodyinformationFieldsvalue != null)
+            {
+                informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
+                informationFieldsObjectpropCount++;
+            }
+
+            if (informationFieldsObjectpropCount > 0)
+            {
+                body["informationFields"] = informationFieldsObject;
+                bodypropCount++;
+            }
+
+            var routingSummaryObject = new JObject();
+            var routingSummaryObjectpropCount = 0;
+            if (bodyroutingSummaryresponsibleField != null)
+            {
+                routingSummaryObject["ResponsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
+                routingSummaryObjectpropCount++;
+            }
+
+            if (bodyroutingSummaryvalue != null)
+            {
+                routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
+                routingSummaryObjectpropCount++;
+            }
+
+            if (routingSummaryObjectpropCount > 0)
+            {
+                body["RoutingSummary"] = routingSummaryObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string[]>> bodydeliverableNames = null)
         {
             var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
             var apiCallHttpMethod = "post";
@@ -1572,21 +1802,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyDrawerName != null)
+            if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodyDrawerName);
+                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
                 bodypropCount++;
             }
 
-            if (bodyDeliverableNames != null)
+            if (bodydeliverableNames != null)
             {
-                body["DeliverableNames"] = ExpressionConverter.ConvertO(bodyDeliverableNames);
+                body["DeliverableNames"] = ExpressionConverter.ConvertO(bodydeliverableNames);
                 bodypropCount++;
             }
 
@@ -1701,7 +1931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyHeadersClientName = null, Expression<Func<string>> bodyHeadersClientNumber = null, Expression<Func<string>> bodyHeadersEngagementType = null, Expression<Func<string>> bodyHeadersPIC = null, Expression<Func<string>> bodyHeadersYear = null, Expression<Func<string>> bodyHeadersPeriodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsDelivery = null, Expression<Func<string>> bodydeliveryInstructionsDestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
+        public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
         {
             var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
             var apiCallHttpMethod = "post";
@@ -1716,47 +1946,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 bodypropCount++;
             }
 
-            var HeadersObject = new JObject();
-            var HeadersObjectpropCount = 0;
-            if (bodyHeadersClientName != null)
+            var headersObject = new JObject();
+            var headersObjectpropCount = 0;
+            if (bodyheadersclientName != null)
             {
-                HeadersObject["ClientName"] = ExpressionConverter.ConvertO(bodyHeadersClientName);
-                HeadersObjectpropCount++;
+                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                headersObjectpropCount++;
             }
 
-            if (bodyHeadersClientNumber != null)
+            if (bodyheadersclientNumber != null)
             {
-                HeadersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyHeadersClientNumber);
-                HeadersObjectpropCount++;
+                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                headersObjectpropCount++;
             }
 
-            if (bodyHeadersEngagementType != null)
+            if (bodyheadersengagementType != null)
             {
-                HeadersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyHeadersEngagementType);
-                HeadersObjectpropCount++;
+                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                headersObjectpropCount++;
             }
 
-            if (bodyHeadersPIC != null)
+            if (bodyheaderspIC != null)
             {
-                HeadersObject["PIC"] = ExpressionConverter.ConvertO(bodyHeadersPIC);
-                HeadersObjectpropCount++;
+                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                headersObjectpropCount++;
             }
 
-            if (bodyHeadersYear != null)
+            if (bodyheadersyear != null)
             {
-                HeadersObject["Year"] = ExpressionConverter.ConvertO(bodyHeadersYear);
-                HeadersObjectpropCount++;
+                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                headersObjectpropCount++;
             }
 
-            if (bodyHeadersPeriodEnd != null)
+            if (bodyheadersperiodEnd != null)
             {
-                HeadersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyHeadersPeriodEnd);
-                HeadersObjectpropCount++;
+                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                headersObjectpropCount++;
             }
 
-            if (HeadersObjectpropCount > 0)
+            if (headersObjectpropCount > 0)
             {
-                body["Headers"] = HeadersObject;
+                body["Headers"] = headersObject;
                 bodypropCount++;
             }
 
@@ -1846,15 +2076,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
             var deliveryInstructionsObject = new JObject();
             var deliveryInstructionsObjectpropCount = 0;
-            if (bodydeliveryInstructionsDelivery != null)
+            if (bodydeliveryInstructionsdelivery != null)
             {
-                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsDelivery);
+                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
                 deliveryInstructionsObjectpropCount++;
             }
 
-            if (bodydeliveryInstructionsDestination != null)
+            if (bodydeliveryInstructionsdestination != null)
             {
-                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsDestination);
+                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
                 deliveryInstructionsObjectpropCount++;
             }
 
@@ -1905,7 +2135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyPageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyDrawerName = null)
+        public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
             var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
             var apiCallHttpMethod = "post";
@@ -1914,9 +2144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyPageNumber != null)
+            if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodyPageNumber);
+                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
                 bodypropCount++;
             }
 
@@ -1926,15 +2156,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 bodypropCount++;
             }
 
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyDrawerName != null)
+            if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodyDrawerName);
+                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
                 bodypropCount++;
             }
 
@@ -1947,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflowV2(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodyCurrentStep = null, Expression<Func<bool>> bodyComplete = null, Expression<Func<string>> bodyCompletedDate = null, Expression<Func<string>> bodyNextStep = null, Expression<Func<string>> bodyAssignedTo = null, Expression<Func<string>> bodyAssignedDate = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyRoutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
+        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflowV2(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
         {
             var apiCallPath = "/firmflow/api/V2/Route";
             var apiCallHttpMethod = "post";
@@ -1962,57 +2192,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 bodypropCount++;
             }
 
-            if (bodyCurrentStep != null)
+            if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodyCurrentStep);
+                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
                 bodypropCount++;
             }
 
-            if (bodyComplete != null)
+            if (bodycomplete != null)
             {
-                body["Complete"] = ExpressionConverter.ConvertO(bodyComplete);
+                body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
                 bodypropCount++;
             }
 
-            if (bodyCompletedDate != null)
+            if (bodycompletedDate != null)
             {
-                body["CompletedDate"] = ExpressionConverter.ConvertO(bodyCompletedDate);
+                body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
                 bodypropCount++;
             }
 
-            if (bodyNextStep != null)
+            if (bodynextStep != null)
             {
-                body["NextStep"] = ExpressionConverter.ConvertO(bodyNextStep);
+                body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
                 bodypropCount++;
             }
 
-            if (bodyAssignedTo != null)
+            if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyAssignedTo);
+                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
                 bodypropCount++;
             }
 
-            if (bodyAssignedDate != null)
+            if (bodyassignedDate != null)
             {
-                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyAssignedDate);
+                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyRoutingNote != null)
+            if (bodyroutingNote != null)
             {
-                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyRoutingNote);
+                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
                 bodypropCount++;
             }
 
@@ -2031,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyEngagementType = null, Expression<Func<string>> bodyWorkflow = null, Expression<Func<string>> bodyCurrentStep = null, Expression<Func<string>> bodyPIC = null, Expression<Func<string>> bodyAssignedTo = null, Expression<Func<string>> bodyAssignedOn = null, Expression<Func<string>> bodyWorkflowDescription = null, Expression<Func<string>> bodyInProcessOnly = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyResponsible = null, Expression<Func<string>> bodyAssignmentHistory = null, Expression<Func<string>> bodyReceivedFrom = null, Expression<Func<string>> bodyReceivedOn = null, Expression<Func<string>> bodySentTo = null, Expression<Func<string>> bodySentOn = null, Expression<Func<string>> bodyCompletedBy = null, Expression<Func<string>> bodyCompletedOn = null, Expression<Func<string>> bodyCurrentDueDate = null, Expression<Func<string>> bodyDaysAtStep = null, Expression<Func<string>> bodyTotalDaysAtStep = null, Expression<Func<string>> bodyDaysBetweenRoutings = null, Expression<Func<string>> bodyTotalDaysInProcess = null, Expression<Func<string>> bodyAccountable = null, Expression<Func<string>> bodyRoutingDetails = null, Expression<Func<string>> bodyLastUpdated = null, Expression<Func<string[]>> bodyInformationFields = null, Expression<Func<string[]>> bodyIndexes = null, Expression<Func<string>> bodyPageNumber = null)
+        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
             var apiCallHttpMethod = "post";
@@ -2040,189 +2270,189 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyEngagementType != null)
+            if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyEngagementType);
+                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
                 bodypropCount++;
             }
 
-            if (bodyWorkflow != null)
+            if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyWorkflow);
+                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
                 bodypropCount++;
             }
 
-            if (bodyCurrentStep != null)
+            if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodyCurrentStep);
+                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
                 bodypropCount++;
             }
 
-            if (bodyPIC != null)
+            if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodyPIC);
+                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
                 bodypropCount++;
             }
 
-            if (bodyAssignedTo != null)
+            if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyAssignedTo);
+                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
                 bodypropCount++;
             }
 
-            if (bodyAssignedOn != null)
+            if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyAssignedOn);
+                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
                 bodypropCount++;
             }
 
-            if (bodyWorkflowDescription != null)
+            if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyWorkflowDescription);
+                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
                 bodypropCount++;
             }
 
-            if (bodyInProcessOnly != null)
+            if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyInProcessOnly);
+                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyResponsible != null)
+            if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyResponsible);
+                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
                 bodypropCount++;
             }
 
-            if (bodyAssignmentHistory != null)
+            if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyAssignmentHistory);
+                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
                 bodypropCount++;
             }
 
-            if (bodyReceivedFrom != null)
+            if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyReceivedFrom);
+                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
                 bodypropCount++;
             }
 
-            if (bodyReceivedOn != null)
+            if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyReceivedOn);
+                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
                 bodypropCount++;
             }
 
-            if (bodySentTo != null)
+            if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodySentTo);
+                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
                 bodypropCount++;
             }
 
-            if (bodySentOn != null)
+            if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodySentOn);
+                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
                 bodypropCount++;
             }
 
-            if (bodyCompletedBy != null)
+            if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodyCompletedBy);
+                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
                 bodypropCount++;
             }
 
-            if (bodyCompletedOn != null)
+            if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodyCompletedOn);
+                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
                 bodypropCount++;
             }
 
-            if (bodyCurrentDueDate != null)
+            if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodyCurrentDueDate);
+                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
                 bodypropCount++;
             }
 
-            if (bodyDaysAtStep != null)
+            if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodyDaysAtStep);
+                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysAtStep != null)
+            if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodyTotalDaysAtStep);
+                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyDaysBetweenRoutings != null)
+            if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodyDaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysInProcess != null)
+            if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodyTotalDaysInProcess);
+                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
-            if (bodyAccountable != null)
+            if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyAccountable);
+                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
                 bodypropCount++;
             }
 
-            if (bodyRoutingDetails != null)
+            if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyRoutingDetails);
+                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
                 bodypropCount++;
             }
 
-            if (bodyLastUpdated != null)
+            if (bodylastUpdated != null)
             {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodyLastUpdated);
+                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
                 bodypropCount++;
             }
 
-            if (bodyInformationFields != null)
+            if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyInformationFields);
+                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
                 bodypropCount++;
             }
 
-            if (bodyIndexes != null)
+            if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyIndexes);
+                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
                 bodypropCount++;
             }
 
-            if (bodyPageNumber != null)
+            if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodyPageNumber);
+                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
                 bodypropCount++;
             }
 
@@ -2235,7 +2465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyDrawerName = null)
+        public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
             var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
             var apiCallHttpMethod = "post";
@@ -2286,15 +2516,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 bodypropCount++;
             }
 
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyDrawerName != null)
+            if (bodydrawerName != null)
             {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodyDrawerName);
+                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
                 bodypropCount++;
             }
 
@@ -2307,7 +2537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoV2Response> GetUserInfoV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyLoginName = null, Expression<Func<string>> bodyUserType = null)
+        public IBodyWorkflowAction<GetUserInfoV2Response> GetUserInfoV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodyuserType = null)
         {
             var apiCallPath = "/api/v2/administration/user/getuser";
             var apiCallHttpMethod = "post";
@@ -2316,15 +2546,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyLoginName != null)
+            if (bodyloginName != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyLoginName);
+                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
                 bodypropCount++;
             }
 
-            if (bodyUserType != null)
+            if (bodyuserType != null)
             {
-                body["UserType"] = ExpressionConverter.ConvertO(bodyUserType);
+                body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
                 bodypropCount++;
             }
 
@@ -2337,7 +2567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverableV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyDrawerId = null, Expression<Func<string>> bodyServiceType = null, Expression<Func<string>> bodyEngagementType = null, Expression<Func<string>> bodyWorkflow = null, Expression<Func<string>> bodyCurrentStep = null, Expression<Func<string>> bodyPIC = null, Expression<Func<string>> bodyAssignedTo = null, Expression<Func<string>> bodyAssignedOn = null, Expression<Func<string>> bodyWorkflowDescription = null, Expression<Func<string>> bodyInProcessOnly = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyReceivedOn = null, Expression<Func<string>> bodyCompletedOn = null, Expression<Func<string>> bodySentOn = null, Expression<Func<string>> bodyResponsible = null, Expression<Func<string>> bodyAssignmentHistory = null, Expression<Func<string>> bodyReceivedFrom = null, Expression<Func<string>> bodySentTo = null, Expression<Func<string>> bodyCompletedBy = null, Expression<Func<string>> bodyAccountable = null, Expression<Func<string>> bodyCurrentDueDate = null, Expression<Func<string>> bodyOriginalDueDate = null, Expression<Func<string>> bodyDateExtended = null, Expression<Func<string>> bodyDaysAtStep = null, Expression<Func<string>> bodyTotalDaysAtStep = null, Expression<Func<string>> bodyDaysBetweenRoutings = null, Expression<Func<string>> bodyTotalDaysInProcess = null, Expression<Func<string>> bodyRoutingDetails = null, Expression<Func<string>> bodyLastUpdated = null, Expression<Func<string[]>> bodyInformationFields = null, Expression<Func<string[]>> bodyIndexes = null, Expression<Func<string>> bodyPageNumber = null)
+        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverableV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
             var apiCallHttpMethod = "post";
@@ -2346,201 +2576,201 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyDrawerId != null)
+            if (bodydrawerId != null)
             {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodyDrawerId);
+                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
                 bodypropCount++;
             }
 
-            if (bodyServiceType != null)
+            if (bodyserviceType != null)
             {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyServiceType);
+                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
                 bodypropCount++;
             }
 
-            if (bodyEngagementType != null)
+            if (bodyengagementType != null)
             {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyEngagementType);
+                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
                 bodypropCount++;
             }
 
-            if (bodyWorkflow != null)
+            if (bodyworkflow != null)
             {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyWorkflow);
+                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
                 bodypropCount++;
             }
 
-            if (bodyCurrentStep != null)
+            if (bodycurrentStep != null)
             {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodyCurrentStep);
+                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
                 bodypropCount++;
             }
 
-            if (bodyPIC != null)
+            if (bodypIC != null)
             {
-                body["PIC"] = ExpressionConverter.ConvertO(bodyPIC);
+                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
                 bodypropCount++;
             }
 
-            if (bodyAssignedTo != null)
+            if (bodyassignedTo != null)
             {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyAssignedTo);
+                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
                 bodypropCount++;
             }
 
-            if (bodyAssignedOn != null)
+            if (bodyassignedOn != null)
             {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyAssignedOn);
+                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
                 bodypropCount++;
             }
 
-            if (bodyWorkflowDescription != null)
+            if (bodyworkflowDescription != null)
             {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyWorkflowDescription);
+                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
                 bodypropCount++;
             }
 
-            if (bodyInProcessOnly != null)
+            if (bodyinProcessOnly != null)
             {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyInProcessOnly);
+                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyReceivedOn != null)
+            if (bodyreceivedOn != null)
             {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyReceivedOn);
+                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
                 bodypropCount++;
             }
 
-            if (bodyCompletedOn != null)
+            if (bodycompletedOn != null)
             {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodyCompletedOn);
+                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
                 bodypropCount++;
             }
 
-            if (bodySentOn != null)
+            if (bodysentOn != null)
             {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodySentOn);
+                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
                 bodypropCount++;
             }
 
-            if (bodyResponsible != null)
+            if (bodyresponsible != null)
             {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyResponsible);
+                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
                 bodypropCount++;
             }
 
-            if (bodyAssignmentHistory != null)
+            if (bodyassignmentHistory != null)
             {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyAssignmentHistory);
+                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
                 bodypropCount++;
             }
 
-            if (bodyReceivedFrom != null)
+            if (bodyreceivedFrom != null)
             {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyReceivedFrom);
+                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
                 bodypropCount++;
             }
 
-            if (bodySentTo != null)
+            if (bodysentTo != null)
             {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodySentTo);
+                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
                 bodypropCount++;
             }
 
-            if (bodyCompletedBy != null)
+            if (bodycompletedBy != null)
             {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodyCompletedBy);
+                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
                 bodypropCount++;
             }
 
-            if (bodyAccountable != null)
+            if (bodyaccountable != null)
             {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyAccountable);
+                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
                 bodypropCount++;
             }
 
-            if (bodyCurrentDueDate != null)
+            if (bodycurrentDueDate != null)
             {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodyCurrentDueDate);
+                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
                 bodypropCount++;
             }
 
-            if (bodyOriginalDueDate != null)
+            if (bodyoriginalDueDate != null)
             {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyOriginalDueDate);
+                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
                 bodypropCount++;
             }
 
-            if (bodyDateExtended != null)
+            if (bodydateExtended != null)
             {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodyDateExtended);
+                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
                 bodypropCount++;
             }
 
-            if (bodyDaysAtStep != null)
+            if (bodydaysAtStep != null)
             {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodyDaysAtStep);
+                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysAtStep != null)
+            if (bodytotalDaysAtStep != null)
             {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodyTotalDaysAtStep);
+                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
                 bodypropCount++;
             }
 
-            if (bodyDaysBetweenRoutings != null)
+            if (bodydaysBetweenRoutings != null)
             {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodyDaysBetweenRoutings);
+                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
                 bodypropCount++;
             }
 
-            if (bodyTotalDaysInProcess != null)
+            if (bodytotalDaysInProcess != null)
             {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodyTotalDaysInProcess);
+                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
                 bodypropCount++;
             }
 
-            if (bodyRoutingDetails != null)
+            if (bodyroutingDetails != null)
             {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyRoutingDetails);
+                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
                 bodypropCount++;
             }
 
-            if (bodyLastUpdated != null)
+            if (bodylastUpdated != null)
             {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodyLastUpdated);
+                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
                 bodypropCount++;
             }
 
-            if (bodyInformationFields != null)
+            if (bodyinformationFields != null)
             {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyInformationFields);
+                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
                 bodypropCount++;
             }
 
-            if (bodyIndexes != null)
+            if (bodyindexes != null)
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyIndexes);
+                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
                 bodypropCount++;
             }
 
-            if (bodyPageNumber != null)
+            if (bodypageNumber != null)
             {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodyPageNumber);
+                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
                 bodypropCount++;
             }
 
@@ -2572,7 +2802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string MfaException { get; set; }
     }
 
-    public class bodyReportsInputItem
+    public class bodyreportsInputItem
     {
         public string[] Allow { get; set; }
         public string[] Deny { get; set; }
@@ -2593,15 +2823,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetGroupDocSecurityException { get; set; }
     }
 
-    public class bodyDocumentSecurityInputItem
+    public class bodydocumentSecurityInputItem
     {
-        public bodyDocumentSecurityInputItemDocSecurityTypeType DocSecurityType { get; set; }
+        public bodydocumentSecurityInputItemDocSecurityTypeType DocSecurityType { get; set; }
         public string IndexName { get; set; }
-        public bodyDocumentSecurityInputItemOperationType Operation { get; set; }
+        public bodydocumentSecurityInputItemOperationType Operation { get; set; }
         public string[] Values { get; set; }
     }
 
-    public enum bodyDocumentSecurityInputItemDocSecurityTypeType
+    public enum bodydocumentSecurityInputItemDocSecurityTypeType
     {
         [EnumMember(Value = "DENY ACCESS")]
         DENYACCESS,
@@ -2611,7 +2841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         NOEDIT
     }
 
-    public enum bodyDocumentSecurityInputItemOperationType
+    public enum bodydocumentSecurityInputItemOperationType
     {
         ADD,
         REMOVE,
@@ -2715,13 +2945,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsSet { get; set; }
     }
 
-    public class bodyDrawerPermissionsInputItem
+    public class bodydrawerPermissionsInputItem
     {
         public string Drawer { get; set; }
-        public bodyDrawerPermissionsInputItemPermissionType Permission { get; set; }
+        public bodydrawerPermissionsInputItemPermissionType Permission { get; set; }
     }
 
-    public class bodyDrawerPermissionsInputItemPermissionType
+    public class bodydrawerPermissionsInputItemPermissionType
     {
         public string Add { get; set; }
         public string Delete { get; set; }
@@ -2809,7 +3039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginId { get; set; }
     }
 
-    public enum bodyUserTypeInput
+    public enum bodyuserTypeInput
     {
         GFRUSERS,
         CLIENTFLOWUSERS
@@ -2827,11 +3057,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetUserDocSecurityException { get; set; }
     }
 
-    public class bodyDocumentSecurityInputItem2
+    public class bodydocumentSecurityInputItem2
     {
-        public bodyDocumentSecurityInputItemDocSecurityTypeType DocSecurityType { get; set; }
+        public bodydocumentSecurityInputItemDocSecurityTypeType DocSecurityType { get; set; }
         public string IndexName { get; set; }
-        public bodyDocumentSecurityInputItemOperationType Operation { get; set; }
+        public bodydocumentSecurityInputItemOperationType Operation { get; set; }
         public string[] Values { get; set; }
     }
 
@@ -3214,7 +3444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsValid { get; set; }
     }
 
-    public class bodyIndexesInputItem
+    public class bodyindexesInputItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
@@ -3235,7 +3465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string NewDocumentId { get; set; }
     }
 
-    public class bodyIndexValuesInputItem
+    public class bodyindexValuesInputItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
@@ -3328,13 +3558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public int DocumentSearchCount { get; set; }
     }
 
-    public class bodyFilterIndexValuesInputItem
+    public class bodyfilterindexValuesInputItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
     }
 
-    public enum bodySortOrderInput
+    public enum bodysortOrderInput
     {
         ASC,
         DESC
@@ -3667,7 +3897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string IndexValue { get; set; }
     }
 
-    public enum bodyActionTypeInput
+    public enum bodyactionTypeInput
     {
         [EnumMember(Value = "1")]
         _1,
@@ -3683,7 +3913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         _6
     }
 
-    public enum bodySearchTypeInput
+    public enum bodysearchTypeInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -3774,6 +4004,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     {
         [JsonProperty("isLogoutSuccess")]
         public bool IsLogoutSuccess { get; set; }
+    }
+
+    public class CreateWorkflowResponse
+    {
+        [JsonProperty("filingId")]
+        public int FilingId { get; set; }
+
+        [JsonProperty("errorComment")]
+        public string ErrorComment { get; set; }
+
+        [JsonProperty("status")]
+        public bool Status { get; set; }
+
+        [JsonProperty("errorMessage")]
+        public string[] ErrorMessage { get; set; }
     }
 
     public class DeleteMasterDeliverableResponseItem

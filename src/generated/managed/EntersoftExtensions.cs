@@ -86,52 +86,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfoGID = null, Expression<Func<string>> blobInfoObjectID = null, Expression<Func<string>> blobInfoKeyID = null, Expression<Func<int>> blobInfoTypeID = null, Expression<Func<string>> blobInfoExt = null, Expression<Func<string>> blobInfoTextBody = null, Expression<Func<bool>> blobInfoIsNew = null)
+        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
         {
             var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var blobInfo = new JObject();
             var blobInfopropCount = 0;
-            if (blobInfoGID != null)
+            if (blobInfogID != null)
             {
-                blobInfo["GID"] = ExpressionConverter.ConvertO(blobInfoGID);
+                blobInfo["GID"] = ExpressionConverter.ConvertO(blobInfogID);
                 blobInfopropCount++;
             }
 
-            if (blobInfoObjectID != null)
+            if (blobInfoobjectID != null)
             {
-                blobInfo["ObjectID"] = ExpressionConverter.ConvertO(blobInfoObjectID);
+                blobInfo["ObjectID"] = ExpressionConverter.ConvertO(blobInfoobjectID);
                 blobInfopropCount++;
             }
 
-            if (blobInfoKeyID != null)
+            if (blobInfokeyID != null)
             {
-                blobInfo["KeyID"] = ExpressionConverter.ConvertO(blobInfoKeyID);
+                blobInfo["KeyID"] = ExpressionConverter.ConvertO(blobInfokeyID);
                 blobInfopropCount++;
             }
 
-            if (blobInfoTypeID != null)
+            if (blobInfotypeID != null)
             {
-                blobInfo["TypeID"] = ExpressionConverter.ConvertO(blobInfoTypeID);
+                blobInfo["TypeID"] = ExpressionConverter.ConvertO(blobInfotypeID);
                 blobInfopropCount++;
             }
 
-            if (blobInfoExt != null)
+            if (blobInfoext != null)
             {
-                blobInfo["Ext"] = ExpressionConverter.ConvertO(blobInfoExt);
+                blobInfo["Ext"] = ExpressionConverter.ConvertO(blobInfoext);
                 blobInfopropCount++;
             }
 
-            if (blobInfoTextBody != null)
+            if (blobInfotextBody != null)
             {
-                blobInfo["TextBody"] = ExpressionConverter.ConvertO(blobInfoTextBody);
+                blobInfo["TextBody"] = ExpressionConverter.ConvertO(blobInfotextBody);
                 blobInfopropCount++;
             }
 
-            if (blobInfoIsNew != null)
+            if (blobInfoisNew != null)
             {
-                blobInfo["IsNew"] = ExpressionConverter.ConvertO(blobInfoIsNew);
+                blobInfo["IsNew"] = ExpressionConverter.ConvertO(blobInfoisNew);
                 blobInfopropCount++;
             }
 
@@ -157,64 +157,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsGID = null, Expression<Func<string>> paramsCode = null, Expression<Func<string>> paramsTitle = null, Expression<Func<string>> paramsDescription = null, Expression<Func<string>> paramsCaption = null, Expression<Func<string>> paramsEDate = null, Expression<Func<string>> paramsFType = null, Expression<Func<string>> paramsTableID = null, Expression<Func<string>> paramsTableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsUNCPath = null, Expression<Func<string>> paramsOriginalPath = null, Expression<Func<string>> paramsOriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramsESDModified = null, Expression<Func<string>> paramsESUModified = null, Expression<Func<string>> paramsESDCreated = null, Expression<Func<string>> paramsESUCreated = null, Expression<Func<bool>> paramsIsBLOB = null, Expression<Func<bool>> paramsIngoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsBLOBDATALength = null, Expression<Func<string>> paramsBLOBDATA = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
         {
             var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var @params = new JObject();
             var @paramspropCount = 0;
-            if (paramsGID != null)
+            if (paramsgID != null)
             {
-                @params["GID"] = ExpressionConverter.ConvertO(paramsGID);
+                @params["GID"] = ExpressionConverter.ConvertO(paramsgID);
                 @paramspropCount++;
             }
 
-            if (paramsCode != null)
+            if (paramscode != null)
             {
-                @params["Code"] = ExpressionConverter.ConvertO(paramsCode);
+                @params["Code"] = ExpressionConverter.ConvertO(paramscode);
                 @paramspropCount++;
             }
 
-            if (paramsTitle != null)
+            if (paramstitle != null)
             {
-                @params["Title"] = ExpressionConverter.ConvertO(paramsTitle);
+                @params["Title"] = ExpressionConverter.ConvertO(paramstitle);
                 @paramspropCount++;
             }
 
-            if (paramsDescription != null)
+            if (paramsdescription != null)
             {
-                @params["Description"] = ExpressionConverter.ConvertO(paramsDescription);
+                @params["Description"] = ExpressionConverter.ConvertO(paramsdescription);
                 @paramspropCount++;
             }
 
-            if (paramsCaption != null)
+            if (paramscaption != null)
             {
-                @params["Caption"] = ExpressionConverter.ConvertO(paramsCaption);
+                @params["Caption"] = ExpressionConverter.ConvertO(paramscaption);
                 @paramspropCount++;
             }
 
-            if (paramsEDate != null)
+            if (paramseDate != null)
             {
-                @params["EDate"] = ExpressionConverter.ConvertO(paramsEDate);
+                @params["EDate"] = ExpressionConverter.ConvertO(paramseDate);
                 @paramspropCount++;
             }
 
-            if (paramsFType != null)
+            if (paramsfType != null)
             {
-                @params["FType"] = ExpressionConverter.ConvertO(paramsFType);
+                @params["FType"] = ExpressionConverter.ConvertO(paramsfType);
                 @paramspropCount++;
             }
 
-            if (paramsTableID != null)
+            if (paramstableID != null)
             {
-                @params["TableID"] = ExpressionConverter.ConvertO(paramsTableID);
+                @params["TableID"] = ExpressionConverter.ConvertO(paramstableID);
                 @paramspropCount++;
             }
 
-            if (paramsTableName != null)
+            if (paramstableName != null)
             {
-                @params["TableName"] = ExpressionConverter.ConvertO(paramsTableName);
+                @params["TableName"] = ExpressionConverter.ConvertO(paramstableName);
                 @paramspropCount++;
             }
 
@@ -230,21 +230,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 @paramspropCount++;
             }
 
-            if (paramsUNCPath != null)
+            if (paramsuNCPath != null)
             {
-                @params["UNCPath"] = ExpressionConverter.ConvertO(paramsUNCPath);
+                @params["UNCPath"] = ExpressionConverter.ConvertO(paramsuNCPath);
                 @paramspropCount++;
             }
 
-            if (paramsOriginalPath != null)
+            if (paramsoriginalPath != null)
             {
-                @params["OriginalPath"] = ExpressionConverter.ConvertO(paramsOriginalPath);
+                @params["OriginalPath"] = ExpressionConverter.ConvertO(paramsoriginalPath);
                 @paramspropCount++;
             }
 
-            if (paramsOriginalFN != null)
+            if (paramsoriginalFN != null)
             {
-                @params["OriginalFN"] = ExpressionConverter.ConvertO(paramsOriginalFN);
+                @params["OriginalFN"] = ExpressionConverter.ConvertO(paramsoriginalFN);
                 @paramspropCount++;
             }
 
@@ -278,39 +278,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 @paramspropCount++;
             }
 
-            if (paramsESDModified != null)
+            if (paramseSDModified != null)
             {
-                @params["ESDModified"] = ExpressionConverter.ConvertO(paramsESDModified);
+                @params["ESDModified"] = ExpressionConverter.ConvertO(paramseSDModified);
                 @paramspropCount++;
             }
 
-            if (paramsESUModified != null)
+            if (paramseSUModified != null)
             {
-                @params["ESUModified"] = ExpressionConverter.ConvertO(paramsESUModified);
+                @params["ESUModified"] = ExpressionConverter.ConvertO(paramseSUModified);
                 @paramspropCount++;
             }
 
-            if (paramsESDCreated != null)
+            if (paramseSDCreated != null)
             {
-                @params["ESDCreated"] = ExpressionConverter.ConvertO(paramsESDCreated);
+                @params["ESDCreated"] = ExpressionConverter.ConvertO(paramseSDCreated);
                 @paramspropCount++;
             }
 
-            if (paramsESUCreated != null)
+            if (paramseSUCreated != null)
             {
-                @params["ESUCreated"] = ExpressionConverter.ConvertO(paramsESUCreated);
+                @params["ESUCreated"] = ExpressionConverter.ConvertO(paramseSUCreated);
                 @paramspropCount++;
             }
 
-            if (paramsIsBLOB != null)
+            if (paramsisBLOB != null)
             {
-                @params["IsBLOB"] = ExpressionConverter.ConvertO(paramsIsBLOB);
+                @params["IsBLOB"] = ExpressionConverter.ConvertO(paramsisBLOB);
                 @paramspropCount++;
             }
 
-            if (paramsIngoing != null)
+            if (paramsingoing != null)
             {
-                @params["Ingoing"] = ExpressionConverter.ConvertO(paramsIngoing);
+                @params["Ingoing"] = ExpressionConverter.ConvertO(paramsingoing);
                 @paramspropCount++;
             }
 
@@ -320,15 +320,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 @paramspropCount++;
             }
 
-            if (paramsBLOBDATALength != null)
+            if (paramsbLOBDATALength != null)
             {
-                @params["BLOBDATALength"] = ExpressionConverter.ConvertO(paramsBLOBDATALength);
+                @params["BLOBDATALength"] = ExpressionConverter.ConvertO(paramsbLOBDATALength);
                 @paramspropCount++;
             }
 
-            if (paramsBLOBDATA != null)
+            if (paramsbLOBDATA != null)
             {
-                @params["BLOBDATA"] = ExpressionConverter.ConvertO(paramsBLOBDATA);
+                @params["BLOBDATA"] = ExpressionConverter.ConvertO(paramsbLOBDATA);
                 @paramspropCount++;
             }
 
@@ -341,64 +341,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocGID = null, Expression<Func<string>> inDocCode = null, Expression<Func<string>> inDocTitle = null, Expression<Func<string>> inDocDescription = null, Expression<Func<string>> inDocCaption = null, Expression<Func<string>> inDocEDate = null, Expression<Func<string>> inDocFType = null, Expression<Func<string>> inDocTableID = null, Expression<Func<string>> inDocTableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocUNCPath = null, Expression<Func<string>> inDocOriginalPath = null, Expression<Func<string>> inDocOriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDocESDModified = null, Expression<Func<string>> inDocESUModified = null, Expression<Func<string>> inDocESDCreated = null, Expression<Func<string>> inDocESUCreated = null, Expression<Func<bool>> inDocIsBLOB = null, Expression<Func<bool>> inDocIngoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocBLOBDATALength = null, Expression<Func<string>> inDocBLOBDATA = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
         {
             var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var inDoc = new JObject();
             var inDocpropCount = 0;
-            if (inDocGID != null)
+            if (inDocgID != null)
             {
-                inDoc["GID"] = ExpressionConverter.ConvertO(inDocGID);
+                inDoc["GID"] = ExpressionConverter.ConvertO(inDocgID);
                 inDocpropCount++;
             }
 
-            if (inDocCode != null)
+            if (inDoccode != null)
             {
-                inDoc["Code"] = ExpressionConverter.ConvertO(inDocCode);
+                inDoc["Code"] = ExpressionConverter.ConvertO(inDoccode);
                 inDocpropCount++;
             }
 
-            if (inDocTitle != null)
+            if (inDoctitle != null)
             {
-                inDoc["Title"] = ExpressionConverter.ConvertO(inDocTitle);
+                inDoc["Title"] = ExpressionConverter.ConvertO(inDoctitle);
                 inDocpropCount++;
             }
 
-            if (inDocDescription != null)
+            if (inDocdescription != null)
             {
-                inDoc["Description"] = ExpressionConverter.ConvertO(inDocDescription);
+                inDoc["Description"] = ExpressionConverter.ConvertO(inDocdescription);
                 inDocpropCount++;
             }
 
-            if (inDocCaption != null)
+            if (inDoccaption != null)
             {
-                inDoc["Caption"] = ExpressionConverter.ConvertO(inDocCaption);
+                inDoc["Caption"] = ExpressionConverter.ConvertO(inDoccaption);
                 inDocpropCount++;
             }
 
-            if (inDocEDate != null)
+            if (inDoceDate != null)
             {
-                inDoc["EDate"] = ExpressionConverter.ConvertO(inDocEDate);
+                inDoc["EDate"] = ExpressionConverter.ConvertO(inDoceDate);
                 inDocpropCount++;
             }
 
-            if (inDocFType != null)
+            if (inDocfType != null)
             {
-                inDoc["FType"] = ExpressionConverter.ConvertO(inDocFType);
+                inDoc["FType"] = ExpressionConverter.ConvertO(inDocfType);
                 inDocpropCount++;
             }
 
-            if (inDocTableID != null)
+            if (inDoctableID != null)
             {
-                inDoc["TableID"] = ExpressionConverter.ConvertO(inDocTableID);
+                inDoc["TableID"] = ExpressionConverter.ConvertO(inDoctableID);
                 inDocpropCount++;
             }
 
-            if (inDocTableName != null)
+            if (inDoctableName != null)
             {
-                inDoc["TableName"] = ExpressionConverter.ConvertO(inDocTableName);
+                inDoc["TableName"] = ExpressionConverter.ConvertO(inDoctableName);
                 inDocpropCount++;
             }
 
@@ -414,21 +414,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 inDocpropCount++;
             }
 
-            if (inDocUNCPath != null)
+            if (inDocuNCPath != null)
             {
-                inDoc["UNCPath"] = ExpressionConverter.ConvertO(inDocUNCPath);
+                inDoc["UNCPath"] = ExpressionConverter.ConvertO(inDocuNCPath);
                 inDocpropCount++;
             }
 
-            if (inDocOriginalPath != null)
+            if (inDocoriginalPath != null)
             {
-                inDoc["OriginalPath"] = ExpressionConverter.ConvertO(inDocOriginalPath);
+                inDoc["OriginalPath"] = ExpressionConverter.ConvertO(inDocoriginalPath);
                 inDocpropCount++;
             }
 
-            if (inDocOriginalFN != null)
+            if (inDocoriginalFN != null)
             {
-                inDoc["OriginalFN"] = ExpressionConverter.ConvertO(inDocOriginalFN);
+                inDoc["OriginalFN"] = ExpressionConverter.ConvertO(inDocoriginalFN);
                 inDocpropCount++;
             }
 
@@ -462,39 +462,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 inDocpropCount++;
             }
 
-            if (inDocESDModified != null)
+            if (inDoceSDModified != null)
             {
-                inDoc["ESDModified"] = ExpressionConverter.ConvertO(inDocESDModified);
+                inDoc["ESDModified"] = ExpressionConverter.ConvertO(inDoceSDModified);
                 inDocpropCount++;
             }
 
-            if (inDocESUModified != null)
+            if (inDoceSUModified != null)
             {
-                inDoc["ESUModified"] = ExpressionConverter.ConvertO(inDocESUModified);
+                inDoc["ESUModified"] = ExpressionConverter.ConvertO(inDoceSUModified);
                 inDocpropCount++;
             }
 
-            if (inDocESDCreated != null)
+            if (inDoceSDCreated != null)
             {
-                inDoc["ESDCreated"] = ExpressionConverter.ConvertO(inDocESDCreated);
+                inDoc["ESDCreated"] = ExpressionConverter.ConvertO(inDoceSDCreated);
                 inDocpropCount++;
             }
 
-            if (inDocESUCreated != null)
+            if (inDoceSUCreated != null)
             {
-                inDoc["ESUCreated"] = ExpressionConverter.ConvertO(inDocESUCreated);
+                inDoc["ESUCreated"] = ExpressionConverter.ConvertO(inDoceSUCreated);
                 inDocpropCount++;
             }
 
-            if (inDocIsBLOB != null)
+            if (inDocisBLOB != null)
             {
-                inDoc["IsBLOB"] = ExpressionConverter.ConvertO(inDocIsBLOB);
+                inDoc["IsBLOB"] = ExpressionConverter.ConvertO(inDocisBLOB);
                 inDocpropCount++;
             }
 
-            if (inDocIngoing != null)
+            if (inDocingoing != null)
             {
-                inDoc["Ingoing"] = ExpressionConverter.ConvertO(inDocIngoing);
+                inDoc["Ingoing"] = ExpressionConverter.ConvertO(inDocingoing);
                 inDocpropCount++;
             }
 
@@ -504,15 +504,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 inDocpropCount++;
             }
 
-            if (inDocBLOBDATALength != null)
+            if (inDocbLOBDATALength != null)
             {
-                inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(inDocBLOBDATALength);
+                inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(inDocbLOBDATALength);
                 inDocpropCount++;
             }
 
-            if (inDocBLOBDATA != null)
+            if (inDocbLOBDATA != null)
             {
-                inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(inDocBLOBDATA);
+                inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(inDocbLOBDATA);
                 inDocpropCount++;
             }
 
@@ -562,22 +562,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgRecipients = null, Expression<Func<string>> msgMessage = null)
+        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
         {
             var apiCallPath = "/api/collaboration/BroadcastMessage/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var msg = new JObject();
             var msgpropCount = 0;
-            if (msgRecipients != null)
+            if (msgrecipients != null)
             {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgRecipients);
+                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
                 msgpropCount++;
             }
 
-            if (msgMessage != null)
+            if (msgmessage != null)
             {
-                msg["Message"] = ExpressionConverter.ConvertO(msgMessage);
+                msg["Message"] = ExpressionConverter.ConvertO(msgmessage);
                 msgpropCount++;
             }
 
@@ -590,34 +590,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgFromEmailAddr = null, Expression<Func<string>> msgToEmailAddr = null, Expression<Func<string>> msgSubject = null, Expression<Func<string>> msgBody = null)
+        public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
         {
             var apiCallPath = "/api/collaboration/SendEmail/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var msg = new JObject();
             var msgpropCount = 0;
-            if (msgFromEmailAddr != null)
+            if (msgfromEmailAddr != null)
             {
-                msg["FromEmailAddr"] = ExpressionConverter.ConvertO(msgFromEmailAddr);
+                msg["FromEmailAddr"] = ExpressionConverter.ConvertO(msgfromEmailAddr);
                 msgpropCount++;
             }
 
-            if (msgToEmailAddr != null)
+            if (msgtoEmailAddr != null)
             {
-                msg["ToEmailAddr"] = ExpressionConverter.ConvertO(msgToEmailAddr);
+                msg["ToEmailAddr"] = ExpressionConverter.ConvertO(msgtoEmailAddr);
                 msgpropCount++;
             }
 
-            if (msgSubject != null)
+            if (msgsubject != null)
             {
-                msg["Subject"] = ExpressionConverter.ConvertO(msgSubject);
+                msg["Subject"] = ExpressionConverter.ConvertO(msgsubject);
                 msgpropCount++;
             }
 
-            if (msgBody != null)
+            if (msgbody != null)
             {
-                msg["Body"] = ExpressionConverter.ConvertO(msgBody);
+                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
                 msgpropCount++;
             }
 
@@ -630,28 +630,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgBody = null, Expression<Func<string[]>> msgRecipients = null, Expression<Func<string[]>> msgUsers = null)
+        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
         {
             var apiCallPath = "/api/collaboration/SendSMS/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var msg = new JObject();
             var msgpropCount = 0;
-            if (msgBody != null)
+            if (msgbody != null)
             {
-                msg["Body"] = ExpressionConverter.ConvertO(msgBody);
+                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
                 msgpropCount++;
             }
 
-            if (msgRecipients != null)
+            if (msgrecipients != null)
             {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgRecipients);
+                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
                 msgpropCount++;
             }
 
-            if (msgUsers != null)
+            if (msgusers != null)
             {
-                msg["Users"] = ExpressionConverter.ConvertO(msgUsers);
+                msg["Users"] = ExpressionConverter.ConvertO(msgusers);
                 msgpropCount++;
             }
 
@@ -664,34 +664,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgRecipients = null, Expression<Func<string>> msgDateToSend = null, Expression<Func<int>> msgExpiresInSecs = null, Expression<Func<string>> msgExpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgCallback = null, Expression<Func<string>> msgBody = null, Expression<Func<string>> msgImage = null, Expression<Func<string>> msgButtonAction = null, Expression<Func<string>> msgButtonCaption = null, Expression<Func<string>> msgSMSFallbackSMSText = null)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
         {
             var apiCallPath = "/api/collaboration/SendViberMessage/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var msg = new JObject();
             var msgpropCount = 0;
-            if (msgRecipients != null)
+            if (msgrecipients != null)
             {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgRecipients);
+                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
                 msgpropCount++;
             }
 
-            if (msgDateToSend != null)
+            if (msgdateToSend != null)
             {
-                msg["DateToSend"] = ExpressionConverter.ConvertO(msgDateToSend);
+                msg["DateToSend"] = ExpressionConverter.ConvertO(msgdateToSend);
                 msgpropCount++;
             }
 
-            if (msgExpiresInSecs != null)
+            if (msgexpiresInSecs != null)
             {
-                msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(msgExpiresInSecs);
+                msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(msgexpiresInSecs);
                 msgpropCount++;
             }
 
-            if (msgExpiryText != null)
+            if (msgexpiryText != null)
             {
-                msg["ExpiryText"] = ExpressionConverter.ConvertO(msgExpiryText);
+                msg["ExpiryText"] = ExpressionConverter.ConvertO(msgexpiryText);
                 msgpropCount++;
             }
 
@@ -701,55 +701,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 msgpropCount++;
             }
 
-            if (msgCallback != null)
+            if (msgcallback != null)
             {
-                msg["Callback"] = ExpressionConverter.ConvertO(msgCallback);
+                msg["Callback"] = ExpressionConverter.ConvertO(msgcallback);
                 msgpropCount++;
             }
 
-            if (msgBody != null)
+            if (msgbody != null)
             {
-                msg["Body"] = ExpressionConverter.ConvertO(msgBody);
+                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
                 msgpropCount++;
             }
 
-            if (msgImage != null)
+            if (msgimage != null)
             {
-                msg["Image"] = ExpressionConverter.ConvertO(msgImage);
+                msg["Image"] = ExpressionConverter.ConvertO(msgimage);
                 msgpropCount++;
             }
 
-            if (msgButtonAction != null)
+            if (msgbuttonAction != null)
             {
-                msg["ButtonAction"] = ExpressionConverter.ConvertO(msgButtonAction);
+                msg["ButtonAction"] = ExpressionConverter.ConvertO(msgbuttonAction);
                 msgpropCount++;
             }
 
-            if (msgButtonCaption != null)
+            if (msgbuttonCaption != null)
             {
-                msg["ButtonCaption"] = ExpressionConverter.ConvertO(msgButtonCaption);
+                msg["ButtonCaption"] = ExpressionConverter.ConvertO(msgbuttonCaption);
                 msgpropCount++;
             }
 
-            var ExtraPropertiesObject = new JObject();
-            var ExtraPropertiesObjectpropCount = 0;
-            if (ExtraPropertiesObjectpropCount > 0)
+            var extraPropertiesObject = new JObject();
+            var extraPropertiesObjectpropCount = 0;
+            if (extraPropertiesObjectpropCount > 0)
             {
-                msg["ExtraProperties"] = ExtraPropertiesObject;
+                msg["ExtraProperties"] = extraPropertiesObject;
                 msgpropCount++;
             }
 
-            var SMSFallbackObject = new JObject();
-            var SMSFallbackObjectpropCount = 0;
-            if (msgSMSFallbackSMSText != null)
+            var sMSFallbackObject = new JObject();
+            var sMSFallbackObjectpropCount = 0;
+            if (msgsMSFallbacksMSText != null)
             {
-                SMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(msgSMSFallbackSMSText);
-                SMSFallbackObjectpropCount++;
+                sMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(msgsMSFallbacksMSText);
+                sMSFallbackObjectpropCount++;
             }
 
-            if (SMSFallbackObjectpropCount > 0)
+            if (sMSFallbackObjectpropCount > 0)
             {
-                msg["SMSFallback"] = SMSFallbackObject;
+                msg["SMSFallback"] = sMSFallbackObject;
                 msgpropCount++;
             }
 
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestCode, Expression<Func<string>> rFARequestRequestedBy, Expression<Func<bool>> rFARequestIsExternal, Expression<Func<rFARequestPriorityInput>> rFARequestPriority = null, Expression<Func<string>> rFARequestRequestClass = null, Expression<Func<string>> rFARequestRequestCategory = null, Expression<Func<double>> rFARequestNumericValue = null, Expression<Func<string>> rFARequestTitle = null, Expression<Func<string[]>> rFARequestRecipientUsers = null, Expression<Func<string[]>> rFARequestRecipientGroups = null, Expression<Func<string>> rFARequestRecipienteMail = null, Expression<Func<string>> rFARequestRecipientPhone = null, Expression<Func<string>> rFARequestRequestedOnUTC = null, Expression<Func<string>> rFARequestExpiresOnUTC = null, Expression<Func<string>> rFARequestTriggeredOn = null)
+        public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
         {
             var apiCallPath = "/api/collaboration/CreateRFARequest/";
             var apiCallHttpMethod = "post";
@@ -772,80 +772,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             rFARequestpropCount++;
             rFARequest["id"] = ExpressionConverter.ConvertO(rFARequestid);
             rFARequestpropCount++;
-            rFARequest["Code"] = ExpressionConverter.ConvertO(rFARequestCode);
+            rFARequest["Code"] = ExpressionConverter.ConvertO(rFARequestcode);
             rFARequestpropCount++;
-            rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(rFARequestRequestedBy);
-            if (rFARequestPriority != null)
+            rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(rFARequestrequestedBy);
+            if (rFARequestpriority != null)
             {
-                rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestPriority);
+                rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestpriority);
                 rFARequestpropCount++;
             }
 
             rFARequestpropCount++;
-            rFARequest["IsExternal"] = ExpressionConverter.ConvertO(rFARequestIsExternal);
-            if (rFARequestRequestClass != null)
+            rFARequest["IsExternal"] = ExpressionConverter.ConvertO(rFARequestisExternal);
+            if (rFARequestrequestClass != null)
             {
-                rFARequest["RequestClass"] = ExpressionConverter.ConvertO(rFARequestRequestClass);
+                rFARequest["RequestClass"] = ExpressionConverter.ConvertO(rFARequestrequestClass);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRequestCategory != null)
+            if (rFARequestrequestCategory != null)
             {
-                rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(rFARequestRequestCategory);
+                rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(rFARequestrequestCategory);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestNumericValue != null)
+            if (rFARequestnumericValue != null)
             {
-                rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestNumericValue);
+                rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestnumericValue);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestTitle != null)
+            if (rFARequesttitle != null)
             {
-                rFARequest["Title"] = ExpressionConverter.ConvertO(rFARequestTitle);
+                rFARequest["Title"] = ExpressionConverter.ConvertO(rFARequesttitle);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRecipientUsers != null)
+            if (rFARequestrecipientUsers != null)
             {
-                rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(rFARequestRecipientUsers);
+                rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(rFARequestrecipientUsers);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRecipientGroups != null)
+            if (rFARequestrecipientGroups != null)
             {
-                rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(rFARequestRecipientGroups);
+                rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(rFARequestrecipientGroups);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRecipienteMail != null)
+            if (rFARequestrecipienteMail != null)
             {
-                rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(rFARequestRecipienteMail);
+                rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(rFARequestrecipienteMail);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRecipientPhone != null)
+            if (rFARequestrecipientPhone != null)
             {
-                rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(rFARequestRecipientPhone);
+                rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(rFARequestrecipientPhone);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestRequestedOnUTC != null)
+            if (rFARequestrequestedOnUTC != null)
             {
-                rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(rFARequestRequestedOnUTC);
+                rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(rFARequestrequestedOnUTC);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestExpiresOnUTC != null)
+            if (rFARequestexpiresOnUTC != null)
             {
-                rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(rFARequestExpiresOnUTC);
+                rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(rFARequestexpiresOnUTC);
                 rFARequestpropCount++;
             }
 
-            if (rFARequestTriggeredOn != null)
+            if (rFARequesttriggeredOn != null)
             {
-                rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(rFARequestTriggeredOn);
+                rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(rFARequesttriggeredOn);
                 rFARequestpropCount++;
             }
 
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponseCode, Expression<Func<string>> rFAResponseResponseBy, Expression<Func<string>> rFAResponseResponseOrigin, Expression<Func<string>> rFAResponseResponseOnUTC, Expression<Func<string>> rFAResponseResponseComments = null)
+        public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
         {
             var apiCallPath = "/api/collaboration/RespondToRFARequest/";
             var apiCallHttpMethod = "post";
@@ -868,19 +868,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             rFAResponsepropCount++;
             rFAResponse["id"] = ExpressionConverter.ConvertO(rFAResponseid);
             rFAResponsepropCount++;
-            rFAResponse["Code"] = ExpressionConverter.ConvertO(rFAResponseCode);
-            if (rFAResponseResponseComments != null)
+            rFAResponse["Code"] = ExpressionConverter.ConvertO(rFAResponsecode);
+            if (rFAResponseresponseComments != null)
             {
-                rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(rFAResponseResponseComments);
+                rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(rFAResponseresponseComments);
                 rFAResponsepropCount++;
             }
 
             rFAResponsepropCount++;
-            rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(rFAResponseResponseBy);
+            rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(rFAResponseresponseBy);
             rFAResponsepropCount++;
-            rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(rFAResponseResponseOrigin);
+            rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(rFAResponseresponseOrigin);
             rFAResponsepropCount++;
-            rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(rFAResponseResponseOnUTC);
+            rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(rFAResponseresponseOnUTC);
             if (rFAResponsepropCount > 0)
             {
                 callPayload.Body = rFAResponse;
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsSelectFields = null, Expression<Func<string[]>> fetchOptionsOrderByFields = null, Expression<Func<int>> fetchOptionsPage = null, Expression<Func<int>> fetchOptionsPageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
             var apiCallPath = "/api/esentity/EntitiesByID/";
             var apiCallHttpMethod = "post";
@@ -1040,35 +1040,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
             var fetchOptions = new JObject();
             var fetchOptionspropCount = 0;
-            if (fetchOptionsSelectFields != null)
+            if (fetchOptionsselectFields != null)
             {
-                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsSelectFields);
+                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsOrderByFields != null)
+            if (fetchOptionsorderByFields != null)
             {
-                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsOrderByFields);
+                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
                 fetchOptionspropCount++;
             }
 
-            var ParamsObject = new JObject();
-            var ParamsObjectpropCount = 0;
-            if (ParamsObjectpropCount > 0)
+            var paramsObject = new JObject();
+            var paramsObjectpropCount = 0;
+            if (paramsObjectpropCount > 0)
             {
-                fetchOptions["Params"] = ParamsObject;
+                fetchOptions["Params"] = paramsObject;
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsPage != null)
+            if (fetchOptionspage != null)
             {
-                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionsPage);
+                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsPageSize != null)
+            if (fetchOptionspageSize != null)
             {
-                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionsPageSize);
+                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
                 fetchOptionspropCount++;
             }
 
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsSelectFields = null, Expression<Func<string[]>> fetchOptionsOrderByFields = null, Expression<Func<int>> fetchOptionsPage = null, Expression<Func<int>> fetchOptionsPageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
             var apiCallPath = "/api/esentity/EntitiesByType/";
             var apiCallHttpMethod = "post";
@@ -1089,35 +1089,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
             var fetchOptions = new JObject();
             var fetchOptionspropCount = 0;
-            if (fetchOptionsSelectFields != null)
+            if (fetchOptionsselectFields != null)
             {
-                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsSelectFields);
+                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsOrderByFields != null)
+            if (fetchOptionsorderByFields != null)
             {
-                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsOrderByFields);
+                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
                 fetchOptionspropCount++;
             }
 
-            var ParamsObject = new JObject();
-            var ParamsObjectpropCount = 0;
-            if (ParamsObjectpropCount > 0)
+            var paramsObject = new JObject();
+            var paramsObjectpropCount = 0;
+            if (paramsObjectpropCount > 0)
             {
-                fetchOptions["Params"] = ParamsObject;
+                fetchOptions["Params"] = paramsObject;
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsPage != null)
+            if (fetchOptionspage != null)
             {
-                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionsPage);
+                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
                 fetchOptionspropCount++;
             }
 
-            if (fetchOptionsPageSize != null)
+            if (fetchOptionspageSize != null)
             {
-                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionsPageSize);
+                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
                 fetchOptionspropCount++;
             }
 
@@ -1680,82 +1680,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandScrollerID, Expression<Func<string>> eSScrollerCommandCommandID, Expression<Func<string>> eSScrollerCommandScrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandRequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandOnlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandReturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandReturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandReturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
         {
             var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var eSScrollerCommand = new JObject();
             var eSScrollerCommandpropCount = 0;
-            var ScrollerParamsObject = new JObject();
-            var ScrollerParamsObjectpropCount = 0;
-            if (ScrollerParamsObjectpropCount > 0)
+            var scrollerParamsObject = new JObject();
+            var scrollerParamsObjectpropCount = 0;
+            if (scrollerParamsObjectpropCount > 0)
             {
-                eSScrollerCommand["ScrollerParams"] = ScrollerParamsObject;
+                eSScrollerCommand["ScrollerParams"] = scrollerParamsObject;
                 eSScrollerCommandpropCount++;
             }
 
-            var ScrollerDatasetObject = new JObject();
-            var ScrollerDatasetObjectpropCount = 0;
-            if (ScrollerDatasetObjectpropCount > 0)
+            var scrollerDatasetObject = new JObject();
+            var scrollerDatasetObjectpropCount = 0;
+            if (scrollerDatasetObjectpropCount > 0)
             {
-                eSScrollerCommand["ScrollerDataset"] = ScrollerDatasetObject;
+                eSScrollerCommand["ScrollerDataset"] = scrollerDatasetObject;
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandScrollerDatasetJson != null)
+            if (eSScrollerCommandscrollerDatasetJson != null)
             {
-                eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(eSScrollerCommandScrollerDatasetJson);
+                eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerDatasetJson);
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandRequiresTransaction != null)
+            if (eSScrollerCommandrequiresTransaction != null)
             {
-                eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(eSScrollerCommandRequiresTransaction);
+                eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(eSScrollerCommandrequiresTransaction);
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandOnlyPrepareTargetDatasets != null)
+            if (eSScrollerCommandonlyPrepareTargetDatasets != null)
             {
-                eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandOnlyPrepareTargetDatasets);
+                eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandonlyPrepareTargetDatasets);
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandReturnTargetDatasets != null)
+            if (eSScrollerCommandreturnTargetDatasets != null)
             {
-                eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandReturnTargetDatasets);
+                eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnTargetDatasets);
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandReturnScrollerDataset != null)
+            if (eSScrollerCommandreturnScrollerDataset != null)
             {
-                eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(eSScrollerCommandReturnScrollerDataset);
+                eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnScrollerDataset);
                 eSScrollerCommandpropCount++;
             }
 
-            if (eSScrollerCommandReturnEntersoftDatasets != null)
+            if (eSScrollerCommandreturnEntersoftDatasets != null)
             {
-                eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandReturnEntersoftDatasets);
+                eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnEntersoftDatasets);
                 eSScrollerCommandpropCount++;
             }
 
             eSScrollerCommandpropCount++;
-            eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(eSScrollerCommandScrollerID);
+            eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerID);
             eSScrollerCommandpropCount++;
-            eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(eSScrollerCommandCommandID);
-            var CommandParamsObject = new JObject();
-            var CommandParamsObjectpropCount = 0;
-            if (CommandParamsObjectpropCount > 0)
+            eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(eSScrollerCommandcommandID);
+            var commandParamsObject = new JObject();
+            var commandParamsObjectpropCount = 0;
+            if (commandParamsObjectpropCount > 0)
             {
-                eSScrollerCommand["CommandParams"] = CommandParamsObject;
+                eSScrollerCommand["CommandParams"] = commandParamsObject;
                 eSScrollerCommandpropCount++;
             }
 
-            var UnboundVariablesObject = new JObject();
-            var UnboundVariablesObjectpropCount = 0;
-            if (UnboundVariablesObjectpropCount > 0)
+            var unboundVariablesObject = new JObject();
+            var unboundVariablesObjectpropCount = 0;
+            if (unboundVariablesObjectpropCount > 0)
             {
-                eSScrollerCommand["UnboundVariables"] = UnboundVariablesObject;
+                eSScrollerCommand["UnboundVariables"] = unboundVariablesObject;
                 eSScrollerCommandpropCount++;
             }
 
@@ -1768,7 +1768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInScrollerID, Expression<Func<string>> eSCommandInCommandID)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
         {
             var apiCallPath = "/api/rpc/ExecuteCommand/";
             var apiCallHttpMethod = "post";
@@ -1776,22 +1776,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var eSCommandIn = new JObject();
             var eSCommandInpropCount = 0;
             eSCommandInpropCount++;
-            eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(eSCommandInScrollerID);
+            eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(eSCommandInscrollerID);
             eSCommandInpropCount++;
-            eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(eSCommandInCommandID);
-            var CommandParamsObject = new JObject();
-            var CommandParamsObjectpropCount = 0;
-            if (CommandParamsObjectpropCount > 0)
+            eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(eSCommandIncommandID);
+            var commandParamsObject = new JObject();
+            var commandParamsObjectpropCount = 0;
+            if (commandParamsObjectpropCount > 0)
             {
-                eSCommandIn["CommandParams"] = CommandParamsObject;
+                eSCommandIn["CommandParams"] = commandParamsObject;
                 eSCommandInpropCount++;
             }
 
-            var UnboundVariablesObject = new JObject();
-            var UnboundVariablesObjectpropCount = 0;
-            if (UnboundVariablesObjectpropCount > 0)
+            var unboundVariablesObject = new JObject();
+            var unboundVariablesObjectpropCount = 0;
+            if (unboundVariablesObjectpropCount > 0)
             {
-                eSCommandIn["UnboundVariables"] = UnboundVariablesObject;
+                eSCommandIn["UnboundVariables"] = unboundVariablesObject;
                 eSCommandInpropCount++;
             }
 
@@ -1804,140 +1804,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandEntityID = null, Expression<Func<string>> formCommandCommandID = null, Expression<Func<string>> formCommandEntityDatasetJson = null, Expression<Func<string>> formCommandEntityGID = null, Expression<Func<string[]>> formCommandEntityGIDs = null, Expression<Func<string>> formCommandEntityCode = null, Expression<Func<string[]>> formCommandEntityCodes = null, Expression<Func<string>> formCommandEntityScrollerID = null, Expression<Func<bool>> formCommandRequiresTransaction = null, Expression<Func<bool>> formCommandCreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandOnlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandReturnSourceDatasets = null, Expression<Func<bool>> formCommandReturnTargetDatasets = null, Expression<Func<bool>> formCommandReturnMap = null, Expression<Func<bool>> formCommandReturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
         {
             var apiCallPath = "/api/rpc/ExecuteFormCommand/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var formCommand = new JObject();
             var formCommandpropCount = 0;
-            if (formCommandEntityID != null)
+            if (formCommandentityID != null)
             {
-                formCommand["EntityID"] = ExpressionConverter.ConvertO(formCommandEntityID);
+                formCommand["EntityID"] = ExpressionConverter.ConvertO(formCommandentityID);
                 formCommandpropCount++;
             }
 
-            if (formCommandCommandID != null)
+            if (formCommandcommandID != null)
             {
-                formCommand["CommandID"] = ExpressionConverter.ConvertO(formCommandCommandID);
+                formCommand["CommandID"] = ExpressionConverter.ConvertO(formCommandcommandID);
                 formCommandpropCount++;
             }
 
-            var EntityDatasetObject = new JObject();
-            var EntityDatasetObjectpropCount = 0;
-            if (EntityDatasetObjectpropCount > 0)
+            var entityDatasetObject = new JObject();
+            var entityDatasetObjectpropCount = 0;
+            if (entityDatasetObjectpropCount > 0)
             {
-                formCommand["EntityDataset"] = EntityDatasetObject;
+                formCommand["EntityDataset"] = entityDatasetObject;
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityDatasetJson != null)
+            if (formCommandentityDatasetJson != null)
             {
-                formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(formCommandEntityDatasetJson);
+                formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(formCommandentityDatasetJson);
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityGID != null)
+            if (formCommandentityGID != null)
             {
-                formCommand["EntityGID"] = ExpressionConverter.ConvertO(formCommandEntityGID);
+                formCommand["EntityGID"] = ExpressionConverter.ConvertO(formCommandentityGID);
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityGIDs != null)
+            if (formCommandentityGIDs != null)
             {
-                formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(formCommandEntityGIDs);
+                formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(formCommandentityGIDs);
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityCode != null)
+            if (formCommandentityCode != null)
             {
-                formCommand["EntityCode"] = ExpressionConverter.ConvertO(formCommandEntityCode);
+                formCommand["EntityCode"] = ExpressionConverter.ConvertO(formCommandentityCode);
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityCodes != null)
+            if (formCommandentityCodes != null)
             {
-                formCommand["EntityCodes"] = ExpressionConverter.ConvertO(formCommandEntityCodes);
+                formCommand["EntityCodes"] = ExpressionConverter.ConvertO(formCommandentityCodes);
                 formCommandpropCount++;
             }
 
-            var EntityParamsObject = new JObject();
-            var EntityParamsObjectpropCount = 0;
-            if (EntityParamsObjectpropCount > 0)
+            var entityParamsObject = new JObject();
+            var entityParamsObjectpropCount = 0;
+            if (entityParamsObjectpropCount > 0)
             {
-                formCommand["EntityParams"] = EntityParamsObject;
+                formCommand["EntityParams"] = entityParamsObject;
                 formCommandpropCount++;
             }
 
-            if (formCommandEntityScrollerID != null)
+            if (formCommandentityScrollerID != null)
             {
-                formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(formCommandEntityScrollerID);
+                formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(formCommandentityScrollerID);
                 formCommandpropCount++;
             }
 
-            var EntityScrollerParamsObject = new JObject();
-            var EntityScrollerParamsObjectpropCount = 0;
-            if (EntityScrollerParamsObjectpropCount > 0)
+            var entityScrollerParamsObject = new JObject();
+            var entityScrollerParamsObjectpropCount = 0;
+            if (entityScrollerParamsObjectpropCount > 0)
             {
-                formCommand["EntityScrollerParams"] = EntityScrollerParamsObject;
+                formCommand["EntityScrollerParams"] = entityScrollerParamsObject;
                 formCommandpropCount++;
             }
 
-            if (formCommandRequiresTransaction != null)
+            if (formCommandrequiresTransaction != null)
             {
-                formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(formCommandRequiresTransaction);
+                formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(formCommandrequiresTransaction);
                 formCommandpropCount++;
             }
 
-            var CommandParamsObject = new JObject();
-            var CommandParamsObjectpropCount = 0;
-            if (CommandParamsObjectpropCount > 0)
+            var commandParamsObject = new JObject();
+            var commandParamsObjectpropCount = 0;
+            if (commandParamsObjectpropCount > 0)
             {
-                formCommand["CommandParams"] = CommandParamsObject;
+                formCommand["CommandParams"] = commandParamsObject;
                 formCommandpropCount++;
             }
 
-            var UnboundVariablesObject = new JObject();
-            var UnboundVariablesObjectpropCount = 0;
-            if (UnboundVariablesObjectpropCount > 0)
+            var unboundVariablesObject = new JObject();
+            var unboundVariablesObjectpropCount = 0;
+            if (unboundVariablesObjectpropCount > 0)
             {
-                formCommand["UnboundVariables"] = UnboundVariablesObject;
+                formCommand["UnboundVariables"] = unboundVariablesObject;
                 formCommandpropCount++;
             }
 
-            if (formCommandCreateNewEmptySourceEntity != null)
+            if (formCommandcreateNewEmptySourceEntity != null)
             {
-                formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(formCommandCreateNewEmptySourceEntity);
+                formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(formCommandcreateNewEmptySourceEntity);
                 formCommandpropCount++;
             }
 
-            if (formCommandOnlyPrepareTargetDatasets != null)
+            if (formCommandonlyPrepareTargetDatasets != null)
             {
-                formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(formCommandOnlyPrepareTargetDatasets);
+                formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(formCommandonlyPrepareTargetDatasets);
                 formCommandpropCount++;
             }
 
-            if (formCommandReturnSourceDatasets != null)
+            if (formCommandreturnSourceDatasets != null)
             {
-                formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(formCommandReturnSourceDatasets);
+                formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(formCommandreturnSourceDatasets);
                 formCommandpropCount++;
             }
 
-            if (formCommandReturnTargetDatasets != null)
+            if (formCommandreturnTargetDatasets != null)
             {
-                formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(formCommandReturnTargetDatasets);
+                formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(formCommandreturnTargetDatasets);
                 formCommandpropCount++;
             }
 
-            if (formCommandReturnMap != null)
+            if (formCommandreturnMap != null)
             {
-                formCommand["ReturnMap"] = ExpressionConverter.ConvertO(formCommandReturnMap);
+                formCommand["ReturnMap"] = ExpressionConverter.ConvertO(formCommandreturnMap);
                 formCommandpropCount++;
             }
 
-            if (formCommandReturnEntersoftDatasets != null)
+            if (formCommandreturnEntersoftDatasets != null)
             {
-                formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(formCommandReturnEntersoftDatasets);
+                formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(formCommandreturnEntersoftDatasets);
                 formCommandpropCount++;
             }
 
@@ -2150,7 +2150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationBusinessEventTypeInput>> registrationBusinessEventType, Expression<Func<string>> registrationContext = null, Expression<Func<double>> registrationValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/businesshook";
             var apiCallHttpMethod = "post";
@@ -2158,34 +2158,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var registration = new JObject();
             var registrationpropCount = 0;
             registrationpropCount++;
-            registration["BusinessEventType"] = ExpressionConverter.ConvertO(registrationBusinessEventType);
-            if (registrationContext != null)
+            registration["BusinessEventType"] = ExpressionConverter.ConvertO(registrationbusinessEventType);
+            if (registrationcontext != null)
             {
-                registration["Context"] = ExpressionConverter.ConvertO(registrationContext);
+                registration["Context"] = ExpressionConverter.ConvertO(registrationcontext);
                 registrationpropCount++;
             }
 
-            if (registrationValue != null)
+            if (registrationvalue != null)
             {
-                registration["Value"] = ExpressionConverter.ConvertO(registrationValue);
+                registration["Value"] = ExpressionConverter.ConvertO(registrationvalue);
                 registrationpropCount++;
             }
 
-            if (registrationExternalID != null)
+            if (registrationexternalID != null)
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationExternalID);
+                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
                 registrationpropCount++;
             }
 
-            if (registrationDescription != null)
+            if (registrationdescription != null)
             {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationDescription);
+                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
                 registrationpropCount++;
             }
 
-            if (registrationIsActive != null)
+            if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationIsActive);
+                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
                 registrationpropCount++;
             }
 
@@ -2199,64 +2199,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationStateInput>> registrationState = null, Expression<Func<registrationPackageTypeInput>> registrationPackageType = null, Expression<Func<string>> registrationConveyanceLicencePlate = null, Expression<Func<string>> registrationBranchID = null, Expression<Func<string>> registrationTradeAccountName = null, Expression<Func<string>> registrationDriverCode = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/podhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var registration = new JObject();
             var registrationpropCount = 0;
-            if (registrationState != null)
+            if (registrationstate != null)
             {
-                registration["State"] = ExpressionConverter.ConvertO(registrationState);
+                registration["State"] = ExpressionConverter.ConvertO(registrationstate);
                 registrationpropCount++;
             }
 
-            if (registrationPackageType != null)
+            if (registrationpackageType != null)
             {
-                registration["PackageType"] = ExpressionConverter.ConvertO(registrationPackageType);
+                registration["PackageType"] = ExpressionConverter.ConvertO(registrationpackageType);
                 registrationpropCount++;
             }
 
-            if (registrationConveyanceLicencePlate != null)
+            if (registrationconveyanceLicencePlate != null)
             {
-                registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(registrationConveyanceLicencePlate);
+                registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(registrationconveyanceLicencePlate);
                 registrationpropCount++;
             }
 
-            if (registrationBranchID != null)
+            if (registrationbranchID != null)
             {
-                registration["BranchID"] = ExpressionConverter.ConvertO(registrationBranchID);
+                registration["BranchID"] = ExpressionConverter.ConvertO(registrationbranchID);
                 registrationpropCount++;
             }
 
-            if (registrationTradeAccountName != null)
+            if (registrationtradeAccountName != null)
             {
-                registration["TradeAccountName"] = ExpressionConverter.ConvertO(registrationTradeAccountName);
+                registration["TradeAccountName"] = ExpressionConverter.ConvertO(registrationtradeAccountName);
                 registrationpropCount++;
             }
 
-            if (registrationDriverCode != null)
+            if (registrationdriverCode != null)
             {
-                registration["DriverCode"] = ExpressionConverter.ConvertO(registrationDriverCode);
+                registration["DriverCode"] = ExpressionConverter.ConvertO(registrationdriverCode);
                 registrationpropCount++;
             }
 
-            if (registrationExternalID != null)
+            if (registrationexternalID != null)
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationExternalID);
+                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
                 registrationpropCount++;
             }
 
-            if (registrationDescription != null)
+            if (registrationdescription != null)
             {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationDescription);
+                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
                 registrationpropCount++;
             }
 
-            if (registrationIsActive != null)
+            if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationIsActive);
+                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
                 registrationpropCount++;
             }
 
@@ -2270,58 +2270,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationRequestedBy = null, Expression<Func<registrationPriorityInput>> registrationPriority = null, Expression<Func<string>> registrationRequestClass = null, Expression<Func<string>> registrationRequestCategory = null, Expression<Func<double>> registrationNumericValue = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/rfahook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var registration = new JObject();
             var registrationpropCount = 0;
-            if (registrationRequestedBy != null)
+            if (registrationrequestedBy != null)
             {
-                registration["RequestedBy"] = ExpressionConverter.ConvertO(registrationRequestedBy);
+                registration["RequestedBy"] = ExpressionConverter.ConvertO(registrationrequestedBy);
                 registrationpropCount++;
             }
 
-            if (registrationPriority != null)
+            if (registrationpriority != null)
             {
-                registration["Priority"] = ExpressionConverter.ConvertO(registrationPriority);
+                registration["Priority"] = ExpressionConverter.ConvertO(registrationpriority);
                 registrationpropCount++;
             }
 
-            if (registrationRequestClass != null)
+            if (registrationrequestClass != null)
             {
-                registration["RequestClass"] = ExpressionConverter.ConvertO(registrationRequestClass);
+                registration["RequestClass"] = ExpressionConverter.ConvertO(registrationrequestClass);
                 registrationpropCount++;
             }
 
-            if (registrationRequestCategory != null)
+            if (registrationrequestCategory != null)
             {
-                registration["RequestCategory"] = ExpressionConverter.ConvertO(registrationRequestCategory);
+                registration["RequestCategory"] = ExpressionConverter.ConvertO(registrationrequestCategory);
                 registrationpropCount++;
             }
 
-            if (registrationNumericValue != null)
+            if (registrationnumericValue != null)
             {
-                registration["NumericValue"] = ExpressionConverter.ConvertO(registrationNumericValue);
+                registration["NumericValue"] = ExpressionConverter.ConvertO(registrationnumericValue);
                 registrationpropCount++;
             }
 
-            if (registrationExternalID != null)
+            if (registrationexternalID != null)
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationExternalID);
+                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
                 registrationpropCount++;
             }
 
-            if (registrationDescription != null)
+            if (registrationdescription != null)
             {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationDescription);
+                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
                 registrationpropCount++;
             }
 
-            if (registrationIsActive != null)
+            if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationIsActive);
+                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
                 registrationpropCount++;
             }
 
@@ -2335,7 +2335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationEntityTypeInput>> registrationEntityType, Expression<Func<registrationEventTypeInput>> registrationEventType, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/hook";
             var apiCallHttpMethod = "post";
@@ -2343,24 +2343,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var registration = new JObject();
             var registrationpropCount = 0;
             registrationpropCount++;
-            registration["EntityType"] = ExpressionConverter.ConvertO(registrationEntityType);
+            registration["EntityType"] = ExpressionConverter.ConvertO(registrationentityType);
             registrationpropCount++;
-            registration["EventType"] = ExpressionConverter.ConvertO(registrationEventType);
-            if (registrationExternalID != null)
+            registration["EventType"] = ExpressionConverter.ConvertO(registrationeventType);
+            if (registrationexternalID != null)
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationExternalID);
+                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
                 registrationpropCount++;
             }
 
-            if (registrationDescription != null)
+            if (registrationdescription != null)
             {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationDescription);
+                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
                 registrationpropCount++;
             }
 
-            if (registrationIsActive != null)
+            if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationIsActive);
+                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
                 registrationpropCount++;
             }
 
@@ -2374,7 +2374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationSystemEventTypeInputItem[]>> registrationSystemEventType, Expression<Func<string>> registrationOtherEvent = null, Expression<Func<string>> registrationExternalID = null, Expression<Func<string>> registrationDescription = null, Expression<Func<bool>> registrationIsActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/systemhook";
             var apiCallHttpMethod = "post";
@@ -2382,28 +2382,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var registration = new JObject();
             var registrationpropCount = 0;
             registrationpropCount++;
-            registration["SystemEventType"] = ExpressionConverter.ConvertO(registrationSystemEventType);
-            if (registrationOtherEvent != null)
+            registration["SystemEventType"] = ExpressionConverter.ConvertO(registrationsystemEventType);
+            if (registrationotherEvent != null)
             {
-                registration["OtherEvent"] = ExpressionConverter.ConvertO(registrationOtherEvent);
+                registration["OtherEvent"] = ExpressionConverter.ConvertO(registrationotherEvent);
                 registrationpropCount++;
             }
 
-            if (registrationExternalID != null)
+            if (registrationexternalID != null)
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationExternalID);
+                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
                 registrationpropCount++;
             }
 
-            if (registrationDescription != null)
+            if (registrationdescription != null)
             {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationDescription);
+                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
                 registrationpropCount++;
             }
 
-            if (registrationIsActive != null)
+            if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationIsActive);
+                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
                 registrationpropCount++;
             }
 
@@ -2614,7 +2614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken[] Message { get; set; }
     }
 
-    public enum rFARequestPriorityInput
+    public enum rFARequestpriorityInput
     {
         Low,
         Normal,
@@ -15390,7 +15390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
-    public enum registrationBusinessEventTypeInput
+    public enum registrationbusinessEventTypeInput
     {
         HighValueSalesOrder,
         HighValuePurchaseOrder,
@@ -15413,7 +15413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
-    public enum registrationStateInput
+    public enum registrationstateInput
     {
         Initial,
         Arrived,
@@ -15423,7 +15423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
-    public enum registrationPackageTypeInput
+    public enum registrationpackageTypeInput
     {
         MasterPackage,
         Package,
@@ -15433,14 +15433,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
-    public enum registrationPriorityInput
+    public enum registrationpriorityInput
     {
         Low,
         Normal,
         High
     }
 
-    public enum registrationEntityTypeInput
+    public enum registrationentityTypeInput
     {
         ES00Device,
         ES00List,
@@ -15686,7 +15686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESWPWorkPackage
     }
 
-    public enum registrationEventTypeInput
+    public enum registrationeventTypeInput
     {
         Create,
         Update,
@@ -15694,7 +15694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
-    public enum registrationSystemEventTypeInputItem
+    public enum registrationsystemEventTypeInputItem
     {
         RestartAppServer,
         UpgradeStart,

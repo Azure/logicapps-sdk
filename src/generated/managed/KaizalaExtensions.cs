@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestSubGroups)
+        public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var request = new JObject();
             var requestpropCount = 0;
             requestpropCount++;
-            request["SubGroups"] = ExpressionConverter.ConvertO(requestSubGroups);
+            request["SubGroups"] = ExpressionConverter.ConvertO(requestsubGroups);
             if (requestpropCount > 0)
             {
                 callPayload.Body = request;

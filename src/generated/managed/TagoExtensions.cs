@@ -85,6 +85,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
+        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/prod/flow";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["device"] = ExpressionConverter.Convert(device);
+            callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
+            callPayload.Queries["condition"] = ExpressionConverter.Convert(condition);
+            if (value != null)
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var configObject = new JObject();
+            var configObjectpropCount = 0;
+            configObject["callback"] = "@listCallbackUrl()";
+            configObjectpropCount++;
+            if (configObjectpropCount > 0)
+            {
+                body["config"] = configObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionTrigger<PostDataResponse>(callPayload, triggerName, recurrence);
+        }
     }
 
     public enum queryInput
@@ -1779,6 +1808,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         GMT1400PacificKiritimati,
         [EnumMember(Value = "(GMT+14:00) Pacific/Apia")]
         GMT1400PacificApia
+    }
+
+    public enum conditionInput
+    {
+        Any,
+        [EnumMember(Value = "Greater than")]
+        GreaterThan,
+        [EnumMember(Value = "Less than")]
+        LessThan,
+        [EnumMember(Value = "Equal to")]
+        EqualTo,
+        [EnumMember(Value = "Different from")]
+        DifferentFrom
     }
 }
 

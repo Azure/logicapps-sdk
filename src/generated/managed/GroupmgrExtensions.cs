@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     public class GroupmgrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval(Expression<Func<string>> bodyListItemId, Expression<Func<bodyApprovedInput>> bodyApproved)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval(Expression<Func<string>> bodylistItemId, Expression<Func<bodyapprovedInput>> bodyapproved)
         {
             var apiCallPath = "/api/ConfimationTrigger";
             var apiCallHttpMethod = "post";
@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodyListItemId);
+            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
             bodypropCount++;
-            body["Approved"] = ExpressionConverter.ConvertO(bodyApproved);
+            body["Approved"] = ExpressionConverter.ConvertO(bodyapproved);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup(Expression<Func<string>> bodyDisplayName, Expression<Func<string>> bodyEmail, Expression<Func<string[]>> bodyOwners, Expression<Func<string[]>> bodyMembers = null, Expression<Func<string>> bodyGroupType = null, Expression<Func<bodyIsPublicInput>> bodyIsPublic = null, Expression<Func<bool>> bodyCreateTeam = null, Expression<Func<string>> bodyDescription = null, Expression<Func<string>> bodyCreatedBy = null)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyowners, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycreatedBy = null)
         {
             var apiCallPath = "/api/GroupBuilderTrigger";
             var apiCallHttpMethod = "post";
@@ -40,44 +40,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["DisplayName"] = ExpressionConverter.ConvertO(bodyDisplayName);
+            body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
             bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
             bodypropCount++;
-            body["Owners"] = ExpressionConverter.ConvertO(bodyOwners);
-            if (bodyMembers != null)
+            body["Owners"] = ExpressionConverter.ConvertO(bodyowners);
+            if (bodymembers != null)
             {
-                body["Members"] = ExpressionConverter.ConvertO(bodyMembers);
+                body["Members"] = ExpressionConverter.ConvertO(bodymembers);
                 bodypropCount++;
             }
 
-            if (bodyGroupType != null)
+            if (bodygroupType != null)
             {
-                body["GroupType"] = ExpressionConverter.ConvertO(bodyGroupType);
+                body["GroupType"] = ExpressionConverter.ConvertO(bodygroupType);
                 bodypropCount++;
             }
 
-            if (bodyIsPublic != null)
+            if (bodyisPublic != null)
             {
-                body["IsPublic"] = ExpressionConverter.ConvertO(bodyIsPublic);
+                body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
                 bodypropCount++;
             }
 
-            if (bodyCreateTeam != null)
+            if (bodycreateTeam != null)
             {
-                body["CreateTeam"] = ExpressionConverter.ConvertO(bodyCreateTeam);
+                body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
-            if (bodyCreatedBy != null)
+            if (bodycreatedBy != null)
             {
-                body["CreatedBy"] = ExpressionConverter.ConvertO(bodyCreatedBy);
+                body["CreatedBy"] = ExpressionConverter.ConvertO(bodycreatedBy);
                 bodypropCount++;
             }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup(Expression<Func<string>> bodyGroupId, Expression<Func<string>> bodyDisplayName = null, Expression<Func<string[]>> bodyOwners = null, Expression<Func<string[]>> bodyMembers = null, Expression<Func<string>> bodyGroupType = null, Expression<Func<bodyIsPublicInput>> bodyIsPublic = null, Expression<Func<bool>> bodyCreateTeam = null, Expression<Func<string>> bodyDescription = null)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodyowners = null, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null)
         {
             var apiCallPath = "/api/GroupBuilderTrigger";
             var apiCallHttpMethod = "put";
@@ -98,46 +98,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["GroupId"] = ExpressionConverter.ConvertO(bodyGroupId);
-            if (bodyDisplayName != null)
+            body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
+            if (bodydisplayName != null)
             {
-                body["DisplayName"] = ExpressionConverter.ConvertO(bodyDisplayName);
+                body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
                 bodypropCount++;
             }
 
-            if (bodyOwners != null)
+            if (bodyowners != null)
             {
-                body["Owners"] = ExpressionConverter.ConvertO(bodyOwners);
+                body["Owners"] = ExpressionConverter.ConvertO(bodyowners);
                 bodypropCount++;
             }
 
-            if (bodyMembers != null)
+            if (bodymembers != null)
             {
-                body["Members"] = ExpressionConverter.ConvertO(bodyMembers);
+                body["Members"] = ExpressionConverter.ConvertO(bodymembers);
                 bodypropCount++;
             }
 
-            if (bodyGroupType != null)
+            if (bodygroupType != null)
             {
-                body["GroupType"] = ExpressionConverter.ConvertO(bodyGroupType);
+                body["GroupType"] = ExpressionConverter.ConvertO(bodygroupType);
                 bodypropCount++;
             }
 
-            if (bodyIsPublic != null)
+            if (bodyisPublic != null)
             {
-                body["IsPublic"] = ExpressionConverter.ConvertO(bodyIsPublic);
+                body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
                 bodypropCount++;
             }
 
-            if (bodyCreateTeam != null)
+            if (bodycreateTeam != null)
             {
-                body["CreateTeam"] = ExpressionConverter.ConvertO(bodyCreateTeam);
+                body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
                 bodypropCount++;
             }
 
-            if (bodyDescription != null)
+            if (bodydescription != null)
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
+                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
             }
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrDeleteGroup(Expression<Func<string>> bodyListItemId)
+        public IWorkflowAction GroupMgrDeleteGroup(Expression<Func<string>> bodylistItemId)
         {
             var apiCallPath = "/api/GroupBuilderTrigger";
             var apiCallHttpMethod = "delete";
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodyListItemId);
+            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrArchiveGroup(Expression<Func<string>> bodyListItemId, Expression<Func<bodyArchiveInput>> bodyArchive)
+        public IWorkflowAction GroupMgrArchiveGroup(Expression<Func<string>> bodylistItemId, Expression<Func<bodyarchiveInput>> bodyarchive)
         {
             var apiCallPath = "/api/GroupBuilderTrigger";
             var apiCallHttpMethod = "patch";
@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["ListItemId"] = ExpressionConverter.ConvertO(bodyListItemId);
+            body["ListItemId"] = ExpressionConverter.ConvertO(bodylistItemId);
             bodypropCount++;
-            body["Archive"] = ExpressionConverter.ConvertO(bodyArchive);
+            body["Archive"] = ExpressionConverter.ConvertO(bodyarchive);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         public string CreatedBy { get; set; }
     }
 
-    public enum bodyApprovedInput
+    public enum bodyapprovedInput
     {
         [EnumMember(Value = "true")]
         Approve,
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Reject
     }
 
-    public enum bodyIsPublicInput
+    public enum bodyisPublicInput
     {
         [EnumMember(Value = "")]
         None,
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Private
     }
 
-    public enum bodyArchiveInput
+    public enum bodyarchiveInput
     {
         [EnumMember(Value = "true")]
         Archive,

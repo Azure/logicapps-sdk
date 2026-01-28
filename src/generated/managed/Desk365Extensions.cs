@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<string>> bodyEmail, Expression<Func<string>> bodyDescription, Expression<Func<string>> bodySubject, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyCategory = null, Expression<Func<bodyPriorityInput>> bodyPriority = null, Expression<Func<string>> bodyStatus = null, Expression<Func<bodyTypeInput>> bodyType = null)
+        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<string>> bodyemail, Expression<Func<string>> bodydescription, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycategory = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodytypeInput>> bodytype = null)
         {
             var apiCallPath = "/power_automate/tickets/create";
             var apiCallHttpMethod = "post";
@@ -57,39 +57,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             callPayload.Queries["src"] = Convert.ToString(2);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAgent != null)
+            if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyAgent);
+                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
                 bodypropCount++;
             }
 
-            if (bodyCategory != null)
+            if (bodycategory != null)
             {
-                body["Category"] = ExpressionConverter.ConvertO(bodyCategory);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
-            bodypropCount++;
-            body["Description"] = ExpressionConverter.ConvertO(bodyDescription);
-            if (bodyPriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
-                bodypropCount++;
-            }
-
-            if (bodyStatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["Subject"] = ExpressionConverter.ConvertO(bodySubject);
-            if (bodyType != null)
+            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+            bodypropCount++;
+            body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+            if (bodypriority != null)
             {
-                body["Type"] = ExpressionConverter.ConvertO(bodyType);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                bodypropCount++;
+            }
+
+            if (bodystatus != null)
+            {
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
+            if (bodytype != null)
+            {
+                body["Type"] = ExpressionConverter.ConvertO(bodytype);
                 bodypropCount++;
             }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodyContent, Expression<Func<string>> bodyAgentEmail = null, Expression<Func<string>> bodyNotifyAgent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null)
+        public IBodyWorkflowAction<AddNoteResponse> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
         {
             var apiCallPath = "/power_automate/tickets/add_note";
             var apiCallHttpMethod = "post";
@@ -171,22 +171,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Content"] = ExpressionConverter.ConvertO(bodyContent);
-            if (bodyAgentEmail != null)
+            body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+            if (bodyagentEmail != null)
             {
-                body["AgentEmail"] = ExpressionConverter.ConvertO(bodyAgentEmail);
+                body["AgentEmail"] = ExpressionConverter.ConvertO(bodyagentEmail);
                 bodypropCount++;
             }
 
-            if (bodyNotifyAgent != null)
+            if (bodynotifyAgent != null)
             {
-                body["NotifyAgent"] = ExpressionConverter.ConvertO(bodyNotifyAgent);
+                body["NotifyAgent"] = ExpressionConverter.ConvertO(bodynotifyAgent);
                 bodypropCount++;
             }
 
-            if (bodyPrivate != null)
+            if (bodyprivate != null)
             {
-                body["Private"] = ExpressionConverter.ConvertO(bodyPrivate);
+                body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
                 bodypropCount++;
             }
 
@@ -201,46 +201,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class Desk365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyContactEmail != null)
+            if (bodycontactEmail != null)
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodyContactEmail);
+                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
                 bodypropCount++;
             }
 
-            if (bodySubject != null)
+            if (bodysubject != null)
             {
-                body["Subject"] = ExpressionConverter.ConvertO(bodySubject);
+                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyAgent != null)
+            if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyAgent);
+                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
                 bodypropCount++;
             }
 
-            if (bodyGroup != null)
+            if (bodygroup != null)
             {
-                body["Group"] = ExpressionConverter.ConvertO(bodyGroup);
+                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
                 bodypropCount++;
             }
 
@@ -254,46 +254,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodyContactEmail = null, Expression<Func<string>> bodySubject = null, Expression<Func<string>> bodyStatus = null, Expression<Func<string>> bodyPriority = null, Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyGroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyContactEmail != null)
+            if (bodycontactEmail != null)
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodyContactEmail);
+                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
                 bodypropCount++;
             }
 
-            if (bodySubject != null)
+            if (bodysubject != null)
             {
-                body["Subject"] = ExpressionConverter.ConvertO(bodySubject);
+                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
                 bodypropCount++;
             }
 
-            if (bodyStatus != null)
+            if (bodystatus != null)
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodyStatus);
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
                 bodypropCount++;
             }
 
-            if (bodyPriority != null)
+            if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodyPriority);
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                 bodypropCount++;
             }
 
-            if (bodyAgent != null)
+            if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyAgent);
+                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
                 bodypropCount++;
             }
 
-            if (bodyGroup != null)
+            if (bodygroup != null)
             {
-                body["Group"] = ExpressionConverter.ConvertO(bodyGroup);
+                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
                 bodypropCount++;
             }
 
@@ -307,28 +307,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyAgent = null, Expression<Func<string>> bodyContent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/power_automate/tickets/add_note_webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyAgent != null)
+            if (bodyagent != null)
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyAgent);
+                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
                 bodypropCount++;
             }
 
-            if (bodyContent != null)
+            if (bodycontent != null)
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodyContent);
+                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
                 bodypropCount++;
             }
 
-            if (bodyPrivate != null)
+            if (bodyprivate != null)
             {
-                body["Private"] = ExpressionConverter.ConvertO(bodyPrivate);
+                body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
                 bodypropCount++;
             }
 
@@ -342,22 +342,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodyContent = null, Expression<Func<bodyResponseTypeInput>> bodyResponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/power_automate/tickets/add_reply_webhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyContent != null)
+            if (bodycontent != null)
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodyContent);
+                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
                 bodypropCount++;
             }
 
-            if (bodyResponseType != null)
+            if (bodyresponseType != null)
             {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyResponseType);
+                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
                 bodypropCount++;
             }
 
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
-    public enum bodyPriorityInput
+    public enum bodypriorityInput
     {
         Low,
         Medium,
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         Urgent
     }
 
-    public enum bodyTypeInput
+    public enum bodytypeInput
     {
         Question,
         Incident,
@@ -505,22 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string UpdatedOn { get; set; }
     }
 
-    public enum bodypriorityInput
-    {
-        Low,
-        Medium,
-        High,
-        Urgent
-    }
-
-    public enum bodytypeInput
-    {
-        Question,
-        Incident,
-        Problem,
-        Request
-    }
-
     public class AddNoteResponse
     {
         public int TicketNumber { get; set; }
@@ -533,13 +517,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Private { get; set; }
     }
 
-    public enum bodyPrivateInput
+    public enum bodyprivateInput
     {
         Yes,
         No
     }
 
-    public enum bodyResponseTypeInput
+    public enum bodyresponseTypeInput
     {
         Agent,
         Contact

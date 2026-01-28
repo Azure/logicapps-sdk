@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
     public class CandidatezipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyFileName, Expression<Func<string>> bodyFileContent)
+        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
             var apiCallPath = "/ParseResumeBinary-Standard";
             var apiCallHttpMethod = "post";
@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyFileName, Expression<Func<string>> bodyFileContent)
+        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
             var apiCallPath = "/ParseResumeBinary";
             var apiCallHttpMethod = "post";
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl(Expression<Func<string>> bodyUrl, Expression<Func<string>> bodyFileName)
+        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
             var apiCallPath = "/ParseResume";
             var apiCallHttpMethod = "post";
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyUrl);
+            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent(Expression<Func<string>> bodyFileName, Expression<Func<string>> bodyFileContent)
+        public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
             var apiCallPath = "/ParseJDBinary";
             var apiCallHttpMethod = "post";
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl(Expression<Func<string>> bodyUrl, Expression<Func<string>> bodyFileName)
+        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
             var apiCallPath = "/ParseResume-Standard";
             var apiCallHttpMethod = "post";
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyUrl);
+            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl(Expression<Func<string>> bodyUrl, Expression<Func<string>> bodyFileName)
+        public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
             var apiCallPath = "/ParseJD";
             var apiCallHttpMethod = "post";
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyUrl);
+            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyFileName, Expression<Func<string>> bodyFileContent)
+        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
             var apiCallPath = "/ParseResumeBinary-Basic";
             var apiCallHttpMethod = "post";
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyFileContent);
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl(Expression<Func<string>> bodyUrl, Expression<Func<string>> bodyFileName)
+        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
             var apiCallPath = "/ParseResume-Basic";
             var apiCallHttpMethod = "post";
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyUrl);
+            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
             bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyFileName);
+            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;

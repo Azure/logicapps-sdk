@@ -663,6 +663,144 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
+        public IBodyWorkflowAction<CreateArticleResponse> CreateArticle(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<bodyarticleTypeInput>> bodyarticleType, Expression<Func<string>> bodyhtmlContent, Expression<Func<string>> bodytag, Expression<Func<string>> bodymainImageUrl = null, Expression<Func<string>> bodysummary = null, Expression<Func<int>> bodychannelId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<string>> bodypublicationDetailspinFromDate = null, Expression<Func<int>> bodypublicationDetailspinDurationHours = null, Expression<Func<string>> bodypublicationDetailsscheduledDateTime = null, Expression<Func<bool>> bodypublicationDetailspublishImmediately = null, Expression<Func<int>> bodypublicationDetailspublishAsUserId = null)
+        {
+            var apiCallPath = "/public/comms/v1/Articles";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["title"] = ExpressionConverter.ConvertO(bodytitle);
+            bodypropCount++;
+            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+            bodypropCount++;
+            body["articleType"] = ExpressionConverter.ConvertO(bodyarticleType);
+            bodypropCount++;
+            body["htmlContent"] = ExpressionConverter.ConvertO(bodyhtmlContent);
+            if (bodymainImageUrl != null)
+            {
+                body["mainImageUrl"] = ExpressionConverter.ConvertO(bodymainImageUrl);
+                bodypropCount++;
+            }
+
+            if (bodysummary != null)
+            {
+                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["tag"] = ExpressionConverter.ConvertO(bodytag);
+            if (bodychannelId != null)
+            {
+                body["channelId"] = ExpressionConverter.ConvertO(bodychannelId);
+                bodypropCount++;
+            }
+
+            var contentSettingsObject = new JObject();
+            var contentSettingsObjectpropCount = 0;
+            if (bodycontentSettingspush != null)
+            {
+                contentSettingsObject["push"] = ExpressionConverter.ConvertO(bodycontentSettingspush);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingssms != null)
+            {
+                contentSettingsObject["sms"] = ExpressionConverter.ConvertO(bodycontentSettingssms);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsemail != null)
+            {
+                contentSettingsObject["email"] = ExpressionConverter.ConvertO(bodycontentSettingsemail);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsinApp != null)
+            {
+                contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(bodycontentSettingsinApp);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsteams != null)
+            {
+                contentSettingsObject["teams"] = ExpressionConverter.ConvertO(bodycontentSettingsteams);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsallowLikes != null)
+            {
+                contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(bodycontentSettingsallowLikes);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsallowComments != null)
+            {
+                contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowComments);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (bodycontentSettingsallowImagesInComments != null)
+            {
+                contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowImagesInComments);
+                contentSettingsObjectpropCount++;
+            }
+
+            if (contentSettingsObjectpropCount > 0)
+            {
+                body["contentSettings"] = contentSettingsObject;
+                bodypropCount++;
+            }
+
+            var publicationDetailsObject = new JObject();
+            var publicationDetailsObjectpropCount = 0;
+            if (bodypublicationDetailspinFromDate != null)
+            {
+                publicationDetailsObject["pinFromDate"] = ExpressionConverter.ConvertO(bodypublicationDetailspinFromDate);
+                publicationDetailsObjectpropCount++;
+            }
+
+            if (bodypublicationDetailspinDurationHours != null)
+            {
+                publicationDetailsObject["pinDurationHours"] = ExpressionConverter.ConvertO(bodypublicationDetailspinDurationHours);
+                publicationDetailsObjectpropCount++;
+            }
+
+            if (bodypublicationDetailsscheduledDateTime != null)
+            {
+                publicationDetailsObject["scheduledDateTime"] = ExpressionConverter.ConvertO(bodypublicationDetailsscheduledDateTime);
+                publicationDetailsObjectpropCount++;
+            }
+
+            if (bodypublicationDetailspublishImmediately != null)
+            {
+                publicationDetailsObject["publishImmediately"] = ExpressionConverter.ConvertO(bodypublicationDetailspublishImmediately);
+                publicationDetailsObjectpropCount++;
+            }
+
+            if (bodypublicationDetailspublishAsUserId != null)
+            {
+                publicationDetailsObject["publishAsUserId"] = ExpressionConverter.ConvertO(bodypublicationDetailspublishAsUserId);
+                publicationDetailsObjectpropCount++;
+            }
+
+            if (publicationDetailsObjectpropCount > 0)
+            {
+                body["publicationDetails"] = publicationDetailsObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateArticleResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateAlertResponse> CreateAlert(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodysummary = null, Expression<Func<bool>> bodyeveryone = null, Expression<Func<string>> bodyaudiencedepartmentTags = null, Expression<Func<string>> bodyaudiencepeopleTags = null, Expression<Func<string>> bodyaudiencegroupTags = null, Expression<Func<string>> bodyaudiencesiteTags = null, Expression<Func<bool>> bodycommunicationMethodspush = null, Expression<Func<bool>> bodycommunicationMethodssms = null, Expression<Func<bool>> bodycommunicationMethodsemail = null, Expression<Func<bool>> bodycommunicationMethodsinApp = null, Expression<Func<bool>> bodycommunicationMethodsteams = null)
         {
             var apiCallPath = "/public/comms/v1/Alerts";
@@ -1935,7 +2073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateAlertResponse
+    public class CreateArticleResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1947,6 +2085,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         Important,
         Highlight,
         Information
+    }
+
+    public enum bodyarticleTypeInput
+    {
+        Social,
+        Blog
+    }
+
+    public class CreateAlertResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
     }
 
     public class CreateTaskResponse

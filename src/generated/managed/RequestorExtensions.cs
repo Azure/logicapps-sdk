@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
     public class RequestorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
-        public IWorkflowAction CreateTicket(Expression<Func<int>> bodyType, Expression<Func<int>> bodyServiceId, Expression<Func<string>> bodySubject, Expression<Func<string>> bodyMessage, Expression<Func<string>> bodySubmitterEmail, Expression<Func<string>> bodySolverUserProviderKey = null)
+        public IWorkflowAction CreateTicket(Expression<Func<int>> bodytype, Expression<Func<int>> bodyserviceId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysubmitterEmail, Expression<Func<string>> bodysolverUserProviderKey = null)
         {
             var apiCallPath = "/api/Tickets/NewTicket";
             var apiCallHttpMethod = "post";
@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["Type"] = ExpressionConverter.ConvertO(bodyType);
+            body["Type"] = ExpressionConverter.ConvertO(bodytype);
             bodypropCount++;
-            body["ServiceId"] = ExpressionConverter.ConvertO(bodyServiceId);
+            body["ServiceId"] = ExpressionConverter.ConvertO(bodyserviceId);
             bodypropCount++;
-            body["Subject"] = ExpressionConverter.ConvertO(bodySubject);
+            body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
             bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodyMessage);
+            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
             bodypropCount++;
-            body["SubmitterEmail"] = ExpressionConverter.ConvertO(bodySubmitterEmail);
-            if (bodySolverUserProviderKey != null)
+            body["SubmitterEmail"] = ExpressionConverter.ConvertO(bodysubmitterEmail);
+            if (bodysolverUserProviderKey != null)
             {
-                body["SolverUserProviderKey"] = ExpressionConverter.ConvertO(bodySolverUserProviderKey);
+                body["SolverUserProviderKey"] = ExpressionConverter.ConvertO(bodysolverUserProviderKey);
                 bodypropCount++;
             }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
-        public IWorkflowAction CreateUser(Expression<Func<string>> bodyUserName, Expression<Func<bool>> bodyChangePasswordAfterLogging, Expression<Func<string>> bodyEmail = null, Expression<Func<string>> bodyPassword = null, Expression<Func<bool>> bodyRoleEndUser = null, Expression<Func<bool>> bodyRoleSmartUser = null, Expression<Func<bool>> bodyRoleOperator = null, Expression<Func<bool>> bodyRoleSuperOperator = null, Expression<Func<bool>> bodyRoleAdministrator = null, Expression<Func<string>> bodyFirstName = null, Expression<Func<string>> bodyLastName = null, Expression<Func<string>> bodyMiddleName = null, Expression<Func<string>> bodyDisplayName = null, Expression<Func<string>> bodyPhone = null, Expression<Func<string>> bodyAdminNote = null, Expression<Func<string>> bodyAdditionalInformation = null, Expression<Func<string[]>> bodyCustomerNames = null)
+        public IWorkflowAction CreateUser(Expression<Func<string>> bodyuserName, Expression<Func<bool>> bodychangePasswordAfterLogging, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bool>> bodyroleEndUser = null, Expression<Func<bool>> bodyroleSmartUser = null, Expression<Func<bool>> bodyroleOperator = null, Expression<Func<bool>> bodyroleSuperOperator = null, Expression<Func<bool>> bodyroleAdministrator = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyadminNote = null, Expression<Func<string>> bodyadditionalInformation = null, Expression<Func<string[]>> bodycustomerNames = null)
         {
             var apiCallPath = "/api/Account/CreateRequestorUser";
             var apiCallHttpMethod = "post";
@@ -52,96 +52,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
-            body["UserName"] = ExpressionConverter.ConvertO(bodyUserName);
-            if (bodyEmail != null)
+            body["UserName"] = ExpressionConverter.ConvertO(bodyuserName);
+            if (bodyemail != null)
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyEmail);
+                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
                 bodypropCount++;
             }
 
-            if (bodyPassword != null)
+            if (bodypassword != null)
             {
-                body["Password"] = ExpressionConverter.ConvertO(bodyPassword);
+                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
                 bodypropCount++;
             }
 
-            if (bodyRoleEndUser != null)
+            if (bodyroleEndUser != null)
             {
-                body["RoleEndUser"] = ExpressionConverter.ConvertO(bodyRoleEndUser);
+                body["RoleEndUser"] = ExpressionConverter.ConvertO(bodyroleEndUser);
                 bodypropCount++;
             }
 
-            if (bodyRoleSmartUser != null)
+            if (bodyroleSmartUser != null)
             {
-                body["RoleSmartUser"] = ExpressionConverter.ConvertO(bodyRoleSmartUser);
+                body["RoleSmartUser"] = ExpressionConverter.ConvertO(bodyroleSmartUser);
                 bodypropCount++;
             }
 
-            if (bodyRoleOperator != null)
+            if (bodyroleOperator != null)
             {
-                body["RoleOperator"] = ExpressionConverter.ConvertO(bodyRoleOperator);
+                body["RoleOperator"] = ExpressionConverter.ConvertO(bodyroleOperator);
                 bodypropCount++;
             }
 
-            if (bodyRoleSuperOperator != null)
+            if (bodyroleSuperOperator != null)
             {
-                body["RoleSuperOperator"] = ExpressionConverter.ConvertO(bodyRoleSuperOperator);
+                body["RoleSuperOperator"] = ExpressionConverter.ConvertO(bodyroleSuperOperator);
                 bodypropCount++;
             }
 
-            if (bodyRoleAdministrator != null)
+            if (bodyroleAdministrator != null)
             {
-                body["RoleAdministrator"] = ExpressionConverter.ConvertO(bodyRoleAdministrator);
+                body["RoleAdministrator"] = ExpressionConverter.ConvertO(bodyroleAdministrator);
                 bodypropCount++;
             }
 
-            if (bodyFirstName != null)
+            if (bodyfirstName != null)
             {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyFirstName);
+                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
                 bodypropCount++;
             }
 
-            if (bodyLastName != null)
+            if (bodylastName != null)
             {
-                body["LastName"] = ExpressionConverter.ConvertO(bodyLastName);
+                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
                 bodypropCount++;
             }
 
-            if (bodyMiddleName != null)
+            if (bodymiddleName != null)
             {
-                body["MiddleName"] = ExpressionConverter.ConvertO(bodyMiddleName);
+                body["MiddleName"] = ExpressionConverter.ConvertO(bodymiddleName);
                 bodypropCount++;
             }
 
-            if (bodyDisplayName != null)
+            if (bodydisplayName != null)
             {
-                body["DisplayName"] = ExpressionConverter.ConvertO(bodyDisplayName);
+                body["DisplayName"] = ExpressionConverter.ConvertO(bodydisplayName);
                 bodypropCount++;
             }
 
-            if (bodyPhone != null)
+            if (bodyphone != null)
             {
-                body["Phone"] = ExpressionConverter.ConvertO(bodyPhone);
+                body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
                 bodypropCount++;
             }
 
             bodypropCount++;
-            body["ChangePasswordAfterLogging"] = ExpressionConverter.ConvertO(bodyChangePasswordAfterLogging);
-            if (bodyAdminNote != null)
+            body["ChangePasswordAfterLogging"] = ExpressionConverter.ConvertO(bodychangePasswordAfterLogging);
+            if (bodyadminNote != null)
             {
-                body["AdminNote"] = ExpressionConverter.ConvertO(bodyAdminNote);
+                body["AdminNote"] = ExpressionConverter.ConvertO(bodyadminNote);
                 bodypropCount++;
             }
 
-            if (bodyAdditionalInformation != null)
+            if (bodyadditionalInformation != null)
             {
-                body["AdditionalInformation"] = ExpressionConverter.ConvertO(bodyAdditionalInformation);
+                body["AdditionalInformation"] = ExpressionConverter.ConvertO(bodyadditionalInformation);
                 bodypropCount++;
             }
 
-            if (bodyCustomerNames != null)
+            if (bodycustomerNames != null)
             {
-                body["CustomerNames"] = ExpressionConverter.ConvertO(bodyCustomerNames);
+                body["CustomerNames"] = ExpressionConverter.ConvertO(bodycustomerNames);
                 bodypropCount++;
             }
 
