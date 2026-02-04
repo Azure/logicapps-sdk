@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Nested workflow class.
@@ -104,6 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// <summary>
         /// location property.
         /// </summary>
+        [JsonProperty(Required = Required.Default)]
         public string Location { get; set; }
     }
 }

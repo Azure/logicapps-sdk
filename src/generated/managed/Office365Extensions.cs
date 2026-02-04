@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionMessageto, Expression<Func<string>> optionsEmailSubscriptionMessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionMessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionMessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionMessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionMessagebody = null, Expression<Func<optionsEmailSubscriptionMessageimportanceInput>> optionsEmailSubscriptionMessageimportance = null, Expression<Func<ClientSendAttachment[]>> optionsEmailSubscriptionMessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionMessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionMessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionMessageshowHTMLConfirmationDialog = null, Expression<Func<bool>> optionsEmailSubscriptionMessagehideMicrosoftFooter = null)
+        public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionmessageto, Expression<Func<string>> optionsEmailSubscriptionmessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionmessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionmessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionmessagebody = null, Expression<Func<optionsEmailSubscriptionmessageimportanceInput>> optionsEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> optionsEmailSubscriptionmessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideMicrosoftFooter = null)
         {
             var apiCallPath = "/mailwithoptions/$subscriptions";
             var apiCallHttpMethod = "post";
@@ -399,79 +399,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var optionsEmailSubscriptionpropCount = 0;
             optionsEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             optionsEmailSubscriptionpropCount++;
-            var MessageObject = new JObject();
-            var MessageObjectpropCount = 0;
-            MessageObjectpropCount++;
-            MessageObject["To"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageto);
-            if (optionsEmailSubscriptionMessagesubject != null)
+            var messageObject = new JObject();
+            var messageObjectpropCount = 0;
+            messageObjectpropCount++;
+            messageObject["To"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageto);
+            if (optionsEmailSubscriptionmessagesubject != null)
             {
-                MessageObject["Subject"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagesubject);
-                MessageObjectpropCount++;
+                messageObject["Subject"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagesubject);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageuserOptions != null)
+            if (optionsEmailSubscriptionmessageuserOptions != null)
             {
-                MessageObject["Options"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageuserOptions);
-                MessageObjectpropCount++;
+                messageObject["Options"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageuserOptions);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageheaderText != null)
+            if (optionsEmailSubscriptionmessageheaderText != null)
             {
-                MessageObject["HeaderText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageheaderText);
-                MessageObjectpropCount++;
+                messageObject["HeaderText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageheaderText);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageselectionText != null)
+            if (optionsEmailSubscriptionmessageselectionText != null)
             {
-                MessageObject["SelectionText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageselectionText);
-                MessageObjectpropCount++;
+                messageObject["SelectionText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageselectionText);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessagebody != null)
+            if (optionsEmailSubscriptionmessagebody != null)
             {
-                MessageObject["Body"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagebody);
-                MessageObjectpropCount++;
+                messageObject["Body"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagebody);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageimportance != null)
+            if (optionsEmailSubscriptionmessageimportance != null)
             {
-                MessageObject["Importance"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageimportance);
-                MessageObjectpropCount++;
+                messageObject["Importance"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageimportance);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageattachments != null)
+            if (optionsEmailSubscriptionmessageattachments != null)
             {
-                MessageObject["Attachments"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageattachments);
-                MessageObjectpropCount++;
+                messageObject["Attachments"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageattachments);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageuseOnlyHTMLMessage != null)
+            if (optionsEmailSubscriptionmessageuseOnlyHTMLMessage != null)
             {
-                MessageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageuseOnlyHTMLMessage);
-                MessageObjectpropCount++;
+                messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageuseOnlyHTMLMessage);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessagehideHTMLMessage != null)
+            if (optionsEmailSubscriptionmessagehideHTMLMessage != null)
             {
-                MessageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagehideHTMLMessage);
-                MessageObjectpropCount++;
+                messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagehideHTMLMessage);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessageshowHTMLConfirmationDialog != null)
+            if (optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
             {
-                MessageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessageshowHTMLConfirmationDialog);
-                MessageObjectpropCount++;
+                messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog);
+                messageObjectpropCount++;
             }
 
-            if (optionsEmailSubscriptionMessagehideMicrosoftFooter != null)
+            if (optionsEmailSubscriptionmessagehideMicrosoftFooter != null)
             {
-                MessageObject["HideMicrosoftFooter"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionMessagehideMicrosoftFooter);
-                MessageObjectpropCount++;
+                messageObject["HideMicrosoftFooter"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagehideMicrosoftFooter);
+                messageObjectpropCount++;
             }
 
-            if (MessageObjectpropCount > 0)
+            if (messageObjectpropCount > 0)
             {
-                optionsEmailSubscription["Message"] = MessageObject;
+                optionsEmailSubscription["Message"] = messageObject;
                 optionsEmailSubscriptionpropCount++;
             }
 
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionMessageto, Expression<Func<string>> approvalEmailSubscriptionMessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionMessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionMessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionMessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionMessagebody = null, Expression<Func<approvalEmailSubscriptionMessageimportanceInput>> approvalEmailSubscriptionMessageimportance = null, Expression<Func<ClientSendAttachment[]>> approvalEmailSubscriptionMessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionMessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionMessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionMessageshowHTMLConfirmationDialog = null)
+        public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionmessageto, Expression<Func<string>> approvalEmailSubscriptionmessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionmessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionmessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionmessagebody = null, Expression<Func<approvalEmailSubscriptionmessageimportanceInput>> approvalEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> approvalEmailSubscriptionmessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
             var apiCallPath = "/approvalmail/$subscriptions";
             var apiCallHttpMethod = "post";
@@ -493,73 +493,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
             var approvalEmailSubscriptionpropCount = 0;
             approvalEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
             approvalEmailSubscriptionpropCount++;
-            var MessageObject = new JObject();
-            var MessageObjectpropCount = 0;
-            MessageObjectpropCount++;
-            MessageObject["To"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageto);
-            if (approvalEmailSubscriptionMessagesubject != null)
+            var messageObject = new JObject();
+            var messageObjectpropCount = 0;
+            messageObjectpropCount++;
+            messageObject["To"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageto);
+            if (approvalEmailSubscriptionmessagesubject != null)
             {
-                MessageObject["Subject"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagesubject);
-                MessageObjectpropCount++;
+                messageObject["Subject"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagesubject);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageuserOptions != null)
+            if (approvalEmailSubscriptionmessageuserOptions != null)
             {
-                MessageObject["Options"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageuserOptions);
-                MessageObjectpropCount++;
+                messageObject["Options"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageuserOptions);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageheaderText != null)
+            if (approvalEmailSubscriptionmessageheaderText != null)
             {
-                MessageObject["HeaderText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageheaderText);
-                MessageObjectpropCount++;
+                messageObject["HeaderText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageheaderText);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageselectionText != null)
+            if (approvalEmailSubscriptionmessageselectionText != null)
             {
-                MessageObject["SelectionText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageselectionText);
-                MessageObjectpropCount++;
+                messageObject["SelectionText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageselectionText);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessagebody != null)
+            if (approvalEmailSubscriptionmessagebody != null)
             {
-                MessageObject["Body"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagebody);
-                MessageObjectpropCount++;
+                messageObject["Body"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagebody);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageimportance != null)
+            if (approvalEmailSubscriptionmessageimportance != null)
             {
-                MessageObject["Importance"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageimportance);
-                MessageObjectpropCount++;
+                messageObject["Importance"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageimportance);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageattachments != null)
+            if (approvalEmailSubscriptionmessageattachments != null)
             {
-                MessageObject["Attachments"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageattachments);
-                MessageObjectpropCount++;
+                messageObject["Attachments"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageattachments);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageuseOnlyHTMLMessage != null)
+            if (approvalEmailSubscriptionmessageuseOnlyHTMLMessage != null)
             {
-                MessageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageuseOnlyHTMLMessage);
-                MessageObjectpropCount++;
+                messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageuseOnlyHTMLMessage);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessagehideHTMLMessage != null)
+            if (approvalEmailSubscriptionmessagehideHTMLMessage != null)
             {
-                MessageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessagehideHTMLMessage);
-                MessageObjectpropCount++;
+                messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagehideHTMLMessage);
+                messageObjectpropCount++;
             }
 
-            if (approvalEmailSubscriptionMessageshowHTMLConfirmationDialog != null)
+            if (approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
             {
-                MessageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionMessageshowHTMLConfirmationDialog);
-                MessageObjectpropCount++;
+                messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog);
+                messageObjectpropCount++;
             }
 
-            if (MessageObjectpropCount > 0)
+            if (messageObjectpropCount > 0)
             {
-                approvalEmailSubscription["Message"] = MessageObject;
+                approvalEmailSubscription["Message"] = messageObject;
                 approvalEmailSubscriptionpropCount++;
             }
 
@@ -2034,11 +2034,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 queryRequestpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                queryRequest["params"] = paramsObject;
+                queryRequest["params"] = @paramsObject;
                 queryRequestpropCount++;
             }
 
@@ -2094,11 +2094,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 queryRequestpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                queryRequest["params"] = paramsObject;
+                queryRequest["params"] = @paramsObject;
                 queryRequestpropCount++;
             }
 
@@ -2154,11 +2154,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 queryRequestpropCount++;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
             {
-                queryRequest["params"] = paramsObject;
+                queryRequest["params"] = @paramsObject;
                 queryRequestpropCount++;
             }
 
@@ -2855,14 +2855,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string NotificationUrl { get; set; }
     }
 
-    public enum optionsEmailSubscriptionMessageimportanceInput
+    public enum optionsEmailSubscriptionmessageimportanceInput
     {
         Low,
         Normal,
         High
     }
 
-    public enum approvalEmailSubscriptionMessageimportanceInput
+    public enum approvalEmailSubscriptionmessageimportanceInput
     {
         Low,
         Normal,

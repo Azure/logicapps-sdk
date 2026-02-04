@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -11,6 +11,196 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class TeamsActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<NewMeetingRespone> CreateTeamsMeeting(Expression<Func<calendaridInput>> calendarid, Expression<Func<string>> itemsubject, Expression<Func<string>> itemtimeZone, Expression<Func<string>> itembodyeventMessageContent = null, Expression<Func<string>> itemstartstartTime = null, Expression<Func<string>> itemendendTime = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemlocationdisplayName = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<itemrecurrencepatternrecurrencePatternInput>> itemrecurrencepatternrecurrencePattern = null, Expression<Func<int>> itemrecurrencepatternrecurrenceInterval = null, Expression<Func<string[]>> itemrecurrencepatterndaysOfWeek = null, Expression<Func<itemrecurrencepatternweekIndexInput>> itemrecurrencepatternweekIndex = null, Expression<Func<string>> itemrecurrencerangerecurrenceStartDate = null, Expression<Func<string>> itemrecurrencerangerecurrenceEndDate = null, Expression<Func<bool>> itemallDayEvent = null, Expression<Func<int>> itempreEventReminderTime = null, Expression<Func<bool>> itemenableReminders = null, Expression<Func<itemstatusShowAsInput>> itemstatusShowAs = null, Expression<Func<bool>> itemrequestResponse = null)
+        {
+            var apiCallPath = String.Format("/v1.0/me/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarid, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var item = new JObject();
+            var itempropCount = 0;
+            itempropCount++;
+            item["subject"] = ExpressionConverter.ConvertO(itemsubject);
+            var bodyObject = new JObject();
+            var bodyObjectpropCount = 0;
+            if (itembodyeventMessageContent != null)
+            {
+                bodyObject["content"] = ExpressionConverter.ConvertO(itembodyeventMessageContent);
+                bodyObjectpropCount++;
+            }
+
+            bodyObject["contentType"] = "html";
+            bodyObjectpropCount++;
+            if (bodyObjectpropCount > 0)
+            {
+                item["body"] = bodyObject;
+                itempropCount++;
+            }
+
+            itempropCount++;
+            item["timeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+            var startObject = new JObject();
+            var startObjectpropCount = 0;
+            if (itemstartstartTime != null)
+            {
+                startObject["dateTime"] = ExpressionConverter.ConvertO(itemstartstartTime);
+                startObjectpropCount++;
+            }
+
+            if (startObjectpropCount > 0)
+            {
+                item["start"] = startObject;
+                itempropCount++;
+            }
+
+            var endObject = new JObject();
+            var endObjectpropCount = 0;
+            if (itemendendTime != null)
+            {
+                endObject["dateTime"] = ExpressionConverter.ConvertO(itemendendTime);
+                endObjectpropCount++;
+            }
+
+            if (endObjectpropCount > 0)
+            {
+                item["end"] = endObject;
+                itempropCount++;
+            }
+
+            if (itemrequiredAttendees != null)
+            {
+                item["requiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                itempropCount++;
+            }
+
+            if (itemoptionalAttendees != null)
+            {
+                item["optionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                itempropCount++;
+            }
+
+            var locationObject = new JObject();
+            var locationObjectpropCount = 0;
+            if (itemlocationdisplayName != null)
+            {
+                locationObject["displayName"] = ExpressionConverter.ConvertO(itemlocationdisplayName);
+                locationObjectpropCount++;
+            }
+
+            if (locationObjectpropCount > 0)
+            {
+                item["location"] = locationObject;
+                itempropCount++;
+            }
+
+            if (itemimportance != null)
+            {
+                item["importance"] = ExpressionConverter.ConvertO(itemimportance);
+                itempropCount++;
+            }
+
+            var recurrenceObject = new JObject();
+            var recurrenceObjectpropCount = 0;
+            var patternObject = new JObject();
+            var patternObjectpropCount = 0;
+            if (itemrecurrencepatternrecurrencePattern != null)
+            {
+                patternObject["type"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrencePattern);
+                patternObjectpropCount++;
+            }
+
+            if (itemrecurrencepatternrecurrenceInterval != null)
+            {
+                patternObject["interval"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrenceInterval);
+                patternObjectpropCount++;
+            }
+
+            if (itemrecurrencepatterndaysOfWeek != null)
+            {
+                patternObject["daysOfWeek"] = ExpressionConverter.ConvertO(itemrecurrencepatterndaysOfWeek);
+                patternObjectpropCount++;
+            }
+
+            if (itemrecurrencepatternweekIndex != null)
+            {
+                patternObject["index"] = ExpressionConverter.ConvertO(itemrecurrencepatternweekIndex);
+                patternObjectpropCount++;
+            }
+
+            if (patternObjectpropCount > 0)
+            {
+                recurrenceObject["pattern"] = patternObject;
+                recurrenceObjectpropCount++;
+            }
+
+            var rangeObject = new JObject();
+            var rangeObjectpropCount = 0;
+            if (itemrecurrencerangerecurrenceStartDate != null)
+            {
+                rangeObject["startDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceStartDate);
+                rangeObjectpropCount++;
+            }
+
+            if (itemrecurrencerangerecurrenceEndDate != null)
+            {
+                rangeObject["endDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceEndDate);
+                rangeObjectpropCount++;
+            }
+
+            if (rangeObjectpropCount > 0)
+            {
+                recurrenceObject["range"] = rangeObject;
+                recurrenceObjectpropCount++;
+            }
+
+            if (recurrenceObjectpropCount > 0)
+            {
+                item["recurrence"] = recurrenceObject;
+                itempropCount++;
+            }
+
+            if (itemallDayEvent != null)
+            {
+                item["isAllDay"] = ExpressionConverter.ConvertO(itemallDayEvent);
+                itempropCount++;
+            }
+
+            if (itempreEventReminderTime != null)
+            {
+                item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(itempreEventReminderTime);
+                itempropCount++;
+            }
+
+            if (itemenableReminders != null)
+            {
+                item["isReminderOn"] = ExpressionConverter.ConvertO(itemenableReminders);
+                itempropCount++;
+            }
+
+            if (itemstatusShowAs != null)
+            {
+                item["showAs"] = ExpressionConverter.ConvertO(itemstatusShowAs);
+                itempropCount++;
+            }
+
+            if (itemrequestResponse != null)
+            {
+                item["responseRequested"] = ExpressionConverter.ConvertO(itemrequestResponse);
+                itempropCount++;
+            }
+
+            item["isOnlineMeeting"] = true;
+            itempropCount++;
+            item["onlineMeetingProvider"] = "teamsForBusiness";
+            itempropCount++;
+            if (itempropCount > 0)
+            {
+                callPayload.Body = item;
+            }
+
+            return new ApiConnectionAction<NewMeetingRespone>(callPayload);
+        }
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetAllTeamsResponse> GetAllTeams()
         {
@@ -364,6 +554,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<JToken> PostCardAndWaitForResponse(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> bodybodyrecipient = null, Expression<Func<string>> bodybodymessage = null, Expression<Func<string>> bodybodyupdateMessage = null)
+        {
+            var apiCallPath = String.Format("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            body["notificationUrl"] = "@listCallbackUrl()";
+            bodypropCount++;
+            var bodyObject = new JObject();
+            var bodyObjectpropCount = 0;
+            if (bodybodyrecipient != null)
+            {
+                bodyObject["recipient"] = ExpressionConverter.ConvertO(bodybodyrecipient);
+                bodyObjectpropCount++;
+            }
+
+            if (bodybodymessage != null)
+            {
+                bodyObject["messageBody"] = ExpressionConverter.ConvertO(bodybodymessage);
+                bodyObjectpropCount++;
+            }
+
+            if (bodybodyupdateMessage != null)
+            {
+                bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                bodyObjectpropCount++;
+            }
+
+            if (bodyObjectpropCount > 0)
+            {
+                body["body"] = bodyObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> ReplyWithCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
             var apiCallPath = String.Format("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
@@ -505,6 +739,259 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             callPayload.Queries["$select"] = Convert.ToString("members");
             return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
         }
+    }
+
+    public class NewMeetingRespone
+    {
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedTimestamp { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedTimestamp { get; set; }
+
+        [JsonProperty("categories")]
+        public JToken[] Categories { get; set; }
+
+        [JsonProperty("timeZone")]
+        public string TimeZone { get; set; }
+
+        [JsonProperty("reminderMinutesBeforeStart")]
+        public int PreEventReminderTime { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool RemindersEnabled { get; set; }
+
+        [JsonProperty("hasAttachments")]
+        public bool HasAttachments { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("bodyPreview")]
+        public string BodyPreview { get; set; }
+
+        [JsonProperty("importance")]
+        public string Importance { get; set; }
+
+        [JsonProperty("sensitivity")]
+        public string Sensitivity { get; set; }
+
+        [JsonProperty("isAllDay")]
+        public bool IsAllDay { get; set; }
+
+        [JsonProperty("isCancelled")]
+        public bool IsCancelled { get; set; }
+
+        [JsonProperty("isOrganizer")]
+        public bool IsOrganizer { get; set; }
+
+        [JsonProperty("responseRequested")]
+        public bool ResponseRequested { get; set; }
+
+        [JsonProperty("showAs")]
+        public string ShowAs { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("webLink")]
+        public string WebLast { get; set; }
+
+        [JsonProperty("onlineMeetingUrl")]
+        public string OnlineMeetingURL { get; set; }
+
+        [JsonProperty("allowNewTimeProposals")]
+        public bool AllowNewTimeProposals { get; set; }
+
+        [JsonProperty("recurrence")]
+        public NewMeetingResponeRecurrenceType Recurrence { get; set; }
+
+        [JsonProperty("responseStatus")]
+        public NewMeetingResponeResponseStatusType ResponseStatus { get; set; }
+
+        [JsonProperty("body")]
+        public NewMeetingResponeBodyType Body { get; set; }
+
+        [JsonProperty("start")]
+        public NewMeetingResponeStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public NewMeetingResponeEndType End { get; set; }
+
+        [JsonProperty("location")]
+        public NewMeetingResponeLocationType Location { get; set; }
+
+        [JsonProperty("attendees")]
+        public NewMeetingResponeAttendeeTypeItem[] Attendee { get; set; }
+
+        [JsonProperty("organizer")]
+        public NewMeetingResponeOrganizerType Organizer { get; set; }
+
+        [JsonProperty("onlineMeeting")]
+        public NewMeetingResponeOnlineMeetingType OnlineMeeting { get; set; }
+    }
+
+    public class NewMeetingResponeRecurrenceType
+    {
+        [JsonProperty("pattern")]
+        public JToken RecurrencePattern { get; set; }
+
+        [JsonProperty("range")]
+        public JToken RecurrenceRange { get; set; }
+    }
+
+    public class NewMeetingResponeResponseStatusType
+    {
+        [JsonProperty("response")]
+        public string Response { get; set; }
+
+        [JsonProperty("time")]
+        public string Time { get; set; }
+    }
+
+    public class NewMeetingResponeBodyType
+    {
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("content")]
+        public string EventMessageContent { get; set; }
+    }
+
+    public class NewMeetingResponeStartType
+    {
+        [JsonProperty("dateTime")]
+        public string DateAndTime { get; set; }
+    }
+
+    public class NewMeetingResponeEndType
+    {
+        [JsonProperty("dateTime")]
+        public string DateAndTime { get; set; }
+    }
+
+    public class NewMeetingResponeLocationType
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+    }
+
+    public class NewMeetingResponeAttendeeTypeItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("status")]
+        public NewMeetingResponeAttendeeTypeItemStatusType Status { get; set; }
+
+        [JsonProperty("emailAddress")]
+        public NewMeetingResponeAttendeeTypeItemEmailAddressType EmailAddress { get; set; }
+    }
+
+    public class NewMeetingResponeAttendeeTypeItemStatusType
+    {
+        [JsonProperty("response")]
+        public string Response { get; set; }
+
+        [JsonProperty("time")]
+        public string Time { get; set; }
+    }
+
+    public class NewMeetingResponeAttendeeTypeItemEmailAddressType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public class NewMeetingResponeOrganizerType
+    {
+        [JsonProperty("emailAddress")]
+        public NewMeetingResponeOrganizerTypeEmailAddressType EmailAddress { get; set; }
+    }
+
+    public class NewMeetingResponeOrganizerTypeEmailAddressType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public class NewMeetingResponeOnlineMeetingType
+    {
+        [JsonProperty("joinUrl")]
+        public string JoinUrl { get; set; }
+    }
+
+    public enum calendaridInput
+    {
+        Birthdays,
+        Calendar,
+        [EnumMember(Value = "United States holidays")]
+        UnitedStatesHolidays
+    }
+
+    public enum itemimportanceInput
+    {
+        [EnumMember(Value = "low")]
+        Low,
+        [EnumMember(Value = "normal")]
+        Normal,
+        [EnumMember(Value = "high")]
+        High
+    }
+
+    public enum itemrecurrencepatternrecurrencePatternInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "daily")]
+        Daily,
+        [EnumMember(Value = "weekly")]
+        Weekly,
+        [EnumMember(Value = "relativeMonthly")]
+        Monthly,
+        [EnumMember(Value = "relativeYearly")]
+        RelativeYearly
+    }
+
+    public enum itemrecurrencepatternweekIndexInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "first")]
+        First,
+        [EnumMember(Value = "second")]
+        Second,
+        [EnumMember(Value = "third")]
+        Third,
+        [EnumMember(Value = "fourth")]
+        Fourth,
+        [EnumMember(Value = "last")]
+        Last
+    }
+
+    public enum itemstatusShowAsInput
+    {
+        [EnumMember(Value = "free")]
+        Free,
+        [EnumMember(Value = "tentative")]
+        Tentative,
+        [EnumMember(Value = "busy")]
+        Busy,
+        [EnumMember(Value = "oof")]
+        Oof,
+        [EnumMember(Value = "workingElsewhere")]
+        WorkingElsewhere,
+        [EnumMember(Value = "unknown")]
+        Unknown
     }
 
     public class GetAllTeamsResponse

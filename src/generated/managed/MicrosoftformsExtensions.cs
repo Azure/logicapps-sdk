@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 
     public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId)
+        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhook["eventType"] = "responseAdded";
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["notificationUrl"] = "@listcallbackurl()";
+            requestBodyOfWebhook["notificationUrl"] = "@listCallbackUrl()";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["source"] = "ms-connector";
             requestBodyOfWebhookpropCount++;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
                 callPayload.Body = requestBodyOfWebhook;
             }
 
-            return new ApiConnectionTrigger(callPayload);
+            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 requestBodypropCount++;
             }
 
-            var tool_resourcesObject = new JObject();
-            var tool_resourcesObjectpropCount = 0;
-            if (tool_resourcesObjectpropCount > 0)
+            var toolResourcesObject = new JObject();
+            var toolResourcesObjectpropCount = 0;
+            if (toolResourcesObjectpropCount > 0)
             {
-                requestBody["tool_resources"] = tool_resourcesObject;
+                requestBody["tool_resources"] = toolResourcesObject;
                 requestBodypropCount++;
             }
 
@@ -139,27 +139,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 requestBodypropCount++;
             }
 
-            var truncation_strategyObject = new JObject();
-            var truncation_strategyObjectpropCount = 0;
-            if (truncation_strategyObjectpropCount > 0)
+            var truncationStrategyObject = new JObject();
+            var truncationStrategyObjectpropCount = 0;
+            if (truncationStrategyObjectpropCount > 0)
             {
-                requestBody["truncation_strategy"] = truncation_strategyObject;
+                requestBody["truncation_strategy"] = truncationStrategyObject;
                 requestBodypropCount++;
             }
 
-            var tool_choiceObject = new JObject();
-            var tool_choiceObjectpropCount = 0;
-            if (tool_choiceObjectpropCount > 0)
+            var toolChoiceObject = new JObject();
+            var toolChoiceObjectpropCount = 0;
+            if (toolChoiceObjectpropCount > 0)
             {
-                requestBody["tool_choice"] = tool_choiceObject;
+                requestBody["tool_choice"] = toolChoiceObject;
                 requestBodypropCount++;
             }
 
-            var response_formatObject = new JObject();
-            var response_formatObjectpropCount = 0;
-            if (response_formatObjectpropCount > 0)
+            var responseFormatObject = new JObject();
+            var responseFormatObjectpropCount = 0;
+            if (responseFormatObjectpropCount > 0)
             {
-                requestBody["response_format"] = response_formatObject;
+                requestBody["response_format"] = responseFormatObject;
                 requestBodypropCount++;
             }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptid = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyconversationid = null)
+        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
         {
             var apiCallPath = "/openai/responses";
             var apiCallHttpMethod = "post";
@@ -280,12 +280,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             var promptObject = new JObject();
             var promptObjectpropCount = 0;
-            if (bodypromptid != null)
-            {
-                promptObject["id"] = ExpressionConverter.ConvertO(bodypromptid);
-                promptObjectpropCount++;
-            }
-
+            promptObjectpropCount++;
+            promptObject["id"] = ExpressionConverter.ConvertO(bodypromptid);
             if (bodypromptversion != null)
             {
                 promptObject["version"] = ExpressionConverter.ConvertO(bodypromptversion);
@@ -353,20 +349,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             if (agentObjectpropCount > 0)
             {
                 body["agent"] = agentObject;
-                bodypropCount++;
-            }
-
-            var conversationObject = new JObject();
-            var conversationObjectpropCount = 0;
-            if (bodyconversationid != null)
-            {
-                conversationObject["id"] = ExpressionConverter.ConvertO(bodyconversationid);
-                conversationObjectpropCount++;
-            }
-
-            if (conversationObjectpropCount > 0)
-            {
-                body["conversation"] = conversationObject;
                 bodypropCount++;
             }
 
@@ -779,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIResponseIncompleteDetailsType IncompleteDetails { get; set; }
 
         [JsonProperty("output")]
-        public OpenAIResponseOutputTypeItem[] Output { get; set; }
+        public OpenAIItemResource[] Output { get; set; }
 
         [JsonProperty("instructions")]
         public JToken Instructions { get; set; }
@@ -1033,37 +1015,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         ContentFilter
     }
 
-    public class OpenAIResponseOutputTypeItem
+    public class OpenAIItemResource
     {
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public OpenAIItemType Type { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("role")]
-        public string Role { get; set; }
-
-        [JsonProperty("content")]
-        public OpenAIResponseOutputTypeItemContentTypeItem[] Content { get; set; }
     }
 
-    public class OpenAIResponseOutputTypeItemContentTypeItem
+    public enum OpenAIItemType
     {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("annotations")]
-        public string[] Annotations { get; set; }
-
-        [JsonProperty("logprobs")]
-        public string[] Logprobs { get; set; }
+        [EnumMember(Value = "message")]
+        Message,
+        [EnumMember(Value = "file_search_call")]
+        FileSearchCall,
+        [EnumMember(Value = "function_call")]
+        FunctionCall,
+        [EnumMember(Value = "function_call_output")]
+        FunctionCallOutput,
+        [EnumMember(Value = "computer_call")]
+        ComputerCall,
+        [EnumMember(Value = "computer_call_output")]
+        ComputerCallOutput,
+        [EnumMember(Value = "web_search_call")]
+        WebSearchCall,
+        [EnumMember(Value = "reasoning")]
+        Reasoning,
+        [EnumMember(Value = "item_reference")]
+        ItemReference,
+        [EnumMember(Value = "image_generation_call")]
+        ImageGenerationCall,
+        [EnumMember(Value = "code_interpreter_call")]
+        CodeInterpreterCall,
+        [EnumMember(Value = "local_shell_call")]
+        LocalShellCall,
+        [EnumMember(Value = "local_shell_call_output")]
+        LocalShellCallOutput,
+        [EnumMember(Value = "mcp_list_tools")]
+        McpListTools,
+        [EnumMember(Value = "mcp_approval_request")]
+        McpApprovalRequest,
+        [EnumMember(Value = "mcp_approval_response")]
+        McpApprovalResponse,
+        [EnumMember(Value = "mcp_call")]
+        McpCall,
+        [EnumMember(Value = "structured_inputs")]
+        StructuredInputs,
+        [EnumMember(Value = "structured_outputs")]
+        StructuredOutputs,
+        [EnumMember(Value = "semantic_event")]
+        SemanticEvent,
+        [EnumMember(Value = "workflow_action")]
+        WorkflowAction,
+        [EnumMember(Value = "memory_search_call")]
+        MemorySearchCall
     }
 
     public class OpenAIResponseUsage

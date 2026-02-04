@@ -71,6 +71,31 @@
         }
 
         /// <summary>
+        /// Converts a string expression with URL encoding applied multiple times.
+        /// </summary>
+        /// <param name="e">The expression to convert.</param>
+        /// <param name="times">The number of times to apply URL encoding.</param>
+        public static string ConvertWithUrlEncodingWithInt(Expression<Func<int>> e, int times)
+        {
+            if (e == null) return string.Empty;
+            var converter = new LogicConverter();
+            var expr = e.Body.Visit(converter, null);
+
+            while (times > 0)
+            {
+                expr = new FunctionCallNode
+                {
+                    FunctionName = "encodeURIComponent",
+                    Arguments = [expr]
+                };
+
+                times--;
+            }
+
+            return expr.Render(true);
+        }
+
+        /// <summary>
         /// Converts an enum expression with URL encoding applied multiple times.
         /// </summary>
         /// <param name="e">The expression to convert.</param>

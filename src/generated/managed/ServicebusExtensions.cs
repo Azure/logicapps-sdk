@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 messagepropCount++;
             }
 
-            var PropertiesObject = new JObject();
-            var PropertiesObjectpropCount = 0;
-            if (PropertiesObjectpropCount > 0)
+            var propertiesObject = new JObject();
+            var propertiesObjectpropCount = 0;
+            if (propertiesObjectpropCount > 0)
             {
-                message["Properties"] = PropertiesObject;
+                message["Properties"] = propertiesObject;
                 messagepropCount++;
             }
 

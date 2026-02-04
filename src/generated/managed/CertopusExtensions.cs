@@ -1,0 +1,154 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
+{
+    using System.Linq.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class CertopusActions([ConnectionName] string connectionId)
+    {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
+        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        {
+            var apiCallPath = "/certificates";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
+            bodypropCount++;
+            body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
+            bodypropCount++;
+            body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+            if (bodygenerate != null)
+            {
+                body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                bodypropCount++;
+            }
+
+            if (bodypublish != null)
+            {
+                body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                bodypropCount++;
+            }
+
+            if (bodyrecipients != null)
+            {
+                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+        }
+    }
+
+    public class CertopusTriggers([ConnectionName] string connectionId)
+    {
+    }
+
+    public class CreateCredentialResponse
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("responses")]
+        public CreateCredentialResponseResponsesTypeItem[] Responses { get; set; }
+    }
+
+    public class CreateCredentialResponseResponsesTypeItem
+    {
+        [JsonProperty("certificateId")]
+        public string CertificateId { get; set; }
+
+        [JsonProperty("recipient")]
+        public CreateCredentialResponseResponsesTypeItemRecipientType Recipient { get; set; }
+
+        [JsonProperty("category")]
+        public CreateCredentialResponseResponsesTypeItemCategoryType Category { get; set; }
+
+        [JsonProperty("eventName")]
+        public string EventName { get; set; }
+
+        [JsonProperty("pdfUrl")]
+        public string PdfUrl { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("certificateUrl")]
+        public string CertificateUrl { get; set; }
+
+        [JsonProperty("issueDate")]
+        public string IssueDate { get; set; }
+
+        [JsonProperty("expiryDate")]
+        public string ExpiryDate { get; set; }
+
+        [JsonProperty("walletId")]
+        public string WalletId { get; set; }
+    }
+
+    public class CreateCredentialResponseResponsesTypeItemRecipientType
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("data")]
+        public CreateCredentialResponseResponsesTypeItemRecipientTypeDataType Data { get; set; }
+    }
+
+    public class CreateCredentialResponseResponsesTypeItemRecipientTypeDataType
+    {
+        [JsonProperty("{Name}")]
+        public string Name { get; set; }
+    }
+
+    public class CreateCredentialResponseResponsesTypeItemCategoryType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class bodyrecipientsInputItem
+    {
+        [JsonProperty("data")]
+        public bodyrecipientsInputItemDataType Data { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class bodyrecipientsInputItemDataType
+    {
+        [JsonProperty("{Name}")]
+        public string Name { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Certopus;
+
+    public partial class WorkflowManagedActions
+    {
+        public CertopusActions Certopus(string connectionId) => new CertopusActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public CertopusTriggers Certopus(string connectionId) => new CertopusTriggers(connectionId);
+    }
+}

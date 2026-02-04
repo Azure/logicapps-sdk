@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Recruitment workflow class.
@@ -139,7 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// <summary>
         /// posting owner property.
         /// </summary>
-        public string JobPostingOwner { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string JobPostingOwner { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -150,7 +152,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// <summary>
         /// posting owner property.
         /// </summary>
-        public string JobPostingId { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string JobPostingId { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -161,7 +164,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// <summary>
         /// current weather location property.
         /// </summary>
-        public string CurrentWeatherLocation { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string CurrentWeatherLocation { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -172,32 +176,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// <summary>
         /// Candidate email property.
         /// </summary>
-        public string CandidateEmail { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string CandidateEmail { get; set; } = string.Empty;
 
         /// <summary>
         /// Candidate name property.
         /// </summary>
-        public string CandidateName { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string CandidateName { get; set; } = string.Empty;
 
         /// <summary>
         /// Candidate interview date time property.
         /// </summary>
-        public string InterviewDateTime { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string InterviewDateTime { get; set; } = string.Empty;
 
         /// <summary>
         /// Candidate interviewer email property.
         /// </summary>
-        public string InterviewerEmail { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string InterviewerEmail { get; set; } = string.Empty;
 
         /// <summary>
         /// Meeting start time property.
         /// </summary>
-        public string MeetingStartTime { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string MeetingStartTime { get; set; } = string.Empty;
 
         /// <summary>
         /// Meeting end time property.
         /// </summary>
-        public string MeetingEndTime { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string MeetingEndTime { get; set; } = string.Empty;
     }
-
 }
