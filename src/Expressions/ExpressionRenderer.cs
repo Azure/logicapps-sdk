@@ -28,11 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
-        /// Visits a nullable node and appends the nullable operator.
+        /// Visits a nullable node. The null-safe dereference operator '?' is not appended here;
+        /// it is emitted by the consuming node (MemberAccessNode, IndexNode) when appropriate.
         /// </summary>
         public string Visit(NullableNode node, object param)
         {
-            return node.Inner.Accept(this, param) + "?";
+            return node.Inner.Accept(this, param);
         }
 
         /// <summary>
@@ -92,18 +93,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         /// <summary>
         /// Renders a member access node with bracket notation.
+        /// Prepends the null-safe dereference operator '?' if the target is a nullable node.
         /// </summary>
         public string Visit(MemberAccessNode node, object param)
         {
-            return $"{node.Target.Accept(this, param)}['{node.MemberName}']";
+            var nullSafe = node.Target is NullableNode ? "?" : "";
+            return $"{node.Target.Accept(this, param)}{nullSafe}['{node.MemberName}']";
         }
 
         /// <summary>
         /// Renders an index access node.
+        /// Prepends the null-safe dereference operator '?' if the target is a nullable node.
         /// </summary>
         public string Visit(IndexNode node, object param)
         {
-            return $"{node.Target.Accept(this, param)}[{node.Index.Accept(this, param)}]";
+            var nullSafe = node.Target is NullableNode ? "?" : "";
+            return $"{node.Target.Accept(this, param)}{nullSafe}[{node.Index.Accept(this, param)}]";
         }
     }
 
