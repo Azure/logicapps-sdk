@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             SerivceNowWorkflow.AddWorkflow();
 
+            NullableNodeWorkflow.AddNullableNodeWorkflow();
+
             host.Run();
         }
     }

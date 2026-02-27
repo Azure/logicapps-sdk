@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             ServiceBusWorkflow.AddServiceBusQueueWorkflow();
 
+            NullableNodeWorkflow.AddNullableNodeWorkflow();
+
             var workflowArtifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
 
             foreach (var workflow in workflowArtifacts.Flows)
