@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 this.input = new HttpRequestTriggerInput
                 {
-                    Method = method,
+                    Method = method?.ToString(),
                     Schema = requestBodyJsonSchema,
                     RelativePath = relativePath
                 };
