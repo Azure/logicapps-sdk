@@ -28,6 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the method.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public HttpMethod Method { get; set; }
+        public string Method { get; set; }
     }
 }
