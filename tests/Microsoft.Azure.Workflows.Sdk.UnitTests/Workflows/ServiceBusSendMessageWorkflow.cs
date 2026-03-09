@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             builder.AddAction(compose);
 
             var sendMessage = WorkflowActions.ManagedConnectors.Servicebus("servicebus").SendMessage(
-                entityName: () => "testqueue",
+                entityName: () => "my-queue",
                 messagecontent: () => compose.Output);
             builder.AddAction(sendMessage);
         }
