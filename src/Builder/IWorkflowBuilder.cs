@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Interface for building a codeful workflow.
     /// </summary>
-    public interface IWorkflowBuilder<T> : IWorkflowBuilder where T : class
+    public interface IWorkflowBuilder<T> : IWorkflowBuilder
     {
         /// <summary>
         /// The trigger output for the workflow.
