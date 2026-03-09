@@ -119,7 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Workflow builder for constructing a workflow with multiple actions.
     /// </summary>
-    public class WorkflowBuilder<TTriggerOutput> : WorkflowBuilder
+    /// <typeparam name="TTriggerOutput">The type of the trigger output.</typeparam>
+    public class WorkflowBuilder<TTriggerOutput> : WorkflowBuilder, IWorkflowBuilder<TTriggerOutput> where TTriggerOutput : class
     {
         /// <summary>
         /// Gets the trigger output.
