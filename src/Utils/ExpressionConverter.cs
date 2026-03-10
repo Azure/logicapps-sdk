@@ -174,6 +174,23 @@
         }
 
         /// <summary>
+        /// Converts an expression to a JSON token wrapped in a base64() function call.
+        /// </summary>
+        /// <param name="e">The expression to convert.</param>
+        /// <typeparam name="T">The expression result type.</typeparam>
+        public static string ConvertOWithBase64<T>(Expression<Func<T>> e)
+        {
+            var converter = new LogicConverter();
+            var node = e.Body.Visit(converter, null);
+            var expr = new FunctionCallNode
+            {
+                FunctionName = "base64",
+                Arguments = [node]
+            };
+            return expr.Render();;
+        }
+
+        /// <summary>
         /// Converts an expression to an object by processing member assignments and compiling the result.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
