@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             SerivceNowWorkflow.AddWorkflow();
 
             ServiceBusWorkflow.AddServiceBusQueueWorkflow();
+            ServiceBusSendMessageWorkflow.AddServiceBusSendMessageWorkflow();
 
             NullableNodeWorkflow.AddNullableNodeWorkflow();
 
