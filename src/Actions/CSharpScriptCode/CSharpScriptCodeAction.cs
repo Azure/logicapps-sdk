@@ -7,12 +7,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class CSharpScriptCode(Delegate callback) : IWorkflowAction
+    public class CSharpScriptCode(Delegate callback) : WorkflowActionBase
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        public override FlowTemplateAction GetActionDefinition(string flowName)
         {
             ScriptExecutor.SaveCustomCodeMethodInfo(
                 workflowName: flowName,

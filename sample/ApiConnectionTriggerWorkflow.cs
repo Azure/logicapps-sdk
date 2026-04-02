@@ -34,7 +34,7 @@ namespace harness
                 Interval = 1
             });
 
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
 
             var msg = WorkflowActions.ManagedConnectors.Teams("teams").PostMessageToConversation(
                 poster: () => PostMessageToConversationposterInput.User,
@@ -42,9 +42,9 @@ namespace harness
                 body: () => new
                 {
                     recipient = "19:meeting_Y2IyMGY4YmEtNTk1Mi00NjM0LWI4YTYtNDg4M2E3ZTIwMTk1@thread.v2",
-                    messageBody = $"The weather changed! The new temperature is °F" + $"{builder.TriggerOutput.Responses.Weather.Current.Temp}"
+                    messageBody = $"The weather changed! The new temperature is °F" + $"{trigger.TriggerBody.Responses.Weather.Current.Temp}"
                 });
-            builder.AddAction(msg);
+            trigger.Then(msg);
         }
     }
 }

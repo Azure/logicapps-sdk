@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         string method,
         object requestBody = null,
         Dictionary<string, string> headers = null,
-        Dictionary<string, string> queries = null) : IWorkflowAction
+        Dictionary<string, string> queries = null) : WorkflowActionBase
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        public override FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Represents a nested workflow action with a strongly-typed output body.
+    /// Represents an HTTP action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public class HttpAction<T> : HttpAction, IBodyWorkflowAction<T>

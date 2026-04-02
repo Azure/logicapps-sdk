@@ -16,14 +16,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddServiceBusQueueWorkflow()
         {
-            // Create Service Bus trigger that fires when a new message arrives in the queue
             var trigger = WorkflowTriggers.Managed.Servicebus("servicebus").GetMessageFromQueue(
                 queueName: () => "my-queue",
                 triggerName: "When_a_message_is_received_in_a_queue");
 
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("ServiceBusQueueWorkflow", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("ServiceBusQueueWorkflow", trigger);
 
-            // Compose action to process the message content
             var processMessage = WorkflowActions.BuiltIn.Compose(() => new
             {
                 MessageId = trigger.TriggerBody.MessageId,
@@ -33,7 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 CorrelationId = trigger.TriggerBody.CorrelationId,
                 Label = trigger.TriggerBody.Label
             });
-            builder.AddAction(processMessage, "Process_Message");
+            processMessage.Name = "Process_Message";
+
+            trigger.Then(processMessage);
         }
     }
 }

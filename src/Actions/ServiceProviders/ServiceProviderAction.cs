@@ -4,7 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    public class ServiceProviderAction : IWorkflowAction
+    public class ServiceProviderAction : WorkflowActionBase
     {
         /// <summary>
         /// API connection action input containing the details of the API call.
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         public ServiceProviderAction(ServiceProviderActionInput serviceProviderActionInput)
         {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the action definition as a JToken.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        public override FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {

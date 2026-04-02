@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Represents a workflow trigger with a name and a method to get its trigger definition.
+    /// Represents a workflow trigger as the root node of a workflow graph.
     /// </summary>
     public interface IWorkflowTrigger
     {
@@ -18,9 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk
         FlowTemplateTrigger GetTriggerDefinition();
 
         /// <summary>
-        /// Gets the name of the object.
+        /// Gets or sets the name of the trigger.
         /// </summary>
         string Name { get; set; }
+
+        /// <summary>
+        /// Gets the child action nodes that run after this trigger.
+        /// </summary>
+        List<IWorkflowAction> Children { get; }
+
+        /// <summary>
+        /// Chains a subsequent action node to run after this trigger.
+        /// </summary>
+        /// <param name="action">The action node to chain.</param>
+        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Not used for trigger-to-action edges in stateful/stateless workflows.</param>
+        /// <returns>The chained action node for further fluent chaining.</returns>
+        IWorkflowAction Then(IWorkflowAction action, FlowStatus[] runAfterStatus = null);
     }
 
     /// <summary>
@@ -36,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Extends IWorkflowAction to support actions with strongly-typed bodies for managed connectors.
+    /// Represents a workflow trigger with strongly-typed body output for managed connectors.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the trigger.</typeparam>
     public interface IBodyWorkflowTrigger<T> : IWorkflowTrigger

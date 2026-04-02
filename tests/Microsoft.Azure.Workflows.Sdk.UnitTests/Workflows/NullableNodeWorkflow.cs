@@ -8,9 +8,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
     /// <summary>
     /// Test workflow that validates NullableNode rendering.
-    /// A NullableNode (e.g. triggerOutputs()) should only emit the null-safe
-    /// dereference operator '?' when followed by a member access, not when
-    /// used standalone in a template string.
     /// </summary>
     public static class NullableNodeWorkflow
     {
@@ -20,15 +17,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddNullableNodeWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("NullableNodeTest", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("NullableNodeTest", trigger);
 
             var composeStandalone = WorkflowActions.BuiltIn.Compose(
                 inputs: () => $"Output is: {trigger.TriggerOutput}");
-            builder.AddAction(composeStandalone, "Compose_Standalone");
+            composeStandalone.Name = "Compose_Standalone";
 
             var composeMemberAccess = WorkflowActions.BuiltIn.Compose(
                 inputs: () => $"Body is: {trigger.TriggerOutput.Body}");
-            builder.AddAction(composeMemberAccess, "Compose_MemberAccess");
+            composeMemberAccess.Name = "Compose_MemberAccess";
+
+            trigger
+                .Then(composeStandalone)
+                .Then(composeMemberAccess);
         }
     }
 }

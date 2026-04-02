@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow trigger for HTTP requests, providing a strongly-typed output.
     /// </summary>
-    public class HttpRequestTrigger : IOutputWorkflowTrigger<HttpRequestTriggerOutput>
+    public class HttpRequestTrigger : WorkflowTriggerBase, IOutputWorkflowTrigger<HttpRequestTriggerOutput>
     {
         /// <summary>
         /// The request input parameters.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the name of the HTTP request trigger.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets the trigger definition for the HTTP request trigger.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>
         /// A <see cref="FlowTemplateTrigger"/> configured for HTTP request operations.
         /// </returns>
-        public FlowTemplateTrigger GetTriggerDefinition()
+        public override FlowTemplateTrigger GetTriggerDefinition()
         {
             // Implementation for getting the trigger definition
             return new FlowTemplateTrigger

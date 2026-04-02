@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Agents.Services
         /// <param name="cancellationToken">The cancellation token.</param>
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            WorkflowBuilderFactory.CreateWorkflows(cancellationToken);
+            WorkflowFactory.CreateWorkflows(cancellationToken);
 
             return Task.CompletedTask;
         }

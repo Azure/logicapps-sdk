@@ -16,9 +16,11 @@ namespace harness
         /// </summary>
         public static void AddRecurrenceWorkflow()
         {
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("RecurrenceWorkflow", WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger());
+            var trigger = WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger();
+            WorkflowFactory.CreateStatefulWorkflow("RecurrenceWorkflow", trigger);
+
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"test");
-            builder.AddAction(compose);
+            trigger.Then(compose);
         }
     }
 }

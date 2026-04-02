@@ -18,7 +18,7 @@ namespace harness
         /// </summary>
         public static void AddNestedWorkflow()
         {
-            var nestedWorkflowBuilder = WorkflowBuilderFactory.CreateConversationalAgent("NestedWorkflow");
+            var trigger = WorkflowFactory.CreateConversationalAgent("NestedWorkflow");
 
             var agent = new AgentBuilder
             {
@@ -52,38 +52,29 @@ namespace harness
                 ConnectionName = "agent",
             };
 
-            var toolBuilder = new AgentTool<MyObject>();
-
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(tool =>
                 {
                     var nestedWorkflow = WorkflowActions.BuiltIn.NestedWorkflow(
                         workflowReferenceName: () => "HttpRequestResponse",
-                        requestBody: () => toolBuilder.Parameters.Location);
-                    toolBuilder.AddAction(nestedWorkflow);
+                        requestBody: () => tool.Parameters.Location);
+                    return nestedWorkflow;
                 },
                description: "This tool gets the weather",
                parameters: new WeatherObject());
 
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(tool =>
                 {
                     var composeAction = WorkflowActions.BuiltIn.Compose(inputs: () => "Sending HTTP Request after getting weather");
                     var http = WorkflowActions.BuiltIn.HttpAction(
                         uri: () => new Uri("https://google.com"),
                         method: () => HttpMethod.Post);
-                        toolBuilder.AddAction(http,
-                            runAfterSpecifications: new RunAfterSpecification[]
-                            {
-                                new RunAfterSpecification
-                                {
-                                    Action = composeAction,
-                                    Status = new FlowStatus[] { FlowStatus.Succeeded }
-                                }
-                            });
+                    composeAction.Then(http);
+                    return composeAction;
                 },
                description: "This tool will send a message",
                parameters: new WeatherObject());
 
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(tool =>
                 {
                     var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("office365-2").SendEmailV2(emailMessage: () => new ClientSendHtmlMessage()
                     {
@@ -91,12 +82,12 @@ namespace harness
                         Subject = "Interview Scheduled",
                         Body = "An interview has been scheduled."
                     });
-                    toolBuilder.AddAction(action: sendEmailAction);
+                    return sendEmailAction;
                 },
                description: "This tool will send an email",
                parameters: new WeatherObject());
 
-            nestedWorkflowBuilder.AddAgent(agent);
+            trigger.Then(agent);
         }
     }
 

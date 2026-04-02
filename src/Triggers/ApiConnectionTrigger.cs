@@ -9,12 +9,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>
-    public class ApiConnectionTrigger : IWorkflowTrigger
+    public class ApiConnectionTrigger : WorkflowTriggerBase
     {
         /// <summary>
         /// Gets or sets the name of the trigger.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// The type of the flow template operation.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition as a flow template trigger.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> containing the trigger configuration.</returns>
-        public FlowTemplateTrigger GetTriggerDefinition()
+        public override FlowTemplateTrigger GetTriggerDefinition()
         {
             return new FlowTemplateTrigger
             {

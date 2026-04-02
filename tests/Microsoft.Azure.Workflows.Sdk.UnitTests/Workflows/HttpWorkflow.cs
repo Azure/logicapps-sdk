@@ -17,18 +17,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddHttpRequestResponseWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("TestHttpRequestResponse", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("TestHttpRequestResponse", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Received request: {trigger.TriggerOutput.Body}");
-            builder.AddAction(compose, "ComposeInput");
+            compose.Name = "ComposeInput";
 
             var sharepoint = WorkflowActions.ManagedConnectors.Sharepointonline("sharepoint").GetItems(
                 dataset: () => "https://microsoft.sharepoint.com/teams/ApiHubDevTeam",
                 table: () => "1149655b-8044-4cec-90ff-701720a5f89a");
-            builder.AddAction(sharepoint, "getItems");
+            sharepoint.Name = "getItems";
 
             var response = WorkflowActions.BuiltIn.Response(responseBody: () => $"Hello from test workflow! Input was: {compose.Output} {sharepoint.Body}");
-            builder.AddAction(response, "HttpResponse");
+            response.Name = "HttpResponse";
+
+            trigger
+                .Then(compose)
+                .Then(sharepoint)
+                .Then(response);
         }
     }
 }

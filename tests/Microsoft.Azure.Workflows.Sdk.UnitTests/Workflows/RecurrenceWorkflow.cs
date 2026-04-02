@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddRecurrenceWorkflow()
         {
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow(
-                "RecurrenceWorkflow",
-                WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger(timeZone: TimeZoneInfo.FindSystemTimeZoneById("India Standard Time")));
+            var trigger = WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger(timeZone: TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
+            WorkflowFactory.CreateStatefulWorkflow("RecurrenceWorkflow", trigger);
+
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"test");
-            builder.AddAction(compose);
+            trigger.Then(compose);
         }
     }
 }

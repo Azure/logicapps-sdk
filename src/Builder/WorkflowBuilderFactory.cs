@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// Factory for creating WorkflowBuilder instances.
+    /// Factory for creating workflows from trigger node graphs.
     /// </summary>
-    public static class WorkflowBuilderFactory
+    public static class WorkflowFactory
     {
         /// <summary>
-        /// The flow templates dictionary that holds all flow templates.
+        /// The stored workflow trigger nodes indexed by flow name.
         /// </summary>
-        private static readonly Dictionary<string, IWorkflowBuilder> WorkflowBuilders = new Dictionary<string, IWorkflowBuilder>();
+        private static readonly Dictionary<string, (IWorkflowTrigger Trigger, FlowKind Kind)> Workflows = new Dictionary<string, (IWorkflowTrigger, FlowKind)>();
 
         /// <summary>
         /// The name of the conversational flow trigger.
@@ -46,16 +46,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Creates a new conversational agent workflow with the specified flow name.
         /// </summary>
         /// <param name="flowName">The conversational flow name.</param>
-        public static IWorkflowBuilder CreateConversationalAgent(string flowName)
+        public static IWorkflowTrigger CreateConversationalAgent(string flowName)
         {
             var conversationalFlow = new ConversationalFlowTrigger();
-            conversationalFlow.Name = WorkflowBuilderFactory.ConversationalFlowTriggerName;
+            conversationalFlow.Name = WorkflowFactory.ConversationalFlowTriggerName;
 
-            var workflowBuilder = new WorkflowBuilder(flowName, conversationalFlow);
+            WorkflowFactory.Workflows[flowName] = (conversationalFlow, FlowKind.Agent);
 
-            WorkflowBuilderFactory.WorkflowBuilders[flowName] = workflowBuilder;
-
-            return workflowBuilder;
+            return conversationalFlow;
         }
 
         /// <summary>
@@ -64,13 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
         /// <typeparam name="T">The type of the trigger output.</typeparam>
-        public static WorkflowBuilder<T> CreateStatefulWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
+        public static IOutputWorkflowTrigger<T> CreateStatefulWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
         {
-            var workflowBuilder = new WorkflowBuilder<T>(flowName, trigger, FlowKind.Stateful);
-
-            WorkflowBuilderFactory.WorkflowBuilders[flowName] = workflowBuilder;
-
-            return workflowBuilder;
+            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
+            return trigger;
         }
 
         /// <summary>
@@ -78,13 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
-        public static WorkflowBuilder CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
+        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
         {
-            var workflowBuilder = new WorkflowBuilder(flowName, trigger, FlowKind.Stateful);
-
-            WorkflowBuilderFactory.WorkflowBuilders[flowName] = workflowBuilder;
-
-            return workflowBuilder;
+            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
+            return trigger;
         }
 
         /// <summary>
@@ -93,13 +85,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
         /// <typeparam name="T">The type of the trigger output.</typeparam>
-        public static WorkflowBuilder<T> CreateStatelessWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
+        public static IOutputWorkflowTrigger<T> CreateStatelessWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
         {
-            var workflowBuilder = new WorkflowBuilder<T>(flowName, trigger, FlowKind.Stateless);
-
-            WorkflowBuilderFactory.WorkflowBuilders[flowName] = workflowBuilder;
-
-            return workflowBuilder;
+            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
+            return trigger;
         }
 
         /// <summary>
@@ -107,13 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
-        public static WorkflowBuilder CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
+        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
         {
-            var workflowBuilder = new WorkflowBuilder(flowName, trigger, FlowKind.Stateless);
-
-            WorkflowBuilderFactory.WorkflowBuilders[flowName] = workflowBuilder;
-
-            return workflowBuilder;
+            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
+            return trigger;
         }
 
         /// <summary>
@@ -122,10 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="services">The service collection to configure.</param>
         public static void ConfigureServices(IServiceCollection services)
         {
-            var grpcEndpoint = WorkflowBuilderFactory.GetGrpcUrl();
+            var grpcEndpoint = WorkflowFactory.GetGrpcUrl();
 
             var jobSessionServiceClient = new IJobSessionService.IJobSessionServiceClient(GrpcChannel.ForAddress(grpcEndpoint, channelOptions: new GrpcChannelOptions() { MaxReceiveMessageSize = int.MaxValue }));
-            WorkflowBuilderFactory.jobSessionServiceClient = jobSessionServiceClient;
+            WorkflowFactory.jobSessionServiceClient = jobSessionServiceClient;
 
             services.AddSingleton<IJobSessionService.IJobSessionServiceClient>(serviceProvider =>
             {
@@ -135,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             services.AddSingleton<WorkflowLoggerService>(serviceProvider =>
             {
                 var workflowService = new WorkflowLoggerService(serviceProvider.GetRequiredService<ILoggerFactory>());
-                WorkflowBuilderFactory.WorkflowLoggerService = workflowService;
+                WorkflowFactory.WorkflowLoggerService = workflowService;
 
                 return workflowService;
             });
@@ -145,36 +131,36 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Creates workflows from the workflow builders and sends them to the extension service.
+        /// Creates workflows from the stored trigger node graphs and sends them to the extension service.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         public static void CreateWorkflows(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var workflowArtifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
-            WorkflowBuilderFactory.WorkflowLoggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
+            var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
+            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
 
             if (workflowArtifacts.Flows?.Count != 0)
             {
-                var response = WorkflowBuilderFactory.jobSessionServiceClient.CreateWorkflows(new WorkflowsRequest { Workflows = workflowArtifacts.ToJson() });
+                var response = WorkflowFactory.jobSessionServiceClient.CreateWorkflows(new WorkflowsRequest { Workflows = workflowArtifacts.ToJson() });
 
-                WorkflowBuilderFactory.WorkflowLoggerService?.LogDebug($"Response got from calling the extension service '{response}'");
+                WorkflowFactory.WorkflowLoggerService?.LogDebug($"Response got from calling the extension service '{response}'");
             }
         }
 
         /// <summary>
-        /// Gets all codeful workflow artifacts from the registered workflow builders.
+        /// Gets all codeful workflow artifacts from the stored workflow graphs.
         /// </summary>
         public static CodefulWorkflowsArtifacts GetCodefulWorkflowArtifacts()
         {
-            WorkflowBuilderFactory.WorkflowLoggerService?.LogDebug($"Retrieving codeful workflow artifacts '{WorkflowBuilderFactory.WorkflowBuilders?.Count}'");
+            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Retrieving codeful workflow artifacts '{WorkflowFactory.Workflows?.Count}'");
 
             var codefulArtifacts = new CodefulWorkflowsArtifacts
             {
-                Flows = WorkflowBuilderFactory.WorkflowBuilders.ToDictionary(
+                Flows = WorkflowFactory.Workflows.ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.GetFlowDefinition()),
+                    kvp => kvp.Value.Trigger.GetFlowDefinition(kvp.Value.Kind)),
             };
 
             return codefulArtifacts;

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 units: () => "I"
             );
 
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
 
             var msg = WorkflowActions.ManagedConnectors.Teams("teams").PostMessageToConversation(
                 poster: () => posterInput.User,
@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     recipient = "19:meeting_Y2IyMGY4YmEtNTk1Mi00NjM0LWI4YTYtNDg4M2E3ZTIwMTk1@thread.v2",
                     messageBody = $"The weather changed! The new temperature is °F" + $"{trigger.TriggerBody.Responses.Weather.Current.Temperature}"
                 });
-            builder.AddAction(msg);
+
+            trigger.Then(msg);
         }
     }
 }

@@ -18,17 +18,21 @@ namespace harness
         /// </summary>
         public static void AddHttpRequestResponseWorkflow()
         {
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("HttpRequestResponse", WorkflowTriggers.BuiltIn.CreateHttpTrigger());
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"The trigger output {builder.TriggerOutput.Body}");
-            builder.AddAction(compose);
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            WorkflowFactory.CreateStatefulWorkflow("HttpRequestResponse", trigger);
+
+            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"The trigger output {trigger.TriggerOutput.Body}");
 
             var getCurrentWeatherAction = WorkflowActions.ManagedConnectors.Msnweather("msnweather-3").CurrentWeather(
-                location: () => $"{builder.TriggerOutput.Body}",
+                location: () => $"{trigger.TriggerOutput.Body}",
                 units: () => CurrentWeatherunitsInput.Imperial);
-            builder.AddAction(getCurrentWeatherAction);
 
             var response = WorkflowActions.BuiltIn.Response(responseBody: () => $"{getCurrentWeatherAction.Body}");
-            builder.AddAction(response);
+
+            trigger
+                .Then(compose)
+                .Then(getCurrentWeatherAction)
+                .Then(response);
         }
     }
 }

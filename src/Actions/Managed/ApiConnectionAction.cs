@@ -7,12 +7,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput) : IWorkflowAction
+    public class ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput) : WorkflowActionBase
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets the action definition for this API connection action.
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// A <see cref="FlowTemplateAction"/> representing the API connection operation to be performed in the workflow.
         /// </returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        public override FlowTemplateAction GetActionDefinition(string flowName)
         {
             return new FlowTemplateAction
             {

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             // Configure the worker with workflow services
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults()
-                .ConfigureServices(services => WorkflowBuilderFactory.ConfigureServices(services))
+                .ConfigureServices(services => WorkflowFactory.ConfigureServices(services))
                 .Build();
 
             HttpWorkflow.AddHttpRequestResponseWorkflow();
