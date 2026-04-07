@@ -52,5 +52,29 @@ namespace Microsoft.Azure.Workflows.Sdk
             this.Children.Add(action);
             return action;
         }
+
+        /// <summary>
+        /// Chains a subsequent action node to run after this node.
+        /// </summary>
+        /// <param name="name">The name of the action.</param>
+        /// <param name="action">The action node to chain.</param>
+        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Defaults to Succeeded.</param>
+        /// <returns>The chained action node for further fluent chaining.</returns>
+        public IWorkflowAction Then(string name, IWorkflowAction action, FlowStatus[] runAfterStatus = null)
+        {
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                this.Name = Utility.GetUniqueActionName();
+            }
+
+            action.Name = !string.IsNullOrEmpty(name)
+                ? name
+                : !string.IsNullOrEmpty(action.Name)
+                    ? action.Name
+                    : Utility.GetUniqueActionName();
+            action.RunAfterConfig[this.Name] = runAfterStatus ?? new[] { FlowStatus.Succeeded };
+            this.Children.Add(action);
+            return action;
+        }
     }
 }

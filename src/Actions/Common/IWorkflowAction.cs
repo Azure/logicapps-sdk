@@ -37,6 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="runAfterStatus">The required statuses for the run-after dependency. Defaults to Succeeded.</param>
         /// <returns>The chained action node for further fluent chaining.</returns>
         IWorkflowAction Then(IWorkflowAction action, FlowStatus[] runAfterStatus = null);
+
+        /// <summary>
+        /// Chains a subsequent action node to run after this node.
+        /// </summary>
+        /// <param name="name">The name of the action.</param>
+        /// <param name="action">The action node to chain.</param>
+        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Defaults to Succeeded.</param>
+        /// <returns>The chained action node for further fluent chaining.</returns>
+        IWorkflowAction Then(string name, IWorkflowAction action, FlowStatus[] runAfterStatus = null);
     }
 
     /// <summary>
