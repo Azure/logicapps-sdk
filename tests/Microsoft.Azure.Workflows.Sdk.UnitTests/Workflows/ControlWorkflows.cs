@@ -120,32 +120,30 @@ namespace la1
         /// </summary>
         public void AddUntilWorkflow()
         {
-            // TODO: Uncomment when WorkflowActions.BuiltIn.Variables is implemented.
-            /*
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
             // Until example
-            var counter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: "counter", value: 0);
+            var counter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "counter", value: () => 0);
             var until = WorkflowActions.BuiltIn.Control.Until(
                 expression: () => counter.Value.ToObject<int>() == 5,
                 actions: () =>
                 {
-                    return WorkflowActions.BuiltIn.Variables.IncrementVariable(name: "counter", value: 1);
+                    return WorkflowActions.BuiltIn.Variables.IncrementVariable(name: () => "counter", value: () => 1);
                 });
 
             // Nested Until example
-            var outerCounter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: "outerCounter", value: 0);
-            var innerCounter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: "innerCounter", value: 0);
+            var outerCounter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "outerCounter", value: () => 0);
+            var innerCounter = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "innerCounter", value: () => 0);
             var nestedUntil = WorkflowActions.BuiltIn.Control.Until(
                 expression: () => outerCounter.Value.ToObject<int>() == 3,
                 actions: () =>
                 {
-                    var incrementOuter = WorkflowActions.BuiltIn.Variables.IncrementVariable(name: "outerCounter", value: 1);
+                    var incrementOuter = WorkflowActions.BuiltIn.Variables.IncrementVariable(name: () => "outerCounter", value: () => 1);
                     var innerUntil = WorkflowActions.BuiltIn.Control.Until(
                         expression: () => innerCounter.Value.ToObject<int>() == 2,
                         actions: () =>
                         {
-                            return WorkflowActions.BuiltIn.Variables.IncrementVariable(name: "innerCounter", value: 1);
+                            return WorkflowActions.BuiltIn.Variables.IncrementVariable(name: () => "innerCounter", value: () => 1);
                         });
                     return incrementOuter.Then(innerUntil);
                 });
@@ -158,7 +156,6 @@ namespace la1
                 .Then(nestedUntil);
             
             WorkflowFactory.CreateStatefulWorkflow("until", trigger);
-            */
         }
 
         /// <summary>

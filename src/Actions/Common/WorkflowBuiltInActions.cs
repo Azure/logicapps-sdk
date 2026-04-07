@@ -21,6 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         public WorkflowControlActions Control { get; } = new WorkflowControlActions();
 
         /// <summary>
+        /// Variable actions (InitializeVariable, SetVariable, IncrementVariable, DecrementVariable,
+        /// AppendToStringVariable, AppendToArrayVariable).
+        /// </summary>
+        public WorkflowVariableActions Variables { get; } = new WorkflowVariableActions();
+
+        /// <summary>
         /// Creates a nested workflow action that calls another workflow.
         /// </summary>
         /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             Func<IWorkflowAction> actions)
         {
             var expressionStr = ExpressionConverter.Convert(expression);
-            var actionsRoot = actions();
+            var actionsRoot = actions?.Invoke();
             return new UntilAction(expressionStr, actionsRoot);
         }
 
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="cases">A factory that returns a dictionary mapping case labels to their SwitchCase entries.</param>
         /// <param name="defaultCase">A factory that builds the default case action graph and returns the root action node (optional).</param>
         public IWorkflowAction Switch(
-            Expression<Func<string>> on,
+            Expression<Func<JToken>> on,
             Func<Dictionary<string, SwitchCase>> cases,
             Func<IWorkflowAction> defaultCase = null)
         {
-            var onExpression = ExpressionConverter.Convert(on);
-            var casesDict = cases();
+            var onExpression = ExpressionConverter.ConvertO(on);
+            var casesDict = cases?.Invoke();
             var defaultCaseRoot = defaultCase?.Invoke();
             return new SwitchAction(onExpression, casesDict, defaultCaseRoot);
         }

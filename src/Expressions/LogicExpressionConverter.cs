@@ -45,6 +45,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
+        /// Checks if a type implements a specific interface, either directly or through its interfaces.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <param name="interfaceType">The generic interface type to match.</param>
+        private static bool ImplementsInterface(Type type, Type interfaceType)
+        {
+            if (interfaceType.IsAssignableFrom(type))
+                return true;
+            return type.GetInterfaces().Any(i => i == interfaceType);
+        }
+
+        /// <summary>
         /// Gets the property name from a member, checking for JSON property attributes.
         /// </summary>
         /// <param name="obj">The object instance.</param>
@@ -248,6 +260,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
+            else if (litNode != null && ImplementsInterface(obj.Type, typeof(IVariableWorkflowAction)))
+            {
+                if (e.Member.Name != "Value")
+                {
+                    throw new NotImplementedException();
+                }
+                var variableName = ((IVariableWorkflowAction)litNode.Value).VariableName;
+
+                return new FunctionCallNode
+                {
+                    FunctionName = "variables",
+                    Arguments = [
+                        new LiteralNode
+                        {
+                            Type = typeof(string),
+                            Value = variableName
+                        }
+                    ]
+                };
+            }
             else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolParameters<>)))
             {
                 if (e.Member.Name != "Parameters")
@@ -384,6 +416,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             var formatArray = typeof(string).GetMethod("Format", new[] { typeof(string), typeof(object[]) });
 
             var toString = typeof(object).GetMethod("ToString", Type.EmptyTypes);
+
+            // Handle JToken.ToObject<T>() and JToken.Value<T>() as pass-through type conversions
+            if (e.Method.IsGenericMethod &&
+                (e.Method.Name == "ToObject" || e.Method.Name == "Value") &&
+                typeof(Newtonsoft.Json.Linq.JToken).IsAssignableFrom(e.Method.DeclaringType))
+            {
+                return instance;
+            }
 
             // Get IDictionary<string, string> indexer (get_Item) method
             var dictType = typeof(IDictionary<string, string>);

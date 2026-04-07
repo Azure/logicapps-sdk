@@ -13,18 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public class SwitchAction : WorkflowActionBase
     {
-        private readonly string onExpression;
+        private readonly JToken onExpression;
         private readonly Dictionary<string, SwitchCase> cases;
         private readonly IWorkflowAction defaultCaseRoot;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SwitchAction"/> class.
         /// </summary>
-        /// <param name="onExpression">The converted expression string to switch on.</param>
+        /// <param name="onExpression">The expression to switch on.</param>
         /// <param name="cases">A dictionary mapping case labels to their SwitchCase entries.</param>
         /// <param name="defaultCaseRoot">The root action node for the default case (optional).</param>
         public SwitchAction(
-            string onExpression,
+            JToken onExpression,
             Dictionary<string, SwitchCase> cases,
             IWorkflowAction defaultCaseRoot = null)
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var action = new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.Switch,
-                Expression = new JValue(this.onExpression),
+                Expression = this.onExpression,
                 Cases = templateCases,
             };
 
