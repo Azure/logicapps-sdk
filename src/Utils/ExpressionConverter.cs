@@ -187,7 +187,7 @@
                 FunctionName = "base64",
                 Arguments = [node]
             };
-            return expr.Render();;
+            return expr.Render();
         }
 
         /// <summary>
