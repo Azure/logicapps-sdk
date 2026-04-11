@@ -17,57 +17,60 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Creates a Scope action that groups nested actions together.
         /// </summary>
-        /// <param name="actions">A factory that builds the nested action graph and returns the root action node.</param>
+        /// <param name="actions">A factory that builds the nested action graph and returns any node in the chain.</param>
         public IWorkflowAction Scope(Func<IWorkflowAction> actions)
         {
-            var actionsRoot = actions();
-            return new ScopeAction(actionsRoot);
+            var actionsResult = actions();
+            return new ScopeAction(actionsResult.GetActionChainRoot());
         }
 
         /// <summary>
         /// Creates a Condition (If) action that evaluates an expression and executes one of two branches.
         /// </summary>
         /// <param name="expression">The boolean expression to evaluate.</param>
-        /// <param name="trueBranch">A factory that builds the true branch action graph and returns the root action node.</param>
-        /// <param name="falseBranch">A factory that builds the false branch action graph and returns the root action node.</param>
+        /// <param name="trueBranch">A factory that builds the true branch action graph and returns any node in the chain.</param>
+        /// <param name="falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
         public IWorkflowAction Condition(
             Expression<Func<bool>> expression,
             Func<IWorkflowAction> trueBranch,
             Func<IWorkflowAction> falseBranch)
         {
             var expressionStr = ExpressionConverter.Convert(expression);
-            var trueBranchRoot = trueBranch?.Invoke();
-            var falseBranchRoot = falseBranch?.Invoke();
-            return new ConditionAction(expressionStr, trueBranchRoot, falseBranchRoot);
+            var trueBranchResult = trueBranch?.Invoke();
+            var falseBranchResult = falseBranch?.Invoke();
+            return new ConditionAction(
+                expressionStr,
+                trueBranchResult?.GetActionChainRoot(),
+                falseBranchResult?.GetActionChainRoot());
         }
 
         /// <summary>
         /// Creates a ForEach action that iterates over a collection and executes actions for each item.
         /// </summary>
         /// <param name="items">An expression for the collection to iterate over.</param>
-        /// <param name="actions">A factory that takes the current item token and builds the action graph, returning the root action node.</param>
+        /// <param name="actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
         public IWorkflowAction ForEach(
             Expression<Func<JToken>> items,
             Func<JToken, IWorkflowAction> actions)
         {
             var itemsExpression = ExpressionConverter.ConvertO(items);
             var currentItemPlaceholder = new JValue("@item()");
-            var actionsRoot = actions?.Invoke(currentItemPlaceholder);
-            return new ForEachAction(itemsExpression, actionsRoot);
+            var actionsResult = actions?.Invoke(currentItemPlaceholder);
+            return new ForEachAction(itemsExpression, actionsResult?.GetActionChainRoot());
         }
 
         /// <summary>
         /// Creates an Until action that repeats actions until a condition is met.
         /// </summary>
         /// <param name="expression">The boolean expression for the exit condition.</param>
-        /// <param name="actions">A factory that builds the action graph to repeat and returns the root action node.</param>
+        /// <param name="actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
         public IWorkflowAction Until(
             Expression<Func<bool>> expression,
             Func<IWorkflowAction> actions)
         {
             var expressionStr = ExpressionConverter.Convert(expression);
-            var actionsRoot = actions?.Invoke();
-            return new UntilAction(expressionStr, actionsRoot);
+            var actionsResult = actions?.Invoke();
+            return new UntilAction(expressionStr, actionsResult?.GetActionChainRoot());
         }
 
         /// <summary>
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="on">An expression for the value to switch on.</param>
         /// <param name="cases">A factory that returns a dictionary mapping case labels to their SwitchCase entries.</param>
-        /// <param name="defaultCase">A factory that builds the default case action graph and returns the root action node (optional).</param>
+        /// <param name="defaultCase">A factory that builds the default case action graph and returns any node in the chain (optional).</param>
         public IWorkflowAction Switch(
             Expression<Func<JToken>> on,
             Func<Dictionary<string, SwitchCase>> cases,
@@ -83,8 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             var onExpression = ExpressionConverter.ConvertO(on);
             var casesDict = cases?.Invoke();
-            var defaultCaseRoot = defaultCase?.Invoke();
-            return new SwitchAction(onExpression, casesDict, defaultCaseRoot);
+            var defaultCaseResult = defaultCase?.Invoke();
+            return new SwitchAction(onExpression, casesDict, defaultCaseResult?.GetActionChainRoot());
         }
 
         /// <summary>

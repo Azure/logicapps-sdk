@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public SwitchCase(JToken caseValue, IWorkflowAction actions)
         {
             this.Case = caseValue;
-            this.Actions = actions;
+            this.Actions = actions?.GetActionChainRoot();
         }
     }
 }

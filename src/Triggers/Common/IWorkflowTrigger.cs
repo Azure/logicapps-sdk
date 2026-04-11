@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow trigger as the root node of a workflow graph.
     /// </summary>
-    public interface IWorkflowTrigger
+    public interface IWorkflowTrigger : IWorkflowNode
     {
         /// <summary>
         /// Gets the trigger definition for the workflow.
@@ -16,33 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// A <see cref="FlowTemplateTrigger"/> representing the trigger configuration.
         /// </returns>
         FlowTemplateTrigger GetTriggerDefinition();
-
-        /// <summary>
-        /// Gets or sets the name of the trigger.
-        /// </summary>
-        string Name { get; set; }
-
-        /// <summary>
-        /// Gets the child action nodes that run after this trigger.
-        /// </summary>
-        List<IWorkflowAction> Children { get; }
-
-        /// <summary>
-        /// Chains a subsequent action node to run after this trigger.
-        /// </summary>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Not used for trigger-to-action edges in stateful/stateless workflows.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        IWorkflowAction Then(IWorkflowAction action, FlowStatus[] runAfterStatus = null);
-
-        /// <summary>
-        /// Chains a subsequent action node to run after this trigger.
-        /// </summary>
-        /// <param name="name">The name of the action.</param>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Not used for trigger-to-action edges in stateful/stateless workflows.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        IWorkflowAction Then(string name, IWorkflowAction action, FlowStatus[] runAfterStatus = null);
     }
 
     /// <summary>

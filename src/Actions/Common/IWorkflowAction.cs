@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow action as a graph node with support for fluent chaining.
     /// </summary>
-    public interface IWorkflowAction
+    public interface IWorkflowAction : IWorkflowNode
     {
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
@@ -16,36 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         FlowTemplateAction GetActionDefinition(string flowName);
 
         /// <summary>
-        /// Gets or sets the name of the action.
-        /// </summary>
-        string Name { get; set; }
-
-        /// <summary>
-        /// Gets the child action nodes that run after this node.
-        /// </summary>
-        List<IWorkflowAction> Children { get; }
-
-        /// <summary>
         /// Gets the run-after configuration mapping parent action names to required statuses.
         /// </summary>
         Dictionary<string, FlowStatus[]> RunAfterConfig { get; }
 
         /// <summary>
-        /// Chains a subsequent action node to run after this node.
+        /// Gets or sets the root node of the chain this action belongs to.
+        /// When actions are connected via <see cref="IWorkflowNode.Then(IWorkflowAction, FlowStatus[])"/>,
+        /// the chain root tracks the first node in the chain (a trigger or an action) so that
+        /// the entire graph can be recovered from any node in the chain.
         /// </summary>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Defaults to Succeeded.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        IWorkflowAction Then(IWorkflowAction action, FlowStatus[] runAfterStatus = null);
-
-        /// <summary>
-        /// Chains a subsequent action node to run after this node.
-        /// </summary>
-        /// <param name="name">The name of the action.</param>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency. Defaults to Succeeded.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        IWorkflowAction Then(string name, IWorkflowAction action, FlowStatus[] runAfterStatus = null);
+        IWorkflowNode ChainRoot { get; set; }
     }
 
     /// <summary>

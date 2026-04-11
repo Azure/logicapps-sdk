@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 action.Name = Utility.GetUniqueActionName();
             }
 
+            action.ChainRoot = this;
             this.Children.Add(action);
             return action;
         }
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 : !string.IsNullOrEmpty(action.Name)
                     ? action.Name
                     : Utility.GetUniqueActionName();
+            action.ChainRoot = this;
             this.Children.Add(action);
             return action;
         }

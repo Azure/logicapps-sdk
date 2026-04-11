@@ -31,6 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
         /// <summary>
+        /// Gets or sets the root node of the chain this action belongs to.
+        /// </summary>
+        public IWorkflowNode ChainRoot { get; set; }
+
+        /// <summary>
+        /// Gets the root of the chain this action belongs to.
+        /// Returns <see cref="ChainRoot"/> if set, otherwise returns this action.
+        /// </summary>
+        public IWorkflowNode GetChainRoot() => this.ChainRoot ?? this;
+
+        /// <summary>
         /// Chains a subsequent action node to run after this node.
         /// </summary>
         /// <param name="action">The action node to chain.</param>
@@ -49,6 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             action.RunAfterConfig[this.Name] = runAfterStatus ?? new[] { FlowStatus.Succeeded };
+            action.ChainRoot = this.ChainRoot ?? this;
             this.Children.Add(action);
             return action;
         }
@@ -73,6 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     ? action.Name
                     : Utility.GetUniqueActionName();
             action.RunAfterConfig[this.Name] = runAfterStatus ?? new[] { FlowStatus.Succeeded };
+            action.ChainRoot = this.ChainRoot ?? this;
             this.Children.Add(action);
             return action;
         }
