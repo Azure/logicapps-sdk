@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Creates a Scope action that groups nested actions together.
         /// </summary>
         /// <param name="actions">A factory that builds the nested action graph and returns any node in the chain.</param>
-        public IWorkflowAction Scope(Func<IWorkflowAction> actions)
+        public IWorkflowAction Scope(Func<IWorkflowNode> actions)
         {
             var actionsResult = actions();
-            return new ScopeAction(actionsResult.GetActionChainRoot());
+            return new ScopeAction(WorkflowChain.GetRootAction(actionsResult));
         }
 
         /// <summary>
@@ -32,16 +32,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
         public IWorkflowAction Condition(
             Expression<Func<bool>> expression,
-            Func<IWorkflowAction> trueBranch,
-            Func<IWorkflowAction> falseBranch)
+            Func<IWorkflowNode> trueBranch,
+            Func<IWorkflowNode> falseBranch)
         {
             var expressionStr = ExpressionConverter.Convert(expression);
             var trueBranchResult = trueBranch?.Invoke();
             var falseBranchResult = falseBranch?.Invoke();
             return new ConditionAction(
                 expressionStr,
-                trueBranchResult?.GetActionChainRoot(),
-                falseBranchResult?.GetActionChainRoot());
+                trueBranchResult != null ? WorkflowChain.GetRootAction(trueBranchResult) : null,
+                falseBranchResult != null ? WorkflowChain.GetRootAction(falseBranchResult) : null);
         }
 
         /// <summary>
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
         public IWorkflowAction ForEach(
             Expression<Func<JToken>> items,
-            Func<JToken, IWorkflowAction> actions)
+            Func<JToken, IWorkflowNode> actions)
         {
             var itemsExpression = ExpressionConverter.ConvertO(items);
             var currentItemPlaceholder = new JValue("@item()");
             var actionsResult = actions?.Invoke(currentItemPlaceholder);
-            return new ForEachAction(itemsExpression, actionsResult?.GetActionChainRoot());
+            return new ForEachAction(itemsExpression, actionsResult != null ? WorkflowChain.GetRootAction(actionsResult) : null);
         }
 
         /// <summary>
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
         public IWorkflowAction Until(
             Expression<Func<bool>> expression,
-            Func<IWorkflowAction> actions)
+            Func<IWorkflowNode> actions)
         {
             var expressionStr = ExpressionConverter.Convert(expression);
             var actionsResult = actions?.Invoke();
-            return new UntilAction(expressionStr, actionsResult?.GetActionChainRoot());
+            return new UntilAction(expressionStr, actionsResult != null ? WorkflowChain.GetRootAction(actionsResult) : null);
         }
 
         /// <summary>
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         public IWorkflowAction Switch(
             Expression<Func<JToken>> on,
             Func<Dictionary<string, SwitchCase>> cases,
-            Func<IWorkflowAction> defaultCase = null)
+            Func<IWorkflowNode> defaultCase = null)
         {
             var onExpression = ExpressionConverter.ConvertO(on);
             var casesDict = cases?.Invoke();
             var defaultCaseResult = defaultCase?.Invoke();
-            return new SwitchAction(onExpression, casesDict, defaultCaseResult?.GetActionChainRoot());
+            return new SwitchAction(onExpression, casesDict, defaultCaseResult != null ? WorkflowChain.GetRootAction(defaultCaseResult) : null);
         }
 
         /// <summary>

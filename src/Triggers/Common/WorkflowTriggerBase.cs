@@ -5,9 +5,10 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Base class for workflow trigger nodes providing graph traversal and fluent chaining support.
+    /// Base class for workflow trigger nodes. Extends <see cref="WorkflowChain"/> for chain tracking
+    /// and implements <see cref="IWorkflowTrigger"/> for trigger-specific behavior.
     /// </summary>
-    public abstract class WorkflowTriggerBase : IWorkflowTrigger
+    public abstract class WorkflowTriggerBase : WorkflowChain, IWorkflowTrigger
     {
         /// <summary>
         /// Gets or sets the name of the trigger.
@@ -15,50 +16,22 @@ namespace Microsoft.Azure.Workflows.Sdk
         public abstract string Name { get; set; }
 
         /// <summary>
-        /// Gets the trigger definition for the workflow.
-        /// </summary>
-        public abstract FlowTemplateTrigger GetTriggerDefinition();
-
-        /// <summary>
         /// Gets the child action nodes that run after this trigger.
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
         /// <summary>
-        /// Chains a subsequent action node to run after this trigger.
+        /// Gets the trigger definition for the workflow.
         /// </summary>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses. Not used for trigger-to-action edges in stateful/stateless workflows but stored for agent workflows.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        public IWorkflowAction Then(IWorkflowAction action, FlowStatus[] runAfterStatus = null)
-        {
-            if (string.IsNullOrEmpty(action.Name))
-            {
-                action.Name = Utility.GetUniqueActionName();
-            }
-
-            action.ChainRoot = this;
-            this.Children.Add(action);
-            return action;
-        }
+        public abstract FlowTemplateTrigger GetTriggerDefinition();
 
         /// <summary>
-        /// Chains a subsequent action node to run after this trigger.
+        /// Wires a child action to this trigger's graph.
         /// </summary>
-        /// <param name="name">The name of the action.</param>
-        /// <param name="action">The action node to chain.</param>
-        /// <param name="runAfterStatus">The required statuses. Not used for trigger-to-action edges in stateful/stateless workflows but stored for agent workflows.</param>
-        /// <returns>The chained action node for further fluent chaining.</returns>
-        public IWorkflowAction Then(string name, IWorkflowAction action, FlowStatus[] runAfterStatus = null)
+        protected override WorkflowChain AppendAction(IWorkflowAction action, IWorkflowNode end, FlowStatus[] runAfterStatus)
         {
-            action.Name = !string.IsNullOrEmpty(name)
-                ? name
-                : !string.IsNullOrEmpty(action.Name)
-                    ? action.Name
-                    : Utility.GetUniqueActionName();
-            action.ChainRoot = this;
             this.Children.Add(action);
-            return action;
+            return new WorkflowChain(this, end);
         }
     }
 }

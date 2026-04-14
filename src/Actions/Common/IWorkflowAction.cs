@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow action as a graph node with support for fluent chaining.
     /// </summary>
-    public interface IWorkflowAction : IWorkflowNode
+    public interface IWorkflowAction : IWorkflowOperation
     {
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
@@ -19,14 +19,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the run-after configuration mapping parent action names to required statuses.
         /// </summary>
         Dictionary<string, FlowStatus[]> RunAfterConfig { get; }
-
-        /// <summary>
-        /// Gets or sets the root node of the chain this action belongs to.
-        /// When actions are connected via <see cref="IWorkflowNode.Then(IWorkflowAction, FlowStatus[])"/>,
-        /// the chain root tracks the first node in the chain (a trigger or an action) so that
-        /// the entire graph can be recovered from any node in the chain.
-        /// </summary>
-        IWorkflowNode ChainRoot { get; set; }
     }
 
     /// <summary>

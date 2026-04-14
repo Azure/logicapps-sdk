@@ -80,6 +80,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
+        /// Creates a new stateful workflow from a workflow chain.
+        /// The chain's start node must be a trigger.
+        /// </summary>
+        /// <param name="flowName">The name of the flow.</param>
+        /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
+        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, WorkflowChain chain)
+        {
+            var trigger = chain.Start as IWorkflowTrigger
+                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+            return CreateStatefulWorkflow(flowName, trigger);
+        }
+
+        /// <summary>
         /// Creates a new stateless workflow for the specified flow name with a typed trigger output.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
@@ -100,6 +113,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
             return trigger;
+        }
+
+        /// <summary>
+        /// Creates a new stateless workflow from a workflow chain.
+        /// The chain's start node must be a trigger.
+        /// </summary>
+        /// <param name="flowName">The name of the flow.</param>
+        /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
+        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, WorkflowChain chain)
+        {
+            var trigger = chain.Start as IWorkflowTrigger
+                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+            return CreateStatelessWorkflow(flowName, trigger);
         }
 
         /// <summary>

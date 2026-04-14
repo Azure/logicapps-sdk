@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public IWorkflowAction Actions { get; set; }
 
-        public SwitchCase(JToken caseValue, IWorkflowAction actions)
+        public SwitchCase(JToken caseValue, IWorkflowNode actions)
         {
             this.Case = caseValue;
-            this.Actions = actions?.GetActionChainRoot();
+            this.Actions = actions != null ? WorkflowChain.GetRootAction(actions) : null;
         }
     }
 }

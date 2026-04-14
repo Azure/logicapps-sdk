@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow trigger as the root node of a workflow graph.
     /// </summary>
-    public interface IWorkflowTrigger : IWorkflowNode
+    public interface IWorkflowTrigger : IWorkflowOperation
     {
         /// <summary>
         /// Gets the trigger definition for the workflow.
