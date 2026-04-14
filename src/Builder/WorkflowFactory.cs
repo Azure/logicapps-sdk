@@ -23,11 +23,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         private static readonly Dictionary<string, (IWorkflowTrigger Trigger, FlowKind Kind)> Workflows = new Dictionary<string, (IWorkflowTrigger, FlowKind)>();
 
         /// <summary>
-        /// The name of the conversational flow trigger.
-        /// </summary>
-        private static string ConversationalFlowTriggerName = "When_a_new_chat_session_starts";
-
-        /// <summary>
         /// The environment variable name for the functions application directory.
         /// </summary>
         public static readonly string FUNCTIONS_APPLICATION_DIRECTORY = "FUNCTIONS_APPLICATION_DIRECTORY";
@@ -43,38 +38,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         private static WorkflowLoggerService WorkflowLoggerService;
 
         /// <summary>
-        /// Creates a new conversational agent workflow with the specified flow name.
-        /// </summary>
-        /// <param name="flowName">The conversational flow name.</param>
-        public static IWorkflowTrigger CreateConversationalAgent(string flowName)
-        {
-            var conversationalFlow = new ConversationalFlowTrigger();
-            conversationalFlow.Name = WorkflowFactory.ConversationalFlowTriggerName;
-
-            WorkflowFactory.Workflows[flowName] = (conversationalFlow, FlowKind.Agent);
-
-            return conversationalFlow;
-        }
-
-        /// <summary>
-        /// Creates a new stateful workflow for the specified flow name with a typed trigger output.
-        /// </summary>
-        /// <param name="flowName">The name of the flow.</param>
-        /// <param name="trigger">The trigger for the flow.</param>
-        /// <typeparam name="T">The type of the trigger output.</typeparam>
-        public static IOutputWorkflowTrigger<T> CreateStatefulWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
-        {
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
-            return trigger;
-        }
-
-        /// <summary>
         /// Creates a new stateful workflow for the specified flow name.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
         public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
         {
+            if (trigger is ConversationalFlowTrigger)
+            {
+                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+            }
+
             WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
             return trigger;
         }
@@ -89,19 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             var trigger = chain.Start as IWorkflowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
-            return CreateStatefulWorkflow(flowName, trigger);
-        }
+            
+            if (trigger is ConversationalFlowTrigger)
+            {
+                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+            }
 
-        /// <summary>
-        /// Creates a new stateless workflow for the specified flow name with a typed trigger output.
-        /// </summary>
-        /// <param name="flowName">The name of the flow.</param>
-        /// <param name="trigger">The trigger for the flow.</param>
-        /// <typeparam name="T">The type of the trigger output.</typeparam>
-        public static IOutputWorkflowTrigger<T> CreateStatelessWorkflow<T>(string flowName, IOutputWorkflowTrigger<T> trigger)
-        {
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
-            return trigger;
+            return CreateStatefulWorkflow(flowName, trigger);
         }
 
         /// <summary>
@@ -111,6 +79,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trigger">The trigger for the flow.</param>
         public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
         {
+            if (trigger is ConversationalFlowTrigger)
+            {
+                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+            }
+
             WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
             return trigger;
         }
@@ -125,7 +98,36 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             var trigger = chain.Start as IWorkflowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+            
+            if (trigger is ConversationalFlowTrigger)
+            {
+                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+            }
+
             return CreateStatelessWorkflow(flowName, trigger);
+        }
+
+        /// <summary>
+        /// Creates a new conversational agent workflow with the specified flow name.
+        /// </summary>
+        /// <param name="flowName">The conversational flow name.</param>
+        /// <param name="trigger">The trigger for the flow.</param>
+        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
+        {
+            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Agent);
+            return trigger;
+        }
+
+        /// <summary>
+        /// Creates a new conversational agent workflow with the specified flow name.
+        /// </summary>
+        /// <param name="flowName">The conversational flow name.</param>
+        /// <param name="chain">The workflow chain.</param>
+        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, WorkflowChain chain)
+        {
+            var trigger = chain.Start as ConversationalFlowTrigger
+                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+            return CreateAgentWorkflow(flowName, trigger);
         }
 
         /// <summary>

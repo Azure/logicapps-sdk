@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddRecruitmentWorkflow()
         {
-            var trigger = WorkflowFactory.CreateConversationalAgent("RecruitmentWorkflow");
+            var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
 
             var agent = new AgentBuilder
             {
@@ -107,6 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                parameters: new RecruiterParameterObject());
 
             trigger.Then(agent);
+
+            WorkflowFactory.CreateAgentWorkflow("RecruitmentWorkflow", trigger);
         }
     }
 

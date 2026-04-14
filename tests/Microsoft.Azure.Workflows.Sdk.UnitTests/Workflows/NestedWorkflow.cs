@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddNestedWorkflow()
         {
-            var trigger = WorkflowFactory.CreateConversationalAgent("NestedWorkflow");
+            var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
 
             var agent = new AgentBuilder
             {
@@ -85,6 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                parameters: new WeatherObject());
 
             trigger.Then(agent);
+
+            WorkflowFactory.CreateAgentWorkflow("NestedWorkflow", trigger);
         }
     }
 
