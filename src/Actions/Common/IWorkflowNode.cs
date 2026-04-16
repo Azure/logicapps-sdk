@@ -6,28 +6,33 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
     /// Defines the fluent chaining contract for workflow nodes.
-    /// Implemented by <see cref="WorkflowChain"/> (multi-node chains),
-    /// actions, and triggers (via <see cref="IWorkflowOperation"/>).
     /// </summary>
     public interface IWorkflowNode
     {
         /// <summary>
-        /// Chains a subsequent node to run after this node.
-        /// Accepts single actions, multi-node chains, or interface-typed actions.
+        /// Chains a subsequent operation to run after this node (operation or chain).
         /// </summary>
-        /// <param name="node">The node or chain to append. Must resolve to an action start, not a trigger.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency.</param>
-        /// <returns>A <see cref="WorkflowChain"/> tracking the chain from this node to the appended node's end.</returns>
-        WorkflowChain Then(IWorkflowNode node, FlowStatus[] runAfterStatus = null);
+        /// <param name="action">The action to append to the chain.</param>
+        /// <param name="name">The name of the action.</param>
+        /// <returns>A <see cref="WorkflowChain"/> tracking the chain from this node's start to the appended action.</returns>
+        WorkflowChain Then(IWorkflowAction action, string name = null);
 
         /// <summary>
-        /// Chains a subsequent named node to run after this node.
-        /// Accepts single actions, multi-node chains, or interface-typed actions.
+        /// Chains a subsequent operation to run after this node (operation or chain) with multiple run-after statuses.
         /// </summary>
-        /// <param name="name">The name to assign to the start action.</param>
-        /// <param name="node">The node or chain to append. Must resolve to an action start, not a trigger.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency.</param>
-        /// <returns>A <see cref="WorkflowChain"/> tracking the chain from this node to the appended node's end.</returns>
-        WorkflowChain Then(string name, IWorkflowNode node, FlowStatus[] runAfterStatus = null);
+        /// <param name="action">The action to append to the chain.</param>
+        /// <param name="runAfter">The statuses for the run-after configuration.</param>
+        /// <param name="name">The name of the action.</param>
+        /// <returns>A <see cref="WorkflowChain"/> tracking the chain from this node's start to the appended action.</returns>
+        WorkflowChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null);
+
+        /// <summary>
+        /// Chains a subsequent operation to run after this node (operation or chain) with multiple run-after statuses for different actions.
+        /// </summary>
+        /// <param name="action">The action to append to the chain.</param>
+        /// <param name="runAfter">The run-after configurations.</param>
+        /// <param name="name">The name of the action.</param>
+        /// <returns>A <see cref="WorkflowChain"/> tracking the chain from this node's start to the appended action.</returns>
+        WorkflowChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null);
     }
 }

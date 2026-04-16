@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             return value.ToString();
         }
-        public static Dictionary<string, FlowStatus[]> GetRunAfterConfiguration(RunAfterSpecification[] runAfter)
+        
+        public static Dictionary<string, FlowStatus[]> GetRunAfterConfiguration(RunAfter[] runAfter)
         {
             return runAfter
                 .Where(spec => spec?.Action?.Name != null && spec.Status != null)

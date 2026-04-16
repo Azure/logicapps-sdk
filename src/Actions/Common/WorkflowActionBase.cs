@@ -31,19 +31,56 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
-        /// <summary>
-        /// Wires a child action to this action's graph, setting run-after configuration.
-        /// </summary>
-        protected override WorkflowChain AppendAction(IWorkflowAction action, IWorkflowNode end, FlowStatus[] runAfterStatus)
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, string name = null)
         {
             if (string.IsNullOrEmpty(this.Name))
             {
                 this.Name = Utility.GetUniqueActionName();
             }
 
-            action.RunAfterConfig[this.Name] = runAfterStatus ?? new[] { FlowStatus.Succeeded };
+            action.Name = name ?? Utility.GetUniqueActionName();
+            action.RunAfterConfig[this.Name] = new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
-            return new WorkflowChain(this, end);
+
+            return new WorkflowChain(this.Start, action);
+        }
+
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        {
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                this.Name = Utility.GetUniqueActionName();
+            }
+
+            action.Name = name ?? Utility.GetUniqueActionName();
+            action.RunAfterConfig[this.Name] = runAfter ?? new[] { FlowStatus.Succeeded };
+            this.Children.Add(action);
+
+            return new WorkflowChain(this.Start, action);
+        }
+
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        {
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                this.Name = Utility.GetUniqueActionName();
+            }
+
+            action.Name = name ?? Utility.GetUniqueActionName();
+            foreach (var ra in runAfter)
+            {
+                if (ra.Action == null || string.IsNullOrEmpty(ra.Action.Name))
+                {
+                    throw new InvalidOperationException($"Invalid action '{ra.Action?.Name}' in RunAfter configuration.");
+                }
+                action.RunAfterConfig[ra.Action.Name] = ra.Status ?? new[] { FlowStatus.Succeeded };
+            }
+            this.Children.Add(action);
+
+            return new WorkflowChain(this.Start, action);
         }
     }
 }

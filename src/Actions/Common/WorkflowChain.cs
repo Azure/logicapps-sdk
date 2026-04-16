@@ -9,31 +9,33 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     /// <summary>
     /// Base class for all workflow nodes providing chain tracking and fluent operation chaining.
-    /// Every workflow operation (action or trigger) is itself a single-node chain where Start and End
+    /// Every workflow operation (action or trigger) is itself a single-node chain where Start and Ends
     /// are the node itself. When nodes are connected via <see cref="Then(IWorkflowNode, FlowStatus[])"/>,
-    /// a new <see cref="WorkflowChain"/> is returned that tracks the full chain from start to end.
+    /// a new <see cref="WorkflowChain"/> is returned that tracks the full chain from start to ends.
     /// Multi-node chains are standalone instances with no Name or Children of their own.
+    /// Chains may track multiple end nodes when created via <see cref="Join(WorkflowChain)"/>.
     /// </summary>
     public class WorkflowChain : IWorkflowNode
     {
-        private readonly IWorkflowNode _start;
-        private readonly IWorkflowNode _end;
+        private readonly IWorkflowOperation _start;
+        private readonly IWorkflowOperation[] _ends;
 
         /// <summary>
         /// Gets the first node in the chain. For single-node chains (actions/triggers),
         /// returns the node itself.
         /// </summary>
-        public IWorkflowNode Start => this._start ?? this;
+        public IWorkflowOperation Start => this._start ?? this as IWorkflowOperation;
 
         /// <summary>
-        /// Gets the last node in the chain. For single-node chains (actions/triggers),
-        /// returns the node itself.
+        /// Gets the end nodes of the chain. For single-node chains (actions/triggers),
+        /// returns a single-element array containing the node itself.
+        /// For joined chains, returns all end nodes.
         /// </summary>
-        public IWorkflowNode End => this._end ?? this;
+        public IReadOnlyList<IWorkflowOperation> Ends => this._ends ?? new[] { this as IWorkflowOperation };
 
         /// <summary>
         /// Initializes a new single-node chain. Used by subclasses (actions/triggers)
-        /// where Start and End default to the node itself.
+        /// where Start and Ends default to the node itself.
         /// </summary>
         protected WorkflowChain()
         {
@@ -44,111 +46,102 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="start">The first node in the chain.</param>
         /// <param name="end">The last node in the chain.</param>
-        public WorkflowChain(IWorkflowNode start, IWorkflowNode end)
+        public WorkflowChain(IWorkflowOperation start, IWorkflowOperation end)
         {
             this._start = start ?? throw new ArgumentNullException(nameof(start));
-            this._end = end ?? throw new ArgumentNullException(nameof(end));
+            this._ends = new[] { end ?? throw new ArgumentNullException(nameof(end)) };
         }
 
         /// <summary>
-        /// Wires a resolved child action to this node and returns a new chain.
-        /// Called by <see cref="Then(IWorkflowNode, FlowStatus[])"/> for single-node chains.
-        /// Override in subclasses to add wiring behavior (e.g., setting RunAfterConfig).
+        /// Initializes a new multi-end chain with explicit start and multiple end nodes.
         /// </summary>
-        /// <param name="action">The child action to append (already name-resolved).</param>
-        /// <param name="end">The end node of the appended segment.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency.</param>
-        /// <returns>A new <see cref="WorkflowChain"/> from this node to the appended end.</returns>
-        protected virtual WorkflowChain AppendAction(IWorkflowAction action, IWorkflowNode end, FlowStatus[] runAfterStatus)
+        /// <param name="start">The first node in the chain.</param>
+        /// <param name="ends">The end nodes of the chain.</param>
+        public WorkflowChain(IWorkflowOperation start, IWorkflowOperation[] ends)
         {
-            throw new InvalidOperationException("Cannot call Then on a bare multi-node WorkflowChain.");
+            this._start = start ?? throw new ArgumentNullException(nameof(start));
+            this._ends = ends ?? throw new ArgumentNullException(nameof(ends));
+
+            if (ends.Length == 0)
+            {
+                throw new ArgumentException("At least one end node is required.", nameof(ends));
+            }
         }
 
         /// <summary>
-        /// Resolves an <see cref="IWorkflowNode"/> to its start action and end node.
-        /// Handles single actions, multi-node chains, and interface-typed actions uniformly.
+        /// Combines this chain with another chain that shares the same root.
         /// </summary>
-        private static (IWorkflowAction StartAction, IWorkflowNode EndNode) ResolveNode(IWorkflowNode node)
+        /// <param name="other">The other chain to join with. Must share the same root as this chain.</param>
+        /// <returns>A new <see cref="WorkflowChain"/> with the same start and the combined end nodes of both chains.</returns>
+        public WorkflowChain Join(WorkflowChain other)
         {
-            if (node is WorkflowChain chain && !object.ReferenceEquals(chain.Start, chain))
+            if (other == null)
             {
-                // Multi-node chain: extract start action and end node
-                var startAction = chain.Start as IWorkflowAction
-                    ?? throw new InvalidOperationException("Cannot chain a node that starts with a trigger.");
-                return (startAction, chain.End);
+                throw new ArgumentNullException(nameof(other));
             }
 
-            if (node is IWorkflowAction action)
+            if (!object.ReferenceEquals(this.Start, other.Start))
             {
-                return (action, node);
+                throw new InvalidOperationException("Cannot join chains that do not share the same root.");
             }
 
-            throw new InvalidOperationException("Cannot chain a trigger as a child node.");
+            var combinedEnds = new List<IWorkflowOperation>(this.Ends);
+
+            foreach (var end in other.Ends)
+            {
+                if (!combinedEnds.Contains(end))
+                {
+                    combinedEnds.Add(end);
+                }
+            }
+
+            return new WorkflowChain(this.Start, combinedEnds.ToArray());
         }
 
-        #region Then overloads
-
-        /// <summary>
-        /// Chains a subsequent node to run after this chain's end.
-        /// Accepts single actions, multi-node chains, or interface-typed actions.
-        /// </summary>
-        /// <param name="node">The node or chain to append. Must resolve to an action start, not a trigger.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency.</param>
-        /// <returns>A new <see cref="WorkflowChain"/> tracking the chain from this node's start to the appended node's end.</returns>
-        public WorkflowChain Then(IWorkflowNode node, FlowStatus[] runAfterStatus = null)
+        /// <inheritdoc/>
+        public virtual WorkflowChain Then(IWorkflowAction action, string name = null)
         {
-            // Multi-node chain: delegate to End node
-            if (!object.ReferenceEquals(this.End, this))
+            foreach (var end in this.Ends)
             {
-                var (_, endNode) = ResolveNode(node);
-                this.End.Then(node, runAfterStatus);
-                return new WorkflowChain(this.Start, endNode);
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action, name);
             }
 
-            // Single-node chain: resolve and wire via subclass
-            var (startAction, end) = ResolveNode(node);
-
-            if (string.IsNullOrEmpty(startAction.Name))
-            {
-                startAction.Name = Utility.GetUniqueActionName();
-            }
-
-            return this.AppendAction(startAction, end, runAfterStatus);
+            return new WorkflowChain(this.Start, action);
         }
 
-        /// <summary>
-        /// Chains a subsequent named node to run after this chain's end.
-        /// Accepts single actions, multi-node chains, or interface-typed actions.
-        /// </summary>
-        /// <param name="name">The name to assign to the start action.</param>
-        /// <param name="node">The node or chain to append. Must resolve to an action start, not a trigger.</param>
-        /// <param name="runAfterStatus">The required statuses for the run-after dependency.</param>
-        /// <returns>A new <see cref="WorkflowChain"/> tracking the chain from this node's start to the appended node's end.</returns>
-        public WorkflowChain Then(string name, IWorkflowNode node, FlowStatus[] runAfterStatus = null)
+        /// <inheritdoc/>
+        public virtual WorkflowChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
         {
-            // Multi-node chain: delegate to End node
-            if (!object.ReferenceEquals(this.End, this))
+            foreach (var end in this.Ends)
             {
-                var (_, endNode) = ResolveNode(node);
-                this.End.Then(name, node, runAfterStatus);
-                return new WorkflowChain(this.Start, endNode);
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action, runAfter, name);
             }
 
-            // Single-node chain: resolve, assign name, and wire via subclass
-            var (startAction, end) = ResolveNode(node);
-
-            startAction.Name = !string.IsNullOrEmpty(name)
-                ? name
-                : !string.IsNullOrEmpty(startAction.Name)
-                    ? startAction.Name
-                    : Utility.GetUniqueActionName();
-
-            return this.AppendAction(startAction, end, runAfterStatus);
+            return new WorkflowChain(this.Start, action);
         }
 
-        #endregion
+        /// <inheritdoc/>
+        public virtual WorkflowChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        {
+            foreach (var end in this.Ends)
+            {
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action, runAfter, name);
+            }
 
-        #region Helpers
+            return new WorkflowChain(this.Start, action);
+        }
 
         /// <summary>
         /// Extracts the root action from an <see cref="IWorkflowNode"/> result.
@@ -169,7 +162,5 @@ namespace Microsoft.Azure.Workflows.Sdk
             return node as IWorkflowAction
                 ?? throw new InvalidOperationException("Branch must contain a workflow action.");
         }
-
-        #endregion
     }
 }

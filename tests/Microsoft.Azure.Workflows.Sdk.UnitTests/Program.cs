@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             NullableNodeWorkflow.AddNullableNodeWorkflow();
 
+            JoinWorkflow.GetJoinWorkflow();
+            JoinWorkflow.GetJoinWithRunAfterWorkflow();
+
             var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
 
             foreach (var workflow in workflowArtifacts.Flows)

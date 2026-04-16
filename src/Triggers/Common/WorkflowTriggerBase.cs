@@ -25,13 +25,25 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public abstract FlowTemplateTrigger GetTriggerDefinition();
 
-        /// <summary>
-        /// Wires a child action to this trigger's graph.
-        /// </summary>
-        protected override WorkflowChain AppendAction(IWorkflowAction action, IWorkflowNode end, FlowStatus[] runAfterStatus)
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, string name = null)
         {
+            action.Name = name ?? Utility.GetUniqueActionName();
             this.Children.Add(action);
-            return new WorkflowChain(this, end);
+
+            return new WorkflowChain(this, action);
+        }
+
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        {
+            throw new NotImplementedException("RunAfter configuration can't be specified on first action after a trigger.");
+        }
+
+        /// <inheritdoc/>
+        public override WorkflowChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        {
+            throw new NotImplementedException("RunAfter configuration can't be specified on first action after a trigger.");
         }
     }
 }
