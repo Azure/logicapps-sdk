@@ -10,15 +10,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Stateful test workflow with custom code action.
     /// </summary>
-    public static class CustomCodeWorkflow
+    public class CustomCodeWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the stateful workflow with custom code.
+        /// Gets the stateful workflow with custom code definitions.
         /// </summary>
-        public static void AddStatefulWorkflowWithCustomCode()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("ManualTrigger");
-            WorkflowFactory.CreateStatefulWorkflow(flowName: "TestStatefulWorkflow", trigger: trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Processing: {trigger.TriggerOutput.Body}");
             compose.Name = "ProcessInput";
@@ -33,6 +32,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Then(compose)
                 .Then(customCode)
                 .Then(response);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("TestStatefulWorkflow", trigger) };
         }
 
         /// <summary>

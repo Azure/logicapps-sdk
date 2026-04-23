@@ -12,6 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class FlowPropertiesDefinition
     {
         /// <summary>
+        /// Gets or sets the workflow name used as the registration key.
+        /// This property is not serialized to JSON.
+        /// </summary>
+        [JsonIgnore]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the flow kind.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

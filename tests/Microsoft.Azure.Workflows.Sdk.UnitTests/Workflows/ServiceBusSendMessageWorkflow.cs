@@ -9,15 +9,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Sample workflow that sends an Azure Service Bus message.
     /// </summary>
-    public static class ServiceBusSendMessageWorkflow
+    public class ServiceBusSendMessageWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Creates a workflow that sends a message to a Service Bus queue.
+        /// Gets the Service Bus send message workflow definitions.
         /// </summary>
-        public static void AddServiceBusSendMessageWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            WorkflowFactory.CreateStatefulWorkflow("ServiceBusSendMessageWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "Test compose");
 
@@ -28,6 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             trigger
                 .Then(compose)
                 .Then(sendMessage);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("ServiceBusSendMessageWorkflow", trigger) };
         }
     }
 }

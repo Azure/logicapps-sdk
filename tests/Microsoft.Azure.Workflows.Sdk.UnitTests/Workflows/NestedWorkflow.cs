@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Nested workflow class.
     /// </summary>
-    public static class NestedWorkflow
+    public class NestedWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the nested workflow.
+        /// Gets the nested workflow definitions.
         /// </summary>
-        public static void AddNestedWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             trigger.Then(agent);
 
-            WorkflowFactory.CreateAgentWorkflow("NestedWorkflow", trigger);
+            return new[] { WorkflowFactory.CreateAgentWorkflow("NestedWorkflow", trigger) };
         }
     }
 

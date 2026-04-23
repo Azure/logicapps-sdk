@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Weather workflow class.
     /// </summary>
-    public static class WeatherWorkflow
+    public class WeatherWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the weather workflow.
+        /// Gets the weather workflow definitions.
         /// </summary>
-        public static void AddWeatherWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.Managed.Msnweather("msnweather").OnCurrentWeatherChange(
                 location: () => "Seattle, WA",
@@ -25,8 +25,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 target: () => 70,
                 units: () => "I"
             );
-
-            WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
 
             var msg = WorkflowActions.ManagedConnectors.Teams("teams").PostMessageToConversation(
                 poster: () => posterInput.User,
@@ -38,6 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 });
 
             trigger.Then(msg);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger) };
         }
     }
 }

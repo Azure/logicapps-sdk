@@ -10,15 +10,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Sample workflow that triggers when a new email arrives and composes its content.
     /// </summary>
-    public static class EmailWorkflow
+    public class EmailWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Creates a workflow that triggers on new email and outputs the body content.
+        /// Gets the email workflow definitions.
         /// </summary>
-        public static void AddEmailWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmailV3();
-            WorkflowFactory.CreateStatefulWorkflow("GetEmailWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent
             {
@@ -30,6 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             compose.Name = "ComposeEmailContent";
 
             trigger.Then(compose);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("GetEmailWorkflow", trigger) };
         }
     }
 

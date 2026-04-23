@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
+    using System.Linq;
+
     /// <summary>
     /// Main Class.
     /// </summary>
@@ -14,34 +16,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void Main()
         {
-            //RecruitmentWorkflow.AddRecruitmentWorkflow();
-
-            HttpWorkflow.AddHttpRequestResponseWorkflow();
-            CustomCodeWorkflow.AddStatefulWorkflowWithCustomCode();
-
-            NestedWorkflow.AddNestedWorkflow();
-
-            RecurrenceWorkflow.AddRecurrenceWorkflow();
-            EmailWorkflow.AddEmailWorkflow();
-
-            WeatherWorkflow.AddWeatherWorkflow();
-
-            SerivceNowWorkflow.AddWorkflow();
-
-            ServiceBusWorkflow.AddServiceBusQueueWorkflow();
-            ServiceBusSendMessageWorkflow.AddServiceBusSendMessageWorkflow();
-
-            NullableNodeWorkflow.AddNullableNodeWorkflow();
-
-            JoinWorkflow.GetJoinWorkflow();
-            JoinWorkflow.GetJoinWithRunAfterWorkflow();
-
-            var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
-
-            foreach (var workflow in workflowArtifacts.Flows)
+            IWorkflowProvider[] providers = new IWorkflowProvider[]
             {
-                Console.WriteLine($"Workflow: {workflow.Key}");
-                Console.WriteLine($"Definition: {workflow.Value.ToJson()}");
+                //new RecruitmentWorkflow(),
+                new HttpWorkflow(),
+                new CustomCodeWorkflow(),
+                new NestedWorkflow(),
+                new RecurrenceWorkflow(),
+                new EmailWorkflow(),
+                new WeatherWorkflow(),
+                new SerivceNowWorkflow(),
+                new ServiceBusWorkflow(),
+                new ServiceBusSendMessageWorkflow(),
+                new NullableNodeWorkflow(),
+                new JoinWorkflow(),
+            };
+
+            var allWorkflows = providers.SelectMany(p => p.GetWorkflows());
+
+            foreach (var workflow in allWorkflows)
+            {
+                Console.WriteLine($"Workflow: {workflow.Name}");
+                Console.WriteLine($"Definition: {workflow.ToJson()}");
                 Console.WriteLine();
             }
         }

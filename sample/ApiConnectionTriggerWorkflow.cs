@@ -4,6 +4,7 @@
 
 namespace harness
 {
+    using Microsoft.Azure.Workflows.Sdk;
     using Microsoft.Azure.Workflows.Sdk.Agents;
     using Microsoft.Azure.Workflows.Sdk.Agents.Connectors;
     using Microsoft.Azure.Workflows.Sdk.Agents.Connectors.Msnweather;
@@ -12,12 +13,12 @@ namespace harness
     /// <summary>
     /// Weather workflow class.
     /// </summary>
-    public static class WeatherWorkflow
+    public class WeatherWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the weather workflow.
+        /// Gets the weather workflow definitions.
         /// </summary>
-        public static void AddWeatherWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.Managed.Msnweather("msnweather").WhenOnCurrentWeatherChange(
                 location: () => "Seattle, WA",
@@ -34,8 +35,6 @@ namespace harness
                 Interval = 1
             });
 
-            WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger);
-
             var msg = WorkflowActions.ManagedConnectors.Teams("teams").PostMessageToConversation(
                 poster: () => PostMessageToConversationposterInput.User,
                 location: () => "Group chat",
@@ -45,6 +44,8 @@ namespace harness
                     messageBody = $"The weather changed! The new temperature is °F" + $"{trigger.TriggerBody.Responses.Weather.Current.Temp}"
                 });
             trigger.Then(msg);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("MyWeatherWorkflow", trigger) };
         }
     }
 }

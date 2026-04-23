@@ -9,12 +9,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Test workflow using graph representation.
     /// </summary>
-    public static class GraphWorkflow
+    public class GraphWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the workflow using graph representation.
+        /// Gets the graph workflow definitions.
         /// </summary>
-        public static IWorkflowTrigger GetGraphWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             // Create trigger as root node
             var rootNode = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Then(rightBranchAction1, runAfter: new[] { FlowStatus.Failed })
                 .Then(rightBranchAction2);
 
-            return rootNode;
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("GraphWorkflow", rootNode) };
         }
     }
 }

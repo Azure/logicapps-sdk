@@ -10,18 +10,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Recurrence trigger class.
     /// </summary>
-    public static class RecurrenceWorkflow
+    public class RecurrenceWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the recurrence workflow.
+        /// Gets the recurrence workflow definitions.
         /// </summary>
-        public static void AddRecurrenceWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger(timeZone: TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
-            WorkflowFactory.CreateStatefulWorkflow("RecurrenceWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"test");
             trigger.Then(compose);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("RecurrenceWorkflow", trigger) };
         }
     }
 }

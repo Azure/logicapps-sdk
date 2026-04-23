@@ -9,12 +9,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Test variables workflow.
     /// </summary>
-    public static class VariablesWorkflow
+    public class VariablesWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the workflow using variables.
+        /// Gets the variables workflow definitions.
         /// </summary>
-        public static IWorkflowTrigger GetVariablesWorkflow()
+        public FlowPropertiesDefinition[] GetWorkflows()
         {
             var rootNode = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Then(setVariable)
                 .Then(compose2);
 
-            return rootNode;
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("VariablesWorkflow", rootNode) };
         }
     }
 }
