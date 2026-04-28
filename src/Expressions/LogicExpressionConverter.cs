@@ -45,18 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
-        /// Checks if a type implements a specific interface, either directly or through its interfaces.
-        /// </summary>
-        /// <param name="type">The type to check.</param>
-        /// <param name="interfaceType">The generic interface type to match.</param>
-        private static bool ImplementsInterface(Type type, Type interfaceType)
-        {
-            if (interfaceType.IsAssignableFrom(type))
-                return true;
-            return type.GetInterfaces().Any(i => i == interfaceType);
-        }
-
-        /// <summary>
         /// Gets the property name from a member, checking for JSON property attributes.
         /// </summary>
         /// <param name="obj">The object instance.</param>
@@ -260,27 +248,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
-            else if (litNode != null && ImplementsInterface(obj.Type, typeof(IVariableWorkflowAction)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IWorkflowBuilder<>)))
             {
-                if (e.Member.Name != "Value")
+                if (e.Member.Name.Equals("TriggerOutput"))
                 {
-                    throw new NotImplementedException();
-                }
-                var variableName = ((IVariableWorkflowAction)litNode.Value).VariableName;
-
-                return new FunctionCallNode
-                {
-                    FunctionName = "variables",
-                    Arguments = [
-                        new LiteralNode
+                    return new NullableNode
+                    {
+                        Inner = new FunctionCallNode
                         {
-                            Type = typeof(string),
-                            Value = variableName
+                            FunctionName = "triggerOutputs"
                         }
-                    ]
-                };
+                    };
+                }
+
+                throw new NotImplementedException();
             }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolParameters<>)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolBuilder<>)))
             {
                 if (e.Member.Name != "Parameters")
                 {
@@ -372,7 +355,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 };
             }
 
-            return LogicConverter.ConvertBinaryFunction(e.NodeType, e.Method, left, right);
+            var function = SelectBinaryFunction(e.NodeType, e.Method, left.Type, right.Type);
+            return new FunctionCallNode
+            {
+                FunctionName = function,
+                Arguments = [left, right]
+            };
         }
 
         /// <summary>
@@ -416,14 +404,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             var formatArray = typeof(string).GetMethod("Format", new[] { typeof(string), typeof(object[]) });
 
             var toString = typeof(object).GetMethod("ToString", Type.EmptyTypes);
-
-            // Handle JToken.ToObject<T>() and JToken.Value<T>() as pass-through type conversions
-            if (e.Method.IsGenericMethod &&
-                (e.Method.Name == "ToObject" || e.Method.Name == "Value") &&
-                typeof(Newtonsoft.Json.Linq.JToken).IsAssignableFrom(e.Method.DeclaringType))
-            {
-                return instance;
-            }
 
             // Get IDictionary<string, string> indexer (get_Item) method
             var dictType = typeof(IDictionary<string, string>);
@@ -575,175 +555,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
-        /// Converts a binary expression into a function call node, selecting the appropriate function based on the expression type and operand types.
+        /// Selects the appropriate binary function name based on the expression type and operand types.
         /// </summary>
         /// <param name="nodeType">The binary expression type.</param>
         /// <param name="method">The method information of the binary operation.</param>
-        /// <param name="left">The left operand node.</param>
-        /// <param name="right">The right operand node.</param>
-        private static FunctionCallNode ConvertBinaryFunction(ExpressionType nodeType, MethodInfo method, LogicAppExpressionNode left, LogicAppExpressionNode right)
+        /// <param name="left">The left operand type.</param>
+        /// <param name="right">The right operand type.</param>
+        private static string SelectBinaryFunction(ExpressionType nodeType, MethodInfo method, Type left, Type right)
         {
-            var leftType = left.Type;
-            var rightType = right.Type;
-
-            switch (nodeType)
+            if ((nodeType, left, right) == (ExpressionType.Add, typeof(int), typeof(int)))
             {
-                // Math functions
-                case ExpressionType.Add:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "add",
-                            Arguments = [left, right]
-                        };
-                    }
-                    else if (method?.Name == "Concat")
-                    {
-                        // LA Expressions are pretty loose with typing, as long as it's concat we'll concatenate it come hell or high water
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "concat",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.Subtract:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "subtract",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.Multiply:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "multiply",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.Divide:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "divide",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.Modulo:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "mod",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-
-                // Logical functions
-                case ExpressionType.Equal:
-                    return new FunctionCallNode
-                    {
-                        FunctionName = "equals",
-                        Arguments = [left, right]
-                    };
-
-                case ExpressionType.NotEqual:
-                    return new FunctionCallNode
-                    {
-                        FunctionName = "not",
-                        Arguments = [
-                            new FunctionCallNode
-                            {
-                                FunctionName = "equals",
-                                Arguments = [left, right]
-                            }
-                        ]
-                    };
-                
-                case ExpressionType.And:
-                    if (leftType == typeof(bool) && rightType == typeof(bool))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "and",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.Or:
-                    if (leftType == typeof(bool) && rightType == typeof(bool))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "or",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.LessThan:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "less",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.LessThanOrEqual:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "lessOrEquals",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.GreaterThan:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "greater",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
-                
-                case ExpressionType.GreaterThanOrEqual:
-                    if (leftType == rightType && (leftType == typeof(int) || leftType == typeof(double) || leftType == typeof(float)))
-                    {
-                        return new FunctionCallNode
-                        {
-                            FunctionName = "greaterOrEquals",
-                            Arguments = [left, right]
-                        };
-                    }
-                    break;
+                return "add";
             }
-
-            throw new NotImplementedException($"Binary operation {nodeType} not implemented for types {leftType.Name} and {rightType.Name} ({method})");
+            else if ((nodeType, method.Name) == (ExpressionType.Add, "Concat"))
+            {
+                // LA Expressions are pretty loose with typing, as long as it's concat we'll concatenate it come hell or high water
+                return "concat";
+            }
+            else if (nodeType == ExpressionType.Equal)
+            {
+                return "equals";
+            }
+            throw new NotImplementedException($"Binary operation {nodeType} not implemented for types {left.Name} and {right.Name} ({method})");
         }
-        
+
         /// <summary>
         /// Visits a generic expression, with special handling for Uri construction.
         /// </summary>
