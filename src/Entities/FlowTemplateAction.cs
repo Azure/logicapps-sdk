@@ -62,12 +62,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         public FlowTemplateActionBranch Else { get; set; }
 
         /// <summary>
-        /// Gets or sets the switch cases (used by Switch actions).
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, FlowTemplateActionCaseBranch> Cases { get; set; }
-
-        /// <summary>
         /// Gets or sets the default branch.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

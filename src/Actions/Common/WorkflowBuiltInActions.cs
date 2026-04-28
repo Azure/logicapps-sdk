@@ -16,17 +16,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class WorkflowBuiltInActions
     {
         /// <summary>
-        /// Control flow actions (Scope, Condition, ForEach, Until, Switch, Terminate).
-        /// </summary>
-        public WorkflowControlActions Control { get; } = new WorkflowControlActions();
-
-        /// <summary>
-        /// Variable actions (InitializeVariable, SetVariable, IncrementVariable, DecrementVariable,
-        /// AppendToStringVariable, AppendToArrayVariable).
-        /// </summary>
-        public WorkflowVariableActions Variables { get; } = new WorkflowVariableActions();
-
-        /// <summary>
         /// Creates a nested workflow action that calls another workflow.
         /// </summary>
         /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>
