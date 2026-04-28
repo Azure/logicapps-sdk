@@ -248,33 +248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IWorkflowBuilder<>)))
-            {
-                if (e.Member.Name.Equals("TriggerOutput"))
-                {
-                    return new NullableNode
-                    {
-                        Inner = new FunctionCallNode
-                        {
-                            FunctionName = "triggerOutputs"
-                        }
-                    };
-                }
-
-                throw new NotImplementedException();
-            }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolBuilder<>)))
-            {
-                if (e.Member.Name != "Parameters")
-                {
-                    throw new NotImplementedException();
-                }
-
-                return new PartialFunctionCallNode
-                {
-                    FunctionName = "agentparameters"
-                };
-            }
             else if (litNode == null)
             {
                 var partialCall = obj as PartialFunctionCallNode;
