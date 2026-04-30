@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="chain">The chain to run after.</param>
         /// <param name="status">The status to run after.</param>
-        public RunAfter(WorkflowChain chain, FlowStatus status)
+        public RunAfter(OperationChain chain, FlowStatus status)
         {
             if (chain == null)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="chain">The chain to run after.</param>
         /// <param name="statuses">The statuses to run after.</param>
-        public RunAfter(WorkflowChain chain, FlowStatus[] statuses)
+        public RunAfter(OperationChain chain, FlowStatus[] statuses)
         {
             if (chain == null)
             {

@@ -11,11 +11,11 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Base class for all workflow nodes providing chain tracking and fluent operation chaining.
     /// Every workflow operation (action or trigger) is itself a single-node chain where Start and Ends
     /// are the node itself. When nodes are connected via <see cref="Then(IWorkflowNode, FlowStatus[])"/>,
-    /// a new <see cref="WorkflowChain"/> is returned that tracks the full chain from start to ends.
+    /// a new <see cref="OperationChain"/> is returned that tracks the full chain from start to ends.
     /// Multi-node chains are standalone instances with no Name or Children of their own.
-    /// Chains may track multiple end nodes when created via <see cref="Join(WorkflowChain)"/>.
+    /// Chains may track multiple end nodes when created via <see cref="Join(OperationChain)"/>.
     /// </summary>
-    public class WorkflowChain : IWorkflowNode
+    public class OperationChain : IWorkflowNode
     {
         private readonly IWorkflowOperation _start;
         private readonly IWorkflowOperation[] _ends;
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new single-node chain. Used by subclasses (actions/triggers)
         /// where Start and Ends default to the node itself.
         /// </summary>
-        protected WorkflowChain()
+        protected OperationChain()
         {
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="start">The first node in the chain.</param>
         /// <param name="end">The last node in the chain.</param>
-        public WorkflowChain(IWorkflowOperation start, IWorkflowOperation end)
+        public OperationChain(IWorkflowOperation start, IWorkflowOperation end)
         {
             this._start = start ?? throw new ArgumentNullException(nameof(start));
             this._ends = new[] { end ?? throw new ArgumentNullException(nameof(end)) };
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="start">The first node in the chain.</param>
         /// <param name="ends">The end nodes of the chain.</param>
-        public WorkflowChain(IWorkflowOperation start, IWorkflowOperation[] ends)
+        public OperationChain(IWorkflowOperation start, IWorkflowOperation[] ends)
         {
             this._start = start ?? throw new ArgumentNullException(nameof(start));
             this._ends = ends ?? throw new ArgumentNullException(nameof(ends));
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Combines this chain with another chain that shares the same root.
         /// </summary>
         /// <param name="other">The other chain to join with. Must share the same root as this chain.</param>
-        /// <returns>A new <see cref="WorkflowChain"/> with the same start and the combined end nodes of both chains.</returns>
-        public WorkflowChain Join(WorkflowChain other)
+        /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of both chains.</returns>
+        public OperationChain Join(OperationChain other)
         {
             if (other == null)
             {
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
             }
 
-            return new WorkflowChain(this.Start, combinedEnds.ToArray());
+            return new OperationChain(this.Start, combinedEnds.ToArray());
         }
 
         /// <inheritdoc/>
-        public virtual WorkflowChain Then(IWorkflowAction action, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action, string name = null)
         {
             foreach (var end in this.Ends)
             {
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 end.Then(action, name);
             }
 
-            return new WorkflowChain(this.Start, action);
+            return new OperationChain(this.Start, action);
         }
 
         /// <inheritdoc/>
-        public virtual WorkflowChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
         {
             foreach (var end in this.Ends)
             {
@@ -125,11 +125,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 end.Then(action, runAfter, name);
             }
 
-            return new WorkflowChain(this.Start, action);
+            return new OperationChain(this.Start, action);
         }
 
         /// <inheritdoc/>
-        public virtual WorkflowChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
         {
             foreach (var end in this.Ends)
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 end.Then(action, runAfter, name);
             }
 
-            return new WorkflowChain(this.Start, action);
+            return new OperationChain(this.Start, action);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>The root <see cref="IWorkflowAction"/> of the action graph.</returns>
         public static IWorkflowAction GetRootAction(IWorkflowNode node)
         {
-            if (node is WorkflowChain chain)
+            if (node is OperationChain chain)
             {
                 return chain.Start as IWorkflowAction
                     ?? throw new InvalidOperationException("Branch chain must start with an action, not a trigger.");

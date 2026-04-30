@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var rootAction = toolBuilder(toolParams);
 
             var toolName = "Tool" + (this.Tools.Count + 1);
-            var toolBranch = BuildToolBranch(rootAction, description, parameters);
+            var toolBranch = AgentBuilder.BuildToolBranch(rootAction, description, parameters);
             this.Tools.Add(toolName, toolBranch);
 
             return this;
