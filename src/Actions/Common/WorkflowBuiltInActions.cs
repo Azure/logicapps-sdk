@@ -109,5 +109,20 @@ namespace Microsoft.Azure.Workflows.Sdk
                 headers != null ? ExpressionConverter.ConvertObject(headers) : null,
                 schema != null ? ExpressionConverter.ConvertObject(schema) : null);
         }
+
+        public AgentAction Agent(
+            AgentModelType agentModelType,
+            string deploymentId,
+            AgentModelSettings agentModelSettings,
+            string connectionName,
+            Expression<Func<AgentPromptMessage[]>> messages)
+        {
+            return new AgentAction(
+                agentModelType: agentModelType,
+                deploymentId: deploymentId,
+                agentModelSettings: agentModelSettings,
+                connectionName: connectionName,
+                messages: messages != null ? ExpressionConverter.ConvertO(messages)?.ToObject<AgentPromptMessage[]>() : null);
+        }
     }
 }

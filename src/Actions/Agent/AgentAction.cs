@@ -12,7 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The agent entity that represents a model deployment and its settings.
     /// </summary>
-    public class AgentBuilder : WorkflowActionBase
+    public class AgentAction(
+        AgentModelType agentModelType,
+        string deploymentId,
+        AgentModelSettings agentModelSettings,
+        string connectionName,
+        AgentPromptMessage[] messages
+    ) : WorkflowActionBase
     {
         /// <summary>
         /// The tools for the agent action.
@@ -25,49 +31,76 @@ namespace Microsoft.Azure.Workflows.Sdk
         public override string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the model deployment id.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string DeploymentId { get; set; }
-
-        /// <summary>
         /// Gets or sets the agent model type.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentModelType AgentModelType { get; set; }
+        public AgentModelType AgentModelType { get; set; } = agentModelType;
 
         /// <summary>
-        /// Gets or sets the messages.
+        /// Gets or sets the model deployment id.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentPromptMessage[] Messages { get; set; }
+        public string DeploymentId { get; set; } = deploymentId;
 
         /// <summary>
         /// Gets or sets the agent model settings.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentModelSettings AgentModelSettings { get; set; }
+        public AgentModelSettings AgentModelSettings { get; set; } = agentModelSettings;
 
         /// <summary>
         /// Gets or sets the connection name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         [Agent(Type = ConnectorType.AgentConnection, ConnectorName = "agent", Id = "connectionProviders/agent")]
-        public string ConnectionName { get; set; }
+        public string ConnectionName { get; set; } = connectionName;
 
         /// <summary>
-        /// Adds a tool to the agent action. The lambda receives parameters and returns the root action node of the tool chain.
+        /// Gets or sets the messages.
         /// </summary>
-        /// <param name="toolBuilder">A function that receives tool parameters and returns the root action node.</param>
+        [JsonProperty(Required = Required.Default)]
+        public AgentPromptMessage[] Messages { get; set; } = messages;
+
+        /// <summary>
+        /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch root action.
+        /// </summary>
+        /// <param name="tool">A function that receives tool parameters and returns the tool branch root action.</param>
         /// <param name="description">The description of the tool.</param>
         /// <param name="parameters">The schema parameters.</param>
-        public AgentBuilder AddTool<T>(Func<IAgentToolParameters<T>, IWorkflowAction> toolBuilder, string description, T parameters) where T : class
+        public AgentAction AddTool<T>(Func<IAgentToolParameters<T>, IWorkflowAction> tool, string description, T parameters) where T : class
         {
+            if (tool == null)
+            {
+                throw new ArgumentNullException(nameof(tool));
+            }
             var toolParams = new AgentToolParameters<T>(parameters);
-            var rootAction = toolBuilder(toolParams);
+            var rootAction = tool.Invoke(toolParams);
 
             var toolName = "Tool" + (this.Tools.Count + 1);
-            var toolBranch = AgentBuilder.BuildToolBranch(rootAction, description, parameters);
+            var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
+            this.Tools.Add(toolName, toolBranch);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch chain.
+        /// </summary>
+        /// <param name="tool">A function that receives tool parameters and returns the tool branch chain.</param>
+        /// <param name="description">The description of the tool.</param>
+        /// <param name="parameters">The schema parameters.</param>
+        public AgentAction AddTool<T>(Func<IAgentToolParameters<T>, OperationChain> tool, string description, T parameters) where T : class
+        {
+            if (tool == null)
+            {
+                throw new ArgumentNullException(nameof(tool));
+            }
+            var toolParams = new AgentToolParameters<T>(parameters);
+            var toolChain = tool.Invoke(toolParams);
+            var rootAction = toolChain.GetRootAction();
+
+            var toolName = "Tool" + (this.Tools.Count + 1);
+            var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
             this.Tools.Add(toolName, toolBranch);
 
             return this;

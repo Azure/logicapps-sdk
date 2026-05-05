@@ -20,11 +20,10 @@ namespace harness
         {
             var trigger = WorkflowFactory.CreateConversationalAgent("NestedWorkflow");
 
-            var agent = new AgentBuilder
-            {
-                AgentModelType = AgentModelType.AzureOpenAI,
-                DeploymentId = "gpt-4.1",
-                AgentModelSettings = new AgentModelSettings
+            var agent = WorkflowActions.BuiltIn.Agent(
+                agentModelType: AgentModelType.AzureOpenAI,
+                deploymentId: "gpt-4.1",
+                agentModelSettings: new AgentModelSettings
                 {
                     AgentChatCompletionSettings = new AgentChatCompletionSettings
                     {
@@ -41,16 +40,16 @@ namespace harness
                         Version = "2024-11-20"
                     }
                 },
-                Messages = new AgentPromptMessage[]
+                connectionName: "agent",
+                messages: () => new AgentPromptMessage[]
+                {
+                    new AgentPromptMessage
                     {
-                        new AgentPromptMessage
-                        {
-                            Role = MessageRole.System,
-                            Content = "You are an agent to respond the weather to the user and send an email"
-                        }
-                    },
-                ConnectionName = "agent",
-            };
+                        Role = MessageRole.System,
+                        Content = "You are an agent to respond the weather to the user and send an email"
+                    }
+                }
+            );
 
             agent.AddTool(tool =>
                 {
@@ -68,8 +67,7 @@ namespace harness
                     var http = WorkflowActions.BuiltIn.HttpAction(
                         uri: () => new Uri("https://google.com"),
                         method: () => HttpMethod.Post);
-                    composeAction.Then(http);
-                    return composeAction;
+                    return composeAction.Then(http);
                 },
                description: "This tool will send a message",
                parameters: new WeatherObject());

@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
 
-            var agent = new AgentBuilder
-            {
-                AgentModelType = AgentModelType.AzureOpenAI,
-                DeploymentId = "gpt-4.1",
-                AgentModelSettings = new AgentModelSettings
+            var agent = WorkflowActions.BuiltIn.Agent(
+                agentModelType: AgentModelType.AzureOpenAI,
+                deploymentId: "gpt-4.1",
+                agentModelSettings: new AgentModelSettings
                 {
                     AgentChatCompletionSettings = new AgentChatCompletionSettings
                     {
@@ -41,16 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         Version = "2024-11-20"
                     }
                 },
-                Messages = new AgentPromptMessage[]
+                connectionName: "agent-2",
+                messages: () => new AgentPromptMessage[]
+                {
+                    new AgentPromptMessage
                     {
-            new AgentPromptMessage
-            {
-                Role = MessageRole.System,
-                Content = "You are a recruitment agent whose role is to help recuriters identify candidates and subsequently help them book interviews using the tools that are provided.\n\nA recruiter may ask the following questions to you:\n\nShow me my job postings. If your are unsure which recruiter you are chatting with, you can use apseth@microsoft.com as the user name.\nSelect top candidates for a particular Job Posting ID\nWhat does my candidate schedule look like for a specific date. Ensure this value is provided by the recuiter and assume the current year comes from this value: @{utcNow()}.\n\nIf user is not logged in, send the tool response as HTML with the consent link to the user to login. Please schedule interviews with candidates based upon my schedule availability. \nAfter the meeting is booked we need to communicate to the interview team that the meeting is booked\n\nUnless specificed othwerwise, please assume all timezone related querys are in (UTC-07:00) Mountain Time (US & Canada). So that includes when displaying dates for the user and when booking meetings.\nSend a teams message"
-            }
-                    },
-                ConnectionName = "agent-2",
-            };
+                        Role = MessageRole.System,
+                        Content = "You are a recruitment agent whose role is to help recuriters identify candidates and subsequently help them book interviews using the tools that are provided.\n\nA recruiter may ask the following questions to you:\n\nShow me my job postings. If your are unsure which recruiter you are chatting with, you can use apseth@microsoft.com as the user name.\nSelect top candidates for a particular Job Posting ID\nWhat does my candidate schedule look like for a specific date. Ensure this value is provided by the recuiter and assume the current year comes from this value: @{utcNow()}.\n\nIf user is not logged in, send the tool response as HTML with the consent link to the user to login. Please schedule interviews with candidates based upon my schedule availability. \nAfter the meeting is booked we need to communicate to the interview team that the meeting is booked\n\nUnless specificed othwerwise, please assume all timezone related querys are in (UTC-07:00) Mountain Time (US & Canada). So that includes when displaying dates for the user and when booking meetings.\nSend a teams message"
+                    }
+                }
+            );
 
             agent.AddTool(tool =>
             {
@@ -88,8 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     itemtimeZone: () => itemtimeZoneInput.UTC0800PacificTimeUSCanada,
                     itemrequiredAttendees: () => tool.Parameters.CandidateEmail,
                     itembody: () => $"<p class=\"editor-paragraph\">Hi {tool.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>");
-                getCalendar.Then(createEvent);
-                return getCalendar;
+                return getCalendar.Then(createEvent);
             },
                description: "This tool will book a meeting between the recruiter and the job candidate",
                parameters: new CandidateDetailsObject());

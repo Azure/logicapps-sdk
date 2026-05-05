@@ -144,23 +144,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Extracts the root action from an <see cref="IWorkflowNode"/> result.
-        /// For chains, returns the Start node cast to <see cref="IWorkflowAction"/>.
-        /// For single action nodes, returns the node itself.
-        /// Used by control action factories to get the root of a branch's action graph.
+        /// Gets the root action of this operation chain.
         /// </summary>
-        /// <param name="node">The node or chain returned from a branch callback.</param>
-        /// <returns>The root <see cref="IWorkflowAction"/> of the action graph.</returns>
-        public static IWorkflowAction GetRootAction(IWorkflowNode node)
+        public IWorkflowAction GetRootAction()
         {
-            if (node is OperationChain chain)
-            {
-                return chain.Start as IWorkflowAction
-                    ?? throw new InvalidOperationException("Branch chain must start with an action, not a trigger.");
-            }
-
-            return node as IWorkflowAction
-                ?? throw new InvalidOperationException("Branch must contain a workflow action.");
+            return this.Start as IWorkflowAction ?? throw new InvalidOperationException("Invalid GetRootAction usage: operation chain must start with an action.");
         }
     }
 }
