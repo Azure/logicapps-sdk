@@ -7,9 +7,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The flow properties definition.
+    /// The flow definition.
     /// </summary>
-    public class FlowPropertiesDefinition
+    public class FlowDefinition
     {
         /// <summary>
         /// Gets or sets the flow kind.

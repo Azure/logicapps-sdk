@@ -12,6 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Collection of flow templates.
         /// </summary>
-        public Dictionary<string, FlowPropertiesDefinition> Flows { get; set; }
+        public Dictionary<string, FlowDefinition> Flows { get; set; }
     }
 }

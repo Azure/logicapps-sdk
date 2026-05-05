@@ -10,13 +10,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     public static class WorkflowTriggerExtensions
     {
         /// <summary>
-        /// Traverses the workflow graph rooted at the trigger node and produces a <see cref="FlowPropertiesDefinition"/>.
+        /// Traverses the workflow graph rooted at the trigger node and produces a <see cref="FlowDefinition"/>.
         /// </summary>
         /// <param name="trigger">The root trigger node of the workflow graph.</param>
         /// <param name="flowName">The workflow name.</param>
         /// <param name="flowKind">The kind of flow (Stateful, Stateless, Agent).</param>
-        /// <returns>A <see cref="FlowPropertiesDefinition"/> representing the complete workflow.</returns>
-        public static FlowPropertiesDefinition GetFlowDefinition(this IWorkflowTrigger trigger, string flowName, FlowKind flowKind)
+        /// <returns>A <see cref="FlowDefinition"/> representing the complete workflow.</returns>
+        public static FlowDefinition GetFlowDefinition(this IWorkflowTrigger trigger, string flowName, FlowKind flowKind)
         {
             var actions = new Dictionary<string, FlowTemplateAction>();
             var visited = new HashSet<string>();
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
             }
 
-            return new FlowPropertiesDefinition
+            return new FlowDefinition
             {
                 Definition = new FlowTemplate
                 {
