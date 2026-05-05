@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the action definition as a FlowTemplateAction.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public abstract FlowTemplateAction GetActionDefinition(string flowName);
+        /// <param name="flowKind">The flow kind.</param>
+        public abstract FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null);
 
         /// <summary>
         /// Gets the run-after configuration mapping parent action names to required statuses.

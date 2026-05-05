@@ -172,6 +172,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
+        /// Visits a new array initialization expression, converting each element to a JArray.
+        /// </summary>
+        /// <param name="e">The new array expression to visit.</param>
+        /// <param name="p">Additional parameter passed to nested visits.</param>
+        public override JToken Visit(NewArrayExpression e, object p)
+        {
+            var array = new JArray();
+            foreach (var expr in e.Expressions)
+            {
+                array.Add(expr.Visit(this, p));
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Visits a member initialization expression, converting property assignments to a JObject.
+        /// </summary>
+        /// <param name="e">The member initialization expression to visit.</param>
+        /// <param name="p">Additional parameter passed to nested visits.</param>
+        public override JToken Visit(MemberInitExpression e, object p)
+        {
+            var result = new JObject();
+            foreach (var binding in e.Bindings.OfType<MemberAssignment>())
+            {
+                var name = GetPropertyName(binding.Member);
+                result[name] = binding.Expression.Visit(this, p);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the property name from a member, checking for JsonProperty attribute.
+        /// </summary>
+        /// <param name="member">The member to get the name from.</param>
+        private static string GetPropertyName(MemberInfo member)
+        {
+            var name = member.Name;
+            var jsonPropAttr = member.GetCustomAttribute(typeof(Newtonsoft.Json.JsonPropertyAttribute));
+            if (jsonPropAttr != null)
+            {
+                var propName = (string)jsonPropAttr.GetType().GetProperty("PropertyName")?.GetValue(jsonPropAttr);
+                if (!string.IsNullOrEmpty(propName))
+                    name = propName;
+            }
+            return name;
+        }
+
+        /// <summary>
         /// Default visit method for unsupported expression types.
         /// </summary>
         /// <param name="e">The expression that cannot be visited.</param>

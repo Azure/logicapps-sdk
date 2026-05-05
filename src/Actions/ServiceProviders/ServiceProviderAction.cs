@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the action definition as a JToken.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

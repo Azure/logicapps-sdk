@@ -108,9 +108,11 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         /// <summary>
         /// Gets the action definition for the agent.
+        /// TODO(aeldridge): Make limit configurable.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -131,6 +133,12 @@ namespace Microsoft.Azure.Workflows.Sdk
                     }
                 },
                 RunAfter = this.RunAfterConfig.Count > 0 ? new Dictionary<string, FlowStatus[]>(this.RunAfterConfig) : null,
+                Limit = flowKind == FlowKind.Stateful || flowKind == FlowKind.Agentic
+                    ? new JObject
+                    {
+                        ["count"] = 100
+                    }
+                    : null
             };
         }
 
@@ -160,7 +168,8 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                 visited.Add(node.Name);
 
-                var definition = node.GetActionDefinition(null);
+                // TODO(aeldridge): flow name/kind should be declared before workflow chain creation so they are available here
+                var definition = node.GetActionDefinition(flowName: null);
 
                 if (node.RunAfterConfig.Count > 0)
                 {

@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 Flows = WorkflowFactory.Workflows.ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.Trigger.GetFlowDefinition(kvp.Value.Kind)),
+                    kvp => kvp.Value.Trigger.GetFlowDefinition(flowName: kvp.Key, flowKind: kvp.Value.Kind)),
             };
 
             return codefulArtifacts;
