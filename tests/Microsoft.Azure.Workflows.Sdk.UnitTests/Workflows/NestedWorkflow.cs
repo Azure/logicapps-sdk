@@ -50,17 +50,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 }
             );
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
                 {
                     var nestedWorkflow = WorkflowActions.BuiltIn.NestedWorkflow(
                         workflowReferenceName: () => "HttpRequestResponse",
-                        requestBody: () => tool.Parameters.Location);
+                        requestBody: () => toolContext.Parameters.Location);
                     return nestedWorkflow;
                 },
                description: "This tool gets the weather",
                parameters: new WeatherObject());
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
                 {
                     var composeAction = WorkflowActions.BuiltIn.Compose(inputs: () => "Sending HTTP Request after getting weather");
                     var http = WorkflowActions.BuiltIn.HttpAction(
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                description: "This tool will send a message",
                parameters: new WeatherObject());
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
                 {
                     var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("connectionId").SendEmailV2(
                         emailMessageto: () => "apseth@microsoft.com",

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Provides access to agent tool parameters for use in expression conversion.
     /// </summary>
     /// <typeparam name="T">The type of the parameters used to configure the agent tool.</typeparam>
-    public interface IAgentToolParameters<T>
+    public interface IAgentToolContext<T>
     {
         /// <summary>
         /// The parameters used to configure the agent tool.
@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Default implementation of <see cref="IAgentToolParameters{T}"/>.
+    /// Default implementation of <see cref="IAgentToolContext{T}"/>.
     /// </summary>
     /// <typeparam name="T">The type of the parameters.</typeparam>
-    public class AgentToolParameters<T> : IAgentToolParameters<T>
+    public class AgentToolContext<T> : IAgentToolContext<T>
     {
         /// <summary>
         /// Gets the parameters for the agent tool.
@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         public T Parameters { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AgentToolParameters{T}"/> class.
+        /// Initializes a new instance of the <see cref="AgentToolContext{T}"/> class.
         /// </summary>
         /// <param name="parameters">The parameters.</param>
-        public AgentToolParameters(T parameters)
+        public AgentToolContext(T parameters)
         {
             this.Parameters = parameters;
         }

@@ -51,54 +51,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 }
             );
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
             {
                 var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentcandiateses",
                     select: () => "cred1_candidatename,cred1_candidateid,cred1_jobpostingid, cred1_candidateemail,cred1_candidateprofilelink",
-                    filter: () => $"cred1_jobpostingid eq '{tool.Parameters.JobPostingId}'");
+                    filter: () => $"cred1_jobpostingid eq '{toolContext.Parameters.JobPostingId}'");
                 return getCandidates;
             },
                description: "This tool will get a list of job candidates based upon a Posting ID",
                parameters: new JobPostingAgentParameter());
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
             {
                 var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentpostingses",
                     select: () => "cred1_postingenddate,cred1_postingowner,cred1_postingid,cred1_postingstatus",
-                    filter: () => $"cred1_postingowner eq '{tool.Parameters.JobPostingOwner}'");
+                    filter: () => $"cred1_postingowner eq '{toolContext.Parameters.JobPostingOwner}'");
                 return getCandidates;
             },
                description: "This tool will retreive all of the job postings that are owned by a particular recruiter",
                parameters: new RecruiterParameterObject());
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
             {
                 var getCalendar = WorkflowActions.ManagedConnectors.Office365("office365").CalendarGetTablesV2();
 
                 var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").V4CalendarPostItem(
                     table: () => getCalendar.Body.Value[1].ID,
-                    itemsubject: () => $"Job Interview with Contoso - {tool.Parameters.CandidateName}",
+                    itemsubject: () => $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
                     itemstartTime: () => "@agentParameters('MeetingStartTime')",
                     itemendTime: () => "@agentParameters('MeetingEndTime')",
                     itemtimeZone: () => itemtimeZoneInput.UTC0800PacificTimeUSCanada,
-                    itemrequiredAttendees: () => tool.Parameters.CandidateEmail,
-                    itembody: () => $"<p class=\"editor-paragraph\">Hi {tool.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>");
+                    itemrequiredAttendees: () => toolContext.Parameters.CandidateEmail,
+                    itembody: () => $"<p class=\"editor-paragraph\">Hi {toolContext.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>");
                 return getCalendar.Then(createEvent);
             },
                description: "This tool will book a meeting between the recruiter and the job candidate",
                parameters: new CandidateDetailsObject());
 
-            agent.AddTool(tool =>
+            agent.AddTool(toolContext =>
             {
                 var upcomingInterviews = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentmeetingses",
                     select: () => "cred1_meetingid,cred1_candidateemail,cred1_candidatename,cred1_intervieweremail,cred1_interviewdatetime",
-                    filter: () => string.Concat("cred1_intervieweremail eq '", tool.Parameters.JobPostingOwner, "'"));
+                    filter: () => string.Concat("cred1_intervieweremail eq '", toolContext.Parameters.JobPostingOwner, "'"));
                 return upcomingInterviews;
             },
                description: "This tool will get the upcoming interview meetings",

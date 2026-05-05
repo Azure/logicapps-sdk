@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="tool">A function that receives tool parameters and returns the tool branch root action.</param>
         /// <param name="description">The description of the tool.</param>
         /// <param name="parameters">The schema parameters.</param>
-        public AgentAction AddTool<T>(Func<IAgentToolParameters<T>, IWorkflowAction> tool, string description, T parameters) where T : class
+        public AgentAction AddTool<T>(Func<IAgentToolContext<T>, IWorkflowAction> tool, string description, T parameters) where T : class
         {
             if (tool == null)
             {
                 throw new ArgumentNullException(nameof(tool));
             }
-            var toolParams = new AgentToolParameters<T>(parameters);
-            var rootAction = tool.Invoke(toolParams);
+            var toolContext = new AgentToolContext<T>(parameters);
+            var rootAction = tool.Invoke(toolContext);
 
             var toolName = "Tool" + (this.Tools.Count + 1);
             var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="tool">A function that receives tool parameters and returns the tool branch chain.</param>
         /// <param name="description">The description of the tool.</param>
         /// <param name="parameters">The schema parameters.</param>
-        public AgentAction AddTool<T>(Func<IAgentToolParameters<T>, OperationChain> tool, string description, T parameters) where T : class
+        public AgentAction AddTool<T>(Func<IAgentToolContext<T>, OperationChain> tool, string description, T parameters) where T : class
         {
             if (tool == null)
             {
                 throw new ArgumentNullException(nameof(tool));
             }
-            var toolParams = new AgentToolParameters<T>(parameters);
-            var toolChain = tool.Invoke(toolParams);
+            var toolContext = new AgentToolContext<T>(parameters);
+            var toolChain = tool.Invoke(toolContext);
             var rootAction = toolChain.GetRootAction();
 
             var toolName = "Tool" + (this.Tools.Count + 1);

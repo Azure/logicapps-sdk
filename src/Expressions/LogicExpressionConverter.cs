@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolParameters<>)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolContext<>)))
             {
                 if (e.Member.Name != "Parameters")
                 {
