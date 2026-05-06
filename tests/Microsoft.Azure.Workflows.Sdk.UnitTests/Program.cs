@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             JoinWorkflow.GetJoinWorkflow();
             JoinWorkflow.GetJoinWithRunAfterWorkflow();
 
+            SplitWorkflow.AddSplitWorkflow();
+            SplitWorkflow.AddSplitThenMergeWorkflow();
+
             var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
 
             foreach (var workflow in workflowArtifacts.Flows)

@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Base class for all workflow nodes providing chain tracking and fluent operation chaining.
@@ -13,7 +14,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// are the node itself. When nodes are connected via <see cref="Then(IWorkflowNode, FlowStatus[])"/>,
     /// a new <see cref="OperationChain"/> is returned that tracks the full chain from start to ends.
     /// Multi-node chains are standalone instances with no Name or Children of their own.
-    /// Chains may track multiple end nodes when created via <see cref="Join(OperationChain)"/>.
+    /// Chains may track multiple end nodes when created via <see cref="Join(OperationChain)"/>
+    /// or <see cref="Split(Func{OperationChain, IEnumerable{OperationChain}})"/>.
     /// </summary>
     public class OperationChain : IWorkflowNode
     {
@@ -96,6 +98,52 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             return new OperationChain(this.Start, combinedEnds.ToArray());
+        }
+
+        /// <summary>
+        /// Splits this chain into multiple branches.
+        /// </summary>
+        /// <param name="branches">A callback that takes the current chain and returns multiple new chains that share the same root.</param>
+        /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of all branches.</returns>
+        public OperationChain Split(Func<OperationChain, IEnumerable<OperationChain>> branches)
+        {
+            if (branches == null)
+            {
+                throw new ArgumentNullException(nameof(branches));
+            }
+
+            var branchesList = branches.Invoke(this)?.ToList()
+                ?? throw new InvalidOperationException("Branches must not be null.");
+
+            if (branchesList.Count == 0)
+            {
+                throw new InvalidOperationException("At least one branch is required.");
+            }
+
+            var allEnds = new List<IWorkflowOperation>();
+
+            foreach (var branch in branchesList)
+            {
+                if (branch == null)
+                {
+                    throw new InvalidOperationException("Null branch is not allowed.");
+                }
+
+                if (!object.ReferenceEquals(this.Start, branch.Start))
+                {
+                    throw new InvalidOperationException("All branches must share the same root as the parent chain.");
+                }
+
+                foreach (var end in branch.Ends)
+                {
+                    if (!allEnds.Contains(end))
+                    {
+                        allEnds.Add(end);
+                    }
+                }
+            }
+
+            return new OperationChain(this.Start, allEnds.ToArray());
         }
 
         /// <inheritdoc/>
