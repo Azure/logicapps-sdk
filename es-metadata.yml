@@ -5,8 +5,8 @@ providers:
   metadata:
     isProduction: true
     accountableOwners:
-      service: e8fdf03b-44f7-48d3-8653-a744c922a342
+      service: e977b40f-c627-41e8-86c3-5fb6b5711774
     routing:
       defaultAreaPath:
         org: azfunc
-        path: internal\Azure Functions\Core
+        path: internal\LogicApps
