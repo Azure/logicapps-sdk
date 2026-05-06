@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -9,13 +9,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Test workflow demonstrating chain joining for fan-out/fan-in patterns.
     /// </summary>
-    public static class JoinWorkflow
+    public class JoinWorkflow : IWorkflowProvider
     {
+        /// <summary>
+        /// Gets the join workflow definitions.
+        /// </summary>
+        public FlowDefinition[] GetWorkflows()
+        {
+            return new[]
+            {
+                this.GetJoinWorkflowDefinition(),
+                this.GetJoinWithRunAfterWorkflowDefinition(),
+            };
+        }
+
         /// <summary>
         /// Creates a workflow that fans out into two branches and then joins them
         /// using the default Then overload on a joined chain.
         /// </summary>
-        public static IWorkflowTrigger GetJoinWorkflow()
+        private FlowDefinition GetJoinWorkflowDefinition()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -33,14 +45,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Join(rightChain)
                 .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Joined"));
 
-            return trigger;
+            return WorkflowFactory.CreateStatefulWorkflow("JoinWorkflow", trigger);
         }
 
         /// <summary>
         /// Creates a workflow that fans out into two branches and then joins them
         /// using the per-chain runAfter overload for explicit status control.
         /// </summary>
-        public static IWorkflowTrigger GetJoinWithRunAfterWorkflow()
+        private FlowDefinition GetJoinWithRunAfterWorkflowDefinition()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -64,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         new RunAfter(rightChain, FlowStatus.Succeeded),
                     });
 
-            return trigger;
+            return WorkflowFactory.CreateStatefulWorkflow("JoinWithRunAfterWorkflow", trigger);
         }
     }
 }

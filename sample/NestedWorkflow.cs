@@ -4,6 +4,7 @@
 
 namespace harness
 {
+    using Microsoft.Azure.Workflows.Sdk;
     using Microsoft.Azure.Workflows.Sdk.Agents;
     using Microsoft.Azure.Workflows.Sdk.Agents.Connectors;
     using Microsoft.Azure.Workflows.Sdk.Agents.Connectors.Office365;
@@ -11,14 +12,14 @@ namespace harness
     /// <summary>
     /// Nested workflow class.
     /// </summary>
-    public static class NestedWorkflow
+    public class NestedWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the nested workflow.
+        /// Gets the nested workflow definitions.
         /// </summary>
-        public static void AddNestedWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
-            var trigger = WorkflowFactory.CreateConversationalAgent("NestedWorkflow");
+            var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
 
             var agent = WorkflowActions.BuiltIn.Agent(
                 agentModelType: AgentModelType.AzureOpenAI,
@@ -86,6 +87,8 @@ namespace harness
                parameters: new WeatherObject());
 
             trigger.Then(agent);
+
+            return new[] { WorkflowFactory.CreateAgentWorkflow("NestedWorkflow", trigger) };
         }
     }
 

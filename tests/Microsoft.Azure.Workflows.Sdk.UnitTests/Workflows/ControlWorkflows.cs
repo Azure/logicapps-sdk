@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -9,12 +9,28 @@ namespace la1
     /// <summary>
     /// Control flow example workflows.
     /// </summary>
-    public class ControlWorkflows
+    public class ControlWorkflows : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the scope workflow.
+        /// Gets all control flow workflow definitions.
         /// </summary>
-        public void AddScopeWorkflow()
+        public FlowDefinition[] GetWorkflows()
+        {
+            return new[]
+            {
+                this.GetScopeWorkflow(),
+                this.GetConditionWorkflow(),
+                this.GetForEachWorkflow(),
+                this.GetUntilWorkflow(),
+                this.GetSwitchWorkflow(),
+                this.GetTerminateWorkflow(),
+            };
+        }
+
+        /// <summary>
+        /// Gets the scope workflow definition.
+        /// </summary>
+        private FlowDefinition GetScopeWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -42,13 +58,13 @@ namespace la1
                 .Then(scope)
                 .Then(nestedScope);
             
-            WorkflowFactory.CreateStatefulWorkflow("scope", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("scope", trigger);
         }
 
         /// <summary>
-        /// Adds the condition workflow.
+        /// Gets the condition workflow definition.
         /// </summary>
-        public void AddConditionWorkflow()
+        private FlowDefinition GetConditionWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -75,13 +91,13 @@ namespace la1
                 .Then(condition)
                 .Then(nestedCondition);
 
-            WorkflowFactory.CreateStatefulWorkflow("condition", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("condition", trigger);
         }
 
         /// <summary>
-        /// Adds the ForEach workflow.
+        /// Gets the ForEach workflow definition.
         /// </summary>
-        public void AddForEachWorkflow()
+        private FlowDefinition GetForEachWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -112,13 +128,13 @@ namespace la1
                 .Then(forEach)
                 .Then(nestedForEach);
 
-            WorkflowFactory.CreateStatefulWorkflow("foreach", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("foreach", trigger);
         }
 
         /// <summary>
-        /// Adds the Until workflow.
+        /// Gets the Until workflow definition.
         /// </summary>
-        public void AddUntilWorkflow()
+        private FlowDefinition GetUntilWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -155,13 +171,13 @@ namespace la1
                 .Then(innerCounter)
                 .Then(nestedUntil);
             
-            WorkflowFactory.CreateStatefulWorkflow("until", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("until", trigger);
         }
 
         /// <summary>
-        /// Adds the Switch workflow.
+        /// Gets the Switch workflow definition.
         /// </summary>
-        public void AddSwitchWorkflow()
+        private FlowDefinition GetSwitchWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -182,13 +198,13 @@ namespace la1
                 },
                 defaultCase: () => WorkflowActions.BuiltIn.Compose(inputs: () => "Default case"));
 
-            WorkflowFactory.CreateStatefulWorkflow("switch", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("switch", trigger);
         }
 
         /// <summary>
-        /// Adds the Terminate workflow.
+        /// Gets the Terminate workflow definition.
         /// </summary>
-        public void AddTerminateWorkflow()
+        private FlowDefinition GetTerminateWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -199,7 +215,7 @@ namespace la1
 
             trigger.Then(terminate);
 
-            WorkflowFactory.CreateStatefulWorkflow("terminate", trigger);
+            return WorkflowFactory.CreateStatefulWorkflow("terminate", trigger);
         }
     }
 }

@@ -13,121 +13,120 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// Factory for creating workflows from trigger node graphs.
+    /// Configures core workflow services for dependency injection and provides
+    /// factory methods for creating workflow definitions.
+    /// Workflow registration is handled via <see cref="IWorkflowProvider"/> implementations.
     /// </summary>
     public static class WorkflowFactory
     {
-        /// <summary>
-        /// The stored workflow trigger nodes indexed by flow name.
-        /// </summary>
-        private static readonly Dictionary<string, (IWorkflowTrigger Trigger, FlowKind Kind)> Workflows = new Dictionary<string, (IWorkflowTrigger, FlowKind)>();
-
         /// <summary>
         /// The environment variable name for the functions application directory.
         /// </summary>
         public static readonly string FUNCTIONS_APPLICATION_DIRECTORY = "FUNCTIONS_APPLICATION_DIRECTORY";
 
         /// <summary>
-        /// Job session service client for gRPC communication.
-        /// </summary>
-        private static IJobSessionService.IJobSessionServiceClient jobSessionServiceClient;
-
-        /// <summary>
-        /// The logger service.
-        /// </summary>
-        private static WorkflowLoggerService WorkflowLoggerService;
-
-        /// <summary>
-        /// Creates a new stateful workflow for the specified flow name.
+        /// Creates a stateful workflow definition for the specified flow name.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
-        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
+        /// <returns>A <see cref="FlowDefinition"/> representing the stateful workflow.</returns>
+        public static FlowDefinition CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
         {
             if (trigger is ConversationalFlowTrigger)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateful workflow.");
             }
 
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateful);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
-        /// Creates a new stateful workflow from a workflow chain.
+        /// Creates a stateful workflow definition from a workflow chain.
         /// The chain's start node must be a trigger.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
-        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, OperationChain chain)
+        /// <returns>A <see cref="FlowDefinition"/> representing the stateful workflow.</returns>
+        public static FlowDefinition CreateStatefulWorkflow(string flowName, OperationChain chain)
         {
             var trigger = chain.Start as IWorkflowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
-            
-            if (trigger is ConversationalFlowTrigger)
-            {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
-            }
 
             return WorkflowFactory.CreateStatefulWorkflow(flowName, trigger);
         }
 
         /// <summary>
-        /// Creates a new stateless workflow for the specified flow name.
+        /// Creates a stateless workflow definition for the specified flow name.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="trigger">The trigger for the flow.</param>
-        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
+        /// <returns>A <see cref="FlowDefinition"/> representing the stateless workflow.</returns>
+        public static FlowDefinition CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
         {
             if (trigger is ConversationalFlowTrigger)
             {
                 throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
             }
 
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateless);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
-        /// Creates a new stateless workflow from a workflow chain.
+        /// Creates a stateless workflow definition from a workflow chain.
         /// The chain's start node must be a trigger.
         /// </summary>
         /// <param name="flowName">The name of the flow.</param>
         /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
-        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, OperationChain chain)
+        /// <returns>A <see cref="FlowDefinition"/> representing the stateless workflow.</returns>
+        public static FlowDefinition CreateStatelessWorkflow(string flowName, OperationChain chain)
         {
             var trigger = chain.Start as IWorkflowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
-            
-            if (trigger is ConversationalFlowTrigger)
-            {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
-            }
 
             return WorkflowFactory.CreateStatelessWorkflow(flowName, trigger);
         }
 
         /// <summary>
-        /// Creates a new conversational agent workflow with the specified flow name.
+        /// Creates an agent workflow definition for the specified flow name.
         /// </summary>
         /// <param name="flowName">The conversational flow name.</param>
         /// <param name="trigger">The trigger for the flow.</param>
-        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
+        /// <returns>A <see cref="FlowDefinition"/> representing the agent workflow.</returns>
+        public static FlowDefinition CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
         {
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Agent);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Agent);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
-        /// Creates a new conversational agent workflow with the specified flow name.
+        /// Creates an agent workflow definition for the specified flow name.
         /// </summary>
         /// <param name="flowName">The conversational flow name.</param>
         /// <param name="chain">The workflow chain.</param>
-        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, OperationChain chain)
+        /// <returns>A <see cref="FlowDefinition"/> representing the agent workflow.</returns>
+        public static FlowDefinition CreateAgentWorkflow(string flowName, OperationChain chain)
         {
             var trigger = chain.Start as ConversationalFlowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
             return WorkflowFactory.CreateAgentWorkflow(flowName, trigger);
+        }
+
+        /// <summary>
+        /// Creates an agent workflow definition for the specified flow name using a generic trigger.
+        /// </summary>
+        /// <param name="flowName">The conversational flow name.</param>
+        /// <param name="trigger">The trigger for the flow.</param>
+        /// <returns>A <see cref="FlowDefinition"/> representing the agent workflow.</returns>
+        public static FlowDefinition CreateAgentWorkflow(string flowName, IWorkflowTrigger trigger)
+        {
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Agent);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
@@ -139,59 +138,16 @@ namespace Microsoft.Azure.Workflows.Sdk
             var grpcEndpoint = WorkflowFactory.GetGrpcUrl();
 
             var jobSessionServiceClient = new IJobSessionService.IJobSessionServiceClient(GrpcChannel.ForAddress(grpcEndpoint, channelOptions: new GrpcChannelOptions() { MaxReceiveMessageSize = int.MaxValue }));
-            WorkflowFactory.jobSessionServiceClient = jobSessionServiceClient;
 
-            services.AddSingleton<IJobSessionService.IJobSessionServiceClient>(serviceProvider =>
-            {
-                return jobSessionServiceClient;
-            });
+            services.AddSingleton<IJobSessionService.IJobSessionServiceClient>(jobSessionServiceClient);
 
             services.AddSingleton<WorkflowLoggerService>(serviceProvider =>
             {
-                var workflowService = new WorkflowLoggerService(serviceProvider.GetRequiredService<ILoggerFactory>());
-                WorkflowFactory.WorkflowLoggerService = workflowService;
-
-                return workflowService;
+                return new WorkflowLoggerService(serviceProvider.GetRequiredService<ILoggerFactory>());
             });
 
             services.AddSingleton<IFunctionMetadataProvider, DummyFunctionProvider>();
             services.AddHostedService<WorkflowInitializationService>();
-        }
-
-        /// <summary>
-        /// Creates workflows from the stored trigger node graphs and sends them to the extension service.
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        public static void CreateWorkflows(CancellationToken cancellationToken)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
-            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
-
-            if (workflowArtifacts.Flows?.Count != 0)
-            {
-                var response = WorkflowFactory.jobSessionServiceClient.CreateWorkflows(new WorkflowsRequest { Workflows = workflowArtifacts.ToJson() });
-
-                WorkflowFactory.WorkflowLoggerService?.LogDebug($"Response got from calling the extension service '{response}'");
-            }
-        }
-
-        /// <summary>
-        /// Gets all codeful workflow artifacts from the stored workflow graphs.
-        /// </summary>
-        public static CodefulWorkflowsArtifacts GetCodefulWorkflowArtifacts()
-        {
-            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Retrieving codeful workflow artifacts '{WorkflowFactory.Workflows?.Count}'");
-
-            var codefulArtifacts = new CodefulWorkflowsArtifacts
-            {
-                Flows = WorkflowFactory.Workflows.ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value.Trigger.GetFlowDefinition(flowName: kvp.Key, flowKind: kvp.Value.Kind)),
-            };
-
-            return codefulArtifacts;
         }
 
         #region Private Methods.

@@ -9,15 +9,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Stateless test workflow.
     /// </summary>
-    public static class StatelessWorkflow
+    public class StatelessWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds a simple stateless workflow.
+        /// Gets the stateless workflow definitions.
         /// </summary>
-        public static void AddStatelessWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            WorkflowFactory.CreateStatelessWorkflow("TestStatelessWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "hello").WithName("Compose");
 
@@ -26,6 +25,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             trigger
                 .Then(compose)
                 .Then(response);
+
+            return new[] { WorkflowFactory.CreateStatelessWorkflow("TestStatelessWorkflow", trigger) };
         }
     }
 }

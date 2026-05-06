@@ -9,13 +9,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Test workflows demonstrating the Split method for fan-out patterns.
     /// </summary>
-    public static class SplitWorkflow
+    public class SplitWorkflow : IWorkflowProvider
     {
+        public FlowDefinition[] GetWorkflows()
+        {
+            return new[]
+            {
+                this.GetSplitWorkflow(),
+                this.GetSplitThenMergeWorkflow(),
+            };
+        }
+
         /// <summary>
         /// Adds a workflow that splits into two branches based on run-after status,
         /// without merging them back (fan-out without fan-in).
         /// </summary>
-        public static void AddSplitWorkflow()
+        public FlowDefinition GetSplitWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -31,14 +40,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     parent.Then(abandon, runAfter: new[] { FlowStatus.Failed }),
                 });
 
-            WorkflowFactory.CreateStatefulWorkflow("splitWorkflow", workflow);
+            return WorkflowFactory.CreateStatefulWorkflow("splitWorkflow", workflow);
         }
 
         /// <summary>
         /// Adds a workflow that splits into multiple branches and then merges them
         /// back with a subsequent Then call (fan-out followed by fan-in).
         /// </summary>
-        public static void AddSplitThenMergeWorkflow()
+        public FlowDefinition GetSplitThenMergeWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -58,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 })
                 .Then(merged);
 
-            WorkflowFactory.CreateStatefulWorkflow("splitThenMergeWorkflow", workflow);
+            return WorkflowFactory.CreateStatefulWorkflow("splitThenMergeWorkflow", workflow);
         }
     }
 }

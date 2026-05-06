@@ -10,15 +10,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// ServiceNow workflow class.
     /// </summary>
-    public static class SerivceNowWorkflow
+    public class SerivceNowWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the workflow.
+        /// Gets the ServiceNow workflow definitions.
         /// </summary>
-        public static void AddWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
             var inTrig = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
-            WorkflowFactory.CreateStatefulWorkflow("TicketEventCodeful", inTrig);
 
             var assignGroup = WorkflowActions.ManagedConnectors.ServiceNow("service-now").GetRecords(
                 () => "sys_user_group",
@@ -57,6 +56,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Then(email)
                 .Then(sendEmail)
                 .Then(response);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("TicketEventCodeful", inTrig) };
         }
     }
 }
