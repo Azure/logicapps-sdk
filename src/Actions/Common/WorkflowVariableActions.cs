@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the variable value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the new value.</param>
-        public IWorkflowAction SetVariable<T>(
+        public IVariableWorkflowAction SetVariable<T>(
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The numeric type of the increment value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the increment value.</param>
-        public IWorkflowAction IncrementVariable<T>(
+        public IVariableWorkflowAction IncrementVariable<T>(
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The numeric type of the decrement value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the decrement value.</param>
-        public IWorkflowAction DecrementVariable<T>(
+        public IVariableWorkflowAction DecrementVariable<T>(
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the string to append.</param>
-        public IWorkflowAction AppendToStringVariable(
+        public IVariableWorkflowAction AppendToStringVariable(
             Expression<Func<string>> name,
             Expression<Func<string>> value)
         {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the value to append.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the value to append.</param>
-        public IWorkflowAction AppendToArrayVariable<T>(
+        public IVariableWorkflowAction AppendToArrayVariable<T>(
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {

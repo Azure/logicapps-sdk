@@ -2,6 +2,8 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
+
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -56,5 +58,27 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="name">The action name.</param>
         IOutputWorkflowAction<T> WithName(string name);
+    }
+
+    /// <summary>
+    /// Extends IWorkflowAction to support variable actions.
+    /// </summary>
+    public interface IVariableWorkflowAction : IWorkflowAction
+    {
+        /// <summary>
+        /// Gets the variable value.
+        /// </summary>
+        JToken Value { get; }
+
+        /// <summary>
+        /// Gets the name of the variable.
+        /// </summary>
+        string VariableName { get; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        IVariableWorkflowAction WithName(string name);
     }
 }

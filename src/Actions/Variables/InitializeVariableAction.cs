@@ -29,14 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets or sets the name of the action.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the variable value placeholder for use in expression trees.
         /// </summary>
-        public JToken Value => JValue.CreateNull();
+        public JToken Value { get; }
 
         /// <summary>
         /// Gets the name of the variable.
@@ -47,7 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the action definition for this InitializeVariable action.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -65,6 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                     },
                 },
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IVariableWorkflowAction WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }
