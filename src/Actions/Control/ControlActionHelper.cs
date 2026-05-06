@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 var node = queue.Dequeue();
 
-                if (string.IsNullOrEmpty(node.Name))
-                {
-                    node.Name = Utility.GetUniqueActionName();
-                }
-
                 if (visited.Contains(node.Name))
                 {
                     continue;

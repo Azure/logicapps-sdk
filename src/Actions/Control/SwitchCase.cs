@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -21,10 +21,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public IWorkflowAction Actions { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwitchCase"/> class.
+        /// </summary>
+        /// <param name="caseValue">The value to match for this case.</param>
+        /// <param name="actions">The actions node for this case.</param>
         public SwitchCase(JToken caseValue, IWorkflowNode actions)
         {
             this.Case = caseValue;
-            this.Actions = actions != null ? WorkflowChain.GetRootAction(actions) : null;
+            this.Actions = actions?.GetRootAction();
         }
     }
 }

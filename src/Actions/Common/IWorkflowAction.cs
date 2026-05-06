@@ -2,10 +2,10 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-using Newtonsoft.Json.Linq;
-
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json.Linq;
+
     /// <summary>
     /// Represents a workflow action as a graph node with support for fluent chaining.
     /// </summary>

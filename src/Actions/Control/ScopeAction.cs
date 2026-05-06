@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The scope action groups a set of actions together.
@@ -24,15 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the action definition for this scope action.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName);
 
@@ -41,6 +36,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.Scope,
                 Actions = nestedActions,
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public ScopeAction WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }

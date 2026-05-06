@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -20,8 +20,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="actions">A factory that builds the nested action graph and returns any node in the chain.</param>
         public IWorkflowAction Scope(Func<IWorkflowNode> actions)
         {
-            var actionsResult = actions();
-            return new ScopeAction(WorkflowChain.GetRootAction(actionsResult));
+            if (actions == null)
+            {
+                throw new ArgumentNullException(nameof(actions), "Scope action requires non-null actions.");
+            }
+            var resolvedActions = actions.Invoke();
+            return new ScopeAction(resolvedActions.GetRootAction());
         }
 
         /// <summary>
@@ -35,13 +39,24 @@ namespace Microsoft.Azure.Workflows.Sdk
             Func<IWorkflowNode> trueBranch,
             Func<IWorkflowNode> falseBranch)
         {
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression), "Condition action requires a non-null expression.");
+            }
+
             var expressionStr = ExpressionConverter.Convert(expression);
-            var trueBranchResult = trueBranch?.Invoke();
-            var falseBranchResult = falseBranch?.Invoke();
+            var resolvedTrueBranch = trueBranch?.Invoke();
+            var resolvedFalseBranch = falseBranch?.Invoke();
+
+            if (resolvedTrueBranch == null && resolvedFalseBranch == null)
+            {
+                throw new ArgumentException("Condition action requires at least one non-null branch.");
+            }
+
             return new ConditionAction(
                 expressionStr,
-                trueBranchResult != null ? WorkflowChain.GetRootAction(trueBranchResult) : null,
-                falseBranchResult != null ? WorkflowChain.GetRootAction(falseBranchResult) : null);
+                resolvedTrueBranch?.GetRootAction(),
+                resolvedFalseBranch?.GetRootAction());
         }
 
         /// <summary>
@@ -53,10 +68,20 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<JToken>> items,
             Func<JToken, IWorkflowNode> actions)
         {
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items), "ForEach action requires a non-null items expression.");
+            }
+
+            if (actions == null)
+            {
+                throw new ArgumentNullException(nameof(actions), "ForEach action requires non-null actions.");
+            }
+
             var itemsExpression = ExpressionConverter.ConvertO(items);
             var currentItemPlaceholder = new JValue("@item()");
-            var actionsResult = actions?.Invoke(currentItemPlaceholder);
-            return new ForEachAction(itemsExpression, actionsResult != null ? WorkflowChain.GetRootAction(actionsResult) : null);
+            var resolvedActions = actions?.Invoke(currentItemPlaceholder);
+            return new ForEachAction(itemsExpression, resolvedActions?.GetRootAction());
         }
 
         /// <summary>
@@ -68,9 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<bool>> expression,
             Func<IWorkflowNode> actions)
         {
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression), "Until action requires a non-null expression.");
+            }
             var expressionStr = ExpressionConverter.Convert(expression);
-            var actionsResult = actions?.Invoke();
-            return new UntilAction(expressionStr, actionsResult != null ? WorkflowChain.GetRootAction(actionsResult) : null);
+            var resolvedActions = actions?.Invoke();
+            return new UntilAction(expressionStr, resolvedActions?.GetRootAction());
         }
 
         /// <summary>
@@ -84,10 +113,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             Func<Dictionary<string, SwitchCase>> cases,
             Func<IWorkflowNode> defaultCase = null)
         {
+            if (on == null)
+            {
+                throw new ArgumentNullException(nameof(on), "Switch action requires a non-null 'on' expression.");
+            }
             var onExpression = ExpressionConverter.ConvertO(on);
-            var casesDict = cases?.Invoke();
-            var defaultCaseResult = defaultCase?.Invoke();
-            return new SwitchAction(onExpression, casesDict, defaultCaseResult != null ? WorkflowChain.GetRootAction(defaultCaseResult) : null);
+            var resolvedCasesDict = cases?.Invoke();
+            var resolvedDefaultCase = defaultCase?.Invoke();
+            return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootAction());
         }
 
         /// <summary>
@@ -99,6 +132,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<FlowStatus>> status,
             Expression<Func<string>> message = null)
         {
+            if (status == null)
+            {
+                throw new ArgumentNullException(nameof(status), "Terminate action requires a non-null status expression.");
+            }
             var statusStr = ExpressionConverter.Convert(status);
             var messageStr = message != null ? ExpressionConverter.Convert(message) : null;
             return new TerminateAction(statusStr, messageStr);

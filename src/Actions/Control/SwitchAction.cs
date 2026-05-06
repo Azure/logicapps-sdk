@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -34,15 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the action definition for this Switch action.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var templateCases = new Dictionary<string, FlowTemplateActionCaseBranch>();
 
@@ -73,6 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             return action;
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public SwitchAction WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }

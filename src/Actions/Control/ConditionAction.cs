@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -34,15 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the action definition for this condition action.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var trueActions = ControlActionHelper.CollectActions(this.trueBranchRoot, flowName);
             var falseActions = ControlActionHelper.CollectActions(this.falseBranchRoot, flowName);
@@ -57,6 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Actions = falseActions,
                 },
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public ConditionAction WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }
