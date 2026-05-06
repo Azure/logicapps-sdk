@@ -59,11 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the name of the recurrence trigger.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the trigger definition for the recurrence trigger.
         /// </summary>
         public override FlowTemplateTrigger GetTriggerDefinition()
@@ -79,6 +74,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                     TimeZone = this.TimeZone?.Id,
                 },
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public RecurrenceTrigger WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }

@@ -15,11 +15,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         Dictionary<string, string> queries = null) : WorkflowActionBase
     {
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the reference name of the workflow to be invoked.
         /// </summary>
         public string Uri { get; } = uri;
@@ -90,5 +85,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Body { get; private set; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IBodyWorkflowAction<T> WithName(string name)
+        {
+            this.Name = name;
+            return this;
+        }
     }
 }

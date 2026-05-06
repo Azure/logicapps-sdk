@@ -11,11 +11,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         private readonly ServiceProviderActionInput serviceProviderActionInput;
 
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
         public ServiceProviderAction(ServiceProviderActionInput serviceProviderActionInput)
         {
             this.serviceProviderActionInput = serviceProviderActionInput;
@@ -33,6 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.ServiceProvider,
                 Inputs = this.serviceProviderActionInput.ToJToken(),
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public ServiceProviderAction WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }

@@ -10,11 +10,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput) : WorkflowActionBase
     {
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the action definition for this API connection action.
         /// </summary>
         /// <returns>
@@ -44,5 +39,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         public T Body { get; private set; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IBodyWorkflowAction<T> WithName(string name)
+        {
+            this.Name = name;
+            return this;
+        }
     }
 }

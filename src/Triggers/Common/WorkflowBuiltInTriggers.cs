@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Adds a conversational agent trigger to the flow.
         /// </summary>
         /// <param name="name">The name to assign to the conversational flow trigger. Defaults to "When_a_new_chat_session_starts".</param>
-        public ConversationalFlowTrigger CreateAgentTrigger(string name = "When_a_new_chat_session_starts")
+        public ConversationalFlowTrigger CreateConversationalAgentTrigger(string name = "When_a_new_chat_session_starts")
         {
             var agentTrigger = new ConversationalFlowTrigger();
             agentTrigger.Name = name;

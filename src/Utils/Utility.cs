@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     internal class Utility
     {
         /// <summary>
-        /// Gets the unique action name.
+        /// Gets the unique operation name.
         /// </summary>
-        public static string GetUniqueActionName()
+        public static string GetUniqueOperationName(bool isTrigger = false)
         {
             // Hash the current Unix timestamp and clip to 8 digits
             var unixTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -28,7 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 // Take first 4 bytes and convert to UInt32, then clip to 8 digits
                 var number = BitConverter.ToUInt32(hash, 0) % 100000000;
 
-                return $"action_{number:D8}";
+                return isTrigger
+                    ? $"trigger_{number:D8}"
+                    : $"action_{number:D8}";
             }
         }
 

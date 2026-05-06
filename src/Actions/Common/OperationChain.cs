@@ -105,24 +105,24 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="branches">A callback that takes the current chain and returns multiple new chains that share the same root.</param>
         /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of all branches.</returns>
-        public OperationChain Split(Func<OperationChain, IEnumerable<OperationChain>> branches)
+        public OperationChain Split(Func<OperationChain, OperationChain[]> branches)
         {
             if (branches == null)
             {
                 throw new ArgumentNullException(nameof(branches));
             }
 
-            var branchesList = branches.Invoke(this)?.ToList()
+            var branchesArr = branches.Invoke(this)
                 ?? throw new InvalidOperationException("Branches must not be null.");
 
-            if (branchesList.Count == 0)
+            if (branchesArr.Length == 0)
             {
                 throw new InvalidOperationException("At least one branch is required.");
             }
 
             var allEnds = new List<IWorkflowOperation>();
 
-            foreach (var branch in branchesList)
+            foreach (var branch in branchesArr)
             {
                 if (branch == null)
                 {
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action)
         {
             foreach (var end in this.Ends)
             {
@@ -155,14 +155,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     continue;
                 }
-                end.Then(action, name);
+                end.Then(action);
             }
 
             return new OperationChain(this.Start, action);
         }
 
         /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
             foreach (var end in this.Ends)
             {
@@ -170,14 +170,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     continue;
                 }
-                end.Then(action, runAfter, name);
+                end.Then(action, runAfter);
             }
 
             return new OperationChain(this.Start, action);
         }
 
         /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        public virtual OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
             foreach (var end in this.Ends)
             {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     continue;
                 }
-                end.Then(action, runAfter, name);
+                end.Then(action, runAfter);
             }
 
             return new OperationChain(this.Start, action);

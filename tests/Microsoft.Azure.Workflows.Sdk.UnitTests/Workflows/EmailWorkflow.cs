@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 Body = trigger.TriggerBody.Value[0].Body,
                 From = trigger.TriggerBody.Value[0].From,
                 ReceivedTime = trigger.TriggerBody.Value[0].ReceivedTime
-            }.ToString());
-            compose.Name = "ComposeEmailContent";
+            }.ToString()).WithName("ComposeEmailContent");
 
             trigger.Then(compose);
         }

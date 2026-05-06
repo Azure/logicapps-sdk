@@ -12,11 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
         public string MethodName { get; private set; } = callback.Method.Name;
 
         /// <summary>
@@ -59,5 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Body { get; private set; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IBodyWorkflowAction<T> WithName(string name)
+        {
+            this.Name = name;
+            return this;
+        }
     }
 }

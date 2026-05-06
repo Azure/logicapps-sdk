@@ -40,11 +40,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the name of the HTTP request trigger.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the trigger definition for the HTTP request trigger.
         /// </summary>
         /// <returns>
@@ -59,6 +54,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Kind = FlowTemplateOperationKind.Http,
                 Inputs = this.input?.ToJToken(),
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public HttpRequestTrigger WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
 
         /// <summary>

@@ -19,11 +19,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             WorkflowFactory.CreateStatelessWorkflow("TestStatelessWorkflow", trigger);
 
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "hello");
-            compose.Name = "ComposeOutput";
+            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "hello").WithName("Compose");
 
-            var response = WorkflowActions.BuiltIn.Response(responseBody: () => compose.Output);
-            response.Name = "Response";
+            var response = WorkflowActions.BuiltIn.Response(responseBody: () => compose.Output).WithName("Response");
 
             trigger
                 .Then(compose)

@@ -20,14 +20,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("ManualTrigger");
             WorkflowFactory.CreateStatefulWorkflow(flowName: "TestStatefulWorkflow", trigger: trigger);
 
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Processing: {trigger.TriggerOutput.Body}");
-            compose.Name = "ProcessInput";
+            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Processing: {trigger.TriggerOutput.Body}").WithName("ProcessInput");
 
-            var customCode = WorkflowActions.BuiltIn.CustomCode<WorkflowResult>(CustomCodeWorkflow.RunCustomCodeAsync);
-            customCode.Name = "customCode";
+            var customCode = WorkflowActions.BuiltIn.CustomCode<WorkflowResult>(CustomCodeWorkflow.RunCustomCodeAsync).WithName("customCode");
 
-            var response = WorkflowActions.BuiltIn.Response(responseBody: () => $"{customCode.Body.Message}");
-            response.Name = "ReturnResult";
+            var response = WorkflowActions.BuiltIn.Response(responseBody: () => $"{customCode.Body.Message}").WithName("ReturnResult");
 
             trigger
                 .Then(compose)

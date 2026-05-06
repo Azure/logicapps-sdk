@@ -10,11 +10,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class ConversationalFlowTrigger : WorkflowTriggerBase
     {
         /// <summary>
-        /// Gets the name of the conversational flow trigger.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets the trigger definition for the conversational flow.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> configured as a request trigger for agent flows.</returns>
@@ -25,6 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.Request,
                 Kind = FlowTemplateOperationKind.Agent,
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public ConversationalFlowTrigger WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 }

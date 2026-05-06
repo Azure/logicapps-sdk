@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 SessionId = trigger.TriggerBody.SessionId,
                 CorrelationId = trigger.TriggerBody.CorrelationId,
                 Label = trigger.TriggerBody.Label
-            });
-            processMessage.Name = "Process_Message";
+            }).WithName("Process_Message");
 
             trigger.Then(processMessage);
         }

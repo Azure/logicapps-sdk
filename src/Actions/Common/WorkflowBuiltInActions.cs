@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<object>> requestBody = null,
             Expression<Func<Dictionary<string, string>>> headers = null)
         {
-           return new NestedWorkFlowAction<JToken>(
+           return new NestedWorkflowAction<JToken>(
                 ExpressionConverter.Convert(workflowReferenceName),
                 requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,
                 headers != null ? ExpressionConverter.ConvertObject(headers) : null);

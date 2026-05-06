@@ -20,12 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             WorkflowFactory.CreateStatefulWorkflow("NullableNodeTest", trigger);
 
             var composeStandalone = WorkflowActions.BuiltIn.Compose(
-                inputs: () => $"Output is: {trigger.TriggerOutput}");
-            composeStandalone.Name = "Compose_Standalone";
+                inputs: () => $"Output is: {trigger.TriggerOutput}").WithName("Compose_Standalone");
 
             var composeMemberAccess = WorkflowActions.BuiltIn.Compose(
-                inputs: () => $"Body is: {trigger.TriggerOutput.Body}");
-            composeMemberAccess.Name = "Compose_MemberAccess";
+                inputs: () => $"Body is: {trigger.TriggerOutput.Body}").WithName("Compose_MemberAccess");
 
             trigger
                 .Then(composeStandalone)

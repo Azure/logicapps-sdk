@@ -9,13 +9,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The nested flow action allows calling a workflow within another workflow.
     /// </summary>
-    public class NestedWorkFlowAction(string workflowReferenceName, object requestBody = null, Dictionary<string, string> headers = null) : WorkflowActionBase
+    public class NestedWorkflowAction(string workflowReferenceName, object requestBody = null, Dictionary<string, string> headers = null) : WorkflowActionBase
     {
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public override string Name { get; set; }
-
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
         /// </summary>
@@ -64,15 +59,15 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a nested workflow action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class NestedWorkFlowAction<T> : NestedWorkFlowAction, IBodyWorkflowAction<T>
+    public class NestedWorkflowAction<T> : NestedWorkflowAction, IBodyWorkflowAction<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NestedWorkFlowAction{T}"/> class.
+        /// Initializes a new instance of the <see cref="NestedWorkflowAction{T}"/> class.
         /// </summary>
         /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>
         /// <param name="requestBody">The request body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
-        public NestedWorkFlowAction(
+        public NestedWorkflowAction(
             string workflowReferenceName,
             object requestBody = null,
             Dictionary<string, string> headers = null)
@@ -84,5 +79,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Body { get; private set; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IBodyWorkflowAction<T> WithName(string name)
+        {
+            this.Name = name;
+            return this;
+        }
     }
 }

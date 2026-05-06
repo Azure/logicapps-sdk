@@ -14,11 +14,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
         public JToken Inputs { get; private set; } = inputs;
 
         /// <summary>
@@ -44,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class ComposeAction<T> : ComposeAction, IOutputWorkflowAction<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NestedWorkFlowAction{T}"/> class.
+        /// Initializes a new instance of the <see cref="ComposeAction{T}"/> class.
         /// </summary>
         public ComposeAction(JToken inputs) : base(inputs)
         {
@@ -54,5 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Output { get; private set; }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public IOutputWorkflowAction<T> WithName(string name)
+        {
+            this.Name = name;
+            return this;
+        }
     }
 }

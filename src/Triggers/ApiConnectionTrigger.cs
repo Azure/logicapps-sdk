@@ -12,11 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class ApiConnectionTrigger : WorkflowTriggerBase
     {
         /// <summary>
-        /// Gets or sets the name of the trigger.
-        /// </summary>
-        public override string Name { get; set; }
-
-        /// <summary>
         /// The type of the flow template operation.
         /// </summary>
         private FlowTemplateOperationType _type;
@@ -88,6 +83,16 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Recurrence = this.Recurrence,
                 SplitOn = this.SplitOn,
             };
+        }
+
+        /// <summary>
+        /// Sets the action name.
+        /// </summary>
+        /// <param name="name">The action name.</param>
+        public ApiConnectionTrigger WithName(string name)
+        {
+            this.Name = name;
+            return this;
         }
     }
 

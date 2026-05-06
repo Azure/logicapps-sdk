@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddRecruitmentWorkflow()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateAgentTrigger();
+            var trigger = WorkflowTriggers.BuiltIn.CreateConversationalAgentTrigger();
 
             var agent = WorkflowActions.BuiltIn.Agent(
                 agentModelType: AgentModelType.AzureOpenAI,

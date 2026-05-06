@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name of the action.
         /// </summary>
-        public abstract string Name { get; set; }
+        public string Name { get; set; } = Utility.GetUniqueOperationName();
 
         /// <summary>
         /// Gets the child action nodes that run after this action.
@@ -33,14 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, string name = null)
+        public override OperationChain Then(IWorkflowAction action)
         {
-            if (string.IsNullOrEmpty(this.Name))
-            {
-                this.Name = Utility.GetUniqueActionName();
-            }
-
-            action.Name = name ?? Utility.GetUniqueActionName();
             action.RunAfterConfig[this.Name] = new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
@@ -48,14 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
-            if (string.IsNullOrEmpty(this.Name))
-            {
-                this.Name = Utility.GetUniqueActionName();
-            }
-
-            action.Name = name ?? Utility.GetUniqueActionName();
             action.RunAfterConfig[this.Name] = runAfter ?? new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
@@ -63,14 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
-            if (string.IsNullOrEmpty(this.Name))
-            {
-                this.Name = Utility.GetUniqueActionName();
-            }
-
-            action.Name = name ?? Utility.GetUniqueActionName();
             foreach (var ra in runAfter)
             {
                 if (ra.Action == null || string.IsNullOrEmpty(ra.Action.Name))

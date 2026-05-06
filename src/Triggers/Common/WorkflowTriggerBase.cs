@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the name of the trigger.
         /// </summary>
-        public abstract string Name { get; set; }
+        public string Name { get; set; } = Utility.GetUniqueOperationName(isTrigger: true);
 
         /// <summary>
         /// Gets the child action nodes that run after this trigger.
@@ -26,22 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         public abstract FlowTemplateTrigger GetTriggerDefinition();
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, string name = null)
+        public override OperationChain Then(IWorkflowAction action)
         {
-            action.Name = name ?? Utility.GetUniqueActionName();
             this.Children.Add(action);
-
             return new OperationChain(this, action);
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null)
+        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
             throw new NotImplementedException("RunAfter configuration can't be specified on first action after a trigger.");
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null)
+        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
             throw new NotImplementedException("RunAfter configuration can't be specified on first action after a trigger.");
         }

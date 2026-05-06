@@ -13,26 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Chains a subsequent operation to run after this node (operation or chain).
         /// </summary>
         /// <param name="action">The action to append to the chain.</param>
-        /// <param name="name">The name of the action.</param>
         /// <returns>A <see cref="OperationChain"/> tracking the chain from this node's start to the appended action.</returns>
-        OperationChain Then(IWorkflowAction action, string name = null);
+        OperationChain Then(IWorkflowAction action);
 
         /// <summary>
         /// Chains a subsequent operation to run after this node (operation or chain) with multiple run-after statuses.
         /// </summary>
         /// <param name="action">The action to append to the chain.</param>
         /// <param name="runAfter">The statuses for the run-after configuration.</param>
-        /// <param name="name">The name of the action.</param>
         /// <returns>A <see cref="OperationChain"/> tracking the chain from this node's start to the appended action.</returns>
-        OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter, string name = null);
+        OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter);
 
         /// <summary>
         /// Chains a subsequent operation to run after this node (operation or chain) with multiple run-after statuses for different actions.
         /// </summary>
         /// <param name="action">The action to append to the chain.</param>
         /// <param name="runAfter">The run-after configurations.</param>
-        /// <param name="name">The name of the action.</param>
         /// <returns>A <see cref="OperationChain"/> tracking the chain from this node's start to the appended action.</returns>
-        OperationChain Then(IWorkflowAction action, RunAfter[] runAfter, string name = null);
+        OperationChain Then(IWorkflowAction action, RunAfter[] runAfter);
     }
 }
