@@ -6,8 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
     /// Provides workflow definitions for registration with the workflow host.
-    /// Implement this interface to define one or more workflows that should be
-    /// registered during application startup.
     /// </summary>
     public interface IWorkflowProvider
     {
