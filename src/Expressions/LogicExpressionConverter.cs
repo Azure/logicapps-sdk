@@ -248,7 +248,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
-            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolContext<>)))
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IWorkflowBuilder<>)))
+            {
+                if (e.Member.Name.Equals("TriggerOutput"))
+                {
+                    return new NullableNode
+                    {
+                        Inner = new FunctionCallNode
+                        {
+                            FunctionName = "triggerOutputs"
+                        }
+                    };
+                }
+
+                throw new NotImplementedException();
+            }
+            else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IAgentToolBuilder<>)))
             {
                 if (e.Member.Name != "Parameters")
                 {
