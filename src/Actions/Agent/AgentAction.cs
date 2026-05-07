@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         private static FlowTemplateActionToolBranch BuildToolBranch<T>(IWorkflowAction rootAction, string description, T parameters) where T : class
         {
             var actions = new Dictionary<string, FlowTemplateAction>();
-            var visited = new HashSet<string>();
+            var visited = new Dictionary<string, IWorkflowAction>();
             var queue = new Queue<IWorkflowAction>();
             queue.Enqueue(rootAction);
 
@@ -160,12 +160,16 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 var node = queue.Dequeue();
 
-                if (visited.Contains(node.Name))
+                if (visited.ContainsKey(node.Name))
                 {
+                    if (!object.ReferenceEquals(visited[node.Name], node))
+                    {
+                        throw new InvalidOperationException($"Duplicate action name detected: {node.Name}. Action names must be unique within a workflow.");
+                    }
                     continue;
                 }
 
-                visited.Add(node.Name);
+                visited.Add(node.Name, node);
 
                 // TODO(aeldridge): flow name/kind should be declared before workflow chain creation so they are available here
                 var definition = node.GetActionDefinition(flowName: null);

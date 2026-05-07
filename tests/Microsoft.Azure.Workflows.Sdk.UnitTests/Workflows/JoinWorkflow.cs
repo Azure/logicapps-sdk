@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// Creates a workflow that fans out into two branches and then joins them
         /// using the default Then overload on a joined chain.
         /// </summary>
-        public static IWorkflowTrigger GetJoinWorkflow()
+        public static void GetJoinWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Join(rightChain)
                 .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Joined"));
 
-            return trigger;
+            WorkflowFactory.CreateStatefulWorkflow("joinWorkflow", trigger);
         }
 
         /// <summary>
         /// Creates a workflow that fans out into two branches and then joins them
         /// using the per-chain runAfter overload for explicit status control.
         /// </summary>
-        public static IWorkflowTrigger GetJoinWithRunAfterWorkflow()
+        public static void GetJoinWithRunAfterWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         new RunAfter(rightChain, FlowStatus.Succeeded),
                     });
 
-            return trigger;
+            WorkflowFactory.CreateStatefulWorkflow("joinWithRunAfterWorkflow", trigger);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var sendEmail = WorkflowActions.ManagedConnectors.Outlook("office365").SendEmailV2(
                 emailMessageto: () => (string)email.Output["to"],
                 emailMessagesubject: () => (string)email.Output["subject"],
-                emailMessagebody: () => "<p class=\"editor-paragraph\">" + email.Output["body"] + "</p?"
+                emailMessagebody: () => "<p class=\"editor-paragraph\">" + email.Output["body"] + "</p>"
             );
 
             var response = WorkflowActions.BuiltIn.Response(statusCode: () => System.Net.HttpStatusCode.Created);
