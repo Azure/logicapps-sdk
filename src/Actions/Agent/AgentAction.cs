@@ -56,16 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         public AgentPromptMessage[] Messages { get; set; } = messages;
 
         /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public AgentAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
-
-        /// <summary>
         /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch root action.
         /// </summary>
         /// <param name="tool">A function that receives tool parameters and returns the tool branch root action.</param>

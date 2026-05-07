@@ -49,15 +49,5 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Output { get; private set; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IOutputWorkflowAction<T> WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }

@@ -76,14 +76,5 @@ namespace Microsoft.Azure.Workflows.Sdk
             };
         }
 
-        /// <summary>
-        /// Sets the trigger name.
-        /// </summary>
-        /// <param name="name">The trigger name.</param>
-        public RecurrenceTrigger WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }

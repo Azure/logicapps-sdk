@@ -39,15 +39,5 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         public T Body { get; private set; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IBodyWorkflowAction<T> WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }

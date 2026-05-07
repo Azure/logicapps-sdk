@@ -57,16 +57,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Sets the trigger name.
-        /// </summary>
-        /// <param name="name">The trigger name.</param>
-        public HttpRequestTrigger WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
-
-        /// <summary>
         /// Gets the output parameters for the HTTP trigger.
         /// </summary>
         public HttpRequestTriggerOutput TriggerOutput { get; private set; } = new HttpRequestTriggerOutput();

@@ -32,12 +32,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the body of the action.
         /// </summary>
         T Body { get; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        IBodyWorkflowAction<T> WithName(string name);
     }
 
     /// <summary>
@@ -50,11 +44,5 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the output of the action.
         /// </summary>
         T Output { get; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        IOutputWorkflowAction<T> WithName(string name);
     }
 }

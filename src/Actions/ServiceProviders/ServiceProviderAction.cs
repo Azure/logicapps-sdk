@@ -29,15 +29,5 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Inputs = this.serviceProviderActionInput.ToJToken(),
             };
         }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public ServiceProviderAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }
