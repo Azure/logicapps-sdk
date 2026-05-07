@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Defines the fluent chaining contract for workflow nodes.
     /// </summary>
-    public interface IWorkflowNode
+    public interface IChainableNode
     {
         /// <summary>
         /// Chains a subsequent operation to run after this node (operation or chain).

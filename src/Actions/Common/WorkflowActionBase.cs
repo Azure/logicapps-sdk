@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Base class for workflow action nodes. Extends <see cref="OperationChain"/> for chain tracking
     /// and implements <see cref="IWorkflowAction"/> for action-specific behavior.
     /// </summary>
-    public abstract class WorkflowActionBase : OperationChain, IWorkflowAction
+    public abstract class WorkflowActionBase : IWorkflowAction
     {
         /// <summary>
         /// Gets or sets the name of the action.
@@ -33,25 +33,25 @@ namespace Microsoft.Azure.Workflows.Sdk
         public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action)
+        public OperationChain Then(IWorkflowAction action)
         {
             action.RunAfterConfig[this.Name] = new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
-            return new OperationChain(this.Start, action);
+            return new OperationChain(this, action);
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
+        public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
             action.RunAfterConfig[this.Name] = runAfter ?? new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
-            return new OperationChain(this.Start, action);
+            return new OperationChain(this, action);
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
+        public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
             foreach (var ra in runAfter)
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             this.Children.Add(action);
 
-            return new OperationChain(this.Start, action);
+            return new OperationChain(this, action);
         }
     }
 }

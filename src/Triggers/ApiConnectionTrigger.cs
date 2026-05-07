@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Sets the action name.
+        /// Sets the trigger name.
         /// </summary>
-        /// <param name="name">The action name.</param>
+        /// <param name="name">The trigger name.</param>
         public ApiConnectionTrigger WithName(string name)
         {
             this.Name = name;

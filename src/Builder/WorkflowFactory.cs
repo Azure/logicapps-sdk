@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trigger">The trigger for the flow.</param>
         public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
         {
+            if (string.IsNullOrEmpty(flowName))
+            {
+                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+            }
+            if (trigger == null)
+            {
+                throw new ArgumentNullException(nameof(trigger));
+            }
             if (trigger is ConversationalFlowTrigger)
             {
                 throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
@@ -61,13 +69,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
         public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, OperationChain chain)
         {
-            var trigger = chain.Start as IWorkflowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
-            
-            if (trigger is ConversationalFlowTrigger)
+            if (chain == null)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new ArgumentNullException(nameof(chain));
             }
+            var trigger = chain.GetRootTrigger();
 
             return WorkflowFactory.CreateStatefulWorkflow(flowName, trigger);
         }
@@ -79,6 +85,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trigger">The trigger for the flow.</param>
         public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
         {
+            if (string.IsNullOrEmpty(flowName))
+            {
+                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+            }
+            if (trigger == null)
+            {
+                throw new ArgumentNullException(nameof(trigger));
+            }
             if (trigger is ConversationalFlowTrigger)
             {
                 throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
@@ -96,13 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="chain">The workflow chain. Its start must be an <see cref="IWorkflowTrigger"/>.</param>
         public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, OperationChain chain)
         {
-            var trigger = chain.Start as IWorkflowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
-            
-            if (trigger is ConversationalFlowTrigger)
+            if (chain == null)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new ArgumentNullException(nameof(chain));
             }
+            var trigger = chain.GetRootTrigger();
 
             return WorkflowFactory.CreateStatelessWorkflow(flowName, trigger);
         }
@@ -114,6 +126,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trigger">The trigger for the flow.</param>
         public static IWorkflowTrigger CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
         {
+            if (string.IsNullOrEmpty(flowName))
+            {
+                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+            }
+            if (trigger == null)
+            {
+                throw new ArgumentNullException(nameof(trigger));
+            }
             WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Agent);
             return trigger;
         }
@@ -125,8 +145,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="chain">The workflow chain.</param>
         public static IWorkflowTrigger CreateAgentWorkflow(string flowName, OperationChain chain)
         {
-            var trigger = chain.Start as ConversationalFlowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+            if (chain == null)
+            {
+                throw new ArgumentNullException(nameof(chain));
+            }
+            var trigger = chain.GetRootTrigger() as ConversationalFlowTrigger;
             return WorkflowFactory.CreateAgentWorkflow(flowName, trigger);
         }
 

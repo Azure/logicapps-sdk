@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         private HttpRequestTriggerInput input;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpAction{T}"/> class.
+        /// Initializes a new instance of the <see cref="HttpRequestTrigger"/> class.
         /// </summary>
         /// <param name="method">The HTTP method to use for the request (optional).</param>
         /// <param name="requestBodyJsonSchema">The request body JSON schema (optional).</param>
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Sets the action name.
+        /// Sets the trigger name.
         /// </summary>
-        /// <param name="name">The action name.</param>
+        /// <param name="name">The trigger name.</param>
         public HttpRequestTrigger WithName(string name)
         {
             this.Name = name;

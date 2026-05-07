@@ -17,6 +17,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Actions provided by managed connectors.
         /// </summary>
-        public static WorkflowManagedActions ManagedConnectors = new WorkflowManagedActions();
+        public static WorkflowManagedActions Managed = new WorkflowManagedActions();
     }
 }

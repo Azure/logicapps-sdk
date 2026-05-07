@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Base class for workflow trigger nodes. Extends <see cref="OperationChain"/> for chain tracking
     /// and implements <see cref="IWorkflowTrigger"/> for trigger-specific behavior.
     /// </summary>
-    public abstract class WorkflowTriggerBase : OperationChain, IWorkflowTrigger
+    public abstract class WorkflowTriggerBase : IWorkflowTrigger
     {
         /// <summary>
         /// Gets or sets the name of the trigger.
@@ -26,20 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         public abstract FlowTemplateTrigger GetTriggerDefinition();
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action)
+        public OperationChain Then(IWorkflowAction action)
         {
             this.Children.Add(action);
             return new OperationChain(this, action);
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
+        public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
             throw new InvalidOperationException("RunAfter configuration can't be specified on first action after a trigger.");
         }
 
         /// <inheritdoc/>
-        public override OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
+        public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
             throw new InvalidOperationException("RunAfter configuration can't be specified on first action after a trigger.");
         }

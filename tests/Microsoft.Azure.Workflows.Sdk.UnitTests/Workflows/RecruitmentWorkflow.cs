@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var getCandidates = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentcandiateses",
                     select: () => "cred1_candidatename,cred1_candidateid,cred1_jobpostingid, cred1_candidateemail,cred1_candidateprofilelink",
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var getCandidates = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentpostingses",
                     select: () => "cred1_postingenddate,cred1_postingowner,cred1_postingid,cred1_postingstatus",
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var getCalendar = WorkflowActions.ManagedConnectors.Office365("office365").CalendarGetTablesV2();
+                var getCalendar = WorkflowActions.Managed.Office365("office365").CalendarGetTablesV2();
 
-                var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").V4CalendarPostItem(
+                var createEvent = WorkflowActions.Managed.Office365("office365").V4CalendarPostItem(
                     table: () => getCalendar.Body.Value[1].ID,
                     itemsubject: () => $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
                     itemstartTime: () => "@agentParameters('MeetingStartTime')",
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var upcomingInterviews = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var upcomingInterviews = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentmeetingses",
                     select: () => "cred1_meetingid,cred1_candidateemail,cred1_candidatename,cred1_intervieweremail,cred1_interviewdatetime",

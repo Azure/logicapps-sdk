@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Represents a workflow action as a graph node with support for fluent chaining.
+    /// Represents a workflow action node.
     /// </summary>
     public interface IWorkflowAction : IWorkflowOperation
     {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Extends IWorkflowAction to support actions with strongly-typed bodies for managed connectors.
+    /// Represents a workflow action with strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public interface IBodyWorkflowAction<T> : IWorkflowAction
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Extends IWorkflowAction to support actions with strongly-typed output.
+    /// Represents a workflow action with strongly-typed output.
     /// </summary>
-    /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
+    /// <typeparam name="T">The type of the output returned by the action.</typeparam>
     public interface IOutputWorkflowAction<T> : IWorkflowAction
     {
         /// <summary>

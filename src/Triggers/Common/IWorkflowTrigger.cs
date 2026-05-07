@@ -5,7 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Represents a workflow trigger as the root node of a workflow graph.
+    /// Represents a workflow trigger node.
     /// </summary>
     public interface IWorkflowTrigger : IWorkflowOperation
     {
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Represents a workflow trigger that produces a strongly-typed output.
+    /// Represents a workflow trigger with strongly-typed output.
     /// </summary>
     /// <typeparam name="T">The type of the trigger output.</typeparam>
     public interface IOutputWorkflowTrigger<T> : IWorkflowTrigger
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Represents a workflow trigger with strongly-typed body output for managed connectors.
+    /// Represents a workflow trigger with strongly-typed body output.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the trigger.</typeparam>
     public interface IBodyWorkflowTrigger<T> : IWorkflowTrigger
