@@ -75,6 +75,5 @@ namespace Microsoft.Azure.Workflows.Sdk
                 },
             };
         }
-
     }
 }

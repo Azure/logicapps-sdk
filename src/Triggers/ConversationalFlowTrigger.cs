@@ -21,6 +21,5 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Kind = FlowTemplateOperationKind.Agent,
             };
         }
-
     }
 }

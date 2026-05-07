@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 SplitOn = this.SplitOn,
             };
         }
-
     }
 
     /// <summary>
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with action input.
         /// </summary>
-        /// <param name="n">The API connection action input.</param>
+        /// <param name="input">The API connection action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
