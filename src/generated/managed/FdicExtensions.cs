@@ -1573,7 +1573,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         REP,
         [EnumMember(Value = "P&A")]
         PA,
-        PA,
         PI,
         IDT,
         MGR,

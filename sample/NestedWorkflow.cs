@@ -85,7 +85,7 @@ namespace harness
 
             agent.AddTool(toolBuilder =>
                 {
-                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("office365-2").SendEmailV2(emailMessage: () => new ClientSendHtmlMessage()
+                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("office365-2").SendEmail(emailMessage: () => new ClientSendHtmlMessage()
                     {
                         To = "apseth@microsoft.com",
                         Subject = "Interview Scheduled",

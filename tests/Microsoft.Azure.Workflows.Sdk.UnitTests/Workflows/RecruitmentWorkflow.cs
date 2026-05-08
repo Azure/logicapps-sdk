@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(b =>
             {
-                var getCalendar = WorkflowActions.ManagedConnectors.Office365("office365").CalendarGetTablesV2();
+                var getCalendar = WorkflowActions.ManagedConnectors.Office365("office365").CalendarGetTables();
                 b.AddAction(getCalendar);
 
-                var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").V4CalendarPostItem(
+                var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").CalendarPostItem(
                     table: () => getCalendar.Body.Value[1].ID, // "body('Get_calendars_for_meeting')?['value'][1]['id']",
                     itemsubject: () => $"Job Interview with Contoso - {b.Parameters.CandidateName}",
                     itemstartTime: () => "@agentParameters('MeetingStartTime')",
