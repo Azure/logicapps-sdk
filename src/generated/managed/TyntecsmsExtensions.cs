@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
-        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheckV3(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
             var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
 
     public class TyntecsmsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IncomingV3(Expression<Func<string>> smsSender, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Incoming(Expression<Func<string>> smsSender, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(smsSender, 1));
             var apiCallHttpMethod = "post";

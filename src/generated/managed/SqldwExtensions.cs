@@ -22,26 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<JToken> ExecuteProcedureV2(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0},{1}/procedures/{2}", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(procedure, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(parameters);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<TablesList> GetTablesV2(Expression<Func<string>> server, Expression<Func<string>> database)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQueryV2(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
+        public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
         {
             var apiCallPath = String.Format("/v2/datasets/{0},{1}/query/sql", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
             var apiCallHttpMethod = "post";
@@ -77,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<ItemsListV2> GetItemsV2(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<ItemsListV2> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
         {
             var apiCallPath = String.Format("/v2/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -94,10 +75,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
                 callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
             return new ApiConnectionAction<ItemsListV2>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
+        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
+        {
+            var apiCallPath = String.Format("/v2/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<TablesList>(callPayload);
+        }
     }
 
     public class SqldwTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ItemsListV2
+    {
+        [JsonProperty("value")]
+        public ItemV2[] Value { get; set; }
+    }
+
+    public class ItemV2
+    {
+        public string ItemInternalId { get; set; }
     }
 
     public class TablesList
@@ -110,17 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
     {
         public string Name { get; set; }
         public string DisplayName { get; set; }
-    }
-
-    public class ItemsListV2
-    {
-        [JsonProperty("value")]
-        public ItemV2[] Value { get; set; }
-    }
-
-    public class ItemV2
-    {
-        public string ItemInternalId { get; set; }
     }
 }
 

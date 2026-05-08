@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagePostResponse> PagePost(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null)
+        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null)
         {
             var apiCallPath = "/v1/pages";
             var apiCallHttpMethod = "post";
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentPostResponse> ComponentPost(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
+        public IBodyWorkflowAction<ComponentPostResponse> Component(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
             var apiCallPath = String.Format("/v1/{0}/components", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentPostResponse> IncidentPost(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentPostResponse> Incident(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var apiCallPath = String.Format("/v1/{0}/incidents", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplatePost(Expression<Func<string>> pageId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
         {
             var apiCallPath = String.Format("/v2/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(template, 1));
             var apiCallHttpMethod = "post";
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdatePost(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var apiCallPath = String.Format("/v1/{0}/incidents/{1}/incident-updates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
             var apiCallHttpMethod = "post";
@@ -889,7 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplatePost(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
         {
             var apiCallPath = String.Format("/v2/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(template, 1));
             var apiCallHttpMethod = "post";
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancePostResponse> MaintenancePost(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenancePostResponse> Maintenance(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var apiCallPath = String.Format("/v1/{0}/maintenances", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdatePost(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var apiCallPath = String.Format("/v1/{0}/maintenances/{1}/maintenance-updates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(maintenanceId, 1));
             var apiCallHttpMethod = "post";
@@ -1246,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplatePostResponse> TemplatePost(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
             var apiCallPath = String.Format("/v1/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
@@ -1387,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<string> TeamMemberPost(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<string> TeamMember(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = String.Format("/v1/{0}/team", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<SubscriberPostResponse> SubscriberPost(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
+        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
         {
             var apiCallPath = String.Format("/v1/{0}/subscribers", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
             var apiCallHttpMethod = "post";

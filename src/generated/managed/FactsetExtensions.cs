@@ -153,13 +153,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             body["text"] = ExpressionConverter.ConvertO(bodytext);
             if (bodyfilterEntities != null)
             {
-                body["filterEntities"] = ExpressionConverter.ConvertO(bodyfilterEntities);
+                if (bodyfilterEntities != null)
+                {
+                    body["filterEntities"] = ExpressionConverter.ConvertO(bodyfilterEntities);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["filterEntities"] = true;
                 bodypropCount++;
             }
 
             if (bodyenableIdLookup != null)
             {
-                body["enableIdLookup"] = ExpressionConverter.ConvertO(bodyenableIdLookup);
+                if (bodyenableIdLookup != null)
+                {
+                    body["enableIdLookup"] = ExpressionConverter.ConvertO(bodyenableIdLookup);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["enableIdLookup"] = true;
                 bodypropCount++;
             }
 

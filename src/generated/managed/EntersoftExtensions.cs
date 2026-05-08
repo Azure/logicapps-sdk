@@ -777,7 +777,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(rFARequestrequestedBy);
             if (rFARequestpriority != null)
             {
-                rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestpriority);
+                if (rFARequestpriority != null)
+                {
+                    rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestpriority);
+                    rFARequestpropCount++;
+                }
+
+                rFARequestpropCount++;
+            }
+            else
+            {
+                rFARequest["Priority"] = "Normal";
                 rFARequestpropCount++;
             }
 
@@ -797,7 +807,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (rFARequestnumericValue != null)
             {
-                rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestnumericValue);
+                if (rFARequestnumericValue != null)
+                {
+                    rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestnumericValue);
+                    rFARequestpropCount++;
+                }
+
+                rFARequestpropCount++;
+            }
+            else
+            {
+                rFARequest["NumericValue"] = 0;
                 rFARequestpropCount++;
             }
 
@@ -1062,13 +1082,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (fetchOptionspage != null)
             {
-                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                if (fetchOptionspage != null)
+                {
+                    fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                    fetchOptionspropCount++;
+                }
+
+                fetchOptionspropCount++;
+            }
+            else
+            {
+                fetchOptions["Page"] = 1;
                 fetchOptionspropCount++;
             }
 
             if (fetchOptionspageSize != null)
             {
-                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                if (fetchOptionspageSize != null)
+                {
+                    fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                    fetchOptionspropCount++;
+                }
+
+                fetchOptionspropCount++;
+            }
+            else
+            {
+                fetchOptions["PageSize"] = 500;
                 fetchOptionspropCount++;
             }
 
@@ -1111,13 +1151,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (fetchOptionspage != null)
             {
-                fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                if (fetchOptionspage != null)
+                {
+                    fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                    fetchOptionspropCount++;
+                }
+
+                fetchOptionspropCount++;
+            }
+            else
+            {
+                fetchOptions["Page"] = 1;
                 fetchOptionspropCount++;
             }
 
             if (fetchOptionspageSize != null)
             {
-                fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                if (fetchOptionspageSize != null)
+                {
+                    fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                    fetchOptionspropCount++;
+                }
+
+                fetchOptionspropCount++;
+            }
+            else
+            {
+                fetchOptions["PageSize"] = 500;
                 fetchOptionspropCount++;
             }
 
@@ -2167,7 +2227,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationvalue != null)
             {
-                registration["Value"] = ExpressionConverter.ConvertO(registrationvalue);
+                if (registrationvalue != null)
+                {
+                    registration["Value"] = ExpressionConverter.ConvertO(registrationvalue);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["Value"] = 0;
                 registrationpropCount++;
             }
 
@@ -2185,7 +2255,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                if (registrationisActive != null)
+                {
+                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["IsActive"] = true;
                 registrationpropCount++;
             }
 
@@ -2208,13 +2288,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var registrationpropCount = 0;
             if (registrationstate != null)
             {
-                registration["State"] = ExpressionConverter.ConvertO(registrationstate);
+                if (registrationstate != null)
+                {
+                    registration["State"] = ExpressionConverter.ConvertO(registrationstate);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["State"] = "All";
                 registrationpropCount++;
             }
 
             if (registrationpackageType != null)
             {
-                registration["PackageType"] = ExpressionConverter.ConvertO(registrationpackageType);
+                if (registrationpackageType != null)
+                {
+                    registration["PackageType"] = ExpressionConverter.ConvertO(registrationpackageType);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["PackageType"] = "All";
                 registrationpropCount++;
             }
 
@@ -2256,7 +2356,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                if (registrationisActive != null)
+                {
+                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["IsActive"] = true;
                 registrationpropCount++;
             }
 
@@ -2303,7 +2413,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationnumericValue != null)
             {
-                registration["NumericValue"] = ExpressionConverter.ConvertO(registrationnumericValue);
+                if (registrationnumericValue != null)
+                {
+                    registration["NumericValue"] = ExpressionConverter.ConvertO(registrationnumericValue);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["NumericValue"] = 0;
                 registrationpropCount++;
             }
 
@@ -2321,7 +2441,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                if (registrationisActive != null)
+                {
+                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["IsActive"] = true;
                 registrationpropCount++;
             }
 
@@ -2360,7 +2490,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                if (registrationisActive != null)
+                {
+                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["IsActive"] = true;
                 registrationpropCount++;
             }
 
@@ -2403,7 +2543,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
             if (registrationisActive != null)
             {
-                registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                if (registrationisActive != null)
+                {
+                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registrationpropCount++;
+                }
+
+                registrationpropCount++;
+            }
+            else
+            {
+                registration["IsActive"] = true;
                 registrationpropCount++;
             }
 

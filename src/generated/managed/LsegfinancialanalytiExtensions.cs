@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/job-status";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             return new ApiConnectionAction<JobStatusResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<int>> bodyprepayRate, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bool>> bodyretrieveOas, Expression<Func<bodycurrencyInput>> bodycurrency = null)
+        public IWorkflowAction BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<bool>> bodyretrieveOas = null, Expression<Func<bodyoptionModelInput>> bodyoptionModel = null)
         {
             var apiCallPath = "/power-platform/v1/bulk-py-analytics";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
             var body = new JObject();
             var bodypropCount = 0;
@@ -71,16 +71,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             body["settlementType"] = ExpressionConverter.ConvertO(bodysettlementType);
             bodypropCount++;
             body["prepayType"] = ExpressionConverter.ConvertO(bodyprepayType);
-            bodypropCount++;
-            body["prepayRate"] = ExpressionConverter.ConvertO(bodyprepayRate);
+            if (bodyprepayRate != null)
+            {
+                body["prepayRate"] = ExpressionConverter.ConvertO(bodyprepayRate);
+                bodypropCount++;
+            }
+
             bodypropCount++;
             body["calculatePartialDurations4pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations4pt);
             bodypropCount++;
             body["calculatePartialDurations7pt"] = ExpressionConverter.ConvertO(bodycalculatePartialDurations7pt);
             bodypropCount++;
             body["retrieveModelProjections"] = ExpressionConverter.ConvertO(bodyretrieveModelProjections);
-            bodypropCount++;
-            body["retrieveOas"] = ExpressionConverter.ConvertO(bodyretrieveOas);
+            if (bodyretrieveOas != null)
+            {
+                body["retrieveOas"] = ExpressionConverter.ConvertO(bodyretrieveOas);
+                bodypropCount++;
+            }
+
+            if (bodyoptionModel != null)
+            {
+                body["optionModel"] = ExpressionConverter.ConvertO(bodyoptionModel);
+                bodypropCount++;
+            }
+
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
@@ -95,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/bulk-indic-data";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             callPayload.Queries["Batch Size"] = ExpressionConverter.Convert(batchSize);
             var body = new JObject();
             var bodypropCount = 0;
@@ -115,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/upload-securities-list";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             var body = new JObject();
             var bodypropCount = 0;
             bodypropCount++;
@@ -129,30 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<string> GetTicks(Expression<Func<string>> bodypayupList)
-        {
-            var apiCallPath = "/power-platform/v1/ticks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["payupList"] = ExpressionConverter.ConvertO(bodypayupList);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
         public IWorkflowAction CloseJob(Expression<Func<string>> jobName)
         {
             var apiCallPath = "/power-platform/v1/close-job";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             return new ApiConnectionAction(callPayload);
         }
 
@@ -162,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job Name"] = ExpressionConverter.Convert(jobName);
+            callPayload.Queries["Job name"] = ExpressionConverter.Convert(jobName);
             callPayload.Queries["Output Format"] = ExpressionConverter.Convert(outputFormat);
             var body = new JObject();
             var bodypropCount = 0;
@@ -174,28 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             }
 
             return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<GetTbaPriceResponse> GetTbaPrice(Expression<Func<string>> bodyresults, Expression<Func<bodypriceDateInput>> bodypriceDate, Expression<Func<string>> bodyticks)
-        {
-            var apiCallPath = "/power-platform/v1/tba-pricing";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["results"] = ExpressionConverter.ConvertO(bodyresults);
-            bodypropCount++;
-            body["priceDate"] = ExpressionConverter.ConvertO(bodypriceDate);
-            bodypropCount++;
-            body["ticks"] = ExpressionConverter.ConvertO(bodyticks);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetTbaPriceResponse>(callPayload);
         }
     }
 
@@ -235,6 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
     public enum bodyprepayTypeInput
     {
+        Default,
         Model,
         CPR,
         PSA,
@@ -245,6 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     {
         USD,
         EUR
+    }
+
+    public enum bodyoptionModelInput
+    {
+        OAS,
+        OASEDUR,
+        YCMARGIN
     }
 
     public class UploadSecuritiesListDefaultResponse
@@ -265,22 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         Csv,
         [EnumMember(Value = "json")]
         Json
-    }
-
-    public class GetTbaPriceResponse
-    {
-        [JsonProperty("levels")]
-        public string Levels { get; set; }
-    }
-
-    public enum bodypriceDateInput
-    {
-        [EnumMember(Value = "Close Price")]
-        ClosePrice,
-        [EnumMember(Value = "Live Bid")]
-        LiveBid,
-        [EnumMember(Value = "Live Ask")]
-        LiveAsk
     }
 }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowPostResponse> WorkflowPost(Expression<Func<string>> workflowId)
+        public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
         {
             var apiCallPath = String.Format("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";

@@ -21,13 +21,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var bodypropCount = 0;
             if (bodydirection != null)
             {
-                body["direction"] = ExpressionConverter.ConvertO(bodydirection);
+                if (bodydirection != null)
+                {
+                    body["direction"] = ExpressionConverter.ConvertO(bodydirection);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["direction"] = "forward";
                 bodypropCount++;
             }
 
             if (bodyperiod != null)
             {
-                body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                if (bodyperiod != null)
+                {
+                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["period"] = 1;
                 bodypropCount++;
             }
 
@@ -69,13 +89,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodyperiod != null)
             {
-                body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                if (bodyperiod != null)
+                {
+                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["period"] = 1;
                 bodypropCount++;
             }
 
             if (bodycycles != null)
             {
-                body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                if (bodycycles != null)
+                {
+                    body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["cycles"] = 1;
                 bodypropCount++;
             }
 
@@ -87,7 +127,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodypowerOn != null)
             {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                if (bodypowerOn != null)
+                {
+                    body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["power_on"] = true;
                 bodypropCount++;
             }
 
@@ -109,7 +159,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var bodypropCount = 0;
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodyduration != null)
+                {
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["duration"] = 0;
                 bodypropCount++;
             }
 
@@ -143,13 +203,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodybrightness != null)
             {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                if (bodybrightness != null)
+                {
+                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["brightness"] = 1;
                 bodypropCount++;
             }
 
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodyduration != null)
+                {
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["duration"] = 0;
                 bodypropCount++;
             }
 
@@ -215,13 +295,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodydefaultsbrightness != null)
             {
-                defaultsObject["brightness"] = ExpressionConverter.ConvertO(bodydefaultsbrightness);
+                if (bodydefaultsbrightness != null)
+                {
+                    defaultsObject["brightness"] = ExpressionConverter.ConvertO(bodydefaultsbrightness);
+                    defaultsObjectpropCount++;
+                }
+
+                defaultsObjectpropCount++;
+            }
+            else
+            {
+                defaultsObject["brightness"] = 1;
                 defaultsObjectpropCount++;
             }
 
             if (bodydefaultsduration != null)
             {
-                defaultsObject["duration"] = ExpressionConverter.ConvertO(bodydefaultsduration);
+                if (bodydefaultsduration != null)
+                {
+                    defaultsObject["duration"] = ExpressionConverter.ConvertO(bodydefaultsduration);
+                    defaultsObjectpropCount++;
+                }
+
+                defaultsObjectpropCount++;
+            }
+            else
+            {
+                defaultsObject["duration"] = 0;
                 defaultsObjectpropCount++;
             }
 
@@ -255,7 +355,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var bodypropCount = 0;
             if (bodyduration != null)
             {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                if (bodyduration != null)
+                {
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["duration"] = 1;
                 bodypropCount++;
             }
 
@@ -285,13 +395,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodyperiod != null)
             {
-                body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                if (bodyperiod != null)
+                {
+                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["period"] = 1;
                 bodypropCount++;
             }
 
             if (bodycycles != null)
             {
-                body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                if (bodycycles != null)
+                {
+                    body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["cycles"] = 1;
                 bodypropCount++;
             }
 
@@ -303,13 +433,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 
             if (bodypowerOn != null)
             {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                if (bodypowerOn != null)
+                {
+                    body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["power_on"] = true;
                 bodypropCount++;
             }
 
             if (bodypeak != null)
             {
-                body["peak"] = ExpressionConverter.ConvertO(bodypeak);
+                if (bodypeak != null)
+                {
+                    body["peak"] = ExpressionConverter.ConvertO(bodypeak);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["peak"] = 0.5;
                 bodypropCount++;
             }
 

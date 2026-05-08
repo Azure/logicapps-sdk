@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     public class TavilyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<SearchPostResponse> SearchPost(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
+        public IBodyWorkflowAction<SearchPostResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
         {
             var apiCallPath = "/search";
             var apiCallHttpMethod = "post";
@@ -23,13 +23,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             body["query"] = ExpressionConverter.ConvertO(bodyquery);
             if (bodytopic != null)
             {
-                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                if (bodytopic != null)
+                {
+                    body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["topic"] = "general";
                 bodypropCount++;
             }
 
             if (bodysearchDepth != null)
             {
-                body["search_depth"] = ExpressionConverter.ConvertO(bodysearchDepth);
+                if (bodysearchDepth != null)
+                {
+                    body["search_depth"] = ExpressionConverter.ConvertO(bodysearchDepth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["search_depth"] = "basic";
                 bodypropCount++;
             }
 
@@ -41,7 +61,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodymaxResults != null)
             {
-                body["max_results"] = ExpressionConverter.ConvertO(bodymaxResults);
+                if (bodymaxResults != null)
+                {
+                    body["max_results"] = ExpressionConverter.ConvertO(bodymaxResults);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_results"] = 5;
                 bodypropCount++;
             }
 
@@ -53,25 +83,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodydays != null)
             {
-                body["days"] = ExpressionConverter.ConvertO(bodydays);
+                if (bodydays != null)
+                {
+                    body["days"] = ExpressionConverter.ConvertO(bodydays);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["days"] = 7;
                 bodypropCount++;
             }
 
             if (bodyincludeAnswer != null)
             {
-                body["include_answer"] = ExpressionConverter.ConvertO(bodyincludeAnswer);
+                if (bodyincludeAnswer != null)
+                {
+                    body["include_answer"] = ExpressionConverter.ConvertO(bodyincludeAnswer);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_answer"] = false;
                 bodypropCount++;
             }
 
             if (bodyincludeRawContent != null)
             {
-                body["include_raw_content"] = ExpressionConverter.ConvertO(bodyincludeRawContent);
+                if (bodyincludeRawContent != null)
+                {
+                    body["include_raw_content"] = ExpressionConverter.ConvertO(bodyincludeRawContent);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_raw_content"] = false;
                 bodypropCount++;
             }
 
             if (bodyincludeImages != null)
             {
-                body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                if (bodyincludeImages != null)
+                {
+                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_images"] = false;
                 bodypropCount++;
             }
 
@@ -102,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<ExtractPostResponse> ExtractPost(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
+        public IBodyWorkflowAction<ExtractPostResponse> Extract(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
             var apiCallPath = "/extract";
             var apiCallHttpMethod = "post";
@@ -113,13 +183,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             body["urls"] = ExpressionConverter.ConvertO(bodyurls);
             if (bodyincludeImages != null)
             {
-                body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                if (bodyincludeImages != null)
+                {
+                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_images"] = false;
                 bodypropCount++;
             }
 
             if (bodyextractDepth != null)
             {
-                body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                if (bodyextractDepth != null)
+                {
+                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["extract_depth"] = "basic";
                 bodypropCount++;
             }
 
@@ -132,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<CrawlPostResponse> CrawlPost(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
+        public IBodyWorkflowAction<CrawlPostResponse> Crawl(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
             var apiCallPath = "/crawl";
             var apiCallHttpMethod = "post";
@@ -149,13 +239,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodymaxBreadth != null)
             {
-                body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                if (bodymaxBreadth != null)
+                {
+                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_breadth"] = 20;
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 50;
                 bodypropCount++;
             }
 
@@ -191,13 +301,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyallowExternal != null)
             {
-                body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                if (bodyallowExternal != null)
+                {
+                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["allow_external"] = false;
                 bodypropCount++;
             }
 
             if (bodyincludeImages != null)
             {
-                body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                if (bodyincludeImages != null)
+                {
+                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_images"] = false;
                 bodypropCount++;
             }
 
@@ -209,7 +339,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyextractDepth != null)
             {
-                body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                if (bodyextractDepth != null)
+                {
+                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["extract_depth"] = "basic";
                 bodypropCount++;
             }
 
@@ -222,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<MapPostResponse> MapPost(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
+        public IBodyWorkflowAction<MapPostResponse> Map(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
         {
             var apiCallPath = "/map";
             var apiCallHttpMethod = "post";
@@ -233,19 +373,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             body["url"] = ExpressionConverter.ConvertO(bodyurl);
             if (bodymaxDepth != null)
             {
-                body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                if (bodymaxDepth != null)
+                {
+                    body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_depth"] = 1;
                 bodypropCount++;
             }
 
             if (bodymaxBreadth != null)
             {
-                body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                if (bodymaxBreadth != null)
+                {
+                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_breadth"] = 20;
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 50;
                 bodypropCount++;
             }
 
@@ -281,7 +451,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 
             if (bodyallowExternal != null)
             {
-                body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                if (bodyallowExternal != null)
+                {
+                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["allow_external"] = false;
                 bodypropCount++;
             }
 

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> RelationshipsPost(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
         {
             var apiCallPath = "/odata/Relationships";
             var apiCallHttpMethod = "post";
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> ObjectsPost(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
         {
             var apiCallPath = "/odata/Objects";
             var apiCallHttpMethod = "post";
@@ -1646,7 +1646,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         DocumentTypeLink,
         DocumentTypeComponent,
         Model,
-        Object,
+        [EnumMember(Value = "Object")]
+        ObjectEntity,
         Relationship,
         Document,
         DocumentComponent,

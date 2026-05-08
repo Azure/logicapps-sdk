@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     public class QuickchartipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartPostResponse> ChartPost(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
+        public IBodyWorkflowAction<ChartPostResponse> Chart(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
         {
             var apiCallPath = "/chart";
             var apiCallHttpMethod = "post";
@@ -47,13 +47,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["format"] = "png";
                 bodypropCount++;
             }
 
             if (bodyencoding != null)
             {
-                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                if (bodyencoding != null)
+                {
+                    body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["encoding"] = "url";
                 bodypropCount++;
             }
 
@@ -107,13 +127,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["format"] = "png";
                 bodypropCount++;
             }
 
             if (bodyencoding != null)
             {
-                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                if (bodyencoding != null)
+                {
+                    body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["encoding"] = "url";
                 bodypropCount++;
             }
 
@@ -197,13 +237,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             body["graph"] = ExpressionConverter.ConvertO(bodygraph);
             if (bodylayout != null)
             {
-                body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                if (bodylayout != null)
+                {
+                    body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["layout"] = "dot";
                 bodypropCount++;
             }
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["format"] = "svg";
                 bodypropCount++;
             }
 

@@ -87,13 +87,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
             if (bodyoutputFormat != null)
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                if (bodyoutputFormat != null)
+                {
+                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["output_format"] = "Csv";
                 bodypropCount++;
             }
 
             if (bodyformattingMode != null)
             {
-                body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                if (bodyformattingMode != null)
+                {
+                    body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["formatting_mode"] = "None";
                 bodypropCount++;
             }
 
@@ -129,19 +149,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
             body["id"] = ExpressionConverter.ConvertO(bodyquery);
             if (bodyoutputFormat != null)
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                if (bodyoutputFormat != null)
+                {
+                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["output_format"] = "Csv";
                 bodypropCount++;
             }
 
             if (bodyformattingMode != null)
             {
-                body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                if (bodyformattingMode != null)
+                {
+                    body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["formatting_mode"] = "None";
                 bodypropCount++;
             }
 
             if (bodysQLGenerationMode != null)
             {
-                body["sql_generation_mode"] = ExpressionConverter.ConvertO(bodysQLGenerationMode);
+                if (bodysQLGenerationMode != null)
+                {
+                    body["sql_generation_mode"] = ExpressionConverter.ConvertO(bodysQLGenerationMode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["sql_generation_mode"] = "Query";
                 bodypropCount++;
             }
 

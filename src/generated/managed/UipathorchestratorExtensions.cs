@@ -99,7 +99,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
             if (bodyitemDatapriority != null)
             {
-                itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                if (bodyitemDatapriority != null)
+                {
+                    itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                    itemDataObjectpropCount++;
+                }
+
+                itemDataObjectpropCount++;
+            }
+            else
+            {
+                itemDataObject["Priority"] = "Normal";
                 itemDataObjectpropCount++;
             }
 

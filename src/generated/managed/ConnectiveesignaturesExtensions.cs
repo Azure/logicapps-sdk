@@ -21,7 +21,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var bodypropCount = 0;
             if (bodydocument != null)
             {
-                body["Document"] = ExpressionConverter.ConvertO(bodydocument);
+                if (bodydocument != null)
+                {
+                    body["Document"] = ExpressionConverter.ConvertO(bodydocument);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Document"] = "";
                 bodypropCount++;
             }
 
@@ -69,7 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
 
             if (bodydocumentGroupCode != null)
             {
-                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
+                if (bodydocumentGroupCode != null)
+                {
+                    body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["DocumentGroupCode"] = "\"00001\"";
                 bodypropCount++;
             }
 

@@ -788,7 +788,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             webhookSettingsObjectpropCount++;
             if (bodywebhookSettingsworkItemClassType != null)
             {
-                webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                if (bodywebhookSettingsworkItemClassType != null)
+                {
+                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    webhookSettingsObjectpropCount++;
+                }
+
+                webhookSettingsObjectpropCount++;
+            }
+            else
+            {
+                webhookSettingsObject["WorkItemClassType"] = "Incident";
                 webhookSettingsObjectpropCount++;
             }
 
@@ -820,7 +830,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             webhookSettingsObjectpropCount++;
             if (bodywebhookSettingsworkItemClassType != null)
             {
-                webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                if (bodywebhookSettingsworkItemClassType != null)
+                {
+                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    webhookSettingsObjectpropCount++;
+                }
+
+                webhookSettingsObjectpropCount++;
+            }
+            else
+            {
+                webhookSettingsObject["WorkItemClassType"] = "Analyst Comment";
                 webhookSettingsObjectpropCount++;
             }
 

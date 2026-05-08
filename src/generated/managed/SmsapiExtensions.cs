@@ -45,7 +45,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
 
             if (bodyfast != null)
             {
-                body["fast"] = ExpressionConverter.ConvertO(bodyfast);
+                if (bodyfast != null)
+                {
+                    body["fast"] = ExpressionConverter.ConvertO(bodyfast);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["fast"] = 0;
                 bodypropCount++;
             }
 

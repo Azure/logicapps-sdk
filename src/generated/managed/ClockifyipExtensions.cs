@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
     public class ClockifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClientsV1(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
         {
             var apiCallPath = String.Format("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUserV1(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var apiCallPath = String.Format("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetWorkspacesV1ResponseItem[]> GetWorkspacesV1()
+        public IBodyWorkflowAction<GetWorkspacesV1ResponseItem[]> GetWorkspaces()
         {
             var apiCallPath = "/v1/workspaces";
             var apiCallHttpMethod = "get";

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> GetPost(Expression<Func<string>> siteId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> CreatePost(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
+        public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
         {
             var apiCallPath = String.Format("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
             var apiCallHttpMethod = "post";

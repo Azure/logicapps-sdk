@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse> ThreadPost(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
+        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
         {
             var apiCallPath = "/postThread";
             var apiCallHttpMethod = "post";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChannelsPostResponse> ChannelsPost()
+        public IBodyWorkflowAction<ChannelsPostResponse> Channels()
         {
             var apiCallPath = "/channels";
             var apiCallHttpMethod = "post";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse> ChatPost(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
         {
             var apiCallPath = "/postChatMessage";
             var apiCallHttpMethod = "post";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse> FilePost(Expression<Func<object>> data = null)
+        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> data = null)
         {
             var apiCallPath = "/uploadFile";
             var apiCallHttpMethod = "post";

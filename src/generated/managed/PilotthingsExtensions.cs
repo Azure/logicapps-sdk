@@ -4254,7 +4254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool Number { get; set; }
 
         [JsonProperty("object")]
-        public bool Object { get; set; }
+        public bool ObjectEntity { get; set; }
 
         [JsonProperty("pojo")]
         public bool Pojo { get; set; }
@@ -4277,7 +4277,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -4322,7 +4323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -4380,7 +4382,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -4860,7 +4863,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -5012,7 +5016,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -5025,7 +5030,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -5201,7 +5207,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }
@@ -5235,7 +5242,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         MISSING,
         NULL,
         NUMBER,
-        OBJECT,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
         POJO,
         STRING
     }

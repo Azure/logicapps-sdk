@@ -195,7 +195,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
             if (bodyisExternalAsNormal != null)
             {
-                body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                if (bodyisExternalAsNormal != null)
+                {
+                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_external_as_normal"] = false;
                 bodypropCount++;
             }
 
@@ -326,7 +336,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             body["column_names"] = ExpressionConverter.ConvertO(bodycolumnNames);
             if (bodylatest != null)
             {
-                body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                if (bodylatest != null)
+                {
+                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["latest"] = false;
                 bodypropCount++;
             }
 
@@ -378,7 +398,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
             if (bodydefaultSecurity != null)
             {
-                body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+                if (bodydefaultSecurity != null)
+                {
+                    body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["default_security"] = "no change";
                 bodypropCount++;
             }
 
@@ -414,7 +444,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
             if (bodyisExternalAsNormal != null)
             {
-                body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                if (bodyisExternalAsNormal != null)
+                {
+                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_external_as_normal"] = false;
                 bodypropCount++;
             }
 

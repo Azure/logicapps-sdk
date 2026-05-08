@@ -25,7 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             importAssemblyFromLocalFile["AssemblyName"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFileassemblyName);
             if (importAssemblyFromLocalFilecompress != null)
             {
-                importAssemblyFromLocalFile["Compress"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilecompress);
+                if (importAssemblyFromLocalFilecompress != null)
+                {
+                    importAssemblyFromLocalFile["Compress"] = ExpressionConverter.ConvertO(importAssemblyFromLocalFilecompress);
+                    importAssemblyFromLocalFilepropCount++;
+                }
+
+                importAssemblyFromLocalFilepropCount++;
+            }
+            else
+            {
+                importAssemblyFromLocalFile["Compress"] = true;
                 importAssemblyFromLocalFilepropCount++;
             }
 
@@ -137,31 +147,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptisNoResultAnError != null)
             {
-                runPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptisNoResultAnError);
+                if (runPowerShellAutomationScriptisNoResultAnError != null)
+                {
+                    runPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptisNoResultAnError);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["IsNoResultAnError"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnComplexTypes);
+                if (runPowerShellAutomationScriptreturnComplexTypes != null)
+                {
+                    runPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnComplexTypes);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ReturnComplexTypes"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnBooleanAsBoolean);
+                if (runPowerShellAutomationScriptreturnBooleanAsBoolean != null)
+                {
+                    runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ReturnBooleanAsBoolean"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnNumericAsDecimal);
+                if (runPowerShellAutomationScriptreturnNumericAsDecimal != null)
+                {
+                    runPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnNumericAsDecimal);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ReturnNumericAsDecimal"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnDateAsDate);
+                if (runPowerShellAutomationScriptreturnDateAsDate != null)
+                {
+                    runPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnDateAsDate);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ReturnDateAsDate"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -179,7 +239,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptconnectionAttempts != null)
             {
-                runPowerShellAutomationScript["ConnectionAttempts"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptconnectionAttempts);
+                if (runPowerShellAutomationScriptconnectionAttempts != null)
+                {
+                    runPowerShellAutomationScript["ConnectionAttempts"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptconnectionAttempts);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ConnectionAttempts"] = 1;
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -197,7 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptrunScriptAsThread);
+                if (runPowerShellAutomationScriptrunScriptAsThread != null)
+                {
+                    runPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptrunScriptAsThread);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["RunScriptAsThread"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -209,25 +289,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (runPowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptsecondsToWaitForThread);
+                if (runPowerShellAutomationScriptsecondsToWaitForThread != null)
+                {
+                    runPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptsecondsToWaitForThread);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["SecondsToWaitForThread"] = 90;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptscriptContainsStoredPassword);
+                if (runPowerShellAutomationScriptscriptContainsStoredPassword != null)
+                {
+                    runPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptscriptContainsStoredPassword);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ScriptContainsStoredPassword"] = true;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptlogVerboseOutput);
+                if (runPowerShellAutomationScriptlogVerboseOutput != null)
+                {
+                    runPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptlogVerboseOutput);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["LogVerboseOutput"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
             if (runPowerShellAutomationScriptreturnSecureStrings != null)
             {
-                runPowerShellAutomationScript["ReturnSecureStrings"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnSecureStrings);
+                if (runPowerShellAutomationScriptreturnSecureStrings != null)
+                {
+                    runPowerShellAutomationScript["ReturnSecureStrings"] = ExpressionConverter.ConvertO(runPowerShellAutomationScriptreturnSecureStrings);
+                    runPowerShellAutomationScriptpropCount++;
+                }
+
+                runPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runPowerShellAutomationScript["ReturnSecureStrings"] = false;
                 runPowerShellAutomationScriptpropCount++;
             }
 
@@ -281,7 +401,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getPowerShellVersionconnectionAttempts != null)
             {
-                getPowerShellVersion["ConnectionAttempts"] = ExpressionConverter.ConvertO(getPowerShellVersionconnectionAttempts);
+                if (getPowerShellVersionconnectionAttempts != null)
+                {
+                    getPowerShellVersion["ConnectionAttempts"] = ExpressionConverter.ConvertO(getPowerShellVersionconnectionAttempts);
+                    getPowerShellVersionpropCount++;
+                }
+
+                getPowerShellVersionpropCount++;
+            }
+            else
+            {
+                getPowerShellVersion["ConnectionAttempts"] = 1;
                 getPowerShellVersionpropCount++;
             }
 
@@ -309,19 +439,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getRegexMatch["Regex"] = ExpressionConverter.ConvertO(getRegexMatchregex);
             if (getRegexMatchsearchIndex != null)
             {
-                getRegexMatch["SearchIndex"] = ExpressionConverter.ConvertO(getRegexMatchsearchIndex);
+                if (getRegexMatchsearchIndex != null)
+                {
+                    getRegexMatch["SearchIndex"] = ExpressionConverter.ConvertO(getRegexMatchsearchIndex);
+                    getRegexMatchpropCount++;
+                }
+
+                getRegexMatchpropCount++;
+            }
+            else
+            {
+                getRegexMatch["SearchIndex"] = 1;
                 getRegexMatchpropCount++;
             }
 
             if (getRegexMatchcaseSensitive != null)
             {
-                getRegexMatch["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchcaseSensitive);
+                if (getRegexMatchcaseSensitive != null)
+                {
+                    getRegexMatch["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchcaseSensitive);
+                    getRegexMatchpropCount++;
+                }
+
+                getRegexMatchpropCount++;
+            }
+            else
+            {
+                getRegexMatch["CaseSensitive"] = true;
                 getRegexMatchpropCount++;
             }
 
             if (getRegexMatchregexTimeoutInSeconds != null)
             {
-                getRegexMatch["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchregexTimeoutInSeconds);
+                if (getRegexMatchregexTimeoutInSeconds != null)
+                {
+                    getRegexMatch["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchregexTimeoutInSeconds);
+                    getRegexMatchpropCount++;
+                }
+
+                getRegexMatchpropCount++;
+            }
+            else
+            {
+                getRegexMatch["RegexTimeoutInSeconds"] = 10;
                 getRegexMatchpropCount++;
             }
 
@@ -347,31 +507,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getRegexMatches["Regex"] = ExpressionConverter.ConvertO(getRegexMatchesregex);
             if (getRegexMatchesmaximumMatches != null)
             {
-                getRegexMatches["MaximumMatches"] = ExpressionConverter.ConvertO(getRegexMatchesmaximumMatches);
+                if (getRegexMatchesmaximumMatches != null)
+                {
+                    getRegexMatches["MaximumMatches"] = ExpressionConverter.ConvertO(getRegexMatchesmaximumMatches);
+                    getRegexMatchespropCount++;
+                }
+
+                getRegexMatchespropCount++;
+            }
+            else
+            {
+                getRegexMatches["MaximumMatches"] = 0;
                 getRegexMatchespropCount++;
             }
 
             if (getRegexMatchescaseSensitive != null)
             {
-                getRegexMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchescaseSensitive);
+                if (getRegexMatchescaseSensitive != null)
+                {
+                    getRegexMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexMatchescaseSensitive);
+                    getRegexMatchespropCount++;
+                }
+
+                getRegexMatchespropCount++;
+            }
+            else
+            {
+                getRegexMatches["CaseSensitive"] = true;
                 getRegexMatchespropCount++;
             }
 
             if (getRegexMatchestrimResults != null)
             {
-                getRegexMatches["TrimResults"] = ExpressionConverter.ConvertO(getRegexMatchestrimResults);
+                if (getRegexMatchestrimResults != null)
+                {
+                    getRegexMatches["TrimResults"] = ExpressionConverter.ConvertO(getRegexMatchestrimResults);
+                    getRegexMatchespropCount++;
+                }
+
+                getRegexMatchespropCount++;
+            }
+            else
+            {
+                getRegexMatches["TrimResults"] = true;
                 getRegexMatchespropCount++;
             }
 
             if (getRegexMatchesremoveEmptyResults != null)
             {
-                getRegexMatches["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexMatchesremoveEmptyResults);
+                if (getRegexMatchesremoveEmptyResults != null)
+                {
+                    getRegexMatches["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexMatchesremoveEmptyResults);
+                    getRegexMatchespropCount++;
+                }
+
+                getRegexMatchespropCount++;
+            }
+            else
+            {
+                getRegexMatches["RemoveEmptyResults"] = false;
                 getRegexMatchespropCount++;
             }
 
             if (getRegexMatchesregexTimeoutInSeconds != null)
             {
-                getRegexMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchesregexTimeoutInSeconds);
+                if (getRegexMatchesregexTimeoutInSeconds != null)
+                {
+                    getRegexMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexMatchesregexTimeoutInSeconds);
+                    getRegexMatchespropCount++;
+                }
+
+                getRegexMatchespropCount++;
+            }
+            else
+            {
+                getRegexMatches["RegexTimeoutInSeconds"] = 10;
                 getRegexMatchespropCount++;
             }
 
@@ -397,25 +607,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getRegexSplit["Regex"] = ExpressionConverter.ConvertO(getRegexSplitregex);
             if (getRegexSplitcaseSensitive != null)
             {
-                getRegexSplit["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexSplitcaseSensitive);
+                if (getRegexSplitcaseSensitive != null)
+                {
+                    getRegexSplit["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexSplitcaseSensitive);
+                    getRegexSplitpropCount++;
+                }
+
+                getRegexSplitpropCount++;
+            }
+            else
+            {
+                getRegexSplit["CaseSensitive"] = true;
                 getRegexSplitpropCount++;
             }
 
             if (getRegexSplittrimResults != null)
             {
-                getRegexSplit["TrimResults"] = ExpressionConverter.ConvertO(getRegexSplittrimResults);
+                if (getRegexSplittrimResults != null)
+                {
+                    getRegexSplit["TrimResults"] = ExpressionConverter.ConvertO(getRegexSplittrimResults);
+                    getRegexSplitpropCount++;
+                }
+
+                getRegexSplitpropCount++;
+            }
+            else
+            {
+                getRegexSplit["TrimResults"] = true;
                 getRegexSplitpropCount++;
             }
 
             if (getRegexSplitremoveEmptyResults != null)
             {
-                getRegexSplit["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexSplitremoveEmptyResults);
+                if (getRegexSplitremoveEmptyResults != null)
+                {
+                    getRegexSplit["RemoveEmptyResults"] = ExpressionConverter.ConvertO(getRegexSplitremoveEmptyResults);
+                    getRegexSplitpropCount++;
+                }
+
+                getRegexSplitpropCount++;
+            }
+            else
+            {
+                getRegexSplit["RemoveEmptyResults"] = false;
                 getRegexSplitpropCount++;
             }
 
             if (getRegexSplitregexTimeoutInSeconds != null)
             {
-                getRegexSplit["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexSplitregexTimeoutInSeconds);
+                if (getRegexSplitregexTimeoutInSeconds != null)
+                {
+                    getRegexSplit["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexSplitregexTimeoutInSeconds);
+                    getRegexSplitpropCount++;
+                }
+
+                getRegexSplitpropCount++;
+            }
+            else
+            {
+                getRegexSplit["RegexTimeoutInSeconds"] = 10;
                 getRegexSplitpropCount++;
             }
 
@@ -447,19 +697,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getRegexGroupMatchessearchIndex != null)
             {
-                getRegexGroupMatches["SearchIndex"] = ExpressionConverter.ConvertO(getRegexGroupMatchessearchIndex);
+                if (getRegexGroupMatchessearchIndex != null)
+                {
+                    getRegexGroupMatches["SearchIndex"] = ExpressionConverter.ConvertO(getRegexGroupMatchessearchIndex);
+                    getRegexGroupMatchespropCount++;
+                }
+
+                getRegexGroupMatchespropCount++;
+            }
+            else
+            {
+                getRegexGroupMatches["SearchIndex"] = 1;
                 getRegexGroupMatchespropCount++;
             }
 
             if (getRegexGroupMatchescaseSensitive != null)
             {
-                getRegexGroupMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexGroupMatchescaseSensitive);
+                if (getRegexGroupMatchescaseSensitive != null)
+                {
+                    getRegexGroupMatches["CaseSensitive"] = ExpressionConverter.ConvertO(getRegexGroupMatchescaseSensitive);
+                    getRegexGroupMatchespropCount++;
+                }
+
+                getRegexGroupMatchespropCount++;
+            }
+            else
+            {
+                getRegexGroupMatches["CaseSensitive"] = true;
                 getRegexGroupMatchespropCount++;
             }
 
             if (getRegexGroupMatchesregexTimeoutInSeconds != null)
             {
-                getRegexGroupMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregexTimeoutInSeconds);
+                if (getRegexGroupMatchesregexTimeoutInSeconds != null)
+                {
+                    getRegexGroupMatches["RegexTimeoutInSeconds"] = ExpressionConverter.ConvertO(getRegexGroupMatchesregexTimeoutInSeconds);
+                    getRegexGroupMatchespropCount++;
+                }
+
+                getRegexGroupMatchespropCount++;
+            }
+            else
+            {
+                getRegexGroupMatches["RegexTimeoutInSeconds"] = 10;
                 getRegexGroupMatchespropCount++;
             }
 
@@ -505,7 +785,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getJSONTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraycolumnName);
             if (getJSONTableFromStringArraydropEmptyItems != null)
             {
-                getJSONTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraydropEmptyItems);
+                if (getJSONTableFromStringArraydropEmptyItems != null)
+                {
+                    getJSONTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getJSONTableFromStringArraydropEmptyItems);
+                    getJSONTableFromStringArraypropCount++;
+                }
+
+                getJSONTableFromStringArraypropCount++;
+            }
+            else
+            {
+                getJSONTableFromStringArray["DropEmptyItems"] = false;
                 getJSONTableFromStringArraypropCount++;
             }
 
@@ -537,7 +827,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterJSONTableascending != null)
             {
-                filterJSONTable["Ascending"] = ExpressionConverter.ConvertO(filterJSONTableascending);
+                if (filterJSONTableascending != null)
+                {
+                    filterJSONTable["Ascending"] = ExpressionConverter.ConvertO(filterJSONTableascending);
+                    filterJSONTablepropCount++;
+                }
+
+                filterJSONTablepropCount++;
+            }
+            else
+            {
+                filterJSONTable["Ascending"] = true;
                 filterJSONTablepropCount++;
             }
 
@@ -549,7 +849,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterJSONTableascending2 != null)
             {
-                filterJSONTable["Ascending2"] = ExpressionConverter.ConvertO(filterJSONTableascending2);
+                if (filterJSONTableascending2 != null)
+                {
+                    filterJSONTable["Ascending2"] = ExpressionConverter.ConvertO(filterJSONTableascending2);
+                    filterJSONTablepropCount++;
+                }
+
+                filterJSONTablepropCount++;
+            }
+            else
+            {
+                filterJSONTable["Ascending2"] = true;
                 filterJSONTablepropCount++;
             }
 
@@ -561,7 +871,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterJSONTableascending3 != null)
             {
-                filterJSONTable["Ascending3"] = ExpressionConverter.ConvertO(filterJSONTableascending3);
+                if (filterJSONTableascending3 != null)
+                {
+                    filterJSONTable["Ascending3"] = ExpressionConverter.ConvertO(filterJSONTableascending3);
+                    filterJSONTablepropCount++;
+                }
+
+                filterJSONTablepropCount++;
+            }
+            else
+            {
+                filterJSONTable["Ascending3"] = true;
                 filterJSONTablepropCount++;
             }
 
@@ -593,7 +913,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterTableascending != null)
             {
-                filterTable["Ascending"] = ExpressionConverter.ConvertO(filterTableascending);
+                if (filterTableascending != null)
+                {
+                    filterTable["Ascending"] = ExpressionConverter.ConvertO(filterTableascending);
+                    filterTablepropCount++;
+                }
+
+                filterTablepropCount++;
+            }
+            else
+            {
+                filterTable["Ascending"] = true;
                 filterTablepropCount++;
             }
 
@@ -605,7 +935,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterTableascending2 != null)
             {
-                filterTable["Ascending2"] = ExpressionConverter.ConvertO(filterTableascending2);
+                if (filterTableascending2 != null)
+                {
+                    filterTable["Ascending2"] = ExpressionConverter.ConvertO(filterTableascending2);
+                    filterTablepropCount++;
+                }
+
+                filterTablepropCount++;
+            }
+            else
+            {
+                filterTable["Ascending2"] = true;
                 filterTablepropCount++;
             }
 
@@ -617,7 +957,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (filterTableascending3 != null)
             {
-                filterTable["Ascending3"] = ExpressionConverter.ConvertO(filterTableascending3);
+                if (filterTableascending3 != null)
+                {
+                    filterTable["Ascending3"] = ExpressionConverter.ConvertO(filterTableascending3);
+                    filterTablepropCount++;
+                }
+
+                filterTablepropCount++;
+            }
+            else
+            {
+                filterTable["Ascending3"] = true;
                 filterTablepropCount++;
             }
 
@@ -651,7 +1001,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortTableascending2 != null)
             {
-                sortTable["Ascending2"] = ExpressionConverter.ConvertO(sortTableascending2);
+                if (sortTableascending2 != null)
+                {
+                    sortTable["Ascending2"] = ExpressionConverter.ConvertO(sortTableascending2);
+                    sortTablepropCount++;
+                }
+
+                sortTablepropCount++;
+            }
+            else
+            {
+                sortTable["Ascending2"] = true;
                 sortTablepropCount++;
             }
 
@@ -663,7 +1023,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortTableascending3 != null)
             {
-                sortTable["Ascending3"] = ExpressionConverter.ConvertO(sortTableascending3);
+                if (sortTableascending3 != null)
+                {
+                    sortTable["Ascending3"] = ExpressionConverter.ConvertO(sortTableascending3);
+                    sortTablepropCount++;
+                }
+
+                sortTablepropCount++;
+            }
+            else
+            {
+                sortTable["Ascending3"] = true;
                 sortTablepropCount++;
             }
 
@@ -689,7 +1059,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             sortJSONTable["SortColumnName"] = ExpressionConverter.ConvertO(sortJSONTablesortColumnName);
             if (sortJSONTableascending != null)
             {
-                sortJSONTable["Ascending"] = ExpressionConverter.ConvertO(sortJSONTableascending);
+                if (sortJSONTableascending != null)
+                {
+                    sortJSONTable["Ascending"] = ExpressionConverter.ConvertO(sortJSONTableascending);
+                    sortJSONTablepropCount++;
+                }
+
+                sortJSONTablepropCount++;
+            }
+            else
+            {
+                sortJSONTable["Ascending"] = true;
                 sortJSONTablepropCount++;
             }
 
@@ -701,7 +1081,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortJSONTableascending2 != null)
             {
-                sortJSONTable["Ascending2"] = ExpressionConverter.ConvertO(sortJSONTableascending2);
+                if (sortJSONTableascending2 != null)
+                {
+                    sortJSONTable["Ascending2"] = ExpressionConverter.ConvertO(sortJSONTableascending2);
+                    sortJSONTablepropCount++;
+                }
+
+                sortJSONTablepropCount++;
+            }
+            else
+            {
+                sortJSONTable["Ascending2"] = true;
                 sortJSONTablepropCount++;
             }
 
@@ -713,7 +1103,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (sortJSONTableascending3 != null)
             {
-                sortJSONTable["Ascending3"] = ExpressionConverter.ConvertO(sortJSONTableascending3);
+                if (sortJSONTableascending3 != null)
+                {
+                    sortJSONTable["Ascending3"] = ExpressionConverter.ConvertO(sortJSONTableascending3);
+                    sortJSONTablepropCount++;
+                }
+
+                sortJSONTablepropCount++;
+            }
+            else
+            {
+                sortJSONTable["Ascending3"] = true;
                 sortJSONTablepropCount++;
             }
 
@@ -739,7 +1139,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getTableFromStringArray["ColumnName"] = ExpressionConverter.ConvertO(getTableFromStringArraycolumnName);
             if (getTableFromStringArraydropEmptyItems != null)
             {
-                getTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getTableFromStringArraydropEmptyItems);
+                if (getTableFromStringArraydropEmptyItems != null)
+                {
+                    getTableFromStringArray["DropEmptyItems"] = ExpressionConverter.ConvertO(getTableFromStringArraydropEmptyItems);
+                    getTableFromStringArraypropCount++;
+                }
+
+                getTableFromStringArraypropCount++;
+            }
+            else
+            {
+                getTableFromStringArray["DropEmptyItems"] = false;
                 getTableFromStringArraypropCount++;
             }
 
@@ -771,7 +1181,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getTableFromJSONstartColumnIndex != null)
             {
-                getTableFromJSON["StartColumnIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnIndex);
+                if (getTableFromJSONstartColumnIndex != null)
+                {
+                    getTableFromJSON["StartColumnIndex"] = ExpressionConverter.ConvertO(getTableFromJSONstartColumnIndex);
+                    getTableFromJSONpropCount++;
+                }
+
+                getTableFromJSONpropCount++;
+            }
+            else
+            {
+                getTableFromJSON["StartColumnIndex"] = 1;
                 getTableFromJSONpropCount++;
             }
 
@@ -807,13 +1227,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             sortStringArray["InputArray"] = ExpressionConverter.ConvertO(sortStringArrayinputArray);
             if (sortStringArrayascending != null)
             {
-                sortStringArray["Ascending"] = ExpressionConverter.ConvertO(sortStringArrayascending);
+                if (sortStringArrayascending != null)
+                {
+                    sortStringArray["Ascending"] = ExpressionConverter.ConvertO(sortStringArrayascending);
+                    sortStringArraypropCount++;
+                }
+
+                sortStringArraypropCount++;
+            }
+            else
+            {
+                sortStringArray["Ascending"] = true;
                 sortStringArraypropCount++;
             }
 
             if (sortStringArraycaseSensitive != null)
             {
-                sortStringArray["CaseSensitive"] = ExpressionConverter.ConvertO(sortStringArraycaseSensitive);
+                if (sortStringArraycaseSensitive != null)
+                {
+                    sortStringArray["CaseSensitive"] = ExpressionConverter.ConvertO(sortStringArraycaseSensitive);
+                    sortStringArraypropCount++;
+                }
+
+                sortStringArraypropCount++;
+            }
+            else
+            {
+                sortStringArray["CaseSensitive"] = false;
                 sortStringArraypropCount++;
             }
 
@@ -1211,7 +1651,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getStringFromJSONTableCellfallBackIfCellDoesNotExist != null)
             {
-                getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
+                if (getStringFromJSONTableCellfallBackIfCellDoesNotExist != null)
+                {
+                    getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = ExpressionConverter.ConvertO(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
+                    getStringFromJSONTableCellpropCount++;
+                }
+
+                getStringFromJSONTableCellpropCount++;
+            }
+            else
+            {
+                getStringFromJSONTableCell["FallBackIfCellDoesNotExist"] = false;
                 getStringFromJSONTableCellpropCount++;
             }
 
@@ -1257,31 +1707,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getStringBetweensearchLineByLine != null)
             {
-                getStringBetween["SearchLineByLine"] = ExpressionConverter.ConvertO(getStringBetweensearchLineByLine);
+                if (getStringBetweensearchLineByLine != null)
+                {
+                    getStringBetween["SearchLineByLine"] = ExpressionConverter.ConvertO(getStringBetweensearchLineByLine);
+                    getStringBetweenpropCount++;
+                }
+
+                getStringBetweenpropCount++;
+            }
+            else
+            {
+                getStringBetween["SearchLineByLine"] = true;
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweenthrowExceptionIfNotFound != null)
             {
-                getStringBetween["ThrowExceptionIfNotFound"] = ExpressionConverter.ConvertO(getStringBetweenthrowExceptionIfNotFound);
+                if (getStringBetweenthrowExceptionIfNotFound != null)
+                {
+                    getStringBetween["ThrowExceptionIfNotFound"] = ExpressionConverter.ConvertO(getStringBetweenthrowExceptionIfNotFound);
+                    getStringBetweenpropCount++;
+                }
+
+                getStringBetweenpropCount++;
+            }
+            else
+            {
+                getStringBetween["ThrowExceptionIfNotFound"] = true;
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweentrimResult != null)
             {
-                getStringBetween["TrimResult"] = ExpressionConverter.ConvertO(getStringBetweentrimResult);
+                if (getStringBetweentrimResult != null)
+                {
+                    getStringBetween["TrimResult"] = ExpressionConverter.ConvertO(getStringBetweentrimResult);
+                    getStringBetweenpropCount++;
+                }
+
+                getStringBetweenpropCount++;
+            }
+            else
+            {
+                getStringBetween["TrimResult"] = true;
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweensearchIsRegularExpression != null)
             {
-                getStringBetween["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(getStringBetweensearchIsRegularExpression);
+                if (getStringBetweensearchIsRegularExpression != null)
+                {
+                    getStringBetween["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(getStringBetweensearchIsRegularExpression);
+                    getStringBetweenpropCount++;
+                }
+
+                getStringBetweenpropCount++;
+            }
+            else
+            {
+                getStringBetween["SearchIsRegularExpression"] = false;
                 getStringBetweenpropCount++;
             }
 
             if (getStringBetweencaseSensitiveSearch != null)
             {
-                getStringBetween["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(getStringBetweencaseSensitiveSearch);
+                if (getStringBetweencaseSensitiveSearch != null)
+                {
+                    getStringBetween["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(getStringBetweencaseSensitiveSearch);
+                    getStringBetweenpropCount++;
+                }
+
+                getStringBetweenpropCount++;
+            }
+            else
+            {
+                getStringBetween["CaseSensitiveSearch"] = false;
                 getStringBetweenpropCount++;
             }
 
@@ -1391,13 +1891,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             lookupValueFromIAConnectLookupTable["SearchResultValueColumnName"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnName);
             if (lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex != null)
             {
-                lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
+                if (lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex != null)
+                {
+                    lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
+                    lookupValueFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupValueFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupValueFromIAConnectLookupTable["SearchResultValueColumnIndex"] = 1;
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
             if (lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                if (lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
+                {
+                    lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupValueFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupValueFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupValueFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = true;
                 lookupValueFromIAConnectLookupTablepropCount++;
             }
 
@@ -1431,19 +1951,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             lookupColumnsFromIAConnectLookupTable["SearchResultTableColumnName"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName);
             if (lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                if (lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
+                {
+                    lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupColumnsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupColumnsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupColumnsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = true;
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
             if (lookupColumnsFromIAConnectLookupTablereturnBlankCells != null)
             {
-                lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
+                if (lookupColumnsFromIAConnectLookupTablereturnBlankCells != null)
+                {
+                    lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
+                    lookupColumnsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupColumnsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupColumnsFromIAConnectLookupTable["ReturnBlankCells"] = false;
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
             if (lookupColumnsFromIAConnectLookupTablereturnFormat != null)
             {
-                lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnFormat);
+                if (lookupColumnsFromIAConnectLookupTablereturnFormat != null)
+                {
+                    lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupColumnsFromIAConnectLookupTablereturnFormat);
+                    lookupColumnsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupColumnsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupColumnsFromIAConnectLookupTable["ReturnFormat"] = "JSON";
                 lookupColumnsFromIAConnectLookupTablepropCount++;
             }
 
@@ -1479,31 +2029,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (removeCharactersFromStringremoveDiacriticsFromInputString != null)
             {
-                removeCharactersFromString["RemoveDiacriticsFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveDiacriticsFromInputString);
+                if (removeCharactersFromStringremoveDiacriticsFromInputString != null)
+                {
+                    removeCharactersFromString["RemoveDiacriticsFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveDiacriticsFromInputString);
+                    removeCharactersFromStringpropCount++;
+                }
+
+                removeCharactersFromStringpropCount++;
+            }
+            else
+            {
+                removeCharactersFromString["RemoveDiacriticsFromInputString"] = false;
                 removeCharactersFromStringpropCount++;
             }
 
             if (removeCharactersFromStringremoveNonAlphaNumericFromInputString != null)
             {
-                removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
+                if (removeCharactersFromStringremoveNonAlphaNumericFromInputString != null)
+                {
+                    removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
+                    removeCharactersFromStringpropCount++;
+                }
+
+                removeCharactersFromStringpropCount++;
+            }
+            else
+            {
+                removeCharactersFromString["RemoveNonAlphaNumericFromInputString"] = false;
                 removeCharactersFromStringpropCount++;
             }
 
             if (removeCharactersFromStringremoveNumericFromInputString != null)
             {
-                removeCharactersFromString["RemoveNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNumericFromInputString);
+                if (removeCharactersFromStringremoveNumericFromInputString != null)
+                {
+                    removeCharactersFromString["RemoveNumericFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveNumericFromInputString);
+                    removeCharactersFromStringpropCount++;
+                }
+
+                removeCharactersFromStringpropCount++;
+            }
+            else
+            {
+                removeCharactersFromString["RemoveNumericFromInputString"] = false;
                 removeCharactersFromStringpropCount++;
             }
 
             if (removeCharactersFromStringremoveLowercaseCharactersFromInputString != null)
             {
-                removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
+                if (removeCharactersFromStringremoveLowercaseCharactersFromInputString != null)
+                {
+                    removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
+                    removeCharactersFromStringpropCount++;
+                }
+
+                removeCharactersFromStringpropCount++;
+            }
+            else
+            {
+                removeCharactersFromString["RemoveLowercaseCharactersFromInputString"] = false;
                 removeCharactersFromStringpropCount++;
             }
 
             if (removeCharactersFromStringremoveUppercaseCharactersFromInputString != null)
             {
-                removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
+                if (removeCharactersFromStringremoveUppercaseCharactersFromInputString != null)
+                {
+                    removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = ExpressionConverter.ConvertO(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
+                    removeCharactersFromStringpropCount++;
+                }
+
+                removeCharactersFromStringpropCount++;
+            }
+            else
+            {
+                removeCharactersFromString["RemoveUppercaseCharactersFromInputString"] = false;
                 removeCharactersFromStringpropCount++;
             }
 
@@ -1527,7 +2127,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getColumnFromIAConnectList["ListName"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListlistName);
             if (getColumnFromIAConnectListsearchColumnIndex != null)
             {
-                getColumnFromIAConnectList["SearchColumnIndex"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnIndex);
+                if (getColumnFromIAConnectListsearchColumnIndex != null)
+                {
+                    getColumnFromIAConnectList["SearchColumnIndex"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListsearchColumnIndex);
+                    getColumnFromIAConnectListpropCount++;
+                }
+
+                getColumnFromIAConnectListpropCount++;
+            }
+            else
+            {
+                getColumnFromIAConnectList["SearchColumnIndex"] = 1;
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -1539,13 +2149,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getColumnFromIAConnectListreturnBlankCells != null)
             {
-                getColumnFromIAConnectList["ReturnBlankCells"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnBlankCells);
+                if (getColumnFromIAConnectListreturnBlankCells != null)
+                {
+                    getColumnFromIAConnectList["ReturnBlankCells"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnBlankCells);
+                    getColumnFromIAConnectListpropCount++;
+                }
+
+                getColumnFromIAConnectListpropCount++;
+            }
+            else
+            {
+                getColumnFromIAConnectList["ReturnBlankCells"] = false;
                 getColumnFromIAConnectListpropCount++;
             }
 
             if (getColumnFromIAConnectListfallBackIfListDoesNotExist != null)
             {
-                getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallBackIfListDoesNotExist);
+                if (getColumnFromIAConnectListfallBackIfListDoesNotExist != null)
+                {
+                    getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListfallBackIfListDoesNotExist);
+                    getColumnFromIAConnectListpropCount++;
+                }
+
+                getColumnFromIAConnectListpropCount++;
+            }
+            else
+            {
+                getColumnFromIAConnectList["FallBackIfListDoesNotExist"] = false;
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -1557,7 +2187,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (getColumnFromIAConnectListreturnFormat != null)
             {
-                getColumnFromIAConnectList["ReturnFormat"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnFormat);
+                if (getColumnFromIAConnectListreturnFormat != null)
+                {
+                    getColumnFromIAConnectList["ReturnFormat"] = ExpressionConverter.ConvertO(getColumnFromIAConnectListreturnFormat);
+                    getColumnFromIAConnectListpropCount++;
+                }
+
+                getColumnFromIAConnectListpropCount++;
+            }
+            else
+            {
+                getColumnFromIAConnectList["ReturnFormat"] = "JSON";
                 getColumnFromIAConnectListpropCount++;
             }
 
@@ -1581,7 +2221,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getIAConnectListContents["ListName"] = ExpressionConverter.ConvertO(getIAConnectListContentslistName);
             if (getIAConnectListContentsreturnFormat != null)
             {
-                getIAConnectListContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectListContentsreturnFormat);
+                if (getIAConnectListContentsreturnFormat != null)
+                {
+                    getIAConnectListContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectListContentsreturnFormat);
+                    getIAConnectListContentspropCount++;
+                }
+
+                getIAConnectListContentspropCount++;
+            }
+            else
+            {
+                getIAConnectListContents["ReturnFormat"] = "JSON";
                 getIAConnectListContentspropCount++;
             }
 
@@ -1611,19 +2261,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
 
             if (lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                if (lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch != null)
+                {
+                    lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
+                    lookupDataCellsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupDataCellsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupDataCellsFromIAConnectLookupTable["RaiseExceptionIfNoMatch"] = true;
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
             if (lookupDataCellsFromIAConnectLookupTablereturnBlankCells != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
+                if (lookupDataCellsFromIAConnectLookupTablereturnBlankCells != null)
+                {
+                    lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
+                    lookupDataCellsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupDataCellsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupDataCellsFromIAConnectLookupTable["ReturnBlankCells"] = false;
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
             if (lookupDataCellsFromIAConnectLookupTablereturnFormat != null)
             {
-                lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnFormat);
+                if (lookupDataCellsFromIAConnectLookupTablereturnFormat != null)
+                {
+                    lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = ExpressionConverter.ConvertO(lookupDataCellsFromIAConnectLookupTablereturnFormat);
+                    lookupDataCellsFromIAConnectLookupTablepropCount++;
+                }
+
+                lookupDataCellsFromIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                lookupDataCellsFromIAConnectLookupTable["ReturnFormat"] = "JSON";
                 lookupDataCellsFromIAConnectLookupTablepropCount++;
             }
 
@@ -1647,7 +2327,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             getIAConnectLookupTableContents["LookupTableName"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentslookupTableName);
             if (getIAConnectLookupTableContentsreturnFormat != null)
             {
-                getIAConnectLookupTableContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsreturnFormat);
+                if (getIAConnectLookupTableContentsreturnFormat != null)
+                {
+                    getIAConnectLookupTableContents["ReturnFormat"] = ExpressionConverter.ConvertO(getIAConnectLookupTableContentsreturnFormat);
+                    getIAConnectLookupTableContentspropCount++;
+                }
+
+                getIAConnectLookupTableContentspropCount++;
+            }
+            else
+            {
+                getIAConnectLookupTableContents["ReturnFormat"] = "JSON";
                 getIAConnectLookupTableContentspropCount++;
             }
 
@@ -1673,7 +2363,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             uploadCSVToIAConnectLookupTable["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecSVData);
             if (uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist != null)
             {
-                uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
+                if (uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist != null)
+                {
+                    uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
+                    uploadCSVToIAConnectLookupTablepropCount++;
+                }
+
+                uploadCSVToIAConnectLookupTablepropCount++;
+            }
+            else
+            {
+                uploadCSVToIAConnectLookupTable["CreateLookupTableIfNotExist"] = false;
                 uploadCSVToIAConnectLookupTablepropCount++;
             }
 
@@ -1699,7 +2399,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             uploadCSVToIAConnectList["CSVData"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcSVData);
             if (uploadCSVToIAConnectListcreateListIfNotExist != null)
             {
-                uploadCSVToIAConnectList["CreateListIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcreateListIfNotExist);
+                if (uploadCSVToIAConnectListcreateListIfNotExist != null)
+                {
+                    uploadCSVToIAConnectList["CreateListIfNotExist"] = ExpressionConverter.ConvertO(uploadCSVToIAConnectListcreateListIfNotExist);
+                    uploadCSVToIAConnectListpropCount++;
+                }
+
+                uploadCSVToIAConnectListpropCount++;
+            }
+            else
+            {
+                uploadCSVToIAConnectList["CreateListIfNotExist"] = false;
                 uploadCSVToIAConnectListpropCount++;
             }
 

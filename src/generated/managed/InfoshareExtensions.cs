@@ -76,88 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocumentV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/UpdateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodydocumentTitle != null)
-            {
-                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyremoveDocumentProperties != null)
-            {
-                body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyremoveDocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
-
-            if (bodyforceUndoCheckout != null)
-            {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
         {
             var apiCallPath = "/api/Logoff";
@@ -267,7 +185,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
             if (bodyignoreHashValidation != null)
             {
-                body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyignoreHashValidation);
+                if (bodyignoreHashValidation != null)
+                {
+                    body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyignoreHashValidation);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IgnoreHashValidation"] = true;
                 bodypropCount++;
             }
 
@@ -446,13 +374,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             body["TargetFormat"] = ExpressionConverter.ConvertO(bodytargetFormat);
             if (bodyaddAnnotatins != null)
             {
-                body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyaddAnnotatins);
+                if (bodyaddAnnotatins != null)
+                {
+                    body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyaddAnnotatins);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["AddAnnotatins"] = true;
                 bodypropCount++;
             }
 
             if (bodyaddOverlay != null)
             {
-                body["AddOverlay"] = ExpressionConverter.ConvertO(bodyaddOverlay);
+                if (bodyaddOverlay != null)
+                {
+                    body["AddOverlay"] = ExpressionConverter.ConvertO(bodyaddOverlay);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["AddOverlay"] = true;
                 bodypropCount++;
             }
 
@@ -586,13 +534,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             body["Values"] = ExpressionConverter.ConvertO(bodyvalues);
             if (bodydeleteAllValues != null)
             {
-                body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodydeleteAllValues);
+                if (bodydeleteAllValues != null)
+                {
+                    body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodydeleteAllValues);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["DeleteAllValues"] = false;
                 bodypropCount++;
             }
 
             if (bodyfirstRowContainsColumnHeaders != null)
             {
-                body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyfirstRowContainsColumnHeaders);
+                if (bodyfirstRowContainsColumnHeaders != null)
+                {
+                    body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyfirstRowContainsColumnHeaders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["FirstRowContainsColumnHeaders"] = false;
                 bodypropCount++;
             }
 
@@ -657,90 +625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocumentV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/CreateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-            if (bodyimportTemplate != null)
-            {
-                body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyimportTemplate);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                bodypropCount++;
-            }
-
-            if (bodyinfoStore != null)
-            {
-                body["InfoStore"] = ExpressionConverter.ConvertO(bodyinfoStore);
-                bodypropCount++;
-            }
-
-            if (bodylifeCycle != null)
-            {
-                body["LifeCycle"] = ExpressionConverter.ConvertO(bodylifeCycle);
-                bodypropCount++;
-            }
-
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
-                bodypropCount++;
-            }
-
-            if (bodyoriginalFileFormat != null)
-            {
-                body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyoriginalFileFormat);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
         {
             var apiCallPath = "/api/MergePDFDocumentsToVersion";
@@ -768,56 +652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             }
 
             return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearchV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
-        {
-            var apiCallPath = "/api/DocumentSearchV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodyconditions != null)
-            {
-                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodymaxSerchResults != null)
-            {
-                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
-                bodypropCount++;
-            }
-
-            if (bodyresultProperties != null)
-            {
-                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                bodypropCount++;
-            }
-
-            if (bodystores != null)
-            {
-                body["Stores"] = ExpressionConverter.ConvertO(bodystores);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
@@ -852,7 +686,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
             if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Culture"] = "de";
                 bodypropCount++;
             }
 
@@ -865,7 +709,339 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcessV2(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
+        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
+        {
+            var apiCallPath = "/api/UserTableUpdateRow";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+            bodypropCount++;
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            bodypropCount++;
+            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+            bodypropCount++;
+            body["RowData"] = ExpressionConverter.ConvertO(bodyrowData);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
+        {
+            var apiCallPath = "/api/GetSelection";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+            bodypropCount++;
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            bodypropCount++;
+            body["SelectionId"] = ExpressionConverter.ConvertO(bodyselectionId);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<GetSelectionResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
+        {
+            var apiCallPath = "/api/CreateDocumentV2";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+            bodypropCount++;
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            bodypropCount++;
+            body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+            if (bodyimportTemplate != null)
+            {
+                body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyimportTemplate);
+                bodypropCount++;
+            }
+
+            if (bodydocumentProperties != null)
+            {
+                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
+                bodypropCount++;
+            }
+
+            if (bodyblog != null)
+            {
+                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
+                bodypropCount++;
+            }
+
+            if (bodyculture != null)
+            {
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Culture"] = "de";
+                bodypropCount++;
+            }
+
+            if (bodyinfoStore != null)
+            {
+                body["InfoStore"] = ExpressionConverter.ConvertO(bodyinfoStore);
+                bodypropCount++;
+            }
+
+            if (bodylifeCycle != null)
+            {
+                body["LifeCycle"] = ExpressionConverter.ConvertO(bodylifeCycle);
+                bodypropCount++;
+            }
+
+            if (bodyprotectionDomain != null)
+            {
+                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                bodypropCount++;
+            }
+
+            if (bodyuploadMethod != null)
+            {
+                if (bodyuploadMethod != null)
+                {
+                    body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["UploadMethod"] = "UploadFileBytesLarge";
+                bodypropCount++;
+            }
+
+            if (bodyoriginalFileFormat != null)
+            {
+                body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyoriginalFileFormat);
+                bodypropCount++;
+            }
+
+            if (bodychunkSize != null)
+            {
+                if (bodychunkSize != null)
+                {
+                    body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ChunkSize"] = 262144;
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
+        {
+            var apiCallPath = "/api/DocumentSearchV2";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+            bodypropCount++;
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodyconditions != null)
+            {
+                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                bodypropCount++;
+            }
+
+            if (bodymaxSerchResults != null)
+            {
+                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
+                bodypropCount++;
+            }
+
+            if (bodyresultProperties != null)
+            {
+                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
+                bodypropCount++;
+            }
+
+            if (bodyculture != null)
+            {
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Culture"] = "de";
+                bodypropCount++;
+            }
+
+            if (bodystores != null)
+            {
+                body["Stores"] = ExpressionConverter.ConvertO(bodystores);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
+        {
+            var apiCallPath = "/api/UpdateDocumentV2";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+            bodypropCount++;
+            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+            if (bodydocumentTitle != null)
+            {
+                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                bodypropCount++;
+            }
+
+            if (bodydocumentProperties != null)
+            {
+                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
+                bodypropCount++;
+            }
+
+            if (bodyremoveDocumentProperties != null)
+            {
+                body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyremoveDocumentProperties);
+                bodypropCount++;
+            }
+
+            if (bodyculture != null)
+            {
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Culture"] = "de";
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+            if (bodyprotectionDomain != null)
+            {
+                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                bodypropCount++;
+            }
+
+            if (bodyblog != null)
+            {
+                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
+                bodypropCount++;
+            }
+
+            if (bodyuploadMethod != null)
+            {
+                if (bodyuploadMethod != null)
+                {
+                    body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["UploadMethod"] = "UploadFileBytesLarge";
+                bodypropCount++;
+            }
+
+            if (bodyfileContent != null)
+            {
+                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                bodypropCount++;
+            }
+
+            if (bodyforceUndoCheckout != null)
+            {
+                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                bodypropCount++;
+            }
+
+            if (bodychunkSize != null)
+            {
+                if (bodychunkSize != null)
+                {
+                    body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ChunkSize"] = 262144;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
         {
             var apiCallPath = "/api/UpdateProcessV2";
             var apiCallHttpMethod = "post";
@@ -928,19 +1104,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
             if (bodypriority != null)
             {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Priority"] = "Normal";
                 bodypropCount++;
             }
 
             if (bodyculture != null)
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Culture"] = "de";
                 bodypropCount++;
             }
 
             if (bodyforceUndoCheckout != null)
             {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                if (bodyforceUndoCheckout != null)
+                {
+                    body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ForceUndoCheckout"] = true;
                 bodypropCount++;
             }
 
@@ -956,52 +1162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             }
 
             return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
-        {
-            var apiCallPath = "/api/UserTableUpdateRow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            bodypropCount++;
-            body["RowData"] = ExpressionConverter.ConvertO(bodyrowData);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
-        {
-            var apiCallPath = "/api/GetSelection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["SelectionId"] = ExpressionConverter.ConvertO(bodyselectionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSelectionResponse>(callPayload);
         }
     }
 
@@ -1095,429 +1255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
-    }
-
-    public class UpdateDocumentV2Response
-    {
-        [JsonProperty("abonnements")]
-        public UpdateDocumentV2ResponseAbonnementsTypeItem[] Abonnements { get; set; }
-
-        [JsonProperty("accessRightsEnumList")]
-        public string[] AccessRightsEnumList { get; set; }
-
-        [JsonProperty("annotationManager")]
-        public UpdateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
-
-        [JsonProperty("blogs")]
-        public UpdateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
-
-        [JsonProperty("checkOutStateEnum")]
-        public string CheckOutStateEnum { get; set; }
-
-        [JsonProperty("checkOutUserId")]
-        public string CheckOutUserId { get; set; }
-
-        [JsonProperty("documentData")]
-        public UpdateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
-
-        [JsonProperty("hasOverlay")]
-        public bool HasOverlay { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("importTemplateId")]
-        public string ImportTemplateId { get; set; }
-
-        [JsonProperty("infoStoreId")]
-        public string InfoStoreId { get; set; }
-
-        [JsonProperty("lifeCycleManager")]
-        public UpdateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
-
-        [JsonProperty("mainFileLength")]
-        public int MainFileLength { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("pageCount")]
-        public int PageCount { get; set; }
-
-        [JsonProperty("properties")]
-        public UpdateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
-
-        [JsonProperty("protectionDomainId")]
-        public string ProtectionDomainId { get; set; }
-
-        [JsonProperty("reminders")]
-        public UpdateDocumentV2ResponseRemindersTypeItem[] Reminders { get; set; }
-
-        [JsonProperty("signingProfileId")]
-        public string SigningProfileId { get; set; }
-
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAbonnementsTypeItem
-    {
-        [JsonProperty("onContentChange")]
-        public bool OnContentChange { get; set; }
-
-        [JsonProperty("onDelete")]
-        public bool OnDelete { get; set; }
-
-        [JsonProperty("onMetadataChange")]
-        public bool OnMetadataChange { get; set; }
-
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerType
-    {
-        [JsonProperty("postItAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem[] PostItAnnotations { get; set; }
-
-        [JsonProperty("rectangleAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem[] RectangleAnnotations { get; set; }
-
-        [JsonProperty("textAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem[] TextAnnotations { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem
-    {
-        [JsonProperty("createdDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("creatorId")]
-        public string CreatorId { get; set; }
-
-        [JsonProperty("fontInfo")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType FontInfo { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("modifiedDate")]
-        public string ModifiedDate { get; set; }
-
-        [JsonProperty("pageNumber")]
-        public int PageNumber { get; set; }
-
-        [JsonProperty("securityLevelEnum")]
-        public string SecurityLevelEnum { get; set; }
-
-        [JsonProperty("selectable")]
-        public bool Selectable { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("x")]
-        public int X { get; set; }
-
-        [JsonProperty("y")]
-        public int Y { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType
-    {
-        [JsonProperty("isItalic")]
-        public bool IsItalic { get; set; }
-
-        [JsonProperty("isStrikeOut")]
-        public bool IsStrikeOut { get; set; }
-
-        [JsonProperty("isUnderline")]
-        public bool IsUnderline { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("pitch")]
-        public int Pitch { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("weight")]
-        public int Weight { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem
-    {
-        [JsonProperty("color")]
-        public int Color { get; set; }
-
-        [JsonProperty("colorHexCode")]
-        public string ColorHexCode { get; set; }
-
-        [JsonProperty("createdDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("creatorId")]
-        public string CreatorId { get; set; }
-
-        [JsonProperty("height")]
-        public int Height { get; set; }
-        public string Id { get; set; }
-
-        [JsonProperty("modifiedDate")]
-        public string ModifiedDate { get; set; }
-
-        [JsonProperty("pageNumber")]
-        public int PageNumber { get; set; }
-
-        [JsonProperty("securityLevelEnum")]
-        public string SecurityLevelEnum { get; set; }
-
-        [JsonProperty("selectable")]
-        public bool Selectable { get; set; }
-
-        [JsonProperty("transparent")]
-        public bool Transparent { get; set; }
-
-        [JsonProperty("width")]
-        public int Width { get; set; }
-
-        [JsonProperty("x")]
-        public int X { get; set; }
-
-        [JsonProperty("y")]
-        public int Y { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem
-    {
-        [JsonProperty("backgroundColor")]
-        public int BackgroundColor { get; set; }
-
-        [JsonProperty("backgroundColorHexCode")]
-        public string BackgroundColorHexCode { get; set; }
-
-        [JsonProperty("createdDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("creatorId")]
-        public string CreatorId { get; set; }
-
-        [JsonProperty("fontInfo")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType FontInfo { get; set; }
-
-        [JsonProperty("foregroundColor")]
-        public int ForegroundColor { get; set; }
-
-        [JsonProperty("foregroundColorHexCode")]
-        public string ForegroundColorHexCode { get; set; }
-
-        [JsonProperty("height")]
-        public int Height { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("modifiedDate")]
-        public string ModifiedDate { get; set; }
-
-        [JsonProperty("pageNumber")]
-        public int PageNumber { get; set; }
-
-        [JsonProperty("rotation")]
-        public int Rotation { get; set; }
-
-        [JsonProperty("securityLevelEnum")]
-        public string SecurityLevelEnum { get; set; }
-
-        [JsonProperty("selectable")]
-        public bool Selectable { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("transparent")]
-        public bool Transparent { get; set; }
-
-        [JsonProperty("width")]
-        public int Width { get; set; }
-
-        [JsonProperty("x")]
-        public int X { get; set; }
-
-        [JsonProperty("y")]
-        public int Y { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType
-    {
-        [JsonProperty("isItalic")]
-        public bool IsItalic { get; set; }
-
-        [JsonProperty("isStrikeOut")]
-        public bool IsStrikeOut { get; set; }
-
-        [JsonProperty("isUnderline")]
-        public bool IsUnderline { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("pitch")]
-        public int Pitch { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("weight")]
-        public int Weight { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseBlogsTypeItem
-    {
-        [JsonProperty("createdDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("creatorId")]
-        public string CreatorId { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseDocumentDataTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("renditions")]
-        public JToken[] Renditions { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseLifeCycleManagerType
-    {
-        [JsonProperty("checkOutLifeCycleStateId")]
-        public string CheckOutLifeCycleStateId { get; set; }
-
-        [JsonProperty("lifeCycleEndDate")]
-        public string LifeCycleEndDate { get; set; }
-
-        [JsonProperty("lifeCycleStartDate")]
-        public string LifeCycleStartDate { get; set; }
-
-        [JsonProperty("lifeCycleStateId")]
-        public string LifeCycleStateId { get; set; }
-
-        [JsonProperty("nextAutomaticLifeCycleStateId")]
-        public string NextAutomaticLifeCycleStateId { get; set; }
-
-        [JsonProperty("nextLifeCycleStates")]
-        public string[] NextLifeCycleStates { get; set; }
-
-        [JsonProperty("lifeCycleProtections")]
-        public UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
-
-        [JsonProperty("lifeCycleId")]
-        public string LifeCycleId { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
-    {
-        [JsonProperty("deleteAfterExpiration")]
-        public bool DeleteAfterExpiration { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("protectAnnotationChange")]
-        public bool ProtectAnnotationChange { get; set; }
-
-        [JsonProperty("protectCheckOut")]
-        public bool ProtectCheckOut { get; set; }
-
-        [JsonProperty("protectContentChange")]
-        public bool ProtectContentChange { get; set; }
-
-        [JsonProperty("protectDelete")]
-        public bool ProtectDelete { get; set; }
-
-        [JsonProperty("protectPropertyChange")]
-        public bool ProtectPropertyChange { get; set; }
-
-        [JsonProperty("protectProtectionDomainChange")]
-        public bool ProtectProtectionDomainChange { get; set; }
-
-        [JsonProperty("protectionDurationTicks")]
-        public int ProtectionDurationTicks { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponsePropertiesTypeItem
-    {
-        [JsonProperty("globalValues")]
-        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("propertyTypeId")]
-        public string PropertyTypeId { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
-    {
-        [JsonProperty("values")]
-        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
-    {
-        [JsonProperty("culture")]
-        public string Culture { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class UpdateDocumentV2ResponseRemindersTypeItem
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("interval")]
-        public int Interval { get; set; }
-
-        [JsonProperty("processTemplateId")]
-        public string ProcessTemplateId { get; set; }
-
-        [JsonProperty("reminderDate")]
-        public string ReminderDate { get; set; }
-
-        [JsonProperty("reminderId")]
-        public string ReminderId { get; set; }
-
-        [JsonProperty("subjectIds")]
-        public JToken[] SubjectIds { get; set; }
-
-        [JsonProperty("useUserFromProcessTemplate")]
-        public bool UseUserFromProcessTemplate { get; set; }
-    }
-
-    public enum bodyuploadMethodInput
-    {
-        UploadFileBytesLarge,
-        UploadStreamChunks,
-        UploadStreamDirect,
-        UploadFileBase64
     }
 
     public class LogoffResponse
@@ -2325,261 +2062,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int UserTableDeleteRecordsResult { get; set; }
     }
 
-    public class CreateDocumentV2Response
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("currentVersionId")]
-        public string CurrentVersionId { get; set; }
-
-        [JsonProperty("protectionDomainId")]
-        public string ProtectionDomainId { get; set; }
-
-        [JsonProperty("infoStoreId")]
-        public string InfoStoreId { get; set; }
-
-        [JsonProperty("checkOutStateEnum")]
-        public string CheckOutStateEnum { get; set; }
-
-        [JsonProperty("checkOutUserId")]
-        public string CheckOutUserId { get; set; }
-
-        [JsonProperty("properties")]
-        public CreateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
-
-        [JsonProperty("importTemplateId")]
-        public string ImportTemplateId { get; set; }
-
-        [JsonProperty("blogs")]
-        public CreateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
-
-        [JsonProperty("accessRightsEnumList")]
-        public string[] AccessRightsEnumList { get; set; }
-
-        [JsonProperty("reminders")]
-        public JToken[] Reminders { get; set; }
-
-        [JsonProperty("pageCount")]
-        public int PageCount { get; set; }
-
-        [JsonProperty("mainFileLength")]
-        public int MainFileLength { get; set; }
-
-        [JsonProperty("abonnements")]
-        public JToken[] Abonnements { get; set; }
-
-        [JsonProperty("annotationManager")]
-        public CreateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
-
-        [JsonProperty("documentData")]
-        public CreateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
-
-        [JsonProperty("signingProfileId")]
-        public string SigningProfileId { get; set; }
-
-        [JsonProperty("lifeCycleManager")]
-        public CreateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
-
-        [JsonProperty("hasOverlay")]
-        public bool HasOverlay { get; set; }
-
-        [JsonProperty("sessionCount")]
-        public int SessionCount { get; set; }
-
-        [JsonProperty("hasSignature")]
-        public bool HasSignature { get; set; }
-
-        [JsonProperty("hasBlog")]
-        public bool HasBlog { get; set; }
-
-        [JsonProperty("hasAnnotation")]
-        public bool HasAnnotation { get; set; }
-
-        [JsonProperty("hasTempAccess")]
-        public bool HasTempAccess { get; set; }
-
-        [JsonProperty("hasReminders")]
-        public bool HasReminders { get; set; }
-
-        [JsonProperty("hasLinks")]
-        public bool HasLinks { get; set; }
-
-        [JsonProperty("hasAbonnement")]
-        public bool HasAbonnement { get; set; }
-    }
-
-    public class CreateDocumentV2ResponsePropertiesTypeItem
-    {
-        [JsonProperty("propertyTypeId")]
-        public string PropertyTypeId { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-
-        [JsonProperty("globalValues")]
-        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
-
-        [JsonProperty("propertyTypeName")]
-        public string PropertyTypeName { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-    }
-
-    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
-    {
-        [JsonProperty("values")]
-        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
-    }
-
-    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
-    {
-        [JsonProperty("culture")]
-        public string Culture { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseBlogsTypeItem
-    {
-        [JsonProperty("createdDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("creatorId")]
-        public string CreatorId { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseAnnotationManagerType
-    {
-        [JsonProperty("textAnnotations")]
-        public JToken[] TextAnnotations { get; set; }
-
-        [JsonProperty("rectangleAnnotations")]
-        public JToken[] RectangleAnnotations { get; set; }
-
-        [JsonProperty("postItAnnotations")]
-        public JToken[] PostItAnnotations { get; set; }
-
-        [JsonProperty("stampAnnotations")]
-        public JToken[] StampAnnotations { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseDocumentDataTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("renditions")]
-        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("files")]
-        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
-
-        [JsonProperty("pageCount")]
-        public string PageCount { get; set; }
-
-        [JsonProperty("extension")]
-        public string Extension { get; set; }
-
-        [JsonProperty("hashValue")]
-        public int[] HashValue { get; set; }
-
-        [JsonProperty("contentProtections")]
-        public JToken[] ContentProtections { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
-    {
-        [JsonProperty("blobStoreId")]
-        public string BlobStoreId { get; set; }
-
-        [JsonProperty("blobPath")]
-        public string BlobPath { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseLifeCycleManagerType
-    {
-        [JsonProperty("lifeCycleId")]
-        public string LifeCycleId { get; set; }
-
-        [JsonProperty("lifeCycleStateId")]
-        public string LifeCycleStateId { get; set; }
-
-        [JsonProperty("lifeCycleStartDate")]
-        public string LifeCycleStartDate { get; set; }
-
-        [JsonProperty("lifeCycleEndDate")]
-        public string LifeCycleEndDate { get; set; }
-
-        [JsonProperty("nextLifeCycleStates")]
-        public JToken[] NextLifeCycleStates { get; set; }
-
-        [JsonProperty("checkOutLifeCycleStateId")]
-        public string CheckOutLifeCycleStateId { get; set; }
-
-        [JsonProperty("nextAutomaticLifeCycleStateId")]
-        public string NextAutomaticLifeCycleStateId { get; set; }
-
-        [JsonProperty("lifeCycleProtections")]
-        public CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
-    }
-
-    public class CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("protectionDurationTicks")]
-        public int ProtectionDurationTicks { get; set; }
-
-        [JsonProperty("protectCheckOut")]
-        public bool ProtectCheckOut { get; set; }
-
-        [JsonProperty("protectContentChange")]
-        public bool ProtectContentChange { get; set; }
-
-        [JsonProperty("protectPropertyChange")]
-        public bool ProtectPropertyChange { get; set; }
-
-        [JsonProperty("protectAnnotationChange")]
-        public bool ProtectAnnotationChange { get; set; }
-
-        [JsonProperty("protectProtectionDomainChange")]
-        public bool ProtectProtectionDomainChange { get; set; }
-
-        [JsonProperty("protectDelete")]
-        public bool ProtectDelete { get; set; }
-
-        [JsonProperty("deleteAfterExpiration")]
-        public bool DeleteAfterExpiration { get; set; }
-    }
-
     public class MergePDFDocumentsToVersionResponse
     {
         [JsonProperty("name")]
@@ -2835,6 +2317,419 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool DeleteAfterExpiration { get; set; }
     }
 
+    public class ProcessSearchResponse
+    {
+        [JsonProperty("processes")]
+        public ProcessSearchResponseProcessesTypeItem[] Processes { get; set; }
+
+        [JsonProperty("hasMore")]
+        public bool HasMore { get; set; }
+
+        [JsonProperty("resumePoint")]
+        public string ResumePoint { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItem
+    {
+        [JsonProperty("name")]
+        public ProcessSearchResponseProcessesTypeItemNameType Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("folderElementId")]
+        public string FolderElementId { get; set; }
+
+        [JsonProperty("checkOutStateEnum")]
+        public string CheckOutStateEnum { get; set; }
+
+        [JsonProperty("properties")]
+        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItem[] Properties { get; set; }
+
+        [JsonProperty("priorityEnum")]
+        public string PriorityEnum { get; set; }
+
+        [JsonProperty("statusEnum")]
+        public string StatusEnum { get; set; }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("hasLinks")]
+        public bool HasLinks { get; set; }
+
+        [JsonProperty("accessRightsEnumList")]
+        public string[] AccessRightsEnumList { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItemNameType
+    {
+        [JsonProperty("values")]
+        public ProcessSearchResponseProcessesTypeItemNameTypeValuesTypeItem[] Values { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItemNameTypeValuesTypeItem
+    {
+        [JsonProperty("culture")]
+        public string Culture { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItem
+    {
+        [JsonProperty("propertyTypeId")]
+        public string PropertyTypeId { get; set; }
+
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
+
+        [JsonProperty("globalValues")]
+        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+
+        [JsonProperty("propertyTypeName")]
+        public string PropertyTypeName { get; set; }
+
+        [JsonProperty("propertyName")]
+        public string PropertyName { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItem
+    {
+        [JsonProperty("values")]
+        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+    }
+
+    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    {
+        [JsonProperty("culture")]
+        public string Culture { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class UserTableUpdateRowResponse
+    {
+        [JsonProperty("userTableUpdateRowResult")]
+        public int UserTableUpdateRowResult { get; set; }
+    }
+
+    public class GetSelectionResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("parentObjectId")]
+        public GetSelectionResponseParentObjectIdType ParentObjectId { get; set; }
+
+        [JsonProperty("objectIds")]
+        public GetSelectionResponseObjectIdsTypeItem[] ObjectIds { get; set; }
+
+        [JsonProperty("allObjectIds")]
+        public GetSelectionResponseAllObjectIdsTypeItem[] AllObjectIds { get; set; }
+    }
+
+    public class GetSelectionResponseParentObjectIdType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("objectId")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty("objectTypeEnum")]
+        public string ObjectTypeEnum { get; set; }
+    }
+
+    public class GetSelectionResponseObjectIdsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("objectId")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty("objectTypeEnum")]
+        public string ObjectTypeEnum { get; set; }
+    }
+
+    public class GetSelectionResponseAllObjectIdsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("objectId")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty("objectTypeEnum")]
+        public string ObjectTypeEnum { get; set; }
+    }
+
+    public class CreateDocumentV2Response
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+
+        [JsonProperty("currentVersionId")]
+        public string CurrentVersionId { get; set; }
+
+        [JsonProperty("protectionDomainId")]
+        public string ProtectionDomainId { get; set; }
+
+        [JsonProperty("infoStoreId")]
+        public string InfoStoreId { get; set; }
+
+        [JsonProperty("checkOutStateEnum")]
+        public string CheckOutStateEnum { get; set; }
+
+        [JsonProperty("checkOutUserId")]
+        public string CheckOutUserId { get; set; }
+
+        [JsonProperty("properties")]
+        public CreateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
+
+        [JsonProperty("importTemplateId")]
+        public string ImportTemplateId { get; set; }
+
+        [JsonProperty("blogs")]
+        public CreateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
+
+        [JsonProperty("accessRightsEnumList")]
+        public string[] AccessRightsEnumList { get; set; }
+
+        [JsonProperty("reminders")]
+        public JToken[] Reminders { get; set; }
+
+        [JsonProperty("pageCount")]
+        public int PageCount { get; set; }
+
+        [JsonProperty("mainFileLength")]
+        public int MainFileLength { get; set; }
+
+        [JsonProperty("abonnements")]
+        public JToken[] Abonnements { get; set; }
+
+        [JsonProperty("annotationManager")]
+        public CreateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
+
+        [JsonProperty("documentData")]
+        public CreateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
+
+        [JsonProperty("signingProfileId")]
+        public string SigningProfileId { get; set; }
+
+        [JsonProperty("lifeCycleManager")]
+        public CreateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
+
+        [JsonProperty("hasOverlay")]
+        public bool HasOverlay { get; set; }
+
+        [JsonProperty("sessionCount")]
+        public int SessionCount { get; set; }
+
+        [JsonProperty("hasSignature")]
+        public bool HasSignature { get; set; }
+
+        [JsonProperty("hasBlog")]
+        public bool HasBlog { get; set; }
+
+        [JsonProperty("hasAnnotation")]
+        public bool HasAnnotation { get; set; }
+
+        [JsonProperty("hasTempAccess")]
+        public bool HasTempAccess { get; set; }
+
+        [JsonProperty("hasReminders")]
+        public bool HasReminders { get; set; }
+
+        [JsonProperty("hasLinks")]
+        public bool HasLinks { get; set; }
+
+        [JsonProperty("hasAbonnement")]
+        public bool HasAbonnement { get; set; }
+    }
+
+    public class CreateDocumentV2ResponsePropertiesTypeItem
+    {
+        [JsonProperty("propertyTypeId")]
+        public string PropertyTypeId { get; set; }
+
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
+
+        [JsonProperty("globalValues")]
+        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+
+        [JsonProperty("propertyTypeName")]
+        public string PropertyTypeName { get; set; }
+
+        [JsonProperty("propertyName")]
+        public string PropertyName { get; set; }
+    }
+
+    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
+    {
+        [JsonProperty("values")]
+        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+    }
+
+    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    {
+        [JsonProperty("culture")]
+        public string Culture { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseBlogsTypeItem
+    {
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("creatorId")]
+        public string CreatorId { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseAnnotationManagerType
+    {
+        [JsonProperty("textAnnotations")]
+        public JToken[] TextAnnotations { get; set; }
+
+        [JsonProperty("rectangleAnnotations")]
+        public JToken[] RectangleAnnotations { get; set; }
+
+        [JsonProperty("postItAnnotations")]
+        public JToken[] PostItAnnotations { get; set; }
+
+        [JsonProperty("stampAnnotations")]
+        public JToken[] StampAnnotations { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseDocumentDataTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("renditions")]
+        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("files")]
+        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
+
+        [JsonProperty("pageCount")]
+        public string PageCount { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("hashValue")]
+        public int[] HashValue { get; set; }
+
+        [JsonProperty("contentProtections")]
+        public JToken[] ContentProtections { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
+    {
+        [JsonProperty("blobStoreId")]
+        public string BlobStoreId { get; set; }
+
+        [JsonProperty("blobPath")]
+        public string BlobPath { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseLifeCycleManagerType
+    {
+        [JsonProperty("lifeCycleId")]
+        public string LifeCycleId { get; set; }
+
+        [JsonProperty("lifeCycleStateId")]
+        public string LifeCycleStateId { get; set; }
+
+        [JsonProperty("lifeCycleStartDate")]
+        public string LifeCycleStartDate { get; set; }
+
+        [JsonProperty("lifeCycleEndDate")]
+        public string LifeCycleEndDate { get; set; }
+
+        [JsonProperty("nextLifeCycleStates")]
+        public JToken[] NextLifeCycleStates { get; set; }
+
+        [JsonProperty("checkOutLifeCycleStateId")]
+        public string CheckOutLifeCycleStateId { get; set; }
+
+        [JsonProperty("nextAutomaticLifeCycleStateId")]
+        public string NextAutomaticLifeCycleStateId { get; set; }
+
+        [JsonProperty("lifeCycleProtections")]
+        public CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
+    }
+
+    public class CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("protectionDurationTicks")]
+        public int ProtectionDurationTicks { get; set; }
+
+        [JsonProperty("protectCheckOut")]
+        public bool ProtectCheckOut { get; set; }
+
+        [JsonProperty("protectContentChange")]
+        public bool ProtectContentChange { get; set; }
+
+        [JsonProperty("protectPropertyChange")]
+        public bool ProtectPropertyChange { get; set; }
+
+        [JsonProperty("protectAnnotationChange")]
+        public bool ProtectAnnotationChange { get; set; }
+
+        [JsonProperty("protectProtectionDomainChange")]
+        public bool ProtectProtectionDomainChange { get; set; }
+
+        [JsonProperty("protectDelete")]
+        public bool ProtectDelete { get; set; }
+
+        [JsonProperty("deleteAfterExpiration")]
+        public bool DeleteAfterExpiration { get; set; }
+    }
+
+    public enum bodyuploadMethodInput
+    {
+        UploadFileBytesLarge,
+        UploadStreamChunks,
+        UploadStreamDirect,
+        UploadFileBase64
+    }
+
     public class DocumentSearchV2Response
     {
         [JsonProperty("documents")]
@@ -2931,97 +2826,419 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class ProcessSearchResponse
+    public class UpdateDocumentV2Response
     {
-        [JsonProperty("processes")]
-        public ProcessSearchResponseProcessesTypeItem[] Processes { get; set; }
+        [JsonProperty("abonnements")]
+        public UpdateDocumentV2ResponseAbonnementsTypeItem[] Abonnements { get; set; }
 
-        [JsonProperty("hasMore")]
-        public bool HasMore { get; set; }
+        [JsonProperty("accessRightsEnumList")]
+        public string[] AccessRightsEnumList { get; set; }
 
-        [JsonProperty("resumePoint")]
-        public string ResumePoint { get; set; }
-    }
+        [JsonProperty("annotationManager")]
+        public UpdateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
 
-    public class ProcessSearchResponseProcessesTypeItem
-    {
-        [JsonProperty("name")]
-        public ProcessSearchResponseProcessesTypeItemNameType Name { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("folderElementId")]
-        public string FolderElementId { get; set; }
+        [JsonProperty("blogs")]
+        public UpdateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
 
         [JsonProperty("checkOutStateEnum")]
         public string CheckOutStateEnum { get; set; }
 
+        [JsonProperty("checkOutUserId")]
+        public string CheckOutUserId { get; set; }
+
+        [JsonProperty("documentData")]
+        public UpdateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
+
+        [JsonProperty("hasOverlay")]
+        public bool HasOverlay { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("importTemplateId")]
+        public string ImportTemplateId { get; set; }
+
+        [JsonProperty("infoStoreId")]
+        public string InfoStoreId { get; set; }
+
+        [JsonProperty("lifeCycleManager")]
+        public UpdateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
+
+        [JsonProperty("mainFileLength")]
+        public int MainFileLength { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("pageCount")]
+        public int PageCount { get; set; }
+
         [JsonProperty("properties")]
-        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItem[] Properties { get; set; }
+        public UpdateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
 
-        [JsonProperty("priorityEnum")]
-        public string PriorityEnum { get; set; }
+        [JsonProperty("protectionDomainId")]
+        public string ProtectionDomainId { get; set; }
 
-        [JsonProperty("statusEnum")]
-        public string StatusEnum { get; set; }
+        [JsonProperty("reminders")]
+        public UpdateDocumentV2ResponseRemindersTypeItem[] Reminders { get; set; }
 
-        [JsonProperty("dueDate")]
-        public string DueDate { get; set; }
+        [JsonProperty("signingProfileId")]
+        public string SigningProfileId { get; set; }
 
-        [JsonProperty("hasLinks")]
-        public bool HasLinks { get; set; }
-
-        [JsonProperty("accessRightsEnumList")]
-        public string[] AccessRightsEnumList { get; set; }
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
     }
 
-    public class ProcessSearchResponseProcessesTypeItemNameType
+    public class UpdateDocumentV2ResponseAbonnementsTypeItem
     {
-        [JsonProperty("values")]
-        public ProcessSearchResponseProcessesTypeItemNameTypeValuesTypeItem[] Values { get; set; }
+        [JsonProperty("onContentChange")]
+        public bool OnContentChange { get; set; }
+
+        [JsonProperty("onDelete")]
+        public bool OnDelete { get; set; }
+
+        [JsonProperty("onMetadataChange")]
+        public bool OnMetadataChange { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
     }
 
-    public class ProcessSearchResponseProcessesTypeItemNameTypeValuesTypeItem
+    public class UpdateDocumentV2ResponseAnnotationManagerType
     {
-        [JsonProperty("culture")]
-        public string Culture { get; set; }
+        [JsonProperty("postItAnnotations")]
+        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem[] PostItAnnotations { get; set; }
+
+        [JsonProperty("rectangleAnnotations")]
+        public UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem[] RectangleAnnotations { get; set; }
+
+        [JsonProperty("textAnnotations")]
+        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem[] TextAnnotations { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem
+    {
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("creatorId")]
+        public string CreatorId { get; set; }
+
+        [JsonProperty("fontInfo")]
+        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType FontInfo { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("pageNumber")]
+        public int PageNumber { get; set; }
+
+        [JsonProperty("securityLevelEnum")]
+        public string SecurityLevelEnum { get; set; }
+
+        [JsonProperty("selectable")]
+        public bool Selectable { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("x")]
+        public int X { get; set; }
+
+        [JsonProperty("y")]
+        public int Y { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType
+    {
+        [JsonProperty("isItalic")]
+        public bool IsItalic { get; set; }
+
+        [JsonProperty("isStrikeOut")]
+        public bool IsStrikeOut { get; set; }
+
+        [JsonProperty("isUnderline")]
+        public bool IsUnderline { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("pitch")]
+        public int Pitch { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("weight")]
+        public int Weight { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem
+    {
+        [JsonProperty("color")]
+        public int Color { get; set; }
+
+        [JsonProperty("colorHexCode")]
+        public string ColorHexCode { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("creatorId")]
+        public string CreatorId { get; set; }
+
+        [JsonProperty("height")]
+        public int Height { get; set; }
+        public string Id { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("pageNumber")]
+        public int PageNumber { get; set; }
+
+        [JsonProperty("securityLevelEnum")]
+        public string SecurityLevelEnum { get; set; }
+
+        [JsonProperty("selectable")]
+        public bool Selectable { get; set; }
+
+        [JsonProperty("transparent")]
+        public bool Transparent { get; set; }
+
+        [JsonProperty("width")]
+        public int Width { get; set; }
+
+        [JsonProperty("x")]
+        public int X { get; set; }
+
+        [JsonProperty("y")]
+        public int Y { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem
+    {
+        [JsonProperty("backgroundColor")]
+        public int BackgroundColor { get; set; }
+
+        [JsonProperty("backgroundColorHexCode")]
+        public string BackgroundColorHexCode { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("creatorId")]
+        public string CreatorId { get; set; }
+
+        [JsonProperty("fontInfo")]
+        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType FontInfo { get; set; }
+
+        [JsonProperty("foregroundColor")]
+        public int ForegroundColor { get; set; }
+
+        [JsonProperty("foregroundColorHexCode")]
+        public string ForegroundColorHexCode { get; set; }
+
+        [JsonProperty("height")]
+        public int Height { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("pageNumber")]
+        public int PageNumber { get; set; }
+
+        [JsonProperty("rotation")]
+        public int Rotation { get; set; }
+
+        [JsonProperty("securityLevelEnum")]
+        public string SecurityLevelEnum { get; set; }
+
+        [JsonProperty("selectable")]
+        public bool Selectable { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("transparent")]
+        public bool Transparent { get; set; }
+
+        [JsonProperty("width")]
+        public int Width { get; set; }
+
+        [JsonProperty("x")]
+        public int X { get; set; }
+
+        [JsonProperty("y")]
+        public int Y { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType
+    {
+        [JsonProperty("isItalic")]
+        public bool IsItalic { get; set; }
+
+        [JsonProperty("isStrikeOut")]
+        public bool IsStrikeOut { get; set; }
+
+        [JsonProperty("isUnderline")]
+        public bool IsUnderline { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("pitch")]
+        public int Pitch { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("weight")]
+        public int Weight { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseBlogsTypeItem
+    {
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("creatorId")]
+        public string CreatorId { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItem
+    public class UpdateDocumentV2ResponseDocumentDataTypeItem
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("renditions")]
+        public JToken[] Renditions { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseLifeCycleManagerType
+    {
+        [JsonProperty("checkOutLifeCycleStateId")]
+        public string CheckOutLifeCycleStateId { get; set; }
+
+        [JsonProperty("lifeCycleEndDate")]
+        public string LifeCycleEndDate { get; set; }
+
+        [JsonProperty("lifeCycleStartDate")]
+        public string LifeCycleStartDate { get; set; }
+
+        [JsonProperty("lifeCycleStateId")]
+        public string LifeCycleStateId { get; set; }
+
+        [JsonProperty("nextAutomaticLifeCycleStateId")]
+        public string NextAutomaticLifeCycleStateId { get; set; }
+
+        [JsonProperty("nextLifeCycleStates")]
+        public string[] NextLifeCycleStates { get; set; }
+
+        [JsonProperty("lifeCycleProtections")]
+        public UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
+
+        [JsonProperty("lifeCycleId")]
+        public string LifeCycleId { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
+    {
+        [JsonProperty("deleteAfterExpiration")]
+        public bool DeleteAfterExpiration { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("protectAnnotationChange")]
+        public bool ProtectAnnotationChange { get; set; }
+
+        [JsonProperty("protectCheckOut")]
+        public bool ProtectCheckOut { get; set; }
+
+        [JsonProperty("protectContentChange")]
+        public bool ProtectContentChange { get; set; }
+
+        [JsonProperty("protectDelete")]
+        public bool ProtectDelete { get; set; }
+
+        [JsonProperty("protectPropertyChange")]
+        public bool ProtectPropertyChange { get; set; }
+
+        [JsonProperty("protectProtectionDomainChange")]
+        public bool ProtectProtectionDomainChange { get; set; }
+
+        [JsonProperty("protectionDurationTicks")]
+        public int ProtectionDurationTicks { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponsePropertiesTypeItem
+    {
+        [JsonProperty("globalValues")]
+        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+
+        [JsonProperty("propertyName")]
+        public string PropertyName { get; set; }
+
         [JsonProperty("propertyTypeId")]
         public string PropertyTypeId { get; set; }
 
         [JsonProperty("values")]
         public string[] Values { get; set; }
-
-        [JsonProperty("globalValues")]
-        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
-
-        [JsonProperty("propertyTypeName")]
-        public string PropertyTypeName { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
     }
 
-    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItem
+    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class ProcessSearchResponseProcessesTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
+    }
+
+    public class UpdateDocumentV2ResponseRemindersTypeItem
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("interval")]
+        public int Interval { get; set; }
+
+        [JsonProperty("processTemplateId")]
+        public string ProcessTemplateId { get; set; }
+
+        [JsonProperty("reminderDate")]
+        public string ReminderDate { get; set; }
+
+        [JsonProperty("reminderId")]
+        public string ReminderId { get; set; }
+
+        [JsonProperty("subjectIds")]
+        public JToken[] SubjectIds { get; set; }
+
+        [JsonProperty("useUserFromProcessTemplate")]
+        public bool UseUserFromProcessTemplate { get; set; }
     }
 
     public class UpdateProcessV2Response
@@ -3370,63 +3587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
         [JsonProperty("text")]
         public string Text { get; set; }
-    }
-
-    public class UserTableUpdateRowResponse
-    {
-        [JsonProperty("userTableUpdateRowResult")]
-        public int UserTableUpdateRowResult { get; set; }
-    }
-
-    public class GetSelectionResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("parentObjectId")]
-        public GetSelectionResponseParentObjectIdType ParentObjectId { get; set; }
-
-        [JsonProperty("objectIds")]
-        public GetSelectionResponseObjectIdsTypeItem[] ObjectIds { get; set; }
-
-        [JsonProperty("allObjectIds")]
-        public GetSelectionResponseAllObjectIdsTypeItem[] AllObjectIds { get; set; }
-    }
-
-    public class GetSelectionResponseParentObjectIdType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("objectTypeEnum")]
-        public string ObjectTypeEnum { get; set; }
-    }
-
-    public class GetSelectionResponseObjectIdsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("objectTypeEnum")]
-        public string ObjectTypeEnum { get; set; }
-    }
-
-    public class GetSelectionResponseAllObjectIdsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("objectTypeEnum")]
-        public string ObjectTypeEnum { get; set; }
     }
 }
 

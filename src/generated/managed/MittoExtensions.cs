@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
     public class MittoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
-        public IBodyWorkflowAction<SmsResponse> SmsRequestPost(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
+        public IBodyWorkflowAction<SmsResponse> SmsRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
             var apiCallPath = "/sms.json";
             var apiCallHttpMethod = "post";
@@ -51,7 +51,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             request["to"] = ExpressionConverter.ConvertO(requestreceiver);
             if (requesttextType != null)
             {
-                request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                if (requesttextType != null)
+                {
+                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["type"] = "GSM";
                 requestpropCount++;
             }
 
@@ -76,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
-        public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequestPost(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
+        public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
             var apiCallPath = "/smsbulk.json";
             var apiCallHttpMethod = "post";
@@ -115,7 +125,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             request["to"] = ExpressionConverter.ConvertO(requestreceivers);
             if (requesttextType != null)
             {
-                request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                if (requesttextType != null)
+                {
+                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["type"] = "GSM";
                 requestpropCount++;
             }
 

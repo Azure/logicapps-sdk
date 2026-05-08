@@ -139,7 +139,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
             if (bodyisAddressFromMainEnterprise != null)
             {
-                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
+                if (bodyisAddressFromMainEnterprise != null)
+                {
+                    body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IsAddressFromMainEnterprise"] = true;
                 bodypropCount++;
             }
 
@@ -331,7 +341,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
             if (bodyisAddressFromMainEnterprise != null)
             {
-                body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
+                if (bodyisAddressFromMainEnterprise != null)
+                {
+                    body["IsAddressFromMainEnterprise"] = ExpressionConverter.ConvertO(bodyisAddressFromMainEnterprise);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IsAddressFromMainEnterprise"] = true;
                 bodypropCount++;
             }
 

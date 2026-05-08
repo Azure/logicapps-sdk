@@ -381,21 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResultsV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
-        {
-            var apiCallPath = String.Format("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["workItemsCount"] = Convert.ToString(200);
-            if (workItemsCount != null)
-                callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
-            if (throwIfQueryChanged != null)
-                callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
-            return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
             var apiCallPath = String.Format("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
@@ -448,6 +433,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["account"] = ExpressionConverter.Convert(account);
             return new ApiConnectionAction<Run>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
+        {
+            var apiCallPath = String.Format("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+            callPayload.Queries["workItemsCount"] = Convert.ToString(200);
+            if (workItemsCount != null)
+                callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
+            if (throwIfQueryChanged != null)
+                callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
+            return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
         }
     }
 
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssignedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
@@ -544,9 +544,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdatedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = String.Format("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["account"] = ExpressionConverter.Convert(account);
@@ -554,8 +554,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["team"] = ExpressionConverter.Convert(team);
             if (wiqlSystemAssignedTo != null)
                 callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
             if (wiqlSystemWorkItemType != null)
                 callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+            callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
+            if (closedState != null)
+                callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
             if (wiqlSystemAreaPath != null)
                 callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
@@ -573,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreatedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
@@ -603,9 +607,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosedV2(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+            var apiCallPath = String.Format("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["account"] = ExpressionConverter.Convert(account);
@@ -613,12 +617,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["team"] = ExpressionConverter.Convert(team);
             if (wiqlSystemAssignedTo != null)
                 callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
-            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
             if (wiqlSystemWorkItemType != null)
                 callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
-            callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
-            if (closedState != null)
-                callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
             if (wiqlSystemAreaPath != null)
                 callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
             callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
@@ -1196,63 +1196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string AssignedTo { get; set; }
     }
 
-    public class VstsListQueryResultWorkItemResponse
-    {
-        [JsonProperty("value")]
-        public QueryResultWorkItemResponse[] Value { get; set; }
-
-        [JsonProperty("@odata.nextLink")]
-        public string NextLink { get; set; }
-    }
-
-    public class QueryResultWorkItemResponse
-    {
-        [JsonProperty("System.Id")]
-        public int Id { get; set; }
-
-        [JsonProperty("System.AreaPath")]
-        public string AreaPath { get; set; }
-
-        [JsonProperty("System.TeamProject")]
-        public string TeamProject { get; set; }
-
-        [JsonProperty("System.IterationPath")]
-        public string IterationPath { get; set; }
-
-        [JsonProperty("System.WorkItemType")]
-        public string WorkItemType { get; set; }
-
-        [JsonProperty("System.State")]
-        public string State { get; set; }
-
-        [JsonProperty("System.Reason")]
-        public string Reason { get; set; }
-
-        [JsonProperty("System.CreatedDate")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("System.CreatedBy")]
-        public string CreatedBy { get; set; }
-
-        [JsonProperty("System.ChangedDate")]
-        public string ChangedDate { get; set; }
-
-        [JsonProperty("System.ChangedBy")]
-        public string ChangedBy { get; set; }
-
-        [JsonProperty("System.Title")]
-        public string Title { get; set; }
-
-        [JsonProperty("System.Description")]
-        public string Description { get; set; }
-
-        [JsonProperty("System.Tags")]
-        public string Tags { get; set; }
-
-        [JsonProperty("System.AssignedTo")]
-        public string AssignedTo { get; set; }
-    }
-
     public class VstsListQueryHierarchyItem
     {
         [JsonProperty("value")]
@@ -1489,6 +1432,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         [JsonProperty("folder")]
         public string Folder { get; set; }
+    }
+
+    public class VstsListQueryResultWorkItemResponse
+    {
+        [JsonProperty("value")]
+        public QueryResultWorkItemResponse[] Value { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+    }
+
+    public class QueryResultWorkItemResponse
+    {
+        [JsonProperty("System.Id")]
+        public int Id { get; set; }
+
+        [JsonProperty("System.AreaPath")]
+        public string AreaPath { get; set; }
+
+        [JsonProperty("System.TeamProject")]
+        public string TeamProject { get; set; }
+
+        [JsonProperty("System.IterationPath")]
+        public string IterationPath { get; set; }
+
+        [JsonProperty("System.WorkItemType")]
+        public string WorkItemType { get; set; }
+
+        [JsonProperty("System.State")]
+        public string State { get; set; }
+
+        [JsonProperty("System.Reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("System.CreatedDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("System.CreatedBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("System.ChangedDate")]
+        public string ChangedDate { get; set; }
+
+        [JsonProperty("System.ChangedBy")]
+        public string ChangedBy { get; set; }
+
+        [JsonProperty("System.Title")]
+        public string Title { get; set; }
+
+        [JsonProperty("System.Description")]
+        public string Description { get; set; }
+
+        [JsonProperty("System.Tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("System.AssignedTo")]
+        public string AssignedTo { get; set; }
     }
 
     public class VstsListBuildResult

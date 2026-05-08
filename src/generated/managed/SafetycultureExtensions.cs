@@ -355,7 +355,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var formatpropCount = 0;
             if (formatexportFormat != null)
             {
-                format["format"] = ExpressionConverter.ConvertO(formatexportFormat);
+                if (formatexportFormat != null)
+                {
+                    format["format"] = ExpressionConverter.ConvertO(formatexportFormat);
+                    formatpropCount++;
+                }
+
+                formatpropCount++;
+            }
+            else
+            {
+                format["format"] = "PDF";
                 formatpropCount++;
             }
 

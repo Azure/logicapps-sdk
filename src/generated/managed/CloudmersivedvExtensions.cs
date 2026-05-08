@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<WhoisResponse> DomainPost(Expression<Func<string>> domain = null)
+        public IBodyWorkflowAction<WhoisResponse> Domain(Expression<Func<string>> domain = null)
         {
             var apiCallPath = "/validate/domain/whois";
             var apiCallHttpMethod = "post";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GeolocateResponse> IPAddressPost(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<GeolocateResponse> IPAddress(Expression<Func<string>> value = null)
         {
             var apiCallPath = "/validate/ip/geolocate";
             var apiCallHttpMethod = "post";

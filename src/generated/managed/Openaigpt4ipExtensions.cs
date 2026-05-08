@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class Openaigpt4ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ChatPostResponse> ChatPost(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodyn = null, Expression<Func<string>> bodystop = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodyn = null, Expression<Func<string>> bodystop = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<string>> bodyuser = null)
         {
             var apiCallPath = "/v1/chat/completions";
             var apiCallHttpMethod = "post";
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<FineTuningPostResponse> FineTuningPost(Expression<Func<string>> bodytrainingFile, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyvalidationFile = null, Expression<Func<int>> bodyhyperparametersnEpochs = null, Expression<Func<string>> bodysuffix = null)
+        public IBodyWorkflowAction<FineTuningPostResponse> FineTuning(Expression<Func<string>> bodytrainingFile, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyvalidationFile = null, Expression<Func<int>> bodyhyperparametersnEpochs = null, Expression<Func<string>> bodysuffix = null)
         {
             var apiCallPath = "/v1/fine_tuning/jobs";
             var apiCallHttpMethod = "post";
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancelPost(Expression<Func<string>> fineTuningJobId)
+        public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel(Expression<Func<string>> fineTuningJobId)
         {
             var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
             var apiCallHttpMethod = "post";
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ModerationPostResponse> ModerationPost(Expression<Func<string>> bodyinput, Expression<Func<bodymodelInput>> bodymodel = null)
+        public IBodyWorkflowAction<ModerationPostResponse> Moderation(Expression<Func<string>> bodyinput, Expression<Func<bodymodelInput>> bodymodel = null)
         {
             var apiCallPath = "/v1/moderations";
             var apiCallHttpMethod = "post";
@@ -177,7 +177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             body["input"] = ExpressionConverter.ConvertO(bodyinput);
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                if (bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["model"] = "text-moderation-latest";
                 bodypropCount++;
             }
 
@@ -190,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<EmbedPostResponse> EmbedPost(Expression<Func<string>> bodyinput, Expression<Func<string>> bodymodel = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string>> bodyinput, Expression<Func<string>> bodymodel = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null, Expression<Func<string>> bodyuser = null)
         {
             var apiCallPath = "/v1/embeddings";
             var apiCallHttpMethod = "post";
@@ -201,13 +211,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             body["input"] = ExpressionConverter.ConvertO(bodyinput);
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                if (bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["model"] = "gpt-4-1106-preview";
                 bodypropCount++;
             }
 
             if (bodyencodingFormat != null)
             {
-                body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                if (bodyencodingFormat != null)
+                {
+                    body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["encoding_format"] = "float";
                 bodypropCount++;
             }
 
@@ -226,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeechPost(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
+        public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
         {
             var apiCallPath = "/v1/audio/speech";
             var apiCallHttpMethod = "post";
@@ -241,13 +271,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
             if (bodyresponseFormat != null)
             {
-                body["response_format"] = ExpressionConverter.ConvertO(bodyresponseFormat);
+                if (bodyresponseFormat != null)
+                {
+                    body["response_format"] = ExpressionConverter.ConvertO(bodyresponseFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["response_format"] = "mp3";
                 bodypropCount++;
             }
 
             if (bodyspeed != null)
             {
-                body["speed"] = ExpressionConverter.ConvertO(bodyspeed);
+                if (bodyspeed != null)
+                {
+                    body["speed"] = ExpressionConverter.ConvertO(bodyspeed);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["speed"] = 1;
                 bodypropCount++;
             }
 
@@ -260,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscriptionPost(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
+        public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
             var apiCallPath = "/v1/audio/transcriptions";
             var apiCallHttpMethod = "post";
@@ -269,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslationPost(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
+        public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
             var apiCallPath = "/v1/audio/translations";
             var apiCallHttpMethod = "post";
@@ -278,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImagePostResponse> ImagePost(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
             var apiCallPath = "/v1/images/generations";
             var apiCallHttpMethod = "post";
@@ -287,7 +337,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var bodypropCount = 0;
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                if (bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["model"] = "dall-e-2";
                 bodypropCount++;
             }
 
@@ -301,7 +361,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
             if (bodyquality != null)
             {
-                body["quality"] = ExpressionConverter.ConvertO(bodyquality);
+                if (bodyquality != null)
+                {
+                    body["quality"] = ExpressionConverter.ConvertO(bodyquality);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["quality"] = "standard";
                 bodypropCount++;
             }
 
@@ -309,7 +379,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             bodypropCount++;
             if (bodysize != null)
             {
-                body["size"] = ExpressionConverter.ConvertO(bodysize);
+                if (bodysize != null)
+                {
+                    body["size"] = ExpressionConverter.ConvertO(bodysize);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["size"] = "1024x1024";
                 bodypropCount++;
             }
 
@@ -334,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageEditPostResponse> ImageEditPost(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
+        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
             var apiCallPath = "/v1/images/edits";
             var apiCallHttpMethod = "post";
@@ -343,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariationPost(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
+        public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
             var apiCallPath = "/v1/images/variations";
             var apiCallHttpMethod = "post";
@@ -365,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }
@@ -422,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class ModelsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public ModelsGetResponseDataTypeItem[] Data { get; set; }
@@ -434,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }
@@ -458,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }
@@ -494,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class FineTuningPostResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -527,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class FineTuningGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -575,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class FineTuningCancelPostResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -617,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class FineTuningEventsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public FineTuningEventsGetResponseDataTypeItem[] Data { get; set; }
@@ -629,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class FineTuningEventsGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -757,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class EmbedPostResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public EmbedPostResponseDataTypeItem[] Data { get; set; }
@@ -772,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     public class EmbedPostResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("embedding")]
         public double[] Embedding { get; set; }

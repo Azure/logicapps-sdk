@@ -47,7 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["selector"] = ExpressionConverter.ConvertO(bodyselector);
             if (bodyselectorType != null)
             {
-                body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                if (bodyselectorType != null)
+                {
+                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["selector_type"] = "css";
                 bodypropCount++;
             }
 
@@ -77,7 +87,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["attribute"] = ExpressionConverter.ConvertO(bodyattribute);
             if (bodyselectorType != null)
             {
-                body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                if (bodyselectorType != null)
+                {
+                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["selector_type"] = "css";
                 bodypropCount++;
             }
 
@@ -145,13 +165,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
             body["html"] = ExpressionConverter.ConvertO(bodyhtml);
             if (bodytableSelector != null)
             {
-                body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                if (bodytableSelector != null)
+                {
+                    body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["table_selector"] = "table";
                 bodypropCount++;
             }
 
             if (bodyheaderRowsExist != null)
             {
-                body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                if (bodyheaderRowsExist != null)
+                {
+                    body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["header_rows_exist"] = true;
                 bodypropCount++;
             }
 

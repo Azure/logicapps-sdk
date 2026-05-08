@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction ApiAnalyzePost(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
+        public IWorkflowAction ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
         {
             var apiCallPath = "/api/analyze";
             var apiCallHttpMethod = "post";

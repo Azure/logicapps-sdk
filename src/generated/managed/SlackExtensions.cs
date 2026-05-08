@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     public class SlackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannelV2(Expression<Func<string>> channel = null)
+        public IBodyWorkflowAction<SetDNDResponse> SetDND(Expression<Func<string>> numMinutes = null)
         {
-            var apiCallPath = "/conversations.join";
-            var apiCallHttpMethod = "post";
+            var apiCallPath = "/dnd.setSnooze";
+            var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (channel != null)
-                callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
-            return new ApiConnectionAction<JoinChannelResponseV2>(callPayload);
+            if (numMinutes != null)
+                callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(numMinutes);
+            return new ApiConnectionAction<SetDNDResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<CreateChannelResponse> CreateChannelV2(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
+        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
         {
             var apiCallPath = "/conversations.create";
             var apiCallHttpMethod = "post";
@@ -36,18 +36,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<SetDNDResponse> SetDND(Expression<Func<string>> numMinutes = null)
+        public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel(Expression<Func<string>> channel = null)
         {
-            var apiCallPath = "/dnd.setSnooze";
-            var apiCallHttpMethod = "get";
+            var apiCallPath = "/conversations.join";
+            var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (numMinutes != null)
-                callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(numMinutes);
-            return new ApiConnectionAction<SetDNDResponse>(callPayload);
+            if (channel != null)
+                callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
+            return new ApiConnectionAction<JoinChannelResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<PostMessageResponse> PostMessageV2(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
+        public IBodyWorkflowAction<ListChannelsResponseV3> ListChannels()
+        {
+            var apiCallPath = "/v3/conversations.list";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<ListChannelsResponseV3>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
+        public IBodyWorkflowAction<PostMessageResponse> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
         {
             var apiCallPath = "/v2/chat.postMessage";
             var apiCallHttpMethod = "post";
@@ -119,24 +128,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 
             return new ApiConnectionAction<PostMessageResponse>(callPayload);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<ListChannelsResponse> ListChannelsV2()
-        {
-            var apiCallPath = "/conversations.list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListChannelsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<ListChannelsResponseV3> ListChannelsV3()
-        {
-            var apiCallPath = "/v3/conversations.list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListChannelsResponseV3>(callPayload);
-        }
     }
 
     public class SlackTriggers([ConnectionName] string connectionId)
@@ -151,13 +142,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
     }
 
-    public class JoinChannelResponseV2
+    public class SetDNDResponse
+    {
+        [JsonProperty("snooze_enabled")]
+        public bool SnoozeEnabled { get; set; }
+    }
+
+    public class CreateChannelResponse
     {
         [JsonProperty("channel")]
         public Channel Channel { get; set; }
-
-        [JsonProperty("warning")]
-        public string Warning { get; set; }
     }
 
     public class Channel
@@ -169,16 +163,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         public string Name { get; set; }
     }
 
-    public class CreateChannelResponse
+    public class JoinChannelResponseV2
     {
         [JsonProperty("channel")]
         public Channel Channel { get; set; }
+
+        [JsonProperty("warning")]
+        public string Warning { get; set; }
     }
 
-    public class SetDNDResponse
+    public class ListChannelsResponseV3
     {
-        [JsonProperty("snooze_enabled")]
-        public bool SnoozeEnabled { get; set; }
+        [JsonProperty("value")]
+        public Channel[] Value { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
     }
 
     public class PostMessageResponse
@@ -217,21 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         Full,
         [EnumMember(Value = "none")]
         None
-    }
-
-    public class ListChannelsResponse
-    {
-        [JsonProperty("channels")]
-        public Channel[] Channels { get; set; }
-    }
-
-    public class ListChannelsResponseV3
-    {
-        [JsonProperty("value")]
-        public Channel[] Value { get; set; }
-
-        [JsonProperty("@odata.nextLink")]
-        public string NextLink { get; set; }
     }
 
     public class OnNewFileResponseItem

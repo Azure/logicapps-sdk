@@ -12,54 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
     public class TodoistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4> ShareProjectV4(Expression<Func<string>> projectId, Expression<Func<string>> shareProjectemail)
-        {
-            var apiCallPath = "/v4/sync/shareProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            var shareProject = new JObject();
-            var shareProjectpropCount = 0;
-            shareProjectpropCount++;
-            shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
-            if (shareProjectpropCount > 0)
-            {
-                callPayload.Body = shareProject;
-            }
-
-            return new ApiConnectionAction<ProjectV4>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4[]> ListProjectsV4()
-        {
-            var apiCallPath = "/v4/projects/getAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectV4[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2[]> ListItemsV4()
-        {
-            var apiCallPath = "/v4/tasks/getAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskV2[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2[]> ListItemsByProjectV4(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = "/v4/tasks/getTasksByProject";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionAction<TaskV2[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2> CreateItemV4(Expression<Func<string>> newItemtitle, Expression<Func<string>> newItemprojectId = null, Expression<Func<string>> newItemdueDate = null, Expression<Func<int>> newItempriority = null, Expression<Func<string>> newItemparentId = null, Expression<Func<int>> newItemchildOrder = null)
+        public IBodyWorkflowAction<TaskV2> CreateItem(Expression<Func<string>> newItemtitle, Expression<Func<string>> newItemprojectId = null, Expression<Func<string>> newItemdueDate = null, Expression<Func<int>> newItempriority = null, Expression<Func<string>> newItemparentId = null, Expression<Func<int>> newItemchildOrder = null)
         {
             var apiCallPath = "/v4/tasks/createTask";
             var apiCallHttpMethod = "post";
@@ -107,33 +60,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateItemV4(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<string>> changeItemtitle, Expression<Func<int>> changeItempriority = null)
+        public IBodyWorkflowAction<LabelV4> CreateLabel(Expression<Func<string>> newLabelname, Expression<Func<string>> newLabelcolor = null, Expression<Func<int>> newLabelorder = null)
         {
-            var apiCallPath = "/v4/tasks/updateTask";
+            var apiCallPath = "/v4/labels/createLabel";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var changeItem = new JObject();
-            var changeItempropCount = 0;
-            changeItempropCount++;
-            changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
-            if (changeItempriority != null)
+            var newLabel = new JObject();
+            var newLabelpropCount = 0;
+            newLabelpropCount++;
+            newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
+            if (newLabelcolor != null)
             {
-                changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
-                changeItempropCount++;
+                newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
+                newLabelpropCount++;
             }
 
-            if (changeItempropCount > 0)
+            if (newLabelorder != null)
             {
-                callPayload.Body = changeItem;
+                newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
+                newLabelpropCount++;
             }
 
-            return new ApiConnectionAction(callPayload);
+            if (newLabelpropCount > 0)
+            {
+                callPayload.Body = newLabel;
+            }
+
+            return new ApiConnectionAction<LabelV4>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4> CreateProjectV4(Expression<Func<string>> newProjectname, Expression<Func<string>> newProjectcolor = null, Expression<Func<string>> newProjectparentId = null, Expression<Func<bool>> newProjectisFavorite = null)
+        public IBodyWorkflowAction<ProjectV4> CreateProject(Expression<Func<string>> newProjectname, Expression<Func<string>> newProjectcolor = null, Expression<Func<string>> newProjectparentId = null, Expression<Func<bool>> newProjectisFavorite = null)
         {
             var apiCallPath = "/v4/projects/createProject";
             var apiCallHttpMethod = "post";
@@ -169,38 +126,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateProjectV4(Expression<Func<string>> id, Expression<Func<string>> changeProjectname, Expression<Func<string>> changeProjectcolor = null, Expression<Func<bool>> changeProjectisFavorite = null)
+        public IBodyWorkflowAction<TaskV2[]> ListItems()
         {
-            var apiCallPath = "/v4/projects/updateProject";
-            var apiCallHttpMethod = "post";
+            var apiCallPath = "/v4/tasks/getAll";
+            var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var changeProject = new JObject();
-            var changeProjectpropCount = 0;
-            changeProjectpropCount++;
-            changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
-            if (changeProjectcolor != null)
-            {
-                changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
-                changeProjectpropCount++;
-            }
-
-            if (changeProjectisFavorite != null)
-            {
-                changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
-                changeProjectpropCount++;
-            }
-
-            if (changeProjectpropCount > 0)
-            {
-                callPayload.Body = changeProject;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<TaskV2[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<LabelV4[]> ListLabelsV4()
+        public IBodyWorkflowAction<TaskV2[]> ListItemsByProject(Expression<Func<string>> projectId)
+        {
+            var apiCallPath = "/v4/tasks/getTasksByProject";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            return new ApiConnectionAction<TaskV2[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
+        public IBodyWorkflowAction<LabelV4[]> ListLabels()
         {
             var apiCallPath = "/v4/labels/getAll";
             var apiCallHttpMethod = "get";
@@ -209,37 +154,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<LabelV4> CreateLabelV4(Expression<Func<string>> newLabelname, Expression<Func<string>> newLabelcolor = null, Expression<Func<int>> newLabelorder = null)
+        public IBodyWorkflowAction<ProjectV4[]> ListProjects()
         {
-            var apiCallPath = "/v4/labels/createLabel";
-            var apiCallHttpMethod = "post";
+            var apiCallPath = "/v4/projects/getAll";
+            var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newLabel = new JObject();
-            var newLabelpropCount = 0;
-            newLabelpropCount++;
-            newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
-            if (newLabelcolor != null)
-            {
-                newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
-                newLabelpropCount++;
-            }
-
-            if (newLabelorder != null)
-            {
-                newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
-                newLabelpropCount++;
-            }
-
-            if (newLabelpropCount > 0)
-            {
-                callPayload.Body = newLabel;
-            }
-
-            return new ApiConnectionAction<LabelV4>(callPayload);
+            return new ApiConnectionAction<ProjectV4[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction UpdateLabelV4(Expression<Func<string>> id, Expression<Func<string>> changeLabelname = null, Expression<Func<string>> changeLabelcolor = null, Expression<Func<int>> changeLabelorder = null)
+        public IBodyWorkflowAction<ProjectV4> ShareProject(Expression<Func<string>> projectId, Expression<Func<string>> shareProjectemail)
+        {
+            var apiCallPath = "/v4/sync/shareProject";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            var shareProject = new JObject();
+            var shareProjectpropCount = 0;
+            shareProjectpropCount++;
+            shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
+            if (shareProjectpropCount > 0)
+            {
+                callPayload.Body = shareProject;
+            }
+
+            return new ApiConnectionAction<ProjectV4>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
+        public IWorkflowAction UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<string>> changeItemtitle, Expression<Func<int>> changeItempriority = null)
+        {
+            var apiCallPath = "/v4/tasks/updateTask";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            var changeItem = new JObject();
+            var changeItempropCount = 0;
+            changeItempropCount++;
+            changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
+            if (changeItempriority != null)
+            {
+                changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
+                changeItempropCount++;
+            }
+
+            if (changeItempropCount > 0)
+            {
+                callPayload.Body = changeItem;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
+        public IWorkflowAction UpdateLabel(Expression<Func<string>> id, Expression<Func<string>> changeLabelname = null, Expression<Func<string>> changeLabelcolor = null, Expression<Func<int>> changeLabelorder = null)
         {
             var apiCallPath = "/v4/labels/updateLabel";
             var apiCallHttpMethod = "post";
@@ -272,11 +241,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
             return new ApiConnectionAction(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
+        public IWorkflowAction UpdateProject(Expression<Func<string>> id, Expression<Func<string>> changeProjectname, Expression<Func<string>> changeProjectcolor = null, Expression<Func<bool>> changeProjectisFavorite = null)
+        {
+            var apiCallPath = "/v4/projects/updateProject";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            var changeProject = new JObject();
+            var changeProjectpropCount = 0;
+            changeProjectpropCount++;
+            changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
+            if (changeProjectcolor != null)
+            {
+                changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
+                changeProjectpropCount++;
+            }
+
+            if (changeProjectisFavorite != null)
+            {
+                changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
+                changeProjectpropCount++;
+            }
+
+            if (changeProjectpropCount > 0)
+            {
+                callPayload.Body = changeProject;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
     }
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompletedV4(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v4/trigger/completed/get_all";
             var apiCallHttpMethod = "get";
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreatedV4(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v4/trigger/sync";
             var apiCallHttpMethod = "get";
@@ -293,48 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
             callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
             return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, triggerName, recurrence);
         }
-    }
-
-    public class ProjectV4
-    {
-        [JsonProperty("id")]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("name")]
-        public string ProjectName { get; set; }
-
-        [JsonProperty("parent_id ")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("child_order ")]
-        public int ChildOrder { get; set; }
-
-        [JsonProperty("color")]
-        public string Color { get; set; }
-
-        [JsonProperty("collapsed")]
-        public bool IsProjectCollapsed { get; set; }
-
-        [JsonProperty("inbox_project")]
-        public bool IsProjectShared { get; set; }
-
-        [JsonProperty("is_deleted")]
-        public bool IsProjectMarkedAsDeleted { get; set; }
-
-        [JsonProperty("is_archived")]
-        public bool IsProjectArchived { get; set; }
-
-        [JsonProperty("sync_id")]
-        public string SyncId { get; set; }
-
-        [JsonProperty("is_favorite")]
-        public bool IsProjectFavorite { get; set; }
-
-        [JsonProperty("team_inbox")]
-        public bool IsProjectInTeamInbox { get; set; }
-
-        [JsonProperty("view_style")]
-        public string ViewStyle { get; set; }
     }
 
     public class TaskV2
@@ -434,6 +392,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
         [JsonProperty("is_favorite")]
         public bool IsFavorite { get; set; }
+    }
+
+    public class ProjectV4
+    {
+        [JsonProperty("id")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("name")]
+        public string ProjectName { get; set; }
+
+        [JsonProperty("parent_id ")]
+        public string ParentId { get; set; }
+
+        [JsonProperty("child_order ")]
+        public int ChildOrder { get; set; }
+
+        [JsonProperty("color")]
+        public string Color { get; set; }
+
+        [JsonProperty("collapsed")]
+        public bool IsProjectCollapsed { get; set; }
+
+        [JsonProperty("inbox_project")]
+        public bool IsProjectShared { get; set; }
+
+        [JsonProperty("is_deleted")]
+        public bool IsProjectMarkedAsDeleted { get; set; }
+
+        [JsonProperty("is_archived")]
+        public bool IsProjectArchived { get; set; }
+
+        [JsonProperty("sync_id")]
+        public string SyncId { get; set; }
+
+        [JsonProperty("is_favorite")]
+        public bool IsProjectFavorite { get; set; }
+
+        [JsonProperty("team_inbox")]
+        public bool IsProjectInTeamInbox { get; set; }
+
+        [JsonProperty("view_style")]
+        public string ViewStyle { get; set; }
     }
 
     public class OnItemCompletedV4Response

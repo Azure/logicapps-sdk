@@ -111,24 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ftp")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolderV2(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null, Expression<Func<bool>> createFolders = null)
-        {
-            var apiCallPath = "/datasets/default/extractFolderV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
-            callPayload.Queries["createFolders"] = Convert.ToString(false);
-            if (createFolders != null)
-                callPayload.Queries["createFolders"] = ExpressionConverter.Convert(createFolders);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ftp")]
         public IBodyWorkflowAction<BlobMetadata[]> ListFolder(Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/datasets/default/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
@@ -143,6 +125,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ftp
             var apiCallPath = "/datasets/default/folders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ftp")]
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null, Expression<Func<bool>> createFolders = null)
+        {
+            var apiCallPath = "/datasets/default/extractFolderV2";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["overwrite"] = Convert.ToString(false);
+            if (overwrite != null)
+                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+            callPayload.Queries["createFolders"] = Convert.ToString(false);
+            if (createFolders != null)
+                callPayload.Queries["createFolders"] = ExpressionConverter.Convert(createFolders);
+            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
     }

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollectionPost(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
+        public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
         {
             var apiCallPath = "/cards/collection";
             var apiCallHttpMethod = "post";
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsSearchGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("total_cards")]
         public int TotalCards { get; set; }
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsSearchGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsSearchGetResponseDataTypeItemAllPartsTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsSearchGetResponseDataTypeItemCardFacesTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsNamedGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsAutocompleteGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("total_values")]
         public int TotalValues { get; set; }
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsCollectionPostResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("not_found")]
         public string[] NotFound { get; set; }
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsCollectionPostResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsSetNumberGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1941,7 +1941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsMultiverseGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2265,7 +2265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsMTGOGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2592,7 +2592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsArenaGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2925,7 +2925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsTCGplayerGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3255,7 +3255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsCardmarketGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3603,7 +3603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsScryfallGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3807,7 +3807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CardsScryfallGetResponseCardFacesTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3951,7 +3951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SetsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
@@ -3963,7 +3963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SetsGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4026,7 +4026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SetGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4089,7 +4089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SetsTCGplayerGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4152,7 +4152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsMultiverseGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
@@ -4164,7 +4164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsMultiverseGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("oracle_id")]
         public string OracleId { get; set; }
@@ -4182,7 +4182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsMTGOGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsMTGOGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("oracle_id")]
         public string OracleId { get; set; }
@@ -4212,7 +4212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsArenaGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
@@ -4224,7 +4224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class RulingsArenaGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("oracle_id")]
         public string OracleId { get; set; }
@@ -4242,7 +4242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SymbolsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
@@ -4254,7 +4254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class SymbolsGetResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("symbol")]
         public string Symbol { get; set; }
@@ -4296,7 +4296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogNamesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4311,7 +4311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogArtistsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4326,7 +4326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogWordsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4341,7 +4341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogCreaturesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4356,7 +4356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogPlaneswalkersGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4371,7 +4371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogLandsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4386,7 +4386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogArtifactsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4401,7 +4401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogEnchantmentsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4416,7 +4416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogSpellGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogPowersGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4446,7 +4446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogToughnessGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4461,7 +4461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogLoyaltiesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4476,7 +4476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogWatermarksGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4491,7 +4491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogKeyAbilitiesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4506,7 +4506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogKeyActionsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -4521,7 +4521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class CatalogAbilitiesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }

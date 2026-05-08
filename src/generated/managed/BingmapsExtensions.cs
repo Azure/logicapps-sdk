@@ -12,43 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
     public class BingmapsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetRouteResponse> GetRouteV3(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
-        {
-            var apiCallPath = String.Format("/V3/REST/V1/Routes/{0}", ExpressionConverter.ConvertWithUrlEncoding(travelMode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["wp.0"] = ExpressionConverter.Convert(wp0);
-            callPayload.Queries["wp.1"] = ExpressionConverter.Convert(wp1);
-            callPayload.Queries["avoid_highways"] = Convert.ToString(false);
-            if (avoidHighways != null)
-                callPayload.Queries["avoid_highways"] = ExpressionConverter.Convert(avoidHighways);
-            callPayload.Queries["avoid_tolls"] = Convert.ToString(false);
-            if (avoidTolls != null)
-                callPayload.Queries["avoid_tolls"] = ExpressionConverter.Convert(avoidTolls);
-            callPayload.Queries["avoid_ferry"] = Convert.ToString(false);
-            if (avoidFerry != null)
-                callPayload.Queries["avoid_ferry"] = ExpressionConverter.Convert(avoidFerry);
-            callPayload.Queries["avoid_minimizeHighways"] = Convert.ToString(false);
-            if (avoidMinimizeHighways != null)
-                callPayload.Queries["avoid_minimizeHighways"] = ExpressionConverter.Convert(avoidMinimizeHighways);
-            callPayload.Queries["avoid_minimizeTolls"] = Convert.ToString(false);
-            if (avoidMinimizeTolls != null)
-                callPayload.Queries["avoid_minimizeTolls"] = ExpressionConverter.Convert(avoidMinimizeTolls);
-            callPayload.Queries["avoid_borderCrossing"] = Convert.ToString(false);
-            if (avoidBorderCrossing != null)
-                callPayload.Queries["avoid_borderCrossing"] = ExpressionConverter.Convert(avoidBorderCrossing);
-            if (optimize != null)
-                callPayload.Queries["optimize"] = ExpressionConverter.Convert(optimize);
-            if (distanceUnit != null)
-                callPayload.Queries["distanceUnit"] = ExpressionConverter.Convert(distanceUnit);
-            if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-            if (timeType != null)
-                callPayload.Queries["timeType"] = ExpressionConverter.Convert(timeType);
-            return new ApiConnectionAction<GetRouteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> includeEntityTypes = null, Expression<Func<bool>> includeNeighborhood = null, Expression<Func<bool>> include = null)
         {
             var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
@@ -87,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<string> GetMapV2(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
+        public IBodyWorkflowAction<string> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
         {
             var apiCallPath = String.Format("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", ExpressionConverter.ConvertWithUrlEncoding(imagerySet, 1), ExpressionConverter.ConvertWithUrlEncoding(zoomLevel, 1));
             var apiCallHttpMethod = "get";
@@ -108,10 +71,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 callPayload.Queries["pushpinLabel"] = ExpressionConverter.Convert(pushpinLabel);
             return new ApiConnectionAction<string>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
+        public IBodyWorkflowAction<GetRouteResponse> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
+        {
+            var apiCallPath = String.Format("/V3/REST/V1/Routes/{0}", ExpressionConverter.ConvertWithUrlEncoding(travelMode, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["wp.0"] = ExpressionConverter.Convert(wp0);
+            callPayload.Queries["wp.1"] = ExpressionConverter.Convert(wp1);
+            callPayload.Queries["avoid_highways"] = Convert.ToString(false);
+            if (avoidHighways != null)
+                callPayload.Queries["avoid_highways"] = ExpressionConverter.Convert(avoidHighways);
+            callPayload.Queries["avoid_tolls"] = Convert.ToString(false);
+            if (avoidTolls != null)
+                callPayload.Queries["avoid_tolls"] = ExpressionConverter.Convert(avoidTolls);
+            callPayload.Queries["avoid_ferry"] = Convert.ToString(false);
+            if (avoidFerry != null)
+                callPayload.Queries["avoid_ferry"] = ExpressionConverter.Convert(avoidFerry);
+            callPayload.Queries["avoid_minimizeHighways"] = Convert.ToString(false);
+            if (avoidMinimizeHighways != null)
+                callPayload.Queries["avoid_minimizeHighways"] = ExpressionConverter.Convert(avoidMinimizeHighways);
+            callPayload.Queries["avoid_minimizeTolls"] = Convert.ToString(false);
+            if (avoidMinimizeTolls != null)
+                callPayload.Queries["avoid_minimizeTolls"] = ExpressionConverter.Convert(avoidMinimizeTolls);
+            callPayload.Queries["avoid_borderCrossing"] = Convert.ToString(false);
+            if (avoidBorderCrossing != null)
+                callPayload.Queries["avoid_borderCrossing"] = ExpressionConverter.Convert(avoidBorderCrossing);
+            if (optimize != null)
+                callPayload.Queries["optimize"] = ExpressionConverter.Convert(optimize);
+            if (distanceUnit != null)
+                callPayload.Queries["distanceUnit"] = ExpressionConverter.Convert(distanceUnit);
+            if (dateTime != null)
+                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
+            if (timeType != null)
+                callPayload.Queries["timeType"] = ExpressionConverter.Convert(timeType);
+            return new ApiConnectionAction<GetRouteResponse>(callPayload);
+        }
     }
 
     public class BingmapsTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class GetLocationResponse
+    {
+        [JsonProperty("address")]
+        public GetLocationResponseAddressType Address { get; set; }
+
+        [JsonProperty("confidence")]
+        public string Confidence { get; set; }
+
+        [JsonProperty("entityType")]
+        public string EntityType { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("point")]
+        public GetLocationResponsePointType Point { get; set; }
+    }
+
+    public class GetLocationResponseAddressType
+    {
+        [JsonProperty("addressLine")]
+        public string Line { get; set; }
+
+        [JsonProperty("countryRegion")]
+        public string CountryRegion { get; set; }
+
+        [JsonProperty("countryRegionIso2")]
+        public string CountryRegionISO2 { get; set; }
+
+        [JsonProperty("formattedAddress")]
+        public string FormattedAddress { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+    }
+
+    public class GetLocationResponsePointType
+    {
+        [JsonProperty("coordinates")]
+        public GetLocationResponsePointTypeCoordinatesType Coordinates { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class GetLocationResponsePointTypeCoordinatesType
+    {
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
+
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
+
+        [JsonProperty("combined")]
+        public string Combined { get; set; }
+    }
+
+    public enum imagerySetInput
+    {
+        Aerial,
+        AerialWithLabels,
+        CanvasDark,
+        CanvasLight,
+        CanvasGray,
+        Road
+    }
+
+    public enum formatInput
+    {
+        [EnumMember(Value = "gif")]
+        Gif,
+        [EnumMember(Value = "jpeg")]
+        Jpeg,
+        [EnumMember(Value = "png")]
+        Png
     }
 
     public class GetRouteResponse
@@ -282,83 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         Arrival,
         Departure,
         LastAvailable
-    }
-
-    public class GetLocationResponse
-    {
-        [JsonProperty("address")]
-        public GetLocationResponseAddressType Address { get; set; }
-
-        [JsonProperty("confidence")]
-        public string Confidence { get; set; }
-
-        [JsonProperty("entityType")]
-        public string EntityType { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("point")]
-        public GetLocationResponsePointType Point { get; set; }
-    }
-
-    public class GetLocationResponseAddressType
-    {
-        [JsonProperty("addressLine")]
-        public string Line { get; set; }
-
-        [JsonProperty("countryRegion")]
-        public string CountryRegion { get; set; }
-
-        [JsonProperty("countryRegionIso2")]
-        public string CountryRegionISO2 { get; set; }
-
-        [JsonProperty("formattedAddress")]
-        public string FormattedAddress { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-    }
-
-    public class GetLocationResponsePointType
-    {
-        [JsonProperty("coordinates")]
-        public GetLocationResponsePointTypeCoordinatesType Coordinates { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class GetLocationResponsePointTypeCoordinatesType
-    {
-        [JsonProperty("latitude")]
-        public double Latitude { get; set; }
-
-        [JsonProperty("longitude")]
-        public double Longitude { get; set; }
-
-        [JsonProperty("combined")]
-        public string Combined { get; set; }
-    }
-
-    public enum imagerySetInput
-    {
-        Aerial,
-        AerialWithLabels,
-        CanvasDark,
-        CanvasLight,
-        CanvasGray,
-        Road
-    }
-
-    public enum formatInput
-    {
-        [EnumMember(Value = "gif")]
-        Gif,
-        [EnumMember(Value = "jpeg")]
-        Jpeg,
-        [EnumMember(Value = "png")]
-        Png
     }
 }
 

@@ -98,7 +98,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var bodypropCount = 0;
             if (bodylistName != null)
             {
-                body["listName"] = ExpressionConverter.ConvertO(bodylistName);
+                if (bodylistName != null)
+                {
+                    body["listName"] = ExpressionConverter.ConvertO(bodylistName);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["listName"] = "Task list";
                 bodypropCount++;
             }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class ServicebusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction SendMessage(Expression<Func<string>> entityName, Expression<Func<JToken>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction SendMessage(Expression<Func<string>> entityName, Expression<Func<string>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
         {
             var apiCallPath = String.Format("/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "post";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var messagepropCount = 0;
             if (messagecontent != null)
             {
-                message["ContentData"] = ExpressionConverter.ConvertOWithBase64(messagecontent);
+                message["ContentData"] = ExpressionConverter.ConvertO(messagecontent);
                 messagepropCount++;
             }
 

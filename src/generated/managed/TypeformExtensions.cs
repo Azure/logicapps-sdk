@@ -37,25 +37,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
             return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
         }
-
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhookV2(Expression<Func<string>> formId, Expression<Func<string>> tag, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/v2/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["enabled"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
-        }
     }
 
     public class WebhookCreationResponse

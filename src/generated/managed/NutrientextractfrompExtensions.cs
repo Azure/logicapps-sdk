@@ -35,13 +35,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
             if (inputPdfDatapageRange != null)
             {
-                inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                if (inputPdfDatapageRange != null)
+                {
+                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["page_range"] = "*";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDatafailOnError != null)
             {
-                inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                if (inputPdfDatafailOnError != null)
+                {
+                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["fail_on_error"] = true;
                 inputPdfDatapropCount++;
             }
 
@@ -77,73 +97,193 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
             inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
             if (inputPdfDataoCRLanguage != null)
             {
-                inputPdfData["ocr_language"] = ExpressionConverter.ConvertO(inputPdfDataoCRLanguage);
+                if (inputPdfDataoCRLanguage != null)
+                {
+                    inputPdfData["ocr_language"] = ExpressionConverter.ConvertO(inputPdfDataoCRLanguage);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["ocr_language"] = "eng";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDatadPI != null)
             {
-                inputPdfData["dpi"] = ExpressionConverter.ConvertO(inputPdfDatadPI);
+                if (inputPdfDatadPI != null)
+                {
+                    inputPdfData["dpi"] = ExpressionConverter.ConvertO(inputPdfDatadPI);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["dpi"] = "300";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDatakVPOutputFormat != null)
             {
-                inputPdfData["kvp_format"] = ExpressionConverter.ConvertO(inputPdfDatakVPOutputFormat);
+                if (inputPdfDatakVPOutputFormat != null)
+                {
+                    inputPdfData["kvp_format"] = ExpressionConverter.ConvertO(inputPdfDatakVPOutputFormat);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["kvp_format"] = "json";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDatapageRange != null)
             {
-                inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                if (inputPdfDatapageRange != null)
+                {
+                    inputPdfData["page_range"] = ExpressionConverter.ConvertO(inputPdfDatapageRange);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["page_range"] = "*";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataautorotate != null)
             {
-                inputPdfData["autorotate"] = ExpressionConverter.ConvertO(inputPdfDataautorotate);
+                if (inputPdfDataautorotate != null)
+                {
+                    inputPdfData["autorotate"] = ExpressionConverter.ConvertO(inputPdfDataautorotate);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["autorotate"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDatatrimSymbols != null)
             {
-                inputPdfData["trim_symbols"] = ExpressionConverter.ConvertO(inputPdfDatatrimSymbols);
+                if (inputPdfDatatrimSymbols != null)
+                {
+                    inputPdfData["trim_symbols"] = ExpressionConverter.ConvertO(inputPdfDatatrimSymbols);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["trim_symbols"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataincludeKeyBoundingBox != null)
             {
-                inputPdfData["include_key_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeKeyBoundingBox);
+                if (inputPdfDataincludeKeyBoundingBox != null)
+                {
+                    inputPdfData["include_key_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeKeyBoundingBox);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["include_key_bounding_box"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataincludeValueBoundingBox != null)
             {
-                inputPdfData["include_value_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeValueBoundingBox);
+                if (inputPdfDataincludeValueBoundingBox != null)
+                {
+                    inputPdfData["include_value_bounding_box"] = ExpressionConverter.ConvertO(inputPdfDataincludeValueBoundingBox);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["include_value_bounding_box"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataincludePageNumber != null)
             {
-                inputPdfData["include_page_number"] = ExpressionConverter.ConvertO(inputPdfDataincludePageNumber);
+                if (inputPdfDataincludePageNumber != null)
+                {
+                    inputPdfData["include_page_number"] = ExpressionConverter.ConvertO(inputPdfDataincludePageNumber);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["include_page_number"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataincludeConfidence != null)
             {
-                inputPdfData["include_confidence"] = ExpressionConverter.ConvertO(inputPdfDataincludeConfidence);
+                if (inputPdfDataincludeConfidence != null)
+                {
+                    inputPdfData["include_confidence"] = ExpressionConverter.ConvertO(inputPdfDataincludeConfidence);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["include_confidence"] = "Default";
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataconfidenceThreshold != null)
             {
-                inputPdfData["confidence_threshold"] = ExpressionConverter.ConvertO(inputPdfDataconfidenceThreshold);
+                if (inputPdfDataconfidenceThreshold != null)
+                {
+                    inputPdfData["confidence_threshold"] = ExpressionConverter.ConvertO(inputPdfDataconfidenceThreshold);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["confidence_threshold"] = 50;
                 inputPdfDatapropCount++;
             }
 
             if (inputPdfDataincludeType != null)
             {
-                inputPdfData["include_type"] = ExpressionConverter.ConvertO(inputPdfDataincludeType);
+                if (inputPdfDataincludeType != null)
+                {
+                    inputPdfData["include_type"] = ExpressionConverter.ConvertO(inputPdfDataincludeType);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["include_type"] = "Default";
                 inputPdfDatapropCount++;
             }
 
@@ -155,7 +295,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputPdfDatafailOnError != null)
             {
-                inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                if (inputPdfDatafailOnError != null)
+                {
+                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfDatapropCount++;
+                }
+
+                inputPdfDatapropCount++;
+            }
+            else
+            {
+                inputPdfData["fail_on_error"] = true;
                 inputPdfDatapropCount++;
             }
 
@@ -191,7 +341,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputDatalanguage != null)
             {
-                inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                if (inputDatalanguage != null)
+                {
+                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["language"] = "English";
                 inputDatapropCount++;
             }
 
@@ -221,19 +381,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputDatapageNumber != null)
             {
-                inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                if (inputDatapageNumber != null)
+                {
+                    inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_number"] = "";
                 inputDatapropCount++;
             }
 
             if (inputDataperformance != null)
             {
-                inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                if (inputDataperformance != null)
+                {
+                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["performance"] = "Slow but accurate";
                 inputDatapropCount++;
             }
 
             if (inputDatablacklistWhitelist != null)
             {
-                inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                if (inputDatablacklistWhitelist != null)
+                {
+                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["characters_option"] = "None";
                 inputDatapropCount++;
             }
 
@@ -245,13 +435,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
             if (inputDatausePagination != null)
             {
-                inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                if (inputDatausePagination != null)
+                {
+                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["paginate"] = false;
                 inputDatapropCount++;
             }
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 

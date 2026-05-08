@@ -477,13 +477,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             body["jobToken"] = ExpressionConverter.ConvertO(bodyjobToken);
             if (bodyreport != null)
             {
-                body["report"] = ExpressionConverter.ConvertO(bodyreport);
+                if (bodyreport != null)
+                {
+                    body["report"] = ExpressionConverter.ConvertO(bodyreport);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["report"] = "Summary";
                 bodypropCount++;
             }
 
             if (bodyreportFormat != null)
             {
-                body["reportFormat"] = ExpressionConverter.ConvertO(bodyreportFormat);
+                if (bodyreportFormat != null)
+                {
+                    body["reportFormat"] = ExpressionConverter.ConvertO(bodyreportFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["reportFormat"] = "Pdf";
                 bodypropCount++;
             }
 

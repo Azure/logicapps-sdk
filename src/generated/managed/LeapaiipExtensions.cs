@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImagePostResponse> ImagePost(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var apiCallPath = String.Format("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "post";
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelPostResponse> ModelPost(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
+        public IBodyWorkflowAction<ModelPostResponse> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
         {
             var apiCallPath = "/v2/images/models/new";
             var apiCallHttpMethod = "post";
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicPostResponse> MusicPost(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
+        public IBodyWorkflowAction<MusicPostResponse> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
         {
             var apiCallPath = "/v1/music";
             var apiCallHttpMethod = "post";

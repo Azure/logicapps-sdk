@@ -109,18 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
-        public IBodyWorkflowAction<BlobMetadataPage> ListFolderV2(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/datasets/default/foldersV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nextPageMarker"] = Convert.ToString("");
-            callPayload.Queries["useFlatListing"] = Convert.ToString(false);
-            return new ApiConnectionAction<BlobMetadataPage>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolderV2(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var apiCallPath = "/datasets/default/extractFolderV2";
             var apiCallHttpMethod = "post";
@@ -132,6 +121,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
             callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
             return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
+        public IBodyWorkflowAction<BlobMetadataPage> ListFolder(Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/datasets/default/foldersV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["nextPageMarker"] = Convert.ToString("");
+            callPayload.Queries["useFlatListing"] = Convert.ToString(false);
+            return new ApiConnectionAction<BlobMetadataPage>(callPayload);
         }
     }
 

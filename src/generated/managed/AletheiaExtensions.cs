@@ -12,19 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
     public class AletheiaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<StockDataV2Response> StockDataV2(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
-        {
-            var apiCallPath = "/v2/StockData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Headers["Accept-Version"] = Convert.ToString(2);
-            return new ApiConnectionAction<StockDataV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
         {
             var apiCallPath = "/EntityFilings";
@@ -219,6 +206,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
             return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
+        {
+            var apiCallPath = "/v2/StockData";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+            if (fields != null)
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            callPayload.Headers["Accept-Version"] = Convert.ToString(2);
+            return new ApiConnectionAction<StockDataV2Response>(callPayload);
+        }
     }
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
@@ -280,85 +280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
-    }
-
-    public class StockDataV2Response
-    {
-        public string Symbol { get; set; }
-        public int FullTimeEmployees { get; set; }
-        public string Sector { get; set; }
-        public string Industry { get; set; }
-        public double Open { get; set; }
-        public int AverageVolume90Day { get; set; }
-        public string Exchange { get; set; }
-        public double DayHigh { get; set; }
-        public string ShortName { get; set; }
-        public string LongName { get; set; }
-        public double Change { get; set; }
-        public double PreviousClose { get; set; }
-        public double Price { get; set; }
-        public string Currency { get; set; }
-        public int Volume { get; set; }
-        public double MarketCap { get; set; }
-        public double ChangePercent { get; set; }
-        public double DayLow { get; set; }
-        public double BidPrice { get; set; }
-        public int BidQuantity { get; set; }
-        public double AskPrice { get; set; }
-        public int AskQuantity { get; set; }
-        public int AverageVolume10Day { get; set; }
-        public double YearLow { get; set; }
-        public double YearHigh { get; set; }
-        public double Beta { get; set; }
-        public double PriceEarningsRatio { get; set; }
-        public double EarningsPerShare { get; set; }
-        public string EarningsDate { get; set; }
-        public double ForwardDividend { get; set; }
-        public double ForwardDividendYield { get; set; }
-        public string ExDividendDate { get; set; }
-        public double YearTargetEstimate { get; set; }
-        public string LastFiscalYearEnd { get; set; }
-        public string LastFiscalQuarterEnd { get; set; }
-        public double ProfitMargin { get; set; }
-        public double OperatingMargin { get; set; }
-        public double ReturnOnAssets { get; set; }
-        public double ReturnOnEquity { get; set; }
-        public double Revenue { get; set; }
-        public double RevenuePerShare { get; set; }
-        public double QuarterlyRevenueGrowth { get; set; }
-        public double GrossProfit { get; set; }
-        public double EDBITDA { get; set; }
-        public double NetIncomeAvailableToCommon { get; set; }
-        public double QuarterlyEarningsGrowth { get; set; }
-        public double Cash { get; set; }
-        public double CashPerShare { get; set; }
-        public double Debt { get; set; }
-        public double DebtToEquityRatio { get; set; }
-        public double CurrentRatio { get; set; }
-        public double BookValuePerShare { get; set; }
-        public double OperatingCashFlow { get; set; }
-        public double LeveredFreeCashFlow { get; set; }
-        public double YearChangePercent { get; set; }
-        public double SP500YearChangePercent { get; set; }
-        public double MovingAverage50Day { get; set; }
-        public double MovingAverage200Day { get; set; }
-        public double SharesOutstanding { get; set; }
-        public double Float { get; set; }
-        public double PercentHeldByInsiders { get; set; }
-        public double PercentHeldByInstitutions { get; set; }
-        public double SharesShort { get; set; }
-        public double ShortRatio { get; set; }
-        public double ShortPercentOfFloat { get; set; }
-        public double ShortPercentOfSharesOutstanding { get; set; }
-        public double ForwardAnnualDividend { get; set; }
-        public double ForwardAnnualDividendYield { get; set; }
-        public double TrailingAnnualDividend { get; set; }
-        public double TrailingAnnualDividendYield { get; set; }
-        public double FiveYearAverageDividendYield { get; set; }
-        public double DividendPayoutRatio { get; set; }
-        public string DividendDate { get; set; }
-        public string LastSplitFactor { get; set; }
-        public string LastSplitDate { get; set; }
     }
 
     public class EntityFilingsResponseItem
@@ -665,6 +586,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double MarketCap { get; set; }
         public int Volume { get; set; }
         public string DataCollected { get; set; }
+    }
+
+    public class StockDataV2Response
+    {
+        public string Symbol { get; set; }
+        public int FullTimeEmployees { get; set; }
+        public string Sector { get; set; }
+        public string Industry { get; set; }
+        public double Open { get; set; }
+        public int AverageVolume90Day { get; set; }
+        public string Exchange { get; set; }
+        public double DayHigh { get; set; }
+        public string ShortName { get; set; }
+        public string LongName { get; set; }
+        public double Change { get; set; }
+        public double PreviousClose { get; set; }
+        public double Price { get; set; }
+        public string Currency { get; set; }
+        public int Volume { get; set; }
+        public double MarketCap { get; set; }
+        public double ChangePercent { get; set; }
+        public double DayLow { get; set; }
+        public double BidPrice { get; set; }
+        public int BidQuantity { get; set; }
+        public double AskPrice { get; set; }
+        public int AskQuantity { get; set; }
+        public int AverageVolume10Day { get; set; }
+        public double YearLow { get; set; }
+        public double YearHigh { get; set; }
+        public double Beta { get; set; }
+        public double PriceEarningsRatio { get; set; }
+        public double EarningsPerShare { get; set; }
+        public string EarningsDate { get; set; }
+        public double ForwardDividend { get; set; }
+        public double ForwardDividendYield { get; set; }
+        public string ExDividendDate { get; set; }
+        public double YearTargetEstimate { get; set; }
+        public string LastFiscalYearEnd { get; set; }
+        public string LastFiscalQuarterEnd { get; set; }
+        public double ProfitMargin { get; set; }
+        public double OperatingMargin { get; set; }
+        public double ReturnOnAssets { get; set; }
+        public double ReturnOnEquity { get; set; }
+        public double Revenue { get; set; }
+        public double RevenuePerShare { get; set; }
+        public double QuarterlyRevenueGrowth { get; set; }
+        public double GrossProfit { get; set; }
+        public double EDBITDA { get; set; }
+        public double NetIncomeAvailableToCommon { get; set; }
+        public double QuarterlyEarningsGrowth { get; set; }
+        public double Cash { get; set; }
+        public double CashPerShare { get; set; }
+        public double Debt { get; set; }
+        public double DebtToEquityRatio { get; set; }
+        public double CurrentRatio { get; set; }
+        public double BookValuePerShare { get; set; }
+        public double OperatingCashFlow { get; set; }
+        public double LeveredFreeCashFlow { get; set; }
+        public double YearChangePercent { get; set; }
+        public double SP500YearChangePercent { get; set; }
+        public double MovingAverage50Day { get; set; }
+        public double MovingAverage200Day { get; set; }
+        public double SharesOutstanding { get; set; }
+        public double Float { get; set; }
+        public double PercentHeldByInsiders { get; set; }
+        public double PercentHeldByInstitutions { get; set; }
+        public double SharesShort { get; set; }
+        public double ShortRatio { get; set; }
+        public double ShortPercentOfFloat { get; set; }
+        public double ShortPercentOfSharesOutstanding { get; set; }
+        public double ForwardAnnualDividend { get; set; }
+        public double ForwardAnnualDividendYield { get; set; }
+        public double TrailingAnnualDividend { get; set; }
+        public double TrailingAnnualDividendYield { get; set; }
+        public double FiveYearAverageDividendYield { get; set; }
+        public double DividendPayoutRatio { get; set; }
+        public string DividendDate { get; set; }
+        public string LastSplitFactor { get; set; }
+        public string LastSplitDate { get; set; }
     }
 
     public enum bodytransactionTypeInput

@@ -179,7 +179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 100;
                 bodypropCount++;
             }
 
@@ -367,7 +377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 100;
                 bodypropCount++;
             }
 

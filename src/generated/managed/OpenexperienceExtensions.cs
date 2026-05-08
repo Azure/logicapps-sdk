@@ -43,7 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
             var settingsObjectpropCount = 0;
             if (projectSettingssettingsprojectAdminMembersAccess != null)
             {
-                settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                if (projectSettingssettingsprojectAdminMembersAccess != null)
+                {
+                    settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                    settingsObjectpropCount++;
+                }
+
+                settingsObjectpropCount++;
+            }
+            else
+            {
+                settingsObject["projectAdminMembersAccess"] = false;
                 settingsObjectpropCount++;
             }
 

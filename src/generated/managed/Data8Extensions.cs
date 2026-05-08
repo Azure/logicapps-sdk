@@ -269,7 +269,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsmaxLines != null)
             {
-                optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                if (bodyoptionsmaxLines != null)
+                {
+                    optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["MaxLines"] = 6;
                 optionsObjectpropCount++;
             }
 
@@ -323,7 +333,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsincludeLocation != null)
             {
-                optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(bodyoptionsincludeLocation);
+                if (bodyoptionsincludeLocation != null)
+                {
+                    optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(bodyoptionsincludeLocation);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["IncludeLocation"] = true;
                 optionsObjectpropCount++;
             }
 
@@ -425,7 +445,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var optionsObjectpropCount = 0;
             if (bodyoptionsmatchLevel != null)
             {
-                optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(bodyoptionsmatchLevel);
+                if (bodyoptionsmatchLevel != null)
+                {
+                    optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(bodyoptionsmatchLevel);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["MatchLevel"] = "I";
                 optionsObjectpropCount++;
             }
 
@@ -551,31 +581,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
             var optionsObjectpropCount = 0;
             if (bodyoptionsmaxLineLength != null)
             {
-                optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                if (bodyoptionsmaxLineLength != null)
+                {
+                    optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["MaxLineLength"] = 100;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsmaxLines != null)
             {
-                optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                if (bodyoptionsmaxLines != null)
+                {
+                    optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["MaxLines"] = 5;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsfixTownCounty != null)
             {
-                optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                if (bodyoptionsfixTownCounty != null)
+                {
+                    optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["FixTownCounty"] = false;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsfixPostcode != null)
             {
-                optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(bodyoptionsfixPostcode);
+                if (bodyoptionsfixPostcode != null)
+                {
+                    optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(bodyoptionsfixPostcode);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["FixPostcode"] = false;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsfixBuilding != null)
             {
-                optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                if (bodyoptionsfixBuilding != null)
+                {
+                    optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["FixBuilding"] = false;
                 optionsObjectpropCount++;
             }
 
@@ -587,19 +667,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
             if (bodyoptionsformatter != null)
             {
-                optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                if (bodyoptionsformatter != null)
+                {
+                    optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["Formatter"] = "DefaultFormatter";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeUDPRN != null)
             {
-                optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                if (bodyoptionsincludeUDPRN != null)
+                {
+                    optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["IncludeUDPRN"] = false;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsincludeUPRN != null)
             {
-                optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUPRN);
+                if (bodyoptionsincludeUPRN != null)
+                {
+                    optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUPRN);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["IncludeUPRN"] = false;
                 optionsObjectpropCount++;
             }
 

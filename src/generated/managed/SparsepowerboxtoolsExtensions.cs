@@ -27,19 +27,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqPdfStampImageoptionsopacity != null)
             {
-                optionsObject["opacity"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsopacity);
+                if (reqPdfStampImageoptionsopacity != null)
+                {
+                    optionsObject["opacity"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsopacity);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["opacity"] = 1;
                 optionsObjectpropCount++;
             }
 
             if (reqPdfStampImageoptionsscale != null)
             {
-                optionsObject["scale"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsscale);
+                if (reqPdfStampImageoptionsscale != null)
+                {
+                    optionsObject["scale"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsscale);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["scale"] = 1;
                 optionsObjectpropCount++;
             }
 
             if (reqPdfStampImageoptionsrotate != null)
             {
-                optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsrotate);
+                if (reqPdfStampImageoptionsrotate != null)
+                {
+                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsrotate);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["rotate"] = 0;
                 optionsObjectpropCount++;
             }
 
@@ -47,19 +77,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var positionObjectpropCount = 0;
             if (reqPdfStampImageoptionspositionyOffset != null)
             {
-                positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionyOffset);
+                if (reqPdfStampImageoptionspositionyOffset != null)
+                {
+                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionyOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["yOffset"] = 25;
                 positionObjectpropCount++;
             }
 
             if (reqPdfStampImageoptionspositionstartOfYOffset != null)
             {
-                positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionstartOfYOffset);
+                if (reqPdfStampImageoptionspositionstartOfYOffset != null)
+                {
+                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionstartOfYOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["yOffsetStart"] = "bottom";
                 positionObjectpropCount++;
             }
 
             if (reqPdfStampImageoptionspositionxOffset != null)
             {
-                positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionxOffset);
+                if (reqPdfStampImageoptionspositionxOffset != null)
+                {
+                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionxOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["xOffset"] = 50;
                 positionObjectpropCount++;
             }
 
@@ -131,19 +191,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqPdfCreateByHtmloptionsmediaType != null)
             {
-                optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmediaType);
+                if (reqPdfCreateByHtmloptionsmediaType != null)
+                {
+                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmediaType);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["mediaType"] = "print";
                 optionsObjectpropCount++;
             }
 
             if (reqPdfCreateByHtmloptionspageFormat != null)
             {
-                optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionspageFormat);
+                if (reqPdfCreateByHtmloptionspageFormat != null)
+                {
+                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionspageFormat);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["format"] = "A4";
                 optionsObjectpropCount++;
             }
 
             if (reqPdfCreateByHtmloptionslandscape != null)
             {
-                optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionslandscape);
+                if (reqPdfCreateByHtmloptionslandscape != null)
+                {
+                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionslandscape);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["landscape"] = false;
                 optionsObjectpropCount++;
             }
 
@@ -151,25 +241,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var marginObjectpropCount = 0;
             if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
             {
-                marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginLeft);
+                if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
+                {
+                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginLeft);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["left"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
             {
-                marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginRight);
+                if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
+                {
+                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginRight);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["right"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
             {
-                marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginTop);
+                if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
+                {
+                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginTop);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["top"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
             {
-                marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginBottom);
+                if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
+                {
+                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginBottom);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["bottom"] = "0px";
                 marginObjectpropCount++;
             }
 
@@ -229,19 +359,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqPdfStampTextoptionsfontColor != null)
             {
-                optionsObject["color"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontColor);
+                if (reqPdfStampTextoptionsfontColor != null)
+                {
+                    optionsObject["color"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontColor);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["color"] = "#000000";
                 optionsObjectpropCount++;
             }
 
             if (reqPdfStampTextoptionsfontSize != null)
             {
-                optionsObject["size"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontSize);
+                if (reqPdfStampTextoptionsfontSize != null)
+                {
+                    optionsObject["size"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontSize);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["size"] = 50;
                 optionsObjectpropCount++;
             }
 
             if (reqPdfStampTextoptionsrotate != null)
             {
-                optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsrotate);
+                if (reqPdfStampTextoptionsrotate != null)
+                {
+                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsrotate);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["rotate"] = 0;
                 optionsObjectpropCount++;
             }
 
@@ -249,19 +409,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var positionObjectpropCount = 0;
             if (reqPdfStampTextoptionspositionyOffset != null)
             {
-                positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionyOffset);
+                if (reqPdfStampTextoptionspositionyOffset != null)
+                {
+                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionyOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["yOffset"] = 25;
                 positionObjectpropCount++;
             }
 
             if (reqPdfStampTextoptionspositionstartOfYOffset != null)
             {
-                positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionstartOfYOffset);
+                if (reqPdfStampTextoptionspositionstartOfYOffset != null)
+                {
+                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionstartOfYOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["yOffsetStart"] = "bottom";
                 positionObjectpropCount++;
             }
 
             if (reqPdfStampTextoptionspositionxOffset != null)
             {
-                positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionxOffset);
+                if (reqPdfStampTextoptionspositionxOffset != null)
+                {
+                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionxOffset);
+                    positionObjectpropCount++;
+                }
+
+                positionObjectpropCount++;
+            }
+            else
+            {
+                positionObject["xOffset"] = 50;
                 positionObjectpropCount++;
             }
 
@@ -299,13 +489,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqCsvToJsonoptionshasHeaders != null)
             {
-                optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionshasHeaders);
+                if (reqCsvToJsonoptionshasHeaders != null)
+                {
+                    optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionshasHeaders);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["hasHeaders"] = true;
                 optionsObjectpropCount++;
             }
 
             if (reqCsvToJsonoptionsdelimiter != null)
             {
-                optionsObject["delimiter"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionsdelimiter);
+                if (reqCsvToJsonoptionsdelimiter != null)
+                {
+                    optionsObject["delimiter"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionsdelimiter);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["delimiter"] = ",";
                 optionsObjectpropCount++;
             }
 
@@ -337,19 +547,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqPdfCreateByUrloptionsmediaType != null)
             {
-                optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmediaType);
+                if (reqPdfCreateByUrloptionsmediaType != null)
+                {
+                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmediaType);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["mediaType"] = "print";
                 optionsObjectpropCount++;
             }
 
             if (reqPdfCreateByUrloptionspageFormat != null)
             {
-                optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionspageFormat);
+                if (reqPdfCreateByUrloptionspageFormat != null)
+                {
+                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionspageFormat);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["format"] = "A4";
                 optionsObjectpropCount++;
             }
 
             if (reqPdfCreateByUrloptionslandscape != null)
             {
-                optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionslandscape);
+                if (reqPdfCreateByUrloptionslandscape != null)
+                {
+                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionslandscape);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["landscape"] = false;
                 optionsObjectpropCount++;
             }
 
@@ -357,25 +597,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var marginObjectpropCount = 0;
             if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
             {
-                marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginLeft);
+                if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
+                {
+                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginLeft);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["left"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByUrloptionsmarginmarginRight != null)
             {
-                marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginRight);
+                if (reqPdfCreateByUrloptionsmarginmarginRight != null)
+                {
+                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginRight);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["right"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByUrloptionsmarginmarginTop != null)
             {
-                marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginTop);
+                if (reqPdfCreateByUrloptionsmarginmarginTop != null)
+                {
+                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginTop);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["top"] = "0px";
                 marginObjectpropCount++;
             }
 
             if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
             {
-                marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginBottom);
+                if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
+                {
+                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginBottom);
+                    marginObjectpropCount++;
+                }
+
+                marginObjectpropCount++;
+            }
+            else
+            {
+                marginObject["bottom"] = "0px";
                 marginObjectpropCount++;
             }
 
@@ -423,19 +703,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqImageStampTextoptionslocationOfTheStamp != null)
             {
-                optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampTextoptionslocationOfTheStamp);
+                if (reqImageStampTextoptionslocationOfTheStamp != null)
+                {
+                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampTextoptionslocationOfTheStamp);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["location"] = "Center";
                 optionsObjectpropCount++;
             }
 
             if (reqImageStampTextoptionsfontcolor != null)
             {
-                optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontcolor);
+                if (reqImageStampTextoptionsfontcolor != null)
+                {
+                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontcolor);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["fontColor"] = "#ffffff";
                 optionsObjectpropCount++;
             }
 
             if (reqImageStampTextoptionsfontsize != null)
             {
-                optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontsize);
+                if (reqImageStampTextoptionsfontsize != null)
+                {
+                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontsize);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["fontSize"] = 25;
                 optionsObjectpropCount++;
             }
 
@@ -483,7 +793,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqImageResizeoptionsignoreTheAspectRation != null)
             {
-                optionsObject["ignoreAspectRation"] = ExpressionConverter.ConvertO(reqImageResizeoptionsignoreTheAspectRation);
+                if (reqImageResizeoptionsignoreTheAspectRation != null)
+                {
+                    optionsObject["ignoreAspectRation"] = ExpressionConverter.ConvertO(reqImageResizeoptionsignoreTheAspectRation);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["ignoreAspectRation"] = false;
                 optionsObjectpropCount++;
             }
 
@@ -519,7 +839,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
             var optionsObjectpropCount = 0;
             if (reqPdfSplitByPageoptionsnumberOfPages != null)
             {
-                optionsObject["numberOfPages"] = ExpressionConverter.ConvertO(reqPdfSplitByPageoptionsnumberOfPages);
+                if (reqPdfSplitByPageoptionsnumberOfPages != null)
+                {
+                    optionsObject["numberOfPages"] = ExpressionConverter.ConvertO(reqPdfSplitByPageoptionsnumberOfPages);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["numberOfPages"] = 1;
                 optionsObjectpropCount++;
             }
 
@@ -561,25 +891,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
 
             if (reqImageStampExifoptionslocationOfTheStamp != null)
             {
-                optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampExifoptionslocationOfTheStamp);
+                if (reqImageStampExifoptionslocationOfTheStamp != null)
+                {
+                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampExifoptionslocationOfTheStamp);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["location"] = "Center";
                 optionsObjectpropCount++;
             }
 
             if (reqImageStampExifoptionsfontcolor != null)
             {
-                optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontcolor);
+                if (reqImageStampExifoptionsfontcolor != null)
+                {
+                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontcolor);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["fontColor"] = "#ffffff";
                 optionsObjectpropCount++;
             }
 
             if (reqImageStampExifoptionsfontsize != null)
             {
-                optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontsize);
+                if (reqImageStampExifoptionsfontsize != null)
+                {
+                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontsize);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["fontSize"] = 25;
                 optionsObjectpropCount++;
             }
 
             if (reqImageStampExifoptionsprintTagName != null)
             {
-                optionsObject["printTagName"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsprintTagName);
+                if (reqImageStampExifoptionsprintTagName != null)
+                {
+                    optionsObject["printTagName"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsprintTagName);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["printTagName"] = false;
                 optionsObjectpropCount++;
             }
 

@@ -186,7 +186,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
             if (bodyprivate != null)
             {
-                body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
+                if (bodyprivate != null)
+                {
+                    body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["Private"] = "Yes";
                 bodypropCount++;
             }
 

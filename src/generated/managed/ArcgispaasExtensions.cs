@@ -12,24 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> GeocodeAddressesV2(Expression<Func<string>> dataaddresses)
-        {
-            var apiCallPath = "/v2/geocode/geocodeAddresses";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            datapropCount++;
-            data["addresses"] = ExpressionConverter.ConvertO(dataaddresses);
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
         {
             var apiCallPath = "/v1/geocode/reverseGeocode";
@@ -43,20 +25,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
             if (locationType != null)
                 callPayload.Queries["locationType"] = ExpressionConverter.Convert(locationType);
             return new ApiConnectionAction<ReverseGeocodeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GeoenrichV2Response> GeoenrichV2(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = "/v2/geoenrichment/enrich";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["datacollection"] = ExpressionConverter.Convert(datacollection);
-            callPayload.Queries["parameter"] = ExpressionConverter.Convert(parameter);
-            callPayload.Queries["buffertype"] = ExpressionConverter.Convert(buffertype);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
@@ -112,7 +80,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GetRouteV2Response> GetRouteV2(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
+        public IBodyWorkflowAction<JToken> GeocodeAddresses(Expression<Func<string>> dataaddresses)
+        {
+            var apiCallPath = "/v2/geocode/geocodeAddresses";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var data = new JObject();
+            var datapropCount = 0;
+            datapropCount++;
+            data["addresses"] = ExpressionConverter.ConvertO(dataaddresses);
+            if (datapropCount > 0)
+            {
+                callPayload.Body = data;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
+        {
+            var apiCallPath = "/v2/geoenrichment/enrich";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+            callPayload.Queries["datacollection"] = ExpressionConverter.Convert(datacollection);
+            callPayload.Queries["parameter"] = ExpressionConverter.Convert(parameter);
+            callPayload.Queries["buffertype"] = ExpressionConverter.Convert(buffertype);
+            callPayload.Body = ExpressionConverter.ConvertO(body);
+            return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<GetRouteV2Response> GetRoute(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
         {
             var apiCallPath = "/v2/routing";
             var apiCallHttpMethod = "post";
@@ -184,6 +184,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         Street
     }
 
+    public class TimeConversionHelperResponse
+    {
+        [JsonProperty("stringTime")]
+        public string DateTime { get; set; }
+
+        [JsonProperty("unixTimeStampSeconds")]
+        public double UnixTimeStampInSeconds { get; set; }
+
+        [JsonProperty("unixTimeStampMilliseconds")]
+        public double UnixTimeStampInMilliseconds { get; set; }
+    }
+
+    public class CreatePointGeometryHelperResponse
+    {
+        [JsonProperty("geometry")]
+        public JToken Geometry { get; set; }
+    }
+
     public class GeoenrichV2Response
     {
         [JsonProperty("value")]
@@ -204,24 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         RingBuffer,
         [EnumMember(Value = "networkservicearea")]
         NetworkServiceArea
-    }
-
-    public class TimeConversionHelperResponse
-    {
-        [JsonProperty("stringTime")]
-        public string DateTime { get; set; }
-
-        [JsonProperty("unixTimeStampSeconds")]
-        public double UnixTimeStampInSeconds { get; set; }
-
-        [JsonProperty("unixTimeStampMilliseconds")]
-        public double UnixTimeStampInMilliseconds { get; set; }
-    }
-
-    public class CreatePointGeometryHelperResponse
-    {
-        [JsonProperty("geometry")]
-        public JToken Geometry { get; set; }
     }
 
     public class GetRouteV2Response

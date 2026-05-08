@@ -456,7 +456,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
             if (bodyrequirement != null)
             {
-                body["requirement"] = ExpressionConverter.ConvertO(bodyrequirement);
+                if (bodyrequirement != null)
+                {
+                    body["requirement"] = ExpressionConverter.ConvertO(bodyrequirement);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["requirement"] = "required";
                 bodypropCount++;
             }
 

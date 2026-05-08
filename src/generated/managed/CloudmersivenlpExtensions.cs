@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntitiesPost(Expression<Func<string>> valueinputString = null)
+        public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities(Expression<Func<string>> valueinputString = null)
         {
             var apiCallPath = "/nlp-v2/extract-entities";
             var apiCallHttpMethod = "post";

@@ -26,7 +26,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookevents != null)
             {
-                requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                if (requestBodyOfWebhookevents != null)
+                {
+                    requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                    requestBodyOfWebhookpropCount++;
+                }
+
+                requestBodyOfWebhookpropCount++;
+            }
+            else
+            {
+                requestBodyOfWebhook["events"] = "any";
                 requestBodyOfWebhookpropCount++;
             }
 

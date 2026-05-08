@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookPostResponse> NotebookPost(Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<NotebookPostResponse> Notebook(Expression<Func<string>> bodydisplayName)
         {
             var apiCallPath = "/notebooks";
             var apiCallHttpMethod = "post";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionPostResponse> SectionPost(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<SectionPostResponse> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
         {
             var apiCallPath = String.Format("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
             var apiCallHttpMethod = "post";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PagePostResponse> PagePost(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
             var apiCallPath = String.Format("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
             var apiCallHttpMethod = "post";

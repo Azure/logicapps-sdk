@@ -21,7 +21,252 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CampaignResponseModel> NewcampaignV2(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentID = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderID = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
+        public IWorkflowAction Sendcampaign(Expression<Func<string>> campaignId)
+        {
+            var apiCallPath = String.Format("/campaigns/{0}/actions/send", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<GetListsResponseModel> GetLists(Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
+        {
+            var apiCallPath = "/lists";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["count"] = Convert.ToString(10);
+            if (count != null)
+                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+            callPayload.Queries["offset"] = Convert.ToString(0);
+            if (offset != null)
+                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+            return new ApiConnectionAction<GetListsResponseModel>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<CreateNewListResponseModel> Newlist(Expression<Func<string>> newListRequestlistName, Expression<Func<string>> newListRequestcontactcompanyName, Expression<Func<string>> newListRequestcontactaddressLine1, Expression<Func<string>> newListRequestcontactcity, Expression<Func<string>> newListRequestcontactstate, Expression<Func<string>> newListRequestcontactpostalCode, Expression<Func<string>> newListRequestcontactcountryCode, Expression<Func<string>> newListRequestcontactphoneNumber, Expression<Func<string>> newListRequestpermissionReminder, Expression<Func<string>> newListRequestcampaignDefaultssenderSName, Expression<Func<string>> newListRequestcampaignDefaultssenderSEmailAddress, Expression<Func<string>> newListRequestcampaignDefaultssubject, Expression<Func<newListRequestcampaignDefaultslanguageInput>> newListRequestcampaignDefaultslanguage, Expression<Func<bool>> newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, Expression<Func<string>> newListRequestcontactaddressLine2 = null, Expression<Func<bool>> newListRequestuseArchiveBar = null, Expression<Func<string>> newListRequestnotifyOnSubscribe = null, Expression<Func<string>> newListRequestnotifyOnUnsubscribe = null, Expression<Func<newListRequestvisibilityInput>> newListRequestvisibility = null)
+        {
+            var apiCallPath = "/lists";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var newListRequest = new JObject();
+            var newListRequestpropCount = 0;
+            newListRequestpropCount++;
+            newListRequest["name"] = ExpressionConverter.ConvertO(newListRequestlistName);
+            var contactObject = new JObject();
+            var contactObjectpropCount = 0;
+            contactObjectpropCount++;
+            contactObject["company"] = ExpressionConverter.ConvertO(newListRequestcontactcompanyName);
+            contactObjectpropCount++;
+            contactObject["address1"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine1);
+            if (newListRequestcontactaddressLine2 != null)
+            {
+                contactObject["address2"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine2);
+                contactObjectpropCount++;
+            }
+
+            contactObjectpropCount++;
+            contactObject["city"] = ExpressionConverter.ConvertO(newListRequestcontactcity);
+            contactObjectpropCount++;
+            contactObject["state"] = ExpressionConverter.ConvertO(newListRequestcontactstate);
+            contactObjectpropCount++;
+            contactObject["zip"] = ExpressionConverter.ConvertO(newListRequestcontactpostalCode);
+            contactObjectpropCount++;
+            contactObject["country"] = ExpressionConverter.ConvertO(newListRequestcontactcountryCode);
+            contactObjectpropCount++;
+            contactObject["phone"] = ExpressionConverter.ConvertO(newListRequestcontactphoneNumber);
+            if (contactObjectpropCount > 0)
+            {
+                newListRequest["contact"] = contactObject;
+                newListRequestpropCount++;
+            }
+
+            newListRequestpropCount++;
+            newListRequest["permission_reminder"] = ExpressionConverter.ConvertO(newListRequestpermissionReminder);
+            if (newListRequestuseArchiveBar != null)
+            {
+                newListRequest["use_archive_bar"] = ExpressionConverter.ConvertO(newListRequestuseArchiveBar);
+                newListRequestpropCount++;
+            }
+
+            var campaignDefaultsObject = new JObject();
+            var campaignDefaultsObjectpropCount = 0;
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["from_name"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSName);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["from_email"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSEmailAddress);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["subject"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssubject);
+            campaignDefaultsObjectpropCount++;
+            campaignDefaultsObject["language"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultslanguage);
+            if (campaignDefaultsObjectpropCount > 0)
+            {
+                newListRequest["campaign_defaults"] = campaignDefaultsObject;
+                newListRequestpropCount++;
+            }
+
+            if (newListRequestnotifyOnSubscribe != null)
+            {
+                newListRequest["notify_on_subscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnSubscribe);
+                newListRequestpropCount++;
+            }
+
+            if (newListRequestnotifyOnUnsubscribe != null)
+            {
+                newListRequest["notify_on_unsubscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnUnsubscribe);
+                newListRequestpropCount++;
+            }
+
+            newListRequestpropCount++;
+            newListRequest["email_type_option"] = ExpressionConverter.ConvertO(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
+            if (newListRequestvisibility != null)
+            {
+                newListRequest["visibility"] = ExpressionConverter.ConvertO(newListRequestvisibility);
+                newListRequestpropCount++;
+            }
+
+            if (newListRequestpropCount > 0)
+            {
+                callPayload.Body = newListRequest;
+            }
+
+            return new ApiConnectionAction<CreateNewListResponseModel>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<GetAddMembersBatchResponseModel> AddMembers(Expression<Func<string>> listId, Expression<Func<NewMemberInListRequest[]>> bodymembers, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null, Expression<Func<bool>> bodyupdateExisting = null)
+        {
+            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (skipMergeValidation != null)
+                callPayload.Queries["skip_merge_validation"] = ExpressionConverter.Convert(skipMergeValidation);
+            if (skipDuplicateCheck != null)
+                callPayload.Queries["skip_duplicate_check"] = ExpressionConverter.Convert(skipDuplicateCheck);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["members"] = ExpressionConverter.ConvertO(bodymembers);
+            if (bodyupdateExisting != null)
+            {
+                body["update_existing"] = ExpressionConverter.ConvertO(bodyupdateExisting);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<GetAddMembersBatchResponseModel>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<GetAllMembersResponseModel> GetListMembers(Expression<Func<string>> listId, Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
+        {
+            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["count"] = Convert.ToString(10);
+            if (count != null)
+                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+            callPayload.Queries["offset"] = Convert.ToString(0);
+            if (offset != null)
+                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+            return new ApiConnectionAction<GetAllMembersResponseModel>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<MemberResponseModel> Addmember(Expression<Func<string>> listId, Expression<Func<newMemberInListstatusInput>> newMemberInListstatus, Expression<Func<string>> newMemberInListemailAddress, Expression<Func<newMemberInListemailTypeInput>> newMemberInListemailType = null, Expression<Func<string>> newMemberInListmergeFieldsfirstName = null, Expression<Func<string>> newMemberInListmergeFieldslastName = null, Expression<Func<string>> newMemberInListlanguage = null, Expression<Func<bool>> newMemberInListvIP = null, Expression<Func<double>> newMemberInListlocationlatitude = null, Expression<Func<double>> newMemberInListlocationlongitude = null)
+        {
+            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var newMemberInList = new JObject();
+            var newMemberInListpropCount = 0;
+            if (newMemberInListemailType != null)
+            {
+                if (newMemberInListemailType != null)
+                {
+                    newMemberInList["email_type"] = ExpressionConverter.ConvertO(newMemberInListemailType);
+                    newMemberInListpropCount++;
+                }
+
+                newMemberInListpropCount++;
+            }
+            else
+            {
+                newMemberInList["email_type"] = "html";
+                newMemberInListpropCount++;
+            }
+
+            newMemberInListpropCount++;
+            newMemberInList["status"] = ExpressionConverter.ConvertO(newMemberInListstatus);
+            var mergeFieldsObject = new JObject();
+            var mergeFieldsObjectpropCount = 0;
+            if (newMemberInListmergeFieldsfirstName != null)
+            {
+                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldsfirstName);
+                mergeFieldsObjectpropCount++;
+            }
+
+            if (newMemberInListmergeFieldslastName != null)
+            {
+                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldslastName);
+                mergeFieldsObjectpropCount++;
+            }
+
+            if (mergeFieldsObjectpropCount > 0)
+            {
+                newMemberInList["merge_fields"] = mergeFieldsObject;
+                newMemberInListpropCount++;
+            }
+
+            if (newMemberInListlanguage != null)
+            {
+                newMemberInList["language"] = ExpressionConverter.ConvertO(newMemberInListlanguage);
+                newMemberInListpropCount++;
+            }
+
+            if (newMemberInListvIP != null)
+            {
+                newMemberInList["vip"] = ExpressionConverter.ConvertO(newMemberInListvIP);
+                newMemberInListpropCount++;
+            }
+
+            var locationObject = new JObject();
+            var locationObjectpropCount = 0;
+            if (newMemberInListlocationlatitude != null)
+            {
+                locationObject["latitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlatitude);
+                locationObjectpropCount++;
+            }
+
+            if (newMemberInListlocationlongitude != null)
+            {
+                locationObject["longitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlongitude);
+                locationObjectpropCount++;
+            }
+
+            if (locationObjectpropCount > 0)
+            {
+                newMemberInList["location"] = locationObject;
+                newMemberInListpropCount++;
+            }
+
+            newMemberInListpropCount++;
+            newMemberInList["email_address"] = ExpressionConverter.ConvertO(newMemberInListemailAddress);
+            if (newMemberInListpropCount > 0)
+            {
+                callPayload.Body = newMemberInList;
+            }
+
+            return new ApiConnectionAction<MemberResponseModel>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
+        public IBodyWorkflowAction<CampaignResponseModel> Newcampaign(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentID = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderID = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
         {
             var apiCallPath = "/v2/campaigns";
             var apiCallHttpMethod = "post";
@@ -425,242 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IWorkflowAction Sendcampaign(Expression<Func<string>> campaignId)
-        {
-            var apiCallPath = String.Format("/campaigns/{0}/actions/send", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<GetListsResponseModel> GetLists(Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
-        {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["count"] = Convert.ToString(10);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<GetListsResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CreateNewListResponseModel> Newlist(Expression<Func<string>> newListRequestlistName, Expression<Func<string>> newListRequestcontactcompanyName, Expression<Func<string>> newListRequestcontactaddressLine1, Expression<Func<string>> newListRequestcontactcity, Expression<Func<string>> newListRequestcontactstate, Expression<Func<string>> newListRequestcontactpostalCode, Expression<Func<string>> newListRequestcontactcountryCode, Expression<Func<string>> newListRequestcontactphoneNumber, Expression<Func<string>> newListRequestpermissionReminder, Expression<Func<string>> newListRequestcampaignDefaultssenderSName, Expression<Func<string>> newListRequestcampaignDefaultssenderSEmailAddress, Expression<Func<string>> newListRequestcampaignDefaultssubject, Expression<Func<newListRequestcampaignDefaultslanguageInput>> newListRequestcampaignDefaultslanguage, Expression<Func<bool>> newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, Expression<Func<string>> newListRequestcontactaddressLine2 = null, Expression<Func<bool>> newListRequestuseArchiveBar = null, Expression<Func<string>> newListRequestnotifyOnSubscribe = null, Expression<Func<string>> newListRequestnotifyOnUnsubscribe = null, Expression<Func<newListRequestvisibilityInput>> newListRequestvisibility = null)
-        {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newListRequest = new JObject();
-            var newListRequestpropCount = 0;
-            newListRequestpropCount++;
-            newListRequest["name"] = ExpressionConverter.ConvertO(newListRequestlistName);
-            var contactObject = new JObject();
-            var contactObjectpropCount = 0;
-            contactObjectpropCount++;
-            contactObject["company"] = ExpressionConverter.ConvertO(newListRequestcontactcompanyName);
-            contactObjectpropCount++;
-            contactObject["address1"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine1);
-            if (newListRequestcontactaddressLine2 != null)
-            {
-                contactObject["address2"] = ExpressionConverter.ConvertO(newListRequestcontactaddressLine2);
-                contactObjectpropCount++;
-            }
-
-            contactObjectpropCount++;
-            contactObject["city"] = ExpressionConverter.ConvertO(newListRequestcontactcity);
-            contactObjectpropCount++;
-            contactObject["state"] = ExpressionConverter.ConvertO(newListRequestcontactstate);
-            contactObjectpropCount++;
-            contactObject["zip"] = ExpressionConverter.ConvertO(newListRequestcontactpostalCode);
-            contactObjectpropCount++;
-            contactObject["country"] = ExpressionConverter.ConvertO(newListRequestcontactcountryCode);
-            contactObjectpropCount++;
-            contactObject["phone"] = ExpressionConverter.ConvertO(newListRequestcontactphoneNumber);
-            if (contactObjectpropCount > 0)
-            {
-                newListRequest["contact"] = contactObject;
-                newListRequestpropCount++;
-            }
-
-            newListRequestpropCount++;
-            newListRequest["permission_reminder"] = ExpressionConverter.ConvertO(newListRequestpermissionReminder);
-            if (newListRequestuseArchiveBar != null)
-            {
-                newListRequest["use_archive_bar"] = ExpressionConverter.ConvertO(newListRequestuseArchiveBar);
-                newListRequestpropCount++;
-            }
-
-            var campaignDefaultsObject = new JObject();
-            var campaignDefaultsObjectpropCount = 0;
-            campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["from_name"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSName);
-            campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["from_email"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssenderSEmailAddress);
-            campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["subject"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultssubject);
-            campaignDefaultsObjectpropCount++;
-            campaignDefaultsObject["language"] = ExpressionConverter.ConvertO(newListRequestcampaignDefaultslanguage);
-            if (campaignDefaultsObjectpropCount > 0)
-            {
-                newListRequest["campaign_defaults"] = campaignDefaultsObject;
-                newListRequestpropCount++;
-            }
-
-            if (newListRequestnotifyOnSubscribe != null)
-            {
-                newListRequest["notify_on_subscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnSubscribe);
-                newListRequestpropCount++;
-            }
-
-            if (newListRequestnotifyOnUnsubscribe != null)
-            {
-                newListRequest["notify_on_unsubscribe"] = ExpressionConverter.ConvertO(newListRequestnotifyOnUnsubscribe);
-                newListRequestpropCount++;
-            }
-
-            newListRequestpropCount++;
-            newListRequest["email_type_option"] = ExpressionConverter.ConvertO(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
-            if (newListRequestvisibility != null)
-            {
-                newListRequest["visibility"] = ExpressionConverter.ConvertO(newListRequestvisibility);
-                newListRequestpropCount++;
-            }
-
-            if (newListRequestpropCount > 0)
-            {
-                callPayload.Body = newListRequest;
-            }
-
-            return new ApiConnectionAction<CreateNewListResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<GetAddMembersBatchResponseModel> AddMembers(Expression<Func<string>> listId, Expression<Func<NewMemberInListRequest[]>> bodymembers, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null, Expression<Func<bool>> bodyupdateExisting = null)
-        {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (skipMergeValidation != null)
-                callPayload.Queries["skip_merge_validation"] = ExpressionConverter.Convert(skipMergeValidation);
-            if (skipDuplicateCheck != null)
-                callPayload.Queries["skip_duplicate_check"] = ExpressionConverter.Convert(skipDuplicateCheck);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembers);
-            if (bodyupdateExisting != null)
-            {
-                body["update_existing"] = ExpressionConverter.ConvertO(bodyupdateExisting);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAddMembersBatchResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<GetAllMembersResponseModel> GetListMembers(Expression<Func<string>> listId, Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
-        {
-            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["count"] = Convert.ToString(10);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<GetAllMembersResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel> Addmember(Expression<Func<string>> listId, Expression<Func<newMemberInListstatusInput>> newMemberInListstatus, Expression<Func<string>> newMemberInListemailAddress, Expression<Func<newMemberInListemailTypeInput>> newMemberInListemailType = null, Expression<Func<string>> newMemberInListmergeFieldsfirstName = null, Expression<Func<string>> newMemberInListmergeFieldslastName = null, Expression<Func<string>> newMemberInListlanguage = null, Expression<Func<bool>> newMemberInListvIP = null, Expression<Func<double>> newMemberInListlocationlatitude = null, Expression<Func<double>> newMemberInListlocationlongitude = null)
-        {
-            var apiCallPath = String.Format("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newMemberInList = new JObject();
-            var newMemberInListpropCount = 0;
-            if (newMemberInListemailType != null)
-            {
-                newMemberInList["email_type"] = ExpressionConverter.ConvertO(newMemberInListemailType);
-                newMemberInListpropCount++;
-            }
-
-            newMemberInListpropCount++;
-            newMemberInList["status"] = ExpressionConverter.ConvertO(newMemberInListstatus);
-            var mergeFieldsObject = new JObject();
-            var mergeFieldsObjectpropCount = 0;
-            if (newMemberInListmergeFieldsfirstName != null)
-            {
-                mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldsfirstName);
-                mergeFieldsObjectpropCount++;
-            }
-
-            if (newMemberInListmergeFieldslastName != null)
-            {
-                mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(newMemberInListmergeFieldslastName);
-                mergeFieldsObjectpropCount++;
-            }
-
-            if (mergeFieldsObjectpropCount > 0)
-            {
-                newMemberInList["merge_fields"] = mergeFieldsObject;
-                newMemberInListpropCount++;
-            }
-
-            if (newMemberInListlanguage != null)
-            {
-                newMemberInList["language"] = ExpressionConverter.ConvertO(newMemberInListlanguage);
-                newMemberInListpropCount++;
-            }
-
-            if (newMemberInListvIP != null)
-            {
-                newMemberInList["vip"] = ExpressionConverter.ConvertO(newMemberInListvIP);
-                newMemberInListpropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (newMemberInListlocationlatitude != null)
-            {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlatitude);
-                locationObjectpropCount++;
-            }
-
-            if (newMemberInListlocationlongitude != null)
-            {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(newMemberInListlocationlongitude);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                newMemberInList["location"] = locationObject;
-                newMemberInListpropCount++;
-            }
-
-            newMemberInListpropCount++;
-            newMemberInList["email_address"] = ExpressionConverter.ConvertO(newMemberInListemailAddress);
-            if (newMemberInListpropCount > 0)
-            {
-                callPayload.Body = newMemberInList;
-            }
-
-            return new ApiConnectionAction<MemberResponseModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IWorkflowAction RemovememberV2(Expression<Func<string>> listId, Expression<Func<string>> memberEmail)
+        public IWorkflowAction Removemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail)
         {
             var apiCallPath = String.Format("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "delete";
@@ -670,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel> UpdatememberV2(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<updateMemberInListRequeststatusInput>> updateMemberInListRequeststatus, Expression<Func<updateMemberInListRequestemailTypeInput>> updateMemberInListRequestemailType = null, Expression<Func<string>> updateMemberInListRequestmergeFieldsfirstName = null, Expression<Func<string>> updateMemberInListRequestmergeFieldslastName = null, Expression<Func<string>> updateMemberInListRequestlanguage = null, Expression<Func<bool>> updateMemberInListRequestvIP = null, Expression<Func<double>> updateMemberInListRequestlocationlatitude = null, Expression<Func<double>> updateMemberInListRequestlocationlongitude = null)
+        public IBodyWorkflowAction<MemberResponseModel> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<updateMemberInListRequeststatusInput>> updateMemberInListRequeststatus, Expression<Func<updateMemberInListRequestemailTypeInput>> updateMemberInListRequestemailType = null, Expression<Func<string>> updateMemberInListRequestmergeFieldsfirstName = null, Expression<Func<string>> updateMemberInListRequestmergeFieldslastName = null, Expression<Func<string>> updateMemberInListRequestlanguage = null, Expression<Func<bool>> updateMemberInListRequestvIP = null, Expression<Func<double>> updateMemberInListRequestlocationlatitude = null, Expression<Func<double>> updateMemberInListRequestlocationlongitude = null)
         {
             var apiCallPath = String.Format("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
             var apiCallHttpMethod = "patch";
@@ -680,7 +690,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var updateMemberInListRequestpropCount = 0;
             if (updateMemberInListRequestemailType != null)
             {
-                updateMemberInListRequest["email_type"] = ExpressionConverter.ConvertO(updateMemberInListRequestemailType);
+                if (updateMemberInListRequestemailType != null)
+                {
+                    updateMemberInListRequest["email_type"] = ExpressionConverter.ConvertO(updateMemberInListRequestemailType);
+                    updateMemberInListRequestpropCount++;
+                }
+
+                updateMemberInListRequestpropCount++;
+            }
+            else
+            {
+                updateMemberInListRequest["email_type"] = "html";
                 updateMemberInListRequestpropCount++;
             }
 
@@ -1181,54 +1201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
         [JsonProperty("schema")]
         public string Schema { get; set; }
-    }
-
-    public enum newCampaignRequestcampaignTypeInput
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "regular")]
-        Regular,
-        [EnumMember(Value = "plaintext")]
-        Plaintext,
-        [EnumMember(Value = "absplit")]
-        Absplit,
-        [EnumMember(Value = "rss")]
-        Rss,
-        [EnumMember(Value = "variate")]
-        Variate
-    }
-
-    public enum newCampaignRequestrssOptsfrequencyInput
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "daily")]
-        Daily,
-        [EnumMember(Value = "weekly")]
-        Weekly,
-        [EnumMember(Value = "monthly")]
-        Monthly
-    }
-
-    public enum newCampaignRequestrssOptsscheduleweeklySendingDayInput
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "sunday")]
-        Sunday,
-        [EnumMember(Value = "monday")]
-        Monday,
-        [EnumMember(Value = "tuesday")]
-        Tuesday,
-        [EnumMember(Value = "wednesday")]
-        Wednesday,
-        [EnumMember(Value = "thursday")]
-        Thursday,
-        [EnumMember(Value = "friday")]
-        Friday,
-        [EnumMember(Value = "saturday")]
-        Saturday
     }
 
     public class GetListsResponseModel
@@ -1806,6 +1778,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Html,
         [EnumMember(Value = "text")]
         Text
+    }
+
+    public enum newCampaignRequestcampaignTypeInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "regular")]
+        Regular,
+        [EnumMember(Value = "plaintext")]
+        Plaintext,
+        [EnumMember(Value = "absplit")]
+        Absplit,
+        [EnumMember(Value = "rss")]
+        Rss,
+        [EnumMember(Value = "variate")]
+        Variate
+    }
+
+    public enum newCampaignRequestrssOptsfrequencyInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "daily")]
+        Daily,
+        [EnumMember(Value = "weekly")]
+        Weekly,
+        [EnumMember(Value = "monthly")]
+        Monthly
+    }
+
+    public enum newCampaignRequestrssOptsscheduleweeklySendingDayInput
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "sunday")]
+        Sunday,
+        [EnumMember(Value = "monday")]
+        Monday,
+        [EnumMember(Value = "tuesday")]
+        Tuesday,
+        [EnumMember(Value = "wednesday")]
+        Wednesday,
+        [EnumMember(Value = "thursday")]
+        Thursday,
+        [EnumMember(Value = "friday")]
+        Friday,
+        [EnumMember(Value = "saturday")]
+        Saturday
     }
 
     public enum updateMemberInListRequeststatusInput

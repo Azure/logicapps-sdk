@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     public class Pdf4meswissqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string> CreateSwissQrBillV1(Expression<Func<bodycrAddressTypeInput>> bodycrAddressType, Expression<Func<string>> bodycrName, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodyiban, Expression<Func<string>> bodyamount = null, Expression<Func<string>> bodyav1Parameters = null, Expression<Func<string>> bodyav2Parameters = null, Expression<Func<string>> bodybillingInfo = null, Expression<Func<string>> bodycrCity = null, Expression<Func<string>> bodycrPostalCode = null, Expression<Func<string>> bodycrStreetOrAddressLine1 = null, Expression<Func<string>> bodycrStreetOrAddressLine2 = null, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodylanguageTypeInput>> bodylanguageType = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyreferenceTypeInput>> bodyreferenceType = null, Expression<Func<bodyseperatorLineInput>> bodyseperatorLine = null, Expression<Func<bodyudAddressTypeInput>> bodyudAddressType = null, Expression<Func<string>> bodyudCity = null, Expression<Func<string>> bodyudName = null, Expression<Func<string>> bodyudPostalCode = null, Expression<Func<string>> bodyudStreetOrAddressLine1 = null, Expression<Func<string>> bodyudStreetOrAddressLine2 = null, Expression<Func<string>> bodyunstructuredMessage = null)
+        public IBodyWorkflowAction<string> CreateSwissQrBill(Expression<Func<bodycrAddressTypeInput>> bodycrAddressType, Expression<Func<string>> bodycrName, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodyiban, Expression<Func<string>> bodyamount = null, Expression<Func<string>> bodyav1Parameters = null, Expression<Func<string>> bodyav2Parameters = null, Expression<Func<string>> bodybillingInfo = null, Expression<Func<string>> bodycrCity = null, Expression<Func<string>> bodycrPostalCode = null, Expression<Func<string>> bodycrStreetOrAddressLine1 = null, Expression<Func<string>> bodycrStreetOrAddressLine2 = null, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodylanguageTypeInput>> bodylanguageType = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyreferenceTypeInput>> bodyreferenceType = null, Expression<Func<bodyseperatorLineInput>> bodyseperatorLine = null, Expression<Func<bodyudAddressTypeInput>> bodyudAddressType = null, Expression<Func<string>> bodyudCity = null, Expression<Func<string>> bodyudName = null, Expression<Func<string>> bodyudPostalCode = null, Expression<Func<string>> bodyudStreetOrAddressLine1 = null, Expression<Func<string>> bodyudStreetOrAddressLine2 = null, Expression<Func<string>> bodyunstructuredMessage = null)
         {
             var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
             var apiCallHttpMethod = "post";
@@ -73,7 +73,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
             if (bodycurrency != null)
             {
-                body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                if (bodycurrency != null)
+                {
+                    body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["currency"] = "CHF";
                 bodypropCount++;
             }
 
@@ -97,7 +107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
             body["iban"] = ExpressionConverter.ConvertO(bodyiban);
             if (bodylanguageType != null)
             {
-                body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                if (bodylanguageType != null)
+                {
+                    body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["languageType"] = "English";
                 bodypropCount++;
             }
 
@@ -109,19 +129,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
 
             if (bodyreferenceType != null)
             {
-                body["referenceType"] = ExpressionConverter.ConvertO(bodyreferenceType);
+                if (bodyreferenceType != null)
+                {
+                    body["referenceType"] = ExpressionConverter.ConvertO(bodyreferenceType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["referenceType"] = "QRR";
                 bodypropCount++;
             }
 
             if (bodyseperatorLine != null)
             {
-                body["seperatorLine"] = ExpressionConverter.ConvertO(bodyseperatorLine);
+                if (bodyseperatorLine != null)
+                {
+                    body["seperatorLine"] = ExpressionConverter.ConvertO(bodyseperatorLine);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["seperatorLine"] = "LineWithScissor";
                 bodypropCount++;
             }
 
             if (bodyudAddressType != null)
             {
-                body["udAddressType"] = ExpressionConverter.ConvertO(bodyudAddressType);
+                if (bodyudAddressType != null)
+                {
+                    body["udAddressType"] = ExpressionConverter.ConvertO(bodyudAddressType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["udAddressType"] = "S";
                 bodypropCount++;
             }
 
@@ -170,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string> ReadSwissQrBillV1(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string> ReadSwissQrBill(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
             var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
             var apiCallHttpMethod = "post";
@@ -202,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCodeV1(Expression<Func<string>> bodydocContent, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null)
+        public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCode(Expression<Func<string>> bodydocContent, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null)
         {
             var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
             var apiCallHttpMethod = "post";
@@ -235,13 +285,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
             body["splitBarcodePage"] = ExpressionConverter.ConvertO(bodysplitBarcodePage);
             if (bodycombinePagesWithSameConsecutiveBarcodes != null)
             {
-                body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(bodycombinePagesWithSameConsecutiveBarcodes);
+                if (bodycombinePagesWithSameConsecutiveBarcodes != null)
+                {
+                    body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(bodycombinePagesWithSameConsecutiveBarcodes);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["combinePagesWithSameConsecutiveBarcodes"] = false;
                 bodypropCount++;
             }
 
             if (bodypdfRenderDpi != null)
             {
-                body["pdfRenderDpi"] = ExpressionConverter.ConvertO(bodypdfRenderDpi);
+                if (bodypdfRenderDpi != null)
+                {
+                    body["pdfRenderDpi"] = ExpressionConverter.ConvertO(bodypdfRenderDpi);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["pdfRenderDpi"] = "150";
                 bodypropCount++;
             }
 

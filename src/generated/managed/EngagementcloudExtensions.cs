@@ -24,7 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             body["name"] = ExpressionConverter.ConvertO(bodyname);
             if (bodyvisibility != null)
             {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                if (bodyvisibility != null)
+                {
+                    body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["visibility"] = "Private";
                 bodypropCount++;
             }
 
@@ -55,13 +65,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             body["email"] = ExpressionConverter.ConvertO(bodyemail);
             if (bodyemailType != null)
             {
-                body["emailType"] = ExpressionConverter.ConvertO(bodyemailType);
+                if (bodyemailType != null)
+                {
+                    body["emailType"] = ExpressionConverter.ConvertO(bodyemailType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["emailType"] = "Html";
                 bodypropCount++;
             }
 
             if (bodyoptInType != null)
             {
-                body["optInType"] = ExpressionConverter.ConvertO(bodyoptInType);
+                if (bodyoptInType != null)
+                {
+                    body["optInType"] = ExpressionConverter.ConvertO(bodyoptInType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["optInType"] = "Unknown";
                 bodypropCount++;
             }
 

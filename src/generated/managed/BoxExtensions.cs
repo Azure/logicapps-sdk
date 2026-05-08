@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "box")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolderV2(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var apiCallPath = "/datasets/default/extractFolderV2";
             var apiCallHttpMethod = "post";
@@ -140,33 +140,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
 
     public class BoxTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Queries["maxFileCount"] = Convert.ToString(10);
-            if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
-            return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFilesV2(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/datasets/default/triggers/batch/onupdatedfileV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Queries["maxFileCount"] = Convert.ToString(10);
-            if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
-            return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-        }
-
         public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
+            callPayload.Queries["maxFileCount"] = Convert.ToString(10);
+            if (maxFileCount != null)
+                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
+            return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);

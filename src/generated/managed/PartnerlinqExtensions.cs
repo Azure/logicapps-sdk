@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinqPost(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<string>> bodydata = null)
         {
             var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";
             var apiCallHttpMethod = "post";

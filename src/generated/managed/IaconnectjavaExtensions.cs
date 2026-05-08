@@ -33,31 +33,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABConnectToJavaAccessBridgeis64BitJABDLL != null)
             {
-                jABConnectToJavaAccessBridge["Is64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeis64BitJABDLL);
+                if (jABConnectToJavaAccessBridgeis64BitJABDLL != null)
+                {
+                    jABConnectToJavaAccessBridge["Is64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeis64BitJABDLL);
+                    jABConnectToJavaAccessBridgepropCount++;
+                }
+
+                jABConnectToJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABConnectToJavaAccessBridge["Is64BitJABDLL"] = false;
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
             if (jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL != null)
             {
-                jABConnectToJavaAccessBridge["UseCOMFor64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL);
+                if (jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL != null)
+                {
+                    jABConnectToJavaAccessBridge["UseCOMFor64BitJABDLL"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeuseCOMFor64BitJABDLL);
+                    jABConnectToJavaAccessBridgepropCount++;
+                }
+
+                jABConnectToJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABConnectToJavaAccessBridge["UseCOMFor64BitJABDLL"] = true;
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
             if (jABConnectToJavaAccessBridgeenableJavaAccessBridge != null)
             {
-                jABConnectToJavaAccessBridge["EnableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeenableJavaAccessBridge);
+                if (jABConnectToJavaAccessBridgeenableJavaAccessBridge != null)
+                {
+                    jABConnectToJavaAccessBridge["EnableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeenableJavaAccessBridge);
+                    jABConnectToJavaAccessBridgepropCount++;
+                }
+
+                jABConnectToJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABConnectToJavaAccessBridge["EnableJavaAccessBridge"] = true;
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
             if (jABConnectToJavaAccessBridgeaccessibilityFilepath != null)
             {
-                jABConnectToJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeaccessibilityFilepath);
+                if (jABConnectToJavaAccessBridgeaccessibilityFilepath != null)
+                {
+                    jABConnectToJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgeaccessibilityFilepath);
+                    jABConnectToJavaAccessBridgepropCount++;
+                }
+
+                jABConnectToJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABConnectToJavaAccessBridge["AccessibilityFilepath"] = "%USERPROFILE%\\.accessibility.properties";
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
             if (jABConnectToJavaAccessBridgecommandTimeoutInSeconds != null)
             {
-                jABConnectToJavaAccessBridge["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgecommandTimeoutInSeconds);
+                if (jABConnectToJavaAccessBridgecommandTimeoutInSeconds != null)
+                {
+                    jABConnectToJavaAccessBridge["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(jABConnectToJavaAccessBridgecommandTimeoutInSeconds);
+                    jABConnectToJavaAccessBridgepropCount++;
+                }
+
+                jABConnectToJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABConnectToJavaAccessBridge["CommandTimeoutInSeconds"] = 20;
                 jABConnectToJavaAccessBridgepropCount++;
             }
 
@@ -81,13 +131,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             var jABDisconnectFromJavaAccessBridgepropCount = 0;
             if (jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge != null)
             {
-                jABDisconnectFromJavaAccessBridge["DisableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge);
+                if (jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge != null)
+                {
+                    jABDisconnectFromJavaAccessBridge["DisableJavaAccessBridge"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgedisableJavaAccessBridge);
+                    jABDisconnectFromJavaAccessBridgepropCount++;
+                }
+
+                jABDisconnectFromJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABDisconnectFromJavaAccessBridge["DisableJavaAccessBridge"] = true;
                 jABDisconnectFromJavaAccessBridgepropCount++;
             }
 
             if (jABDisconnectFromJavaAccessBridgeaccessibilityFilepath != null)
             {
-                jABDisconnectFromJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeaccessibilityFilepath);
+                if (jABDisconnectFromJavaAccessBridgeaccessibilityFilepath != null)
+                {
+                    jABDisconnectFromJavaAccessBridge["AccessibilityFilepath"] = ExpressionConverter.ConvertO(jABDisconnectFromJavaAccessBridgeaccessibilityFilepath);
+                    jABDisconnectFromJavaAccessBridgepropCount++;
+                }
+
+                jABDisconnectFromJavaAccessBridgepropCount++;
+            }
+            else
+            {
+                jABDisconnectFromJavaAccessBridge["AccessibilityFilepath"] = "%USERPROFILE%\\.accessibility.properties";
                 jABDisconnectFromJavaAccessBridgepropCount++;
             }
 
@@ -155,13 +225,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABIsJavaWindowsearchSubTree != null)
             {
-                jABIsJavaWindow["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchSubTree);
+                if (jABIsJavaWindowsearchSubTree != null)
+                {
+                    jABIsJavaWindow["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsJavaWindowsearchSubTree);
+                    jABIsJavaWindowpropCount++;
+                }
+
+                jABIsJavaWindowpropCount++;
+            }
+            else
+            {
+                jABIsJavaWindow["SearchSubTree"] = true;
                 jABIsJavaWindowpropCount++;
             }
 
             if (jABIsJavaWindowmatchIndex != null)
             {
-                jABIsJavaWindow["MatchIndex"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndex);
+                if (jABIsJavaWindowmatchIndex != null)
+                {
+                    jABIsJavaWindow["MatchIndex"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndex);
+                    jABIsJavaWindowpropCount++;
+                }
+
+                jABIsJavaWindowpropCount++;
+            }
+            else
+            {
+                jABIsJavaWindow["MatchIndex"] = 1;
                 jABIsJavaWindowpropCount++;
             }
 
@@ -179,7 +269,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABIsJavaWindowmatchIndexAscending != null)
             {
-                jABIsJavaWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndexAscending);
+                if (jABIsJavaWindowmatchIndexAscending != null)
+                {
+                    jABIsJavaWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsJavaWindowmatchIndexAscending);
+                    jABIsJavaWindowpropCount++;
+                }
+
+                jABIsJavaWindowpropCount++;
+            }
+            else
+            {
+                jABIsJavaWindow["MatchIndexAscending"] = true;
                 jABIsJavaWindowpropCount++;
             }
 
@@ -249,13 +349,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetUIAElementPropertiessearchSubTree != null)
             {
-                jABGetUIAElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchSubTree);
+                if (jABGetUIAElementPropertiessearchSubTree != null)
+                {
+                    jABGetUIAElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiessearchSubTree);
+                    jABGetUIAElementPropertiespropCount++;
+                }
+
+                jABGetUIAElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetUIAElementProperties["SearchSubTree"] = true;
                 jABGetUIAElementPropertiespropCount++;
             }
 
             if (jABGetUIAElementPropertiesmatchIndex != null)
             {
-                jABGetUIAElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndex);
+                if (jABGetUIAElementPropertiesmatchIndex != null)
+                {
+                    jABGetUIAElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndex);
+                    jABGetUIAElementPropertiespropCount++;
+                }
+
+                jABGetUIAElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetUIAElementProperties["MatchIndex"] = 1;
                 jABGetUIAElementPropertiespropCount++;
             }
 
@@ -273,13 +393,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetUIAElementPropertiesmatchIndexAscending != null)
             {
-                jABGetUIAElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndexAscending);
+                if (jABGetUIAElementPropertiesmatchIndexAscending != null)
+                {
+                    jABGetUIAElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmatchIndexAscending);
+                    jABGetUIAElementPropertiespropCount++;
+                }
+
+                jABGetUIAElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetUIAElementProperties["MatchIndexAscending"] = true;
                 jABGetUIAElementPropertiespropCount++;
             }
 
             if (jABGetUIAElementPropertiesmaxStringLength != null)
             {
-                jABGetUIAElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmaxStringLength);
+                if (jABGetUIAElementPropertiesmaxStringLength != null)
+                {
+                    jABGetUIAElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetUIAElementPropertiesmaxStringLength);
+                    jABGetUIAElementPropertiespropCount++;
+                }
+
+                jABGetUIAElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetUIAElementProperties["MaxStringLength"] = 0;
                 jABGetUIAElementPropertiespropCount++;
             }
 
@@ -323,19 +463,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetJABElementPropertiessearchSubTree != null)
             {
-                jABGetJABElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchSubTree);
+                if (jABGetJABElementPropertiessearchSubTree != null)
+                {
+                    jABGetJABElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiessearchSubTree);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["SearchSubTree"] = true;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesmaxRelativeDepth != null)
             {
-                jABGetJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxRelativeDepth);
+                if (jABGetJABElementPropertiesmaxRelativeDepth != null)
+                {
+                    jABGetJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxRelativeDepth);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MaxRelativeDepth"] = 0;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesmatchIndex != null)
             {
-                jABGetJABElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndex);
+                if (jABGetJABElementPropertiesmatchIndex != null)
+                {
+                    jABGetJABElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndex);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MatchIndex"] = 1;
                 jABGetJABElementPropertiespropCount++;
             }
 
@@ -353,25 +523,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetJABElementPropertiesmatchIndexAscending != null)
             {
-                jABGetJABElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndexAscending);
+                if (jABGetJABElementPropertiesmatchIndexAscending != null)
+                {
+                    jABGetJABElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmatchIndexAscending);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MatchIndexAscending"] = true;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiescaseSensitiveSearch != null)
             {
-                jABGetJABElementProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiescaseSensitiveSearch);
+                if (jABGetJABElementPropertiescaseSensitiveSearch != null)
+                {
+                    jABGetJABElementProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiescaseSensitiveSearch);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["CaseSensitiveSearch"] = false;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesonlySearchVisibleElements != null)
             {
-                jABGetJABElementProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchVisibleElements);
+                if (jABGetJABElementPropertiesonlySearchVisibleElements != null)
+                {
+                    jABGetJABElementProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchVisibleElements);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["OnlySearchVisibleElements"] = true;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesonlySearchShowingElements != null)
             {
-                jABGetJABElementProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchShowingElements);
+                if (jABGetJABElementPropertiesonlySearchShowingElements != null)
+                {
+                    jABGetJABElementProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesonlySearchShowingElements);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["OnlySearchShowingElements"] = true;
                 jABGetJABElementPropertiespropCount++;
             }
 
@@ -383,19 +593,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetJABElementPropertiesmaximumElementsToSearch != null)
             {
-                jABGetJABElementProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumElementsToSearch);
+                if (jABGetJABElementPropertiesmaximumElementsToSearch != null)
+                {
+                    jABGetJABElementProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumElementsToSearch);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MaximumElementsToSearch"] = 2000;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetJABElementProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode);
+                if (jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetJABElementProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaximumChildElementsToSearchPerNode);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetJABElementPropertiespropCount++;
             }
 
             if (jABGetJABElementPropertiesmaxStringLength != null)
             {
-                jABGetJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxStringLength);
+                if (jABGetJABElementPropertiesmaxStringLength != null)
+                {
+                    jABGetJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetJABElementPropertiesmaxStringLength);
+                    jABGetJABElementPropertiespropCount++;
+                }
+
+                jABGetJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetJABElementProperties["MaxStringLength"] = 0;
                 jABGetJABElementPropertiespropCount++;
             }
 
@@ -439,19 +679,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDrawRectangleAroundJABElementsearchSubTree != null)
             {
-                jABDrawRectangleAroundJABElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchSubTree);
+                if (jABDrawRectangleAroundJABElementsearchSubTree != null)
+                {
+                    jABDrawRectangleAroundJABElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementsearchSubTree);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["SearchSubTree"] = true;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementmaxRelativeDepth != null)
             {
-                jABDrawRectangleAroundJABElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaxRelativeDepth);
+                if (jABDrawRectangleAroundJABElementmaxRelativeDepth != null)
+                {
+                    jABDrawRectangleAroundJABElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaxRelativeDepth);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["MaxRelativeDepth"] = 0;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementmatchIndex != null)
             {
-                jABDrawRectangleAroundJABElement["MatchIndex"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndex);
+                if (jABDrawRectangleAroundJABElementmatchIndex != null)
+                {
+                    jABDrawRectangleAroundJABElement["MatchIndex"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndex);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["MatchIndex"] = 1;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
@@ -469,25 +739,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDrawRectangleAroundJABElementmatchIndexAscending != null)
             {
-                jABDrawRectangleAroundJABElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndexAscending);
+                if (jABDrawRectangleAroundJABElementmatchIndexAscending != null)
+                {
+                    jABDrawRectangleAroundJABElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmatchIndexAscending);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["MatchIndexAscending"] = true;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementcaseSensitiveSearch != null)
             {
-                jABDrawRectangleAroundJABElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementcaseSensitiveSearch);
+                if (jABDrawRectangleAroundJABElementcaseSensitiveSearch != null)
+                {
+                    jABDrawRectangleAroundJABElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementcaseSensitiveSearch);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["CaseSensitiveSearch"] = false;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementonlySearchVisibleElements != null)
             {
-                jABDrawRectangleAroundJABElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchVisibleElements);
+                if (jABDrawRectangleAroundJABElementonlySearchVisibleElements != null)
+                {
+                    jABDrawRectangleAroundJABElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchVisibleElements);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["OnlySearchVisibleElements"] = true;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementonlySearchShowingElements != null)
             {
-                jABDrawRectangleAroundJABElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchShowingElements);
+                if (jABDrawRectangleAroundJABElementonlySearchShowingElements != null)
+                {
+                    jABDrawRectangleAroundJABElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementonlySearchShowingElements);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["OnlySearchShowingElements"] = true;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
@@ -499,25 +809,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDrawRectangleAroundJABElementmaximumElementsToSearch != null)
             {
-                jABDrawRectangleAroundJABElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumElementsToSearch);
+                if (jABDrawRectangleAroundJABElementmaximumElementsToSearch != null)
+                {
+                    jABDrawRectangleAroundJABElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumElementsToSearch);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["MaximumElementsToSearch"] = 2000;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABDrawRectangleAroundJABElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode);
+                if (jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABDrawRectangleAroundJABElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementmaximumChildElementsToSearchPerNode);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementpenColour != null)
             {
-                jABDrawRectangleAroundJABElement["PenColour"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenColour);
+                if (jABDrawRectangleAroundJABElementpenColour != null)
+                {
+                    jABDrawRectangleAroundJABElement["PenColour"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenColour);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["PenColour"] = "Orange";
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
             if (jABDrawRectangleAroundJABElementpenThicknessPixels != null)
             {
-                jABDrawRectangleAroundJABElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenThicknessPixels);
+                if (jABDrawRectangleAroundJABElementpenThicknessPixels != null)
+                {
+                    jABDrawRectangleAroundJABElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(jABDrawRectangleAroundJABElementpenThicknessPixels);
+                    jABDrawRectangleAroundJABElementpropCount++;
+                }
+
+                jABDrawRectangleAroundJABElementpropCount++;
+            }
+            else
+            {
+                jABDrawRectangleAroundJABElement["PenThicknessPixels"] = 4;
                 jABDrawRectangleAroundJABElementpropCount++;
             }
 
@@ -561,19 +911,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDoesElementExistsearchSubTree != null)
             {
-                jABDoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchSubTree);
+                if (jABDoesElementExistsearchSubTree != null)
+                {
+                    jABDoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABDoesElementExistsearchSubTree);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["SearchSubTree"] = true;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistmaxRelativeDepth != null)
             {
-                jABDoesElementExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDoesElementExistmaxRelativeDepth);
+                if (jABDoesElementExistmaxRelativeDepth != null)
+                {
+                    jABDoesElementExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABDoesElementExistmaxRelativeDepth);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["MaxRelativeDepth"] = 0;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistmatchIndex != null)
             {
-                jABDoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndex);
+                if (jABDoesElementExistmatchIndex != null)
+                {
+                    jABDoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndex);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["MatchIndex"] = 1;
                 jABDoesElementExistpropCount++;
             }
 
@@ -591,25 +971,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDoesElementExistmatchIndexAscending != null)
             {
-                jABDoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndexAscending);
+                if (jABDoesElementExistmatchIndexAscending != null)
+                {
+                    jABDoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesElementExistmatchIndexAscending);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["MatchIndexAscending"] = true;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistcaseSensitiveSearch != null)
             {
-                jABDoesElementExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistcaseSensitiveSearch);
+                if (jABDoesElementExistcaseSensitiveSearch != null)
+                {
+                    jABDoesElementExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistcaseSensitiveSearch);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["CaseSensitiveSearch"] = false;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistonlySearchVisibleElements != null)
             {
-                jABDoesElementExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchVisibleElements);
+                if (jABDoesElementExistonlySearchVisibleElements != null)
+                {
+                    jABDoesElementExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchVisibleElements);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["OnlySearchVisibleElements"] = true;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistonlySearchShowingElements != null)
             {
-                jABDoesElementExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchShowingElements);
+                if (jABDoesElementExistonlySearchShowingElements != null)
+                {
+                    jABDoesElementExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABDoesElementExistonlySearchShowingElements);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["OnlySearchShowingElements"] = true;
                 jABDoesElementExistpropCount++;
             }
 
@@ -621,13 +1041,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDoesElementExistmaximumElementsToSearch != null)
             {
-                jABDoesElementExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumElementsToSearch);
+                if (jABDoesElementExistmaximumElementsToSearch != null)
+                {
+                    jABDoesElementExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumElementsToSearch);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["MaximumElementsToSearch"] = 2000;
                 jABDoesElementExistpropCount++;
             }
 
             if (jABDoesElementExistmaximumChildElementsToSearchPerNode != null)
             {
-                jABDoesElementExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumChildElementsToSearchPerNode);
+                if (jABDoesElementExistmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABDoesElementExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABDoesElementExistmaximumChildElementsToSearchPerNode);
+                    jABDoesElementExistpropCount++;
+                }
+
+                jABDoesElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesElementExist["MaximumChildElementsToSearchPerNode"] = 200;
                 jABDoesElementExistpropCount++;
             }
 
@@ -671,19 +1111,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementsearchSubTree != null)
             {
-                jABWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementsearchSubTree);
+                if (jABWaitForElementsearchSubTree != null)
+                {
+                    jABWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementsearchSubTree);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["SearchSubTree"] = true;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementmaxRelativeDepth != null)
             {
-                jABWaitForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementmaxRelativeDepth);
+                if (jABWaitForElementmaxRelativeDepth != null)
+                {
+                    jABWaitForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementmaxRelativeDepth);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["MaxRelativeDepth"] = 0;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementmatchIndex != null)
             {
-                jABWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndex);
+                if (jABWaitForElementmatchIndex != null)
+                {
+                    jABWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndex);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["MatchIndex"] = 1;
                 jABWaitForElementpropCount++;
             }
 
@@ -701,25 +1171,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementmatchIndexAscending != null)
             {
-                jABWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndexAscending);
+                if (jABWaitForElementmatchIndexAscending != null)
+                {
+                    jABWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementmatchIndexAscending);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["MatchIndexAscending"] = true;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementcaseSensitiveSearch != null)
             {
-                jABWaitForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementcaseSensitiveSearch);
+                if (jABWaitForElementcaseSensitiveSearch != null)
+                {
+                    jABWaitForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementcaseSensitiveSearch);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["CaseSensitiveSearch"] = false;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementonlySearchVisibleElements != null)
             {
-                jABWaitForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchVisibleElements);
+                if (jABWaitForElementonlySearchVisibleElements != null)
+                {
+                    jABWaitForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchVisibleElements);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["OnlySearchVisibleElements"] = true;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementonlySearchShowingElements != null)
             {
-                jABWaitForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchShowingElements);
+                if (jABWaitForElementonlySearchShowingElements != null)
+                {
+                    jABWaitForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementonlySearchShowingElements);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["OnlySearchShowingElements"] = true;
                 jABWaitForElementpropCount++;
             }
 
@@ -731,13 +1241,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementmaximumElementsToSearch != null)
             {
-                jABWaitForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumElementsToSearch);
+                if (jABWaitForElementmaximumElementsToSearch != null)
+                {
+                    jABWaitForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumElementsToSearch);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["MaximumElementsToSearch"] = 2000;
                 jABWaitForElementpropCount++;
             }
 
             if (jABWaitForElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABWaitForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumChildElementsToSearchPerNode);
+                if (jABWaitForElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABWaitForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementmaximumChildElementsToSearchPerNode);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABWaitForElementpropCount++;
             }
 
@@ -745,7 +1275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementsecondsToWait);
             if (jABWaitForElementraiseExceptionIfElementNotFound != null)
             {
-                jABWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForElementraiseExceptionIfElementNotFound);
+                if (jABWaitForElementraiseExceptionIfElementNotFound != null)
+                {
+                    jABWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForElementraiseExceptionIfElementNotFound);
+                    jABWaitForElementpropCount++;
+                }
+
+                jABWaitForElementpropCount++;
+            }
+            else
+            {
+                jABWaitForElement["RaiseExceptionIfElementNotFound"] = false;
                 jABWaitForElementpropCount++;
             }
 
@@ -789,19 +1329,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementToNotExistsearchSubTree != null)
             {
-                jABWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchSubTree);
+                if (jABWaitForElementToNotExistsearchSubTree != null)
+                {
+                    jABWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsearchSubTree);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["SearchSubTree"] = true;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistmaxRelativeDepth != null)
             {
-                jABWaitForElementToNotExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaxRelativeDepth);
+                if (jABWaitForElementToNotExistmaxRelativeDepth != null)
+                {
+                    jABWaitForElementToNotExist["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaxRelativeDepth);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["MaxRelativeDepth"] = 0;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistmatchIndex != null)
             {
-                jABWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndex);
+                if (jABWaitForElementToNotExistmatchIndex != null)
+                {
+                    jABWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndex);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["MatchIndex"] = 1;
                 jABWaitForElementToNotExistpropCount++;
             }
 
@@ -819,25 +1389,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementToNotExistmatchIndexAscending != null)
             {
-                jABWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndexAscending);
+                if (jABWaitForElementToNotExistmatchIndexAscending != null)
+                {
+                    jABWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmatchIndexAscending);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["MatchIndexAscending"] = true;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistcaseSensitiveSearch != null)
             {
-                jABWaitForElementToNotExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistcaseSensitiveSearch);
+                if (jABWaitForElementToNotExistcaseSensitiveSearch != null)
+                {
+                    jABWaitForElementToNotExist["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistcaseSensitiveSearch);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["CaseSensitiveSearch"] = false;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistonlySearchVisibleElements != null)
             {
-                jABWaitForElementToNotExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchVisibleElements);
+                if (jABWaitForElementToNotExistonlySearchVisibleElements != null)
+                {
+                    jABWaitForElementToNotExist["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchVisibleElements);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["OnlySearchVisibleElements"] = true;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistonlySearchShowingElements != null)
             {
-                jABWaitForElementToNotExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchShowingElements);
+                if (jABWaitForElementToNotExistonlySearchShowingElements != null)
+                {
+                    jABWaitForElementToNotExist["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistonlySearchShowingElements);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["OnlySearchShowingElements"] = true;
                 jABWaitForElementToNotExistpropCount++;
             }
 
@@ -849,13 +1459,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForElementToNotExistmaximumElementsToSearch != null)
             {
-                jABWaitForElementToNotExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumElementsToSearch);
+                if (jABWaitForElementToNotExistmaximumElementsToSearch != null)
+                {
+                    jABWaitForElementToNotExist["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumElementsToSearch);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["MaximumElementsToSearch"] = 2000;
                 jABWaitForElementToNotExistpropCount++;
             }
 
             if (jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode != null)
             {
-                jABWaitForElementToNotExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode);
+                if (jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABWaitForElementToNotExist["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistmaximumChildElementsToSearchPerNode);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["MaximumChildElementsToSearchPerNode"] = 200;
                 jABWaitForElementToNotExistpropCount++;
             }
 
@@ -863,7 +1493,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistsecondsToWait);
             if (jABWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
             {
-                jABWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                if (jABWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
+                {
+                    jABWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                    jABWaitForElementToNotExistpropCount++;
+                }
+
+                jABWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = false;
                 jABWaitForElementToNotExistpropCount++;
             }
 
@@ -893,37 +1533,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetDesktopElementssearchProcessID != null)
             {
-                jABGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchProcessID);
+                if (jABGetDesktopElementssearchProcessID != null)
+                {
+                    jABGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchProcessID);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["SearchProcessID"] = 0;
                 jABGetDesktopElementspropCount++;
             }
 
             if (jABGetDesktopElementsfirstItemToReturn != null)
             {
-                jABGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsfirstItemToReturn);
+                if (jABGetDesktopElementsfirstItemToReturn != null)
+                {
+                    jABGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsfirstItemToReturn);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["FirstItemToReturn"] = 1;
                 jABGetDesktopElementspropCount++;
             }
 
             if (jABGetDesktopElementsmaxItemsToReturn != null)
             {
-                jABGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxItemsToReturn);
+                if (jABGetDesktopElementsmaxItemsToReturn != null)
+                {
+                    jABGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxItemsToReturn);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["MaxItemsToReturn"] = 0;
                 jABGetDesktopElementspropCount++;
             }
 
             if (jABGetDesktopElementssearchChildElements != null)
             {
-                jABGetDesktopElements["SearchChildElements"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchChildElements);
+                if (jABGetDesktopElementssearchChildElements != null)
+                {
+                    jABGetDesktopElements["SearchChildElements"] = ExpressionConverter.ConvertO(jABGetDesktopElementssearchChildElements);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["SearchChildElements"] = true;
                 jABGetDesktopElementspropCount++;
             }
 
             if (jABGetDesktopElementsmaxStringLength != null)
             {
-                jABGetDesktopElements["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxStringLength);
+                if (jABGetDesktopElementsmaxStringLength != null)
+                {
+                    jABGetDesktopElements["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetDesktopElementsmaxStringLength);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["MaxStringLength"] = 0;
                 jABGetDesktopElementspropCount++;
             }
 
             if (jABGetDesktopElementsincludeChildProcesses != null)
             {
-                jABGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABGetDesktopElementsincludeChildProcesses);
+                if (jABGetDesktopElementsincludeChildProcesses != null)
+                {
+                    jABGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABGetDesktopElementsincludeChildProcesses);
+                    jABGetDesktopElementspropCount++;
+                }
+
+                jABGetDesktopElementspropCount++;
+            }
+            else
+            {
+                jABGetDesktopElements["IncludeChildProcesses"] = true;
                 jABGetDesktopElementspropCount++;
             }
 
@@ -965,19 +1665,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDoesDesktopElementExistsearchProcessID != null)
             {
-                jABDoesDesktopElementExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchProcessID);
+                if (jABDoesDesktopElementExistsearchProcessID != null)
+                {
+                    jABDoesDesktopElementExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchProcessID);
+                    jABDoesDesktopElementExistpropCount++;
+                }
+
+                jABDoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesDesktopElementExist["SearchProcessID"] = 0;
                 jABDoesDesktopElementExistpropCount++;
             }
 
             if (jABDoesDesktopElementExistsearchChildElements != null)
             {
-                jABDoesDesktopElementExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchChildElements);
+                if (jABDoesDesktopElementExistsearchChildElements != null)
+                {
+                    jABDoesDesktopElementExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistsearchChildElements);
+                    jABDoesDesktopElementExistpropCount++;
+                }
+
+                jABDoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesDesktopElementExist["SearchChildElements"] = true;
                 jABDoesDesktopElementExistpropCount++;
             }
 
             if (jABDoesDesktopElementExistmatchIndex != null)
             {
-                jABDoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndex);
+                if (jABDoesDesktopElementExistmatchIndex != null)
+                {
+                    jABDoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndex);
+                    jABDoesDesktopElementExistpropCount++;
+                }
+
+                jABDoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesDesktopElementExist["MatchIndex"] = 1;
                 jABDoesDesktopElementExistpropCount++;
             }
 
@@ -995,13 +1725,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABDoesDesktopElementExistmatchIndexAscending != null)
             {
-                jABDoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndexAscending);
+                if (jABDoesDesktopElementExistmatchIndexAscending != null)
+                {
+                    jABDoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistmatchIndexAscending);
+                    jABDoesDesktopElementExistpropCount++;
+                }
+
+                jABDoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesDesktopElementExist["MatchIndexAscending"] = true;
                 jABDoesDesktopElementExistpropCount++;
             }
 
             if (jABDoesDesktopElementExistincludeChildProcesses != null)
             {
-                jABDoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistincludeChildProcesses);
+                if (jABDoesDesktopElementExistincludeChildProcesses != null)
+                {
+                    jABDoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABDoesDesktopElementExistincludeChildProcesses);
+                    jABDoesDesktopElementExistpropCount++;
+                }
+
+                jABDoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                jABDoesDesktopElementExist["IncludeChildProcesses"] = true;
                 jABDoesDesktopElementExistpropCount++;
             }
 
@@ -1043,19 +1793,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForDesktopElementsearchProcessID != null)
             {
-                jABWaitForDesktopElement["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchProcessID);
+                if (jABWaitForDesktopElementsearchProcessID != null)
+                {
+                    jABWaitForDesktopElement["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchProcessID);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["SearchProcessID"] = 0;
                 jABWaitForDesktopElementpropCount++;
             }
 
             if (jABWaitForDesktopElementsearchChildElements != null)
             {
-                jABWaitForDesktopElement["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchChildElements);
+                if (jABWaitForDesktopElementsearchChildElements != null)
+                {
+                    jABWaitForDesktopElement["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsearchChildElements);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["SearchChildElements"] = true;
                 jABWaitForDesktopElementpropCount++;
             }
 
             if (jABWaitForDesktopElementmatchIndex != null)
             {
-                jABWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndex);
+                if (jABWaitForDesktopElementmatchIndex != null)
+                {
+                    jABWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndex);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["MatchIndex"] = 1;
                 jABWaitForDesktopElementpropCount++;
             }
 
@@ -1073,7 +1853,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForDesktopElementmatchIndexAscending != null)
             {
-                jABWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndexAscending);
+                if (jABWaitForDesktopElementmatchIndexAscending != null)
+                {
+                    jABWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementmatchIndexAscending);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["MatchIndexAscending"] = true;
                 jABWaitForDesktopElementpropCount++;
             }
 
@@ -1081,13 +1871,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementsecondsToWait);
             if (jABWaitForDesktopElementincludeChildProcesses != null)
             {
-                jABWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementincludeChildProcesses);
+                if (jABWaitForDesktopElementincludeChildProcesses != null)
+                {
+                    jABWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementincludeChildProcesses);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["IncludeChildProcesses"] = true;
                 jABWaitForDesktopElementpropCount++;
             }
 
             if (jABWaitForDesktopElementraiseExceptionIfElementNotFound != null)
             {
-                jABWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementraiseExceptionIfElementNotFound);
+                if (jABWaitForDesktopElementraiseExceptionIfElementNotFound != null)
+                {
+                    jABWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementraiseExceptionIfElementNotFound);
+                    jABWaitForDesktopElementpropCount++;
+                }
+
+                jABWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = false;
                 jABWaitForDesktopElementpropCount++;
             }
 
@@ -1129,19 +1939,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForDesktopElementToNotExistsearchProcessID != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchProcessID);
+                if (jABWaitForDesktopElementToNotExistsearchProcessID != null)
+                {
+                    jABWaitForDesktopElementToNotExist["SearchProcessID"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchProcessID);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["SearchProcessID"] = 0;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (jABWaitForDesktopElementToNotExistsearchChildElements != null)
             {
-                jABWaitForDesktopElementToNotExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchChildElements);
+                if (jABWaitForDesktopElementToNotExistsearchChildElements != null)
+                {
+                    jABWaitForDesktopElementToNotExist["SearchChildElements"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsearchChildElements);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["SearchChildElements"] = true;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (jABWaitForDesktopElementToNotExistmatchIndex != null)
             {
-                jABWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndex);
+                if (jABWaitForDesktopElementToNotExistmatchIndex != null)
+                {
+                    jABWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndex);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["MatchIndex"] = 1;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1159,7 +1999,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABWaitForDesktopElementToNotExistmatchIndexAscending != null)
             {
-                jABWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndexAscending);
+                if (jABWaitForDesktopElementToNotExistmatchIndexAscending != null)
+                {
+                    jABWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistmatchIndexAscending);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["MatchIndexAscending"] = true;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1167,13 +2017,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistsecondsToWait);
             if (jABWaitForDesktopElementToNotExistincludeChildProcesses != null)
             {
-                jABWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistincludeChildProcesses);
+                if (jABWaitForDesktopElementToNotExistincludeChildProcesses != null)
+                {
+                    jABWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistincludeChildProcesses);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["IncludeChildProcesses"] = true;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
             {
-                jABWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                if (jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
+                {
+                    jABWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                    jABWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                jABWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                jABWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = false;
                 jABWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1219,7 +2089,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetChildJABElementProperties["SearchChildIndex"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiessearchChildIndex);
             if (jABGetChildJABElementPropertiesmaxStringLength != null)
             {
-                jABGetChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesmaxStringLength);
+                if (jABGetChildJABElementPropertiesmaxStringLength != null)
+                {
+                    jABGetChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetChildJABElementPropertiesmaxStringLength);
+                    jABGetChildJABElementPropertiespropCount++;
+                }
+
+                jABGetChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetChildJABElementProperties["MaxStringLength"] = 0;
                 jABGetChildJABElementPropertiespropCount++;
             }
 
@@ -1245,25 +2125,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetAllChildJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchElementJABHandle);
             if (jABGetAllChildJABElementPropertiesfirstItemToReturn != null)
             {
-                jABGetAllChildJABElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesfirstItemToReturn);
+                if (jABGetAllChildJABElementPropertiesfirstItemToReturn != null)
+                {
+                    jABGetAllChildJABElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesfirstItemToReturn);
+                    jABGetAllChildJABElementPropertiespropCount++;
+                }
+
+                jABGetAllChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetAllChildJABElementProperties["FirstItemToReturn"] = 1;
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
             if (jABGetAllChildJABElementPropertiesmaxItemsToReturn != null)
             {
-                jABGetAllChildJABElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxItemsToReturn);
+                if (jABGetAllChildJABElementPropertiesmaxItemsToReturn != null)
+                {
+                    jABGetAllChildJABElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxItemsToReturn);
+                    jABGetAllChildJABElementPropertiespropCount++;
+                }
+
+                jABGetAllChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetAllChildJABElementProperties["MaxItemsToReturn"] = 0;
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
             if (jABGetAllChildJABElementPropertiesmaxStringLength != null)
             {
-                jABGetAllChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxStringLength);
+                if (jABGetAllChildJABElementPropertiesmaxStringLength != null)
+                {
+                    jABGetAllChildJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxStringLength);
+                    jABGetAllChildJABElementPropertiespropCount++;
+                }
+
+                jABGetAllChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetAllChildJABElementProperties["MaxStringLength"] = 0;
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
             if (jABGetAllChildJABElementPropertiessearchDescendants != null)
             {
-                jABGetAllChildJABElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchDescendants);
+                if (jABGetAllChildJABElementPropertiessearchDescendants != null)
+                {
+                    jABGetAllChildJABElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiessearchDescendants);
+                    jABGetAllChildJABElementPropertiespropCount++;
+                }
+
+                jABGetAllChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetAllChildJABElementProperties["SearchDescendants"] = false;
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
@@ -1275,7 +2195,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetAllChildJABElementPropertiesmaxRelativeDepth != null)
             {
-                jABGetAllChildJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxRelativeDepth);
+                if (jABGetAllChildJABElementPropertiesmaxRelativeDepth != null)
+                {
+                    jABGetAllChildJABElementProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetAllChildJABElementPropertiesmaxRelativeDepth);
+                    jABGetAllChildJABElementPropertiespropCount++;
+                }
+
+                jABGetAllChildJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetAllChildJABElementProperties["MaxRelativeDepth"] = 0;
                 jABGetAllChildJABElementPropertiespropCount++;
             }
 
@@ -1301,7 +2231,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiessearchElementJABHandle);
             if (jABGetParentJABElementPropertiesmaxStringLength != null)
             {
-                jABGetParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesmaxStringLength);
+                if (jABGetParentJABElementPropertiesmaxStringLength != null)
+                {
+                    jABGetParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetParentJABElementPropertiesmaxStringLength);
+                    jABGetParentJABElementPropertiespropCount++;
+                }
+
+                jABGetParentJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetParentJABElementProperties["MaxStringLength"] = 0;
                 jABGetParentJABElementPropertiespropCount++;
             }
 
@@ -1345,19 +2285,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPressElementsearchSubTree != null)
             {
-                jABPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPressElementsearchSubTree);
+                if (jABPressElementsearchSubTree != null)
+                {
+                    jABPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPressElementsearchSubTree);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["SearchSubTree"] = true;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementmaxRelativeDepth != null)
             {
-                jABPressElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPressElementmaxRelativeDepth);
+                if (jABPressElementmaxRelativeDepth != null)
+                {
+                    jABPressElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPressElementmaxRelativeDepth);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["MaxRelativeDepth"] = 0;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementmatchIndex != null)
             {
-                jABPressElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPressElementmatchIndex);
+                if (jABPressElementmatchIndex != null)
+                {
+                    jABPressElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPressElementmatchIndex);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["MatchIndex"] = 1;
                 jABPressElementpropCount++;
             }
 
@@ -1375,25 +2345,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPressElementmatchIndexAscending != null)
             {
-                jABPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPressElementmatchIndexAscending);
+                if (jABPressElementmatchIndexAscending != null)
+                {
+                    jABPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPressElementmatchIndexAscending);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["MatchIndexAscending"] = true;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementcaseSensitiveSearch != null)
             {
-                jABPressElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPressElementcaseSensitiveSearch);
+                if (jABPressElementcaseSensitiveSearch != null)
+                {
+                    jABPressElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPressElementcaseSensitiveSearch);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["CaseSensitiveSearch"] = false;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementonlySearchVisibleElements != null)
             {
-                jABPressElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchVisibleElements);
+                if (jABPressElementonlySearchVisibleElements != null)
+                {
+                    jABPressElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchVisibleElements);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["OnlySearchVisibleElements"] = true;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementonlySearchShowingElements != null)
             {
-                jABPressElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchShowingElements);
+                if (jABPressElementonlySearchShowingElements != null)
+                {
+                    jABPressElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPressElementonlySearchShowingElements);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["OnlySearchShowingElements"] = true;
                 jABPressElementpropCount++;
             }
 
@@ -1405,31 +2415,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPressElementmaximumElementsToSearch != null)
             {
-                jABPressElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPressElementmaximumElementsToSearch);
+                if (jABPressElementmaximumElementsToSearch != null)
+                {
+                    jABPressElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPressElementmaximumElementsToSearch);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["MaximumElementsToSearch"] = 2000;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABPressElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPressElementmaximumChildElementsToSearchPerNode);
+                if (jABPressElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABPressElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPressElementmaximumChildElementsToSearchPerNode);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementnumberOfTimesToPressElement != null)
             {
-                jABPressElement["NumberOfTimesToPressElement"] = ExpressionConverter.ConvertO(jABPressElementnumberOfTimesToPressElement);
+                if (jABPressElementnumberOfTimesToPressElement != null)
+                {
+                    jABPressElement["NumberOfTimesToPressElement"] = ExpressionConverter.ConvertO(jABPressElementnumberOfTimesToPressElement);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["NumberOfTimesToPressElement"] = 1;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementsecondsToWaitBetweenPresses != null)
             {
-                jABPressElement["SecondsToWaitBetweenPresses"] = ExpressionConverter.ConvertO(jABPressElementsecondsToWaitBetweenPresses);
+                if (jABPressElementsecondsToWaitBetweenPresses != null)
+                {
+                    jABPressElement["SecondsToWaitBetweenPresses"] = ExpressionConverter.ConvertO(jABPressElementsecondsToWaitBetweenPresses);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["SecondsToWaitBetweenPresses"] = 0;
                 jABPressElementpropCount++;
             }
 
             if (jABPressElementautoDetectActionName != null)
             {
-                jABPressElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABPressElementautoDetectActionName);
+                if (jABPressElementautoDetectActionName != null)
+                {
+                    jABPressElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABPressElementautoDetectActionName);
+                    jABPressElementpropCount++;
+                }
+
+                jABPressElementpropCount++;
+            }
+            else
+            {
+                jABPressElement["AutoDetectActionName"] = true;
                 jABPressElementpropCount++;
             }
 
@@ -1479,19 +2539,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPerformActionOnElementsearchSubTree != null)
             {
-                jABPerformActionOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchSubTree);
+                if (jABPerformActionOnElementsearchSubTree != null)
+                {
+                    jABPerformActionOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABPerformActionOnElementsearchSubTree);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["SearchSubTree"] = true;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementmaxRelativeDepth != null)
             {
-                jABPerformActionOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaxRelativeDepth);
+                if (jABPerformActionOnElementmaxRelativeDepth != null)
+                {
+                    jABPerformActionOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaxRelativeDepth);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["MaxRelativeDepth"] = 0;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementmatchIndex != null)
             {
-                jABPerformActionOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndex);
+                if (jABPerformActionOnElementmatchIndex != null)
+                {
+                    jABPerformActionOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndex);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["MatchIndex"] = 1;
                 jABPerformActionOnElementpropCount++;
             }
 
@@ -1509,25 +2599,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPerformActionOnElementmatchIndexAscending != null)
             {
-                jABPerformActionOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndexAscending);
+                if (jABPerformActionOnElementmatchIndexAscending != null)
+                {
+                    jABPerformActionOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmatchIndexAscending);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["MatchIndexAscending"] = true;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementcaseSensitiveSearch != null)
             {
-                jABPerformActionOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementcaseSensitiveSearch);
+                if (jABPerformActionOnElementcaseSensitiveSearch != null)
+                {
+                    jABPerformActionOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementcaseSensitiveSearch);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["CaseSensitiveSearch"] = false;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementonlySearchVisibleElements != null)
             {
-                jABPerformActionOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchVisibleElements);
+                if (jABPerformActionOnElementonlySearchVisibleElements != null)
+                {
+                    jABPerformActionOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchVisibleElements);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["OnlySearchVisibleElements"] = true;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementonlySearchShowingElements != null)
             {
-                jABPerformActionOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchShowingElements);
+                if (jABPerformActionOnElementonlySearchShowingElements != null)
+                {
+                    jABPerformActionOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABPerformActionOnElementonlySearchShowingElements);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["OnlySearchShowingElements"] = true;
                 jABPerformActionOnElementpropCount++;
             }
 
@@ -1539,13 +2669,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABPerformActionOnElementmaximumElementsToSearch != null)
             {
-                jABPerformActionOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumElementsToSearch);
+                if (jABPerformActionOnElementmaximumElementsToSearch != null)
+                {
+                    jABPerformActionOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumElementsToSearch);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["MaximumElementsToSearch"] = 2000;
                 jABPerformActionOnElementpropCount++;
             }
 
             if (jABPerformActionOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABPerformActionOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumChildElementsToSearchPerNode);
+                if (jABPerformActionOnElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABPerformActionOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABPerformActionOnElementmaximumChildElementsToSearchPerNode);
+                    jABPerformActionOnElementpropCount++;
+                }
+
+                jABPerformActionOnElementpropCount++;
+            }
+            else
+            {
+                jABPerformActionOnElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABPerformActionOnElementpropCount++;
             }
 
@@ -1591,19 +2741,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalLeftMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchSubTree);
+                if (jABGlobalLeftMouseClickOnElementsearchSubTree != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsearchSubTree);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["SearchSubTree"] = true;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaxRelativeDepth);
+                if (jABGlobalLeftMouseClickOnElementmaxRelativeDepth != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaxRelativeDepth);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["MaxRelativeDepth"] = 0;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndex);
+                if (jABGlobalLeftMouseClickOnElementmatchIndex != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndex);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["MatchIndex"] = 1;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
@@ -1621,25 +2801,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndexAscending);
+                if (jABGlobalLeftMouseClickOnElementmatchIndexAscending != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmatchIndexAscending);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["MatchIndexAscending"] = true;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementcaseSensitiveSearch);
+                if (jABGlobalLeftMouseClickOnElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementcaseSensitiveSearch);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["CaseSensitiveSearch"] = false;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchVisibleElements);
+                if (jABGlobalLeftMouseClickOnElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchVisibleElements);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["OnlySearchVisibleElements"] = true;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchShowingElements);
+                if (jABGlobalLeftMouseClickOnElementonlySearchShowingElements != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementonlySearchShowingElements);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["OnlySearchShowingElements"] = true;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
@@ -1651,25 +2871,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalLeftMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumElementsToSearch);
+                if (jABGlobalLeftMouseClickOnElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumElementsToSearch);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetX);
+                if (jABGlobalLeftMouseClickOnElementclickOffsetX != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetX);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["ClickOffsetX"] = 0;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetY);
+                if (jABGlobalLeftMouseClickOnElementclickOffsetY != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementclickOffsetY);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["ClickOffsetY"] = 0;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
@@ -1681,13 +2941,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement != null)
             {
-                jABGlobalLeftMouseClickOnElement["NumberOfTimesToClickElement"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement);
+                if (jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["NumberOfTimesToClickElement"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementnumberOfTimesToClickElement);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["NumberOfTimesToClickElement"] = 1;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks != null)
             {
-                jABGlobalLeftMouseClickOnElement["SecondsToWaitBetweenClicks"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks);
+                if (jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks != null)
+                {
+                    jABGlobalLeftMouseClickOnElement["SecondsToWaitBetweenClicks"] = ExpressionConverter.ConvertO(jABGlobalLeftMouseClickOnElementsecondsToWaitBetweenClicks);
+                    jABGlobalLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalLeftMouseClickOnElement["SecondsToWaitBetweenClicks"] = 0;
                 jABGlobalLeftMouseClickOnElementpropCount++;
             }
 
@@ -1731,19 +3011,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalRightMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchSubTree);
+                if (jABGlobalRightMouseClickOnElementsearchSubTree != null)
+                {
+                    jABGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementsearchSubTree);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["SearchSubTree"] = true;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalRightMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaxRelativeDepth);
+                if (jABGlobalRightMouseClickOnElementmaxRelativeDepth != null)
+                {
+                    jABGlobalRightMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaxRelativeDepth);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["MaxRelativeDepth"] = 0;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndex);
+                if (jABGlobalRightMouseClickOnElementmatchIndex != null)
+                {
+                    jABGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndex);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["MatchIndex"] = 1;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1761,25 +3071,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalRightMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndexAscending);
+                if (jABGlobalRightMouseClickOnElementmatchIndexAscending != null)
+                {
+                    jABGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmatchIndexAscending);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["MatchIndexAscending"] = true;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalRightMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementcaseSensitiveSearch);
+                if (jABGlobalRightMouseClickOnElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalRightMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementcaseSensitiveSearch);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["CaseSensitiveSearch"] = false;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalRightMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchVisibleElements);
+                if (jABGlobalRightMouseClickOnElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalRightMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchVisibleElements);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["OnlySearchVisibleElements"] = true;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalRightMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchShowingElements);
+                if (jABGlobalRightMouseClickOnElementonlySearchShowingElements != null)
+                {
+                    jABGlobalRightMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementonlySearchShowingElements);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["OnlySearchShowingElements"] = true;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1791,25 +3141,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalRightMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalRightMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumElementsToSearch);
+                if (jABGlobalRightMouseClickOnElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalRightMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumElementsToSearch);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalRightMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalRightMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetX);
+                if (jABGlobalRightMouseClickOnElementclickOffsetX != null)
+                {
+                    jABGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetX);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["ClickOffsetX"] = 0;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalRightMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetY);
+                if (jABGlobalRightMouseClickOnElementclickOffsetY != null)
+                {
+                    jABGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalRightMouseClickOnElementclickOffsetY);
+                    jABGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalRightMouseClickOnElement["ClickOffsetY"] = 0;
                 jABGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1859,19 +3249,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMiddleMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchSubTree);
+                if (jABGlobalMiddleMouseClickOnElementsearchSubTree != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementsearchSubTree);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["SearchSubTree"] = true;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaxRelativeDepth);
+                if (jABGlobalMiddleMouseClickOnElementmaxRelativeDepth != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaxRelativeDepth);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["MaxRelativeDepth"] = 0;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndex);
+                if (jABGlobalMiddleMouseClickOnElementmatchIndex != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndex);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["MatchIndex"] = 1;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1889,25 +3309,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndexAscending);
+                if (jABGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmatchIndexAscending);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = true;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalMiddleMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch);
+                if (jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementcaseSensitiveSearch);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["CaseSensitiveSearch"] = false;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalMiddleMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements);
+                if (jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchVisibleElements);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["OnlySearchVisibleElements"] = true;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalMiddleMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchShowingElements);
+                if (jABGlobalMiddleMouseClickOnElementonlySearchShowingElements != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementonlySearchShowingElements);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["OnlySearchShowingElements"] = true;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1919,25 +3379,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch);
+                if (jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumElementsToSearch);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalMiddleMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetX);
+                if (jABGlobalMiddleMouseClickOnElementclickOffsetX != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetX);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["ClickOffsetX"] = 0;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalMiddleMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetY);
+                if (jABGlobalMiddleMouseClickOnElementclickOffsetY != null)
+                {
+                    jABGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMiddleMouseClickOnElementclickOffsetY);
+                    jABGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalMiddleMouseClickOnElement["ClickOffsetY"] = 0;
                 jABGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1987,19 +3487,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchSubTree);
+                if (jABGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementsearchSubTree);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = true;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth);
+                if (jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaxRelativeDepth);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["MaxRelativeDepth"] = 0;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndex);
+                if (jABGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndex);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = 1;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2017,25 +3547,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
+                if (jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = true;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch);
+                if (jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementcaseSensitiveSearch);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["CaseSensitiveSearch"] = false;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements);
+                if (jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchVisibleElements);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchVisibleElements"] = true;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements);
+                if (jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementonlySearchShowingElements);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["OnlySearchShowingElements"] = true;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2047,25 +3617,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch);
+                if (jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumElementsToSearch);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetX);
+                if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetX);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = 0;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetY);
+                if (jABGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementclickOffsetY);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = 0;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2077,7 +3687,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
             {
-                jABGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
+                if (jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
+                {
+                    jABGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
+                    jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                jABGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                jABGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = 10;
                 jABGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -2121,19 +3741,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetActionsForElementsearchSubTree != null)
             {
-                jABGetActionsForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchSubTree);
+                if (jABGetActionsForElementsearchSubTree != null)
+                {
+                    jABGetActionsForElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetActionsForElementsearchSubTree);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["SearchSubTree"] = true;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementmaxRelativeDepth != null)
             {
-                jABGetActionsForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaxRelativeDepth);
+                if (jABGetActionsForElementmaxRelativeDepth != null)
+                {
+                    jABGetActionsForElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaxRelativeDepth);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["MaxRelativeDepth"] = 0;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementmatchIndex != null)
             {
-                jABGetActionsForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndex);
+                if (jABGetActionsForElementmatchIndex != null)
+                {
+                    jABGetActionsForElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndex);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["MatchIndex"] = 1;
                 jABGetActionsForElementpropCount++;
             }
 
@@ -2151,25 +3801,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetActionsForElementmatchIndexAscending != null)
             {
-                jABGetActionsForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndexAscending);
+                if (jABGetActionsForElementmatchIndexAscending != null)
+                {
+                    jABGetActionsForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetActionsForElementmatchIndexAscending);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["MatchIndexAscending"] = true;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementcaseSensitiveSearch != null)
             {
-                jABGetActionsForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementcaseSensitiveSearch);
+                if (jABGetActionsForElementcaseSensitiveSearch != null)
+                {
+                    jABGetActionsForElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementcaseSensitiveSearch);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["CaseSensitiveSearch"] = false;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementonlySearchVisibleElements != null)
             {
-                jABGetActionsForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchVisibleElements);
+                if (jABGetActionsForElementonlySearchVisibleElements != null)
+                {
+                    jABGetActionsForElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchVisibleElements);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["OnlySearchVisibleElements"] = true;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementonlySearchShowingElements != null)
             {
-                jABGetActionsForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchShowingElements);
+                if (jABGetActionsForElementonlySearchShowingElements != null)
+                {
+                    jABGetActionsForElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetActionsForElementonlySearchShowingElements);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["OnlySearchShowingElements"] = true;
                 jABGetActionsForElementpropCount++;
             }
 
@@ -2181,13 +3871,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetActionsForElementmaximumElementsToSearch != null)
             {
-                jABGetActionsForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumElementsToSearch);
+                if (jABGetActionsForElementmaximumElementsToSearch != null)
+                {
+                    jABGetActionsForElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumElementsToSearch);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["MaximumElementsToSearch"] = 2000;
                 jABGetActionsForElementpropCount++;
             }
 
             if (jABGetActionsForElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetActionsForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumChildElementsToSearchPerNode);
+                if (jABGetActionsForElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetActionsForElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetActionsForElementmaximumChildElementsToSearchPerNode);
+                    jABGetActionsForElementpropCount++;
+                }
+
+                jABGetActionsForElementpropCount++;
+            }
+            else
+            {
+                jABGetActionsForElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetActionsForElementpropCount++;
             }
 
@@ -2231,19 +3941,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABFocusElementsearchSubTree != null)
             {
-                jABFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABFocusElementsearchSubTree);
+                if (jABFocusElementsearchSubTree != null)
+                {
+                    jABFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABFocusElementsearchSubTree);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["SearchSubTree"] = true;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementmaxRelativeDepth != null)
             {
-                jABFocusElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABFocusElementmaxRelativeDepth);
+                if (jABFocusElementmaxRelativeDepth != null)
+                {
+                    jABFocusElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABFocusElementmaxRelativeDepth);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["MaxRelativeDepth"] = 0;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementmatchIndex != null)
             {
-                jABFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndex);
+                if (jABFocusElementmatchIndex != null)
+                {
+                    jABFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndex);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["MatchIndex"] = 1;
                 jABFocusElementpropCount++;
             }
 
@@ -2261,25 +4001,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABFocusElementmatchIndexAscending != null)
             {
-                jABFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndexAscending);
+                if (jABFocusElementmatchIndexAscending != null)
+                {
+                    jABFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABFocusElementmatchIndexAscending);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["MatchIndexAscending"] = true;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementcaseSensitiveSearch != null)
             {
-                jABFocusElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABFocusElementcaseSensitiveSearch);
+                if (jABFocusElementcaseSensitiveSearch != null)
+                {
+                    jABFocusElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABFocusElementcaseSensitiveSearch);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["CaseSensitiveSearch"] = false;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementonlySearchVisibleElements != null)
             {
-                jABFocusElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchVisibleElements);
+                if (jABFocusElementonlySearchVisibleElements != null)
+                {
+                    jABFocusElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchVisibleElements);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["OnlySearchVisibleElements"] = true;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementonlySearchShowingElements != null)
             {
-                jABFocusElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchShowingElements);
+                if (jABFocusElementonlySearchShowingElements != null)
+                {
+                    jABFocusElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABFocusElementonlySearchShowingElements);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["OnlySearchShowingElements"] = true;
                 jABFocusElementpropCount++;
             }
 
@@ -2291,13 +4071,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABFocusElementmaximumElementsToSearch != null)
             {
-                jABFocusElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABFocusElementmaximumElementsToSearch);
+                if (jABFocusElementmaximumElementsToSearch != null)
+                {
+                    jABFocusElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABFocusElementmaximumElementsToSearch);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["MaximumElementsToSearch"] = 2000;
                 jABFocusElementpropCount++;
             }
 
             if (jABFocusElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABFocusElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABFocusElementmaximumChildElementsToSearchPerNode);
+                if (jABFocusElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABFocusElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABFocusElementmaximumChildElementsToSearchPerNode);
+                    jABFocusElementpropCount++;
+                }
+
+                jABFocusElementpropCount++;
+            }
+            else
+            {
+                jABFocusElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABFocusElementpropCount++;
             }
 
@@ -2341,19 +4141,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputPasswordIntoElementsearchSubTree != null)
             {
-                jABInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchSubTree);
+                if (jABInputPasswordIntoElementsearchSubTree != null)
+                {
+                    jABInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementsearchSubTree);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["SearchSubTree"] = true;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementmaxRelativeDepth != null)
             {
-                jABInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaxRelativeDepth);
+                if (jABInputPasswordIntoElementmaxRelativeDepth != null)
+                {
+                    jABInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaxRelativeDepth);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["MaxRelativeDepth"] = 0;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementmatchIndex != null)
             {
-                jABInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndex);
+                if (jABInputPasswordIntoElementmatchIndex != null)
+                {
+                    jABInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndex);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["MatchIndex"] = 1;
                 jABInputPasswordIntoElementpropCount++;
             }
 
@@ -2371,25 +4201,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputPasswordIntoElementmatchIndexAscending != null)
             {
-                jABInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndexAscending);
+                if (jABInputPasswordIntoElementmatchIndexAscending != null)
+                {
+                    jABInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmatchIndexAscending);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["MatchIndexAscending"] = true;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementcaseSensitiveSearch != null)
             {
-                jABInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementcaseSensitiveSearch);
+                if (jABInputPasswordIntoElementcaseSensitiveSearch != null)
+                {
+                    jABInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementcaseSensitiveSearch);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["CaseSensitiveSearch"] = false;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementonlySearchVisibleElements != null)
             {
-                jABInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchVisibleElements);
+                if (jABInputPasswordIntoElementonlySearchVisibleElements != null)
+                {
+                    jABInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchVisibleElements);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["OnlySearchVisibleElements"] = true;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementonlySearchShowingElements != null)
             {
-                jABInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchShowingElements);
+                if (jABInputPasswordIntoElementonlySearchShowingElements != null)
+                {
+                    jABInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementonlySearchShowingElements);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["OnlySearchShowingElements"] = true;
                 jABInputPasswordIntoElementpropCount++;
             }
 
@@ -2401,13 +4271,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputPasswordIntoElementmaximumElementsToSearch != null)
             {
-                jABInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumElementsToSearch);
+                if (jABInputPasswordIntoElementmaximumElementsToSearch != null)
+                {
+                    jABInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumElementsToSearch);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["MaximumElementsToSearch"] = 2000;
                 jABInputPasswordIntoElementpropCount++;
             }
 
             if (jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
+                if (jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
+                    jABInputPasswordIntoElementpropCount++;
+                }
+
+                jABInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABInputPasswordIntoElementpropCount++;
             }
 
@@ -2453,19 +4343,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputTextIntoElementsearchSubTree != null)
             {
-                jABInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchSubTree);
+                if (jABInputTextIntoElementsearchSubTree != null)
+                {
+                    jABInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABInputTextIntoElementsearchSubTree);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["SearchSubTree"] = true;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementmaxRelativeDepth != null)
             {
-                jABInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaxRelativeDepth);
+                if (jABInputTextIntoElementmaxRelativeDepth != null)
+                {
+                    jABInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaxRelativeDepth);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["MaxRelativeDepth"] = 0;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementmatchIndex != null)
             {
-                jABInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndex);
+                if (jABInputTextIntoElementmatchIndex != null)
+                {
+                    jABInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndex);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["MatchIndex"] = 1;
                 jABInputTextIntoElementpropCount++;
             }
 
@@ -2483,25 +4403,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputTextIntoElementmatchIndexAscending != null)
             {
-                jABInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndexAscending);
+                if (jABInputTextIntoElementmatchIndexAscending != null)
+                {
+                    jABInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmatchIndexAscending);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["MatchIndexAscending"] = true;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementcaseSensitiveSearch != null)
             {
-                jABInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementcaseSensitiveSearch);
+                if (jABInputTextIntoElementcaseSensitiveSearch != null)
+                {
+                    jABInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementcaseSensitiveSearch);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["CaseSensitiveSearch"] = false;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementonlySearchVisibleElements != null)
             {
-                jABInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchVisibleElements);
+                if (jABInputTextIntoElementonlySearchVisibleElements != null)
+                {
+                    jABInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchVisibleElements);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["OnlySearchVisibleElements"] = true;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementonlySearchShowingElements != null)
             {
-                jABInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchShowingElements);
+                if (jABInputTextIntoElementonlySearchShowingElements != null)
+                {
+                    jABInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABInputTextIntoElementonlySearchShowingElements);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["OnlySearchShowingElements"] = true;
                 jABInputTextIntoElementpropCount++;
             }
 
@@ -2513,13 +4473,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputTextIntoElementmaximumElementsToSearch != null)
             {
-                jABInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumElementsToSearch);
+                if (jABInputTextIntoElementmaximumElementsToSearch != null)
+                {
+                    jABInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumElementsToSearch);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["MaximumElementsToSearch"] = 2000;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumChildElementsToSearchPerNode);
+                if (jABInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABInputTextIntoElementmaximumChildElementsToSearchPerNode);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABInputTextIntoElementpropCount++;
             }
 
@@ -2531,13 +4511,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABInputTextIntoElementreplaceExistingValue != null)
             {
-                jABInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(jABInputTextIntoElementreplaceExistingValue);
+                if (jABInputTextIntoElementreplaceExistingValue != null)
+                {
+                    jABInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(jABInputTextIntoElementreplaceExistingValue);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["ReplaceExistingValue"] = true;
                 jABInputTextIntoElementpropCount++;
             }
 
             if (jABInputTextIntoElementinsertPosition != null)
             {
-                jABInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(jABInputTextIntoElementinsertPosition);
+                if (jABInputTextIntoElementinsertPosition != null)
+                {
+                    jABInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(jABInputTextIntoElementinsertPosition);
+                    jABInputTextIntoElementpropCount++;
+                }
+
+                jABInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABInputTextIntoElement["InsertPosition"] = 0;
                 jABInputTextIntoElementpropCount++;
             }
 
@@ -2581,19 +4581,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementTextValuesearchSubTree != null)
             {
-                jABGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchSubTree);
+                if (jABGetElementTextValuesearchSubTree != null)
+                {
+                    jABGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementTextValuesearchSubTree);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["SearchSubTree"] = true;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValuemaxRelativeDepth != null)
             {
-                jABGetElementTextValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaxRelativeDepth);
+                if (jABGetElementTextValuemaxRelativeDepth != null)
+                {
+                    jABGetElementTextValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaxRelativeDepth);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["MaxRelativeDepth"] = 0;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValuematchIndex != null)
             {
-                jABGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndex);
+                if (jABGetElementTextValuematchIndex != null)
+                {
+                    jABGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndex);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["MatchIndex"] = 1;
                 jABGetElementTextValuepropCount++;
             }
 
@@ -2611,25 +4641,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementTextValuematchIndexAscending != null)
             {
-                jABGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndexAscending);
+                if (jABGetElementTextValuematchIndexAscending != null)
+                {
+                    jABGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementTextValuematchIndexAscending);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["MatchIndexAscending"] = true;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValuecaseSensitiveSearch != null)
             {
-                jABGetElementTextValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuecaseSensitiveSearch);
+                if (jABGetElementTextValuecaseSensitiveSearch != null)
+                {
+                    jABGetElementTextValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuecaseSensitiveSearch);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["CaseSensitiveSearch"] = false;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValueonlySearchVisibleElements != null)
             {
-                jABGetElementTextValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchVisibleElements);
+                if (jABGetElementTextValueonlySearchVisibleElements != null)
+                {
+                    jABGetElementTextValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchVisibleElements);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["OnlySearchVisibleElements"] = true;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValueonlySearchShowingElements != null)
             {
-                jABGetElementTextValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchShowingElements);
+                if (jABGetElementTextValueonlySearchShowingElements != null)
+                {
+                    jABGetElementTextValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementTextValueonlySearchShowingElements);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["OnlySearchShowingElements"] = true;
                 jABGetElementTextValuepropCount++;
             }
 
@@ -2641,13 +4711,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementTextValuemaximumElementsToSearch != null)
             {
-                jABGetElementTextValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumElementsToSearch);
+                if (jABGetElementTextValuemaximumElementsToSearch != null)
+                {
+                    jABGetElementTextValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumElementsToSearch);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["MaximumElementsToSearch"] = 2000;
                 jABGetElementTextValuepropCount++;
             }
 
             if (jABGetElementTextValuemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementTextValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumChildElementsToSearchPerNode);
+                if (jABGetElementTextValuemaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetElementTextValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementTextValuemaximumChildElementsToSearchPerNode);
+                    jABGetElementTextValuepropCount++;
+                }
+
+                jABGetElementTextValuepropCount++;
+            }
+            else
+            {
+                jABGetElementTextValue["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetElementTextValuepropCount++;
             }
 
@@ -2691,19 +4781,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementValuesearchSubTree != null)
             {
-                jABGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementValuesearchSubTree);
+                if (jABGetElementValuesearchSubTree != null)
+                {
+                    jABGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementValuesearchSubTree);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["SearchSubTree"] = true;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValuemaxRelativeDepth != null)
             {
-                jABGetElementValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementValuemaxRelativeDepth);
+                if (jABGetElementValuemaxRelativeDepth != null)
+                {
+                    jABGetElementValue["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementValuemaxRelativeDepth);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["MaxRelativeDepth"] = 0;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValuematchIndex != null)
             {
-                jABGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndex);
+                if (jABGetElementValuematchIndex != null)
+                {
+                    jABGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndex);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["MatchIndex"] = 1;
                 jABGetElementValuepropCount++;
             }
 
@@ -2721,25 +4841,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementValuematchIndexAscending != null)
             {
-                jABGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndexAscending);
+                if (jABGetElementValuematchIndexAscending != null)
+                {
+                    jABGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementValuematchIndexAscending);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["MatchIndexAscending"] = true;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValuecaseSensitiveSearch != null)
             {
-                jABGetElementValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementValuecaseSensitiveSearch);
+                if (jABGetElementValuecaseSensitiveSearch != null)
+                {
+                    jABGetElementValue["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementValuecaseSensitiveSearch);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["CaseSensitiveSearch"] = false;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValueonlySearchVisibleElements != null)
             {
-                jABGetElementValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchVisibleElements);
+                if (jABGetElementValueonlySearchVisibleElements != null)
+                {
+                    jABGetElementValue["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchVisibleElements);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["OnlySearchVisibleElements"] = true;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValueonlySearchShowingElements != null)
             {
-                jABGetElementValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchShowingElements);
+                if (jABGetElementValueonlySearchShowingElements != null)
+                {
+                    jABGetElementValue["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementValueonlySearchShowingElements);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["OnlySearchShowingElements"] = true;
                 jABGetElementValuepropCount++;
             }
 
@@ -2751,13 +4911,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementValuemaximumElementsToSearch != null)
             {
-                jABGetElementValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumElementsToSearch);
+                if (jABGetElementValuemaximumElementsToSearch != null)
+                {
+                    jABGetElementValue["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumElementsToSearch);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["MaximumElementsToSearch"] = 2000;
                 jABGetElementValuepropCount++;
             }
 
             if (jABGetElementValuemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumChildElementsToSearchPerNode);
+                if (jABGetElementValuemaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetElementValue["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementValuemaximumChildElementsToSearchPerNode);
+                    jABGetElementValuepropCount++;
+                }
+
+                jABGetElementValuepropCount++;
+            }
+            else
+            {
+                jABGetElementValue["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetElementValuepropCount++;
             }
 
@@ -2801,19 +4981,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABCheckElementsearchSubTree != null)
             {
-                jABCheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABCheckElementsearchSubTree);
+                if (jABCheckElementsearchSubTree != null)
+                {
+                    jABCheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABCheckElementsearchSubTree);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["SearchSubTree"] = true;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementmaxRelativeDepth != null)
             {
-                jABCheckElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABCheckElementmaxRelativeDepth);
+                if (jABCheckElementmaxRelativeDepth != null)
+                {
+                    jABCheckElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABCheckElementmaxRelativeDepth);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["MaxRelativeDepth"] = 0;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementmatchIndex != null)
             {
-                jABCheckElement["MatchIndex"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndex);
+                if (jABCheckElementmatchIndex != null)
+                {
+                    jABCheckElement["MatchIndex"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndex);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["MatchIndex"] = 1;
                 jABCheckElementpropCount++;
             }
 
@@ -2831,25 +5041,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABCheckElementmatchIndexAscending != null)
             {
-                jABCheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndexAscending);
+                if (jABCheckElementmatchIndexAscending != null)
+                {
+                    jABCheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABCheckElementmatchIndexAscending);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["MatchIndexAscending"] = true;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementcaseSensitiveSearch != null)
             {
-                jABCheckElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABCheckElementcaseSensitiveSearch);
+                if (jABCheckElementcaseSensitiveSearch != null)
+                {
+                    jABCheckElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABCheckElementcaseSensitiveSearch);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["CaseSensitiveSearch"] = false;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementonlySearchVisibleElements != null)
             {
-                jABCheckElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchVisibleElements);
+                if (jABCheckElementonlySearchVisibleElements != null)
+                {
+                    jABCheckElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchVisibleElements);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["OnlySearchVisibleElements"] = true;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementonlySearchShowingElements != null)
             {
-                jABCheckElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchShowingElements);
+                if (jABCheckElementonlySearchShowingElements != null)
+                {
+                    jABCheckElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABCheckElementonlySearchShowingElements);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["OnlySearchShowingElements"] = true;
                 jABCheckElementpropCount++;
             }
 
@@ -2861,25 +5111,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABCheckElementmaximumElementsToSearch != null)
             {
-                jABCheckElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABCheckElementmaximumElementsToSearch);
+                if (jABCheckElementmaximumElementsToSearch != null)
+                {
+                    jABCheckElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABCheckElementmaximumElementsToSearch);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["MaximumElementsToSearch"] = 2000;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABCheckElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABCheckElementmaximumChildElementsToSearchPerNode);
+                if (jABCheckElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABCheckElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABCheckElementmaximumChildElementsToSearchPerNode);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementcheckElement != null)
             {
-                jABCheckElement["CheckElement"] = ExpressionConverter.ConvertO(jABCheckElementcheckElement);
+                if (jABCheckElementcheckElement != null)
+                {
+                    jABCheckElement["CheckElement"] = ExpressionConverter.ConvertO(jABCheckElementcheckElement);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["CheckElement"] = true;
                 jABCheckElementpropCount++;
             }
 
             if (jABCheckElementautoDetectActionName != null)
             {
-                jABCheckElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABCheckElementautoDetectActionName);
+                if (jABCheckElementautoDetectActionName != null)
+                {
+                    jABCheckElement["AutoDetectActionName"] = ExpressionConverter.ConvertO(jABCheckElementautoDetectActionName);
+                    jABCheckElementpropCount++;
+                }
+
+                jABCheckElementpropCount++;
+            }
+            else
+            {
+                jABCheckElement["AutoDetectActionName"] = true;
                 jABCheckElementpropCount++;
             }
 
@@ -2929,19 +5219,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementPropertiesAsListsearchSubTree != null)
             {
-                jABGetElementPropertiesAsList["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchSubTree);
+                if (jABGetElementPropertiesAsListsearchSubTree != null)
+                {
+                    jABGetElementPropertiesAsList["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListsearchSubTree);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["SearchSubTree"] = true;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListmaxRelativeDepth != null)
             {
-                jABGetElementPropertiesAsList["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxRelativeDepth);
+                if (jABGetElementPropertiesAsListmaxRelativeDepth != null)
+                {
+                    jABGetElementPropertiesAsList["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxRelativeDepth);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MaxRelativeDepth"] = 0;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListmatchIndex != null)
             {
-                jABGetElementPropertiesAsList["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndex);
+                if (jABGetElementPropertiesAsListmatchIndex != null)
+                {
+                    jABGetElementPropertiesAsList["MatchIndex"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndex);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MatchIndex"] = 1;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
@@ -2959,25 +5279,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementPropertiesAsListmatchIndexAscending != null)
             {
-                jABGetElementPropertiesAsList["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndexAscending);
+                if (jABGetElementPropertiesAsListmatchIndexAscending != null)
+                {
+                    jABGetElementPropertiesAsList["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmatchIndexAscending);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MatchIndexAscending"] = true;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListcaseSensitiveSearch != null)
             {
-                jABGetElementPropertiesAsList["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListcaseSensitiveSearch);
+                if (jABGetElementPropertiesAsListcaseSensitiveSearch != null)
+                {
+                    jABGetElementPropertiesAsList["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListcaseSensitiveSearch);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["CaseSensitiveSearch"] = false;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListonlySearchVisibleElements != null)
             {
-                jABGetElementPropertiesAsList["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchVisibleElements);
+                if (jABGetElementPropertiesAsListonlySearchVisibleElements != null)
+                {
+                    jABGetElementPropertiesAsList["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchVisibleElements);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["OnlySearchVisibleElements"] = true;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListonlySearchShowingElements != null)
             {
-                jABGetElementPropertiesAsList["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchShowingElements);
+                if (jABGetElementPropertiesAsListonlySearchShowingElements != null)
+                {
+                    jABGetElementPropertiesAsList["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListonlySearchShowingElements);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["OnlySearchShowingElements"] = true;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
@@ -2989,19 +5349,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetElementPropertiesAsListmaximumElementsToSearch != null)
             {
-                jABGetElementPropertiesAsList["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumElementsToSearch);
+                if (jABGetElementPropertiesAsListmaximumElementsToSearch != null)
+                {
+                    jABGetElementPropertiesAsList["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumElementsToSearch);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MaximumElementsToSearch"] = 2000;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetElementPropertiesAsList["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode);
+                if (jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetElementPropertiesAsList["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaximumChildElementsToSearchPerNode);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
             if (jABGetElementPropertiesAsListmaxStringLength != null)
             {
-                jABGetElementPropertiesAsList["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxStringLength);
+                if (jABGetElementPropertiesAsListmaxStringLength != null)
+                {
+                    jABGetElementPropertiesAsList["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetElementPropertiesAsListmaxStringLength);
+                    jABGetElementPropertiesAsListpropCount++;
+                }
+
+                jABGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                jABGetElementPropertiesAsList["MaxStringLength"] = 0;
                 jABGetElementPropertiesAsListpropCount++;
             }
 
@@ -3045,19 +5435,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputPasswordIntoElementsearchSubTree != null)
             {
-                jABGlobalInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchSubTree);
+                if (jABGlobalInputPasswordIntoElementsearchSubTree != null)
+                {
+                    jABGlobalInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsearchSubTree);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["SearchSubTree"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementmaxRelativeDepth != null)
             {
-                jABGlobalInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaxRelativeDepth);
+                if (jABGlobalInputPasswordIntoElementmaxRelativeDepth != null)
+                {
+                    jABGlobalInputPasswordIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaxRelativeDepth);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["MaxRelativeDepth"] = 0;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementmatchIndex != null)
             {
-                jABGlobalInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndex);
+                if (jABGlobalInputPasswordIntoElementmatchIndex != null)
+                {
+                    jABGlobalInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndex);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["MatchIndex"] = 1;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
@@ -3075,25 +5495,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputPasswordIntoElementmatchIndexAscending != null)
             {
-                jABGlobalInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndexAscending);
+                if (jABGlobalInputPasswordIntoElementmatchIndexAscending != null)
+                {
+                    jABGlobalInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmatchIndexAscending);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["MatchIndexAscending"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementcaseSensitiveSearch != null)
             {
-                jABGlobalInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementcaseSensitiveSearch);
+                if (jABGlobalInputPasswordIntoElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalInputPasswordIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementcaseSensitiveSearch);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["CaseSensitiveSearch"] = false;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementonlySearchVisibleElements != null)
             {
-                jABGlobalInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchVisibleElements);
+                if (jABGlobalInputPasswordIntoElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalInputPasswordIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchVisibleElements);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["OnlySearchVisibleElements"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementonlySearchShowingElements != null)
             {
-                jABGlobalInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchShowingElements);
+                if (jABGlobalInputPasswordIntoElementonlySearchShowingElements != null)
+                {
+                    jABGlobalInputPasswordIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementonlySearchShowingElements);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["OnlySearchShowingElements"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
@@ -3105,37 +5565,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputPasswordIntoElementmaximumElementsToSearch != null)
             {
-                jABGlobalInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumElementsToSearch);
+                if (jABGlobalInputPasswordIntoElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalInputPasswordIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumElementsToSearch);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementfocusElement != null)
             {
-                jABGlobalInputPasswordIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementfocusElement);
+                if (jABGlobalInputPasswordIntoElementfocusElement != null)
+                {
+                    jABGlobalInputPasswordIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementfocusElement);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["FocusElement"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementglobalMouseClickOnElement != null)
             {
-                jABGlobalInputPasswordIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementglobalMouseClickOnElement);
+                if (jABGlobalInputPasswordIntoElementglobalMouseClickOnElement != null)
+                {
+                    jABGlobalInputPasswordIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementglobalMouseClickOnElement);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["GlobalMouseClickOnElement"] = true;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete);
+                if (jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementreplaceExistingValueUsingCTRLADelete);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
@@ -3143,25 +5663,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGlobalInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementpasswordToInput);
             if (jABGlobalInputPasswordIntoElementsendKeyEvents != null)
             {
-                jABGlobalInputPasswordIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsendKeyEvents);
+                if (jABGlobalInputPasswordIntoElementsendKeyEvents != null)
+                {
+                    jABGlobalInputPasswordIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementsendKeyEvents);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["SendKeyEvents"] = false;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds != null)
             {
-                jABGlobalInputPasswordIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds);
+                if (jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds != null)
+                {
+                    jABGlobalInputPasswordIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementkeyIntervalInMilliseconds);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["KeyIntervalInMilliseconds"] = 10;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds != null)
             {
-                jABGlobalInputPasswordIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds);
+                if (jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds != null)
+                {
+                    jABGlobalInputPasswordIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdoubleClickIntervalInMilliseconds);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["DoubleClickIntervalInMilliseconds"] = 10;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
             if (jABGlobalInputPasswordIntoElementdontInterpretSymbols != null)
             {
-                jABGlobalInputPasswordIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdontInterpretSymbols);
+                if (jABGlobalInputPasswordIntoElementdontInterpretSymbols != null)
+                {
+                    jABGlobalInputPasswordIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputPasswordIntoElementdontInterpretSymbols);
+                    jABGlobalInputPasswordIntoElementpropCount++;
+                }
+
+                jABGlobalInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputPasswordIntoElement["DontInterpretSymbols"] = false;
                 jABGlobalInputPasswordIntoElementpropCount++;
             }
 
@@ -3205,19 +5765,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputTextIntoElementsearchSubTree != null)
             {
-                jABGlobalInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchSubTree);
+                if (jABGlobalInputTextIntoElementsearchSubTree != null)
+                {
+                    jABGlobalInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsearchSubTree);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["SearchSubTree"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementmaxRelativeDepth != null)
             {
-                jABGlobalInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaxRelativeDepth);
+                if (jABGlobalInputTextIntoElementmaxRelativeDepth != null)
+                {
+                    jABGlobalInputTextIntoElement["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaxRelativeDepth);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["MaxRelativeDepth"] = 0;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementmatchIndex != null)
             {
-                jABGlobalInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndex);
+                if (jABGlobalInputTextIntoElementmatchIndex != null)
+                {
+                    jABGlobalInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndex);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["MatchIndex"] = 1;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
@@ -3235,25 +5825,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputTextIntoElementmatchIndexAscending != null)
             {
-                jABGlobalInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndexAscending);
+                if (jABGlobalInputTextIntoElementmatchIndexAscending != null)
+                {
+                    jABGlobalInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmatchIndexAscending);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["MatchIndexAscending"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementcaseSensitiveSearch != null)
             {
-                jABGlobalInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementcaseSensitiveSearch);
+                if (jABGlobalInputTextIntoElementcaseSensitiveSearch != null)
+                {
+                    jABGlobalInputTextIntoElement["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementcaseSensitiveSearch);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["CaseSensitiveSearch"] = false;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementonlySearchVisibleElements != null)
             {
-                jABGlobalInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchVisibleElements);
+                if (jABGlobalInputTextIntoElementonlySearchVisibleElements != null)
+                {
+                    jABGlobalInputTextIntoElement["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchVisibleElements);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["OnlySearchVisibleElements"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementonlySearchShowingElements != null)
             {
-                jABGlobalInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchShowingElements);
+                if (jABGlobalInputTextIntoElementonlySearchShowingElements != null)
+                {
+                    jABGlobalInputTextIntoElement["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementonlySearchShowingElements);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["OnlySearchShowingElements"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
@@ -3265,37 +5895,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputTextIntoElementmaximumElementsToSearch != null)
             {
-                jABGlobalInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumElementsToSearch);
+                if (jABGlobalInputTextIntoElementmaximumElementsToSearch != null)
+                {
+                    jABGlobalInputTextIntoElement["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumElementsToSearch);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["MaximumElementsToSearch"] = 2000;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode);
+                if (jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementmaximumChildElementsToSearchPerNode);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementfocusElement != null)
             {
-                jABGlobalInputTextIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementfocusElement);
+                if (jABGlobalInputTextIntoElementfocusElement != null)
+                {
+                    jABGlobalInputTextIntoElement["FocusElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementfocusElement);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["FocusElement"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementglobalMouseClickOnElement != null)
             {
-                jABGlobalInputTextIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementglobalMouseClickOnElement);
+                if (jABGlobalInputTextIntoElementglobalMouseClickOnElement != null)
+                {
+                    jABGlobalInputTextIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementglobalMouseClickOnElement);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["GlobalMouseClickOnElement"] = true;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                if (jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    jABGlobalInputTextIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete);
+                if (jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    jABGlobalInputTextIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementreplaceExistingValueUsingCTRLADelete);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
@@ -3307,25 +5997,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalInputTextIntoElementsendKeyEvents != null)
             {
-                jABGlobalInputTextIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsendKeyEvents);
+                if (jABGlobalInputTextIntoElementsendKeyEvents != null)
+                {
+                    jABGlobalInputTextIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementsendKeyEvents);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["SendKeyEvents"] = false;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementkeyIntervalInMilliseconds != null)
             {
-                jABGlobalInputTextIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementkeyIntervalInMilliseconds);
+                if (jABGlobalInputTextIntoElementkeyIntervalInMilliseconds != null)
+                {
+                    jABGlobalInputTextIntoElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementkeyIntervalInMilliseconds);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["KeyIntervalInMilliseconds"] = 10;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds != null)
             {
-                jABGlobalInputTextIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds);
+                if (jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds != null)
+                {
+                    jABGlobalInputTextIntoElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdoubleClickIntervalInMilliseconds);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["DoubleClickIntervalInMilliseconds"] = 10;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
             if (jABGlobalInputTextIntoElementdontInterpretSymbols != null)
             {
-                jABGlobalInputTextIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdontInterpretSymbols);
+                if (jABGlobalInputTextIntoElementdontInterpretSymbols != null)
+                {
+                    jABGlobalInputTextIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(jABGlobalInputTextIntoElementdontInterpretSymbols);
+                    jABGlobalInputTextIntoElementpropCount++;
+                }
+
+                jABGlobalInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                jABGlobalInputTextIntoElement["DontInterpretSymbols"] = false;
                 jABGlobalInputTextIntoElementpropCount++;
             }
 
@@ -3369,19 +6099,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionElementItemssearchSubTree != null)
             {
-                jABGetSelectionElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchSubTree);
+                if (jABGetSelectionElementItemssearchSubTree != null)
+                {
+                    jABGetSelectionElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssearchSubTree);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["SearchSubTree"] = true;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsmaxRelativeDepth != null)
             {
-                jABGetSelectionElementItems["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxRelativeDepth);
+                if (jABGetSelectionElementItemsmaxRelativeDepth != null)
+                {
+                    jABGetSelectionElementItems["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxRelativeDepth);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MaxRelativeDepth"] = 0;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsmatchIndex != null)
             {
-                jABGetSelectionElementItems["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndex);
+                if (jABGetSelectionElementItemsmatchIndex != null)
+                {
+                    jABGetSelectionElementItems["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndex);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MatchIndex"] = 1;
                 jABGetSelectionElementItemspropCount++;
             }
 
@@ -3399,25 +6159,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionElementItemsmatchIndexAscending != null)
             {
-                jABGetSelectionElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndexAscending);
+                if (jABGetSelectionElementItemsmatchIndexAscending != null)
+                {
+                    jABGetSelectionElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmatchIndexAscending);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MatchIndexAscending"] = true;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemscaseSensitiveSearch != null)
             {
-                jABGetSelectionElementItems["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscaseSensitiveSearch);
+                if (jABGetSelectionElementItemscaseSensitiveSearch != null)
+                {
+                    jABGetSelectionElementItems["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscaseSensitiveSearch);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["CaseSensitiveSearch"] = false;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsonlySearchVisibleElements != null)
             {
-                jABGetSelectionElementItems["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchVisibleElements);
+                if (jABGetSelectionElementItemsonlySearchVisibleElements != null)
+                {
+                    jABGetSelectionElementItems["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchVisibleElements);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["OnlySearchVisibleElements"] = true;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsonlySearchShowingElements != null)
             {
-                jABGetSelectionElementItems["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchShowingElements);
+                if (jABGetSelectionElementItemsonlySearchShowingElements != null)
+                {
+                    jABGetSelectionElementItems["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsonlySearchShowingElements);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["OnlySearchShowingElements"] = true;
                 jABGetSelectionElementItemspropCount++;
             }
 
@@ -3429,49 +6229,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionElementItemsmaximumElementsToSearch != null)
             {
-                jABGetSelectionElementItems["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumElementsToSearch);
+                if (jABGetSelectionElementItemsmaximumElementsToSearch != null)
+                {
+                    jABGetSelectionElementItems["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumElementsToSearch);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MaximumElementsToSearch"] = 2000;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionElementItems["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode);
+                if (jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetSelectionElementItems["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaximumChildElementsToSearchPerNode);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsgetListOfOptionsBySelecting != null)
             {
-                jABGetSelectionElementItems["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsBySelecting);
+                if (jABGetSelectionElementItemsgetListOfOptionsBySelecting != null)
+                {
+                    jABGetSelectionElementItems["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsBySelecting);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["GetListOfOptionsBySelecting"] = false;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsgetListOfOptionsByReadingLabels != null)
             {
-                jABGetSelectionElementItems["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsByReadingLabels);
+                if (jABGetSelectionElementItemsgetListOfOptionsByReadingLabels != null)
+                {
+                    jABGetSelectionElementItems["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsgetListOfOptionsByReadingLabels);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["GetListOfOptionsByReadingLabels"] = false;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsexpandFirst != null)
             {
-                jABGetSelectionElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsexpandFirst);
+                if (jABGetSelectionElementItemsexpandFirst != null)
+                {
+                    jABGetSelectionElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsexpandFirst);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["ExpandFirst"] = false;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemscollapseAfter != null)
             {
-                jABGetSelectionElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscollapseAfter);
+                if (jABGetSelectionElementItemscollapseAfter != null)
+                {
+                    jABGetSelectionElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemscollapseAfter);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["CollapseAfter"] = false;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemssecondsBetweenExpandCollapse != null)
             {
-                jABGetSelectionElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssecondsBetweenExpandCollapse);
+                if (jABGetSelectionElementItemssecondsBetweenExpandCollapse != null)
+                {
+                    jABGetSelectionElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemssecondsBetweenExpandCollapse);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["SecondsBetweenExpandCollapse"] = 0.05;
                 jABGetSelectionElementItemspropCount++;
             }
 
             if (jABGetSelectionElementItemsmaxListItemsToReturn != null)
             {
-                jABGetSelectionElementItems["MaxListItemsToReturn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxListItemsToReturn);
+                if (jABGetSelectionElementItemsmaxListItemsToReturn != null)
+                {
+                    jABGetSelectionElementItems["MaxListItemsToReturn"] = ExpressionConverter.ConvertO(jABGetSelectionElementItemsmaxListItemsToReturn);
+                    jABGetSelectionElementItemspropCount++;
+                }
+
+                jABGetSelectionElementItemspropCount++;
+            }
+            else
+            {
+                jABGetSelectionElementItems["MaxListItemsToReturn"] = 100;
                 jABGetSelectionElementItemspropCount++;
             }
 
@@ -3515,19 +6395,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByIndexsearchSubTree != null)
             {
-                jABSetSelectionByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchSubTree);
+                if (jABSetSelectionByIndexsearchSubTree != null)
+                {
+                    jABSetSelectionByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexsearchSubTree);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["SearchSubTree"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexmaxRelativeDepth != null)
             {
-                jABSetSelectionByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaxRelativeDepth);
+                if (jABSetSelectionByIndexmaxRelativeDepth != null)
+                {
+                    jABSetSelectionByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaxRelativeDepth);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["MaxRelativeDepth"] = 0;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexmatchIndex != null)
             {
-                jABSetSelectionByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndex);
+                if (jABSetSelectionByIndexmatchIndex != null)
+                {
+                    jABSetSelectionByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndex);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["MatchIndex"] = 1;
                 jABSetSelectionByIndexpropCount++;
             }
 
@@ -3545,25 +6455,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByIndexmatchIndexAscending != null)
             {
-                jABSetSelectionByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndexAscending);
+                if (jABSetSelectionByIndexmatchIndexAscending != null)
+                {
+                    jABSetSelectionByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmatchIndexAscending);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["MatchIndexAscending"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexcaseSensitiveSearch != null)
             {
-                jABSetSelectionByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexcaseSensitiveSearch);
+                if (jABSetSelectionByIndexcaseSensitiveSearch != null)
+                {
+                    jABSetSelectionByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexcaseSensitiveSearch);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["CaseSensitiveSearch"] = false;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexonlySearchVisibleElements != null)
             {
-                jABSetSelectionByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchVisibleElements);
+                if (jABSetSelectionByIndexonlySearchVisibleElements != null)
+                {
+                    jABSetSelectionByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchVisibleElements);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["OnlySearchVisibleElements"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexonlySearchShowingElements != null)
             {
-                jABSetSelectionByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchShowingElements);
+                if (jABSetSelectionByIndexonlySearchShowingElements != null)
+                {
+                    jABSetSelectionByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexonlySearchShowingElements);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["OnlySearchShowingElements"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
@@ -3575,13 +6525,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByIndexmaximumElementsToSearch != null)
             {
-                jABSetSelectionByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumElementsToSearch);
+                if (jABSetSelectionByIndexmaximumElementsToSearch != null)
+                {
+                    jABSetSelectionByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumElementsToSearch);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["MaximumElementsToSearch"] = 2000;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexmaximumChildElementsToSearchPerNode != null)
             {
-                jABSetSelectionByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumChildElementsToSearchPerNode);
+                if (jABSetSelectionByIndexmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABSetSelectionByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexmaximumChildElementsToSearchPerNode);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["MaximumChildElementsToSearchPerNode"] = 200;
                 jABSetSelectionByIndexpropCount++;
             }
 
@@ -3589,19 +6559,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABSetSelectionByIndex["ItemIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexitemIndex);
             if (jABSetSelectionByIndexselectItem != null)
             {
-                jABSetSelectionByIndex["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexselectItem);
+                if (jABSetSelectionByIndexselectItem != null)
+                {
+                    jABSetSelectionByIndex["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexselectItem);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["SelectItem"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexclearSelectionFirst != null)
             {
-                jABSetSelectionByIndex["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexclearSelectionFirst);
+                if (jABSetSelectionByIndexclearSelectionFirst != null)
+                {
+                    jABSetSelectionByIndex["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexclearSelectionFirst);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["ClearSelectionFirst"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
             if (jABSetSelectionByIndexrecoverOnFailure != null)
             {
-                jABSetSelectionByIndex["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexrecoverOnFailure);
+                if (jABSetSelectionByIndexrecoverOnFailure != null)
+                {
+                    jABSetSelectionByIndex["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByIndexrecoverOnFailure);
+                    jABSetSelectionByIndexpropCount++;
+                }
+
+                jABSetSelectionByIndexpropCount++;
+            }
+            else
+            {
+                jABSetSelectionByIndex["RecoverOnFailure"] = true;
                 jABSetSelectionByIndexpropCount++;
             }
 
@@ -3645,19 +6645,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByNamesearchSubTree != null)
             {
-                jABSetSelectionByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchSubTree);
+                if (jABSetSelectionByNamesearchSubTree != null)
+                {
+                    jABSetSelectionByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesearchSubTree);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["SearchSubTree"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamemaxRelativeDepth != null)
             {
-                jABSetSelectionByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaxRelativeDepth);
+                if (jABSetSelectionByNamemaxRelativeDepth != null)
+                {
+                    jABSetSelectionByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaxRelativeDepth);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["MaxRelativeDepth"] = 0;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamematchIndex != null)
             {
-                jABSetSelectionByName["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndex);
+                if (jABSetSelectionByNamematchIndex != null)
+                {
+                    jABSetSelectionByName["MatchIndex"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndex);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["MatchIndex"] = 1;
                 jABSetSelectionByNamepropCount++;
             }
 
@@ -3675,25 +6705,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByNamematchIndexAscending != null)
             {
-                jABSetSelectionByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndexAscending);
+                if (jABSetSelectionByNamematchIndexAscending != null)
+                {
+                    jABSetSelectionByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABSetSelectionByNamematchIndexAscending);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["MatchIndexAscending"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamecaseSensitiveSearch != null)
             {
-                jABSetSelectionByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecaseSensitiveSearch);
+                if (jABSetSelectionByNamecaseSensitiveSearch != null)
+                {
+                    jABSetSelectionByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecaseSensitiveSearch);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["CaseSensitiveSearch"] = false;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameonlySearchVisibleElements != null)
             {
-                jABSetSelectionByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchVisibleElements);
+                if (jABSetSelectionByNameonlySearchVisibleElements != null)
+                {
+                    jABSetSelectionByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchVisibleElements);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["OnlySearchVisibleElements"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameonlySearchShowingElements != null)
             {
-                jABSetSelectionByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchShowingElements);
+                if (jABSetSelectionByNameonlySearchShowingElements != null)
+                {
+                    jABSetSelectionByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABSetSelectionByNameonlySearchShowingElements);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["OnlySearchShowingElements"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
@@ -3705,13 +6775,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABSetSelectionByNamemaximumElementsToSearch != null)
             {
-                jABSetSelectionByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumElementsToSearch);
+                if (jABSetSelectionByNamemaximumElementsToSearch != null)
+                {
+                    jABSetSelectionByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumElementsToSearch);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["MaximumElementsToSearch"] = 2000;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamemaximumChildElementsToSearchPerNode != null)
             {
-                jABSetSelectionByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumChildElementsToSearchPerNode);
+                if (jABSetSelectionByNamemaximumChildElementsToSearchPerNode != null)
+                {
+                    jABSetSelectionByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABSetSelectionByNamemaximumChildElementsToSearchPerNode);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["MaximumChildElementsToSearchPerNode"] = 200;
                 jABSetSelectionByNamepropCount++;
             }
 
@@ -3719,61 +6809,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABSetSelectionByName["ItemName"] = ExpressionConverter.ConvertO(jABSetSelectionByNameitemName);
             if (jABSetSelectionByNameselectItem != null)
             {
-                jABSetSelectionByName["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByNameselectItem);
+                if (jABSetSelectionByNameselectItem != null)
+                {
+                    jABSetSelectionByName["SelectItem"] = ExpressionConverter.ConvertO(jABSetSelectionByNameselectItem);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["SelectItem"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameitemNameCaseSensitive != null)
             {
-                jABSetSelectionByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABSetSelectionByNameitemNameCaseSensitive);
+                if (jABSetSelectionByNameitemNameCaseSensitive != null)
+                {
+                    jABSetSelectionByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABSetSelectionByNameitemNameCaseSensitive);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["ItemNameCaseSensitive"] = false;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameclearSelectionFirst != null)
             {
-                jABSetSelectionByName["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameclearSelectionFirst);
+                if (jABSetSelectionByNameclearSelectionFirst != null)
+                {
+                    jABSetSelectionByName["ClearSelectionFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameclearSelectionFirst);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["ClearSelectionFirst"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamegetListOfOptionsBySelecting != null)
             {
-                jABSetSelectionByName["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsBySelecting);
+                if (jABSetSelectionByNamegetListOfOptionsBySelecting != null)
+                {
+                    jABSetSelectionByName["GetListOfOptionsBySelecting"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsBySelecting);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["GetListOfOptionsBySelecting"] = false;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamegetListOfOptionsByReadingLabels != null)
             {
-                jABSetSelectionByName["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsByReadingLabels);
+                if (jABSetSelectionByNamegetListOfOptionsByReadingLabels != null)
+                {
+                    jABSetSelectionByName["GetListOfOptionsByReadingLabels"] = ExpressionConverter.ConvertO(jABSetSelectionByNamegetListOfOptionsByReadingLabels);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["GetListOfOptionsByReadingLabels"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameexpandFirst != null)
             {
-                jABSetSelectionByName["ExpandFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameexpandFirst);
+                if (jABSetSelectionByNameexpandFirst != null)
+                {
+                    jABSetSelectionByName["ExpandFirst"] = ExpressionConverter.ConvertO(jABSetSelectionByNameexpandFirst);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["ExpandFirst"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamecollapseAfter != null)
             {
-                jABSetSelectionByName["CollapseAfter"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecollapseAfter);
+                if (jABSetSelectionByNamecollapseAfter != null)
+                {
+                    jABSetSelectionByName["CollapseAfter"] = ExpressionConverter.ConvertO(jABSetSelectionByNamecollapseAfter);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["CollapseAfter"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamesecondsBetweenExpandCollapse != null)
             {
-                jABSetSelectionByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesecondsBetweenExpandCollapse);
+                if (jABSetSelectionByNamesecondsBetweenExpandCollapse != null)
+                {
+                    jABSetSelectionByName["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(jABSetSelectionByNamesecondsBetweenExpandCollapse);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["SecondsBetweenExpandCollapse"] = 0.05;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNameforceEvenIfInCorrectState != null)
             {
-                jABSetSelectionByName["ForceEvenIfInCorrectState"] = ExpressionConverter.ConvertO(jABSetSelectionByNameforceEvenIfInCorrectState);
+                if (jABSetSelectionByNameforceEvenIfInCorrectState != null)
+                {
+                    jABSetSelectionByName["ForceEvenIfInCorrectState"] = ExpressionConverter.ConvertO(jABSetSelectionByNameforceEvenIfInCorrectState);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["ForceEvenIfInCorrectState"] = false;
                 jABSetSelectionByNamepropCount++;
             }
 
             if (jABSetSelectionByNamerecoverOnFailure != null)
             {
-                jABSetSelectionByName["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByNamerecoverOnFailure);
+                if (jABSetSelectionByNamerecoverOnFailure != null)
+                {
+                    jABSetSelectionByName["RecoverOnFailure"] = ExpressionConverter.ConvertO(jABSetSelectionByNamerecoverOnFailure);
+                    jABSetSelectionByNamepropCount++;
+                }
+
+                jABSetSelectionByNamepropCount++;
+            }
+            else
+            {
+                jABSetSelectionByName["RecoverOnFailure"] = true;
                 jABSetSelectionByNamepropCount++;
             }
 
@@ -3817,19 +7007,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABExpandSelectionsearchSubTree != null)
             {
-                jABExpandSelection["SearchSubTree"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchSubTree);
+                if (jABExpandSelectionsearchSubTree != null)
+                {
+                    jABExpandSelection["SearchSubTree"] = ExpressionConverter.ConvertO(jABExpandSelectionsearchSubTree);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["SearchSubTree"] = true;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionmaxRelativeDepth != null)
             {
-                jABExpandSelection["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABExpandSelectionmaxRelativeDepth);
+                if (jABExpandSelectionmaxRelativeDepth != null)
+                {
+                    jABExpandSelection["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABExpandSelectionmaxRelativeDepth);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["MaxRelativeDepth"] = 0;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionmatchIndex != null)
             {
-                jABExpandSelection["MatchIndex"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndex);
+                if (jABExpandSelectionmatchIndex != null)
+                {
+                    jABExpandSelection["MatchIndex"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndex);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["MatchIndex"] = 1;
                 jABExpandSelectionpropCount++;
             }
 
@@ -3847,25 +7067,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABExpandSelectionmatchIndexAscending != null)
             {
-                jABExpandSelection["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndexAscending);
+                if (jABExpandSelectionmatchIndexAscending != null)
+                {
+                    jABExpandSelection["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABExpandSelectionmatchIndexAscending);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["MatchIndexAscending"] = true;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectioncaseSensitiveSearch != null)
             {
-                jABExpandSelection["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABExpandSelectioncaseSensitiveSearch);
+                if (jABExpandSelectioncaseSensitiveSearch != null)
+                {
+                    jABExpandSelection["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABExpandSelectioncaseSensitiveSearch);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["CaseSensitiveSearch"] = false;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectiononlySearchVisibleElements != null)
             {
-                jABExpandSelection["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchVisibleElements);
+                if (jABExpandSelectiononlySearchVisibleElements != null)
+                {
+                    jABExpandSelection["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchVisibleElements);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["OnlySearchVisibleElements"] = true;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectiononlySearchShowingElements != null)
             {
-                jABExpandSelection["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchShowingElements);
+                if (jABExpandSelectiononlySearchShowingElements != null)
+                {
+                    jABExpandSelection["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABExpandSelectiononlySearchShowingElements);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["OnlySearchShowingElements"] = true;
                 jABExpandSelectionpropCount++;
             }
 
@@ -3877,31 +7137,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABExpandSelectionmaximumElementsToSearch != null)
             {
-                jABExpandSelection["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumElementsToSearch);
+                if (jABExpandSelectionmaximumElementsToSearch != null)
+                {
+                    jABExpandSelection["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumElementsToSearch);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["MaximumElementsToSearch"] = 2000;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionmaximumChildElementsToSearchPerNode != null)
             {
-                jABExpandSelection["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumChildElementsToSearchPerNode);
+                if (jABExpandSelectionmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABExpandSelection["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABExpandSelectionmaximumChildElementsToSearchPerNode);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["MaximumChildElementsToSearchPerNode"] = 200;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionexpand != null)
             {
-                jABExpandSelection["Expand"] = ExpressionConverter.ConvertO(jABExpandSelectionexpand);
+                if (jABExpandSelectionexpand != null)
+                {
+                    jABExpandSelection["Expand"] = ExpressionConverter.ConvertO(jABExpandSelectionexpand);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["Expand"] = true;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionverifyElementState != null)
             {
-                jABExpandSelection["VerifyElementState"] = ExpressionConverter.ConvertO(jABExpandSelectionverifyElementState);
+                if (jABExpandSelectionverifyElementState != null)
+                {
+                    jABExpandSelection["VerifyElementState"] = ExpressionConverter.ConvertO(jABExpandSelectionverifyElementState);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["VerifyElementState"] = false;
                 jABExpandSelectionpropCount++;
             }
 
             if (jABExpandSelectionsecondsToWaitForStateChange != null)
             {
-                jABExpandSelection["SecondsToWaitForStateChange"] = ExpressionConverter.ConvertO(jABExpandSelectionsecondsToWaitForStateChange);
+                if (jABExpandSelectionsecondsToWaitForStateChange != null)
+                {
+                    jABExpandSelection["SecondsToWaitForStateChange"] = ExpressionConverter.ConvertO(jABExpandSelectionsecondsToWaitForStateChange);
+                    jABExpandSelectionpropCount++;
+                }
+
+                jABExpandSelectionpropCount++;
+            }
+            else
+            {
+                jABExpandSelection["SecondsToWaitForStateChange"] = 0.05;
                 jABExpandSelectionpropCount++;
             }
 
@@ -3945,19 +7255,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByIndexsearchSubTree != null)
             {
-                jABGetSelectionStateByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchSubTree);
+                if (jABGetSelectionStateByIndexsearchSubTree != null)
+                {
+                    jABGetSelectionStateByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexsearchSubTree);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["SearchSubTree"] = true;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexmaxRelativeDepth != null)
             {
-                jABGetSelectionStateByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaxRelativeDepth);
+                if (jABGetSelectionStateByIndexmaxRelativeDepth != null)
+                {
+                    jABGetSelectionStateByIndex["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaxRelativeDepth);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["MaxRelativeDepth"] = 0;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexmatchIndex != null)
             {
-                jABGetSelectionStateByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndex);
+                if (jABGetSelectionStateByIndexmatchIndex != null)
+                {
+                    jABGetSelectionStateByIndex["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndex);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["MatchIndex"] = 1;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
@@ -3975,25 +7315,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByIndexmatchIndexAscending != null)
             {
-                jABGetSelectionStateByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndexAscending);
+                if (jABGetSelectionStateByIndexmatchIndexAscending != null)
+                {
+                    jABGetSelectionStateByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmatchIndexAscending);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["MatchIndexAscending"] = true;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexcaseSensitiveSearch != null)
             {
-                jABGetSelectionStateByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexcaseSensitiveSearch);
+                if (jABGetSelectionStateByIndexcaseSensitiveSearch != null)
+                {
+                    jABGetSelectionStateByIndex["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexcaseSensitiveSearch);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["CaseSensitiveSearch"] = false;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexonlySearchVisibleElements != null)
             {
-                jABGetSelectionStateByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchVisibleElements);
+                if (jABGetSelectionStateByIndexonlySearchVisibleElements != null)
+                {
+                    jABGetSelectionStateByIndex["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchVisibleElements);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["OnlySearchVisibleElements"] = true;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexonlySearchShowingElements != null)
             {
-                jABGetSelectionStateByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchShowingElements);
+                if (jABGetSelectionStateByIndexonlySearchShowingElements != null)
+                {
+                    jABGetSelectionStateByIndex["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexonlySearchShowingElements);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["OnlySearchShowingElements"] = true;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
@@ -4005,13 +7385,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByIndexmaximumElementsToSearch != null)
             {
-                jABGetSelectionStateByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumElementsToSearch);
+                if (jABGetSelectionStateByIndexmaximumElementsToSearch != null)
+                {
+                    jABGetSelectionStateByIndex["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumElementsToSearch);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["MaximumElementsToSearch"] = 2000;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
             if (jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionStateByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode);
+                if (jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetSelectionStateByIndex["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByIndexmaximumChildElementsToSearchPerNode);
+                    jABGetSelectionStateByIndexpropCount++;
+                }
+
+                jABGetSelectionStateByIndexpropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByIndex["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetSelectionStateByIndexpropCount++;
             }
 
@@ -4057,19 +7457,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByNamesearchSubTree != null)
             {
-                jABGetSelectionStateByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchSubTree);
+                if (jABGetSelectionStateByNamesearchSubTree != null)
+                {
+                    jABGetSelectionStateByName["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamesearchSubTree);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["SearchSubTree"] = true;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNamemaxRelativeDepth != null)
             {
-                jABGetSelectionStateByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaxRelativeDepth);
+                if (jABGetSelectionStateByNamemaxRelativeDepth != null)
+                {
+                    jABGetSelectionStateByName["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaxRelativeDepth);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["MaxRelativeDepth"] = 0;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNamematchIndex != null)
             {
-                jABGetSelectionStateByName["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndex);
+                if (jABGetSelectionStateByNamematchIndex != null)
+                {
+                    jABGetSelectionStateByName["MatchIndex"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndex);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["MatchIndex"] = 1;
                 jABGetSelectionStateByNamepropCount++;
             }
 
@@ -4087,25 +7517,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByNamematchIndexAscending != null)
             {
-                jABGetSelectionStateByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndexAscending);
+                if (jABGetSelectionStateByNamematchIndexAscending != null)
+                {
+                    jABGetSelectionStateByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamematchIndexAscending);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["MatchIndexAscending"] = true;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNamecaseSensitiveSearch != null)
             {
-                jABGetSelectionStateByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamecaseSensitiveSearch);
+                if (jABGetSelectionStateByNamecaseSensitiveSearch != null)
+                {
+                    jABGetSelectionStateByName["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamecaseSensitiveSearch);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["CaseSensitiveSearch"] = false;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNameonlySearchVisibleElements != null)
             {
-                jABGetSelectionStateByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchVisibleElements);
+                if (jABGetSelectionStateByNameonlySearchVisibleElements != null)
+                {
+                    jABGetSelectionStateByName["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchVisibleElements);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["OnlySearchVisibleElements"] = true;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNameonlySearchShowingElements != null)
             {
-                jABGetSelectionStateByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchShowingElements);
+                if (jABGetSelectionStateByNameonlySearchShowingElements != null)
+                {
+                    jABGetSelectionStateByName["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameonlySearchShowingElements);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["OnlySearchShowingElements"] = true;
                 jABGetSelectionStateByNamepropCount++;
             }
 
@@ -4117,13 +7587,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetSelectionStateByNamemaximumElementsToSearch != null)
             {
-                jABGetSelectionStateByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumElementsToSearch);
+                if (jABGetSelectionStateByNamemaximumElementsToSearch != null)
+                {
+                    jABGetSelectionStateByName["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumElementsToSearch);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["MaximumElementsToSearch"] = 2000;
                 jABGetSelectionStateByNamepropCount++;
             }
 
             if (jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetSelectionStateByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode);
+                if (jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetSelectionStateByName["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNamemaximumChildElementsToSearchPerNode);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetSelectionStateByNamepropCount++;
             }
 
@@ -4131,7 +7621,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetSelectionStateByName["ItemName"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameitemName);
             if (jABGetSelectionStateByNameitemNameCaseSensitive != null)
             {
-                jABGetSelectionStateByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameitemNameCaseSensitive);
+                if (jABGetSelectionStateByNameitemNameCaseSensitive != null)
+                {
+                    jABGetSelectionStateByName["ItemNameCaseSensitive"] = ExpressionConverter.ConvertO(jABGetSelectionStateByNameitemNameCaseSensitive);
+                    jABGetSelectionStateByNamepropCount++;
+                }
+
+                jABGetSelectionStateByNamepropCount++;
+            }
+            else
+            {
+                jABGetSelectionStateByName["ItemNameCaseSensitive"] = false;
                 jABGetSelectionStateByNamepropCount++;
             }
 
@@ -4175,19 +7675,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTablePropertiessearchSubTree != null)
             {
-                jABGetTableProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchSubTree);
+                if (jABGetTablePropertiessearchSubTree != null)
+                {
+                    jABGetTableProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTablePropertiessearchSubTree);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["SearchSubTree"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesmaxRelativeDepth != null)
             {
-                jABGetTableProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxRelativeDepth);
+                if (jABGetTablePropertiesmaxRelativeDepth != null)
+                {
+                    jABGetTableProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxRelativeDepth);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MaxRelativeDepth"] = 0;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesmatchIndex != null)
             {
-                jABGetTableProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndex);
+                if (jABGetTablePropertiesmatchIndex != null)
+                {
+                    jABGetTableProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndex);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MatchIndex"] = 1;
                 jABGetTablePropertiespropCount++;
             }
 
@@ -4205,25 +7735,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTablePropertiesmatchIndexAscending != null)
             {
-                jABGetTableProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndexAscending);
+                if (jABGetTablePropertiesmatchIndexAscending != null)
+                {
+                    jABGetTableProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmatchIndexAscending);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MatchIndexAscending"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiescaseSensitiveSearch != null)
             {
-                jABGetTableProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiescaseSensitiveSearch);
+                if (jABGetTablePropertiescaseSensitiveSearch != null)
+                {
+                    jABGetTableProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiescaseSensitiveSearch);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["CaseSensitiveSearch"] = false;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesonlySearchVisibleElements != null)
             {
-                jABGetTableProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchVisibleElements);
+                if (jABGetTablePropertiesonlySearchVisibleElements != null)
+                {
+                    jABGetTableProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchVisibleElements);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["OnlySearchVisibleElements"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesonlySearchShowingElements != null)
             {
-                jABGetTableProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchShowingElements);
+                if (jABGetTablePropertiesonlySearchShowingElements != null)
+                {
+                    jABGetTableProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTablePropertiesonlySearchShowingElements);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["OnlySearchShowingElements"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
@@ -4235,61 +7805,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTablePropertiesmaximumElementsToSearch != null)
             {
-                jABGetTableProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumElementsToSearch);
+                if (jABGetTablePropertiesmaximumElementsToSearch != null)
+                {
+                    jABGetTableProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumElementsToSearch);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MaximumElementsToSearch"] = 2000;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumChildElementsToSearchPerNode);
+                if (jABGetTablePropertiesmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetTableProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaximumChildElementsToSearchPerNode);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesenumerateViewport != null)
             {
-                jABGetTableProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTablePropertiesenumerateViewport);
+                if (jABGetTablePropertiesenumerateViewport != null)
+                {
+                    jABGetTableProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTablePropertiesenumerateViewport);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["EnumerateViewport"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesprocessViewportParents != null)
             {
-                jABGetTableProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTablePropertiesprocessViewportParents);
+                if (jABGetTablePropertiesprocessViewportParents != null)
+                {
+                    jABGetTableProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTablePropertiesprocessViewportParents);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ProcessViewportParents"] = true;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesmaxViewportParentsToProcess != null)
             {
-                jABGetTableProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxViewportParentsToProcess);
+                if (jABGetTablePropertiesmaxViewportParentsToProcess != null)
+                {
+                    jABGetTableProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTablePropertiesmaxViewportParentsToProcess);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["MaxViewportParentsToProcess"] = 50;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesviewportParentElementRolesToConsider != null)
             {
-                jABGetTableProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportParentElementRolesToConsider);
+                if (jABGetTablePropertiesviewportParentElementRolesToConsider != null)
+                {
+                    jABGetTableProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportParentElementRolesToConsider);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ViewportParentElementRolesToConsider"] = "Panel,Viewport,Layered pane,Root pane";
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesviewportLeftMargin != null)
             {
-                jABGetTableProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportLeftMargin);
+                if (jABGetTablePropertiesviewportLeftMargin != null)
+                {
+                    jABGetTableProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportLeftMargin);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ViewportLeftMargin"] = 2;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesviewportTopMargin != null)
             {
-                jABGetTableProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportTopMargin);
+                if (jABGetTablePropertiesviewportTopMargin != null)
+                {
+                    jABGetTableProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportTopMargin);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ViewportTopMargin"] = 2;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesviewportRightMargin != null)
             {
-                jABGetTableProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportRightMargin);
+                if (jABGetTablePropertiesviewportRightMargin != null)
+                {
+                    jABGetTableProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportRightMargin);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ViewportRightMargin"] = 2;
                 jABGetTablePropertiespropCount++;
             }
 
             if (jABGetTablePropertiesviewportBottomMargin != null)
             {
-                jABGetTableProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportBottomMargin);
+                if (jABGetTablePropertiesviewportBottomMargin != null)
+                {
+                    jABGetTableProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTablePropertiesviewportBottomMargin);
+                    jABGetTablePropertiespropCount++;
+                }
+
+                jABGetTablePropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableProperties["ViewportBottomMargin"] = 2;
                 jABGetTablePropertiespropCount++;
             }
 
@@ -4333,19 +8003,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableCellPropertiessearchSubTree != null)
             {
-                jABGetTableCellProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchSubTree);
+                if (jABGetTableCellPropertiessearchSubTree != null)
+                {
+                    jABGetTableCellProperties["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiessearchSubTree);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["SearchSubTree"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesmaxRelativeDepth != null)
             {
-                jABGetTableCellProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxRelativeDepth);
+                if (jABGetTableCellPropertiesmaxRelativeDepth != null)
+                {
+                    jABGetTableCellProperties["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxRelativeDepth);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MaxRelativeDepth"] = 0;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesmatchIndex != null)
             {
-                jABGetTableCellProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndex);
+                if (jABGetTableCellPropertiesmatchIndex != null)
+                {
+                    jABGetTableCellProperties["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndex);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MatchIndex"] = 1;
                 jABGetTableCellPropertiespropCount++;
             }
 
@@ -4363,25 +8063,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableCellPropertiesmatchIndexAscending != null)
             {
-                jABGetTableCellProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndexAscending);
+                if (jABGetTableCellPropertiesmatchIndexAscending != null)
+                {
+                    jABGetTableCellProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmatchIndexAscending);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MatchIndexAscending"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiescaseSensitiveSearch != null)
             {
-                jABGetTableCellProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiescaseSensitiveSearch);
+                if (jABGetTableCellPropertiescaseSensitiveSearch != null)
+                {
+                    jABGetTableCellProperties["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiescaseSensitiveSearch);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["CaseSensitiveSearch"] = false;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesonlySearchVisibleElements != null)
             {
-                jABGetTableCellProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchVisibleElements);
+                if (jABGetTableCellPropertiesonlySearchVisibleElements != null)
+                {
+                    jABGetTableCellProperties["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchVisibleElements);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["OnlySearchVisibleElements"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesonlySearchShowingElements != null)
             {
-                jABGetTableCellProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchShowingElements);
+                if (jABGetTableCellPropertiesonlySearchShowingElements != null)
+                {
+                    jABGetTableCellProperties["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesonlySearchShowingElements);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["OnlySearchShowingElements"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
@@ -4393,13 +8133,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableCellPropertiesmaximumElementsToSearch != null)
             {
-                jABGetTableCellProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumElementsToSearch);
+                if (jABGetTableCellPropertiesmaximumElementsToSearch != null)
+                {
+                    jABGetTableCellProperties["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumElementsToSearch);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MaximumElementsToSearch"] = 2000;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableCellProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode);
+                if (jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetTableCellProperties["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaximumChildElementsToSearchPerNode);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetTableCellPropertiespropCount++;
             }
 
@@ -4409,55 +8169,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetTableCellProperties["ColumnIndex"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiescolumnIndex);
             if (jABGetTableCellPropertiesreturnJABHandle != null)
             {
-                jABGetTableCellProperties["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesreturnJABHandle);
+                if (jABGetTableCellPropertiesreturnJABHandle != null)
+                {
+                    jABGetTableCellProperties["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesreturnJABHandle);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ReturnJABHandle"] = false;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesenumerateViewport != null)
             {
-                jABGetTableCellProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesenumerateViewport);
+                if (jABGetTableCellPropertiesenumerateViewport != null)
+                {
+                    jABGetTableCellProperties["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesenumerateViewport);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["EnumerateViewport"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesprocessViewportParents != null)
             {
-                jABGetTableCellProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesprocessViewportParents);
+                if (jABGetTableCellPropertiesprocessViewportParents != null)
+                {
+                    jABGetTableCellProperties["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesprocessViewportParents);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ProcessViewportParents"] = true;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesmaxViewportParentsToProcess != null)
             {
-                jABGetTableCellProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxViewportParentsToProcess);
+                if (jABGetTableCellPropertiesmaxViewportParentsToProcess != null)
+                {
+                    jABGetTableCellProperties["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesmaxViewportParentsToProcess);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["MaxViewportParentsToProcess"] = 50;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesviewportParentElementRolesToConsider != null)
             {
-                jABGetTableCellProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportParentElementRolesToConsider);
+                if (jABGetTableCellPropertiesviewportParentElementRolesToConsider != null)
+                {
+                    jABGetTableCellProperties["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportParentElementRolesToConsider);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ViewportParentElementRolesToConsider"] = "Panel,Viewport,Layered pane,Root pane";
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesviewportLeftMargin != null)
             {
-                jABGetTableCellProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportLeftMargin);
+                if (jABGetTableCellPropertiesviewportLeftMargin != null)
+                {
+                    jABGetTableCellProperties["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportLeftMargin);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ViewportLeftMargin"] = 2;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesviewportTopMargin != null)
             {
-                jABGetTableCellProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportTopMargin);
+                if (jABGetTableCellPropertiesviewportTopMargin != null)
+                {
+                    jABGetTableCellProperties["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportTopMargin);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ViewportTopMargin"] = 2;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesviewportRightMargin != null)
             {
-                jABGetTableCellProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportRightMargin);
+                if (jABGetTableCellPropertiesviewportRightMargin != null)
+                {
+                    jABGetTableCellProperties["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportRightMargin);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ViewportRightMargin"] = 2;
                 jABGetTableCellPropertiespropCount++;
             }
 
             if (jABGetTableCellPropertiesviewportBottomMargin != null)
             {
-                jABGetTableCellProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportBottomMargin);
+                if (jABGetTableCellPropertiesviewportBottomMargin != null)
+                {
+                    jABGetTableCellProperties["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGetTableCellPropertiesviewportBottomMargin);
+                    jABGetTableCellPropertiespropCount++;
+                }
+
+                jABGetTableCellPropertiespropCount++;
+            }
+            else
+            {
+                jABGetTableCellProperties["ViewportBottomMargin"] = 2;
                 jABGetTableCellPropertiespropCount++;
             }
 
@@ -4501,19 +8351,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableContentssearchSubTree != null)
             {
-                jABGetTableContents["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableContentssearchSubTree);
+                if (jABGetTableContentssearchSubTree != null)
+                {
+                    jABGetTableContents["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetTableContentssearchSubTree);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["SearchSubTree"] = true;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsmaxRelativeDepth != null)
             {
-                jABGetTableContents["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRelativeDepth);
+                if (jABGetTableContentsmaxRelativeDepth != null)
+                {
+                    jABGetTableContents["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRelativeDepth);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MaxRelativeDepth"] = 0;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsmatchIndex != null)
             {
-                jABGetTableContents["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndex);
+                if (jABGetTableContentsmatchIndex != null)
+                {
+                    jABGetTableContents["MatchIndex"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndex);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MatchIndex"] = 1;
                 jABGetTableContentspropCount++;
             }
 
@@ -4531,25 +8411,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableContentsmatchIndexAscending != null)
             {
-                jABGetTableContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndexAscending);
+                if (jABGetTableContentsmatchIndexAscending != null)
+                {
+                    jABGetTableContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetTableContentsmatchIndexAscending);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MatchIndexAscending"] = true;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentscaseSensitiveSearch != null)
             {
-                jABGetTableContents["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableContentscaseSensitiveSearch);
+                if (jABGetTableContentscaseSensitiveSearch != null)
+                {
+                    jABGetTableContents["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetTableContentscaseSensitiveSearch);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["CaseSensitiveSearch"] = false;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsonlySearchVisibleElements != null)
             {
-                jABGetTableContents["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchVisibleElements);
+                if (jABGetTableContentsonlySearchVisibleElements != null)
+                {
+                    jABGetTableContents["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchVisibleElements);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["OnlySearchVisibleElements"] = true;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsonlySearchShowingElements != null)
             {
-                jABGetTableContents["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchShowingElements);
+                if (jABGetTableContentsonlySearchShowingElements != null)
+                {
+                    jABGetTableContents["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetTableContentsonlySearchShowingElements);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["OnlySearchShowingElements"] = true;
                 jABGetTableContentspropCount++;
             }
 
@@ -4561,49 +8481,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetTableContentsmaximumElementsToSearch != null)
             {
-                jABGetTableContents["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumElementsToSearch);
+                if (jABGetTableContentsmaximumElementsToSearch != null)
+                {
+                    jABGetTableContents["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumElementsToSearch);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MaximumElementsToSearch"] = 2000;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetTableContents["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumChildElementsToSearchPerNode);
+                if (jABGetTableContentsmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetTableContents["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetTableContentsmaximumChildElementsToSearchPerNode);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsfirstRowToReturn != null)
             {
-                jABGetTableContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstRowToReturn);
+                if (jABGetTableContentsfirstRowToReturn != null)
+                {
+                    jABGetTableContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstRowToReturn);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["FirstRowToReturn"] = 1;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsmaxRowsToReturn != null)
             {
-                jABGetTableContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRowsToReturn);
+                if (jABGetTableContentsmaxRowsToReturn != null)
+                {
+                    jABGetTableContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxRowsToReturn);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MaxRowsToReturn"] = 0;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsfirstColumnToReturn != null)
             {
-                jABGetTableContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstColumnToReturn);
+                if (jABGetTableContentsfirstColumnToReturn != null)
+                {
+                    jABGetTableContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsfirstColumnToReturn);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["FirstColumnToReturn"] = 1;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsmaxColumnsToReturn != null)
             {
-                jABGetTableContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxColumnsToReturn);
+                if (jABGetTableContentsmaxColumnsToReturn != null)
+                {
+                    jABGetTableContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(jABGetTableContentsmaxColumnsToReturn);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["MaxColumnsToReturn"] = 0;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsuseColumnHeadersFromTable != null)
             {
-                jABGetTableContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(jABGetTableContentsuseColumnHeadersFromTable);
+                if (jABGetTableContentsuseColumnHeadersFromTable != null)
+                {
+                    jABGetTableContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(jABGetTableContentsuseColumnHeadersFromTable);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["UseColumnHeadersFromTable"] = false;
                 jABGetTableContentspropCount++;
             }
 
             if (jABGetTableContentsreturnRowIndexInOutputCollection != null)
             {
-                jABGetTableContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(jABGetTableContentsreturnRowIndexInOutputCollection);
+                if (jABGetTableContentsreturnRowIndexInOutputCollection != null)
+                {
+                    jABGetTableContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(jABGetTableContentsreturnRowIndexInOutputCollection);
+                    jABGetTableContentspropCount++;
+                }
+
+                jABGetTableContentspropCount++;
+            }
+            else
+            {
+                jABGetTableContents["ReturnRowIndexInOutputCollection"] = true;
                 jABGetTableContentspropCount++;
             }
 
@@ -4653,19 +8653,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABIsTableCellVisibleOnscreensearchSubTree != null)
             {
-                jABIsTableCellVisibleOnscreen["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchSubTree);
+                if (jABIsTableCellVisibleOnscreensearchSubTree != null)
+                {
+                    jABIsTableCellVisibleOnscreen["SearchSubTree"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreensearchSubTree);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["SearchSubTree"] = true;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenmaxRelativeDepth != null)
             {
-                jABIsTableCellVisibleOnscreen["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxRelativeDepth);
+                if (jABIsTableCellVisibleOnscreenmaxRelativeDepth != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxRelativeDepth);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MaxRelativeDepth"] = 0;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenmatchIndex != null)
             {
-                jABIsTableCellVisibleOnscreen["MatchIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndex);
+                if (jABIsTableCellVisibleOnscreenmatchIndex != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MatchIndex"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndex);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MatchIndex"] = 1;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
@@ -4683,25 +8713,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABIsTableCellVisibleOnscreenmatchIndexAscending != null)
             {
-                jABIsTableCellVisibleOnscreen["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndexAscending);
+                if (jABIsTableCellVisibleOnscreenmatchIndexAscending != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmatchIndexAscending);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MatchIndexAscending"] = true;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreencaseSensitiveSearch != null)
             {
-                jABIsTableCellVisibleOnscreen["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreencaseSensitiveSearch);
+                if (jABIsTableCellVisibleOnscreencaseSensitiveSearch != null)
+                {
+                    jABIsTableCellVisibleOnscreen["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreencaseSensitiveSearch);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["CaseSensitiveSearch"] = false;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenonlySearchVisibleElements != null)
             {
-                jABIsTableCellVisibleOnscreen["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchVisibleElements);
+                if (jABIsTableCellVisibleOnscreenonlySearchVisibleElements != null)
+                {
+                    jABIsTableCellVisibleOnscreen["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchVisibleElements);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["OnlySearchVisibleElements"] = true;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenonlySearchShowingElements != null)
             {
-                jABIsTableCellVisibleOnscreen["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchShowingElements);
+                if (jABIsTableCellVisibleOnscreenonlySearchShowingElements != null)
+                {
+                    jABIsTableCellVisibleOnscreen["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenonlySearchShowingElements);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["OnlySearchShowingElements"] = true;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
@@ -4713,55 +8783,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABIsTableCellVisibleOnscreenmaximumElementsToSearch != null)
             {
-                jABIsTableCellVisibleOnscreen["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumElementsToSearch);
+                if (jABIsTableCellVisibleOnscreenmaximumElementsToSearch != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumElementsToSearch);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MaximumElementsToSearch"] = 2000;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode != null)
             {
-                jABIsTableCellVisibleOnscreen["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode);
+                if (jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaximumChildElementsToSearchPerNode);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MaximumChildElementsToSearchPerNode"] = 200;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenprocessViewportParents != null)
             {
-                jABIsTableCellVisibleOnscreen["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenprocessViewportParents);
+                if (jABIsTableCellVisibleOnscreenprocessViewportParents != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenprocessViewportParents);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ProcessViewportParents"] = true;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess != null)
             {
-                jABIsTableCellVisibleOnscreen["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess);
+                if (jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess != null)
+                {
+                    jABIsTableCellVisibleOnscreen["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenmaxViewportParentsToProcess);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["MaxViewportParentsToProcess"] = 50;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider);
+                if (jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportParentElementRolesToConsider);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ViewportParentElementRolesToConsider"] = "Panel,Viewport,Layered pane,Root pane";
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenviewportLeftMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportLeftMargin);
+                if (jABIsTableCellVisibleOnscreenviewportLeftMargin != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportLeftMargin);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ViewportLeftMargin"] = 2;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenviewportTopMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportTopMargin);
+                if (jABIsTableCellVisibleOnscreenviewportTopMargin != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportTopMargin);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ViewportTopMargin"] = 2;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenviewportRightMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportRightMargin);
+                if (jABIsTableCellVisibleOnscreenviewportRightMargin != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportRightMargin);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ViewportRightMargin"] = 2;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
             if (jABIsTableCellVisibleOnscreenviewportBottomMargin != null)
             {
-                jABIsTableCellVisibleOnscreen["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportBottomMargin);
+                if (jABIsTableCellVisibleOnscreenviewportBottomMargin != null)
+                {
+                    jABIsTableCellVisibleOnscreen["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABIsTableCellVisibleOnscreenviewportBottomMargin);
+                    jABIsTableCellVisibleOnscreenpropCount++;
+                }
+
+                jABIsTableCellVisibleOnscreenpropCount++;
+            }
+            else
+            {
+                jABIsTableCellVisibleOnscreen["ViewportBottomMargin"] = 2;
                 jABIsTableCellVisibleOnscreenpropCount++;
             }
 
@@ -4813,19 +8973,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetVisibleBoundingRectangleOfElementOnscreen["ElementJABHandle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenelementJABHandle);
             if (jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess);
+                if (jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess != null)
+                {
+                    jABGetVisibleBoundingRectangleOfElementOnscreen["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenmaxParentsToProcess);
+                    jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+                }
+
+                jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+            }
+            else
+            {
+                jABGetVisibleBoundingRectangleOfElementOnscreen["MaxParentsToProcess"] = 0;
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
             if (jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["ParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider);
+                if (jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider != null)
+                {
+                    jABGetVisibleBoundingRectangleOfElementOnscreen["ParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreenparentElementRolesToConsider);
+                    jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+                }
+
+                jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+            }
+            else
+            {
+                jABGetVisibleBoundingRectangleOfElementOnscreen["ParentElementRolesToConsider"] = "Panel,Viewport,Layered pane,Root pane";
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
             if (jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle != null)
             {
-                jABGetVisibleBoundingRectangleOfElementOnscreen["DrawRectangle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle);
+                if (jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle != null)
+                {
+                    jABGetVisibleBoundingRectangleOfElementOnscreen["DrawRectangle"] = ExpressionConverter.ConvertO(jABGetVisibleBoundingRectangleOfElementOnscreendrawRectangle);
+                    jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+                }
+
+                jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
+            }
+            else
+            {
+                jABGetVisibleBoundingRectangleOfElementOnscreen["DrawRectangle"] = false;
                 jABGetVisibleBoundingRectangleOfElementOnscreenpropCount++;
             }
 
@@ -4879,7 +9069,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetTableCellAtScreenCoordinate["ScreenY"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatescreenY);
             if (jABGetTableCellAtScreenCoordinatereturnJABHandle != null)
             {
-                jABGetTableCellAtScreenCoordinate["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatereturnJABHandle);
+                if (jABGetTableCellAtScreenCoordinatereturnJABHandle != null)
+                {
+                    jABGetTableCellAtScreenCoordinate["ReturnJABHandle"] = ExpressionConverter.ConvertO(jABGetTableCellAtScreenCoordinatereturnJABHandle);
+                    jABGetTableCellAtScreenCoordinatepropCount++;
+                }
+
+                jABGetTableCellAtScreenCoordinatepropCount++;
+            }
+            else
+            {
+                jABGetTableCellAtScreenCoordinate["ReturnJABHandle"] = false;
                 jABGetTableCellAtScreenCoordinatepropCount++;
             }
 
@@ -4905,13 +9105,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetMultipleParentJABElementProperties["SearchElementJABHandle"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiessearchElementJABHandle);
             if (jABGetMultipleParentJABElementPropertiesmaxStringLength != null)
             {
-                jABGetMultipleParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxStringLength);
+                if (jABGetMultipleParentJABElementPropertiesmaxStringLength != null)
+                {
+                    jABGetMultipleParentJABElementProperties["MaxStringLength"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxStringLength);
+                    jABGetMultipleParentJABElementPropertiespropCount++;
+                }
+
+                jABGetMultipleParentJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetMultipleParentJABElementProperties["MaxStringLength"] = 0;
                 jABGetMultipleParentJABElementPropertiespropCount++;
             }
 
             if (jABGetMultipleParentJABElementPropertiesmaxParentsToProcess != null)
             {
-                jABGetMultipleParentJABElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxParentsToProcess);
+                if (jABGetMultipleParentJABElementPropertiesmaxParentsToProcess != null)
+                {
+                    jABGetMultipleParentJABElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(jABGetMultipleParentJABElementPropertiesmaxParentsToProcess);
+                    jABGetMultipleParentJABElementPropertiespropCount++;
+                }
+
+                jABGetMultipleParentJABElementPropertiespropCount++;
+            }
+            else
+            {
+                jABGetMultipleParentJABElementProperties["MaxParentsToProcess"] = 0;
                 jABGetMultipleParentJABElementPropertiespropCount++;
             }
 
@@ -4955,19 +9175,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMouseClickOnTableCellsearchSubTree != null)
             {
-                jABGlobalMouseClickOnTableCell["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchSubTree);
+                if (jABGlobalMouseClickOnTableCellsearchSubTree != null)
+                {
+                    jABGlobalMouseClickOnTableCell["SearchSubTree"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellsearchSubTree);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["SearchSubTree"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellmaxRelativeDepth != null)
             {
-                jABGlobalMouseClickOnTableCell["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxRelativeDepth);
+                if (jABGlobalMouseClickOnTableCellmaxRelativeDepth != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxRelativeDepth);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MaxRelativeDepth"] = 0;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellmatchIndex != null)
             {
-                jABGlobalMouseClickOnTableCell["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndex);
+                if (jABGlobalMouseClickOnTableCellmatchIndex != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MatchIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndex);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MatchIndex"] = 1;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -4985,25 +9235,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMouseClickOnTableCellmatchIndexAscending != null)
             {
-                jABGlobalMouseClickOnTableCell["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndexAscending);
+                if (jABGlobalMouseClickOnTableCellmatchIndexAscending != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmatchIndexAscending);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MatchIndexAscending"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellcaseSensitiveSearch != null)
             {
-                jABGlobalMouseClickOnTableCell["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellcaseSensitiveSearch);
+                if (jABGlobalMouseClickOnTableCellcaseSensitiveSearch != null)
+                {
+                    jABGlobalMouseClickOnTableCell["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellcaseSensitiveSearch);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["CaseSensitiveSearch"] = false;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellonlySearchVisibleElements != null)
             {
-                jABGlobalMouseClickOnTableCell["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchVisibleElements);
+                if (jABGlobalMouseClickOnTableCellonlySearchVisibleElements != null)
+                {
+                    jABGlobalMouseClickOnTableCell["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchVisibleElements);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["OnlySearchVisibleElements"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellonlySearchShowingElements != null)
             {
-                jABGlobalMouseClickOnTableCell["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchShowingElements);
+                if (jABGlobalMouseClickOnTableCellonlySearchShowingElements != null)
+                {
+                    jABGlobalMouseClickOnTableCell["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellonlySearchShowingElements);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["OnlySearchShowingElements"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -5015,13 +9305,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMouseClickOnTableCellmaximumElementsToSearch != null)
             {
-                jABGlobalMouseClickOnTableCell["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumElementsToSearch);
+                if (jABGlobalMouseClickOnTableCellmaximumElementsToSearch != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumElementsToSearch);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MaximumElementsToSearch"] = 2000;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode != null)
             {
-                jABGlobalMouseClickOnTableCell["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode);
+                if (jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaximumChildElementsToSearchPerNode);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -5031,49 +9341,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGlobalMouseClickOnTableCell["ColumnIndex"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellcolumnIndex);
             if (jABGlobalMouseClickOnTableCellenumerateViewport != null)
             {
-                jABGlobalMouseClickOnTableCell["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellenumerateViewport);
+                if (jABGlobalMouseClickOnTableCellenumerateViewport != null)
+                {
+                    jABGlobalMouseClickOnTableCell["EnumerateViewport"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellenumerateViewport);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["EnumerateViewport"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellprocessViewportParents != null)
             {
-                jABGlobalMouseClickOnTableCell["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellprocessViewportParents);
+                if (jABGlobalMouseClickOnTableCellprocessViewportParents != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ProcessViewportParents"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellprocessViewportParents);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ProcessViewportParents"] = true;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess != null)
             {
-                jABGlobalMouseClickOnTableCell["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess);
+                if (jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess != null)
+                {
+                    jABGlobalMouseClickOnTableCell["MaxViewportParentsToProcess"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmaxViewportParentsToProcess);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["MaxViewportParentsToProcess"] = 50;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider != null)
             {
-                jABGlobalMouseClickOnTableCell["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider);
+                if (jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ViewportParentElementRolesToConsider"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportParentElementRolesToConsider);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ViewportParentElementRolesToConsider"] = "Panel,Viewport,Layered pane,Root pane";
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellviewportLeftMargin != null)
             {
-                jABGlobalMouseClickOnTableCell["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportLeftMargin);
+                if (jABGlobalMouseClickOnTableCellviewportLeftMargin != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ViewportLeftMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportLeftMargin);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ViewportLeftMargin"] = 2;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellviewportTopMargin != null)
             {
-                jABGlobalMouseClickOnTableCell["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportTopMargin);
+                if (jABGlobalMouseClickOnTableCellviewportTopMargin != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ViewportTopMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportTopMargin);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ViewportTopMargin"] = 2;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellviewportRightMargin != null)
             {
-                jABGlobalMouseClickOnTableCell["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportRightMargin);
+                if (jABGlobalMouseClickOnTableCellviewportRightMargin != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ViewportRightMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportRightMargin);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ViewportRightMargin"] = 2;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellviewportBottomMargin != null)
             {
-                jABGlobalMouseClickOnTableCell["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportBottomMargin);
+                if (jABGlobalMouseClickOnTableCellviewportBottomMargin != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ViewportBottomMargin"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellviewportBottomMargin);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ViewportBottomMargin"] = 2;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -5081,13 +9471,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGlobalMouseClickOnTableCell["MouseButton"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellmouseButton);
             if (jABGlobalMouseClickOnTableCellclickOffsetX != null)
             {
-                jABGlobalMouseClickOnTableCell["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetX);
+                if (jABGlobalMouseClickOnTableCellclickOffsetX != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ClickOffsetX"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetX);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ClickOffsetX"] = 0;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
             if (jABGlobalMouseClickOnTableCellclickOffsetY != null)
             {
-                jABGlobalMouseClickOnTableCell["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetY);
+                if (jABGlobalMouseClickOnTableCellclickOffsetY != null)
+                {
+                    jABGlobalMouseClickOnTableCell["ClickOffsetY"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCellclickOffsetY);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["ClickOffsetY"] = 0;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -5099,7 +9509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGlobalMouseClickOnTableCelldelayInMilliseconds != null)
             {
-                jABGlobalMouseClickOnTableCell["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCelldelayInMilliseconds);
+                if (jABGlobalMouseClickOnTableCelldelayInMilliseconds != null)
+                {
+                    jABGlobalMouseClickOnTableCell["DelayInMilliseconds"] = ExpressionConverter.ConvertO(jABGlobalMouseClickOnTableCelldelayInMilliseconds);
+                    jABGlobalMouseClickOnTableCellpropCount++;
+                }
+
+                jABGlobalMouseClickOnTableCellpropCount++;
+            }
+            else
+            {
+                jABGlobalMouseClickOnTableCell["DelayInMilliseconds"] = 10;
                 jABGlobalMouseClickOnTableCellpropCount++;
             }
 
@@ -5143,19 +9563,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetRoleCSVFromElementSearchsearchSubTree != null)
             {
-                jABGetRoleCSVFromElementSearch["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchSubTree);
+                if (jABGetRoleCSVFromElementSearchsearchSubTree != null)
+                {
+                    jABGetRoleCSVFromElementSearch["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchsearchSubTree);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["SearchSubTree"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchmaxRelativeDepth != null)
             {
-                jABGetRoleCSVFromElementSearch["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaxRelativeDepth);
+                if (jABGetRoleCSVFromElementSearchmaxRelativeDepth != null)
+                {
+                    jABGetRoleCSVFromElementSearch["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaxRelativeDepth);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["MaxRelativeDepth"] = 0;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchmatchIndex != null)
             {
-                jABGetRoleCSVFromElementSearch["MatchIndex"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndex);
+                if (jABGetRoleCSVFromElementSearchmatchIndex != null)
+                {
+                    jABGetRoleCSVFromElementSearch["MatchIndex"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndex);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["MatchIndex"] = 1;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
@@ -5173,25 +9623,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetRoleCSVFromElementSearchmatchIndexAscending != null)
             {
-                jABGetRoleCSVFromElementSearch["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndexAscending);
+                if (jABGetRoleCSVFromElementSearchmatchIndexAscending != null)
+                {
+                    jABGetRoleCSVFromElementSearch["MatchIndexAscending"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmatchIndexAscending);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["MatchIndexAscending"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchcaseSensitiveSearch != null)
             {
-                jABGetRoleCSVFromElementSearch["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchcaseSensitiveSearch);
+                if (jABGetRoleCSVFromElementSearchcaseSensitiveSearch != null)
+                {
+                    jABGetRoleCSVFromElementSearch["CaseSensitiveSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchcaseSensitiveSearch);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["CaseSensitiveSearch"] = false;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchonlySearchVisibleElements != null)
             {
-                jABGetRoleCSVFromElementSearch["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchVisibleElements);
+                if (jABGetRoleCSVFromElementSearchonlySearchVisibleElements != null)
+                {
+                    jABGetRoleCSVFromElementSearch["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchVisibleElements);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["OnlySearchVisibleElements"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchonlySearchShowingElements != null)
             {
-                jABGetRoleCSVFromElementSearch["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchShowingElements);
+                if (jABGetRoleCSVFromElementSearchonlySearchShowingElements != null)
+                {
+                    jABGetRoleCSVFromElementSearch["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchonlySearchShowingElements);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["OnlySearchShowingElements"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
@@ -5203,31 +9693,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetRoleCSVFromElementSearchmaximumElementsToSearch != null)
             {
-                jABGetRoleCSVFromElementSearch["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumElementsToSearch);
+                if (jABGetRoleCSVFromElementSearchmaximumElementsToSearch != null)
+                {
+                    jABGetRoleCSVFromElementSearch["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumElementsToSearch);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["MaximumElementsToSearch"] = 2000;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode != null)
             {
-                jABGetRoleCSVFromElementSearch["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode);
+                if (jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetRoleCSVFromElementSearch["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchmaximumChildElementsToSearchPerNode);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchindentRoleInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchindentRoleInCSV);
+                if (jABGetRoleCSVFromElementSearchindentRoleInCSV != null)
+                {
+                    jABGetRoleCSVFromElementSearch["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchindentRoleInCSV);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["IndentRoleInCSV"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchincludeDescriptionInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDescriptionInCSV);
+                if (jABGetRoleCSVFromElementSearchincludeDescriptionInCSV != null)
+                {
+                    jABGetRoleCSVFromElementSearch["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDescriptionInCSV);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["IncludeDescriptionInCSV"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
             if (jABGetRoleCSVFromElementSearchincludeDimensionsInCSV != null)
             {
-                jABGetRoleCSVFromElementSearch["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDimensionsInCSV);
+                if (jABGetRoleCSVFromElementSearchincludeDimensionsInCSV != null)
+                {
+                    jABGetRoleCSVFromElementSearch["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementSearchincludeDimensionsInCSV);
+                    jABGetRoleCSVFromElementSearchpropCount++;
+                }
+
+                jABGetRoleCSVFromElementSearchpropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementSearch["IncludeDimensionsInCSV"] = true;
                 jABGetRoleCSVFromElementSearchpropCount++;
             }
 
@@ -5253,25 +9793,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
             jABGetRoleCSVFromElementHandle["SearchParentElementJABHandle"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlesearchParentElementJABHandle);
             if (jABGetRoleCSVFromElementHandlesearchSubTree != null)
             {
-                jABGetRoleCSVFromElementHandle["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlesearchSubTree);
+                if (jABGetRoleCSVFromElementHandlesearchSubTree != null)
+                {
+                    jABGetRoleCSVFromElementHandle["SearchSubTree"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlesearchSubTree);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["SearchSubTree"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandlemaxRelativeDepth != null)
             {
-                jABGetRoleCSVFromElementHandle["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaxRelativeDepth);
+                if (jABGetRoleCSVFromElementHandlemaxRelativeDepth != null)
+                {
+                    jABGetRoleCSVFromElementHandle["MaxRelativeDepth"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaxRelativeDepth);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["MaxRelativeDepth"] = 0;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandleonlySearchVisibleElements != null)
             {
-                jABGetRoleCSVFromElementHandle["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchVisibleElements);
+                if (jABGetRoleCSVFromElementHandleonlySearchVisibleElements != null)
+                {
+                    jABGetRoleCSVFromElementHandle["OnlySearchVisibleElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchVisibleElements);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["OnlySearchVisibleElements"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandleonlySearchShowingElements != null)
             {
-                jABGetRoleCSVFromElementHandle["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchShowingElements);
+                if (jABGetRoleCSVFromElementHandleonlySearchShowingElements != null)
+                {
+                    jABGetRoleCSVFromElementHandle["OnlySearchShowingElements"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleonlySearchShowingElements);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["OnlySearchShowingElements"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
@@ -5283,31 +9863,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
             if (jABGetRoleCSVFromElementHandlemaximumElementsToSearch != null)
             {
-                jABGetRoleCSVFromElementHandle["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumElementsToSearch);
+                if (jABGetRoleCSVFromElementHandlemaximumElementsToSearch != null)
+                {
+                    jABGetRoleCSVFromElementHandle["MaximumElementsToSearch"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumElementsToSearch);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["MaximumElementsToSearch"] = 2000;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode != null)
             {
-                jABGetRoleCSVFromElementHandle["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode);
+                if (jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode != null)
+                {
+                    jABGetRoleCSVFromElementHandle["MaximumChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandlemaximumChildElementsToSearchPerNode);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["MaximumChildElementsToSearchPerNode"] = 200;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandleindentRoleInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleindentRoleInCSV);
+                if (jABGetRoleCSVFromElementHandleindentRoleInCSV != null)
+                {
+                    jABGetRoleCSVFromElementHandle["IndentRoleInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleindentRoleInCSV);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["IndentRoleInCSV"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandleincludeDescriptionInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDescriptionInCSV);
+                if (jABGetRoleCSVFromElementHandleincludeDescriptionInCSV != null)
+                {
+                    jABGetRoleCSVFromElementHandle["IncludeDescriptionInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDescriptionInCSV);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["IncludeDescriptionInCSV"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 
             if (jABGetRoleCSVFromElementHandleincludeDimensionsInCSV != null)
             {
-                jABGetRoleCSVFromElementHandle["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDimensionsInCSV);
+                if (jABGetRoleCSVFromElementHandleincludeDimensionsInCSV != null)
+                {
+                    jABGetRoleCSVFromElementHandle["IncludeDimensionsInCSV"] = ExpressionConverter.ConvertO(jABGetRoleCSVFromElementHandleincludeDimensionsInCSV);
+                    jABGetRoleCSVFromElementHandlepropCount++;
+                }
+
+                jABGetRoleCSVFromElementHandlepropCount++;
+            }
+            else
+            {
+                jABGetRoleCSVFromElementHandle["IncludeDimensionsInCSV"] = true;
                 jABGetRoleCSVFromElementHandlepropCount++;
             }
 

@@ -39,7 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
             var bodypropCount = 0;
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["description"] = "";
                 bodypropCount++;
             }
 
