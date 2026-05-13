@@ -131,21 +131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolderV2(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
-        {
-            var apiCallPath = String.Format("/datasets/{0}/extractFolderV2", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
@@ -774,11 +759,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             callPayload.Body = ExpressionConverter.ConvertO(item);
             return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        {
+            var apiCallPath = String.Format("/datasets/{0}/extractFolderV2", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
+            callPayload.Queries["overwrite"] = Convert.ToString(false);
+            if (overwrite != null)
+                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
+            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+        }
     }
 
     public class SharepointonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList> GetOnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onchangeditems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList> GetOnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/ondeletedfileitems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList> GetOnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/ondeleteditems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> GetOnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onnewfileitems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> GetOnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> GetOnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onupdatedfileclassifiedtimes", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> GetOnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onupdatedfileitems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> GetOnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";

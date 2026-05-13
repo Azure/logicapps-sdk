@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2> CreateBitlinkV2(Expression<Func<string>> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2> CreateBitlink(Expression<Func<string>> bodyuRL)
         {
             var apiCallPath = "/shorten";
             var apiCallHttpMethod = "post";
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreatedV2(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

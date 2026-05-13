@@ -36,7 +36,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var datapropCount = 0;
             if (dataformType != null)
             {
-                data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                if (dataformType != null)
+                {
+                    data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                    datapropCount++;
+                }
+
+                datapropCount++;
+            }
+            else
+            {
+                data["formType"] = "hubspot";
                 datapropCount++;
             }
 
@@ -60,7 +70,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
             if (dataarchived != null)
             {
-                data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+                if (dataarchived != null)
+                {
+                    data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+                    datapropCount++;
+                }
+
+                datapropCount++;
+            }
+            else
+            {
+                data["archived"] = false;
                 datapropCount++;
             }
 

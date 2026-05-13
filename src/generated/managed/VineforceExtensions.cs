@@ -209,7 +209,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
             if (bodyisPrivate != null)
             {
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                if (bodyisPrivate != null)
+                {
+                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["isPrivate"] = false;
                 bodypropCount++;
             }
 
@@ -836,13 +846,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
             if (bodystatus != null)
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["status"] = "Active";
                 bodypropCount++;
             }
 
             if (bodyisPrivate != null)
             {
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                if (bodyisPrivate != null)
+                {
+                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["isPrivate"] = false;
                 bodypropCount++;
             }
 

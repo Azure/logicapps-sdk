@@ -27,31 +27,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runActiveDirectoryPowerShellAutomationScriptisNoResultAnError != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError);
+                if (runActiveDirectoryPowerShellAutomationScriptisNoResultAnError != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["IsNoResultAnError"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes);
+                if (runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["ReturnComplexTypes"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean);
+                if (runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["ReturnBooleanAsBoolean"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal);
+                if (runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["ReturnNumericAsDecimal"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate);
+                if (runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["ReturnDateAsDate"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
@@ -63,7 +113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread);
+                if (runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["RunScriptAsThread"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
@@ -75,19 +135,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread);
+                if (runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["SecondsToWaitForThread"] = 90;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword);
+                if (runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["ScriptContainsStoredPassword"] = true;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
             if (runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runActiveDirectoryPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput);
+                if (runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput != null)
+                {
+                    runActiveDirectoryPowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput);
+                    runActiveDirectoryPowerShellAutomationScriptpropCount++;
+                }
+
+                runActiveDirectoryPowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runActiveDirectoryPowerShellAutomationScript["LogVerboseOutput"] = false;
                 runActiveDirectoryPowerShellAutomationScriptpropCount++;
             }
 
@@ -139,7 +229,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL != null)
             {
-                openActiveDirectoryPowerShellRunspaceWithCredentials["UseSSL"] = ExpressionConverter.ConvertO(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL);
+                if (openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL != null)
+                {
+                    openActiveDirectoryPowerShellRunspaceWithCredentials["UseSSL"] = ExpressionConverter.ConvertO(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL);
+                    openActiveDirectoryPowerShellRunspaceWithCredentialspropCount++;
+                }
+
+                openActiveDirectoryPowerShellRunspaceWithCredentialspropCount++;
+            }
+            else
+            {
+                openActiveDirectoryPowerShellRunspaceWithCredentials["UseSSL"] = false;
                 openActiveDirectoryPowerShellRunspaceWithCredentialspropCount++;
             }
 
@@ -273,31 +373,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryAddADUseraccountPasswordIsStoredPassword != null)
             {
-                activeDirectoryAddADUser["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(activeDirectoryAddADUseraccountPasswordIsStoredPassword);
+                if (activeDirectoryAddADUseraccountPasswordIsStoredPassword != null)
+                {
+                    activeDirectoryAddADUser["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(activeDirectoryAddADUseraccountPasswordIsStoredPassword);
+                    activeDirectoryAddADUserpropCount++;
+                }
+
+                activeDirectoryAddADUserpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUser["AccountPasswordIsStoredPassword"] = false;
                 activeDirectoryAddADUserpropCount++;
             }
 
             if (activeDirectoryAddADUserenabled != null)
             {
-                activeDirectoryAddADUser["Enabled"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserenabled);
+                if (activeDirectoryAddADUserenabled != null)
+                {
+                    activeDirectoryAddADUser["Enabled"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserenabled);
+                    activeDirectoryAddADUserpropCount++;
+                }
+
+                activeDirectoryAddADUserpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUser["Enabled"] = true;
                 activeDirectoryAddADUserpropCount++;
             }
 
             if (activeDirectoryAddADUserchangePasswordAtLogon != null)
             {
-                activeDirectoryAddADUser["ChangePasswordAtLogon"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserchangePasswordAtLogon);
+                if (activeDirectoryAddADUserchangePasswordAtLogon != null)
+                {
+                    activeDirectoryAddADUser["ChangePasswordAtLogon"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserchangePasswordAtLogon);
+                    activeDirectoryAddADUserpropCount++;
+                }
+
+                activeDirectoryAddADUserpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUser["ChangePasswordAtLogon"] = true;
                 activeDirectoryAddADUserpropCount++;
             }
 
             if (activeDirectoryAddADUsercannotChangePassword != null)
             {
-                activeDirectoryAddADUser["CannotChangePassword"] = ExpressionConverter.ConvertO(activeDirectoryAddADUsercannotChangePassword);
+                if (activeDirectoryAddADUsercannotChangePassword != null)
+                {
+                    activeDirectoryAddADUser["CannotChangePassword"] = ExpressionConverter.ConvertO(activeDirectoryAddADUsercannotChangePassword);
+                    activeDirectoryAddADUserpropCount++;
+                }
+
+                activeDirectoryAddADUserpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUser["CannotChangePassword"] = false;
                 activeDirectoryAddADUserpropCount++;
             }
 
             if (activeDirectoryAddADUserpasswordNeverExpires != null)
             {
-                activeDirectoryAddADUser["PasswordNeverExpires"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserpasswordNeverExpires);
+                if (activeDirectoryAddADUserpasswordNeverExpires != null)
+                {
+                    activeDirectoryAddADUser["PasswordNeverExpires"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserpasswordNeverExpires);
+                    activeDirectoryAddADUserpropCount++;
+                }
+
+                activeDirectoryAddADUserpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUser["PasswordNeverExpires"] = false;
                 activeDirectoryAddADUserpropCount++;
             }
 
@@ -339,7 +489,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryGetADUserByIdentityfilterPropertyComparison != null)
             {
-                activeDirectoryGetADUserByIdentity["FilterPropertyComparison"] = ExpressionConverter.ConvertO(activeDirectoryGetADUserByIdentityfilterPropertyComparison);
+                if (activeDirectoryGetADUserByIdentityfilterPropertyComparison != null)
+                {
+                    activeDirectoryGetADUserByIdentity["FilterPropertyComparison"] = ExpressionConverter.ConvertO(activeDirectoryGetADUserByIdentityfilterPropertyComparison);
+                    activeDirectoryGetADUserByIdentitypropCount++;
+                }
+
+                activeDirectoryGetADUserByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADUserByIdentity["FilterPropertyComparison"] = "Equals";
                 activeDirectoryGetADUserByIdentitypropCount++;
             }
 
@@ -357,7 +517,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryGetADUserByIdentitysearchOUBaseSubtree != null)
             {
-                activeDirectoryGetADUserByIdentity["SearchOUBaseSubtree"] = ExpressionConverter.ConvertO(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree);
+                if (activeDirectoryGetADUserByIdentitysearchOUBaseSubtree != null)
+                {
+                    activeDirectoryGetADUserByIdentity["SearchOUBaseSubtree"] = ExpressionConverter.ConvertO(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree);
+                    activeDirectoryGetADUserByIdentitypropCount++;
+                }
+
+                activeDirectoryGetADUserByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADUserByIdentity["SearchOUBaseSubtree"] = true;
                 activeDirectoryGetADUserByIdentitypropCount++;
             }
 
@@ -463,7 +633,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryGetADGroupByIdentityfilterPropertyComparison != null)
             {
-                activeDirectoryGetADGroupByIdentity["FilterPropertyComparison"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentityfilterPropertyComparison);
+                if (activeDirectoryGetADGroupByIdentityfilterPropertyComparison != null)
+                {
+                    activeDirectoryGetADGroupByIdentity["FilterPropertyComparison"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentityfilterPropertyComparison);
+                    activeDirectoryGetADGroupByIdentitypropCount++;
+                }
+
+                activeDirectoryGetADGroupByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADGroupByIdentity["FilterPropertyComparison"] = "Equals";
                 activeDirectoryGetADGroupByIdentitypropCount++;
             }
 
@@ -481,13 +661,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree != null)
             {
-                activeDirectoryGetADGroupByIdentity["SearchOUBaseSubtree"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree);
+                if (activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree != null)
+                {
+                    activeDirectoryGetADGroupByIdentity["SearchOUBaseSubtree"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree);
+                    activeDirectoryGetADGroupByIdentitypropCount++;
+                }
+
+                activeDirectoryGetADGroupByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADGroupByIdentity["SearchOUBaseSubtree"] = true;
                 activeDirectoryGetADGroupByIdentitypropCount++;
             }
 
             if (activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist != null)
             {
-                activeDirectoryGetADGroupByIdentity["RaiseExceptionIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist);
+                if (activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist != null)
+                {
+                    activeDirectoryGetADGroupByIdentity["RaiseExceptionIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist);
+                    activeDirectoryGetADGroupByIdentitypropCount++;
+                }
+
+                activeDirectoryGetADGroupByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADGroupByIdentity["RaiseExceptionIfGroupDoesNotExist"] = false;
                 activeDirectoryGetADGroupByIdentitypropCount++;
             }
 
@@ -567,19 +767,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd != null)
             {
-                activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd);
+                if (activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd != null)
+                {
+                    activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd);
+                    activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToAdd"] = false;
                 activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
             }
 
             if (activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd != null)
             {
-                activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd);
+                if (activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd != null)
+                {
+                    activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd);
+                    activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryAddMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToAdd"] = false;
                 activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
             }
 
             if (activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall != null)
             {
-                activeDirectoryAddMultipleADGroupMembersByIdentity["AddAllMembersInASingleCall"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall);
+                if (activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall != null)
+                {
+                    activeDirectoryAddMultipleADGroupMembersByIdentity["AddAllMembersInASingleCall"] = ExpressionConverter.ConvertO(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall);
+                    activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryAddMultipleADGroupMembersByIdentity["AddAllMembersInASingleCall"] = false;
                 activeDirectoryAddMultipleADGroupMembersByIdentitypropCount++;
             }
 
@@ -617,13 +847,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd != null)
             {
-                activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAnyGroupsFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd);
+                if (activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd != null)
+                {
+                    activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAnyGroupsFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd);
+                    activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
+                }
+
+                activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAnyGroupsFailToAdd"] = false;
                 activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
             }
 
             if (activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd != null)
             {
-                activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAllGroupsFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd);
+                if (activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd != null)
+                {
+                    activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAllGroupsFailToAdd"] = ExpressionConverter.ConvertO(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd);
+                    activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
+                }
+
+                activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADUserToMultipleADGroupsByName["ExceptionIfAllGroupsFailToAdd"] = false;
                 activeDirectoryAddADUserToMultipleADGroupsByNamepropCount++;
             }
 
@@ -699,7 +949,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue != null)
             {
-                activeDirectoryModifyADUserStringPropertyByIdentity["ReplaceValue"] = ExpressionConverter.ConvertO(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue);
+                if (activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue != null)
+                {
+                    activeDirectoryModifyADUserStringPropertyByIdentity["ReplaceValue"] = ExpressionConverter.ConvertO(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue);
+                    activeDirectoryModifyADUserStringPropertyByIdentitypropCount++;
+                }
+
+                activeDirectoryModifyADUserStringPropertyByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryModifyADUserStringPropertyByIdentity["ReplaceValue"] = true;
                 activeDirectoryModifyADUserStringPropertyByIdentitypropCount++;
             }
 
@@ -727,7 +987,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryModifyADUserBooleanPropertyByIdentity["PropertyName"] = ExpressionConverter.ConvertO(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName);
             if (activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue != null)
             {
-                activeDirectoryModifyADUserBooleanPropertyByIdentity["PropertyValue"] = ExpressionConverter.ConvertO(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue);
+                if (activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue != null)
+                {
+                    activeDirectoryModifyADUserBooleanPropertyByIdentity["PropertyValue"] = ExpressionConverter.ConvertO(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue);
+                    activeDirectoryModifyADUserBooleanPropertyByIdentitypropCount++;
+                }
+
+                activeDirectoryModifyADUserBooleanPropertyByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryModifyADUserBooleanPropertyByIdentity["PropertyValue"] = false;
                 activeDirectoryModifyADUserBooleanPropertyByIdentitypropCount++;
             }
 
@@ -999,13 +1269,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryDirSyncmaxRetryAttempts != null)
             {
-                activeDirectoryDirSync["MaxRetryAttempts"] = ExpressionConverter.ConvertO(activeDirectoryDirSyncmaxRetryAttempts);
+                if (activeDirectoryDirSyncmaxRetryAttempts != null)
+                {
+                    activeDirectoryDirSync["MaxRetryAttempts"] = ExpressionConverter.ConvertO(activeDirectoryDirSyncmaxRetryAttempts);
+                    activeDirectoryDirSyncpropCount++;
+                }
+
+                activeDirectoryDirSyncpropCount++;
+            }
+            else
+            {
+                activeDirectoryDirSync["MaxRetryAttempts"] = 3;
                 activeDirectoryDirSyncpropCount++;
             }
 
             if (activeDirectoryDirSyncsecondsBetweenRetries != null)
             {
-                activeDirectoryDirSync["SecondsBetweenRetries"] = ExpressionConverter.ConvertO(activeDirectoryDirSyncsecondsBetweenRetries);
+                if (activeDirectoryDirSyncsecondsBetweenRetries != null)
+                {
+                    activeDirectoryDirSync["SecondsBetweenRetries"] = ExpressionConverter.ConvertO(activeDirectoryDirSyncsecondsBetweenRetries);
+                    activeDirectoryDirSyncpropCount++;
+                }
+
+                activeDirectoryDirSyncpropCount++;
+            }
+            else
+            {
+                activeDirectoryDirSync["SecondsBetweenRetries"] = 10;
                 activeDirectoryDirSyncpropCount++;
             }
 
@@ -1031,19 +1321,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryRemoveADUserByIdentity["UserIdentity"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentityuserIdentity);
             if (activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion != null)
             {
-                activeDirectoryRemoveADUserByIdentity["RemoveProtectionFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion);
+                if (activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion != null)
+                {
+                    activeDirectoryRemoveADUserByIdentity["RemoveProtectionFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion);
+                    activeDirectoryRemoveADUserByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveADUserByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserByIdentity["RemoveProtectionFromAccidentalDeletion"] = false;
                 activeDirectoryRemoveADUserByIdentitypropCount++;
             }
 
             if (activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects != null)
             {
-                activeDirectoryRemoveADUserByIdentity["DeleteEvenIfUserHasSubObjects"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects);
+                if (activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects != null)
+                {
+                    activeDirectoryRemoveADUserByIdentity["DeleteEvenIfUserHasSubObjects"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects);
+                    activeDirectoryRemoveADUserByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveADUserByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserByIdentity["DeleteEvenIfUserHasSubObjects"] = false;
                 activeDirectoryRemoveADUserByIdentitypropCount++;
             }
 
             if (activeDirectoryRemoveADUserByIdentityforceDeleteRecursive != null)
             {
-                activeDirectoryRemoveADUserByIdentity["ForceDeleteRecursive"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive);
+                if (activeDirectoryRemoveADUserByIdentityforceDeleteRecursive != null)
+                {
+                    activeDirectoryRemoveADUserByIdentity["ForceDeleteRecursive"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive);
+                    activeDirectoryRemoveADUserByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveADUserByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserByIdentity["ForceDeleteRecursive"] = false;
                 activeDirectoryRemoveADUserByIdentitypropCount++;
             }
 
@@ -1077,37 +1397,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryResetADUserPasswordByIdentity["NewPassword"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitynewPassword);
             if (activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword);
+                if (activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["AccountPasswordIsStoredPassword"] = false;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
             if (activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["SetUserPasswordProperties"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties);
+                if (activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["SetUserPasswordProperties"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["SetUserPasswordProperties"] = true;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
             if (activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["ChangePasswordAtLogon"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon);
+                if (activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["ChangePasswordAtLogon"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["ChangePasswordAtLogon"] = true;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
             if (activeDirectoryResetADUserPasswordByIdentitycannotChangePassword != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["CannotChangePassword"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword);
+                if (activeDirectoryResetADUserPasswordByIdentitycannotChangePassword != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["CannotChangePassword"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["CannotChangePassword"] = false;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
             if (activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["PasswordNeverExpires"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires);
+                if (activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["PasswordNeverExpires"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["PasswordNeverExpires"] = false;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
             if (activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice != null)
             {
-                activeDirectoryResetADUserPasswordByIdentity["ResetPasswordTwice"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice);
+                if (activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice != null)
+                {
+                    activeDirectoryResetADUserPasswordByIdentity["ResetPasswordTwice"] = ExpressionConverter.ConvertO(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice);
+                    activeDirectoryResetADUserPasswordByIdentitypropCount++;
+                }
+
+                activeDirectoryResetADUserPasswordByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryResetADUserPasswordByIdentity["ResetPasswordTwice"] = false;
                 activeDirectoryResetADUserPasswordByIdentitypropCount++;
             }
 
@@ -1231,7 +1611,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectorySetADUserHomeFolderByIdentitycreateFolder != null)
             {
-                activeDirectorySetADUserHomeFolderByIdentity["CreateFolder"] = ExpressionConverter.ConvertO(activeDirectorySetADUserHomeFolderByIdentitycreateFolder);
+                if (activeDirectorySetADUserHomeFolderByIdentitycreateFolder != null)
+                {
+                    activeDirectorySetADUserHomeFolderByIdentity["CreateFolder"] = ExpressionConverter.ConvertO(activeDirectorySetADUserHomeFolderByIdentitycreateFolder);
+                    activeDirectorySetADUserHomeFolderByIdentitypropCount++;
+                }
+
+                activeDirectorySetADUserHomeFolderByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectorySetADUserHomeFolderByIdentity["CreateFolder"] = false;
                 activeDirectorySetADUserHomeFolderByIdentitypropCount++;
             }
 
@@ -1327,13 +1717,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove != null)
             {
-                activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove);
+                if (activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove != null)
+                {
+                    activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove);
+                    activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
+                }
+
+                activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAnyGroupsFailToRemove"] = false;
                 activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
             }
 
             if (activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove != null)
             {
-                activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove);
+                if (activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove != null)
+                {
+                    activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove);
+                    activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
+                }
+
+                activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserFromMultipleADGroupsByName["ExceptionIfAllGroupsFailToRemove"] = false;
                 activeDirectoryRemoveADUserFromMultipleADGroupsByNamepropCount++;
             }
 
@@ -1381,7 +1791,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist != null)
             {
-                activeDirectoryRemoveADUserFromAllGroups["ExceptionIfExcludedGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist);
+                if (activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist != null)
+                {
+                    activeDirectoryRemoveADUserFromAllGroups["ExceptionIfExcludedGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist);
+                    activeDirectoryRemoveADUserFromAllGroupspropCount++;
+                }
+
+                activeDirectoryRemoveADUserFromAllGroupspropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserFromAllGroups["ExceptionIfExcludedGroupDoesNotExist"] = false;
                 activeDirectoryRemoveADUserFromAllGroupspropCount++;
             }
 
@@ -1393,7 +1813,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryRemoveADUserFromAllGroupsrunAsThread != null)
             {
-                activeDirectoryRemoveADUserFromAllGroups["RunAsThread"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupsrunAsThread);
+                if (activeDirectoryRemoveADUserFromAllGroupsrunAsThread != null)
+                {
+                    activeDirectoryRemoveADUserFromAllGroups["RunAsThread"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupsrunAsThread);
+                    activeDirectoryRemoveADUserFromAllGroupspropCount++;
+                }
+
+                activeDirectoryRemoveADUserFromAllGroupspropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserFromAllGroups["RunAsThread"] = false;
                 activeDirectoryRemoveADUserFromAllGroupspropCount++;
             }
 
@@ -1405,7 +1835,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread != null)
             {
-                activeDirectoryRemoveADUserFromAllGroups["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread);
+                if (activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread != null)
+                {
+                    activeDirectoryRemoveADUserFromAllGroups["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread);
+                    activeDirectoryRemoveADUserFromAllGroupspropCount++;
+                }
+
+                activeDirectoryRemoveADUserFromAllGroupspropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADUserFromAllGroups["SecondsToWaitForThread"] = 90;
                 activeDirectoryRemoveADUserFromAllGroupspropCount++;
             }
 
@@ -1505,19 +1945,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove != null)
             {
-                activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove);
+                if (activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove != null)
+                {
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove);
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAnyMembersFailToRemove"] = false;
                 activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
             }
 
             if (activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove != null)
             {
-                activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove);
+                if (activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove != null)
+                {
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToRemove"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove);
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveMultipleADGroupMembersByIdentity["ExceptionIfAllMembersFailToRemove"] = false;
                 activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
             }
 
             if (activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall != null)
             {
-                activeDirectoryRemoveMultipleADGroupMembersByIdentity["RemoveAllMembersInASingleCall"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall);
+                if (activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall != null)
+                {
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentity["RemoveAllMembersInASingleCall"] = ExpressionConverter.ConvertO(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall);
+                    activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+                }
+
+                activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveMultipleADGroupMembersByIdentity["RemoveAllMembersInASingleCall"] = false;
                 activeDirectoryRemoveMultipleADGroupMembersByIdentitypropCount++;
             }
 
@@ -1573,7 +2043,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var activeDirectorySetADServerpropCount = 0;
             if (activeDirectorySetADServerpredefinedADServerChoice != null)
             {
-                activeDirectorySetADServer["PredefinedADServerChoice"] = ExpressionConverter.ConvertO(activeDirectorySetADServerpredefinedADServerChoice);
+                if (activeDirectorySetADServerpredefinedADServerChoice != null)
+                {
+                    activeDirectorySetADServer["PredefinedADServerChoice"] = ExpressionConverter.ConvertO(activeDirectorySetADServerpredefinedADServerChoice);
+                    activeDirectorySetADServerpropCount++;
+                }
+
+                activeDirectorySetADServerpropCount++;
+            }
+            else
+            {
+                activeDirectorySetADServer["PredefinedADServerChoice"] = "Manual: Specify in AD server field";
                 activeDirectorySetADServerpropCount++;
             }
 
@@ -1609,7 +2089,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryGetDomainInfopredefinedIdentity != null)
             {
-                activeDirectoryGetDomainInfo["PredefinedIdentity"] = ExpressionConverter.ConvertO(activeDirectoryGetDomainInfopredefinedIdentity);
+                if (activeDirectoryGetDomainInfopredefinedIdentity != null)
+                {
+                    activeDirectoryGetDomainInfo["PredefinedIdentity"] = ExpressionConverter.ConvertO(activeDirectoryGetDomainInfopredefinedIdentity);
+                    activeDirectoryGetDomainInfopropCount++;
+                }
+
+                activeDirectoryGetDomainInfopropCount++;
+            }
+            else
+            {
+                activeDirectoryGetDomainInfo["PredefinedIdentity"] = "Manual: Specify in Domain identity field";
                 activeDirectoryGetDomainInfopropCount++;
             }
 
@@ -1687,7 +2177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryAddADGroupprotectedFromAccidentalDeletion != null)
             {
-                activeDirectoryAddADGroup["ProtectedFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryAddADGroupprotectedFromAccidentalDeletion);
+                if (activeDirectoryAddADGroupprotectedFromAccidentalDeletion != null)
+                {
+                    activeDirectoryAddADGroup["ProtectedFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryAddADGroupprotectedFromAccidentalDeletion);
+                    activeDirectoryAddADGrouppropCount++;
+                }
+
+                activeDirectoryAddADGrouppropCount++;
+            }
+            else
+            {
+                activeDirectoryAddADGroup["ProtectedFromAccidentalDeletion"] = false;
                 activeDirectoryAddADGrouppropCount++;
             }
 
@@ -1745,13 +2245,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryRemoveADGroup["GroupIdentity"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADGroupgroupIdentity);
             if (activeDirectoryRemoveADGroupdeleteEvenIfProtected != null)
             {
-                activeDirectoryRemoveADGroup["DeleteEvenIfProtected"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADGroupdeleteEvenIfProtected);
+                if (activeDirectoryRemoveADGroupdeleteEvenIfProtected != null)
+                {
+                    activeDirectoryRemoveADGroup["DeleteEvenIfProtected"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADGroupdeleteEvenIfProtected);
+                    activeDirectoryRemoveADGrouppropCount++;
+                }
+
+                activeDirectoryRemoveADGrouppropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADGroup["DeleteEvenIfProtected"] = false;
                 activeDirectoryRemoveADGrouppropCount++;
             }
 
             if (activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist != null)
             {
-                activeDirectoryRemoveADGroup["RaiseExceptionIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist);
+                if (activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist != null)
+                {
+                    activeDirectoryRemoveADGroup["RaiseExceptionIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist);
+                    activeDirectoryRemoveADGrouppropCount++;
+                }
+
+                activeDirectoryRemoveADGrouppropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveADGroup["RaiseExceptionIfGroupDoesNotExist"] = false;
                 activeDirectoryRemoveADGrouppropCount++;
             }
 
@@ -1807,7 +2327,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (activeDirectoryAddOUprotectedFromAccidentalDeletion != null)
             {
-                activeDirectoryAddOU["ProtectedFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryAddOUprotectedFromAccidentalDeletion);
+                if (activeDirectoryAddOUprotectedFromAccidentalDeletion != null)
+                {
+                    activeDirectoryAddOU["ProtectedFromAccidentalDeletion"] = ExpressionConverter.ConvertO(activeDirectoryAddOUprotectedFromAccidentalDeletion);
+                    activeDirectoryAddOUpropCount++;
+                }
+
+                activeDirectoryAddOUpropCount++;
+            }
+            else
+            {
+                activeDirectoryAddOU["ProtectedFromAccidentalDeletion"] = true;
                 activeDirectoryAddOUpropCount++;
             }
 
@@ -1863,13 +2393,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryRemoveOU["OUIdentity"] = ExpressionConverter.ConvertO(activeDirectoryRemoveOUoUIdentity);
             if (activeDirectoryRemoveOUdeleteEvenIfProtected != null)
             {
-                activeDirectoryRemoveOU["DeleteEvenIfProtected"] = ExpressionConverter.ConvertO(activeDirectoryRemoveOUdeleteEvenIfProtected);
+                if (activeDirectoryRemoveOUdeleteEvenIfProtected != null)
+                {
+                    activeDirectoryRemoveOU["DeleteEvenIfProtected"] = ExpressionConverter.ConvertO(activeDirectoryRemoveOUdeleteEvenIfProtected);
+                    activeDirectoryRemoveOUpropCount++;
+                }
+
+                activeDirectoryRemoveOUpropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveOU["DeleteEvenIfProtected"] = false;
                 activeDirectoryRemoveOUpropCount++;
             }
 
             if (activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist != null)
             {
-                activeDirectoryRemoveOU["RaiseExceptionIfOUDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist);
+                if (activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist != null)
+                {
+                    activeDirectoryRemoveOU["RaiseExceptionIfOUDoesNotExist"] = ExpressionConverter.ConvertO(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist);
+                    activeDirectoryRemoveOUpropCount++;
+                }
+
+                activeDirectoryRemoveOUpropCount++;
+            }
+            else
+            {
+                activeDirectoryRemoveOU["RaiseExceptionIfOUDoesNotExist"] = false;
                 activeDirectoryRemoveOUpropCount++;
             }
 
@@ -1933,7 +2483,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             activeDirectoryGetADGroupMembers["GroupIdentity"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupMembersgroupIdentity);
             if (activeDirectoryGetADGroupMembersrecursive != null)
             {
-                activeDirectoryGetADGroupMembers["Recursive"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupMembersrecursive);
+                if (activeDirectoryGetADGroupMembersrecursive != null)
+                {
+                    activeDirectoryGetADGroupMembers["Recursive"] = ExpressionConverter.ConvertO(activeDirectoryGetADGroupMembersrecursive);
+                    activeDirectoryGetADGroupMemberspropCount++;
+                }
+
+                activeDirectoryGetADGroupMemberspropCount++;
+            }
+            else
+            {
+                activeDirectoryGetADGroupMembers["Recursive"] = false;
                 activeDirectoryGetADGroupMemberspropCount++;
             }
 
@@ -1977,31 +2537,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             openExchangePowerShellRunspace["ExchangeServerFQDN"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceexchangeServerFQDN);
             if (openExchangePowerShellRunspaceuseSSL != null)
             {
-                openExchangePowerShellRunspace["UseSSL"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceuseSSL);
+                if (openExchangePowerShellRunspaceuseSSL != null)
+                {
+                    openExchangePowerShellRunspace["UseSSL"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceuseSSL);
+                    openExchangePowerShellRunspacepropCount++;
+                }
+
+                openExchangePowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openExchangePowerShellRunspace["UseSSL"] = false;
                 openExchangePowerShellRunspacepropCount++;
             }
 
             if (openExchangePowerShellRunspaceconnectionMethod != null)
             {
-                openExchangePowerShellRunspace["ConnectionMethod"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceconnectionMethod);
+                if (openExchangePowerShellRunspaceconnectionMethod != null)
+                {
+                    openExchangePowerShellRunspace["ConnectionMethod"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceconnectionMethod);
+                    openExchangePowerShellRunspacepropCount++;
+                }
+
+                openExchangePowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openExchangePowerShellRunspace["ConnectionMethod"] = "Remote";
                 openExchangePowerShellRunspacepropCount++;
             }
 
             if (openExchangePowerShellRunspaceauthenticationMechanism != null)
             {
-                openExchangePowerShellRunspace["AuthenticationMechanism"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceauthenticationMechanism);
+                if (openExchangePowerShellRunspaceauthenticationMechanism != null)
+                {
+                    openExchangePowerShellRunspace["AuthenticationMechanism"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceauthenticationMechanism);
+                    openExchangePowerShellRunspacepropCount++;
+                }
+
+                openExchangePowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openExchangePowerShellRunspace["AuthenticationMechanism"] = "Kerberos";
                 openExchangePowerShellRunspacepropCount++;
             }
 
             if (openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected != null)
             {
-                openExchangePowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected);
+                if (openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected != null)
+                {
+                    openExchangePowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected);
+                    openExchangePowerShellRunspacepropCount++;
+                }
+
+                openExchangePowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openExchangePowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = true;
                 openExchangePowerShellRunspacepropCount++;
             }
 
             if (openExchangePowerShellRunspacecommandTypesToImportLocally != null)
             {
-                openExchangePowerShellRunspace["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspacecommandTypesToImportLocally);
+                if (openExchangePowerShellRunspacecommandTypesToImportLocally != null)
+                {
+                    openExchangePowerShellRunspace["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openExchangePowerShellRunspacecommandTypesToImportLocally);
+                    openExchangePowerShellRunspacepropCount++;
+                }
+
+                openExchangePowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openExchangePowerShellRunspace["CommandTypesToImportLocally"] = "All";
                 openExchangePowerShellRunspacepropCount++;
             }
 
@@ -2031,13 +2641,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var isExchangePowerShellRunspaceOpenpropCount = 0;
             if (isExchangePowerShellRunspaceOpentestCommunications != null)
             {
-                isExchangePowerShellRunspaceOpen["TestCommunications"] = ExpressionConverter.ConvertO(isExchangePowerShellRunspaceOpentestCommunications);
+                if (isExchangePowerShellRunspaceOpentestCommunications != null)
+                {
+                    isExchangePowerShellRunspaceOpen["TestCommunications"] = ExpressionConverter.ConvertO(isExchangePowerShellRunspaceOpentestCommunications);
+                    isExchangePowerShellRunspaceOpenpropCount++;
+                }
+
+                isExchangePowerShellRunspaceOpenpropCount++;
+            }
+            else
+            {
+                isExchangePowerShellRunspaceOpen["TestCommunications"] = true;
                 isExchangePowerShellRunspaceOpenpropCount++;
             }
 
             if (isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
             {
-                isExchangePowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                if (isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                {
+                    isExchangePowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                    isExchangePowerShellRunspaceOpenpropCount++;
+                }
+
+                isExchangePowerShellRunspaceOpenpropCount++;
+            }
+            else
+            {
+                isExchangePowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = false;
                 isExchangePowerShellRunspaceOpenpropCount++;
             }
 
@@ -2067,31 +2697,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runExchangePowerShellAutomationScriptisNoResultAnError != null)
             {
-                runExchangePowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptisNoResultAnError);
+                if (runExchangePowerShellAutomationScriptisNoResultAnError != null)
+                {
+                    runExchangePowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptisNoResultAnError);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["IsNoResultAnError"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runExchangePowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnComplexTypes);
+                if (runExchangePowerShellAutomationScriptreturnComplexTypes != null)
+                {
+                    runExchangePowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnComplexTypes);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["ReturnComplexTypes"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runExchangePowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean);
+                if (runExchangePowerShellAutomationScriptreturnBooleanAsBoolean != null)
+                {
+                    runExchangePowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["ReturnBooleanAsBoolean"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runExchangePowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnNumericAsDecimal);
+                if (runExchangePowerShellAutomationScriptreturnNumericAsDecimal != null)
+                {
+                    runExchangePowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnNumericAsDecimal);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["ReturnNumericAsDecimal"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runExchangePowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnDateAsDate);
+                if (runExchangePowerShellAutomationScriptreturnDateAsDate != null)
+                {
+                    runExchangePowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptreturnDateAsDate);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["ReturnDateAsDate"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
@@ -2103,7 +2783,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runExchangePowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runExchangePowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptrunScriptAsThread);
+                if (runExchangePowerShellAutomationScriptrunScriptAsThread != null)
+                {
+                    runExchangePowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptrunScriptAsThread);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["RunScriptAsThread"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
@@ -2115,19 +2805,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runExchangePowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runExchangePowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptsecondsToWaitForThread);
+                if (runExchangePowerShellAutomationScriptsecondsToWaitForThread != null)
+                {
+                    runExchangePowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptsecondsToWaitForThread);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["SecondsToWaitForThread"] = 90;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runExchangePowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptscriptContainsStoredPassword);
+                if (runExchangePowerShellAutomationScriptscriptContainsStoredPassword != null)
+                {
+                    runExchangePowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptscriptContainsStoredPassword);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["ScriptContainsStoredPassword"] = true;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
             if (runExchangePowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runExchangePowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptlogVerboseOutput);
+                if (runExchangePowerShellAutomationScriptlogVerboseOutput != null)
+                {
+                    runExchangePowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runExchangePowerShellAutomationScriptlogVerboseOutput);
+                    runExchangePowerShellAutomationScriptpropCount++;
+                }
+
+                runExchangePowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runExchangePowerShellAutomationScript["LogVerboseOutput"] = false;
                 runExchangePowerShellAutomationScriptpropCount++;
             }
 
@@ -2199,7 +2919,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetMailboxfilterPropertyComparison != null)
             {
-                exchangeGetMailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetMailboxfilterPropertyComparison);
+                if (exchangeGetMailboxfilterPropertyComparison != null)
+                {
+                    exchangeGetMailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetMailboxfilterPropertyComparison);
+                    exchangeGetMailboxpropCount++;
+                }
+
+                exchangeGetMailboxpropCount++;
+            }
+            else
+            {
+                exchangeGetMailbox["FilterPropertyComparison"] = "Equals";
                 exchangeGetMailboxpropCount++;
             }
 
@@ -2217,7 +2947,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetMailboxnoResultIsAnException != null)
             {
-                exchangeGetMailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetMailboxnoResultIsAnException);
+                if (exchangeGetMailboxnoResultIsAnException != null)
+                {
+                    exchangeGetMailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetMailboxnoResultIsAnException);
+                    exchangeGetMailboxpropCount++;
+                }
+
+                exchangeGetMailboxpropCount++;
+            }
+            else
+            {
+                exchangeGetMailbox["NoResultIsAnException"] = false;
                 exchangeGetMailboxpropCount++;
             }
 
@@ -2253,7 +2993,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeDoesMailboxExistfilterPropertyComparison != null)
             {
-                exchangeDoesMailboxExist["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeDoesMailboxExistfilterPropertyComparison);
+                if (exchangeDoesMailboxExistfilterPropertyComparison != null)
+                {
+                    exchangeDoesMailboxExist["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeDoesMailboxExistfilterPropertyComparison);
+                    exchangeDoesMailboxExistpropCount++;
+                }
+
+                exchangeDoesMailboxExistpropCount++;
+            }
+            else
+            {
+                exchangeDoesMailboxExist["FilterPropertyComparison"] = "Equals";
                 exchangeDoesMailboxExistpropCount++;
             }
 
@@ -2315,7 +3065,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             exchangeRemoveDistributionGroupMember["Member"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupMembermember);
             if (exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
             {
-                exchangeRemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                if (exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
+                {
+                    exchangeRemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                    exchangeRemoveDistributionGroupMemberpropCount++;
+                }
+
+                exchangeRemoveDistributionGroupMemberpropCount++;
+            }
+            else
+            {
+                exchangeRemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = true;
                 exchangeRemoveDistributionGroupMemberpropCount++;
             }
 
@@ -2351,7 +3111,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetDistributionGroupfilterPropertyComparison != null)
             {
-                exchangeGetDistributionGroup["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetDistributionGroupfilterPropertyComparison);
+                if (exchangeGetDistributionGroupfilterPropertyComparison != null)
+                {
+                    exchangeGetDistributionGroup["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetDistributionGroupfilterPropertyComparison);
+                    exchangeGetDistributionGrouppropCount++;
+                }
+
+                exchangeGetDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeGetDistributionGroup["FilterPropertyComparison"] = "Equals";
                 exchangeGetDistributionGrouppropCount++;
             }
 
@@ -2363,7 +3133,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetDistributionGroupnoResultIsAnException != null)
             {
-                exchangeGetDistributionGroup["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetDistributionGroupnoResultIsAnException);
+                if (exchangeGetDistributionGroupnoResultIsAnException != null)
+                {
+                    exchangeGetDistributionGroup["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetDistributionGroupnoResultIsAnException);
+                    exchangeGetDistributionGrouppropCount++;
+                }
+
+                exchangeGetDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeGetDistributionGroup["NoResultIsAnException"] = false;
                 exchangeGetDistributionGrouppropCount++;
             }
 
@@ -2471,31 +3251,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewDistributionGroupmemberDepartRestriction != null)
             {
-                exchangeNewDistributionGroup["MemberDepartRestriction"] = ExpressionConverter.ConvertO(exchangeNewDistributionGroupmemberDepartRestriction);
+                if (exchangeNewDistributionGroupmemberDepartRestriction != null)
+                {
+                    exchangeNewDistributionGroup["MemberDepartRestriction"] = ExpressionConverter.ConvertO(exchangeNewDistributionGroupmemberDepartRestriction);
+                    exchangeNewDistributionGrouppropCount++;
+                }
+
+                exchangeNewDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeNewDistributionGroup["MemberDepartRestriction"] = "Open";
                 exchangeNewDistributionGrouppropCount++;
             }
 
             if (exchangeNewDistributionGroupmemberJoinRestriction != null)
             {
-                exchangeNewDistributionGroup["MemberJoinRestriction"] = ExpressionConverter.ConvertO(exchangeNewDistributionGroupmemberJoinRestriction);
+                if (exchangeNewDistributionGroupmemberJoinRestriction != null)
+                {
+                    exchangeNewDistributionGroup["MemberJoinRestriction"] = ExpressionConverter.ConvertO(exchangeNewDistributionGroupmemberJoinRestriction);
+                    exchangeNewDistributionGrouppropCount++;
+                }
+
+                exchangeNewDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeNewDistributionGroup["MemberJoinRestriction"] = "Closed";
                 exchangeNewDistributionGrouppropCount++;
             }
 
             if (exchangeNewDistributionGrouprequireSenderAuthenticationEnabled != null)
             {
-                exchangeNewDistributionGroup["RequireSenderAuthenticationEnabled"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled);
+                if (exchangeNewDistributionGrouprequireSenderAuthenticationEnabled != null)
+                {
+                    exchangeNewDistributionGroup["RequireSenderAuthenticationEnabled"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled);
+                    exchangeNewDistributionGrouppropCount++;
+                }
+
+                exchangeNewDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeNewDistributionGroup["RequireSenderAuthenticationEnabled"] = false;
                 exchangeNewDistributionGrouppropCount++;
             }
 
             if (exchangeNewDistributionGrouptype != null)
             {
-                exchangeNewDistributionGroup["Type"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouptype);
+                if (exchangeNewDistributionGrouptype != null)
+                {
+                    exchangeNewDistributionGroup["Type"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouptype);
+                    exchangeNewDistributionGrouppropCount++;
+                }
+
+                exchangeNewDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeNewDistributionGroup["Type"] = "Distribution";
                 exchangeNewDistributionGrouppropCount++;
             }
 
             if (exchangeNewDistributionGrouperrorIfGroupAlreadyExists != null)
             {
-                exchangeNewDistributionGroup["ErrorIfGroupAlreadyExists"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouperrorIfGroupAlreadyExists);
+                if (exchangeNewDistributionGrouperrorIfGroupAlreadyExists != null)
+                {
+                    exchangeNewDistributionGroup["ErrorIfGroupAlreadyExists"] = ExpressionConverter.ConvertO(exchangeNewDistributionGrouperrorIfGroupAlreadyExists);
+                    exchangeNewDistributionGrouppropCount++;
+                }
+
+                exchangeNewDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeNewDistributionGroup["ErrorIfGroupAlreadyExists"] = true;
                 exchangeNewDistributionGrouppropCount++;
             }
 
@@ -2521,13 +3351,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             exchangeRemoveDistributionGroup["Identity"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupidentity);
             if (exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck != null)
             {
-                exchangeRemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck);
+                if (exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck != null)
+                {
+                    exchangeRemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck);
+                    exchangeRemoveDistributionGrouppropCount++;
+                }
+
+                exchangeRemoveDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeRemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = true;
                 exchangeRemoveDistributionGrouppropCount++;
             }
 
             if (exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist != null)
             {
-                exchangeRemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist);
+                if (exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist != null)
+                {
+                    exchangeRemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist);
+                    exchangeRemoveDistributionGrouppropCount++;
+                }
+
+                exchangeRemoveDistributionGrouppropCount++;
+            }
+            else
+            {
+                exchangeRemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = false;
                 exchangeRemoveDistributionGrouppropCount++;
             }
 
@@ -2557,7 +3407,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             exchangeAddMailboxPermission["AccessRights"] = ExpressionConverter.ConvertO(exchangeAddMailboxPermissionaccessRights);
             if (exchangeAddMailboxPermissionautoMapping != null)
             {
-                exchangeAddMailboxPermission["AutoMapping"] = ExpressionConverter.ConvertO(exchangeAddMailboxPermissionautoMapping);
+                if (exchangeAddMailboxPermissionautoMapping != null)
+                {
+                    exchangeAddMailboxPermission["AutoMapping"] = ExpressionConverter.ConvertO(exchangeAddMailboxPermissionautoMapping);
+                    exchangeAddMailboxPermissionpropCount++;
+                }
+
+                exchangeAddMailboxPermissionpropCount++;
+            }
+            else
+            {
+                exchangeAddMailboxPermission["AutoMapping"] = false;
                 exchangeAddMailboxPermissionpropCount++;
             }
 
@@ -2733,7 +3593,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeEnableRemoteMailboxarchive != null)
             {
-                exchangeEnableRemoteMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeEnableRemoteMailboxarchive);
+                if (exchangeEnableRemoteMailboxarchive != null)
+                {
+                    exchangeEnableRemoteMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeEnableRemoteMailboxarchive);
+                    exchangeEnableRemoteMailboxpropCount++;
+                }
+
+                exchangeEnableRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeEnableRemoteMailbox["Archive"] = false;
                 exchangeEnableRemoteMailboxpropCount++;
             }
 
@@ -2775,7 +3645,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetRemoteMailboxfilterPropertyComparison != null)
             {
-                exchangeGetRemoteMailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetRemoteMailboxfilterPropertyComparison);
+                if (exchangeGetRemoteMailboxfilterPropertyComparison != null)
+                {
+                    exchangeGetRemoteMailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeGetRemoteMailboxfilterPropertyComparison);
+                    exchangeGetRemoteMailboxpropCount++;
+                }
+
+                exchangeGetRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeGetRemoteMailbox["FilterPropertyComparison"] = "Equals";
                 exchangeGetRemoteMailboxpropCount++;
             }
 
@@ -2787,7 +3667,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeGetRemoteMailboxnoResultIsAnException != null)
             {
-                exchangeGetRemoteMailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetRemoteMailboxnoResultIsAnException);
+                if (exchangeGetRemoteMailboxnoResultIsAnException != null)
+                {
+                    exchangeGetRemoteMailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(exchangeGetRemoteMailboxnoResultIsAnException);
+                    exchangeGetRemoteMailboxpropCount++;
+                }
+
+                exchangeGetRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeGetRemoteMailbox["NoResultIsAnException"] = false;
                 exchangeGetRemoteMailboxpropCount++;
             }
 
@@ -2823,7 +3713,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeDoesRemoteMailboxExistfilterPropertyComparison != null)
             {
-                exchangeDoesRemoteMailboxExist["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeDoesRemoteMailboxExistfilterPropertyComparison);
+                if (exchangeDoesRemoteMailboxExistfilterPropertyComparison != null)
+                {
+                    exchangeDoesRemoteMailboxExist["FilterPropertyComparison"] = ExpressionConverter.ConvertO(exchangeDoesRemoteMailboxExistfilterPropertyComparison);
+                    exchangeDoesRemoteMailboxExistpropCount++;
+                }
+
+                exchangeDoesRemoteMailboxExistpropCount++;
+            }
+            else
+            {
+                exchangeDoesRemoteMailboxExist["FilterPropertyComparison"] = "Equals";
                 exchangeDoesRemoteMailboxExistpropCount++;
             }
 
@@ -2905,13 +3805,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewMailboxaccountPasswordIsStoredPassword != null)
             {
-                exchangeNewMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(exchangeNewMailboxaccountPasswordIsStoredPassword);
+                if (exchangeNewMailboxaccountPasswordIsStoredPassword != null)
+                {
+                    exchangeNewMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(exchangeNewMailboxaccountPasswordIsStoredPassword);
+                    exchangeNewMailboxpropCount++;
+                }
+
+                exchangeNewMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewMailbox["AccountPasswordIsStoredPassword"] = false;
                 exchangeNewMailboxpropCount++;
             }
 
             if (exchangeNewMailboxresetPasswordOnNextLogon != null)
             {
-                exchangeNewMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(exchangeNewMailboxresetPasswordOnNextLogon);
+                if (exchangeNewMailboxresetPasswordOnNextLogon != null)
+                {
+                    exchangeNewMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(exchangeNewMailboxresetPasswordOnNextLogon);
+                    exchangeNewMailboxpropCount++;
+                }
+
+                exchangeNewMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewMailbox["ResetPasswordOnNextLogon"] = true;
                 exchangeNewMailboxpropCount++;
             }
 
@@ -2923,7 +3843,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewMailboxsharedMailbox != null)
             {
-                exchangeNewMailbox["SharedMailbox"] = ExpressionConverter.ConvertO(exchangeNewMailboxsharedMailbox);
+                if (exchangeNewMailboxsharedMailbox != null)
+                {
+                    exchangeNewMailbox["SharedMailbox"] = ExpressionConverter.ConvertO(exchangeNewMailboxsharedMailbox);
+                    exchangeNewMailboxpropCount++;
+                }
+
+                exchangeNewMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewMailbox["SharedMailbox"] = false;
                 exchangeNewMailboxpropCount++;
             }
 
@@ -2935,7 +3865,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewMailboxarchive != null)
             {
-                exchangeNewMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeNewMailboxarchive);
+                if (exchangeNewMailboxarchive != null)
+                {
+                    exchangeNewMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeNewMailboxarchive);
+                    exchangeNewMailboxpropCount++;
+                }
+
+                exchangeNewMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewMailbox["Archive"] = false;
                 exchangeNewMailboxpropCount++;
             }
 
@@ -3017,19 +3957,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewRemoteMailboxaccountPasswordIsStoredPassword != null)
             {
-                exchangeNewRemoteMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword);
+                if (exchangeNewRemoteMailboxaccountPasswordIsStoredPassword != null)
+                {
+                    exchangeNewRemoteMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword);
+                    exchangeNewRemoteMailboxpropCount++;
+                }
+
+                exchangeNewRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewRemoteMailbox["AccountPasswordIsStoredPassword"] = false;
                 exchangeNewRemoteMailboxpropCount++;
             }
 
             if (exchangeNewRemoteMailboxresetPasswordOnNextLogon != null)
             {
-                exchangeNewRemoteMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxresetPasswordOnNextLogon);
+                if (exchangeNewRemoteMailboxresetPasswordOnNextLogon != null)
+                {
+                    exchangeNewRemoteMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxresetPasswordOnNextLogon);
+                    exchangeNewRemoteMailboxpropCount++;
+                }
+
+                exchangeNewRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewRemoteMailbox["ResetPasswordOnNextLogon"] = true;
                 exchangeNewRemoteMailboxpropCount++;
             }
 
             if (exchangeNewRemoteMailboxsharedMailbox != null)
             {
-                exchangeNewRemoteMailbox["SharedMailbox"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxsharedMailbox);
+                if (exchangeNewRemoteMailboxsharedMailbox != null)
+                {
+                    exchangeNewRemoteMailbox["SharedMailbox"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxsharedMailbox);
+                    exchangeNewRemoteMailboxpropCount++;
+                }
+
+                exchangeNewRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewRemoteMailbox["SharedMailbox"] = false;
                 exchangeNewRemoteMailboxpropCount++;
             }
 
@@ -3041,7 +4011,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeNewRemoteMailboxarchive != null)
             {
-                exchangeNewRemoteMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxarchive);
+                if (exchangeNewRemoteMailboxarchive != null)
+                {
+                    exchangeNewRemoteMailbox["Archive"] = ExpressionConverter.ConvertO(exchangeNewRemoteMailboxarchive);
+                    exchangeNewRemoteMailboxpropCount++;
+                }
+
+                exchangeNewRemoteMailboxpropCount++;
+            }
+            else
+            {
+                exchangeNewRemoteMailbox["Archive"] = false;
                 exchangeNewRemoteMailboxpropCount++;
             }
 
@@ -3257,7 +4237,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeSetMailboxEmailAddressesreplaceEmailAddresses != null)
             {
-                exchangeSetMailboxEmailAddresses["ReplaceEmailAddresses"] = ExpressionConverter.ConvertO(exchangeSetMailboxEmailAddressesreplaceEmailAddresses);
+                if (exchangeSetMailboxEmailAddressesreplaceEmailAddresses != null)
+                {
+                    exchangeSetMailboxEmailAddresses["ReplaceEmailAddresses"] = ExpressionConverter.ConvertO(exchangeSetMailboxEmailAddressesreplaceEmailAddresses);
+                    exchangeSetMailboxEmailAddressespropCount++;
+                }
+
+                exchangeSetMailboxEmailAddressespropCount++;
+            }
+            else
+            {
+                exchangeSetMailboxEmailAddresses["ReplaceEmailAddresses"] = true;
                 exchangeSetMailboxEmailAddressespropCount++;
             }
 
@@ -3333,7 +4323,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses != null)
             {
-                exchangeSetRemoteMailboxEmailAddresses["ReplaceEmailAddresses"] = ExpressionConverter.ConvertO(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses);
+                if (exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses != null)
+                {
+                    exchangeSetRemoteMailboxEmailAddresses["ReplaceEmailAddresses"] = ExpressionConverter.ConvertO(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses);
+                    exchangeSetRemoteMailboxEmailAddressespropCount++;
+                }
+
+                exchangeSetRemoteMailboxEmailAddressespropCount++;
+            }
+            else
+            {
+                exchangeSetRemoteMailboxEmailAddresses["ReplaceEmailAddresses"] = true;
                 exchangeSetRemoteMailboxEmailAddressespropCount++;
             }
 
@@ -3385,91 +4385,241 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             exchangeResetMailboxAttributes["Identity"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesidentity);
             if (exchangeResetMailboxAttributesresetCustomAttribute1 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute1"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute1);
+                if (exchangeResetMailboxAttributesresetCustomAttribute1 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute1"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute1);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute1"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute2 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute2"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute2);
+                if (exchangeResetMailboxAttributesresetCustomAttribute2 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute2"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute2);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute2"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute3 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute3"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute3);
+                if (exchangeResetMailboxAttributesresetCustomAttribute3 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute3"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute3);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute3"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute4 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute4"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute4);
+                if (exchangeResetMailboxAttributesresetCustomAttribute4 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute4"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute4);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute4"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute5 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute5"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute5);
+                if (exchangeResetMailboxAttributesresetCustomAttribute5 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute5"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute5);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute5"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute6 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute6"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute6);
+                if (exchangeResetMailboxAttributesresetCustomAttribute6 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute6"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute6);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute6"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute7 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute7"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute7);
+                if (exchangeResetMailboxAttributesresetCustomAttribute7 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute7"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute7);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute7"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute8 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute8"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute8);
+                if (exchangeResetMailboxAttributesresetCustomAttribute8 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute8"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute8);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute8"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute9 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute9"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute9);
+                if (exchangeResetMailboxAttributesresetCustomAttribute9 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute9"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute9);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute9"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute10 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute10"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute10);
+                if (exchangeResetMailboxAttributesresetCustomAttribute10 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute10"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute10);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute10"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute11 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute11"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute11);
+                if (exchangeResetMailboxAttributesresetCustomAttribute11 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute11"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute11);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute11"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute12 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute12"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute12);
+                if (exchangeResetMailboxAttributesresetCustomAttribute12 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute12"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute12);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute12"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute13 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute13"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute13);
+                if (exchangeResetMailboxAttributesresetCustomAttribute13 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute13"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute13);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute13"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute14 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute14"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute14);
+                if (exchangeResetMailboxAttributesresetCustomAttribute14 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute14"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute14);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute14"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
             if (exchangeResetMailboxAttributesresetCustomAttribute15 != null)
             {
-                exchangeResetMailboxAttributes["ResetCustomAttribute15"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute15);
+                if (exchangeResetMailboxAttributesresetCustomAttribute15 != null)
+                {
+                    exchangeResetMailboxAttributes["ResetCustomAttribute15"] = ExpressionConverter.ConvertO(exchangeResetMailboxAttributesresetCustomAttribute15);
+                    exchangeResetMailboxAttributespropCount++;
+                }
+
+                exchangeResetMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetMailboxAttributes["ResetCustomAttribute15"] = false;
                 exchangeResetMailboxAttributespropCount++;
             }
 
@@ -3495,91 +4645,241 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             exchangeResetRemoteMailboxAttributes["Identity"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesidentity);
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute1 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute1"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute1);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute1 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute1"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute1);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute1"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute2 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute2"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute2);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute2 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute2"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute2);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute2"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute3 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute3"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute3);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute3 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute3"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute3);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute3"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute4 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute4"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute4);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute4 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute4"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute4);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute4"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute5 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute5"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute5);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute5 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute5"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute5);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute5"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute6 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute6"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute6);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute6 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute6"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute6);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute6"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute7 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute7"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute7);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute7 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute7"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute7);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute7"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute8 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute8"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute8);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute8 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute8"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute8);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute8"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute9 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute9"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute9);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute9 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute9"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute9);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute9"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute10 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute10"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute10);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute10 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute10"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute10);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute10"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute11 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute11"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute11);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute11 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute11"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute11);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute11"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute12 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute12"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute12);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute12 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute12"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute12);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute12"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute13 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute13"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute13);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute13 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute13"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute13);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute13"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute14 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute14"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute14);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute14 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute14"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute14);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute14"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
             if (exchangeResetRemoteMailboxAttributesresetCustomAttribute15 != null)
             {
-                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute15"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute15);
+                if (exchangeResetRemoteMailboxAttributesresetCustomAttribute15 != null)
+                {
+                    exchangeResetRemoteMailboxAttributes["ResetCustomAttribute15"] = ExpressionConverter.ConvertO(exchangeResetRemoteMailboxAttributesresetCustomAttribute15);
+                    exchangeResetRemoteMailboxAttributespropCount++;
+                }
+
+                exchangeResetRemoteMailboxAttributespropCount++;
+            }
+            else
+            {
+                exchangeResetRemoteMailboxAttributes["ResetCustomAttribute15"] = false;
                 exchangeResetRemoteMailboxAttributespropCount++;
             }
 
@@ -3815,7 +5115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (exchangeSetMailboxAutoReplyConfigurationexternalAudience != null)
             {
-                exchangeSetMailboxAutoReplyConfiguration["ExternalAudience"] = ExpressionConverter.ConvertO(exchangeSetMailboxAutoReplyConfigurationexternalAudience);
+                if (exchangeSetMailboxAutoReplyConfigurationexternalAudience != null)
+                {
+                    exchangeSetMailboxAutoReplyConfiguration["ExternalAudience"] = ExpressionConverter.ConvertO(exchangeSetMailboxAutoReplyConfigurationexternalAudience);
+                    exchangeSetMailboxAutoReplyConfigurationpropCount++;
+                }
+
+                exchangeSetMailboxAutoReplyConfigurationpropCount++;
+            }
+            else
+            {
+                exchangeSetMailboxAutoReplyConfiguration["ExternalAudience"] = "All";
                 exchangeSetMailboxAutoReplyConfigurationpropCount++;
             }
 
@@ -3873,13 +5183,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (openAzureADv2PowerShellRunspaceaPIToUse != null)
             {
-                openAzureADv2PowerShellRunspace["APIToUse"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceaPIToUse);
+                if (openAzureADv2PowerShellRunspaceaPIToUse != null)
+                {
+                    openAzureADv2PowerShellRunspace["APIToUse"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceaPIToUse);
+                    openAzureADv2PowerShellRunspacepropCount++;
+                }
+
+                openAzureADv2PowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openAzureADv2PowerShellRunspace["APIToUse"] = "Auto";
                 openAzureADv2PowerShellRunspacepropCount++;
             }
 
             if (openAzureADv2PowerShellRunspaceauthenticationScope != null)
             {
-                openAzureADv2PowerShellRunspace["AuthenticationScope"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceauthenticationScope);
+                if (openAzureADv2PowerShellRunspaceauthenticationScope != null)
+                {
+                    openAzureADv2PowerShellRunspace["AuthenticationScope"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceauthenticationScope);
+                    openAzureADv2PowerShellRunspacepropCount++;
+                }
+
+                openAzureADv2PowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openAzureADv2PowerShellRunspace["AuthenticationScope"] = "User.ReadWrite.All Group.ReadWrite.All LicenseAssignment.ReadWrite.All";
                 openAzureADv2PowerShellRunspacepropCount++;
             }
 
@@ -3909,7 +5239,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             openAzureADv2PowerShellRunspaceWithCertificate["TenantId"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceWithCertificatetenantId);
             if (openAzureADv2PowerShellRunspaceWithCertificateaPIToUse != null)
             {
-                openAzureADv2PowerShellRunspaceWithCertificate["APIToUse"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse);
+                if (openAzureADv2PowerShellRunspaceWithCertificateaPIToUse != null)
+                {
+                    openAzureADv2PowerShellRunspaceWithCertificate["APIToUse"] = ExpressionConverter.ConvertO(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse);
+                    openAzureADv2PowerShellRunspaceWithCertificatepropCount++;
+                }
+
+                openAzureADv2PowerShellRunspaceWithCertificatepropCount++;
+            }
+            else
+            {
+                openAzureADv2PowerShellRunspaceWithCertificate["APIToUse"] = "Auto";
                 openAzureADv2PowerShellRunspaceWithCertificatepropCount++;
             }
 
@@ -3933,7 +5273,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var isAzureADv2PowerShellRunspaceOpenpropCount = 0;
             if (isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
             {
-                isAzureADv2PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                if (isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                {
+                    isAzureADv2PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                    isAzureADv2PowerShellRunspaceOpenpropCount++;
+                }
+
+                isAzureADv2PowerShellRunspaceOpenpropCount++;
+            }
+            else
+            {
+                isAzureADv2PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = false;
                 isAzureADv2PowerShellRunspaceOpenpropCount++;
             }
 
@@ -3963,31 +5313,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runAzureADv2PowerShellAutomationScriptisNoResultAnError != null)
             {
-                runAzureADv2PowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptisNoResultAnError);
+                if (runAzureADv2PowerShellAutomationScriptisNoResultAnError != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptisNoResultAnError);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["IsNoResultAnError"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runAzureADv2PowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnComplexTypes);
+                if (runAzureADv2PowerShellAutomationScriptreturnComplexTypes != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnComplexTypes);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["ReturnComplexTypes"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runAzureADv2PowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean);
+                if (runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["ReturnBooleanAsBoolean"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runAzureADv2PowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal);
+                if (runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["ReturnNumericAsDecimal"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runAzureADv2PowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnDateAsDate);
+                if (runAzureADv2PowerShellAutomationScriptreturnDateAsDate != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptreturnDateAsDate);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["ReturnDateAsDate"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
@@ -3999,7 +5399,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runAzureADv2PowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runAzureADv2PowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptrunScriptAsThread);
+                if (runAzureADv2PowerShellAutomationScriptrunScriptAsThread != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptrunScriptAsThread);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["RunScriptAsThread"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
@@ -4011,19 +5421,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runAzureADv2PowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread);
+                if (runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["SecondsToWaitForThread"] = 90;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runAzureADv2PowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword);
+                if (runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["ScriptContainsStoredPassword"] = true;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
             if (runAzureADv2PowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runAzureADv2PowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptlogVerboseOutput);
+                if (runAzureADv2PowerShellAutomationScriptlogVerboseOutput != null)
+                {
+                    runAzureADv2PowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runAzureADv2PowerShellAutomationScriptlogVerboseOutput);
+                    runAzureADv2PowerShellAutomationScriptpropCount++;
+                }
+
+                runAzureADv2PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runAzureADv2PowerShellAutomationScript["LogVerboseOutput"] = false;
                 runAzureADv2PowerShellAutomationScriptpropCount++;
             }
 
@@ -4095,7 +5535,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2GetAzureADUsersfilterPropertyComparison != null)
             {
-                azureADv2GetAzureADUsers["FilterPropertyComparison"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUsersfilterPropertyComparison);
+                if (azureADv2GetAzureADUsersfilterPropertyComparison != null)
+                {
+                    azureADv2GetAzureADUsers["FilterPropertyComparison"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUsersfilterPropertyComparison);
+                    azureADv2GetAzureADUserspropCount++;
+                }
+
+                azureADv2GetAzureADUserspropCount++;
+            }
+            else
+            {
+                azureADv2GetAzureADUsers["FilterPropertyComparison"] = "Equals";
                 azureADv2GetAzureADUserspropCount++;
             }
 
@@ -4107,7 +5557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2GetAzureADUsersnoResultIsAnException != null)
             {
-                azureADv2GetAzureADUsers["NoResultIsAnException"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUsersnoResultIsAnException);
+                if (azureADv2GetAzureADUsersnoResultIsAnException != null)
+                {
+                    azureADv2GetAzureADUsers["NoResultIsAnException"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUsersnoResultIsAnException);
+                    azureADv2GetAzureADUserspropCount++;
+                }
+
+                azureADv2GetAzureADUserspropCount++;
+            }
+            else
+            {
+                azureADv2GetAzureADUsers["NoResultIsAnException"] = false;
                 azureADv2GetAzureADUserspropCount++;
             }
 
@@ -4143,7 +5603,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2AddAzureADUser["AccountPassword"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUseraccountPassword);
             if (azureADv2AddAzureADUseraccountPasswordIsStoredPassword != null)
             {
-                azureADv2AddAzureADUser["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUseraccountPasswordIsStoredPassword);
+                if (azureADv2AddAzureADUseraccountPasswordIsStoredPassword != null)
+                {
+                    azureADv2AddAzureADUser["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUseraccountPasswordIsStoredPassword);
+                    azureADv2AddAzureADUserpropCount++;
+                }
+
+                azureADv2AddAzureADUserpropCount++;
+            }
+            else
+            {
+                azureADv2AddAzureADUser["AccountPasswordIsStoredPassword"] = false;
                 azureADv2AddAzureADUserpropCount++;
             }
 
@@ -4267,19 +5737,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2AddAzureADUserforceChangePasswordNextLogin != null)
             {
-                azureADv2AddAzureADUser["ForceChangePasswordNextLogin"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserforceChangePasswordNextLogin);
+                if (azureADv2AddAzureADUserforceChangePasswordNextLogin != null)
+                {
+                    azureADv2AddAzureADUser["ForceChangePasswordNextLogin"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserforceChangePasswordNextLogin);
+                    azureADv2AddAzureADUserpropCount++;
+                }
+
+                azureADv2AddAzureADUserpropCount++;
+            }
+            else
+            {
+                azureADv2AddAzureADUser["ForceChangePasswordNextLogin"] = true;
                 azureADv2AddAzureADUserpropCount++;
             }
 
             if (azureADv2AddAzureADUserenforceChangePasswordPolicy != null)
             {
-                azureADv2AddAzureADUser["EnforceChangePasswordPolicy"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserenforceChangePasswordPolicy);
+                if (azureADv2AddAzureADUserenforceChangePasswordPolicy != null)
+                {
+                    azureADv2AddAzureADUser["EnforceChangePasswordPolicy"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserenforceChangePasswordPolicy);
+                    azureADv2AddAzureADUserpropCount++;
+                }
+
+                azureADv2AddAzureADUserpropCount++;
+            }
+            else
+            {
+                azureADv2AddAzureADUser["EnforceChangePasswordPolicy"] = false;
                 azureADv2AddAzureADUserpropCount++;
             }
 
             if (azureADv2AddAzureADUserpasswordNeverExpires != null)
             {
-                azureADv2AddAzureADUser["PasswordNeverExpires"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserpasswordNeverExpires);
+                if (azureADv2AddAzureADUserpasswordNeverExpires != null)
+                {
+                    azureADv2AddAzureADUser["PasswordNeverExpires"] = ExpressionConverter.ConvertO(azureADv2AddAzureADUserpasswordNeverExpires);
+                    azureADv2AddAzureADUserpropCount++;
+                }
+
+                azureADv2AddAzureADUserpropCount++;
+            }
+            else
+            {
+                azureADv2AddAzureADUser["PasswordNeverExpires"] = false;
                 azureADv2AddAzureADUserpropCount++;
             }
 
@@ -4305,7 +5805,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveAzureADUser["ObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveAzureADUserobjectId);
             if (azureADv2RemoveAzureADUsererrorIfUserDoesNotExist != null)
             {
-                azureADv2RemoveAzureADUser["ErrorIfUserDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist);
+                if (azureADv2RemoveAzureADUsererrorIfUserDoesNotExist != null)
+                {
+                    azureADv2RemoveAzureADUser["ErrorIfUserDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist);
+                    azureADv2RemoveAzureADUserpropCount++;
+                }
+
+                azureADv2RemoveAzureADUserpropCount++;
+            }
+            else
+            {
+                azureADv2RemoveAzureADUser["ErrorIfUserDoesNotExist"] = false;
                 azureADv2RemoveAzureADUserpropCount++;
             }
 
@@ -4333,19 +5843,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2ResetAzureADUserPassword["NewPassword"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordnewPassword);
             if (azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword != null)
             {
-                azureADv2ResetAzureADUserPassword["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword);
+                if (azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword != null)
+                {
+                    azureADv2ResetAzureADUserPassword["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword);
+                    azureADv2ResetAzureADUserPasswordpropCount++;
+                }
+
+                azureADv2ResetAzureADUserPasswordpropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserPassword["AccountPasswordIsStoredPassword"] = false;
                 azureADv2ResetAzureADUserPasswordpropCount++;
             }
 
             if (azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin != null)
             {
-                azureADv2ResetAzureADUserPassword["ForceChangePasswordNextLogin"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin);
+                if (azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin != null)
+                {
+                    azureADv2ResetAzureADUserPassword["ForceChangePasswordNextLogin"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin);
+                    azureADv2ResetAzureADUserPasswordpropCount++;
+                }
+
+                azureADv2ResetAzureADUserPasswordpropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserPassword["ForceChangePasswordNextLogin"] = true;
                 azureADv2ResetAzureADUserPasswordpropCount++;
             }
 
             if (azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy != null)
             {
-                azureADv2ResetAzureADUserPassword["EnforceChangePasswordPolicy"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy);
+                if (azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy != null)
+                {
+                    azureADv2ResetAzureADUserPassword["EnforceChangePasswordPolicy"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy);
+                    azureADv2ResetAzureADUserPasswordpropCount++;
+                }
+
+                azureADv2ResetAzureADUserPasswordpropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserPassword["EnforceChangePasswordPolicy"] = false;
                 azureADv2ResetAzureADUserPasswordpropCount++;
             }
 
@@ -4421,7 +5961,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2AddUserToGroup["GroupObjectId"] = ExpressionConverter.ConvertO(azureADv2AddUserToGroupgroupObjectId);
             if (azureADv2AddUserToGroupcheckUserGroupMembershipsFirst != null)
             {
-                azureADv2AddUserToGroup["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst);
+                if (azureADv2AddUserToGroupcheckUserGroupMembershipsFirst != null)
+                {
+                    azureADv2AddUserToGroup["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst);
+                    azureADv2AddUserToGrouppropCount++;
+                }
+
+                azureADv2AddUserToGrouppropCount++;
+            }
+            else
+            {
+                azureADv2AddUserToGroup["CheckUserGroupMembershipsFirst"] = true;
                 azureADv2AddUserToGrouppropCount++;
             }
 
@@ -4449,7 +5999,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveUserFromGroup["GroupObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromGroupgroupObjectId);
             if (azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst != null)
             {
-                azureADv2RemoveUserFromGroup["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst);
+                if (azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst != null)
+                {
+                    azureADv2RemoveUserFromGroup["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst);
+                    azureADv2RemoveUserFromGrouppropCount++;
+                }
+
+                azureADv2RemoveUserFromGrouppropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromGroup["CheckUserGroupMembershipsFirst"] = true;
                 azureADv2RemoveUserFromGrouppropCount++;
             }
 
@@ -4481,19 +6041,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd != null)
             {
-                azureADv2AddADUserToMultipleADGroups["ExceptionIfAnyGroupsFailToAdd"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd);
+                if (azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd != null)
+                {
+                    azureADv2AddADUserToMultipleADGroups["ExceptionIfAnyGroupsFailToAdd"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd);
+                    azureADv2AddADUserToMultipleADGroupspropCount++;
+                }
+
+                azureADv2AddADUserToMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2AddADUserToMultipleADGroups["ExceptionIfAnyGroupsFailToAdd"] = false;
                 azureADv2AddADUserToMultipleADGroupspropCount++;
             }
 
             if (azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd != null)
             {
-                azureADv2AddADUserToMultipleADGroups["ExceptionIfAllGroupsFailToAdd"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd);
+                if (azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd != null)
+                {
+                    azureADv2AddADUserToMultipleADGroups["ExceptionIfAllGroupsFailToAdd"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd);
+                    azureADv2AddADUserToMultipleADGroupspropCount++;
+                }
+
+                azureADv2AddADUserToMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2AddADUserToMultipleADGroups["ExceptionIfAllGroupsFailToAdd"] = false;
                 azureADv2AddADUserToMultipleADGroupspropCount++;
             }
 
             if (azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst != null)
             {
-                azureADv2AddADUserToMultipleADGroups["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst);
+                if (azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst != null)
+                {
+                    azureADv2AddADUserToMultipleADGroups["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst);
+                    azureADv2AddADUserToMultipleADGroupspropCount++;
+                }
+
+                azureADv2AddADUserToMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2AddADUserToMultipleADGroups["CheckUserGroupMembershipsFirst"] = true;
                 azureADv2AddADUserToMultipleADGroupspropCount++;
             }
 
@@ -4531,19 +6121,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove != null)
             {
-                azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove);
+                if (azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove != null)
+                {
+                    azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove);
+                    azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+                }
+
+                azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAnyGroupsFailToRemove"] = false;
                 azureADv2RemoveADUserFromMultipleADGroupspropCount++;
             }
 
             if (azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove != null)
             {
-                azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove);
+                if (azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove != null)
+                {
+                    azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove);
+                    azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+                }
+
+                azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2RemoveADUserFromMultipleADGroups["ExceptionIfAllGroupsFailToRemove"] = false;
                 azureADv2RemoveADUserFromMultipleADGroupspropCount++;
             }
 
             if (azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst != null)
             {
-                azureADv2RemoveADUserFromMultipleADGroups["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst);
+                if (azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst != null)
+                {
+                    azureADv2RemoveADUserFromMultipleADGroups["CheckUserGroupMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst);
+                    azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+                }
+
+                azureADv2RemoveADUserFromMultipleADGroupspropCount++;
+            }
+            else
+            {
+                azureADv2RemoveADUserFromMultipleADGroups["CheckUserGroupMembershipsFirst"] = true;
                 azureADv2RemoveADUserFromMultipleADGroupspropCount++;
             }
 
@@ -4575,13 +6195,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveUserFromAllGroups["UserObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllGroupsuserObjectId);
             if (azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove != null)
             {
-                azureADv2RemoveUserFromAllGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove);
+                if (azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromAllGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove);
+                    azureADv2RemoveUserFromAllGroupspropCount++;
+                }
+
+                azureADv2RemoveUserFromAllGroupspropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromAllGroups["ExceptionIfAnyGroupsFailToRemove"] = false;
                 azureADv2RemoveUserFromAllGroupspropCount++;
             }
 
             if (azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove != null)
             {
-                azureADv2RemoveUserFromAllGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove);
+                if (azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromAllGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove);
+                    azureADv2RemoveUserFromAllGroupspropCount++;
+                }
+
+                azureADv2RemoveUserFromAllGroupspropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromAllGroups["ExceptionIfAllGroupsFailToRemove"] = false;
                 azureADv2RemoveUserFromAllGroupspropCount++;
             }
 
@@ -4611,7 +6251,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var azureADv2GetAzureADLicenseSKUspropCount = 0;
             if (azureADv2GetAzureADLicenseSKUsexpandProperty != null)
             {
-                azureADv2GetAzureADLicenseSKUs["ExpandProperty"] = ExpressionConverter.ConvertO(azureADv2GetAzureADLicenseSKUsexpandProperty);
+                if (azureADv2GetAzureADLicenseSKUsexpandProperty != null)
+                {
+                    azureADv2GetAzureADLicenseSKUs["ExpandProperty"] = ExpressionConverter.ConvertO(azureADv2GetAzureADLicenseSKUsexpandProperty);
+                    azureADv2GetAzureADLicenseSKUspropCount++;
+                }
+
+                azureADv2GetAzureADLicenseSKUspropCount++;
+            }
+            else
+            {
+                azureADv2GetAzureADLicenseSKUs["ExpandProperty"] = "None";
                 azureADv2GetAzureADLicenseSKUspropCount++;
             }
 
@@ -4643,7 +6293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2SetAzureADUserLicenselicensePlansChoice != null)
             {
-                azureADv2SetAzureADUserLicense["LicensePlansChoice"] = ExpressionConverter.ConvertO(azureADv2SetAzureADUserLicenselicensePlansChoice);
+                if (azureADv2SetAzureADUserLicenselicensePlansChoice != null)
+                {
+                    azureADv2SetAzureADUserLicense["LicensePlansChoice"] = ExpressionConverter.ConvertO(azureADv2SetAzureADUserLicenselicensePlansChoice);
+                    azureADv2SetAzureADUserLicensepropCount++;
+                }
+
+                azureADv2SetAzureADUserLicensepropCount++;
+            }
+            else
+            {
+                azureADv2SetAzureADUserLicense["LicensePlansChoice"] = "All";
                 azureADv2SetAzureADUserLicensepropCount++;
             }
 
@@ -4901,115 +6561,305 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2ResetAzureADUserProperties["ObjectId"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesobjectId);
             if (azureADv2ResetAzureADUserPropertiesresetFirstName != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetFirstName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetFirstName);
+                if (azureADv2ResetAzureADUserPropertiesresetFirstName != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetFirstName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetFirstName);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetFirstName"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetLastName != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetLastName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetLastName);
+                if (azureADv2ResetAzureADUserPropertiesresetLastName != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetLastName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetLastName);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetLastName"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetCity != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetCity"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCity);
+                if (azureADv2ResetAzureADUserPropertiesresetCity != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetCity"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCity);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetCity"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetCompanyName != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetCompanyName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCompanyName);
+                if (azureADv2ResetAzureADUserPropertiesresetCompanyName != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetCompanyName"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCompanyName);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetCompanyName"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetCountry != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetCountry"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCountry);
+                if (azureADv2ResetAzureADUserPropertiesresetCountry != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetCountry"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetCountry);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetCountry"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetDepartment != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetDepartment"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetDepartment);
+                if (azureADv2ResetAzureADUserPropertiesresetDepartment != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetDepartment"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetDepartment);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetDepartment"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetFaxNumber != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetFaxNumber"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetFaxNumber);
+                if (azureADv2ResetAzureADUserPropertiesresetFaxNumber != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetFaxNumber"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetFaxNumber);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetFaxNumber"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetJobTitle != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetJobTitle"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetJobTitle);
+                if (azureADv2ResetAzureADUserPropertiesresetJobTitle != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetJobTitle"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetJobTitle);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetJobTitle"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetMobilePhone != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetMobilePhone"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetMobilePhone);
+                if (azureADv2ResetAzureADUserPropertiesresetMobilePhone != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetMobilePhone"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetMobilePhone);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetMobilePhone"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetOffice != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetOffice"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetOffice);
+                if (azureADv2ResetAzureADUserPropertiesresetOffice != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetOffice"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetOffice);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetOffice"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetPhoneNumber != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetPhoneNumber"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPhoneNumber);
+                if (azureADv2ResetAzureADUserPropertiesresetPhoneNumber != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetPhoneNumber"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPhoneNumber);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetPhoneNumber"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetPostalCode != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetPostalCode"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPostalCode);
+                if (azureADv2ResetAzureADUserPropertiesresetPostalCode != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetPostalCode"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPostalCode);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetPostalCode"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetPreferredLanguage != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetPreferredLanguage"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage);
+                if (azureADv2ResetAzureADUserPropertiesresetPreferredLanguage != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetPreferredLanguage"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetPreferredLanguage"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetState != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetState"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetState);
+                if (azureADv2ResetAzureADUserPropertiesresetState != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetState"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetState);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetState"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetStreetAddress != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetStreetAddress"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetStreetAddress);
+                if (azureADv2ResetAzureADUserPropertiesresetStreetAddress != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetStreetAddress"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetStreetAddress);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetStreetAddress"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetUsageLocation != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetUsageLocation"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetUsageLocation);
+                if (azureADv2ResetAzureADUserPropertiesresetUsageLocation != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetUsageLocation"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetUsageLocation);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetUsageLocation"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetAgeGroup != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetAgeGroup"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetAgeGroup);
+                if (azureADv2ResetAzureADUserPropertiesresetAgeGroup != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetAgeGroup"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetAgeGroup);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetAgeGroup"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetConsentProvidedForMinor"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor);
+                if (azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetConsentProvidedForMinor"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetConsentProvidedForMinor"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
             if (azureADv2ResetAzureADUserPropertiesresetEmployeeId != null)
             {
-                azureADv2ResetAzureADUserProperties["ResetEmployeeId"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetEmployeeId);
+                if (azureADv2ResetAzureADUserPropertiesresetEmployeeId != null)
+                {
+                    azureADv2ResetAzureADUserProperties["ResetEmployeeId"] = ExpressionConverter.ConvertO(azureADv2ResetAzureADUserPropertiesresetEmployeeId);
+                    azureADv2ResetAzureADUserPropertiespropCount++;
+                }
+
+                azureADv2ResetAzureADUserPropertiespropCount++;
+            }
+            else
+            {
+                azureADv2ResetAzureADUserProperties["ResetEmployeeId"] = false;
                 azureADv2ResetAzureADUserPropertiespropCount++;
             }
 
@@ -5067,7 +6917,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2NewSecurityGroupcheckGroupExists != null)
             {
-                azureADv2NewSecurityGroup["CheckGroupExists"] = ExpressionConverter.ConvertO(azureADv2NewSecurityGroupcheckGroupExists);
+                if (azureADv2NewSecurityGroupcheckGroupExists != null)
+                {
+                    azureADv2NewSecurityGroup["CheckGroupExists"] = ExpressionConverter.ConvertO(azureADv2NewSecurityGroupcheckGroupExists);
+                    azureADv2NewSecurityGrouppropCount++;
+                }
+
+                azureADv2NewSecurityGrouppropCount++;
+            }
+            else
+            {
+                azureADv2NewSecurityGroup["CheckGroupExists"] = true;
                 azureADv2NewSecurityGrouppropCount++;
             }
 
@@ -5093,7 +6953,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveSecurityGroup["GroupObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveSecurityGroupgroupObjectId);
             if (azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist != null)
             {
-                azureADv2RemoveSecurityGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist);
+                if (azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist != null)
+                {
+                    azureADv2RemoveSecurityGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist);
+                    azureADv2RemoveSecurityGrouppropCount++;
+                }
+
+                azureADv2RemoveSecurityGrouppropCount++;
+            }
+            else
+            {
+                azureADv2RemoveSecurityGroup["ErrorIfGroupDoesNotExist"] = false;
                 azureADv2RemoveSecurityGrouppropCount++;
             }
 
@@ -5131,13 +7001,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2NewMicrosoft365GroupgroupVisibility != null)
             {
-                azureADv2NewMicrosoft365Group["GroupVisibility"] = ExpressionConverter.ConvertO(azureADv2NewMicrosoft365GroupgroupVisibility);
+                if (azureADv2NewMicrosoft365GroupgroupVisibility != null)
+                {
+                    azureADv2NewMicrosoft365Group["GroupVisibility"] = ExpressionConverter.ConvertO(azureADv2NewMicrosoft365GroupgroupVisibility);
+                    azureADv2NewMicrosoft365GrouppropCount++;
+                }
+
+                azureADv2NewMicrosoft365GrouppropCount++;
+            }
+            else
+            {
+                azureADv2NewMicrosoft365Group["GroupVisibility"] = "Public";
                 azureADv2NewMicrosoft365GrouppropCount++;
             }
 
             if (azureADv2NewMicrosoft365GroupcheckGroupExists != null)
             {
-                azureADv2NewMicrosoft365Group["CheckGroupExists"] = ExpressionConverter.ConvertO(azureADv2NewMicrosoft365GroupcheckGroupExists);
+                if (azureADv2NewMicrosoft365GroupcheckGroupExists != null)
+                {
+                    azureADv2NewMicrosoft365Group["CheckGroupExists"] = ExpressionConverter.ConvertO(azureADv2NewMicrosoft365GroupcheckGroupExists);
+                    azureADv2NewMicrosoft365GrouppropCount++;
+                }
+
+                azureADv2NewMicrosoft365GrouppropCount++;
+            }
+            else
+            {
+                azureADv2NewMicrosoft365Group["CheckGroupExists"] = true;
                 azureADv2NewMicrosoft365GrouppropCount++;
             }
 
@@ -5173,7 +7063,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2GetGroupsfilterPropertyComparison != null)
             {
-                azureADv2GetGroups["FilterPropertyComparison"] = ExpressionConverter.ConvertO(azureADv2GetGroupsfilterPropertyComparison);
+                if (azureADv2GetGroupsfilterPropertyComparison != null)
+                {
+                    azureADv2GetGroups["FilterPropertyComparison"] = ExpressionConverter.ConvertO(azureADv2GetGroupsfilterPropertyComparison);
+                    azureADv2GetGroupspropCount++;
+                }
+
+                azureADv2GetGroupspropCount++;
+            }
+            else
+            {
+                azureADv2GetGroups["FilterPropertyComparison"] = "Equals";
                 azureADv2GetGroupspropCount++;
             }
 
@@ -5185,7 +7085,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2GetGroupsnoResultIsAnException != null)
             {
-                azureADv2GetGroups["NoResultIsAnException"] = ExpressionConverter.ConvertO(azureADv2GetGroupsnoResultIsAnException);
+                if (azureADv2GetGroupsnoResultIsAnException != null)
+                {
+                    azureADv2GetGroups["NoResultIsAnException"] = ExpressionConverter.ConvertO(azureADv2GetGroupsnoResultIsAnException);
+                    azureADv2GetGroupspropCount++;
+                }
+
+                azureADv2GetGroupspropCount++;
+            }
+            else
+            {
+                azureADv2GetGroups["NoResultIsAnException"] = false;
                 azureADv2GetGroupspropCount++;
             }
 
@@ -5237,7 +7147,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2DisableUser["UserObjectId"] = ExpressionConverter.ConvertO(azureADv2DisableUseruserObjectId);
             if (azureADv2DisableUserrevokeUserRefreshTokens != null)
             {
-                azureADv2DisableUser["RevokeUserRefreshTokens"] = ExpressionConverter.ConvertO(azureADv2DisableUserrevokeUserRefreshTokens);
+                if (azureADv2DisableUserrevokeUserRefreshTokens != null)
+                {
+                    azureADv2DisableUser["RevokeUserRefreshTokens"] = ExpressionConverter.ConvertO(azureADv2DisableUserrevokeUserRefreshTokens);
+                    azureADv2DisableUserpropCount++;
+                }
+
+                azureADv2DisableUserpropCount++;
+            }
+            else
+            {
+                azureADv2DisableUser["RevokeUserRefreshTokens"] = true;
                 azureADv2DisableUserpropCount++;
             }
 
@@ -5265,13 +7185,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2AssignUserToRole["RoleObjectId"] = ExpressionConverter.ConvertO(azureADv2AssignUserToRoleroleObjectId);
             if (azureADv2AssignUserToRoledirectoryScopeId != null)
             {
-                azureADv2AssignUserToRole["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2AssignUserToRoledirectoryScopeId);
+                if (azureADv2AssignUserToRoledirectoryScopeId != null)
+                {
+                    azureADv2AssignUserToRole["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2AssignUserToRoledirectoryScopeId);
+                    azureADv2AssignUserToRolepropCount++;
+                }
+
+                azureADv2AssignUserToRolepropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToRole["DirectoryScopeId"] = "/";
                 azureADv2AssignUserToRolepropCount++;
             }
 
             if (azureADv2AssignUserToRolecheckUserRoleMembershipsFirst != null)
             {
-                azureADv2AssignUserToRole["CheckUserRoleMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst);
+                if (azureADv2AssignUserToRolecheckUserRoleMembershipsFirst != null)
+                {
+                    azureADv2AssignUserToRole["CheckUserRoleMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst);
+                    azureADv2AssignUserToRolepropCount++;
+                }
+
+                azureADv2AssignUserToRolepropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToRole["CheckUserRoleMembershipsFirst"] = true;
                 azureADv2AssignUserToRolepropCount++;
             }
 
@@ -5303,31 +7243,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign != null)
             {
-                azureADv2AssignUserToMultipleRoles["ExceptionIfAnyRolesFailToAssign"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign);
+                if (azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign != null)
+                {
+                    azureADv2AssignUserToMultipleRoles["ExceptionIfAnyRolesFailToAssign"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign);
+                    azureADv2AssignUserToMultipleRolespropCount++;
+                }
+
+                azureADv2AssignUserToMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToMultipleRoles["ExceptionIfAnyRolesFailToAssign"] = false;
                 azureADv2AssignUserToMultipleRolespropCount++;
             }
 
             if (azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign != null)
             {
-                azureADv2AssignUserToMultipleRoles["ExceptionIfAllRolesFailToAssign"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign);
+                if (azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign != null)
+                {
+                    azureADv2AssignUserToMultipleRoles["ExceptionIfAllRolesFailToAssign"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign);
+                    azureADv2AssignUserToMultipleRolespropCount++;
+                }
+
+                azureADv2AssignUserToMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToMultipleRoles["ExceptionIfAllRolesFailToAssign"] = false;
                 azureADv2AssignUserToMultipleRolespropCount++;
             }
 
             if (azureADv2AssignUserToMultipleRolesdirectoryScopeId != null)
             {
-                azureADv2AssignUserToMultipleRoles["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesdirectoryScopeId);
+                if (azureADv2AssignUserToMultipleRolesdirectoryScopeId != null)
+                {
+                    azureADv2AssignUserToMultipleRoles["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolesdirectoryScopeId);
+                    azureADv2AssignUserToMultipleRolespropCount++;
+                }
+
+                azureADv2AssignUserToMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToMultipleRoles["DirectoryScopeId"] = "/";
                 azureADv2AssignUserToMultipleRolespropCount++;
             }
 
             if (azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst != null)
             {
-                azureADv2AssignUserToMultipleRoles["CheckUserRoleMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst);
+                if (azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst != null)
+                {
+                    azureADv2AssignUserToMultipleRoles["CheckUserRoleMembershipsFirst"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst);
+                    azureADv2AssignUserToMultipleRolespropCount++;
+                }
+
+                azureADv2AssignUserToMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToMultipleRoles["CheckUserRoleMembershipsFirst"] = true;
                 azureADv2AssignUserToMultipleRolespropCount++;
             }
 
             if (azureADv2AssignUserToMultipleRolescheckRoleIdsExist != null)
             {
-                azureADv2AssignUserToMultipleRoles["CheckRoleIdsExist"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolescheckRoleIdsExist);
+                if (azureADv2AssignUserToMultipleRolescheckRoleIdsExist != null)
+                {
+                    azureADv2AssignUserToMultipleRoles["CheckRoleIdsExist"] = ExpressionConverter.ConvertO(azureADv2AssignUserToMultipleRolescheckRoleIdsExist);
+                    azureADv2AssignUserToMultipleRolespropCount++;
+                }
+
+                azureADv2AssignUserToMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2AssignUserToMultipleRoles["CheckRoleIdsExist"] = true;
                 azureADv2AssignUserToMultipleRolespropCount++;
             }
 
@@ -5359,25 +7349,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (azureADv2RemoveUserFromMultipleRolesdirectoryScopeId != null)
             {
-                azureADv2RemoveUserFromMultipleRoles["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId);
+                if (azureADv2RemoveUserFromMultipleRolesdirectoryScopeId != null)
+                {
+                    azureADv2RemoveUserFromMultipleRoles["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId);
+                    azureADv2RemoveUserFromMultipleRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromMultipleRoles["DirectoryScopeId"] = "*";
                 azureADv2RemoveUserFromMultipleRolespropCount++;
             }
 
             if (azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove != null)
             {
-                azureADv2RemoveUserFromMultipleRoles["ExceptionIfAnyRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove);
+                if (azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromMultipleRoles["ExceptionIfAnyRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove);
+                    azureADv2RemoveUserFromMultipleRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromMultipleRoles["ExceptionIfAnyRolesFailToRemove"] = false;
                 azureADv2RemoveUserFromMultipleRolespropCount++;
             }
 
             if (azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove != null)
             {
-                azureADv2RemoveUserFromMultipleRoles["ExceptionIfAllRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove);
+                if (azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromMultipleRoles["ExceptionIfAllRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove);
+                    azureADv2RemoveUserFromMultipleRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromMultipleRoles["ExceptionIfAllRolesFailToRemove"] = false;
                 azureADv2RemoveUserFromMultipleRolespropCount++;
             }
 
             if (azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist != null)
             {
-                azureADv2RemoveUserFromMultipleRoles["ExceptionIfRoleDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist);
+                if (azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist != null)
+                {
+                    azureADv2RemoveUserFromMultipleRoles["ExceptionIfRoleDoesNotExist"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist);
+                    azureADv2RemoveUserFromMultipleRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromMultipleRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromMultipleRoles["ExceptionIfRoleDoesNotExist"] = false;
                 azureADv2RemoveUserFromMultipleRolespropCount++;
             }
 
@@ -5425,13 +7455,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2GetAzureADUserRoleAssignments["ObjectId"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUserRoleAssignmentsobjectId);
             if (azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames != null)
             {
-                azureADv2GetAzureADUserRoleAssignments["RetrieveAdminRoleNames"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames);
+                if (azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames != null)
+                {
+                    azureADv2GetAzureADUserRoleAssignments["RetrieveAdminRoleNames"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames);
+                    azureADv2GetAzureADUserRoleAssignmentspropCount++;
+                }
+
+                azureADv2GetAzureADUserRoleAssignmentspropCount++;
+            }
+            else
+            {
+                azureADv2GetAzureADUserRoleAssignments["RetrieveAdminRoleNames"] = true;
                 azureADv2GetAzureADUserRoleAssignmentspropCount++;
             }
 
             if (azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds != null)
             {
-                azureADv2GetAzureADUserRoleAssignments["ReturnAssignmentIds"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds);
+                if (azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds != null)
+                {
+                    azureADv2GetAzureADUserRoleAssignments["ReturnAssignmentIds"] = ExpressionConverter.ConvertO(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds);
+                    azureADv2GetAzureADUserRoleAssignmentspropCount++;
+                }
+
+                azureADv2GetAzureADUserRoleAssignmentspropCount++;
+            }
+            else
+            {
+                azureADv2GetAzureADUserRoleAssignments["ReturnAssignmentIds"] = false;
                 azureADv2GetAzureADUserRoleAssignmentspropCount++;
             }
 
@@ -5459,7 +7509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveUserFromRole["RoleObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromRoleroleObjectId);
             if (azureADv2RemoveUserFromRoledirectoryScopeId != null)
             {
-                azureADv2RemoveUserFromRole["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromRoledirectoryScopeId);
+                if (azureADv2RemoveUserFromRoledirectoryScopeId != null)
+                {
+                    azureADv2RemoveUserFromRole["DirectoryScopeId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromRoledirectoryScopeId);
+                    azureADv2RemoveUserFromRolepropCount++;
+                }
+
+                azureADv2RemoveUserFromRolepropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromRole["DirectoryScopeId"] = "*";
                 azureADv2RemoveUserFromRolepropCount++;
             }
 
@@ -5485,13 +7545,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             azureADv2RemoveUserFromAllRoles["UserObjectId"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllRolesuserObjectId);
             if (azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove != null)
             {
-                azureADv2RemoveUserFromAllRoles["ExceptionIfAnyRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove);
+                if (azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromAllRoles["ExceptionIfAnyRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove);
+                    azureADv2RemoveUserFromAllRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromAllRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromAllRoles["ExceptionIfAnyRolesFailToRemove"] = false;
                 azureADv2RemoveUserFromAllRolespropCount++;
             }
 
             if (azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove != null)
             {
-                azureADv2RemoveUserFromAllRoles["ExceptionIfAllRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove);
+                if (azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove != null)
+                {
+                    azureADv2RemoveUserFromAllRoles["ExceptionIfAllRolesFailToRemove"] = ExpressionConverter.ConvertO(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove);
+                    azureADv2RemoveUserFromAllRolespropCount++;
+                }
+
+                azureADv2RemoveUserFromAllRolespropCount++;
+            }
+            else
+            {
+                azureADv2RemoveUserFromAllRoles["ExceptionIfAllRolesFailToRemove"] = true;
                 azureADv2RemoveUserFromAllRolespropCount++;
             }
 
@@ -5557,19 +7637,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (openO365PowerShellRunspaceconnectionMethod != null)
             {
-                openO365PowerShellRunspace["ConnectionMethod"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceconnectionMethod);
+                if (openO365PowerShellRunspaceconnectionMethod != null)
+                {
+                    openO365PowerShellRunspace["ConnectionMethod"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceconnectionMethod);
+                    openO365PowerShellRunspacepropCount++;
+                }
+
+                openO365PowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspace["ConnectionMethod"] = "EXO V1 local";
                 openO365PowerShellRunspacepropCount++;
             }
 
             if (openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected != null)
             {
-                openO365PowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected);
+                if (openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected != null)
+                {
+                    openO365PowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected);
+                    openO365PowerShellRunspacepropCount++;
+                }
+
+                openO365PowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspace["OnlyConnectIfNotAlreadyConnected"] = true;
                 openO365PowerShellRunspacepropCount++;
             }
 
             if (openO365PowerShellRunspacecommandTypesToImportLocally != null)
             {
-                openO365PowerShellRunspace["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openO365PowerShellRunspacecommandTypesToImportLocally);
+                if (openO365PowerShellRunspacecommandTypesToImportLocally != null)
+                {
+                    openO365PowerShellRunspace["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openO365PowerShellRunspacecommandTypesToImportLocally);
+                    openO365PowerShellRunspacepropCount++;
+                }
+
+                openO365PowerShellRunspacepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspace["CommandTypesToImportLocally"] = "All";
                 openO365PowerShellRunspacepropCount++;
             }
 
@@ -5611,19 +7721,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (openO365PowerShellRunspaceWithCertificateconnectionMethod != null)
             {
-                openO365PowerShellRunspaceWithCertificate["ConnectionMethod"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificateconnectionMethod);
+                if (openO365PowerShellRunspaceWithCertificateconnectionMethod != null)
+                {
+                    openO365PowerShellRunspaceWithCertificate["ConnectionMethod"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificateconnectionMethod);
+                    openO365PowerShellRunspaceWithCertificatepropCount++;
+                }
+
+                openO365PowerShellRunspaceWithCertificatepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspaceWithCertificate["ConnectionMethod"] = "EXO V2";
                 openO365PowerShellRunspaceWithCertificatepropCount++;
             }
 
             if (openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected != null)
             {
-                openO365PowerShellRunspaceWithCertificate["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected);
+                if (openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected != null)
+                {
+                    openO365PowerShellRunspaceWithCertificate["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected);
+                    openO365PowerShellRunspaceWithCertificatepropCount++;
+                }
+
+                openO365PowerShellRunspaceWithCertificatepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspaceWithCertificate["OnlyConnectIfNotAlreadyConnected"] = true;
                 openO365PowerShellRunspaceWithCertificatepropCount++;
             }
 
             if (openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally != null)
             {
-                openO365PowerShellRunspaceWithCertificate["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally);
+                if (openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally != null)
+                {
+                    openO365PowerShellRunspaceWithCertificate["CommandTypesToImportLocally"] = ExpressionConverter.ConvertO(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally);
+                    openO365PowerShellRunspaceWithCertificatepropCount++;
+                }
+
+                openO365PowerShellRunspaceWithCertificatepropCount++;
+            }
+            else
+            {
+                openO365PowerShellRunspaceWithCertificate["CommandTypesToImportLocally"] = "All";
                 openO365PowerShellRunspaceWithCertificatepropCount++;
             }
 
@@ -5653,13 +7793,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var isO365PowerShellRunspaceOpenpropCount = 0;
             if (isO365PowerShellRunspaceOpentestCommunications != null)
             {
-                isO365PowerShellRunspaceOpen["TestCommunications"] = ExpressionConverter.ConvertO(isO365PowerShellRunspaceOpentestCommunications);
+                if (isO365PowerShellRunspaceOpentestCommunications != null)
+                {
+                    isO365PowerShellRunspaceOpen["TestCommunications"] = ExpressionConverter.ConvertO(isO365PowerShellRunspaceOpentestCommunications);
+                    isO365PowerShellRunspaceOpenpropCount++;
+                }
+
+                isO365PowerShellRunspaceOpenpropCount++;
+            }
+            else
+            {
+                isO365PowerShellRunspaceOpen["TestCommunications"] = true;
                 isO365PowerShellRunspaceOpenpropCount++;
             }
 
             if (isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
             {
-                isO365PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                if (isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                {
+                    isO365PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                    isO365PowerShellRunspaceOpenpropCount++;
+                }
+
+                isO365PowerShellRunspaceOpenpropCount++;
+            }
+            else
+            {
+                isO365PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = false;
                 isO365PowerShellRunspaceOpenpropCount++;
             }
 
@@ -5689,31 +7849,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runO365PowerShellAutomationScriptisNoResultAnError != null)
             {
-                runO365PowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptisNoResultAnError);
+                if (runO365PowerShellAutomationScriptisNoResultAnError != null)
+                {
+                    runO365PowerShellAutomationScript["IsNoResultAnError"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptisNoResultAnError);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["IsNoResultAnError"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptreturnComplexTypes != null)
             {
-                runO365PowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnComplexTypes);
+                if (runO365PowerShellAutomationScriptreturnComplexTypes != null)
+                {
+                    runO365PowerShellAutomationScript["ReturnComplexTypes"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnComplexTypes);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["ReturnComplexTypes"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptreturnBooleanAsBoolean != null)
             {
-                runO365PowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnBooleanAsBoolean);
+                if (runO365PowerShellAutomationScriptreturnBooleanAsBoolean != null)
+                {
+                    runO365PowerShellAutomationScript["ReturnBooleanAsBoolean"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnBooleanAsBoolean);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["ReturnBooleanAsBoolean"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptreturnNumericAsDecimal != null)
             {
-                runO365PowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnNumericAsDecimal);
+                if (runO365PowerShellAutomationScriptreturnNumericAsDecimal != null)
+                {
+                    runO365PowerShellAutomationScript["ReturnNumericAsDecimal"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnNumericAsDecimal);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["ReturnNumericAsDecimal"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptreturnDateAsDate != null)
             {
-                runO365PowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnDateAsDate);
+                if (runO365PowerShellAutomationScriptreturnDateAsDate != null)
+                {
+                    runO365PowerShellAutomationScript["ReturnDateAsDate"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptreturnDateAsDate);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["ReturnDateAsDate"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
@@ -5731,7 +7941,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runO365PowerShellAutomationScriptrunScriptAsThread != null)
             {
-                runO365PowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptrunScriptAsThread);
+                if (runO365PowerShellAutomationScriptrunScriptAsThread != null)
+                {
+                    runO365PowerShellAutomationScript["RunScriptAsThread"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptrunScriptAsThread);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["RunScriptAsThread"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
@@ -5743,19 +7963,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (runO365PowerShellAutomationScriptsecondsToWaitForThread != null)
             {
-                runO365PowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptsecondsToWaitForThread);
+                if (runO365PowerShellAutomationScriptsecondsToWaitForThread != null)
+                {
+                    runO365PowerShellAutomationScript["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptsecondsToWaitForThread);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["SecondsToWaitForThread"] = 90;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptscriptContainsStoredPassword != null)
             {
-                runO365PowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptscriptContainsStoredPassword);
+                if (runO365PowerShellAutomationScriptscriptContainsStoredPassword != null)
+                {
+                    runO365PowerShellAutomationScript["ScriptContainsStoredPassword"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptscriptContainsStoredPassword);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["ScriptContainsStoredPassword"] = true;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
             if (runO365PowerShellAutomationScriptlogVerboseOutput != null)
             {
-                runO365PowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptlogVerboseOutput);
+                if (runO365PowerShellAutomationScriptlogVerboseOutput != null)
+                {
+                    runO365PowerShellAutomationScript["LogVerboseOutput"] = ExpressionConverter.ConvertO(runO365PowerShellAutomationScriptlogVerboseOutput);
+                    runO365PowerShellAutomationScriptpropCount++;
+                }
+
+                runO365PowerShellAutomationScriptpropCount++;
+            }
+            else
+            {
+                runO365PowerShellAutomationScript["LogVerboseOutput"] = false;
                 runO365PowerShellAutomationScriptpropCount++;
             }
 
@@ -5827,7 +8077,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365GetO365MailboxfilterPropertyComparison != null)
             {
-                o365GetO365Mailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(o365GetO365MailboxfilterPropertyComparison);
+                if (o365GetO365MailboxfilterPropertyComparison != null)
+                {
+                    o365GetO365Mailbox["FilterPropertyComparison"] = ExpressionConverter.ConvertO(o365GetO365MailboxfilterPropertyComparison);
+                    o365GetO365MailboxpropCount++;
+                }
+
+                o365GetO365MailboxpropCount++;
+            }
+            else
+            {
+                o365GetO365Mailbox["FilterPropertyComparison"] = "Equals";
                 o365GetO365MailboxpropCount++;
             }
 
@@ -5845,7 +8105,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365GetO365MailboxnoResultIsAnException != null)
             {
-                o365GetO365Mailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(o365GetO365MailboxnoResultIsAnException);
+                if (o365GetO365MailboxnoResultIsAnException != null)
+                {
+                    o365GetO365Mailbox["NoResultIsAnException"] = ExpressionConverter.ConvertO(o365GetO365MailboxnoResultIsAnException);
+                    o365GetO365MailboxpropCount++;
+                }
+
+                o365GetO365MailboxpropCount++;
+            }
+            else
+            {
+                o365GetO365Mailbox["NoResultIsAnException"] = false;
                 o365GetO365MailboxpropCount++;
             }
 
@@ -5875,7 +8145,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             o365AddMailboxPermission["AccessRights"] = ExpressionConverter.ConvertO(o365AddMailboxPermissionaccessRights);
             if (o365AddMailboxPermissionautoMapping != null)
             {
-                o365AddMailboxPermission["AutoMapping"] = ExpressionConverter.ConvertO(o365AddMailboxPermissionautoMapping);
+                if (o365AddMailboxPermissionautoMapping != null)
+                {
+                    o365AddMailboxPermission["AutoMapping"] = ExpressionConverter.ConvertO(o365AddMailboxPermissionautoMapping);
+                    o365AddMailboxPermissionpropCount++;
+                }
+
+                o365AddMailboxPermissionpropCount++;
+            }
+            else
+            {
+                o365AddMailboxPermission["AutoMapping"] = false;
                 o365AddMailboxPermissionpropCount++;
             }
 
@@ -5927,7 +8207,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             o365AddDistributionGroupMember["Member"] = ExpressionConverter.ConvertO(o365AddDistributionGroupMembermember);
             if (o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
             {
-                o365AddDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                if (o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
+                {
+                    o365AddDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                    o365AddDistributionGroupMemberpropCount++;
+                }
+
+                o365AddDistributionGroupMemberpropCount++;
+            }
+            else
+            {
+                o365AddDistributionGroupMember["BypassSecurityGroupManagerCheck"] = false;
                 o365AddDistributionGroupMemberpropCount++;
             }
 
@@ -5963,7 +8253,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365GetO365DistributionGroupfilterPropertyComparison != null)
             {
-                o365GetO365DistributionGroup["FilterPropertyComparison"] = ExpressionConverter.ConvertO(o365GetO365DistributionGroupfilterPropertyComparison);
+                if (o365GetO365DistributionGroupfilterPropertyComparison != null)
+                {
+                    o365GetO365DistributionGroup["FilterPropertyComparison"] = ExpressionConverter.ConvertO(o365GetO365DistributionGroupfilterPropertyComparison);
+                    o365GetO365DistributionGrouppropCount++;
+                }
+
+                o365GetO365DistributionGrouppropCount++;
+            }
+            else
+            {
+                o365GetO365DistributionGroup["FilterPropertyComparison"] = "Equals";
                 o365GetO365DistributionGrouppropCount++;
             }
 
@@ -5975,7 +8275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365GetO365DistributionGroupnoResultIsAnException != null)
             {
-                o365GetO365DistributionGroup["NoResultIsAnException"] = ExpressionConverter.ConvertO(o365GetO365DistributionGroupnoResultIsAnException);
+                if (o365GetO365DistributionGroupnoResultIsAnException != null)
+                {
+                    o365GetO365DistributionGroup["NoResultIsAnException"] = ExpressionConverter.ConvertO(o365GetO365DistributionGroupnoResultIsAnException);
+                    o365GetO365DistributionGrouppropCount++;
+                }
+
+                o365GetO365DistributionGrouppropCount++;
+            }
+            else
+            {
+                o365GetO365DistributionGroup["NoResultIsAnException"] = false;
                 o365GetO365DistributionGrouppropCount++;
             }
 
@@ -6043,19 +8353,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365NewO365DistributionGroupmemberDepartRestriction != null)
             {
-                o365NewO365DistributionGroup["MemberDepartRestriction"] = ExpressionConverter.ConvertO(o365NewO365DistributionGroupmemberDepartRestriction);
+                if (o365NewO365DistributionGroupmemberDepartRestriction != null)
+                {
+                    o365NewO365DistributionGroup["MemberDepartRestriction"] = ExpressionConverter.ConvertO(o365NewO365DistributionGroupmemberDepartRestriction);
+                    o365NewO365DistributionGrouppropCount++;
+                }
+
+                o365NewO365DistributionGrouppropCount++;
+            }
+            else
+            {
+                o365NewO365DistributionGroup["MemberDepartRestriction"] = "Open";
                 o365NewO365DistributionGrouppropCount++;
             }
 
             if (o365NewO365DistributionGroupmemberJoinRestriction != null)
             {
-                o365NewO365DistributionGroup["MemberJoinRestriction"] = ExpressionConverter.ConvertO(o365NewO365DistributionGroupmemberJoinRestriction);
+                if (o365NewO365DistributionGroupmemberJoinRestriction != null)
+                {
+                    o365NewO365DistributionGroup["MemberJoinRestriction"] = ExpressionConverter.ConvertO(o365NewO365DistributionGroupmemberJoinRestriction);
+                    o365NewO365DistributionGrouppropCount++;
+                }
+
+                o365NewO365DistributionGrouppropCount++;
+            }
+            else
+            {
+                o365NewO365DistributionGroup["MemberJoinRestriction"] = "Closed";
                 o365NewO365DistributionGrouppropCount++;
             }
 
             if (o365NewO365DistributionGrouprequireSenderAuthenticationEnabled != null)
             {
-                o365NewO365DistributionGroup["RequireSenderAuthenticationEnabled"] = ExpressionConverter.ConvertO(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled);
+                if (o365NewO365DistributionGrouprequireSenderAuthenticationEnabled != null)
+                {
+                    o365NewO365DistributionGroup["RequireSenderAuthenticationEnabled"] = ExpressionConverter.ConvertO(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled);
+                    o365NewO365DistributionGrouppropCount++;
+                }
+
+                o365NewO365DistributionGrouppropCount++;
+            }
+            else
+            {
+                o365NewO365DistributionGroup["RequireSenderAuthenticationEnabled"] = false;
                 o365NewO365DistributionGrouppropCount++;
             }
 
@@ -6087,13 +8427,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             o365RemoveDistributionGroup["Identity"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupidentity);
             if (o365RemoveDistributionGroupbypassSecurityGroupManagerCheck != null)
             {
-                o365RemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck);
+                if (o365RemoveDistributionGroupbypassSecurityGroupManagerCheck != null)
+                {
+                    o365RemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck);
+                    o365RemoveDistributionGrouppropCount++;
+                }
+
+                o365RemoveDistributionGrouppropCount++;
+            }
+            else
+            {
+                o365RemoveDistributionGroup["BypassSecurityGroupManagerCheck"] = true;
                 o365RemoveDistributionGrouppropCount++;
             }
 
             if (o365RemoveDistributionGrouperrorIfGroupDoesNotExist != null)
             {
-                o365RemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(o365RemoveDistributionGrouperrorIfGroupDoesNotExist);
+                if (o365RemoveDistributionGrouperrorIfGroupDoesNotExist != null)
+                {
+                    o365RemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = ExpressionConverter.ConvertO(o365RemoveDistributionGrouperrorIfGroupDoesNotExist);
+                    o365RemoveDistributionGrouppropCount++;
+                }
+
+                o365RemoveDistributionGrouppropCount++;
+            }
+            else
+            {
+                o365RemoveDistributionGroup["ErrorIfGroupDoesNotExist"] = false;
                 o365RemoveDistributionGrouppropCount++;
             }
 
@@ -6231,7 +8591,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365SetO365MailboxAutoReplyConfigurationexternalAudience != null)
             {
-                o365SetO365MailboxAutoReplyConfiguration["ExternalAudience"] = ExpressionConverter.ConvertO(o365SetO365MailboxAutoReplyConfigurationexternalAudience);
+                if (o365SetO365MailboxAutoReplyConfigurationexternalAudience != null)
+                {
+                    o365SetO365MailboxAutoReplyConfiguration["ExternalAudience"] = ExpressionConverter.ConvertO(o365SetO365MailboxAutoReplyConfigurationexternalAudience);
+                    o365SetO365MailboxAutoReplyConfigurationpropCount++;
+                }
+
+                o365SetO365MailboxAutoReplyConfigurationpropCount++;
+            }
+            else
+            {
+                o365SetO365MailboxAutoReplyConfiguration["ExternalAudience"] = "All";
                 o365SetO365MailboxAutoReplyConfigurationpropCount++;
             }
 
@@ -6265,13 +8635,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             o365RemoveDistributionGroupMember["Member"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupMembermember);
             if (o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
             {
-                o365RemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                if (o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck != null)
+                {
+                    o365RemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
+                    o365RemoveDistributionGroupMemberpropCount++;
+                }
+
+                o365RemoveDistributionGroupMemberpropCount++;
+            }
+            else
+            {
+                o365RemoveDistributionGroupMember["BypassSecurityGroupManagerCheck"] = true;
                 o365RemoveDistributionGroupMemberpropCount++;
             }
 
             if (o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup != null)
             {
-                o365RemoveDistributionGroupMember["ExceptionIfMemberNotInGroup"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup);
+                if (o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup != null)
+                {
+                    o365RemoveDistributionGroupMember["ExceptionIfMemberNotInGroup"] = ExpressionConverter.ConvertO(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup);
+                    o365RemoveDistributionGroupMemberpropCount++;
+                }
+
+                o365RemoveDistributionGroupMemberpropCount++;
+            }
+            else
+            {
+                o365RemoveDistributionGroupMember["ExceptionIfMemberNotInGroup"] = false;
                 o365RemoveDistributionGroupMemberpropCount++;
             }
 
@@ -6353,19 +8743,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck != null)
             {
-                o365RemoveMailboxFromAllDistributionGroups["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck);
+                if (o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck != null)
+                {
+                    o365RemoveMailboxFromAllDistributionGroups["BypassSecurityGroupManagerCheck"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck);
+                    o365RemoveMailboxFromAllDistributionGroupspropCount++;
+                }
+
+                o365RemoveMailboxFromAllDistributionGroupspropCount++;
+            }
+            else
+            {
+                o365RemoveMailboxFromAllDistributionGroups["BypassSecurityGroupManagerCheck"] = true;
                 o365RemoveMailboxFromAllDistributionGroupspropCount++;
             }
 
             if (o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove != null)
             {
-                o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove);
+                if (o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove != null)
+                {
+                    o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAnyGroupsFailToRemove"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove);
+                    o365RemoveMailboxFromAllDistributionGroupspropCount++;
+                }
+
+                o365RemoveMailboxFromAllDistributionGroupspropCount++;
+            }
+            else
+            {
+                o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAnyGroupsFailToRemove"] = false;
                 o365RemoveMailboxFromAllDistributionGroupspropCount++;
             }
 
             if (o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove != null)
             {
-                o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove);
+                if (o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove != null)
+                {
+                    o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAllGroupsFailToRemove"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove);
+                    o365RemoveMailboxFromAllDistributionGroupspropCount++;
+                }
+
+                o365RemoveMailboxFromAllDistributionGroupspropCount++;
+            }
+            else
+            {
+                o365RemoveMailboxFromAllDistributionGroups["ExceptionIfAllGroupsFailToRemove"] = true;
                 o365RemoveMailboxFromAllDistributionGroupspropCount++;
             }
 
@@ -6377,7 +8797,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365RemoveMailboxFromAllDistributionGroupsrunAsThread != null)
             {
-                o365RemoveMailboxFromAllDistributionGroups["RunAsThread"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsrunAsThread);
+                if (o365RemoveMailboxFromAllDistributionGroupsrunAsThread != null)
+                {
+                    o365RemoveMailboxFromAllDistributionGroups["RunAsThread"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupsrunAsThread);
+                    o365RemoveMailboxFromAllDistributionGroupspropCount++;
+                }
+
+                o365RemoveMailboxFromAllDistributionGroupspropCount++;
+            }
+            else
+            {
+                o365RemoveMailboxFromAllDistributionGroups["RunAsThread"] = false;
                 o365RemoveMailboxFromAllDistributionGroupspropCount++;
             }
 
@@ -6389,7 +8819,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread != null)
             {
-                o365RemoveMailboxFromAllDistributionGroups["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread);
+                if (o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread != null)
+                {
+                    o365RemoveMailboxFromAllDistributionGroups["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread);
+                    o365RemoveMailboxFromAllDistributionGroupspropCount++;
+                }
+
+                o365RemoveMailboxFromAllDistributionGroupspropCount++;
+            }
+            else
+            {
+                o365RemoveMailboxFromAllDistributionGroups["SecondsToWaitForThread"] = 90;
                 o365RemoveMailboxFromAllDistributionGroupspropCount++;
             }
 
@@ -6459,19 +8899,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365NewMailboxaccountPasswordIsStoredPassword != null)
             {
-                o365NewMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(o365NewMailboxaccountPasswordIsStoredPassword);
+                if (o365NewMailboxaccountPasswordIsStoredPassword != null)
+                {
+                    o365NewMailbox["AccountPasswordIsStoredPassword"] = ExpressionConverter.ConvertO(o365NewMailboxaccountPasswordIsStoredPassword);
+                    o365NewMailboxpropCount++;
+                }
+
+                o365NewMailboxpropCount++;
+            }
+            else
+            {
+                o365NewMailbox["AccountPasswordIsStoredPassword"] = false;
                 o365NewMailboxpropCount++;
             }
 
             if (o365NewMailboxresetPasswordOnNextLogon != null)
             {
-                o365NewMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(o365NewMailboxresetPasswordOnNextLogon);
+                if (o365NewMailboxresetPasswordOnNextLogon != null)
+                {
+                    o365NewMailbox["ResetPasswordOnNextLogon"] = ExpressionConverter.ConvertO(o365NewMailboxresetPasswordOnNextLogon);
+                    o365NewMailboxpropCount++;
+                }
+
+                o365NewMailboxpropCount++;
+            }
+            else
+            {
+                o365NewMailbox["ResetPasswordOnNextLogon"] = true;
                 o365NewMailboxpropCount++;
             }
 
             if (o365NewMailboxarchive != null)
             {
-                o365NewMailbox["Archive"] = ExpressionConverter.ConvertO(o365NewMailboxarchive);
+                if (o365NewMailboxarchive != null)
+                {
+                    o365NewMailbox["Archive"] = ExpressionConverter.ConvertO(o365NewMailboxarchive);
+                    o365NewMailboxpropCount++;
+                }
+
+                o365NewMailboxpropCount++;
+            }
+            else
+            {
+                o365NewMailbox["Archive"] = false;
                 o365NewMailboxpropCount++;
             }
 
@@ -6545,7 +9015,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365NewSharedMailboxarchive != null)
             {
-                o365NewSharedMailbox["Archive"] = ExpressionConverter.ConvertO(o365NewSharedMailboxarchive);
+                if (o365NewSharedMailboxarchive != null)
+                {
+                    o365NewSharedMailbox["Archive"] = ExpressionConverter.ConvertO(o365NewSharedMailboxarchive);
+                    o365NewSharedMailboxpropCount++;
+                }
+
+                o365NewSharedMailboxpropCount++;
+            }
+            else
+            {
+                o365NewSharedMailbox["Archive"] = false;
                 o365NewSharedMailboxpropCount++;
             }
 
@@ -6577,7 +9057,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             o365EnableArchiveMailbox["Identity"] = ExpressionConverter.ConvertO(o365EnableArchiveMailboxidentity);
             if (o365EnableArchiveMailboxcheckIfArchiveExists != null)
             {
-                o365EnableArchiveMailbox["CheckIfArchiveExists"] = ExpressionConverter.ConvertO(o365EnableArchiveMailboxcheckIfArchiveExists);
+                if (o365EnableArchiveMailboxcheckIfArchiveExists != null)
+                {
+                    o365EnableArchiveMailbox["CheckIfArchiveExists"] = ExpressionConverter.ConvertO(o365EnableArchiveMailboxcheckIfArchiveExists);
+                    o365EnableArchiveMailboxpropCount++;
+                }
+
+                o365EnableArchiveMailboxpropCount++;
+            }
+            else
+            {
+                o365EnableArchiveMailbox["CheckIfArchiveExists"] = true;
                 o365EnableArchiveMailboxpropCount++;
             }
 
@@ -6589,7 +9079,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (o365EnableArchiveMailboxautoExpandingArchive != null)
             {
-                o365EnableArchiveMailbox["AutoExpandingArchive"] = ExpressionConverter.ConvertO(o365EnableArchiveMailboxautoExpandingArchive);
+                if (o365EnableArchiveMailboxautoExpandingArchive != null)
+                {
+                    o365EnableArchiveMailbox["AutoExpandingArchive"] = ExpressionConverter.ConvertO(o365EnableArchiveMailboxautoExpandingArchive);
+                    o365EnableArchiveMailboxpropCount++;
+                }
+
+                o365EnableArchiveMailboxpropCount++;
+            }
+            else
+            {
+                o365EnableArchiveMailbox["AutoExpandingArchive"] = false;
                 o365EnableArchiveMailboxpropCount++;
             }
 
@@ -6675,31 +9175,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (jMLGetNextAvailableAccountNamevariableMStartValue != null)
             {
-                jMLGetNextAvailableAccountName["VariableMStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableMStartValue);
+                if (jMLGetNextAvailableAccountNamevariableMStartValue != null)
+                {
+                    jMLGetNextAvailableAccountName["VariableMStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableMStartValue);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["VariableMStartValue"] = 2;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
             if (jMLGetNextAvailableAccountNamevariableNStartValue != null)
             {
-                jMLGetNextAvailableAccountName["VariableNStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableNStartValue);
+                if (jMLGetNextAvailableAccountNamevariableNStartValue != null)
+                {
+                    jMLGetNextAvailableAccountName["VariableNStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableNStartValue);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["VariableNStartValue"] = 2;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
             if (jMLGetNextAvailableAccountNamevariableXStartValue != null)
             {
-                jMLGetNextAvailableAccountName["VariableXStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableXStartValue);
+                if (jMLGetNextAvailableAccountNamevariableXStartValue != null)
+                {
+                    jMLGetNextAvailableAccountName["VariableXStartValue"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamevariableXStartValue);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["VariableXStartValue"] = 2;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
             if (jMLGetNextAvailableAccountNamemaxAttempts != null)
             {
-                jMLGetNextAvailableAccountName["MaxAttempts"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamemaxAttempts);
+                if (jMLGetNextAvailableAccountNamemaxAttempts != null)
+                {
+                    jMLGetNextAvailableAccountName["MaxAttempts"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamemaxAttempts);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["MaxAttempts"] = 20;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
             if (jMLGetNextAvailableAccountNamefallbackCausesRetest != null)
             {
-                jMLGetNextAvailableAccountName["FallbackCausesRetest"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamefallbackCausesRetest);
+                if (jMLGetNextAvailableAccountNamefallbackCausesRetest != null)
+                {
+                    jMLGetNextAvailableAccountName["FallbackCausesRetest"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNamefallbackCausesRetest);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["FallbackCausesRetest"] = true;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
@@ -6717,13 +9267,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs != null)
             {
-                jMLGetNextAvailableAccountName["RemoveDiacriticsFromInputs"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs);
+                if (jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs != null)
+                {
+                    jMLGetNextAvailableAccountName["RemoveDiacriticsFromInputs"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["RemoveDiacriticsFromInputs"] = true;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
             if (jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs != null)
             {
-                jMLGetNextAvailableAccountName["RemoveNonAlphaNumericFromInputs"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs);
+                if (jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs != null)
+                {
+                    jMLGetNextAvailableAccountName["RemoveNonAlphaNumericFromInputs"] = ExpressionConverter.ConvertO(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs);
+                    jMLGetNextAvailableAccountNamepropCount++;
+                }
+
+                jMLGetNextAvailableAccountNamepropCount++;
+            }
+            else
+            {
+                jMLGetNextAvailableAccountName["RemoveNonAlphaNumericFromInputs"] = true;
                 jMLGetNextAvailableAccountNamepropCount++;
             }
 
@@ -6765,7 +9335,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 
             if (jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected != null)
             {
-                jMLConnectToJMLEnvironment["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected);
+                if (jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected != null)
+                {
+                    jMLConnectToJMLEnvironment["OnlyConnectIfNotAlreadyConnected"] = ExpressionConverter.ConvertO(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected);
+                    jMLConnectToJMLEnvironmentpropCount++;
+                }
+
+                jMLConnectToJMLEnvironmentpropCount++;
+            }
+            else
+            {
+                jMLConnectToJMLEnvironment["OnlyConnectIfNotAlreadyConnected"] = true;
                 jMLConnectToJMLEnvironmentpropCount++;
             }
 

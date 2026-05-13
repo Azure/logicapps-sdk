@@ -217,7 +217,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getProcessesgetProcessCommandLine != null)
             {
-                getProcesses["GetProcessCommandLine"] = ExpressionConverter.ConvertO(getProcessesgetProcessCommandLine);
+                if (getProcessesgetProcessCommandLine != null)
+                {
+                    getProcesses["GetProcessCommandLine"] = ExpressionConverter.ConvertO(getProcessesgetProcessCommandLine);
+                    getProcessespropCount++;
+                }
+
+                getProcessespropCount++;
+            }
+            else
+            {
+                getProcesses["GetProcessCommandLine"] = false;
                 getProcessespropCount++;
             }
 
@@ -255,43 +265,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runProcessuseShellExecute != null)
             {
-                runProcess["UseShellExecute"] = ExpressionConverter.ConvertO(runProcessuseShellExecute);
+                if (runProcessuseShellExecute != null)
+                {
+                    runProcess["UseShellExecute"] = ExpressionConverter.ConvertO(runProcessuseShellExecute);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["UseShellExecute"] = true;
                 runProcesspropCount++;
             }
 
             if (runProcesscreateNoWindow != null)
             {
-                runProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runProcesscreateNoWindow);
+                if (runProcesscreateNoWindow != null)
+                {
+                    runProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runProcesscreateNoWindow);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["CreateNoWindow"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcesswindowStyle != null)
             {
-                runProcess["WindowStyle"] = ExpressionConverter.ConvertO(runProcesswindowStyle);
+                if (runProcesswindowStyle != null)
+                {
+                    runProcess["WindowStyle"] = ExpressionConverter.ConvertO(runProcesswindowStyle);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["WindowStyle"] = "normal";
                 runProcesspropCount++;
             }
 
             if (runProcesswaitForProcess != null)
             {
-                runProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runProcesswaitForProcess);
+                if (runProcesswaitForProcess != null)
+                {
+                    runProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runProcesswaitForProcess);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["WaitForProcess"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcessredirectStandardOutput != null)
             {
-                runProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardOutput);
+                if (runProcessredirectStandardOutput != null)
+                {
+                    runProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardOutput);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["RedirectStandardOutput"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcessredirectStandardError != null)
             {
-                runProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runProcessredirectStandardError);
+                if (runProcessredirectStandardError != null)
+                {
+                    runProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runProcessredirectStandardError);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["RedirectStandardError"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcessredirectStandardErrorToOutput != null)
             {
-                runProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardErrorToOutput);
+                if (runProcessredirectStandardErrorToOutput != null)
+                {
+                    runProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runProcessredirectStandardErrorToOutput);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["RedirectStandardErrorToOutput"] = false;
                 runProcesspropCount++;
             }
 
@@ -327,19 +407,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runProcessrunAsLoadUserProfile != null)
             {
-                runProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runProcessrunAsLoadUserProfile);
+                if (runProcessrunAsLoadUserProfile != null)
+                {
+                    runProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runProcessrunAsLoadUserProfile);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["RunAsLoadUserProfile"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcessrunAsElevate != null)
             {
-                runProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runProcessrunAsElevate);
+                if (runProcessrunAsElevate != null)
+                {
+                    runProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runProcessrunAsElevate);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["RunAsElevate"] = false;
                 runProcesspropCount++;
             }
 
             if (runProcesstimeoutInSeconds != null)
             {
-                runProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runProcesstimeoutInSeconds);
+                if (runProcesstimeoutInSeconds != null)
+                {
+                    runProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runProcesstimeoutInSeconds);
+                    runProcesspropCount++;
+                }
+
+                runProcesspropCount++;
+            }
+            else
+            {
+                runProcess["TimeoutInSeconds"] = 10;
                 runProcesspropCount++;
             }
 
@@ -363,7 +473,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var runPowerShellProcesspropCount = 0;
             if (runPowerShellProcesspowerShellExecutable != null)
             {
-                runPowerShellProcess["PowerShellExecutable"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellExecutable);
+                if (runPowerShellProcesspowerShellExecutable != null)
+                {
+                    runPowerShellProcess["PowerShellExecutable"] = ExpressionConverter.ConvertO(runPowerShellProcesspowerShellExecutable);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["PowerShellExecutable"] = "PowerShell.exe";
                 runPowerShellProcesspropCount++;
             }
 
@@ -387,37 +507,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runPowerShellProcesscreateNoWindow != null)
             {
-                runPowerShellProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runPowerShellProcesscreateNoWindow);
+                if (runPowerShellProcesscreateNoWindow != null)
+                {
+                    runPowerShellProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(runPowerShellProcesscreateNoWindow);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["CreateNoWindow"] = true;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcesswindowStyle != null)
             {
-                runPowerShellProcess["WindowStyle"] = ExpressionConverter.ConvertO(runPowerShellProcesswindowStyle);
+                if (runPowerShellProcesswindowStyle != null)
+                {
+                    runPowerShellProcess["WindowStyle"] = ExpressionConverter.ConvertO(runPowerShellProcesswindowStyle);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["WindowStyle"] = "normal";
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcesswaitForProcess != null)
             {
-                runPowerShellProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runPowerShellProcesswaitForProcess);
+                if (runPowerShellProcesswaitForProcess != null)
+                {
+                    runPowerShellProcess["WaitForProcess"] = ExpressionConverter.ConvertO(runPowerShellProcesswaitForProcess);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["WaitForProcess"] = true;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessredirectStandardOutput != null)
             {
-                runPowerShellProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardOutput);
+                if (runPowerShellProcessredirectStandardOutput != null)
+                {
+                    runPowerShellProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardOutput);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["RedirectStandardOutput"] = true;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessredirectStandardError != null)
             {
-                runPowerShellProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardError);
+                if (runPowerShellProcessredirectStandardError != null)
+                {
+                    runPowerShellProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardError);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["RedirectStandardError"] = false;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessredirectStandardErrorToOutput != null)
             {
-                runPowerShellProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardErrorToOutput);
+                if (runPowerShellProcessredirectStandardErrorToOutput != null)
+                {
+                    runPowerShellProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(runPowerShellProcessredirectStandardErrorToOutput);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["RedirectStandardErrorToOutput"] = false;
                 runPowerShellProcesspropCount++;
             }
 
@@ -453,19 +633,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runPowerShellProcessrunAsLoadUserProfile != null)
             {
-                runPowerShellProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsLoadUserProfile);
+                if (runPowerShellProcessrunAsLoadUserProfile != null)
+                {
+                    runPowerShellProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsLoadUserProfile);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["RunAsLoadUserProfile"] = false;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcessrunAsElevate != null)
             {
-                runPowerShellProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsElevate);
+                if (runPowerShellProcessrunAsElevate != null)
+                {
+                    runPowerShellProcess["RunAsElevate"] = ExpressionConverter.ConvertO(runPowerShellProcessrunAsElevate);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["RunAsElevate"] = false;
                 runPowerShellProcesspropCount++;
             }
 
             if (runPowerShellProcesstimeoutInSeconds != null)
             {
-                runPowerShellProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runPowerShellProcesstimeoutInSeconds);
+                if (runPowerShellProcesstimeoutInSeconds != null)
+                {
+                    runPowerShellProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(runPowerShellProcesstimeoutInSeconds);
+                    runPowerShellProcesspropCount++;
+                }
+
+                runPowerShellProcesspropCount++;
+            }
+            else
+            {
+                runPowerShellProcess["TimeoutInSeconds"] = 10;
                 runPowerShellProcesspropCount++;
             }
 
@@ -551,19 +761,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getListOfPrinterspropCount = 0;
             if (getListOfPrinterslistLocalPrinters != null)
             {
-                getListOfPrinters["ListLocalPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistLocalPrinters);
+                if (getListOfPrinterslistLocalPrinters != null)
+                {
+                    getListOfPrinters["ListLocalPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistLocalPrinters);
+                    getListOfPrinterspropCount++;
+                }
+
+                getListOfPrinterspropCount++;
+            }
+            else
+            {
+                getListOfPrinters["ListLocalPrinters"] = true;
                 getListOfPrinterspropCount++;
             }
 
             if (getListOfPrinterslistNetworkPrinters != null)
             {
-                getListOfPrinters["ListNetworkPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistNetworkPrinters);
+                if (getListOfPrinterslistNetworkPrinters != null)
+                {
+                    getListOfPrinters["ListNetworkPrinters"] = ExpressionConverter.ConvertO(getListOfPrinterslistNetworkPrinters);
+                    getListOfPrinterspropCount++;
+                }
+
+                getListOfPrinterspropCount++;
+            }
+            else
+            {
+                getListOfPrinters["ListNetworkPrinters"] = false;
                 getListOfPrinterspropCount++;
             }
 
             if (getListOfPrintersreturnDetailedInformation != null)
             {
-                getListOfPrinters["ReturnDetailedInformation"] = ExpressionConverter.ConvertO(getListOfPrintersreturnDetailedInformation);
+                if (getListOfPrintersreturnDetailedInformation != null)
+                {
+                    getListOfPrinters["ReturnDetailedInformation"] = ExpressionConverter.ConvertO(getListOfPrintersreturnDetailedInformation);
+                    getListOfPrinterspropCount++;
+                }
+
+                getListOfPrinterspropCount++;
+            }
+            else
+            {
+                getListOfPrinters["ReturnDetailedInformation"] = false;
                 getListOfPrinterspropCount++;
             }
 
@@ -587,31 +827,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setMouseMultiplierpropCount = 0;
             if (setMouseMultipliermouseXMultiplier != null)
             {
-                setMouseMultiplier["MouseXMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseXMultiplier);
+                if (setMouseMultipliermouseXMultiplier != null)
+                {
+                    setMouseMultiplier["MouseXMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseXMultiplier);
+                    setMouseMultiplierpropCount++;
+                }
+
+                setMouseMultiplierpropCount++;
+            }
+            else
+            {
+                setMouseMultiplier["MouseXMultiplier"] = 1;
                 setMouseMultiplierpropCount++;
             }
 
             if (setMouseMultipliermouseYMultiplier != null)
             {
-                setMouseMultiplier["MouseYMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseYMultiplier);
+                if (setMouseMultipliermouseYMultiplier != null)
+                {
+                    setMouseMultiplier["MouseYMultiplier"] = ExpressionConverter.ConvertO(setMouseMultipliermouseYMultiplier);
+                    setMouseMultiplierpropCount++;
+                }
+
+                setMouseMultiplierpropCount++;
+            }
+            else
+            {
+                setMouseMultiplier["MouseYMultiplier"] = 1;
                 setMouseMultiplierpropCount++;
             }
 
             if (setMouseMultiplierapplyToMouseEvent != null)
             {
-                setMouseMultiplier["ApplyToMouseEvent"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToMouseEvent);
+                if (setMouseMultiplierapplyToMouseEvent != null)
+                {
+                    setMouseMultiplier["ApplyToMouseEvent"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToMouseEvent);
+                    setMouseMultiplierpropCount++;
+                }
+
+                setMouseMultiplierpropCount++;
+            }
+            else
+            {
+                setMouseMultiplier["ApplyToMouseEvent"] = true;
                 setMouseMultiplierpropCount++;
             }
 
             if (setMouseMultiplierapplyToSetCursorPos != null)
             {
-                setMouseMultiplier["ApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToSetCursorPos);
+                if (setMouseMultiplierapplyToSetCursorPos != null)
+                {
+                    setMouseMultiplier["ApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToSetCursorPos);
+                    setMouseMultiplierpropCount++;
+                }
+
+                setMouseMultiplierpropCount++;
+            }
+            else
+            {
+                setMouseMultiplier["ApplyToSetCursorPos"] = false;
                 setMouseMultiplierpropCount++;
             }
 
             if (setMouseMultiplierapplyToCurrentMouseMoveMethod != null)
             {
-                setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToCurrentMouseMoveMethod);
+                if (setMouseMultiplierapplyToCurrentMouseMoveMethod != null)
+                {
+                    setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setMouseMultiplierapplyToCurrentMouseMoveMethod);
+                    setMouseMultiplierpropCount++;
+                }
+
+                setMouseMultiplierpropCount++;
+            }
+            else
+            {
+                setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = false;
                 setMouseMultiplierpropCount++;
             }
 
@@ -1057,7 +1347,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var doubleLeftClickMousepropCount = 0;
             if (doubleLeftClickMousedelayInMilliseconds != null)
             {
-                doubleLeftClickMouse["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMousedelayInMilliseconds);
+                if (doubleLeftClickMousedelayInMilliseconds != null)
+                {
+                    doubleLeftClickMouse["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMousedelayInMilliseconds);
+                    doubleLeftClickMousepropCount++;
+                }
+
+                doubleLeftClickMousepropCount++;
+            }
+            else
+            {
+                doubleLeftClickMouse["DelayInMilliseconds"] = 10;
                 doubleLeftClickMousepropCount++;
             }
 
@@ -1085,7 +1385,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             doubleLeftClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinateyCoord);
             if (doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
             {
-                doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
+                if (doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
+                {
+                    doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = ExpressionConverter.ConvertO(doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
+                    doubleLeftClickMouseAtCoordinatepropCount++;
+                }
+
+                doubleLeftClickMouseAtCoordinatepropCount++;
+            }
+            else
+            {
+                doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = 10;
                 doubleLeftClickMouseAtCoordinatepropCount++;
             }
 
@@ -1117,13 +1427,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             leftMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesendYCoord);
             if (leftMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
-                leftMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesnumberOfSteps);
+                if (leftMouseDragBetweenCoordinatesnumberOfSteps != null)
+                {
+                    leftMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesnumberOfSteps);
+                    leftMouseDragBetweenCoordinatespropCount++;
+                }
+
+                leftMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                leftMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
                 leftMouseDragBetweenCoordinatespropCount++;
             }
 
             if (leftMouseDragBetweenCoordinatestotalTimeInSeconds != null)
             {
-                leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatestotalTimeInSeconds);
+                if (leftMouseDragBetweenCoordinatestotalTimeInSeconds != null)
+                {
+                    leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    leftMouseDragBetweenCoordinatespropCount++;
+                }
+
+                leftMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
                 leftMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1141,7 +1471,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
             {
-                leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                if (leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
+                {
+                    leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    leftMouseDragBetweenCoordinatespropCount++;
+                }
+
+                leftMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
                 leftMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1173,13 +1513,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             rightMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesendYCoord);
             if (rightMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
-                rightMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesnumberOfSteps);
+                if (rightMouseDragBetweenCoordinatesnumberOfSteps != null)
+                {
+                    rightMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesnumberOfSteps);
+                    rightMouseDragBetweenCoordinatespropCount++;
+                }
+
+                rightMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                rightMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
                 rightMouseDragBetweenCoordinatespropCount++;
             }
 
             if (rightMouseDragBetweenCoordinatestotalTimeInSeconds != null)
             {
-                rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatestotalTimeInSeconds);
+                if (rightMouseDragBetweenCoordinatestotalTimeInSeconds != null)
+                {
+                    rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    rightMouseDragBetweenCoordinatespropCount++;
+                }
+
+                rightMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
                 rightMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1197,7 +1557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
             {
-                rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                if (rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
+                {
+                    rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    rightMouseDragBetweenCoordinatespropCount++;
+                }
+
+                rightMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
                 rightMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1229,13 +1599,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             middleMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesendYCoord);
             if (middleMouseDragBetweenCoordinatesnumberOfSteps != null)
             {
-                middleMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesnumberOfSteps);
+                if (middleMouseDragBetweenCoordinatesnumberOfSteps != null)
+                {
+                    middleMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesnumberOfSteps);
+                    middleMouseDragBetweenCoordinatespropCount++;
+                }
+
+                middleMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                middleMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
                 middleMouseDragBetweenCoordinatespropCount++;
             }
 
             if (middleMouseDragBetweenCoordinatestotalTimeInSeconds != null)
             {
-                middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatestotalTimeInSeconds);
+                if (middleMouseDragBetweenCoordinatestotalTimeInSeconds != null)
+                {
+                    middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatestotalTimeInSeconds);
+                    middleMouseDragBetweenCoordinatespropCount++;
+                }
+
+                middleMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
                 middleMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1253,7 +1643,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
             {
-                middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                if (middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
+                {
+                    middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    middleMouseDragBetweenCoordinatespropCount++;
+                }
+
+                middleMouseDragBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
                 middleMouseDragBetweenCoordinatespropCount++;
             }
 
@@ -1285,13 +1685,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             moveMouseBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesendYCoord);
             if (moveMouseBetweenCoordinatesnumberOfSteps != null)
             {
-                moveMouseBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesnumberOfSteps);
+                if (moveMouseBetweenCoordinatesnumberOfSteps != null)
+                {
+                    moveMouseBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesnumberOfSteps);
+                    moveMouseBetweenCoordinatespropCount++;
+                }
+
+                moveMouseBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                moveMouseBetweenCoordinates["NumberOfSteps"] = 20;
                 moveMouseBetweenCoordinatespropCount++;
             }
 
             if (moveMouseBetweenCoordinatestotalTimeInSeconds != null)
             {
-                moveMouseBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatestotalTimeInSeconds);
+                if (moveMouseBetweenCoordinatestotalTimeInSeconds != null)
+                {
+                    moveMouseBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatestotalTimeInSeconds);
+                    moveMouseBetweenCoordinatespropCount++;
+                }
+
+                moveMouseBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                moveMouseBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
                 moveMouseBetweenCoordinatespropCount++;
             }
 
@@ -1309,7 +1729,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
             {
-                moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                if (moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
+                {
+                    moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
+                    moveMouseBetweenCoordinatespropCount++;
+                }
+
+                moveMouseBetweenCoordinatespropCount++;
+            }
+            else
+            {
+                moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
                 moveMouseBetweenCoordinatespropCount++;
             }
 
@@ -1393,7 +1823,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var calibrateMouseEventpropCount = 0;
             if (calibrateMouseEventcalibrationSizeInPixels != null)
             {
-                calibrateMouseEvent["CalibrationSizeInPixels"] = ExpressionConverter.ConvertO(calibrateMouseEventcalibrationSizeInPixels);
+                if (calibrateMouseEventcalibrationSizeInPixels != null)
+                {
+                    calibrateMouseEvent["CalibrationSizeInPixels"] = ExpressionConverter.ConvertO(calibrateMouseEventcalibrationSizeInPixels);
+                    calibrateMouseEventpropCount++;
+                }
+
+                calibrateMouseEventpropCount++;
+            }
+            else
+            {
+                calibrateMouseEvent["CalibrationSizeInPixels"] = 200;
                 calibrateMouseEventpropCount++;
             }
 
@@ -1455,7 +1895,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var wiggleMousepropCount = 0;
             if (wiggleMousexWiggle != null)
             {
-                wiggleMouse["XWiggle"] = ExpressionConverter.ConvertO(wiggleMousexWiggle);
+                if (wiggleMousexWiggle != null)
+                {
+                    wiggleMouse["XWiggle"] = ExpressionConverter.ConvertO(wiggleMousexWiggle);
+                    wiggleMousepropCount++;
+                }
+
+                wiggleMousepropCount++;
+            }
+            else
+            {
+                wiggleMouse["XWiggle"] = 2;
                 wiggleMousepropCount++;
             }
 
@@ -1467,7 +1917,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (wiggleMousewiggleDelayInSeconds != null)
             {
-                wiggleMouse["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(wiggleMousewiggleDelayInSeconds);
+                if (wiggleMousewiggleDelayInSeconds != null)
+                {
+                    wiggleMouse["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(wiggleMousewiggleDelayInSeconds);
+                    wiggleMousepropCount++;
+                }
+
+                wiggleMousepropCount++;
+            }
+            else
+            {
+                wiggleMouse["WiggleDelayInSeconds"] = 0.1;
                 wiggleMousepropCount++;
             }
 
@@ -1493,19 +1953,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             sendKeyEvents["Text"] = ExpressionConverter.ConvertO(sendKeyEventstext);
             if (sendKeyEventsinterval != null)
             {
-                sendKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendKeyEventsinterval);
+                if (sendKeyEventsinterval != null)
+                {
+                    sendKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendKeyEventsinterval);
+                    sendKeyEventspropCount++;
+                }
+
+                sendKeyEventspropCount++;
+            }
+            else
+            {
+                sendKeyEvents["Interval"] = 10;
                 sendKeyEventspropCount++;
             }
 
             if (sendKeyEventsisPassword != null)
             {
-                sendKeyEvents["IsPassword"] = ExpressionConverter.ConvertO(sendKeyEventsisPassword);
+                if (sendKeyEventsisPassword != null)
+                {
+                    sendKeyEvents["IsPassword"] = ExpressionConverter.ConvertO(sendKeyEventsisPassword);
+                    sendKeyEventspropCount++;
+                }
+
+                sendKeyEventspropCount++;
+            }
+            else
+            {
+                sendKeyEvents["IsPassword"] = false;
                 sendKeyEventspropCount++;
             }
 
             if (sendKeyEventsdontInterpretSymbols != null)
             {
-                sendKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeyEventsdontInterpretSymbols);
+                if (sendKeyEventsdontInterpretSymbols != null)
+                {
+                    sendKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeyEventsdontInterpretSymbols);
+                    sendKeyEventspropCount++;
+                }
+
+                sendKeyEventspropCount++;
+            }
+            else
+            {
+                sendKeyEvents["DontInterpretSymbols"] = false;
                 sendKeyEventspropCount++;
             }
 
@@ -1531,19 +2021,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             sendPasswordKeyEvents["Password"] = ExpressionConverter.ConvertO(sendPasswordKeyEventspassword);
             if (sendPasswordKeyEventsinterval != null)
             {
-                sendPasswordKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsinterval);
+                if (sendPasswordKeyEventsinterval != null)
+                {
+                    sendPasswordKeyEvents["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsinterval);
+                    sendPasswordKeyEventspropCount++;
+                }
+
+                sendPasswordKeyEventspropCount++;
+            }
+            else
+            {
+                sendPasswordKeyEvents["Interval"] = 10;
                 sendPasswordKeyEventspropCount++;
             }
 
             if (sendPasswordKeyEventsdontInterpretSymbols != null)
             {
-                sendPasswordKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsdontInterpretSymbols);
+                if (sendPasswordKeyEventsdontInterpretSymbols != null)
+                {
+                    sendPasswordKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeyEventsdontInterpretSymbols);
+                    sendPasswordKeyEventspropCount++;
+                }
+
+                sendPasswordKeyEventspropCount++;
+            }
+            else
+            {
+                sendPasswordKeyEvents["DontInterpretSymbols"] = false;
                 sendPasswordKeyEventspropCount++;
             }
 
             if (sendPasswordKeyEventspasswordContainsStoredPassword != null)
             {
-                sendPasswordKeyEvents["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyEventspasswordContainsStoredPassword);
+                if (sendPasswordKeyEventspasswordContainsStoredPassword != null)
+                {
+                    sendPasswordKeyEvents["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyEventspasswordContainsStoredPassword);
+                    sendPasswordKeyEventspropCount++;
+                }
+
+                sendPasswordKeyEventspropCount++;
+            }
+            else
+            {
+                sendPasswordKeyEvents["PasswordContainsStoredPassword"] = false;
                 sendPasswordKeyEventspropCount++;
             }
 
@@ -1569,19 +2089,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             sendKeys["Text"] = ExpressionConverter.ConvertO(sendKeystext);
             if (sendKeysinterval != null)
             {
-                sendKeys["Interval"] = ExpressionConverter.ConvertO(sendKeysinterval);
+                if (sendKeysinterval != null)
+                {
+                    sendKeys["Interval"] = ExpressionConverter.ConvertO(sendKeysinterval);
+                    sendKeyspropCount++;
+                }
+
+                sendKeyspropCount++;
+            }
+            else
+            {
+                sendKeys["Interval"] = 10;
                 sendKeyspropCount++;
             }
 
             if (sendKeysisPassword != null)
             {
-                sendKeys["IsPassword"] = ExpressionConverter.ConvertO(sendKeysisPassword);
+                if (sendKeysisPassword != null)
+                {
+                    sendKeys["IsPassword"] = ExpressionConverter.ConvertO(sendKeysisPassword);
+                    sendKeyspropCount++;
+                }
+
+                sendKeyspropCount++;
+            }
+            else
+            {
+                sendKeys["IsPassword"] = false;
                 sendKeyspropCount++;
             }
 
             if (sendKeysdontInterpretSymbols != null)
             {
-                sendKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeysdontInterpretSymbols);
+                if (sendKeysdontInterpretSymbols != null)
+                {
+                    sendKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendKeysdontInterpretSymbols);
+                    sendKeyspropCount++;
+                }
+
+                sendKeyspropCount++;
+            }
+            else
+            {
+                sendKeys["DontInterpretSymbols"] = false;
                 sendKeyspropCount++;
             }
 
@@ -1607,19 +2157,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             sendPasswordKeys["Password"] = ExpressionConverter.ConvertO(sendPasswordKeyspassword);
             if (sendPasswordKeysinterval != null)
             {
-                sendPasswordKeys["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeysinterval);
+                if (sendPasswordKeysinterval != null)
+                {
+                    sendPasswordKeys["Interval"] = ExpressionConverter.ConvertO(sendPasswordKeysinterval);
+                    sendPasswordKeyspropCount++;
+                }
+
+                sendPasswordKeyspropCount++;
+            }
+            else
+            {
+                sendPasswordKeys["Interval"] = 10;
                 sendPasswordKeyspropCount++;
             }
 
             if (sendPasswordKeysdontInterpretSymbols != null)
             {
-                sendPasswordKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeysdontInterpretSymbols);
+                if (sendPasswordKeysdontInterpretSymbols != null)
+                {
+                    sendPasswordKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sendPasswordKeysdontInterpretSymbols);
+                    sendPasswordKeyspropCount++;
+                }
+
+                sendPasswordKeyspropCount++;
+            }
+            else
+            {
+                sendPasswordKeys["DontInterpretSymbols"] = false;
                 sendPasswordKeyspropCount++;
             }
 
             if (sendPasswordKeyspasswordContainsStoredPassword != null)
             {
-                sendPasswordKeys["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyspasswordContainsStoredPassword);
+                if (sendPasswordKeyspasswordContainsStoredPassword != null)
+                {
+                    sendPasswordKeys["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(sendPasswordKeyspasswordContainsStoredPassword);
+                    sendPasswordKeyspropCount++;
+                }
+
+                sendPasswordKeyspropCount++;
+            }
+            else
+            {
+                sendPasswordKeys["PasswordContainsStoredPassword"] = false;
                 sendPasswordKeyspropCount++;
             }
 
@@ -1703,7 +2283,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var takeScreenshotpropCount = 0;
             if (takeScreenshotfullscreen != null)
             {
-                takeScreenshot["Fullscreen"] = ExpressionConverter.ConvertO(takeScreenshotfullscreen);
+                if (takeScreenshotfullscreen != null)
+                {
+                    takeScreenshot["Fullscreen"] = ExpressionConverter.ConvertO(takeScreenshotfullscreen);
+                    takeScreenshotpropCount++;
+                }
+
+                takeScreenshotpropCount++;
+            }
+            else
+            {
+                takeScreenshot["Fullscreen"] = true;
                 takeScreenshotpropCount++;
             }
 
@@ -1739,25 +2329,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (takeScreenshotuseDisplayDevice != null)
             {
-                takeScreenshot["UseDisplayDevice"] = ExpressionConverter.ConvertO(takeScreenshotuseDisplayDevice);
+                if (takeScreenshotuseDisplayDevice != null)
+                {
+                    takeScreenshot["UseDisplayDevice"] = ExpressionConverter.ConvertO(takeScreenshotuseDisplayDevice);
+                    takeScreenshotpropCount++;
+                }
+
+                takeScreenshotpropCount++;
+            }
+            else
+            {
+                takeScreenshot["UseDisplayDevice"] = false;
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshotraiseExceptionOnError != null)
             {
-                takeScreenshot["RaiseExceptionOnError"] = ExpressionConverter.ConvertO(takeScreenshotraiseExceptionOnError);
+                if (takeScreenshotraiseExceptionOnError != null)
+                {
+                    takeScreenshot["RaiseExceptionOnError"] = ExpressionConverter.ConvertO(takeScreenshotraiseExceptionOnError);
+                    takeScreenshotpropCount++;
+                }
+
+                takeScreenshotpropCount++;
+            }
+            else
+            {
+                takeScreenshot["RaiseExceptionOnError"] = true;
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshothideAgent != null)
             {
-                takeScreenshot["HideAgent"] = ExpressionConverter.ConvertO(takeScreenshothideAgent);
+                if (takeScreenshothideAgent != null)
+                {
+                    takeScreenshot["HideAgent"] = ExpressionConverter.ConvertO(takeScreenshothideAgent);
+                    takeScreenshotpropCount++;
+                }
+
+                takeScreenshotpropCount++;
+            }
+            else
+            {
+                takeScreenshot["HideAgent"] = false;
                 takeScreenshotpropCount++;
             }
 
             if (takeScreenshotusePhysicalCoordinates != null)
             {
-                takeScreenshot["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(takeScreenshotusePhysicalCoordinates);
+                if (takeScreenshotusePhysicalCoordinates != null)
+                {
+                    takeScreenshot["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(takeScreenshotusePhysicalCoordinates);
+                    takeScreenshotpropCount++;
+                }
+
+                takeScreenshotpropCount++;
+            }
+            else
+            {
+                takeScreenshot["UsePhysicalCoordinates"] = false;
                 takeScreenshotpropCount++;
             }
 
@@ -1823,7 +2453,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setScreenReaderpropCount = 0;
             if (setScreenReaderenableScreenReader != null)
             {
-                setScreenReader["EnableScreenReader"] = ExpressionConverter.ConvertO(setScreenReaderenableScreenReader);
+                if (setScreenReaderenableScreenReader != null)
+                {
+                    setScreenReader["EnableScreenReader"] = ExpressionConverter.ConvertO(setScreenReaderenableScreenReader);
+                    setScreenReaderpropCount++;
+                }
+
+                setScreenReaderpropCount++;
+            }
+            else
+            {
+                setScreenReader["EnableScreenReader"] = true;
                 setScreenReaderpropCount++;
             }
 
@@ -1905,7 +2545,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var keepSessionAlivepropCount = 0;
             if (keepSessionAlivexWiggle != null)
             {
-                keepSessionAlive["XWiggle"] = ExpressionConverter.ConvertO(keepSessionAlivexWiggle);
+                if (keepSessionAlivexWiggle != null)
+                {
+                    keepSessionAlive["XWiggle"] = ExpressionConverter.ConvertO(keepSessionAlivexWiggle);
+                    keepSessionAlivepropCount++;
+                }
+
+                keepSessionAlivepropCount++;
+            }
+            else
+            {
+                keepSessionAlive["XWiggle"] = 2;
                 keepSessionAlivepropCount++;
             }
 
@@ -1917,25 +2567,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (keepSessionAlivewiggleDelayInSeconds != null)
             {
-                keepSessionAlive["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivewiggleDelayInSeconds);
+                if (keepSessionAlivewiggleDelayInSeconds != null)
+                {
+                    keepSessionAlive["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivewiggleDelayInSeconds);
+                    keepSessionAlivepropCount++;
+                }
+
+                keepSessionAlivepropCount++;
+            }
+            else
+            {
+                keepSessionAlive["WiggleDelayInSeconds"] = 0.1;
                 keepSessionAlivepropCount++;
             }
 
             if (keepSessionAliveidleThresholdInSeconds != null)
             {
-                keepSessionAlive["IdleThresholdInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleThresholdInSeconds);
+                if (keepSessionAliveidleThresholdInSeconds != null)
+                {
+                    keepSessionAlive["IdleThresholdInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleThresholdInSeconds);
+                    keepSessionAlivepropCount++;
+                }
+
+                keepSessionAlivepropCount++;
+            }
+            else
+            {
+                keepSessionAlive["IdleThresholdInSeconds"] = 120;
                 keepSessionAlivepropCount++;
             }
 
             if (keepSessionAliveidleCheckPeriodInSeconds != null)
             {
-                keepSessionAlive["IdleCheckPeriodInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleCheckPeriodInSeconds);
+                if (keepSessionAliveidleCheckPeriodInSeconds != null)
+                {
+                    keepSessionAlive["IdleCheckPeriodInSeconds"] = ExpressionConverter.ConvertO(keepSessionAliveidleCheckPeriodInSeconds);
+                    keepSessionAlivepropCount++;
+                }
+
+                keepSessionAlivepropCount++;
+            }
+            else
+            {
+                keepSessionAlive["IdleCheckPeriodInSeconds"] = 30;
                 keepSessionAlivepropCount++;
             }
 
             if (keepSessionAlivetotalKeepaliveRuntimeInSeconds != null)
             {
-                keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivetotalKeepaliveRuntimeInSeconds);
+                if (keepSessionAlivetotalKeepaliveRuntimeInSeconds != null)
+                {
+                    keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = ExpressionConverter.ConvertO(keepSessionAlivetotalKeepaliveRuntimeInSeconds);
+                    keepSessionAlivepropCount++;
+                }
+
+                keepSessionAlivepropCount++;
+            }
+            else
+            {
+                keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = -1;
                 keepSessionAlivepropCount++;
             }
 
@@ -1979,7 +2669,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             copyFileToClipboard["Filepath"] = ExpressionConverter.ConvertO(copyFileToClipboardfilepath);
             if (copyFileToClipboardcut != null)
             {
-                copyFileToClipboard["Cut"] = ExpressionConverter.ConvertO(copyFileToClipboardcut);
+                if (copyFileToClipboardcut != null)
+                {
+                    copyFileToClipboard["Cut"] = ExpressionConverter.ConvertO(copyFileToClipboardcut);
+                    copyFileToClipboardpropCount++;
+                }
+
+                copyFileToClipboardpropCount++;
+            }
+            else
+            {
+                copyFileToClipboard["Cut"] = false;
                 copyFileToClipboardpropCount++;
             }
 
@@ -2029,7 +2729,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (generatePasswordreturnAsPlainText != null)
             {
-                generatePassword["ReturnAsPlainText"] = ExpressionConverter.ConvertO(generatePasswordreturnAsPlainText);
+                if (generatePasswordreturnAsPlainText != null)
+                {
+                    generatePassword["ReturnAsPlainText"] = ExpressionConverter.ConvertO(generatePasswordreturnAsPlainText);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["ReturnAsPlainText"] = false;
                 generatePasswordpropCount++;
             }
 
@@ -2047,37 +2757,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (generatePasswordattemptUniquePasswords != null)
             {
-                generatePassword["AttemptUniquePasswords"] = ExpressionConverter.ConvertO(generatePasswordattemptUniquePasswords);
+                if (generatePasswordattemptUniquePasswords != null)
+                {
+                    generatePassword["AttemptUniquePasswords"] = ExpressionConverter.ConvertO(generatePasswordattemptUniquePasswords);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["AttemptUniquePasswords"] = true;
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordgenerateAt != null)
             {
-                generatePassword["GenerateAt"] = ExpressionConverter.ConvertO(generatePasswordgenerateAt);
+                if (generatePasswordgenerateAt != null)
+                {
+                    generatePassword["GenerateAt"] = ExpressionConverter.ConvertO(generatePasswordgenerateAt);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["GenerateAt"] = "Agent";
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordminimumLowercase != null)
             {
-                generatePassword["MinimumLowercase"] = ExpressionConverter.ConvertO(generatePasswordminimumLowercase);
+                if (generatePasswordminimumLowercase != null)
+                {
+                    generatePassword["MinimumLowercase"] = ExpressionConverter.ConvertO(generatePasswordminimumLowercase);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["MinimumLowercase"] = 0;
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordminimumUppercase != null)
             {
-                generatePassword["MinimumUppercase"] = ExpressionConverter.ConvertO(generatePasswordminimumUppercase);
+                if (generatePasswordminimumUppercase != null)
+                {
+                    generatePassword["MinimumUppercase"] = ExpressionConverter.ConvertO(generatePasswordminimumUppercase);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["MinimumUppercase"] = 0;
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordminimumNumbers != null)
             {
-                generatePassword["MinimumNumbers"] = ExpressionConverter.ConvertO(generatePasswordminimumNumbers);
+                if (generatePasswordminimumNumbers != null)
+                {
+                    generatePassword["MinimumNumbers"] = ExpressionConverter.ConvertO(generatePasswordminimumNumbers);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["MinimumNumbers"] = 0;
                 generatePasswordpropCount++;
             }
 
             if (generatePasswordminimumSymbols != null)
             {
-                generatePassword["MinimumSymbols"] = ExpressionConverter.ConvertO(generatePasswordminimumSymbols);
+                if (generatePasswordminimumSymbols != null)
+                {
+                    generatePassword["MinimumSymbols"] = ExpressionConverter.ConvertO(generatePasswordminimumSymbols);
+                    generatePasswordpropCount++;
+                }
+
+                generatePasswordpropCount++;
+            }
+            else
+            {
+                generatePassword["MinimumSymbols"] = 0;
                 generatePasswordpropCount++;
             }
 
@@ -2171,7 +2941,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var deletePasswordInAgentMemorypropCount = 0;
             if (deletePasswordInAgentMemorydeleteAllPasswords != null)
             {
-                deletePasswordInAgentMemory["DeleteAllPasswords"] = ExpressionConverter.ConvertO(deletePasswordInAgentMemorydeleteAllPasswords);
+                if (deletePasswordInAgentMemorydeleteAllPasswords != null)
+                {
+                    deletePasswordInAgentMemory["DeleteAllPasswords"] = ExpressionConverter.ConvertO(deletePasswordInAgentMemorydeleteAllPasswords);
+                    deletePasswordInAgentMemorypropCount++;
+                }
+
+                deletePasswordInAgentMemorypropCount++;
+            }
+            else
+            {
+                deletePasswordInAgentMemory["DeleteAllPasswords"] = false;
                 deletePasswordInAgentMemorypropCount++;
             }
 
@@ -2209,7 +2989,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             credentialWrite["CredentialType"] = ExpressionConverter.ConvertO(credentialWritecredentialType);
             if (credentialWritecredentialPersistence != null)
             {
-                credentialWrite["CredentialPersistence"] = ExpressionConverter.ConvertO(credentialWritecredentialPersistence);
+                if (credentialWritecredentialPersistence != null)
+                {
+                    credentialWrite["CredentialPersistence"] = ExpressionConverter.ConvertO(credentialWritecredentialPersistence);
+                    credentialWritepropCount++;
+                }
+
+                credentialWritepropCount++;
+            }
+            else
+            {
+                credentialWrite["CredentialPersistence"] = "LocalMachine";
                 credentialWritepropCount++;
             }
 
@@ -2261,7 +3051,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (credentialReaddontReturnPassword != null)
             {
-                credentialRead["DontReturnPassword"] = ExpressionConverter.ConvertO(credentialReaddontReturnPassword);
+                if (credentialReaddontReturnPassword != null)
+                {
+                    credentialRead["DontReturnPassword"] = ExpressionConverter.ConvertO(credentialReaddontReturnPassword);
+                    credentialReadpropCount++;
+                }
+
+                credentialReadpropCount++;
+            }
+            else
+            {
+                credentialRead["DontReturnPassword"] = false;
                 credentialReadpropCount++;
             }
 
@@ -2313,19 +3113,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             generateRDPFile["RDPFileName"] = ExpressionConverter.ConvertO(generateRDPFilerDPFileName);
             if (generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
             {
-                generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = ExpressionConverter.ConvertO(generateRDPFileoverwriteRDPFileIfAlreadyExists);
+                if (generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
+                {
+                    generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = ExpressionConverter.ConvertO(generateRDPFileoverwriteRDPFileIfAlreadyExists);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = true;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFiletrustRemoteComputer != null)
             {
-                generateRDPFile["TrustRemoteComputer"] = ExpressionConverter.ConvertO(generateRDPFiletrustRemoteComputer);
+                if (generateRDPFiletrustRemoteComputer != null)
+                {
+                    generateRDPFile["TrustRemoteComputer"] = ExpressionConverter.ConvertO(generateRDPFiletrustRemoteComputer);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["TrustRemoteComputer"] = true;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilestoreCredentials != null)
             {
-                generateRDPFile["StoreCredentials"] = ExpressionConverter.ConvertO(generateRDPFilestoreCredentials);
+                if (generateRDPFilestoreCredentials != null)
+                {
+                    generateRDPFile["StoreCredentials"] = ExpressionConverter.ConvertO(generateRDPFilestoreCredentials);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["StoreCredentials"] = true;
                 generateRDPFilepropCount++;
             }
 
@@ -2343,67 +3173,177 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (generateRDPFilecredentialType != null)
             {
-                generateRDPFile["CredentialType"] = ExpressionConverter.ConvertO(generateRDPFilecredentialType);
+                if (generateRDPFilecredentialType != null)
+                {
+                    generateRDPFile["CredentialType"] = ExpressionConverter.ConvertO(generateRDPFilecredentialType);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["CredentialType"] = "Windows";
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilecredentialPersistence != null)
             {
-                generateRDPFile["CredentialPersistence"] = ExpressionConverter.ConvertO(generateRDPFilecredentialPersistence);
+                if (generateRDPFilecredentialPersistence != null)
+                {
+                    generateRDPFile["CredentialPersistence"] = ExpressionConverter.ConvertO(generateRDPFilecredentialPersistence);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["CredentialPersistence"] = "Session";
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFileredirectPrinters != null)
             {
-                generateRDPFile["RedirectPrinters"] = ExpressionConverter.ConvertO(generateRDPFileredirectPrinters);
+                if (generateRDPFileredirectPrinters != null)
+                {
+                    generateRDPFile["RedirectPrinters"] = ExpressionConverter.ConvertO(generateRDPFileredirectPrinters);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["RedirectPrinters"] = false;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFileredirectAllDrives != null)
             {
-                generateRDPFile["RedirectAllDrives"] = ExpressionConverter.ConvertO(generateRDPFileredirectAllDrives);
+                if (generateRDPFileredirectAllDrives != null)
+                {
+                    generateRDPFile["RedirectAllDrives"] = ExpressionConverter.ConvertO(generateRDPFileredirectAllDrives);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["RedirectAllDrives"] = false;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFileredirectClipboard != null)
             {
-                generateRDPFile["RedirectClipboard"] = ExpressionConverter.ConvertO(generateRDPFileredirectClipboard);
+                if (generateRDPFileredirectClipboard != null)
+                {
+                    generateRDPFile["RedirectClipboard"] = ExpressionConverter.ConvertO(generateRDPFileredirectClipboard);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["RedirectClipboard"] = true;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilefullscreen != null)
             {
-                generateRDPFile["Fullscreen"] = ExpressionConverter.ConvertO(generateRDPFilefullscreen);
+                if (generateRDPFilefullscreen != null)
+                {
+                    generateRDPFile["Fullscreen"] = ExpressionConverter.ConvertO(generateRDPFilefullscreen);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["Fullscreen"] = true;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFiledesktopWidth != null)
             {
-                generateRDPFile["DesktopWidth"] = ExpressionConverter.ConvertO(generateRDPFiledesktopWidth);
+                if (generateRDPFiledesktopWidth != null)
+                {
+                    generateRDPFile["DesktopWidth"] = ExpressionConverter.ConvertO(generateRDPFiledesktopWidth);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["DesktopWidth"] = 1280;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFiledesktopHeight != null)
             {
-                generateRDPFile["DesktopHeight"] = ExpressionConverter.ConvertO(generateRDPFiledesktopHeight);
+                if (generateRDPFiledesktopHeight != null)
+                {
+                    generateRDPFile["DesktopHeight"] = ExpressionConverter.ConvertO(generateRDPFiledesktopHeight);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["DesktopHeight"] = 1024;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFileuseMultiMonitor != null)
             {
-                generateRDPFile["UseMultiMonitor"] = ExpressionConverter.ConvertO(generateRDPFileuseMultiMonitor);
+                if (generateRDPFileuseMultiMonitor != null)
+                {
+                    generateRDPFile["UseMultiMonitor"] = ExpressionConverter.ConvertO(generateRDPFileuseMultiMonitor);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["UseMultiMonitor"] = false;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilesessionBPP != null)
             {
-                generateRDPFile["SessionBPP"] = ExpressionConverter.ConvertO(generateRDPFilesessionBPP);
+                if (generateRDPFilesessionBPP != null)
+                {
+                    generateRDPFile["SessionBPP"] = ExpressionConverter.ConvertO(generateRDPFilesessionBPP);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["SessionBPP"] = 32;
                 generateRDPFilepropCount++;
             }
 
             if (generateRDPFilesmartSizing != null)
             {
-                generateRDPFile["SmartSizing"] = ExpressionConverter.ConvertO(generateRDPFilesmartSizing);
+                if (generateRDPFilesmartSizing != null)
+                {
+                    generateRDPFile["SmartSizing"] = ExpressionConverter.ConvertO(generateRDPFilesmartSizing);
+                    generateRDPFilepropCount++;
+                }
+
+                generateRDPFilepropCount++;
+            }
+            else
+            {
+                generateRDPFile["SmartSizing"] = true;
                 generateRDPFilepropCount++;
             }
 
@@ -2429,7 +3369,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             launchRemoteDesktopSession["RDPFilePath"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessionrDPFilePath);
             if (launchRemoteDesktopSessiontrustRemoteComputer != null)
             {
-                launchRemoteDesktopSession["TrustRemoteComputer"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessiontrustRemoteComputer);
+                if (launchRemoteDesktopSessiontrustRemoteComputer != null)
+                {
+                    launchRemoteDesktopSession["TrustRemoteComputer"] = ExpressionConverter.ConvertO(launchRemoteDesktopSessiontrustRemoteComputer);
+                    launchRemoteDesktopSessionpropCount++;
+                }
+
+                launchRemoteDesktopSessionpropCount++;
+            }
+            else
+            {
+                launchRemoteDesktopSession["TrustRemoteComputer"] = true;
                 launchRemoteDesktopSessionpropCount++;
             }
 
@@ -2457,7 +3407,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             isTCPPortResponding["TCPPort"] = ExpressionConverter.ConvertO(isTCPPortRespondingtCPPort);
             if (isTCPPortRespondingtimeoutInSeconds != null)
             {
-                isTCPPortResponding["TimeoutInSeconds"] = ExpressionConverter.ConvertO(isTCPPortRespondingtimeoutInSeconds);
+                if (isTCPPortRespondingtimeoutInSeconds != null)
+                {
+                    isTCPPortResponding["TimeoutInSeconds"] = ExpressionConverter.ConvertO(isTCPPortRespondingtimeoutInSeconds);
+                    isTCPPortRespondingpropCount++;
+                }
+
+                isTCPPortRespondingpropCount++;
+            }
+            else
+            {
+                isTCPPortResponding["TimeoutInSeconds"] = 10;
                 isTCPPortRespondingpropCount++;
             }
 
@@ -2483,7 +3443,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             unlockSession["UnlockPassword"] = ExpressionConverter.ConvertO(unlockSessionunlockPassword);
             if (unlockSessionpasswordContainsStoredPassword != null)
             {
-                unlockSession["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(unlockSessionpasswordContainsStoredPassword);
+                if (unlockSessionpasswordContainsStoredPassword != null)
+                {
+                    unlockSession["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(unlockSessionpasswordContainsStoredPassword);
+                    unlockSessionpropCount++;
+                }
+
+                unlockSessionpropCount++;
+            }
+            else
+            {
+                unlockSession["PasswordContainsStoredPassword"] = false;
                 unlockSessionpropCount++;
             }
 
@@ -2493,7 +3463,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             unlockSession["DetectCredentialProvider"] = ExpressionConverter.ConvertO(unlockSessiondetectCredentialProvider);
             if (unlockSessionsecondsToWaitForUnlock != null)
             {
-                unlockSession["SecondsToWaitForUnlock"] = ExpressionConverter.ConvertO(unlockSessionsecondsToWaitForUnlock);
+                if (unlockSessionsecondsToWaitForUnlock != null)
+                {
+                    unlockSession["SecondsToWaitForUnlock"] = ExpressionConverter.ConvertO(unlockSessionsecondsToWaitForUnlock);
+                    unlockSessionpropCount++;
+                }
+
+                unlockSessionpropCount++;
+            }
+            else
+            {
+                unlockSession["SecondsToWaitForUnlock"] = 5;
                 unlockSessionpropCount++;
             }
 
@@ -2517,13 +3497,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var lockSessionpropCount = 0;
             if (lockSessionlockAfterMinutesOfActionInactivity != null)
             {
-                lockSession["LockAfterMinutesOfActionInactivity"] = ExpressionConverter.ConvertO(lockSessionlockAfterMinutesOfActionInactivity);
+                if (lockSessionlockAfterMinutesOfActionInactivity != null)
+                {
+                    lockSession["LockAfterMinutesOfActionInactivity"] = ExpressionConverter.ConvertO(lockSessionlockAfterMinutesOfActionInactivity);
+                    lockSessionpropCount++;
+                }
+
+                lockSessionpropCount++;
+            }
+            else
+            {
+                lockSession["LockAfterMinutesOfActionInactivity"] = 5;
                 lockSessionpropCount++;
             }
 
             if (lockSessionsecondsToWaitAfterLock != null)
             {
-                lockSession["SecondsToWaitAfterLock"] = ExpressionConverter.ConvertO(lockSessionsecondsToWaitAfterLock);
+                if (lockSessionsecondsToWaitAfterLock != null)
+                {
+                    lockSession["SecondsToWaitAfterLock"] = ExpressionConverter.ConvertO(lockSessionsecondsToWaitAfterLock);
+                    lockSessionpropCount++;
+                }
+
+                lockSessionpropCount++;
+            }
+            else
+            {
+                lockSession["SecondsToWaitAfterLock"] = 3;
                 lockSessionpropCount++;
             }
 
@@ -2571,7 +3571,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getGenericCredentialFromOrchestratorretrievePlainTextPassword != null)
             {
-                getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = ExpressionConverter.ConvertO(getGenericCredentialFromOrchestratorretrievePlainTextPassword);
+                if (getGenericCredentialFromOrchestratorretrievePlainTextPassword != null)
+                {
+                    getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = ExpressionConverter.ConvertO(getGenericCredentialFromOrchestratorretrievePlainTextPassword);
+                    getGenericCredentialFromOrchestratorpropCount++;
+                }
+
+                getGenericCredentialFromOrchestratorpropCount++;
+            }
+            else
+            {
+                getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = false;
                 getGenericCredentialFromOrchestratorpropCount++;
             }
 
@@ -2601,25 +3611,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             drawRectangleOnScreen["RectangleBottomPixelYCoord"] = ExpressionConverter.ConvertO(drawRectangleOnScreenrectangleBottomPixelYCoord);
             if (drawRectangleOnScreenpenColour != null)
             {
-                drawRectangleOnScreen["PenColour"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenColour);
+                if (drawRectangleOnScreenpenColour != null)
+                {
+                    drawRectangleOnScreen["PenColour"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenColour);
+                    drawRectangleOnScreenpropCount++;
+                }
+
+                drawRectangleOnScreenpropCount++;
+            }
+            else
+            {
+                drawRectangleOnScreen["PenColour"] = "#800080";
                 drawRectangleOnScreenpropCount++;
             }
 
             if (drawRectangleOnScreenpenThicknessPixels != null)
             {
-                drawRectangleOnScreen["PenThicknessPixels"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenThicknessPixels);
+                if (drawRectangleOnScreenpenThicknessPixels != null)
+                {
+                    drawRectangleOnScreen["PenThicknessPixels"] = ExpressionConverter.ConvertO(drawRectangleOnScreenpenThicknessPixels);
+                    drawRectangleOnScreenpropCount++;
+                }
+
+                drawRectangleOnScreenpropCount++;
+            }
+            else
+            {
+                drawRectangleOnScreen["PenThicknessPixels"] = 4;
                 drawRectangleOnScreenpropCount++;
             }
 
             if (drawRectangleOnScreensecondsToDisplay != null)
             {
-                drawRectangleOnScreen["SecondsToDisplay"] = ExpressionConverter.ConvertO(drawRectangleOnScreensecondsToDisplay);
+                if (drawRectangleOnScreensecondsToDisplay != null)
+                {
+                    drawRectangleOnScreen["SecondsToDisplay"] = ExpressionConverter.ConvertO(drawRectangleOnScreensecondsToDisplay);
+                    drawRectangleOnScreenpropCount++;
+                }
+
+                drawRectangleOnScreenpropCount++;
+            }
+            else
+            {
+                drawRectangleOnScreen["SecondsToDisplay"] = 5;
                 drawRectangleOnScreenpropCount++;
             }
 
             if (drawRectangleOnScreencoordinatesArePhysical != null)
             {
-                drawRectangleOnScreen["CoordinatesArePhysical"] = ExpressionConverter.ConvertO(drawRectangleOnScreencoordinatesArePhysical);
+                if (drawRectangleOnScreencoordinatesArePhysical != null)
+                {
+                    drawRectangleOnScreen["CoordinatesArePhysical"] = ExpressionConverter.ConvertO(drawRectangleOnScreencoordinatesArePhysical);
+                    drawRectangleOnScreenpropCount++;
+                }
+
+                drawRectangleOnScreenpropCount++;
+            }
+            else
+            {
+                drawRectangleOnScreen["CoordinatesArePhysical"] = false;
                 drawRectangleOnScreenpropCount++;
             }
 
@@ -2645,7 +3695,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getFailedActionErrorMessageFromPowerAutomateResultJSON["PowerAutomateResultJSON"] = ExpressionConverter.ConvertO(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON);
             if (getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
             {
-                getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = ExpressionConverter.ConvertO(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
+                if (getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
+                {
+                    getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = ExpressionConverter.ConvertO(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
+                    getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
+                }
+
+                getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
+            }
+            else
+            {
+                getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = "Failed";
                 getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
             }
 
@@ -2671,13 +3731,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getPixelColourAtCoordinate["TopYPixels"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinatetopYPixels);
             if (getPixelColourAtCoordinatehideAgent != null)
             {
-                getPixelColourAtCoordinate["HideAgent"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinatehideAgent);
+                if (getPixelColourAtCoordinatehideAgent != null)
+                {
+                    getPixelColourAtCoordinate["HideAgent"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinatehideAgent);
+                    getPixelColourAtCoordinatepropCount++;
+                }
+
+                getPixelColourAtCoordinatepropCount++;
+            }
+            else
+            {
+                getPixelColourAtCoordinate["HideAgent"] = false;
                 getPixelColourAtCoordinatepropCount++;
             }
 
             if (getPixelColourAtCoordinateusePhysicalCoordinates != null)
             {
-                getPixelColourAtCoordinate["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinateusePhysicalCoordinates);
+                if (getPixelColourAtCoordinateusePhysicalCoordinates != null)
+                {
+                    getPixelColourAtCoordinate["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(getPixelColourAtCoordinateusePhysicalCoordinates);
+                    getPixelColourAtCoordinatepropCount++;
+                }
+
+                getPixelColourAtCoordinatepropCount++;
+            }
+            else
+            {
+                getPixelColourAtCoordinate["UsePhysicalCoordinates"] = false;
                 getPixelColourAtCoordinatepropCount++;
             }
 
@@ -2735,25 +3815,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPImethod != null)
             {
-                sendMessageToWebAPI["Method"] = ExpressionConverter.ConvertO(sendMessageToWebAPImethod);
+                if (sendMessageToWebAPImethod != null)
+                {
+                    sendMessageToWebAPI["Method"] = ExpressionConverter.ConvertO(sendMessageToWebAPImethod);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["Method"] = "GET";
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPItimeoutInSeconds != null)
             {
-                sendMessageToWebAPI["TimeoutInSeconds"] = ExpressionConverter.ConvertO(sendMessageToWebAPItimeoutInSeconds);
+                if (sendMessageToWebAPItimeoutInSeconds != null)
+                {
+                    sendMessageToWebAPI["TimeoutInSeconds"] = ExpressionConverter.ConvertO(sendMessageToWebAPItimeoutInSeconds);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["TimeoutInSeconds"] = 20;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIcontentType != null)
             {
-                sendMessageToWebAPI["ContentType"] = ExpressionConverter.ConvertO(sendMessageToWebAPIcontentType);
+                if (sendMessageToWebAPIcontentType != null)
+                {
+                    sendMessageToWebAPI["ContentType"] = ExpressionConverter.ConvertO(sendMessageToWebAPIcontentType);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["ContentType"] = "application/json; charset=utf-8";
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIaccept != null)
             {
-                sendMessageToWebAPI["Accept"] = ExpressionConverter.ConvertO(sendMessageToWebAPIaccept);
+                if (sendMessageToWebAPIaccept != null)
+                {
+                    sendMessageToWebAPI["Accept"] = ExpressionConverter.ConvertO(sendMessageToWebAPIaccept);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["Accept"] = "application/json";
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -2765,19 +3885,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPItransmitEncoding != null)
             {
-                sendMessageToWebAPI["TransmitEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPItransmitEncoding);
+                if (sendMessageToWebAPItransmitEncoding != null)
+                {
+                    sendMessageToWebAPI["TransmitEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPItransmitEncoding);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["TransmitEncoding"] = "UTF-8";
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIresponseEncoding != null)
             {
-                sendMessageToWebAPI["ResponseEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPIresponseEncoding);
+                if (sendMessageToWebAPIresponseEncoding != null)
+                {
+                    sendMessageToWebAPI["ResponseEncoding"] = ExpressionConverter.ConvertO(sendMessageToWebAPIresponseEncoding);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["ResponseEncoding"] = "UTF-8";
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIbufferSize != null)
             {
-                sendMessageToWebAPI["BufferSize"] = ExpressionConverter.ConvertO(sendMessageToWebAPIbufferSize);
+                if (sendMessageToWebAPIbufferSize != null)
+                {
+                    sendMessageToWebAPI["BufferSize"] = ExpressionConverter.ConvertO(sendMessageToWebAPIbufferSize);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["BufferSize"] = 16384;
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -2789,55 +3939,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (sendMessageToWebAPInegotiateTLS10 != null)
             {
-                sendMessageToWebAPI["NegotiateTLS10"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS10);
+                if (sendMessageToWebAPInegotiateTLS10 != null)
+                {
+                    sendMessageToWebAPI["NegotiateTLS10"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS10);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["NegotiateTLS10"] = false;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPInegotiateTLS11 != null)
             {
-                sendMessageToWebAPI["NegotiateTLS11"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS11);
+                if (sendMessageToWebAPInegotiateTLS11 != null)
+                {
+                    sendMessageToWebAPI["NegotiateTLS11"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS11);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["NegotiateTLS11"] = false;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPInegotiateTLS12 != null)
             {
-                sendMessageToWebAPI["NegotiateTLS12"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS12);
+                if (sendMessageToWebAPInegotiateTLS12 != null)
+                {
+                    sendMessageToWebAPI["NegotiateTLS12"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS12);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["NegotiateTLS12"] = true;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPInegotiateTLS13 != null)
             {
-                sendMessageToWebAPI["NegotiateTLS13"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS13);
+                if (sendMessageToWebAPInegotiateTLS13 != null)
+                {
+                    sendMessageToWebAPI["NegotiateTLS13"] = ExpressionConverter.ConvertO(sendMessageToWebAPInegotiateTLS13);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["NegotiateTLS13"] = false;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIkeepAlive != null)
             {
-                sendMessageToWebAPI["KeepAlive"] = ExpressionConverter.ConvertO(sendMessageToWebAPIkeepAlive);
+                if (sendMessageToWebAPIkeepAlive != null)
+                {
+                    sendMessageToWebAPI["KeepAlive"] = ExpressionConverter.ConvertO(sendMessageToWebAPIkeepAlive);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["KeepAlive"] = true;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIexpect100Continue != null)
             {
-                sendMessageToWebAPI["Expect100Continue"] = ExpressionConverter.ConvertO(sendMessageToWebAPIexpect100Continue);
+                if (sendMessageToWebAPIexpect100Continue != null)
+                {
+                    sendMessageToWebAPI["Expect100Continue"] = ExpressionConverter.ConvertO(sendMessageToWebAPIexpect100Continue);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["Expect100Continue"] = false;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIreturnResponseHeaders != null)
             {
-                sendMessageToWebAPI["ReturnResponseHeaders"] = ExpressionConverter.ConvertO(sendMessageToWebAPIreturnResponseHeaders);
+                if (sendMessageToWebAPIreturnResponseHeaders != null)
+                {
+                    sendMessageToWebAPI["ReturnResponseHeaders"] = ExpressionConverter.ConvertO(sendMessageToWebAPIreturnResponseHeaders);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["ReturnResponseHeaders"] = false;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIrunAsThread != null)
             {
-                sendMessageToWebAPI["RunAsThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIrunAsThread);
+                if (sendMessageToWebAPIrunAsThread != null)
+                {
+                    sendMessageToWebAPI["RunAsThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIrunAsThread);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["RunAsThread"] = true;
                 sendMessageToWebAPIpropCount++;
             }
 
             if (sendMessageToWebAPIwaitForThread != null)
             {
-                sendMessageToWebAPI["WaitForThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIwaitForThread);
+                if (sendMessageToWebAPIwaitForThread != null)
+                {
+                    sendMessageToWebAPI["WaitForThread"] = ExpressionConverter.ConvertO(sendMessageToWebAPIwaitForThread);
+                    sendMessageToWebAPIpropCount++;
+                }
+
+                sendMessageToWebAPIpropCount++;
+            }
+            else
+            {
+                sendMessageToWebAPI["WaitForThread"] = true;
                 sendMessageToWebAPIpropCount++;
             }
 
@@ -2867,7 +4107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAddNewTaskpropCount = 0;
             if (tasksAddNewTasksetAutomationName != null)
             {
-                tasksAddNewTask["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewTasksetAutomationName);
+                if (tasksAddNewTasksetAutomationName != null)
+                {
+                    tasksAddNewTask["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewTasksetAutomationName);
+                    tasksAddNewTaskpropCount++;
+                }
+
+                tasksAddNewTaskpropCount++;
+            }
+            else
+            {
+                tasksAddNewTask["SetAutomationName"] = "Auto";
                 tasksAddNewTaskpropCount++;
             }
 
@@ -2891,7 +4141,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTaskpriority != null)
             {
-                tasksAddNewTask["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskpriority);
+                if (tasksAddNewTaskpriority != null)
+                {
+                    tasksAddNewTask["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskpriority);
+                    tasksAddNewTaskpropCount++;
+                }
+
+                tasksAddNewTaskpropCount++;
+            }
+            else
+            {
+                tasksAddNewTask["Priority"] = 3;
                 tasksAddNewTaskpropCount++;
             }
 
@@ -2903,7 +4163,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTasktaskOnHold != null)
             {
-                tasksAddNewTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewTasktaskOnHold);
+                if (tasksAddNewTasktaskOnHold != null)
+                {
+                    tasksAddNewTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewTasktaskOnHold);
+                    tasksAddNewTaskpropCount++;
+                }
+
+                tasksAddNewTaskpropCount++;
+            }
+            else
+            {
+                tasksAddNewTask["TaskOnHold"] = false;
                 tasksAddNewTaskpropCount++;
             }
 
@@ -2951,7 +4221,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var tasksAddNewDeferralpropCount = 0;
             if (tasksAddNewDeferralsetAutomationName != null)
             {
-                tasksAddNewDeferral["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewDeferralsetAutomationName);
+                if (tasksAddNewDeferralsetAutomationName != null)
+                {
+                    tasksAddNewDeferral["SetAutomationName"] = ExpressionConverter.ConvertO(tasksAddNewDeferralsetAutomationName);
+                    tasksAddNewDeferralpropCount++;
+                }
+
+                tasksAddNewDeferralpropCount++;
+            }
+            else
+            {
+                tasksAddNewDeferral["SetAutomationName"] = "Auto";
                 tasksAddNewDeferralpropCount++;
             }
 
@@ -2987,13 +4267,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewDeferralpriority != null)
             {
-                tasksAddNewDeferral["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralpriority);
+                if (tasksAddNewDeferralpriority != null)
+                {
+                    tasksAddNewDeferral["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralpriority);
+                    tasksAddNewDeferralpropCount++;
+                }
+
+                tasksAddNewDeferralpropCount++;
+            }
+            else
+            {
+                tasksAddNewDeferral["Priority"] = 3;
                 tasksAddNewDeferralpropCount++;
             }
 
             if (tasksAddNewDeferraltaskOnHold != null)
             {
-                tasksAddNewDeferral["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewDeferraltaskOnHold);
+                if (tasksAddNewDeferraltaskOnHold != null)
+                {
+                    tasksAddNewDeferral["TaskOnHold"] = ExpressionConverter.ConvertO(tasksAddNewDeferraltaskOnHold);
+                    tasksAddNewDeferralpropCount++;
+                }
+
+                tasksAddNewDeferralpropCount++;
+            }
+            else
+            {
+                tasksAddNewDeferral["TaskOnHold"] = false;
                 tasksAddNewDeferralpropCount++;
             }
 
@@ -3061,13 +4361,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksDeferExistingTaskpriority != null)
             {
-                tasksDeferExistingTask["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskpriority);
+                if (tasksDeferExistingTaskpriority != null)
+                {
+                    tasksDeferExistingTask["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskpriority);
+                    tasksDeferExistingTaskpropCount++;
+                }
+
+                tasksDeferExistingTaskpropCount++;
+            }
+            else
+            {
+                tasksDeferExistingTask["Priority"] = 3;
                 tasksDeferExistingTaskpropCount++;
             }
 
             if (tasksDeferExistingTasktaskOnHold != null)
             {
-                tasksDeferExistingTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksDeferExistingTasktaskOnHold);
+                if (tasksDeferExistingTasktaskOnHold != null)
+                {
+                    tasksDeferExistingTask["TaskOnHold"] = ExpressionConverter.ConvertO(tasksDeferExistingTasktaskOnHold);
+                    tasksDeferExistingTaskpropCount++;
+                }
+
+                tasksDeferExistingTaskpropCount++;
+            }
+            else
+            {
+                tasksDeferExistingTask["TaskOnHold"] = false;
                 tasksDeferExistingTaskpropCount++;
             }
 
@@ -3109,7 +4429,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksDeferExistingTaskOperationpriority != null)
             {
-                tasksDeferExistingTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationpriority);
+                if (tasksDeferExistingTaskOperationpriority != null)
+                {
+                    tasksDeferExistingTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksDeferExistingTaskOperationpriority);
+                    tasksDeferExistingTaskOperationpropCount++;
+                }
+
+                tasksDeferExistingTaskOperationpropCount++;
+            }
+            else
+            {
+                tasksDeferExistingTaskOperation["Priority"] = 3;
                 tasksDeferExistingTaskOperationpropCount++;
             }
 
@@ -3133,7 +4463,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             tasksDeleteTask["TaskId"] = ExpressionConverter.ConvertO(tasksDeleteTasktaskId);
             if (tasksDeleteTaskupdateSourceSystem != null)
             {
-                tasksDeleteTask["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskupdateSourceSystem);
+                if (tasksDeleteTaskupdateSourceSystem != null)
+                {
+                    tasksDeleteTask["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskupdateSourceSystem);
+                    tasksDeleteTaskpropCount++;
+                }
+
+                tasksDeleteTaskpropCount++;
+            }
+            else
+            {
+                tasksDeleteTask["UpdateSourceSystem"] = true;
                 tasksDeleteTaskpropCount++;
             }
 
@@ -3157,7 +4497,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             tasksDeleteTaskOperation["OperationId"] = ExpressionConverter.ConvertO(tasksDeleteTaskOperationoperationId);
             if (tasksDeleteTaskOperationupdateSourceSystem != null)
             {
-                tasksDeleteTaskOperation["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskOperationupdateSourceSystem);
+                if (tasksDeleteTaskOperationupdateSourceSystem != null)
+                {
+                    tasksDeleteTaskOperation["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksDeleteTaskOperationupdateSourceSystem);
+                    tasksDeleteTaskOperationpropCount++;
+                }
+
+                tasksDeleteTaskOperationpropCount++;
+            }
+            else
+            {
+                tasksDeleteTaskOperation["UpdateSourceSystem"] = true;
                 tasksDeleteTaskOperationpropCount++;
             }
 
@@ -3209,31 +4559,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksGetAllTaskssortByDeferralDate != null)
             {
-                tasksGetAllTasks["SortByDeferralDate"] = ExpressionConverter.ConvertO(tasksGetAllTaskssortByDeferralDate);
+                if (tasksGetAllTaskssortByDeferralDate != null)
+                {
+                    tasksGetAllTasks["SortByDeferralDate"] = ExpressionConverter.ConvertO(tasksGetAllTaskssortByDeferralDate);
+                    tasksGetAllTaskspropCount++;
+                }
+
+                tasksGetAllTaskspropCount++;
+            }
+            else
+            {
+                tasksGetAllTasks["SortByDeferralDate"] = false;
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksretrieveOnHoldTasks != null)
             {
-                tasksGetAllTasks["RetrieveOnHoldTasks"] = ExpressionConverter.ConvertO(tasksGetAllTasksretrieveOnHoldTasks);
+                if (tasksGetAllTasksretrieveOnHoldTasks != null)
+                {
+                    tasksGetAllTasks["RetrieveOnHoldTasks"] = ExpressionConverter.ConvertO(tasksGetAllTasksretrieveOnHoldTasks);
+                    tasksGetAllTaskspropCount++;
+                }
+
+                tasksGetAllTaskspropCount++;
+            }
+            else
+            {
+                tasksGetAllTasks["RetrieveOnHoldTasks"] = true;
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksskip != null)
             {
-                tasksGetAllTasks["Skip"] = ExpressionConverter.ConvertO(tasksGetAllTasksskip);
+                if (tasksGetAllTasksskip != null)
+                {
+                    tasksGetAllTasks["Skip"] = ExpressionConverter.ConvertO(tasksGetAllTasksskip);
+                    tasksGetAllTaskspropCount++;
+                }
+
+                tasksGetAllTaskspropCount++;
+            }
+            else
+            {
+                tasksGetAllTasks["Skip"] = 0;
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksmaxResults != null)
             {
-                tasksGetAllTasks["MaxResults"] = ExpressionConverter.ConvertO(tasksGetAllTasksmaxResults);
+                if (tasksGetAllTasksmaxResults != null)
+                {
+                    tasksGetAllTasks["MaxResults"] = ExpressionConverter.ConvertO(tasksGetAllTasksmaxResults);
+                    tasksGetAllTaskspropCount++;
+                }
+
+                tasksGetAllTaskspropCount++;
+            }
+            else
+            {
+                tasksGetAllTasks["MaxResults"] = 0;
                 tasksGetAllTaskspropCount++;
             }
 
             if (tasksGetAllTasksexcludeTaskData != null)
             {
-                tasksGetAllTasks["ExcludeTaskData"] = ExpressionConverter.ConvertO(tasksGetAllTasksexcludeTaskData);
+                if (tasksGetAllTasksexcludeTaskData != null)
+                {
+                    tasksGetAllTasks["ExcludeTaskData"] = ExpressionConverter.ConvertO(tasksGetAllTasksexcludeTaskData);
+                    tasksGetAllTaskspropCount++;
+                }
+
+                tasksGetAllTaskspropCount++;
+            }
+            else
+            {
+                tasksGetAllTasks["ExcludeTaskData"] = false;
                 tasksGetAllTaskspropCount++;
             }
 
@@ -3257,7 +4657,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             tasksGetTask["TaskId"] = ExpressionConverter.ConvertO(tasksGetTasktaskId);
             if (tasksGetTaskstatusChange != null)
             {
-                tasksGetTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetTaskstatusChange);
+                if (tasksGetTaskstatusChange != null)
+                {
+                    tasksGetTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetTaskstatusChange);
+                    tasksGetTaskpropCount++;
+                }
+
+                tasksGetTaskpropCount++;
+            }
+            else
+            {
+                tasksGetTask["StatusChange"] = "Retrieved";
                 tasksGetTaskpropCount++;
             }
 
@@ -3297,19 +4707,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksGetNextTaskstatusChange != null)
             {
-                tasksGetNextTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetNextTaskstatusChange);
+                if (tasksGetNextTaskstatusChange != null)
+                {
+                    tasksGetNextTask["StatusChange"] = ExpressionConverter.ConvertO(tasksGetNextTaskstatusChange);
+                    tasksGetNextTaskpropCount++;
+                }
+
+                tasksGetNextTaskpropCount++;
+            }
+            else
+            {
+                tasksGetNextTask["StatusChange"] = "Retrieved";
                 tasksGetNextTaskpropCount++;
             }
 
             if (tasksGetNextTaskminutesUntilDeferralDate != null)
             {
-                tasksGetNextTask["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(tasksGetNextTaskminutesUntilDeferralDate);
+                if (tasksGetNextTaskminutesUntilDeferralDate != null)
+                {
+                    tasksGetNextTask["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(tasksGetNextTaskminutesUntilDeferralDate);
+                    tasksGetNextTaskpropCount++;
+                }
+
+                tasksGetNextTaskpropCount++;
+            }
+            else
+            {
+                tasksGetNextTask["MinutesUntilDeferralDate"] = 0;
                 tasksGetNextTaskpropCount++;
             }
 
             if (tasksGetNextTaskignoreSLA != null)
             {
-                tasksGetNextTask["IgnoreSLA"] = ExpressionConverter.ConvertO(tasksGetNextTaskignoreSLA);
+                if (tasksGetNextTaskignoreSLA != null)
+                {
+                    tasksGetNextTask["IgnoreSLA"] = ExpressionConverter.ConvertO(tasksGetNextTaskignoreSLA);
+                    tasksGetNextTaskpropCount++;
+                }
+
+                tasksGetNextTaskpropCount++;
+            }
+            else
+            {
+                tasksGetNextTask["IgnoreSLA"] = false;
                 tasksGetNextTaskpropCount++;
             }
 
@@ -3345,25 +4785,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksChangeTaskStatustaskOnHold != null)
             {
-                tasksChangeTaskStatus["TaskOnHold"] = ExpressionConverter.ConvertO(tasksChangeTaskStatustaskOnHold);
+                if (tasksChangeTaskStatustaskOnHold != null)
+                {
+                    tasksChangeTaskStatus["TaskOnHold"] = ExpressionConverter.ConvertO(tasksChangeTaskStatustaskOnHold);
+                    tasksChangeTaskStatuspropCount++;
+                }
+
+                tasksChangeTaskStatuspropCount++;
+            }
+            else
+            {
+                tasksChangeTaskStatus["TaskOnHold"] = false;
                 tasksChangeTaskStatuspropCount++;
             }
 
             if (tasksChangeTaskStatuseraseTaskInputData != null)
             {
-                tasksChangeTaskStatus["EraseTaskInputData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseTaskInputData);
+                if (tasksChangeTaskStatuseraseTaskInputData != null)
+                {
+                    tasksChangeTaskStatus["EraseTaskInputData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseTaskInputData);
+                    tasksChangeTaskStatuspropCount++;
+                }
+
+                tasksChangeTaskStatuspropCount++;
+            }
+            else
+            {
+                tasksChangeTaskStatus["EraseTaskInputData"] = true;
                 tasksChangeTaskStatuspropCount++;
             }
 
             if (tasksChangeTaskStatuseraseDeferralStoredData != null)
             {
-                tasksChangeTaskStatus["EraseDeferralStoredData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseDeferralStoredData);
+                if (tasksChangeTaskStatuseraseDeferralStoredData != null)
+                {
+                    tasksChangeTaskStatus["EraseDeferralStoredData"] = ExpressionConverter.ConvertO(tasksChangeTaskStatuseraseDeferralStoredData);
+                    tasksChangeTaskStatuspropCount++;
+                }
+
+                tasksChangeTaskStatuspropCount++;
+            }
+            else
+            {
+                tasksChangeTaskStatus["EraseDeferralStoredData"] = true;
                 tasksChangeTaskStatuspropCount++;
             }
 
             if (tasksChangeTaskStatusupdateSourceSystem != null)
             {
-                tasksChangeTaskStatus["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksChangeTaskStatusupdateSourceSystem);
+                if (tasksChangeTaskStatusupdateSourceSystem != null)
+                {
+                    tasksChangeTaskStatus["UpdateSourceSystem"] = ExpressionConverter.ConvertO(tasksChangeTaskStatusupdateSourceSystem);
+                    tasksChangeTaskStatuspropCount++;
+                }
+
+                tasksChangeTaskStatuspropCount++;
+            }
+            else
+            {
+                tasksChangeTaskStatus["UpdateSourceSystem"] = true;
                 tasksChangeTaskStatuspropCount++;
             }
 
@@ -3395,7 +4875,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             tasksAddNote["NoteText"] = ExpressionConverter.ConvertO(tasksAddNotenoteText);
             if (tasksAddNotenoteType != null)
             {
-                tasksAddNote["NoteType"] = ExpressionConverter.ConvertO(tasksAddNotenoteType);
+                if (tasksAddNotenoteType != null)
+                {
+                    tasksAddNote["NoteType"] = ExpressionConverter.ConvertO(tasksAddNotenoteType);
+                    tasksAddNotepropCount++;
+                }
+
+                tasksAddNotepropCount++;
+            }
+            else
+            {
+                tasksAddNote["NoteType"] = "WorkNote";
                 tasksAddNotepropCount++;
             }
 
@@ -3449,13 +4939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAssignTaskremoveUserAssignmentIfBlank != null)
             {
-                tasksAssignTask["RemoveUserAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveUserAssignmentIfBlank);
+                if (tasksAssignTaskremoveUserAssignmentIfBlank != null)
+                {
+                    tasksAssignTask["RemoveUserAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveUserAssignmentIfBlank);
+                    tasksAssignTaskpropCount++;
+                }
+
+                tasksAssignTaskpropCount++;
+            }
+            else
+            {
+                tasksAssignTask["RemoveUserAssignmentIfBlank"] = true;
                 tasksAssignTaskpropCount++;
             }
 
             if (tasksAssignTaskremoveGroupAssignmentIfBlank != null)
             {
-                tasksAssignTask["RemoveGroupAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveGroupAssignmentIfBlank);
+                if (tasksAssignTaskremoveGroupAssignmentIfBlank != null)
+                {
+                    tasksAssignTask["RemoveGroupAssignmentIfBlank"] = ExpressionConverter.ConvertO(tasksAssignTaskremoveGroupAssignmentIfBlank);
+                    tasksAssignTaskpropCount++;
+                }
+
+                tasksAssignTaskpropCount++;
+            }
+            else
+            {
+                tasksAssignTask["RemoveGroupAssignmentIfBlank"] = true;
                 tasksAssignTaskpropCount++;
             }
 
@@ -3519,7 +5029,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewTaskOperationpriority != null)
             {
-                tasksAddNewTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationpriority);
+                if (tasksAddNewTaskOperationpriority != null)
+                {
+                    tasksAddNewTaskOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewTaskOperationpriority);
+                    tasksAddNewTaskOperationpropCount++;
+                }
+
+                tasksAddNewTaskOperationpropCount++;
+            }
+            else
+            {
+                tasksAddNewTaskOperation["Priority"] = 3;
                 tasksAddNewTaskOperationpropCount++;
             }
 
@@ -3601,7 +5121,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (tasksAddNewDeferralOperationpriority != null)
             {
-                tasksAddNewDeferralOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationpriority);
+                if (tasksAddNewDeferralOperationpriority != null)
+                {
+                    tasksAddNewDeferralOperation["Priority"] = ExpressionConverter.ConvertO(tasksAddNewDeferralOperationpriority);
+                    tasksAddNewDeferralOperationpropCount++;
+                }
+
+                tasksAddNewDeferralOperationpropCount++;
+            }
+            else
+            {
+                tasksAddNewDeferralOperation["Priority"] = 3;
                 tasksAddNewDeferralOperationpropCount++;
             }
 
@@ -3713,7 +5243,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             setLicenseCode["ActivationCode"] = ExpressionConverter.ConvertO(setLicenseCodeactivationCode);
             if (setLicenseCodestoreInRegistry != null)
             {
-                setLicenseCode["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseCodestoreInRegistry);
+                if (setLicenseCodestoreInRegistry != null)
+                {
+                    setLicenseCode["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseCodestoreInRegistry);
+                    setLicenseCodepropCount++;
+                }
+
+                setLicenseCodepropCount++;
+            }
+            else
+            {
+                setLicenseCode["StoreInRegistry"] = true;
                 setLicenseCodepropCount++;
             }
 
@@ -3739,7 +5279,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             setLicenseString["LicenseString"] = ExpressionConverter.ConvertO(setLicenseStringlicenseString);
             if (setLicenseStringstoreInRegistry != null)
             {
-                setLicenseString["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseStringstoreInRegistry);
+                if (setLicenseStringstoreInRegistry != null)
+                {
+                    setLicenseString["StoreInRegistry"] = ExpressionConverter.ConvertO(setLicenseStringstoreInRegistry);
+                    setLicenseStringpropCount++;
+                }
+
+                setLicenseStringpropCount++;
+            }
+            else
+            {
+                setLicenseString["StoreInRegistry"] = true;
                 setLicenseStringpropCount++;
             }
 
@@ -3781,7 +5331,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setRSAGUITopmostpropCount = 0;
             if (setRSAGUITopmosttopMost != null)
             {
-                setRSAGUITopmost["TopMost"] = ExpressionConverter.ConvertO(setRSAGUITopmosttopMost);
+                if (setRSAGUITopmosttopMost != null)
+                {
+                    setRSAGUITopmost["TopMost"] = ExpressionConverter.ConvertO(setRSAGUITopmosttopMost);
+                    setRSAGUITopmostpropCount++;
+                }
+
+                setRSAGUITopmostpropCount++;
+            }
+            else
+            {
+                setRSAGUITopmost["TopMost"] = true;
                 setRSAGUITopmostpropCount++;
             }
 
@@ -3847,13 +5407,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var bringRSAGUIToFrontpropCount = 0;
             if (bringRSAGUIToFrontfocus != null)
             {
-                bringRSAGUIToFront["Focus"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontfocus);
+                if (bringRSAGUIToFrontfocus != null)
+                {
+                    bringRSAGUIToFront["Focus"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontfocus);
+                    bringRSAGUIToFrontpropCount++;
+                }
+
+                bringRSAGUIToFrontpropCount++;
+            }
+            else
+            {
+                bringRSAGUIToFront["Focus"] = true;
                 bringRSAGUIToFrontpropCount++;
             }
 
             if (bringRSAGUIToFrontglobalLeftMouseClick != null)
             {
-                bringRSAGUIToFront["GlobalLeftMouseClick"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontglobalLeftMouseClick);
+                if (bringRSAGUIToFrontglobalLeftMouseClick != null)
+                {
+                    bringRSAGUIToFront["GlobalLeftMouseClick"] = ExpressionConverter.ConvertO(bringRSAGUIToFrontglobalLeftMouseClick);
+                    bringRSAGUIToFrontpropCount++;
+                }
+
+                bringRSAGUIToFrontpropCount++;
+            }
+            else
+            {
+                bringRSAGUIToFront["GlobalLeftMouseClick"] = true;
                 bringRSAGUIToFrontpropCount++;
             }
 
@@ -3877,13 +5457,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var disconnectSessionpropCount = 0;
             if (disconnectSessionsecondsToWait != null)
             {
-                disconnectSession["SecondsToWait"] = ExpressionConverter.ConvertO(disconnectSessionsecondsToWait);
+                if (disconnectSessionsecondsToWait != null)
+                {
+                    disconnectSession["SecondsToWait"] = ExpressionConverter.ConvertO(disconnectSessionsecondsToWait);
+                    disconnectSessionpropCount++;
+                }
+
+                disconnectSessionpropCount++;
+            }
+            else
+            {
+                disconnectSession["SecondsToWait"] = 3;
                 disconnectSessionpropCount++;
             }
 
             if (disconnectSessiondoNotDisconnectIfLocalAgent != null)
             {
-                disconnectSession["DoNotDisconnectIfLocalAgent"] = ExpressionConverter.ConvertO(disconnectSessiondoNotDisconnectIfLocalAgent);
+                if (disconnectSessiondoNotDisconnectIfLocalAgent != null)
+                {
+                    disconnectSession["DoNotDisconnectIfLocalAgent"] = ExpressionConverter.ConvertO(disconnectSessiondoNotDisconnectIfLocalAgent);
+                    disconnectSessionpropCount++;
+                }
+
+                disconnectSessionpropCount++;
+            }
+            else
+            {
+                disconnectSession["DoNotDisconnectIfLocalAgent"] = false;
                 disconnectSessionpropCount++;
             }
 
@@ -3907,7 +5507,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var logoffSessionpropCount = 0;
             if (logoffSessionsecondsToWait != null)
             {
-                logoffSession["SecondsToWait"] = ExpressionConverter.ConvertO(logoffSessionsecondsToWait);
+                if (logoffSessionsecondsToWait != null)
+                {
+                    logoffSession["SecondsToWait"] = ExpressionConverter.ConvertO(logoffSessionsecondsToWait);
+                    logoffSessionpropCount++;
+                }
+
+                logoffSessionpropCount++;
+            }
+            else
+            {
+                logoffSession["SecondsToWait"] = 3;
                 logoffSessionpropCount++;
             }
 
@@ -3931,7 +5541,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var closeRSAServerpropCount = 0;
             if (closeRSAServersecondsToWait != null)
             {
-                closeRSAServer["SecondsToWait"] = ExpressionConverter.ConvertO(closeRSAServersecondsToWait);
+                if (closeRSAServersecondsToWait != null)
+                {
+                    closeRSAServer["SecondsToWait"] = ExpressionConverter.ConvertO(closeRSAServersecondsToWait);
+                    closeRSAServerpropCount++;
+                }
+
+                closeRSAServerpropCount++;
+            }
+            else
+            {
+                closeRSAServer["SecondsToWait"] = 3;
                 closeRSAServerpropCount++;
             }
 
@@ -3957,7 +5577,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             setRPACommandTimeout["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(setRPACommandTimeoutcommandTimeoutInSeconds);
             if (setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
             {
-                setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = ExpressionConverter.ConvertO(setRPACommandTimeoutterminateTimedoutRPACommandThreads);
+                if (setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
+                {
+                    setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = ExpressionConverter.ConvertO(setRPACommandTimeoutterminateTimedoutRPACommandThreads);
+                    setRPACommandTimeoutpropCount++;
+                }
+
+                setRPACommandTimeoutpropCount++;
+            }
+            else
+            {
+                setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = true;
                 setRPACommandTimeoutpropCount++;
             }
 
@@ -3989,7 +5619,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runAlternativeIAConnectloadIntoMemory != null)
             {
-                runAlternativeIAConnect["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectloadIntoMemory);
+                if (runAlternativeIAConnectloadIntoMemory != null)
+                {
+                    runAlternativeIAConnect["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectloadIntoMemory);
+                    runAlternativeIAConnectpropCount++;
+                }
+
+                runAlternativeIAConnectpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnect["LoadIntoMemory"] = true;
                 runAlternativeIAConnectpropCount++;
             }
 
@@ -4021,7 +5661,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runAlternativeIAConnectSentFromDirectorcompress != null)
             {
-                runAlternativeIAConnectSentFromDirector["Compress"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorcompress);
+                if (runAlternativeIAConnectSentFromDirectorcompress != null)
+                {
+                    runAlternativeIAConnectSentFromDirector["Compress"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorcompress);
+                    runAlternativeIAConnectSentFromDirectorpropCount++;
+                }
+
+                runAlternativeIAConnectSentFromDirectorpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnectSentFromDirector["Compress"] = true;
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
@@ -4033,25 +5683,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (runAlternativeIAConnectSentFromDirectorpermitDowngrade != null)
             {
-                runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorpermitDowngrade);
+                if (runAlternativeIAConnectSentFromDirectorpermitDowngrade != null)
+                {
+                    runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorpermitDowngrade);
+                    runAlternativeIAConnectSentFromDirectorpropCount++;
+                }
+
+                runAlternativeIAConnectSentFromDirectorpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = false;
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
             if (runAlternativeIAConnectSentFromDirectorskipVersionCheck != null)
             {
-                runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorskipVersionCheck);
+                if (runAlternativeIAConnectSentFromDirectorskipVersionCheck != null)
+                {
+                    runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorskipVersionCheck);
+                    runAlternativeIAConnectSentFromDirectorpropCount++;
+                }
+
+                runAlternativeIAConnectSentFromDirectorpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = false;
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
             if (runAlternativeIAConnectSentFromDirectorloadIntoMemory != null)
             {
-                runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorloadIntoMemory);
+                if (runAlternativeIAConnectSentFromDirectorloadIntoMemory != null)
+                {
+                    runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorloadIntoMemory);
+                    runAlternativeIAConnectSentFromDirectorpropCount++;
+                }
+
+                runAlternativeIAConnectSentFromDirectorpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = true;
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
             if (runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory != null)
             {
-                runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
+                if (runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory != null)
+                {
+                    runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = ExpressionConverter.ConvertO(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
+                    runAlternativeIAConnectSentFromDirectorpropCount++;
+                }
+
+                runAlternativeIAConnectSentFromDirectorpropCount++;
+            }
+            else
+            {
+                runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = false;
                 runAlternativeIAConnectSentFromDirectorpropCount++;
             }
 
@@ -4093,25 +5783,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getIAConnectAgentLogpropCount = 0;
             if (getIAConnectAgentLogcompress != null)
             {
-                getIAConnectAgentLog["Compress"] = ExpressionConverter.ConvertO(getIAConnectAgentLogcompress);
+                if (getIAConnectAgentLogcompress != null)
+                {
+                    getIAConnectAgentLog["Compress"] = ExpressionConverter.ConvertO(getIAConnectAgentLogcompress);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["Compress"] = true;
                 getIAConnectAgentLogpropCount++;
             }
 
             if (getIAConnectAgentLogreturnLastCommandOnly != null)
             {
-                getIAConnectAgentLog["ReturnLastCommandOnly"] = ExpressionConverter.ConvertO(getIAConnectAgentLogreturnLastCommandOnly);
+                if (getIAConnectAgentLogreturnLastCommandOnly != null)
+                {
+                    getIAConnectAgentLog["ReturnLastCommandOnly"] = ExpressionConverter.ConvertO(getIAConnectAgentLogreturnLastCommandOnly);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["ReturnLastCommandOnly"] = false;
                 getIAConnectAgentLogpropCount++;
             }
 
             if (getIAConnectAgentLogsaveLogToFile != null)
             {
-                getIAConnectAgentLog["SaveLogToFile"] = ExpressionConverter.ConvertO(getIAConnectAgentLogsaveLogToFile);
+                if (getIAConnectAgentLogsaveLogToFile != null)
+                {
+                    getIAConnectAgentLog["SaveLogToFile"] = ExpressionConverter.ConvertO(getIAConnectAgentLogsaveLogToFile);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["SaveLogToFile"] = true;
                 getIAConnectAgentLogpropCount++;
             }
 
             if (getIAConnectAgentLogplaceLogContentInDataItem != null)
             {
-                getIAConnectAgentLog["PlaceLogContentInDataItem"] = ExpressionConverter.ConvertO(getIAConnectAgentLogplaceLogContentInDataItem);
+                if (getIAConnectAgentLogplaceLogContentInDataItem != null)
+                {
+                    getIAConnectAgentLog["PlaceLogContentInDataItem"] = ExpressionConverter.ConvertO(getIAConnectAgentLogplaceLogContentInDataItem);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["PlaceLogContentInDataItem"] = false;
                 getIAConnectAgentLogpropCount++;
             }
 
@@ -4123,7 +5853,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getIAConnectAgentLoguseAgentLogFilename != null)
             {
-                getIAConnectAgentLog["UseAgentLogFilename"] = ExpressionConverter.ConvertO(getIAConnectAgentLoguseAgentLogFilename);
+                if (getIAConnectAgentLoguseAgentLogFilename != null)
+                {
+                    getIAConnectAgentLog["UseAgentLogFilename"] = ExpressionConverter.ConvertO(getIAConnectAgentLoguseAgentLogFilename);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["UseAgentLogFilename"] = true;
                 getIAConnectAgentLogpropCount++;
             }
 
@@ -4135,7 +5875,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (getIAConnectAgentLogmaxBytesToRead != null)
             {
-                getIAConnectAgentLog["MaxBytesToRead"] = ExpressionConverter.ConvertO(getIAConnectAgentLogmaxBytesToRead);
+                if (getIAConnectAgentLogmaxBytesToRead != null)
+                {
+                    getIAConnectAgentLog["MaxBytesToRead"] = ExpressionConverter.ConvertO(getIAConnectAgentLogmaxBytesToRead);
+                    getIAConnectAgentLogpropCount++;
+                }
+
+                getIAConnectAgentLogpropCount++;
+            }
+            else
+            {
+                getIAConnectAgentLog["MaxBytesToRead"] = 4000;
                 getIAConnectAgentLogpropCount++;
             }
 
@@ -4201,61 +5951,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (enableNextHopnextHopDirectorTCPPort != null)
             {
-                enableNextHop["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorTCPPort);
+                if (enableNextHopnextHopDirectorTCPPort != null)
+                {
+                    enableNextHop["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorTCPPort);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorTCPPort"] = 8002;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopnextHopDirectorUsesHTTPS != null)
             {
-                enableNextHop["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorUsesHTTPS);
+                if (enableNextHopnextHopDirectorUsesHTTPS != null)
+                {
+                    enableNextHop["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorUsesHTTPS);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorUsesHTTPS"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopnextHopDirectorAddressIsLocalhostname != null)
             {
-                enableNextHop["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsLocalhostname);
+                if (enableNextHopnextHopDirectorAddressIsLocalhostname != null)
+                {
+                    enableNextHop["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsLocalhostname);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorAddressIsLocalhostname"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopnextHopDirectorAddressIsHostname != null)
             {
-                enableNextHop["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsHostname);
+                if (enableNextHopnextHopDirectorAddressIsHostname != null)
+                {
+                    enableNextHop["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsHostname);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorAddressIsHostname"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopnextHopDirectorAddressIsFQDN != null)
             {
-                enableNextHop["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsFQDN);
+                if (enableNextHopnextHopDirectorAddressIsFQDN != null)
+                {
+                    enableNextHop["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsFQDN);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorAddressIsFQDN"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopincrementNextHopDirectorTCPPortBySessionId != null)
             {
-                enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(enableNextHopincrementNextHopDirectorTCPPortBySessionId);
+                if (enableNextHopincrementNextHopDirectorTCPPortBySessionId != null)
+                {
+                    enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(enableNextHopincrementNextHopDirectorTCPPortBySessionId);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = true;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopdisableBeforeEnable != null)
             {
-                enableNextHop["DisableBeforeEnable"] = ExpressionConverter.ConvertO(enableNextHopdisableBeforeEnable);
+                if (enableNextHopdisableBeforeEnable != null)
+                {
+                    enableNextHop["DisableBeforeEnable"] = ExpressionConverter.ConvertO(enableNextHopdisableBeforeEnable);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["DisableBeforeEnable"] = true;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopcheckNextHopDirectorIsRunning != null)
             {
-                enableNextHop["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopDirectorIsRunning);
+                if (enableNextHopcheckNextHopDirectorIsRunning != null)
+                {
+                    enableNextHop["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopDirectorIsRunning);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["CheckNextHopDirectorIsRunning"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopcheckNextHopAgentIsRunning != null)
             {
-                enableNextHop["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopAgentIsRunning);
+                if (enableNextHopcheckNextHopAgentIsRunning != null)
+                {
+                    enableNextHop["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(enableNextHopcheckNextHopAgentIsRunning);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["CheckNextHopAgentIsRunning"] = false;
                 enableNextHoppropCount++;
             }
 
             if (enableNextHopnextHopDirectorAddressIsNamedPipe != null)
             {
-                enableNextHop["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsNamedPipe);
+                if (enableNextHopnextHopDirectorAddressIsNamedPipe != null)
+                {
+                    enableNextHop["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(enableNextHopnextHopDirectorAddressIsNamedPipe);
+                    enableNextHoppropCount++;
+                }
+
+                enableNextHoppropCount++;
+            }
+            else
+            {
+                enableNextHop["NextHopDirectorAddressIsNamedPipe"] = true;
                 enableNextHoppropCount++;
             }
 
@@ -4297,13 +6147,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getNextHopStatuspropCount = 0;
             if (getNextHopStatuscheckNextHopDirectorIsRunning != null)
             {
-                getNextHopStatus["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopDirectorIsRunning);
+                if (getNextHopStatuscheckNextHopDirectorIsRunning != null)
+                {
+                    getNextHopStatus["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopDirectorIsRunning);
+                    getNextHopStatuspropCount++;
+                }
+
+                getNextHopStatuspropCount++;
+            }
+            else
+            {
+                getNextHopStatus["CheckNextHopDirectorIsRunning"] = false;
                 getNextHopStatuspropCount++;
             }
 
             if (getNextHopStatuscheckNextHopAgentIsRunning != null)
             {
-                getNextHopStatus["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopAgentIsRunning);
+                if (getNextHopStatuscheckNextHopAgentIsRunning != null)
+                {
+                    getNextHopStatus["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(getNextHopStatuscheckNextHopAgentIsRunning);
+                    getNextHopStatuspropCount++;
+                }
+
+                getNextHopStatuspropCount++;
+            }
+            else
+            {
+                getNextHopStatus["CheckNextHopAgentIsRunning"] = false;
                 getNextHopStatuspropCount++;
             }
 
@@ -4333,55 +6203,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (waitForNextHopSessionToConnectnextHopDirectorTCPPort != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorTCPPort);
+                if (waitForNextHopSessionToConnectnextHopDirectorTCPPort != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorTCPPort);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = 8002;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
+                if (waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = false;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
+                if (waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = false;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
+                if (waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = false;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
+                if (waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = false;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId != null)
             {
-                waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
+                if (waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId != null)
+                {
+                    waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = true;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectsecondsToWait != null)
             {
-                waitForNextHopSessionToConnect["SecondsToWait"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectsecondsToWait);
+                if (waitForNextHopSessionToConnectsecondsToWait != null)
+                {
+                    waitForNextHopSessionToConnect["SecondsToWait"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectsecondsToWait);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["SecondsToWait"] = 35;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe != null)
             {
-                waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
+                if (waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe != null)
+                {
+                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = true;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
             if (waitForNextHopSessionToConnectdisableExistingNextHop != null)
             {
-                waitForNextHopSessionToConnect["DisableExistingNextHop"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectdisableExistingNextHop);
+                if (waitForNextHopSessionToConnectdisableExistingNextHop != null)
+                {
+                    waitForNextHopSessionToConnect["DisableExistingNextHop"] = ExpressionConverter.ConvertO(waitForNextHopSessionToConnectdisableExistingNextHop);
+                    waitForNextHopSessionToConnectpropCount++;
+                }
+
+                waitForNextHopSessionToConnectpropCount++;
+            }
+            else
+            {
+                waitForNextHopSessionToConnect["DisableExistingNextHop"] = true;
                 waitForNextHopSessionToConnectpropCount++;
             }
 
@@ -4405,73 +6365,193 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var configureNextHopDirectorpropCount = 0;
             if (configureNextHopDirectorsOAPEnabled != null)
             {
-                configureNextHopDirector["SOAPEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPEnabled);
+                if (configureNextHopDirectorsOAPEnabled != null)
+                {
+                    configureNextHopDirector["SOAPEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPEnabled);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["SOAPEnabled"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorrESTEnabled != null)
             {
-                configureNextHopDirector["RESTEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTEnabled);
+                if (configureNextHopDirectorrESTEnabled != null)
+                {
+                    configureNextHopDirector["RESTEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTEnabled);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["RESTEnabled"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorwebServerEnabled != null)
             {
-                configureNextHopDirector["WebServerEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorwebServerEnabled);
+                if (configureNextHopDirectorwebServerEnabled != null)
+                {
+                    configureNextHopDirector["WebServerEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorwebServerEnabled);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["WebServerEnabled"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectordirectorIsLocalhostOnly != null)
             {
-                configureNextHopDirector["DirectorIsLocalhostOnly"] = ExpressionConverter.ConvertO(configureNextHopDirectordirectorIsLocalhostOnly);
+                if (configureNextHopDirectordirectorIsLocalhostOnly != null)
+                {
+                    configureNextHopDirector["DirectorIsLocalhostOnly"] = ExpressionConverter.ConvertO(configureNextHopDirectordirectorIsLocalhostOnly);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["DirectorIsLocalhostOnly"] = true;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorsOAPTCPPort != null)
             {
-                configureNextHopDirector["SOAPTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPTCPPort);
+                if (configureNextHopDirectorsOAPTCPPort != null)
+                {
+                    configureNextHopDirector["SOAPTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPTCPPort);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["SOAPTCPPort"] = 8002;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorrESTTCPPort != null)
             {
-                configureNextHopDirector["RESTTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTTCPPort);
+                if (configureNextHopDirectorrESTTCPPort != null)
+                {
+                    configureNextHopDirector["RESTTCPPort"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTTCPPort);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["RESTTCPPort"] = 8002;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorsOAPUsesHTTPS != null)
             {
-                configureNextHopDirector["SOAPUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesHTTPS);
+                if (configureNextHopDirectorsOAPUsesHTTPS != null)
+                {
+                    configureNextHopDirector["SOAPUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesHTTPS);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["SOAPUsesHTTPS"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorrESTUsesHTTPS != null)
             {
-                configureNextHopDirector["RESTUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesHTTPS);
+                if (configureNextHopDirectorrESTUsesHTTPS != null)
+                {
+                    configureNextHopDirector["RESTUsesHTTPS"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesHTTPS);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["RESTUsesHTTPS"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorincrementDirectorTCPPortBySessionId != null)
             {
-                configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(configureNextHopDirectorincrementDirectorTCPPortBySessionId);
+                if (configureNextHopDirectorincrementDirectorTCPPortBySessionId != null)
+                {
+                    configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(configureNextHopDirectorincrementDirectorTCPPortBySessionId);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = true;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorsOAPUsesUserAuthentication != null)
             {
-                configureNextHopDirector["SOAPUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesUserAuthentication);
+                if (configureNextHopDirectorsOAPUsesUserAuthentication != null)
+                {
+                    configureNextHopDirector["SOAPUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorsOAPUsesUserAuthentication);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["SOAPUsesUserAuthentication"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorrESTUsesUserAuthentication != null)
             {
-                configureNextHopDirector["RESTUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesUserAuthentication);
+                if (configureNextHopDirectorrESTUsesUserAuthentication != null)
+                {
+                    configureNextHopDirector["RESTUsesUserAuthentication"] = ExpressionConverter.ConvertO(configureNextHopDirectorrESTUsesUserAuthentication);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["RESTUsesUserAuthentication"] = false;
                 configureNextHopDirectorpropCount++;
             }
 
             if (configureNextHopDirectorcommandNamedPipeEnabled != null)
             {
-                configureNextHopDirector["CommandNamedPipeEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorcommandNamedPipeEnabled);
+                if (configureNextHopDirectorcommandNamedPipeEnabled != null)
+                {
+                    configureNextHopDirector["CommandNamedPipeEnabled"] = ExpressionConverter.ConvertO(configureNextHopDirectorcommandNamedPipeEnabled);
+                    configureNextHopDirectorpropCount++;
+                }
+
+                configureNextHopDirectorpropCount++;
+            }
+            else
+            {
+                configureNextHopDirector["CommandNamedPipeEnabled"] = true;
                 configureNextHopDirectorpropCount++;
             }
 
@@ -4697,7 +6777,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateEndWindow"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow);
             if (getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
             {
-                getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
+                if (getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
+                {
+                    getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = ExpressionConverter.ConvertO(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
+                    getOrchestratorWorkerFlowUsageHeatmappropCount++;
+                }
+
+                getOrchestratorWorkerFlowUsageHeatmappropCount++;
+            }
+            else
+            {
+                getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = 0;
                 getOrchestratorWorkerFlowUsageHeatmappropCount++;
             }
 
@@ -4885,7 +6975,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             attachToIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNameiAConnectSessionName);
             if (attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
             {
-                attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
+                if (attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
+                {
+                    attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
+                    attachToIAConnectSessionByNamepropCount++;
+                }
+
+                attachToIAConnectSessionByNamepropCount++;
+            }
+            else
+            {
+                attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = true;
                 attachToIAConnectSessionByNamepropCount++;
             }
 
@@ -4909,7 +7009,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var attachToTier1IAConnectSessionpropCount = 0;
             if (attachToTier1IAConnectSessionvirtualChannelMustBeConnected != null)
             {
-                attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
+                if (attachToTier1IAConnectSessionvirtualChannelMustBeConnected != null)
+                {
+                    attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
+                    attachToTier1IAConnectSessionpropCount++;
+                }
+
+                attachToTier1IAConnectSessionpropCount++;
+            }
+            else
+            {
+                attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = true;
                 attachToTier1IAConnectSessionpropCount++;
             }
 
@@ -4951,19 +7061,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (attachToIAConnectSessionByIndexraiseExceptionIfTimedout != null)
             {
-                attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
+                if (attachToIAConnectSessionByIndexraiseExceptionIfTimedout != null)
+                {
+                    attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
+                    attachToIAConnectSessionByIndexpropCount++;
+                }
+
+                attachToIAConnectSessionByIndexpropCount++;
+            }
+            else
+            {
+                attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = true;
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
             if (attachToIAConnectSessionByIndexvirtualChannelMustBeConnected != null)
             {
-                attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
+                if (attachToIAConnectSessionByIndexvirtualChannelMustBeConnected != null)
+                {
+                    attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
+                    attachToIAConnectSessionByIndexpropCount++;
+                }
+
+                attachToIAConnectSessionByIndexpropCount++;
+            }
+            else
+            {
+                attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = true;
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
             if (attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore != null)
             {
-                attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
+                if (attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore != null)
+                {
+                    attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
+                    attachToIAConnectSessionByIndexpropCount++;
+                }
+
+                attachToIAConnectSessionByIndexpropCount++;
+            }
+            else
+            {
+                attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = false;
                 attachToIAConnectSessionByIndexpropCount++;
             }
 
@@ -4999,19 +7139,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (attachToMostRecentIAConnectSessionraiseExceptionIfTimedout != null)
             {
-                attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
+                if (attachToMostRecentIAConnectSessionraiseExceptionIfTimedout != null)
+                {
+                    attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
+                    attachToMostRecentIAConnectSessionpropCount++;
+                }
+
+                attachToMostRecentIAConnectSessionpropCount++;
+            }
+            else
+            {
+                attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = true;
                 attachToMostRecentIAConnectSessionpropCount++;
             }
 
             if (attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected != null)
             {
-                attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
+                if (attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected != null)
+                {
+                    attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
+                    attachToMostRecentIAConnectSessionpropCount++;
+                }
+
+                attachToMostRecentIAConnectSessionpropCount++;
+            }
+            else
+            {
+                attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = true;
                 attachToMostRecentIAConnectSessionpropCount++;
             }
 
             if (attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore != null)
             {
-                attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
+                if (attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore != null)
+                {
+                    attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
+                    attachToMostRecentIAConnectSessionpropCount++;
+                }
+
+                attachToMostRecentIAConnectSessionpropCount++;
+            }
+            else
+            {
+                attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = false;
                 attachToMostRecentIAConnectSessionpropCount++;
             }
 
@@ -5081,13 +7251,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout != null)
             {
-                waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
+                if (waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout != null)
+                {
+                    waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
+                    waitForIAConnectSessionToCloseByNamepropCount++;
+                }
+
+                waitForIAConnectSessionToCloseByNamepropCount++;
+            }
+            else
+            {
+                waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = true;
                 waitForIAConnectSessionToCloseByNamepropCount++;
             }
 
             if (waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess != null)
             {
-                waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
+                if (waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess != null)
+                {
+                    waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
+                    waitForIAConnectSessionToCloseByNamepropCount++;
+                }
+
+                waitForIAConnectSessionToCloseByNamepropCount++;
+            }
+            else
+            {
+                waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = true;
                 waitForIAConnectSessionToCloseByNamepropCount++;
             }
 
@@ -5113,7 +7303,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             killIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameiAConnectSessionName);
             if (killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
             {
-                killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
+                if (killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
+                {
+                    killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
+                    killIAConnectSessionByNamepropCount++;
+                }
+
+                killIAConnectSessionByNamepropCount++;
+            }
+            else
+            {
+                killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = true;
                 killIAConnectSessionByNamepropCount++;
             }
 
@@ -5137,73 +7337,193 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setAgentGlobalCoordinateConfigurationpropCount = 0;
             if (setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality != null)
             {
-                setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
+                if (setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = "NotSet";
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
+                if (setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = "NotSet";
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
+                if (setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = "NotSet";
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
+                if (setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = 0;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
+                if (setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = 0;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
+                if (setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = 0;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier != null)
             {
-                setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
+                if (setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = 0;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent != null)
             {
-                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
+                if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = true;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos != null)
             {
-                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
+                if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = false;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod != null)
             {
-                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
+                if (setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = false;
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationjavaCoordinateSystem != null)
             {
-                setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
+                if (setAgentGlobalCoordinateConfigurationjavaCoordinateSystem != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = "NotSet";
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
             if (setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem != null)
             {
-                setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
+                if (setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem != null)
+                {
+                    setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = ExpressionConverter.ConvertO(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
+                    setAgentGlobalCoordinateConfigurationpropCount++;
+                }
+
+                setAgentGlobalCoordinateConfigurationpropCount++;
+            }
+            else
+            {
+                setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = "NotSet";
                 setAgentGlobalCoordinateConfigurationpropCount++;
             }
 
@@ -5247,13 +7567,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getAgentThreadStatus["ThreadId"] = ExpressionConverter.ConvertO(getAgentThreadStatusthreadId);
             if (getAgentThreadStatusretrieveThreadOutputData != null)
             {
-                getAgentThreadStatus["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(getAgentThreadStatusretrieveThreadOutputData);
+                if (getAgentThreadStatusretrieveThreadOutputData != null)
+                {
+                    getAgentThreadStatus["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(getAgentThreadStatusretrieveThreadOutputData);
+                    getAgentThreadStatuspropCount++;
+                }
+
+                getAgentThreadStatuspropCount++;
+            }
+            else
+            {
+                getAgentThreadStatus["RetrieveThreadOutputData"] = false;
                 getAgentThreadStatuspropCount++;
             }
 
             if (getAgentThreadStatusclearOutputDataFromMemoryOnceRead != null)
             {
-                getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
+                if (getAgentThreadStatusclearOutputDataFromMemoryOnceRead != null)
+                {
+                    getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
+                    getAgentThreadStatuspropCount++;
+                }
+
+                getAgentThreadStatuspropCount++;
+            }
+            else
+            {
+                getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = true;
                 getAgentThreadStatuspropCount++;
             }
 
@@ -5281,31 +7621,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             waitForAgentThreadToCompleteSuccessfully["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread);
             if (waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
             {
-                waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
+                if (waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
+                {
+                    waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
+                    waitForAgentThreadToCompleteSuccessfullypropCount++;
+                }
+
+                waitForAgentThreadToCompleteSuccessfullypropCount++;
+            }
+            else
+            {
+                waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = false;
                 waitForAgentThreadToCompleteSuccessfullypropCount++;
             }
 
             if (waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead != null)
             {
-                waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
+                if (waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead != null)
+                {
+                    waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
+                    waitForAgentThreadToCompleteSuccessfullypropCount++;
+                }
+
+                waitForAgentThreadToCompleteSuccessfullypropCount++;
+            }
+            else
+            {
+                waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = true;
                 waitForAgentThreadToCompleteSuccessfullypropCount++;
             }
 
             if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted != null)
             {
-                waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
+                if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted != null)
+                {
+                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
+                    waitForAgentThreadToCompleteSuccessfullypropCount++;
+                }
+
+                waitForAgentThreadToCompleteSuccessfullypropCount++;
+            }
+            else
+            {
+                waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = true;
                 waitForAgentThreadToCompleteSuccessfullypropCount++;
             }
 
             if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError != null)
             {
-                waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
+                if (waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError != null)
+                {
+                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
+                    waitForAgentThreadToCompleteSuccessfullypropCount++;
+                }
+
+                waitForAgentThreadToCompleteSuccessfullypropCount++;
+            }
+            else
+            {
+                waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = true;
                 waitForAgentThreadToCompleteSuccessfullypropCount++;
             }
 
             if (waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall != null)
             {
-                waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
+                if (waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall != null)
+                {
+                    waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = ExpressionConverter.ConvertO(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
+                    waitForAgentThreadToCompleteSuccessfullypropCount++;
+                }
+
+                waitForAgentThreadToCompleteSuccessfullypropCount++;
+            }
+            else
+            {
+                waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = 5;
                 waitForAgentThreadToCompleteSuccessfullypropCount++;
             }
 
@@ -5379,13 +7769,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (deleteAgentThreaddeleteAllAgentThreads != null)
             {
-                deleteAgentThread["DeleteAllAgentThreads"] = ExpressionConverter.ConvertO(deleteAgentThreaddeleteAllAgentThreads);
+                if (deleteAgentThreaddeleteAllAgentThreads != null)
+                {
+                    deleteAgentThread["DeleteAllAgentThreads"] = ExpressionConverter.ConvertO(deleteAgentThreaddeleteAllAgentThreads);
+                    deleteAgentThreadpropCount++;
+                }
+
+                deleteAgentThreadpropCount++;
+            }
+            else
+            {
+                deleteAgentThread["DeleteAllAgentThreads"] = false;
                 deleteAgentThreadpropCount++;
             }
 
             if (deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete != null)
             {
-                deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = ExpressionConverter.ConvertO(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
+                if (deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete != null)
+                {
+                    deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = ExpressionConverter.ConvertO(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
+                    deleteAgentThreadpropCount++;
+                }
+
+                deleteAgentThreadpropCount++;
+            }
+            else
+            {
+                deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = false;
                 deleteAgentThreadpropCount++;
             }
 
@@ -5421,7 +7831,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable != null)
             {
-                allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
+                if (allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable != null)
+                {
+                    allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = ExpressionConverter.ConvertO(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
+                    allocateWorkerFromOrchestratorpropCount++;
+                }
+
+                allocateWorkerFromOrchestratorpropCount++;
+            }
+            else
+            {
+                allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = false;
                 allocateWorkerFromOrchestratorpropCount++;
             }
 
@@ -5445,7 +7865,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var setOrchestratorWorkerMaintenanceModepropCount = 0;
             if (setOrchestratorWorkerMaintenanceModeworkerId != null)
             {
-                setOrchestratorWorkerMaintenanceMode["WorkerId"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModeworkerId);
+                if (setOrchestratorWorkerMaintenanceModeworkerId != null)
+                {
+                    setOrchestratorWorkerMaintenanceMode["WorkerId"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModeworkerId);
+                    setOrchestratorWorkerMaintenanceModepropCount++;
+                }
+
+                setOrchestratorWorkerMaintenanceModepropCount++;
+            }
+            else
+            {
+                setOrchestratorWorkerMaintenanceMode["WorkerId"] = 0;
                 setOrchestratorWorkerMaintenanceModepropCount++;
             }
 
@@ -5457,7 +7887,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (setOrchestratorWorkerMaintenanceModemaintenanceMode != null)
             {
-                setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModemaintenanceMode);
+                if (setOrchestratorWorkerMaintenanceModemaintenanceMode != null)
+                {
+                    setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = ExpressionConverter.ConvertO(setOrchestratorWorkerMaintenanceModemaintenanceMode);
+                    setOrchestratorWorkerMaintenanceModepropCount++;
+                }
+
+                setOrchestratorWorkerMaintenanceModepropCount++;
+            }
+            else
+            {
+                setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = true;
                 setOrchestratorWorkerMaintenanceModepropCount++;
             }
 
@@ -5499,13 +7939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion != null)
             {
-                createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
+                if (createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion != null)
+                {
+                    createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
+                    createOrchestratorOneTimeSecretpropCount++;
+                }
+
+                createOrchestratorOneTimeSecretpropCount++;
+            }
+            else
+            {
+                createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = 1;
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
             if (createOrchestratorOneTimeSecretsecretHasAStartDate != null)
             {
-                createOrchestratorOneTimeSecret["SecretHasAStartDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAStartDate);
+                if (createOrchestratorOneTimeSecretsecretHasAStartDate != null)
+                {
+                    createOrchestratorOneTimeSecret["SecretHasAStartDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAStartDate);
+                    createOrchestratorOneTimeSecretpropCount++;
+                }
+
+                createOrchestratorOneTimeSecretpropCount++;
+            }
+            else
+            {
+                createOrchestratorOneTimeSecret["SecretHasAStartDate"] = false;
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
@@ -5523,7 +7983,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (createOrchestratorOneTimeSecretsecretHasAnExpiryDate != null)
             {
-                createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
+                if (createOrchestratorOneTimeSecretsecretHasAnExpiryDate != null)
+                {
+                    createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = ExpressionConverter.ConvertO(createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
+                    createOrchestratorOneTimeSecretpropCount++;
+                }
+
+                createOrchestratorOneTimeSecretpropCount++;
+            }
+            else
+            {
+                createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = false;
                 createOrchestratorOneTimeSecretpropCount++;
             }
 
@@ -5557,7 +8027,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             var getListOfOrchestratorWorkerspropCount = 0;
             if (getListOfOrchestratorWorkersonlyReturnLiveWorkers != null)
             {
-                getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = ExpressionConverter.ConvertO(getListOfOrchestratorWorkersonlyReturnLiveWorkers);
+                if (getListOfOrchestratorWorkersonlyReturnLiveWorkers != null)
+                {
+                    getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = ExpressionConverter.ConvertO(getListOfOrchestratorWorkersonlyReturnLiveWorkers);
+                    getListOfOrchestratorWorkerspropCount++;
+                }
+
+                getListOfOrchestratorWorkerspropCount++;
+            }
+            else
+            {
+                getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = false;
                 getListOfOrchestratorWorkerspropCount++;
             }
 
@@ -5687,7 +8167,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             deleteDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(deleteDirectorydirectoryPath);
             if (deleteDirectoryrecursive != null)
             {
-                deleteDirectory["Recursive"] = ExpressionConverter.ConvertO(deleteDirectoryrecursive);
+                if (deleteDirectoryrecursive != null)
+                {
+                    deleteDirectory["Recursive"] = ExpressionConverter.ConvertO(deleteDirectoryrecursive);
+                    deleteDirectorypropCount++;
+                }
+
+                deleteDirectorypropCount++;
+            }
+            else
+            {
+                deleteDirectory["Recursive"] = false;
                 deleteDirectorypropCount++;
             }
 
@@ -5713,13 +8203,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             purgeDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(purgeDirectorydirectoryPath);
             if (purgeDirectoryrecursive != null)
             {
-                purgeDirectory["Recursive"] = ExpressionConverter.ConvertO(purgeDirectoryrecursive);
+                if (purgeDirectoryrecursive != null)
+                {
+                    purgeDirectory["Recursive"] = ExpressionConverter.ConvertO(purgeDirectoryrecursive);
+                    purgeDirectorypropCount++;
+                }
+
+                purgeDirectorypropCount++;
+            }
+            else
+            {
+                purgeDirectory["Recursive"] = false;
                 purgeDirectorypropCount++;
             }
 
             if (purgeDirectorydeleteTopLevel != null)
             {
-                purgeDirectory["DeleteTopLevel"] = ExpressionConverter.ConvertO(purgeDirectorydeleteTopLevel);
+                if (purgeDirectorydeleteTopLevel != null)
+                {
+                    purgeDirectory["DeleteTopLevel"] = ExpressionConverter.ConvertO(purgeDirectorydeleteTopLevel);
+                    purgeDirectorypropCount++;
+                }
+
+                purgeDirectorypropCount++;
+            }
+            else
+            {
+                purgeDirectory["DeleteTopLevel"] = false;
                 purgeDirectorypropCount++;
             }
 
@@ -5789,7 +8299,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             createDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(createDirectorydirectoryPath);
             if (createDirectoryerrorIfAlreadyExists != null)
             {
-                createDirectory["ErrorIfAlreadyExists"] = ExpressionConverter.ConvertO(createDirectoryerrorIfAlreadyExists);
+                if (createDirectoryerrorIfAlreadyExists != null)
+                {
+                    createDirectory["ErrorIfAlreadyExists"] = ExpressionConverter.ConvertO(createDirectoryerrorIfAlreadyExists);
+                    createDirectorypropCount++;
+                }
+
+                createDirectorypropCount++;
+            }
+            else
+            {
+                createDirectory["ErrorIfAlreadyExists"] = false;
                 createDirectorypropCount++;
             }
 
@@ -5841,7 +8361,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (writeTextFileappendExistingFile != null)
             {
-                writeTextFile["AppendExistingFile"] = ExpressionConverter.ConvertO(writeTextFileappendExistingFile);
+                if (writeTextFileappendExistingFile != null)
+                {
+                    writeTextFile["AppendExistingFile"] = ExpressionConverter.ConvertO(writeTextFileappendExistingFile);
+                    writeTextFilepropCount++;
+                }
+
+                writeTextFilepropCount++;
+            }
+            else
+            {
+                writeTextFile["AppendExistingFile"] = false;
                 writeTextFilepropCount++;
             }
 
@@ -5853,7 +8383,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (writeTextFilecreateFolderIfRequired != null)
             {
-                writeTextFile["CreateFolderIfRequired"] = ExpressionConverter.ConvertO(writeTextFilecreateFolderIfRequired);
+                if (writeTextFilecreateFolderIfRequired != null)
+                {
+                    writeTextFile["CreateFolderIfRequired"] = ExpressionConverter.ConvertO(writeTextFilecreateFolderIfRequired);
+                    writeTextFilepropCount++;
+                }
+
+                writeTextFilepropCount++;
+            }
+            else
+            {
+                writeTextFile["CreateFolderIfRequired"] = true;
                 writeTextFilepropCount++;
             }
 
@@ -6025,25 +8565,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getCSVTextAsCollection["CSVFilePath"] = ExpressionConverter.ConvertO(getCSVTextAsCollectioncSVFilePath);
             if (getCSVTextAsCollectionfirstLineIsHeader != null)
             {
-                getCSVTextAsCollection["FirstLineIsHeader"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionfirstLineIsHeader);
+                if (getCSVTextAsCollectionfirstLineIsHeader != null)
+                {
+                    getCSVTextAsCollection["FirstLineIsHeader"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionfirstLineIsHeader);
+                    getCSVTextAsCollectionpropCount++;
+                }
+
+                getCSVTextAsCollectionpropCount++;
+            }
+            else
+            {
+                getCSVTextAsCollection["FirstLineIsHeader"] = true;
                 getCSVTextAsCollectionpropCount++;
             }
 
             if (getCSVTextAsCollectiontrimHeaders != null)
             {
-                getCSVTextAsCollection["TrimHeaders"] = ExpressionConverter.ConvertO(getCSVTextAsCollectiontrimHeaders);
+                if (getCSVTextAsCollectiontrimHeaders != null)
+                {
+                    getCSVTextAsCollection["TrimHeaders"] = ExpressionConverter.ConvertO(getCSVTextAsCollectiontrimHeaders);
+                    getCSVTextAsCollectionpropCount++;
+                }
+
+                getCSVTextAsCollectionpropCount++;
+            }
+            else
+            {
+                getCSVTextAsCollection["TrimHeaders"] = true;
                 getCSVTextAsCollectionpropCount++;
             }
 
             if (getCSVTextAsCollectionallowBlankRows != null)
             {
-                getCSVTextAsCollection["AllowBlankRows"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionallowBlankRows);
+                if (getCSVTextAsCollectionallowBlankRows != null)
+                {
+                    getCSVTextAsCollection["AllowBlankRows"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionallowBlankRows);
+                    getCSVTextAsCollectionpropCount++;
+                }
+
+                getCSVTextAsCollectionpropCount++;
+            }
+            else
+            {
+                getCSVTextAsCollection["AllowBlankRows"] = true;
                 getCSVTextAsCollectionpropCount++;
             }
 
             if (getCSVTextAsCollectionextendColumnsIfRequired != null)
             {
-                getCSVTextAsCollection["ExtendColumnsIfRequired"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionextendColumnsIfRequired);
+                if (getCSVTextAsCollectionextendColumnsIfRequired != null)
+                {
+                    getCSVTextAsCollection["ExtendColumnsIfRequired"] = ExpressionConverter.ConvertO(getCSVTextAsCollectionextendColumnsIfRequired);
+                    getCSVTextAsCollectionpropCount++;
+                }
+
+                getCSVTextAsCollectionpropCount++;
+            }
+            else
+            {
+                getCSVTextAsCollection["ExtendColumnsIfRequired"] = false;
                 getCSVTextAsCollectionpropCount++;
             }
 
@@ -6081,7 +8661,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             writeCollectionToCSVFile["CSVFilePath"] = ExpressionConverter.ConvertO(writeCollectionToCSVFilecSVFilePath);
             if (writeCollectionToCSVFileoutputEncoding != null)
             {
-                writeCollectionToCSVFile["OutputEncoding"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileoutputEncoding);
+                if (writeCollectionToCSVFileoutputEncoding != null)
+                {
+                    writeCollectionToCSVFile["OutputEncoding"] = ExpressionConverter.ConvertO(writeCollectionToCSVFileoutputEncoding);
+                    writeCollectionToCSVFilepropCount++;
+                }
+
+                writeCollectionToCSVFilepropCount++;
+            }
+            else
+            {
+                writeCollectionToCSVFile["OutputEncoding"] = "UTF8";
                 writeCollectionToCSVFilepropCount++;
             }
 
@@ -6155,25 +8745,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             addPermissionToFolder["Permission"] = ExpressionConverter.ConvertO(addPermissionToFolderpermission);
             if (addPermissionToFolderapplyToFolder != null)
             {
-                addPermissionToFolder["ApplyToFolder"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFolder);
+                if (addPermissionToFolderapplyToFolder != null)
+                {
+                    addPermissionToFolder["ApplyToFolder"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFolder);
+                    addPermissionToFolderpropCount++;
+                }
+
+                addPermissionToFolderpropCount++;
+            }
+            else
+            {
+                addPermissionToFolder["ApplyToFolder"] = false;
                 addPermissionToFolderpropCount++;
             }
 
             if (addPermissionToFolderapplyToSubFolders != null)
             {
-                addPermissionToFolder["ApplyToSubFolders"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToSubFolders);
+                if (addPermissionToFolderapplyToSubFolders != null)
+                {
+                    addPermissionToFolder["ApplyToSubFolders"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToSubFolders);
+                    addPermissionToFolderpropCount++;
+                }
+
+                addPermissionToFolderpropCount++;
+            }
+            else
+            {
+                addPermissionToFolder["ApplyToSubFolders"] = true;
                 addPermissionToFolderpropCount++;
             }
 
             if (addPermissionToFolderapplyToFiles != null)
             {
-                addPermissionToFolder["ApplyToFiles"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFiles);
+                if (addPermissionToFolderapplyToFiles != null)
+                {
+                    addPermissionToFolder["ApplyToFiles"] = ExpressionConverter.ConvertO(addPermissionToFolderapplyToFiles);
+                    addPermissionToFolderpropCount++;
+                }
+
+                addPermissionToFolderpropCount++;
+            }
+            else
+            {
+                addPermissionToFolder["ApplyToFiles"] = true;
                 addPermissionToFolderpropCount++;
             }
 
             if (addPermissionToFolderdeny != null)
             {
-                addPermissionToFolder["Deny"] = ExpressionConverter.ConvertO(addPermissionToFolderdeny);
+                if (addPermissionToFolderdeny != null)
+                {
+                    addPermissionToFolder["Deny"] = ExpressionConverter.ConvertO(addPermissionToFolderdeny);
+                    addPermissionToFolderpropCount++;
+                }
+
+                addPermissionToFolderpropCount++;
+            }
+            else
+            {
+                addPermissionToFolder["Deny"] = false;
                 addPermissionToFolderpropCount++;
             }
 
@@ -6203,7 +8833,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             addPermissionToFile["Permission"] = ExpressionConverter.ConvertO(addPermissionToFilepermission);
             if (addPermissionToFiledeny != null)
             {
-                addPermissionToFile["Deny"] = ExpressionConverter.ConvertO(addPermissionToFiledeny);
+                if (addPermissionToFiledeny != null)
+                {
+                    addPermissionToFile["Deny"] = ExpressionConverter.ConvertO(addPermissionToFiledeny);
+                    addPermissionToFilepropCount++;
+                }
+
+                addPermissionToFilepropCount++;
+            }
+            else
+            {
+                addPermissionToFile["Deny"] = false;
                 addPermissionToFilepropCount++;
             }
 
@@ -6229,7 +8869,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             breakFolderSecurityInheritance["FolderPath"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritancefolderPath);
             if (breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
             {
-                breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritanceconvertInheritedToExplicit);
+                if (breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
+                {
+                    breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = ExpressionConverter.ConvertO(breakFolderSecurityInheritanceconvertInheritedToExplicit);
+                    breakFolderSecurityInheritancepropCount++;
+                }
+
+                breakFolderSecurityInheritancepropCount++;
+            }
+            else
+            {
+                breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = true;
                 breakFolderSecurityInheritancepropCount++;
             }
 
@@ -6361,7 +9011,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             copyFileFromClientToServer["ServerFilePath"] = ExpressionConverter.ConvertO(copyFileFromClientToServerserverFilePath);
             if (copyFileFromClientToServercompress != null)
             {
-                copyFileFromClientToServer["Compress"] = ExpressionConverter.ConvertO(copyFileFromClientToServercompress);
+                if (copyFileFromClientToServercompress != null)
+                {
+                    copyFileFromClientToServer["Compress"] = ExpressionConverter.ConvertO(copyFileFromClientToServercompress);
+                    copyFileFromClientToServerpropCount++;
+                }
+
+                copyFileFromClientToServerpropCount++;
+            }
+            else
+            {
+                copyFileFromClientToServer["Compress"] = true;
                 copyFileFromClientToServerpropCount++;
             }
 
@@ -6417,19 +9077,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (replaceVariableDataInINIFilecreateNewFileIfNotExists != null)
             {
-                replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilecreateNewFileIfNotExists);
+                if (replaceVariableDataInINIFilecreateNewFileIfNotExists != null)
+                {
+                    replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilecreateNewFileIfNotExists);
+                    replaceVariableDataInINIFilepropCount++;
+                }
+
+                replaceVariableDataInINIFilepropCount++;
+            }
+            else
+            {
+                replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = true;
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFilewriteSpaceBeforeEquals != null)
             {
-                replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceBeforeEquals);
+                if (replaceVariableDataInINIFilewriteSpaceBeforeEquals != null)
+                {
+                    replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceBeforeEquals);
+                    replaceVariableDataInINIFilepropCount++;
+                }
+
+                replaceVariableDataInINIFilepropCount++;
+            }
+            else
+            {
+                replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = true;
                 replaceVariableDataInINIFilepropCount++;
             }
 
             if (replaceVariableDataInINIFilewriteSpaceAfterEquals != null)
             {
-                replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceAfterEquals);
+                if (replaceVariableDataInINIFilewriteSpaceAfterEquals != null)
+                {
+                    replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = ExpressionConverter.ConvertO(replaceVariableDataInINIFilewriteSpaceAfterEquals);
+                    replaceVariableDataInINIFilepropCount++;
+                }
+
+                replaceVariableDataInINIFilepropCount++;
+            }
+            else
+            {
+                replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = true;
                 replaceVariableDataInINIFilepropCount++;
             }
 
@@ -6461,67 +9151,177 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (downloadHTTPFileoverwriteExistingFile != null)
             {
-                downloadHTTPFile["OverwriteExistingFile"] = ExpressionConverter.ConvertO(downloadHTTPFileoverwriteExistingFile);
+                if (downloadHTTPFileoverwriteExistingFile != null)
+                {
+                    downloadHTTPFile["OverwriteExistingFile"] = ExpressionConverter.ConvertO(downloadHTTPFileoverwriteExistingFile);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["OverwriteExistingFile"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilepassthroughAuthentication != null)
             {
-                downloadHTTPFile["PassthroughAuthentication"] = ExpressionConverter.ConvertO(downloadHTTPFilepassthroughAuthentication);
+                if (downloadHTTPFilepassthroughAuthentication != null)
+                {
+                    downloadHTTPFile["PassthroughAuthentication"] = ExpressionConverter.ConvertO(downloadHTTPFilepassthroughAuthentication);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["PassthroughAuthentication"] = false;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFileuserAgent != null)
             {
-                downloadHTTPFile["UserAgent"] = ExpressionConverter.ConvertO(downloadHTTPFileuserAgent);
+                if (downloadHTTPFileuserAgent != null)
+                {
+                    downloadHTTPFile["UserAgent"] = ExpressionConverter.ConvertO(downloadHTTPFileuserAgent);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["UserAgent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36";
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFileaccept != null)
             {
-                downloadHTTPFile["Accept"] = ExpressionConverter.ConvertO(downloadHTTPFileaccept);
+                if (downloadHTTPFileaccept != null)
+                {
+                    downloadHTTPFile["Accept"] = ExpressionConverter.ConvertO(downloadHTTPFileaccept);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilesupportTLS10 != null)
             {
-                downloadHTTPFile["SupportTLS10"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS10);
+                if (downloadHTTPFilesupportTLS10 != null)
+                {
+                    downloadHTTPFile["SupportTLS10"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS10);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["SupportTLS10"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilesupportTLS11 != null)
             {
-                downloadHTTPFile["SupportTLS11"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS11);
+                if (downloadHTTPFilesupportTLS11 != null)
+                {
+                    downloadHTTPFile["SupportTLS11"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS11);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["SupportTLS11"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilesupportTLS12 != null)
             {
-                downloadHTTPFile["SupportTLS12"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS12);
+                if (downloadHTTPFilesupportTLS12 != null)
+                {
+                    downloadHTTPFile["SupportTLS12"] = ExpressionConverter.ConvertO(downloadHTTPFilesupportTLS12);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["SupportTLS12"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFileautoDecompressDeflate != null)
             {
-                downloadHTTPFile["AutoDecompressDeflate"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressDeflate);
+                if (downloadHTTPFileautoDecompressDeflate != null)
+                {
+                    downloadHTTPFile["AutoDecompressDeflate"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressDeflate);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["AutoDecompressDeflate"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFileautoDecompressGZIP != null)
             {
-                downloadHTTPFile["AutoDecompressGZIP"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressGZIP);
+                if (downloadHTTPFileautoDecompressGZIP != null)
+                {
+                    downloadHTTPFile["AutoDecompressGZIP"] = ExpressionConverter.ConvertO(downloadHTTPFileautoDecompressGZIP);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["AutoDecompressGZIP"] = true;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilereturnContentsAsString != null)
             {
-                downloadHTTPFile["ReturnContentsAsString"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentsAsString);
+                if (downloadHTTPFilereturnContentsAsString != null)
+                {
+                    downloadHTTPFile["ReturnContentsAsString"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentsAsString);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["ReturnContentsAsString"] = false;
                 downloadHTTPFilepropCount++;
             }
 
             if (downloadHTTPFilereturnContentEncoding != null)
             {
-                downloadHTTPFile["ReturnContentEncoding"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentEncoding);
+                if (downloadHTTPFilereturnContentEncoding != null)
+                {
+                    downloadHTTPFile["ReturnContentEncoding"] = ExpressionConverter.ConvertO(downloadHTTPFilereturnContentEncoding);
+                    downloadHTTPFilepropCount++;
+                }
+
+                downloadHTTPFilepropCount++;
+            }
+            else
+            {
+                downloadHTTPFile["ReturnContentEncoding"] = "UTF8";
                 downloadHTTPFilepropCount++;
             }
 
@@ -6553,7 +9353,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (unZIPFileextractAllFilesToSingleFolder != null)
             {
-                unZIPFile["ExtractAllFilesToSingleFolder"] = ExpressionConverter.ConvertO(unZIPFileextractAllFilesToSingleFolder);
+                if (unZIPFileextractAllFilesToSingleFolder != null)
+                {
+                    unZIPFile["ExtractAllFilesToSingleFolder"] = ExpressionConverter.ConvertO(unZIPFileextractAllFilesToSingleFolder);
+                    unZIPFilepropCount++;
+                }
+
+                unZIPFilepropCount++;
+            }
+            else
+            {
+                unZIPFile["ExtractAllFilesToSingleFolder"] = false;
                 unZIPFilepropCount++;
             }
 
@@ -6605,13 +9415,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (addFileToZIPcompress != null)
             {
-                addFileToZIP["Compress"] = ExpressionConverter.ConvertO(addFileToZIPcompress);
+                if (addFileToZIPcompress != null)
+                {
+                    addFileToZIP["Compress"] = ExpressionConverter.ConvertO(addFileToZIPcompress);
+                    addFileToZIPpropCount++;
+                }
+
+                addFileToZIPpropCount++;
+            }
+            else
+            {
+                addFileToZIP["Compress"] = true;
                 addFileToZIPpropCount++;
             }
 
             if (addFileToZIPaddToExistingZIPFile != null)
             {
-                addFileToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFileToZIPaddToExistingZIPFile);
+                if (addFileToZIPaddToExistingZIPFile != null)
+                {
+                    addFileToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFileToZIPaddToExistingZIPFile);
+                    addFileToZIPpropCount++;
+                }
+
+                addFileToZIPpropCount++;
+            }
+            else
+            {
+                addFileToZIP["AddToExistingZIPFile"] = false;
                 addFileToZIPpropCount++;
             }
 
@@ -6645,19 +9475,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 
             if (addFolderToZIPcompress != null)
             {
-                addFolderToZIP["Compress"] = ExpressionConverter.ConvertO(addFolderToZIPcompress);
+                if (addFolderToZIPcompress != null)
+                {
+                    addFolderToZIP["Compress"] = ExpressionConverter.ConvertO(addFolderToZIPcompress);
+                    addFolderToZIPpropCount++;
+                }
+
+                addFolderToZIPpropCount++;
+            }
+            else
+            {
+                addFolderToZIP["Compress"] = true;
                 addFolderToZIPpropCount++;
             }
 
             if (addFolderToZIPaddToExistingZIPFile != null)
             {
-                addFolderToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFolderToZIPaddToExistingZIPFile);
+                if (addFolderToZIPaddToExistingZIPFile != null)
+                {
+                    addFolderToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(addFolderToZIPaddToExistingZIPFile);
+                    addFolderToZIPpropCount++;
+                }
+
+                addFolderToZIPpropCount++;
+            }
+            else
+            {
+                addFolderToZIP["AddToExistingZIPFile"] = false;
                 addFolderToZIPpropCount++;
             }
 
             if (addFolderToZIPincludeSubfolders != null)
             {
-                addFolderToZIP["IncludeSubfolders"] = ExpressionConverter.ConvertO(addFolderToZIPincludeSubfolders);
+                if (addFolderToZIPincludeSubfolders != null)
+                {
+                    addFolderToZIP["IncludeSubfolders"] = ExpressionConverter.ConvertO(addFolderToZIPincludeSubfolders);
+                    addFolderToZIPpropCount++;
+                }
+
+                addFolderToZIPpropCount++;
+            }
+            else
+            {
+                addFolderToZIP["IncludeSubfolders"] = true;
                 addFolderToZIPpropCount++;
             }
 
@@ -6695,13 +9555,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
             getFileContentsAsBase64["FilePath"] = ExpressionConverter.ConvertO(getFileContentsAsBase64filePath);
             if (getFileContentsAsBase64compress != null)
             {
-                getFileContentsAsBase64["Compress"] = ExpressionConverter.ConvertO(getFileContentsAsBase64compress);
+                if (getFileContentsAsBase64compress != null)
+                {
+                    getFileContentsAsBase64["Compress"] = ExpressionConverter.ConvertO(getFileContentsAsBase64compress);
+                    getFileContentsAsBase64propCount++;
+                }
+
+                getFileContentsAsBase64propCount++;
+            }
+            else
+            {
+                getFileContentsAsBase64["Compress"] = false;
                 getFileContentsAsBase64propCount++;
             }
 
             if (getFileContentsAsBase64maxFileSize != null)
             {
-                getFileContentsAsBase64["MaxFileSize"] = ExpressionConverter.ConvertO(getFileContentsAsBase64maxFileSize);
+                if (getFileContentsAsBase64maxFileSize != null)
+                {
+                    getFileContentsAsBase64["MaxFileSize"] = ExpressionConverter.ConvertO(getFileContentsAsBase64maxFileSize);
+                    getFileContentsAsBase64propCount++;
+                }
+
+                getFileContentsAsBase64propCount++;
+            }
+            else
+            {
+                getFileContentsAsBase64["MaxFileSize"] = 1024000;
                 getFileContentsAsBase64propCount++;
             }
 

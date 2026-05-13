@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string Relationship { get; set; }
 
         [JsonProperty("object")]
-        public JToken Object { get; set; }
+        public JToken ObjectEntity { get; set; }
 
         [JsonProperty("certainty")]
         public double Certainty { get; set; }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string Relationship { get; set; }
 
         [JsonProperty("object")]
-        public JToken Object { get; set; }
+        public JToken ObjectEntity { get; set; }
 
         [JsonProperty("certainty")]
         public double Certainty { get; set; }
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public double Certainty { get; set; }
 
         [JsonProperty("object")]
-        public EvidenceResponseFactTypeObjectType Object { get; set; }
+        public EvidenceResponseFactTypeObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("relationship")]
         public EvidenceResponseFactTypeRelationshipType Relationship { get; set; }
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public EvidenceResponseFactTypeSubjectType Subject { get; set; }
     }
 
-    public class EvidenceResponseFactTypeObjectType
+    public class EvidenceResponseFactTypeObjectEntityType
     {
         [JsonProperty("dataType")]
         public string DataType { get; set; }
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string FactID { get; set; }
 
         [JsonProperty("object")]
-        public JToken Object { get; set; }
+        public JToken ObjectEntity { get; set; }
 
         [JsonProperty("objectType")]
         public string ObjectType { get; set; }

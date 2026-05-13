@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtagsPost(Expression<Func<string>> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags(Expression<Func<string>> bodyimage)
         {
             var apiCallPath = "/tag/generate";
             var apiCallHttpMethod = "post";

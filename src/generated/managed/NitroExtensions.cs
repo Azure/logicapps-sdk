@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTriggerV2(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/webhooks";
             var apiCallHttpMethod = "post";

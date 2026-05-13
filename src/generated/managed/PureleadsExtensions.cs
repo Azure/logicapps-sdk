@@ -37,7 +37,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
             if (bodylifecycleStageName != null)
             {
-                body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                if (bodylifecycleStageName != null)
+                {
+                    body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["lifecycle_stage_name"] = 1;
                 bodypropCount++;
             }
 

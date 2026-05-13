@@ -41,7 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             inputData["watermark_data"] = ExpressionConverter.ConvertO(inputDatawatermarkData);
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -99,7 +109,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -111,7 +131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -153,13 +183,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -183,7 +233,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -243,7 +303,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -255,7 +325,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -297,13 +377,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -327,7 +427,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -377,7 +487,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             inputData["end_y"] = ExpressionConverter.ConvertO(inputDatayCoordinateEnd);
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -389,7 +509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -425,13 +555,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -455,7 +605,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -499,7 +659,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
             inputData["barcode_type"] = ExpressionConverter.ConvertO(inputDatabarcodeType);
             if (inputDataomitEncodingOfStartStopSymbols != null)
             {
-                inputData["omit_start_stop_symbols"] = ExpressionConverter.ConvertO(inputDataomitEncodingOfStartStopSymbols);
+                if (inputDataomitEncodingOfStartStopSymbols != null)
+                {
+                    inputData["omit_start_stop_symbols"] = ExpressionConverter.ConvertO(inputDataomitEncodingOfStartStopSymbols);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["omit_start_stop_symbols"] = "false";
                 inputDatapropCount++;
             }
 
@@ -533,7 +703,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalabelPlacement != null)
             {
-                inputData["label_placement"] = ExpressionConverter.ConvertO(inputDatalabelPlacement);
+                if (inputDatalabelPlacement != null)
+                {
+                    inputData["label_placement"] = ExpressionConverter.ConvertO(inputDatalabelPlacement);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["label_placement"] = "Bottom Center";
                 inputDatapropCount++;
             }
 
@@ -557,7 +737,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -569,7 +759,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -605,13 +805,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -635,7 +855,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -695,7 +925,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -707,7 +947,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -731,13 +981,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -761,7 +1031,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -827,7 +1107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -839,7 +1129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -875,13 +1175,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -905,7 +1225,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -963,7 +1293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -975,7 +1315,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -1017,13 +1367,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -1047,7 +1417,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -1107,7 +1487,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -1119,7 +1509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -1161,13 +1561,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -1191,7 +1611,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -1261,7 +1691,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatalayer != null)
             {
-                inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                if (inputDatalayer != null)
+                {
+                    inputData["layer"] = ExpressionConverter.ConvertO(inputDatalayer);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["layer"] = "Foreground";
                 inputDatapropCount++;
             }
 
@@ -1273,7 +1713,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDataopacity != null)
             {
-                inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                if (inputDataopacity != null)
+                {
+                    inputData["opacity"] = ExpressionConverter.ConvertO(inputDataopacity);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["opacity"] = "100";
                 inputDatapropCount++;
             }
 
@@ -1315,13 +1765,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatawatermarkPageOrientation != null)
             {
-                inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                if (inputDatawatermarkPageOrientation != null)
+                {
+                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatawatermarkPageOrientation);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_orientation"] = "Both";
                 inputDatapropCount++;
             }
 
             if (inputDataprintOnly != null)
             {
-                inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                if (inputDataprintOnly != null)
+                {
+                    inputData["print_only"] = ExpressionConverter.ConvertO(inputDataprintOnly);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["print_only"] = "false";
                 inputDatapropCount++;
             }
 
@@ -1345,7 +1815,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 

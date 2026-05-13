@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserPostResponse> UserPost(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
         {
             var apiCallPath = "/v1/users/";
             var apiCallHttpMethod = "post";
@@ -42,13 +42,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
             if (bodyagreeTermsOfService != null)
             {
-                body["agreeTermsOfService"] = ExpressionConverter.ConvertO(bodyagreeTermsOfService);
+                if (bodyagreeTermsOfService != null)
+                {
+                    body["agreeTermsOfService"] = ExpressionConverter.ConvertO(bodyagreeTermsOfService);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["agreeTermsOfService"] = "yes";
                 bodypropCount++;
             }
 
             if (bodynotMinor != null)
             {
-                body["notMinor"] = ExpressionConverter.ConvertO(bodynotMinor);
+                if (bodynotMinor != null)
+                {
+                    body["notMinor"] = ExpressionConverter.ConvertO(bodynotMinor);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["notMinor"] = "yes";
                 bodypropCount++;
             }
 
@@ -168,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPostResponse> GraphPost(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPostResponse> Graph(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
         {
             var apiCallPath = "/v1/users/graphs";
             var apiCallHttpMethod = "post";
@@ -234,13 +254,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
             if (bodyunit != null)
             {
-                body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                if (bodyunit != null)
+                {
+                    body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["unit"] = "commit";
                 bodypropCount++;
             }
 
             if (bodycolor != null)
             {
-                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                if (bodycolor != null)
+                {
+                    body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["color"] = "shibafu";
                 bodypropCount++;
             }
 
@@ -329,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPostResponse> PixelPost(Expression<Func<string>> graphID, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
+        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> graphID, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
         {
             var apiCallPath = "/v1/users/graphs/";
             var apiCallHttpMethod = "post";

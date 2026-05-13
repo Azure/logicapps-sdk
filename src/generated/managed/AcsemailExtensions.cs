@@ -24,7 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             emailMessage["senderAddress"] = ExpressionConverter.ConvertO(emailMessagesenderAddress);
             if (emailMessageimportance != null)
             {
-                emailMessage["importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                if (emailMessageimportance != null)
+                {
+                    emailMessage["importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                    emailMessagepropCount++;
+                }
+
+                emailMessagepropCount++;
+            }
+            else
+            {
+                emailMessage["importance"] = "Normal";
                 emailMessagepropCount++;
             }
 

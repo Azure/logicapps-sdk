@@ -37,13 +37,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
             if (bodyorderByAsc != null)
             {
-                body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                if (bodyorderByAsc != null)
+                {
+                    body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["OrderByAsc"] = false;
                 bodypropCount++;
             }
 
             if (bodytakeAll != null)
             {
-                body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                if (bodytakeAll != null)
+                {
+                    body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["TakeAll"] = false;
                 bodypropCount++;
             }
 
@@ -191,13 +211,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
             if (bodynoInvoice != null)
             {
-                body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                if (bodynoInvoice != null)
+                {
+                    body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["noInvoice"] = false;
                 bodypropCount++;
             }
 
             if (bodyextraCharge != null)
             {
-                body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                if (bodyextraCharge != null)
+                {
+                    body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["extraCharge"] = true;
                 bodypropCount++;
             }
 

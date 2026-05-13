@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddEmailWorkflow()
         {
-            var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmailV3();
+            var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmail();
             WorkflowFactory.CreateStatefulWorkflow("GetEmailWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent

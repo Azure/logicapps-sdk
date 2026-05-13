@@ -153,7 +153,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
             if (bodyforceOptIn != null)
             {
-                body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
+                if (bodyforceOptIn != null)
+                {
+                    body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ForceOptIn"] = false;
                 bodypropCount++;
             }
 
@@ -167,7 +177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             body["Execute"] = ExpressionConverter.ConvertO(bodyexecute);
             if (bodyignoreInvalidTargets != null)
             {
-                body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
+                if (bodyignoreInvalidTargets != null)
+                {
+                    body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IgnoreInvalidTargets"] = false;
                 bodypropCount++;
             }
 

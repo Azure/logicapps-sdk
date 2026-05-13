@@ -70,17 +70,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<GraphUserV1> MyProfileV2(Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/codeless/v1.0/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IWorkflowAction UpdateMyPhoto(Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
             var apiCallPath = "/codeless/v1.0/me/photo/$value";
@@ -126,66 +115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<EntityListResponseIReadOnlyListUser> SearchUserV2(Expression<Func<string>> searchTerm = null, Expression<Func<int>> top = null, Expression<Func<bool>> isSearchTermRequired = null)
-        {
-            var apiCallPath = "/v2/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (searchTerm != null)
-                callPayload.Queries["searchTerm"] = ExpressionConverter.Convert(searchTerm);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["isSearchTermRequired"] = Convert.ToString(true);
-            if (isSearchTermRequired != null)
-                callPayload.Queries["isSearchTermRequired"] = ExpressionConverter.Convert(isSearchTermRequired);
-            return new ApiConnectionAction<EntityListResponseIReadOnlyListUser>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<GraphUserV1> UserProfileV2(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<GraphUserV1> ManagerV2(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/manager", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<DirectReportsV2Response> DirectReportsV2(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/directReports", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<DirectReportsV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IBodyWorkflowAction<string> UserPhotoV2(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/photo/$value", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<TrendingDocumentsResponse> TrendingDocuments(Expression<Func<string>> id, Expression<Func<string>> filter = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var apiCallPath = String.Format("/codeless/beta/users/{0}/insights/trending", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
@@ -224,106 +153,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
             callPayload.Body = ExpressionConverter.ConvertO(body);
             return new ApiConnectionAction<JToken>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<DirectReportsV2Response> DirectReports(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<int>> top = null)
+        {
+            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/directReports", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (select != null)
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+            if (top != null)
+                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+            return new ApiConnectionAction<DirectReportsV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<GraphUserV1> Manager(Expression<Func<string>> id, Expression<Func<string>> select = null)
+        {
+            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/manager", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (select != null)
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+            return new ApiConnectionAction<GraphUserV1>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<GraphUserV1> MyProfile(Expression<Func<string>> select = null)
+        {
+            var apiCallPath = "/codeless/v1.0/me";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (select != null)
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+            return new ApiConnectionAction<GraphUserV1>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<EntityListResponseIReadOnlyListUser> SearchUser(Expression<Func<string>> searchTerm = null, Expression<Func<int>> top = null, Expression<Func<bool>> isSearchTermRequired = null)
+        {
+            var apiCallPath = "/v2/users";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (searchTerm != null)
+                callPayload.Queries["searchTerm"] = ExpressionConverter.Convert(searchTerm);
+            if (top != null)
+                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+            callPayload.Queries["isSearchTermRequired"] = Convert.ToString(true);
+            if (isSearchTermRequired != null)
+                callPayload.Queries["isSearchTermRequired"] = ExpressionConverter.Convert(isSearchTermRequired);
+            return new ApiConnectionAction<EntityListResponseIReadOnlyListUser>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<string> UserPhoto(Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/photo/$value", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<string>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
+        public IBodyWorkflowAction<GraphUserV1> UserProfile(Expression<Func<string>> id, Expression<Func<string>> select = null)
+        {
+            var apiCallPath = String.Format("/codeless/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (select != null)
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+            return new ApiConnectionAction<GraphUserV1>(callPayload);
+        }
     }
 
     public class Office365usersTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class GraphUserV1
-    {
-        [JsonProperty("aboutMe")]
-        public string AboutMe { get; set; }
-
-        [JsonProperty("accountEnabled")]
-        public bool AccountEnabled { get; set; }
-
-        [JsonProperty("birthday")]
-        public string Birthday { get; set; }
-
-        [JsonProperty("businessPhones")]
-        public string[] BusinessPhones { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("companyName")]
-        public string CompanyName { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("department")]
-        public string Department { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("givenName")]
-        public string GivenName { get; set; }
-
-        [JsonProperty("hireDate")]
-        public string HireDate { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("interests")]
-        public string[] Interests { get; set; }
-
-        [JsonProperty("jobTitle")]
-        public string JobTitle { get; set; }
-
-        [JsonProperty("mail")]
-        public string Mail { get; set; }
-
-        [JsonProperty("mailNickname")]
-        public string Nickname { get; set; }
-
-        [JsonProperty("mobilePhone")]
-        public string MobilePhone { get; set; }
-
-        [JsonProperty("mySite")]
-        public string MySite { get; set; }
-
-        [JsonProperty("officeLocation")]
-        public string OfficeLocation { get; set; }
-
-        [JsonProperty("pastProjects")]
-        public string[] PastProjects { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("preferredLanguage")]
-        public string PreferredLanguage { get; set; }
-
-        [JsonProperty("preferredName")]
-        public string PreferredName { get; set; }
-
-        [JsonProperty("responsibilities")]
-        public string[] Responsibilities { get; set; }
-
-        [JsonProperty("schools")]
-        public string[] Schools { get; set; }
-
-        [JsonProperty("skills")]
-        public string[] Skills { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("streetAddress")]
-        public string StreetAddress { get; set; }
-
-        [JsonProperty("surname")]
-        public string Surname { get; set; }
-
-        [JsonProperty("userPrincipalName")]
-        public string UserPrincipalName { get; set; }
-
-        [JsonProperty("userType")]
-        public string UserType { get; set; }
     }
 
     public class MyTrendingDocumentsResponse
@@ -491,6 +395,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         public string ImageFileExtension { get; set; }
     }
 
+    public class TrendingDocumentsResponse
+    {
+        [JsonProperty("value")]
+        public GraphTrending[] Value { get; set; }
+    }
+
+    public enum methodInput
+    {
+        GET,
+        POST,
+        PUT,
+        PATCH,
+        DELETE
+    }
+
+    public class DirectReportsV2Response
+    {
+        [JsonProperty("value")]
+        public GraphUserV1[] Value { get; set; }
+    }
+
+    public class GraphUserV1
+    {
+        [JsonProperty("aboutMe")]
+        public string AboutMe { get; set; }
+
+        [JsonProperty("accountEnabled")]
+        public bool AccountEnabled { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+
+        [JsonProperty("businessPhones")]
+        public string[] BusinessPhones { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("givenName")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("hireDate")]
+        public string HireDate { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("interests")]
+        public string[] Interests { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("mail")]
+        public string Mail { get; set; }
+
+        [JsonProperty("mailNickname")]
+        public string Nickname { get; set; }
+
+        [JsonProperty("mobilePhone")]
+        public string MobilePhone { get; set; }
+
+        [JsonProperty("mySite")]
+        public string MySite { get; set; }
+
+        [JsonProperty("officeLocation")]
+        public string OfficeLocation { get; set; }
+
+        [JsonProperty("pastProjects")]
+        public string[] PastProjects { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("preferredLanguage")]
+        public string PreferredLanguage { get; set; }
+
+        [JsonProperty("preferredName")]
+        public string PreferredName { get; set; }
+
+        [JsonProperty("responsibilities")]
+        public string[] Responsibilities { get; set; }
+
+        [JsonProperty("schools")]
+        public string[] Schools { get; set; }
+
+        [JsonProperty("skills")]
+        public string[] Skills { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("streetAddress")]
+        public string StreetAddress { get; set; }
+
+        [JsonProperty("surname")]
+        public string Surname { get; set; }
+
+        [JsonProperty("userPrincipalName")]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("userType")]
+        public string UserType { get; set; }
+    }
+
     public class EntityListResponseIReadOnlyListUser
     {
         [JsonProperty("value")]
@@ -529,27 +550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
 
         [JsonProperty("UserPrincipalName")]
         public string UserPrincipalNameUPN { get; set; }
-    }
-
-    public class DirectReportsV2Response
-    {
-        [JsonProperty("value")]
-        public GraphUserV1[] Value { get; set; }
-    }
-
-    public class TrendingDocumentsResponse
-    {
-        [JsonProperty("value")]
-        public GraphTrending[] Value { get; set; }
-    }
-
-    public enum methodInput
-    {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
     }
 }
 

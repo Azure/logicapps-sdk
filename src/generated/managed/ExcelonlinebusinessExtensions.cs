@@ -12,18 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
     public class ExcelonlinebusinessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<JToken> RunScriptProdV2(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> scriptSource, Expression<Func<string>> scriptDrive, Expression<Func<string>> scriptId, Expression<Func<object>> scriptParameters = null)
-        {
-            var apiCallPath = String.Format("/v2/officescripting/api/unattended/run/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(scriptDrive, 1), ExpressionConverter.ConvertWithUrlEncoding(scriptId, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["scriptSource"] = ExpressionConverter.Convert(scriptSource);
-            callPayload.Body = ExpressionConverter.ConvertO(scriptParameters);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
         public IBodyWorkflowAction<JToken> RunScriptProd(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> scriptId, Expression<Func<object>> scriptParameters = null)
         {
             var apiCallPath = String.Format("/officescripting/api/unattended/run/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2));
@@ -224,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<Item> AddRowV2(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item> AddRow(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
         {
             var apiCallPath = String.Format("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(drive, 1), ExpressionConverter.ConvertWithUrlEncoding(file, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "post";

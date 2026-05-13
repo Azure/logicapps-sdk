@@ -37,19 +37,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             inputDatapropCount++;
             if (inputDatalanguage != null)
             {
-                inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                if (inputDatalanguage != null)
+                {
+                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["language"] = "English";
                 inputDatapropCount++;
             }
 
             if (inputDataperformance != null)
             {
-                inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                if (inputDataperformance != null)
+                {
+                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["performance"] = "Slow but accurate";
                 inputDatapropCount++;
             }
 
             if (inputDatablacklistWhitelist != null)
             {
-                inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                if (inputDatablacklistWhitelist != null)
+                {
+                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["characters_option"] = "None";
                 inputDatapropCount++;
             }
 
@@ -61,7 +91,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatausePagination != null)
             {
-                inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                if (inputDatausePagination != null)
+                {
+                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["paginate"] = false;
                 inputDatapropCount++;
             }
 
@@ -73,7 +113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 
@@ -109,7 +159,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatalanguage != null)
             {
-                inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                if (inputDatalanguage != null)
+                {
+                    inputData["language"] = ExpressionConverter.ConvertO(inputDatalanguage);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["language"] = "English";
                 inputDatapropCount++;
             }
 
@@ -139,19 +199,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatapageNumber != null)
             {
-                inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                if (inputDatapageNumber != null)
+                {
+                    inputData["page_number"] = ExpressionConverter.ConvertO(inputDatapageNumber);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["page_number"] = "";
                 inputDatapropCount++;
             }
 
             if (inputDataperformance != null)
             {
-                inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                if (inputDataperformance != null)
+                {
+                    inputData["performance"] = ExpressionConverter.ConvertO(inputDataperformance);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["performance"] = "Slow but accurate";
                 inputDatapropCount++;
             }
 
             if (inputDatablacklistWhitelist != null)
             {
-                inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                if (inputDatablacklistWhitelist != null)
+                {
+                    inputData["characters_option"] = ExpressionConverter.ConvertO(inputDatablacklistWhitelist);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["characters_option"] = "None";
                 inputDatapropCount++;
             }
 
@@ -163,13 +253,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
             if (inputDatausePagination != null)
             {
-                inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                if (inputDatausePagination != null)
+                {
+                    inputData["paginate"] = ExpressionConverter.ConvertO(inputDatausePagination);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["paginate"] = false;
                 inputDatapropCount++;
             }
 
             if (inputDatafailOnError != null)
             {
-                inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                if (inputDatafailOnError != null)
+                {
+                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputDatapropCount++;
+                }
+
+                inputDatapropCount++;
+            }
+            else
+            {
+                inputData["fail_on_error"] = true;
                 inputDatapropCount++;
             }
 

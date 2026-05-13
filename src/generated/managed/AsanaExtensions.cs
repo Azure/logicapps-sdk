@@ -12,16 +12,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class AsanaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeamsV2(Expression<Func<string>> workspace)
+        public IBodyWorkflowAction<AddCommentResponseV2> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
         {
-            var apiCallPath = String.Format("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(workspace, 1));
-            var apiCallHttpMethod = "get";
+            var apiCallPath = String.Format("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var dataObject = new JObject();
+            var dataObjectpropCount = 0;
+            if (bodydatacomment != null)
+            {
+                dataObject["text"] = ExpressionConverter.ConvertO(bodydatacomment);
+                dataObjectpropCount++;
+            }
+
+            if (dataObjectpropCount > 0)
+            {
+                body["data"] = dataObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2> CreateProjectV2(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
+        public IBodyWorkflowAction<TaskResponseV2> CompleteTask(Expression<Func<string>> taskId)
+        {
+            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<TaskResponseV2>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
+        public IBodyWorkflowAction<ProjectResponseV2> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
         {
             var apiCallPath = "/v2/projects";
             var apiCallHttpMethod = "post";
@@ -47,7 +77,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
             if (projectdatapublic != null)
             {
-                dataObject["public"] = ExpressionConverter.ConvertO(projectdatapublic);
+                if (projectdatapublic != null)
+                {
+                    dataObject["public"] = ExpressionConverter.ConvertO(projectdatapublic);
+                    dataObjectpropCount++;
+                }
+
+                dataObjectpropCount++;
+            }
+            else
+            {
+                dataObject["public"] = false;
                 dataObjectpropCount++;
             }
 
@@ -71,7 +111,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
             if (projectdataarchive != null)
             {
-                dataObject["archived"] = ExpressionConverter.ConvertO(projectdataarchive);
+                if (projectdataarchive != null)
+                {
+                    dataObject["archived"] = ExpressionConverter.ConvertO(projectdataarchive);
+                    dataObjectpropCount++;
+                }
+
+                dataObjectpropCount++;
+            }
+            else
+            {
+                dataObject["archived"] = false;
                 dataObjectpropCount++;
             }
 
@@ -90,16 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2> GetProjectV2(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = String.Format("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectResponseV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> CreateTaskV2(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
+        public IBodyWorkflowAction<TaskResponseV2> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
         {
             var apiCallPath = "/v2/tasks";
             var apiCallHttpMethod = "post";
@@ -136,7 +177,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
             if (taskdatacompleted != null)
             {
-                dataObject["completed"] = ExpressionConverter.ConvertO(taskdatacompleted);
+                if (taskdatacompleted != null)
+                {
+                    dataObject["completed"] = ExpressionConverter.ConvertO(taskdatacompleted);
+                    dataObjectpropCount++;
+                }
+
+                dataObjectpropCount++;
+            }
+            else
+            {
+                dataObject["completed"] = false;
                 dataObjectpropCount++;
             }
 
@@ -161,7 +212,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> GetTaskV2(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<ProjectResponseV2> GetProject(Expression<Func<string>> projectId)
+        {
+            var apiCallPath = String.Format("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
+        public IBodyWorkflowAction<TaskResponseV2> GetTask(Expression<Func<string>> taskId)
         {
             var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "get";
@@ -170,46 +230,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> CompleteTaskV2(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<UserResponseV2> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
+            var apiCallPath = String.Format("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            return new ApiConnectionAction<UserResponseV2>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<AddCommentResponseV2> AddCommentV2(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
-        {
-            var apiCallPath = String.Format("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatacomment != null)
-            {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatacomment);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ListUsersResponseV2> ListUsersV2(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<ListUsersResponseV2> ListUsers(Expression<Func<string>> workspaceId)
         {
             var apiCallPath = String.Format("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
@@ -218,18 +248,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<UserResponseV2> GetUserV2(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams(Expression<Func<string>> workspace)
         {
-            var apiCallPath = String.Format("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+            var apiCallPath = String.Format("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(workspace, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponseV2>(callPayload);
+            return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
         }
     }
 
     public class AsanaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreatedV2(Expression<Func<string>> workspace, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated(Expression<Func<string>> workspace, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/new_project_trigger/projects";
             var apiCallHttpMethod = "get";
@@ -238,17 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreatedV2(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/v2/new_task_trigger/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompletedV2(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/complete_task_trigger/tasks";
             var apiCallHttpMethod = "get";
@@ -257,18 +277,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             callPayload.Queries["project"] = ExpressionConverter.Convert(project);
             return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
         }
+
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            var apiCallPath = "/v2/new_task_trigger/tasks";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
+            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+        }
     }
 
-    public class ListTeamsResponseV2
+    public class AddCommentResponseV2
     {
         [JsonProperty("data")]
-        public ListTeamsResponseV2DataTypeItem[] Data { get; set; }
+        public AddCommentResponseV2DataType Data { get; set; }
     }
 
-    public class ListTeamsResponseV2DataTypeItem
+    public class AddCommentResponseV2DataType
+    {
+        [JsonProperty("target")]
+        public TargetV2 Target { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreationDate { get; set; }
+
+        [JsonProperty("created_by")]
+        public CreatedByV2 CreatedBy { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("gid")]
+        public string CommentID { get; set; }
+    }
+
+    public class TargetV2
     {
         [JsonProperty("gid")]
-        public string TeamID { get; set; }
+        public string ID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreatedByV2
+    {
+        [JsonProperty("gid")]
+        public string ID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class TaskResponseV2
+    {
+        [JsonProperty("gid")]
+        public string TaskID { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("modified_at")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("name")]
+        public string TaskName { get; set; }
+
+        [JsonProperty("notes")]
+        public string TaskNotes { get; set; }
+
+        [JsonProperty("completed")]
+        public bool Completed { get; set; }
+
+        [JsonProperty("assignee")]
+        public AssigneeV2 Assignee { get; set; }
+
+        [JsonProperty("assignee_status")]
+        public string AsigneeStatus { get; set; }
+
+        [JsonProperty("completed_at")]
+        public string CompletedDateAndTime { get; set; }
+
+        [JsonProperty("due_on")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("due_at")]
+        public string DueDateAndTime { get; set; }
+
+        [JsonProperty("workspace")]
+        public WorkSpaceV2 Workspace { get; set; }
+
+        [JsonProperty("num_hearts")]
+        public int NumberOfLikes { get; set; }
+
+        [JsonProperty("permalink_url")]
+        public string PermanentUrl { get; set; }
+
+        [JsonProperty("hearted")]
+        public bool Liked { get; set; }
+    }
+
+    public class AssigneeV2
+    {
+        [JsonProperty("gid")]
+        public string ID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class WorkSpaceV2
+    {
+        [JsonProperty("gid")]
+        public string ID { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -343,15 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
-    public class WorkSpaceV2
-    {
-        [JsonProperty("gid")]
-        public string ID { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
     public enum projectdataprojectColorInput
     {
         [EnumMember(Value = "dark-pink")]
@@ -392,123 +512,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         LightWarmGray
     }
 
-    public class TaskResponseV2
-    {
-        [JsonProperty("gid")]
-        public string TaskID { get; set; }
-
-        [JsonProperty("created_at")]
-        public string CreatedDate { get; set; }
-
-        [JsonProperty("modified_at")]
-        public string ModifiedDate { get; set; }
-
-        [JsonProperty("name")]
-        public string TaskName { get; set; }
-
-        [JsonProperty("notes")]
-        public string TaskNotes { get; set; }
-
-        [JsonProperty("completed")]
-        public bool Completed { get; set; }
-
-        [JsonProperty("assignee")]
-        public AssigneeV2 Assignee { get; set; }
-
-        [JsonProperty("assignee_status")]
-        public string AsigneeStatus { get; set; }
-
-        [JsonProperty("completed_at")]
-        public string CompletedDateAndTime { get; set; }
-
-        [JsonProperty("due_on")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("due_at")]
-        public string DueDateAndTime { get; set; }
-
-        [JsonProperty("workspace")]
-        public WorkSpaceV2 Workspace { get; set; }
-
-        [JsonProperty("num_hearts")]
-        public int NumberOfLikes { get; set; }
-
-        [JsonProperty("permalink_url")]
-        public string PermanentUrl { get; set; }
-
-        [JsonProperty("hearted")]
-        public bool Liked { get; set; }
-    }
-
-    public class AssigneeV2
-    {
-        [JsonProperty("gid")]
-        public string ID { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
     public enum taskdataassigneeStatusInput
     {
         Inbox,
         Later,
         Today,
         Upcoming
-    }
-
-    public class AddCommentResponseV2
-    {
-        [JsonProperty("data")]
-        public AddCommentResponseV2DataType Data { get; set; }
-    }
-
-    public class AddCommentResponseV2DataType
-    {
-        [JsonProperty("target")]
-        public TargetV2 Target { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("created_at")]
-        public string CreationDate { get; set; }
-
-        [JsonProperty("created_by")]
-        public CreatedByV2 CreatedBy { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("gid")]
-        public string CommentID { get; set; }
-    }
-
-    public class TargetV2
-    {
-        [JsonProperty("gid")]
-        public string ID { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class CreatedByV2
-    {
-        [JsonProperty("gid")]
-        public string ID { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class ListUsersResponseV2
-    {
-        [JsonProperty("data")]
-        public UserResponseV2[] Users { get; set; }
     }
 
     public class UserResponseV2
@@ -521,6 +530,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
         [JsonProperty("email")]
         public string Email { get; set; }
+    }
+
+    public class ListUsersResponseV2
+    {
+        [JsonProperty("data")]
+        public UserResponseV2[] Users { get; set; }
+    }
+
+    public class ListTeamsResponseV2
+    {
+        [JsonProperty("data")]
+        public ListTeamsResponseV2DataTypeItem[] Data { get; set; }
+    }
+
+    public class ListTeamsResponseV2DataTypeItem
+    {
+        [JsonProperty("gid")]
+        public string TeamID { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class ListProjectsResponseV2

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslatePostResponse> TranslatePost(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
         {
             var apiCallPath = String.Format("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
             var apiCallHttpMethod = "post";

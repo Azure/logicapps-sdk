@@ -87,19 +87,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
             var eventTypeObjectpropCount = 0;
             if (bodyeventTypecreate != null)
             {
-                eventTypeObject["Create"] = ExpressionConverter.ConvertO(bodyeventTypecreate);
+                if (bodyeventTypecreate != null)
+                {
+                    eventTypeObject["Create"] = ExpressionConverter.ConvertO(bodyeventTypecreate);
+                    eventTypeObjectpropCount++;
+                }
+
+                eventTypeObjectpropCount++;
+            }
+            else
+            {
+                eventTypeObject["Create"] = true;
                 eventTypeObjectpropCount++;
             }
 
             if (bodyeventTypedelete != null)
             {
-                eventTypeObject["Delete"] = ExpressionConverter.ConvertO(bodyeventTypedelete);
+                if (bodyeventTypedelete != null)
+                {
+                    eventTypeObject["Delete"] = ExpressionConverter.ConvertO(bodyeventTypedelete);
+                    eventTypeObjectpropCount++;
+                }
+
+                eventTypeObjectpropCount++;
+            }
+            else
+            {
+                eventTypeObject["Delete"] = false;
                 eventTypeObjectpropCount++;
             }
 
             if (bodyeventTypeupdate != null)
             {
-                eventTypeObject["Update"] = ExpressionConverter.ConvertO(bodyeventTypeupdate);
+                if (bodyeventTypeupdate != null)
+                {
+                    eventTypeObject["Update"] = ExpressionConverter.ConvertO(bodyeventTypeupdate);
+                    eventTypeObjectpropCount++;
+                }
+
+                eventTypeObjectpropCount++;
+            }
+            else
+            {
+                eventTypeObject["Update"] = true;
                 eventTypeObjectpropCount++;
             }
 

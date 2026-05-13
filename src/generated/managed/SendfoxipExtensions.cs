@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListPostResponse> ListPost(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<ListPostResponse> List(Expression<Func<string>> bodyname)
         {
             var apiCallPath = "/lists";
             var apiCallHttpMethod = "post";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactPostResponse> ContactPost(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
+        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
         {
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "post";

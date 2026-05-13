@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SealingResponse> SealingRequestsealingPost(Expression<Func<string>> bodypdfDocument, Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylanguageType = null)
+        public IBodyWorkflowAction<SealingResponse> SealingRequestsealing(Expression<Func<string>> bodypdfDocument, Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylanguageType = null)
         {
             var apiCallPath = "/management/sealing";
             var apiCallHttpMethod = "post";
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SigningProcess> CreateSigningProcesssigningPost(Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodypdfDocument = null, Expression<Func<string>> bodypdfFileName = null, Expression<Func<CreateSignee[]>> bodycreateSignees = null, Expression<Func<SigningAttachment[]>> bodyattachments = null, Expression<Func<AttachmentReference[]>> bodyattachmentReferences = null, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null, Expression<Func<bodysignatureLocationInput>> bodysignatureLocation = null, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodysequenceKey = null, Expression<Func<string>> bodyactivityDisplayName = null, Expression<Func<bool>> bodyflattenDocument = null, Expression<Func<string>> bodyreminderRule = null)
+        public IBodyWorkflowAction<SigningProcess> CreateSigningProcesssigning(Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodypdfDocument = null, Expression<Func<string>> bodypdfFileName = null, Expression<Func<CreateSignee[]>> bodycreateSignees = null, Expression<Func<SigningAttachment[]>> bodyattachments = null, Expression<Func<AttachmentReference[]>> bodyattachmentReferences = null, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null, Expression<Func<bodysignatureLocationInput>> bodysignatureLocation = null, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodysequenceKey = null, Expression<Func<string>> bodyactivityDisplayName = null, Expression<Func<bool>> bodyflattenDocument = null, Expression<Func<string>> bodyreminderRule = null)
         {
             var apiCallPath = "/management/signing";
             var apiCallHttpMethod = "post";
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<JToken> SealingXmlRequestsealingxmlPost(Expression<Func<string>> bodyxmlDocument, Expression<Func<string>> bodyflowKey)
+        public IBodyWorkflowAction<JToken> SealingXmlRequestsealingxml(Expression<Func<string>> bodyxmlDocument, Expression<Func<string>> bodyflowKey)
         {
             var apiCallPath = "/management/sealing/xml";
             var apiCallHttpMethod = "post";
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SequentialSigning> CreateSequentialSigningsigningsequentialPost(Expression<Func<CreateSigningProcess[]>> bodycreateSigningProcesses, Expression<Func<string>> bodyuser, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null)
+        public IBodyWorkflowAction<SequentialSigning> CreateSequentialSigningsigningsequential(Expression<Func<CreateSigningProcess[]>> bodycreateSigningProcesses, Expression<Func<string>> bodyuser, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null)
         {
             var apiCallPath = "/management/signing/sequential";
             var apiCallHttpMethod = "post";
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<StartAuthResponse> AuthStartStartPost(Expression<Func<string>> bodyflowKey, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodyphoneNumber = null)
+        public IBodyWorkflowAction<StartAuthResponse> AuthStartStart(Expression<Func<string>> bodyflowKey, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodyphoneNumber = null)
         {
             var apiCallPath = "/Auth/Start";
             var apiCallHttpMethod = "post";
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<PollCustomer> AuthPollPollPost(Expression<Func<string>> bodyauthRequestId, Expression<Func<string>> bodyflowKey, Expression<Func<bodylookupTypeInput>> bodylookupType)
+        public IBodyWorkflowAction<PollCustomer> AuthPollPoll(Expression<Func<string>> bodyauthRequestId, Expression<Func<string>> bodyflowKey, Expression<Func<bodylookupTypeInput>> bodylookupType)
         {
             var apiCallPath = "/Auth/Poll";
             var apiCallHttpMethod = "post";
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<StartAuthResponse> RequestToViewSequenceStartsequentialSequenceKeyauthPost(Expression<Func<string>> sequenceKey, Expression<Func<string>> bodysequenceKey, Expression<Func<string>> bodyloginHint, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType)
+        public IBodyWorkflowAction<StartAuthResponse> RequestToViewSequenceStartsequentialSequenceKeyauth(Expression<Func<string>> sequenceKey, Expression<Func<string>> bodysequenceKey, Expression<Func<string>> bodyloginHint, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType)
         {
             var apiCallPath = String.Format("/signing/sequential/{0}/auth", ExpressionConverter.ConvertWithUrlEncoding(sequenceKey, 1));
             var apiCallHttpMethod = "post";

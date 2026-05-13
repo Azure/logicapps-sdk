@@ -228,46 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
             return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, triggerName, recurrence);
         }
-
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProjectV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/v2/trigger/_api/ProjectData/Projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublishedV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/v2/trigger/_api/ProjectData/PublishedProjects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResourceV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/v2/trigger/_api/ProjectData/Resources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTaskV2(Expression<Func<string>> siteUrl, Expression<Func<string>> select, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/v2/trigger/_api/ProjectData/Tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, triggerName, recurrence);
-        }
     }
 
     public class ProjectsWrapper

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
     public class DocumentaikonfuzioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IBodyWorkflowAction<V2DocsCreateResponse> V2DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
+        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
         {
             var apiCallPath = "/v2/docs/";
             var apiCallHttpMethod = "post";
@@ -21,16 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction V2DocsRead(Expression<Func<string>> doc)
-        {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction V2DocsDelete(Expression<Func<string>> doc)
+        public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
         {
             var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
             var apiCallHttpMethod = "delete";
@@ -39,10 +30,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction V2DocsPartialUpdate(Expression<Func<string>> doc)
+        public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
         {
             var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
             var apiCallHttpMethod = "patch";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
+        public IWorkflowAction DocsRead(Expression<Func<string>> doc)
+        {
+            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+            var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction(callPayload);
         }

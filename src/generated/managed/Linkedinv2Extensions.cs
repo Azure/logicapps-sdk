@@ -29,7 +29,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             bodypropCount++;
             if (bodyisReshareDisabledByAuthor != null)
             {
-                body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                if (bodyisReshareDisabledByAuthor != null)
+                {
+                    body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["isReshareDisabledByAuthor"] = false;
                 bodypropCount++;
             }
 
@@ -49,7 +59,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var articleObjectpropCount = 0;
             if (bodycontentarticledescription != null)
             {
-                articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                if (bodycontentarticledescription != null)
+                {
+                    articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                    articleObjectpropCount++;
+                }
+
+                articleObjectpropCount++;
+            }
+            else
+            {
+                articleObject["description"] = "";
                 articleObjectpropCount++;
             }
 
@@ -99,7 +119,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             bodypropCount++;
             if (bodyisReshareDisabledByAuthor != null)
             {
-                body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                if (bodyisReshareDisabledByAuthor != null)
+                {
+                    body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["isReshareDisabledByAuthor"] = false;
                 bodypropCount++;
             }
 
@@ -119,7 +149,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var articleObjectpropCount = 0;
             if (bodycontentarticledescription != null)
             {
-                articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                if (bodycontentarticledescription != null)
+                {
+                    articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                    articleObjectpropCount++;
+                }
+
+                articleObjectpropCount++;
+            }
+            else
+            {
+                articleObject["description"] = "";
                 articleObjectpropCount++;
             }
 
@@ -154,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ListCompaniesResponseV2Item[]> ListCompaniesV2()
+        public IBodyWorkflowAction<ListCompaniesResponseV2Item[]> ListCompanies()
         {
             var apiCallPath = "/v2/organizationalEntityAcls";
             var apiCallHttpMethod = "get";

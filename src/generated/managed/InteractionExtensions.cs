@@ -31,13 +31,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesskip != null)
             {
-                variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                if (bodyvariablesskip != null)
+                {
+                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["skip"] = 0;
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslimit != null)
             {
-                variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                if (bodyvariableslimit != null)
+                {
+                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["limit"] = 100;
                 variablesObjectpropCount++;
             }
 
@@ -81,13 +101,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesskip != null)
             {
-                variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                if (bodyvariablesskip != null)
+                {
+                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["skip"] = 0;
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslimit != null)
             {
-                variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                if (bodyvariableslimit != null)
+                {
+                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["limit"] = 100;
                 variablesObjectpropCount++;
             }
 
@@ -125,13 +165,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesskip != null)
             {
-                variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                if (bodyvariablesskip != null)
+                {
+                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["skip"] = 0;
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslimit != null)
             {
-                variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                if (bodyvariableslimit != null)
+                {
+                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["limit"] = 100;
                 variablesObjectpropCount++;
             }
 
@@ -207,7 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariableslistid != null)
             {
-                variablesObject["listid"] = ExpressionConverter.ConvertO(bodyvariableslistid);
+                if (bodyvariableslistid != null)
+                {
+                    variablesObject["listid"] = ExpressionConverter.ConvertO(bodyvariableslistid);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["listid"] = "00000000-0000-0000-0000-000000000000";
                 variablesObjectpropCount++;
             }
 
@@ -367,13 +437,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
             if (bodyvariablesskip != null)
             {
-                variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                if (bodyvariablesskip != null)
+                {
+                    variablesObject["skip"] = ExpressionConverter.ConvertO(bodyvariablesskip);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["skip"] = 0;
                 variablesObjectpropCount++;
             }
 
             if (bodyvariableslimit != null)
             {
-                variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                if (bodyvariableslimit != null)
+                {
+                    variablesObject["limit"] = ExpressionConverter.ConvertO(bodyvariableslimit);
+                    variablesObjectpropCount++;
+                }
+
+                variablesObjectpropCount++;
+            }
+            else
+            {
+                variablesObject["limit"] = 100;
                 variablesObjectpropCount++;
             }
 

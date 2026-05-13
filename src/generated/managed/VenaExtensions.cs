@@ -35,7 +35,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var lidsBodypropCount = 0;
             if (lidsBodyshowHeader != null)
             {
-                lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                if (lidsBodyshowHeader != null)
+                {
+                    lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["showHeaders"] = false;
                 lidsBodypropCount++;
             }
 
@@ -47,13 +57,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (lidsBodyfileFormat != null)
             {
-                lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                if (lidsBodyfileFormat != null)
+                {
+                    lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["format"] = "CSV";
                 lidsBodypropCount++;
             }
 
             if (lidsBodyfileEncoding != null)
             {
-                lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                if (lidsBodyfileEncoding != null)
+                {
+                    lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["encoding"] = "UTF-8";
                 lidsBodypropCount++;
             }
 
@@ -77,7 +107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var hierarchiesBodypropCount = 0;
             if (hierarchiesBodyshowHeader != null)
             {
-                hierarchiesBody["showHeaders"] = ExpressionConverter.ConvertO(hierarchiesBodyshowHeader);
+                if (hierarchiesBodyshowHeader != null)
+                {
+                    hierarchiesBody["showHeaders"] = ExpressionConverter.ConvertO(hierarchiesBodyshowHeader);
+                    hierarchiesBodypropCount++;
+                }
+
+                hierarchiesBodypropCount++;
+            }
+            else
+            {
+                hierarchiesBody["showHeaders"] = false;
                 hierarchiesBodypropCount++;
             }
 
@@ -89,13 +129,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (hierarchiesBodyfileFormat != null)
             {
-                hierarchiesBody["format"] = ExpressionConverter.ConvertO(hierarchiesBodyfileFormat);
+                if (hierarchiesBodyfileFormat != null)
+                {
+                    hierarchiesBody["format"] = ExpressionConverter.ConvertO(hierarchiesBodyfileFormat);
+                    hierarchiesBodypropCount++;
+                }
+
+                hierarchiesBodypropCount++;
+            }
+            else
+            {
+                hierarchiesBody["format"] = "CSV";
                 hierarchiesBodypropCount++;
             }
 
             if (hierarchiesBodyfileEncoding != null)
             {
-                hierarchiesBody["encoding"] = ExpressionConverter.ConvertO(hierarchiesBodyfileEncoding);
+                if (hierarchiesBodyfileEncoding != null)
+                {
+                    hierarchiesBody["encoding"] = ExpressionConverter.ConvertO(hierarchiesBodyfileEncoding);
+                    hierarchiesBodypropCount++;
+                }
+
+                hierarchiesBodypropCount++;
+            }
+            else
+            {
+                hierarchiesBody["encoding"] = "UTF-8";
                 hierarchiesBodypropCount++;
             }
 
@@ -103,7 +163,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             hierarchiesBodypropCount++;
             if (hierarchiesBodyexportMemberIDs != null)
             {
-                hierarchiesBody["exportMemberIds"] = ExpressionConverter.ConvertO(hierarchiesBodyexportMemberIDs);
+                if (hierarchiesBodyexportMemberIDs != null)
+                {
+                    hierarchiesBody["exportMemberIds"] = ExpressionConverter.ConvertO(hierarchiesBodyexportMemberIDs);
+                    hierarchiesBodypropCount++;
+                }
+
+                hierarchiesBodypropCount++;
+            }
+            else
+            {
+                hierarchiesBody["exportMemberIds"] = false;
                 hierarchiesBodypropCount++;
             }
 
@@ -125,7 +195,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var valuesBodypropCount = 0;
             if (valuesBodyshowHeader != null)
             {
-                valuesBody["showHeaders"] = ExpressionConverter.ConvertO(valuesBodyshowHeader);
+                if (valuesBodyshowHeader != null)
+                {
+                    valuesBody["showHeaders"] = ExpressionConverter.ConvertO(valuesBodyshowHeader);
+                    valuesBodypropCount++;
+                }
+
+                valuesBodypropCount++;
+            }
+            else
+            {
+                valuesBody["showHeaders"] = false;
                 valuesBodypropCount++;
             }
 
@@ -137,13 +217,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (valuesBodyfileFormat != null)
             {
-                valuesBody["format"] = ExpressionConverter.ConvertO(valuesBodyfileFormat);
+                if (valuesBodyfileFormat != null)
+                {
+                    valuesBody["format"] = ExpressionConverter.ConvertO(valuesBodyfileFormat);
+                    valuesBodypropCount++;
+                }
+
+                valuesBodypropCount++;
+            }
+            else
+            {
+                valuesBody["format"] = "CSV";
                 valuesBodypropCount++;
             }
 
             if (valuesBodyfileEncoding != null)
             {
-                valuesBody["encoding"] = ExpressionConverter.ConvertO(valuesBodyfileEncoding);
+                if (valuesBodyfileEncoding != null)
+                {
+                    valuesBody["encoding"] = ExpressionConverter.ConvertO(valuesBodyfileEncoding);
+                    valuesBodypropCount++;
+                }
+
+                valuesBodypropCount++;
+            }
+            else
+            {
+                valuesBody["encoding"] = "UTF-8";
                 valuesBodypropCount++;
             }
 
@@ -151,13 +251,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             valuesBodypropCount++;
             if (valuesBodyincludeExternalIDs != null)
             {
-                valuesBody["includeExternalId"] = ExpressionConverter.ConvertO(valuesBodyincludeExternalIDs);
+                if (valuesBodyincludeExternalIDs != null)
+                {
+                    valuesBody["includeExternalId"] = ExpressionConverter.ConvertO(valuesBodyincludeExternalIDs);
+                    valuesBodypropCount++;
+                }
+
+                valuesBodypropCount++;
+            }
+            else
+            {
+                valuesBody["includeExternalId"] = false;
                 valuesBodypropCount++;
             }
 
             if (valuesBodynamedDimensions != null)
             {
-                valuesBody["isNamedHeader"] = ExpressionConverter.ConvertO(valuesBodynamedDimensions);
+                if (valuesBodynamedDimensions != null)
+                {
+                    valuesBody["isNamedHeader"] = ExpressionConverter.ConvertO(valuesBodynamedDimensions);
+                    valuesBodypropCount++;
+                }
+
+                valuesBodypropCount++;
+            }
+            else
+            {
+                valuesBody["isNamedHeader"] = false;
                 valuesBodypropCount++;
             }
 
@@ -179,7 +299,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var lidsBodypropCount = 0;
             if (lidsBodyshowHeader != null)
             {
-                lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                if (lidsBodyshowHeader != null)
+                {
+                    lidsBody["showHeaders"] = ExpressionConverter.ConvertO(lidsBodyshowHeader);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["showHeaders"] = false;
                 lidsBodypropCount++;
             }
 
@@ -191,13 +321,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
             if (lidsBodyfileFormat != null)
             {
-                lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                if (lidsBodyfileFormat != null)
+                {
+                    lidsBody["format"] = ExpressionConverter.ConvertO(lidsBodyfileFormat);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["format"] = "CSV";
                 lidsBodypropCount++;
             }
 
             if (lidsBodyfileEncoding != null)
             {
-                lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                if (lidsBodyfileEncoding != null)
+                {
+                    lidsBody["encoding"] = ExpressionConverter.ConvertO(lidsBodyfileEncoding);
+                    lidsBodypropCount++;
+                }
+
+                lidsBodypropCount++;
+            }
+            else
+            {
+                lidsBody["encoding"] = "UTF-8";
                 lidsBodypropCount++;
             }
 

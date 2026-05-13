@@ -57,7 +57,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
 
             if (bodyxRecordStatus != null)
             {
-                body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                if (bodyxRecordStatus != null)
+                {
+                    body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["xRecordStatus"] = "Active";
                 bodypropCount++;
             }
 

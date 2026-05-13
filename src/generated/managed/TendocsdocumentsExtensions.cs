@@ -12,7 +12,271 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> V1DocumentTemplatePost(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<AiCompareResponse> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
+        {
+            var apiCallPath = "/ai/v1/tasks/compare";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            var sourceDocumentObject = new JObject();
+            var sourceDocumentObjectpropCount = 0;
+            if (requestsourceDocumentfirstFile != null)
+            {
+                sourceDocumentObject["file"] = ExpressionConverter.ConvertO(requestsourceDocumentfirstFile);
+                sourceDocumentObjectpropCount++;
+            }
+
+            if (sourceDocumentObjectpropCount > 0)
+            {
+                request["sourceDocument"] = sourceDocumentObject;
+                requestpropCount++;
+            }
+
+            var comparisonDocumentObject = new JObject();
+            var comparisonDocumentObjectpropCount = 0;
+            if (requestcomparisonDocumentsecondFile != null)
+            {
+                comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(requestcomparisonDocumentsecondFile);
+                comparisonDocumentObjectpropCount++;
+            }
+
+            if (comparisonDocumentObjectpropCount > 0)
+            {
+                request["comparisonDocument"] = comparisonDocumentObject;
+                requestpropCount++;
+            }
+
+            var configurationObject = new JObject();
+            var configurationObjectpropCount = 0;
+            if (requestconfigurationprofession != null)
+            {
+                configurationObject["profession"] = ExpressionConverter.ConvertO(requestconfigurationprofession);
+                configurationObjectpropCount++;
+            }
+
+            var keysObject = new JObject();
+            var keysObjectpropCount = 0;
+            if (keysObjectpropCount > 0)
+            {
+                configurationObject["keys"] = keysObject;
+                configurationObjectpropCount++;
+            }
+
+            if (configurationObjectpropCount > 0)
+            {
+                request["configuration"] = configurationObject;
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<AiCompareResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
+        public IBodyWorkflowAction<AiSummaryResponse> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
+        {
+            var apiCallPath = "/ai/v1/tasks/summary";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            var documentObject = new JObject();
+            var documentObjectpropCount = 0;
+            if (requestdocumentfile != null)
+            {
+                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                documentObjectpropCount++;
+            }
+
+            if (documentObjectpropCount > 0)
+            {
+                request["document"] = documentObject;
+                requestpropCount++;
+            }
+
+            var configurationObject = new JObject();
+            var configurationObjectpropCount = 0;
+            if (requestconfigurationtargetWordCount != null)
+            {
+                configurationObject["targetWords"] = ExpressionConverter.ConvertO(requestconfigurationtargetWordCount);
+                configurationObjectpropCount++;
+            }
+
+            var keysObject = new JObject();
+            var keysObjectpropCount = 0;
+            if (keysObjectpropCount > 0)
+            {
+                configurationObject["keys"] = keysObject;
+                configurationObjectpropCount++;
+            }
+
+            if (configurationObjectpropCount > 0)
+            {
+                request["configuration"] = configurationObject;
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<AiSummaryResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
+        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
+        {
+            var apiCallPath = "/ai/v1/tasks/templateBuilder";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            requestpropCount++;
+            request["description"] = ExpressionConverter.ConvertO(requestdescribeTheDocument1000Chars);
+            var configurationObject = new JObject();
+            var configurationObjectpropCount = 0;
+            var keysObject = new JObject();
+            var keysObjectpropCount = 0;
+            if (keysObjectpropCount > 0)
+            {
+                configurationObject["keys"] = keysObject;
+                configurationObjectpropCount++;
+            }
+
+            if (configurationObjectpropCount > 0)
+            {
+                request["configuration"] = configurationObject;
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<AiTemplateBuilderResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
+        public IBodyWorkflowAction<string> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        {
+            var apiCallPath = "/conversion/v1/convert";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            var documentObject = new JObject();
+            var documentObjectpropCount = 0;
+            if (requestdocumentfile != null)
+            {
+                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                documentObjectpropCount++;
+            }
+
+            if (documentObjectpropCount > 0)
+            {
+                request["document"] = documentObject;
+                requestpropCount++;
+            }
+
+            var configurationObject = new JObject();
+            var configurationObjectpropCount = 0;
+            if (requestconfigurationdocumentFormat != null)
+            {
+                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                configurationObjectpropCount++;
+            }
+
+            var keysObject = new JObject();
+            var keysObjectpropCount = 0;
+            if (keysObjectpropCount > 0)
+            {
+                configurationObject["keys"] = keysObject;
+                configurationObjectpropCount++;
+            }
+
+            if (configurationObjectpropCount > 0)
+            {
+                request["configuration"] = configurationObject;
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<string>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
+        public IBodyWorkflowAction<string> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        {
+            var apiCallPath = "/documents/v1/jsonTemplate";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            var templateObject = new JObject();
+            var templateObjectpropCount = 0;
+            if (requesttemplatetemplateFile != null)
+            {
+                templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
+                templateObjectpropCount++;
+            }
+
+            if (templateObjectpropCount > 0)
+            {
+                request["template"] = templateObject;
+                requestpropCount++;
+            }
+
+            var jsonObject = new JObject();
+            var jsonObjectpropCount = 0;
+            if (jsonObjectpropCount > 0)
+            {
+                request["json"] = jsonObject;
+                requestpropCount++;
+            }
+
+            var configurationObject = new JObject();
+            var configurationObjectpropCount = 0;
+            if (requestconfigurationdocumentFormat != null)
+            {
+                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                configurationObjectpropCount++;
+            }
+
+            var keysObject = new JObject();
+            var keysObjectpropCount = 0;
+            if (keysObjectpropCount > 0)
+            {
+                configurationObject["keys"] = keysObject;
+                configurationObjectpropCount++;
+            }
+
+            if (configurationObjectpropCount > 0)
+            {
+                request["configuration"] = configurationObject;
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<string>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
+        public IBodyWorkflowAction<string> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
             var apiCallPath = "/documents/v1/template";
             var apiCallHttpMethod = "post";
@@ -90,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse> V1EnvelopesInstancesPost(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
         {
             var apiCallPath = "/envelopes/v1/instances";
             var apiCallHttpMethod = "post";
@@ -214,313 +478,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
             return new ApiConnectionAction<InstancesResponse>(callPayload);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> V1DocumentJsonTemplatePost(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
-        {
-            var apiCallPath = "/documents/v1/jsonTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (requesttemplatetemplateFile != null)
-            {
-                templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                request["template"] = templateObject;
-                requestpropCount++;
-            }
-
-            var jsonObject = new JObject();
-            var jsonObjectpropCount = 0;
-            if (jsonObjectpropCount > 0)
-            {
-                request["json"] = jsonObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationdocumentFormat != null)
-            {
-                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> V1ConversionConvertPost(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
-        {
-            var apiCallPath = "/conversion/v1/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (requestdocumentfile != null)
-            {
-                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                request["document"] = documentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationdocumentFormat != null)
-            {
-                configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse> V1AiSummaryPost(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
-        {
-            var apiCallPath = "/ai/v1/tasks/summary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (requestdocumentfile != null)
-            {
-                documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                request["document"] = documentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationtargetWordCount != null)
-            {
-                configurationObject["targetWords"] = ExpressionConverter.ConvertO(requestconfigurationtargetWordCount);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiSummaryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse> V1AiTemplateBuilderPost(Expression<Func<string>> requestdescribeTheDocument1000Chars)
-        {
-            var apiCallPath = "/ai/v1/tasks/templateBuilder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["description"] = ExpressionConverter.ConvertO(requestdescribeTheDocument1000Chars);
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiTemplateBuilderResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiCompareResponse> V1AiComparePost(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
-        {
-            var apiCallPath = "/ai/v1/tasks/compare";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (requestsourceDocumentfirstFile != null)
-            {
-                sourceDocumentObject["file"] = ExpressionConverter.ConvertO(requestsourceDocumentfirstFile);
-                sourceDocumentObjectpropCount++;
-            }
-
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                request["sourceDocument"] = sourceDocumentObject;
-                requestpropCount++;
-            }
-
-            var comparisonDocumentObject = new JObject();
-            var comparisonDocumentObjectpropCount = 0;
-            if (requestcomparisonDocumentsecondFile != null)
-            {
-                comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(requestcomparisonDocumentsecondFile);
-                comparisonDocumentObjectpropCount++;
-            }
-
-            if (comparisonDocumentObjectpropCount > 0)
-            {
-                request["comparisonDocument"] = comparisonDocumentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationprofession != null)
-            {
-                configurationObject["profession"] = ExpressionConverter.ConvertO(requestconfigurationprofession);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiCompareResponse>(callPayload);
-        }
     }
 
     public class TendocsdocumentsTriggers([ConnectionName] string connectionId)
     {
     }
 
-    public class requestimageInputItem
+    public class AiCompareResponse
     {
-        [JsonProperty("token")]
-        public string Token { get; set; }
+        [JsonProperty("differences")]
+        public AiCompareResponseDifferencesTypeItem[] Differences { get; set; }
 
-        [JsonProperty("file")]
-        public string FileContent { get; set; }
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
     }
 
-    public class requestdocumentInputItem
+    public class AiCompareResponseDifferencesTypeItem
     {
-        [JsonProperty("token")]
-        public string Token { get; set; }
+        [JsonProperty("aspect")]
+        public string Aspect { get; set; }
 
-        [JsonProperty("file")]
-        public string FileContent { get; set; }
+        [JsonProperty("detailSummary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("detail")]
+        public AiCompareResponseDifferencesTypeItemDetailsTypeItem[] Details { get; set; }
+
+        [JsonProperty("importance")]
+        public string Importance { get; set; }
     }
 
-    public class requesttableInputItem
+    public class AiCompareResponseDifferencesTypeItemDetailsTypeItem
     {
-        [JsonProperty("token")]
-        public string Token { get; set; }
+        [JsonProperty("document")]
+        public string Document { get; set; }
 
-        [JsonProperty("rows")]
-        public JToken Rows { get; set; }
+        [JsonProperty("summary")]
+        public string DocumentSummary { get; set; }
     }
 
-    public enum requestconfigurationdocumentFormatInput
+    public enum requestconfigurationprofessionInput
     {
-        PDF,
-        HTML
-    }
-
-    public class InstancesResponse
-    {
-        [JsonProperty("url")]
-        public string DocumentUrl { get; set; }
+        Doctor,
+        Editor,
+        Lawyer,
+        General
     }
 
     public class AiSummaryResponse
@@ -580,45 +582,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public JToken[] Subsections { get; set; }
     }
 
-    public class AiCompareResponse
+    public enum requestconfigurationdocumentFormatInput
     {
-        [JsonProperty("differences")]
-        public AiCompareResponseDifferencesTypeItem[] Differences { get; set; }
-
-        [JsonProperty("summary")]
-        public string Summary { get; set; }
+        Original,
+        PDF,
+        HTML
     }
 
-    public class AiCompareResponseDifferencesTypeItem
+    public class requestimageInputItem
     {
-        [JsonProperty("aspect")]
-        public string Aspect { get; set; }
+        [JsonProperty("token")]
+        public string Token { get; set; }
 
-        [JsonProperty("detailSummary")]
-        public string Summary { get; set; }
-
-        [JsonProperty("detail")]
-        public AiCompareResponseDifferencesTypeItemDetailsTypeItem[] Details { get; set; }
-
-        [JsonProperty("importance")]
-        public string Importance { get; set; }
+        [JsonProperty("file")]
+        public string FileContent { get; set; }
     }
 
-    public class AiCompareResponseDifferencesTypeItemDetailsTypeItem
+    public class requestdocumentInputItem
     {
-        [JsonProperty("document")]
-        public string Document { get; set; }
+        [JsonProperty("token")]
+        public string Token { get; set; }
 
-        [JsonProperty("summary")]
-        public string DocumentSummary { get; set; }
+        [JsonProperty("file")]
+        public string FileContent { get; set; }
     }
 
-    public enum requestconfigurationprofessionInput
+    public class requesttableInputItem
     {
-        Doctor,
-        Editor,
-        Lawyer,
-        General
+        [JsonProperty("token")]
+        public string Token { get; set; }
+
+        [JsonProperty("rows")]
+        public JToken Rows { get; set; }
+    }
+
+    public class InstancesResponse
+    {
+        [JsonProperty("url")]
+        public string DocumentUrl { get; set; }
     }
 }
 

@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<Post> GetThreadPost(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<Post> GetThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction ReplyPost(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IWorkflowAction Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
             var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "post";
@@ -366,32 +366,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction ForwardPostV2(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<GetUsersGraphAction[]>> bodyrecipients, Expression<Func<string>> bodycomment = null)
-        {
-            var apiCallPath = String.Format("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ToRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var apiCallPath = "/httprequest";
@@ -414,6 +388,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                 callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
             callPayload.Body = ExpressionConverter.ConvertO(body);
             return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
+        public IWorkflowAction Forward(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<GetUsersGraphAction[]>> bodyrecipients, Expression<Func<string>> bodycomment = null)
+        {
+            var apiCallPath = String.Format("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
+            callPayload.Headers["content-type"] = Convert.ToString("application/json");
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodycomment != null)
+            {
+                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["ToRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction(callPayload);
         }
     }
 

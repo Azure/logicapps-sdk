@@ -65,7 +65,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodyaccounttimeZone != null)
             {
-                accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                if (bodyaccounttimeZone != null)
+                {
+                    accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                    accountObjectpropCount++;
+                }
+
+                accountObjectpropCount++;
+            }
+            else
+            {
+                accountObject["time_zone"] = "Europe/Helsinki";
                 accountObjectpropCount++;
             }
 
@@ -171,7 +181,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodyemploymentemployment != null)
             {
-                employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                if (bodyemploymentemployment != null)
+                {
+                    employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                    employmentObjectpropCount++;
+                }
+
+                employmentObjectpropCount++;
+            }
+            else
+            {
+                employmentObject["employment"] = "active";
                 employmentObjectpropCount++;
             }
 
@@ -535,7 +555,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodypropertiestype != null)
             {
-                propertiesObject["type"] = ExpressionConverter.ConvertO(bodypropertiestype);
+                if (bodypropertiestype != null)
+                {
+                    propertiesObject["type"] = ExpressionConverter.ConvertO(bodypropertiestype);
+                    propertiesObjectpropCount++;
+                }
+
+                propertiesObjectpropCount++;
+            }
+            else
+            {
+                propertiesObject["type"] = "private";
                 propertiesObjectpropCount++;
             }
 
@@ -828,7 +858,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
             if (bodydisable != null)
             {
-                body["disable"] = ExpressionConverter.ConvertO(bodydisable);
+                if (bodydisable != null)
+                {
+                    body["disable"] = ExpressionConverter.ConvertO(bodydisable);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["disable"] = false;
                 bodypropCount++;
             }
 

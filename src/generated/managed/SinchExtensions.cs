@@ -31,7 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             body["message"] = ExpressionConverter.ConvertO(bodymessage);
             if (bodydeliveryReport != null)
             {
-                body["delivery_report"] = ExpressionConverter.ConvertO(bodydeliveryReport);
+                if (bodydeliveryReport != null)
+                {
+                    body["delivery_report"] = ExpressionConverter.ConvertO(bodydeliveryReport);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["delivery_report"] = true;
                 bodypropCount++;
             }
 

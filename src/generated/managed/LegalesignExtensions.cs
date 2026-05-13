@@ -272,7 +272,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             body["signers"] = ExpressionConverter.ConvertO(bodysigners);
             if (bodysignatureType != null)
             {
-                body["signature_type"] = ExpressionConverter.ConvertO(bodysignatureType);
+                if (bodysignatureType != null)
+                {
+                    body["signature_type"] = ExpressionConverter.ConvertO(bodysignatureType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["signature_type"] = 4;
                 bodypropCount++;
             }
 
@@ -284,13 +294,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyautoArchive != null)
             {
-                body["auto_archive"] = ExpressionConverter.ConvertO(bodyautoArchive);
+                if (bodyautoArchive != null)
+                {
+                    body["auto_archive"] = ExpressionConverter.ConvertO(bodyautoArchive);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["auto_archive"] = true;
                 bodypropCount++;
             }
 
             if (bodydoEmail != null)
             {
-                body["do_email"] = ExpressionConverter.ConvertO(bodydoEmail);
+                if (bodydoEmail != null)
+                {
+                    body["do_email"] = ExpressionConverter.ConvertO(bodydoEmail);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["do_email"] = true;
                 bodypropCount++;
             }
 
@@ -302,7 +332,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyconvertSenderToSigner != null)
             {
-                body["convert_sender_to_signer"] = ExpressionConverter.ConvertO(bodyconvertSenderToSigner);
+                if (bodyconvertSenderToSigner != null)
+                {
+                    body["convert_sender_to_signer"] = ExpressionConverter.ConvertO(bodyconvertSenderToSigner);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["convert_sender_to_signer"] = false;
                 bodypropCount++;
             }
 
@@ -340,7 +380,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodyreturnSignerLinks != null)
             {
-                body["return_signer_links"] = ExpressionConverter.ConvertO(bodyreturnSignerLinks);
+                if (bodyreturnSignerLinks != null)
+                {
+                    body["return_signer_links"] = ExpressionConverter.ConvertO(bodyreturnSignerLinks);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["return_signer_links"] = false;
                 bodypropCount++;
             }
 
@@ -360,7 +410,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
             if (bodystrictFields != null)
             {
-                body["strict_fields"] = ExpressionConverter.ConvertO(bodystrictFields);
+                if (bodystrictFields != null)
+                {
+                    body["strict_fields"] = ExpressionConverter.ConvertO(bodystrictFields);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["strict_fields"] = false;
                 bodypropCount++;
             }
 
@@ -444,7 +504,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var bodypropCount = 0;
             if (bodyarchiveUponSend != null)
             {
-                body["archive_upon_send"] = ExpressionConverter.ConvertO(bodyarchiveUponSend);
+                if (bodyarchiveUponSend != null)
+                {
+                    body["archive_upon_send"] = ExpressionConverter.ConvertO(bodyarchiveUponSend);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["archive_upon_send"] = false;
                 bodypropCount++;
             }
 

@@ -21,34 +21,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<NewMeetingResponse> CreateMeetingV2(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
-        {
-            var apiCallPath = "/v2/meetings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newMeeting = new JObject();
-            var newMeetingpropCount = 0;
-            newMeetingpropCount++;
-            newMeeting["subject"] = ExpressionConverter.ConvertO(newMeetingsubject);
-            newMeetingpropCount++;
-            newMeeting["starttime"] = ExpressionConverter.ConvertO(newMeetingstartTime);
-            newMeetingpropCount++;
-            newMeeting["endtime"] = ExpressionConverter.ConvertO(newMeetingendTime);
-            newMeetingpropCount++;
-            newMeeting["passwordrequired"] = ExpressionConverter.ConvertO(newMeetingrequiresPassword);
-            newMeetingpropCount++;
-            newMeeting["conferencecallinfo"] = ExpressionConverter.ConvertO(newMeetingconferenceCallInfo);
-            newMeetingpropCount++;
-            newMeeting["meetingtype"] = ExpressionConverter.ConvertO(newMeetingmeetingType);
-            if (newMeetingpropCount > 0)
-            {
-                callPayload.Body = newMeeting;
-            }
-
-            return new ApiConnectionAction<NewMeetingResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Meeting> GetMeeting(Expression<Func<string>> meetingId)
         {
             var apiCallPath = String.Format("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
@@ -96,6 +68,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Attendee[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
+        public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
+        {
+            var apiCallPath = "/v2/meetings";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var newMeeting = new JObject();
+            var newMeetingpropCount = 0;
+            newMeetingpropCount++;
+            newMeeting["subject"] = ExpressionConverter.ConvertO(newMeetingsubject);
+            newMeetingpropCount++;
+            newMeeting["starttime"] = ExpressionConverter.ConvertO(newMeetingstartTime);
+            newMeetingpropCount++;
+            newMeeting["endtime"] = ExpressionConverter.ConvertO(newMeetingendTime);
+            newMeetingpropCount++;
+            newMeeting["passwordrequired"] = ExpressionConverter.ConvertO(newMeetingrequiresPassword);
+            newMeetingpropCount++;
+            newMeeting["conferencecallinfo"] = ExpressionConverter.ConvertO(newMeetingconferenceCallInfo);
+            newMeetingpropCount++;
+            newMeeting["meetingtype"] = ExpressionConverter.ConvertO(newMeetingmeetingType);
+            if (newMeetingpropCount > 0)
+            {
+                callPayload.Body = newMeeting;
+            }
+
+            return new ApiConnectionAction<NewMeetingResponse>(callPayload);
         }
     }
 
@@ -155,40 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
         [JsonProperty("meetingType")]
         public string MeetingType { get; set; }
-    }
-
-    public class NewMeetingResponse
-    {
-        [JsonProperty("joinURL")]
-        public string JoinURL { get; set; }
-
-        [JsonProperty("meetingid")]
-        public int MeetingId { get; set; }
-
-        [JsonProperty("maxParticipants")]
-        public int MaxParticipants { get; set; }
-
-        [JsonProperty("conferenceCallInfo")]
-        public string ConferenceCallInfo { get; set; }
-    }
-
-    public enum newMeetingconferenceCallInfoInput
-    {
-        PSTN,
-        Free,
-        Hybrid,
-        Private,
-        VoIP
-    }
-
-    public enum newMeetingmeetingTypeInput
-    {
-        [EnumMember(Value = "immediate")]
-        Immediate,
-        [EnumMember(Value = "recurring")]
-        Recurring,
-        [EnumMember(Value = "scheduled")]
-        Scheduled
     }
 
     public class Meeting
@@ -265,6 +231,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
         [JsonProperty("attendeeEmail")]
         public string AttendeeEmail { get; set; }
+    }
+
+    public class NewMeetingResponse
+    {
+        [JsonProperty("joinURL")]
+        public string JoinURL { get; set; }
+
+        [JsonProperty("meetingid")]
+        public int MeetingId { get; set; }
+
+        [JsonProperty("maxParticipants")]
+        public int MaxParticipants { get; set; }
+
+        [JsonProperty("conferenceCallInfo")]
+        public string ConferenceCallInfo { get; set; }
+    }
+
+    public enum newMeetingconferenceCallInfoInput
+    {
+        PSTN,
+        Free,
+        Hybrid,
+        Private,
+        VoIP
+    }
+
+    public enum newMeetingmeetingTypeInput
+    {
+        [EnumMember(Value = "immediate")]
+        Immediate,
+        [EnumMember(Value = "recurring")]
+        Recurring,
+        [EnumMember(Value = "scheduled")]
+        Scheduled
     }
 }
 

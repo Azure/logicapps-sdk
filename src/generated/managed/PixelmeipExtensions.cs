@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        public IBodyWorkflowAction<RedirectPostResponse> RedirectPost(Expression<Func<string>> bodyurl, Expression<Func<string[]>> bodypixelsIds = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodykey = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodysubCampaignId = null, Expression<Func<bodydynamicUrlsInputItem[]>> bodydynamicUrls = null)
+        public IBodyWorkflowAction<RedirectPostResponse> Redirect(Expression<Func<string>> bodyurl, Expression<Func<string[]>> bodypixelsIds = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodykey = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodysubCampaignId = null, Expression<Func<bodydynamicUrlsInputItem[]>> bodydynamicUrls = null)
         {
             var apiCallPath = "/redirects";
             var apiCallHttpMethod = "post";

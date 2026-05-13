@@ -57,7 +57,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
             if (bodyideacreator != null)
             {
-                body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                if (bodyideacreator != null)
+                {
+                    body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ideacreator"] = true;
                 bodypropCount++;
             }
 

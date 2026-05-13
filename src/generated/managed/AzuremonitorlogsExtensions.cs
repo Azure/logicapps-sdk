@@ -27,32 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<TableV2> QueryDataV2(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> bodyquery, Expression<Func<string>> bodytimeRangeType, Expression<Func<object>> bodytimerange)
-        {
-            var apiCallPath = "/queryDataV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptions"] = ExpressionConverter.Convert(subscriptions);
-            callPayload.Queries["resourcegroups"] = ExpressionConverter.Convert(resourcegroups);
-            callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(resourcetype);
-            callPayload.Queries["resourcename"] = ExpressionConverter.Convert(resourcename);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["timerangetype"] = ExpressionConverter.ConvertO(bodytimeRangeType);
-            bodypropCount++;
-            body["timerange"] = ExpressionConverter.ConvertO(bodytimerange);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TableV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<visTypeInput>> visType, Expression<Func<string>> query = null)
         {
             var apiCallPath = "/visualizeQuery";
@@ -65,33 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
             callPayload.Queries["visType"] = ExpressionConverter.Convert(visType);
             callPayload.Body = ExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction<VisualizeResults>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQueryV2(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> bodyquery, Expression<Func<string>> bodytimeRangeType, Expression<Func<object>> bodytimerange, Expression<Func<visTypeInput>> visType)
-        {
-            var apiCallPath = "/visualizeQueryV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptions"] = ExpressionConverter.Convert(subscriptions);
-            callPayload.Queries["resourcegroups"] = ExpressionConverter.Convert(resourcegroups);
-            callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(resourcetype);
-            callPayload.Queries["resourcename"] = ExpressionConverter.Convert(resourcename);
-            callPayload.Queries["visType"] = ExpressionConverter.Convert(visType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["timerangetype"] = ExpressionConverter.ConvertO(bodytimeRangeType);
-            bodypropCount++;
-            body["timerange"] = ExpressionConverter.ConvertO(bodytimerange);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
             return new ApiConnectionAction<VisualizeResults>(callPayload);
         }
     }
@@ -112,12 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         LogAnalyticsWorkspace,
         [EnumMember(Value = "Application Insights")]
         ApplicationInsights
-    }
-
-    public class TableV2
-    {
-        [JsonProperty("value")]
-        public JToken[] Value { get; set; }
     }
 
     public class VisualizeResults

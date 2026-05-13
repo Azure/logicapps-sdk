@@ -124,58 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetExtendedV09(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
-        {
-            var apiCallPath = "/api/Document/GetExtended";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (usage != null)
-                callPayload.Queries["usage"] = ExpressionConverter.Convert(usage);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (classname != null)
-                callPayload.Queries["classname"] = ExpressionConverter.Convert(classname);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            if (filetype != null)
-                callPayload.Queries["filetype"] = ExpressionConverter.Convert(filetype);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (masterid != null)
-                callPayload.Queries["masterid"] = ExpressionConverter.Convert(masterid);
-            if (pageNo != null)
-                callPayload.Queries["pageNo"] = ExpressionConverter.Convert(pageNo);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortField != null)
-                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
-            if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
-            if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-            if (result != null)
-                callPayload.Queries["result"] = ExpressionConverter.Convert(result);
-            if (resultId != null)
-                callPayload.Queries["resultId"] = ExpressionConverter.Convert(resultId);
-            if (resultIndex != null)
-                callPayload.Queries["resultIndex"] = ExpressionConverter.Convert(resultIndex);
-            if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (docGuid != null)
-                callPayload.Queries["docGuid"] = ExpressionConverter.Convert(docGuid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetImages(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<int>> stpdId = null)
         {
             var apiCallPath = "/api/Document/GetImages";
@@ -187,46 +135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
             callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetDataV09(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
-        {
-            var apiCallPath = "/api/Document/GetData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (contentType != null)
-                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            if (blobid != null)
-                callPayload.Queries["blobid"] = ExpressionConverter.Convert(blobid);
-            if (pageindex != null)
-                callPayload.Queries["pageindex"] = ExpressionConverter.Convert(pageindex);
-            if (imagesCount != null)
-                callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(imagesCount);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object> DocumentGetBlobV09(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
-        {
-            var apiCallPath = "/api/Document/GetBlob";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<object>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -667,6 +575,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(latestOnly);
             callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
             return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
+        public IBodyWorkflowAction<object> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
+        {
+            var apiCallPath = "/api/Document/GetBlob";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (userId != null)
+                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+            if (id != null)
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            if (type != null)
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            return new ApiConnectionAction<object>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
+        {
+            var apiCallPath = "/api/Document/GetData";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (id != null)
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+            if (type != null)
+                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+            if (contentType != null)
+                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
+            if (text != null)
+                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+            if (blobid != null)
+                callPayload.Queries["blobid"] = ExpressionConverter.Convert(blobid);
+            if (pageindex != null)
+                callPayload.Queries["pageindex"] = ExpressionConverter.Convert(pageindex);
+            if (imagesCount != null)
+                callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(imagesCount);
+            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
+        {
+            var apiCallPath = "/api/Document/GetExtended";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (userId != null)
+                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
+            if (projectId != null)
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+            if (stpdId != null)
+                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
+            if (usage != null)
+                callPayload.Queries["usage"] = ExpressionConverter.Convert(usage);
+            if (status != null)
+                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+            if (classname != null)
+                callPayload.Queries["classname"] = ExpressionConverter.Convert(classname);
+            if (filename != null)
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+            if (filetype != null)
+                callPayload.Queries["filetype"] = ExpressionConverter.Convert(filetype);
+            if (start != null)
+                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+            if (end != null)
+                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+            if (masterid != null)
+                callPayload.Queries["masterid"] = ExpressionConverter.Convert(masterid);
+            if (pageNo != null)
+                callPayload.Queries["pageNo"] = ExpressionConverter.Convert(pageNo);
+            if (pageSize != null)
+                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+            if (sortField != null)
+                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
+            if (sortDirection != null)
+                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
+            if (comment != null)
+                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+            if (result != null)
+                callPayload.Queries["result"] = ExpressionConverter.Convert(result);
+            if (resultId != null)
+                callPayload.Queries["resultId"] = ExpressionConverter.Convert(resultId);
+            if (resultIndex != null)
+                callPayload.Queries["resultIndex"] = ExpressionConverter.Convert(resultIndex);
+            if (externalId != null)
+                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+            if (docGuid != null)
+                callPayload.Queries["docGuid"] = ExpressionConverter.Convert(docGuid);
+            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
+            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
         }
     }
 
@@ -1165,102 +1165,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
     }
 
     public enum AIForgedDALDocumentDataType
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11
-    }
-
-    public enum usageInput
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99
-    }
-
-    public enum statusInput
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "81")]
-        _81,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "108")]
-        _108,
-        [EnumMember(Value = "109")]
-        _109,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "190")]
-        _190
-    }
-
-    public enum sortFieldInput
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
-    }
-
-    public enum sortDirectionInput
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
-    }
-
-    public enum typeInput
     {
         [EnumMember(Value = "0")]
         _0,
@@ -2273,6 +2177,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _5,
         [EnumMember(Value = "6")]
         _6
+    }
+
+    public enum typeInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "1")]
+        _1,
+        [EnumMember(Value = "2")]
+        _2,
+        [EnumMember(Value = "10")]
+        _10,
+        [EnumMember(Value = "11")]
+        _11
+    }
+
+    public enum usageInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "1")]
+        _1,
+        [EnumMember(Value = "2")]
+        _2,
+        [EnumMember(Value = "3")]
+        _3,
+        [EnumMember(Value = "4")]
+        _4,
+        [EnumMember(Value = "10")]
+        _10,
+        [EnumMember(Value = "90")]
+        _90,
+        [EnumMember(Value = "98")]
+        _98,
+        [EnumMember(Value = "99")]
+        _99
+    }
+
+    public enum statusInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "3")]
+        _3,
+        [EnumMember(Value = "4")]
+        _4,
+        [EnumMember(Value = "5")]
+        _5,
+        [EnumMember(Value = "8")]
+        _8,
+        [EnumMember(Value = "9")]
+        _9,
+        [EnumMember(Value = "10")]
+        _10,
+        [EnumMember(Value = "81")]
+        _81,
+        [EnumMember(Value = "90")]
+        _90,
+        [EnumMember(Value = "98")]
+        _98,
+        [EnumMember(Value = "99")]
+        _99,
+        [EnumMember(Value = "103")]
+        _103,
+        [EnumMember(Value = "108")]
+        _108,
+        [EnumMember(Value = "109")]
+        _109,
+        [EnumMember(Value = "110")]
+        _110,
+        [EnumMember(Value = "190")]
+        _190
+    }
+
+    public enum sortFieldInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "1")]
+        _1,
+        [EnumMember(Value = "2")]
+        _2,
+        [EnumMember(Value = "3")]
+        _3,
+        [EnumMember(Value = "4")]
+        _4,
+        [EnumMember(Value = "5")]
+        _5
+    }
+
+    public enum sortDirectionInput
+    {
+        [EnumMember(Value = "0")]
+        _0,
+        [EnumMember(Value = "1")]
+        _1
     }
 }
 

@@ -242,13 +242,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class PeopleSearchResponse
     {
-        public PeopleSearchResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public PeopleSearchResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public PeopleSearchResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class PeopleSearchResponseObjectType
+    public class PeopleSearchResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -277,13 +278,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class DeletedSearchResponse
     {
-        public DeletedSearchResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public DeletedSearchResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public DeletedSearchResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class DeletedSearchResponseObjectType
+    public class DeletedSearchResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -432,13 +434,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class TitleCountryResponse
     {
-        public TitleCountryResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public TitleCountryResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public TitleCountryResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class TitleCountryResponseObjectType
+    public class TitleCountryResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -476,13 +479,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class TitleGenreResponse
     {
-        public TitleGenreResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public TitleGenreResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public TitleGenreResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class TitleGenreResponseObjectType
+    public class TitleGenreResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -505,13 +509,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class TitleEpisodeResponse
     {
-        public TitleEpisodeResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public TitleEpisodeResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public TitleEpisodeResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class TitleEpisodeResponseObjectType
+    public class TitleEpisodeResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -552,13 +557,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 
     public class TitleImageResponse
     {
-        public TitleImageResponseObjectType Object { get; set; }
+        [JsonProperty("Object")]
+        public TitleImageResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("results")]
         public TitleImageResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class TitleImageResponseObjectType
+    public class TitleImageResponseObjectEntityType
     {
         [JsonProperty("total")]
         public int Total { get; set; }

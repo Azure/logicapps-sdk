@@ -146,7 +146,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var alertObjectpropCount = 0;
             if (bodyalertaction != null)
             {
-                alertObject["action"] = ExpressionConverter.ConvertO(bodyalertaction);
+                if (bodyalertaction != null)
+                {
+                    alertObject["action"] = ExpressionConverter.ConvertO(bodyalertaction);
+                    alertObjectpropCount++;
+                }
+
+                alertObjectpropCount++;
+            }
+            else
+            {
+                alertObject["action"] = "breathe";
                 alertObjectpropCount++;
             }
 
@@ -229,7 +239,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var identifyObjectpropCount = 0;
             if (bodyidentifyaction != null)
             {
-                identifyObject["action"] = ExpressionConverter.ConvertO(bodyidentifyaction);
+                if (bodyidentifyaction != null)
+                {
+                    identifyObject["action"] = ExpressionConverter.ConvertO(bodyidentifyaction);
+                    identifyObjectpropCount++;
+                }
+
+                identifyObjectpropCount++;
+            }
+            else
+            {
+                identifyObject["action"] = "identify";
                 identifyObjectpropCount++;
             }
 

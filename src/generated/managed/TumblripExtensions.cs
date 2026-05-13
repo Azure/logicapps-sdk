@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostUnblockPost(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
+        public IBodyWorkflowAction<string> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "delete";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostBlockPost(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
+        public IBodyWorkflowAction<string> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "post";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostsBlockPost(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
+        public IBodyWorkflowAction<string> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/blocks/bulk", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "post";
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostQueuedReorderPost(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
+        public IBodyWorkflowAction<string> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/posts/queue/reorder", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "post";
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostQueuedShufflePost(Expression<Func<string>> blogIdentifier)
+        public IBodyWorkflowAction<string> PostQueuedShuffle(Expression<Func<string>> blogIdentifier)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/posts/queue/shuffle", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "post";
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostCreatePostResponse> PostCreatePost(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostCreatePostResponse> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
         {
             var apiCallPath = String.Format("/v2/blog/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
             var apiCallHttpMethod = "post";
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollowPost(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollow(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
         {
             var apiCallPath = "/v2/user/follow";
             var apiCallHttpMethod = "post";
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollowPost(Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollow(Expression<Func<string>> bodyurl = null)
         {
             var apiCallPath = "/v2/user/unfollow";
             var apiCallHttpMethod = "post";
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostLikePost(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string> PostLike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
             var apiCallPath = "/v2/user/like";
             var apiCallHttpMethod = "post";
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostUnlikePost(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string> PostUnlike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
             var apiCallPath = "/v2/user/unlike";
             var apiCallHttpMethod = "post";

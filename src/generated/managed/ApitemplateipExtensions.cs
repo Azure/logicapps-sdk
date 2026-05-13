@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     public class ApitemplateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessPDFFile> PDFPost(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
+        public IBodyWorkflowAction<ResponseSuccessPDFFile> PDF(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
         {
             var apiCallPath = "/v2/create-pdf";
             var apiCallHttpMethod = "post";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessImageFile> ImagePost(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessImageFile> Image(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
         {
             var apiCallPath = "/v2/create-image";
             var apiCallHttpMethod = "post";
