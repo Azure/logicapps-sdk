@@ -52,7 +52,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             body["value"] = ExpressionConverter.ConvertO(bodyvalue);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["timezone"] = "(GMT+00:00) UTC";
                 bodypropCount++;
             }
 

@@ -59,13 +59,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
             if (bodyisPublic != null)
             {
-                body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                if (bodyisPublic != null)
+                {
+                    body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IsPublic"] = "true";
                 bodypropCount++;
             }
 
             if (bodycreateTeam != null)
             {
-                body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                if (bodycreateTeam != null)
+                {
+                    body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["CreateTeam"] = false;
                 bodypropCount++;
             }
 
@@ -125,13 +145,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
             if (bodyisPublic != null)
             {
-                body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                if (bodyisPublic != null)
+                {
+                    body["IsPublic"] = ExpressionConverter.ConvertO(bodyisPublic);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["IsPublic"] = "";
                 bodypropCount++;
             }
 
             if (bodycreateTeam != null)
             {
-                body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                if (bodycreateTeam != null)
+                {
+                    body["CreateTeam"] = ExpressionConverter.ConvertO(bodycreateTeam);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["CreateTeam"] = false;
                 bodypropCount++;
             }
 

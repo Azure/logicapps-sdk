@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> CreatePost(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
+        public IBodyWorkflowAction<Post> Create(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1));
             var apiCallHttpMethod = "post";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> GetPost(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<Post> Get(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "get";
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> EditPost(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
+        public IBodyWorkflowAction<Post> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "put";
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IWorkflowAction DeletePost(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        public IWorkflowAction Delete(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "delete";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> PublishPost(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<Post> Publish(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts/{1}/publish", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "post";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post> RevertPost(Expression<Func<string>> blogId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<Post> Revert(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
             var apiCallPath = String.Format("/blogs/{0}/posts/{1}/revert", ExpressionConverter.ConvertWithUrlEncoding(blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
             var apiCallHttpMethod = "post";

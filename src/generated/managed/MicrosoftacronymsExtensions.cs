@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
     public class MicrosoftacronymsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearchPost(Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
+        public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearch(Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
         {
             var apiCallPath = "/query";
             var apiCallHttpMethod = "post";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<AcronymPostResponse> AcronymPost(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodystandsFor, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
+        public IBodyWorkflowAction<AcronymPostResponse> Acronym(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodystandsFor, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
             var apiCallPath = "/acronyms";
             var apiCallHttpMethod = "post";
@@ -68,7 +68,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                if (bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["state"] = "published";
                 bodypropCount++;
             }
 
@@ -132,7 +142,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 
             if (bodystate != null)
             {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                if (bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["state"] = "published";
                 bodypropCount++;
             }
 

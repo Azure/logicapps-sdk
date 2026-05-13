@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<AssistantPostResponse> AssistantPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<string[]>> bodyfileIds = null)
+        public IBodyWorkflowAction<AssistantPostResponse> Assistant(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<string[]>> bodyfileIds = null)
         {
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "post";
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FilePostResponse> FilePost(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> bodyfileId)
+        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> bodyfileId)
         {
             var apiCallPath = String.Format("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "post";
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadPostResponse> ThreadPost(Expression<Func<string>> openAIBeta, Expression<Func<bodymessagesInputItem[]>> bodymessages)
+        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> openAIBeta, Expression<Func<bodymessagesInputItem[]>> bodymessages)
         {
             var apiCallPath = "/threads";
             var apiCallHttpMethod = "post";
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModifyPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessagePostResponse> MessagePost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessageModifyPostResponse> MessageModifyPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunPostResponse> RunPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyassistantId = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
+        public IBodyWorkflowAction<RunPostResponse> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyassistantId = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunModifyPostResponse> RunModifyPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<RunModifyPostResponse> RunModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputsPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<bodytoolOutputsInputItem[]>> bodytoolOutputs = null)
+        public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<bodytoolOutputsInputItem[]>> bodytoolOutputs = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/submit_tool_outputs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunCancelPostResponse> RunCancelPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<RunCancelPostResponse> RunCancel(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/cancel", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRunPost(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodyassistantId = null, Expression<Func<bodythreadmessagesInputItem[]>> bodythreadmessages = null, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
+        public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRun(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodyassistantId = null, Expression<Func<bodythreadmessagesInputItem[]>> bodythreadmessages = null, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
             var apiCallPath = "/threads/runs";
             var apiCallHttpMethod = "post";
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class ModelsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public ModelsGetResponseDataTypeItem[] Data { get; set; }
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class AssistantsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public AssistantsGetResponseDataTypeItem[] Data { get; set; }
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("deleted")]
         public bool Deleted { get; set; }
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class FilesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public FilesGetResponseDataTypeItem[] Data { get; set; }
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("deleted")]
         public bool Deleted { get; set; }
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("deleted")]
         public bool Deleted { get; set; }
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class MessagesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public MessagesGetResponseDataTypeItem[] Data { get; set; }
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class MessageFilesGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public MessageFilesGetResponseDataTypeItem[] Data { get; set; }
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1094,7 +1094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class RunsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public RunsGetResponseDataTypeItem[] Data { get; set; }
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1448,7 +1448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1508,7 +1508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
     public class RunStepsGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public RunStepsGetResponseDataTypeItem[] Data { get; set; }
@@ -1655,7 +1655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }

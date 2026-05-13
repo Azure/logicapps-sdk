@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<LinkPostResponseItem[]> LinkPost(Expression<Func<string>> graphId, Expression<Func<string>> bodyurl, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string[]>> bodyhighlights = null)
+        public IBodyWorkflowAction<LinkPostResponseItem[]> Link(Expression<Func<string>> graphId, Expression<Func<string>> bodyurl, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string[]>> bodyhighlights = null)
         {
             var apiCallPath = String.Format("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "post";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<NotePostResponse> NotePost(Expression<Func<string>> graphId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycontentMarkdown, Expression<Func<bool>> bodypinned = null)
+        public IBodyWorkflowAction<NotePostResponse> Note(Expression<Func<string>> graphId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycontentMarkdown, Expression<Func<bool>> bodypinned = null)
         {
             var apiCallPath = String.Format("/graphs/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(graphId, 1));
             var apiCallHttpMethod = "post";

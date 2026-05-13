@@ -72,39 +72,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActionsV2(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
-        {
-            var apiCallPath = String.Format("/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = Convert.ToString("Action Package");
-            if (actionType != null)
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestactionBody != null)
-            {
-                request["actionBody"] = ExpressionConverter.ConvertO(requestactionBody);
-                requestpropCount++;
-            }
-
-            if (requestsubscribers != null)
-            {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendActionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));

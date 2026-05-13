@@ -193,6 +193,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
             return new ApiConnectionAction(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
+        public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
+        {
+            var apiCallPath = String.Format("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["per_page"] = Convert.ToString(100);
+            var body = new JObject();
+            var bodypropCount = 0;
+            var clientObject = new JObject();
+            var clientObjectpropCount = 0;
+            if (bodyclientfirstName != null)
+            {
+                clientObject["fname"] = ExpressionConverter.ConvertO(bodyclientfirstName);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientlastName != null)
+            {
+                clientObject["lname"] = ExpressionConverter.ConvertO(bodyclientlastName);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientorganization != null)
+            {
+                clientObject["organization"] = ExpressionConverter.ConvertO(bodyclientorganization);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientemailAddress != null)
+            {
+                clientObject["email"] = ExpressionConverter.ConvertO(bodyclientemailAddress);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientphoneNumber != null)
+            {
+                clientObject["bus_phone"] = ExpressionConverter.ConvertO(bodyclientphoneNumber);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientcurrency != null)
+            {
+                clientObject["currency_code"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientstreetAddress1 != null)
+            {
+                clientObject["p_street"] = ExpressionConverter.ConvertO(bodyclientstreetAddress1);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientstreetAddress2 != null)
+            {
+                clientObject["p_street2"] = ExpressionConverter.ConvertO(bodyclientstreetAddress2);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientcity != null)
+            {
+                clientObject["p_city"] = ExpressionConverter.ConvertO(bodyclientcity);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientpostalCode != null)
+            {
+                clientObject["p_code"] = ExpressionConverter.ConvertO(bodyclientpostalCode);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientcountry != null)
+            {
+                clientObject["p_country"] = ExpressionConverter.ConvertO(bodyclientcountry);
+                clientObjectpropCount++;
+            }
+
+            if (bodyclientprovince != null)
+            {
+                clientObject["p_province"] = ExpressionConverter.ConvertO(bodyclientprovince);
+                clientObjectpropCount++;
+            }
+
+            if (clientObjectpropCount > 0)
+            {
+                body["client"] = clientObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<Client>(callPayload);
+        }
     }
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
@@ -330,6 +427,281 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     }
 
     public enum bodyexpenseamountcurrencyInput
+    {
+        AED,
+        AMD,
+        ANG,
+        ARS,
+        AUD,
+        AWG,
+        AZN,
+        BAM,
+        BBD,
+        BDT,
+        BGN,
+        BHD,
+        BIF,
+        BMD,
+        BND,
+        BOB,
+        BOV,
+        BRL,
+        BSD,
+        BTN,
+        BWP,
+        BYN,
+        BYR,
+        BZD,
+        CAD,
+        CDF,
+        CHE,
+        CHF,
+        CHW,
+        CLF,
+        CLP,
+        CNY,
+        COP,
+        COU,
+        CRC,
+        CUC,
+        CUP,
+        CVE,
+        CZK,
+        DJF,
+        DKK,
+        DOP,
+        EGP,
+        ERN,
+        ETB,
+        EUR,
+        FJD,
+        FKP,
+        GBP,
+        GEL,
+        GHS,
+        GIP,
+        GMD,
+        GNF,
+        GTQ,
+        GYD,
+        HKD,
+        HNL,
+        HRK,
+        HTG,
+        HUF,
+        IDR,
+        ILS,
+        INR,
+        IQD,
+        IRR,
+        ISK,
+        JMD,
+        JOD,
+        JPY,
+        KES,
+        KGS,
+        KHR,
+        KMF,
+        KPW,
+        KRW,
+        KWD,
+        KYD,
+        KZT,
+        LAK,
+        LBP,
+        LKR,
+        LRD,
+        LSL,
+        LYD,
+        MAD,
+        MDL,
+        MGA,
+        MKD,
+        MMK,
+        MNT,
+        MOP,
+        MRO,
+        MUR,
+        MVR,
+        MWK,
+        MXN,
+        MXV,
+        MYR,
+        MZN,
+        NAD,
+        NGN,
+        NIO,
+        NOK,
+        NPR,
+        NZD,
+        OMR,
+        PAB,
+        PEN,
+        PGK,
+        PHP,
+        PKR,
+        PLN,
+        PYG,
+        QAR,
+        RON,
+        RSD,
+        RUB,
+        RWF,
+        SAR,
+        SBD,
+        SCR,
+        SDG,
+        SEK,
+        SGD,
+        SHP,
+        SLL,
+        SOS,
+        SRD,
+        SSP,
+        STD,
+        SVC,
+        SYP,
+        SZL,
+        THB,
+        TJS,
+        TMT,
+        TND,
+        TOP,
+        TRY,
+        TTD,
+        TWD,
+        TZS,
+        UAH,
+        UGX,
+        USD,
+        USN,
+        UYI,
+        UYU,
+        UZS,
+        VEF,
+        VND,
+        VUV,
+        WST,
+        XAF,
+        XAG,
+        XAU,
+        XBA,
+        XBB,
+        XBC,
+        XBD,
+        XCD,
+        XDR,
+        XOF,
+        XPD,
+        XPF,
+        XPT,
+        XSU,
+        XTS,
+        XUA,
+        XXX,
+        YER,
+        ZAR,
+        ZMW,
+        ZWL
+    }
+
+    public class Client
+    {
+        [JsonProperty("response")]
+        public ClientValueType Value { get; set; }
+    }
+
+    public class ClientValueType
+    {
+        [JsonProperty("result")]
+        public ClientValueTypeValueType Value { get; set; }
+    }
+
+    public class ClientValueTypeValueType
+    {
+        [JsonProperty("client")]
+        public ClientValueTypeValueTypeValueType Value { get; set; }
+    }
+
+    public class ClientValueTypeValueTypeValueType
+    {
+        [JsonProperty("fname")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lname")]
+        public string LastName { get; set; }
+
+        [JsonProperty("fax")]
+        public string FaNumber { get; set; }
+
+        [JsonProperty("vat_number")]
+        public string VATNumber { get; set; }
+
+        [JsonProperty("vat_name")]
+        public string VATName { get; set; }
+
+        [JsonProperty("id")]
+        public int ClientId { get; set; }
+
+        [JsonProperty("p_province")]
+        public string Province { get; set; }
+
+        [JsonProperty("p_country")]
+        public string Country { get; set; }
+
+        [JsonProperty("p_city")]
+        public string City { get; set; }
+
+        [JsonProperty("p_street")]
+        public string Street { get; set; }
+
+        [JsonProperty("p_street2")]
+        public string Street2 { get; set; }
+
+        [JsonProperty("p_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("mob_phone")]
+        public string MobilePhone { get; set; }
+
+        [JsonProperty("home_phone")]
+        public string HomePhone { get; set; }
+
+        [JsonProperty("company_industry")]
+        public string CompanyIndustry { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("updated")]
+        public string Updated { get; set; }
+
+        [JsonProperty("bus_phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("company_size")]
+        public string Size { get; set; }
+
+        [JsonProperty("accounting_systemid")]
+        public string SystemId { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("organization")]
+        public string Organization { get; set; }
+
+        [JsonProperty("currency_code")]
+        public string CurrencyCode { get; set; }
+    }
+
+    public enum bodyclientcurrencyInput
     {
         AED,
         AMD,

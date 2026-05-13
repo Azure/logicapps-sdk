@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSavePost(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
+        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
         {
             var apiCallPath = "/highlights/";
             var apiCallHttpMethod = "post";
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTagsPost(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
         {
             var apiCallPath = String.Format("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "post";

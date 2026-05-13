@@ -7,8 +7,18 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Built-in triggers for workflow.
+    /// Provides factory methods for creating built-in workflow triggers. Built-in triggers are first-party
+    /// operations that run directly in the Logic Apps runtime without requiring external API connections.
     /// </summary>
+    /// <remarks>
+    /// Access this class through <c>WorkflowTriggers.BuiltIn</c>. Available trigger types include:
+    /// <list type="bullet">
+    ///   <item><description><see cref="CreateHttpTrigger"/> — Fires when an HTTP request is received.</description></item>
+    ///   <item><description><see cref="CreateRecurrenceTrigger"/> — Fires on a recurring schedule.</description></item>
+    ///   <item><description><see cref="CreateConversationalAgentTrigger"/> — Fires when a new conversational chat session starts.</description></item>
+    /// </list>
+    /// </remarks>
+    /// <seealso cref="WorkflowTriggers"/>
     public class WorkflowBuiltInTriggers
     {
         /// <summary>

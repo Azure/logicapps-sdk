@@ -6,63 +6,60 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
-    /// Base class for all workflow nodes providing chain tracking and fluent operation chaining.
-    /// Every workflow operation (action or trigger) is itself a single-node chain where Start and Ends
-    /// are the node itself. When nodes are connected via <see cref="Then(IWorkflowNode, FlowStatus[])"/>,
-    /// a new <see cref="OperationChain"/> is returned that tracks the full chain from start to ends.
-    /// Multi-node chains are standalone instances with no Name or Children of their own.
-    /// Chains may track multiple end nodes when created via <see cref="Join(OperationChain)"/>
-    /// or <see cref="Split(Func{OperationChain, IEnumerable{OperationChain}})"/>.
+    /// Represents a directed chain of workflow operations, tracking a start node and one or more end nodes.
+    /// <see cref="OperationChain"/> is the result of every <c>.Then()</c> call and implements
+    /// <see cref="IChainableNode"/> so that additional operations can be appended fluently.
     /// </summary>
-    public class OperationChain : IWorkflowNode
+    /// <remarks>
+    /// <para>
+    /// An <see cref="OperationChain"/> always has exactly one <see cref="Start"/> node (the trigger or first action)
+    /// and one or more <see cref="Ends"/> nodes. When a chain has multiple end nodes, it represents a fan-out
+    /// (parallel branching) pattern. Calling <c>.Then()</c> on a multi-end chain attaches the next action
+    /// to <em>all</em> end nodes, creating a fan-in (merge) point.
+    /// </para>
+    /// <para>
+    /// Use the <see cref="Join"/> method to combine two chains that share the same root into a single chain
+    /// with a unified set of end nodes. This is useful for building fan-out/fan-in patterns where branches
+    /// are constructed independently.
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="IChainableNode"/>
+    /// <seealso cref="IWorkflowOperation"/>
+    /// <seealso cref="WorkflowFactory"/>
+    public class OperationChain : IChainableNode
     {
-        private readonly IWorkflowOperation _start;
-        private readonly IWorkflowOperation[] _ends;
-
         /// <summary>
-        /// Gets the first node in the chain. For single-node chains (actions/triggers),
-        /// returns the node itself.
+        /// Gets the first node in the chain.
         /// </summary>
-        public IWorkflowOperation Start => this._start ?? this as IWorkflowOperation;
+        internal IWorkflowOperation Start { get; private set; }
 
         /// <summary>
-        /// Gets the end nodes of the chain. For single-node chains (actions/triggers),
-        /// returns a single-element array containing the node itself.
-        /// For joined chains, returns all end nodes.
+        /// Gets the end node(s) of the chain.
         /// </summary>
-        public IReadOnlyList<IWorkflowOperation> Ends => this._ends ?? new[] { this as IWorkflowOperation };
+        internal IReadOnlyList<IWorkflowOperation> Ends { get; private set; }
 
         /// <summary>
-        /// Initializes a new single-node chain. Used by subclasses (actions/triggers)
-        /// where Start and Ends default to the node itself.
-        /// </summary>
-        protected OperationChain()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new multi-node chain with explicit start and end nodes.
+        /// Initializes a new instance of the <see cref="OperationChain"/> class with a single start and end node.
         /// </summary>
         /// <param name="start">The first node in the chain.</param>
         /// <param name="end">The last node in the chain.</param>
-        public OperationChain(IWorkflowOperation start, IWorkflowOperation end)
+        internal OperationChain(IWorkflowOperation start, IWorkflowOperation end)
         {
-            this._start = start ?? throw new ArgumentNullException(nameof(start));
-            this._ends = new[] { end ?? throw new ArgumentNullException(nameof(end)) };
+            this.Start = start ?? throw new ArgumentNullException(nameof(start));
+            this.Ends = new[] { end ?? throw new ArgumentNullException(nameof(end)) };
         }
 
         /// <summary>
-        /// Initializes a new multi-end chain with explicit start and multiple end nodes.
+        /// Initializes a new instance of the <see cref="OperationChain"/> class with a single start node and multiple end nodes.
         /// </summary>
         /// <param name="start">The first node in the chain.</param>
         /// <param name="ends">The end nodes of the chain.</param>
-        public OperationChain(IWorkflowOperation start, IWorkflowOperation[] ends)
+        internal OperationChain(IWorkflowOperation start, IWorkflowOperation[] ends)
         {
-            this._start = start ?? throw new ArgumentNullException(nameof(start));
-            this._ends = ends ?? throw new ArgumentNullException(nameof(ends));
+            this.Start = start ?? throw new ArgumentNullException(nameof(start));
+            this.Ends = ends ?? throw new ArgumentNullException(nameof(ends));
 
             if (ends.Length == 0)
             {
@@ -71,10 +68,30 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Combines this chain with another chain that shares the same root.
+        /// Combines this chain with another chain that shares the same root, producing a single chain
+        /// whose end nodes are the union of both chains' end nodes. This enables fan-out/fan-in patterns
+        /// where parallel branches are built independently and then merged.
         /// </summary>
-        /// <param name="other">The other chain to join with. Must share the same root as this chain.</param>
+        /// <param name="other">
+        /// The other chain to join with. Must share the same <see cref="Start"/> node as this chain;
+        /// otherwise, an <see cref="InvalidOperationException"/> is thrown.
+        /// </param>
         /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of both chains.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="other"/> is <see langword="null"/>.</exception>
+        /// <exception cref="InvalidOperationException">The two chains do not share the same root node.</exception>
+        /// <example>
+        /// Build two branches from the same trigger, join them, then add a merged action:
+        /// <code>
+        /// var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+        /// var left = trigger.Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Left").WithName("Left"));
+        /// var right = trigger.Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Right").WithName("Right"));
+        ///
+        /// left.Join(right)
+        ///     .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Merged").WithName("Merged"));
+        ///
+        /// WorkflowFactory.CreateStatefulWorkflow("fanInWorkflow", trigger);
+        /// </code>
+        /// </example>
         public OperationChain Join(OperationChain other)
         {
             if (other == null)
@@ -100,12 +117,53 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new OperationChain(this.Start, combinedEnds.ToArray());
         }
 
-        /// <summary>
-        /// Splits this chain into multiple branches.
-        /// </summary>
-        /// <param name="branches">A callback that takes the current chain and returns multiple new chains that share the same root.</param>
-        /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of all branches.</returns>
-        public OperationChain Split(Func<OperationChain, OperationChain[]> branches)
+        /// <inheritdoc/>
+        public OperationChain Then(IWorkflowAction action)
+        {
+            foreach (var end in this.Ends)
+            {
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action);
+            }
+
+            return new OperationChain(this.Start, action);
+        }
+
+        /// <inheritdoc/>
+        public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
+        {
+            foreach (var end in this.Ends)
+            {
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action, runAfter);
+            }
+
+            return new OperationChain(this.Start, action);
+        }
+
+        /// <inheritdoc/>
+        public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
+        {
+            foreach (var end in this.Ends)
+            {
+                if (object.ReferenceEquals(end, this))
+                {
+                    continue;
+                }
+                end.Then(action, runAfter);
+            }
+
+            return new OperationChain(this.Start, action);
+        }
+
+        /// <inheritdoc/>
+        public OperationChain Then(Func<IChainableNode, OperationChain[]> branches)
         {
             if (branches == null)
             {
@@ -147,54 +205,23 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action)
+        public IWorkflowOperation GetRootOperation()
         {
-            foreach (var end in this.Ends)
-            {
-                if (object.ReferenceEquals(end, this))
-                {
-                    continue;
-                }
-                end.Then(action);
-            }
-
-            return new OperationChain(this.Start, action);
+            return this.Start;
         }
 
-        /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
+        /// <summary>
+        /// Gets the root trigger of this operation chain (workflow).
+        /// </summary>
+        internal IWorkflowTrigger GetRootTrigger()
         {
-            foreach (var end in this.Ends)
-            {
-                if (object.ReferenceEquals(end, this))
-                {
-                    continue;
-                }
-                end.Then(action, runAfter);
-            }
-
-            return new OperationChain(this.Start, action);
-        }
-
-        /// <inheritdoc/>
-        public virtual OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
-        {
-            foreach (var end in this.Ends)
-            {
-                if (object.ReferenceEquals(end, this))
-                {
-                    continue;
-                }
-                end.Then(action, runAfter);
-            }
-
-            return new OperationChain(this.Start, action);
+            return this.Start as IWorkflowTrigger ?? throw new InvalidOperationException("Invalid GetRootTrigger usage: operation chain must start with a trigger.");
         }
 
         /// <summary>
         /// Gets the root action of this operation chain.
         /// </summary>
-        public IWorkflowAction GetRootAction()
+        internal IWorkflowAction GetRootAction()
         {
             return this.Start as IWorkflowAction ?? throw new InvalidOperationException("Invalid GetRootAction usage: operation chain must start with an action.");
         }

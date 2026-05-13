@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     public class LettriaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[]> ComprehendPost(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[]> ClassifyPost(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
         {
             var apiCallPath = "/nls/classification";
             var apiCallHttpMethod = "post";

@@ -5,39 +5,56 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// The nested flow action allows calling a workflow within another workflow.
+    /// The HTTP action to send HTTP requests to external services.
     /// </summary>
-    public class HttpAction(
-        string uri,
-        string method,
-        object requestBody = null,
-        Dictionary<string, string> headers = null,
-        Dictionary<string, string> queries = null) : WorkflowActionBase
+    public class HttpAction : WorkflowActionBase
     {
         /// <summary>
-        /// Gets the reference name of the workflow to be invoked.
+        /// Gets the URI of the HTTP request.
         /// </summary>
-        public string Uri { get; } = uri;
+        public string Uri { get; }
 
         /// <summary>
-        /// Gets the reference name of the workflow to be invoked.
+        /// Gets the HTTP method to be used for the request.
         /// </summary>
-        public string Method { get; } = method;
-
-        /// <summary>
-        /// Gets or sets the headers for the request.
-        /// </summary>
-        public Dictionary<string, string> Headers { get; set; } = headers;
+        public string Method { get; }
 
         /// <summary>
         /// Gets or sets the headers for the request.
         /// </summary>
-        public Dictionary<string, string> Queries { get; set; } = queries;
+        public Dictionary<string, string> Headers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the query parameters for the request.
+        /// </summary>
+        public Dictionary<string, string> Queries { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
         /// </summary>
-        public object RequestBody { get; set; } = requestBody;
+        public object RequestBody { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpAction"/> class.
+        /// </summary>
+        /// <param name="uri">The URI of the HTTP request.</param>
+        /// <param name="method">The HTTP method to use for the request.</param>
+        /// <param name="requestBody">The request body (optional).</param>
+        /// <param name="headers">The request headers (optional).</param>
+        /// <param name="queries">The query parameters (optional).</param>
+        internal HttpAction(
+            string uri,
+            string method,
+            object requestBody = null,
+            Dictionary<string, string> headers = null,
+            Dictionary<string, string> queries = null)
+        {
+            this.Uri = uri;
+            this.Method = method;
+            this.RequestBody = requestBody;
+            this.Headers = headers;
+            this.Queries = queries;
+        }
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
@@ -76,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="queries">The query parameters.</param>
         /// <param name="requestBody">The request body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
-        public HttpAction(string uri, string method, object requestBody = null, Dictionary<string, string> queries = null, Dictionary<string, string> headers = null)
+        internal HttpAction(string uri, string method, object requestBody = null, Dictionary<string, string> queries = null, Dictionary<string, string> headers = null)
             : base(uri, method, requestBody, queries, headers)
         {
         }
@@ -85,15 +102,5 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the strongly-typed body of the action.
         /// </summary>
         public T Body { get; private set; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IBodyWorkflowAction<T> WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }

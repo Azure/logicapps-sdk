@@ -54,7 +54,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
             if (bodyticketTypeId != null)
             {
-                body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                if (bodyticketTypeId != null)
+                {
+                    body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ticket_type_id"] = "Default";
                 bodypropCount++;
             }
 

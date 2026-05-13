@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="caseValue">The value to match for this case.</param>
         /// <param name="actions">The actions node for this case.</param>
-        public SwitchCase(JToken caseValue, IWorkflowNode actions)
+        public SwitchCase(JToken caseValue, IChainableNode actions)
         {
             this.Case = caseValue;
-            this.Actions = actions?.GetRootAction();
+            this.Actions = actions?.GetRootOperation() as IWorkflowAction;
         }
     }
 }

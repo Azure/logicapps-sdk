@@ -85,31 +85,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserDownloadSuitableChromeDriverFromInternet["ChromeDriverDownloadParentFolder"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverDownloadParentFolder);
             if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaXMLIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex);
+                if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex != null)
+                {
+                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaXMLIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaXMLIndex);
+                    browserDownloadSuitableChromeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaXMLIndex"] = true;
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
             if (browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["ChromeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL);
+                if (browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL != null)
+                {
+                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverRootWebPageURL);
+                    browserDownloadSuitableChromeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromeDriverFromInternet["ChromeDriverRootWebPageURL"] = "https://chromedriver.storage.googleapis.com/";
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
             if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaJSONIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex);
+                if (browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex != null)
+                {
+                    browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaJSONIndex"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetattemptToLocateChromeDriverURLViaJSONIndex);
+                    browserDownloadSuitableChromeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromeDriverFromInternet["AttemptToLocateChromeDriverURLViaJSONIndex"] = true;
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
             if (browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["ChromeDriverJSONIndexWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL);
+                if (browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL != null)
+                {
+                    browserDownloadSuitableChromeDriverFromInternet["ChromeDriverJSONIndexWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetchromeDriverJSONIndexWebPageURL);
+                    browserDownloadSuitableChromeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromeDriverFromInternet["ChromeDriverJSONIndexWebPageURL"] = "https://googlechromelabs.github.io/chrome-for-testing/latest-versions-per-milestone-with-downloads.json";
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
             if (browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver != null)
             {
-                browserDownloadSuitableChromeDriverFromInternet["Prefer64bitChromeDriver"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver);
+                if (browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver != null)
+                {
+                    browserDownloadSuitableChromeDriverFromInternet["Prefer64bitChromeDriver"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromeDriverFromInternetprefer64bitChromeDriver);
+                    browserDownloadSuitableChromeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromeDriverFromInternet["Prefer64bitChromeDriver"] = false;
                 browserDownloadSuitableChromeDriverFromInternetpropCount++;
             }
 
@@ -165,7 +215,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserUploadNewChromeDriver["LocalChromeDriverFilePath"] = ExpressionConverter.ConvertO(browserUploadNewChromeDriverlocalChromeDriverFilePath);
             if (browserUploadNewChromeDrivercompress != null)
             {
-                browserUploadNewChromeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromeDrivercompress);
+                if (browserUploadNewChromeDrivercompress != null)
+                {
+                    browserUploadNewChromeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromeDrivercompress);
+                    browserUploadNewChromeDriverpropCount++;
+                }
+
+                browserUploadNewChromeDriverpropCount++;
+            }
+            else
+            {
+                browserUploadNewChromeDriver["Compress"] = false;
                 browserUploadNewChromeDriverpropCount++;
             }
 
@@ -207,7 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromekillExistingChromeDriver != null)
             {
-                browserOpenChrome["KillExistingChromeDriver"] = ExpressionConverter.ConvertO(browserOpenChromekillExistingChromeDriver);
+                if (browserOpenChromekillExistingChromeDriver != null)
+                {
+                    browserOpenChrome["KillExistingChromeDriver"] = ExpressionConverter.ConvertO(browserOpenChromekillExistingChromeDriver);
+                    browserOpenChromepropCount++;
+                }
+
+                browserOpenChromepropCount++;
+            }
+            else
+            {
+                browserOpenChrome["KillExistingChromeDriver"] = true;
                 browserOpenChromepropCount++;
             }
 
@@ -219,7 +289,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromeprintToDefaultPrinter != null)
             {
-                browserOpenChrome["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromeprintToDefaultPrinter);
+                if (browserOpenChromeprintToDefaultPrinter != null)
+                {
+                    browserOpenChrome["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromeprintToDefaultPrinter);
+                    browserOpenChromepropCount++;
+                }
+
+                browserOpenChromepropCount++;
+            }
+            else
+            {
+                browserOpenChrome["PrintToDefaultPrinter"] = true;
                 browserOpenChromepropCount++;
             }
 
@@ -231,7 +311,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromedownloadPDFInsteadOfOpening != null)
             {
-                browserOpenChrome["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromedownloadPDFInsteadOfOpening);
+                if (browserOpenChromedownloadPDFInsteadOfOpening != null)
+                {
+                    browserOpenChrome["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromedownloadPDFInsteadOfOpening);
+                    browserOpenChromepropCount++;
+                }
+
+                browserOpenChromepropCount++;
+            }
+            else
+            {
+                browserOpenChrome["DownloadPDFInsteadOfOpening"] = false;
                 browserOpenChromepropCount++;
             }
 
@@ -255,7 +345,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromeignoreCertificateErrors != null)
             {
-                browserOpenChrome["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromeignoreCertificateErrors);
+                if (browserOpenChromeignoreCertificateErrors != null)
+                {
+                    browserOpenChrome["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromeignoreCertificateErrors);
+                    browserOpenChromepropCount++;
+                }
+
+                browserOpenChromepropCount++;
+            }
+            else
+            {
+                browserOpenChrome["IgnoreCertificateErrors"] = false;
                 browserOpenChromepropCount++;
             }
 
@@ -267,7 +367,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromedoNothingIfChromeInstanceAlreadyOpen != null)
             {
-                browserOpenChrome["DoNothingIfChromeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen);
+                if (browserOpenChromedoNothingIfChromeInstanceAlreadyOpen != null)
+                {
+                    browserOpenChrome["DoNothingIfChromeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromedoNothingIfChromeInstanceAlreadyOpen);
+                    browserOpenChromepropCount++;
+                }
+
+                browserOpenChromepropCount++;
+            }
+            else
+            {
+                browserOpenChrome["DoNothingIfChromeInstanceAlreadyOpen"] = false;
                 browserOpenChromepropCount++;
             }
 
@@ -291,13 +401,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCloseChromepropCount = 0;
             if (browserCloseChromepurgeDynamicUserDataDir != null)
             {
-                browserCloseChrome["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeDynamicUserDataDir);
+                if (browserCloseChromepurgeDynamicUserDataDir != null)
+                {
+                    browserCloseChrome["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeDynamicUserDataDir);
+                    browserCloseChromepropCount++;
+                }
+
+                browserCloseChromepropCount++;
+            }
+            else
+            {
+                browserCloseChrome["PurgeDynamicUserDataDir"] = true;
                 browserCloseChromepropCount++;
             }
 
             if (browserCloseChromepurgeStaticUserDataDir != null)
             {
-                browserCloseChrome["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeStaticUserDataDir);
+                if (browserCloseChromepurgeStaticUserDataDir != null)
+                {
+                    browserCloseChrome["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromepurgeStaticUserDataDir);
+                    browserCloseChromepropCount++;
+                }
+
+                browserCloseChromepropCount++;
+            }
+            else
+            {
+                browserCloseChrome["PurgeStaticUserDataDir"] = false;
                 browserCloseChromepropCount++;
             }
 
@@ -327,25 +457,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenInternetExplorerkillExistingIEDriver != null)
             {
-                browserOpenInternetExplorer["KillExistingIEDriver"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIEDriver);
+                if (browserOpenInternetExplorerkillExistingIEDriver != null)
+                {
+                    browserOpenInternetExplorer["KillExistingIEDriver"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIEDriver);
+                    browserOpenInternetExplorerpropCount++;
+                }
+
+                browserOpenInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserOpenInternetExplorer["KillExistingIEDriver"] = false;
                 browserOpenInternetExplorerpropCount++;
             }
 
             if (browserOpenInternetExplorerkillExistingIE != null)
             {
-                browserOpenInternetExplorer["KillExistingIE"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIE);
+                if (browserOpenInternetExplorerkillExistingIE != null)
+                {
+                    browserOpenInternetExplorer["KillExistingIE"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerkillExistingIE);
+                    browserOpenInternetExplorerpropCount++;
+                }
+
+                browserOpenInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserOpenInternetExplorer["KillExistingIE"] = true;
                 browserOpenInternetExplorerpropCount++;
             }
 
             if (browserOpenInternetExplorercleanSession != null)
             {
-                browserOpenInternetExplorer["CleanSession"] = ExpressionConverter.ConvertO(browserOpenInternetExplorercleanSession);
+                if (browserOpenInternetExplorercleanSession != null)
+                {
+                    browserOpenInternetExplorer["CleanSession"] = ExpressionConverter.ConvertO(browserOpenInternetExplorercleanSession);
+                    browserOpenInternetExplorerpropCount++;
+                }
+
+                browserOpenInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserOpenInternetExplorer["CleanSession"] = false;
                 browserOpenInternetExplorerpropCount++;
             }
 
             if (browserOpenInternetExplorerenableNativeEvents != null)
             {
-                browserOpenInternetExplorer["EnableNativeEvents"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerenableNativeEvents);
+                if (browserOpenInternetExplorerenableNativeEvents != null)
+                {
+                    browserOpenInternetExplorer["EnableNativeEvents"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerenableNativeEvents);
+                    browserOpenInternetExplorerpropCount++;
+                }
+
+                browserOpenInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserOpenInternetExplorer["EnableNativeEvents"] = true;
                 browserOpenInternetExplorerpropCount++;
             }
 
@@ -363,7 +533,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenInternetExplorerdisableIEFirstRunCustomise != null)
             {
-                browserOpenInternetExplorer["DisableIEFirstRunCustomise"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerdisableIEFirstRunCustomise);
+                if (browserOpenInternetExplorerdisableIEFirstRunCustomise != null)
+                {
+                    browserOpenInternetExplorer["DisableIEFirstRunCustomise"] = ExpressionConverter.ConvertO(browserOpenInternetExplorerdisableIEFirstRunCustomise);
+                    browserOpenInternetExplorerpropCount++;
+                }
+
+                browserOpenInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserOpenInternetExplorer["DisableIEFirstRunCustomise"] = true;
                 browserOpenInternetExplorerpropCount++;
             }
 
@@ -393,7 +573,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCloseInternetExplorerpropCount = 0;
             if (browserCloseInternetExplorerunloadIEDriver != null)
             {
-                browserCloseInternetExplorer["UnloadIEDriver"] = ExpressionConverter.ConvertO(browserCloseInternetExplorerunloadIEDriver);
+                if (browserCloseInternetExplorerunloadIEDriver != null)
+                {
+                    browserCloseInternetExplorer["UnloadIEDriver"] = ExpressionConverter.ConvertO(browserCloseInternetExplorerunloadIEDriver);
+                    browserCloseInternetExplorerpropCount++;
+                }
+
+                browserCloseInternetExplorerpropCount++;
+            }
+            else
+            {
+                browserCloseInternetExplorer["UnloadIEDriver"] = false;
                 browserCloseInternetExplorerpropCount++;
             }
 
@@ -481,7 +671,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverDownloadParentFolder"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverDownloadParentFolder);
             if (browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL != null)
             {
-                browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL);
+                if (browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL != null)
+                {
+                    browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverRootWebPageURL"] = ExpressionConverter.ConvertO(browserDownloadSuitableChromiumEdgeDriverFromInternetchromiumEdgeDriverRootWebPageURL);
+                    browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
+                }
+
+                browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
+            }
+            else
+            {
+                browserDownloadSuitableChromiumEdgeDriverFromInternet["ChromiumEdgeDriverRootWebPageURL"] = "https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/";
                 browserDownloadSuitableChromiumEdgeDriverFromInternetpropCount++;
             }
 
@@ -537,7 +737,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserUploadNewChromiumEdgeDriver["LocalChromiumEdgeDriverFilePath"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDriverlocalChromiumEdgeDriverFilePath);
             if (browserUploadNewChromiumEdgeDrivercompress != null)
             {
-                browserUploadNewChromiumEdgeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDrivercompress);
+                if (browserUploadNewChromiumEdgeDrivercompress != null)
+                {
+                    browserUploadNewChromiumEdgeDriver["Compress"] = ExpressionConverter.ConvertO(browserUploadNewChromiumEdgeDrivercompress);
+                    browserUploadNewChromiumEdgeDriverpropCount++;
+                }
+
+                browserUploadNewChromiumEdgeDriverpropCount++;
+            }
+            else
+            {
+                browserUploadNewChromiumEdgeDriver["Compress"] = false;
                 browserUploadNewChromiumEdgeDriverpropCount++;
             }
 
@@ -585,13 +795,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgekillExistingChromiumEdgeDriver != null)
             {
-                browserOpenChromiumEdge["KillExistingChromiumEdgeDriver"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgekillExistingChromiumEdgeDriver);
+                if (browserOpenChromiumEdgekillExistingChromiumEdgeDriver != null)
+                {
+                    browserOpenChromiumEdge["KillExistingChromiumEdgeDriver"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgekillExistingChromiumEdgeDriver);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["KillExistingChromiumEdgeDriver"] = true;
                 browserOpenChromiumEdgepropCount++;
             }
 
             if (browserOpenChromiumEdgeprintToDefaultPrinter != null)
             {
-                browserOpenChromiumEdge["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeprintToDefaultPrinter);
+                if (browserOpenChromiumEdgeprintToDefaultPrinter != null)
+                {
+                    browserOpenChromiumEdge["PrintToDefaultPrinter"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeprintToDefaultPrinter);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["PrintToDefaultPrinter"] = true;
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -603,7 +833,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgedownloadPDFInsteadOfOpening != null)
             {
-                browserOpenChromiumEdge["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedownloadPDFInsteadOfOpening);
+                if (browserOpenChromiumEdgedownloadPDFInsteadOfOpening != null)
+                {
+                    browserOpenChromiumEdge["DownloadPDFInsteadOfOpening"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedownloadPDFInsteadOfOpening);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["DownloadPDFInsteadOfOpening"] = false;
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -621,7 +861,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage != null)
             {
-                browserOpenChromiumEdge["HideBrowserIsBeingAutomatedMessage"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage);
+                if (browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage != null)
+                {
+                    browserOpenChromiumEdge["HideBrowserIsBeingAutomatedMessage"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgehideBrowserIsBeingAutomatedMessage);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["HideBrowserIsBeingAutomatedMessage"] = true;
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -633,7 +883,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgeignoreCertificateErrors != null)
             {
-                browserOpenChromiumEdge["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeignoreCertificateErrors);
+                if (browserOpenChromiumEdgeignoreCertificateErrors != null)
+                {
+                    browserOpenChromiumEdge["IgnoreCertificateErrors"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgeignoreCertificateErrors);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["IgnoreCertificateErrors"] = false;
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -645,7 +905,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen != null)
             {
-                browserOpenChromiumEdge["DoNothingIfChromiumEdgeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen);
+                if (browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen != null)
+                {
+                    browserOpenChromiumEdge["DoNothingIfChromiumEdgeInstanceAlreadyOpen"] = ExpressionConverter.ConvertO(browserOpenChromiumEdgedoNothingIfChromiumEdgeInstanceAlreadyOpen);
+                    browserOpenChromiumEdgepropCount++;
+                }
+
+                browserOpenChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserOpenChromiumEdge["DoNothingIfChromiumEdgeInstanceAlreadyOpen"] = false;
                 browserOpenChromiumEdgepropCount++;
             }
 
@@ -669,13 +939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserCloseChromiumEdgepropCount = 0;
             if (browserCloseChromiumEdgepurgeDynamicUserDataDir != null)
             {
-                browserCloseChromiumEdge["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeDynamicUserDataDir);
+                if (browserCloseChromiumEdgepurgeDynamicUserDataDir != null)
+                {
+                    browserCloseChromiumEdge["PurgeDynamicUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeDynamicUserDataDir);
+                    browserCloseChromiumEdgepropCount++;
+                }
+
+                browserCloseChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserCloseChromiumEdge["PurgeDynamicUserDataDir"] = true;
                 browserCloseChromiumEdgepropCount++;
             }
 
             if (browserCloseChromiumEdgepurgeStaticUserDataDir != null)
             {
-                browserCloseChromiumEdge["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeStaticUserDataDir);
+                if (browserCloseChromiumEdgepurgeStaticUserDataDir != null)
+                {
+                    browserCloseChromiumEdge["PurgeStaticUserDataDir"] = ExpressionConverter.ConvertO(browserCloseChromiumEdgepurgeStaticUserDataDir);
+                    browserCloseChromiumEdgepropCount++;
+                }
+
+                browserCloseChromiumEdgepropCount++;
+            }
+            else
+            {
+                browserCloseChromiumEdge["PurgeStaticUserDataDir"] = false;
                 browserCloseChromiumEdgepropCount++;
             }
 
@@ -753,25 +1043,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserNormaliseBrowserpropCount = 0;
             if (browserNormaliseBrowserx != null)
             {
-                browserNormaliseBrowser["X"] = ExpressionConverter.ConvertO(browserNormaliseBrowserx);
+                if (browserNormaliseBrowserx != null)
+                {
+                    browserNormaliseBrowser["X"] = ExpressionConverter.ConvertO(browserNormaliseBrowserx);
+                    browserNormaliseBrowserpropCount++;
+                }
+
+                browserNormaliseBrowserpropCount++;
+            }
+            else
+            {
+                browserNormaliseBrowser["X"] = 20;
                 browserNormaliseBrowserpropCount++;
             }
 
             if (browserNormaliseBrowsery != null)
             {
-                browserNormaliseBrowser["Y"] = ExpressionConverter.ConvertO(browserNormaliseBrowsery);
+                if (browserNormaliseBrowsery != null)
+                {
+                    browserNormaliseBrowser["Y"] = ExpressionConverter.ConvertO(browserNormaliseBrowsery);
+                    browserNormaliseBrowserpropCount++;
+                }
+
+                browserNormaliseBrowserpropCount++;
+            }
+            else
+            {
+                browserNormaliseBrowser["Y"] = 20;
                 browserNormaliseBrowserpropCount++;
             }
 
             if (browserNormaliseBrowserwidth != null)
             {
-                browserNormaliseBrowser["Width"] = ExpressionConverter.ConvertO(browserNormaliseBrowserwidth);
+                if (browserNormaliseBrowserwidth != null)
+                {
+                    browserNormaliseBrowser["Width"] = ExpressionConverter.ConvertO(browserNormaliseBrowserwidth);
+                    browserNormaliseBrowserpropCount++;
+                }
+
+                browserNormaliseBrowserpropCount++;
+            }
+            else
+            {
+                browserNormaliseBrowser["Width"] = -40;
                 browserNormaliseBrowserpropCount++;
             }
 
             if (browserNormaliseBrowserheight != null)
             {
-                browserNormaliseBrowser["Height"] = ExpressionConverter.ConvertO(browserNormaliseBrowserheight);
+                if (browserNormaliseBrowserheight != null)
+                {
+                    browserNormaliseBrowser["Height"] = ExpressionConverter.ConvertO(browserNormaliseBrowserheight);
+                    browserNormaliseBrowserpropCount++;
+                }
+
+                browserNormaliseBrowserpropCount++;
+            }
+            else
+            {
+                browserNormaliseBrowser["Height"] = -40;
                 browserNormaliseBrowserpropCount++;
             }
 
@@ -973,7 +1303,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDoesElementExistsearchElementIndex != null)
             {
-                browserDoesElementExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementIndex);
+                if (browserDoesElementExistsearchElementIndex != null)
+                {
+                    browserDoesElementExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementIndex);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementIndex"] = 1;
                 browserDoesElementExistpropCount++;
             }
 
@@ -997,43 +1337,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDoesElementExistsearchElementMinimumWidth != null)
             {
-                browserDoesElementExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumWidth);
+                if (browserDoesElementExistsearchElementMinimumWidth != null)
+                {
+                    browserDoesElementExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumWidth);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementMinimumWidth"] = 1;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementMinimumHeight != null)
             {
-                browserDoesElementExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumHeight);
+                if (browserDoesElementExistsearchElementMinimumHeight != null)
+                {
+                    browserDoesElementExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementMinimumHeight);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementMinimumHeight"] = 1;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementBoundingBoxLeft != null)
             {
-                browserDoesElementExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxLeft);
+                if (browserDoesElementExistsearchElementBoundingBoxLeft != null)
+                {
+                    browserDoesElementExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxLeft);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementBoundingBoxLeft"] = -99999;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementBoundingBoxRight != null)
             {
-                browserDoesElementExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxRight);
+                if (browserDoesElementExistsearchElementBoundingBoxRight != null)
+                {
+                    browserDoesElementExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxRight);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementBoundingBoxRight"] = 99999;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementBoundingBoxTop != null)
             {
-                browserDoesElementExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxTop);
+                if (browserDoesElementExistsearchElementBoundingBoxTop != null)
+                {
+                    browserDoesElementExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxTop);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementBoundingBoxTop"] = -99999;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistsearchElementBoundingBoxBottom != null)
             {
-                browserDoesElementExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxBottom);
+                if (browserDoesElementExistsearchElementBoundingBoxBottom != null)
+                {
+                    browserDoesElementExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDoesElementExistsearchElementBoundingBoxBottom);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["SearchElementBoundingBoxBottom"] = 99999;
                 browserDoesElementExistpropCount++;
             }
 
             if (browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserDoesElementExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserDoesElementExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDoesElementExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDoesElementExistpropCount++;
+                }
+
+                browserDoesElementExistpropCount++;
+            }
+            else
+            {
+                browserDoesElementExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserDoesElementExistpropCount++;
             }
 
@@ -1105,7 +1515,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToElementsearchElementIndex != null)
             {
-                browserCreateHandleToElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementIndex);
+                if (browserCreateHandleToElementsearchElementIndex != null)
+                {
+                    browserCreateHandleToElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementIndex);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementIndex"] = 1;
                 browserCreateHandleToElementpropCount++;
             }
 
@@ -1129,43 +1549,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToElementsearchElementMinimumWidth != null)
             {
-                browserCreateHandleToElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumWidth);
+                if (browserCreateHandleToElementsearchElementMinimumWidth != null)
+                {
+                    browserCreateHandleToElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumWidth);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementMinimumWidth"] = 1;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementMinimumHeight != null)
             {
-                browserCreateHandleToElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumHeight);
+                if (browserCreateHandleToElementsearchElementMinimumHeight != null)
+                {
+                    browserCreateHandleToElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementMinimumHeight);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementMinimumHeight"] = 1;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementBoundingBoxLeft != null)
             {
-                browserCreateHandleToElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxLeft);
+                if (browserCreateHandleToElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserCreateHandleToElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxLeft);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementBoundingBoxRight != null)
             {
-                browserCreateHandleToElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxRight);
+                if (browserCreateHandleToElementsearchElementBoundingBoxRight != null)
+                {
+                    browserCreateHandleToElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxRight);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementBoundingBoxRight"] = 99999;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementBoundingBoxTop != null)
             {
-                browserCreateHandleToElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxTop);
+                if (browserCreateHandleToElementsearchElementBoundingBoxTop != null)
+                {
+                    browserCreateHandleToElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxTop);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementBoundingBoxTop"] = -99999;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementsearchElementBoundingBoxBottom != null)
             {
-                browserCreateHandleToElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxBottom);
+                if (browserCreateHandleToElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserCreateHandleToElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToElementsearchElementBoundingBoxBottom);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserCreateHandleToElementpropCount++;
             }
 
             if (browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserCreateHandleToElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserCreateHandleToElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCreateHandleToElementpropCount++;
+                }
+
+                browserCreateHandleToElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserCreateHandleToElementpropCount++;
             }
 
@@ -1237,7 +1727,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToParentElementsearchElementIndex != null)
             {
-                browserCreateHandleToParentElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementIndex);
+                if (browserCreateHandleToParentElementsearchElementIndex != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementIndex);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementIndex"] = 1;
                 browserCreateHandleToParentElementpropCount++;
             }
 
@@ -1261,43 +1761,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCreateHandleToParentElementsearchElementMinimumWidth != null)
             {
-                browserCreateHandleToParentElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumWidth);
+                if (browserCreateHandleToParentElementsearchElementMinimumWidth != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumWidth);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementMinimumWidth"] = 1;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementMinimumHeight != null)
             {
-                browserCreateHandleToParentElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumHeight);
+                if (browserCreateHandleToParentElementsearchElementMinimumHeight != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementMinimumHeight);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementMinimumHeight"] = 1;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementBoundingBoxLeft != null)
             {
-                browserCreateHandleToParentElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxLeft);
+                if (browserCreateHandleToParentElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxLeft);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementBoundingBoxRight != null)
             {
-                browserCreateHandleToParentElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxRight);
+                if (browserCreateHandleToParentElementsearchElementBoundingBoxRight != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxRight);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementBoundingBoxRight"] = 99999;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementBoundingBoxTop != null)
             {
-                browserCreateHandleToParentElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxTop);
+                if (browserCreateHandleToParentElementsearchElementBoundingBoxTop != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxTop);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementBoundingBoxTop"] = -99999;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementsearchElementBoundingBoxBottom != null)
             {
-                browserCreateHandleToParentElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxBottom);
+                if (browserCreateHandleToParentElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserCreateHandleToParentElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementsearchElementBoundingBoxBottom);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserCreateHandleToParentElementpropCount++;
             }
 
             if (browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserCreateHandleToParentElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserCreateHandleToParentElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCreateHandleToParentElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCreateHandleToParentElementpropCount++;
+                }
+
+                browserCreateHandleToParentElementpropCount++;
+            }
+            else
+            {
+                browserCreateHandleToParentElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserCreateHandleToParentElementpropCount++;
             }
 
@@ -1369,7 +1939,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementPropertiessearchElementIndex != null)
             {
-                browserGetElementProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementIndex);
+                if (browserGetElementPropertiessearchElementIndex != null)
+                {
+                    browserGetElementProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementIndex);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementIndex"] = 1;
                 browserGetElementPropertiespropCount++;
             }
 
@@ -1393,55 +1973,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementPropertiessearchElementMinimumWidth != null)
             {
-                browserGetElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumWidth);
+                if (browserGetElementPropertiessearchElementMinimumWidth != null)
+                {
+                    browserGetElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumWidth);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementMinimumWidth"] = 1;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementMinimumHeight != null)
             {
-                browserGetElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumHeight);
+                if (browserGetElementPropertiessearchElementMinimumHeight != null)
+                {
+                    browserGetElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementMinimumHeight);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementMinimumHeight"] = 1;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementBoundingBoxLeft != null)
             {
-                browserGetElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxLeft);
+                if (browserGetElementPropertiessearchElementBoundingBoxLeft != null)
+                {
+                    browserGetElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementBoundingBoxRight != null)
             {
-                browserGetElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxRight);
+                if (browserGetElementPropertiessearchElementBoundingBoxRight != null)
+                {
+                    browserGetElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxRight);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementBoundingBoxRight"] = 99999;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementBoundingBoxTop != null)
             {
-                browserGetElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxTop);
+                if (browserGetElementPropertiessearchElementBoundingBoxTop != null)
+                {
+                    browserGetElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxTop);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementBoundingBoxTop"] = -99999;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiessearchElementBoundingBoxBottom != null)
             {
-                browserGetElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxBottom);
+                if (browserGetElementPropertiessearchElementBoundingBoxBottom != null)
+                {
+                    browserGetElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiesgetHTMLCode != null)
             {
-                browserGetElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementPropertiesgetHTMLCode);
+                if (browserGetElementPropertiesgetHTMLCode != null)
+                {
+                    browserGetElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementPropertiesgetHTMLCode);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["GetHTMLCode"] = false;
                 browserGetElementPropertiespropCount++;
             }
 
             if (browserGetElementPropertiesreturnElementHandle != null)
             {
-                browserGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(browserGetElementPropertiesreturnElementHandle);
+                if (browserGetElementPropertiesreturnElementHandle != null)
+                {
+                    browserGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(browserGetElementPropertiesreturnElementHandle);
+                    browserGetElementPropertiespropCount++;
+                }
+
+                browserGetElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementProperties["ReturnElementHandle"] = true;
                 browserGetElementPropertiespropCount++;
             }
 
@@ -1525,121 +2195,321 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetMultipleElementPropertiessearchElementMinimumWidth != null)
             {
-                browserGetMultipleElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumWidth);
+                if (browserGetMultipleElementPropertiessearchElementMinimumWidth != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumWidth);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementMinimumWidth"] = 1;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementMinimumHeight != null)
             {
-                browserGetMultipleElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumHeight);
+                if (browserGetMultipleElementPropertiessearchElementMinimumHeight != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementMinimumHeight);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementMinimumHeight"] = 1;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementBoundingBoxLeft != null)
             {
-                browserGetMultipleElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft);
+                if (browserGetMultipleElementPropertiessearchElementBoundingBoxLeft != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxLeft);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementBoundingBoxRight != null)
             {
-                browserGetMultipleElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxRight);
+                if (browserGetMultipleElementPropertiessearchElementBoundingBoxRight != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxRight);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementBoundingBoxRight"] = 99999;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementBoundingBoxTop != null)
             {
-                browserGetMultipleElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxTop);
+                if (browserGetMultipleElementPropertiessearchElementBoundingBoxTop != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxTop);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementBoundingBoxTop"] = -99999;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiessearchElementBoundingBoxBottom != null)
             {
-                browserGetMultipleElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom);
+                if (browserGetMultipleElementPropertiessearchElementBoundingBoxBottom != null)
+                {
+                    browserGetMultipleElementProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiessearchElementBoundingBoxBottom);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetMultipleElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetMultipleElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesgetHTMLCode != null)
             {
-                browserGetMultipleElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesgetHTMLCode);
+                if (browserGetMultipleElementPropertiesgetHTMLCode != null)
+                {
+                    browserGetMultipleElementProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesgetHTMLCode);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["GetHTMLCode"] = false;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiescreateHandle != null)
             {
-                browserGetMultipleElementProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiescreateHandle);
+                if (browserGetMultipleElementPropertiescreateHandle != null)
+                {
+                    browserGetMultipleElementProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiescreateHandle);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["CreateHandle"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnValue != null)
             {
-                browserGetMultipleElementProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnValue);
+                if (browserGetMultipleElementPropertiesreturnValue != null)
+                {
+                    browserGetMultipleElementProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnValue);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnValue"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnText != null)
             {
-                browserGetMultipleElementProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnText);
+                if (browserGetMultipleElementPropertiesreturnText != null)
+                {
+                    browserGetMultipleElementProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnText);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnText"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesmaxValueLength != null)
             {
-                browserGetMultipleElementProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxValueLength);
+                if (browserGetMultipleElementPropertiesmaxValueLength != null)
+                {
+                    browserGetMultipleElementProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxValueLength);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["MaxValueLength"] = 0;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesmaxTextLength != null)
             {
-                browserGetMultipleElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxTextLength);
+                if (browserGetMultipleElementPropertiesmaxTextLength != null)
+                {
+                    browserGetMultipleElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxTextLength);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["MaxTextLength"] = 0;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnIsDisplayed != null)
             {
-                browserGetMultipleElementProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnIsDisplayed);
+                if (browserGetMultipleElementPropertiesreturnIsDisplayed != null)
+                {
+                    browserGetMultipleElementProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnIsDisplayed);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnIsDisplayed"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnCoordinates != null)
             {
-                browserGetMultipleElementProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnCoordinates);
+                if (browserGetMultipleElementPropertiesreturnCoordinates != null)
+                {
+                    browserGetMultipleElementProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnCoordinates);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnCoordinates"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnDimensions != null)
             {
-                browserGetMultipleElementProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnDimensions);
+                if (browserGetMultipleElementPropertiesreturnDimensions != null)
+                {
+                    browserGetMultipleElementProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnDimensions);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnDimensions"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnChildElementCount != null)
             {
-                browserGetMultipleElementProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnChildElementCount);
+                if (browserGetMultipleElementPropertiesreturnChildElementCount != null)
+                {
+                    browserGetMultipleElementProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnChildElementCount);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnChildElementCount"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesreturnParentTag != null)
             {
-                browserGetMultipleElementProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnParentTag);
+                if (browserGetMultipleElementPropertiesreturnParentTag != null)
+                {
+                    browserGetMultipleElementProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesreturnParentTag);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["ReturnParentTag"] = true;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesfirstItemToReturn != null)
             {
-                browserGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesfirstItemToReturn);
+                if (browserGetMultipleElementPropertiesfirstItemToReturn != null)
+                {
+                    browserGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesfirstItemToReturn);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["FirstItemToReturn"] = 1;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
             if (browserGetMultipleElementPropertiesmaxItemsToReturn != null)
             {
-                browserGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxItemsToReturn);
+                if (browserGetMultipleElementPropertiesmaxItemsToReturn != null)
+                {
+                    browserGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetMultipleElementPropertiesmaxItemsToReturn);
+                    browserGetMultipleElementPropertiespropCount++;
+                }
+
+                browserGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                browserGetMultipleElementProperties["MaxItemsToReturn"] = 0;
                 browserGetMultipleElementPropertiespropCount++;
             }
 
@@ -1711,7 +2581,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementParentPropertiessearchElementIndex != null)
             {
-                browserGetElementParentProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementIndex);
+                if (browserGetElementParentPropertiessearchElementIndex != null)
+                {
+                    browserGetElementParentProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementIndex);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementIndex"] = 1;
                 browserGetElementParentPropertiespropCount++;
             }
 
@@ -1735,55 +2615,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementParentPropertiessearchElementMinimumWidth != null)
             {
-                browserGetElementParentProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumWidth);
+                if (browserGetElementParentPropertiessearchElementMinimumWidth != null)
+                {
+                    browserGetElementParentProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumWidth);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementMinimumWidth"] = 1;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementMinimumHeight != null)
             {
-                browserGetElementParentProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumHeight);
+                if (browserGetElementParentPropertiessearchElementMinimumHeight != null)
+                {
+                    browserGetElementParentProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementMinimumHeight);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementMinimumHeight"] = 1;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementBoundingBoxLeft != null)
             {
-                browserGetElementParentProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxLeft);
+                if (browserGetElementParentPropertiessearchElementBoundingBoxLeft != null)
+                {
+                    browserGetElementParentProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementBoundingBoxRight != null)
             {
-                browserGetElementParentProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxRight);
+                if (browserGetElementParentPropertiessearchElementBoundingBoxRight != null)
+                {
+                    browserGetElementParentProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxRight);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementBoundingBoxRight"] = 99999;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementBoundingBoxTop != null)
             {
-                browserGetElementParentProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxTop);
+                if (browserGetElementParentPropertiessearchElementBoundingBoxTop != null)
+                {
+                    browserGetElementParentProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxTop);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementBoundingBoxTop"] = -99999;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiessearchElementBoundingBoxBottom != null)
             {
-                browserGetElementParentProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxBottom);
+                if (browserGetElementParentPropertiessearchElementBoundingBoxBottom != null)
+                {
+                    browserGetElementParentProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetElementParentProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetElementParentProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiesgetHTMLCode != null)
             {
-                browserGetElementParentProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesgetHTMLCode);
+                if (browserGetElementParentPropertiesgetHTMLCode != null)
+                {
+                    browserGetElementParentProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiesgetHTMLCode);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["GetHTMLCode"] = false;
                 browserGetElementParentPropertiespropCount++;
             }
 
             if (browserGetElementParentPropertiescreateHandle != null)
             {
-                browserGetElementParentProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiescreateHandle);
+                if (browserGetElementParentPropertiescreateHandle != null)
+                {
+                    browserGetElementParentProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementParentPropertiescreateHandle);
+                    browserGetElementParentPropertiespropCount++;
+                }
+
+                browserGetElementParentPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementParentProperties["CreateHandle"] = true;
                 browserGetElementParentPropertiespropCount++;
             }
 
@@ -1867,127 +2837,337 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementChildrenPropertiessearchElementMinimumWidth != null)
             {
-                browserGetElementChildrenProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumWidth);
+                if (browserGetElementChildrenPropertiessearchElementMinimumWidth != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumWidth);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementMinimumWidth"] = 1;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementMinimumHeight != null)
             {
-                browserGetElementChildrenProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumHeight);
+                if (browserGetElementChildrenPropertiessearchElementMinimumHeight != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementMinimumHeight);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementMinimumHeight"] = 1;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementBoundingBoxLeft != null)
             {
-                browserGetElementChildrenProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft);
+                if (browserGetElementChildrenPropertiessearchElementBoundingBoxLeft != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxLeft);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementBoundingBoxRight != null)
             {
-                browserGetElementChildrenProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxRight);
+                if (browserGetElementChildrenPropertiessearchElementBoundingBoxRight != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxRight);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementBoundingBoxRight"] = 99999;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementBoundingBoxTop != null)
             {
-                browserGetElementChildrenProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxTop);
+                if (browserGetElementChildrenPropertiessearchElementBoundingBoxTop != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxTop);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementBoundingBoxTop"] = -99999;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchElementBoundingBoxBottom != null)
             {
-                browserGetElementChildrenProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom);
+                if (browserGetElementChildrenPropertiessearchElementBoundingBoxBottom != null)
+                {
+                    browserGetElementChildrenProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchElementBoundingBoxBottom);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetElementChildrenProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetElementChildrenProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesgetHTMLCode != null)
             {
-                browserGetElementChildrenProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesgetHTMLCode);
+                if (browserGetElementChildrenPropertiesgetHTMLCode != null)
+                {
+                    browserGetElementChildrenProperties["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesgetHTMLCode);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["GetHTMLCode"] = false;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiescreateHandle != null)
             {
-                browserGetElementChildrenProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiescreateHandle);
+                if (browserGetElementChildrenPropertiescreateHandle != null)
+                {
+                    browserGetElementChildrenProperties["CreateHandle"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiescreateHandle);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["CreateHandle"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiessearchSubTree != null)
             {
-                browserGetElementChildrenProperties["SearchSubTree"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchSubTree);
+                if (browserGetElementChildrenPropertiessearchSubTree != null)
+                {
+                    browserGetElementChildrenProperties["SearchSubTree"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiessearchSubTree);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["SearchSubTree"] = false;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnValue != null)
             {
-                browserGetElementChildrenProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnValue);
+                if (browserGetElementChildrenPropertiesreturnValue != null)
+                {
+                    browserGetElementChildrenProperties["ReturnValue"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnValue);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnValue"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnText != null)
             {
-                browserGetElementChildrenProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnText);
+                if (browserGetElementChildrenPropertiesreturnText != null)
+                {
+                    browserGetElementChildrenProperties["ReturnText"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnText);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnText"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesmaxValueLength != null)
             {
-                browserGetElementChildrenProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxValueLength);
+                if (browserGetElementChildrenPropertiesmaxValueLength != null)
+                {
+                    browserGetElementChildrenProperties["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxValueLength);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["MaxValueLength"] = 0;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesmaxTextLength != null)
             {
-                browserGetElementChildrenProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxTextLength);
+                if (browserGetElementChildrenPropertiesmaxTextLength != null)
+                {
+                    browserGetElementChildrenProperties["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxTextLength);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["MaxTextLength"] = 0;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnIsDisplayed != null)
             {
-                browserGetElementChildrenProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnIsDisplayed);
+                if (browserGetElementChildrenPropertiesreturnIsDisplayed != null)
+                {
+                    browserGetElementChildrenProperties["ReturnIsDisplayed"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnIsDisplayed);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnIsDisplayed"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnCoordinates != null)
             {
-                browserGetElementChildrenProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnCoordinates);
+                if (browserGetElementChildrenPropertiesreturnCoordinates != null)
+                {
+                    browserGetElementChildrenProperties["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnCoordinates);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnCoordinates"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnDimensions != null)
             {
-                browserGetElementChildrenProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnDimensions);
+                if (browserGetElementChildrenPropertiesreturnDimensions != null)
+                {
+                    browserGetElementChildrenProperties["ReturnDimensions"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnDimensions);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnDimensions"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnChildElementCount != null)
             {
-                browserGetElementChildrenProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnChildElementCount);
+                if (browserGetElementChildrenPropertiesreturnChildElementCount != null)
+                {
+                    browserGetElementChildrenProperties["ReturnChildElementCount"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnChildElementCount);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnChildElementCount"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesreturnParentTag != null)
             {
-                browserGetElementChildrenProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnParentTag);
+                if (browserGetElementChildrenPropertiesreturnParentTag != null)
+                {
+                    browserGetElementChildrenProperties["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesreturnParentTag);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["ReturnParentTag"] = true;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesfirstItemToReturn != null)
             {
-                browserGetElementChildrenProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesfirstItemToReturn);
+                if (browserGetElementChildrenPropertiesfirstItemToReturn != null)
+                {
+                    browserGetElementChildrenProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesfirstItemToReturn);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["FirstItemToReturn"] = 1;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
             if (browserGetElementChildrenPropertiesmaxItemsToReturn != null)
             {
-                browserGetElementChildrenProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxItemsToReturn);
+                if (browserGetElementChildrenPropertiesmaxItemsToReturn != null)
+                {
+                    browserGetElementChildrenProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(browserGetElementChildrenPropertiesmaxItemsToReturn);
+                    browserGetElementChildrenPropertiespropCount++;
+                }
+
+                browserGetElementChildrenPropertiespropCount++;
+            }
+            else
+            {
+                browserGetElementChildrenProperties["MaxItemsToReturn"] = 0;
                 browserGetElementChildrenPropertiespropCount++;
             }
 
@@ -2059,7 +3239,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputTextIntoElementsearchElementIndex != null)
             {
-                browserInputTextIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementIndex);
+                if (browserInputTextIntoElementsearchElementIndex != null)
+                {
+                    browserInputTextIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementIndex);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementIndex"] = 1;
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -2083,43 +3273,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputTextIntoElementsearchElementMinimumWidth != null)
             {
-                browserInputTextIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumWidth);
+                if (browserInputTextIntoElementsearchElementMinimumWidth != null)
+                {
+                    browserInputTextIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumWidth);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementMinimumWidth"] = 1;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementMinimumHeight != null)
             {
-                browserInputTextIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumHeight);
+                if (browserInputTextIntoElementsearchElementMinimumHeight != null)
+                {
+                    browserInputTextIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementMinimumHeight);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementMinimumHeight"] = 1;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementBoundingBoxLeft != null)
             {
-                browserInputTextIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxLeft);
+                if (browserInputTextIntoElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserInputTextIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxLeft);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementBoundingBoxRight != null)
             {
-                browserInputTextIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxRight);
+                if (browserInputTextIntoElementsearchElementBoundingBoxRight != null)
+                {
+                    browserInputTextIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxRight);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementBoundingBoxRight"] = 99999;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementBoundingBoxTop != null)
             {
-                browserInputTextIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxTop);
+                if (browserInputTextIntoElementsearchElementBoundingBoxTop != null)
+                {
+                    browserInputTextIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxTop);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementBoundingBoxTop"] = -99999;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementsearchElementBoundingBoxBottom != null)
             {
-                browserInputTextIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxBottom);
+                if (browserInputTextIntoElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserInputTextIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputTextIntoElementsearchElementBoundingBoxBottom);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserInputTextIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserInputTextIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputTextIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -2131,13 +3391,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputTextIntoElementresetExistingValue != null)
             {
-                browserInputTextIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputTextIntoElementresetExistingValue);
+                if (browserInputTextIntoElementresetExistingValue != null)
+                {
+                    browserInputTextIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputTextIntoElementresetExistingValue);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["ResetExistingValue"] = true;
                 browserInputTextIntoElementpropCount++;
             }
 
             if (browserInputTextIntoElementinsertPosition != null)
             {
-                browserInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(browserInputTextIntoElementinsertPosition);
+                if (browserInputTextIntoElementinsertPosition != null)
+                {
+                    browserInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(browserInputTextIntoElementinsertPosition);
+                    browserInputTextIntoElementpropCount++;
+                }
+
+                browserInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputTextIntoElement["InsertPosition"] = -1;
                 browserInputTextIntoElementpropCount++;
             }
 
@@ -2229,7 +3509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressCtrlKeyOnElementsearchElementIndex != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementIndex);
+                if (browserPressCtrlKeyOnElementsearchElementIndex != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementIndex);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementIndex"] = 1;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
@@ -2253,43 +3543,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressCtrlKeyOnElementsearchElementMinimumWidth != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumWidth);
+                if (browserPressCtrlKeyOnElementsearchElementMinimumWidth != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumWidth);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementMinimumWidth"] = 1;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementMinimumHeight != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumHeight);
+                if (browserPressCtrlKeyOnElementsearchElementMinimumHeight != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementMinimumHeight);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementMinimumHeight"] = 1;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft);
+                if (browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxLeft);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementBoundingBoxRight != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight);
+                if (browserPressCtrlKeyOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxRight);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementBoundingBoxTop != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop);
+                if (browserPressCtrlKeyOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxTop);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserPressCtrlKeyOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom);
+                if (browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserPressCtrlKeyOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementsearchElementBoundingBoxBottom);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
             if (browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserPressCtrlKeyOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserPressCtrlKeyOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressCtrlKeyOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPressCtrlKeyOnElementpropCount++;
+                }
+
+                browserPressCtrlKeyOnElementpropCount++;
+            }
+            else
+            {
+                browserPressCtrlKeyOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserPressCtrlKeyOnElementpropCount++;
             }
 
@@ -2363,7 +3723,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClickElementsearchElementIndex != null)
             {
-                browserClickElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClickElementsearchElementIndex);
+                if (browserClickElementsearchElementIndex != null)
+                {
+                    browserClickElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClickElementsearchElementIndex);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementIndex"] = 1;
                 browserClickElementpropCount++;
             }
 
@@ -2387,43 +3757,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClickElementsearchElementMinimumWidth != null)
             {
-                browserClickElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumWidth);
+                if (browserClickElementsearchElementMinimumWidth != null)
+                {
+                    browserClickElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumWidth);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementMinimumWidth"] = 1;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementMinimumHeight != null)
             {
-                browserClickElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumHeight);
+                if (browserClickElementsearchElementMinimumHeight != null)
+                {
+                    browserClickElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementMinimumHeight);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementMinimumHeight"] = 1;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementBoundingBoxLeft != null)
             {
-                browserClickElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxLeft);
+                if (browserClickElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserClickElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxLeft);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementBoundingBoxRight != null)
             {
-                browserClickElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxRight);
+                if (browserClickElementsearchElementBoundingBoxRight != null)
+                {
+                    browserClickElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxRight);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementBoundingBoxRight"] = 99999;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementBoundingBoxTop != null)
             {
-                browserClickElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxTop);
+                if (browserClickElementsearchElementBoundingBoxTop != null)
+                {
+                    browserClickElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxTop);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementBoundingBoxTop"] = -99999;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementsearchElementBoundingBoxBottom != null)
             {
-                browserClickElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxBottom);
+                if (browserClickElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserClickElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClickElementsearchElementBoundingBoxBottom);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserClickElementpropCount++;
             }
 
             if (browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserClickElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserClickElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClickElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserClickElementpropCount++;
+                }
+
+                browserClickElementpropCount++;
+            }
+            else
+            {
+                browserClickElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserClickElementpropCount++;
             }
 
@@ -2495,7 +3935,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSubmitElementsearchElementIndex != null)
             {
-                browserSubmitElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementIndex);
+                if (browserSubmitElementsearchElementIndex != null)
+                {
+                    browserSubmitElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementIndex);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementIndex"] = 1;
                 browserSubmitElementpropCount++;
             }
 
@@ -2519,43 +3969,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSubmitElementsearchElementMinimumWidth != null)
             {
-                browserSubmitElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumWidth);
+                if (browserSubmitElementsearchElementMinimumWidth != null)
+                {
+                    browserSubmitElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumWidth);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementMinimumWidth"] = 1;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementMinimumHeight != null)
             {
-                browserSubmitElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumHeight);
+                if (browserSubmitElementsearchElementMinimumHeight != null)
+                {
+                    browserSubmitElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementMinimumHeight);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementMinimumHeight"] = 1;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementBoundingBoxLeft != null)
             {
-                browserSubmitElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxLeft);
+                if (browserSubmitElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserSubmitElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxLeft);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementBoundingBoxRight != null)
             {
-                browserSubmitElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxRight);
+                if (browserSubmitElementsearchElementBoundingBoxRight != null)
+                {
+                    browserSubmitElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxRight);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementBoundingBoxRight"] = 99999;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementBoundingBoxTop != null)
             {
-                browserSubmitElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxTop);
+                if (browserSubmitElementsearchElementBoundingBoxTop != null)
+                {
+                    browserSubmitElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxTop);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementBoundingBoxTop"] = -99999;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementsearchElementBoundingBoxBottom != null)
             {
-                browserSubmitElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxBottom);
+                if (browserSubmitElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserSubmitElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSubmitElementsearchElementBoundingBoxBottom);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserSubmitElementpropCount++;
             }
 
             if (browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserSubmitElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserSubmitElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSubmitElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSubmitElementpropCount++;
+                }
+
+                browserSubmitElementpropCount++;
+            }
+            else
+            {
+                browserSubmitElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserSubmitElementpropCount++;
             }
 
@@ -2627,7 +4147,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCheckElementsearchElementIndex != null)
             {
-                browserCheckElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementIndex);
+                if (browserCheckElementsearchElementIndex != null)
+                {
+                    browserCheckElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementIndex);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementIndex"] = 1;
                 browserCheckElementpropCount++;
             }
 
@@ -2651,49 +4181,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCheckElementsearchElementMinimumWidth != null)
             {
-                browserCheckElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumWidth);
+                if (browserCheckElementsearchElementMinimumWidth != null)
+                {
+                    browserCheckElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumWidth);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementMinimumWidth"] = 1;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementMinimumHeight != null)
             {
-                browserCheckElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumHeight);
+                if (browserCheckElementsearchElementMinimumHeight != null)
+                {
+                    browserCheckElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementMinimumHeight);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementMinimumHeight"] = 1;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementBoundingBoxLeft != null)
             {
-                browserCheckElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxLeft);
+                if (browserCheckElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserCheckElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxLeft);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementBoundingBoxRight != null)
             {
-                browserCheckElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxRight);
+                if (browserCheckElementsearchElementBoundingBoxRight != null)
+                {
+                    browserCheckElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxRight);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementBoundingBoxRight"] = 99999;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementBoundingBoxTop != null)
             {
-                browserCheckElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxTop);
+                if (browserCheckElementsearchElementBoundingBoxTop != null)
+                {
+                    browserCheckElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxTop);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementBoundingBoxTop"] = -99999;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementsearchElementBoundingBoxBottom != null)
             {
-                browserCheckElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxBottom);
+                if (browserCheckElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserCheckElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCheckElementsearchElementBoundingBoxBottom);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserCheckElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserCheckElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCheckElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserCheckElementpropCount++;
             }
 
             if (browserCheckElementcheckElement != null)
             {
-                browserCheckElement["CheckElement"] = ExpressionConverter.ConvertO(browserCheckElementcheckElement);
+                if (browserCheckElementcheckElement != null)
+                {
+                    browserCheckElement["CheckElement"] = ExpressionConverter.ConvertO(browserCheckElementcheckElement);
+                    browserCheckElementpropCount++;
+                }
+
+                browserCheckElementpropCount++;
+            }
+            else
+            {
+                browserCheckElement["CheckElement"] = true;
                 browserCheckElementpropCount++;
             }
 
@@ -2785,7 +4395,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetSelectionPropertiessearchElementIndex != null)
             {
-                browserGetSelectionProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementIndex);
+                if (browserGetSelectionPropertiessearchElementIndex != null)
+                {
+                    browserGetSelectionProperties["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementIndex);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementIndex"] = 1;
                 browserGetSelectionPropertiespropCount++;
             }
 
@@ -2809,43 +4429,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetSelectionPropertiessearchElementMinimumWidth != null)
             {
-                browserGetSelectionProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumWidth);
+                if (browserGetSelectionPropertiessearchElementMinimumWidth != null)
+                {
+                    browserGetSelectionProperties["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumWidth);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementMinimumWidth"] = 1;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementMinimumHeight != null)
             {
-                browserGetSelectionProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumHeight);
+                if (browserGetSelectionPropertiessearchElementMinimumHeight != null)
+                {
+                    browserGetSelectionProperties["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementMinimumHeight);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementMinimumHeight"] = 1;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementBoundingBoxLeft != null)
             {
-                browserGetSelectionProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxLeft);
+                if (browserGetSelectionPropertiessearchElementBoundingBoxLeft != null)
+                {
+                    browserGetSelectionProperties["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxLeft);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementBoundingBoxRight != null)
             {
-                browserGetSelectionProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxRight);
+                if (browserGetSelectionPropertiessearchElementBoundingBoxRight != null)
+                {
+                    browserGetSelectionProperties["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxRight);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementBoundingBoxRight"] = 99999;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementBoundingBoxTop != null)
             {
-                browserGetSelectionProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxTop);
+                if (browserGetSelectionPropertiessearchElementBoundingBoxTop != null)
+                {
+                    browserGetSelectionProperties["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxTop);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementBoundingBoxTop"] = -99999;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiessearchElementBoundingBoxBottom != null)
             {
-                browserGetSelectionProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxBottom);
+                if (browserGetSelectionPropertiessearchElementBoundingBoxBottom != null)
+                {
+                    browserGetSelectionProperties["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiessearchElementBoundingBoxBottom);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetSelectionPropertiespropCount++;
             }
 
             if (browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetSelectionProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetSelectionProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetSelectionPropertiesonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetSelectionPropertiespropCount++;
+                }
+
+                browserGetSelectionPropertiespropCount++;
+            }
+            else
+            {
+                browserGetSelectionProperties["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetSelectionPropertiespropCount++;
             }
 
@@ -2917,7 +4607,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectSelectionsearchElementIndex != null)
             {
-                browserSelectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementIndex);
+                if (browserSelectSelectionsearchElementIndex != null)
+                {
+                    browserSelectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementIndex);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementIndex"] = 1;
                 browserSelectSelectionpropCount++;
             }
 
@@ -2941,43 +4641,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectSelectionsearchElementMinimumWidth != null)
             {
-                browserSelectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumWidth);
+                if (browserSelectSelectionsearchElementMinimumWidth != null)
+                {
+                    browserSelectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumWidth);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementMinimumWidth"] = 1;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementMinimumHeight != null)
             {
-                browserSelectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumHeight);
+                if (browserSelectSelectionsearchElementMinimumHeight != null)
+                {
+                    browserSelectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementMinimumHeight);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementMinimumHeight"] = 1;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementBoundingBoxLeft != null)
             {
-                browserSelectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxLeft);
+                if (browserSelectSelectionsearchElementBoundingBoxLeft != null)
+                {
+                    browserSelectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxLeft);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementBoundingBoxLeft"] = -99999;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementBoundingBoxRight != null)
             {
-                browserSelectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxRight);
+                if (browserSelectSelectionsearchElementBoundingBoxRight != null)
+                {
+                    browserSelectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxRight);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementBoundingBoxRight"] = 99999;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementBoundingBoxTop != null)
             {
-                browserSelectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxTop);
+                if (browserSelectSelectionsearchElementBoundingBoxTop != null)
+                {
+                    browserSelectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxTop);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementBoundingBoxTop"] = -99999;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectionsearchElementBoundingBoxBottom != null)
             {
-                browserSelectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxBottom);
+                if (browserSelectSelectionsearchElementBoundingBoxBottom != null)
+                {
+                    browserSelectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectSelectionsearchElementBoundingBoxBottom);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["SearchElementBoundingBoxBottom"] = 99999;
                 browserSelectSelectionpropCount++;
             }
 
             if (browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserSelectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserSelectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserSelectSelectionpropCount++;
             }
 
@@ -2995,7 +4765,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectSelectionindexToSelect != null)
             {
-                browserSelectSelection["IndexToSelect"] = ExpressionConverter.ConvertO(browserSelectSelectionindexToSelect);
+                if (browserSelectSelectionindexToSelect != null)
+                {
+                    browserSelectSelection["IndexToSelect"] = ExpressionConverter.ConvertO(browserSelectSelectionindexToSelect);
+                    browserSelectSelectionpropCount++;
+                }
+
+                browserSelectSelectionpropCount++;
+            }
+            else
+            {
+                browserSelectSelection["IndexToSelect"] = 1;
                 browserSelectSelectionpropCount++;
             }
 
@@ -3067,7 +4847,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectSelectionsearchElementIndex != null)
             {
-                browserDeselectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementIndex);
+                if (browserDeselectSelectionsearchElementIndex != null)
+                {
+                    browserDeselectSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementIndex);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementIndex"] = 1;
                 browserDeselectSelectionpropCount++;
             }
 
@@ -3091,43 +4881,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectSelectionsearchElementMinimumWidth != null)
             {
-                browserDeselectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumWidth);
+                if (browserDeselectSelectionsearchElementMinimumWidth != null)
+                {
+                    browserDeselectSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumWidth);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementMinimumWidth"] = 1;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementMinimumHeight != null)
             {
-                browserDeselectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumHeight);
+                if (browserDeselectSelectionsearchElementMinimumHeight != null)
+                {
+                    browserDeselectSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementMinimumHeight);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementMinimumHeight"] = 1;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementBoundingBoxLeft != null)
             {
-                browserDeselectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxLeft);
+                if (browserDeselectSelectionsearchElementBoundingBoxLeft != null)
+                {
+                    browserDeselectSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxLeft);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementBoundingBoxLeft"] = -99999;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementBoundingBoxRight != null)
             {
-                browserDeselectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxRight);
+                if (browserDeselectSelectionsearchElementBoundingBoxRight != null)
+                {
+                    browserDeselectSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxRight);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementBoundingBoxRight"] = 99999;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementBoundingBoxTop != null)
             {
-                browserDeselectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxTop);
+                if (browserDeselectSelectionsearchElementBoundingBoxTop != null)
+                {
+                    browserDeselectSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxTop);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementBoundingBoxTop"] = -99999;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectionsearchElementBoundingBoxBottom != null)
             {
-                browserDeselectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxBottom);
+                if (browserDeselectSelectionsearchElementBoundingBoxBottom != null)
+                {
+                    browserDeselectSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectSelectionsearchElementBoundingBoxBottom);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["SearchElementBoundingBoxBottom"] = 99999;
                 browserDeselectSelectionpropCount++;
             }
 
             if (browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserDeselectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserDeselectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserDeselectSelectionpropCount++;
             }
 
@@ -3145,7 +5005,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectSelectionindexToDeselect != null)
             {
-                browserDeselectSelection["IndexToDeselect"] = ExpressionConverter.ConvertO(browserDeselectSelectionindexToDeselect);
+                if (browserDeselectSelectionindexToDeselect != null)
+                {
+                    browserDeselectSelection["IndexToDeselect"] = ExpressionConverter.ConvertO(browserDeselectSelectionindexToDeselect);
+                    browserDeselectSelectionpropCount++;
+                }
+
+                browserDeselectSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectSelection["IndexToDeselect"] = 1;
                 browserDeselectSelectionpropCount++;
             }
 
@@ -3217,7 +5087,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectAllSelectionsearchElementIndex != null)
             {
-                browserDeselectAllSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementIndex);
+                if (browserDeselectAllSelectionsearchElementIndex != null)
+                {
+                    browserDeselectAllSelection["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementIndex);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementIndex"] = 1;
                 browserDeselectAllSelectionpropCount++;
             }
 
@@ -3241,43 +5121,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDeselectAllSelectionsearchElementMinimumWidth != null)
             {
-                browserDeselectAllSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumWidth);
+                if (browserDeselectAllSelectionsearchElementMinimumWidth != null)
+                {
+                    browserDeselectAllSelection["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumWidth);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementMinimumWidth"] = 1;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementMinimumHeight != null)
             {
-                browserDeselectAllSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumHeight);
+                if (browserDeselectAllSelectionsearchElementMinimumHeight != null)
+                {
+                    browserDeselectAllSelection["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementMinimumHeight);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementMinimumHeight"] = 1;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementBoundingBoxLeft != null)
             {
-                browserDeselectAllSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxLeft);
+                if (browserDeselectAllSelectionsearchElementBoundingBoxLeft != null)
+                {
+                    browserDeselectAllSelection["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxLeft);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementBoundingBoxLeft"] = -99999;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementBoundingBoxRight != null)
             {
-                browserDeselectAllSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxRight);
+                if (browserDeselectAllSelectionsearchElementBoundingBoxRight != null)
+                {
+                    browserDeselectAllSelection["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxRight);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementBoundingBoxRight"] = 99999;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementBoundingBoxTop != null)
             {
-                browserDeselectAllSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxTop);
+                if (browserDeselectAllSelectionsearchElementBoundingBoxTop != null)
+                {
+                    browserDeselectAllSelection["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxTop);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementBoundingBoxTop"] = -99999;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectionsearchElementBoundingBoxBottom != null)
             {
-                browserDeselectAllSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxBottom);
+                if (browserDeselectAllSelectionsearchElementBoundingBoxBottom != null)
+                {
+                    browserDeselectAllSelection["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDeselectAllSelectionsearchElementBoundingBoxBottom);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["SearchElementBoundingBoxBottom"] = 99999;
                 browserDeselectAllSelectionpropCount++;
             }
 
             if (browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserDeselectAllSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserDeselectAllSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDeselectAllSelectiononlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDeselectAllSelectionpropCount++;
+                }
+
+                browserDeselectAllSelectionpropCount++;
+            }
+            else
+            {
+                browserDeselectAllSelection["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserDeselectAllSelectionpropCount++;
             }
 
@@ -3349,7 +5299,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetTableContentssearchElementIndex != null)
             {
-                browserGetTableContents["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementIndex);
+                if (browserGetTableContentssearchElementIndex != null)
+                {
+                    browserGetTableContents["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementIndex);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementIndex"] = 1;
                 browserGetTableContentspropCount++;
             }
 
@@ -3373,55 +5333,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetTableContentssearchElementMinimumWidth != null)
             {
-                browserGetTableContents["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumWidth);
+                if (browserGetTableContentssearchElementMinimumWidth != null)
+                {
+                    browserGetTableContents["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumWidth);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementMinimumWidth"] = 1;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementMinimumHeight != null)
             {
-                browserGetTableContents["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumHeight);
+                if (browserGetTableContentssearchElementMinimumHeight != null)
+                {
+                    browserGetTableContents["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementMinimumHeight);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementMinimumHeight"] = 1;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementBoundingBoxLeft != null)
             {
-                browserGetTableContents["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxLeft);
+                if (browserGetTableContentssearchElementBoundingBoxLeft != null)
+                {
+                    browserGetTableContents["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxLeft);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementBoundingBoxRight != null)
             {
-                browserGetTableContents["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxRight);
+                if (browserGetTableContentssearchElementBoundingBoxRight != null)
+                {
+                    browserGetTableContents["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxRight);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementBoundingBoxRight"] = 99999;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementBoundingBoxTop != null)
             {
-                browserGetTableContents["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxTop);
+                if (browserGetTableContentssearchElementBoundingBoxTop != null)
+                {
+                    browserGetTableContents["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxTop);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementBoundingBoxTop"] = -99999;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentssearchElementBoundingBoxBottom != null)
             {
-                browserGetTableContents["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxBottom);
+                if (browserGetTableContentssearchElementBoundingBoxBottom != null)
+                {
+                    browserGetTableContents["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetTableContentssearchElementBoundingBoxBottom);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetTableContents["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetTableContents["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetTableContentsonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentscreateColumnNamesFromRow != null)
             {
-                browserGetTableContents["CreateColumnNamesFromRow"] = ExpressionConverter.ConvertO(browserGetTableContentscreateColumnNamesFromRow);
+                if (browserGetTableContentscreateColumnNamesFromRow != null)
+                {
+                    browserGetTableContents["CreateColumnNamesFromRow"] = ExpressionConverter.ConvertO(browserGetTableContentscreateColumnNamesFromRow);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["CreateColumnNamesFromRow"] = 0;
                 browserGetTableContentspropCount++;
             }
 
             if (browserGetTableContentsmergeChildTables != null)
             {
-                browserGetTableContents["MergeChildTables"] = ExpressionConverter.ConvertO(browserGetTableContentsmergeChildTables);
+                if (browserGetTableContentsmergeChildTables != null)
+                {
+                    browserGetTableContents["MergeChildTables"] = ExpressionConverter.ConvertO(browserGetTableContentsmergeChildTables);
+                    browserGetTableContentspropCount++;
+                }
+
+                browserGetTableContentspropCount++;
+            }
+            else
+            {
+                browserGetTableContents["MergeChildTables"] = false;
                 browserGetTableContentspropCount++;
             }
 
@@ -3495,7 +5545,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserScrollElementIntoViewsearchElementIndex != null)
             {
-                browserScrollElementIntoView["SearchElementIndex"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementIndex);
+                if (browserScrollElementIntoViewsearchElementIndex != null)
+                {
+                    browserScrollElementIntoView["SearchElementIndex"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementIndex);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementIndex"] = 1;
                 browserScrollElementIntoViewpropCount++;
             }
 
@@ -3519,43 +5579,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserScrollElementIntoViewsearchElementMinimumWidth != null)
             {
-                browserScrollElementIntoView["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumWidth);
+                if (browserScrollElementIntoViewsearchElementMinimumWidth != null)
+                {
+                    browserScrollElementIntoView["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumWidth);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementMinimumWidth"] = 1;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementMinimumHeight != null)
             {
-                browserScrollElementIntoView["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumHeight);
+                if (browserScrollElementIntoViewsearchElementMinimumHeight != null)
+                {
+                    browserScrollElementIntoView["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementMinimumHeight);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementMinimumHeight"] = 1;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementBoundingBoxLeft != null)
             {
-                browserScrollElementIntoView["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxLeft);
+                if (browserScrollElementIntoViewsearchElementBoundingBoxLeft != null)
+                {
+                    browserScrollElementIntoView["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxLeft);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementBoundingBoxLeft"] = -99999;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementBoundingBoxRight != null)
             {
-                browserScrollElementIntoView["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxRight);
+                if (browserScrollElementIntoViewsearchElementBoundingBoxRight != null)
+                {
+                    browserScrollElementIntoView["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxRight);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementBoundingBoxRight"] = 99999;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementBoundingBoxTop != null)
             {
-                browserScrollElementIntoView["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxTop);
+                if (browserScrollElementIntoViewsearchElementBoundingBoxTop != null)
+                {
+                    browserScrollElementIntoView["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxTop);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementBoundingBoxTop"] = -99999;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewsearchElementBoundingBoxBottom != null)
             {
-                browserScrollElementIntoView["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxBottom);
+                if (browserScrollElementIntoViewsearchElementBoundingBoxBottom != null)
+                {
+                    browserScrollElementIntoView["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewsearchElementBoundingBoxBottom);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["SearchElementBoundingBoxBottom"] = 99999;
                 browserScrollElementIntoViewpropCount++;
             }
 
             if (browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserScrollElementIntoView["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserScrollElementIntoView["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserScrollElementIntoViewonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserScrollElementIntoViewpropCount++;
+                }
+
+                browserScrollElementIntoViewpropCount++;
+            }
+            else
+            {
+                browserScrollElementIntoView["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserScrollElementIntoViewpropCount++;
             }
 
@@ -3647,7 +5777,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementBoundingRectsearchElementIndex != null)
             {
-                browserGetElementBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementIndex);
+                if (browserGetElementBoundingRectsearchElementIndex != null)
+                {
+                    browserGetElementBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementIndex);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementIndex"] = 1;
                 browserGetElementBoundingRectpropCount++;
             }
 
@@ -3671,43 +5811,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementBoundingRectsearchElementMinimumWidth != null)
             {
-                browserGetElementBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumWidth);
+                if (browserGetElementBoundingRectsearchElementMinimumWidth != null)
+                {
+                    browserGetElementBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumWidth);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementMinimumWidth"] = 1;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementMinimumHeight != null)
             {
-                browserGetElementBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumHeight);
+                if (browserGetElementBoundingRectsearchElementMinimumHeight != null)
+                {
+                    browserGetElementBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementMinimumHeight);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementMinimumHeight"] = 1;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementBoundingBoxLeft != null)
             {
-                browserGetElementBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxLeft);
+                if (browserGetElementBoundingRectsearchElementBoundingBoxLeft != null)
+                {
+                    browserGetElementBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxLeft);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementBoundingBoxRight != null)
             {
-                browserGetElementBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxRight);
+                if (browserGetElementBoundingRectsearchElementBoundingBoxRight != null)
+                {
+                    browserGetElementBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxRight);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementBoundingBoxRight"] = 99999;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementBoundingBoxTop != null)
             {
-                browserGetElementBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxTop);
+                if (browserGetElementBoundingRectsearchElementBoundingBoxTop != null)
+                {
+                    browserGetElementBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxTop);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementBoundingBoxTop"] = -99999;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectsearchElementBoundingBoxBottom != null)
             {
-                browserGetElementBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxBottom);
+                if (browserGetElementBoundingRectsearchElementBoundingBoxBottom != null)
+                {
+                    browserGetElementBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectsearchElementBoundingBoxBottom);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetElementBoundingRectpropCount++;
             }
 
             if (browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetElementBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetElementBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementBoundingRectpropCount++;
+                }
+
+                browserGetElementBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetElementBoundingRectpropCount++;
             }
 
@@ -3779,7 +5989,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDrawRectangleAroundElementsearchElementIndex != null)
             {
-                browserDrawRectangleAroundElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementIndex);
+                if (browserDrawRectangleAroundElementsearchElementIndex != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementIndex);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementIndex"] = 1;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
@@ -3803,55 +6023,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserDrawRectangleAroundElementsearchElementMinimumWidth != null)
             {
-                browserDrawRectangleAroundElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumWidth);
+                if (browserDrawRectangleAroundElementsearchElementMinimumWidth != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumWidth);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementMinimumWidth"] = 1;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementMinimumHeight != null)
             {
-                browserDrawRectangleAroundElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumHeight);
+                if (browserDrawRectangleAroundElementsearchElementMinimumHeight != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementMinimumHeight);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementMinimumHeight"] = 1;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementBoundingBoxLeft != null)
             {
-                browserDrawRectangleAroundElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft);
+                if (browserDrawRectangleAroundElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxLeft);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementBoundingBoxRight != null)
             {
-                browserDrawRectangleAroundElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxRight);
+                if (browserDrawRectangleAroundElementsearchElementBoundingBoxRight != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxRight);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementBoundingBoxRight"] = 99999;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementBoundingBoxTop != null)
             {
-                browserDrawRectangleAroundElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxTop);
+                if (browserDrawRectangleAroundElementsearchElementBoundingBoxTop != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxTop);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementBoundingBoxTop"] = -99999;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementsearchElementBoundingBoxBottom != null)
             {
-                browserDrawRectangleAroundElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom);
+                if (browserDrawRectangleAroundElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserDrawRectangleAroundElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementsearchElementBoundingBoxBottom);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserDrawRectangleAroundElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserDrawRectangleAroundElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementpenColour != null)
             {
-                browserDrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenColour);
+                if (browserDrawRectangleAroundElementpenColour != null)
+                {
+                    browserDrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenColour);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["PenColour"] = "green";
                 browserDrawRectangleAroundElementpropCount++;
             }
 
             if (browserDrawRectangleAroundElementpenThicknessPixels != null)
             {
-                browserDrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenThicknessPixels);
+                if (browserDrawRectangleAroundElementpenThicknessPixels != null)
+                {
+                    browserDrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(browserDrawRectangleAroundElementpenThicknessPixels);
+                    browserDrawRectangleAroundElementpropCount++;
+                }
+
+                browserDrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                browserDrawRectangleAroundElement["PenThicknessPixels"] = 4;
                 browserDrawRectangleAroundElementpropCount++;
             }
 
@@ -3953,7 +6263,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementScreenBoundingRectsearchElementIndex != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementIndex);
+                if (browserGetElementScreenBoundingRectsearchElementIndex != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementIndex);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementIndex"] = 1;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
@@ -3977,43 +6297,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGetElementScreenBoundingRectsearchElementMinimumWidth != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumWidth);
+                if (browserGetElementScreenBoundingRectsearchElementMinimumWidth != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumWidth);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementMinimumWidth"] = 1;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementMinimumHeight != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumHeight);
+                if (browserGetElementScreenBoundingRectsearchElementMinimumHeight != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementMinimumHeight);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementMinimumHeight"] = 1;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft);
+                if (browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxLeft);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementBoundingBoxLeft"] = -99999;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementBoundingBoxRight != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight);
+                if (browserGetElementScreenBoundingRectsearchElementBoundingBoxRight != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxRight);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementBoundingBoxRight"] = 99999;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementBoundingBoxTop != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop);
+                if (browserGetElementScreenBoundingRectsearchElementBoundingBoxTop != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxTop);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementBoundingBoxTop"] = -99999;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom != null)
             {
-                browserGetElementScreenBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom);
+                if (browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom != null)
+                {
+                    browserGetElementScreenBoundingRect["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectsearchElementBoundingBoxBottom);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["SearchElementBoundingBoxBottom"] = 99999;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
             if (browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGetElementScreenBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGetElementScreenBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGetElementScreenBoundingRectonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGetElementScreenBoundingRectpropCount++;
+                }
+
+                browserGetElementScreenBoundingRectpropCount++;
+            }
+            else
+            {
+                browserGetElementScreenBoundingRect["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGetElementScreenBoundingRectpropCount++;
             }
 
@@ -4085,7 +6475,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserFocusElementsearchElementIndex != null)
             {
-                browserFocusElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementIndex);
+                if (browserFocusElementsearchElementIndex != null)
+                {
+                    browserFocusElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementIndex);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementIndex"] = 1;
                 browserFocusElementpropCount++;
             }
 
@@ -4109,43 +6509,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserFocusElementsearchElementMinimumWidth != null)
             {
-                browserFocusElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumWidth);
+                if (browserFocusElementsearchElementMinimumWidth != null)
+                {
+                    browserFocusElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumWidth);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementMinimumWidth"] = 1;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementMinimumHeight != null)
             {
-                browserFocusElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumHeight);
+                if (browserFocusElementsearchElementMinimumHeight != null)
+                {
+                    browserFocusElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementMinimumHeight);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementMinimumHeight"] = 1;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementBoundingBoxLeft != null)
             {
-                browserFocusElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxLeft);
+                if (browserFocusElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserFocusElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxLeft);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementBoundingBoxRight != null)
             {
-                browserFocusElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxRight);
+                if (browserFocusElementsearchElementBoundingBoxRight != null)
+                {
+                    browserFocusElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxRight);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementBoundingBoxRight"] = 99999;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementBoundingBoxTop != null)
             {
-                browserFocusElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxTop);
+                if (browserFocusElementsearchElementBoundingBoxTop != null)
+                {
+                    browserFocusElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxTop);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementBoundingBoxTop"] = -99999;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementsearchElementBoundingBoxBottom != null)
             {
-                browserFocusElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxBottom);
+                if (browserFocusElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserFocusElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserFocusElementsearchElementBoundingBoxBottom);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserFocusElementpropCount++;
             }
 
             if (browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserFocusElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserFocusElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserFocusElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserFocusElementpropCount++;
+                }
+
+                browserFocusElementpropCount++;
+            }
+            else
+            {
+                browserFocusElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserFocusElementpropCount++;
             }
 
@@ -4217,7 +6687,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressEnterOnElementsearchElementIndex != null)
             {
-                browserPressEnterOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementIndex);
+                if (browserPressEnterOnElementsearchElementIndex != null)
+                {
+                    browserPressEnterOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementIndex);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementIndex"] = 1;
                 browserPressEnterOnElementpropCount++;
             }
 
@@ -4241,43 +6721,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPressEnterOnElementsearchElementMinimumWidth != null)
             {
-                browserPressEnterOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumWidth);
+                if (browserPressEnterOnElementsearchElementMinimumWidth != null)
+                {
+                    browserPressEnterOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumWidth);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementMinimumWidth"] = 1;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementMinimumHeight != null)
             {
-                browserPressEnterOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumHeight);
+                if (browserPressEnterOnElementsearchElementMinimumHeight != null)
+                {
+                    browserPressEnterOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementMinimumHeight);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementMinimumHeight"] = 1;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserPressEnterOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxLeft);
+                if (browserPressEnterOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserPressEnterOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxLeft);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementBoundingBoxRight != null)
             {
-                browserPressEnterOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxRight);
+                if (browserPressEnterOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserPressEnterOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxRight);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementBoundingBoxTop != null)
             {
-                browserPressEnterOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxTop);
+                if (browserPressEnterOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserPressEnterOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxTop);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserPressEnterOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxBottom);
+                if (browserPressEnterOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserPressEnterOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPressEnterOnElementsearchElementBoundingBoxBottom);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserPressEnterOnElementpropCount++;
             }
 
             if (browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserPressEnterOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserPressEnterOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPressEnterOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPressEnterOnElementpropCount++;
+                }
+
+                browserPressEnterOnElementpropCount++;
+            }
+            else
+            {
+                browserPressEnterOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserPressEnterOnElementpropCount++;
             }
 
@@ -4349,7 +6899,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseLeftClickOnElementsearchElementIndex != null)
             {
-                browserMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementIndex);
+                if (browserMouseLeftClickOnElementsearchElementIndex != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementIndex);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementIndex"] = 1;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
@@ -4373,49 +6933,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseLeftClickOnElementsearchElementMinimumWidth != null)
             {
-                browserMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumWidth);
+                if (browserMouseLeftClickOnElementsearchElementMinimumWidth != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumWidth);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementMinimumWidth"] = 1;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementMinimumHeight != null)
             {
-                browserMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumHeight);
+                if (browserMouseLeftClickOnElementsearchElementMinimumHeight != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementMinimumHeight);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementMinimumHeight"] = 1;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                if (browserMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
             {
-                browserMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                if (browserMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
             {
-                browserMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                if (browserMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                if (browserMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
             if (browserMouseLeftClickOnElementfocusFirst != null)
             {
-                browserMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementfocusFirst);
+                if (browserMouseLeftClickOnElementfocusFirst != null)
+                {
+                    browserMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseLeftClickOnElementfocusFirst);
+                    browserMouseLeftClickOnElementpropCount++;
+                }
+
+                browserMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseLeftClickOnElement["FocusFirst"] = false;
                 browserMouseLeftClickOnElementpropCount++;
             }
 
@@ -4487,7 +7127,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseRightClickOnElementsearchElementIndex != null)
             {
-                browserMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementIndex);
+                if (browserMouseRightClickOnElementsearchElementIndex != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementIndex);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementIndex"] = 1;
                 browserMouseRightClickOnElementpropCount++;
             }
 
@@ -4511,49 +7161,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserMouseRightClickOnElementsearchElementMinimumWidth != null)
             {
-                browserMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumWidth);
+                if (browserMouseRightClickOnElementsearchElementMinimumWidth != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumWidth);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementMinimumWidth"] = 1;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementMinimumHeight != null)
             {
-                browserMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumHeight);
+                if (browserMouseRightClickOnElementsearchElementMinimumHeight != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementMinimumHeight);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementMinimumHeight"] = 1;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                if (browserMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementBoundingBoxRight != null)
             {
-                browserMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxRight);
+                if (browserMouseRightClickOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxRight);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementBoundingBoxTop != null)
             {
-                browserMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxTop);
+                if (browserMouseRightClickOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxTop);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                if (browserMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserMouseRightClickOnElementpropCount++;
             }
 
             if (browserMouseRightClickOnElementfocusFirst != null)
             {
-                browserMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementfocusFirst);
+                if (browserMouseRightClickOnElementfocusFirst != null)
+                {
+                    browserMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserMouseRightClickOnElementfocusFirst);
+                    browserMouseRightClickOnElementpropCount++;
+                }
+
+                browserMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserMouseRightClickOnElement["FocusFirst"] = false;
                 browserMouseRightClickOnElementpropCount++;
             }
 
@@ -4625,7 +7355,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserJavaScriptClickOnElementsearchElementIndex != null)
             {
-                browserJavaScriptClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementIndex);
+                if (browserJavaScriptClickOnElementsearchElementIndex != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementIndex);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementIndex"] = 1;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
@@ -4649,43 +7389,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserJavaScriptClickOnElementsearchElementMinimumWidth != null)
             {
-                browserJavaScriptClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumWidth);
+                if (browserJavaScriptClickOnElementsearchElementMinimumWidth != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumWidth);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementMinimumWidth"] = 1;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementMinimumHeight != null)
             {
-                browserJavaScriptClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumHeight);
+                if (browserJavaScriptClickOnElementsearchElementMinimumHeight != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementMinimumHeight);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementMinimumHeight"] = 1;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserJavaScriptClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft);
+                if (browserJavaScriptClickOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxLeft);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementBoundingBoxRight != null)
             {
-                browserJavaScriptClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxRight);
+                if (browserJavaScriptClickOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxRight);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementBoundingBoxTop != null)
             {
-                browserJavaScriptClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxTop);
+                if (browserJavaScriptClickOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxTop);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserJavaScriptClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom);
+                if (browserJavaScriptClickOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserJavaScriptClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementsearchElementBoundingBoxBottom);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
             if (browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserJavaScriptClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserJavaScriptClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserJavaScriptClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserJavaScriptClickOnElementpropCount++;
+                }
+
+                browserJavaScriptClickOnElementpropCount++;
+            }
+            else
+            {
+                browserJavaScriptClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserJavaScriptClickOnElementpropCount++;
             }
 
@@ -4757,7 +7567,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserExecuteJavaScriptOnElementsearchElementIndex != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementIndex);
+                if (browserExecuteJavaScriptOnElementsearchElementIndex != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementIndex);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementIndex"] = 1;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
@@ -4781,43 +7601,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserExecuteJavaScriptOnElementsearchElementMinimumWidth != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumWidth);
+                if (browserExecuteJavaScriptOnElementsearchElementMinimumWidth != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumWidth);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementMinimumWidth"] = 1;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementMinimumHeight != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumHeight);
+                if (browserExecuteJavaScriptOnElementsearchElementMinimumHeight != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementMinimumHeight);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementMinimumHeight"] = 1;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft);
+                if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxLeft);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight);
+                if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxRight);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop);
+                if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxTop);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom);
+                if (browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserExecuteJavaScriptOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementsearchElementBoundingBoxBottom);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
             if (browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserExecuteJavaScriptOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserExecuteJavaScriptOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserExecuteJavaScriptOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserExecuteJavaScriptOnElementpropCount++;
+                }
+
+                browserExecuteJavaScriptOnElementpropCount++;
+            }
+            else
+            {
+                browserExecuteJavaScriptOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserExecuteJavaScriptOnElementpropCount++;
             }
 
@@ -4891,7 +7781,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseLeftClickOnElementsearchElementIndex != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementIndex);
+                if (browserGlobalMouseLeftClickOnElementsearchElementIndex != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementIndex);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementIndex"] = 1;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -4915,43 +7815,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth);
+                if (browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumWidth);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementMinimumWidth"] = 1;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight);
+                if (browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementMinimumHeight);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementMinimumHeight"] = 1;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxLeft);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxRight);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxTop);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                if (browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementsearchElementBoundingBoxBottom);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGlobalMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -4969,7 +7939,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseLeftClickOnElementfocusFirst != null)
             {
-                browserGlobalMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementfocusFirst);
+                if (browserGlobalMouseLeftClickOnElementfocusFirst != null)
+                {
+                    browserGlobalMouseLeftClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseLeftClickOnElementfocusFirst);
+                    browserGlobalMouseLeftClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseLeftClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseLeftClickOnElement["FocusFirst"] = false;
                 browserGlobalMouseLeftClickOnElementpropCount++;
             }
 
@@ -5041,7 +8021,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseRightClickOnElementsearchElementIndex != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementIndex);
+                if (browserGlobalMouseRightClickOnElementsearchElementIndex != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementIndex);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementIndex"] = 1;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -5065,43 +8055,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseRightClickOnElementsearchElementMinimumWidth != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth);
+                if (browserGlobalMouseRightClickOnElementsearchElementMinimumWidth != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumWidth);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementMinimumWidth"] = 1;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementMinimumHeight != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight);
+                if (browserGlobalMouseRightClickOnElementsearchElementMinimumHeight != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementMinimumHeight);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementMinimumHeight"] = 1;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxLeft);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight);
+                if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxRight);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop);
+                if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxTop);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                if (browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementsearchElementBoundingBoxBottom);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
             if (browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserGlobalMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserGlobalMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -5119,7 +8179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserGlobalMouseRightClickOnElementfocusFirst != null)
             {
-                browserGlobalMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementfocusFirst);
+                if (browserGlobalMouseRightClickOnElementfocusFirst != null)
+                {
+                    browserGlobalMouseRightClickOnElement["FocusFirst"] = ExpressionConverter.ConvertO(browserGlobalMouseRightClickOnElementfocusFirst);
+                    browserGlobalMouseRightClickOnElementpropCount++;
+                }
+
+                browserGlobalMouseRightClickOnElementpropCount++;
+            }
+            else
+            {
+                browserGlobalMouseRightClickOnElement["FocusFirst"] = false;
                 browserGlobalMouseRightClickOnElementpropCount++;
             }
 
@@ -5149,7 +8219,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserOpenNewTabswitchControlToNewTab != null)
             {
-                browserOpenNewTab["SwitchControlToNewTab"] = ExpressionConverter.ConvertO(browserOpenNewTabswitchControlToNewTab);
+                if (browserOpenNewTabswitchControlToNewTab != null)
+                {
+                    browserOpenNewTab["SwitchControlToNewTab"] = ExpressionConverter.ConvertO(browserOpenNewTabswitchControlToNewTab);
+                    browserOpenNewTabpropCount++;
+                }
+
+                browserOpenNewTabpropCount++;
+            }
+            else
+            {
+                browserOpenNewTab["SwitchControlToNewTab"] = true;
                 browserOpenNewTabpropCount++;
             }
 
@@ -5325,7 +8405,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSwitchToFrameElementsearchElementIndex != null)
             {
-                browserSwitchToFrameElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementIndex);
+                if (browserSwitchToFrameElementsearchElementIndex != null)
+                {
+                    browserSwitchToFrameElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementIndex);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementIndex"] = 1;
                 browserSwitchToFrameElementpropCount++;
             }
 
@@ -5349,43 +8439,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSwitchToFrameElementsearchElementMinimumWidth != null)
             {
-                browserSwitchToFrameElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumWidth);
+                if (browserSwitchToFrameElementsearchElementMinimumWidth != null)
+                {
+                    browserSwitchToFrameElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumWidth);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementMinimumWidth"] = 1;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementMinimumHeight != null)
             {
-                browserSwitchToFrameElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumHeight);
+                if (browserSwitchToFrameElementsearchElementMinimumHeight != null)
+                {
+                    browserSwitchToFrameElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementMinimumHeight);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementMinimumHeight"] = 1;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementBoundingBoxLeft != null)
             {
-                browserSwitchToFrameElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxLeft);
+                if (browserSwitchToFrameElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserSwitchToFrameElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxLeft);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementBoundingBoxRight != null)
             {
-                browserSwitchToFrameElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxRight);
+                if (browserSwitchToFrameElementsearchElementBoundingBoxRight != null)
+                {
+                    browserSwitchToFrameElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxRight);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementBoundingBoxRight"] = 99999;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementBoundingBoxTop != null)
             {
-                browserSwitchToFrameElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxTop);
+                if (browserSwitchToFrameElementsearchElementBoundingBoxTop != null)
+                {
+                    browserSwitchToFrameElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxTop);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementBoundingBoxTop"] = -99999;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementsearchElementBoundingBoxBottom != null)
             {
-                browserSwitchToFrameElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxBottom);
+                if (browserSwitchToFrameElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserSwitchToFrameElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementsearchElementBoundingBoxBottom);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserSwitchToFrameElementpropCount++;
             }
 
             if (browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserSwitchToFrameElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserSwitchToFrameElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSwitchToFrameElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSwitchToFrameElementpropCount++;
+                }
+
+                browserSwitchToFrameElementpropCount++;
+            }
+            else
+            {
+                browserSwitchToFrameElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserSwitchToFrameElementpropCount++;
             }
 
@@ -5529,7 +8689,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClearElementTextsearchElementIndex != null)
             {
-                browserClearElementText["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementIndex);
+                if (browserClearElementTextsearchElementIndex != null)
+                {
+                    browserClearElementText["SearchElementIndex"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementIndex);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementIndex"] = 1;
                 browserClearElementTextpropCount++;
             }
 
@@ -5553,43 +8723,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserClearElementTextsearchElementMinimumWidth != null)
             {
-                browserClearElementText["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumWidth);
+                if (browserClearElementTextsearchElementMinimumWidth != null)
+                {
+                    browserClearElementText["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumWidth);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementMinimumWidth"] = 1;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementMinimumHeight != null)
             {
-                browserClearElementText["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumHeight);
+                if (browserClearElementTextsearchElementMinimumHeight != null)
+                {
+                    browserClearElementText["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementMinimumHeight);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementMinimumHeight"] = 1;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementBoundingBoxLeft != null)
             {
-                browserClearElementText["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxLeft);
+                if (browserClearElementTextsearchElementBoundingBoxLeft != null)
+                {
+                    browserClearElementText["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxLeft);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementBoundingBoxLeft"] = -99999;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementBoundingBoxRight != null)
             {
-                browserClearElementText["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxRight);
+                if (browserClearElementTextsearchElementBoundingBoxRight != null)
+                {
+                    browserClearElementText["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxRight);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementBoundingBoxRight"] = 99999;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementBoundingBoxTop != null)
             {
-                browserClearElementText["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxTop);
+                if (browserClearElementTextsearchElementBoundingBoxTop != null)
+                {
+                    browserClearElementText["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxTop);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementBoundingBoxTop"] = -99999;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextsearchElementBoundingBoxBottom != null)
             {
-                browserClearElementText["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxBottom);
+                if (browserClearElementTextsearchElementBoundingBoxBottom != null)
+                {
+                    browserClearElementText["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserClearElementTextsearchElementBoundingBoxBottom);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["SearchElementBoundingBoxBottom"] = 99999;
                 browserClearElementTextpropCount++;
             }
 
             if (browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserClearElementText["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserClearElementText["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserClearElementTextonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserClearElementTextpropCount++;
+                }
+
+                browserClearElementTextpropCount++;
+            }
+            else
+            {
+                browserClearElementText["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserClearElementTextpropCount++;
             }
 
@@ -5661,7 +8901,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCopySelectedTextOnElementsearchElementIndex != null)
             {
-                browserCopySelectedTextOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementIndex);
+                if (browserCopySelectedTextOnElementsearchElementIndex != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementIndex);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementIndex"] = 1;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
@@ -5685,43 +8935,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserCopySelectedTextOnElementsearchElementMinimumWidth != null)
             {
-                browserCopySelectedTextOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumWidth);
+                if (browserCopySelectedTextOnElementsearchElementMinimumWidth != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumWidth);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementMinimumWidth"] = 1;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementMinimumHeight != null)
             {
-                browserCopySelectedTextOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumHeight);
+                if (browserCopySelectedTextOnElementsearchElementMinimumHeight != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementMinimumHeight);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementMinimumHeight"] = 1;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserCopySelectedTextOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft);
+                if (browserCopySelectedTextOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxLeft);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementBoundingBoxRight != null)
             {
-                browserCopySelectedTextOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxRight);
+                if (browserCopySelectedTextOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxRight);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementBoundingBoxTop != null)
             {
-                browserCopySelectedTextOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxTop);
+                if (browserCopySelectedTextOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxTop);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserCopySelectedTextOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom);
+                if (browserCopySelectedTextOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserCopySelectedTextOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementsearchElementBoundingBoxBottom);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
             if (browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserCopySelectedTextOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserCopySelectedTextOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserCopySelectedTextOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserCopySelectedTextOnElementpropCount++;
+                }
+
+                browserCopySelectedTextOnElementpropCount++;
+            }
+            else
+            {
+                browserCopySelectedTextOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserCopySelectedTextOnElementpropCount++;
             }
 
@@ -5793,7 +9113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputPasswordIntoElementsearchElementIndex != null)
             {
-                browserInputPasswordIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementIndex);
+                if (browserInputPasswordIntoElementsearchElementIndex != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementIndex);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementIndex"] = 1;
                 browserInputPasswordIntoElementpropCount++;
             }
 
@@ -5817,43 +9147,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserInputPasswordIntoElementsearchElementMinimumWidth != null)
             {
-                browserInputPasswordIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumWidth);
+                if (browserInputPasswordIntoElementsearchElementMinimumWidth != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumWidth);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementMinimumWidth"] = 1;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementMinimumHeight != null)
             {
-                browserInputPasswordIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumHeight);
+                if (browserInputPasswordIntoElementsearchElementMinimumHeight != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementMinimumHeight);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementMinimumHeight"] = 1;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementBoundingBoxLeft != null)
             {
-                browserInputPasswordIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxLeft);
+                if (browserInputPasswordIntoElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxLeft);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementBoundingBoxRight != null)
             {
-                browserInputPasswordIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxRight);
+                if (browserInputPasswordIntoElementsearchElementBoundingBoxRight != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxRight);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementBoundingBoxRight"] = 99999;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementBoundingBoxTop != null)
             {
-                browserInputPasswordIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxTop);
+                if (browserInputPasswordIntoElementsearchElementBoundingBoxTop != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxTop);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementBoundingBoxTop"] = -99999;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementsearchElementBoundingBoxBottom != null)
             {
-                browserInputPasswordIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxBottom);
+                if (browserInputPasswordIntoElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserInputPasswordIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementsearchElementBoundingBoxBottom);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserInputPasswordIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserInputPasswordIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserInputPasswordIntoElementpropCount++;
             }
 
@@ -5861,13 +9261,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementpasswordToInput);
             if (browserInputPasswordIntoElementresetExistingValue != null)
             {
-                browserInputPasswordIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementresetExistingValue);
+                if (browserInputPasswordIntoElementresetExistingValue != null)
+                {
+                    browserInputPasswordIntoElement["ResetExistingValue"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementresetExistingValue);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["ResetExistingValue"] = true;
                 browserInputPasswordIntoElementpropCount++;
             }
 
             if (browserInputPasswordIntoElementpasswordContainsStoredPassword != null)
             {
-                browserInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementpasswordContainsStoredPassword);
+                if (browserInputPasswordIntoElementpasswordContainsStoredPassword != null)
+                {
+                    browserInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(browserInputPasswordIntoElementpasswordContainsStoredPassword);
+                    browserInputPasswordIntoElementpropCount++;
+                }
+
+                browserInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                browserInputPasswordIntoElement["PasswordContainsStoredPassword"] = false;
                 browserInputPasswordIntoElementpropCount++;
             }
 
@@ -5939,7 +9359,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPasteIntoElementsearchElementIndex != null)
             {
-                browserPasteIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementIndex);
+                if (browserPasteIntoElementsearchElementIndex != null)
+                {
+                    browserPasteIntoElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementIndex);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementIndex"] = 1;
                 browserPasteIntoElementpropCount++;
             }
 
@@ -5963,43 +9393,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserPasteIntoElementsearchElementMinimumWidth != null)
             {
-                browserPasteIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumWidth);
+                if (browserPasteIntoElementsearchElementMinimumWidth != null)
+                {
+                    browserPasteIntoElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumWidth);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementMinimumWidth"] = 1;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementMinimumHeight != null)
             {
-                browserPasteIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumHeight);
+                if (browserPasteIntoElementsearchElementMinimumHeight != null)
+                {
+                    browserPasteIntoElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementMinimumHeight);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementMinimumHeight"] = 1;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementBoundingBoxLeft != null)
             {
-                browserPasteIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxLeft);
+                if (browserPasteIntoElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserPasteIntoElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxLeft);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementBoundingBoxRight != null)
             {
-                browserPasteIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxRight);
+                if (browserPasteIntoElementsearchElementBoundingBoxRight != null)
+                {
+                    browserPasteIntoElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxRight);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementBoundingBoxRight"] = 99999;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementBoundingBoxTop != null)
             {
-                browserPasteIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxTop);
+                if (browserPasteIntoElementsearchElementBoundingBoxTop != null)
+                {
+                    browserPasteIntoElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxTop);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementBoundingBoxTop"] = -99999;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementsearchElementBoundingBoxBottom != null)
             {
-                browserPasteIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxBottom);
+                if (browserPasteIntoElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserPasteIntoElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserPasteIntoElementsearchElementBoundingBoxBottom);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserPasteIntoElementpropCount++;
             }
 
             if (browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserPasteIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserPasteIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserPasteIntoElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserPasteIntoElementpropCount++;
+                }
+
+                browserPasteIntoElementpropCount++;
+            }
+            else
+            {
+                browserPasteIntoElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserPasteIntoElementpropCount++;
             }
 
@@ -6149,7 +9649,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectAllOnElementsearchElementIndex != null)
             {
-                browserSelectAllOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementIndex);
+                if (browserSelectAllOnElementsearchElementIndex != null)
+                {
+                    browserSelectAllOnElement["SearchElementIndex"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementIndex);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementIndex"] = 1;
                 browserSelectAllOnElementpropCount++;
             }
 
@@ -6173,43 +9683,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserSelectAllOnElementsearchElementMinimumWidth != null)
             {
-                browserSelectAllOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumWidth);
+                if (browserSelectAllOnElementsearchElementMinimumWidth != null)
+                {
+                    browserSelectAllOnElement["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumWidth);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementMinimumWidth"] = 1;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementMinimumHeight != null)
             {
-                browserSelectAllOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumHeight);
+                if (browserSelectAllOnElementsearchElementMinimumHeight != null)
+                {
+                    browserSelectAllOnElement["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementMinimumHeight);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementMinimumHeight"] = 1;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementBoundingBoxLeft != null)
             {
-                browserSelectAllOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxLeft);
+                if (browserSelectAllOnElementsearchElementBoundingBoxLeft != null)
+                {
+                    browserSelectAllOnElement["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxLeft);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementBoundingBoxLeft"] = -99999;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementBoundingBoxRight != null)
             {
-                browserSelectAllOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxRight);
+                if (browserSelectAllOnElementsearchElementBoundingBoxRight != null)
+                {
+                    browserSelectAllOnElement["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxRight);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementBoundingBoxRight"] = 99999;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementBoundingBoxTop != null)
             {
-                browserSelectAllOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxTop);
+                if (browserSelectAllOnElementsearchElementBoundingBoxTop != null)
+                {
+                    browserSelectAllOnElement["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxTop);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementBoundingBoxTop"] = -99999;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementsearchElementBoundingBoxBottom != null)
             {
-                browserSelectAllOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxBottom);
+                if (browserSelectAllOnElementsearchElementBoundingBoxBottom != null)
+                {
+                    browserSelectAllOnElement["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserSelectAllOnElementsearchElementBoundingBoxBottom);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["SearchElementBoundingBoxBottom"] = 99999;
                 browserSelectAllOnElementpropCount++;
             }
 
             if (browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserSelectAllOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserSelectAllOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserSelectAllOnElementonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserSelectAllOnElementpropCount++;
+                }
+
+                browserSelectAllOnElementpropCount++;
+            }
+            else
+            {
+                browserSelectAllOnElement["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserSelectAllOnElementpropCount++;
             }
 
@@ -6275,7 +9855,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToExistsearchElementIndex != null)
             {
-                browserWaitForElementToExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementIndex);
+                if (browserWaitForElementToExistsearchElementIndex != null)
+                {
+                    browserWaitForElementToExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementIndex);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementIndex"] = 1;
                 browserWaitForElementToExistpropCount++;
             }
 
@@ -6299,43 +9889,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToExistsearchElementMinimumWidth != null)
             {
-                browserWaitForElementToExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumWidth);
+                if (browserWaitForElementToExistsearchElementMinimumWidth != null)
+                {
+                    browserWaitForElementToExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumWidth);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementMinimumWidth"] = 1;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementMinimumHeight != null)
             {
-                browserWaitForElementToExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumHeight);
+                if (browserWaitForElementToExistsearchElementMinimumHeight != null)
+                {
+                    browserWaitForElementToExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementMinimumHeight);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementMinimumHeight"] = 1;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementBoundingBoxLeft != null)
             {
-                browserWaitForElementToExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxLeft);
+                if (browserWaitForElementToExistsearchElementBoundingBoxLeft != null)
+                {
+                    browserWaitForElementToExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxLeft);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementBoundingBoxLeft"] = -99999;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementBoundingBoxRight != null)
             {
-                browserWaitForElementToExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxRight);
+                if (browserWaitForElementToExistsearchElementBoundingBoxRight != null)
+                {
+                    browserWaitForElementToExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxRight);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementBoundingBoxRight"] = 99999;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementBoundingBoxTop != null)
             {
-                browserWaitForElementToExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxTop);
+                if (browserWaitForElementToExistsearchElementBoundingBoxTop != null)
+                {
+                    browserWaitForElementToExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxTop);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementBoundingBoxTop"] = -99999;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistsearchElementBoundingBoxBottom != null)
             {
-                browserWaitForElementToExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxBottom);
+                if (browserWaitForElementToExistsearchElementBoundingBoxBottom != null)
+                {
+                    browserWaitForElementToExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsearchElementBoundingBoxBottom);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["SearchElementBoundingBoxBottom"] = 99999;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserWaitForElementToExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserWaitForElementToExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserWaitForElementToExistpropCount++;
             }
 
@@ -6343,19 +10003,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserWaitForElementToExist["SecondsToWait"] = ExpressionConverter.ConvertO(browserWaitForElementToExistsecondsToWait);
             if (browserWaitForElementToExistraiseExceptionIfElementNotFound != null)
             {
-                browserWaitForElementToExist["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserWaitForElementToExistraiseExceptionIfElementNotFound);
+                if (browserWaitForElementToExistraiseExceptionIfElementNotFound != null)
+                {
+                    browserWaitForElementToExist["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserWaitForElementToExistraiseExceptionIfElementNotFound);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["RaiseExceptionIfElementNotFound"] = false;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistuseExplicitWaitConditionsIfPossible != null)
             {
-                browserWaitForElementToExist["UseExplicitWaitConditionsIfPossible"] = ExpressionConverter.ConvertO(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible);
+                if (browserWaitForElementToExistuseExplicitWaitConditionsIfPossible != null)
+                {
+                    browserWaitForElementToExist["UseExplicitWaitConditionsIfPossible"] = ExpressionConverter.ConvertO(browserWaitForElementToExistuseExplicitWaitConditionsIfPossible);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["UseExplicitWaitConditionsIfPossible"] = true;
                 browserWaitForElementToExistpropCount++;
             }
 
             if (browserWaitForElementToExistwaitForSearchElementToBeDisplayed != null)
             {
-                browserWaitForElementToExist["WaitForSearchElementToBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToExistwaitForSearchElementToBeDisplayed);
+                if (browserWaitForElementToExistwaitForSearchElementToBeDisplayed != null)
+                {
+                    browserWaitForElementToExist["WaitForSearchElementToBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToExistwaitForSearchElementToBeDisplayed);
+                    browserWaitForElementToExistpropCount++;
+                }
+
+                browserWaitForElementToExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToExist["WaitForSearchElementToBeDisplayed"] = false;
                 browserWaitForElementToExistpropCount++;
             }
 
@@ -6427,7 +10117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToNotExistsearchElementIndex != null)
             {
-                browserWaitForElementToNotExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementIndex);
+                if (browserWaitForElementToNotExistsearchElementIndex != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementIndex"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementIndex);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementIndex"] = 1;
                 browserWaitForElementToNotExistpropCount++;
             }
 
@@ -6451,43 +10151,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
 
             if (browserWaitForElementToNotExistsearchElementMinimumWidth != null)
             {
-                browserWaitForElementToNotExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumWidth);
+                if (browserWaitForElementToNotExistsearchElementMinimumWidth != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementMinimumWidth"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumWidth);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementMinimumWidth"] = 1;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementMinimumHeight != null)
             {
-                browserWaitForElementToNotExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumHeight);
+                if (browserWaitForElementToNotExistsearchElementMinimumHeight != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementMinimumHeight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMinimumHeight);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementMinimumHeight"] = 1;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementBoundingBoxLeft != null)
             {
-                browserWaitForElementToNotExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxLeft);
+                if (browserWaitForElementToNotExistsearchElementBoundingBoxLeft != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxLeft);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementBoundingBoxLeft"] = -99999;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementBoundingBoxRight != null)
             {
-                browserWaitForElementToNotExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxRight);
+                if (browserWaitForElementToNotExistsearchElementBoundingBoxRight != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxRight"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxRight);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementBoundingBoxRight"] = 99999;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementBoundingBoxTop != null)
             {
-                browserWaitForElementToNotExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxTop);
+                if (browserWaitForElementToNotExistsearchElementBoundingBoxTop != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxTop"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxTop);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementBoundingBoxTop"] = -99999;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementBoundingBoxBottom != null)
             {
-                browserWaitForElementToNotExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxBottom);
+                if (browserWaitForElementToNotExistsearchElementBoundingBoxBottom != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementBoundingBoxBottom);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementBoundingBoxBottom"] = 99999;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
             {
-                browserWaitForElementToNotExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                if (browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox != null)
+                {
+                    browserWaitForElementToNotExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistonlyElementTopLeftNeedsToBeInBoundingBox);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["OnlyElementTopLeftNeedsToBeInBoundingBox"] = false;
                 browserWaitForElementToNotExistpropCount++;
             }
 
@@ -6495,13 +10265,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsecondsToWait);
             if (browserWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
             {
-                browserWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                if (browserWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
+                {
+                    browserWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = false;
                 browserWaitForElementToNotExistpropCount++;
             }
 
             if (browserWaitForElementToNotExistsearchElementMustBeDisplayed != null)
             {
-                browserWaitForElementToNotExist["SearchElementMustBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMustBeDisplayed);
+                if (browserWaitForElementToNotExistsearchElementMustBeDisplayed != null)
+                {
+                    browserWaitForElementToNotExist["SearchElementMustBeDisplayed"] = ExpressionConverter.ConvertO(browserWaitForElementToNotExistsearchElementMustBeDisplayed);
+                    browserWaitForElementToNotExistpropCount++;
+                }
+
+                browserWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                browserWaitForElementToNotExist["SearchElementMustBeDisplayed"] = false;
                 browserWaitForElementToNotExistpropCount++;
             }
 
@@ -6525,19 +10315,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetWebElementAtScreenCoordinatespropCount = 0;
             if (browserGetWebElementAtScreenCoordinatesxCoord != null)
             {
-                browserGetWebElementAtScreenCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesxCoord);
+                if (browserGetWebElementAtScreenCoordinatesxCoord != null)
+                {
+                    browserGetWebElementAtScreenCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesxCoord);
+                    browserGetWebElementAtScreenCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtScreenCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtScreenCoordinates["XCoord"] = 0;
                 browserGetWebElementAtScreenCoordinatespropCount++;
             }
 
             if (browserGetWebElementAtScreenCoordinatesyCoord != null)
             {
-                browserGetWebElementAtScreenCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesyCoord);
+                if (browserGetWebElementAtScreenCoordinatesyCoord != null)
+                {
+                    browserGetWebElementAtScreenCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesyCoord);
+                    browserGetWebElementAtScreenCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtScreenCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtScreenCoordinates["YCoord"] = 0;
                 browserGetWebElementAtScreenCoordinatespropCount++;
             }
 
             if (browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound != null)
             {
-                browserGetWebElementAtScreenCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound);
+                if (browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound != null)
+                {
+                    browserGetWebElementAtScreenCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtScreenCoordinatesraiseExceptionIfElementNotFound);
+                    browserGetWebElementAtScreenCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtScreenCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtScreenCoordinates["RaiseExceptionIfElementNotFound"] = false;
                 browserGetWebElementAtScreenCoordinatespropCount++;
             }
 
@@ -6561,19 +10381,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             var browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount = 0;
             if (browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord != null)
             {
-                browserGetWebElementAtBrowserDocumentWindowCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord);
+                if (browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord != null)
+                {
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["XCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesxCoord);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtBrowserDocumentWindowCoordinates["XCoord"] = 0;
                 browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
             }
 
             if (browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord != null)
             {
-                browserGetWebElementAtBrowserDocumentWindowCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord);
+                if (browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord != null)
+                {
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["YCoord"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesyCoord);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtBrowserDocumentWindowCoordinates["YCoord"] = 0;
                 browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
             }
 
             if (browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound != null)
             {
-                browserGetWebElementAtBrowserDocumentWindowCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound);
+                if (browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound != null)
+                {
+                    browserGetWebElementAtBrowserDocumentWindowCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(browserGetWebElementAtBrowserDocumentWindowCoordinatesraiseExceptionIfElementNotFound);
+                    browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+                }
+
+                browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
+            }
+            else
+            {
+                browserGetWebElementAtBrowserDocumentWindowCoordinates["RaiseExceptionIfElementNotFound"] = false;
                 browserGetWebElementAtBrowserDocumentWindowCoordinatespropCount++;
             }
 
@@ -6599,43 +10449,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
             browserGetWebElementPropertiesAsList["ElementHandle"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListelementHandle);
             if (browserGetWebElementPropertiesAsListgetHTMLCode != null)
             {
-                browserGetWebElementPropertiesAsList["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListgetHTMLCode);
+                if (browserGetWebElementPropertiesAsListgetHTMLCode != null)
+                {
+                    browserGetWebElementPropertiesAsList["GetHTMLCode"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListgetHTMLCode);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["GetHTMLCode"] = false;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListreturnValue != null)
             {
-                browserGetWebElementPropertiesAsList["ReturnValue"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnValue);
+                if (browserGetWebElementPropertiesAsListreturnValue != null)
+                {
+                    browserGetWebElementPropertiesAsList["ReturnValue"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnValue);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["ReturnValue"] = true;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListreturnText != null)
             {
-                browserGetWebElementPropertiesAsList["ReturnText"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnText);
+                if (browserGetWebElementPropertiesAsListreturnText != null)
+                {
+                    browserGetWebElementPropertiesAsList["ReturnText"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnText);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["ReturnText"] = true;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListmaxValueLength != null)
             {
-                browserGetWebElementPropertiesAsList["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxValueLength);
+                if (browserGetWebElementPropertiesAsListmaxValueLength != null)
+                {
+                    browserGetWebElementPropertiesAsList["MaxValueLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxValueLength);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["MaxValueLength"] = 0;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListmaxTextLength != null)
             {
-                browserGetWebElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxTextLength);
+                if (browserGetWebElementPropertiesAsListmaxTextLength != null)
+                {
+                    browserGetWebElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListmaxTextLength);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["MaxTextLength"] = 0;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListreturnCoordinates != null)
             {
-                browserGetWebElementPropertiesAsList["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnCoordinates);
+                if (browserGetWebElementPropertiesAsListreturnCoordinates != null)
+                {
+                    browserGetWebElementPropertiesAsList["ReturnCoordinates"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnCoordinates);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["ReturnCoordinates"] = true;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 
             if (browserGetWebElementPropertiesAsListreturnParentTag != null)
             {
-                browserGetWebElementPropertiesAsList["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnParentTag);
+                if (browserGetWebElementPropertiesAsListreturnParentTag != null)
+                {
+                    browserGetWebElementPropertiesAsList["ReturnParentTag"] = ExpressionConverter.ConvertO(browserGetWebElementPropertiesAsListreturnParentTag);
+                    browserGetWebElementPropertiesAsListpropCount++;
+                }
+
+                browserGetWebElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                browserGetWebElementPropertiesAsList["ReturnParentTag"] = true;
                 browserGetWebElementPropertiesAsListpropCount++;
             }
 

@@ -79,7 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
 
             if (bodyParamsblock != null)
             {
-                @paramsObject["Block"] = ExpressionConverter.ConvertO(bodyParamsblock);
+                if (bodyParamsblock != null)
+                {
+                    @paramsObject["Block"] = ExpressionConverter.ConvertO(bodyParamsblock);
+                    @paramsObjectpropCount++;
+                }
+
+                @paramsObjectpropCount++;
+            }
+            else
+            {
+                @paramsObject["Block"] = "latest";
                 @paramsObjectpropCount++;
             }
 

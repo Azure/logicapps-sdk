@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlePostResponse> ArticlePost(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
+        public IBodyWorkflowAction<ArticlePostResponse> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
         {
             var apiCallPath = "/create_article";
             var apiCallHttpMethod = "post";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGetPost(Expression<Func<string>> bodyarticleID = null)
+        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet(Expression<Func<string>> bodyarticleID = null)
         {
             var apiCallPath = "/get_article";
             var apiCallHttpMethod = "post";
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlesPostResponseItem[]> ArticlesPost(Expression<Func<int>> bodycursor = null)
+        public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles(Expression<Func<int>> bodycursor = null)
         {
             var apiCallPath = "/list_articles";
             var apiCallHttpMethod = "post";
@@ -93,7 +93,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             var bodypropCount = 0;
             if (bodycursor != null)
             {
-                body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                if (bodycursor != null)
+                {
+                    body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["cursor"] = 0;
                 bodypropCount++;
             }
 

@@ -206,13 +206,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 
             if (projectprojectpublic != null)
             {
-                projectObject["is_public"] = ExpressionConverter.ConvertO(projectprojectpublic);
+                if (projectprojectpublic != null)
+                {
+                    projectObject["is_public"] = ExpressionConverter.ConvertO(projectprojectpublic);
+                    projectObjectpropCount++;
+                }
+
+                projectObjectpropCount++;
+            }
+            else
+            {
+                projectObject["is_public"] = false;
                 projectObjectpropCount++;
             }
 
             if (projectprojectinheritMembers != null)
             {
-                projectObject["inherit_members"] = ExpressionConverter.ConvertO(projectprojectinheritMembers);
+                if (projectprojectinheritMembers != null)
+                {
+                    projectObject["inherit_members"] = ExpressionConverter.ConvertO(projectprojectinheritMembers);
+                    projectObjectpropCount++;
+                }
+
+                projectObjectpropCount++;
+            }
+            else
+            {
+                projectObject["inherit_members"] = false;
                 projectObjectpropCount++;
             }
 

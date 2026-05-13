@@ -417,27 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<JToken> GetDocFieldsV2(Expression<Func<string>> templateId, Expression<Func<string>> docId)
-        {
-            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValuesV2(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
-        {
-            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<UpdateFieldValuesV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IWorkflowAction PrefillSmartFields(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
             var apiCallPath = String.Format("/document/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
@@ -522,7 +501,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
             if (replaceToexpirationDays != null)
             {
-                replaceTo["expiration_days"] = ExpressionConverter.ConvertO(replaceToexpirationDays);
+                if (replaceToexpirationDays != null)
+                {
+                    replaceTo["expiration_days"] = ExpressionConverter.ConvertO(replaceToexpirationDays);
+                    replaceTopropCount++;
+                }
+
+                replaceTopropCount++;
+            }
+            else
+            {
+                replaceTo["expiration_days"] = 30;
                 replaceTopropCount++;
             }
 
@@ -568,7 +557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
             if (inviteSettingslinkExpiration != null)
             {
-                inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                if (inviteSettingslinkExpiration != null)
+                {
+                    inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                    inviteSettingspropCount++;
+                }
+
+                inviteSettingspropCount++;
+            }
+            else
+            {
+                inviteSettings["link_expiration"] = 15;
                 inviteSettingspropCount++;
             }
 
@@ -596,7 +595,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var inviteSettingspropCount = 0;
             if (inviteSettingstype != null)
             {
-                inviteSettings["type"] = ExpressionConverter.ConvertO(inviteSettingstype);
+                if (inviteSettingstype != null)
+                {
+                    inviteSettings["type"] = ExpressionConverter.ConvertO(inviteSettingstype);
+                    inviteSettingspropCount++;
+                }
+
+                inviteSettingspropCount++;
+            }
+            else
+            {
+                inviteSettings["type"] = "Manage";
                 inviteSettingspropCount++;
             }
 
@@ -608,7 +617,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
             if (inviteSettingslinkExpiration != null)
             {
-                inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                if (inviteSettingslinkExpiration != null)
+                {
+                    inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(inviteSettingslinkExpiration);
+                    inviteSettingspropCount++;
+                }
+
+                inviteSettingspropCount++;
+            }
+            else
+            {
+                inviteSettings["link_expiration"] = 15;
                 inviteSettingspropCount++;
             }
 
@@ -795,11 +814,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
             return new ApiConnectionAction<InviteToSignDocGroupAllOptionsResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
+        public IBodyWorkflowAction<JToken> GetDocFields(Expression<Func<string>> templateId, Expression<Func<string>> docId)
+        {
+            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
+        public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
+        {
+            var apiCallPath = String.Format("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(docId, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+            callPayload.Body = ExpressionConverter.ConvertO(fields);
+            return new ApiConnectionAction<UpdateFieldValuesV2Response>(callPayload);
+        }
     }
 
     public class SignnowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response> TriggersV2(Expression<Func<string>> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response> Triggers(Expression<Func<string>> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/multievent";
             var apiCallHttpMethod = "post";
@@ -1303,12 +1343,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [EnumMember(Value = "Phone Call")]
         PhoneCall,
         SMS
-    }
-
-    public class UpdateFieldValuesV2Response
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class GetInviteStatusResponse
@@ -1955,6 +1989,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class UpdateFieldValuesV2Response
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public class TriggersV2Response

@@ -21,7 +21,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<SendMessageResponse[]> SendMessageV2(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
+        public IBodyWorkflowAction<ListScheduledInfo[]> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
+        {
+            var apiCallPath = "/messages/list-scheduled.json";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var listScheduledRequest = new JObject();
+            var listScheduledRequestpropCount = 0;
+            if (listScheduledRequestto != null)
+            {
+                listScheduledRequest["To"] = ExpressionConverter.ConvertO(listScheduledRequestto);
+                listScheduledRequestpropCount++;
+            }
+
+            if (listScheduledRequestpropCount > 0)
+            {
+                callPayload.Body = listScheduledRequest;
+            }
+
+            return new ApiConnectionAction<ListScheduledInfo[]>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
+        public IBodyWorkflowAction<SendMessageResponse[]> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
         {
             var apiCallPath = "/v2/messages/send.json";
             var apiCallHttpMethod = "post";
@@ -159,28 +181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
             return new ApiConnectionAction<SendMessageResponse[]>(callPayload);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<ListScheduledInfo[]> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
-        {
-            var apiCallPath = "/messages/list-scheduled.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var listScheduledRequest = new JObject();
-            var listScheduledRequestpropCount = 0;
-            if (listScheduledRequestto != null)
-            {
-                listScheduledRequest["To"] = ExpressionConverter.ConvertO(listScheduledRequestto);
-                listScheduledRequestpropCount++;
-            }
-
-            if (listScheduledRequestpropCount > 0)
-            {
-                callPayload.Body = listScheduledRequest;
-            }
-
-            return new ApiConnectionAction<ListScheduledInfo[]>(callPayload);
-        }
     }
 
     public class MandrillTriggers([ConnectionName] string connectionId)
@@ -262,55 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public int UniqueClicks { get; set; }
     }
 
-    public class SendMessageResponse
-    {
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("status")]
-        public string SendingStatus { get; set; }
-
-        [JsonProperty("reject_reason")]
-        public string RejectReason { get; set; }
-
-        [JsonProperty("_id")]
-        public string MessageID { get; set; }
-    }
-
-    public class RecipientInfo
-    {
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public RecipientInfoSendAsType SendAs { get; set; }
-    }
-
-    public enum RecipientInfoSendAsType
-    {
-        [EnumMember(Value = "to")]
-        To,
-        [EnumMember(Value = "cc")]
-        Cc,
-        [EnumMember(Value = "bcc")]
-        Bcc
-    }
-
-    public class AttachmentInfo
-    {
-        [JsonProperty("type")]
-        public string MIMEType { get; set; }
-
-        [JsonProperty("name")]
-        public string FileName { get; set; }
-
-        [JsonProperty("content")]
-        public string Content { get; set; }
-    }
-
     public class ListScheduledInfo
     {
         [JsonProperty("email")]
@@ -366,6 +317,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         Unsigned,
         [EnumMember(Value = "or rule")]
         OrRule
+    }
+
+    public class SendMessageResponse
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("status")]
+        public string SendingStatus { get; set; }
+
+        [JsonProperty("reject_reason")]
+        public string RejectReason { get; set; }
+
+        [JsonProperty("_id")]
+        public string MessageID { get; set; }
+    }
+
+    public class RecipientInfo
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public RecipientInfoSendAsType SendAs { get; set; }
+    }
+
+    public enum RecipientInfoSendAsType
+    {
+        [EnumMember(Value = "to")]
+        To,
+        [EnumMember(Value = "cc")]
+        Cc,
+        [EnumMember(Value = "bcc")]
+        Bcc
+    }
+
+    public class AttachmentInfo
+    {
+        [JsonProperty("type")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 }
 

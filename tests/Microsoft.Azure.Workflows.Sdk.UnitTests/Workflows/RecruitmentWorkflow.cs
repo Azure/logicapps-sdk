@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     new AgentPromptMessage
                     {
                         Role = MessageRole.System,
-                        Content = "You are a recruitment agent whose role is to help recuriters identify candidates and subsequently help them book interviews using the tools that are provided.\n\nA recruiter may ask the following questions to you:\n\nShow me my job postings. If your are unsure which recruiter you are chatting with, you can use apseth@microsoft.com as the user name.\nSelect top candidates for a particular Job Posting ID\nWhat does my candidate schedule look like for a specific date. Ensure this value is provided by the recuiter and assume the current year comes from this value: @{utcNow()}.\n\nIf user is not logged in, send the tool response as HTML with the consent link to the user to login. Please schedule interviews with candidates based upon my schedule availability. \nAfter the meeting is booked we need to communicate to the interview team that the meeting is booked\n\nUnless specificed othwerwise, please assume all timezone related querys are in (UTC-07:00) Mountain Time (US & Canada). So that includes when displaying dates for the user and when booking meetings.\nSend a teams message"
+                        Content = "You are a recruitment agent whose role is to help recruiters identify candidates and subsequently help them book interviews using the tools that are provided.\n\nA recruiter may ask the following questions to you:\n\nShow me my job postings. If your are unsure which recruiter you are chatting with, you can use apseth@microsoft.com as the user name.\nSelect top candidates for a particular Job Posting ID\nWhat does my candidate schedule look like for a specific date. Ensure this value is provided by the recruiter and assume the current year comes from this value: @{utcNow()}.\n\nIf user is not logged in, send the tool response as HTML with the consent link to the user to login. Please schedule interviews with candidates based upon my schedule availability. \nAfter the meeting is booked we need to communicate to the interview team that the meeting is booked\n\nUnless specified otherwise, please assume all timezone related queries are in (UTC-07:00) Mountain Time (US & Canada). So that includes when displaying dates for the user and when booking meetings.\nSend a teams message"
                     }
                 }
             );
 
             agent.AddTool(toolContext =>
             {
-                var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var getCandidates = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentcandiateses",
                     select: () => "cred1_candidatename,cred1_candidateid,cred1_jobpostingid, cred1_candidateemail,cred1_candidateprofilelink",
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var getCandidates = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var getCandidates = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentpostingses",
                     select: () => "cred1_postingenddate,cred1_postingowner,cred1_postingid,cred1_postingstatus",
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var getCalendar = WorkflowActions.ManagedConnectors.Office365("office365").CalendarGetTablesV2();
+                var getCalendar = WorkflowActions.Managed.Office365("office365").CalendarGetTables();
 
-                var createEvent = WorkflowActions.ManagedConnectors.Office365("office365").V4CalendarPostItem(
+                var createEvent = WorkflowActions.Managed.Office365("office365").CalendarPostItem(
                     table: () => getCalendar.Body.Value[1].ID,
                     itemsubject: () => $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
                     itemstartTime: () => "@agentParameters('MeetingStartTime')",
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolContext =>
             {
-                var upcomingInterviews = WorkflowActions.ManagedConnectors.Commondataservice("commondataservice").ListRecords(
+                var upcomingInterviews = WorkflowActions.Managed.Commondataservice("commondataservice").ListRecords(
                     organization: () => "https://org7a3fb188.crm.dynamics.com",
                     entityName: () => "cred1_recruitmentmeetingses",
                     select: () => "cred1_meetingid,cred1_candidateemail,cred1_candidatename,cred1_intervieweremail,cred1_interviewdatetime",

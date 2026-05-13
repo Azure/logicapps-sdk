@@ -201,7 +201,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
 
             if (bodydoubleOptIn != null)
             {
-                body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                if (bodydoubleOptIn != null)
+                {
+                    body["double_opt_in"] = ExpressionConverter.ConvertO(bodydoubleOptIn);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["double_opt_in"] = true;
                 bodypropCount++;
             }
 

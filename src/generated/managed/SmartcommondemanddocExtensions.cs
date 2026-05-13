@@ -34,13 +34,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
             body["batchConfigResId"] = ExpressionConverter.ConvertO(bodybatchConfigResId);
             if (bodytransactionRange != null)
             {
-                body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                if (bodytransactionRange != null)
+                {
+                    body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["transactionRange"] = 1;
                 bodypropCount++;
             }
 
             if (bodytransactionDataType != null)
             {
-                body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                if (bodytransactionDataType != null)
+                {
+                    body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["transactionDataType"] = "application/xml";
                 bodypropCount++;
             }
 

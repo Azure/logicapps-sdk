@@ -12,48 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
     public class VirustotalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurlV3(Expression<Func<string>> url)
-        {
-            var apiCallPath = "/api/v3/urls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UrlReport>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport(Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/api/v3/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<UrlResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3V2(Expression<Func<string>> ip)
-        {
-            var apiCallPath = String.Format("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Ip>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfoV2(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Analyses>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFileV2(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<File>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
@@ -73,22 +37,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DomainResult>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
+        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl(Expression<Func<string>> url)
+        {
+            var apiCallPath = "/api/v3/urls";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<UrlReport>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
+        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3(Expression<Func<string>> ip)
+        {
+            var apiCallPath = String.Format("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<Ip>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
+        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo(Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<Analyses>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
+        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile(Expression<Func<string>> id)
+        {
+            var apiCallPath = String.Format("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<File>(callPayload);
+        }
     }
 
     public class VirustotalTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class UrlReport
-    {
-        [JsonProperty("data")]
-        public UrlReportDataType Data { get; set; }
-    }
-
-    public class UrlReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class UrlResult
@@ -200,6 +188,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
 
         [JsonProperty("malicious")]
         public int Malicious { get; set; }
+    }
+
+    public class FilesReport
+    {
+        [JsonProperty("data")]
+        public FilesReportDataType Data { get; set; }
+    }
+
+    public class FilesReportDataType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class DomainResult
+    {
+        [JsonProperty("data")]
+        public DomainResultDataType Data { get; set; }
+    }
+
+    public class DomainResultDataType
+    {
+        [JsonProperty("attributes")]
+        public DomainResultDataTypeAttributesType Attributes { get; set; }
+    }
+
+    public class DomainResultDataTypeAttributesType
+    {
+        [JsonProperty("categories")]
+        public JToken Categories { get; set; }
+
+        [JsonProperty("creation_date")]
+        public int CreationDate { get; set; }
+
+        [JsonProperty("last_analysis_results")]
+        public JToken LastAnalysisResults { get; set; }
+
+        [JsonProperty("last_analysis_stats")]
+        public DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType LastAnalysisStatistics { get; set; }
+
+        [JsonProperty("last_dns_records")]
+        public JToken[] LastDNSRecords { get; set; }
+
+        [JsonProperty("last_dns_records_date")]
+        public int LastDNSRecordsDate { get; set; }
+
+        [JsonProperty("last_https_certificate")]
+        public JToken LastHTTPSCertificate { get; set; }
+
+        [JsonProperty("last_https_certificate_date")]
+        public int LastHTTPSCertificateDate { get; set; }
+
+        [JsonProperty("last_modification_date")]
+        public int LastModificationDateFormat { get; set; }
+
+        [JsonProperty("last_update_date")]
+        public int LastUpdateDate { get; set; }
+
+        [JsonProperty("popularity_ranks")]
+        public JToken PopularityRanks { get; set; }
+
+        [JsonProperty("registrar")]
+        public string Registrar { get; set; }
+
+        [JsonProperty("reputation")]
+        public int Reputation { get; set; }
+
+        [JsonProperty("tags")]
+        public JToken[] Tags { get; set; }
+
+        [JsonProperty("total_votes")]
+        public DomainResultDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
+
+        [JsonProperty("whois")]
+        public string WHOIS { get; set; }
+
+        [JsonProperty("whois_date")]
+        public int WHOISDate { get; set; }
+    }
+
+    public class DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType
+    {
+        [JsonProperty("harmless")]
+        public int Harmless { get; set; }
+
+        [JsonProperty("malicious")]
+        public int Malicious { get; set; }
+
+        [JsonProperty("suspicious")]
+        public int Suspicious { get; set; }
+
+        [JsonProperty("timeout")]
+        public int Timeout { get; set; }
+
+        [JsonProperty("undetected")]
+        public int Undetected { get; set; }
+    }
+
+    public class DomainResultDataTypeAttributesTypeTotalVotesType
+    {
+        [JsonProperty("harmless")]
+        public int Harmless { get; set; }
+
+        [JsonProperty("malicious")]
+        public int Malicious { get; set; }
+    }
+
+    public class UrlReport
+    {
+        [JsonProperty("data")]
+        public UrlReportDataType Data { get; set; }
+    }
+
+    public class UrlReportDataType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public class Ip
@@ -470,111 +575,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
     }
 
     public class FileDataTypeAttributesTypeTotalVotesType
-    {
-        [JsonProperty("harmless")]
-        public int Harmless { get; set; }
-
-        [JsonProperty("malicious")]
-        public int Malicious { get; set; }
-    }
-
-    public class FilesReport
-    {
-        [JsonProperty("data")]
-        public FilesReportDataType Data { get; set; }
-    }
-
-    public class FilesReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class DomainResult
-    {
-        [JsonProperty("data")]
-        public DomainResultDataType Data { get; set; }
-    }
-
-    public class DomainResultDataType
-    {
-        [JsonProperty("attributes")]
-        public DomainResultDataTypeAttributesType Attributes { get; set; }
-    }
-
-    public class DomainResultDataTypeAttributesType
-    {
-        [JsonProperty("categories")]
-        public JToken Categories { get; set; }
-
-        [JsonProperty("creation_date")]
-        public int CreationDate { get; set; }
-
-        [JsonProperty("last_analysis_results")]
-        public JToken LastAnalysisResults { get; set; }
-
-        [JsonProperty("last_analysis_stats")]
-        public DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType LastAnalysisStatistics { get; set; }
-
-        [JsonProperty("last_dns_records")]
-        public JToken[] LastDNSRecords { get; set; }
-
-        [JsonProperty("last_dns_records_date")]
-        public int LastDNSRecordsDate { get; set; }
-
-        [JsonProperty("last_https_certificate")]
-        public JToken LastHTTPSCertificate { get; set; }
-
-        [JsonProperty("last_https_certificate_date")]
-        public int LastHTTPSCertificateDate { get; set; }
-
-        [JsonProperty("last_modification_date")]
-        public int LastModificationDateFormat { get; set; }
-
-        [JsonProperty("last_update_date")]
-        public int LastUpdateDate { get; set; }
-
-        [JsonProperty("popularity_ranks")]
-        public JToken PopularityRanks { get; set; }
-
-        [JsonProperty("registrar")]
-        public string Registrar { get; set; }
-
-        [JsonProperty("reputation")]
-        public int Reputation { get; set; }
-
-        [JsonProperty("tags")]
-        public JToken[] Tags { get; set; }
-
-        [JsonProperty("total_votes")]
-        public DomainResultDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
-
-        [JsonProperty("whois")]
-        public string WHOIS { get; set; }
-
-        [JsonProperty("whois_date")]
-        public int WHOISDate { get; set; }
-    }
-
-    public class DomainResultDataTypeAttributesTypeLastAnalysisStatisticsType
-    {
-        [JsonProperty("harmless")]
-        public int Harmless { get; set; }
-
-        [JsonProperty("malicious")]
-        public int Malicious { get; set; }
-
-        [JsonProperty("suspicious")]
-        public int Suspicious { get; set; }
-
-        [JsonProperty("timeout")]
-        public int Timeout { get; set; }
-
-        [JsonProperty("undetected")]
-        public int Undetected { get; set; }
-    }
-
-    public class DomainResultDataTypeAttributesTypeTotalVotesType
     {
         [JsonProperty("harmless")]
         public int Harmless { get; set; }

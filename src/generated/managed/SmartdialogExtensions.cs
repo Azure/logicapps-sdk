@@ -304,7 +304,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var requestBodypropCount = 0;
             if (requestBodyactive != null)
             {
-                requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                if (requestBodyactive != null)
+                {
+                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBodypropCount++;
+                }
+
+                requestBodypropCount++;
+            }
+            else
+            {
+                requestBody["active"] = true;
                 requestBodypropCount++;
             }
 
@@ -401,7 +411,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var requestBodypropCount = 0;
             if (requestBodyactive != null)
             {
-                requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                if (requestBodyactive != null)
+                {
+                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBodypropCount++;
+                }
+
+                requestBodypropCount++;
+            }
+            else
+            {
+                requestBody["active"] = true;
                 requestBodypropCount++;
             }
 

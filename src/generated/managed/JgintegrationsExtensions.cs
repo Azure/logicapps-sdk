@@ -49,7 +49,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
             body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
             if (bodyreplacement != null)
             {
-                body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                if (bodyreplacement != null)
+                {
+                    body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["replacement"] = "";
                 bodypropCount++;
             }
 

@@ -12,54 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
     public class OpentextdocumentumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IBodyWorkflowAction<string> CreateDocumentV2(Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoparentID, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
-        {
-            var apiCallPath = String.Format("/api/v2/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationSet, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var documentDto = new JObject();
-            var documentDtopropCount = 0;
-            documentDtopropCount++;
-            documentDto["parentId"] = ExpressionConverter.ConvertO(documentDtoparentID);
-            var fileObject = new JObject();
-            var fileObjectpropCount = 0;
-            fileObjectpropCount++;
-            fileObject["name"] = ExpressionConverter.ConvertO(documentDtofilefileName);
-            fileObjectpropCount++;
-            fileObject["content"] = ExpressionConverter.ConvertO(documentDtofilefileContent);
-            if (fileObjectpropCount > 0)
-            {
-                documentDto["file"] = fileObject;
-                documentDtopropCount++;
-            }
-
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            metadataObjectpropCount++;
-            metadataObject["displayName"] = ExpressionConverter.ConvertO(documentDtometadatadisplayName);
-            if (documentDtometadatadescription != null)
-            {
-                metadataObject["description"] = ExpressionConverter.ConvertO(documentDtometadatadescription);
-                metadataObjectpropCount++;
-            }
-
-            metadataObjectpropCount++;
-            metadataObject["fields"] = ExpressionConverter.ConvertO(documentDtometadatafields);
-            if (metadataObjectpropCount > 0)
-            {
-                documentDto["metadata"] = metadataObject;
-                documentDtopropCount++;
-            }
-
-            if (documentDtopropCount > 0)
-            {
-                callPayload.Body = documentDto;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/api/v1/document/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
@@ -116,33 +68,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction UpdateDocumentPropertiesV2(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> metadataDtodisplayName, Expression<Func<object>> metadataDtofields, Expression<Func<string>> metadataDtodescription = null)
+        public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoparentID, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
-            var apiCallPath = String.Format("/api/v2/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationSet, 1));
-            var apiCallHttpMethod = "put";
+            var apiCallPath = String.Format("/api/v2/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationSet, 1));
+            var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var metadataDto = new JObject();
-            var metadataDtopropCount = 0;
-            metadataDtopropCount++;
-            metadataDto["displayName"] = ExpressionConverter.ConvertO(metadataDtodisplayName);
-            if (metadataDtodescription != null)
+            var documentDto = new JObject();
+            var documentDtopropCount = 0;
+            documentDtopropCount++;
+            documentDto["parentId"] = ExpressionConverter.ConvertO(documentDtoparentID);
+            var fileObject = new JObject();
+            var fileObjectpropCount = 0;
+            fileObjectpropCount++;
+            fileObject["name"] = ExpressionConverter.ConvertO(documentDtofilefileName);
+            fileObjectpropCount++;
+            fileObject["content"] = ExpressionConverter.ConvertO(documentDtofilefileContent);
+            if (fileObjectpropCount > 0)
             {
-                metadataDto["description"] = ExpressionConverter.ConvertO(metadataDtodescription);
-                metadataDtopropCount++;
+                documentDto["file"] = fileObject;
+                documentDtopropCount++;
             }
 
-            metadataDtopropCount++;
-            metadataDto["fields"] = ExpressionConverter.ConvertO(metadataDtofields);
-            if (metadataDtopropCount > 0)
+            var metadataObject = new JObject();
+            var metadataObjectpropCount = 0;
+            metadataObjectpropCount++;
+            metadataObject["displayName"] = ExpressionConverter.ConvertO(documentDtometadatadisplayName);
+            if (documentDtometadatadescription != null)
             {
-                callPayload.Body = metadataDto;
+                metadataObject["description"] = ExpressionConverter.ConvertO(documentDtometadatadescription);
+                metadataObjectpropCount++;
             }
 
-            return new ApiConnectionAction(callPayload);
+            metadataObjectpropCount++;
+            metadataObject["fields"] = ExpressionConverter.ConvertO(documentDtometadatafields);
+            if (metadataObjectpropCount > 0)
+            {
+                documentDto["metadata"] = metadataObject;
+                documentDtopropCount++;
+            }
+
+            if (documentDtopropCount > 0)
+            {
+                callPayload.Body = documentDto;
+            }
+
+            return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction UpdateDocumentV2(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
+        public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
             var apiCallPath = String.Format("/api/v2/document/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationSet, 1));
             var apiCallHttpMethod = "put";
@@ -182,6 +156,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
             if (documentDtopropCount > 0)
             {
                 callPayload.Body = documentDto;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
+        public IWorkflowAction UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> metadataDtodisplayName, Expression<Func<object>> metadataDtofields, Expression<Func<string>> metadataDtodescription = null)
+        {
+            var apiCallPath = String.Format("/api/v2/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationSet, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var metadataDto = new JObject();
+            var metadataDtopropCount = 0;
+            metadataDtopropCount++;
+            metadataDto["displayName"] = ExpressionConverter.ConvertO(metadataDtodisplayName);
+            if (metadataDtodescription != null)
+            {
+                metadataDto["description"] = ExpressionConverter.ConvertO(metadataDtodescription);
+                metadataDtopropCount++;
+            }
+
+            metadataDtopropCount++;
+            metadataDto["fields"] = ExpressionConverter.ConvertO(metadataDtofields);
+            if (metadataDtopropCount > 0)
+            {
+                callPayload.Body = metadataDto;
             }
 
             return new ApiConnectionAction(callPayload);

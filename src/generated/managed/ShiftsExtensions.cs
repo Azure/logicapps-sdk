@@ -36,6 +36,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
+        public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
+        {
+            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            var sharedTimeOffObject = new JObject();
+            var sharedTimeOffObjectpropCount = 0;
+            if (requestvaluetimeOffReason != null)
+            {
+                sharedTimeOffObject["timeOffReasonId"] = ExpressionConverter.ConvertO(requestvaluetimeOffReason);
+                sharedTimeOffObjectpropCount++;
+            }
+
+            if (requestvaluestartTime != null)
+            {
+                sharedTimeOffObject["startDateTime"] = ExpressionConverter.ConvertO(requestvaluestartTime);
+                sharedTimeOffObjectpropCount++;
+            }
+
+            if (requestvalueendTime != null)
+            {
+                sharedTimeOffObject["endDateTime"] = ExpressionConverter.ConvertO(requestvalueendTime);
+                sharedTimeOffObjectpropCount++;
+            }
+
+            if (requestvaluetheme != null)
+            {
+                if (requestvaluetheme != null)
+                {
+                    sharedTimeOffObject["theme"] = ExpressionConverter.ConvertO(requestvaluetheme);
+                    sharedTimeOffObjectpropCount++;
+                }
+
+                sharedTimeOffObjectpropCount++;
+            }
+            else
+            {
+                sharedTimeOffObject["theme"] = "white";
+                sharedTimeOffObjectpropCount++;
+            }
+
+            if (sharedTimeOffObjectpropCount > 0)
+            {
+                request["sharedTimeOff"] = sharedTimeOffObject;
+                requestpropCount++;
+            }
+
+            requestpropCount++;
+            request["userId"] = ExpressionConverter.ConvertO(requestuserID);
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<TimeOffResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
         public IBodyWorkflowAction<TimeOffResponse> GetTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
         {
             var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/timesoff/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1), ExpressionConverter.ConvertWithUrlEncoding(timeOffId, 1));
@@ -66,6 +126,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             if (top != null)
                 callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
             return new ApiConnectionAction<ListShiftsResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
+        public IBodyWorkflowAction<ShiftResponse> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
+        {
+            var apiCallPath = String.Format("/v1.0/teams/{0}/schedule/shifts", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            if (requestschedulingGroupID != null)
+            {
+                request["schedulingGroupId"] = ExpressionConverter.ConvertO(requestschedulingGroupID);
+                requestpropCount++;
+            }
+
+            var sharedShiftObject = new JObject();
+            var sharedShiftObjectpropCount = 0;
+            if (requestvaluedisplayName != null)
+            {
+                sharedShiftObject["displayName"] = ExpressionConverter.ConvertO(requestvaluedisplayName);
+                sharedShiftObjectpropCount++;
+            }
+
+            if (requestvaluenotes != null)
+            {
+                sharedShiftObject["notes"] = ExpressionConverter.ConvertO(requestvaluenotes);
+                sharedShiftObjectpropCount++;
+            }
+
+            if (requestvaluestartTime != null)
+            {
+                sharedShiftObject["startDateTime"] = ExpressionConverter.ConvertO(requestvaluestartTime);
+                sharedShiftObjectpropCount++;
+            }
+
+            if (requestvalueendTime != null)
+            {
+                sharedShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestvalueendTime);
+                sharedShiftObjectpropCount++;
+            }
+
+            if (requestvaluetheme != null)
+            {
+                if (requestvaluetheme != null)
+                {
+                    sharedShiftObject["theme"] = ExpressionConverter.ConvertO(requestvaluetheme);
+                    sharedShiftObjectpropCount++;
+                }
+
+                sharedShiftObjectpropCount++;
+            }
+            else
+            {
+                sharedShiftObject["theme"] = "white";
+                sharedShiftObjectpropCount++;
+            }
+
+            if (requestvalueactivities != null)
+            {
+                sharedShiftObject["activities"] = ExpressionConverter.ConvertO(requestvalueactivities);
+                sharedShiftObjectpropCount++;
+            }
+
+            if (sharedShiftObjectpropCount > 0)
+            {
+                request["sharedShift"] = sharedShiftObject;
+                requestpropCount++;
+            }
+
+            requestpropCount++;
+            request["userId"] = ExpressionConverter.ConvertO(requestuserID);
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<ShiftResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
@@ -135,7 +273,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             sharedOpenShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftendTime);
             if (requestsharedOpenShifttheme != null)
             {
-                sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                if (requestsharedOpenShifttheme != null)
+                {
+                    sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                    sharedOpenShiftObjectpropCount++;
+                }
+
+                sharedOpenShiftObjectpropCount++;
+            }
+            else
+            {
+                sharedOpenShiftObject["theme"] = "white";
                 sharedOpenShiftObjectpropCount++;
             }
 
@@ -204,7 +352,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             sharedOpenShiftObject["endDateTime"] = ExpressionConverter.ConvertO(requestsharedOpenShiftendTime);
             if (requestsharedOpenShifttheme != null)
             {
-                sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                if (requestsharedOpenShifttheme != null)
+                {
+                    sharedOpenShiftObject["theme"] = ExpressionConverter.ConvertO(requestsharedOpenShifttheme);
+                    sharedOpenShiftObjectpropCount++;
+                }
+
+                sharedOpenShiftObjectpropCount++;
+            }
+            else
+            {
+                sharedOpenShiftObject["theme"] = "white";
                 sharedOpenShiftObjectpropCount++;
             }
 
@@ -799,6 +957,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public Theme Theme { get; set; }
     }
 
+    public enum requestvaluethemeInput
+    {
+        [EnumMember(Value = "white")]
+        White,
+        [EnumMember(Value = "blue")]
+        Blue,
+        [EnumMember(Value = "green")]
+        Green,
+        [EnumMember(Value = "purple")]
+        Purple,
+        [EnumMember(Value = "pink")]
+        Pink,
+        [EnumMember(Value = "yellow")]
+        Yellow,
+        [EnumMember(Value = "gray")]
+        Gray,
+        [EnumMember(Value = "darkBlue")]
+        DarkBlue,
+        [EnumMember(Value = "darkGreen")]
+        DarkGreen,
+        [EnumMember(Value = "darkPurple")]
+        DarkPurple,
+        [EnumMember(Value = "darkPink")]
+        DarkPink,
+        [EnumMember(Value = "darkYellow")]
+        DarkYellow
+    }
+
     public class ListShiftsResponse
     {
         [JsonProperty("@odata.context")]
@@ -911,6 +1097,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 
         [JsonProperty("activities")]
         public ActivitiesItem[] Activities { get; set; }
+    }
+
+    public class requestvalueactivitiesInputItem
+    {
+        [JsonProperty("isPaid")]
+        public bool IsPaid { get; set; }
+
+        [JsonProperty("startDateTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endDateTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
     }
 
     public class ListOpenShiftsResponse

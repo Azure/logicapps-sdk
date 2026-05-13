@@ -2177,90 +2177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflowV2(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
-        {
-            var apiCallPath = "/firmflow/api/V2/Route";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfilingId != null)
-            {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
-                bodypropCount++;
-            }
-
-            if (bodycurrentStep != null)
-            {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
-                bodypropCount++;
-            }
-
-            if (bodycomplete != null)
-            {
-                body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
-                bodypropCount++;
-            }
-
-            if (bodycompletedDate != null)
-            {
-                body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
-                bodypropCount++;
-            }
-
-            if (bodynextStep != null)
-            {
-                body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
-                bodypropCount++;
-            }
-
-            if (bodyassignedTo != null)
-            {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodyassignedDate != null)
-            {
-                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyroutingNote != null)
-            {
-                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
-                bodypropCount++;
-            }
-
-            if (bodyemailNotify != null)
-            {
-                body["emailNotify"] = ExpressionConverter.ConvertO(bodyemailNotify);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
@@ -2537,24 +2453,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoV2Response> GetUserInfoV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodyuserType = null)
+        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
         {
-            var apiCallPath = "/api/v2/administration/user/getuser";
+            var apiCallPath = "/firmflow/api/V2/Route";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (xAuthorization != null)
                 callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
             var body = new JObject();
             var bodypropCount = 0;
-            if (bodyloginName != null)
+            if (bodyfilingId != null)
             {
-                body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
                 bodypropCount++;
             }
 
-            if (bodyuserType != null)
+            if (bodycurrentStep != null)
             {
-                body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
+                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                bodypropCount++;
+            }
+
+            if (bodycomplete != null)
+            {
+                body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
+                bodypropCount++;
+            }
+
+            if (bodycompletedDate != null)
+            {
+                body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
+                bodypropCount++;
+            }
+
+            if (bodynextStep != null)
+            {
+                body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
+                bodypropCount++;
+            }
+
+            if (bodyassignedTo != null)
+            {
+                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                bodypropCount++;
+            }
+
+            if (bodyassignedDate != null)
+            {
+                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
+                bodypropCount++;
+            }
+
+            if (bodypriority != null)
+            {
+                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                bodypropCount++;
+            }
+
+            if (bodystatus != null)
+            {
+                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                bodypropCount++;
+            }
+
+            if (bodyroutingNote != null)
+            {
+                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
+                bodypropCount++;
+            }
+
+            if (bodyemailNotify != null)
+            {
+                body["emailNotify"] = ExpressionConverter.ConvertO(bodyemailNotify);
                 bodypropCount++;
             }
 
@@ -2563,11 +2533,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionAction<GetUserInfoV2Response>(callPayload);
+            return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverableV2(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
+        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
             var apiCallHttpMethod = "post";
@@ -4120,15 +4090,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string FirmManagedOption { get; set; }
     }
 
-    public class RouteWorkflowV2Response
-    {
-        [JsonProperty("filingId")]
-        public string FilingId { get; set; }
-
-        [JsonProperty("isRouted")]
-        public bool IsRouted { get; set; }
-    }
-
     public class TrackingReportByWorkflowResponse
     {
         [JsonProperty("totalRecords")]
@@ -4303,112 +4264,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ResponseMessage { get; set; }
     }
 
-    public class GetUserInfoV2Response
+    public class RouteWorkflowV2Response
     {
-        [JsonProperty("userID")]
-        public string UserID { get; set; }
+        [JsonProperty("filingId")]
+        public string FilingId { get; set; }
 
-        [JsonProperty("loginID")]
-        public string LoginID { get; set; }
-
-        [JsonProperty("fullName")]
-        public string FullName { get; set; }
-
-        [JsonProperty("createDate")]
-        public string CreateDate { get; set; }
-
-        [JsonProperty("createdBy")]
-        public string CreatedBy { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("disabled")]
-        public int Disabled { get; set; }
-
-        [JsonProperty("disabledByAdmin")]
-        public bool DisabledByAdmin { get; set; }
-
-        [JsonProperty("passwordExpireDate")]
-        public string PasswordExpireDate { get; set; }
-
-        [JsonProperty("forcePasswordChange")]
-        public bool ForcePasswordChange { get; set; }
-
-        [JsonProperty("passwordChangeDate")]
-        public string PasswordChangeDate { get; set; }
-
-        [JsonProperty("passwordChangeInterval")]
-        public int PasswordChangeInterval { get; set; }
-
-        [JsonProperty("licenseType")]
-        public string LicenseType { get; set; }
-
-        [JsonProperty("offline")]
-        public bool Offline { get; set; }
-
-        [JsonProperty("reports")]
-        public bool Reports { get; set; }
-
-        [JsonProperty("systemAdmin")]
-        public bool SystemAdmin { get; set; }
-
-        [JsonProperty("signature")]
-        public string Signature { get; set; }
-
-        [JsonProperty("locationID")]
-        public string LocationID { get; set; }
-
-        [JsonProperty("hasDrawerSetupRights")]
-        public string HasDrawerSetupRights { get; set; }
-
-        [JsonProperty("taxFlow")]
-        public bool TaxFlow { get; set; }
-
-        [JsonProperty("emailNotify")]
-        public bool EmailNotify { get; set; }
-
-        [JsonProperty("emailNotifyGroup")]
-        public bool EmailNotifyGroup { get; set; }
-
-        [JsonProperty("emailNotifyEventMgmtUsers")]
-        public bool EmailNotifyEventMgmtUsers { get; set; }
-
-        [JsonProperty("emailNotifyEventMgmtGroups")]
-        public bool EmailNotifyEventMgmtGroups { get; set; }
-
-        [JsonProperty("portalUserAdministration")]
-        public bool PortalUserAdministration { get; set; }
-
-        [JsonProperty("internalUserAdministration")]
-        public bool InternalUserAdministration { get; set; }
-
-        [JsonProperty("workflowManagerUser")]
-        public bool WorkflowManagerUser { get; set; }
-
-        [JsonProperty("managerId")]
-        public string ManagerId { get; set; }
-
-        [JsonProperty("managerLoginId")]
-        public string ManagerLoginId { get; set; }
-
-        [JsonProperty("managerFullName")]
-        public string ManagerFullName { get; set; }
-
-        [JsonProperty("isManager")]
-        public int IsManager { get; set; }
-
-        [JsonProperty("oberonUser")]
-        public int OberonUser { get; set; }
-
-        [JsonProperty("isAdmin")]
-        public int IsAdmin { get; set; }
-
-        [JsonProperty("lastLogin")]
-        public string LastLogin { get; set; }
-
-        [JsonProperty("groups")]
-        public string[] Groups { get; set; }
+        [JsonProperty("isRouted")]
+        public bool IsRouted { get; set; }
     }
 
     public class TrackingReportByDeliverableV2Response

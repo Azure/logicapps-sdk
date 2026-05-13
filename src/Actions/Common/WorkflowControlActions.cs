@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Creates a Scope action that groups nested actions together.
         /// </summary>
         /// <param name="actions">A factory that builds the nested action graph and returns any node in the chain.</param>
-        public IWorkflowAction Scope(Func<IWorkflowNode> actions)
+        public IWorkflowAction Scope(Func<IChainableNode> actions)
         {
             if (actions == null)
             {
                 throw new ArgumentNullException(nameof(actions), "Scope action requires non-null actions.");
             }
             var resolvedActions = actions.Invoke();
-            return new ScopeAction(resolvedActions.GetRootAction());
+            return new ScopeAction(resolvedActions.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
         public IWorkflowAction Condition(
             Expression<Func<bool>> expression,
-            Func<IWorkflowNode> trueBranch,
-            Func<IWorkflowNode> falseBranch)
+            Func<IChainableNode> trueBranch,
+            Func<IChainableNode> falseBranch)
         {
             if (expression == null)
             {
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             return new ConditionAction(
                 expressionStr,
-                resolvedTrueBranch?.GetRootAction(),
-                resolvedFalseBranch?.GetRootAction());
+                resolvedTrueBranch?.GetRootOperation() as IWorkflowAction,
+                resolvedFalseBranch?.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
         public IWorkflowAction ForEach(
             Expression<Func<JToken>> items,
-            Func<JToken, IWorkflowNode> actions)
+            Func<JToken, IChainableNode> actions)
         {
             if (items == null)
             {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var itemsExpression = ExpressionConverter.ConvertO(items);
             var currentItemPlaceholder = new JValue("@item()");
             var resolvedActions = actions?.Invoke(currentItemPlaceholder);
-            return new ForEachAction(itemsExpression, resolvedActions?.GetRootAction());
+            return new ForEachAction(itemsExpression, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
         public IWorkflowAction Until(
             Expression<Func<bool>> expression,
-            Func<IWorkflowNode> actions)
+            Func<IChainableNode> actions)
         {
             if (expression == null)
             {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             var expressionStr = ExpressionConverter.Convert(expression);
             var resolvedActions = actions?.Invoke();
-            return new UntilAction(expressionStr, resolvedActions?.GetRootAction());
+            return new UntilAction(expressionStr, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public IWorkflowAction Switch(
             Expression<Func<JToken>> on,
             Func<Dictionary<string, SwitchCase>> cases,
-            Func<IWorkflowNode> defaultCase = null)
+            Func<IChainableNode> defaultCase = null)
         {
             if (on == null)
             {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var onExpression = ExpressionConverter.ConvertO(on);
             var resolvedCasesDict = cases?.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
-            return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootAction());
+            return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>

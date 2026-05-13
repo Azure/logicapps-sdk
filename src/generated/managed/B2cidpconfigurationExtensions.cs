@@ -108,55 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ServicePrincipleCollection> GetServicePrincipleV1()
-        {
-            var apiCallPath = "/v1.0/serviceprincipals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ServicePrincipleCollection>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ServicePrinciple> PostServicePrincipleV1(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
-        {
-            var apiCallPath = "/v1.0/serviceprincipals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountEnabled != null)
-            {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
-                bodypropCount++;
-            }
-
-            if (bodyappId != null)
-            {
-                body["appId"] = ExpressionConverter.ConvertO(bodyappId);
-                bodypropCount++;
-            }
-
-            if (bodyappRoleAssignmentRequired != null)
-            {
-                body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(bodyappRoleAssignmentRequired);
-                bodypropCount++;
-            }
-
-            if (bodyreplyUrls != null)
-            {
-                body["replyUrls"] = ExpressionConverter.ConvertO(bodyreplyUrls);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ServicePrinciple>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<PermissionGrantCollection> GetPermissionGrants()
         {
             var apiCallPath = "/v1.0/oauth2PermissionGrants";
@@ -285,7 +236,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 
             if (bodyuserFlowTypeVersion != null)
             {
-                body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                if (bodyuserFlowTypeVersion != null)
+                {
+                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["userFlowTypeVersion"] = 1;
                 bodypropCount++;
             }
 
@@ -293,7 +254,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             var tokenClaimsConfigurationObjectpropCount = 0;
             if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
             {
-                tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                {
+                    tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                    tokenClaimsConfigurationObjectpropCount++;
+                }
+
+                tokenClaimsConfigurationObjectpropCount++;
+            }
+            else
+            {
+                tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = true;
                 tokenClaimsConfigurationObjectpropCount++;
             }
 
@@ -309,6 +280,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
             }
 
             return new ApiConnectionAction<UserFlow>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
+        public IBodyWorkflowAction<ServicePrincipleCollection> GetServicePrinciple()
+        {
+            var apiCallPath = "/v1.0/serviceprincipals";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<ServicePrincipleCollection>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
+        public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
+        {
+            var apiCallPath = "/v1.0/serviceprincipals";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodyaccountEnabled != null)
+            {
+                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                bodypropCount++;
+            }
+
+            if (bodyappId != null)
+            {
+                body["appId"] = ExpressionConverter.ConvertO(bodyappId);
+                bodypropCount++;
+            }
+
+            if (bodyappRoleAssignmentRequired != null)
+            {
+                body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(bodyappRoleAssignmentRequired);
+                bodypropCount++;
+            }
+
+            if (bodyreplyUrls != null)
+            {
+                body["replyUrls"] = ExpressionConverter.ConvertO(bodyreplyUrls);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<ServicePrinciple>(callPayload);
         }
     }
 
@@ -529,6 +549,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public bool EnableIdTokenIssuance { get; set; }
     }
 
+    public class PermissionGrantCollection
+    {
+        [JsonProperty("value")]
+        public PermissionGrant[] Value { get; set; }
+    }
+
+    public class PermissionGrant
+    {
+        [JsonProperty("clientId")]
+        public string ClientId { get; set; }
+
+        [JsonProperty("consentType")]
+        public string ConsentType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("principalId")]
+        public string PrincipalId { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("scope")]
+        public string Scope { get; set; }
+    }
+
+    public class UserFlowCollection
+    {
+        [JsonProperty("value")]
+        public UserFlow[] Value { get; set; }
+    }
+
+    public class UserFlow
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("userFlowType")]
+        public string UserFlowType { get; set; }
+
+        [JsonProperty("userFlowTypeVersion")]
+        public int UserFlowTypeVersion { get; set; }
+    }
+
     public class ServicePrincipleCollection
     {
         [JsonProperty("value")]
@@ -689,51 +754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 
         [JsonProperty("logoUrl")]
         public string LogoUrl { get; set; }
-    }
-
-    public class PermissionGrantCollection
-    {
-        [JsonProperty("value")]
-        public PermissionGrant[] Value { get; set; }
-    }
-
-    public class PermissionGrant
-    {
-        [JsonProperty("clientId")]
-        public string ClientId { get; set; }
-
-        [JsonProperty("consentType")]
-        public string ConsentType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("principalId")]
-        public string PrincipalId { get; set; }
-
-        [JsonProperty("resourceId")]
-        public string ResourceId { get; set; }
-
-        [JsonProperty("scope")]
-        public string Scope { get; set; }
-    }
-
-    public class UserFlowCollection
-    {
-        [JsonProperty("value")]
-        public UserFlow[] Value { get; set; }
-    }
-
-    public class UserFlow
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("userFlowType")]
-        public string UserFlowType { get; set; }
-
-        [JsonProperty("userFlowTypeVersion")]
-        public int UserFlowTypeVersion { get; set; }
     }
 }
 

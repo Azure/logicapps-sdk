@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<JToken> DownloadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
         {
             var apiCallPath = String.Format("/meta/document/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<string>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -543,9 +543,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyentityName = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodyfields = null)
+        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyentityName = null, Expression<Func<string>> bodylegalEntity = null)
         {
-            var apiCallPath = "/integration/ResolveContext";
+            var apiCallPath = "/integration/resolvecontext";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
@@ -569,9 +569,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 bodypropCount++;
             }
 
-            if (bodyfields != null)
+            var fieldsObject = new JObject();
+            var fieldsObjectpropCount = 0;
+            if (fieldsObjectpropCount > 0)
             {
-                body["fields"] = ExpressionConverter.ConvertO(bodyfields);
+                body["fields"] = fieldsObject;
                 bodypropCount++;
             }
 
@@ -864,6 +866,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Body = body;
             }
 
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
+        public IWorkflowAction AddTemplateToDocumentSingle(Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> exaAuthPlugin)
+        {
+            var apiCallPath = String.Format("/meta/document/{0}/template/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -1534,9 +1546,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [JsonProperty("tenantId")]
         public string TenantId { get; set; }
 
-        [JsonProperty("masterTemplateId")]
-        public string MasterTemplateId { get; set; }
-
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
 
@@ -1834,9 +1843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         [JsonProperty("tenantId")]
         public string TenantId { get; set; }
 
-        [JsonProperty("providerId")]
-        public string ProviderId { get; set; }
-
         [JsonProperty("parentTagId")]
         public string ParentTagId { get; set; }
 
@@ -1851,12 +1857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
         [JsonProperty("code")]
         public string Code { get; set; }
-
-        [JsonProperty("syncDetails")]
-        public ResolveContextResponseSyncDetailsType SyncDetails { get; set; }
-
-        [JsonProperty("excludeFromSearch")]
-        public bool ExcludeFromSearch { get; set; }
     }
 
     public class ResolveContextResponseLabelsTypeItem
@@ -1866,27 +1866,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
         [JsonProperty("value")]
         public string Value { get; set; }
-    }
-
-    public class ResolveContextResponseSyncDetailsType
-    {
-        [JsonProperty("externalEntityName")]
-        public string ExternalEntityName { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("primaryIdFields")]
-        public string[] PrimaryIdFields { get; set; }
-
-        [JsonProperty("primaryIdFormat")]
-        public string PrimaryIdFormat { get; set; }
-
-        [JsonProperty("primaryIdFieldValues")]
-        public string[] PrimaryIdFieldValues { get; set; }
-
-        [JsonProperty("lastSyncedOn")]
-        public string LastSyncedOn { get; set; }
     }
 
     public class AdvancedSearchQueryDocumentsResponse

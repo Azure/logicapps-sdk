@@ -104,7 +104,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
             if (bodymailType != null)
             {
-                body["mailtype"] = ExpressionConverter.ConvertO(bodymailType);
+                if (bodymailType != null)
+                {
+                    body["mailtype"] = ExpressionConverter.ConvertO(bodymailType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["mailtype"] = "html";
                 bodypropCount++;
             }
 

@@ -27,7 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             body["text"] = ExpressionConverter.ConvertO(bodytext);
             if (bodymode != null)
             {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                if (bodymode != null)
+                {
+                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["mode"] = "markdown";
                 bodypropCount++;
             }
 

@@ -147,7 +147,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
 
             if (bodypage != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypage);
+                if (bodypage != null)
+                {
+                    body["page"] = ExpressionConverter.ConvertO(bodypage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["page"] = 1;
                 bodypropCount++;
             }
 

@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiermcp
     public class ZapiermcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiermcp")]
-        public IWorkflowAction InvokeServer(Expression<Func<string>> accountId, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IBodyWorkflowAction<string> InvokeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
         {
-            var apiCallPath = String.Format("/api/mcp/a/{0}/mcp", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+            var apiCallPath = "/api/v1/connect";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             if (mcpSessionId != null)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiermcp
                 callPayload.Body = queryRequest;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<string>(callPayload);
         }
     }
 

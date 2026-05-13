@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dropbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dropbox")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolderV2(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var apiCallPath = "/datasets/default/extractFolderV2";
             var apiCallHttpMethod = "post";

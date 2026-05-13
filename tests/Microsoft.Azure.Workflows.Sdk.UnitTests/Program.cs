@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void Main()
         {
-            IWorkflowProvider[] providers = new IWorkflowProvider[]
+            var providers = new IWorkflowProvider[]
             {
                 //new RecruitmentWorkflow(),
                 new HttpWorkflow(),
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 new ServiceBusWorkflow(),
                 new ServiceBusSendMessageWorkflow(),
                 new NullableNodeWorkflow(),
-                new JoinWorkflow(),
-                new SplitWorkflow(),
+                new ComplexBranchWorkflow(),
+                new ParallelBranchWorkflow(),
             };
 
             var allWorkflows = providers.SelectMany(p => p.GetWorkflows());

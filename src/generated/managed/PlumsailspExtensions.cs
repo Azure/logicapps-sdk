@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class PlumsailspActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateSiteFromTemplatePost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestleafURL, Expression<Func<string>> requestdescription = null, Expression<Func<int>> requestlcid = null, Expression<Func<bool>> requestinheritPermissions = null, Expression<Func<bool>> requestinheritNavigation = null, Expression<Func<bool>> requestonTopNavigation = null, Expression<Func<bool>> requestonQuickLaunch = null)
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateSiteFromTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestleafURL, Expression<Func<string>> requestdescription = null, Expression<Func<int>> requestlcid = null, Expression<Func<bool>> requestinheritPermissions = null, Expression<Func<bool>> requestinheritNavigation = null, Expression<Func<bool>> requestonTopNavigation = null, Expression<Func<bool>> requestonQuickLaunch = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSiteFromTemplate";
             var apiCallHttpMethod = "post";
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsChangePermissionsPost(Expression<Func<actionTypeInput>> actionType, Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsChangePermissions(Expression<Func<actionTypeInput>> actionType, Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ChangePermissions";
             var apiCallHttpMethod = "post";
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsActivateFeaturePost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsActivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ActivateFeature";
             var apiCallHttpMethod = "post";
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeactivateFeaturePost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeactivateFeature";
             var apiCallHttpMethod = "post";
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsCreateListOrLibraryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestpartialURL = null, Expression<Func<string>> requestdescription = null, Expression<Func<bool>> requestonQuickLaunch = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsCreateListOrLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestpartialURL = null, Expression<Func<string>> requestdescription = null, Expression<Func<bool>> requestonQuickLaunch = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateListOrLibrary";
             var apiCallHttpMethod = "post";
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsSetDefaultSiteGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestgroupTypeInput>> requestgroupType, Expression<Func<string>> requestgroupName)
+        public IWorkflowAction FlowV1SharePointFlowJobsSetDefaultSiteGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestgroupTypeInput>> requestgroupType, Expression<Func<string>> requestgroupName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/SetDefaultSiteGroup";
             var apiCallHttpMethod = "post";
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCopyDocumentFromLibraryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCopyDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentFromLibrary";
             var apiCallHttpMethod = "post";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsMoveDocumentFromLibraryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsMoveDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentFromLibrary";
             var apiCallHttpMethod = "post";
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveDocumentByUrlPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveDocumentByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveDocumentByUrl";
             var apiCallHttpMethod = "post";
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCreateDocumentSetPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentSetName, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestcontentType = null)
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCreateDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentSetName, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestcontentType = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateDocumentSet";
             var apiCallHttpMethod = "post";
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCopyDocumentSetPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCopyDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentSet";
             var apiCallHttpMethod = "post";
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsMoveDocumentSetPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsMoveDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentSet";
             var apiCallHttpMethod = "post";
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderByUrlPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderByUrl";
             var apiCallHttpMethod = "post";
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderInListPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestfolderPath)
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderInList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestfolderPath)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderInList";
             var apiCallHttpMethod = "post";
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveFolderByUrlPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveFolderByUrl";
             var apiCallHttpMethod = "post";
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCopyFolderFromLibraryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCopyFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyFolderFromLibrary";
             var apiCallHttpMethod = "post";
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsMoveFolderFromLibraryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsMoveFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveFolderFromLibrary";
             var apiCallHttpMethod = "post";
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckInDocumentPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL, Expression<Func<string>> requestcomment = null)
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckInDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL, Expression<Func<string>> requestcomment = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckInDocument";
             var apiCallHttpMethod = "post";
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckOutDocumentPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckOutDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckOutDocument";
             var apiCallHttpMethod = "post";
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateModernSitePost(Expression<Func<siteTypeInput>> siteType, Expression<Func<object>> request = null)
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateModernSite(Expression<Func<siteTypeInput>> siteType, Expression<Func<object>> request = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateModernSite";
             var apiCallHttpMethod = "post";
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsApplySiteDesignPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsiteDesign)
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsApplySiteDesign(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsiteDesign)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ApplySiteDesign";
             var apiCallHttpMethod = "post";
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsCreateSharePointGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestgroupDescription = null, Expression<Func<string>> requestgroupOwner = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsCreateSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestgroupDescription = null, Expression<Func<string>> requestgroupOwner = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSharePointGroup";
             var apiCallHttpMethod = "post";
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSharePointGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSharePointGroup";
             var apiCallHttpMethod = "post";
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<string>> requestpropertiesowner = null, Expression<Func<bool>> requestpropertiesallowMembersEditMembership = null, Expression<Func<bool>> requestpropertiesallowRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesautoAcceptRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesonlyAllowMembersViewMembership = null, Expression<Func<string>> requestpropertiesrequestToJoinLeaveEmailSetting = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointGroupProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<string>> requestpropertiesowner = null, Expression<Func<bool>> requestpropertiesallowMembersEditMembership = null, Expression<Func<bool>> requestpropertiesallowRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesautoAcceptRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesonlyAllowMembersViewMembership = null, Expression<Func<string>> requestpropertiesrequestToJoinLeaveEmailSetting = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointGroupProperties";
             var apiCallHttpMethod = "post";
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GroupExistResponse> FlowV1SharePointFlowJobsCheckSharePointGroupExistsPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
+        public IBodyWorkflowAction<GroupExistResponse> FlowV1SharePointFlowJobsCheckSharePointGroupExists(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckSharePointGroupExists";
             var apiCallHttpMethod = "post";
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddUserToSharePointGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser, Expression<Func<bool>> requestsendEmail = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsAddUserToSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser, Expression<Func<bool>> requestsendEmail = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddUserToSharePointGroup";
             var apiCallHttpMethod = "post";
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveUserFromSharePointGroup";
             var apiCallHttpMethod = "post";
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GetSPGroupMembersResponse> FlowV1SharePointFlowJobsGetSharePointGroupMembersPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
+        public IBodyWorkflowAction<GetSPGroupMembersResponse> FlowV1SharePointFlowJobsGetSharePointGroupMembers(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointGroupMembers";
             var apiCallHttpMethod = "post";
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<UserExistsResponse> FlowV1SharePointFlowJobsUserExistInSharePointGroupPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
+        public IBodyWorkflowAction<UserExistsResponse> FlowV1SharePointFlowJobsUserExistInSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/UserExistInSharePointGroup";
             var apiCallHttpMethod = "post";
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<bool>> requestpropertiesquickLaunchEnabled = null, Expression<Func<bool>> requestpropertiestreeViewEnabled = null, Expression<Func<string>> requestpropertiessiteLogoURL = null, Expression<Func<string>> requestpropertiesalternateCssURL = null, Expression<Func<string>> requestpropertiesassociatedMemberGroup = null, Expression<Func<string>> requestpropertiesassociatedOwnerGroup = null, Expression<Func<string>> requestpropertiesassociatedVisitorGroup = null, Expression<Func<bool>> requestpropertiescontainsConfidentialInfo = null, Expression<Func<string>> requestpropertiescustomMasterURL = null, Expression<Func<bool>> requestpropertiesenableMinimalDownload = null, Expression<Func<bool>> requestpropertiesisMultilingual = null, Expression<Func<string>> requestpropertiesmasterURL = null, Expression<Func<bool>> requestpropertiesmembersCanShare = null, Expression<Func<bool>> requestpropertiesnoCrawl = null, Expression<Func<bool>> requestpropertiesoverwriteTranslationsOnChange = null, Expression<Func<string>> requestpropertiesrequestAccessEmail = null, Expression<Func<bool>> requestpropertiessaveSiteAsTemplateEnabled = null, Expression<Func<string>> requestpropertiesserverRelativeURL = null, Expression<Func<bool>> requestpropertiessyndicationEnabled = null, Expression<Func<int>> requestpropertiesuIVersion = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointSiteProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<bool>> requestpropertiesquickLaunchEnabled = null, Expression<Func<bool>> requestpropertiestreeViewEnabled = null, Expression<Func<string>> requestpropertiessiteLogoURL = null, Expression<Func<string>> requestpropertiesalternateCssURL = null, Expression<Func<string>> requestpropertiesassociatedMemberGroup = null, Expression<Func<string>> requestpropertiesassociatedOwnerGroup = null, Expression<Func<string>> requestpropertiesassociatedVisitorGroup = null, Expression<Func<bool>> requestpropertiescontainsConfidentialInfo = null, Expression<Func<string>> requestpropertiescustomMasterURL = null, Expression<Func<bool>> requestpropertiesenableMinimalDownload = null, Expression<Func<bool>> requestpropertiesisMultilingual = null, Expression<Func<string>> requestpropertiesmasterURL = null, Expression<Func<bool>> requestpropertiesmembersCanShare = null, Expression<Func<bool>> requestpropertiesnoCrawl = null, Expression<Func<bool>> requestpropertiesoverwriteTranslationsOnChange = null, Expression<Func<string>> requestpropertiesrequestAccessEmail = null, Expression<Func<bool>> requestpropertiessaveSiteAsTemplateEnabled = null, Expression<Func<string>> requestpropertiesserverRelativeURL = null, Expression<Func<bool>> requestpropertiessyndicationEnabled = null, Expression<Func<int>> requestpropertiesuIVersion = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointSiteProperties";
             var apiCallHttpMethod = "post";
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeleteSharePointSitePost(Expression<Func<string>> requestsharePointSiteURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsDeleteSharePointSite(Expression<Func<string>> requestsharePointSiteURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeleteSharePointSite";
             var apiCallHttpMethod = "post";
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<SPSiteOptionValueResponse> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestoptionName)
+        public IBodyWorkflowAction<SPSiteOptionValueResponse> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestoptionName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointSiteOptionValueAsString";
             var apiCallHttpMethod = "post";
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsInviteExternalUserToSharePointPost(Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/InviteExternalUserToSharePoint";
             var apiCallHttpMethod = "post";
@@ -964,7 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsCopyAttachmentsToUrlPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
+        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyAttachmentsToUrl";
             var apiCallHttpMethod = "post";
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsMoveAttachmentsToUrlPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
+        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveAttachmentsToUrl";
             var apiCallHttpMethod = "post";
@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddContentTypeToSharePointListPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcontentTypeName, Expression<Func<bool>> requestmakeItDefault = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsAddContentTypeToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcontentTypeName, Expression<Func<bool>> requestmakeItDefault = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddContentTypeToSharePointList";
             var apiCallHttpMethod = "post";
@@ -1052,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsCopyListItemToSharePointListPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
+        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyListItemToSharePointList";
             var apiCallHttpMethod = "post";
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsMoveListItemToSharePointListPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
+        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveListItemToSharePointList";
             var apiCallHttpMethod = "post";
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartListWorkflowPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID)
+        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartListWorkflow";
             var apiCallHttpMethod = "post";
@@ -1144,7 +1144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartSiteWorkflowPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName)
+        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartSiteWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartSiteWorkflow";
             var apiCallHttpMethod = "post";
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsGetItemsByCamlQueryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcAMLQuery, Expression<Func<string>> requestfolderURL = null)
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsGetItemsByCamlQuery(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcAMLQuery, Expression<Func<string>> requestfolderURL = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetItemsByCamlQuery";
             var apiCallHttpMethod = "post";
@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<VersionsHistoryResponse> FlowV1SharePointFlowJobsGetVersionsHistoryPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestfieldName)
+        public IBodyWorkflowAction<VersionsHistoryResponse> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestfieldName)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetVersionsHistory";
             var apiCallHttpMethod = "post";
@@ -1224,7 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTemplatePost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTemplate";
             var apiCallHttpMethod = "post";
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTenantTemplatePost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTenantTemplate";
             var apiCallHttpMethod = "post";
@@ -1360,7 +1360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddSiteNavigationPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null, Expression<Func<string>> requesturl = null, Expression<Func<bool>> requestprepend = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsAddSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null, Expression<Func<string>> requesturl = null, Expression<Func<bool>> requestprepend = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddSiteNavigation";
             var apiCallHttpMethod = "post";
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSiteNavigationPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null)
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSiteNavigation";
             var apiCallHttpMethod = "post";
@@ -1428,7 +1428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateListItemPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateListItem";
             var apiCallHttpMethod = "post";
@@ -1458,7 +1458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeclareDocumentAsRecordPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeclareDocumentAsRecord";
             var apiCallHttpMethod = "post";
@@ -1480,7 +1480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUndeclareDocumentAsRecordPost(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/UndeclareDocumentAsRecord";
             var apiCallHttpMethod = "post";
@@ -1502,7 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsParseCsvPost(Expression<Func<string>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsParseCsv(Expression<Func<string>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/ParseCsv";
             var apiCallHttpMethod = "post";
@@ -1519,7 +1519,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
             if (requestlocale != null)
             {
-                request["locale"] = ExpressionConverter.ConvertO(requestlocale);
+                if (requestlocale != null)
+                {
+                    request["locale"] = ExpressionConverter.ConvertO(requestlocale);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["locale"] = "en-US";
                 requestpropCount++;
             }
 
@@ -1546,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsRegExpMatchPost(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsRegExpMatch(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpMatch";
             var apiCallHttpMethod = "post";
@@ -1566,7 +1576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<StringResultResponse> FlowV1SharePointFlowJobsRegExpReplacePost(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext, Expression<Func<string>> requestreplacement = null)
+        public IBodyWorkflowAction<StringResultResponse> FlowV1SharePointFlowJobsRegExpReplace(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext, Expression<Func<string>> requestreplacement = null)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpReplace";
             var apiCallHttpMethod = "post";
@@ -1592,7 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<BooleanResultResponse> FlowV1SharePointFlowJobsRegExpTestPost(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
+        public IBodyWorkflowAction<BooleanResultResponse> FlowV1SharePointFlowJobsRegExpTest(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
         {
             var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpTest";
             var apiCallHttpMethod = "post";

@@ -21,15 +21,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheckV3(Expression<Func<string>> messageId)
-        {
-            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
         public IBodyWorkflowAction<SendWhatsAppTextResponse> SendWhatsAppText(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodycontenttext = null)
         {
             var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/text";
@@ -1584,11 +1575,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
             return new ApiConnectionAction<SendWhatsAppTemplateQuickReplyResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
+        {
+            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+        }
     }
 
     public class TyntecwaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IncomingV2(Expression<Func<string>> wABA, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Incoming(Expression<Func<string>> wABA, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(wABA, 1));
             var apiCallHttpMethod = "post";
@@ -1655,18 +1655,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
     {
         [JsonProperty("score")]
         public string Score { get; set; }
-    }
-
-    public class StatusCheckV3Response
-    {
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
     }
 
     public class SendWhatsAppTextResponse
@@ -2039,6 +2027,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
         [JsonProperty("payload")]
         public string Payload { get; set; }
+    }
+
+    public class StatusCheckV3Response
+    {
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
     }
 }
 

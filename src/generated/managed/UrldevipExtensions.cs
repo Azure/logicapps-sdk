@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     public class UrldevipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<LinkPostResponse> LinkPost(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
         {
             var apiCallPath = "/create/";
             var apiCallHttpMethod = "post";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<MessagePostResponse> MessagePost(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
         {
             var apiCallPath = "/messages/create/";
             var apiCallHttpMethod = "post";

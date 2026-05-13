@@ -951,7 +951,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
             callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/octet-stream");
             callPayload.Body = ExpressionConverter.ConvertO(body);
             return new ApiConnectionAction<CreateFileResponse>(callPayload);
         }
@@ -1078,6 +1077,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyhelpText = null)
+        {
+            var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+            bodypropCount++;
+            body["key"] = ExpressionConverter.ConvertO(bodykey);
+            if (bodydisplayName != null)
+            {
+                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                bodypropCount++;
+            }
+
+            if (bodytype != null)
+            {
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                bodypropCount++;
+            }
+
+            if (bodypriority != null)
+            {
+                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                bodypropCount++;
+            }
+
+            if (bodydata != null)
+            {
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                bodypropCount++;
+            }
+
+            if (bodyhelpText != null)
+            {
+                body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UpdateNamespaceKeysResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem> GetNamespace(Expression<Func<string>> bodyNamespace)
         {
             var apiCallPath = "/api-proxy/GetNamespace";
@@ -1096,7 +1145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteNamespaceResponse> DeleteNamespace(Expression<Func<string>> bodyNamespace, Expression<Func<bool>> bodyforce = null)
+        public IWorkflowAction DeleteNamespace(Expression<Func<string>> bodyNamespace, Expression<Func<bool>> bodyforce = null)
         {
             var apiCallPath = "/api-proxy/DeleteNamespace";
             var apiCallHttpMethod = "post";
@@ -1116,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionAction<DeleteNamespaceResponse>(callPayload);
+            return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1488,7 +1537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteMetadataKeyResponse> DeleteMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
+        public IWorkflowAction DeleteMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
         {
             var apiCallPath = "/api-proxy/DeleteMetadataKey";
             var apiCallHttpMethod = "post";
@@ -1510,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionAction<DeleteMetadataKeyResponse>(callPayload);
+            return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1551,222 +1600,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             }
 
             return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV1Response> SearchV1(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<string>> bodymodifiedBefore = null, Expression<Func<string>> bodymodifiedAfter = null, Expression<Func<string>> bodyuploadedBefore = null, Expression<Func<string>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInput>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInput>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null)
-        {
-            var apiCallPath = "/api-proxy/SearchV1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
-
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
-
-            if (bodyfolder != null)
-            {
-                body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
-                bodypropCount++;
-            }
-
-            if (bodymodifiedBefore != null)
-            {
-                body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
-                bodypropCount++;
-            }
-
-            if (bodymodifiedAfter != null)
-            {
-                body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
-                bodypropCount++;
-            }
-
-            if (bodyuploadedBefore != null)
-            {
-                body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
-                bodypropCount++;
-            }
-
-            if (bodyuploadedAfter != null)
-            {
-                body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodysnippetRequested != null)
-            {
-                body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
-                bodypropCount++;
-            }
-
-            if (bodysortBy != null)
-            {
-                body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
-                bodypropCount++;
-            }
-
-            if (bodysortDirection != null)
-            {
-                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
-                bodypropCount++;
-            }
-
-            if (bodyfileQueryFields != null)
-            {
-                body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
-                bodypropCount++;
-            }
-
-            if (bodyfolderQueryFields != null)
-            {
-                body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
-                bodypropCount++;
-            }
-
-            if (bodyqueryOperator != null)
-            {
-                body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SearchV1Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response> SearchV2(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
-        {
-            var apiCallPath = "/api-proxy/SearchV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
-
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
-
-            if (bodyfolder != null)
-            {
-                body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
-                bodypropCount++;
-            }
-
-            if (bodymodifiedBefore != null)
-            {
-                body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
-                bodypropCount++;
-            }
-
-            if (bodymodifiedAfter != null)
-            {
-                body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
-                bodypropCount++;
-            }
-
-            if (bodyuploadedBefore != null)
-            {
-                body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
-                bodypropCount++;
-            }
-
-            if (bodyuploadedAfter != null)
-            {
-                body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodysnippetRequested != null)
-            {
-                body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
-                bodypropCount++;
-            }
-
-            if (bodysortBy != null)
-            {
-                body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
-                bodypropCount++;
-            }
-
-            if (bodysortDirection != null)
-            {
-                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
-                bodypropCount++;
-            }
-
-            if (bodyfileQueryFields != null)
-            {
-                body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
-                bodypropCount++;
-            }
-
-            if (bodyfolderQueryFields != null)
-            {
-                body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
-                bodypropCount++;
-            }
-
-            if (bodyqueryOperator != null)
-            {
-                body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
-                bodypropCount++;
-            }
-
-            if (bodymlt != null)
-            {
-                body["mlt"] = ExpressionConverter.ConvertO(bodymlt);
-                bodypropCount++;
-            }
-
-            if (bodymltt != null)
-            {
-                body["mltt"] = ExpressionConverter.ConvertO(bodymltt);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SearchV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1990,70 +1823,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksV2Response> ListLinksV2(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
-        {
-            var apiCallPath = "/api-proxy/ListLinksV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypath != null)
-            {
-                body["path"] = ExpressionConverter.ConvertO(bodypath);
-                bodypropCount++;
-            }
-
-            if (bodyusername != null)
-            {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
-
-            if (bodycreatedBefore != null)
-            {
-                body["createdBefore"] = ExpressionConverter.ConvertO(bodycreatedBefore);
-                bodypropCount++;
-            }
-
-            if (bodycreatedAfter != null)
-            {
-                body["createdAfter"] = ExpressionConverter.ConvertO(bodycreatedAfter);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodyaccessibility != null)
-            {
-                body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
-                bodypropCount++;
-            }
-
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
-
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ListLinksV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShowLinkDetailsResponse> ShowLinkDetails(Expression<Func<string>> bodylinkId)
         {
             var apiCallPath = "/api-proxy/ShowLinkDetails";
@@ -2211,7 +1980,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
             if (bodyincludeCitations != null)
             {
-                body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                if (bodyincludeCitations != null)
+                {
+                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["includeCitations"] = false;
                 bodypropCount++;
             }
 
@@ -2309,7 +2088,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
             if (bodyincludeCitations != null)
             {
-                body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                if (bodyincludeCitations != null)
+                {
+                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["includeCitations"] = false;
                 bodypropCount++;
             }
 
@@ -2333,6 +2122,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             }
 
             return new ApiConnectionAction<AICopilotResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<SearchV2Response> Search(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
+        {
+            var apiCallPath = "/api-proxy/SearchV2";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["query"] = ExpressionConverter.ConvertO(bodyquery);
+            if (bodyoffset != null)
+            {
+                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                bodypropCount++;
+            }
+
+            if (bodycount != null)
+            {
+                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                bodypropCount++;
+            }
+
+            if (bodyfolder != null)
+            {
+                body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
+                bodypropCount++;
+            }
+
+            if (bodymodifiedBefore != null)
+            {
+                body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
+                bodypropCount++;
+            }
+
+            if (bodymodifiedAfter != null)
+            {
+                body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
+                bodypropCount++;
+            }
+
+            if (bodyuploadedBefore != null)
+            {
+                body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
+                bodypropCount++;
+            }
+
+            if (bodyuploadedAfter != null)
+            {
+                body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
+                bodypropCount++;
+            }
+
+            if (bodytype != null)
+            {
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                bodypropCount++;
+            }
+
+            if (bodysnippetRequested != null)
+            {
+                if (bodysnippetRequested != null)
+                {
+                    body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["snippetRequested"] = true;
+                bodypropCount++;
+            }
+
+            if (bodysortBy != null)
+            {
+                body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
+                bodypropCount++;
+            }
+
+            if (bodysortDirection != null)
+            {
+                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
+                bodypropCount++;
+            }
+
+            if (bodyfileQueryFields != null)
+            {
+                body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
+                bodypropCount++;
+            }
+
+            if (bodyfolderQueryFields != null)
+            {
+                body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
+                bodypropCount++;
+            }
+
+            if (bodyqueryOperator != null)
+            {
+                body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
+                bodypropCount++;
+            }
+
+            if (bodymlt != null)
+            {
+                body["mlt"] = ExpressionConverter.ConvertO(bodymlt);
+                bodypropCount++;
+            }
+
+            if (bodymltt != null)
+            {
+                body["mltt"] = ExpressionConverter.ConvertO(bodymltt);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<SearchV2Response>(callPayload);
         }
     }
 
@@ -3846,10 +3759,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Enum
     }
 
-    public class DeleteNamespaceResponse
+    public class UpdateNamespaceKeysResponse
     {
-        [JsonProperty("errorMessage")]
-        public string ErrorMessage { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("helpText")]
+        public string HelpText { get; set; }
+
+        [JsonProperty("priority")]
+        public double Priority { get; set; }
+    }
+
+    public enum bodytypeInput
+    {
+        FOLDER,
+        FILE,
+        ALL
     }
 
     public class ProjectItem
@@ -3959,213 +3891,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Message { get; set; }
     }
 
-    public enum bodytypeInput
-    {
-        [EnumMember(Value = "file")]
-        File,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "upload")]
-        Upload
-    }
-
-    public class DeleteMetadataKeyResponse
-    {
-        [JsonProperty("errorMessage")]
-        public string ErrorMessage { get; set; }
-    }
-
-    public class SearchV1Response
-    {
-        [JsonProperty("results")]
-        public SearchV1ResponseResultsTypeItem[] Results { get; set; }
-
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-    }
-
-    public class SearchV1ResponseResultsTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("snippet")]
-        public string Snippet { get; set; }
-
-        [JsonProperty("snippet_html")]
-        public string SnippetHtml { get; set; }
-
-        [JsonProperty("entry_id")]
-        public string EntryId { get; set; }
-
-        [JsonProperty("group_id")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("last_modified")]
-        public string LastModified { get; set; }
-
-        [JsonProperty("uploaded_by")]
-        public string UploadedBy { get; set; }
-
-        [JsonProperty("uploaded_by_username")]
-        public string UploadedByUsername { get; set; }
-
-        [JsonProperty("num_versions")]
-        public int NumVersions { get; set; }
-
-        [JsonProperty("is_folder")]
-        public bool IsFolder { get; set; }
-    }
-
-    public enum bodysortByInput
-    {
-        [EnumMember(Value = "last_modified")]
-        LastModified,
-        [EnumMember(Value = "size")]
-        Size,
-        [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "score")]
-        Score
-    }
-
-    public enum bodysortDirectionInput
-    {
-        [EnumMember(Value = "ascending")]
-        Ascending,
-        [EnumMember(Value = "descending")]
-        Descending
-    }
-
-    public enum bodyfileQueryFieldsInput
-    {
-        ALL,
-        FILENAME,
-        COMMENTS,
-        CONTENT
-    }
-
-    public enum bodyfolderQueryFieldsInput
-    {
-        ALL,
-        FOLDERNAME,
-        DESCRIPTION
-    }
-
-    public enum bodyqueryOperatorInput
-    {
-        ANY,
-        ALL
-    }
-
-    public class SearchV2Response
-    {
-        [JsonProperty("results")]
-        public SearchV2ResponseResultsTypeItem[] Results { get; set; }
-
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("hasMore")]
-        public bool HasMore { get; set; }
-    }
-
-    public class SearchV2ResponseResultsTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("snippet")]
-        public string Snippet { get; set; }
-
-        [JsonProperty("snippet_html")]
-        public string SnippetHtml { get; set; }
-
-        [JsonProperty("entry_id")]
-        public string EntryId { get; set; }
-
-        [JsonProperty("group_id")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("last_modified")]
-        public string LastModified { get; set; }
-
-        [JsonProperty("uploaded_by")]
-        public string UploadedBy { get; set; }
-
-        [JsonProperty("uploaded_by_username")]
-        public string UploadedByUsername { get; set; }
-
-        [JsonProperty("num_versions")]
-        public int NumVersions { get; set; }
-
-        [JsonProperty("is_folder")]
-        public bool IsFolder { get; set; }
-
-        [JsonProperty("custom_properties")]
-        public SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem[] CustomProperties { get; set; }
-
-        [JsonProperty("score")]
-        public double Score { get; set; }
-    }
-
-    public class SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem
-    {
-        [JsonProperty("scope")]
-        public string Scope { get; set; }
-
-        [JsonProperty("namespace")]
-        public string Namespace { get; set; }
-
-        [JsonProperty("key")]
-        public string Key { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public enum bodyfileQueryFieldsInputItem
-    {
-        ALL,
-        FILENAME,
-        COMMENTS,
-        CONTENT
-    }
-
-    public enum bodyfolderQueryFieldsInputItem
-    {
-        ALL,
-        FOLDERNAME,
-        DESCRIPTION
-    }
-
     public class bodyhasKeyInputItem
     {
         [JsonProperty("namespace")]
@@ -4258,63 +3983,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Recipients,
         [EnumMember(Value = "none")]
         None
-    }
-
-    public class ListLinksV2Response
-    {
-        [JsonProperty("links")]
-        public ListLinksV2ResponseLinksTypeItem[] Links { get; set; }
-
-        [JsonProperty("count")]
-        public double Count { get; set; }
-    }
-
-    public class ListLinksV2ResponseLinksTypeItem
-    {
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("accessibility")]
-        public string Accessibility { get; set; }
-
-        [JsonProperty("protection")]
-        public string Protection { get; set; }
-
-        [JsonProperty("recipients")]
-        public string[] Recipients { get; set; }
-
-        [JsonProperty("notify")]
-        public bool Notify { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("link_to_current")]
-        public bool LinkToCurrent { get; set; }
-
-        [JsonProperty("creation_date")]
-        public string CreationDate { get; set; }
-
-        [JsonProperty("created_by")]
-        public string CreatedBy { get; set; }
-
-        [JsonProperty("resource_id")]
-        public string ResourceId { get; set; }
-
-        [JsonProperty("expiry_clicks")]
-        public double ExpiryClicks { get; set; }
-
-        [JsonProperty("last_accessed")]
-        public string LastAccessed { get; set; }
-
-        [JsonProperty("expiry_date")]
-        public string ExpiryDate { get; set; }
     }
 
     public class ShowLinkDetailsResponse
@@ -4491,6 +4159,125 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         [JsonProperty("entryId")]
         public string EntryId { get; set; }
+    }
+
+    public class SearchV2Response
+    {
+        [JsonProperty("results")]
+        public SearchV2ResponseResultsTypeItem[] Results { get; set; }
+
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("hasMore")]
+        public bool HasMore { get; set; }
+    }
+
+    public class SearchV2ResponseResultsTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("snippet")]
+        public string Snippet { get; set; }
+
+        [JsonProperty("snippet_html")]
+        public string SnippetHtml { get; set; }
+
+        [JsonProperty("entry_id")]
+        public string EntryId { get; set; }
+
+        [JsonProperty("group_id")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("last_modified")]
+        public string LastModified { get; set; }
+
+        [JsonProperty("uploaded_by")]
+        public string UploadedBy { get; set; }
+
+        [JsonProperty("uploaded_by_username")]
+        public string UploadedByUsername { get; set; }
+
+        [JsonProperty("num_versions")]
+        public int NumVersions { get; set; }
+
+        [JsonProperty("is_folder")]
+        public bool IsFolder { get; set; }
+
+        [JsonProperty("custom_properties")]
+        public SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem[] CustomProperties { get; set; }
+
+        [JsonProperty("score")]
+        public double Score { get; set; }
+    }
+
+    public class SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem
+    {
+        [JsonProperty("scope")]
+        public string Scope { get; set; }
+
+        [JsonProperty("namespace")]
+        public string Namespace { get; set; }
+
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public enum bodysortByInput
+    {
+        [EnumMember(Value = "last_modified")]
+        LastModified,
+        [EnumMember(Value = "size")]
+        Size,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "score")]
+        Score
+    }
+
+    public enum bodysortDirectionInput
+    {
+        [EnumMember(Value = "ascending")]
+        Ascending,
+        [EnumMember(Value = "descending")]
+        Descending
+    }
+
+    public enum bodyfileQueryFieldsInputItem
+    {
+        ALL,
+        FILENAME,
+        COMMENTS,
+        CONTENT
+    }
+
+    public enum bodyfolderQueryFieldsInputItem
+    {
+        ALL,
+        FOLDERNAME,
+        DESCRIPTION
+    }
+
+    public enum bodyqueryOperatorInput
+    {
+        ANY,
+        ALL
     }
 
     public class PollCreatedFilesResponseItem

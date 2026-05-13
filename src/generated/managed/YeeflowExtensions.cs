@@ -173,13 +173,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
             if (bodypageNumber != null)
             {
-                body["PageIndex"] = ExpressionConverter.ConvertO(bodypageNumber);
+                if (bodypageNumber != null)
+                {
+                    body["PageIndex"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["PageIndex"] = 1;
                 bodypropCount++;
             }
 
             if (bodypageSize != null)
             {
-                body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                if (bodypageSize != null)
+                {
+                    body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["PageSize"] = 10;
                 bodypropCount++;
             }
 

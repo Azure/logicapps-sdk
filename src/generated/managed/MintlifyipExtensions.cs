@@ -21,7 +21,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
             var bodypropCount = 0;
             if (bodycommented != null)
             {
-                body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                if (bodycommented != null)
+                {
+                    body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["commented"] = true;
                 bodypropCount++;
             }
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IWorkflowAction FormPost(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
+        public IWorkflowAction Form(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
         {
             var apiCallPath = "/form/";
             var apiCallHttpMethod = "post";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserPostResponse> UserPost(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
         {
             var apiCallPath = "/user/";
             var apiCallHttpMethod = "post";
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldPostResponse> UserFieldPost(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<UserFieldPostResponse> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
         {
             var apiCallPath = String.Format("/field/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";

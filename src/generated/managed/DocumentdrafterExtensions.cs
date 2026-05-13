@@ -103,19 +103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<string> GetExternalShareLinkV2(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> email, Expression<Func<string>> createUser)
-        {
-            var apiCallPath = "/PowerAutomateCreateMagicLinkV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
         {
             var apiCallPath = String.Format("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));

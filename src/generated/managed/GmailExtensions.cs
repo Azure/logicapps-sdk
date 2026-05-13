@@ -33,61 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction SendEmailV2(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<Attachment[]>> emailMessageattachments = null)
+        public IWorkflowAction TrashEmail(Expression<Func<string>> id)
         {
-            var apiCallPath = "/v2/Mail";
+            var apiCallPath = String.Format("/Mail/{0}/trash", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var emailMessage = new JObject();
-            var emailMessagepropCount = 0;
-            emailMessagepropCount++;
-            emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
-            if (emailMessagecC != null)
-            {
-                emailMessage["Cc"] = ExpressionConverter.ConvertO(emailMessagecC);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagebCC != null)
-            {
-                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebCC);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagesubject != null)
-            {
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagebody != null)
-            {
-                emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessageimportance != null)
-            {
-                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessageattachments != null)
-            {
-                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagepropCount > 0)
-            {
-                callPayload.Body = emailMessage;
-            }
-
             return new ApiConnectionAction(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction ReplyToV2(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<Attachment[]>> replyMessageattachments = null)
+        public IWorkflowAction ReplyTo(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<Attachment[]>> replyMessageattachments = null)
         {
             var apiCallPath = String.Format("/v2/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -151,11 +106,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction TrashEmail(Expression<Func<string>> id)
+        public IWorkflowAction SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<Attachment[]>> emailMessageattachments = null)
         {
-            var apiCallPath = String.Format("/Mail/{0}/trash", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallPath = "/v2/Mail";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var emailMessage = new JObject();
+            var emailMessagepropCount = 0;
+            emailMessagepropCount++;
+            emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
+            if (emailMessagecC != null)
+            {
+                emailMessage["Cc"] = ExpressionConverter.ConvertO(emailMessagecC);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagebCC != null)
+            {
+                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebCC);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagesubject != null)
+            {
+                emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagebody != null)
+            {
+                emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessageimportance != null)
+            {
+                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessageattachments != null)
+            {
+                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                emailMessagepropCount++;
+            }
+
+            if (emailMessagepropCount > 0)
+            {
+                callPayload.Body = emailMessage;
+            }
+
             return new ApiConnectionAction(callPayload);
         }
     }
@@ -238,14 +238,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string ContentType { get; set; }
     }
 
-    public enum emailMessageimportanceInput
+    public enum replyMessageimportanceInput
     {
         Normal,
         Low,
         High
     }
 
-    public enum replyMessageimportanceInput
+    public enum emailMessageimportanceInput
     {
         Normal,
         Low,

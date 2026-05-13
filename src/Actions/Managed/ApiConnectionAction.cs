@@ -7,8 +7,22 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput) : WorkflowActionBase
+    public class ApiConnectionAction : WorkflowActionBase
     {
+        /// <summary>
+        /// API connection action input.
+        /// </summary>
+        private readonly ApiConnectionActionInput apiConnectionActionInput;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnectionAction"/> class.
+        /// </summary>
+        /// <param name="apiConnectionActionInput">The API connection action input.</param>
+        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        {
+            this.apiConnectionActionInput = apiConnectionActionInput;
+        }
+
         /// <summary>
         /// Gets the action definition for this API connection action.
         /// </summary>
@@ -22,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.ApiConnection,
-                Inputs = apiConnectionActionInput,
+                Inputs = this.apiConnectionActionInput,
             };
         }
     }
@@ -33,21 +47,11 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
     {
-        public ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
             : base(apiConnectionActionInput)
         {
         }
 
         public T Body { get; private set; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IBodyWorkflowAction<T> WithName(string name)
-        {
-            this.Name = name;
-            return this;
-        }
     }
 }

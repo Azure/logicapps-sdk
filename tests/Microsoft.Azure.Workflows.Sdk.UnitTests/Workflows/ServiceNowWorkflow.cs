@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var inTrig = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
-            var assignGroup = WorkflowActions.ManagedConnectors.ServiceNow("service-now").GetRecords(
+            var assignGroup = WorkflowActions.Managed.ServiceNow("service-now").GetRecords(
                 () => "sys_user_group",
                 sysparmQuery: () => "sys_id=" + inTrig.TriggerOutput.Headers["assignment_group"]
             );
 
-            var getCustomers = WorkflowActions.ManagedConnectors.ServiceNow("service-now").GetRecords(
+            var getCustomers = WorkflowActions.Managed.ServiceNow("service-now").GetRecords(
                 () => "sys_user",
                 sysparmQuery: () => "sys_id=" + inTrig.TriggerOutput.Headers["caller_id"]
             );
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var email = WorkflowActions.BuiltIn.Compose(() => "text");
 
-            var sendEmail = WorkflowActions.ManagedConnectors.Outlook("office365").SendEmailV2(
+            var sendEmail = WorkflowActions.Managed.Outlook("office365").SendEmail(
                 emailMessageto: () => (string)email.Output["to"],
                 emailMessagesubject: () => (string)email.Output["subject"],
-                emailMessagebody: () => "<p class=\"editor-paragraph\">" + email.Output["body"] + "</p?"
+                emailMessagebody: () => "<p class=\"editor-paragraph\">" + email.Output["body"] + "</p>"
             );
 
             var response = WorkflowActions.BuiltIn.Response(statusCode: () => System.Net.HttpStatusCode.Created);

@@ -12,24 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     public class MondayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetUsersV2Response> GetUsersV2()
-        {
-            var apiCallPath = "/getData/getUsersV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUsersV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetTagsV2Response> GetTagsV2()
-        {
-            var apiCallPath = "/getData/getTagsV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagsV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateItemResponse> CreateItem(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<object>> bodycolumnValues = null)
         {
             var apiCallPath = "/executePowerAutomateAction/CreateItem";
@@ -354,42 +336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<JToken> GetItemsV2(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> groupId, Expression<Func<string>> filter1Column = null, Expression<Func<string>> filter1Operator = null, Expression<Func<string>> filter1Value = null, Expression<Func<string>> filter2Column = null, Expression<Func<string>> filter2Operator = null, Expression<Func<string>> filter2Value = null, Expression<Func<string>> filter3Column = null, Expression<Func<string>> filter3Operator = null, Expression<Func<string>> filter3Value = null, Expression<Func<string>> filter4Column = null, Expression<Func<string>> filter4Operator = null, Expression<Func<string>> filter4Value = null)
-        {
-            var apiCallPath = "/getData/getItemsV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            if (filter1Column != null)
-                callPayload.Queries["filter1Column"] = ExpressionConverter.Convert(filter1Column);
-            if (filter1Operator != null)
-                callPayload.Queries["filter1Operator"] = ExpressionConverter.Convert(filter1Operator);
-            if (filter1Value != null)
-                callPayload.Queries["filter1Value"] = ExpressionConverter.Convert(filter1Value);
-            if (filter2Column != null)
-                callPayload.Queries["filter2Column"] = ExpressionConverter.Convert(filter2Column);
-            if (filter2Operator != null)
-                callPayload.Queries["filter2Operator"] = ExpressionConverter.Convert(filter2Operator);
-            if (filter2Value != null)
-                callPayload.Queries["filter2Value"] = ExpressionConverter.Convert(filter2Value);
-            if (filter3Column != null)
-                callPayload.Queries["filter3Column"] = ExpressionConverter.Convert(filter3Column);
-            if (filter3Operator != null)
-                callPayload.Queries["filter3Operator"] = ExpressionConverter.Convert(filter3Operator);
-            if (filter3Value != null)
-                callPayload.Queries["filter3Value"] = ExpressionConverter.Convert(filter3Value);
-            if (filter4Column != null)
-                callPayload.Queries["filter4Column"] = ExpressionConverter.Convert(filter4Column);
-            if (filter4Operator != null)
-                callPayload.Queries["filter4Operator"] = ExpressionConverter.Convert(filter4Operator);
-            if (filter4Value != null)
-                callPayload.Queries["filter4Value"] = ExpressionConverter.Convert(filter4Value);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetSubitems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> itemId)
         {
             var apiCallPath = "/getData/getSubitems";
@@ -436,7 +382,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateWorkspaceV2Response> CreateWorkspaceV2(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<JToken> GetItemById(Expression<Func<string>> itemId, Expression<Func<string>> workspaceId, Expression<Func<string>> boardId)
+        {
+            var apiCallPath = "/getData/getItemById";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["itemId"] = ExpressionConverter.Convert(itemId);
+            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
+        public IBodyWorkflowAction<CreateWorkspaceV2Response> CreateWorkspace(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
         {
             var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
             var apiCallHttpMethod = "post";
@@ -460,15 +418,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<JToken> GetItemById(Expression<Func<string>> itemId, Expression<Func<string>> workspaceId, Expression<Func<string>> boardId)
+        public IBodyWorkflowAction<JToken> GetItems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> groupId, Expression<Func<string>> filter1Column = null, Expression<Func<string>> filter1Operator = null, Expression<Func<string>> filter1Value = null, Expression<Func<string>> filter2Column = null, Expression<Func<string>> filter2Operator = null, Expression<Func<string>> filter2Value = null, Expression<Func<string>> filter3Column = null, Expression<Func<string>> filter3Operator = null, Expression<Func<string>> filter3Value = null, Expression<Func<string>> filter4Column = null, Expression<Func<string>> filter4Operator = null, Expression<Func<string>> filter4Value = null)
         {
-            var apiCallPath = "/getData/getItemById";
+            var apiCallPath = "/getData/getItemsV2";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["itemId"] = ExpressionConverter.Convert(itemId);
             callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
             callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
+            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+            if (filter1Column != null)
+                callPayload.Queries["filter1Column"] = ExpressionConverter.Convert(filter1Column);
+            if (filter1Operator != null)
+                callPayload.Queries["filter1Operator"] = ExpressionConverter.Convert(filter1Operator);
+            if (filter1Value != null)
+                callPayload.Queries["filter1Value"] = ExpressionConverter.Convert(filter1Value);
+            if (filter2Column != null)
+                callPayload.Queries["filter2Column"] = ExpressionConverter.Convert(filter2Column);
+            if (filter2Operator != null)
+                callPayload.Queries["filter2Operator"] = ExpressionConverter.Convert(filter2Operator);
+            if (filter2Value != null)
+                callPayload.Queries["filter2Value"] = ExpressionConverter.Convert(filter2Value);
+            if (filter3Column != null)
+                callPayload.Queries["filter3Column"] = ExpressionConverter.Convert(filter3Column);
+            if (filter3Operator != null)
+                callPayload.Queries["filter3Operator"] = ExpressionConverter.Convert(filter3Operator);
+            if (filter3Value != null)
+                callPayload.Queries["filter3Value"] = ExpressionConverter.Convert(filter3Value);
+            if (filter4Column != null)
+                callPayload.Queries["filter4Column"] = ExpressionConverter.Convert(filter4Column);
+            if (filter4Operator != null)
+                callPayload.Queries["filter4Operator"] = ExpressionConverter.Convert(filter4Operator);
+            if (filter4Value != null)
+                callPayload.Queries["filter4Value"] = ExpressionConverter.Convert(filter4Value);
             return new ApiConnectionAction<JToken>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
+        public IBodyWorkflowAction<GetTagsV2Response> GetTags()
+        {
+            var apiCallPath = "/getData/getTagsV2";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetTagsV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
+        public IBodyWorkflowAction<GetUsersV2Response> GetUsers()
+        {
+            var apiCallPath = "/getData/getUsersV2";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetUsersV2Response>(callPayload);
         }
     }
 
@@ -643,51 +643,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
-    }
-
-    public class GetUsersV2Response
-    {
-        [JsonProperty("data")]
-        public GetUsersV2ResponseDataType Data { get; set; }
-    }
-
-    public class GetUsersV2ResponseDataType
-    {
-        [JsonProperty("users")]
-        public GetUsersV2ResponseDataTypeUsersTypeItem[] Users { get; set; }
-    }
-
-    public class GetUsersV2ResponseDataTypeUsersTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-    }
-
-    public class GetTagsV2Response
-    {
-        [JsonProperty("data")]
-        public GetTagsV2ResponseDataType Data { get; set; }
-    }
-
-    public class GetTagsV2ResponseDataType
-    {
-        [JsonProperty("tags")]
-        public GetTagsV2ResponseDataTypeTagsTypeItem[] Tags { get; set; }
-    }
-
-    public class GetTagsV2ResponseDataTypeTagsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 
     public class CreateItemResponse
@@ -981,6 +936,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class GetTagsV2Response
+    {
+        [JsonProperty("data")]
+        public GetTagsV2ResponseDataType Data { get; set; }
+    }
+
+    public class GetTagsV2ResponseDataType
+    {
+        [JsonProperty("tags")]
+        public GetTagsV2ResponseDataTypeTagsTypeItem[] Tags { get; set; }
+    }
+
+    public class GetTagsV2ResponseDataTypeTagsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class GetUsersV2Response
+    {
+        [JsonProperty("data")]
+        public GetUsersV2ResponseDataType Data { get; set; }
+    }
+
+    public class GetUsersV2ResponseDataType
+    {
+        [JsonProperty("users")]
+        public GetUsersV2ResponseDataTypeUsersTypeItem[] Users { get; set; }
+    }
+
+    public class GetUsersV2ResponseDataTypeUsersTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
     }
 }
 

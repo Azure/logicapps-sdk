@@ -165,7 +165,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodydescription != null)
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["description"] = "Created from iManage Work Connector";
                 bodypropCount++;
             }
 
@@ -888,7 +898,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
             if (bodylatest != null)
             {
-                body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                if (bodylatest != null)
+                {
+                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["latest"] = false;
                 bodypropCount++;
             }
 
@@ -961,7 +981,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
             if (bodylatest != null)
             {
-                body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                if (bodylatest != null)
+                {
+                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["latest"] = false;
                 bodypropCount++;
             }
 
@@ -1562,13 +1592,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             body["destination_folder_id"] = ExpressionConverter.ConvertO(bodydestinationFolderId);
             if (bodyupdateProfile != null)
             {
-                body["update_profile"] = ExpressionConverter.ConvertO(bodyupdateProfile);
+                if (bodyupdateProfile != null)
+                {
+                    body["update_profile"] = ExpressionConverter.ConvertO(bodyupdateProfile);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["update_profile"] = true;
                 bodypropCount++;
             }
 
             if (bodyupdateSecurity != null)
             {
-                body["update_security"] = ExpressionConverter.ConvertO(bodyupdateSecurity);
+                if (bodyupdateSecurity != null)
+                {
+                    body["update_security"] = ExpressionConverter.ConvertO(bodyupdateSecurity);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["update_security"] = true;
                 bodypropCount++;
             }
 
@@ -1650,7 +1700,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
             if (bodylatest != null)
             {
-                body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                if (bodylatest != null)
+                {
+                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["latest"] = false;
                 bodypropCount++;
             }
 
@@ -2002,13 +2062,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodyenabledState != null)
             {
-                body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                if (bodyenabledState != null)
+                {
+                    body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["enabled_state"] = "Enabled";
                 bodypropCount++;
             }
 
             if (bodyincludePath != null)
             {
-                body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                if (bodyincludePath != null)
+                {
+                    body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_path"] = false;
                 bodypropCount++;
             }
 
@@ -2020,7 +2100,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodyimmediateChildrenOnly != null)
             {
-                body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                if (bodyimmediateChildrenOnly != null)
+                {
+                    body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["immediate_children_only"] = true;
                 bodypropCount++;
             }
 
@@ -2165,7 +2255,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodywaitForCompletion != null)
             {
-                body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                if (bodywaitForCompletion != null)
+                {
+                    body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["waitForCompletion"] = false;
                 bodypropCount++;
             }
 
@@ -2210,13 +2310,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodyshowFormPerObject != null)
             {
-                body["showFormPerObject"] = ExpressionConverter.ConvertO(bodyshowFormPerObject);
+                if (bodyshowFormPerObject != null)
+                {
+                    body["showFormPerObject"] = ExpressionConverter.ConvertO(bodyshowFormPerObject);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["showFormPerObject"] = false;
                 bodypropCount++;
             }
 
             if (bodywaitForCompletion != null)
             {
-                body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                if (bodywaitForCompletion != null)
+                {
+                    body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["waitForCompletion"] = false;
                 bodypropCount++;
             }
 
@@ -2259,7 +2379,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodywaitForCompletion != null)
             {
-                body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                if (bodywaitForCompletion != null)
+                {
+                    body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["waitForCompletion"] = false;
                 bodypropCount++;
             }
 
@@ -2302,7 +2432,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
             if (bodywaitForCompletion != null)
             {
-                body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                if (bodywaitForCompletion != null)
+                {
+                    body["waitForCompletion"] = ExpressionConverter.ConvertO(bodywaitForCompletion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["waitForCompletion"] = false;
                 bodypropCount++;
             }
 

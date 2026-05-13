@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public FlowDefinition[] GetWorkflows()
         {
-            var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmailV3();
+            var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmail();
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent
             {

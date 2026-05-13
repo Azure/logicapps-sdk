@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<JToken> ModelIDPost(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<JToken> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
             var apiCallHttpMethod = "post";
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMaskPost(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/bert-base-uncased";
             var apiCallHttpMethod = "post";
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[]> SummarizationPost(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/facebook/bart-large-cnn";
             var apiCallHttpMethod = "post";
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<AnswerPostResponse> AnswerPost(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
+        public IBodyWorkflowAction<AnswerPostResponse> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
         {
             var apiCallPath = "/deepset/roberta-base-squad2";
             var apiCallHttpMethod = "post";
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<double[]> SentenceSimilarityPost(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<double[]> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
             var apiCallHttpMethod = "post";
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassificationPost(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
             var apiCallHttpMethod = "post";
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGenerationPost(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/gpt2";
             var apiCallHttpMethod = "post";
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassificationPost(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
             var apiCallHttpMethod = "post";
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TranslationPostResponseItem[]> TranslationPost(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/t5-base";
             var apiCallHttpMethod = "post";
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShotPost(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/facebook/bart-large-mnli";
             var apiCallHttpMethod = "post";
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ConversationalPostResponse> ConversationalPost(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ConversationalPostResponse> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var apiCallPath = "/microsoft/DialoGPT-large";
             var apiCallHttpMethod = "post";

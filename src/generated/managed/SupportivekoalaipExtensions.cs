@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesPostResponse> ImagesPost(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
+        public IBodyWorkflowAction<ImagesPostResponse> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
         {
             var apiCallPath = "/images/";
             var apiCallHttpMethod = "post";
@@ -31,7 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 
             if (bodyformat != null)
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["format"] = "png";
                 bodypropCount++;
             }
 
@@ -62,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse> TemplatePost(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
             var apiCallPath = "/templates/";
             var apiCallHttpMethod = "post";

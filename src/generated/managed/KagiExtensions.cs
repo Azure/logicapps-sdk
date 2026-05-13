@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     public class KagiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SummarizePostResponse> SummarizePost(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
+        public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
         {
             var apiCallPath = "/v0/summarize";
             var apiCallHttpMethod = "post";
@@ -33,13 +33,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 
             if (bodyengine != null)
             {
-                body["engine"] = ExpressionConverter.ConvertO(bodyengine);
+                if (bodyengine != null)
+                {
+                    body["engine"] = ExpressionConverter.ConvertO(bodyengine);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["engine"] = "cecil";
                 bodypropCount++;
             }
 
             if (bodysummaryType != null)
             {
-                body["summary_type"] = ExpressionConverter.ConvertO(bodysummaryType);
+                if (bodysummaryType != null)
+                {
+                    body["summary_type"] = ExpressionConverter.ConvertO(bodysummaryType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["summary_type"] = "summary";
                 bodypropCount++;
             }
 
@@ -64,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTPostResponse> FastGPTPost(Expression<Func<string>> bodyquery)
+        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
         {
             var apiCallPath = "/v0/fastgpt";
             var apiCallHttpMethod = "post";

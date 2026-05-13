@@ -134,7 +134,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
             var argsObjectpropCount = 0;
             if (bodyargsaccountId != null)
             {
-                argsObject["account_id"] = ExpressionConverter.ConvertO(bodyargsaccountId);
+                if (bodyargsaccountId != null)
+                {
+                    argsObject["account_id"] = ExpressionConverter.ConvertO(bodyargsaccountId);
+                    argsObjectpropCount++;
+                }
+
+                argsObjectpropCount++;
+            }
+            else
+            {
+                argsObject["account_id"] = "aker-carbon-capture";
                 argsObjectpropCount++;
             }
 

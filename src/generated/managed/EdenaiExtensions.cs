@@ -23,25 +23,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "google, microsoft, lovoai, ibm, amazon";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
             if (bodytext != null)
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["text"] = "Hello, my name is Jane.";
                 bodypropCount++;
             }
 
             if (bodyoption != null)
             {
-                body["option"] = ExpressionConverter.ConvertO(bodyoption);
+                if (bodyoption != null)
+                {
+                    body["option"] = ExpressionConverter.ConvertO(bodyoption);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["option"] = "FEMALE";
                 bodypropCount++;
             }
 
@@ -55,31 +95,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodyrate != null)
             {
-                body["rate"] = ExpressionConverter.ConvertO(bodyrate);
+                if (bodyrate != null)
+                {
+                    body["rate"] = ExpressionConverter.ConvertO(bodyrate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["rate"] = 0;
                 bodypropCount++;
             }
 
             if (bodypitch != null)
             {
-                body["pitch"] = ExpressionConverter.ConvertO(bodypitch);
+                if (bodypitch != null)
+                {
+                    body["pitch"] = ExpressionConverter.ConvertO(bodypitch);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["pitch"] = 0;
                 bodypropCount++;
             }
 
             if (bodyvolume != null)
             {
-                body["volume"] = ExpressionConverter.ConvertO(bodyvolume);
+                if (bodyvolume != null)
+                {
+                    body["volume"] = ExpressionConverter.ConvertO(bodyvolume);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["volume"] = 0;
                 bodypropCount++;
             }
 
             if (bodyaudioFormat != null)
             {
-                body["audio_format"] = ExpressionConverter.ConvertO(bodyaudioFormat);
+                if (bodyaudioFormat != null)
+                {
+                    body["audio_format"] = ExpressionConverter.ConvertO(bodyaudioFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["audio_format"] = "mp3";
                 bodypropCount++;
             }
 
             if (bodysamplingRate != null)
             {
-                body["sampling_rate"] = ExpressionConverter.ConvertO(bodysamplingRate);
+                if (bodysamplingRate != null)
+                {
+                    body["sampling_rate"] = ExpressionConverter.ConvertO(bodysamplingRate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["sampling_rate"] = 0;
                 bodypropCount++;
             }
 
@@ -112,7 +202,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "openai, cohere";
                 bodypropCount++;
             }
 
@@ -124,13 +224,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["temperature"] = 0.3;
                 bodypropCount++;
             }
 
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_tokens"] = 250;
                 bodypropCount++;
             }
 
@@ -162,7 +282,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "openai";
                 bodypropCount++;
             }
 
@@ -180,13 +310,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["temperature"] = 0.3;
                 bodypropCount++;
             }
 
             if (bodymaxTokens != null)
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_tokens"] = 250;
                 bodypropCount++;
             }
 
@@ -218,13 +368,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "google, openai, ibm";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -254,13 +424,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "amazon, openai, microsoft, ibm, oneai, emvista";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -290,13 +480,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -344,7 +554,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "stabilityai, openai, deepai";
                 bodypropCount++;
             }
 
@@ -356,13 +576,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodyresolution != null)
             {
-                body["resolution"] = ExpressionConverter.ConvertO(bodyresolution);
+                if (bodyresolution != null)
+                {
+                    body["resolution"] = ExpressionConverter.ConvertO(bodyresolution);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["resolution"] = "512x512";
                 bodypropCount++;
             }
 
             if (bodynumImages != null)
             {
-                body["num_images"] = ExpressionConverter.ConvertO(bodynumImages);
+                if (bodynumImages != null)
+                {
+                    body["num_images"] = ExpressionConverter.ConvertO(bodynumImages);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["num_images"] = 1;
                 bodypropCount++;
             }
 
@@ -386,7 +626,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
                 bodypropCount++;
             }
 
@@ -398,13 +648,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodysourceLanguage != null)
             {
-                body["source_language"] = ExpressionConverter.ConvertO(bodysourceLanguage);
+                if (bodysourceLanguage != null)
+                {
+                    body["source_language"] = ExpressionConverter.ConvertO(bodysourceLanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["source_language"] = "en";
                 bodypropCount++;
             }
 
             if (bodytargetLanguage != null)
             {
-                body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                if (bodytargetLanguage != null)
+                {
+                    body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["target_language"] = "fr";
                 bodypropCount++;
             }
 
@@ -428,13 +698,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "microsoft, openai";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -464,13 +754,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "cohere, openai, microsoft, emvista, oneai, connexun";
                 bodypropCount++;
             }
 
             if (bodyoutputSentences != null)
             {
-                body["output_sentences"] = ExpressionConverter.ConvertO(bodyoutputSentences);
+                if (bodyoutputSentences != null)
+                {
+                    body["output_sentences"] = ExpressionConverter.ConvertO(bodyoutputSentences);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["output_sentences"] = 3;
                 bodypropCount++;
             }
 
@@ -482,7 +792,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -514,7 +834,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
                 bodypropCount++;
             }
 
@@ -544,13 +874,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var bodypropCount = 0;
             if (bodyproviders != null)
             {
-                body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                if (bodyproviders != null)
+                {
+                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["providers"] = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";
                 bodypropCount++;
             }
 
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 

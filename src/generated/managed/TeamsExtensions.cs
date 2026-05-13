@@ -487,7 +487,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             body["description"] = ExpressionConverter.ConvertO(bodydescription);
             if (bodyvisibility != null)
             {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                if (bodyvisibility != null)
+                {
+                    body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["visibility"] = "Public";
                 bodypropCount++;
             }
 
@@ -579,7 +589,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
             if (bodybodyupdateMessage != null)
             {
-                bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                if (bodybodyupdateMessage != null)
+                {
+                    bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                    bodyObjectpropCount++;
+                }
+
+                bodyObjectpropCount++;
+            }
+            else
+            {
+                bodyObject["updateMessage"] = "Thanks for your response!";
                 bodyObjectpropCount++;
             }
 
@@ -720,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipRemoval(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/removal";
             var apiCallHttpMethod = "get";
@@ -730,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnGroupMembershipAdd(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1.0/groups/delta";
             var apiCallHttpMethod = "get";

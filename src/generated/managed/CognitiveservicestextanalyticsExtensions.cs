@@ -12,29 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneralV3(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
-        {
-            var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
-
-            return new ApiConnectionAction<EntitiesResultV3>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinkingV3(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/entities/linking";
             var apiCallHttpMethod = "post";
@@ -56,7 +34,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhraseV3(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        {
+            var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (modelVersion != null)
+                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
+            if (showStats != null)
+                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
+            var input = new JObject();
+            var inputpropCount = 0;
+            inputpropCount++;
+            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
+            if (inputpropCount > 0)
+            {
+                callPayload.Body = input;
+            }
+
+            return new ApiConnectionAction<EntitiesResultV3>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
+        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/keyPhrases";
             var apiCallHttpMethod = "post";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3> LanguagesV3(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<LanguageResultV3> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/languages";
             var apiCallHttpMethod = "post";
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse> SentimentV3(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<SentimentResponse> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/sentiment";
             var apiCallHttpMethod = "post";
@@ -124,120 +124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
 
     public class CognitiveservicestextanalyticsTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class EntitiesResultV3
-    {
-        [JsonProperty("documents")]
-        public DocumentEntities[] Documents { get; set; }
-
-        [JsonProperty("errors")]
-        public DocumentError[] Errors { get; set; }
-
-        [JsonProperty("statistics")]
-        public RequestStatistics Statistics { get; set; }
-
-        [JsonProperty("modelVersion")]
-        public string ModelVersion { get; set; }
-    }
-
-    public class DocumentEntities
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("entities")]
-        public Entity[] Entities { get; set; }
-
-        [JsonProperty("warnings")]
-        public TextAnalyticsWarning[] Warnings { get; set; }
-
-        [JsonProperty("statistics")]
-        public DocumentStatistics Statistics { get; set; }
-    }
-
-    public class Entity
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("category")]
-        public string Category { get; set; }
-
-        [JsonProperty("subcategory")]
-        public string Subcategory { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("length")]
-        public int Length { get; set; }
-
-        [JsonProperty("confidenceScore")]
-        public double ConfidenceScore { get; set; }
-    }
-
-    public class TextAnalyticsWarning
-    {
-        [JsonProperty("code")]
-        public TextAnalyticsWarningCodeType Code { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("targetRef")]
-        public string TargetRef { get; set; }
-    }
-
-    public enum TextAnalyticsWarningCodeType
-    {
-        LongWordsInDocument,
-        DocumentTruncated
-    }
-
-    public class DocumentStatistics
-    {
-        [JsonProperty("charactersCount")]
-        public int CharactersCount { get; set; }
-
-        [JsonProperty("transactionsCount")]
-        public int TransactionsCount { get; set; }
-    }
-
-    public class DocumentError
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class RequestStatistics
-    {
-        [JsonProperty("documentsCount")]
-        public int DocumentsCount { get; set; }
-
-        [JsonProperty("validDocumentsCount")]
-        public int ValidDocumentsCount { get; set; }
-
-        [JsonProperty("erroneousDocumentsCount")]
-        public int ErroneousDocumentsCount { get; set; }
-
-        [JsonProperty("transactionsCount")]
-        public int TransactionsCount { get; set; }
-    }
-
-    public class MultiLanguageInputV3
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("language")]
-        public string Language { get; set; }
     }
 
     public class EntityLinkingResult
@@ -304,6 +190,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
 
         [JsonProperty("length")]
         public int Length { get; set; }
+    }
+
+    public class TextAnalyticsWarning
+    {
+        [JsonProperty("code")]
+        public TextAnalyticsWarningCodeType Code { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("targetRef")]
+        public string TargetRef { get; set; }
+    }
+
+    public enum TextAnalyticsWarningCodeType
+    {
+        LongWordsInDocument,
+        DocumentTruncated
+    }
+
+    public class DocumentStatistics
+    {
+        [JsonProperty("charactersCount")]
+        public int CharactersCount { get; set; }
+
+        [JsonProperty("transactionsCount")]
+        public int TransactionsCount { get; set; }
+    }
+
+    public class DocumentError
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
+    }
+
+    public class RequestStatistics
+    {
+        [JsonProperty("documentsCount")]
+        public int DocumentsCount { get; set; }
+
+        [JsonProperty("validDocumentsCount")]
+        public int ValidDocumentsCount { get; set; }
+
+        [JsonProperty("erroneousDocumentsCount")]
+        public int ErroneousDocumentsCount { get; set; }
+
+        [JsonProperty("transactionsCount")]
+        public int TransactionsCount { get; set; }
+    }
+
+    public class MultiLanguageInputV3
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+    }
+
+    public class EntitiesResultV3
+    {
+        [JsonProperty("documents")]
+        public DocumentEntities[] Documents { get; set; }
+
+        [JsonProperty("errors")]
+        public DocumentError[] Errors { get; set; }
+
+        [JsonProperty("statistics")]
+        public RequestStatistics Statistics { get; set; }
+
+        [JsonProperty("modelVersion")]
+        public string ModelVersion { get; set; }
+    }
+
+    public class DocumentEntities
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("entities")]
+        public Entity[] Entities { get; set; }
+
+        [JsonProperty("warnings")]
+        public TextAnalyticsWarning[] Warnings { get; set; }
+
+        [JsonProperty("statistics")]
+        public DocumentStatistics Statistics { get; set; }
+    }
+
+    public class Entity
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("subcategory")]
+        public string Subcategory { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("length")]
+        public int Length { get; set; }
+
+        [JsonProperty("confidenceScore")]
+        public double ConfidenceScore { get; set; }
     }
 
     public class KeyPhraseResultV3

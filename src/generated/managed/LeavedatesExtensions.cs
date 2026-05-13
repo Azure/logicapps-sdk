@@ -117,7 +117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodyisAdmin != null)
             {
-                body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                if (bodyisAdmin != null)
+                {
+                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_admin"] = false;
                 bodypropCount++;
             }
 
@@ -235,7 +245,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodyisAdmin != null)
             {
-                body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                if (bodyisAdmin != null)
+                {
+                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_admin"] = false;
                 bodypropCount++;
             }
 
@@ -357,7 +377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
             if (bodyisPrivate != null)
             {
-                body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                if (bodyisPrivate != null)
+                {
+                    body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_private"] = false;
                 bodypropCount++;
             }
 

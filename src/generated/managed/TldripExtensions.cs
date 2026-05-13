@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     public class TldripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHumanPost(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
         {
             var apiCallPath = "/model/abstractive/summarize-url/";
             var apiCallHttpMethod = "post";
@@ -23,13 +23,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             body["url"] = ExpressionConverter.ConvertO(bodyurl);
             if (bodyminLength != null)
             {
-                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                if (bodyminLength != null)
+                {
+                    body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["min_length"] = 100;
                 bodypropCount++;
             }
 
             if (bodymaxLength != null)
             {
-                body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                if (bodymaxLength != null)
+                {
+                    body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_length"] = 300;
                 bodypropCount++;
             }
 
@@ -48,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticlePost(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
         {
             var apiCallPath = "/model/extractive/summarize-url/";
             var apiCallHttpMethod = "post";
@@ -65,7 +85,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
 
             if (bodyisDetailed != null)
             {
-                body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                if (bodyisDetailed != null)
+                {
+                    body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_detailed"] = true;
                 bodypropCount++;
             }
 
@@ -78,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<TextHumanPostResponse> TextHumanPost(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
+        public IBodyWorkflowAction<TextHumanPostResponse> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
         {
             var apiCallPath = "/model/abstractive/summarize-text/";
             var apiCallHttpMethod = "post";
@@ -89,13 +119,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
             body["text"] = ExpressionConverter.ConvertO(bodytext);
             if (bodyminLength != null)
             {
-                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                if (bodyminLength != null)
+                {
+                    body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["min_length"] = 100;
                 bodypropCount++;
             }
 
             if (bodymaxLength != null)
             {
-                body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                if (bodymaxLength != null)
+                {
+                    body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["max_length"] = 300;
                 bodypropCount++;
             }
 
@@ -108,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractTextPostResponse> ExtractTextPost(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
+        public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
         {
             var apiCallPath = "/model/extractive/summarize-text/";
             var apiCallHttpMethod = "post";

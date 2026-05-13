@@ -335,31 +335,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
             if (bodydeliveryMethod != null)
             {
-                body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
+                if (bodydeliveryMethod != null)
+                {
+                    body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["deliveryMethod"] = "email";
                 bodypropCount++;
             }
 
             if (bodyauthenticationToView != null)
             {
-                body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
+                if (bodyauthenticationToView != null)
+                {
+                    body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["authenticationToView"] = "standard";
                 bodypropCount++;
             }
 
             if (bodyauthenticationToViewArchived != null)
             {
-                body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
+                if (bodyauthenticationToViewArchived != null)
+                {
+                    body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["authenticationToViewArchived"] = "standard";
                 bodypropCount++;
             }
 
             if (bodyauthenticationToSign != null)
             {
-                body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
+                if (bodyauthenticationToSign != null)
+                {
+                    body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["authenticationToSign"] = "standard";
                 bodypropCount++;
             }
 
             if (bodyconfirmation != null)
             {
-                body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
+                if (bodyconfirmation != null)
+                {
+                    body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["confirmation"] = "email";
                 bodypropCount++;
             }
 

@@ -59,13 +59,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A001AV01CV01ConvertCsvToJson["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter);
+                if (dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A001AV01CV01ConvertCsvToJson["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter);
+                    dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+                }
+
+                dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A001AV01CV01ConvertCsvToJson["mayHaveQuotedFields"] = true;
                 dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
             }
 
             if (dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders != null)
             {
-                dtoRequestT01A001AV01CV01ConvertCsvToJson["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders);
+                if (dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders != null)
+                {
+                    dtoRequestT01A001AV01CV01ConvertCsvToJson["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders);
+                    dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+                }
+
+                dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A001AV01CV01ConvertCsvToJson["hasHeader"] = true;
                 dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
             }
 
@@ -83,7 +103,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes != null)
             {
-                dtoRequestT01A001AV01CV01ConvertCsvToJson["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes);
+                if (dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A001AV01CV01ConvertCsvToJson["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes);
+                    dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+                }
+
+                dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A001AV01CV01ConvertCsvToJson["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
             }
 
@@ -113,7 +143,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows != null)
             {
-                dtoRequestT01A001AV01CV01ConvertCsvToJson["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows);
+                if (dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows != null)
+                {
+                    dtoRequestT01A001AV01CV01ConvertCsvToJson["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows);
+                    dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+                }
+
+                dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A001AV01CV01ConvertCsvToJson["ignoreEmptyLine"] = true;
                 dtoRequestT01A001AV01CV01ConvertCsvToJsonpropCount++;
             }
 
@@ -191,13 +231,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["mayHaveQuotedFields"] = true;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["hasHeader"] = true;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
@@ -215,7 +275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
@@ -245,7 +315,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["ignoreEmptyLine"] = true;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
@@ -281,13 +361,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["adjustColumnToContent"] = true;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
             if (dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText != null)
             {
-                dtoRequestT01A003AV01CV01ConvertCsvToExcel["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText);
+                if (dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText != null)
+                {
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcel["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText);
+                    dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+                }
+
+                dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A003AV01CV01ConvertCsvToExcel["wrapColumnText"] = false;
                 dtoRequestT01A003AV01CV01ConvertCsvToExcelpropCount++;
             }
 
@@ -341,13 +441,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A005AV01CV01ConvertCsvToHtml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter);
+                if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter);
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+                }
+
+                dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A005AV01CV01ConvertCsvToHtml["mayHaveQuotedFields"] = true;
                 dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
             }
 
             if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders != null)
             {
-                dtoRequestT01A005AV01CV01ConvertCsvToHtml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders);
+                if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders != null)
+                {
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders);
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+                }
+
+                dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A005AV01CV01ConvertCsvToHtml["hasHeader"] = true;
                 dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
             }
 
@@ -365,7 +485,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes != null)
             {
-                dtoRequestT01A005AV01CV01ConvertCsvToHtml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes);
+                if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes);
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+                }
+
+                dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A005AV01CV01ConvertCsvToHtml["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
             }
 
@@ -395,7 +525,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows != null)
             {
-                dtoRequestT01A005AV01CV01ConvertCsvToHtml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows);
+                if (dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows != null)
+                {
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows);
+                    dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+                }
+
+                dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A005AV01CV01ConvertCsvToHtml["ignoreEmptyLine"] = true;
                 dtoRequestT01A005AV01CV01ConvertCsvToHtmlpropCount++;
             }
 
@@ -473,13 +613,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A007AV01CV01ConvertCsvToXml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter);
+                if (dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A007AV01CV01ConvertCsvToXml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter);
+                    dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+                }
+
+                dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A007AV01CV01ConvertCsvToXml["mayHaveQuotedFields"] = true;
                 dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
             }
 
             if (dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders != null)
             {
-                dtoRequestT01A007AV01CV01ConvertCsvToXml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders);
+                if (dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders != null)
+                {
+                    dtoRequestT01A007AV01CV01ConvertCsvToXml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders);
+                    dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+                }
+
+                dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A007AV01CV01ConvertCsvToXml["hasHeader"] = true;
                 dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
             }
 
@@ -497,7 +657,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes != null)
             {
-                dtoRequestT01A007AV01CV01ConvertCsvToXml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes);
+                if (dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A007AV01CV01ConvertCsvToXml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes);
+                    dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+                }
+
+                dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A007AV01CV01ConvertCsvToXml["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
             }
 
@@ -527,7 +697,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows != null)
             {
-                dtoRequestT01A007AV01CV01ConvertCsvToXml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows);
+                if (dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows != null)
+                {
+                    dtoRequestT01A007AV01CV01ConvertCsvToXml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows);
+                    dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+                }
+
+                dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A007AV01CV01ConvertCsvToXml["ignoreEmptyLine"] = true;
                 dtoRequestT01A007AV01CV01ConvertCsvToXmlpropCount++;
             }
 
@@ -605,13 +785,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A009AV01CV01ConvertCsvToYaml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter);
+                if (dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A009AV01CV01ConvertCsvToYaml["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter);
+                    dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+                }
+
+                dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A009AV01CV01ConvertCsvToYaml["mayHaveQuotedFields"] = true;
                 dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
             }
 
             if (dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders != null)
             {
-                dtoRequestT01A009AV01CV01ConvertCsvToYaml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders);
+                if (dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders != null)
+                {
+                    dtoRequestT01A009AV01CV01ConvertCsvToYaml["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders);
+                    dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+                }
+
+                dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A009AV01CV01ConvertCsvToYaml["hasHeader"] = true;
                 dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
             }
 
@@ -629,7 +829,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes != null)
             {
-                dtoRequestT01A009AV01CV01ConvertCsvToYaml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes);
+                if (dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A009AV01CV01ConvertCsvToYaml["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes);
+                    dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+                }
+
+                dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A009AV01CV01ConvertCsvToYaml["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
             }
 
@@ -659,7 +869,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows != null)
             {
-                dtoRequestT01A009AV01CV01ConvertCsvToYaml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows);
+                if (dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows != null)
+                {
+                    dtoRequestT01A009AV01CV01ConvertCsvToYaml["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows);
+                    dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+                }
+
+                dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
+            }
+            else
+            {
+                dtoRequestT01A009AV01CV01ConvertCsvToYaml["ignoreEmptyLine"] = true;
                 dtoRequestT01A009AV01CV01ConvertCsvToYamlpropCount++;
             }
 
@@ -737,13 +957,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter != null)
             {
-                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter);
+                if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter != null)
+                {
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTable["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter);
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+                }
+
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+            }
+            else
+            {
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["mayHaveQuotedFields"] = true;
                 dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
             }
 
             if (dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders != null)
             {
-                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders);
+                if (dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders != null)
+                {
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTable["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders);
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+                }
+
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+            }
+            else
+            {
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["hasHeader"] = true;
                 dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
             }
 
@@ -761,7 +1001,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes != null)
             {
-                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes);
+                if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes != null)
+                {
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTable["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes);
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+                }
+
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+            }
+            else
+            {
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["autoDiscoverFieldTypes"] = false;
                 dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
             }
 
@@ -791,7 +1041,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 
             if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows != null)
             {
-                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows);
+                if (dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows != null)
+                {
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTable["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows);
+                    dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+                }
+
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
+            }
+            else
+            {
+                dtoRequestT01A011AV01CV01ConvertCsvToTextTable["ignoreEmptyLine"] = true;
                 dtoRequestT01A011AV01CV01ConvertCsvToTextTablepropCount++;
             }
 

@@ -171,17 +171,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIPV4(Expression<Func<string>> iPAddress = null)
-        {
-            var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iPAddress != null)
-                callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
-            return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
         public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches(Expression<Func<string>> businessName = null, Expression<Func<string>> address = null, Expression<Func<string>> address2 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null)
         {
             var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
@@ -200,6 +189,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             if (postalCode != null)
                 callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
             return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
+        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
+        {
+            var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (iPAddress != null)
+                callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
+            return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
         }
     }
 
@@ -529,40 +529,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class IPAVGetLocationByIPV4Response
-    {
-        public IPAVGetLocationByIPV4ResponseErrorType Error { get; set; }
-        public int Certainty { get; set; }
-        public string City { get; set; }
-        public string Region { get; set; }
-        public string Country { get; set; }
-        public string CountryISO3 { get; set; }
-        public string CountryISO2 { get; set; }
-        public string PostalCode { get; set; }
-        public string MetroCode { get; set; }
-        public string DMA { get; set; }
-        public string StateFIPS { get; set; }
-        public string CountyFIPS { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public string IsProxy { get; set; }
-        public string ProxyType { get; set; }
-        public string PossibleMobileDevice { get; set; }
-        public string ISP { get; set; }
-        public string NetblockOwner { get; set; }
-        public string HostNames { get; set; }
-        public string IPNoteCodes { get; set; }
-        public string IPNotes { get; set; }
-        public string Debug { get; set; }
-    }
-
-    public class IPAVGetLocationByIPV4ResponseErrorType
-    {
-        public string Desc { get; set; }
-        public string Location { get; set; }
-        public string Number { get; set; }
-    }
-
     public class AV3GetBestMatchesResponse
     {
         public AV3GetBestMatchesResponseAddressesTypeItem[] Addresses { get; set; }
@@ -606,6 +572,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string TypeCode { get; set; }
         public string Desc { get; set; }
         public string DescCode { get; set; }
+    }
+
+    public class IPAVGetLocationByIPV4Response
+    {
+        public IPAVGetLocationByIPV4ResponseErrorType Error { get; set; }
+        public int Certainty { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
+        public string CountryISO3 { get; set; }
+        public string CountryISO2 { get; set; }
+        public string PostalCode { get; set; }
+        public string MetroCode { get; set; }
+        public string DMA { get; set; }
+        public string StateFIPS { get; set; }
+        public string CountyFIPS { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string IsProxy { get; set; }
+        public string ProxyType { get; set; }
+        public string PossibleMobileDevice { get; set; }
+        public string ISP { get; set; }
+        public string NetblockOwner { get; set; }
+        public string HostNames { get; set; }
+        public string IPNoteCodes { get; set; }
+        public string IPNotes { get; set; }
+        public string Debug { get; set; }
+    }
+
+    public class IPAVGetLocationByIPV4ResponseErrorType
+    {
+        public string Desc { get; set; }
+        public string Location { get; set; }
+        public string Number { get; set; }
     }
 }
 

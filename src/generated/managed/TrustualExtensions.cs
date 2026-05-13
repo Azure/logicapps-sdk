@@ -27,7 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
             if (bodycertificateLanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                if (bodycertificateLanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 
@@ -73,7 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 
             if (bodycertificateLanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                if (bodycertificateLanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "en";
                 bodypropCount++;
             }
 

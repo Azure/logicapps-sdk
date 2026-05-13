@@ -70,7 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<MessageListV2> ListMessagesV2(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
+        {
+            var apiCallPath = String.Format("/Messages/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<Message>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
+        public IBodyWorkflowAction<MessageListV2> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
         {
             var apiCallPath = "/v2/Messages.json";
             var apiCallHttpMethod = "get";
@@ -86,15 +95,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
                 callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
             callPayload.Queries["Page"] = Convert.ToString(0);
             return new ApiConnectionAction<MessageListV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
-        {
-            var apiCallPath = String.Format("/Messages/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Message>(callPayload);
         }
     }
 

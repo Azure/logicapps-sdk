@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStorePost(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
+        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
         {
             var apiCallPath = "/stores/refreshstore";
             var apiCallHttpMethod = "post";

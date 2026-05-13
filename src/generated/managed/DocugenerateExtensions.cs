@@ -68,7 +68,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
 
             if (bodyoutputFormat != null)
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                if (bodyoutputFormat != null)
+                {
+                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["output_format"] = ".pdf";
                 bodypropCount++;
             }
 
