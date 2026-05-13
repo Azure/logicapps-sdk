@@ -227,7 +227,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
             if (datawho != null)
             {
-                data["who"] = ExpressionConverter.ConvertO(datawho);
+                if (datawho != null)
+                {
+                    data["who"] = ExpressionConverter.ConvertO(datawho);
+                    datapropCount++;
+                }
+
+                datapropCount++;
+            }
+            else
+            {
+                data["who"] = "o";
                 datapropCount++;
             }
 

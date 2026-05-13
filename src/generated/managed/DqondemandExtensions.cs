@@ -23,19 +23,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsageV2> UsageGetV2(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<summariseByInput>> summariseBy = null)
-        {
-            var apiCallPath = "/Account/Usage/v2.0";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-            if (summariseBy != null)
-                callPayload.Queries["SummariseBy"] = ExpressionConverter.Convert(summariseBy);
-            return new ApiConnectionAction<GetUsageV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GetPricesOutput> PricingGet()
         {
             var apiCallPath = "/Account/Prices";
@@ -1037,99 +1024,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
         [JsonProperty("creditsUsed")]
         public int CreditsUsed { get; set; }
-    }
-
-    public class GetUsageV2
-    {
-        [JsonProperty("status")]
-        public int Status { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("data")]
-        public GetUsageV2DataType Data { get; set; }
-    }
-
-    public class GetUsageV2DataType
-    {
-        public GetUsageV2DataTypeFilterCriteriaType FilterCriteria { get; set; }
-        public GetUsageV2DataTypeResultsTypeItem[] Results { get; set; }
-        public GetUsageV2DataTypeSummaryTypeItem[] Summary { get; set; }
-    }
-
-    public class GetUsageV2DataTypeFilterCriteriaType
-    {
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("endDate")]
-        public string EndDate { get; set; }
-    }
-
-    public class GetUsageV2DataTypeResultsTypeItem
-    {
-        [JsonProperty("providerName")]
-        public string ProviderName { get; set; }
-
-        [JsonProperty("usage")]
-        public GetUsageV2DataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
-    }
-
-    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItem
-    {
-        [JsonProperty("functionName")]
-        public string FunctionName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
-
-        [JsonProperty("creditsUsedBy")]
-        public GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
-    }
-
-    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem
-    {
-        [JsonProperty("applicationName")]
-        public string ApplicationName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
-    }
-
-    public class GetUsageV2DataTypeSummaryTypeItem
-    {
-        [JsonProperty("periodStart")]
-        public string PeriodStart { get; set; }
-
-        [JsonProperty("periodEnd")]
-        public string PeriodEnd { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
-
-        [JsonProperty("creditsUsedBy")]
-        public GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
-    }
-
-    public class GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem
-    {
-        [JsonProperty("applicationName")]
-        public string ApplicationName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
-    }
-
-    public enum summariseByInput
-    {
-        Day,
-        Month,
-        Year,
-        Quarter
     }
 
     public class GetPricesOutput

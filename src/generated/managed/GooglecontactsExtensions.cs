@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
     public class GooglecontactsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecontacts")]
-        public IBodyWorkflowAction<PeopleApiListContactsV4Response> PeopleApiListContactsV4()
+        public IBodyWorkflowAction<PeopleApiListContactsV4Response> PeopleApiListContacts()
         {
             var apiCallPath = "/v4/people/v1/me/connections";
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
 
     public class GooglecontactsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedV3Response> PeopleApiOnContactUpdatedV3(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedV3Response> PeopleApiOnContactUpdated(string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/people/trigger/onContactUpdated";
             var apiCallHttpMethod = "get";

@@ -23,7 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
             body["string"] = ExpressionConverter.ConvertO(bodystring);
             if (bodytype != null)
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["type"] = "sha1";
                 bodypropCount++;
             }
 

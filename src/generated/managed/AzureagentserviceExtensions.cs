@@ -111,13 +111,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (requestBodytemperature != null)
             {
-                requestBody["temperature"] = ExpressionConverter.ConvertO(requestBodytemperature);
+                if (requestBodytemperature != null)
+                {
+                    requestBody["temperature"] = ExpressionConverter.ConvertO(requestBodytemperature);
+                    requestBodypropCount++;
+                }
+
+                requestBodypropCount++;
+            }
+            else
+            {
+                requestBody["temperature"] = 1;
                 requestBodypropCount++;
             }
 
             if (requestBodytopP != null)
             {
-                requestBody["top_p"] = ExpressionConverter.ConvertO(requestBodytopP);
+                if (requestBodytopP != null)
+                {
+                    requestBody["top_p"] = ExpressionConverter.ConvertO(requestBodytopP);
+                    requestBodypropCount++;
+                }
+
+                requestBodypropCount++;
+            }
+            else
+            {
+                requestBody["top_p"] = 1;
                 requestBodypropCount++;
             }
 
@@ -228,7 +248,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodybackground != null)
             {
-                body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                if (bodybackground != null)
+                {
+                    body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["background"] = false;
                 bodypropCount++;
             }
 
@@ -304,7 +334,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodytruncation != null)
             {
-                body["truncation"] = ExpressionConverter.ConvertO(bodytruncation);
+                if (bodytruncation != null)
+                {
+                    body["truncation"] = ExpressionConverter.ConvertO(bodytruncation);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["truncation"] = "disabled";
                 bodypropCount++;
             }
 
@@ -322,13 +362,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
             if (bodyparallelToolCalls != null)
             {
-                body["parallel_tool_calls"] = ExpressionConverter.ConvertO(bodyparallelToolCalls);
+                if (bodyparallelToolCalls != null)
+                {
+                    body["parallel_tool_calls"] = ExpressionConverter.ConvertO(bodyparallelToolCalls);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["parallel_tool_calls"] = true;
                 bodypropCount++;
             }
 
             if (bodystore != null)
             {
-                body["store"] = ExpressionConverter.ConvertO(bodystore);
+                if (bodystore != null)
+                {
+                    body["store"] = ExpressionConverter.ConvertO(bodystore);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["store"] = true;
                 bodypropCount++;
             }
 
@@ -402,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class ListAgentsResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public Data[] Data { get; set; }
@@ -423,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -477,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -521,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -602,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created_at")]
         public int CreatedAt { get; set; }
@@ -674,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class ListMessageResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public Data[] Data { get; set; }
@@ -746,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public OpenAIResponseObjectType Object { get; set; }
+        public OpenAIResponseObjectEntityType ObjectEntity { get; set; }
 
         [JsonProperty("status")]
         public OpenAIResponseStatusType Status { get; set; }
@@ -930,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         Disabled
     }
 
-    public enum OpenAIResponseObjectType
+    public enum OpenAIResponseObjectEntityType
     {
         [EnumMember(Value = "response")]
         Response

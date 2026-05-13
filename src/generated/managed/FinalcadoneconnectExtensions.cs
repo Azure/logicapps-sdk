@@ -36,7 +36,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             var bodypropCount = 0;
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "fr";
                 bodypropCount++;
             }
 

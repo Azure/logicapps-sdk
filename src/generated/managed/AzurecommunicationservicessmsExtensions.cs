@@ -29,7 +29,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
             var smsSendOptionsObjectpropCount = 0;
             if (bodysmsSendOptionsdeliveryReport != null)
             {
-                smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                if (bodysmsSendOptionsdeliveryReport != null)
+                {
+                    smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                    smsSendOptionsObjectpropCount++;
+                }
+
+                smsSendOptionsObjectpropCount++;
+            }
+            else
+            {
+                smsSendOptionsObject["enableDeliveryReport"] = false;
                 smsSendOptionsObjectpropCount++;
             }
 

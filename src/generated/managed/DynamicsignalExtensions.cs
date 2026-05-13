@@ -66,6 +66,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
+        public IBodyWorkflowAction<UserRequestResponse> PreregisterUser(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyexternalSsoUserID = null, Expression<Func<string>> bodyhandle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<int[]>> bodydivisionIDs = null, Expression<Func<int[]>> bodytargetIDs = null, Expression<Func<UserTagRequestResponse[]>> bodytags = null, Expression<Func<bool>> bodysendInvitationEmail = null, Expression<Func<string>> bodyinvitationMessage = null, Expression<Func<bodynotificationsDefaultInput>> bodynotificationsDefault = null, Expression<Func<bool>> bodyvaluecanSharePosts = null, Expression<Func<bool>> bodyvaluecanCommentPosts = null, Expression<Func<bool>> bodyvaluecanSubmitPosts = null, Expression<Func<bool>> bodyvaluecanManageOrganization = null)
+        {
+            var apiCallPath = "/manage/preregister";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodyemail != null)
+            {
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+            }
+
+            if (bodyexternalSsoUserID != null)
+            {
+                body["externalSsoUserId"] = ExpressionConverter.ConvertO(bodyexternalSsoUserID);
+                bodypropCount++;
+            }
+
+            if (bodyhandle != null)
+            {
+                body["handle"] = ExpressionConverter.ConvertO(bodyhandle);
+                bodypropCount++;
+            }
+
+            if (bodyfirstName != null)
+            {
+                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                bodypropCount++;
+            }
+
+            if (bodylastName != null)
+            {
+                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                bodypropCount++;
+            }
+
+            if (bodydivisionIDs != null)
+            {
+                body["divisionIds"] = ExpressionConverter.ConvertO(bodydivisionIDs);
+                bodypropCount++;
+            }
+
+            if (bodytargetIDs != null)
+            {
+                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
+                bodypropCount++;
+            }
+
+            if (bodytags != null)
+            {
+                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                bodypropCount++;
+            }
+
+            if (bodysendInvitationEmail != null)
+            {
+                body["sendInvitationEmail"] = ExpressionConverter.ConvertO(bodysendInvitationEmail);
+                bodypropCount++;
+            }
+
+            if (bodyinvitationMessage != null)
+            {
+                body["invitationMessage"] = ExpressionConverter.ConvertO(bodyinvitationMessage);
+                bodypropCount++;
+            }
+
+            if (bodynotificationsDefault != null)
+            {
+                body["notificationsDefault"] = ExpressionConverter.ConvertO(bodynotificationsDefault);
+                bodypropCount++;
+            }
+
+            var privilegesObject = new JObject();
+            var privilegesObjectpropCount = 0;
+            if (bodyvaluecanSharePosts != null)
+            {
+                privilegesObject["canSharePosts"] = ExpressionConverter.ConvertO(bodyvaluecanSharePosts);
+                privilegesObjectpropCount++;
+            }
+
+            if (bodyvaluecanCommentPosts != null)
+            {
+                privilegesObject["canCommentPosts"] = ExpressionConverter.ConvertO(bodyvaluecanCommentPosts);
+                privilegesObjectpropCount++;
+            }
+
+            if (bodyvaluecanSubmitPosts != null)
+            {
+                privilegesObject["canSubmitPosts"] = ExpressionConverter.ConvertO(bodyvaluecanSubmitPosts);
+                privilegesObjectpropCount++;
+            }
+
+            if (bodyvaluecanManageOrganization != null)
+            {
+                privilegesObject["canManageOrganization"] = ExpressionConverter.ConvertO(bodyvaluecanManageOrganization);
+                privilegesObjectpropCount++;
+            }
+
+            if (privilegesObjectpropCount > 0)
+            {
+                body["privileges"] = privilegesObject;
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UserRequestResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<UploadImageResponse> ManageImage(Expression<Func<string>> contentType, Expression<Func<string>> file = null)
         {
             var apiCallPath = "/manage/images";
@@ -77,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> GetPost(Expression<Func<string>> id, Expression<Func<int>> userId = null)
+        public IBodyWorkflowAction<PostResponse> Get(Expression<Func<string>> id, Expression<Func<int>> userId = null)
         {
             var apiCallPath = String.Format("/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -88,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> CreatePost(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null, Expression<Func<string>> bodymemberVideoUrl = null, Expression<Func<bodypostTypeInput>> bodypostType = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null, Expression<Func<bodydisplayModeInput>> bodydisplayMode = null, Expression<Func<bool>> bodysharable = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodysuggestedShareText = null, Expression<Func<string>> bodyshortSuggestedShareText = null, Expression<Func<int>> bodysharePoints = null, Expression<Func<int>> bodyclickPoints = null, Expression<Func<bool>> bodyshareWithImages = null, Expression<Func<bool>> bodyshareImagesOnly = null, Expression<Func<PostTagRequestResponse[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<int>> bodycreatorID = null, Expression<Func<bool>> bodydisplayCreator = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null)
+        public IBodyWorkflowAction<PostResponse> Create(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null, Expression<Func<string>> bodymemberVideoUrl = null, Expression<Func<bodypostTypeInput>> bodypostType = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null, Expression<Func<bodydisplayModeInput>> bodydisplayMode = null, Expression<Func<bool>> bodysharable = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodysuggestedShareText = null, Expression<Func<string>> bodyshortSuggestedShareText = null, Expression<Func<int>> bodysharePoints = null, Expression<Func<int>> bodyclickPoints = null, Expression<Func<bool>> bodyshareWithImages = null, Expression<Func<bool>> bodyshareImagesOnly = null, Expression<Func<PostTagRequestResponse[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<int>> bodycreatorID = null, Expression<Func<bool>> bodydisplayCreator = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null)
         {
             var apiCallPath = "/post";
             var apiCallHttpMethod = "post";
@@ -262,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> PutImageToPost(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<SuccessResponse> PutImageTo(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
         {
             var apiCallPath = String.Format("/post/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -273,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> AddImageToPost(Expression<Func<string>> id, Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<SuccessResponse> AddImageTo(Expression<Func<string>> id, Expression<Func<string>> bodyurl)
         {
             var apiCallPath = String.Format("/post/{0}/imageurl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -291,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> UpdatePost(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null)
+        public IBodyWorkflowAction<PostResponse> Update(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null)
         {
             var apiCallPath = String.Format("/manage/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -1001,6 +1115,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
         [JsonProperty("mimeType")]
         public string MimeType { get; set; }
+    }
+
+    public class UserTagRequestResponse
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public enum bodynotificationsDefaultInput
+    {
+        Immediately,
+        AfterFirstLogin
     }
 
     public class UploadImageResponse

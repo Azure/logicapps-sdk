@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
     public class HolopinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
-        public IBodyWorkflowAction<IssuePostResponse> IssuePost(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
         {
             var apiCallPath = "/sticker/share";
             var apiCallHttpMethod = "post";

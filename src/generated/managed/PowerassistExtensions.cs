@@ -91,7 +91,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -117,7 +127,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             body["value"] = ExpressionConverter.ConvertO(bodyvalue);
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -151,7 +171,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -185,7 +215,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -219,7 +259,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -277,7 +327,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 
             if (bodyvalueType != null)
             {
-                body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                if (bodyvalueType != null)
+                {
+                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["valueType"] = "String";
                 bodypropCount++;
             }
 
@@ -719,7 +779,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
             body["substring"] = ExpressionConverter.ConvertO(bodysubstring);
             if (bodyignoreCase != null)
             {
-                body["ignoreCase"] = ExpressionConverter.ConvertO(bodyignoreCase);
+                if (bodyignoreCase != null)
+                {
+                    body["ignoreCase"] = ExpressionConverter.ConvertO(bodyignoreCase);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["ignoreCase"] = false;
                 bodypropCount++;
             }
 

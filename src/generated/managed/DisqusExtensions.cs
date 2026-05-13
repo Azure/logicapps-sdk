@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     public class DisqusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> CreatePost(Expression<Func<string>> thread, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
         {
             var apiCallPath = "/posts/create.json";
             var apiCallHttpMethod = "post";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> ReplyToPost(Expression<Func<string>> parent, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
         {
             var apiCallPath = "/reply/posts/create.json";
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> RemovePost(Expression<Func<string>> post)
+        public IBodyWorkflowAction<OperationResultResponse> Remove(Expression<Func<string>> post)
         {
             var apiCallPath = "/posts/remove.json";
             var apiCallHttpMethod = "post";

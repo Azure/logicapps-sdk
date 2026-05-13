@@ -21,19 +21,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPEnableScriptingpropCount = 0;
             if (sAPEnableScriptingnotifyWhenScriptAttachesToGUI != null)
             {
-                sAPEnableScripting["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptAttachesToGUI);
+                if (sAPEnableScriptingnotifyWhenScriptAttachesToGUI != null)
+                {
+                    sAPEnableScripting["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptAttachesToGUI);
+                    sAPEnableScriptingpropCount++;
+                }
+
+                sAPEnableScriptingpropCount++;
+            }
+            else
+            {
+                sAPEnableScripting["NotifyWhenScriptAttachesToGUI"] = false;
                 sAPEnableScriptingpropCount++;
             }
 
             if (sAPEnableScriptingnotifyWhenScriptOpensConnection != null)
             {
-                sAPEnableScripting["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptOpensConnection);
+                if (sAPEnableScriptingnotifyWhenScriptOpensConnection != null)
+                {
+                    sAPEnableScripting["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPEnableScriptingnotifyWhenScriptOpensConnection);
+                    sAPEnableScriptingpropCount++;
+                }
+
+                sAPEnableScriptingpropCount++;
+            }
+            else
+            {
+                sAPEnableScripting["NotifyWhenScriptOpensConnection"] = false;
                 sAPEnableScriptingpropCount++;
             }
 
             if (sAPEnableScriptingshowNativeWindowsDialogs != null)
             {
-                sAPEnableScripting["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPEnableScriptingshowNativeWindowsDialogs);
+                if (sAPEnableScriptingshowNativeWindowsDialogs != null)
+                {
+                    sAPEnableScripting["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPEnableScriptingshowNativeWindowsDialogs);
+                    sAPEnableScriptingpropCount++;
+                }
+
+                sAPEnableScriptingpropCount++;
+            }
+            else
+            {
+                sAPEnableScripting["ShowNativeWindowsDialogs"] = false;
                 sAPEnableScriptingpropCount++;
             }
 
@@ -69,49 +99,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPLaunchSAPGUIenableSAPScripting != null)
             {
-                sAPLaunchSAPGUI["EnableSAPScripting"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIenableSAPScripting);
+                if (sAPLaunchSAPGUIenableSAPScripting != null)
+                {
+                    sAPLaunchSAPGUI["EnableSAPScripting"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIenableSAPScripting);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["EnableSAPScripting"] = true;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI != null)
             {
-                sAPLaunchSAPGUI["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI);
+                if (sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI != null)
+                {
+                    sAPLaunchSAPGUI["NotifyWhenScriptAttachesToGUI"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["NotifyWhenScriptAttachesToGUI"] = false;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUInotifyWhenScriptOpensConnection != null)
             {
-                sAPLaunchSAPGUI["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptOpensConnection);
+                if (sAPLaunchSAPGUInotifyWhenScriptOpensConnection != null)
+                {
+                    sAPLaunchSAPGUI["NotifyWhenScriptOpensConnection"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUInotifyWhenScriptOpensConnection);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["NotifyWhenScriptOpensConnection"] = false;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUIshowNativeWindowsDialogs != null)
             {
-                sAPLaunchSAPGUI["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIshowNativeWindowsDialogs);
+                if (sAPLaunchSAPGUIshowNativeWindowsDialogs != null)
+                {
+                    sAPLaunchSAPGUI["ShowNativeWindowsDialogs"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIshowNativeWindowsDialogs);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["ShowNativeWindowsDialogs"] = false;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUIattachAfterLaunch != null)
             {
-                sAPLaunchSAPGUI["AttachAfterLaunch"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIattachAfterLaunch);
+                if (sAPLaunchSAPGUIattachAfterLaunch != null)
+                {
+                    sAPLaunchSAPGUI["AttachAfterLaunch"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIattachAfterLaunch);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["AttachAfterLaunch"] = true;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUIsecondsToWait != null)
             {
-                sAPLaunchSAPGUI["SecondsToWait"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsecondsToWait);
+                if (sAPLaunchSAPGUIsecondsToWait != null)
+                {
+                    sAPLaunchSAPGUI["SecondsToWait"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsecondsToWait);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["SecondsToWait"] = 15;
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUIsAPProgId != null)
             {
-                sAPLaunchSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsAPProgId);
+                if (sAPLaunchSAPGUIsAPProgId != null)
+                {
+                    sAPLaunchSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIsAPProgId);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["SAPProgId"] = "SAPGUI";
                 sAPLaunchSAPGUIpropCount++;
             }
 
             if (sAPLaunchSAPGUIdisableSystemMessages != null)
             {
-                sAPLaunchSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIdisableSystemMessages);
+                if (sAPLaunchSAPGUIdisableSystemMessages != null)
+                {
+                    sAPLaunchSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPLaunchSAPGUIdisableSystemMessages);
+                    sAPLaunchSAPGUIpropCount++;
+                }
+
+                sAPLaunchSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPLaunchSAPGUI["DisableSystemMessages"] = true;
                 sAPLaunchSAPGUIpropCount++;
             }
 
@@ -135,13 +245,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPAttachToSAPGUIpropCount = 0;
             if (sAPAttachToSAPGUIsAPProgId != null)
             {
-                sAPAttachToSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIsAPProgId);
+                if (sAPAttachToSAPGUIsAPProgId != null)
+                {
+                    sAPAttachToSAPGUI["SAPProgId"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIsAPProgId);
+                    sAPAttachToSAPGUIpropCount++;
+                }
+
+                sAPAttachToSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPAttachToSAPGUI["SAPProgId"] = "SAPGUI";
                 sAPAttachToSAPGUIpropCount++;
             }
 
             if (sAPAttachToSAPGUIdisableSystemMessages != null)
             {
-                sAPAttachToSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIdisableSystemMessages);
+                if (sAPAttachToSAPGUIdisableSystemMessages != null)
+                {
+                    sAPAttachToSAPGUI["DisableSystemMessages"] = ExpressionConverter.ConvertO(sAPAttachToSAPGUIdisableSystemMessages);
+                    sAPAttachToSAPGUIpropCount++;
+                }
+
+                sAPAttachToSAPGUIpropCount++;
+            }
+            else
+            {
+                sAPAttachToSAPGUI["DisableSystemMessages"] = true;
                 sAPAttachToSAPGUIpropCount++;
             }
 
@@ -249,7 +379,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPCloseSessionpropCount = 0;
             if (sAPCloseSessioncloseAttachedSession != null)
             {
-                sAPCloseSession["CloseAttachedSession"] = ExpressionConverter.ConvertO(sAPCloseSessioncloseAttachedSession);
+                if (sAPCloseSessioncloseAttachedSession != null)
+                {
+                    sAPCloseSession["CloseAttachedSession"] = ExpressionConverter.ConvertO(sAPCloseSessioncloseAttachedSession);
+                    sAPCloseSessionpropCount++;
+                }
+
+                sAPCloseSessionpropCount++;
+            }
+            else
+            {
+                sAPCloseSession["CloseAttachedSession"] = true;
                 sAPCloseSessionpropCount++;
             }
 
@@ -305,7 +445,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWaitForAttachedSessionNotBusy["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusysecondsToWait);
             if (sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait != null)
             {
-                sAPWaitForAttachedSessionNotBusy["RaiseExceptionIfBusyAfterWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait);
+                if (sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait != null)
+                {
+                    sAPWaitForAttachedSessionNotBusy["RaiseExceptionIfBusyAfterWait"] = ExpressionConverter.ConvertO(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait);
+                    sAPWaitForAttachedSessionNotBusypropCount++;
+                }
+
+                sAPWaitForAttachedSessionNotBusypropCount++;
+            }
+            else
+            {
+                sAPWaitForAttachedSessionNotBusy["RaiseExceptionIfBusyAfterWait"] = false;
                 sAPWaitForAttachedSessionNotBusypropCount++;
             }
 
@@ -337,13 +487,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPInputTextIntoSAPElementreplaceExistingValue != null)
             {
-                sAPInputTextIntoSAPElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementreplaceExistingValue);
+                if (sAPInputTextIntoSAPElementreplaceExistingValue != null)
+                {
+                    sAPInputTextIntoSAPElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementreplaceExistingValue);
+                    sAPInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPInputTextIntoSAPElement["ReplaceExistingValue"] = true;
                 sAPInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPInputTextIntoSAPElementinsertPosition != null)
             {
-                sAPInputTextIntoSAPElement["InsertPosition"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementinsertPosition);
+                if (sAPInputTextIntoSAPElementinsertPosition != null)
+                {
+                    sAPInputTextIntoSAPElement["InsertPosition"] = ExpressionConverter.ConvertO(sAPInputTextIntoSAPElementinsertPosition);
+                    sAPInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPInputTextIntoSAPElement["InsertPosition"] = 0;
                 sAPInputTextIntoSAPElementpropCount++;
             }
 
@@ -411,13 +581,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWaitForElementId["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWaitForElementIdsearchSAPElementId);
             if (sAPWaitForElementIdsecondsToWait != null)
             {
-                sAPWaitForElementId["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForElementIdsecondsToWait);
+                if (sAPWaitForElementIdsecondsToWait != null)
+                {
+                    sAPWaitForElementId["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForElementIdsecondsToWait);
+                    sAPWaitForElementIdpropCount++;
+                }
+
+                sAPWaitForElementIdpropCount++;
+            }
+            else
+            {
+                sAPWaitForElementId["SecondsToWait"] = 15;
                 sAPWaitForElementIdpropCount++;
             }
 
             if (sAPWaitForElementIdraiseExceptionIfElementNotFound != null)
             {
-                sAPWaitForElementId["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForElementIdraiseExceptionIfElementNotFound);
+                if (sAPWaitForElementIdraiseExceptionIfElementNotFound != null)
+                {
+                    sAPWaitForElementId["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForElementIdraiseExceptionIfElementNotFound);
+                    sAPWaitForElementIdpropCount++;
+                }
+
+                sAPWaitForElementIdpropCount++;
+            }
+            else
+            {
+                sAPWaitForElementId["RaiseExceptionIfElementNotFound"] = false;
                 sAPWaitForElementIdpropCount++;
             }
 
@@ -443,25 +633,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWaitForWindow["SearchSAPWindowTitle"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchSAPWindowTitle);
             if (sAPWaitForWindowsearchIsRegularExpression != null)
             {
-                sAPWaitForWindow["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsRegularExpression);
+                if (sAPWaitForWindowsearchIsRegularExpression != null)
+                {
+                    sAPWaitForWindow["SearchIsRegularExpression"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsRegularExpression);
+                    sAPWaitForWindowpropCount++;
+                }
+
+                sAPWaitForWindowpropCount++;
+            }
+            else
+            {
+                sAPWaitForWindow["SearchIsRegularExpression"] = false;
                 sAPWaitForWindowpropCount++;
             }
 
             if (sAPWaitForWindowsearchIsCaseSensitive != null)
             {
-                sAPWaitForWindow["SearchIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsCaseSensitive);
+                if (sAPWaitForWindowsearchIsCaseSensitive != null)
+                {
+                    sAPWaitForWindow["SearchIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPWaitForWindowsearchIsCaseSensitive);
+                    sAPWaitForWindowpropCount++;
+                }
+
+                sAPWaitForWindowpropCount++;
+            }
+            else
+            {
+                sAPWaitForWindow["SearchIsCaseSensitive"] = false;
                 sAPWaitForWindowpropCount++;
             }
 
             if (sAPWaitForWindowsecondsToWait != null)
             {
-                sAPWaitForWindow["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForWindowsecondsToWait);
+                if (sAPWaitForWindowsecondsToWait != null)
+                {
+                    sAPWaitForWindow["SecondsToWait"] = ExpressionConverter.ConvertO(sAPWaitForWindowsecondsToWait);
+                    sAPWaitForWindowpropCount++;
+                }
+
+                sAPWaitForWindowpropCount++;
+            }
+            else
+            {
+                sAPWaitForWindow["SecondsToWait"] = 15;
                 sAPWaitForWindowpropCount++;
             }
 
             if (sAPWaitForWindowraiseExceptionIfElementNotFound != null)
             {
-                sAPWaitForWindow["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForWindowraiseExceptionIfElementNotFound);
+                if (sAPWaitForWindowraiseExceptionIfElementNotFound != null)
+                {
+                    sAPWaitForWindow["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(sAPWaitForWindowraiseExceptionIfElementNotFound);
+                    sAPWaitForWindowpropCount++;
+                }
+
+                sAPWaitForWindowpropCount++;
+            }
+            else
+            {
+                sAPWaitForWindow["RaiseExceptionIfElementNotFound"] = false;
                 sAPWaitForWindowpropCount++;
             }
 
@@ -567,7 +797,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPCheckSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPElementsearchSAPElementId);
             if (sAPCheckSAPElementcheckElement != null)
             {
-                sAPCheckSAPElement["CheckElement"] = ExpressionConverter.ConvertO(sAPCheckSAPElementcheckElement);
+                if (sAPCheckSAPElementcheckElement != null)
+                {
+                    sAPCheckSAPElement["CheckElement"] = ExpressionConverter.ConvertO(sAPCheckSAPElementcheckElement);
+                    sAPCheckSAPElementpropCount++;
+                }
+
+                sAPCheckSAPElementpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPElement["CheckElement"] = true;
                 sAPCheckSAPElementpropCount++;
             }
 
@@ -593,7 +833,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPVisualiseSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementsearchSAPElementId);
             if (sAPVisualiseSAPElementvisualiseOn != null)
             {
-                sAPVisualiseSAPElement["VisualiseOn"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementvisualiseOn);
+                if (sAPVisualiseSAPElementvisualiseOn != null)
+                {
+                    sAPVisualiseSAPElement["VisualiseOn"] = ExpressionConverter.ConvertO(sAPVisualiseSAPElementvisualiseOn);
+                    sAPVisualiseSAPElementpropCount++;
+                }
+
+                sAPVisualiseSAPElementpropCount++;
+            }
+            else
+            {
+                sAPVisualiseSAPElement["VisualiseOn"] = true;
                 sAPVisualiseSAPElementpropCount++;
             }
 
@@ -619,13 +869,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPDrawRectangleAroundSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementsearchSAPElementId);
             if (sAPDrawRectangleAroundSAPElementpenColour != null)
             {
-                sAPDrawRectangleAroundSAPElement["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenColour);
+                if (sAPDrawRectangleAroundSAPElementpenColour != null)
+                {
+                    sAPDrawRectangleAroundSAPElement["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenColour);
+                    sAPDrawRectangleAroundSAPElementpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPElementpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPElement["PenColour"] = "#009FDE";
                 sAPDrawRectangleAroundSAPElementpropCount++;
             }
 
             if (sAPDrawRectangleAroundSAPElementpenThicknessPixels != null)
             {
-                sAPDrawRectangleAroundSAPElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenThicknessPixels);
+                if (sAPDrawRectangleAroundSAPElementpenThicknessPixels != null)
+                {
+                    sAPDrawRectangleAroundSAPElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPElementpenThicknessPixels);
+                    sAPDrawRectangleAroundSAPElementpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPElementpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPElement["PenThicknessPixels"] = 4;
                 sAPDrawRectangleAroundSAPElementpropCount++;
             }
 
@@ -693,7 +963,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSendVKey["SAPVKey"] = ExpressionConverter.ConvertO(sAPSendVKeysAPVKey);
             if (sAPSendVKeydetectParentWindowElement != null)
             {
-                sAPSendVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendVKeydetectParentWindowElement);
+                if (sAPSendVKeydetectParentWindowElement != null)
+                {
+                    sAPSendVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendVKeydetectParentWindowElement);
+                    sAPSendVKeypropCount++;
+                }
+
+                sAPSendVKeypropCount++;
+            }
+            else
+            {
+                sAPSendVKey["DetectParentWindowElement"] = true;
                 sAPSendVKeypropCount++;
             }
 
@@ -719,7 +999,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSendEnterVKey["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSendEnterVKeysearchSAPElementId);
             if (sAPSendEnterVKeydetectParentWindowElement != null)
             {
-                sAPSendEnterVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendEnterVKeydetectParentWindowElement);
+                if (sAPSendEnterVKeydetectParentWindowElement != null)
+                {
+                    sAPSendEnterVKey["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPSendEnterVKeydetectParentWindowElement);
+                    sAPSendEnterVKeypropCount++;
+                }
+
+                sAPSendEnterVKeypropCount++;
+            }
+            else
+            {
+                sAPSendEnterVKey["DetectParentWindowElement"] = true;
                 sAPSendEnterVKeypropCount++;
             }
 
@@ -745,7 +1035,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWindowRestore["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowRestoresearchSAPElementId);
             if (sAPWindowRestoredetectParentWindowElement != null)
             {
-                sAPWindowRestore["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowRestoredetectParentWindowElement);
+                if (sAPWindowRestoredetectParentWindowElement != null)
+                {
+                    sAPWindowRestore["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowRestoredetectParentWindowElement);
+                    sAPWindowRestorepropCount++;
+                }
+
+                sAPWindowRestorepropCount++;
+            }
+            else
+            {
+                sAPWindowRestore["DetectParentWindowElement"] = true;
                 sAPWindowRestorepropCount++;
             }
 
@@ -771,7 +1071,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWindowMaximise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMaximisesearchSAPElementId);
             if (sAPWindowMaximisedetectParentWindowElement != null)
             {
-                sAPWindowMaximise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMaximisedetectParentWindowElement);
+                if (sAPWindowMaximisedetectParentWindowElement != null)
+                {
+                    sAPWindowMaximise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMaximisedetectParentWindowElement);
+                    sAPWindowMaximisepropCount++;
+                }
+
+                sAPWindowMaximisepropCount++;
+            }
+            else
+            {
+                sAPWindowMaximise["DetectParentWindowElement"] = true;
                 sAPWindowMaximisepropCount++;
             }
 
@@ -797,7 +1107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWindowMinimise["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowMinimisesearchSAPElementId);
             if (sAPWindowMinimisedetectParentWindowElement != null)
             {
-                sAPWindowMinimise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMinimisedetectParentWindowElement);
+                if (sAPWindowMinimisedetectParentWindowElement != null)
+                {
+                    sAPWindowMinimise["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowMinimisedetectParentWindowElement);
+                    sAPWindowMinimisepropCount++;
+                }
+
+                sAPWindowMinimisepropCount++;
+            }
+            else
+            {
+                sAPWindowMinimise["DetectParentWindowElement"] = true;
                 sAPWindowMinimisepropCount++;
             }
 
@@ -823,7 +1143,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPWindowClose["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPWindowClosesearchSAPElementId);
             if (sAPWindowClosedetectParentWindowElement != null)
             {
-                sAPWindowClose["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowClosedetectParentWindowElement);
+                if (sAPWindowClosedetectParentWindowElement != null)
+                {
+                    sAPWindowClose["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPWindowClosedetectParentWindowElement);
+                    sAPWindowClosepropCount++;
+                }
+
+                sAPWindowClosepropCount++;
+            }
+            else
+            {
+                sAPWindowClose["DetectParentWindowElement"] = true;
                 sAPWindowClosepropCount++;
             }
 
@@ -849,25 +1179,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPBringWindowToFront["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontsearchSAPElementId);
             if (sAPBringWindowToFronttoggleWindow != null)
             {
-                sAPBringWindowToFront["ToggleWindow"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleWindow);
+                if (sAPBringWindowToFronttoggleWindow != null)
+                {
+                    sAPBringWindowToFront["ToggleWindow"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleWindow);
+                    sAPBringWindowToFrontpropCount++;
+                }
+
+                sAPBringWindowToFrontpropCount++;
+            }
+            else
+            {
+                sAPBringWindowToFront["ToggleWindow"] = true;
                 sAPBringWindowToFrontpropCount++;
             }
 
             if (sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPBringWindowToFront["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPBringWindowToFront["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent);
+                    sAPBringWindowToFrontpropCount++;
+                }
+
+                sAPBringWindowToFrontpropCount++;
+            }
+            else
+            {
+                sAPBringWindowToFront["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPBringWindowToFrontpropCount++;
             }
 
             if (sAPBringWindowToFronttoggleDelay != null)
             {
-                sAPBringWindowToFront["ToggleDelay"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleDelay);
+                if (sAPBringWindowToFronttoggleDelay != null)
+                {
+                    sAPBringWindowToFront["ToggleDelay"] = ExpressionConverter.ConvertO(sAPBringWindowToFronttoggleDelay);
+                    sAPBringWindowToFrontpropCount++;
+                }
+
+                sAPBringWindowToFrontpropCount++;
+            }
+            else
+            {
+                sAPBringWindowToFront["ToggleDelay"] = 0.5;
                 sAPBringWindowToFrontpropCount++;
             }
 
             if (sAPBringWindowToFrontdetectParentWindowElement != null)
             {
-                sAPBringWindowToFront["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontdetectParentWindowElement);
+                if (sAPBringWindowToFrontdetectParentWindowElement != null)
+                {
+                    sAPBringWindowToFront["DetectParentWindowElement"] = ExpressionConverter.ConvertO(sAPBringWindowToFrontdetectParentWindowElement);
+                    sAPBringWindowToFrontpropCount++;
+                }
+
+                sAPBringWindowToFrontpropCount++;
+            }
+            else
+            {
+                sAPBringWindowToFront["DetectParentWindowElement"] = true;
                 sAPBringWindowToFrontpropCount++;
             }
 
@@ -893,43 +1263,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId);
             if (sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost);
+                if (sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront);
+                if (sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow);
+                if (sAPGlobalLeftMouseClickOnSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleWindow"] = true;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay);
+                if (sAPGlobalLeftMouseClickOnSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX);
+                if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetX != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetX"] = 0;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY);
+                if (sAPGlobalLeftMouseClickOnSAPElementclickOffsetY != null)
+                {
+                    sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY);
+                    sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftMouseClickOnSAPElement["ClickOffsetY"] = 0;
                 sAPGlobalLeftMouseClickOnSAPElementpropCount++;
             }
 
@@ -961,43 +1401,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalRightMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId);
             if (sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost);
+                if (sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront);
+                if (sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleWindow);
+                if (sAPGlobalRightMouseClickOnSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleWindow);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["ToggleWindow"] = true;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleDelay);
+                if (sAPGlobalRightMouseClickOnSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementtoggleDelay);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetX);
+                if (sAPGlobalRightMouseClickOnSAPElementclickOffsetX != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetX);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetX"] = 0;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalRightMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetY);
+                if (sAPGlobalRightMouseClickOnSAPElementclickOffsetY != null)
+                {
+                    sAPGlobalRightMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightMouseClickOnSAPElementclickOffsetY);
+                    sAPGlobalRightMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalRightMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightMouseClickOnSAPElement["ClickOffsetY"] = 0;
                 sAPGlobalRightMouseClickOnSAPElementpropCount++;
             }
 
@@ -1029,43 +1539,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalMiddleMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId);
             if (sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost);
+                if (sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront);
+                if (sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow);
+                if (sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleWindow"] = true;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay);
+                if (sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX);
+                if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetX"] = 0;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY);
+                if (sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY != null)
+                {
+                    sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY);
+                    sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalMiddleMouseClickOnSAPElement["ClickOffsetY"] = 0;
                 sAPGlobalMiddleMouseClickOnSAPElementpropCount++;
             }
 
@@ -1097,43 +1677,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalDoubleLeftMouseClickOnSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId);
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleWindow"] = true;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetX"] = 0;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["ClickOffsetY"] = 0;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
@@ -1145,7 +1795,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds != null)
             {
-                sAPGlobalDoubleLeftMouseClickOnSAPElement["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds);
+                if (sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds != null)
+                {
+                    sAPGlobalDoubleLeftMouseClickOnSAPElement["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds);
+                    sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+                }
+
+                sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftMouseClickOnSAPElement["DoubleClickDelayInMilliseconds"] = 10;
                 sAPGlobalDoubleLeftMouseClickOnSAPElementpropCount++;
             }
 
@@ -1171,49 +1831,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalInputTextIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsearchSAPElementId);
             if (sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalInputTextIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost);
+                if (sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalInputTextIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront);
+                if (sAPGlobalInputTextIntoSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementtoggleWindow != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleWindow);
+                if (sAPGlobalInputTextIntoSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleWindow);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["ToggleWindow"] = true;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementtoggleDelay != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleDelay);
+                if (sAPGlobalInputTextIntoSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementtoggleDelay);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement != null)
             {
-                sAPGlobalInputTextIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement);
+                if (sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["GlobalMouseClickOnElement"] = true;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
+                if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete);
+                if (sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
@@ -1225,25 +1965,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalInputTextIntoSAPElementsendKeyEvents != null)
             {
-                sAPGlobalInputTextIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsendKeyEvents);
+                if (sAPGlobalInputTextIntoSAPElementsendKeyEvents != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementsendKeyEvents);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["SendKeyEvents"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds != null)
             {
-                sAPGlobalInputTextIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds);
+                if (sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["KeyIntervalInMilliseconds"] = 10;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds != null)
             {
-                sAPGlobalInputTextIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds);
+                if (sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["DoubleClickIntervalInMilliseconds"] = 10;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputTextIntoSAPElementdontInterpretSymbols != null)
             {
-                sAPGlobalInputTextIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols);
+                if (sAPGlobalInputTextIntoSAPElementdontInterpretSymbols != null)
+                {
+                    sAPGlobalInputTextIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols);
+                    sAPGlobalInputTextIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputTextIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputTextIntoSAPElement["DontInterpretSymbols"] = false;
                 sAPGlobalInputTextIntoSAPElementpropCount++;
             }
 
@@ -1269,49 +2049,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalInputPasswordIntoSAPElement["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId);
             if (sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost);
+                if (sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["SetElementWindowTopMost"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront);
+                if (sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["BringElementWindowToFront"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementtoggleWindow != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleWindow);
+                if (sAPGlobalInputPasswordIntoSAPElementtoggleWindow != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleWindow);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["ToggleWindow"] = true;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementtoggleDelay != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleDelay);
+                if (sAPGlobalInputPasswordIntoSAPElementtoggleDelay != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementtoggleDelay);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["ToggleDelay"] = 0.5;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement);
+                if (sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["GlobalMouseClickOnElement"] = true;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
+                if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete);
+                if (sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
@@ -1319,25 +2179,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGlobalInputPasswordIntoSAPElement["PasswordToInput"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementpasswordToInput);
             if (sAPGlobalInputPasswordIntoSAPElementsendKeyEvents != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents);
+                if (sAPGlobalInputPasswordIntoSAPElementsendKeyEvents != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["SendKeyEvents"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["SendKeyEvents"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds);
+                if (sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["KeyIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["KeyIntervalInMilliseconds"] = 10;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds);
+                if (sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["DoubleClickIntervalInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["DoubleClickIntervalInMilliseconds"] = 10;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
             if (sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols != null)
             {
-                sAPGlobalInputPasswordIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols);
+                if (sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols != null)
+                {
+                    sAPGlobalInputPasswordIntoSAPElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols);
+                    sAPGlobalInputPasswordIntoSAPElementpropCount++;
+                }
+
+                sAPGlobalInputPasswordIntoSAPElementpropCount++;
+            }
+            else
+            {
+                sAPGlobalInputPasswordIntoSAPElement["DontInterpretSymbols"] = false;
                 sAPGlobalInputPasswordIntoSAPElementpropCount++;
             }
 
@@ -1427,13 +2327,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetAllChildSAPElementProperties["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiessearchSAPElementId);
             if (sAPGetAllChildSAPElementPropertiesfirstItemToReturn != null)
             {
-                sAPGetAllChildSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesfirstItemToReturn);
+                if (sAPGetAllChildSAPElementPropertiesfirstItemToReturn != null)
+                {
+                    sAPGetAllChildSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesfirstItemToReturn);
+                    sAPGetAllChildSAPElementPropertiespropCount++;
+                }
+
+                sAPGetAllChildSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetAllChildSAPElementProperties["FirstItemToReturn"] = 1;
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
             if (sAPGetAllChildSAPElementPropertiesmaxItemsToReturn != null)
             {
-                sAPGetAllChildSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn);
+                if (sAPGetAllChildSAPElementPropertiesmaxItemsToReturn != null)
+                {
+                    sAPGetAllChildSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn);
+                    sAPGetAllChildSAPElementPropertiespropCount++;
+                }
+
+                sAPGetAllChildSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetAllChildSAPElementProperties["MaxItemsToReturn"] = 0;
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
@@ -1445,7 +2365,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetAllChildSAPElementPropertiesmaxTextLength != null)
             {
-                sAPGetAllChildSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxTextLength);
+                if (sAPGetAllChildSAPElementPropertiesmaxTextLength != null)
+                {
+                    sAPGetAllChildSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetAllChildSAPElementPropertiesmaxTextLength);
+                    sAPGetAllChildSAPElementPropertiespropCount++;
+                }
+
+                sAPGetAllChildSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetAllChildSAPElementProperties["MaxTextLength"] = 0;
                 sAPGetAllChildSAPElementPropertiespropCount++;
             }
 
@@ -1469,13 +2399,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             var sAPGetSAPSessionTopLevelSAPElementPropertiespropCount = 0;
             if (sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn);
+                if (sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn != null)
+                {
+                    sAPGetSAPSessionTopLevelSAPElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn);
+                    sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+                }
+
+                sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetSAPSessionTopLevelSAPElementProperties["FirstItemToReturn"] = 1;
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
             if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn);
+                if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn != null)
+                {
+                    sAPGetSAPSessionTopLevelSAPElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn);
+                    sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+                }
+
+                sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetSAPSessionTopLevelSAPElementProperties["MaxItemsToReturn"] = 0;
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
@@ -1487,7 +2437,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength != null)
             {
-                sAPGetSAPSessionTopLevelSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength);
+                if (sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength != null)
+                {
+                    sAPGetSAPSessionTopLevelSAPElementProperties["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength);
+                    sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+                }
+
+                sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetSAPSessionTopLevelSAPElementProperties["MaxTextLength"] = 0;
                 sAPGetSAPSessionTopLevelSAPElementPropertiespropCount++;
             }
 
@@ -1533,7 +2493,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetElementPropertiesAsList["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListsearchSAPElementId);
             if (sAPGetElementPropertiesAsListmaxTextLength != null)
             {
-                sAPGetElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListmaxTextLength);
+                if (sAPGetElementPropertiesAsListmaxTextLength != null)
+                {
+                    sAPGetElementPropertiesAsList["MaxTextLength"] = ExpressionConverter.ConvertO(sAPGetElementPropertiesAsListmaxTextLength);
+                    sAPGetElementPropertiesAsListpropCount++;
+                }
+
+                sAPGetElementPropertiesAsListpropCount++;
+            }
+            else
+            {
+                sAPGetElementPropertiesAsList["MaxTextLength"] = 0;
                 sAPGetElementPropertiesAsListpropCount++;
             }
 
@@ -1591,13 +2561,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPOpenConnectionconnectSynchronous != null)
             {
-                sAPOpenConnection["ConnectSynchronous"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectSynchronous);
+                if (sAPOpenConnectionconnectSynchronous != null)
+                {
+                    sAPOpenConnection["ConnectSynchronous"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectSynchronous);
+                    sAPOpenConnectionpropCount++;
+                }
+
+                sAPOpenConnectionpropCount++;
+            }
+            else
+            {
+                sAPOpenConnection["ConnectSynchronous"] = true;
                 sAPOpenConnectionpropCount++;
             }
 
             if (sAPOpenConnectionconnectToSession != null)
             {
-                sAPOpenConnection["ConnectToSession"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectToSession);
+                if (sAPOpenConnectionconnectToSession != null)
+                {
+                    sAPOpenConnection["ConnectToSession"] = ExpressionConverter.ConvertO(sAPOpenConnectionconnectToSession);
+                    sAPOpenConnectionpropCount++;
+                }
+
+                sAPOpenConnectionpropCount++;
+            }
+            else
+            {
+                sAPOpenConnection["ConnectToSession"] = true;
                 sAPOpenConnectionpropCount++;
             }
 
@@ -1643,19 +2633,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
             if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
+                if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
+                {
+                    sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
+                    sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = 1;
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
+                if (sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
+                {
+                    sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
+                    sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = 1;
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             if (sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue != null)
             {
-                sAPGetSAPTableVisibleCellTextContentsAtIndex["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue);
+                if (sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue != null)
+                {
+                    sAPGetSAPTableVisibleCellTextContentsAtIndex["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue);
+                    sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPTableVisibleCellTextContentsAtIndex["CheckedElementValue"] = "True";
                 sAPGetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
@@ -1681,13 +2701,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetSAPTableVisibleCellPropertiesAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId);
             if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex != null)
             {
-                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex);
+                if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex != null)
+                {
+                    sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex);
+                    sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
+                }
+
+                sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleRowIndex"] = 1;
                 sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
             }
 
             if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex != null)
             {
-                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex);
+                if (sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex != null)
+                {
+                    sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex);
+                    sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
+                }
+
+                sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPTableVisibleCellPropertiesAtIndex["VisibleColumnIndex"] = 1;
                 sAPGetSAPTableVisibleCellPropertiesAtIndexpropCount++;
             }
 
@@ -1713,13 +2753,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSetSAPTableVisibleCellTextContentsAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
             if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
+                if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex != null)
+                {
+                    sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
+                    sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleRowIndex"] = 1;
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
+                if (sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex != null)
+                {
+                    sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
+                    sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["VisibleColumnIndex"] = 1;
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
@@ -1731,13 +2791,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue);
+                if (sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue != null)
+                {
+                    sAPSetSAPTableVisibleCellTextContentsAtIndex["ReplaceExistingValue"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue);
+                    sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["ReplaceExistingValue"] = true;
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
             if (sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition != null)
             {
-                sAPSetSAPTableVisibleCellTextContentsAtIndex["InsertPosition"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition);
+                if (sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition != null)
+                {
+                    sAPSetSAPTableVisibleCellTextContentsAtIndex["InsertPosition"] = ExpressionConverter.ConvertO(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition);
+                    sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+                }
+
+                sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPSetSAPTableVisibleCellTextContentsAtIndex["InsertPosition"] = 0;
                 sAPSetSAPTableVisibleCellTextContentsAtIndexpropCount++;
             }
 
@@ -1763,19 +2843,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPCheckSAPTableVisibleCellCheckboxAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId);
             if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex);
+                if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex != null)
+                {
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex);
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleRowIndex"] = 1;
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
             if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex);
+                if (sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex != null)
+                {
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex);
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["VisibleColumnIndex"] = 1;
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
             if (sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement != null)
             {
-                sAPCheckSAPTableVisibleCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement);
+                if (sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement != null)
+                {
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement);
+                    sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPTableVisibleCellCheckboxAtIndex["CheckCellElement"] = true;
                 sAPCheckSAPTableVisibleCellCheckboxAtIndexpropCount++;
             }
 
@@ -1801,13 +2911,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPPressSAPTableVisibleCellAtIndex["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId);
             if (sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex != null)
             {
-                sAPPressSAPTableVisibleCellAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex);
+                if (sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex != null)
+                {
+                    sAPPressSAPTableVisibleCellAtIndex["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex);
+                    sAPPressSAPTableVisibleCellAtIndexpropCount++;
+                }
+
+                sAPPressSAPTableVisibleCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPPressSAPTableVisibleCellAtIndex["VisibleRowIndex"] = 1;
                 sAPPressSAPTableVisibleCellAtIndexpropCount++;
             }
 
             if (sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex != null)
             {
-                sAPPressSAPTableVisibleCellAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex);
+                if (sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex != null)
+                {
+                    sAPPressSAPTableVisibleCellAtIndex["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex);
+                    sAPPressSAPTableVisibleCellAtIndexpropCount++;
+                }
+
+                sAPPressSAPTableVisibleCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPPressSAPTableVisibleCellAtIndex["VisibleColumnIndex"] = 1;
                 sAPPressSAPTableVisibleCellAtIndexpropCount++;
             }
 
@@ -1833,7 +2963,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPScrollSAPTable["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPScrollSAPTablesearchSAPElementId);
             if (sAPScrollSAPTablemoveHorizontalScrollbar != null)
             {
-                sAPScrollSAPTable["MoveHorizontalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveHorizontalScrollbar);
+                if (sAPScrollSAPTablemoveHorizontalScrollbar != null)
+                {
+                    sAPScrollSAPTable["MoveHorizontalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveHorizontalScrollbar);
+                    sAPScrollSAPTablepropCount++;
+                }
+
+                sAPScrollSAPTablepropCount++;
+            }
+            else
+            {
+                sAPScrollSAPTable["MoveHorizontalScrollbar"] = false;
                 sAPScrollSAPTablepropCount++;
             }
 
@@ -1845,7 +2985,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPScrollSAPTablemoveVerticalScrollbar != null)
             {
-                sAPScrollSAPTable["MoveVerticalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveVerticalScrollbar);
+                if (sAPScrollSAPTablemoveVerticalScrollbar != null)
+                {
+                    sAPScrollSAPTable["MoveVerticalScrollbar"] = ExpressionConverter.ConvertO(sAPScrollSAPTablemoveVerticalScrollbar);
+                    sAPScrollSAPTablepropCount++;
+                }
+
+                sAPScrollSAPTablepropCount++;
+            }
+            else
+            {
+                sAPScrollSAPTable["MoveVerticalScrollbar"] = false;
                 sAPScrollSAPTablepropCount++;
             }
 
@@ -1877,37 +3027,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetTableVisibleTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentssearchSAPElementId);
             if (sAPGetTableVisibleTextContentsfirstVisibleRowToReturn != null)
             {
-                sAPGetTableVisibleTextContents["FirstVisibleRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn);
+                if (sAPGetTableVisibleTextContentsfirstVisibleRowToReturn != null)
+                {
+                    sAPGetTableVisibleTextContents["FirstVisibleRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["FirstVisibleRowToReturn"] = 1;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             if (sAPGetTableVisibleTextContentsmaxRowsToReturn != null)
             {
-                sAPGetTableVisibleTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxRowsToReturn);
+                if (sAPGetTableVisibleTextContentsmaxRowsToReturn != null)
+                {
+                    sAPGetTableVisibleTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxRowsToReturn);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["MaxRowsToReturn"] = 0;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             if (sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn != null)
             {
-                sAPGetTableVisibleTextContents["FirstVisibleColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn);
+                if (sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn != null)
+                {
+                    sAPGetTableVisibleTextContents["FirstVisibleColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["FirstVisibleColumnToReturn"] = 1;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             if (sAPGetTableVisibleTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetTableVisibleTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxColumnsToReturn);
+                if (sAPGetTableVisibleTextContentsmaxColumnsToReturn != null)
+                {
+                    sAPGetTableVisibleTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsmaxColumnsToReturn);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["MaxColumnsToReturn"] = 0;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             if (sAPGetTableVisibleTextContentsuseColumnHeadersFromTable != null)
             {
-                sAPGetTableVisibleTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable);
+                if (sAPGetTableVisibleTextContentsuseColumnHeadersFromTable != null)
+                {
+                    sAPGetTableVisibleTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["UseColumnHeadersFromTable"] = false;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
             if (sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetTableVisibleTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection);
+                if (sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection != null)
+                {
+                    sAPGetTableVisibleTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["ReturnRowIndexInOutputCollection"] = false;
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
@@ -1919,7 +3129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetTableVisibleTextContentscheckedElementValue != null)
             {
-                sAPGetTableVisibleTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentscheckedElementValue);
+                if (sAPGetTableVisibleTextContentscheckedElementValue != null)
+                {
+                    sAPGetTableVisibleTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetTableVisibleTextContentscheckedElementValue);
+                    sAPGetTableVisibleTextContentspropCount++;
+                }
+
+                sAPGetTableVisibleTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTableVisibleTextContents["CheckedElementValue"] = "True";
                 sAPGetTableVisibleTextContentspropCount++;
             }
 
@@ -1945,13 +3165,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSelectSAPTableRow["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowsearchSAPElementId);
             if (sAPSelectSAPTableRowvisibleRowIndex != null)
             {
-                sAPSelectSAPTableRow["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowvisibleRowIndex);
+                if (sAPSelectSAPTableRowvisibleRowIndex != null)
+                {
+                    sAPSelectSAPTableRow["VisibleRowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowvisibleRowIndex);
+                    sAPSelectSAPTableRowpropCount++;
+                }
+
+                sAPSelectSAPTableRowpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPTableRow["VisibleRowIndex"] = 1;
                 sAPSelectSAPTableRowpropCount++;
             }
 
             if (sAPSelectSAPTableRowselect != null)
             {
-                sAPSelectSAPTableRow["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowselect);
+                if (sAPSelectSAPTableRowselect != null)
+                {
+                    sAPSelectSAPTableRow["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableRowselect);
+                    sAPSelectSAPTableRowpropCount++;
+                }
+
+                sAPSelectSAPTableRowpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPTableRow["Select"] = true;
                 sAPSelectSAPTableRowpropCount++;
             }
 
@@ -1977,13 +3217,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSelectSAPTableColumn["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnsearchSAPElementId);
             if (sAPSelectSAPTableColumnvisibleColumnIndex != null)
             {
-                sAPSelectSAPTableColumn["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnvisibleColumnIndex);
+                if (sAPSelectSAPTableColumnvisibleColumnIndex != null)
+                {
+                    sAPSelectSAPTableColumn["VisibleColumnIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnvisibleColumnIndex);
+                    sAPSelectSAPTableColumnpropCount++;
+                }
+
+                sAPSelectSAPTableColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPTableColumn["VisibleColumnIndex"] = 1;
                 sAPSelectSAPTableColumnpropCount++;
             }
 
             if (sAPSelectSAPTableColumnselect != null)
             {
-                sAPSelectSAPTableColumn["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnselect);
+                if (sAPSelectSAPTableColumnselect != null)
+                {
+                    sAPSelectSAPTableColumn["Select"] = ExpressionConverter.ConvertO(sAPSelectSAPTableColumnselect);
+                    sAPSelectSAPTableColumnpropCount++;
+                }
+
+                sAPSelectSAPTableColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPTableColumn["Select"] = true;
                 sAPSelectSAPTableColumnpropCount++;
             }
 
@@ -2015,7 +3275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetTreeNodesprocessSubNodes != null)
             {
-                sAPGetTreeNodes["ProcessSubNodes"] = ExpressionConverter.ConvertO(sAPGetTreeNodesprocessSubNodes);
+                if (sAPGetTreeNodesprocessSubNodes != null)
+                {
+                    sAPGetTreeNodes["ProcessSubNodes"] = ExpressionConverter.ConvertO(sAPGetTreeNodesprocessSubNodes);
+                    sAPGetTreeNodespropCount++;
+                }
+
+                sAPGetTreeNodespropCount++;
+            }
+            else
+            {
+                sAPGetTreeNodes["ProcessSubNodes"] = true;
                 sAPGetTreeNodespropCount++;
             }
 
@@ -2059,13 +3329,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPDoubleClickTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression);
+                    sAPDoubleClickTreeItempropCount++;
+                }
+
+                sAPDoubleClickTreeItempropCount++;
+            }
+            else
+            {
+                sAPDoubleClickTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPDoubleClickTreeItempropCount++;
             }
 
             if (sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPDoubleClickTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPDoubleClickTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPDoubleClickTreeItempropCount++;
+                }
+
+                sAPDoubleClickTreeItempropCount++;
+            }
+            else
+            {
+                sAPDoubleClickTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPDoubleClickTreeItempropCount++;
             }
 
@@ -2083,13 +3373,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPDoubleClickTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPDoubleClickTreeItempropCount++;
+                }
+
+                sAPDoubleClickTreeItempropCount++;
+            }
+            else
+            {
+                sAPDoubleClickTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPDoubleClickTreeItempropCount++;
             }
 
             if (sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDoubleClickTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPDoubleClickTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPDoubleClickTreeItempropCount++;
+                }
+
+                sAPDoubleClickTreeItempropCount++;
+            }
+            else
+            {
+                sAPDoubleClickTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPDoubleClickTreeItempropCount++;
             }
 
@@ -2133,13 +3443,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSelectTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPSelectTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPSelectTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPSelectTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsRegularExpression);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPSelectTreeItempropCount++;
             }
 
             if (sAPSelectTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPSelectTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPSelectTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPSelectTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPSelectTreeItempropCount++;
             }
 
@@ -2157,25 +3487,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSelectTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSelectTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPSelectTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSelectTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSelectTreeItempropCount++;
             }
 
             if (sAPSelectTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSelectTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPSelectTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSelectTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSelectTreeItempropCount++;
             }
 
             if (sAPSelectTreeItemselect != null)
             {
-                sAPSelectTreeItem["Select"] = ExpressionConverter.ConvertO(sAPSelectTreeItemselect);
+                if (sAPSelectTreeItemselect != null)
+                {
+                    sAPSelectTreeItem["Select"] = ExpressionConverter.ConvertO(sAPSelectTreeItemselect);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["Select"] = true;
                 sAPSelectTreeItempropCount++;
             }
 
             if (sAPSelectTreeItemdeselectAllFirst != null)
             {
-                sAPSelectTreeItem["DeselectAllFirst"] = ExpressionConverter.ConvertO(sAPSelectTreeItemdeselectAllFirst);
+                if (sAPSelectTreeItemdeselectAllFirst != null)
+                {
+                    sAPSelectTreeItem["DeselectAllFirst"] = ExpressionConverter.ConvertO(sAPSelectTreeItemdeselectAllFirst);
+                    sAPSelectTreeItempropCount++;
+                }
+
+                sAPSelectTreeItempropCount++;
+            }
+            else
+            {
+                sAPSelectTreeItem["DeselectAllFirst"] = false;
                 sAPSelectTreeItempropCount++;
             }
 
@@ -2219,19 +3589,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPExpandTreeNodesearchNodeTextIsRegularExpression != null)
             {
-                sAPExpandTreeNode["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsRegularExpression);
+                if (sAPExpandTreeNodesearchNodeTextIsRegularExpression != null)
+                {
+                    sAPExpandTreeNode["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsRegularExpression);
+                    sAPExpandTreeNodepropCount++;
+                }
+
+                sAPExpandTreeNodepropCount++;
+            }
+            else
+            {
+                sAPExpandTreeNode["SearchNodeTextIsRegularExpression"] = false;
                 sAPExpandTreeNodepropCount++;
             }
 
             if (sAPExpandTreeNodesearchNodeTextIsCaseSensitive != null)
             {
-                sAPExpandTreeNode["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsCaseSensitive);
+                if (sAPExpandTreeNodesearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPExpandTreeNode["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPExpandTreeNodesearchNodeTextIsCaseSensitive);
+                    sAPExpandTreeNodepropCount++;
+                }
+
+                sAPExpandTreeNodepropCount++;
+            }
+            else
+            {
+                sAPExpandTreeNode["SearchNodeTextIsCaseSensitive"] = false;
                 sAPExpandTreeNodepropCount++;
             }
 
             if (sAPExpandTreeNodeexpand != null)
             {
-                sAPExpandTreeNode["Expand"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeexpand);
+                if (sAPExpandTreeNodeexpand != null)
+                {
+                    sAPExpandTreeNode["Expand"] = ExpressionConverter.ConvertO(sAPExpandTreeNodeexpand);
+                    sAPExpandTreeNodepropCount++;
+                }
+
+                sAPExpandTreeNodepropCount++;
+            }
+            else
+            {
+                sAPExpandTreeNode["Expand"] = true;
                 sAPExpandTreeNodepropCount++;
             }
 
@@ -2317,13 +3717,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPOpenContextMenuOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression);
+                    sAPOpenContextMenuOnTreeItempropCount++;
+                }
+
+                sAPOpenContextMenuOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
             if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPOpenContextMenuOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPOpenContextMenuOnTreeItempropCount++;
+                }
+
+                sAPOpenContextMenuOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPOpenContextMenuOnTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
@@ -2341,13 +3761,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPOpenContextMenuOnTreeItempropCount++;
+                }
+
+                sAPOpenContextMenuOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
             if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPOpenContextMenuOnTreeItempropCount++;
+                }
+
+                sAPOpenContextMenuOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPOpenContextMenuOnTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPOpenContextMenuOnTreeItempropCount++;
             }
 
@@ -2373,37 +3813,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetTreeTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentssearchSAPElementId);
             if (sAPGetTreeTextContentsfirstRowToReturn != null)
             {
-                sAPGetTreeTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstRowToReturn);
+                if (sAPGetTreeTextContentsfirstRowToReturn != null)
+                {
+                    sAPGetTreeTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstRowToReturn);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["FirstRowToReturn"] = 1;
                 sAPGetTreeTextContentspropCount++;
             }
 
             if (sAPGetTreeTextContentsmaxRowsToReturn != null)
             {
-                sAPGetTreeTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxRowsToReturn);
+                if (sAPGetTreeTextContentsmaxRowsToReturn != null)
+                {
+                    sAPGetTreeTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxRowsToReturn);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["MaxRowsToReturn"] = 0;
                 sAPGetTreeTextContentspropCount++;
             }
 
             if (sAPGetTreeTextContentsfirstColumnToReturn != null)
             {
-                sAPGetTreeTextContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstColumnToReturn);
+                if (sAPGetTreeTextContentsfirstColumnToReturn != null)
+                {
+                    sAPGetTreeTextContents["FirstColumnToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsfirstColumnToReturn);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["FirstColumnToReturn"] = 1;
                 sAPGetTreeTextContentspropCount++;
             }
 
             if (sAPGetTreeTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetTreeTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxColumnsToReturn);
+                if (sAPGetTreeTextContentsmaxColumnsToReturn != null)
+                {
+                    sAPGetTreeTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsmaxColumnsToReturn);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["MaxColumnsToReturn"] = 0;
                 sAPGetTreeTextContentspropCount++;
             }
 
             if (sAPGetTreeTextContentsuseColumnHeadersFromTree != null)
             {
-                sAPGetTreeTextContents["UseColumnHeadersFromTree"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsuseColumnHeadersFromTree);
+                if (sAPGetTreeTextContentsuseColumnHeadersFromTree != null)
+                {
+                    sAPGetTreeTextContents["UseColumnHeadersFromTree"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsuseColumnHeadersFromTree);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["UseColumnHeadersFromTree"] = false;
                 sAPGetTreeTextContentspropCount++;
             }
 
             if (sAPGetTreeTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetTreeTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsreturnRowIndexInOutputCollection);
+                if (sAPGetTreeTextContentsreturnRowIndexInOutputCollection != null)
+                {
+                    sAPGetTreeTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetTreeTextContentsreturnRowIndexInOutputCollection);
+                    sAPGetTreeTextContentspropCount++;
+                }
+
+                sAPGetTreeTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetTreeTextContents["ReturnRowIndexInOutputCollection"] = false;
                 sAPGetTreeTextContentspropCount++;
             }
 
@@ -2447,19 +3947,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression);
+                if (sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSetTreeColumnWidth["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression);
+                    sAPSetTreeColumnWidthpropCount++;
+                }
+
+                sAPSetTreeColumnWidthpropCount++;
+            }
+            else
+            {
+                sAPSetTreeColumnWidth["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSetTreeColumnWidthpropCount++;
             }
 
             if (sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetTreeColumnWidth["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive);
+                if (sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSetTreeColumnWidth["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive);
+                    sAPSetTreeColumnWidthpropCount++;
+                }
+
+                sAPSetTreeColumnWidthpropCount++;
+            }
+            else
+            {
+                sAPSetTreeColumnWidth["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSetTreeColumnWidthpropCount++;
             }
 
             if (sAPSetTreeColumnWidthcolumnWidthInPixels != null)
             {
-                sAPSetTreeColumnWidth["ColumnWidthInPixels"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthcolumnWidthInPixels);
+                if (sAPSetTreeColumnWidthcolumnWidthInPixels != null)
+                {
+                    sAPSetTreeColumnWidth["ColumnWidthInPixels"] = ExpressionConverter.ConvertO(sAPSetTreeColumnWidthcolumnWidthInPixels);
+                    sAPSetTreeColumnWidthpropCount++;
+                }
+
+                sAPSetTreeColumnWidthpropCount++;
+            }
+            else
+            {
+                sAPSetTreeColumnWidth["ColumnWidthInPixels"] = 200;
                 sAPSetTreeColumnWidthpropCount++;
             }
 
@@ -2503,13 +4033,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPPressButtonOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression);
+                    sAPPressButtonOnTreeItempropCount++;
+                }
+
+                sAPPressButtonOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPPressButtonOnTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPPressButtonOnTreeItempropCount++;
             }
 
             if (sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPPressButtonOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPPressButtonOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPPressButtonOnTreeItempropCount++;
+                }
+
+                sAPPressButtonOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPPressButtonOnTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPPressButtonOnTreeItempropCount++;
             }
 
@@ -2527,19 +4077,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPPressButtonOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPPressButtonOnTreeItempropCount++;
+                }
+
+                sAPPressButtonOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPPressButtonOnTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPPressButtonOnTreeItempropCount++;
             }
 
             if (sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressButtonOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPPressButtonOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPPressButtonOnTreeItempropCount++;
+                }
+
+                sAPPressButtonOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPPressButtonOnTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPPressButtonOnTreeItempropCount++;
             }
 
             if (sAPPressButtonOnTreeItemforce != null)
             {
-                sAPPressButtonOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemforce);
+                if (sAPPressButtonOnTreeItemforce != null)
+                {
+                    sAPPressButtonOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPPressButtonOnTreeItemforce);
+                    sAPPressButtonOnTreeItempropCount++;
+                }
+
+                sAPPressButtonOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPPressButtonOnTreeItem["Force"] = false;
                 sAPPressButtonOnTreeItempropCount++;
             }
 
@@ -2583,13 +4163,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPClickLinkOnTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression);
+                    sAPClickLinkOnTreeItempropCount++;
+                }
+
+                sAPClickLinkOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPClickLinkOnTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPClickLinkOnTreeItempropCount++;
             }
 
             if (sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPClickLinkOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPClickLinkOnTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPClickLinkOnTreeItempropCount++;
+                }
+
+                sAPClickLinkOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPClickLinkOnTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPClickLinkOnTreeItempropCount++;
             }
 
@@ -2607,19 +4207,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPClickLinkOnTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPClickLinkOnTreeItempropCount++;
+                }
+
+                sAPClickLinkOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPClickLinkOnTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPClickLinkOnTreeItempropCount++;
             }
 
             if (sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPClickLinkOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPClickLinkOnTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPClickLinkOnTreeItempropCount++;
+                }
+
+                sAPClickLinkOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPClickLinkOnTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPClickLinkOnTreeItempropCount++;
             }
 
             if (sAPClickLinkOnTreeItemforce != null)
             {
-                sAPClickLinkOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemforce);
+                if (sAPClickLinkOnTreeItemforce != null)
+                {
+                    sAPClickLinkOnTreeItem["Force"] = ExpressionConverter.ConvertO(sAPClickLinkOnTreeItemforce);
+                    sAPClickLinkOnTreeItempropCount++;
+                }
+
+                sAPClickLinkOnTreeItempropCount++;
+            }
+            else
+            {
+                sAPClickLinkOnTreeItem["Force"] = false;
                 sAPClickLinkOnTreeItempropCount++;
             }
 
@@ -2663,13 +4293,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPCheckTreeItemsearchNodeTextIsRegularExpression != null)
             {
-                sAPCheckTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsRegularExpression);
+                if (sAPCheckTreeItemsearchNodeTextIsRegularExpression != null)
+                {
+                    sAPCheckTreeItem["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsRegularExpression);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["SearchNodeTextIsRegularExpression"] = false;
                 sAPCheckTreeItempropCount++;
             }
 
             if (sAPCheckTreeItemsearchNodeTextIsCaseSensitive != null)
             {
-                sAPCheckTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsCaseSensitive);
+                if (sAPCheckTreeItemsearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPCheckTreeItem["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchNodeTextIsCaseSensitive);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["SearchNodeTextIsCaseSensitive"] = false;
                 sAPCheckTreeItempropCount++;
             }
 
@@ -2687,25 +4337,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPCheckTreeItemsearchColumnTitleIsRegularExpression != null)
             {
-                sAPCheckTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsRegularExpression);
+                if (sAPCheckTreeItemsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPCheckTreeItem["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsRegularExpression);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["SearchColumnTitleIsRegularExpression"] = false;
                 sAPCheckTreeItempropCount++;
             }
 
             if (sAPCheckTreeItemsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPCheckTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive);
+                if (sAPCheckTreeItemsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPCheckTreeItem["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPCheckTreeItempropCount++;
             }
 
             if (sAPCheckTreeItemcheckItem != null)
             {
-                sAPCheckTreeItem["CheckItem"] = ExpressionConverter.ConvertO(sAPCheckTreeItemcheckItem);
+                if (sAPCheckTreeItemcheckItem != null)
+                {
+                    sAPCheckTreeItem["CheckItem"] = ExpressionConverter.ConvertO(sAPCheckTreeItemcheckItem);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["CheckItem"] = true;
                 sAPCheckTreeItempropCount++;
             }
 
             if (sAPCheckTreeItemforce != null)
             {
-                sAPCheckTreeItem["Force"] = ExpressionConverter.ConvertO(sAPCheckTreeItemforce);
+                if (sAPCheckTreeItemforce != null)
+                {
+                    sAPCheckTreeItem["Force"] = ExpressionConverter.ConvertO(sAPCheckTreeItemforce);
+                    sAPCheckTreeItempropCount++;
+                }
+
+                sAPCheckTreeItempropCount++;
+            }
+            else
+            {
+                sAPCheckTreeItem["Force"] = false;
                 sAPCheckTreeItempropCount++;
             }
 
@@ -2769,13 +4459,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression != null)
             {
-                sAPGetTreeItemProperties["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression);
+                if (sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression != null)
+                {
+                    sAPGetTreeItemProperties["SearchNodeTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression);
+                    sAPGetTreeItemPropertiespropCount++;
+                }
+
+                sAPGetTreeItemPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetTreeItemProperties["SearchNodeTextIsRegularExpression"] = false;
                 sAPGetTreeItemPropertiespropCount++;
             }
 
             if (sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive != null)
             {
-                sAPGetTreeItemProperties["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive);
+                if (sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive != null)
+                {
+                    sAPGetTreeItemProperties["SearchNodeTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive);
+                    sAPGetTreeItemPropertiespropCount++;
+                }
+
+                sAPGetTreeItemPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetTreeItemProperties["SearchNodeTextIsCaseSensitive"] = false;
                 sAPGetTreeItemPropertiespropCount++;
             }
 
@@ -2793,13 +4503,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetTreeItemProperties["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression);
+                if (sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGetTreeItemProperties["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression);
+                    sAPGetTreeItemPropertiespropCount++;
+                }
+
+                sAPGetTreeItemPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetTreeItemProperties["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGetTreeItemPropertiespropCount++;
             }
 
             if (sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetTreeItemProperties["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive);
+                if (sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGetTreeItemProperties["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive);
+                    sAPGetTreeItemPropertiespropCount++;
+                }
+
+                sAPGetTreeItemPropertiespropCount++;
+            }
+            else
+            {
+                sAPGetTreeItemProperties["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGetTreeItemPropertiespropCount++;
             }
 
@@ -2857,19 +4587,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressShellToolbarElementsearchToolbarElementIndex != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarElementIndex);
+                if (sAPPressShellToolbarElementsearchToolbarElementIndex != null)
+                {
+                    sAPPressShellToolbarElement["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarElementIndex);
+                    sAPPressShellToolbarElementpropCount++;
+                }
+
+                sAPPressShellToolbarElementpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElement["SearchToolbarElementIndex"] = 0;
                 sAPPressShellToolbarElementpropCount++;
             }
 
             if (sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression);
+                if (sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression != null)
+                {
+                    sAPPressShellToolbarElement["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression);
+                    sAPPressShellToolbarElementpropCount++;
+                }
+
+                sAPPressShellToolbarElementpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElement["SearchToolbarTextIsRegularExpression"] = false;
                 sAPPressShellToolbarElementpropCount++;
             }
 
             if (sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPPressShellToolbarElement["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive);
+                if (sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive != null)
+                {
+                    sAPPressShellToolbarElement["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive);
+                    sAPPressShellToolbarElementpropCount++;
+                }
+
+                sAPPressShellToolbarElementpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElement["SearchToolbarTextIsCaseSensitive"] = false;
                 sAPPressShellToolbarElementpropCount++;
             }
 
@@ -2907,19 +4667,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex);
+                if (sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex != null)
+                {
+                    sAPPressShellToolbarElementContextButton["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex);
+                    sAPPressShellToolbarElementContextButtonpropCount++;
+                }
+
+                sAPPressShellToolbarElementContextButtonpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElementContextButton["SearchToolbarElementIndex"] = 0;
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
             if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression);
+                if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression != null)
+                {
+                    sAPPressShellToolbarElementContextButton["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression);
+                    sAPPressShellToolbarElementContextButtonpropCount++;
+                }
+
+                sAPPressShellToolbarElementContextButtonpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsRegularExpression"] = false;
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
             if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive);
+                if (sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive != null)
+                {
+                    sAPPressShellToolbarElementContextButton["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive);
+                    sAPPressShellToolbarElementContextButtonpropCount++;
+                }
+
+                sAPPressShellToolbarElementContextButtonpropCount++;
+            }
+            else
+            {
+                sAPPressShellToolbarElementContextButton["SearchToolbarTextIsCaseSensitive"] = false;
                 sAPPressShellToolbarElementContextButtonpropCount++;
             }
 
@@ -2957,19 +4747,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSelectShellToolbarMenuItemsearchToolbarElementIndex != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex);
+                if (sAPSelectShellToolbarMenuItemsearchToolbarElementIndex != null)
+                {
+                    sAPSelectShellToolbarMenuItem["SearchToolbarElementIndex"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex);
+                    sAPSelectShellToolbarMenuItempropCount++;
+                }
+
+                sAPSelectShellToolbarMenuItempropCount++;
+            }
+            else
+            {
+                sAPSelectShellToolbarMenuItem["SearchToolbarElementIndex"] = 0;
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
             if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression);
+                if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression != null)
+                {
+                    sAPSelectShellToolbarMenuItem["SearchToolbarTextIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression);
+                    sAPSelectShellToolbarMenuItempropCount++;
+                }
+
+                sAPSelectShellToolbarMenuItempropCount++;
+            }
+            else
+            {
+                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsRegularExpression"] = false;
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
             if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive != null)
             {
-                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive);
+                if (sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive != null)
+                {
+                    sAPSelectShellToolbarMenuItem["SearchToolbarTextIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive);
+                    sAPSelectShellToolbarMenuItempropCount++;
+                }
+
+                sAPSelectShellToolbarMenuItempropCount++;
+            }
+            else
+            {
+                sAPSelectShellToolbarMenuItem["SearchToolbarTextIsCaseSensitive"] = false;
                 sAPSelectShellToolbarMenuItempropCount++;
             }
 
@@ -3029,13 +4849,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPGetSAPGridViewCellContentsAtIndexpropCount++;
+                }
+
+                sAPGetSAPGridViewCellContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
             if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPGetSAPGridViewCellContentsAtIndexpropCount++;
+                }
+
+                sAPGetSAPGridViewCellContentsAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPGridViewCellContentsAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGetSAPGridViewCellContentsAtIndexpropCount++;
             }
 
@@ -3075,13 +4915,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
+                }
+
+                sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
             if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
+                }
+
+                sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGetSAPGridViewCellPropertiesAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGetSAPGridViewCellPropertiesAtIndexpropCount++;
             }
 
@@ -3121,25 +4981,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour);
+                if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour != null)
+                {
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenColour"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour);
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenColour"] = "#009FDE";
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels != null)
             {
-                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels);
+                if (sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels != null)
+                {
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenThicknessPixels"] = ExpressionConverter.ConvertO(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels);
+                    sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDrawRectangleAroundSAPGridViewCellAtIndex["PenThicknessPixels"] = 4;
                 sAPDrawRectangleAroundSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3179,55 +5079,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = false;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = false;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = true;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = 0.5;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = 0;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY);
+                if (sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
+                {
+                    sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY);
+                    sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = 0;
                 sAPGlobalLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3273,55 +5263,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = false;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = false;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleWindow"] = true;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ToggleDelay"] = 0.5;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetX"] = 0;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY);
+                if (sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY != null)
+                {
+                    sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY);
+                    sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalRightClickSAPGridViewCellAtIndex["ClickOffsetY"] = 0;
                 sAPGlobalRightClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3367,55 +5447,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["SetElementWindowTopMost"] = false;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["BringElementWindowToFront"] = false;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleWindow"] = true;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ToggleDelay"] = 0.5;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetX"] = 0;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["ClickOffsetY"] = 0;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3427,7 +5597,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds != null)
             {
-                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds);
+                if (sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds != null)
+                {
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["DoubleClickDelayInMilliseconds"] = ExpressionConverter.ConvertO(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds);
+                    sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPGlobalDoubleLeftClickSAPGridViewCellAtIndex["DoubleClickDelayInMilliseconds"] = 10;
                 sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3487,13 +5667,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3533,13 +5733,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPDoubleClickSAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPDoubleClickSAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3579,13 +5799,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPPressSAPGridViewCellButtonAtIndexpropCount++;
+                }
+
+                sAPPressSAPGridViewCellButtonAtIndexpropCount++;
+            }
+            else
+            {
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
             if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPPressSAPGridViewCellButtonAtIndexpropCount++;
+                }
+
+                sAPPressSAPGridViewCellButtonAtIndexpropCount++;
+            }
+            else
+            {
+                sAPPressSAPGridViewCellButtonAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPPressSAPGridViewCellButtonAtIndexpropCount++;
             }
 
@@ -3625,19 +5865,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
             if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPGridViewCellCheckboxAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
             if (sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement != null)
             {
-                sAPCheckSAPGridViewCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement);
+                if (sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement != null)
+                {
+                    sAPCheckSAPGridViewCellCheckboxAtIndex["CheckCellElement"] = ExpressionConverter.ConvertO(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement);
+                    sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+                }
+
+                sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
+            }
+            else
+            {
+                sAPCheckSAPGridViewCellCheckboxAtIndex["CheckCellElement"] = true;
                 sAPCheckSAPGridViewCellCheckboxAtIndexpropCount++;
             }
 
@@ -3677,13 +5947,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
+                    sAPModifySAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPModifySAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsRegularExpression"] = false;
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
             if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                if (sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
+                    sAPModifySAPGridViewCellAtIndexpropCount++;
+                }
+
+                sAPModifySAPGridViewCellAtIndexpropCount++;
+            }
+            else
+            {
+                sAPModifySAPGridViewCellAtIndex["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPModifySAPGridViewCellAtIndexpropCount++;
             }
 
@@ -3749,13 +6039,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression);
+                if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression);
+                    sAPPressSAPGridViewColumnHeaderpropCount++;
+                }
+
+                sAPPressSAPGridViewColumnHeaderpropCount++;
+            }
+            else
+            {
+                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsRegularExpression"] = false;
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
             if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive != null)
             {
-                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive);
+                if (sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive);
+                    sAPPressSAPGridViewColumnHeaderpropCount++;
+                }
+
+                sAPPressSAPGridViewColumnHeaderpropCount++;
+            }
+            else
+            {
+                sAPPressSAPGridViewColumnHeader["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPPressSAPGridViewColumnHeaderpropCount++;
             }
 
@@ -3805,7 +6115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPSelectSAPGridViewRow["RowIndex"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowrowIndex);
             if (sAPSelectSAPGridViewRowsetAsCurrentRow != null)
             {
-                sAPSelectSAPGridViewRow["SetAsCurrentRow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowsetAsCurrentRow);
+                if (sAPSelectSAPGridViewRowsetAsCurrentRow != null)
+                {
+                    sAPSelectSAPGridViewRow["SetAsCurrentRow"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewRowsetAsCurrentRow);
+                    sAPSelectSAPGridViewRowpropCount++;
+                }
+
+                sAPSelectSAPGridViewRowpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewRow["SetAsCurrentRow"] = true;
                 sAPSelectSAPGridViewRowpropCount++;
             }
 
@@ -3865,13 +6185,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression);
+                if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression);
+                    sAPSetSAPGridViewCurrentColumnpropCount++;
+                }
+
+                sAPSetSAPGridViewCurrentColumnpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
             if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive);
+                if (sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive);
+                    sAPSetSAPGridViewCurrentColumnpropCount++;
+                }
+
+                sAPSetSAPGridViewCurrentColumnpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewCurrentColumn["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSetSAPGridViewCurrentColumnpropCount++;
             }
 
@@ -3911,13 +6251,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression);
+                if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression);
+                    sAPSetSAPGridViewCurrentCellpropCount++;
+                }
+
+                sAPSetSAPGridViewCurrentCellpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
             if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive);
+                if (sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive);
+                    sAPSetSAPGridViewCurrentCellpropCount++;
+                }
+
+                sAPSetSAPGridViewCurrentCellpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewCurrentCell["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSetSAPGridViewCurrentCellpropCount++;
             }
 
@@ -3955,31 +6315,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression);
+                if (sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSelectSAPGridViewColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression);
+                    sAPSelectSAPGridViewColumnpropCount++;
+                }
+
+                sAPSelectSAPGridViewColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewColumn["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
             if (sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSelectSAPGridViewColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive);
+                if (sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSelectSAPGridViewColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive);
+                    sAPSelectSAPGridViewColumnpropCount++;
+                }
+
+                sAPSelectSAPGridViewColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewColumn["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
             if (sAPSelectSAPGridViewColumnselectColumn != null)
             {
-                sAPSelectSAPGridViewColumn["SelectColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnselectColumn);
+                if (sAPSelectSAPGridViewColumnselectColumn != null)
+                {
+                    sAPSelectSAPGridViewColumn["SelectColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnselectColumn);
+                    sAPSelectSAPGridViewColumnpropCount++;
+                }
+
+                sAPSelectSAPGridViewColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewColumn["SelectColumn"] = true;
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
             if (sAPSelectSAPGridViewColumnsetAsCurrentColumn != null)
             {
-                sAPSelectSAPGridViewColumn["SetAsCurrentColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsetAsCurrentColumn);
+                if (sAPSelectSAPGridViewColumnsetAsCurrentColumn != null)
+                {
+                    sAPSelectSAPGridViewColumn["SetAsCurrentColumn"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnsetAsCurrentColumn);
+                    sAPSelectSAPGridViewColumnpropCount++;
+                }
+
+                sAPSelectSAPGridViewColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewColumn["SetAsCurrentColumn"] = false;
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
             if (sAPSelectSAPGridViewColumnclearSelectionFirst != null)
             {
-                sAPSelectSAPGridViewColumn["ClearSelectionFirst"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnclearSelectionFirst);
+                if (sAPSelectSAPGridViewColumnclearSelectionFirst != null)
+                {
+                    sAPSelectSAPGridViewColumn["ClearSelectionFirst"] = ExpressionConverter.ConvertO(sAPSelectSAPGridViewColumnclearSelectionFirst);
+                    sAPSelectSAPGridViewColumnpropCount++;
+                }
+
+                sAPSelectSAPGridViewColumnpropCount++;
+            }
+            else
+            {
+                sAPSelectSAPGridViewColumn["ClearSelectionFirst"] = false;
                 sAPSelectSAPGridViewColumnpropCount++;
             }
 
@@ -4057,13 +6467,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression);
+                if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression);
+                    sAPSetSAPGridViewFirstVisibleColumnpropCount++;
+                }
+
+                sAPSetSAPGridViewFirstVisibleColumnpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsRegularExpression"] = false;
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
             if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive != null)
             {
-                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive);
+                if (sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive);
+                    sAPSetSAPGridViewFirstVisibleColumnpropCount++;
+                }
+
+                sAPSetSAPGridViewFirstVisibleColumnpropCount++;
+            }
+            else
+            {
+                sAPSetSAPGridViewFirstVisibleColumn["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPSetSAPGridViewFirstVisibleColumnpropCount++;
             }
 
@@ -4103,13 +6533,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression);
+                if (sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGridViewOpenContextMenu["SearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression);
+                    sAPGridViewOpenContextMenupropCount++;
+                }
+
+                sAPGridViewOpenContextMenupropCount++;
+            }
+            else
+            {
+                sAPGridViewOpenContextMenu["SearchColumnTitleIsRegularExpression"] = false;
                 sAPGridViewOpenContextMenupropCount++;
             }
 
             if (sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGridViewOpenContextMenu["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive);
+                if (sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGridViewOpenContextMenu["SearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive);
+                    sAPGridViewOpenContextMenupropCount++;
+                }
+
+                sAPGridViewOpenContextMenupropCount++;
+            }
+            else
+            {
+                sAPGridViewOpenContextMenu["SearchColumnTitleIsCaseSensitive"] = false;
                 sAPGridViewOpenContextMenupropCount++;
             }
 
@@ -4135,13 +6585,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
             sAPGetGridViewTextContents["SearchSAPElementId"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentssearchSAPElementId);
             if (sAPGetGridViewTextContentsfirstRowToReturn != null)
             {
-                sAPGetGridViewTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstRowToReturn);
+                if (sAPGetGridViewTextContentsfirstRowToReturn != null)
+                {
+                    sAPGetGridViewTextContents["FirstRowToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstRowToReturn);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["FirstRowToReturn"] = 1;
                 sAPGetGridViewTextContentspropCount++;
             }
 
             if (sAPGetGridViewTextContentsmaxRowsToReturn != null)
             {
-                sAPGetGridViewTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxRowsToReturn);
+                if (sAPGetGridViewTextContentsmaxRowsToReturn != null)
+                {
+                    sAPGetGridViewTextContents["MaxRowsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxRowsToReturn);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["MaxRowsToReturn"] = 0;
                 sAPGetGridViewTextContentspropCount++;
             }
 
@@ -4159,31 +6629,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression);
+                if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression != null)
+                {
+                    sAPGetGridViewTextContents["FirstSearchColumnTitleIsRegularExpression"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["FirstSearchColumnTitleIsRegularExpression"] = false;
                 sAPGetGridViewTextContentspropCount++;
             }
 
             if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive != null)
             {
-                sAPGetGridViewTextContents["FirstSearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive);
+                if (sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive != null)
+                {
+                    sAPGetGridViewTextContents["FirstSearchColumnTitleIsCaseSensitive"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["FirstSearchColumnTitleIsCaseSensitive"] = false;
                 sAPGetGridViewTextContentspropCount++;
             }
 
             if (sAPGetGridViewTextContentsmaxColumnsToReturn != null)
             {
-                sAPGetGridViewTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxColumnsToReturn);
+                if (sAPGetGridViewTextContentsmaxColumnsToReturn != null)
+                {
+                    sAPGetGridViewTextContents["MaxColumnsToReturn"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsmaxColumnsToReturn);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["MaxColumnsToReturn"] = 0;
                 sAPGetGridViewTextContentspropCount++;
             }
 
             if (sAPGetGridViewTextContentsuseColumnHeadersFromTable != null)
             {
-                sAPGetGridViewTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsuseColumnHeadersFromTable);
+                if (sAPGetGridViewTextContentsuseColumnHeadersFromTable != null)
+                {
+                    sAPGetGridViewTextContents["UseColumnHeadersFromTable"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsuseColumnHeadersFromTable);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["UseColumnHeadersFromTable"] = true;
                 sAPGetGridViewTextContentspropCount++;
             }
 
             if (sAPGetGridViewTextContentsreturnRowIndexInOutputCollection != null)
             {
-                sAPGetGridViewTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection);
+                if (sAPGetGridViewTextContentsreturnRowIndexInOutputCollection != null)
+                {
+                    sAPGetGridViewTextContents["ReturnRowIndexInOutputCollection"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["ReturnRowIndexInOutputCollection"] = false;
                 sAPGetGridViewTextContentspropCount++;
             }
 
@@ -4195,7 +6715,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
 
             if (sAPGetGridViewTextContentscheckedElementValue != null)
             {
-                sAPGetGridViewTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentscheckedElementValue);
+                if (sAPGetGridViewTextContentscheckedElementValue != null)
+                {
+                    sAPGetGridViewTextContents["CheckedElementValue"] = ExpressionConverter.ConvertO(sAPGetGridViewTextContentscheckedElementValue);
+                    sAPGetGridViewTextContentspropCount++;
+                }
+
+                sAPGetGridViewTextContentspropCount++;
+            }
+            else
+            {
+                sAPGetGridViewTextContents["CheckedElementValue"] = "True";
                 sAPGetGridViewTextContentspropCount++;
             }
 

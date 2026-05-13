@@ -56,13 +56,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var postprocessConfigObjectpropCount = 0;
             if (requestpostprocessingtheOutputFormat != null)
             {
-                postprocessConfigObject["outputFormat"] = ExpressionConverter.ConvertO(requestpostprocessingtheOutputFormat);
+                if (requestpostprocessingtheOutputFormat != null)
+                {
+                    postprocessConfigObject["outputFormat"] = ExpressionConverter.ConvertO(requestpostprocessingtheOutputFormat);
+                    postprocessConfigObjectpropCount++;
+                }
+
+                postprocessConfigObjectpropCount++;
+            }
+            else
+            {
+                postprocessConfigObject["outputFormat"] = "v2";
                 postprocessConfigObjectpropCount++;
             }
 
             if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
             {
-                postprocessConfigObject["strategy"] = ExpressionConverter.ConvertO(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
+                if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
+                {
+                    postprocessConfigObject["strategy"] = ExpressionConverter.ConvertO(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
+                    postprocessConfigObjectpropCount++;
+                }
+
+                postprocessConfigObjectpropCount++;
+            }
+            else
+            {
+                postprocessConfigObject["strategy"] = "BEST_FIRST";
                 postprocessConfigObjectpropCount++;
             }
 

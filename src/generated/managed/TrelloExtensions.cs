@@ -122,154 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card> UpdateCardV2(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> updateCardname, Expression<Func<string>> updateCarddescription = null, Expression<Func<bool>> updateCardisClosed = null, Expression<Func<string[]>> updateCardmemberIds = null, Expression<Func<string>> updateCardcoverAttachmentIds = null, Expression<Func<string>> updateCardboardId = null, Expression<Func<string>> updateCardlistId = null, Expression<Func<string>> updateCardposition = null, Expression<Func<string>> updateCarddueDate = null, Expression<Func<bool>> updateCardsubscribedToCard = null)
-        {
-            var apiCallPath = String.Format("/v2/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var updateCard = new JObject();
-            var updateCardpropCount = 0;
-            updateCardpropCount++;
-            updateCard["name"] = ExpressionConverter.ConvertO(updateCardname);
-            if (updateCarddescription != null)
-            {
-                updateCard["desc"] = ExpressionConverter.ConvertO(updateCarddescription);
-                updateCardpropCount++;
-            }
-
-            if (updateCardisClosed != null)
-            {
-                updateCard["closed"] = ExpressionConverter.ConvertO(updateCardisClosed);
-                updateCardpropCount++;
-            }
-
-            if (updateCardmemberIds != null)
-            {
-                updateCard["idMembersArray"] = ExpressionConverter.ConvertO(updateCardmemberIds);
-                updateCardpropCount++;
-            }
-
-            if (updateCardcoverAttachmentIds != null)
-            {
-                updateCard["idAttachmentCover"] = ExpressionConverter.ConvertO(updateCardcoverAttachmentIds);
-                updateCardpropCount++;
-            }
-
-            if (updateCardboardId != null)
-            {
-                updateCard["idBoard"] = ExpressionConverter.ConvertO(updateCardboardId);
-                updateCardpropCount++;
-            }
-
-            if (updateCardlistId != null)
-            {
-                updateCard["idList"] = ExpressionConverter.ConvertO(updateCardlistId);
-                updateCardpropCount++;
-            }
-
-            if (updateCardposition != null)
-            {
-                updateCard["pos"] = ExpressionConverter.ConvertO(updateCardposition);
-                updateCardpropCount++;
-            }
-
-            if (updateCarddueDate != null)
-            {
-                updateCard["due"] = ExpressionConverter.ConvertO(updateCarddueDate);
-                updateCardpropCount++;
-            }
-
-            if (updateCardsubscribedToCard != null)
-            {
-                updateCard["subscribed"] = ExpressionConverter.ConvertO(updateCardsubscribedToCard);
-                updateCardpropCount++;
-            }
-
-            if (updateCardpropCount > 0)
-            {
-                callPayload.Body = updateCard;
-            }
-
-            return new ApiConnectionAction<Card>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card> CreateCardV2(Expression<Func<string>> boardId, Expression<Func<string>> newCardparentListId, Expression<Func<string>> newCardcardName, Expression<Func<string>> newCardcardDescription = null, Expression<Func<newCardcardPositionInput>> newCardcardPosition = null, Expression<Func<string[]>> newCardmemberIds = null, Expression<Func<string[]>> newCardlabelIds = null, Expression<Func<string>> newCardsourceUrl = null, Expression<Func<string>> newCardsourceFile = null, Expression<Func<string>> newCardsourceCardId = null, Expression<Func<string>> newCardpropertiesFromSourceCard = null, Expression<Func<string>> newCarddueDate = null)
-        {
-            var apiCallPath = "/v2/cards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            var newCard = new JObject();
-            var newCardpropCount = 0;
-            newCardpropCount++;
-            newCard["idList"] = ExpressionConverter.ConvertO(newCardparentListId);
-            newCardpropCount++;
-            newCard["name"] = ExpressionConverter.ConvertO(newCardcardName);
-            if (newCardcardDescription != null)
-            {
-                newCard["desc"] = ExpressionConverter.ConvertO(newCardcardDescription);
-                newCardpropCount++;
-            }
-
-            if (newCardcardPosition != null)
-            {
-                newCard["pos"] = ExpressionConverter.ConvertO(newCardcardPosition);
-                newCardpropCount++;
-            }
-
-            if (newCardmemberIds != null)
-            {
-                newCard["idMembersArray"] = ExpressionConverter.ConvertO(newCardmemberIds);
-                newCardpropCount++;
-            }
-
-            if (newCardlabelIds != null)
-            {
-                newCard["idLabelsArray"] = ExpressionConverter.ConvertO(newCardlabelIds);
-                newCardpropCount++;
-            }
-
-            if (newCardsourceUrl != null)
-            {
-                newCard["urlSource"] = ExpressionConverter.ConvertO(newCardsourceUrl);
-                newCardpropCount++;
-            }
-
-            if (newCardsourceFile != null)
-            {
-                newCard["fileSource"] = ExpressionConverter.ConvertO(newCardsourceFile);
-                newCardpropCount++;
-            }
-
-            if (newCardsourceCardId != null)
-            {
-                newCard["idCardSource"] = ExpressionConverter.ConvertO(newCardsourceCardId);
-                newCardpropCount++;
-            }
-
-            if (newCardpropertiesFromSourceCard != null)
-            {
-                newCard["keepFromSource"] = ExpressionConverter.ConvertO(newCardpropertiesFromSourceCard);
-                newCardpropCount++;
-            }
-
-            if (newCarddueDate != null)
-            {
-                newCard["due"] = ExpressionConverter.ConvertO(newCarddueDate);
-                newCardpropCount++;
-            }
-
-            if (newCardpropCount > 0)
-            {
-                callPayload.Body = newCard;
-            }
-
-            return new ApiConnectionAction<Card>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board[]> ListBoards(Expression<Func<string>> filter = null, Expression<Func<string>> fields = null, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<int>> actionsLimit = null, Expression<Func<actionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> lists = null)
         {
             var apiCallPath = "/member/me/boards";
@@ -783,28 +635,169 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<Board>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        public IBodyWorkflowAction<Card> CreateCard(Expression<Func<string>> boardId, Expression<Func<string>> newCardparentListId, Expression<Func<string>> newCardcardName, Expression<Func<string>> newCardcardDescription = null, Expression<Func<newCardcardPositionInput>> newCardcardPosition = null, Expression<Func<string[]>> newCardmemberIds = null, Expression<Func<string[]>> newCardlabelIds = null, Expression<Func<string>> newCardsourceUrl = null, Expression<Func<string>> newCardsourceFile = null, Expression<Func<string>> newCardsourceCardId = null, Expression<Func<string>> newCardpropertiesFromSourceCard = null, Expression<Func<string>> newCarddueDate = null)
+        {
+            var apiCallPath = "/v2/cards";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+            var newCard = new JObject();
+            var newCardpropCount = 0;
+            newCardpropCount++;
+            newCard["idList"] = ExpressionConverter.ConvertO(newCardparentListId);
+            newCardpropCount++;
+            newCard["name"] = ExpressionConverter.ConvertO(newCardcardName);
+            if (newCardcardDescription != null)
+            {
+                newCard["desc"] = ExpressionConverter.ConvertO(newCardcardDescription);
+                newCardpropCount++;
+            }
+
+            if (newCardcardPosition != null)
+            {
+                newCard["pos"] = ExpressionConverter.ConvertO(newCardcardPosition);
+                newCardpropCount++;
+            }
+
+            if (newCardmemberIds != null)
+            {
+                newCard["idMembersArray"] = ExpressionConverter.ConvertO(newCardmemberIds);
+                newCardpropCount++;
+            }
+
+            if (newCardlabelIds != null)
+            {
+                newCard["idLabelsArray"] = ExpressionConverter.ConvertO(newCardlabelIds);
+                newCardpropCount++;
+            }
+
+            if (newCardsourceUrl != null)
+            {
+                if (newCardsourceUrl != null)
+                {
+                    newCard["urlSource"] = ExpressionConverter.ConvertO(newCardsourceUrl);
+                    newCardpropCount++;
+                }
+
+                newCardpropCount++;
+            }
+            else
+            {
+                newCard["urlSource"] = "null";
+                newCardpropCount++;
+            }
+
+            if (newCardsourceFile != null)
+            {
+                newCard["fileSource"] = ExpressionConverter.ConvertO(newCardsourceFile);
+                newCardpropCount++;
+            }
+
+            if (newCardsourceCardId != null)
+            {
+                newCard["idCardSource"] = ExpressionConverter.ConvertO(newCardsourceCardId);
+                newCardpropCount++;
+            }
+
+            if (newCardpropertiesFromSourceCard != null)
+            {
+                newCard["keepFromSource"] = ExpressionConverter.ConvertO(newCardpropertiesFromSourceCard);
+                newCardpropCount++;
+            }
+
+            if (newCarddueDate != null)
+            {
+                newCard["due"] = ExpressionConverter.ConvertO(newCarddueDate);
+                newCardpropCount++;
+            }
+
+            if (newCardpropCount > 0)
+            {
+                callPayload.Body = newCard;
+            }
+
+            return new ApiConnectionAction<Card>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
+        public IBodyWorkflowAction<Card> UpdateCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> updateCardname, Expression<Func<string>> updateCarddescription = null, Expression<Func<bool>> updateCardisClosed = null, Expression<Func<string[]>> updateCardmemberIds = null, Expression<Func<string>> updateCardcoverAttachmentIds = null, Expression<Func<string>> updateCardboardId = null, Expression<Func<string>> updateCardlistId = null, Expression<Func<string>> updateCardposition = null, Expression<Func<string>> updateCarddueDate = null, Expression<Func<bool>> updateCardsubscribedToCard = null)
+        {
+            var apiCallPath = String.Format("/v2/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+            var apiCallHttpMethod = "put";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
+            var updateCard = new JObject();
+            var updateCardpropCount = 0;
+            updateCardpropCount++;
+            updateCard["name"] = ExpressionConverter.ConvertO(updateCardname);
+            if (updateCarddescription != null)
+            {
+                updateCard["desc"] = ExpressionConverter.ConvertO(updateCarddescription);
+                updateCardpropCount++;
+            }
+
+            if (updateCardisClosed != null)
+            {
+                updateCard["closed"] = ExpressionConverter.ConvertO(updateCardisClosed);
+                updateCardpropCount++;
+            }
+
+            if (updateCardmemberIds != null)
+            {
+                updateCard["idMembersArray"] = ExpressionConverter.ConvertO(updateCardmemberIds);
+                updateCardpropCount++;
+            }
+
+            if (updateCardcoverAttachmentIds != null)
+            {
+                updateCard["idAttachmentCover"] = ExpressionConverter.ConvertO(updateCardcoverAttachmentIds);
+                updateCardpropCount++;
+            }
+
+            if (updateCardboardId != null)
+            {
+                updateCard["idBoard"] = ExpressionConverter.ConvertO(updateCardboardId);
+                updateCardpropCount++;
+            }
+
+            if (updateCardlistId != null)
+            {
+                updateCard["idList"] = ExpressionConverter.ConvertO(updateCardlistId);
+                updateCardpropCount++;
+            }
+
+            if (updateCardposition != null)
+            {
+                updateCard["pos"] = ExpressionConverter.ConvertO(updateCardposition);
+                updateCardpropCount++;
+            }
+
+            if (updateCarddueDate != null)
+            {
+                updateCard["due"] = ExpressionConverter.ConvertO(updateCarddueDate);
+                updateCardpropCount++;
+            }
+
+            if (updateCardsubscribedToCard != null)
+            {
+                updateCard["subscribed"] = ExpressionConverter.ConvertO(updateCardsubscribedToCard);
+                updateCardpropCount++;
+            }
+
+            if (updateCardpropCount > 0)
+            {
+                callPayload.Body = updateCard;
+            }
+
+            return new ApiConnectionAction<Card>(callPayload);
+        }
     }
 
     public class TrelloTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoardV2(Expression<Func<string>> boardId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/v2/trigger/boards/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CardInAction[]>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInListV2(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/v2/trigger/lists/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            return new ApiConnectionTrigger<CardInAction[]>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoardV3(Expression<Func<string>> boardId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard(Expression<Func<string>> boardId, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
@@ -839,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             return new ApiConnectionTrigger<CardInAction[]>(input);
         }
 
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInListV3(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList(Expression<Func<string>> boardId, Expression<Func<string>> listId, string triggerName = null)
         {
             var input = new ApiConnectionNotificationActionInput(connectionId);
             input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
@@ -1104,14 +1097,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
         [JsonProperty("checklists")]
         public Checklist[] Checklists { get; set; }
-    }
-
-    public enum newCardcardPositionInput
-    {
-        [EnumMember(Value = "top")]
-        Top,
-        [EnumMember(Value = "bottom")]
-        Bottom
     }
 
     public class Board
@@ -1666,6 +1651,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     public enum listlistPositionInput
+    {
+        [EnumMember(Value = "top")]
+        Top,
+        [EnumMember(Value = "bottom")]
+        Bottom
+    }
+
+    public enum newCardcardPositionInput
     {
         [EnumMember(Value = "top")]
         Top,

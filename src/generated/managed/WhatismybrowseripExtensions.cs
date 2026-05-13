@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse> DetectPost(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
         {
             var apiCallPath = "/detect";
             var apiCallHttpMethod = "post";

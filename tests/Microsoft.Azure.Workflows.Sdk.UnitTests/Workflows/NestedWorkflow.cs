@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             agent.AddTool(toolBuilder =>
                 {
-                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("connectionId").SendEmailV2(
+                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("connectionId").SendEmail(
                         emailMessageto: () => "apseth@microsoft.com",
                         emailMessagesubject: () => "Interview Scheduled",
                         emailMessagebody: () => "An interview has been scheduled.");

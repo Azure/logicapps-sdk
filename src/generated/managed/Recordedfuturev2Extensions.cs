@@ -87,36 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<AlertSearchV2Response> AlertSearchV2(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<fieldsInput>> fields = null)
-        {
-            var apiCallPath = "/v2/alerts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (triggered != null)
-                callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
-            if (alertRule != null)
-                callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchIdV2(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
-        {
-            var apiCallPath = String.Format("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertRulesSearchResponse> AlertRulesSearch(Expression<Func<string>> freetext = null, Expression<Func<int>> limit = null)
         {
             var apiCallPath = "/alert/rules";
@@ -528,6 +498,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
             return new ApiConnectionAction<STIXMalwareIndicatorsResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
+        public IBodyWorkflowAction<AlertSearchV2Response> AlertSearch(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<fieldsInput>> fields = null)
+        {
+            var apiCallPath = "/v2/alerts";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (triggered != null)
+                callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
+            if (alertRule != null)
+                callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
+            if (limit != null)
+                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+            if (from != null)
+                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+            if (fields != null)
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
+        public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
+        {
+            var apiCallPath = String.Format("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (fields != null)
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+            return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
+        }
     }
 
     public class Recordedfuturev2Triggers([ConnectionName] string connectionId)
@@ -907,266 +907,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
         [JsonProperty("criticality")]
         public int Criticality { get; set; }
-    }
-
-    public class AlertSearchV2Response
-    {
-        [JsonProperty("data")]
-        public AlertSearchV2[] Data { get; set; }
-
-        [JsonProperty("counts")]
-        public AlertSearchV2ResponseCountsType Counts { get; set; }
-    }
-
-    public class AlertSearchV2
-    {
-        [JsonProperty("review")]
-        public AlertReviewV2 Review { get; set; }
-
-        [JsonProperty("owner_organisation_details")]
-        public AlertOwnerV2 OwnerOrganisationDetails { get; set; }
-
-        [JsonProperty("url")]
-        public AlertURLV2 Url { get; set; }
-
-        [JsonProperty("rule")]
-        public AlertRuleV2 Rule { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("hits")]
-        public AlertHitsV2Item[] Hits { get; set; }
-
-        [JsonProperty("log")]
-        public AlertLogV2 Log { get; set; }
-
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("ai_insights")]
-        public AlertAiV2 AiInsights { get; set; }
-    }
-
-    public class AlertReviewV2
-    {
-        [JsonProperty("assignee")]
-        public string Assignee { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("status_in_portal")]
-        public string StatusInPortal { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class AlertOwnerV2
-    {
-        [JsonProperty("organisations")]
-        public AlertOwnerV2OrganisationsTypeItem[] Organisations { get; set; }
-
-        [JsonProperty("enterprise_id")]
-        public string EnterpriseId { get; set; }
-
-        [JsonProperty("enterprise_name")]
-        public string EnterpriseName { get; set; }
-    }
-
-    public class AlertOwnerV2OrganisationsTypeItem
-    {
-        [JsonProperty("organisation_id")]
-        public string OrganisationId { get; set; }
-
-        [JsonProperty("organisation_name")]
-        public string OrganisationName { get; set; }
-    }
-
-    public class AlertURLV2
-    {
-        [JsonProperty("api")]
-        public string Api { get; set; }
-
-        [JsonProperty("portal")]
-        public string Portal { get; set; }
-    }
-
-    public class AlertRuleV2
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("url")]
-        public AlertRuleV2UrlType Url { get; set; }
-    }
-
-    public class AlertRuleV2UrlType
-    {
-        [JsonProperty("portal")]
-        public string Portal { get; set; }
-    }
-
-    public class AlertHitsV2Item
-    {
-        [JsonProperty("entities")]
-        public AlertHitsV2ItemEntitiesTypeItem[] Entities { get; set; }
-
-        [JsonProperty("document")]
-        public AlertHitsV2ItemDocumentType Document { get; set; }
-
-        [JsonProperty("fragment")]
-        public string Fragment { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("language")]
-        public string Language { get; set; }
-
-        [JsonProperty("primary_entity")]
-        public AlertHitsV2ItemPrimaryEntityType PrimaryEntity { get; set; }
-
-        [JsonProperty("analyst_note")]
-        public string AnalystNote { get; set; }
-    }
-
-    public class AlertHitsV2ItemEntitiesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class AlertHitsV2ItemDocumentType
-    {
-        [JsonProperty("source")]
-        public AlertHitsV2ItemDocumentTypeSourceType Source { get; set; }
-
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("authors")]
-        public AlertHitsV2ItemDocumentTypeAuthorsTypeItem[] Authors { get; set; }
-    }
-
-    public class AlertHitsV2ItemDocumentTypeSourceType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class AlertHitsV2ItemDocumentTypeAuthorsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class AlertHitsV2ItemPrimaryEntityType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class AlertLogV2
-    {
-        [JsonProperty("note_author")]
-        public string NoteAuthor { get; set; }
-
-        [JsonProperty("note_date")]
-        public string NoteDate { get; set; }
-
-        [JsonProperty("status_date")]
-        public string StatusDate { get; set; }
-
-        [JsonProperty("triggered")]
-        public string Triggered { get; set; }
-
-        [JsonProperty("status_change_by")]
-        public string StatusChangeBy { get; set; }
-    }
-
-    public class AlertAiV2
-    {
-        [JsonProperty("comment")]
-        public string Comment { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class AlertSearchV2ResponseCountsType
-    {
-        [JsonProperty("returned")]
-        public int Returned { get; set; }
-
-        [JsonProperty("total")]
-        public int Total { get; set; }
-    }
-
-    public enum fieldsInput
-    {
-        [EnumMember(Value = "ai_insights")]
-        AiInsights,
-        [EnumMember(Value = "hits")]
-        Hits,
-        [EnumMember(Value = "id")]
-        Id,
-        [EnumMember(Value = "log")]
-        Log,
-        [EnumMember(Value = "owner_organisation_details")]
-        OwnerOrganisationDetails,
-        [EnumMember(Value = "review")]
-        Review,
-        [EnumMember(Value = "rule")]
-        Rule,
-        [EnumMember(Value = "title")]
-        Title,
-        [EnumMember(Value = "type")]
-        Type,
-        [EnumMember(Value = "url")]
-        Url,
-        [EnumMember(Value = "id, hits")]
-        IdHits
-    }
-
-    public class AlertSearchIdV2Response
-    {
-        [JsonProperty("data")]
-        public AlertSearchV2 Data { get; set; }
     }
 
     public class AlertRulesSearchResponse
@@ -2129,6 +1869,266 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class AlertSearchV2Response
+    {
+        [JsonProperty("data")]
+        public AlertSearchV2[] Data { get; set; }
+
+        [JsonProperty("counts")]
+        public AlertSearchV2ResponseCountsType Counts { get; set; }
+    }
+
+    public class AlertSearchV2
+    {
+        [JsonProperty("review")]
+        public AlertReviewV2 Review { get; set; }
+
+        [JsonProperty("owner_organisation_details")]
+        public AlertOwnerV2 OwnerOrganisationDetails { get; set; }
+
+        [JsonProperty("url")]
+        public AlertURLV2 Url { get; set; }
+
+        [JsonProperty("rule")]
+        public AlertRuleV2 Rule { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("hits")]
+        public AlertHitsV2Item[] Hits { get; set; }
+
+        [JsonProperty("log")]
+        public AlertLogV2 Log { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("ai_insights")]
+        public AlertAiV2 AiInsights { get; set; }
+    }
+
+    public class AlertReviewV2
+    {
+        [JsonProperty("assignee")]
+        public string Assignee { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("status_in_portal")]
+        public string StatusInPortal { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+    }
+
+    public class AlertOwnerV2
+    {
+        [JsonProperty("organisations")]
+        public AlertOwnerV2OrganisationsTypeItem[] Organisations { get; set; }
+
+        [JsonProperty("enterprise_id")]
+        public string EnterpriseId { get; set; }
+
+        [JsonProperty("enterprise_name")]
+        public string EnterpriseName { get; set; }
+    }
+
+    public class AlertOwnerV2OrganisationsTypeItem
+    {
+        [JsonProperty("organisation_id")]
+        public string OrganisationId { get; set; }
+
+        [JsonProperty("organisation_name")]
+        public string OrganisationName { get; set; }
+    }
+
+    public class AlertURLV2
+    {
+        [JsonProperty("api")]
+        public string Api { get; set; }
+
+        [JsonProperty("portal")]
+        public string Portal { get; set; }
+    }
+
+    public class AlertRuleV2
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public AlertRuleV2UrlType Url { get; set; }
+    }
+
+    public class AlertRuleV2UrlType
+    {
+        [JsonProperty("portal")]
+        public string Portal { get; set; }
+    }
+
+    public class AlertHitsV2Item
+    {
+        [JsonProperty("entities")]
+        public AlertHitsV2ItemEntitiesTypeItem[] Entities { get; set; }
+
+        [JsonProperty("document")]
+        public AlertHitsV2ItemDocumentType Document { get; set; }
+
+        [JsonProperty("fragment")]
+        public string Fragment { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("primary_entity")]
+        public AlertHitsV2ItemPrimaryEntityType PrimaryEntity { get; set; }
+
+        [JsonProperty("analyst_note")]
+        public string AnalystNote { get; set; }
+    }
+
+    public class AlertHitsV2ItemEntitiesTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class AlertHitsV2ItemDocumentType
+    {
+        [JsonProperty("source")]
+        public AlertHitsV2ItemDocumentTypeSourceType Source { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("authors")]
+        public AlertHitsV2ItemDocumentTypeAuthorsTypeItem[] Authors { get; set; }
+    }
+
+    public class AlertHitsV2ItemDocumentTypeSourceType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class AlertHitsV2ItemDocumentTypeAuthorsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class AlertHitsV2ItemPrimaryEntityType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class AlertLogV2
+    {
+        [JsonProperty("note_author")]
+        public string NoteAuthor { get; set; }
+
+        [JsonProperty("note_date")]
+        public string NoteDate { get; set; }
+
+        [JsonProperty("status_date")]
+        public string StatusDate { get; set; }
+
+        [JsonProperty("triggered")]
+        public string Triggered { get; set; }
+
+        [JsonProperty("status_change_by")]
+        public string StatusChangeBy { get; set; }
+    }
+
+    public class AlertAiV2
+    {
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class AlertSearchV2ResponseCountsType
+    {
+        [JsonProperty("returned")]
+        public int Returned { get; set; }
+
+        [JsonProperty("total")]
+        public int Total { get; set; }
+    }
+
+    public enum fieldsInput
+    {
+        [EnumMember(Value = "ai_insights")]
+        AiInsights,
+        [EnumMember(Value = "hits")]
+        Hits,
+        [EnumMember(Value = "id")]
+        Id,
+        [EnumMember(Value = "log")]
+        Log,
+        [EnumMember(Value = "owner_organisation_details")]
+        OwnerOrganisationDetails,
+        [EnumMember(Value = "review")]
+        Review,
+        [EnumMember(Value = "rule")]
+        Rule,
+        [EnumMember(Value = "title")]
+        Title,
+        [EnumMember(Value = "type")]
+        Type,
+        [EnumMember(Value = "url")]
+        Url,
+        [EnumMember(Value = "id, hits")]
+        IdHits
+    }
+
+    public class AlertSearchIdV2Response
+    {
+        [JsonProperty("data")]
+        public AlertSearchV2 Data { get; set; }
     }
 }
 

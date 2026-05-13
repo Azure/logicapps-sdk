@@ -30,7 +30,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var bodypropCount = 0;
             if (bodysendNotifications != null)
             {
-                body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                if (bodysendNotifications != null)
+                {
+                    body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["SendNotifications"] = false;
                 bodypropCount++;
             }
 
@@ -90,7 +100,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
             if (transactionseal != null)
             {
-                transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                if (transactionseal != null)
+                {
+                    transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                    transactionpropCount++;
+                }
+
+                transactionpropCount++;
+            }
+            else
+            {
+                transaction["Seal"] = false;
                 transactionpropCount++;
             }
 
@@ -120,13 +140,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
             if (transactionsignRequestMode != null)
             {
-                transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                if (transactionsignRequestMode != null)
+                {
+                    transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                    transactionpropCount++;
+                }
+
+                transactionpropCount++;
+            }
+            else
+            {
+                transaction["SignRequestMode"] = 2;
                 transactionpropCount++;
             }
 
             if (transactiondaysToExpire != null)
             {
-                transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                if (transactiondaysToExpire != null)
+                {
+                    transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                    transactionpropCount++;
+                }
+
+                transactionpropCount++;
+            }
+            else
+            {
+                transaction["DaysToExpire"] = 60;
                 transactionpropCount++;
             }
 

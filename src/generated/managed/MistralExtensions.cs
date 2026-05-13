@@ -25,13 +25,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             body["messages"] = ExpressionConverter.ConvertO(bodymessages);
             if (bodytemperature != null)
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["temperature"] = 0.7;
                 bodypropCount++;
             }
 
             if (bodytopP != null)
             {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                if (bodytopP != null)
+                {
+                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["top_p"] = 1;
                 bodypropCount++;
             }
 
@@ -43,13 +63,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 
             if (bodystream != null)
             {
-                body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                if (bodystream != null)
+                {
+                    body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["stream"] = false;
                 bodypropCount++;
             }
 
             if (bodysafePrompt != null)
             {
-                body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                if (bodysafePrompt != null)
+                {
+                    body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["safe_prompt"] = false;
                 bodypropCount++;
             }
 
@@ -77,7 +117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             var bodypropCount = 0;
             if (bodymodel != null)
             {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                if (bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["model"] = "mistral-embed";
                 bodypropCount++;
             }
 
@@ -121,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }
@@ -214,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public EmbeddingResponseDataTypeItem[] Data { get; set; }
@@ -229,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class EmbeddingResponseDataTypeItem
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("embedding")]
         public double[] Embedding { get; set; }
@@ -256,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class ModelList
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("data")]
         public Model[] Data { get; set; }
@@ -268,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("created")]
         public int Created { get; set; }

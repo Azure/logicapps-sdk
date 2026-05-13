@@ -31,13 +31,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
             postBodyParameter["To"] = ExpressionConverter.ConvertO(postBodyParameterto);
             if (postBodyParametersaveCopyToSentItems != null)
             {
-                postBodyParameter["SaveCopyToSentItems"] = ExpressionConverter.ConvertO(postBodyParametersaveCopyToSentItems);
+                if (postBodyParametersaveCopyToSentItems != null)
+                {
+                    postBodyParameter["SaveCopyToSentItems"] = ExpressionConverter.ConvertO(postBodyParametersaveCopyToSentItems);
+                    postBodyParameterpropCount++;
+                }
+
+                postBodyParameterpropCount++;
+            }
+            else
+            {
+                postBodyParameter["SaveCopyToSentItems"] = "Yes";
                 postBodyParameterpropCount++;
             }
 
             if (postBodyParameterimportance != null)
             {
-                postBodyParameter["Importance"] = ExpressionConverter.ConvertO(postBodyParameterimportance);
+                if (postBodyParameterimportance != null)
+                {
+                    postBodyParameter["Importance"] = ExpressionConverter.ConvertO(postBodyParameterimportance);
+                    postBodyParameterpropCount++;
+                }
+
+                postBodyParameterpropCount++;
+            }
+            else
+            {
+                postBodyParameter["Importance"] = "Normal";
                 postBodyParameterpropCount++;
             }
 
@@ -163,7 +183,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
 
             if (postBodyParameterincludeAntTextSignature != null)
             {
-                postBodyParameter["IncludeAntTextSignature"] = ExpressionConverter.ConvertO(postBodyParameterincludeAntTextSignature);
+                if (postBodyParameterincludeAntTextSignature != null)
+                {
+                    postBodyParameter["IncludeAntTextSignature"] = ExpressionConverter.ConvertO(postBodyParameterincludeAntTextSignature);
+                    postBodyParameterpropCount++;
+                }
+
+                postBodyParameterpropCount++;
+            }
+            else
+            {
+                postBodyParameter["IncludeAntTextSignature"] = "Yes";
                 postBodyParameterpropCount++;
             }
 

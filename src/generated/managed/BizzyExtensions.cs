@@ -25,7 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             content["activityJson"] = ExpressionConverter.ConvertO(contentreplyActivity);
             if (contentshowInChat != null)
             {
-                content["showInChat"] = ExpressionConverter.ConvertO(contentshowInChat);
+                if (contentshowInChat != null)
+                {
+                    content["showInChat"] = ExpressionConverter.ConvertO(contentshowInChat);
+                    contentpropCount++;
+                }
+
+                contentpropCount++;
+            }
+            else
+            {
+                content["showInChat"] = true;
                 contentpropCount++;
             }
 
@@ -97,7 +107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             cardSet["activityJson"] = ExpressionConverter.ConvertO(cardSetreplyActivity);
             if (cardSetshowInTab != null)
             {
-                cardSet["showInTab"] = ExpressionConverter.ConvertO(cardSetshowInTab);
+                if (cardSetshowInTab != null)
+                {
+                    cardSet["showInTab"] = ExpressionConverter.ConvertO(cardSetshowInTab);
+                    cardSetpropCount++;
+                }
+
+                cardSetpropCount++;
+            }
+            else
+            {
+                cardSet["showInTab"] = false;
                 cardSetpropCount++;
             }
 
@@ -263,13 +283,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
@@ -321,19 +361,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
@@ -385,25 +455,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
             if (webHooklistenForVoiceResponse != null)
             {
-                webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                if (webHooklistenForVoiceResponse != null)
+                {
+                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["listenForInput"] = false;
                 webHookpropCount++;
             }
 
@@ -467,25 +577,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
             if (webHooklistenForVoiceResponse != null)
             {
-                webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                if (webHooklistenForVoiceResponse != null)
+                {
+                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["listenForInput"] = false;
                 webHookpropCount++;
             }
 
@@ -543,25 +693,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
             if (webHooklistenForVoiceResponse != null)
             {
-                webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                if (webHooklistenForVoiceResponse != null)
+                {
+                    webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["listenForInput"] = false;
                 webHookpropCount++;
             }
 
@@ -613,19 +803,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
@@ -683,7 +903,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (webHookacceptResponseFrom != null)
             {
-                webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                if (webHookacceptResponseFrom != null)
+                {
+                    webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["acceptResponseFrom"] = "Original User";
                 webHookpropCount++;
             }
 
@@ -695,13 +925,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 
             if (webHookshowInChat != null)
             {
-                webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                if (webHookshowInChat != null)
+                {
+                    webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["showInChat"] = true;
                 webHookpropCount++;
             }
 
@@ -949,7 +1199,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
             if (webHookallowBranching != null)
             {
-                webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                if (webHookallowBranching != null)
+                {
+                    webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+            }
+            else
+            {
+                webHook["allowBranching"] = "No";
                 webHookpropCount++;
             }
 

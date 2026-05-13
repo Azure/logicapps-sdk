@@ -31,7 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
             if (bodypriority != null)
             {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["priority"] = "Medium";
                 bodypropCount++;
             }
 

@@ -56,19 +56,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             body["end"] = ExpressionConverter.ConvertO(bodyend);
             if (bodytimezone != null)
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["timezone"] = "Europe/London";
                 bodypropCount++;
             }
 
             if (bodyenabledAutoRecordMeeting != null)
             {
-                body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(bodyenabledAutoRecordMeeting);
+                if (bodyenabledAutoRecordMeeting != null)
+                {
+                    body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(bodyenabledAutoRecordMeeting);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["enabledAutoRecordMeeting"] = false;
                 bodypropCount++;
             }
 
             if (bodyallowAnyUserToBeCoHost != null)
             {
-                body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(bodyallowAnyUserToBeCoHost);
+                if (bodyallowAnyUserToBeCoHost != null)
+                {
+                    body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(bodyallowAnyUserToBeCoHost);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["allowAnyUserToBeCoHost"] = false;
                 bodypropCount++;
             }
 

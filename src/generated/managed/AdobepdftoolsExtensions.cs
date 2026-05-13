@@ -390,6 +390,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
+        public IBodyWorkflowAction<DtoResponsePDFProperties> PDFProperties(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<bool>> pageLevel, Expression<Func<xRegionValueInput>> xRegionValue = null)
+        {
+            var apiCallPath = "/operation/v1/pdfProperties";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+            if (xRegionValue != null)
+                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
+            return new ApiConnectionAction<DtoResponsePDFProperties>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<string>> inputFileName, Expression<Func<string>> jsonStringForMerge, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<string>> fragments = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
             var apiCallPath = "/operation/v1/docGen";
@@ -808,6 +821,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         JSONFILE,
         [EnumMember(Value = "JSON OBJECT")]
         JSONOBJECT
+    }
+
+    public class DtoResponsePDFProperties
+    {
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+
+        [JsonProperty("fileContent")]
+        public string FileContent { get; set; }
+
+        [JsonProperty("fileContentType")]
+        public string FileContentType { get; set; }
+
+        [JsonProperty("jsonObject")]
+        public string JSONString { get; set; }
+
+        [JsonProperty("properties")]
+        public DtoResponsePDFPropertiesValueType Value { get; set; }
+    }
+
+    public class DtoResponsePDFPropertiesValueType
+    {
+        [JsonProperty("page_count")]
+        public int PDFPageCount { get; set; }
+
+        [JsonProperty("file_size")]
+        public string FileSize { get; set; }
+
+        [JsonProperty("linearized")]
+        public bool PDFLinearized { get; set; }
+
+        [JsonProperty("tagged")]
+        public bool PDFTagged { get; set; }
+
+        [JsonProperty("certified")]
+        public bool PDFCertified { get; set; }
+
+        [JsonProperty("compliance_level")]
+        public string ComplianceLevelDeprecated { get; set; }
+
+        [JsonProperty("xfa")]
+        public bool PDFXFA { get; set; }
+
+        [JsonProperty("portfolio")]
+        public bool PDFPortfolio { get; set; }
+
+        [JsonProperty("encrypted")]
+        public bool PDFEncrypted { get; set; }
+
+        [JsonProperty("pdfVersion")]
+        public string PDFVersion { get; set; }
+
+        [JsonProperty("hasAcroForms")]
+        public bool PDFHasAcroforms { get; set; }
+
+        [JsonProperty("signed")]
+        public bool PDFSigned { get; set; }
+
+        [JsonProperty("incrementalSaveCount")]
+        public int IncrementalSaveCount { get; set; }
+
+        [JsonProperty("hasEmbeddedFiles")]
+        public bool PDFHasEmbeddedFiles { get; set; }
+        public string XMP { get; set; }
+
+        [JsonProperty("creationDate")]
+        public string PDFCreationDate { get; set; }
+
+        [JsonProperty("Producer")]
+        public string PDFProducer { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string PDFLatestModificationDate { get; set; }
+
+        [JsonProperty("fonts")]
+        public DtoResponsePDFPropertiesFonts[] Fonts { get; set; }
+
+        [JsonProperty("pdfa_compliance_level")]
+        public string PDFAComplianceLevel { get; set; }
+
+        [JsonProperty("pdfe_compliance_level")]
+        public string PDFEComplianceLevel { get; set; }
+
+        [JsonProperty("pdfvt_compliance_level")]
+        public string PDFVTComplianceLevel { get; set; }
+
+        [JsonProperty("pdfx_compliance_level")]
+        public string PDFXComplianceLevel { get; set; }
+
+        [JsonProperty("pdfua_compliance_level")]
+        public string PDFUAComplianceLevel { get; set; }
+
+        [JsonProperty("pages")]
+        public DtoResponsePDFPropertiesPages[] Page { get; set; }
+    }
+
+    public class DtoResponsePDFPropertiesFonts
+    {
+        [JsonProperty("name")]
+        public string FontName { get; set; }
+
+        [JsonProperty("font_type")]
+        public string FontType { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FontFamilyName { get; set; }
+    }
+
+    public class DtoResponsePDFPropertiesPages
+    {
+        [JsonProperty("pageNumber")]
+        public int PageNumber { get; set; }
+
+        [JsonProperty("scanned")]
+        public bool PageScanned { get; set; }
+
+        [JsonProperty("width")]
+        public int PageWidth { get; set; }
+
+        [JsonProperty("height")]
+        public int PageHeight { get; set; }
+
+        [JsonProperty("hasStructure")]
+        public bool PageHasStructure { get; set; }
+
+        [JsonProperty("numberOfImages")]
+        public int NumberOfImagesInThePage { get; set; }
+
+        [JsonProperty("onlyImages")]
+        public bool OnlyImagesInThePage { get; set; }
+
+        [JsonProperty("hasText")]
+        public bool PageHasText { get; set; }
+
+        [JsonProperty("hasImages")]
+        public bool PageHasImages { get; set; }
+
+        [JsonProperty("empty")]
+        public bool PageEmpty { get; set; }
     }
 
     public class DocGenResponse

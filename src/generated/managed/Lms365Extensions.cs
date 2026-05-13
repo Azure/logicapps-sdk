@@ -223,7 +223,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var publishingSettingsObjectpropCount = 0;
             if (bodypublishingSettingsisEnabled != null)
             {
-                publishingSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodypublishingSettingsisEnabled);
+                if (bodypublishingSettingsisEnabled != null)
+                {
+                    publishingSettingsObject["IsEnabled"] = ExpressionConverter.ConvertO(bodypublishingSettingsisEnabled);
+                    publishingSettingsObjectpropCount++;
+                }
+
+                publishingSettingsObjectpropCount++;
+            }
+            else
+            {
+                publishingSettingsObject["IsEnabled"] = true;
                 publishingSettingsObjectpropCount++;
             }
 
@@ -529,7 +539,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
             if (bodyroomsource != null)
             {
-                roomObject["Source"] = ExpressionConverter.ConvertO(bodyroomsource);
+                if (bodyroomsource != null)
+                {
+                    roomObject["Source"] = ExpressionConverter.ConvertO(bodyroomsource);
+                    roomObjectpropCount++;
+                }
+
+                roomObjectpropCount++;
+            }
+            else
+            {
+                roomObject["Source"] = "Unknown";
                 roomObjectpropCount++;
             }
 
@@ -572,40 +592,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public IWorkflowAction HttpRequest(Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
         {
             var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["method"] = ExpressionConverter.ConvertO(parametersmethod);
-            parameterspropCount++;
-            parameters["uri"] = ExpressionConverter.ConvertO(parametersuri);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                parameters["headers"] = headersObject;
-                parameterspropCount++;
-            }
-
-            if (parametersbody != null)
-            {
-                parameters["body"] = ExpressionConverter.ConvertO(parametersbody);
-                parameterspropCount++;
-            }
-
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction HttpRequestV2(Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
-        {
-            var apiCallPath = "/v2/httprequest";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var parameters = new JObject();

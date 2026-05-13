@@ -44,7 +44,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             if (bodyprojectconsultable != null)
             {
-                projectObject["consultable"] = ExpressionConverter.ConvertO(bodyprojectconsultable);
+                if (bodyprojectconsultable != null)
+                {
+                    projectObject["consultable"] = ExpressionConverter.ConvertO(bodyprojectconsultable);
+                    projectObjectpropCount++;
+                }
+
+                projectObjectpropCount++;
+            }
+            else
+            {
+                projectObject["consultable"] = true;
                 projectObjectpropCount++;
             }
 
@@ -68,7 +78,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
             if (bodyprojectisTemplate != null)
             {
-                projectObject["is_template"] = ExpressionConverter.ConvertO(bodyprojectisTemplate);
+                if (bodyprojectisTemplate != null)
+                {
+                    projectObject["is_template"] = ExpressionConverter.ConvertO(bodyprojectisTemplate);
+                    projectObjectpropCount++;
+                }
+
+                projectObjectpropCount++;
+            }
+            else
+            {
+                projectObject["is_template"] = false;
                 projectObjectpropCount++;
             }
 

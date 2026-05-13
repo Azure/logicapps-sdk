@@ -285,31 +285,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
             if (bodyurgent != null)
             {
-                body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                if (bodyurgent != null)
+                {
+                    body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["urgent"] = "false";
                 bodypropCount++;
             }
 
             if (bodyimportant != null)
             {
-                body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                if (bodyimportant != null)
+                {
+                    body["important"] = ExpressionConverter.ConvertO(bodyimportant);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["important"] = "false";
                 bodypropCount++;
             }
 
             if (bodyrenewal != null)
             {
-                body["renewal"] = ExpressionConverter.ConvertO(bodyrenewal);
+                if (bodyrenewal != null)
+                {
+                    body["renewal"] = ExpressionConverter.ConvertO(bodyrenewal);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["renewal"] = "false";
                 bodypropCount++;
             }
 
             if (bodypreviouscertificate != null)
             {
-                body["previouscertificate"] = ExpressionConverter.ConvertO(bodypreviouscertificate);
+                if (bodypreviouscertificate != null)
+                {
+                    body["previouscertificate"] = ExpressionConverter.ConvertO(bodypreviouscertificate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["previouscertificate"] = "";
                 bodypropCount++;
             }
 
             if (bodyrenewalstatus != null)
             {
-                body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                if (bodyrenewalstatus != null)
+                {
+                    body["renewalstatus"] = ExpressionConverter.ConvertO(bodyrenewalstatus);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["renewalstatus"] = "false";
                 bodypropCount++;
             }
 

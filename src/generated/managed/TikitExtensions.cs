@@ -490,13 +490,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodywebHookstatus != null)
             {
-                webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                if (bodywebHookstatus != null)
+                {
+                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObjectpropCount++;
+                }
+
+                webHookObjectpropCount++;
+            }
+            else
+            {
+                webHookObject["Status"] = "Any";
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookpriority != null)
             {
-                webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                if (bodywebHookpriority != null)
+                {
+                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    webHookObjectpropCount++;
+                }
+
+                webHookObjectpropCount++;
+            }
+            else
+            {
+                webHookObject["Priority"] = "Any";
                 webHookObjectpropCount++;
             }
 
@@ -558,13 +578,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodywebHookstatus != null)
             {
-                webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                if (bodywebHookstatus != null)
+                {
+                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObjectpropCount++;
+                }
+
+                webHookObjectpropCount++;
+            }
+            else
+            {
+                webHookObject["Status"] = "Any";
                 webHookObjectpropCount++;
             }
 
             if (bodywebHookpriority != null)
             {
-                webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                if (bodywebHookpriority != null)
+                {
+                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    webHookObjectpropCount++;
+                }
+
+                webHookObjectpropCount++;
+            }
+            else
+            {
+                webHookObject["Priority"] = "Any";
                 webHookObjectpropCount++;
             }
 
@@ -620,7 +660,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
             if (bodywebHookisPublicComment != null)
             {
-                webHookObject["IsPublicComment"] = ExpressionConverter.ConvertO(bodywebHookisPublicComment);
+                if (bodywebHookisPublicComment != null)
+                {
+                    webHookObject["IsPublicComment"] = ExpressionConverter.ConvertO(bodywebHookisPublicComment);
+                    webHookObjectpropCount++;
+                }
+
+                webHookObjectpropCount++;
+            }
+            else
+            {
+                webHookObject["IsPublicComment"] = "Any";
                 webHookObjectpropCount++;
             }
 

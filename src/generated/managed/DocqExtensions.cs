@@ -65,7 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
     public class ExtractInformationResponse
     {
         public string Summary { get; set; }
-        public string Object { get; set; }
+
+        [JsonProperty("Object")]
+        public string ObjectEntity { get; set; }
         public string ErrorDescription { get; set; }
         public bool IsSuccess { get; set; }
     }

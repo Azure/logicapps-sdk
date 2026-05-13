@@ -395,7 +395,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             body["file"] = ExpressionConverter.ConvertO(bodyfile);
             if (bodylanguage != null)
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["language"] = "eng";
                 bodypropCount++;
             }
 

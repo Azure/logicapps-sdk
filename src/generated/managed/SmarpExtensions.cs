@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
-        public IWorkflowAction SmarpCreatePost(Expression<Func<string[]>> bodychannelList, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<bool>> bodyproposed = null, Expression<Func<bool>> bodyshareable = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyurl = null)
+        public IWorkflowAction SmarpCreate(Expression<Func<string[]>> bodychannelList, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<bool>> bodyproposed = null, Expression<Func<bool>> bodyshareable = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyurl = null)
         {
             var apiCallPath = "/publicapi/post";
             var apiCallHttpMethod = "post";
@@ -47,13 +47,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 
             if (bodyproposed != null)
             {
-                body["proposed"] = ExpressionConverter.ConvertO(bodyproposed);
+                if (bodyproposed != null)
+                {
+                    body["proposed"] = ExpressionConverter.ConvertO(bodyproposed);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["proposed"] = true;
                 bodypropCount++;
             }
 
             if (bodyshareable != null)
             {
-                body["shareable"] = ExpressionConverter.ConvertO(bodyshareable);
+                if (bodyshareable != null)
+                {
+                    body["shareable"] = ExpressionConverter.ConvertO(bodyshareable);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["shareable"] = true;
                 bodypropCount++;
             }
 

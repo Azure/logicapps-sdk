@@ -86,7 +86,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
             if (requestemailContentType != null)
             {
-                request["emailContentType"] = ExpressionConverter.ConvertO(requestemailContentType);
+                if (requestemailContentType != null)
+                {
+                    request["emailContentType"] = ExpressionConverter.ConvertO(requestemailContentType);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["emailContentType"] = "Template";
                 requestpropCount++;
             }
 
@@ -104,7 +114,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
             if (requestwhenToSendType != null)
             {
-                request["jobExecutionType"] = ExpressionConverter.ConvertO(requestwhenToSendType);
+                if (requestwhenToSendType != null)
+                {
+                    request["jobExecutionType"] = ExpressionConverter.ConvertO(requestwhenToSendType);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["jobExecutionType"] = "Now";
                 requestpropCount++;
             }
 
@@ -136,13 +156,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             request["recipientType"] = ExpressionConverter.ConvertO(requestrecipientSource);
             if (requestremoveDuplicates != null)
             {
-                request["removeDuplicates"] = ExpressionConverter.ConvertO(requestremoveDuplicates);
+                if (requestremoveDuplicates != null)
+                {
+                    request["removeDuplicates"] = ExpressionConverter.ConvertO(requestremoveDuplicates);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["removeDuplicates"] = true;
                 requestpropCount++;
             }
 
             if (requestsendReport != null)
             {
-                request["reportAuthor"] = ExpressionConverter.ConvertO(requestsendReport);
+                if (requestsendReport != null)
+                {
+                    request["reportAuthor"] = ExpressionConverter.ConvertO(requestsendReport);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["reportAuthor"] = true;
                 requestpropCount++;
             }
 
@@ -164,13 +204,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             request["title"] = ExpressionConverter.ConvertO(requestnewsletterTitle);
             if (requesttrackClicks != null)
             {
-                request["trackClicks"] = ExpressionConverter.ConvertO(requesttrackClicks);
+                if (requesttrackClicks != null)
+                {
+                    request["trackClicks"] = ExpressionConverter.ConvertO(requesttrackClicks);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["trackClicks"] = true;
                 requestpropCount++;
             }
 
             if (requesttrackOpens != null)
             {
-                request["trackOpens"] = ExpressionConverter.ConvertO(requesttrackOpens);
+                if (requesttrackOpens != null)
+                {
+                    request["trackOpens"] = ExpressionConverter.ConvertO(requesttrackOpens);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["trackOpens"] = true;
                 requestpropCount++;
             }
 

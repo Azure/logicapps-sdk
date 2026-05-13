@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
     public class DataboxipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
-        public IBodyWorkflowAction<DataPostResponse> DataPost(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<DataPostResponse> Data(Expression<Func<bodyInputItem[]>> body = null)
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "post";

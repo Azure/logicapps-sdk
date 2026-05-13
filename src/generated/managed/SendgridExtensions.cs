@@ -12,74 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     public class SendgridActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken> SendEmailV4(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
-        {
-            var apiCallPath = "/v4/mail/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestattachment != null)
-            {
-                request["attachments"] = ExpressionConverter.ConvertO(requestattachment);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestfrom);
-            if (requestfromName != null)
-            {
-                request["fromname"] = ExpressionConverter.ConvertO(requestfromName);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestto);
-            if (requesttoNames != null)
-            {
-                request["toname"] = ExpressionConverter.ConvertO(requesttoNames);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["subject"] = ExpressionConverter.ConvertO(requestsubject);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requestemailBody);
-            request["ishtml"] = true;
-            requestpropCount++;
-            if (requestcC != null)
-            {
-                request["cc"] = ExpressionConverter.ConvertO(requestcC);
-                requestpropCount++;
-            }
-
-            if (requestcCNames != null)
-            {
-                request["ccname"] = ExpressionConverter.ConvertO(requestcCNames);
-                requestpropCount++;
-            }
-
-            if (requestbcc != null)
-            {
-                request["bcc"] = ExpressionConverter.ConvertO(requestbcc);
-                requestpropCount++;
-            }
-
-            if (requestbCCNames != null)
-            {
-                request["bccname"] = ExpressionConverter.ConvertO(requestbCCNames);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression(Expression<Func<string[]>> recipientEmailsrecipientEmail = null)
         {
             var apiCallPath = "/suppressions/global";
@@ -145,22 +77,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<EmailIsUnsubscribedResponse>(callPayload);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
+        public IBodyWorkflowAction<JToken> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
+        {
+            var apiCallPath = "/v4/mail/send";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var request = new JObject();
+            var requestpropCount = 0;
+            if (requestattachment != null)
+            {
+                request["attachments"] = ExpressionConverter.ConvertO(requestattachment);
+                requestpropCount++;
+            }
+
+            requestpropCount++;
+            request["from"] = ExpressionConverter.ConvertO(requestfrom);
+            if (requestfromName != null)
+            {
+                request["fromname"] = ExpressionConverter.ConvertO(requestfromName);
+                requestpropCount++;
+            }
+
+            requestpropCount++;
+            request["to"] = ExpressionConverter.ConvertO(requestto);
+            if (requesttoNames != null)
+            {
+                request["toname"] = ExpressionConverter.ConvertO(requesttoNames);
+                requestpropCount++;
+            }
+
+            requestpropCount++;
+            request["subject"] = ExpressionConverter.ConvertO(requestsubject);
+            requestpropCount++;
+            request["text"] = ExpressionConverter.ConvertO(requestemailBody);
+            request["ishtml"] = true;
+            requestpropCount++;
+            if (requestcC != null)
+            {
+                request["cc"] = ExpressionConverter.ConvertO(requestcC);
+                requestpropCount++;
+            }
+
+            if (requestcCNames != null)
+            {
+                request["ccname"] = ExpressionConverter.ConvertO(requestcCNames);
+                requestpropCount++;
+            }
+
+            if (requestbcc != null)
+            {
+                request["bcc"] = ExpressionConverter.ConvertO(requestbcc);
+                requestpropCount++;
+            }
+
+            if (requestbCCNames != null)
+            {
+                request["bccname"] = ExpressionConverter.ConvertO(requestbCCNames);
+                requestpropCount++;
+            }
+
+            if (requestpropCount > 0)
+            {
+                callPayload.Body = request;
+            }
+
+            return new ApiConnectionAction<JToken>(callPayload);
+        }
     }
 
     public class SendgridTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class EmailAttachment
-    {
-        [JsonProperty("content")]
-        public string Content { get; set; }
-
-        [JsonProperty("filename")]
-        public string Name { get; set; }
-
-        [JsonProperty("contenttype")]
-        public string ContentType { get; set; }
     }
 
     public class AddGlobalSuppressRequestAndResponse
@@ -188,6 +176,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     {
         [JsonProperty("isUnsubscribed")]
         public bool IsEmailUnsubscribed { get; set; }
+    }
+
+    public class EmailAttachment
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("filename")]
+        public string Name { get; set; }
+
+        [JsonProperty("contenttype")]
+        public string ContentType { get; set; }
     }
 }
 

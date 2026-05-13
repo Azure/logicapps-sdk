@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailPostResponse> EmailPost(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
+        public IBodyWorkflowAction<EmailPostResponse> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
         {
             var apiCallPath = "/emails";
             var apiCallHttpMethod = "post";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainPostResponse> DomainPost(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
+        public IBodyWorkflowAction<DomainPostResponse> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
         {
             var apiCallPath = "/domains";
             var apiCallHttpMethod = "post";
@@ -99,7 +99,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             body["name"] = ExpressionConverter.ConvertO(bodyname);
             if (bodyregion != null)
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["region"] = "us-east-1";
                 bodypropCount++;
             }
 
@@ -121,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<string> VerifyPost(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
         {
             var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
             var apiCallHttpMethod = "post";
@@ -161,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class RetrieveGetResponse
     {
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }

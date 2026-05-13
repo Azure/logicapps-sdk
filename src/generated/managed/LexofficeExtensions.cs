@@ -165,7 +165,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
             if (bodypriceleadingPrice != null)
             {
-                priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                if (bodypriceleadingPrice != null)
+                {
+                    priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                    priceObjectpropCount++;
+                }
+
+                priceObjectpropCount++;
+            }
+            else
+            {
+                priceObject["leadingPrice"] = "GROSS";
                 priceObjectpropCount++;
             }
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse> PlantPost(Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
         {
             var apiCallPath = "/plant/trees";
             var apiCallHttpMethod = "post";

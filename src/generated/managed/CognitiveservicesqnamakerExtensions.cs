@@ -25,7 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
             body["question"] = ExpressionConverter.ConvertO(bodyquestion);
             if (bodytop != null)
             {
-                body["top"] = ExpressionConverter.ConvertO(bodytop);
+                if (bodytop != null)
+                {
+                    body["top"] = ExpressionConverter.ConvertO(bodytop);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["top"] = 1;
                 bodypropCount++;
             }
 
@@ -41,15 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOld(Expression<Func<string>> knowledgeBaseId)
         {
             var apiCallPath = String.Format("/qnamaker/v4.0/knowledgebases/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeBaseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOldV2(Expression<Func<string>> subdomainName, Expression<Func<string>> knowledgeBaseId)
-        {
-            var apiCallPath = String.Format("/v2/subdomain/{0}/qnamaker/v4.0/knowledgebases/{1}", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(knowledgeBaseId, 1));
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(callPayload);

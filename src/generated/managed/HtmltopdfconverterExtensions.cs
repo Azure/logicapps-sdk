@@ -24,7 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
             var bodypropCount = 0;
             if (bodyhtmlBody != null)
             {
-                body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
+                if (bodyhtmlBody != null)
+                {
+                    body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["HtmlBody"] = "<html><body><h1>Hello, World!</h1></body></html>";
                 bodypropCount++;
             }
 

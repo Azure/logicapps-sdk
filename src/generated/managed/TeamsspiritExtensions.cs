@@ -209,7 +209,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
             var bodypropCount = 0;
             if (bodyweeks != null)
             {
-                body["weeks"] = ExpressionConverter.ConvertO(bodyweeks);
+                if (bodyweeks != null)
+                {
+                    body["weeks"] = ExpressionConverter.ConvertO(bodyweeks);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["weeks"] = "4'";
                 bodypropCount++;
             }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<CommandPostResponse> CommandPost(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
+        public IBodyWorkflowAction<CommandPostResponse> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
         {
             var apiCallPath = "/v1/command";
             var apiCallHttpMethod = "post";
@@ -43,31 +43,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var optionsObjectpropCount = 0;
             if (bodyoptionsoutputCount != null)
             {
-                optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                if (bodyoptionsoutputCount != null)
+                {
+                    optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["outputCount"] = 3;
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsinputLanguage != null)
             {
-                optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                if (bodyoptionsinputLanguage != null)
+                {
+                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["inputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsoutputLanguage != null)
             {
-                optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                if (bodyoptionsoutputLanguage != null)
+                {
+                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["outputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionslanguageFormality != null)
             {
-                optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                if (bodyoptionslanguageFormality != null)
+                {
+                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["languageFormality"] = "default";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionscompletionType != null)
             {
-                optionsObject["completionType"] = ExpressionConverter.ConvertO(bodyoptionscompletionType);
+                if (bodyoptionscompletionType != null)
+                {
+                    optionsObject["completionType"] = ExpressionConverter.ConvertO(bodyoptionscompletionType);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["completionType"] = "performance";
                 optionsObjectpropCount++;
             }
 
@@ -86,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWritingPost(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
             var apiCallPath = "/v1/keep-writing";
             var apiCallHttpMethod = "post";
@@ -97,7 +147,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var inputsObjectpropCount = 0;
             if (bodyinputstype != null)
             {
-                inputsObject["type"] = ExpressionConverter.ConvertO(bodyinputstype);
+                if (bodyinputstype != null)
+                {
+                    inputsObject["type"] = ExpressionConverter.ConvertO(bodyinputstype);
+                    inputsObjectpropCount++;
+                }
+
+                inputsObjectpropCount++;
+            }
+            else
+            {
+                inputsObject["type"] = "text";
                 inputsObjectpropCount++;
             }
 
@@ -117,19 +177,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var optionsObjectpropCount = 0;
             if (bodyoptionsinputLanguage != null)
             {
-                optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                if (bodyoptionsinputLanguage != null)
+                {
+                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["inputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsoutputLanguage != null)
             {
-                optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                if (bodyoptionsoutputLanguage != null)
+                {
+                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["outputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionslanguageFormality != null)
             {
-                optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                if (bodyoptionslanguageFormality != null)
+                {
+                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["languageFormality"] = "default";
                 optionsObjectpropCount++;
             }
 
@@ -166,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplatePostResponse> TemplatePost(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
             var apiCallPath = String.Format("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
             var apiCallHttpMethod = "post";
@@ -191,19 +281,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 
             if (bodyoptionsinputLanguage != null)
             {
-                optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                if (bodyoptionsinputLanguage != null)
+                {
+                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["inputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionsoutputLanguage != null)
             {
-                optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                if (bodyoptionsoutputLanguage != null)
+                {
+                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["outputLanguage"] = "English";
                 optionsObjectpropCount++;
             }
 
             if (bodyoptionslanguageFormality != null)
             {
-                optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                if (bodyoptionslanguageFormality != null)
+                {
+                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    optionsObjectpropCount++;
+                }
+
+                optionsObjectpropCount++;
+            }
+            else
+            {
+                optionsObject["languageFormality"] = "default";
                 optionsObjectpropCount++;
             }
 
@@ -235,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse> KnowledgePost(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
             var apiCallPath = "/v1/knowledge";
             var apiCallHttpMethod = "post";
@@ -254,7 +374,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var settingsObjectpropCount = 0;
             if (bodysettingsappVisibility != null)
             {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                if (bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
+
+                settingsObjectpropCount++;
+            }
+            else
+            {
+                settingsObject["appVisibility"] = "visible";
                 settingsObjectpropCount++;
             }
 
@@ -354,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePostResponse> TonePost(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<TonePostResponse> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
             var apiCallPath = "/v1/tones";
             var apiCallHttpMethod = "post";
@@ -373,7 +503,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var settingsObjectpropCount = 0;
             if (bodysettingsappVisibility != null)
             {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                if (bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
+
+                settingsObjectpropCount++;
+            }
+            else
+            {
+                settingsObject["appVisibility"] = "visible";
                 settingsObjectpropCount++;
             }
 

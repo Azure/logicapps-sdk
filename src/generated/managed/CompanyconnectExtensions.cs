@@ -53,13 +53,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
             if (requestyesText != null)
             {
-                request["yesText"] = ExpressionConverter.ConvertO(requestyesText);
+                if (requestyesText != null)
+                {
+                    request["yesText"] = ExpressionConverter.ConvertO(requestyesText);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["yesText"] = "Yes";
                 requestpropCount++;
             }
 
             if (requestnoText != null)
             {
-                request["noText"] = ExpressionConverter.ConvertO(requestnoText);
+                if (requestnoText != null)
+                {
+                    request["noText"] = ExpressionConverter.ConvertO(requestnoText);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+            }
+            else
+            {
+                request["noText"] = "No";
                 requestpropCount++;
             }
 

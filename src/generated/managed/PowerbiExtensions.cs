@@ -88,7 +88,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (goalstatus != null)
             {
-                goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                if (goalstatus != null)
+                {
+                    goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                    goalpropCount++;
+                }
+
+                goalpropCount++;
+            }
+            else
+            {
+                goal["status"] = "Not started";
                 goalpropCount++;
             }
 
@@ -170,7 +180,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (goalstatus != null)
             {
-                goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                if (goalstatus != null)
+                {
+                    goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                    goalpropCount++;
+                }
+
+                goalpropCount++;
+            }
+            else
+            {
+                goal["status"] = "Leave unchanged";
                 goalpropCount++;
             }
 
@@ -209,7 +229,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var serializerSettingsObjectpropCount = 0;
             if (specificationserializerSettingsnullsIncluded != null)
             {
-                serializerSettingsObject["includeNulls"] = ExpressionConverter.ConvertO(specificationserializerSettingsnullsIncluded);
+                if (specificationserializerSettingsnullsIncluded != null)
+                {
+                    serializerSettingsObject["includeNulls"] = ExpressionConverter.ConvertO(specificationserializerSettingsnullsIncluded);
+                    serializerSettingsObjectpropCount++;
+                }
+
+                serializerSettingsObjectpropCount++;
+            }
+            else
+            {
+                serializerSettingsObject["includeNulls"] = false;
                 serializerSettingsObjectpropCount++;
             }
 
@@ -291,7 +321,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (checkinstatus != null)
             {
-                checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                if (checkinstatus != null)
+                {
+                    checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                    checkinpropCount++;
+                }
+
+                checkinpropCount++;
+            }
+            else
+            {
+                checkin["status"] = "Leave unchanged";
                 checkinpropCount++;
             }
 
@@ -337,7 +377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
             if (checkinstatus != null)
             {
-                checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                if (checkinstatus != null)
+                {
+                    checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                    checkinpropCount++;
+                }
+
+                checkinpropCount++;
+            }
+            else
+            {
+                checkin["status"] = "Leave unchanged";
                 checkinpropCount++;
             }
 

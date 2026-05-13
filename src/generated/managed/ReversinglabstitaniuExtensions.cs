@@ -673,7 +673,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlresponseFormat != null)
             {
-                rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                if (bodyrlresponseFormat != null)
+                {
+                    rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                    rlObjectpropCount++;
+                }
+
+                rlObjectpropCount++;
+            }
+            else
+            {
+                rlObject["response_format"] = "json";
                 rlObjectpropCount++;
             }
 
@@ -897,7 +907,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1021,7 +1041,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1065,7 +1095,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1109,7 +1149,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1177,7 +1227,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1233,7 +1293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1289,7 +1359,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1345,7 +1425,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1389,7 +1479,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1457,7 +1557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1513,7 +1623,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1697,7 +1817,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             queryObject["network_locations"] = ExpressionConverter.ConvertO(bodyrlquerynetworkLocations);
             if (bodyrlqueryresponseFormat != null)
             {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                if (bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
+
+                queryObjectpropCount++;
+            }
+            else
+            {
+                queryObject["response_format"] = "json";
                 queryObjectpropCount++;
             }
 
@@ -1769,7 +1899,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrlresponseFormat != null)
             {
-                rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                if (bodyrlresponseFormat != null)
+                {
+                    rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                    rlObjectpropCount++;
+                }
+
+                rlObjectpropCount++;
+            }
+            else
+            {
+                rlObject["response_format"] = "json";
                 rlObjectpropCount++;
             }
 
@@ -1989,19 +2129,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 
             if (bodyrecordsPerPage != null)
             {
-                body["records_per_page"] = ExpressionConverter.ConvertO(bodyrecordsPerPage);
+                if (bodyrecordsPerPage != null)
+                {
+                    body["records_per_page"] = ExpressionConverter.ConvertO(bodyrecordsPerPage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["records_per_page"] = 1000;
                 bodypropCount++;
             }
 
             if (bodypage != null)
             {
-                body["page"] = ExpressionConverter.ConvertO(bodypage);
+                if (bodypage != null)
+                {
+                    body["page"] = ExpressionConverter.ConvertO(bodypage);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["page"] = 1;
                 bodypropCount++;
             }
 
             if (bodysort != null)
             {
-                body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                if (bodysort != null)
+                {
+                    body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["sort"] = "firstseen desc";
                 bodypropCount++;
             }
 

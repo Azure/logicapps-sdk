@@ -21,13 +21,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var bodypropCount = 0;
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["offset"] = 0;
                 bodypropCount++;
             }
 
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 1;
                 bodypropCount++;
             }
 
@@ -64,13 +84,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var bodypropCount = 0;
             if (bodylimit != null)
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["limit"] = 1;
                 bodypropCount++;
             }
 
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["offset"] = 0;
                 bodypropCount++;
             }
 
@@ -84,7 +124,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var predicateObjectpropCount = 0;
             if (bodypredicatepath != null)
             {
-                predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                if (bodypredicatepath != null)
+                {
+                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    predicateObjectpropCount++;
+                }
+
+                predicateObjectpropCount++;
+            }
+            else
+            {
+                predicateObject["path"] = "parent.id";
                 predicateObjectpropCount++;
             }
 
@@ -96,7 +146,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodypredicatecomparator != null)
             {
-                predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                if (bodypredicatecomparator != null)
+                {
+                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    predicateObjectpropCount++;
+                }
+
+                predicateObjectpropCount++;
+            }
+            else
+            {
+                predicateObject["comparator"] = "EqualTo";
                 predicateObjectpropCount++;
             }
 
@@ -154,7 +214,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var bodypropCount = 0;
             if (bodyoffset != null)
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["offset"] = 0;
                 bodypropCount++;
             }
 
@@ -168,7 +238,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var predicateObjectpropCount = 0;
             if (bodypredicatepath != null)
             {
-                predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                if (bodypredicatepath != null)
+                {
+                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    predicateObjectpropCount++;
+                }
+
+                predicateObjectpropCount++;
+            }
+            else
+            {
+                predicateObject["path"] = "group.id";
                 predicateObjectpropCount++;
             }
 
@@ -180,7 +260,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 
             if (bodypredicatecomparator != null)
             {
-                predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                if (bodypredicatecomparator != null)
+                {
+                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    predicateObjectpropCount++;
+                }
+
+                predicateObjectpropCount++;
+            }
+            else
+            {
+                predicateObject["comparator"] = "EqualTo";
                 predicateObjectpropCount++;
             }
 

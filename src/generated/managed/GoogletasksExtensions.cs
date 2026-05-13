@@ -120,14 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
         }
-
-        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInListV2(Expression<Func<string>> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/trigger5/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
-        }
     }
 
     public class TaskListList

@@ -1,0 +1,567 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
+{
+    using System.Linq.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
+    {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        {
+            var apiCallPath = "/api/create-emergency-contact";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
+            if (bodyaddressLine1 != null)
+            {
+                body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                bodypropCount++;
+            }
+
+            if (bodyaddressLine2 != null)
+            {
+                body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                bodypropCount++;
+            }
+
+            if (bodyaddressLine3 != null)
+            {
+                body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
+                bodypropCount++;
+            }
+
+            if (bodyaddressCity != null)
+            {
+                body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
+                bodypropCount++;
+            }
+
+            if (bodyaddressState != null)
+            {
+                body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
+                bodypropCount++;
+            }
+
+            if (bodyaddressCountry != null)
+            {
+                body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
+                bodypropCount++;
+            }
+
+            if (bodyaddressPostalCode != null)
+            {
+                body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
+                bodypropCount++;
+            }
+
+            if (bodyphones != null)
+            {
+                body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                bodypropCount++;
+            }
+
+            if (bodyemails != null)
+            {
+                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
+            bodypropCount++;
+            body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
+        {
+            var apiCallPath = "/api/delete-emergency-contacts";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["itemIds"] = ExpressionConverter.ConvertO(bodyitemIds);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<GetContactsResponse> GetContacts()
+        {
+            var apiCallPath = "/api/get-emergency-contacts";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<GetPayDistributionsResponse> GetPayDistributions()
+        {
+            var apiCallPath = "/api/get-pay-distributions";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetPayDistributionsResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<GetPayStatementsResponse> GetPayStatements()
+        {
+            var apiCallPath = "/api/get-pay-statements";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetPayStatementsResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<GetUserResponse> GetUser()
+        {
+            var apiCallPath = "/api/get-worker";
+            var apiCallHttpMethod = "get";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            return new ApiConnectionAction<GetUserResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        {
+            var apiCallPath = "/api/update-emergency-contact";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            bodypropCount++;
+            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
+            bodypropCount++;
+            body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
+            if (bodyaddressLine1 != null)
+            {
+                body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                bodypropCount++;
+            }
+
+            if (bodyaddressLine2 != null)
+            {
+                body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                bodypropCount++;
+            }
+
+            if (bodyaddressLine3 != null)
+            {
+                body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
+                bodypropCount++;
+            }
+
+            if (bodyaddressCity != null)
+            {
+                body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
+                bodypropCount++;
+            }
+
+            if (bodyaddressState != null)
+            {
+                body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
+                bodypropCount++;
+            }
+
+            if (bodyaddressCountry != null)
+            {
+                body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
+                bodypropCount++;
+            }
+
+            if (bodyaddressPostalCode != null)
+            {
+                body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
+                bodypropCount++;
+            }
+
+            if (bodyphones != null)
+            {
+                body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                bodypropCount++;
+            }
+
+            if (bodyemails != null)
+            {
+                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                bodypropCount++;
+            }
+
+            bodypropCount++;
+            body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
+            bodypropCount++;
+            body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UpdateContactResponse>(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
+        {
+            var apiCallPath = "/api/update-profile";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            var body = new JObject();
+            var bodypropCount = 0;
+            if (bodyname != null)
+            {
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+            }
+
+            if (bodyemail != null)
+            {
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+            }
+
+            if (bodymobileCountry != null)
+            {
+                body["mobileCountry"] = ExpressionConverter.ConvertO(bodymobileCountry);
+                bodypropCount++;
+            }
+
+            if (bodymobileArea != null)
+            {
+                body["mobileArea"] = ExpressionConverter.ConvertO(bodymobileArea);
+                bodypropCount++;
+            }
+
+            if (bodymobileNumber != null)
+            {
+                body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                bodypropCount++;
+            }
+
+            if (bodypropCount > 0)
+            {
+                callPayload.Body = body;
+            }
+
+            return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+        }
+    }
+
+    public class AdpemployeeselfserviTriggers([ConnectionName] string connectionId)
+    {
+    }
+
+    public class CreateContactResponse
+    {
+        [JsonProperty("result")]
+        public CreateContactResponseResultType Result { get; set; }
+    }
+
+    public class CreateContactResponseResultType
+    {
+        [JsonProperty("itemId")]
+        public string ItemId { get; set; }
+    }
+
+    public enum bodyrelationInput
+    {
+        [EnumMember(Value = "spouse")]
+        Spouse,
+        [EnumMember(Value = "partner")]
+        Partner,
+        [EnumMember(Value = "child")]
+        Child,
+        [EnumMember(Value = "sibling")]
+        Sibling,
+        [EnumMember(Value = "parent")]
+        Parent,
+        [EnumMember(Value = "other")]
+        Other
+    }
+
+    public class bodyphonesInputItem
+    {
+        [JsonProperty("phoneType")]
+        public bodyphonesInputItemPhoneTypeType PhoneType { get; set; }
+
+        [JsonProperty("countryCode")]
+        public int CountryCode { get; set; }
+
+        [JsonProperty("areaCode")]
+        public int AreaCode { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("extension")]
+        public int Extension { get; set; }
+    }
+
+    public enum bodyphonesInputItemPhoneTypeType
+    {
+        [EnumMember(Value = "home")]
+        Home,
+        [EnumMember(Value = "work")]
+        Work,
+        [EnumMember(Value = "alternate")]
+        Alternate,
+        [EnumMember(Value = "mobile")]
+        Mobile
+    }
+
+    public class bodyemailsInputItem
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public class DeleteContactsResponse
+    {
+        [JsonProperty("result")]
+        public DeleteContactsResponseResultTypeItem[] Result { get; set; }
+    }
+
+    public class DeleteContactsResponseResultTypeItem
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("error")]
+        public string Error { get; set; }
+    }
+
+    public class GetContactsResponse
+    {
+        [JsonProperty("result")]
+        public GetContactsResponseResultTypeItem[] Result { get; set; }
+    }
+
+    public class GetContactsResponseResultTypeItem
+    {
+        [JsonProperty("itemId")]
+        public string ItemId { get; set; }
+
+        [JsonProperty("contactName")]
+        public string ContactName { get; set; }
+
+        [JsonProperty("addressLine1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("addressLine3")]
+        public string AddressLine3 { get; set; }
+
+        [JsonProperty("addressCity")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("addressState")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("addressCountry")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("addressPostalCode")]
+        public string AddressPostalCode { get; set; }
+
+        [JsonProperty("phones")]
+        public GetContactsResponseResultTypeItemPhonesTypeItem[] Phones { get; set; }
+
+        [JsonProperty("emails")]
+        public GetContactsResponseResultTypeItemEmailsTypeItem[] Emails { get; set; }
+
+        [JsonProperty("relation")]
+        public string Relation { get; set; }
+
+        [JsonProperty("isPrimary")]
+        public bool IsPrimary { get; set; }
+    }
+
+    public class GetContactsResponseResultTypeItemPhonesTypeItem
+    {
+        [JsonProperty("phoneType")]
+        public string PhoneType { get; set; }
+
+        [JsonProperty("countryCode")]
+        public int CountryCode { get; set; }
+
+        [JsonProperty("areaCode")]
+        public int AreaCode { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("extension")]
+        public int Extension { get; set; }
+    }
+
+    public class GetContactsResponseResultTypeItemEmailsTypeItem
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    public class GetPayDistributionsResponse
+    {
+        [JsonProperty("result")]
+        public GetPayDistributionsResponseResultTypeItem[] Result { get; set; }
+    }
+
+    public class GetPayDistributionsResponseResultTypeItem
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("effectiveDate")]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("accountType")]
+        public string AccountType { get; set; }
+
+        [JsonProperty("accountNumber")]
+        public string AccountNumber { get; set; }
+
+        [JsonProperty("routingNumber")]
+        public string RoutingNumber { get; set; }
+
+        [JsonProperty("amount")]
+        public int Amount { get; set; }
+
+        [JsonProperty("isBonusOnly")]
+        public bool IsBonusOnly { get; set; }
+    }
+
+    public class GetPayStatementsResponse
+    {
+        [JsonProperty("result")]
+        public GetPayStatementsResponseResultTypeItem[] Result { get; set; }
+    }
+
+    public class GetPayStatementsResponseResultTypeItem
+    {
+        [JsonProperty("payDate")]
+        public string PayDate { get; set; }
+
+        [JsonProperty("currencyCode")]
+        public string CurrencyCode { get; set; }
+
+        [JsonProperty("netPayAmount")]
+        public double NetPayAmount { get; set; }
+
+        [JsonProperty("grossPayAmount")]
+        public double GrossPayAmount { get; set; }
+
+        [JsonProperty("totalHours")]
+        public double TotalHours { get; set; }
+    }
+
+    public class GetUserResponse
+    {
+        [JsonProperty("result")]
+        public GetUserResponseResultType Result { get; set; }
+    }
+
+    public class GetUserResponseResultType
+    {
+        [JsonProperty("preferredName")]
+        public string PreferredName { get; set; }
+
+        [JsonProperty("legalName")]
+        public string LegalName { get; set; }
+
+        [JsonProperty("personalEmail")]
+        public string PersonalEmail { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+
+        [JsonProperty("businessEmail")]
+        public string BusinessEmail { get; set; }
+    }
+
+    public class UpdateContactResponse
+    {
+        [JsonProperty("result")]
+        public UpdateContactResponseResultType Result { get; set; }
+    }
+
+    public class UpdateContactResponseResultType
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
+    public class bodyphonesInputItem2
+    {
+        [JsonProperty("phoneType")]
+        public bodyphonesInputItemPhoneTypeType PhoneType { get; set; }
+
+        [JsonProperty("countryCode")]
+        public int CountryCode { get; set; }
+
+        [JsonProperty("areaCode")]
+        public int AreaCode { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("extension")]
+        public int Extension { get; set; }
+    }
+
+    public class UpdateUserResponse
+    {
+        [JsonProperty("result")]
+        public UpdateUserResponseResultTypeItem[] Result { get; set; }
+    }
+
+    public class UpdateUserResponseResultTypeItem
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("error")]
+        public string Error { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi;
+
+    public partial class WorkflowManagedActions
+    {
+        public AdpemployeeselfserviActions Adpemployeeselfservi(string connectionId) => new AdpemployeeselfserviActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public AdpemployeeselfserviTriggers Adpemployeeselfservi(string connectionId) => new AdpemployeeselfserviTriggers(connectionId);
+    }
+}

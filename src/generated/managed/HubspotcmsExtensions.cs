@@ -305,7 +305,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
 
             if (bodyisAvailableForNewContent != null)
             {
-                body["is_available_for_new_content"] = ExpressionConverter.ConvertO(bodyisAvailableForNewContent);
+                if (bodyisAvailableForNewContent != null)
+                {
+                    body["is_available_for_new_content"] = ExpressionConverter.ConvertO(bodyisAvailableForNewContent);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["is_available_for_new_content"] = false;
                 bodypropCount++;
             }
 

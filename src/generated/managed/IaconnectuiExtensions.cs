@@ -39,7 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesTopLevelWindowExistmatchIndex != null)
             {
-                uIADoesTopLevelWindowExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistmatchIndex);
+                if (uIADoesTopLevelWindowExistmatchIndex != null)
+                {
+                    uIADoesTopLevelWindowExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesTopLevelWindowExistmatchIndex);
+                    uIADoesTopLevelWindowExistpropCount++;
+                }
+
+                uIADoesTopLevelWindowExistpropCount++;
+            }
+            else
+            {
+                uIADoesTopLevelWindowExist["MatchIndex"] = 1;
                 uIADoesTopLevelWindowExistpropCount++;
             }
 
@@ -87,7 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetHandleForTopLevelWindowmatchIndex != null)
             {
-                uIAGetHandleForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndex);
+                if (uIAGetHandleForTopLevelWindowmatchIndex != null)
+                {
+                    uIAGetHandleForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndex);
+                    uIAGetHandleForTopLevelWindowpropCount++;
+                }
+
+                uIAGetHandleForTopLevelWindowpropCount++;
+            }
+            else
+            {
+                uIAGetHandleForTopLevelWindow["MatchIndex"] = 1;
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
@@ -105,7 +125,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetHandleForTopLevelWindowmatchIndexAscending != null)
             {
-                uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndexAscending);
+                if (uIAGetHandleForTopLevelWindowmatchIndexAscending != null)
+                {
+                    uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetHandleForTopLevelWindowmatchIndexAscending);
+                    uIAGetHandleForTopLevelWindowpropCount++;
+                }
+
+                uIAGetHandleForTopLevelWindowpropCount++;
+            }
+            else
+            {
+                uIAGetHandleForTopLevelWindow["MatchIndexAscending"] = true;
                 uIAGetHandleForTopLevelWindowpropCount++;
             }
 
@@ -149,7 +179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForTopLevelWindowmatchIndex != null)
             {
-                uIAWaitForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndex);
+                if (uIAWaitForTopLevelWindowmatchIndex != null)
+                {
+                    uIAWaitForTopLevelWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndex);
+                    uIAWaitForTopLevelWindowpropCount++;
+                }
+
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+            else
+            {
+                uIAWaitForTopLevelWindow["MatchIndex"] = 1;
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
@@ -167,13 +207,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForTopLevelWindowmatchIndexAscending != null)
             {
-                uIAWaitForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndexAscending);
+                if (uIAWaitForTopLevelWindowmatchIndexAscending != null)
+                {
+                    uIAWaitForTopLevelWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowmatchIndexAscending);
+                    uIAWaitForTopLevelWindowpropCount++;
+                }
+
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+            else
+            {
+                uIAWaitForTopLevelWindow["MatchIndexAscending"] = true;
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
             if (uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound != null)
             {
-                uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound);
+                if (uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound != null)
+                {
+                    uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = ExpressionConverter.ConvertO(uIAWaitForTopLevelWindowraiseExceptionIfWindowNotFound);
+                    uIAWaitForTopLevelWindowpropCount++;
+                }
+
+                uIAWaitForTopLevelWindowpropCount++;
+            }
+            else
+            {
+                uIAWaitForTopLevelWindow["RaiseExceptionIfWindowNotFound"] = false;
                 uIAWaitForTopLevelWindowpropCount++;
             }
 
@@ -357,19 +417,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIASetForegroundWindow["WindowHandle"] = ExpressionConverter.ConvertO(uIASetForegroundWindowwindowHandle);
             if (uIASetForegroundWindowtoggleWindow != null)
             {
-                uIASetForegroundWindow["ToggleWindow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleWindow);
+                if (uIASetForegroundWindowtoggleWindow != null)
+                {
+                    uIASetForegroundWindow["ToggleWindow"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleWindow);
+                    uIASetForegroundWindowpropCount++;
+                }
+
+                uIASetForegroundWindowpropCount++;
+            }
+            else
+            {
+                uIASetForegroundWindow["ToggleWindow"] = true;
                 uIASetForegroundWindowpropCount++;
             }
 
             if (uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent != null)
             {
-                uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent);
+                if (uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent != null)
+                {
+                    uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleUsesGlobalLeftMouseClickAgent);
+                    uIASetForegroundWindowpropCount++;
+                }
+
+                uIASetForegroundWindowpropCount++;
+            }
+            else
+            {
+                uIASetForegroundWindow["ToggleUsesGlobalLeftMouseClickAgent"] = true;
                 uIASetForegroundWindowpropCount++;
             }
 
             if (uIASetForegroundWindowtoggleDelay != null)
             {
-                uIASetForegroundWindow["ToggleDelay"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleDelay);
+                if (uIASetForegroundWindowtoggleDelay != null)
+                {
+                    uIASetForegroundWindow["ToggleDelay"] = ExpressionConverter.ConvertO(uIASetForegroundWindowtoggleDelay);
+                    uIASetForegroundWindowpropCount++;
+                }
+
+                uIASetForegroundWindowpropCount++;
+            }
+            else
+            {
+                uIASetForegroundWindow["ToggleDelay"] = 0.25;
                 uIASetForegroundWindowpropCount++;
             }
 
@@ -485,19 +575,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesElementExistsearchSubTree != null)
             {
-                uIADoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchSubTree);
+                if (uIADoesElementExistsearchSubTree != null)
+                {
+                    uIADoesElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesElementExistsearchSubTree);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["SearchSubTree"] = true;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistreturnElementHandle != null)
             {
-                uIADoesElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistreturnElementHandle);
+                if (uIADoesElementExistreturnElementHandle != null)
+                {
+                    uIADoesElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesElementExistreturnElementHandle);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["ReturnElementHandle"] = true;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistmatchIndex != null)
             {
-                uIADoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndex);
+                if (uIADoesElementExistmatchIndex != null)
+                {
+                    uIADoesElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndex);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["MatchIndex"] = 1;
                 uIADoesElementExistpropCount++;
             }
 
@@ -515,31 +635,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesElementExistmatchIndexAscending != null)
             {
-                uIADoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndexAscending);
+                if (uIADoesElementExistmatchIndexAscending != null)
+                {
+                    uIADoesElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesElementExistmatchIndexAscending);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["MatchIndexAscending"] = true;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistincludeChildProcesses != null)
             {
-                uIADoesElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesElementExistincludeChildProcesses);
+                if (uIADoesElementExistincludeChildProcesses != null)
+                {
+                    uIADoesElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesElementExistincludeChildProcesses);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["IncludeChildProcesses"] = false;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistmaxElementsToSearch != null)
             {
-                uIADoesElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxElementsToSearch);
+                if (uIADoesElementExistmaxElementsToSearch != null)
+                {
+                    uIADoesElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxElementsToSearch);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["MaxElementsToSearch"] = 0;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistmaxRelativeSearchDepth != null)
             {
-                uIADoesElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxRelativeSearchDepth);
+                if (uIADoesElementExistmaxRelativeSearchDepth != null)
+                {
+                    uIADoesElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxRelativeSearchDepth);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["MaxRelativeSearchDepth"] = 0;
                 uIADoesElementExistpropCount++;
             }
 
             if (uIADoesElementExistmaxChildElementsToSearchPerNode != null)
             {
-                uIADoesElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxChildElementsToSearchPerNode);
+                if (uIADoesElementExistmaxChildElementsToSearchPerNode != null)
+                {
+                    uIADoesElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesElementExistmaxChildElementsToSearchPerNode);
+                    uIADoesElementExistpropCount++;
+                }
+
+                uIADoesElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesElementExist["MaxChildElementsToSearchPerNode"] = 0;
                 uIADoesElementExistpropCount++;
             }
 
@@ -599,19 +769,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesDesktopElementExistsearchSubTree != null)
             {
-                uIADoesDesktopElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchSubTree);
+                if (uIADoesDesktopElementExistsearchSubTree != null)
+                {
+                    uIADoesDesktopElementExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistsearchSubTree);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["SearchSubTree"] = true;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistreturnElementHandle != null)
             {
-                uIADoesDesktopElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistreturnElementHandle);
+                if (uIADoesDesktopElementExistreturnElementHandle != null)
+                {
+                    uIADoesDesktopElementExist["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistreturnElementHandle);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["ReturnElementHandle"] = true;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistmatchIndex != null)
             {
-                uIADoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndex);
+                if (uIADoesDesktopElementExistmatchIndex != null)
+                {
+                    uIADoesDesktopElementExist["MatchIndex"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndex);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["MatchIndex"] = 1;
                 uIADoesDesktopElementExistpropCount++;
             }
 
@@ -629,31 +829,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADoesDesktopElementExistmatchIndexAscending != null)
             {
-                uIADoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndexAscending);
+                if (uIADoesDesktopElementExistmatchIndexAscending != null)
+                {
+                    uIADoesDesktopElementExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmatchIndexAscending);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["MatchIndexAscending"] = true;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistincludeChildProcesses != null)
             {
-                uIADoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistincludeChildProcesses);
+                if (uIADoesDesktopElementExistincludeChildProcesses != null)
+                {
+                    uIADoesDesktopElementExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistincludeChildProcesses);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["IncludeChildProcesses"] = false;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistmaxElementsToSearch != null)
             {
-                uIADoesDesktopElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxElementsToSearch);
+                if (uIADoesDesktopElementExistmaxElementsToSearch != null)
+                {
+                    uIADoesDesktopElementExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxElementsToSearch);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["MaxElementsToSearch"] = 0;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistmaxRelativeSearchDepth != null)
             {
-                uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxRelativeSearchDepth);
+                if (uIADoesDesktopElementExistmaxRelativeSearchDepth != null)
+                {
+                    uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxRelativeSearchDepth);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["MaxRelativeSearchDepth"] = 0;
                 uIADoesDesktopElementExistpropCount++;
             }
 
             if (uIADoesDesktopElementExistmaxChildElementsToSearchPerNode != null)
             {
-                uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode);
+                if (uIADoesDesktopElementExistmaxChildElementsToSearchPerNode != null)
+                {
+                    uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADoesDesktopElementExistmaxChildElementsToSearchPerNode);
+                    uIADoesDesktopElementExistpropCount++;
+                }
+
+                uIADoesDesktopElementExistpropCount++;
+            }
+            else
+            {
+                uIADoesDesktopElementExist["MaxChildElementsToSearchPerNode"] = 0;
                 uIADoesDesktopElementExistpropCount++;
             }
 
@@ -715,13 +965,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementsearchSubTree != null)
             {
-                uIAWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchSubTree);
+                if (uIAWaitForElementsearchSubTree != null)
+                {
+                    uIAWaitForElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementsearchSubTree);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["SearchSubTree"] = true;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementreturnElementHandle != null)
             {
-                uIAWaitForElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementreturnElementHandle);
+                if (uIAWaitForElementreturnElementHandle != null)
+                {
+                    uIAWaitForElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForElementreturnElementHandle);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["ReturnElementHandle"] = true;
                 uIAWaitForElementpropCount++;
             }
 
@@ -729,7 +999,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAWaitForElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementsecondsToWait);
             if (uIAWaitForElementmatchIndex != null)
             {
-                uIAWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndex);
+                if (uIAWaitForElementmatchIndex != null)
+                {
+                    uIAWaitForElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndex);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["MatchIndex"] = 1;
                 uIAWaitForElementpropCount++;
             }
 
@@ -747,37 +1027,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementmatchIndexAscending != null)
             {
-                uIAWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndexAscending);
+                if (uIAWaitForElementmatchIndexAscending != null)
+                {
+                    uIAWaitForElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementmatchIndexAscending);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["MatchIndexAscending"] = true;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementincludeChildProcesses != null)
             {
-                uIAWaitForElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementincludeChildProcesses);
+                if (uIAWaitForElementincludeChildProcesses != null)
+                {
+                    uIAWaitForElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementincludeChildProcesses);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["IncludeChildProcesses"] = false;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementraiseExceptionIfElementNotFound != null)
             {
-                uIAWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForElementraiseExceptionIfElementNotFound);
+                if (uIAWaitForElementraiseExceptionIfElementNotFound != null)
+                {
+                    uIAWaitForElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForElementraiseExceptionIfElementNotFound);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["RaiseExceptionIfElementNotFound"] = false;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementmaxElementsToSearch != null)
             {
-                uIAWaitForElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxElementsToSearch);
+                if (uIAWaitForElementmaxElementsToSearch != null)
+                {
+                    uIAWaitForElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxElementsToSearch);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["MaxElementsToSearch"] = 0;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxRelativeSearchDepth);
+                if (uIAWaitForElementmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxRelativeSearchDepth);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForElementpropCount++;
             }
 
             if (uIAWaitForElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxChildElementsToSearchPerNode);
+                if (uIAWaitForElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForElementpropCount++;
+                }
+
+                uIAWaitForElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForElementpropCount++;
             }
 
@@ -831,19 +1171,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementsearchProcessId != null)
             {
-                uIAWaitForDesktopElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchProcessId);
+                if (uIAWaitForDesktopElementsearchProcessId != null)
+                {
+                    uIAWaitForDesktopElement["SearchProcessId"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchProcessId);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["SearchProcessId"] = 0;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementsearchSubTree != null)
             {
-                uIAWaitForDesktopElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchSubTree);
+                if (uIAWaitForDesktopElementsearchSubTree != null)
+                {
+                    uIAWaitForDesktopElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsearchSubTree);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["SearchSubTree"] = true;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementreturnElementHandle != null)
             {
-                uIAWaitForDesktopElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementreturnElementHandle);
+                if (uIAWaitForDesktopElementreturnElementHandle != null)
+                {
+                    uIAWaitForDesktopElement["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementreturnElementHandle);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["ReturnElementHandle"] = true;
                 uIAWaitForDesktopElementpropCount++;
             }
 
@@ -851,7 +1221,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAWaitForDesktopElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementsecondsToWait);
             if (uIAWaitForDesktopElementmatchIndex != null)
             {
-                uIAWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndex);
+                if (uIAWaitForDesktopElementmatchIndex != null)
+                {
+                    uIAWaitForDesktopElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndex);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["MatchIndex"] = 1;
                 uIAWaitForDesktopElementpropCount++;
             }
 
@@ -869,37 +1249,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementmatchIndexAscending != null)
             {
-                uIAWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndexAscending);
+                if (uIAWaitForDesktopElementmatchIndexAscending != null)
+                {
+                    uIAWaitForDesktopElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmatchIndexAscending);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["MatchIndexAscending"] = true;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementincludeChildProcesses != null)
             {
-                uIAWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementincludeChildProcesses);
+                if (uIAWaitForDesktopElementincludeChildProcesses != null)
+                {
+                    uIAWaitForDesktopElement["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementincludeChildProcesses);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["IncludeChildProcesses"] = false;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementraiseExceptionIfElementNotFound != null)
             {
-                uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementraiseExceptionIfElementNotFound);
+                if (uIAWaitForDesktopElementraiseExceptionIfElementNotFound != null)
+                {
+                    uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementraiseExceptionIfElementNotFound);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["RaiseExceptionIfElementNotFound"] = false;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementmaxElementsToSearch != null)
             {
-                uIAWaitForDesktopElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxElementsToSearch);
+                if (uIAWaitForDesktopElementmaxElementsToSearch != null)
+                {
+                    uIAWaitForDesktopElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxElementsToSearch);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["MaxElementsToSearch"] = 0;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxRelativeSearchDepth);
+                if (uIAWaitForDesktopElementmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxRelativeSearchDepth);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForDesktopElementpropCount++;
             }
 
             if (uIAWaitForDesktopElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode);
+                if (uIAWaitForDesktopElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForDesktopElementpropCount++;
+                }
+
+                uIAWaitForDesktopElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForDesktopElementpropCount++;
             }
 
@@ -961,7 +1401,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementToNotExistsearchSubTree != null)
             {
-                uIAWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchSubTree);
+                if (uIAWaitForElementToNotExistsearchSubTree != null)
+                {
+                    uIAWaitForElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsearchSubTree);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["SearchSubTree"] = true;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
@@ -969,7 +1419,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAWaitForElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistsecondsToWait);
             if (uIAWaitForElementToNotExistmatchIndex != null)
             {
-                uIAWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndex);
+                if (uIAWaitForElementToNotExistmatchIndex != null)
+                {
+                    uIAWaitForElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndex);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["MatchIndex"] = 1;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
@@ -987,37 +1447,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForElementToNotExistmatchIndexAscending != null)
             {
-                uIAWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndexAscending);
+                if (uIAWaitForElementToNotExistmatchIndexAscending != null)
+                {
+                    uIAWaitForElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmatchIndexAscending);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["MatchIndexAscending"] = true;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistincludeChildProcesses != null)
             {
-                uIAWaitForElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistincludeChildProcesses);
+                if (uIAWaitForElementToNotExistincludeChildProcesses != null)
+                {
+                    uIAWaitForElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistincludeChildProcesses);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["IncludeChildProcesses"] = false;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
             {
-                uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                if (uIAWaitForElementToNotExistraiseExceptionIfElementStillExists != null)
+                {
+                    uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistraiseExceptionIfElementStillExists);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["RaiseExceptionIfElementStillExists"] = false;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistmaxElementsToSearch != null)
             {
-                uIAWaitForElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxElementsToSearch);
+                if (uIAWaitForElementToNotExistmaxElementsToSearch != null)
+                {
+                    uIAWaitForElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxElementsToSearch);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["MaxElementsToSearch"] = 0;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistmaxRelativeSearchDepth != null)
             {
-                uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxRelativeSearchDepth);
+                if (uIAWaitForElementToNotExistmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxRelativeSearchDepth);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
             if (uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode);
+                if (uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForElementToNotExistmaxChildElementsToSearchPerNode);
+                    uIAWaitForElementToNotExistpropCount++;
+                }
+
+                uIAWaitForElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForElementToNotExist["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForElementToNotExistpropCount++;
             }
 
@@ -1077,7 +1597,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementToNotExistsearchSubTree != null)
             {
-                uIAWaitForDesktopElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchSubTree);
+                if (uIAWaitForDesktopElementToNotExistsearchSubTree != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsearchSubTree);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["SearchSubTree"] = true;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1085,7 +1615,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAWaitForDesktopElementToNotExist["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistsecondsToWait);
             if (uIAWaitForDesktopElementToNotExistmatchIndex != null)
             {
-                uIAWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndex);
+                if (uIAWaitForDesktopElementToNotExistmatchIndex != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndex);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["MatchIndex"] = 1;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1103,37 +1643,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForDesktopElementToNotExistmatchIndexAscending != null)
             {
-                uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndexAscending);
+                if (uIAWaitForDesktopElementToNotExistmatchIndexAscending != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmatchIndexAscending);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["MatchIndexAscending"] = true;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistincludeChildProcesses != null)
             {
-                uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistincludeChildProcesses);
+                if (uIAWaitForDesktopElementToNotExistincludeChildProcesses != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistincludeChildProcesses);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["IncludeChildProcesses"] = false;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
             {
-                uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                if (uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["RaiseExceptionIfElementStillExists"] = false;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistmaxElementsToSearch != null)
             {
-                uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxElementsToSearch);
+                if (uIAWaitForDesktopElementToNotExistmaxElementsToSearch != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxElementsToSearch);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["MaxElementsToSearch"] = 0;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth != null)
             {
-                uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth);
+                if (uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxRelativeSearchDepth);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
             if (uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode);
+                if (uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForDesktopElementToNotExistmaxChildElementsToSearchPerNode);
+                    uIAWaitForDesktopElementToNotExistpropCount++;
+                }
+
+                uIAWaitForDesktopElementToNotExistpropCount++;
+            }
+            else
+            {
+                uIAWaitForDesktopElementToNotExist["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForDesktopElementToNotExistpropCount++;
             }
 
@@ -1189,25 +1789,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAPressElementsearchSubTree != null)
             {
-                uIAPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAPressElementsearchSubTree);
+                if (uIAPressElementsearchSubTree != null)
+                {
+                    uIAPressElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAPressElementsearchSubTree);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["SearchSubTree"] = true;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementwait != null)
             {
-                uIAPressElement["Wait"] = ExpressionConverter.ConvertO(uIAPressElementwait);
+                if (uIAPressElementwait != null)
+                {
+                    uIAPressElement["Wait"] = ExpressionConverter.ConvertO(uIAPressElementwait);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["Wait"] = false;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementwin32ClickButton != null)
             {
-                uIAPressElement["Win32ClickButton"] = ExpressionConverter.ConvertO(uIAPressElementwin32ClickButton);
+                if (uIAPressElementwin32ClickButton != null)
+                {
+                    uIAPressElement["Win32ClickButton"] = ExpressionConverter.ConvertO(uIAPressElementwin32ClickButton);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["Win32ClickButton"] = false;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementmatchIndex != null)
             {
-                uIAPressElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndex);
+                if (uIAPressElementmatchIndex != null)
+                {
+                    uIAPressElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndex);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["MatchIndex"] = 1;
                 uIAPressElementpropCount++;
             }
 
@@ -1225,25 +1865,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAPressElementmatchIndexAscending != null)
             {
-                uIAPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndexAscending);
+                if (uIAPressElementmatchIndexAscending != null)
+                {
+                    uIAPressElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAPressElementmatchIndexAscending);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["MatchIndexAscending"] = true;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementmaxElementsToSearch != null)
             {
-                uIAPressElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAPressElementmaxElementsToSearch);
+                if (uIAPressElementmaxElementsToSearch != null)
+                {
+                    uIAPressElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAPressElementmaxElementsToSearch);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["MaxElementsToSearch"] = 0;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementmaxRelativeSearchDepth != null)
             {
-                uIAPressElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAPressElementmaxRelativeSearchDepth);
+                if (uIAPressElementmaxRelativeSearchDepth != null)
+                {
+                    uIAPressElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAPressElementmaxRelativeSearchDepth);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["MaxRelativeSearchDepth"] = 0;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAPressElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAPressElementmaxChildElementsToSearchPerNode);
+                if (uIAPressElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAPressElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAPressElementmaxChildElementsToSearchPerNode);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAPressElementpropCount++;
             }
 
@@ -1255,13 +1935,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAPressElementtryInvokePattern != null)
             {
-                uIAPressElement["TryInvokePattern"] = ExpressionConverter.ConvertO(uIAPressElementtryInvokePattern);
+                if (uIAPressElementtryInvokePattern != null)
+                {
+                    uIAPressElement["TryInvokePattern"] = ExpressionConverter.ConvertO(uIAPressElementtryInvokePattern);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["TryInvokePattern"] = true;
                 uIAPressElementpropCount++;
             }
 
             if (uIAPressElementtryLegacyPattern != null)
             {
-                uIAPressElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAPressElementtryLegacyPattern);
+                if (uIAPressElementtryLegacyPattern != null)
+                {
+                    uIAPressElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAPressElementtryLegacyPattern);
+                    uIAPressElementpropCount++;
+                }
+
+                uIAPressElementpropCount++;
+            }
+            else
+            {
+                uIAPressElement["TryLegacyPattern"] = false;
                 uIAPressElementpropCount++;
             }
 
@@ -1311,19 +2011,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchSubTree);
+                if (uIAGlobalMouseClickOnElementsearchSubTree != null)
+                {
+                    uIAGlobalMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementsearchSubTree);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["SearchSubTree"] = true;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementfocusElementFirst);
+                if (uIAGlobalMouseClickOnElementfocusElementFirst != null)
+                {
+                    uIAGlobalMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementfocusElementFirst);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["FocusElementFirst"] = true;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndex);
+                if (uIAGlobalMouseClickOnElementmatchIndex != null)
+                {
+                    uIAGlobalMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndex);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["MatchIndex"] = 1;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -1341,19 +2071,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndexAscending);
+                if (uIAGlobalMouseClickOnElementmatchIndexAscending != null)
+                {
+                    uIAGlobalMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["MatchIndexAscending"] = true;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetX);
+                if (uIAGlobalMouseClickOnElementclickOffsetX != null)
+                {
+                    uIAGlobalMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetX);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["ClickOffsetX"] = 0;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetY);
+                if (uIAGlobalMouseClickOnElementclickOffsetY != null)
+                {
+                    uIAGlobalMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementclickOffsetY);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["ClickOffsetY"] = 0;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -1365,19 +2125,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxElementsToSearch);
+                if (uIAGlobalMouseClickOnElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["MaxElementsToSearch"] = 0;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth);
+                if (uIAGlobalMouseClickOnElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -1389,7 +2179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalMouseClickOnElementpropCount++;
             }
 
@@ -1439,19 +2239,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchSubTree);
+                if (uIAGlobalRightMouseClickOnElementsearchSubTree != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementsearchSubTree);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["SearchSubTree"] = true;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementfocusElementFirst);
+                if (uIAGlobalRightMouseClickOnElementfocusElementFirst != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementfocusElementFirst);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["FocusElementFirst"] = true;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndex);
+                if (uIAGlobalRightMouseClickOnElementmatchIndex != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndex);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["MatchIndex"] = 1;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1469,19 +2299,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndexAscending);
+                if (uIAGlobalRightMouseClickOnElementmatchIndexAscending != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["MatchIndexAscending"] = true;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetX);
+                if (uIAGlobalRightMouseClickOnElementclickOffsetX != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetX);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["ClickOffsetX"] = 0;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetY);
+                if (uIAGlobalRightMouseClickOnElementclickOffsetY != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementclickOffsetY);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["ClickOffsetY"] = 0;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1493,19 +2353,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxElementsToSearch);
+                if (uIAGlobalRightMouseClickOnElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["MaxElementsToSearch"] = 0;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth);
+                if (uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1517,7 +2407,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalRightMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalRightMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalRightMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalRightMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalRightMouseClickOnElementpropCount++;
             }
 
@@ -1567,19 +2467,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchSubTree);
+                if (uIAGlobalMiddleMouseClickOnElementsearchSubTree != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementsearchSubTree);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["SearchSubTree"] = true;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementfocusElementFirst);
+                if (uIAGlobalMiddleMouseClickOnElementfocusElementFirst != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementfocusElementFirst);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["FocusElementFirst"] = true;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndex);
+                if (uIAGlobalMiddleMouseClickOnElementmatchIndex != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndex);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["MatchIndex"] = 1;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1597,19 +2527,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending);
+                if (uIAGlobalMiddleMouseClickOnElementmatchIndexAscending != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["MatchIndexAscending"] = true;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetX);
+                if (uIAGlobalMiddleMouseClickOnElementclickOffsetX != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetX);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["ClickOffsetX"] = 0;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetY);
+                if (uIAGlobalMiddleMouseClickOnElementclickOffsetY != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementclickOffsetY);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["ClickOffsetY"] = 0;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1621,19 +2581,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch);
+                if (uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["MaxElementsToSearch"] = 0;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth);
+                if (uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1645,7 +2635,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalMiddleMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalMiddleMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalMiddleMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalMiddleMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalMiddleMouseClickOnElementpropCount++;
             }
 
@@ -1695,25 +2695,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree);
+                if (uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementsearchSubTree);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["SearchSubTree"] = true;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
+                if (uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementdelayInMilliseconds);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["DelayInMilliseconds"] = 10;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst);
+                if (uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementfocusElementFirst);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["FocusElementFirst"] = true;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex);
+                if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndex != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndex);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndex"] = 1;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -1731,19 +2771,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
+                if (uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmatchIndexAscending);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["MatchIndexAscending"] = true;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX);
+                if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetX);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetX"] = 0;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY);
+                if (uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementclickOffsetY);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["ClickOffsetY"] = 0;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -1755,19 +2825,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch);
+                if (uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxElementsToSearch);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxElementsToSearch"] = 0;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth);
+                if (uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxRelativeSearchDepth);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
             if (uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -1779,7 +2879,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalDoubleLeftMouseClickOnElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+                }
+
+                uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalDoubleLeftMouseClickOnElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalDoubleLeftMouseClickOnElementpropCount++;
             }
 
@@ -1829,13 +2939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASelectElementsearchSubTree != null)
             {
-                uIASelectElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIASelectElementsearchSubTree);
+                if (uIASelectElementsearchSubTree != null)
+                {
+                    uIASelectElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIASelectElementsearchSubTree);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["SearchSubTree"] = true;
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementmatchIndex != null)
             {
-                uIASelectElement["MatchIndex"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndex);
+                if (uIASelectElementmatchIndex != null)
+                {
+                    uIASelectElement["MatchIndex"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndex);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["MatchIndex"] = 1;
                 uIASelectElementpropCount++;
             }
 
@@ -1853,25 +2983,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASelectElementmatchIndexAscending != null)
             {
-                uIASelectElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndexAscending);
+                if (uIASelectElementmatchIndexAscending != null)
+                {
+                    uIASelectElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASelectElementmatchIndexAscending);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["MatchIndexAscending"] = true;
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementmaxElementsToSearch != null)
             {
-                uIASelectElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASelectElementmaxElementsToSearch);
+                if (uIASelectElementmaxElementsToSearch != null)
+                {
+                    uIASelectElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASelectElementmaxElementsToSearch);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["MaxElementsToSearch"] = 0;
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementmaxRelativeSearchDepth != null)
             {
-                uIASelectElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASelectElementmaxRelativeSearchDepth);
+                if (uIASelectElementmaxRelativeSearchDepth != null)
+                {
+                    uIASelectElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASelectElementmaxRelativeSearchDepth);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["MaxRelativeSearchDepth"] = 0;
                 uIASelectElementpropCount++;
             }
 
             if (uIASelectElementmaxChildElementsToSearchPerNode != null)
             {
-                uIASelectElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASelectElementmaxChildElementsToSearchPerNode);
+                if (uIASelectElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIASelectElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASelectElementmaxChildElementsToSearchPerNode);
+                    uIASelectElementpropCount++;
+                }
+
+                uIASelectElementpropCount++;
+            }
+            else
+            {
+                uIASelectElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIASelectElementpropCount++;
             }
 
@@ -1927,7 +3097,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputPasswordIntoElementsearchSubTree != null)
             {
-                uIAInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchSubTree);
+                if (uIAInputPasswordIntoElementsearchSubTree != null)
+                {
+                    uIAInputPasswordIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementsearchSubTree);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["SearchSubTree"] = true;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -1935,7 +3115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAInputPasswordIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordToInput);
             if (uIAInputPasswordIntoElementmatchIndex != null)
             {
-                uIAInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndex);
+                if (uIAInputPasswordIntoElementmatchIndex != null)
+                {
+                    uIAInputPasswordIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndex);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["MatchIndex"] = 1;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -1953,31 +3143,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputPasswordIntoElementmatchIndexAscending != null)
             {
-                uIAInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndexAscending);
+                if (uIAInputPasswordIntoElementmatchIndexAscending != null)
+                {
+                    uIAInputPasswordIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmatchIndexAscending);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["MatchIndexAscending"] = true;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementpasswordContainsStoredPassword != null)
             {
-                uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordContainsStoredPassword);
+                if (uIAInputPasswordIntoElementpasswordContainsStoredPassword != null)
+                {
+                    uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementpasswordContainsStoredPassword);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["PasswordContainsStoredPassword"] = false;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementmaxElementsToSearch != null)
             {
-                uIAInputPasswordIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxElementsToSearch);
+                if (uIAInputPasswordIntoElementmaxElementsToSearch != null)
+                {
+                    uIAInputPasswordIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxElementsToSearch);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["MaxElementsToSearch"] = 0;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxRelativeSearchDepth);
+                if (uIAInputPasswordIntoElementmaxRelativeSearchDepth != null)
+                {
+                    uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxRelativeSearchDepth);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["MaxRelativeSearchDepth"] = 0;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode);
+                if (uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -1989,13 +3229,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputPasswordIntoElementtryValuePattern != null)
             {
-                uIAInputPasswordIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryValuePattern);
+                if (uIAInputPasswordIntoElementtryValuePattern != null)
+                {
+                    uIAInputPasswordIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryValuePattern);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["TryValuePattern"] = true;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
             if (uIAInputPasswordIntoElementtryLegacyPattern != null)
             {
-                uIAInputPasswordIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryLegacyPattern);
+                if (uIAInputPasswordIntoElementtryLegacyPattern != null)
+                {
+                    uIAInputPasswordIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputPasswordIntoElementtryLegacyPattern);
+                    uIAInputPasswordIntoElementpropCount++;
+                }
+
+                uIAInputPasswordIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputPasswordIntoElement["TryLegacyPattern"] = false;
                 uIAInputPasswordIntoElementpropCount++;
             }
 
@@ -2045,7 +3305,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementsearchSubTree != null)
             {
-                uIAInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchSubTree);
+                if (uIAInputTextIntoElementsearchSubTree != null)
+                {
+                    uIAInputTextIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementsearchSubTree);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["SearchSubTree"] = true;
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -2057,7 +3327,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementmatchIndex != null)
             {
-                uIAInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndex);
+                if (uIAInputTextIntoElementmatchIndex != null)
+                {
+                    uIAInputTextIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndex);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["MatchIndex"] = 1;
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -2075,37 +3355,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementmatchIndexAscending != null)
             {
-                uIAInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndexAscending);
+                if (uIAInputTextIntoElementmatchIndexAscending != null)
+                {
+                    uIAInputTextIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmatchIndexAscending);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["MatchIndexAscending"] = true;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementreplaceExistingValue != null)
             {
-                uIAInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementreplaceExistingValue);
+                if (uIAInputTextIntoElementreplaceExistingValue != null)
+                {
+                    uIAInputTextIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementreplaceExistingValue);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["ReplaceExistingValue"] = true;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementinsertPosition != null)
             {
-                uIAInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementinsertPosition);
+                if (uIAInputTextIntoElementinsertPosition != null)
+                {
+                    uIAInputTextIntoElement["InsertPosition"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementinsertPosition);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["InsertPosition"] = 0;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementmaxElementsToSearch != null)
             {
-                uIAInputTextIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxElementsToSearch);
+                if (uIAInputTextIntoElementmaxElementsToSearch != null)
+                {
+                    uIAInputTextIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxElementsToSearch);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["MaxElementsToSearch"] = 0;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAInputTextIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxRelativeSearchDepth);
+                if (uIAInputTextIntoElementmaxRelativeSearchDepth != null)
+                {
+                    uIAInputTextIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxRelativeSearchDepth);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["MaxRelativeSearchDepth"] = 0;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxChildElementsToSearchPerNode);
+                if (uIAInputTextIntoElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -2117,19 +3457,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputTextIntoElementraiseExceptionIfInputValidationFails != null)
             {
-                uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementraiseExceptionIfInputValidationFails);
+                if (uIAInputTextIntoElementraiseExceptionIfInputValidationFails != null)
+                {
+                    uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementraiseExceptionIfInputValidationFails);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["RaiseExceptionIfInputValidationFails"] = false;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementtryValuePattern != null)
             {
-                uIAInputTextIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryValuePattern);
+                if (uIAInputTextIntoElementtryValuePattern != null)
+                {
+                    uIAInputTextIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryValuePattern);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["TryValuePattern"] = true;
                 uIAInputTextIntoElementpropCount++;
             }
 
             if (uIAInputTextIntoElementtryLegacyPattern != null)
             {
-                uIAInputTextIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryLegacyPattern);
+                if (uIAInputTextIntoElementtryLegacyPattern != null)
+                {
+                    uIAInputTextIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputTextIntoElementtryLegacyPattern);
+                    uIAInputTextIntoElementpropCount++;
+                }
+
+                uIAInputTextIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputTextIntoElement["TryLegacyPattern"] = false;
                 uIAInputTextIntoElementpropCount++;
             }
 
@@ -2199,13 +3569,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementsearchSubTree != null)
             {
-                uIAInputReturnIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchSubTree);
+                if (uIAInputReturnIntoElementsearchSubTree != null)
+                {
+                    uIAInputReturnIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementsearchSubTree);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["SearchSubTree"] = true;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementmatchIndex != null)
             {
-                uIAInputReturnIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndex);
+                if (uIAInputReturnIntoElementmatchIndex != null)
+                {
+                    uIAInputReturnIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndex);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["MatchIndex"] = 1;
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -2223,13 +3613,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementmatchIndexAscending != null)
             {
-                uIAInputReturnIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndexAscending);
+                if (uIAInputReturnIntoElementmatchIndexAscending != null)
+                {
+                    uIAInputReturnIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmatchIndexAscending);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["MatchIndexAscending"] = true;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementreplaceExistingValue != null)
             {
-                uIAInputReturnIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementreplaceExistingValue);
+                if (uIAInputReturnIntoElementreplaceExistingValue != null)
+                {
+                    uIAInputReturnIntoElement["ReplaceExistingValue"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementreplaceExistingValue);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["ReplaceExistingValue"] = false;
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -2241,19 +3651,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementmaxElementsToSearch != null)
             {
-                uIAInputReturnIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxElementsToSearch);
+                if (uIAInputReturnIntoElementmaxElementsToSearch != null)
+                {
+                    uIAInputReturnIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxElementsToSearch);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["MaxElementsToSearch"] = 0;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxRelativeSearchDepth);
+                if (uIAInputReturnIntoElementmaxRelativeSearchDepth != null)
+                {
+                    uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxRelativeSearchDepth);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["MaxRelativeSearchDepth"] = 0;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode);
+                if (uIAInputReturnIntoElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementmaxChildElementsToSearchPerNode);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -2265,19 +3705,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAInputReturnIntoElementraiseExceptionIfInputValidationFails != null)
             {
-                uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails);
+                if (uIAInputReturnIntoElementraiseExceptionIfInputValidationFails != null)
+                {
+                    uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementraiseExceptionIfInputValidationFails);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["RaiseExceptionIfInputValidationFails"] = false;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementtryValuePattern != null)
             {
-                uIAInputReturnIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryValuePattern);
+                if (uIAInputReturnIntoElementtryValuePattern != null)
+                {
+                    uIAInputReturnIntoElement["TryValuePattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryValuePattern);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["TryValuePattern"] = true;
                 uIAInputReturnIntoElementpropCount++;
             }
 
             if (uIAInputReturnIntoElementtryLegacyPattern != null)
             {
-                uIAInputReturnIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryLegacyPattern);
+                if (uIAInputReturnIntoElementtryLegacyPattern != null)
+                {
+                    uIAInputReturnIntoElement["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIAInputReturnIntoElementtryLegacyPattern);
+                    uIAInputReturnIntoElementpropCount++;
+                }
+
+                uIAInputReturnIntoElementpropCount++;
+            }
+            else
+            {
+                uIAInputReturnIntoElement["TryLegacyPattern"] = false;
                 uIAInputReturnIntoElementpropCount++;
             }
 
@@ -2327,13 +3797,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAFocusElementsearchSubTree != null)
             {
-                uIAFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAFocusElementsearchSubTree);
+                if (uIAFocusElementsearchSubTree != null)
+                {
+                    uIAFocusElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAFocusElementsearchSubTree);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["SearchSubTree"] = true;
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementmatchIndex != null)
             {
-                uIAFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndex);
+                if (uIAFocusElementmatchIndex != null)
+                {
+                    uIAFocusElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndex);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["MatchIndex"] = 1;
                 uIAFocusElementpropCount++;
             }
 
@@ -2351,25 +3841,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAFocusElementmatchIndexAscending != null)
             {
-                uIAFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndexAscending);
+                if (uIAFocusElementmatchIndexAscending != null)
+                {
+                    uIAFocusElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAFocusElementmatchIndexAscending);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["MatchIndexAscending"] = true;
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementmaxElementsToSearch != null)
             {
-                uIAFocusElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAFocusElementmaxElementsToSearch);
+                if (uIAFocusElementmaxElementsToSearch != null)
+                {
+                    uIAFocusElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAFocusElementmaxElementsToSearch);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["MaxElementsToSearch"] = 0;
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementmaxRelativeSearchDepth != null)
             {
-                uIAFocusElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAFocusElementmaxRelativeSearchDepth);
+                if (uIAFocusElementmaxRelativeSearchDepth != null)
+                {
+                    uIAFocusElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAFocusElementmaxRelativeSearchDepth);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["MaxRelativeSearchDepth"] = 0;
                 uIAFocusElementpropCount++;
             }
 
             if (uIAFocusElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAFocusElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAFocusElementmaxChildElementsToSearchPerNode);
+                if (uIAFocusElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAFocusElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAFocusElementmaxChildElementsToSearchPerNode);
+                    uIAFocusElementpropCount++;
+                }
+
+                uIAFocusElementpropCount++;
+            }
+            else
+            {
+                uIAFocusElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAFocusElementpropCount++;
             }
 
@@ -2425,13 +3955,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAToggleElementsearchSubTree != null)
             {
-                uIAToggleElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAToggleElementsearchSubTree);
+                if (uIAToggleElementsearchSubTree != null)
+                {
+                    uIAToggleElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAToggleElementsearchSubTree);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["SearchSubTree"] = true;
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementmatchIndex != null)
             {
-                uIAToggleElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndex);
+                if (uIAToggleElementmatchIndex != null)
+                {
+                    uIAToggleElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndex);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["MatchIndex"] = 1;
                 uIAToggleElementpropCount++;
             }
 
@@ -2449,25 +3999,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAToggleElementmatchIndexAscending != null)
             {
-                uIAToggleElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndexAscending);
+                if (uIAToggleElementmatchIndexAscending != null)
+                {
+                    uIAToggleElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAToggleElementmatchIndexAscending);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["MatchIndexAscending"] = true;
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementmaxElementsToSearch != null)
             {
-                uIAToggleElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAToggleElementmaxElementsToSearch);
+                if (uIAToggleElementmaxElementsToSearch != null)
+                {
+                    uIAToggleElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAToggleElementmaxElementsToSearch);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["MaxElementsToSearch"] = 0;
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementmaxRelativeSearchDepth != null)
             {
-                uIAToggleElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAToggleElementmaxRelativeSearchDepth);
+                if (uIAToggleElementmaxRelativeSearchDepth != null)
+                {
+                    uIAToggleElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAToggleElementmaxRelativeSearchDepth);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["MaxRelativeSearchDepth"] = 0;
                 uIAToggleElementpropCount++;
             }
 
             if (uIAToggleElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAToggleElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAToggleElementmaxChildElementsToSearchPerNode);
+                if (uIAToggleElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAToggleElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAToggleElementmaxChildElementsToSearchPerNode);
+                    uIAToggleElementpropCount++;
+                }
+
+                uIAToggleElementpropCount++;
+            }
+            else
+            {
+                uIAToggleElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAToggleElementpropCount++;
             }
 
@@ -2523,19 +4113,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACheckElementsearchSubTree != null)
             {
-                uIACheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACheckElementsearchSubTree);
+                if (uIACheckElementsearchSubTree != null)
+                {
+                    uIACheckElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACheckElementsearchSubTree);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["SearchSubTree"] = true;
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementcheckElement != null)
             {
-                uIACheckElement["CheckElement"] = ExpressionConverter.ConvertO(uIACheckElementcheckElement);
+                if (uIACheckElementcheckElement != null)
+                {
+                    uIACheckElement["CheckElement"] = ExpressionConverter.ConvertO(uIACheckElementcheckElement);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["CheckElement"] = true;
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementmatchIndex != null)
             {
-                uIACheckElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndex);
+                if (uIACheckElementmatchIndex != null)
+                {
+                    uIACheckElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndex);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["MatchIndex"] = 1;
                 uIACheckElementpropCount++;
             }
 
@@ -2553,25 +4173,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACheckElementmatchIndexAscending != null)
             {
-                uIACheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndexAscending);
+                if (uIACheckElementmatchIndexAscending != null)
+                {
+                    uIACheckElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACheckElementmatchIndexAscending);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["MatchIndexAscending"] = true;
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementmaxElementsToSearch != null)
             {
-                uIACheckElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACheckElementmaxElementsToSearch);
+                if (uIACheckElementmaxElementsToSearch != null)
+                {
+                    uIACheckElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACheckElementmaxElementsToSearch);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["MaxElementsToSearch"] = 0;
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementmaxRelativeSearchDepth != null)
             {
-                uIACheckElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACheckElementmaxRelativeSearchDepth);
+                if (uIACheckElementmaxRelativeSearchDepth != null)
+                {
+                    uIACheckElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACheckElementmaxRelativeSearchDepth);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["MaxRelativeSearchDepth"] = 0;
                 uIACheckElementpropCount++;
             }
 
             if (uIACheckElementmaxChildElementsToSearchPerNode != null)
             {
-                uIACheckElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACheckElementmaxChildElementsToSearchPerNode);
+                if (uIACheckElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIACheckElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACheckElementmaxChildElementsToSearchPerNode);
+                    uIACheckElementpropCount++;
+                }
+
+                uIACheckElementpropCount++;
+            }
+            else
+            {
+                uIACheckElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIACheckElementpropCount++;
             }
 
@@ -2647,13 +4307,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAIsElementCheckedsearchSubTree != null)
             {
-                uIAIsElementChecked["SearchSubTree"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchSubTree);
+                if (uIAIsElementCheckedsearchSubTree != null)
+                {
+                    uIAIsElementChecked["SearchSubTree"] = ExpressionConverter.ConvertO(uIAIsElementCheckedsearchSubTree);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["SearchSubTree"] = true;
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedmatchIndex != null)
             {
-                uIAIsElementChecked["MatchIndex"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndex);
+                if (uIAIsElementCheckedmatchIndex != null)
+                {
+                    uIAIsElementChecked["MatchIndex"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndex);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["MatchIndex"] = 1;
                 uIAIsElementCheckedpropCount++;
             }
 
@@ -2671,25 +4351,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAIsElementCheckedmatchIndexAscending != null)
             {
-                uIAIsElementChecked["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndexAscending);
+                if (uIAIsElementCheckedmatchIndexAscending != null)
+                {
+                    uIAIsElementChecked["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmatchIndexAscending);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["MatchIndexAscending"] = true;
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedmaxElementsToSearch != null)
             {
-                uIAIsElementChecked["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxElementsToSearch);
+                if (uIAIsElementCheckedmaxElementsToSearch != null)
+                {
+                    uIAIsElementChecked["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxElementsToSearch);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["MaxElementsToSearch"] = 0;
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedmaxRelativeSearchDepth != null)
             {
-                uIAIsElementChecked["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxRelativeSearchDepth);
+                if (uIAIsElementCheckedmaxRelativeSearchDepth != null)
+                {
+                    uIAIsElementChecked["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxRelativeSearchDepth);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["MaxRelativeSearchDepth"] = 0;
                 uIAIsElementCheckedpropCount++;
             }
 
             if (uIAIsElementCheckedmaxChildElementsToSearchPerNode != null)
             {
-                uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxChildElementsToSearchPerNode);
+                if (uIAIsElementCheckedmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAIsElementCheckedmaxChildElementsToSearchPerNode);
+                    uIAIsElementCheckedpropCount++;
+                }
+
+                uIAIsElementCheckedpropCount++;
+            }
+            else
+            {
+                uIAIsElementChecked["MaxChildElementsToSearchPerNode"] = 0;
                 uIAIsElementCheckedpropCount++;
             }
 
@@ -2745,13 +4465,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACloseElementWindowsearchSubTree != null)
             {
-                uIACloseElementWindow["SearchSubTree"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchSubTree);
+                if (uIACloseElementWindowsearchSubTree != null)
+                {
+                    uIACloseElementWindow["SearchSubTree"] = ExpressionConverter.ConvertO(uIACloseElementWindowsearchSubTree);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["SearchSubTree"] = true;
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowmatchIndex != null)
             {
-                uIACloseElementWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndex);
+                if (uIACloseElementWindowmatchIndex != null)
+                {
+                    uIACloseElementWindow["MatchIndex"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndex);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["MatchIndex"] = 1;
                 uIACloseElementWindowpropCount++;
             }
 
@@ -2769,25 +4509,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACloseElementWindowmatchIndexAscending != null)
             {
-                uIACloseElementWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndexAscending);
+                if (uIACloseElementWindowmatchIndexAscending != null)
+                {
+                    uIACloseElementWindow["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACloseElementWindowmatchIndexAscending);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["MatchIndexAscending"] = true;
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowmaxElementsToSearch != null)
             {
-                uIACloseElementWindow["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxElementsToSearch);
+                if (uIACloseElementWindowmaxElementsToSearch != null)
+                {
+                    uIACloseElementWindow["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxElementsToSearch);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["MaxElementsToSearch"] = 0;
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowmaxRelativeSearchDepth != null)
             {
-                uIACloseElementWindow["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxRelativeSearchDepth);
+                if (uIACloseElementWindowmaxRelativeSearchDepth != null)
+                {
+                    uIACloseElementWindow["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxRelativeSearchDepth);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["MaxRelativeSearchDepth"] = 0;
                 uIACloseElementWindowpropCount++;
             }
 
             if (uIACloseElementWindowmaxChildElementsToSearchPerNode != null)
             {
-                uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxChildElementsToSearchPerNode);
+                if (uIACloseElementWindowmaxChildElementsToSearchPerNode != null)
+                {
+                    uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACloseElementWindowmaxChildElementsToSearchPerNode);
+                    uIACloseElementWindowpropCount++;
+                }
+
+                uIACloseElementWindowpropCount++;
+            }
+            else
+            {
+                uIACloseElementWindow["MaxChildElementsToSearchPerNode"] = 0;
                 uIACloseElementWindowpropCount++;
             }
 
@@ -2843,13 +4623,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementTextValuesearchSubTree != null)
             {
-                uIAGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchSubTree);
+                if (uIAGetElementTextValuesearchSubTree != null)
+                {
+                    uIAGetElementTextValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementTextValuesearchSubTree);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["SearchSubTree"] = true;
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuematchIndex != null)
             {
-                uIAGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndex);
+                if (uIAGetElementTextValuematchIndex != null)
+                {
+                    uIAGetElementTextValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndex);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["MatchIndex"] = 1;
                 uIAGetElementTextValuepropCount++;
             }
 
@@ -2867,25 +4667,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementTextValuematchIndexAscending != null)
             {
-                uIAGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndexAscending);
+                if (uIAGetElementTextValuematchIndexAscending != null)
+                {
+                    uIAGetElementTextValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementTextValuematchIndexAscending);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["MatchIndexAscending"] = true;
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuemaxElementsToSearch != null)
             {
-                uIAGetElementTextValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxElementsToSearch);
+                if (uIAGetElementTextValuemaxElementsToSearch != null)
+                {
+                    uIAGetElementTextValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxElementsToSearch);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["MaxElementsToSearch"] = 0;
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementTextValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxRelativeSearchDepth);
+                if (uIAGetElementTextValuemaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementTextValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxRelativeSearchDepth);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementTextValuepropCount++;
             }
 
             if (uIAGetElementTextValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxChildElementsToSearchPerNode);
+                if (uIAGetElementTextValuemaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementTextValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementTextValuepropCount++;
+                }
+
+                uIAGetElementTextValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementTextValue["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementTextValuepropCount++;
             }
 
@@ -2941,13 +4781,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementValuesearchSubTree != null)
             {
-                uIAGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchSubTree);
+                if (uIAGetElementValuesearchSubTree != null)
+                {
+                    uIAGetElementValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementValuesearchSubTree);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["SearchSubTree"] = true;
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuematchIndex != null)
             {
-                uIAGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndex);
+                if (uIAGetElementValuematchIndex != null)
+                {
+                    uIAGetElementValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndex);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["MatchIndex"] = 1;
                 uIAGetElementValuepropCount++;
             }
 
@@ -2965,25 +4825,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementValuematchIndexAscending != null)
             {
-                uIAGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndexAscending);
+                if (uIAGetElementValuematchIndexAscending != null)
+                {
+                    uIAGetElementValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementValuematchIndexAscending);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["MatchIndexAscending"] = true;
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuemaxElementsToSearch != null)
             {
-                uIAGetElementValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxElementsToSearch);
+                if (uIAGetElementValuemaxElementsToSearch != null)
+                {
+                    uIAGetElementValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxElementsToSearch);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["MaxElementsToSearch"] = 0;
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxRelativeSearchDepth);
+                if (uIAGetElementValuemaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxRelativeSearchDepth);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementValuepropCount++;
             }
 
             if (uIAGetElementValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxChildElementsToSearchPerNode);
+                if (uIAGetElementValuemaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementValuepropCount++;
+                }
+
+                uIAGetElementValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementValue["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementValuepropCount++;
             }
 
@@ -3039,13 +4939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementLabelValuesearchSubTree != null)
             {
-                uIAGetElementLabelValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchSubTree);
+                if (uIAGetElementLabelValuesearchSubTree != null)
+                {
+                    uIAGetElementLabelValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuesearchSubTree);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["SearchSubTree"] = true;
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuematchIndex != null)
             {
-                uIAGetElementLabelValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndex);
+                if (uIAGetElementLabelValuematchIndex != null)
+                {
+                    uIAGetElementLabelValue["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndex);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["MatchIndex"] = 1;
                 uIAGetElementLabelValuepropCount++;
             }
 
@@ -3063,25 +4983,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementLabelValuematchIndexAscending != null)
             {
-                uIAGetElementLabelValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndexAscending);
+                if (uIAGetElementLabelValuematchIndexAscending != null)
+                {
+                    uIAGetElementLabelValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuematchIndexAscending);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["MatchIndexAscending"] = true;
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuemaxElementsToSearch != null)
             {
-                uIAGetElementLabelValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxElementsToSearch);
+                if (uIAGetElementLabelValuemaxElementsToSearch != null)
+                {
+                    uIAGetElementLabelValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxElementsToSearch);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["MaxElementsToSearch"] = 0;
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuemaxRelativeSearchDepth != null)
             {
-                uIAGetElementLabelValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxRelativeSearchDepth);
+                if (uIAGetElementLabelValuemaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementLabelValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxRelativeSearchDepth);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementLabelValuepropCount++;
             }
 
             if (uIAGetElementLabelValuemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxChildElementsToSearchPerNode);
+                if (uIAGetElementLabelValuemaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementLabelValuemaxChildElementsToSearchPerNode);
+                    uIAGetElementLabelValuepropCount++;
+                }
+
+                uIAGetElementLabelValuepropCount++;
+            }
+            else
+            {
+                uIAGetElementLabelValue["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementLabelValuepropCount++;
             }
 
@@ -3137,25 +5097,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPropertiessearchSubTree != null)
             {
-                uIAGetElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchSubTree);
+                if (uIAGetElementPropertiessearchSubTree != null)
+                {
+                    uIAGetElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPropertiessearchSubTree);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["SearchSubTree"] = true;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesreturnElementHandle != null)
             {
-                uIAGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementHandle);
+                if (uIAGetElementPropertiesreturnElementHandle != null)
+                {
+                    uIAGetElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementHandle);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["ReturnElementHandle"] = true;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesreturnElementValue != null)
             {
-                uIAGetElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementValue);
+                if (uIAGetElementPropertiesreturnElementValue != null)
+                {
+                    uIAGetElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesreturnElementValue);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["ReturnElementValue"] = false;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesmatchIndex != null)
             {
-                uIAGetElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndex);
+                if (uIAGetElementPropertiesmatchIndex != null)
+                {
+                    uIAGetElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndex);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["MatchIndex"] = 1;
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -3173,25 +5173,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPropertiesmatchIndexAscending != null)
             {
-                uIAGetElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndexAscending);
+                if (uIAGetElementPropertiesmatchIndexAscending != null)
+                {
+                    uIAGetElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmatchIndexAscending);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["MatchIndexAscending"] = true;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesmaxElementsToSearch != null)
             {
-                uIAGetElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxElementsToSearch);
+                if (uIAGetElementPropertiesmaxElementsToSearch != null)
+                {
+                    uIAGetElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxElementsToSearch);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["MaxElementsToSearch"] = 0;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesmaxRelativeSearchDepth != null)
             {
-                uIAGetElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxRelativeSearchDepth);
+                if (uIAGetElementPropertiesmaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxRelativeSearchDepth);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementPropertiespropCount++;
             }
 
             if (uIAGetElementPropertiesmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxChildElementsToSearchPerNode);
+                if (uIAGetElementPropertiesmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesmaxChildElementsToSearchPerNode);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -3203,7 +5243,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary);
+                if (uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGetElementPropertiesvalidateClickablePointWithinElementBoundary);
+                    uIAGetElementPropertiespropCount++;
+                }
+
+                uIAGetElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetElementProperties["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGetElementPropertiespropCount++;
             }
 
@@ -3235,31 +5285,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementPropertiessearchDescendants != null)
             {
-                uIAGetMultipleElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchDescendants);
+                if (uIAGetMultipleElementPropertiessearchDescendants != null)
+                {
+                    uIAGetMultipleElementProperties["SearchDescendants"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiessearchDescendants);
+                    uIAGetMultipleElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementProperties["SearchDescendants"] = false;
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
             if (uIAGetMultipleElementPropertiesreturnElementHandle != null)
             {
-                uIAGetMultipleElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementHandle);
+                if (uIAGetMultipleElementPropertiesreturnElementHandle != null)
+                {
+                    uIAGetMultipleElementProperties["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementHandle);
+                    uIAGetMultipleElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementProperties["ReturnElementHandle"] = true;
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
             if (uIAGetMultipleElementPropertiesreturnElementValue != null)
             {
-                uIAGetMultipleElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementValue);
+                if (uIAGetMultipleElementPropertiesreturnElementValue != null)
+                {
+                    uIAGetMultipleElementProperties["ReturnElementValue"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesreturnElementValue);
+                    uIAGetMultipleElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementProperties["ReturnElementValue"] = false;
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
             if (uIAGetMultipleElementPropertiesfirstItemToReturn != null)
             {
-                uIAGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesfirstItemToReturn);
+                if (uIAGetMultipleElementPropertiesfirstItemToReturn != null)
+                {
+                    uIAGetMultipleElementProperties["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesfirstItemToReturn);
+                    uIAGetMultipleElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementProperties["FirstItemToReturn"] = 1;
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
             if (uIAGetMultipleElementPropertiesmaxItemsToReturn != null)
             {
-                uIAGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesmaxItemsToReturn);
+                if (uIAGetMultipleElementPropertiesmaxItemsToReturn != null)
+                {
+                    uIAGetMultipleElementProperties["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementPropertiesmaxItemsToReturn);
+                    uIAGetMultipleElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementProperties["MaxItemsToReturn"] = 0;
                 uIAGetMultipleElementPropertiespropCount++;
             }
 
@@ -3289,31 +5389,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDesktopElementssearchProcessID != null)
             {
-                uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchProcessID);
+                if (uIAGetDesktopElementssearchProcessID != null)
+                {
+                    uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(uIAGetDesktopElementssearchProcessID);
+                    uIAGetDesktopElementspropCount++;
+                }
+
+                uIAGetDesktopElementspropCount++;
+            }
+            else
+            {
+                uIAGetDesktopElements["SearchProcessID"] = 0;
                 uIAGetDesktopElementspropCount++;
             }
 
             if (uIAGetDesktopElementsreturnElementHandle != null)
             {
-                uIAGetDesktopElements["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsreturnElementHandle);
+                if (uIAGetDesktopElementsreturnElementHandle != null)
+                {
+                    uIAGetDesktopElements["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsreturnElementHandle);
+                    uIAGetDesktopElementspropCount++;
+                }
+
+                uIAGetDesktopElementspropCount++;
+            }
+            else
+            {
+                uIAGetDesktopElements["ReturnElementHandle"] = true;
                 uIAGetDesktopElementspropCount++;
             }
 
             if (uIAGetDesktopElementsfirstItemToReturn != null)
             {
-                uIAGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsfirstItemToReturn);
+                if (uIAGetDesktopElementsfirstItemToReturn != null)
+                {
+                    uIAGetDesktopElements["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsfirstItemToReturn);
+                    uIAGetDesktopElementspropCount++;
+                }
+
+                uIAGetDesktopElementspropCount++;
+            }
+            else
+            {
+                uIAGetDesktopElements["FirstItemToReturn"] = 1;
                 uIAGetDesktopElementspropCount++;
             }
 
             if (uIAGetDesktopElementsmaxItemsToReturn != null)
             {
-                uIAGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsmaxItemsToReturn);
+                if (uIAGetDesktopElementsmaxItemsToReturn != null)
+                {
+                    uIAGetDesktopElements["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsmaxItemsToReturn);
+                    uIAGetDesktopElementspropCount++;
+                }
+
+                uIAGetDesktopElementspropCount++;
+            }
+            else
+            {
+                uIAGetDesktopElements["MaxItemsToReturn"] = 0;
                 uIAGetDesktopElementspropCount++;
             }
 
             if (uIAGetDesktopElementsincludeChildProcesses != null)
             {
-                uIAGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsincludeChildProcesses);
+                if (uIAGetDesktopElementsincludeChildProcesses != null)
+                {
+                    uIAGetDesktopElements["IncludeChildProcesses"] = ExpressionConverter.ConvertO(uIAGetDesktopElementsincludeChildProcesses);
+                    uIAGetDesktopElementspropCount++;
+                }
+
+                uIAGetDesktopElementspropCount++;
+            }
+            else
+            {
+                uIAGetDesktopElements["IncludeChildProcesses"] = false;
                 uIAGetDesktopElementspropCount++;
             }
 
@@ -3363,13 +5513,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAExpandElementsearchSubTree != null)
             {
-                uIAExpandElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAExpandElementsearchSubTree);
+                if (uIAExpandElementsearchSubTree != null)
+                {
+                    uIAExpandElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAExpandElementsearchSubTree);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["SearchSubTree"] = true;
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementmatchIndex != null)
             {
-                uIAExpandElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndex);
+                if (uIAExpandElementmatchIndex != null)
+                {
+                    uIAExpandElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndex);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["MatchIndex"] = 1;
                 uIAExpandElementpropCount++;
             }
 
@@ -3387,25 +5557,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAExpandElementmatchIndexAscending != null)
             {
-                uIAExpandElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndexAscending);
+                if (uIAExpandElementmatchIndexAscending != null)
+                {
+                    uIAExpandElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAExpandElementmatchIndexAscending);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["MatchIndexAscending"] = true;
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementmaxElementsToSearch != null)
             {
-                uIAExpandElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAExpandElementmaxElementsToSearch);
+                if (uIAExpandElementmaxElementsToSearch != null)
+                {
+                    uIAExpandElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAExpandElementmaxElementsToSearch);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["MaxElementsToSearch"] = 0;
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementmaxRelativeSearchDepth != null)
             {
-                uIAExpandElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAExpandElementmaxRelativeSearchDepth);
+                if (uIAExpandElementmaxRelativeSearchDepth != null)
+                {
+                    uIAExpandElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAExpandElementmaxRelativeSearchDepth);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["MaxRelativeSearchDepth"] = 0;
                 uIAExpandElementpropCount++;
             }
 
             if (uIAExpandElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAExpandElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAExpandElementmaxChildElementsToSearchPerNode);
+                if (uIAExpandElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAExpandElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAExpandElementmaxChildElementsToSearchPerNode);
+                    uIAExpandElementpropCount++;
+                }
+
+                uIAExpandElementpropCount++;
+            }
+            else
+            {
+                uIAExpandElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAExpandElementpropCount++;
             }
 
@@ -3461,13 +5671,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACollapseElementsearchSubTree != null)
             {
-                uIACollapseElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACollapseElementsearchSubTree);
+                if (uIACollapseElementsearchSubTree != null)
+                {
+                    uIACollapseElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIACollapseElementsearchSubTree);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["SearchSubTree"] = true;
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementmatchIndex != null)
             {
-                uIACollapseElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndex);
+                if (uIACollapseElementmatchIndex != null)
+                {
+                    uIACollapseElement["MatchIndex"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndex);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["MatchIndex"] = 1;
                 uIACollapseElementpropCount++;
             }
 
@@ -3485,25 +5715,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIACollapseElementmatchIndexAscending != null)
             {
-                uIACollapseElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndexAscending);
+                if (uIACollapseElementmatchIndexAscending != null)
+                {
+                    uIACollapseElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIACollapseElementmatchIndexAscending);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["MatchIndexAscending"] = true;
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementmaxElementsToSearch != null)
             {
-                uIACollapseElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACollapseElementmaxElementsToSearch);
+                if (uIACollapseElementmaxElementsToSearch != null)
+                {
+                    uIACollapseElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIACollapseElementmaxElementsToSearch);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["MaxElementsToSearch"] = 0;
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementmaxRelativeSearchDepth != null)
             {
-                uIACollapseElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACollapseElementmaxRelativeSearchDepth);
+                if (uIACollapseElementmaxRelativeSearchDepth != null)
+                {
+                    uIACollapseElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIACollapseElementmaxRelativeSearchDepth);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["MaxRelativeSearchDepth"] = 0;
                 uIACollapseElementpropCount++;
             }
 
             if (uIACollapseElementmaxChildElementsToSearchPerNode != null)
             {
-                uIACollapseElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACollapseElementmaxChildElementsToSearchPerNode);
+                if (uIACollapseElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIACollapseElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIACollapseElementmaxChildElementsToSearchPerNode);
+                    uIACollapseElementpropCount++;
+                }
+
+                uIACollapseElementpropCount++;
+            }
+            else
+            {
+                uIACollapseElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIACollapseElementpropCount++;
             }
 
@@ -3559,7 +5829,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationsearchSubTree != null)
             {
-                uIATakeScreenShotOfElementLocation["SearchSubTree"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchSubTree);
+                if (uIATakeScreenShotOfElementLocationsearchSubTree != null)
+                {
+                    uIATakeScreenShotOfElementLocation["SearchSubTree"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationsearchSubTree);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["SearchSubTree"] = true;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -3571,7 +5851,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationmatchIndex != null)
             {
-                uIATakeScreenShotOfElementLocation["MatchIndex"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndex);
+                if (uIATakeScreenShotOfElementLocationmatchIndex != null)
+                {
+                    uIATakeScreenShotOfElementLocation["MatchIndex"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndex);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["MatchIndex"] = 1;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -3589,31 +5879,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIATakeScreenShotOfElementLocationmatchIndexAscending != null)
             {
-                uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndexAscending);
+                if (uIATakeScreenShotOfElementLocationmatchIndexAscending != null)
+                {
+                    uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmatchIndexAscending);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["MatchIndexAscending"] = true;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationhideAgent != null)
             {
-                uIATakeScreenShotOfElementLocation["HideAgent"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationhideAgent);
+                if (uIATakeScreenShotOfElementLocationhideAgent != null)
+                {
+                    uIATakeScreenShotOfElementLocation["HideAgent"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationhideAgent);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["HideAgent"] = false;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationmaxElementsToSearch != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxElementsToSearch);
+                if (uIATakeScreenShotOfElementLocationmaxElementsToSearch != null)
+                {
+                    uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxElementsToSearch);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["MaxElementsToSearch"] = 0;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth);
+                if (uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth != null)
+                {
+                    uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxRelativeSearchDepth);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["MaxRelativeSearchDepth"] = 0;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
             if (uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode != null)
             {
-                uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode);
+                if (uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode != null)
+                {
+                    uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIATakeScreenShotOfElementLocationmaxChildElementsToSearchPerNode);
+                    uIATakeScreenShotOfElementLocationpropCount++;
+                }
+
+                uIATakeScreenShotOfElementLocationpropCount++;
+            }
+            else
+            {
+                uIATakeScreenShotOfElementLocation["MaxChildElementsToSearchPerNode"] = 0;
                 uIATakeScreenShotOfElementLocationpropCount++;
             }
 
@@ -3669,25 +6009,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADrawRectangleAroundElementsearchSubTree != null)
             {
-                uIADrawRectangleAroundElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchSubTree);
+                if (uIADrawRectangleAroundElementsearchSubTree != null)
+                {
+                    uIADrawRectangleAroundElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementsearchSubTree);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["SearchSubTree"] = true;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementpenColour != null)
             {
-                uIADrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenColour);
+                if (uIADrawRectangleAroundElementpenColour != null)
+                {
+                    uIADrawRectangleAroundElement["PenColour"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenColour);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["PenColour"] = "#800080";
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementpenThicknessPixels != null)
             {
-                uIADrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenThicknessPixels);
+                if (uIADrawRectangleAroundElementpenThicknessPixels != null)
+                {
+                    uIADrawRectangleAroundElement["PenThicknessPixels"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementpenThicknessPixels);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["PenThicknessPixels"] = 4;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementmatchIndex != null)
             {
-                uIADrawRectangleAroundElement["MatchIndex"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndex);
+                if (uIADrawRectangleAroundElementmatchIndex != null)
+                {
+                    uIADrawRectangleAroundElement["MatchIndex"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndex);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["MatchIndex"] = 1;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
@@ -3705,25 +6085,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIADrawRectangleAroundElementmatchIndexAscending != null)
             {
-                uIADrawRectangleAroundElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndexAscending);
+                if (uIADrawRectangleAroundElementmatchIndexAscending != null)
+                {
+                    uIADrawRectangleAroundElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmatchIndexAscending);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["MatchIndexAscending"] = true;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementmaxElementsToSearch != null)
             {
-                uIADrawRectangleAroundElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxElementsToSearch);
+                if (uIADrawRectangleAroundElementmaxElementsToSearch != null)
+                {
+                    uIADrawRectangleAroundElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxElementsToSearch);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["MaxElementsToSearch"] = 0;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementmaxRelativeSearchDepth != null)
             {
-                uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxRelativeSearchDepth);
+                if (uIADrawRectangleAroundElementmaxRelativeSearchDepth != null)
+                {
+                    uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxRelativeSearchDepth);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["MaxRelativeSearchDepth"] = 0;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
             if (uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode != null)
             {
-                uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode);
+                if (uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIADrawRectangleAroundElementmaxChildElementsToSearchPerNode);
+                    uIADrawRectangleAroundElementpropCount++;
+                }
+
+                uIADrawRectangleAroundElementpropCount++;
+            }
+            else
+            {
+                uIADrawRectangleAroundElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIADrawRectangleAroundElementpropCount++;
             }
 
@@ -3803,25 +6223,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentssearchSubTree != null)
             {
-                uIAGetDataGridElementContents["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchSubTree);
+                if (uIAGetDataGridElementContentssearchSubTree != null)
+                {
+                    uIAGetDataGridElementContents["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssearchSubTree);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["SearchSubTree"] = true;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsonScreenColumnsOnly != null)
             {
-                uIAGetDataGridElementContents["OnScreenColumnsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenColumnsOnly);
+                if (uIAGetDataGridElementContentsonScreenColumnsOnly != null)
+                {
+                    uIAGetDataGridElementContents["OnScreenColumnsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenColumnsOnly);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["OnScreenColumnsOnly"] = true;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsonScreenRowsOnly != null)
             {
-                uIAGetDataGridElementContents["OnScreenRowsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenRowsOnly);
+                if (uIAGetDataGridElementContentsonScreenRowsOnly != null)
+                {
+                    uIAGetDataGridElementContents["OnScreenRowsOnly"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsonScreenRowsOnly);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["OnScreenRowsOnly"] = true;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsreturnNullValuesAsBlank != null)
             {
-                uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnNullValuesAsBlank);
+                if (uIAGetDataGridElementContentsreturnNullValuesAsBlank != null)
+                {
+                    uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnNullValuesAsBlank);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ReturnNullValuesAsBlank"] = true;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -3833,7 +6293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsreturnRowUIAName != null)
             {
-                uIAGetDataGridElementContents["ReturnRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnRowUIAName);
+                if (uIAGetDataGridElementContentsreturnRowUIAName != null)
+                {
+                    uIAGetDataGridElementContents["ReturnRowUIAName"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreturnRowUIAName);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ReturnRowUIAName"] = false;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -3845,7 +6315,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsmatchIndex != null)
             {
-                uIAGetDataGridElementContents["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndex);
+                if (uIAGetDataGridElementContentsmatchIndex != null)
+                {
+                    uIAGetDataGridElementContents["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndex);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MatchIndex"] = 1;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -3863,31 +6343,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsmatchIndexAscending != null)
             {
-                uIAGetDataGridElementContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndexAscending);
+                if (uIAGetDataGridElementContentsmatchIndexAscending != null)
+                {
+                    uIAGetDataGridElementContents["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmatchIndexAscending);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MatchIndexAscending"] = true;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsfirstItemToReturn != null)
             {
-                uIAGetDataGridElementContents["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsfirstItemToReturn);
+                if (uIAGetDataGridElementContentsfirstItemToReturn != null)
+                {
+                    uIAGetDataGridElementContents["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsfirstItemToReturn);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["FirstItemToReturn"] = 1;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsmaxItemsToReturn != null)
             {
-                uIAGetDataGridElementContents["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxItemsToReturn);
+                if (uIAGetDataGridElementContentsmaxItemsToReturn != null)
+                {
+                    uIAGetDataGridElementContents["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxItemsToReturn);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MaxItemsToReturn"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows != null)
             {
-                uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows);
+                if (uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows != null)
+                {
+                    uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscanFirstNRowsForEmptyRows);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ScanFirstNRowsForEmptyRows"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsreadTableAsThread != null)
             {
-                uIAGetDataGridElementContents["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreadTableAsThread);
+                if (uIAGetDataGridElementContentsreadTableAsThread != null)
+                {
+                    uIAGetDataGridElementContents["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsreadTableAsThread);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ReadTableAsThread"] = false;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -3899,37 +6429,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentssecondsToWaitForThread != null)
             {
-                uIAGetDataGridElementContents["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssecondsToWaitForThread);
+                if (uIAGetDataGridElementContentssecondsToWaitForThread != null)
+                {
+                    uIAGetDataGridElementContents["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentssecondsToWaitForThread);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["SecondsToWaitForThread"] = 90;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent);
+                if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent != null)
+                {
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNPercent);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNPercent"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows);
+                if (uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows != null)
+                {
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyEveryNRows);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyEveryNRows"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle != null)
             {
-                uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle);
+                if (uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle != null)
+                {
+                    uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsscrollDataGridVerticallyElementHandle);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["ScrollDataGridVerticallyElementHandle"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsminimumDataGridRowsForScrolling != null)
             {
-                uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling);
+                if (uIAGetDataGridElementContentsminimumDataGridRowsForScrolling != null)
+                {
+                    uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsminimumDataGridRowsForScrolling);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MinimumDataGridRowsForScrolling"] = 200;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsraiseExceptionIfCannotScroll != null)
             {
-                uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll);
+                if (uIAGetDataGridElementContentsraiseExceptionIfCannotScroll != null)
+                {
+                    uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsraiseExceptionIfCannotScroll);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["RaiseExceptionIfCannotScroll"] = false;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -3941,19 +6531,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementContentsmaxElementsToSearch != null)
             {
-                uIAGetDataGridElementContents["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxElementsToSearch);
+                if (uIAGetDataGridElementContentsmaxElementsToSearch != null)
+                {
+                    uIAGetDataGridElementContents["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxElementsToSearch);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MaxElementsToSearch"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsmaxRelativeSearchDepth != null)
             {
-                uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxRelativeSearchDepth);
+                if (uIAGetDataGridElementContentsmaxRelativeSearchDepth != null)
+                {
+                    uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxRelativeSearchDepth);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MaxRelativeSearchDepth"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
             if (uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode);
+                if (uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementContentsmaxChildElementsToSearchPerNode);
+                    uIAGetDataGridElementContentspropCount++;
+                }
+
+                uIAGetDataGridElementContentspropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementContents["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetDataGridElementContentspropCount++;
             }
 
@@ -4009,7 +6629,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertiessearchSubTree != null)
             {
-                uIAGetDataGridElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchSubTree);
+                if (uIAGetDataGridElementPropertiessearchSubTree != null)
+                {
+                    uIAGetDataGridElementProperties["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiessearchSubTree);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["SearchSubTree"] = true;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -4021,7 +6651,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertiesmatchIndex != null)
             {
-                uIAGetDataGridElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndex);
+                if (uIAGetDataGridElementPropertiesmatchIndex != null)
+                {
+                    uIAGetDataGridElementProperties["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndex);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["MatchIndex"] = 1;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -4039,25 +6679,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetDataGridElementPropertiesmatchIndexAscending != null)
             {
-                uIAGetDataGridElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndexAscending);
+                if (uIAGetDataGridElementPropertiesmatchIndexAscending != null)
+                {
+                    uIAGetDataGridElementProperties["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmatchIndexAscending);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["MatchIndexAscending"] = true;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiesmaxElementsToSearch != null)
             {
-                uIAGetDataGridElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxElementsToSearch);
+                if (uIAGetDataGridElementPropertiesmaxElementsToSearch != null)
+                {
+                    uIAGetDataGridElementProperties["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxElementsToSearch);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["MaxElementsToSearch"] = 0;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiesmaxRelativeSearchDepth != null)
             {
-                uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth);
+                if (uIAGetDataGridElementPropertiesmaxRelativeSearchDepth != null)
+                {
+                    uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxRelativeSearchDepth);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["MaxRelativeSearchDepth"] = 0;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
             if (uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode);
+                if (uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetDataGridElementPropertiesmaxChildElementsToSearchPerNode);
+                    uIAGetDataGridElementPropertiespropCount++;
+                }
+
+                uIAGetDataGridElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetDataGridElementProperties["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetDataGridElementPropertiespropCount++;
             }
 
@@ -4113,37 +6793,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetListElementItemssearchSubTree != null)
             {
-                uIAGetListElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchSubTree);
+                if (uIAGetListElementItemssearchSubTree != null)
+                {
+                    uIAGetListElementItems["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetListElementItemssearchSubTree);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["SearchSubTree"] = true;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemsexpandFirst != null)
             {
-                uIAGetListElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(uIAGetListElementItemsexpandFirst);
+                if (uIAGetListElementItemsexpandFirst != null)
+                {
+                    uIAGetListElementItems["ExpandFirst"] = ExpressionConverter.ConvertO(uIAGetListElementItemsexpandFirst);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["ExpandFirst"] = false;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemscollapseAfter != null)
             {
-                uIAGetListElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(uIAGetListElementItemscollapseAfter);
+                if (uIAGetListElementItemscollapseAfter != null)
+                {
+                    uIAGetListElementItems["CollapseAfter"] = ExpressionConverter.ConvertO(uIAGetListElementItemscollapseAfter);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["CollapseAfter"] = false;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemscheckForSelectedItems != null)
             {
-                uIAGetListElementItems["CheckForSelectedItems"] = ExpressionConverter.ConvertO(uIAGetListElementItemscheckForSelectedItems);
+                if (uIAGetListElementItemscheckForSelectedItems != null)
+                {
+                    uIAGetListElementItems["CheckForSelectedItems"] = ExpressionConverter.ConvertO(uIAGetListElementItemscheckForSelectedItems);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["CheckForSelectedItems"] = true;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemssecondsBetweenExpandCollapse != null)
             {
-                uIAGetListElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAGetListElementItemssecondsBetweenExpandCollapse);
+                if (uIAGetListElementItemssecondsBetweenExpandCollapse != null)
+                {
+                    uIAGetListElementItems["SecondsBetweenExpandCollapse"] = ExpressionConverter.ConvertO(uIAGetListElementItemssecondsBetweenExpandCollapse);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["SecondsBetweenExpandCollapse"] = 0;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemsmatchIndex != null)
             {
-                uIAGetListElementItems["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndex);
+                if (uIAGetListElementItemsmatchIndex != null)
+                {
+                    uIAGetListElementItems["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndex);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["MatchIndex"] = 1;
                 uIAGetListElementItemspropCount++;
             }
 
@@ -4161,25 +6901,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetListElementItemsmatchIndexAscending != null)
             {
-                uIAGetListElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndexAscending);
+                if (uIAGetListElementItemsmatchIndexAscending != null)
+                {
+                    uIAGetListElementItems["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmatchIndexAscending);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["MatchIndexAscending"] = true;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemsmaxElementsToSearch != null)
             {
-                uIAGetListElementItems["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxElementsToSearch);
+                if (uIAGetListElementItemsmaxElementsToSearch != null)
+                {
+                    uIAGetListElementItems["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxElementsToSearch);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["MaxElementsToSearch"] = 0;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemsmaxRelativeSearchDepth != null)
             {
-                uIAGetListElementItems["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxRelativeSearchDepth);
+                if (uIAGetListElementItemsmaxRelativeSearchDepth != null)
+                {
+                    uIAGetListElementItems["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxRelativeSearchDepth);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["MaxRelativeSearchDepth"] = 0;
                 uIAGetListElementItemspropCount++;
             }
 
             if (uIAGetListElementItemsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxChildElementsToSearchPerNode);
+                if (uIAGetListElementItemsmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetListElementItemsmaxChildElementsToSearchPerNode);
+                    uIAGetListElementItemspropCount++;
+                }
+
+                uIAGetListElementItemspropCount++;
+            }
+            else
+            {
+                uIAGetListElementItems["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetListElementItemspropCount++;
             }
 
@@ -4235,19 +7015,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNamesearchSubTree != null)
             {
-                uIAClickListElementItemByName["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchSubTree);
+                if (uIAClickListElementItemByNamesearchSubTree != null)
+                {
+                    uIAClickListElementItemByName["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamesearchSubTree);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["SearchSubTree"] = true;
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNameexpandFirst != null)
             {
-                uIAClickListElementItemByName["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameexpandFirst);
+                if (uIAClickListElementItemByNameexpandFirst != null)
+                {
+                    uIAClickListElementItemByName["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNameexpandFirst);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["ExpandFirst"] = false;
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamecollapseAfter != null)
             {
-                uIAClickListElementItemByName["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamecollapseAfter);
+                if (uIAClickListElementItemByNamecollapseAfter != null)
+                {
+                    uIAClickListElementItemByName["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamecollapseAfter);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["CollapseAfter"] = false;
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -4265,7 +7075,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNamematchIndex != null)
             {
-                uIAClickListElementItemByName["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndex);
+                if (uIAClickListElementItemByNamematchIndex != null)
+                {
+                    uIAClickListElementItemByName["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndex);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["MatchIndex"] = 1;
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -4283,25 +7103,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByNamematchIndexAscending != null)
             {
-                uIAClickListElementItemByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndexAscending);
+                if (uIAClickListElementItemByNamematchIndexAscending != null)
+                {
+                    uIAClickListElementItemByName["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamematchIndexAscending);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["MatchIndexAscending"] = true;
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamemaxElementsToSearch != null)
             {
-                uIAClickListElementItemByName["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxElementsToSearch);
+                if (uIAClickListElementItemByNamemaxElementsToSearch != null)
+                {
+                    uIAClickListElementItemByName["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxElementsToSearch);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["MaxElementsToSearch"] = 0;
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamemaxRelativeSearchDepth != null)
             {
-                uIAClickListElementItemByName["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxRelativeSearchDepth);
+                if (uIAClickListElementItemByNamemaxRelativeSearchDepth != null)
+                {
+                    uIAClickListElementItemByName["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxRelativeSearchDepth);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["MaxRelativeSearchDepth"] = 0;
                 uIAClickListElementItemByNamepropCount++;
             }
 
             if (uIAClickListElementItemByNamemaxChildElementsToSearchPerNode != null)
             {
-                uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode);
+                if (uIAClickListElementItemByNamemaxChildElementsToSearchPerNode != null)
+                {
+                    uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByNamemaxChildElementsToSearchPerNode);
+                    uIAClickListElementItemByNamepropCount++;
+                }
+
+                uIAClickListElementItemByNamepropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByName["MaxChildElementsToSearchPerNode"] = 0;
                 uIAClickListElementItemByNamepropCount++;
             }
 
@@ -4357,25 +7217,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexsearchSubTree != null)
             {
-                uIAClickListElementItemByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchSubTree);
+                if (uIAClickListElementItemByIndexsearchSubTree != null)
+                {
+                    uIAClickListElementItemByIndex["SearchSubTree"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexsearchSubTree);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["SearchSubTree"] = true;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexexpandFirst != null)
             {
-                uIAClickListElementItemByIndex["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexexpandFirst);
+                if (uIAClickListElementItemByIndexexpandFirst != null)
+                {
+                    uIAClickListElementItemByIndex["ExpandFirst"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexexpandFirst);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["ExpandFirst"] = false;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexcollapseAfter != null)
             {
-                uIAClickListElementItemByIndex["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexcollapseAfter);
+                if (uIAClickListElementItemByIndexcollapseAfter != null)
+                {
+                    uIAClickListElementItemByIndex["CollapseAfter"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexcollapseAfter);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["CollapseAfter"] = false;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexitemIndex != null)
             {
-                uIAClickListElementItemByIndex["ItemIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexitemIndex);
+                if (uIAClickListElementItemByIndexitemIndex != null)
+                {
+                    uIAClickListElementItemByIndex["ItemIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexitemIndex);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["ItemIndex"] = 1;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -4387,7 +7287,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexmatchIndex != null)
             {
-                uIAClickListElementItemByIndex["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndex);
+                if (uIAClickListElementItemByIndexmatchIndex != null)
+                {
+                    uIAClickListElementItemByIndex["MatchIndex"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndex);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["MatchIndex"] = 1;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -4405,25 +7315,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAClickListElementItemByIndexmatchIndexAscending != null)
             {
-                uIAClickListElementItemByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndexAscending);
+                if (uIAClickListElementItemByIndexmatchIndexAscending != null)
+                {
+                    uIAClickListElementItemByIndex["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmatchIndexAscending);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["MatchIndexAscending"] = true;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexmaxElementsToSearch != null)
             {
-                uIAClickListElementItemByIndex["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxElementsToSearch);
+                if (uIAClickListElementItemByIndexmaxElementsToSearch != null)
+                {
+                    uIAClickListElementItemByIndex["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxElementsToSearch);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["MaxElementsToSearch"] = 0;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexmaxRelativeSearchDepth != null)
             {
-                uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxRelativeSearchDepth);
+                if (uIAClickListElementItemByIndexmaxRelativeSearchDepth != null)
+                {
+                    uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxRelativeSearchDepth);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["MaxRelativeSearchDepth"] = 0;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
             if (uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode != null)
             {
-                uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode);
+                if (uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAClickListElementItemByIndexmaxChildElementsToSearchPerNode);
+                    uIAClickListElementItemByIndexpropCount++;
+                }
+
+                uIAClickListElementItemByIndexpropCount++;
+            }
+            else
+            {
+                uIAClickListElementItemByIndex["MaxChildElementsToSearchPerNode"] = 0;
                 uIAClickListElementItemByIndexpropCount++;
             }
 
@@ -4479,13 +7429,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericValuesearchSubTree != null)
             {
-                uIASetElementToNumericValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchSubTree);
+                if (uIASetElementToNumericValuesearchSubTree != null)
+                {
+                    uIASetElementToNumericValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuesearchSubTree);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["SearchSubTree"] = true;
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuematchIndex != null)
             {
-                uIASetElementToNumericValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndex);
+                if (uIASetElementToNumericValuematchIndex != null)
+                {
+                    uIASetElementToNumericValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndex);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["MatchIndex"] = 1;
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -4503,7 +7473,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericValuematchIndexAscending != null)
             {
-                uIASetElementToNumericValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndexAscending);
+                if (uIASetElementToNumericValuematchIndexAscending != null)
+                {
+                    uIASetElementToNumericValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuematchIndexAscending);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["MatchIndexAscending"] = true;
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -4511,19 +7491,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIASetElementToNumericValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuenewValue);
             if (uIASetElementToNumericValuemaxElementsToSearch != null)
             {
-                uIASetElementToNumericValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxElementsToSearch);
+                if (uIASetElementToNumericValuemaxElementsToSearch != null)
+                {
+                    uIASetElementToNumericValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxElementsToSearch);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["MaxElementsToSearch"] = 0;
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuemaxRelativeSearchDepth != null)
             {
-                uIASetElementToNumericValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxRelativeSearchDepth);
+                if (uIASetElementToNumericValuemaxRelativeSearchDepth != null)
+                {
+                    uIASetElementToNumericValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxRelativeSearchDepth);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["MaxRelativeSearchDepth"] = 0;
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuemaxChildElementsToSearchPerNode != null)
             {
-                uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxChildElementsToSearchPerNode);
+                if (uIASetElementToNumericValuemaxChildElementsToSearchPerNode != null)
+                {
+                    uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuemaxChildElementsToSearchPerNode);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["MaxChildElementsToSearchPerNode"] = 0;
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -4535,19 +7545,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericValueraiseExceptionIfInputValidationFails != null)
             {
-                uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueraiseExceptionIfInputValidationFails);
+                if (uIASetElementToNumericValueraiseExceptionIfInputValidationFails != null)
+                {
+                    uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = ExpressionConverter.ConvertO(uIASetElementToNumericValueraiseExceptionIfInputValidationFails);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["RaiseExceptionIfInputValidationFails"] = false;
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuetryValuePattern != null)
             {
-                uIASetElementToNumericValue["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryValuePattern);
+                if (uIASetElementToNumericValuetryValuePattern != null)
+                {
+                    uIASetElementToNumericValue["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryValuePattern);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["TryValuePattern"] = true;
                 uIASetElementToNumericValuepropCount++;
             }
 
             if (uIASetElementToNumericValuetryLegacyPattern != null)
             {
-                uIASetElementToNumericValue["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryLegacyPattern);
+                if (uIASetElementToNumericValuetryLegacyPattern != null)
+                {
+                    uIASetElementToNumericValue["TryLegacyPattern"] = ExpressionConverter.ConvertO(uIASetElementToNumericValuetryLegacyPattern);
+                    uIASetElementToNumericValuepropCount++;
+                }
+
+                uIASetElementToNumericValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericValue["TryLegacyPattern"] = false;
                 uIASetElementToNumericValuepropCount++;
             }
 
@@ -4597,13 +7637,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericRangeValuesearchSubTree != null)
             {
-                uIASetElementToNumericRangeValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchSubTree);
+                if (uIASetElementToNumericRangeValuesearchSubTree != null)
+                {
+                    uIASetElementToNumericRangeValue["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuesearchSubTree);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["SearchSubTree"] = true;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuematchIndex != null)
             {
-                uIASetElementToNumericRangeValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndex);
+                if (uIASetElementToNumericRangeValuematchIndex != null)
+                {
+                    uIASetElementToNumericRangeValue["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndex);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["MatchIndex"] = 1;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
@@ -4621,7 +7681,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementToNumericRangeValuematchIndexAscending != null)
             {
-                uIASetElementToNumericRangeValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndexAscending);
+                if (uIASetElementToNumericRangeValuematchIndexAscending != null)
+                {
+                    uIASetElementToNumericRangeValue["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuematchIndexAscending);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["MatchIndexAscending"] = true;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
@@ -4629,25 +7699,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIASetElementToNumericRangeValue["NewValue"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValue);
             if (uIASetElementToNumericRangeValuenewValueIsPercentage != null)
             {
-                uIASetElementToNumericRangeValue["NewValueIsPercentage"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValueIsPercentage);
+                if (uIASetElementToNumericRangeValuenewValueIsPercentage != null)
+                {
+                    uIASetElementToNumericRangeValue["NewValueIsPercentage"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuenewValueIsPercentage);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["NewValueIsPercentage"] = false;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuemaxElementsToSearch != null)
             {
-                uIASetElementToNumericRangeValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxElementsToSearch);
+                if (uIASetElementToNumericRangeValuemaxElementsToSearch != null)
+                {
+                    uIASetElementToNumericRangeValue["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxElementsToSearch);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["MaxElementsToSearch"] = 0;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuemaxRelativeSearchDepth != null)
             {
-                uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxRelativeSearchDepth);
+                if (uIASetElementToNumericRangeValuemaxRelativeSearchDepth != null)
+                {
+                    uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxRelativeSearchDepth);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["MaxRelativeSearchDepth"] = 0;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
             if (uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode != null)
             {
-                uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode);
+                if (uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode != null)
+                {
+                    uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementToNumericRangeValuemaxChildElementsToSearchPerNode);
+                    uIASetElementToNumericRangeValuepropCount++;
+                }
+
+                uIASetElementToNumericRangeValuepropCount++;
+            }
+            else
+            {
+                uIASetElementToNumericRangeValue["MaxChildElementsToSearchPerNode"] = 0;
                 uIASetElementToNumericRangeValuepropCount++;
             }
 
@@ -4721,13 +7831,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalPasswordInputIntoElementsearchSubTree != null)
             {
-                uIAGlobalPasswordInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchSubTree);
+                if (uIAGlobalPasswordInputIntoElementsearchSubTree != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsearchSubTree);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["SearchSubTree"] = true;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementmatchIndex != null)
             {
-                uIAGlobalPasswordInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndex);
+                if (uIAGlobalPasswordInputIntoElementmatchIndex != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndex);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["MatchIndex"] = 1;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -4745,31 +7875,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalPasswordInputIntoElementmatchIndexAscending != null)
             {
-                uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndexAscending);
+                if (uIAGlobalPasswordInputIntoElementmatchIndexAscending != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmatchIndexAscending);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["MatchIndexAscending"] = true;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementfocusElement != null)
             {
-                uIAGlobalPasswordInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementfocusElement);
+                if (uIAGlobalPasswordInputIntoElementfocusElement != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementfocusElement);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["FocusElement"] = true;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement != null)
             {
-                uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement);
+                if (uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementglobalMouseClickOnElement);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["GlobalMouseClickOnElement"] = true;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                if (uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -4777,43 +7957,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAGlobalPasswordInputIntoElement["PasswordToInput"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordToInput);
             if (uIAGlobalPasswordInputIntoElementsendKeyEvents != null)
             {
-                uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsendKeyEvents);
+                if (uIAGlobalPasswordInputIntoElementsendKeyEvents != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementsendKeyEvents);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["SendKeyEvents"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementinterval != null)
             {
-                uIAGlobalPasswordInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementinterval);
+                if (uIAGlobalPasswordInputIntoElementinterval != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementinterval);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["Interval"] = 10;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementdontInterpretSymbols != null)
             {
-                uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementdontInterpretSymbols);
+                if (uIAGlobalPasswordInputIntoElementdontInterpretSymbols != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementdontInterpretSymbols);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["DontInterpretSymbols"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword != null)
             {
-                uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword);
+                if (uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementpasswordContainsStoredPassword);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["PasswordContainsStoredPassword"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementmaxElementsToSearch != null)
             {
-                uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxElementsToSearch);
+                if (uIAGlobalPasswordInputIntoElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxElementsToSearch);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["MaxElementsToSearch"] = 0;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth);
+                if (uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxRelativeSearchDepth);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
             if (uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -4825,7 +8075,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalPasswordInputIntoElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalPasswordInputIntoElementpropCount++;
+                }
+
+                uIAGlobalPasswordInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalPasswordInputIntoElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalPasswordInputIntoElementpropCount++;
             }
 
@@ -4875,13 +8135,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementsearchSubTree != null)
             {
-                uIAGlobalTextInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchSubTree);
+                if (uIAGlobalTextInputIntoElementsearchSubTree != null)
+                {
+                    uIAGlobalTextInputIntoElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsearchSubTree);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["SearchSubTree"] = true;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementmatchIndex != null)
             {
-                uIAGlobalTextInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndex);
+                if (uIAGlobalTextInputIntoElementmatchIndex != null)
+                {
+                    uIAGlobalTextInputIntoElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndex);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["MatchIndex"] = 1;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -4899,31 +8179,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementmatchIndexAscending != null)
             {
-                uIAGlobalTextInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndexAscending);
+                if (uIAGlobalTextInputIntoElementmatchIndexAscending != null)
+                {
+                    uIAGlobalTextInputIntoElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmatchIndexAscending);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["MatchIndexAscending"] = true;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementfocusElement != null)
             {
-                uIAGlobalTextInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementfocusElement);
+                if (uIAGlobalTextInputIntoElementfocusElement != null)
+                {
+                    uIAGlobalTextInputIntoElement["FocusElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementfocusElement);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["FocusElement"] = true;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementglobalMouseClickOnElement != null)
             {
-                uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementglobalMouseClickOnElement);
+                if (uIAGlobalTextInputIntoElementglobalMouseClickOnElement != null)
+                {
+                    uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementglobalMouseClickOnElement);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["GlobalMouseClickOnElement"] = true;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
             {
-                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete != null)
+                {
+                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingDoubleClickDelete);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingDoubleClickDelete"] = false;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
             {
-                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                if (uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete != null)
+                {
+                    uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementreplaceExistingValueUsingCTRLADelete);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["ReplaceExistingValueUsingCTRLADelete"] = false;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -4935,37 +8265,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementsendKeyEvents != null)
             {
-                uIAGlobalTextInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsendKeyEvents);
+                if (uIAGlobalTextInputIntoElementsendKeyEvents != null)
+                {
+                    uIAGlobalTextInputIntoElement["SendKeyEvents"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementsendKeyEvents);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["SendKeyEvents"] = false;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementinterval != null)
             {
-                uIAGlobalTextInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementinterval);
+                if (uIAGlobalTextInputIntoElementinterval != null)
+                {
+                    uIAGlobalTextInputIntoElement["Interval"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementinterval);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["Interval"] = 10;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementdontInterpretSymbols != null)
             {
-                uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementdontInterpretSymbols);
+                if (uIAGlobalTextInputIntoElementdontInterpretSymbols != null)
+                {
+                    uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementdontInterpretSymbols);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["DontInterpretSymbols"] = false;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementmaxElementsToSearch != null)
             {
-                uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxElementsToSearch);
+                if (uIAGlobalTextInputIntoElementmaxElementsToSearch != null)
+                {
+                    uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxElementsToSearch);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["MaxElementsToSearch"] = 0;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementmaxRelativeSearchDepth != null)
             {
-                uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth);
+                if (uIAGlobalTextInputIntoElementmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxRelativeSearchDepth);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
             if (uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode);
+                if (uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementmaxChildElementsToSearchPerNode);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -4977,7 +8367,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary != null)
             {
-                uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary);
+                if (uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary != null)
+                {
+                    uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = ExpressionConverter.ConvertO(uIAGlobalTextInputIntoElementvalidateClickablePointWithinElementBoundary);
+                    uIAGlobalTextInputIntoElementpropCount++;
+                }
+
+                uIAGlobalTextInputIntoElementpropCount++;
+            }
+            else
+            {
+                uIAGlobalTextInputIntoElement["ValidateClickablePointWithinElementBoundary"] = false;
                 uIAGlobalTextInputIntoElementpropCount++;
             }
 
@@ -5041,19 +8441,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             var uIAGetElementAtCoordinatespropCount = 0;
             if (uIAGetElementAtCoordinatesxCoord != null)
             {
-                uIAGetElementAtCoordinates["XCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesxCoord);
+                if (uIAGetElementAtCoordinatesxCoord != null)
+                {
+                    uIAGetElementAtCoordinates["XCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesxCoord);
+                    uIAGetElementAtCoordinatespropCount++;
+                }
+
+                uIAGetElementAtCoordinatespropCount++;
+            }
+            else
+            {
+                uIAGetElementAtCoordinates["XCoord"] = 0;
                 uIAGetElementAtCoordinatespropCount++;
             }
 
             if (uIAGetElementAtCoordinatesyCoord != null)
             {
-                uIAGetElementAtCoordinates["YCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesyCoord);
+                if (uIAGetElementAtCoordinatesyCoord != null)
+                {
+                    uIAGetElementAtCoordinates["YCoord"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesyCoord);
+                    uIAGetElementAtCoordinatespropCount++;
+                }
+
+                uIAGetElementAtCoordinatespropCount++;
+            }
+            else
+            {
+                uIAGetElementAtCoordinates["YCoord"] = 0;
                 uIAGetElementAtCoordinatespropCount++;
             }
 
             if (uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound != null)
             {
-                uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound);
+                if (uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound != null)
+                {
+                    uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = ExpressionConverter.ConvertO(uIAGetElementAtCoordinatesraiseExceptionIfElementNotFound);
+                    uIAGetElementAtCoordinatespropCount++;
+                }
+
+                uIAGetElementAtCoordinatespropCount++;
+            }
+            else
+            {
+                uIAGetElementAtCoordinates["RaiseExceptionIfElementNotFound"] = false;
                 uIAGetElementAtCoordinatespropCount++;
             }
 
@@ -5079,7 +8509,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAGetMultipleParentElementProperties["ElementHandle"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertieselementHandle);
             if (uIAGetMultipleParentElementPropertiesmaxParentsToProcess != null)
             {
-                uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesmaxParentsToProcess);
+                if (uIAGetMultipleParentElementPropertiesmaxParentsToProcess != null)
+                {
+                    uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIAGetMultipleParentElementPropertiesmaxParentsToProcess);
+                    uIAGetMultipleParentElementPropertiespropCount++;
+                }
+
+                uIAGetMultipleParentElementPropertiespropCount++;
+            }
+            else
+            {
+                uIAGetMultipleParentElementProperties["MaxParentsToProcess"] = 50;
                 uIAGetMultipleParentElementPropertiespropCount++;
             }
 
@@ -5117,13 +8557,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASearchForFirstParentElementmaxParentsToProcess != null)
             {
-                uIASearchForFirstParentElement["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementmaxParentsToProcess);
+                if (uIASearchForFirstParentElementmaxParentsToProcess != null)
+                {
+                    uIASearchForFirstParentElement["MaxParentsToProcess"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementmaxParentsToProcess);
+                    uIASearchForFirstParentElementpropCount++;
+                }
+
+                uIASearchForFirstParentElementpropCount++;
+            }
+            else
+            {
+                uIASearchForFirstParentElement["MaxParentsToProcess"] = 50;
                 uIASearchForFirstParentElementpropCount++;
             }
 
             if (uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound != null)
             {
-                uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound);
+                if (uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound != null)
+                {
+                    uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = ExpressionConverter.ConvertO(uIASearchForFirstParentElementraiseExceptionIfParentElementNotFound);
+                    uIASearchForFirstParentElementpropCount++;
+                }
+
+                uIASearchForFirstParentElementpropCount++;
+            }
+            else
+            {
+                uIASearchForFirstParentElement["RaiseExceptionIfParentElementNotFound"] = false;
                 uIASearchForFirstParentElementpropCount++;
             }
 
@@ -5177,13 +8637,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablesearchSubTree != null)
             {
-                uIAGetMultipleElementsAsTable["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchSubTree);
+                if (uIAGetMultipleElementsAsTablesearchSubTree != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchSubTree);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchSubTree"] = true;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablematchIndex != null)
             {
-                uIAGetMultipleElementsAsTable["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndex);
+                if (uIAGetMultipleElementsAsTablematchIndex != null)
+                {
+                    uIAGetMultipleElementsAsTable["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndex);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MatchIndex"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -5201,7 +8681,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablematchIndexAscending != null)
             {
-                uIAGetMultipleElementsAsTable["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndexAscending);
+                if (uIAGetMultipleElementsAsTablematchIndexAscending != null)
+                {
+                    uIAGetMultipleElementsAsTable["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablematchIndexAscending);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MatchIndexAscending"] = true;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -5231,97 +8721,257 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements != null)
             {
-                uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements);
+                if (uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchDescendantsForCellSubElements);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchDescendantsForCellSubElements"] = true;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn);
+                if (uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn != null)
+                {
+                    uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellHeaderSubElementToReturn);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["FirstCellHeaderSubElementToReturn"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn);
+                if (uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn != null)
+                {
+                    uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellHeaderSubElementsToReturn);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MaxCellHeaderSubElementsToReturn"] = 0;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablefirstCellSubElementToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn);
+                if (uIAGetMultipleElementsAsTablefirstCellSubElementToReturn != null)
+                {
+                    uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablefirstCellSubElementToReturn);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["FirstCellSubElementToReturn"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn != null)
             {
-                uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn);
+                if (uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn != null)
+                {
+                    uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxCellSubElementsToReturn);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MaxCellSubElementsToReturn"] = 0;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablerequestedNumberOfColumns != null)
             {
-                uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablerequestedNumberOfColumns);
+                if (uIAGetMultipleElementsAsTablerequestedNumberOfColumns != null)
+                {
+                    uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablerequestedNumberOfColumns);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["RequestedNumberOfColumns"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablecellSubElementValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementValuePriority);
+                if (uIAGetMultipleElementsAsTablecellSubElementValuePriority != null)
+                {
+                    uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementValuePriority);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["CellSubElementValuePriority"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablecellSubElementTextValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority);
+                if (uIAGetMultipleElementsAsTablecellSubElementTextValuePriority != null)
+                {
+                    uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementTextValuePriority);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["CellSubElementTextValuePriority"] = 2;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablecellSubElementNameValuePriority != null)
             {
-                uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority);
+                if (uIAGetMultipleElementsAsTablecellSubElementNameValuePriority != null)
+                {
+                    uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablecellSubElementNameValuePriority);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["CellSubElementNameValuePriority"] = 3;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTableminimumCellSubElementWidth != null)
             {
-                uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementWidth);
+                if (uIAGetMultipleElementsAsTableminimumCellSubElementWidth != null)
+                {
+                    uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementWidth);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MinimumCellSubElementWidth"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTableminimumCellSubElementHeight != null)
             {
-                uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementHeight);
+                if (uIAGetMultipleElementsAsTableminimumCellSubElementHeight != null)
+                {
+                    uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTableminimumCellSubElementHeight);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MinimumCellSubElementHeight"] = 1;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft);
+                if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxLeft);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxLeft"] = -99999;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight);
+                if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxRight);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxRight"] = 99999;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop);
+                if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxTop);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxTop"] = -99999;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom != null)
             {
-                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom);
+                if (uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom != null)
+                {
+                    uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesearchCellSubElementBoundingBoxBottom);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SearchCellSubElementBoundingBoxBottom"] = 99999;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablereadTableAsThread != null)
             {
-                uIAGetMultipleElementsAsTable["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablereadTableAsThread);
+                if (uIAGetMultipleElementsAsTablereadTableAsThread != null)
+                {
+                    uIAGetMultipleElementsAsTable["ReadTableAsThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablereadTableAsThread);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["ReadTableAsThread"] = false;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -5333,25 +8983,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetMultipleElementsAsTablesecondsToWaitForThread != null)
             {
-                uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesecondsToWaitForThread);
+                if (uIAGetMultipleElementsAsTablesecondsToWaitForThread != null)
+                {
+                    uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablesecondsToWaitForThread);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["SecondsToWaitForThread"] = 90;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablemaxElementsToSearch != null)
             {
-                uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxElementsToSearch);
+                if (uIAGetMultipleElementsAsTablemaxElementsToSearch != null)
+                {
+                    uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxElementsToSearch);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MaxElementsToSearch"] = 0;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablemaxRelativeSearchDepth != null)
             {
-                uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth);
+                if (uIAGetMultipleElementsAsTablemaxRelativeSearchDepth != null)
+                {
+                    uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxRelativeSearchDepth);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MaxRelativeSearchDepth"] = 0;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
             if (uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode != null)
             {
-                uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode);
+                if (uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetMultipleElementsAsTablemaxChildElementsToSearchPerNode);
+                    uIAGetMultipleElementsAsTablepropCount++;
+                }
+
+                uIAGetMultipleElementsAsTablepropCount++;
+            }
+            else
+            {
+                uIAGetMultipleElementsAsTable["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetMultipleElementsAsTablepropCount++;
             }
 
@@ -5407,13 +9097,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementScrollPercentagesearchSubTree != null)
             {
-                uIASetElementScrollPercentage["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchSubTree);
+                if (uIASetElementScrollPercentagesearchSubTree != null)
+                {
+                    uIASetElementScrollPercentage["SearchSubTree"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagesearchSubTree);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["SearchSubTree"] = true;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagematchIndex != null)
             {
-                uIASetElementScrollPercentage["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndex);
+                if (uIASetElementScrollPercentagematchIndex != null)
+                {
+                    uIASetElementScrollPercentage["MatchIndex"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndex);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["MatchIndex"] = 1;
                 uIASetElementScrollPercentagepropCount++;
             }
 
@@ -5431,55 +9141,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIASetElementScrollPercentagematchIndexAscending != null)
             {
-                uIASetElementScrollPercentage["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndexAscending);
+                if (uIASetElementScrollPercentagematchIndexAscending != null)
+                {
+                    uIASetElementScrollPercentage["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagematchIndexAscending);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["MatchIndexAscending"] = true;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagehorizontalScrollPercentage != null)
             {
-                uIASetElementScrollPercentage["HorizontalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagehorizontalScrollPercentage);
+                if (uIASetElementScrollPercentagehorizontalScrollPercentage != null)
+                {
+                    uIASetElementScrollPercentage["HorizontalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagehorizontalScrollPercentage);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["HorizontalScrollPercentage"] = -1;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentageverticalScrollPercentage != null)
             {
-                uIASetElementScrollPercentage["VerticalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageverticalScrollPercentage);
+                if (uIASetElementScrollPercentageverticalScrollPercentage != null)
+                {
+                    uIASetElementScrollPercentage["VerticalScrollPercentage"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentageverticalScrollPercentage);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["VerticalScrollPercentage"] = -1;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagetryScrollPattern != null)
             {
-                uIASetElementScrollPercentage["TryScrollPattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryScrollPattern);
+                if (uIASetElementScrollPercentagetryScrollPattern != null)
+                {
+                    uIASetElementScrollPercentage["TryScrollPattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryScrollPattern);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["TryScrollPattern"] = true;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagetryRangeValuePattern != null)
             {
-                uIASetElementScrollPercentage["TryRangeValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryRangeValuePattern);
+                if (uIASetElementScrollPercentagetryRangeValuePattern != null)
+                {
+                    uIASetElementScrollPercentage["TryRangeValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryRangeValuePattern);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["TryRangeValuePattern"] = true;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagetryValuePattern != null)
             {
-                uIASetElementScrollPercentage["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryValuePattern);
+                if (uIASetElementScrollPercentagetryValuePattern != null)
+                {
+                    uIASetElementScrollPercentage["TryValuePattern"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagetryValuePattern);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["TryValuePattern"] = true;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagemaxElementsToSearch != null)
             {
-                uIASetElementScrollPercentage["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxElementsToSearch);
+                if (uIASetElementScrollPercentagemaxElementsToSearch != null)
+                {
+                    uIASetElementScrollPercentage["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxElementsToSearch);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["MaxElementsToSearch"] = 0;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagemaxRelativeSearchDepth != null)
             {
-                uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxRelativeSearchDepth);
+                if (uIASetElementScrollPercentagemaxRelativeSearchDepth != null)
+                {
+                    uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxRelativeSearchDepth);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["MaxRelativeSearchDepth"] = 0;
                 uIASetElementScrollPercentagepropCount++;
             }
 
             if (uIASetElementScrollPercentagemaxChildElementsToSearchPerNode != null)
             {
-                uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode);
+                if (uIASetElementScrollPercentagemaxChildElementsToSearchPerNode != null)
+                {
+                    uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIASetElementScrollPercentagemaxChildElementsToSearchPerNode);
+                    uIASetElementScrollPercentagepropCount++;
+                }
+
+                uIASetElementScrollPercentagepropCount++;
+            }
+            else
+            {
+                uIASetElementScrollPercentage["MaxChildElementsToSearchPerNode"] = 0;
                 uIASetElementScrollPercentagepropCount++;
             }
 
@@ -5535,13 +9335,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementSearchColourRegionsearchSubTree != null)
             {
-                uIAGetElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchSubTree);
+                if (uIAGetElementSearchColourRegionsearchSubTree != null)
+                {
+                    uIAGetElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionsearchSubTree);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["SearchSubTree"] = true;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionmatchIndex != null)
             {
-                uIAGetElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndex);
+                if (uIAGetElementSearchColourRegionmatchIndex != null)
+                {
+                    uIAGetElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndex);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["MatchIndex"] = 1;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -5559,7 +9379,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementSearchColourRegionmatchIndexAscending != null)
             {
-                uIAGetElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndexAscending);
+                if (uIAGetElementSearchColourRegionmatchIndexAscending != null)
+                {
+                    uIAGetElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmatchIndexAscending);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["MatchIndexAscending"] = true;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -5593,31 +9423,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementSearchColourRegionhideAgent != null)
             {
-                uIAGetElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionhideAgent);
+                if (uIAGetElementSearchColourRegionhideAgent != null)
+                {
+                    uIAGetElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionhideAgent);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["HideAgent"] = true;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionreturnPhysicalCoordinates != null)
             {
-                uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionreturnPhysicalCoordinates);
+                if (uIAGetElementSearchColourRegionreturnPhysicalCoordinates != null)
+                {
+                    uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionreturnPhysicalCoordinates);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["ReturnPhysicalCoordinates"] = false;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionmaxElementsToSearch != null)
             {
-                uIAGetElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxElementsToSearch);
+                if (uIAGetElementSearchColourRegionmaxElementsToSearch != null)
+                {
+                    uIAGetElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxElementsToSearch);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["MaxElementsToSearch"] = 0;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionmaxRelativeSearchDepth != null)
             {
-                uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxRelativeSearchDepth);
+                if (uIAGetElementSearchColourRegionmaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxRelativeSearchDepth);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
             if (uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                if (uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                    uIAGetElementSearchColourRegionpropCount++;
+                }
+
+                uIAGetElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGetElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementSearchColourRegionpropCount++;
             }
 
@@ -5673,13 +9553,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickElementSearchColourRegionsearchSubTree != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree);
+                if (uIAGlobalMouseClickElementSearchColourRegionsearchSubTree != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionsearchSubTree);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["SearchSubTree"] = true;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionmatchIndex != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndex);
+                if (uIAGlobalMouseClickElementSearchColourRegionmatchIndex != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndex);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MatchIndex"] = 1;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -5697,7 +9597,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending);
+                if (uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmatchIndexAscending);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MatchIndexAscending"] = true;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -5731,55 +9641,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGlobalMouseClickElementSearchColourRegionmouseButton != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmouseButton);
+                if (uIAGlobalMouseClickElementSearchColourRegionmouseButton != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmouseButton);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MouseButton"] = "Left";
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetX != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX);
+                if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetX != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetX);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetX"] = 0;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetY != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY);
+                if (uIAGlobalMouseClickElementSearchColourRegionclickOffsetY != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionclickOffsetY);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["ClickOffsetY"] = 0;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo);
+                if (uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeTo);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["OffsetRelativeTo"] = "Center";
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds);
+                if (uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegiondelayInMilliseconds);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["DelayInMilliseconds"] = 10;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionhideAgent != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionhideAgent);
+                if (uIAGlobalMouseClickElementSearchColourRegionhideAgent != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionhideAgent);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["HideAgent"] = true;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch);
+                if (uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxElementsToSearch);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxElementsToSearch"] = 0;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth);
+                if (uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxRelativeSearchDepth);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxRelativeSearchDepth"] = 0;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
             if (uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
             {
-                uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                if (uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGlobalMouseClickElementSearchColourRegionmaxChildElementsToSearchPerNode);
+                    uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+                }
+
+                uIAGlobalMouseClickElementSearchColourRegionpropCount++;
+            }
+            else
+            {
+                uIAGlobalMouseClickElementSearchColourRegion["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGlobalMouseClickElementSearchColourRegionpropCount++;
             }
 
@@ -5821,31 +9821,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetWin32WindowstopLevelWindowsOnly != null)
             {
-                uIAGetWin32Windows["TopLevelWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowstopLevelWindowsOnly);
+                if (uIAGetWin32WindowstopLevelWindowsOnly != null)
+                {
+                    uIAGetWin32Windows["TopLevelWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowstopLevelWindowsOnly);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["TopLevelWindowsOnly"] = false;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowsvisibleWindowsOnly != null)
             {
-                uIAGetWin32Windows["VisibleWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsvisibleWindowsOnly);
+                if (uIAGetWin32WindowsvisibleWindowsOnly != null)
+                {
+                    uIAGetWin32Windows["VisibleWindowsOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsvisibleWindowsOnly);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["VisibleWindowsOnly"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowswindowsWithTitlebarOnly != null)
             {
-                uIAGetWin32Windows["WindowsWithTitlebarOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitlebarOnly);
+                if (uIAGetWin32WindowswindowsWithTitlebarOnly != null)
+                {
+                    uIAGetWin32Windows["WindowsWithTitlebarOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitlebarOnly);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["WindowsWithTitlebarOnly"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowswindowsWithTitleOnly != null)
             {
-                uIAGetWin32Windows["WindowsWithTitleOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitleOnly);
+                if (uIAGetWin32WindowswindowsWithTitleOnly != null)
+                {
+                    uIAGetWin32Windows["WindowsWithTitleOnly"] = ExpressionConverter.ConvertO(uIAGetWin32WindowswindowsWithTitleOnly);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["WindowsWithTitleOnly"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowsignoreTransparentWindows != null)
             {
-                uIAGetWin32Windows["IgnoreTransparentWindows"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsignoreTransparentWindows);
+                if (uIAGetWin32WindowsignoreTransparentWindows != null)
+                {
+                    uIAGetWin32Windows["IgnoreTransparentWindows"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsignoreTransparentWindows);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["IgnoreTransparentWindows"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
@@ -5869,25 +9919,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetWin32WindowsmatchIndexAscending != null)
             {
-                uIAGetWin32Windows["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmatchIndexAscending);
+                if (uIAGetWin32WindowsmatchIndexAscending != null)
+                {
+                    uIAGetWin32Windows["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmatchIndexAscending);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["MatchIndexAscending"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowsreturnElementHandle != null)
             {
-                uIAGetWin32Windows["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsreturnElementHandle);
+                if (uIAGetWin32WindowsreturnElementHandle != null)
+                {
+                    uIAGetWin32Windows["ReturnElementHandle"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsreturnElementHandle);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["ReturnElementHandle"] = true;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowsfirstItemToReturn != null)
             {
-                uIAGetWin32Windows["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsfirstItemToReturn);
+                if (uIAGetWin32WindowsfirstItemToReturn != null)
+                {
+                    uIAGetWin32Windows["FirstItemToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsfirstItemToReturn);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["FirstItemToReturn"] = 1;
                 uIAGetWin32WindowspropCount++;
             }
 
             if (uIAGetWin32WindowsmaxItemsToReturn != null)
             {
-                uIAGetWin32Windows["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmaxItemsToReturn);
+                if (uIAGetWin32WindowsmaxItemsToReturn != null)
+                {
+                    uIAGetWin32Windows["MaxItemsToReturn"] = ExpressionConverter.ConvertO(uIAGetWin32WindowsmaxItemsToReturn);
+                    uIAGetWin32WindowspropCount++;
+                }
+
+                uIAGetWin32WindowspropCount++;
+            }
+            else
+            {
+                uIAGetWin32Windows["MaxItemsToReturn"] = 0;
                 uIAGetWin32WindowspropCount++;
             }
 
@@ -5975,13 +10065,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPatternssearchSubTree != null)
             {
-                uIAGetElementPatterns["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchSubTree);
+                if (uIAGetElementPatternssearchSubTree != null)
+                {
+                    uIAGetElementPatterns["SearchSubTree"] = ExpressionConverter.ConvertO(uIAGetElementPatternssearchSubTree);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["SearchSubTree"] = true;
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternsmatchIndex != null)
             {
-                uIAGetElementPatterns["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndex);
+                if (uIAGetElementPatternsmatchIndex != null)
+                {
+                    uIAGetElementPatterns["MatchIndex"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndex);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["MatchIndex"] = 1;
                 uIAGetElementPatternspropCount++;
             }
 
@@ -5999,25 +10109,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAGetElementPatternsmatchIndexAscending != null)
             {
-                uIAGetElementPatterns["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndexAscending);
+                if (uIAGetElementPatternsmatchIndexAscending != null)
+                {
+                    uIAGetElementPatterns["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmatchIndexAscending);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["MatchIndexAscending"] = true;
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternsmaxElementsToSearch != null)
             {
-                uIAGetElementPatterns["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxElementsToSearch);
+                if (uIAGetElementPatternsmaxElementsToSearch != null)
+                {
+                    uIAGetElementPatterns["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxElementsToSearch);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["MaxElementsToSearch"] = 0;
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternsmaxRelativeSearchDepth != null)
             {
-                uIAGetElementPatterns["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxRelativeSearchDepth);
+                if (uIAGetElementPatternsmaxRelativeSearchDepth != null)
+                {
+                    uIAGetElementPatterns["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxRelativeSearchDepth);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["MaxRelativeSearchDepth"] = 0;
                 uIAGetElementPatternspropCount++;
             }
 
             if (uIAGetElementPatternsmaxChildElementsToSearchPerNode != null)
             {
-                uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxChildElementsToSearchPerNode);
+                if (uIAGetElementPatternsmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAGetElementPatternsmaxChildElementsToSearchPerNode);
+                    uIAGetElementPatternspropCount++;
+                }
+
+                uIAGetElementPatternspropCount++;
+            }
+            else
+            {
+                uIAGetElementPatterns["MaxChildElementsToSearchPerNode"] = 0;
                 uIAGetElementPatternspropCount++;
             }
 
@@ -6073,13 +10223,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAMoveElementsearchSubTree != null)
             {
-                uIAMoveElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAMoveElementsearchSubTree);
+                if (uIAMoveElementsearchSubTree != null)
+                {
+                    uIAMoveElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAMoveElementsearchSubTree);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["SearchSubTree"] = true;
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementmatchIndex != null)
             {
-                uIAMoveElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndex);
+                if (uIAMoveElementmatchIndex != null)
+                {
+                    uIAMoveElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndex);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["MatchIndex"] = 1;
                 uIAMoveElementpropCount++;
             }
 
@@ -6097,25 +10267,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAMoveElementmatchIndexAscending != null)
             {
-                uIAMoveElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndexAscending);
+                if (uIAMoveElementmatchIndexAscending != null)
+                {
+                    uIAMoveElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAMoveElementmatchIndexAscending);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["MatchIndexAscending"] = true;
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementmaxElementsToSearch != null)
             {
-                uIAMoveElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAMoveElementmaxElementsToSearch);
+                if (uIAMoveElementmaxElementsToSearch != null)
+                {
+                    uIAMoveElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAMoveElementmaxElementsToSearch);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["MaxElementsToSearch"] = 0;
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementmaxRelativeSearchDepth != null)
             {
-                uIAMoveElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAMoveElementmaxRelativeSearchDepth);
+                if (uIAMoveElementmaxRelativeSearchDepth != null)
+                {
+                    uIAMoveElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAMoveElementmaxRelativeSearchDepth);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["MaxRelativeSearchDepth"] = 0;
                 uIAMoveElementpropCount++;
             }
 
             if (uIAMoveElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAMoveElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAMoveElementmaxChildElementsToSearchPerNode);
+                if (uIAMoveElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAMoveElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAMoveElementmaxChildElementsToSearchPerNode);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAMoveElementpropCount++;
             }
 
@@ -6127,7 +10337,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAMoveElementhorizontalMovementType != null)
             {
-                uIAMoveElement["HorizontalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalMovementType);
+                if (uIAMoveElementhorizontalMovementType != null)
+                {
+                    uIAMoveElement["HorizontalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalMovementType);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["HorizontalMovementType"] = "Absolute";
                 uIAMoveElementpropCount++;
             }
 
@@ -6135,7 +10355,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAMoveElement["HorizontalPosition"] = ExpressionConverter.ConvertO(uIAMoveElementhorizontalPosition);
             if (uIAMoveElementverticalMovementType != null)
             {
-                uIAMoveElement["VerticalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementverticalMovementType);
+                if (uIAMoveElementverticalMovementType != null)
+                {
+                    uIAMoveElement["VerticalMovementType"] = ExpressionConverter.ConvertO(uIAMoveElementverticalMovementType);
+                    uIAMoveElementpropCount++;
+                }
+
+                uIAMoveElementpropCount++;
+            }
+            else
+            {
+                uIAMoveElement["VerticalMovementType"] = "Absolute";
                 uIAMoveElementpropCount++;
             }
 
@@ -6187,13 +10417,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAResizeElementsearchSubTree != null)
             {
-                uIAResizeElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAResizeElementsearchSubTree);
+                if (uIAResizeElementsearchSubTree != null)
+                {
+                    uIAResizeElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAResizeElementsearchSubTree);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["SearchSubTree"] = true;
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementmatchIndex != null)
             {
-                uIAResizeElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndex);
+                if (uIAResizeElementmatchIndex != null)
+                {
+                    uIAResizeElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndex);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["MatchIndex"] = 1;
                 uIAResizeElementpropCount++;
             }
 
@@ -6211,25 +10461,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAResizeElementmatchIndexAscending != null)
             {
-                uIAResizeElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndexAscending);
+                if (uIAResizeElementmatchIndexAscending != null)
+                {
+                    uIAResizeElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAResizeElementmatchIndexAscending);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["MatchIndexAscending"] = true;
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementmaxElementsToSearch != null)
             {
-                uIAResizeElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAResizeElementmaxElementsToSearch);
+                if (uIAResizeElementmaxElementsToSearch != null)
+                {
+                    uIAResizeElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAResizeElementmaxElementsToSearch);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["MaxElementsToSearch"] = 0;
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementmaxRelativeSearchDepth != null)
             {
-                uIAResizeElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAResizeElementmaxRelativeSearchDepth);
+                if (uIAResizeElementmaxRelativeSearchDepth != null)
+                {
+                    uIAResizeElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAResizeElementmaxRelativeSearchDepth);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["MaxRelativeSearchDepth"] = 0;
                 uIAResizeElementpropCount++;
             }
 
             if (uIAResizeElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAResizeElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAResizeElementmaxChildElementsToSearchPerNode);
+                if (uIAResizeElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAResizeElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAResizeElementmaxChildElementsToSearchPerNode);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAResizeElementpropCount++;
             }
 
@@ -6241,7 +10531,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAResizeElementresizeWidthType != null)
             {
-                uIAResizeElement["ResizeWidthType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeWidthType);
+                if (uIAResizeElementresizeWidthType != null)
+                {
+                    uIAResizeElement["ResizeWidthType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeWidthType);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["ResizeWidthType"] = "Relative";
                 uIAResizeElementpropCount++;
             }
 
@@ -6249,7 +10549,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
             uIAResizeElement["NewWidth"] = ExpressionConverter.ConvertO(uIAResizeElementnewWidth);
             if (uIAResizeElementresizeHeightType != null)
             {
-                uIAResizeElement["ResizeHeightType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeHeightType);
+                if (uIAResizeElementresizeHeightType != null)
+                {
+                    uIAResizeElement["ResizeHeightType"] = ExpressionConverter.ConvertO(uIAResizeElementresizeHeightType);
+                    uIAResizeElementpropCount++;
+                }
+
+                uIAResizeElementpropCount++;
+            }
+            else
+            {
+                uIAResizeElement["ResizeHeightType"] = "Relative";
                 uIAResizeElementpropCount++;
             }
 
@@ -6301,13 +10611,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementsearchSubTree != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchSubTree);
+                if (uIALocateVisibleSearchImageWithinElementsearchSubTree != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchSubTree);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["SearchSubTree"] = true;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmatchIndex != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndex);
+                if (uIALocateVisibleSearchImageWithinElementmatchIndex != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndex);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MatchIndex"] = 1;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6325,25 +10655,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementmatchIndexAscending != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndexAscending);
+                if (uIALocateVisibleSearchImageWithinElementmatchIndexAscending != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmatchIndexAscending);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MatchIndexAscending"] = true;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmaxElementsToSearch != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch);
+                if (uIALocateVisibleSearchImageWithinElementmaxElementsToSearch != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxElementsToSearch);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxElementsToSearch"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                if (uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                if (uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6367,7 +10737,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementaltSearchImageType != null)
             {
-                uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImageType);
+                if (uIALocateVisibleSearchImageWithinElementaltSearchImageType != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementaltSearchImageType);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["AltSearchImageType"] = "None";
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6379,19 +10759,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementmaxColourDeviation != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxColourDeviation);
+                if (uIALocateVisibleSearchImageWithinElementmaxColourDeviation != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxColourDeviation);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxColourDeviation"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmaxPixelDifferences != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences);
+                if (uIALocateVisibleSearchImageWithinElementmaxPixelDifferences != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxPixelDifferences);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxPixelDifferences"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                if (uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = 0;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6421,43 +10831,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
             {
-                uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                if (uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = "Pixel";
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
             {
-                uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                if (uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = "Pixel";
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementsearchImageIndex != null)
             {
-                uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageIndex);
+                if (uIALocateVisibleSearchImageWithinElementsearchImageIndex != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementsearchImageIndex);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["SearchImageIndex"] = 1;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementimageSearchDirection != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementimageSearchDirection);
+                if (uIALocateVisibleSearchImageWithinElementimageSearchDirection != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementimageSearchDirection);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["ImageSearchDirection"] = "FromTop";
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementhideAgent != null)
             {
-                uIALocateVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementhideAgent);
+                if (uIALocateVisibleSearchImageWithinElementhideAgent != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementhideAgent);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["HideAgent"] = true;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                if (uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = false;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIALocateVisibleSearchImageWithinElementshowHighlightRectangle != null)
             {
-                uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle);
+                if (uIALocateVisibleSearchImageWithinElementshowHighlightRectangle != null)
+                {
+                    uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIALocateVisibleSearchImageWithinElementshowHighlightRectangle);
+                    uIALocateVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIALocateVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIALocateVisibleSearchImageWithinElement["ShowHighlightRectangle"] = false;
                 uIALocateVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6511,13 +10991,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchSubTree != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchSubTree);
+                if (uIAWaitForVisibleSearchImageWithinElementsearchSubTree != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchSubTree);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["SearchSubTree"] = true;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmatchIndex != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndex);
+                if (uIAWaitForVisibleSearchImageWithinElementmatchIndex != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndex);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MatchIndex"] = 1;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6535,25 +11035,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending);
+                if (uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmatchIndexAscending);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MatchIndexAscending"] = true;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxElementsToSearch);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxElementsToSearch"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxRelativeSearchDepth);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6577,7 +11117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementaltSearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType);
+                if (uIAWaitForVisibleSearchImageWithinElementaltSearchImageType != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementaltSearchImageType);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["AltSearchImageType"] = "None";
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6589,19 +11139,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxColourDeviation);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxColourDeviation"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxPixelDifferences);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxPixelDifferences"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                if (uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmaxConsecutivePixelDifferences);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MaxConsecutivePixelDifferences"] = 0;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6631,61 +11211,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                if (uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnit);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["PixelXOffsetsUnit"] = "Pixel";
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                if (uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnit);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["PixelYOffsetsUnit"] = "Pixel";
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsearchImageIndex != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex);
+                if (uIAWaitForVisibleSearchImageWithinElementsearchImageIndex != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsearchImageIndex);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["SearchImageIndex"] = 1;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementimageSearchDirection != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection);
+                if (uIAWaitForVisibleSearchImageWithinElementimageSearchDirection != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementimageSearchDirection);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["ImageSearchDirection"] = "FromTop";
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementhideAgent != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementhideAgent);
+                if (uIAWaitForVisibleSearchImageWithinElementhideAgent != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementhideAgent);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["HideAgent"] = true;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                if (uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementreturnPhysicalCoordinates);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["ReturnPhysicalCoordinates"] = false;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle);
+                if (uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementshowHighlightRectangle);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["ShowHighlightRectangle"] = false;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementsecondsToWait != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsecondsToWait);
+                if (uIAWaitForVisibleSearchImageWithinElementsecondsToWait != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementsecondsToWait);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["SecondsToWait"] = 60;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches);
+                if (uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementmillisecondsBetweenSearches);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["MillisecondsBetweenSearches"] = 5000;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound);
+                if (uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementraiseExceptionIfImageNotFound);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["RaiseExceptionIfImageNotFound"] = true;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6697,7 +11377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageWithinElementwaitForThread != null)
             {
-                uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementwaitForThread);
+                if (uIAWaitForVisibleSearchImageWithinElementwaitForThread != null)
+                {
+                    uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageWithinElementwaitForThread);
+                    uIAWaitForVisibleSearchImageWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageWithinElement["WaitForThread"] = true;
                 uIAWaitForVisibleSearchImageWithinElementpropCount++;
             }
 
@@ -6751,13 +11441,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchSubTree);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchSubTree"] = true;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndex);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndex"] = 1;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -6775,25 +11485,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmatchIndexAscending);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MatchIndexAscending"] = true;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxElementsToSearch);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxElementsToSearch"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxRelativeSearchDepth);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxRelativeSearchDepth"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxChildElementsToSearchPerNode);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxChildElementsToSearchPerNode"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -6817,7 +11567,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageType);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["AltSearchImageType"] = "None";
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -6829,19 +11589,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxColourDeviation);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxColourDeviation"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxPixelDifferences);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxPixelDifferences"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmaxConsecutivePixelDifferences);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MaxConsecutivePixelDifferences"] = 0;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -6871,55 +11661,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnit);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelXOffsetsUnit"] = "Pixel";
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnit);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["PixelYOffsetsUnit"] = "Pixel";
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageIndex);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SearchImageIndex"] = 1;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirection);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ImageSearchDirection"] = "FromTop";
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementhideAgent);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["HideAgent"] = true;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementshowHighlightRectangle);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["ShowHighlightRectangle"] = false;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementsecondsToWait);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["SecondsToWait"] = 60;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementmillisecondsBetweenSearches);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["MillisecondsBetweenSearches"] = 5000;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementraiseExceptionIfImageStillPresent);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["RaiseExceptionIfImageStillPresent"] = true;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 
@@ -6931,7 +11811,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
             if (uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread != null)
             {
-                uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread);
+                if (uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread != null)
+                {
+                    uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = ExpressionConverter.ConvertO(uIAWaitForVisibleSearchImageToNotExistWithinElementwaitForThread);
+                    uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+                }
+
+                uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
+            }
+            else
+            {
+                uIAWaitForVisibleSearchImageToNotExistWithinElement["WaitForThread"] = true;
                 uIAWaitForVisibleSearchImageToNotExistWithinElementpropCount++;
             }
 

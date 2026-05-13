@@ -209,13 +209,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
             if (bodyenabledState != null)
             {
-                body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                if (bodyenabledState != null)
+                {
+                    body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["enabled_state"] = "Enabled";
                 bodypropCount++;
             }
 
             if (bodyincludePath != null)
             {
-                body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                if (bodyincludePath != null)
+                {
+                    body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["include_path"] = false;
                 bodypropCount++;
             }
 
@@ -227,7 +247,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 
             if (bodyimmediateChildrenOnly != null)
             {
-                body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                if (bodyimmediateChildrenOnly != null)
+                {
+                    body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+            }
+            else
+            {
+                body["immediate_children_only"] = true;
                 bodypropCount++;
             }
 

@@ -35,19 +35,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 
             if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
             {
-                hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLisEnhancedInterface);
+                if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                {
+                    hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLisEnhancedInterface);
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+
+                hLLAPISetHLLAPIDLLpropCount++;
+            }
+            else
+            {
+                hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = false;
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
             if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
             {
-                hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+                if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                {
+                    hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+
+                hLLAPISetHLLAPIDLLpropCount++;
+            }
+            else
+            {
+                hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = false;
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
             if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
             {
-                hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+                if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                {
+                    hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+
+                hLLAPISetHLLAPIDLLpropCount++;
+            }
+            else
+            {
+                hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = false;
                 hLLAPISetHLLAPIDLLpropCount++;
             }
 
@@ -385,7 +415,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
             if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
             {
-                hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+                if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
+                {
+                    hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+                    hLLAPIWaitForKeyboardUnlockedpropCount++;
+                }
+
+                hLLAPIWaitForKeyboardUnlockedpropCount++;
+            }
+            else
+            {
+                hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = 0.05;
                 hLLAPIWaitForKeyboardUnlockedpropCount++;
             }
 
@@ -411,7 +451,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             hLLAPIWaitForSystemReady["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadysecondsToWait);
             if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
             {
-                hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+                if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
+                {
+                    hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+                    hLLAPIWaitForSystemReadypropCount++;
+                }
+
+                hLLAPIWaitForSystemReadypropCount++;
+            }
+            else
+            {
+                hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = 0.05;
                 hLLAPIWaitForSystemReadypropCount++;
             }
 
@@ -457,7 +507,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchString);
             if (hLLAPISearchForStringsearchEntireScreen != null)
             {
-                hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchEntireScreen);
+                if (hLLAPISearchForStringsearchEntireScreen != null)
+                {
+                    hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchEntireScreen);
+                    hLLAPISearchForStringpropCount++;
+                }
+
+                hLLAPISearchForStringpropCount++;
+            }
+            else
+            {
+                hLLAPISearchForString["SearchEntireScreen"] = true;
                 hLLAPISearchForStringpropCount++;
             }
 
@@ -497,7 +557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchString);
             if (hLLAPIWaitForStringsearchEntireScreen != null)
             {
-                hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchEntireScreen);
+                if (hLLAPIWaitForStringsearchEntireScreen != null)
+                {
+                    hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchEntireScreen);
+                    hLLAPIWaitForStringpropCount++;
+                }
+
+                hLLAPIWaitForStringpropCount++;
+            }
+            else
+            {
+                hLLAPIWaitForString["SearchEntireScreen"] = true;
                 hLLAPIWaitForStringpropCount++;
             }
 
@@ -517,7 +587,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
             hLLAPIWaitForString["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsecondsToWait);
             if (hLLAPIWaitForStringdeltaSecondsToWait != null)
             {
-                hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringdeltaSecondsToWait);
+                if (hLLAPIWaitForStringdeltaSecondsToWait != null)
+                {
+                    hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringdeltaSecondsToWait);
+                    hLLAPIWaitForStringpropCount++;
+                }
+
+                hLLAPIWaitForStringpropCount++;
+            }
+            else
+            {
+                hLLAPIWaitForString["DeltaSecondsToWait"] = 0.05;
                 hLLAPIWaitForStringpropCount++;
             }
 

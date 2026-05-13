@@ -12,6 +12,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     public class ExperlogixsmartflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
+        public IWorkflowAction InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        {
+            var apiCallPath = "/runtime/webhooks/mcp";
+            var apiCallHttpMethod = "post";
+            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+            if (mcpSessionId != null)
+                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+            var queryRequest = new JObject();
+            var queryRequestpropCount = 0;
+            if (queryRequestjsonrpc != null)
+            {
+                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                queryRequestpropCount++;
+            }
+
+            if (queryRequestid != null)
+            {
+                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                queryRequestpropCount++;
+            }
+
+            if (queryRequestmethod != null)
+            {
+                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                queryRequestpropCount++;
+            }
+
+            var @paramsObject = new JObject();
+            var @paramsObjectpropCount = 0;
+            if (@paramsObjectpropCount > 0)
+            {
+                queryRequest["params"] = @paramsObject;
+                queryRequestpropCount++;
+            }
+
+            var resultObject = new JObject();
+            var resultObjectpropCount = 0;
+            if (resultObjectpropCount > 0)
+            {
+                queryRequest["result"] = resultObject;
+                queryRequestpropCount++;
+            }
+
+            var errorObject = new JObject();
+            var errorObjectpropCount = 0;
+            if (errorObjectpropCount > 0)
+            {
+                queryRequest["error"] = errorObject;
+                queryRequestpropCount++;
+            }
+
+            if (queryRequestpropCount > 0)
+            {
+                callPayload.Body = queryRequest;
+            }
+
+            return new ApiConnectionAction(callPayload);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<GetDocumentsResponse[]> GetDocuments(Expression<Func<string>> reqexecutionId)
         {
             var apiCallPath = "/api/Documents";
@@ -85,7 +145,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 
             if (reqenableAsynchronousRequestReplyPattern != null)
             {
-                req["enableAsynchronousRequestReplyPattern"] = ExpressionConverter.ConvertO(reqenableAsynchronousRequestReplyPattern);
+                if (reqenableAsynchronousRequestReplyPattern != null)
+                {
+                    req["enableAsynchronousRequestReplyPattern"] = ExpressionConverter.ConvertO(reqenableAsynchronousRequestReplyPattern);
+                    reqpropCount++;
+                }
+
+                reqpropCount++;
+            }
+            else
+            {
+                req["enableAsynchronousRequestReplyPattern"] = true;
                 reqpropCount++;
             }
 
@@ -119,13 +189,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             req["includeAllDependencies"] = ExpressionConverter.ConvertO(reqincludeAllDependencies);
             if (reqincludeTemplateHistory != null)
             {
-                req["includeTemplateHistory"] = ExpressionConverter.ConvertO(reqincludeTemplateHistory);
+                if (reqincludeTemplateHistory != null)
+                {
+                    req["includeTemplateHistory"] = ExpressionConverter.ConvertO(reqincludeTemplateHistory);
+                    reqpropCount++;
+                }
+
+                reqpropCount++;
+            }
+            else
+            {
+                req["includeTemplateHistory"] = false;
                 reqpropCount++;
             }
 
             if (reqincludeSamples != null)
             {
-                req["includeSamples"] = ExpressionConverter.ConvertO(reqincludeSamples);
+                if (reqincludeSamples != null)
+                {
+                    req["includeSamples"] = ExpressionConverter.ConvertO(reqincludeSamples);
+                    reqpropCount++;
+                }
+
+                reqpropCount++;
+            }
+            else
+            {
+                req["includeSamples"] = false;
                 reqpropCount++;
             }
 
@@ -159,7 +249,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             req["includeHistory"] = ExpressionConverter.ConvertO(reqincludeHistory);
             if (req00000000000000000000000000000000 != null)
             {
-                req["00000000-0000-0000-0000-000000000000"] = ExpressionConverter.ConvertO(req00000000000000000000000000000000);
+                if (req00000000000000000000000000000000 != null)
+                {
+                    req["00000000-0000-0000-0000-000000000000"] = ExpressionConverter.ConvertO(req00000000000000000000000000000000);
+                    reqpropCount++;
+                }
+
+                reqpropCount++;
+            }
+            else
+            {
+                req["00000000-0000-0000-0000-000000000000"] = false;
                 reqpropCount++;
             }
 
@@ -195,6 +295,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 
         [JsonProperty("documentName")]
         public string DocumentName { get; set; }
+
+        [JsonProperty("downloadUrl")]
+        public string DownloadUrl { get; set; }
     }
 
     public class FlowExecutionResponse

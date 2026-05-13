@@ -200,7 +200,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var configsObjectpropCount = 0;
             if (bodyconfigfileType != null)
             {
-                configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                if (bodyconfigfileType != null)
+                {
+                    configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                    configsObjectpropCount++;
+                }
+
+                configsObjectpropCount++;
+            }
+            else
+            {
+                configsObject["type"] = "review";
                 configsObjectpropCount++;
             }
 
@@ -244,104 +254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             }
 
             return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTFileV2Response> POSTFileV2(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
-        {
-            var apiCallPath = "/v2/autoreview/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodyflowPropertiesdisplayName != null)
-            {
-                propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesflowId != null)
-            {
-                propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesowner != null)
-            {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
-                propertiesObjectpropCount++;
-            }
-
-            if (bodyflowPropertiesenvironment != null)
-            {
-                propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
-                propertiesObjectpropCount++;
-            }
-
-            var definitionObject = new JObject();
-            var definitionObjectpropCount = 0;
-            if (definitionObjectpropCount > 0)
-            {
-                propertiesObject["definition"] = definitionObject;
-                propertiesObjectpropCount++;
-            }
-
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            var configsObject = new JObject();
-            var configsObjectpropCount = 0;
-            if (bodyconfigfileType != null)
-            {
-                configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
-                configsObjectpropCount++;
-            }
-
-            var namingObject = new JObject();
-            var namingObjectpropCount = 0;
-            if (namingObjectpropCount > 0)
-            {
-                configsObject["naming"] = namingObject;
-                configsObjectpropCount++;
-            }
-
-            if (bodyconfigcomplexity != null)
-            {
-                configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
-                configsObjectpropCount++;
-            }
-
-            var ratingsObject = new JObject();
-            var ratingsObjectpropCount = 0;
-            if (ratingsObjectpropCount > 0)
-            {
-                configsObject["ratings"] = ratingsObject;
-                configsObjectpropCount++;
-            }
-
-            if (bodyconfigscoring != null)
-            {
-                configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
-                configsObjectpropCount++;
-            }
-
-            if (configsObjectpropCount > 0)
-            {
-                body["configs"] = configsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTFileV2Response>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
@@ -856,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string HashId { get; set; }
 
         [JsonProperty("object")]
-        public string Object { get; set; }
+        public string ObjectEntity { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -878,21 +790,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         Diagram,
         [EnumMember(Value = "exception")]
         Exception
-    }
-
-    public class POSTFileV2Response
-    {
-        [JsonProperty("data")]
-        public POSTFileV2ResponseDataType Data { get; set; }
-    }
-
-    public class POSTFileV2ResponseDataType
-    {
-        [JsonProperty("file")]
-        public string File { get; set; }
-
-        [JsonProperty("info")]
-        public string Info { get; set; }
     }
 
     public class POSTDiagramResponse
