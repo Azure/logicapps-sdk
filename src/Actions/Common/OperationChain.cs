@@ -79,52 +79,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new OperationChain(this.Start, combinedEnds.ToArray());
         }
 
-        /// <summary>
-        /// Splits this chain into multiple branches.
-        /// </summary>
-        /// <param name="branches">A callback that takes the current chain and returns multiple new chains that share the same root.</param>
-        /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of all branches.</returns>
-        public OperationChain Split(Func<OperationChain, OperationChain[]> branches)
-        {
-            if (branches == null)
-            {
-                throw new ArgumentNullException(nameof(branches));
-            }
-
-            var branchesArr = branches.Invoke(this)
-                ?? throw new InvalidOperationException("Branches must not be null.");
-
-            if (branchesArr.Length == 0)
-            {
-                throw new InvalidOperationException("At least one branch is required.");
-            }
-
-            var allEnds = new List<IWorkflowOperation>();
-
-            foreach (var branch in branchesArr)
-            {
-                if (branch == null)
-                {
-                    throw new InvalidOperationException("Null branch is not allowed.");
-                }
-
-                if (!object.ReferenceEquals(this.Start, branch.Start))
-                {
-                    throw new InvalidOperationException("All branches must share the same root as the parent chain.");
-                }
-
-                foreach (var end in branch.Ends)
-                {
-                    if (!allEnds.Contains(end))
-                    {
-                        allEnds.Add(end);
-                    }
-                }
-            }
-
-            return new OperationChain(this.Start, allEnds.ToArray());
-        }
-
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)
         {
@@ -170,10 +124,52 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new OperationChain(this.Start, action);
         }
 
+        /// <inheritdoc/>
+        public OperationChain Then(Func<IChainableNode, OperationChain[]> branches)
+        {
+            if (branches == null)
+            {
+                throw new ArgumentNullException(nameof(branches));
+            }
+
+            var branchesArr = branches.Invoke(this)
+                ?? throw new InvalidOperationException("Branches must not be null.");
+
+            if (branchesArr.Length == 0)
+            {
+                throw new InvalidOperationException("At least one branch is required.");
+            }
+
+            var allEnds = new List<IWorkflowOperation>();
+
+            foreach (var branch in branchesArr)
+            {
+                if (branch == null)
+                {
+                    throw new InvalidOperationException("Null branch is not allowed.");
+                }
+
+                if (!object.ReferenceEquals(this.Start, branch.Start))
+                {
+                    throw new InvalidOperationException("All branches must share the same root as the parent chain.");
+                }
+
+                foreach (var end in branch.Ends)
+                {
+                    if (!allEnds.Contains(end))
+                    {
+                        allEnds.Add(end);
+                    }
+                }
+            }
+
+            return new OperationChain(this.Start, allEnds.ToArray());
+        }
+
         /// <summary>
         /// Gets the root trigger of this operation chain (workflow).
         /// </summary>
-        public IWorkflowTrigger GetRootTrigger()
+        internal IWorkflowTrigger GetRootTrigger()
         {
             return this.Start as IWorkflowTrigger ?? throw new InvalidOperationException("Invalid GetRootTrigger usage: operation chain must start with a trigger.");
         }
@@ -181,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the root action of this operation chain.
         /// </summary>
-        public IWorkflowAction GetRootAction()
+        internal IWorkflowAction GetRootAction()
         {
             return this.Start as IWorkflowAction ?? throw new InvalidOperationException("Invalid GetRootAction usage: operation chain must start with an action.");
         }

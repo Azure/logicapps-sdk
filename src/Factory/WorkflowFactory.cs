@@ -23,11 +23,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         private static readonly Dictionary<string, (IWorkflowTrigger Trigger, FlowKind Kind)> Workflows = new Dictionary<string, (IWorkflowTrigger, FlowKind)>();
 
         /// <summary>
-        /// The environment variable name for the functions application directory.
-        /// </summary>
-        public static readonly string FUNCTIONS_APPLICATION_DIRECTORY = "FUNCTIONS_APPLICATION_DIRECTORY";
-
-        /// <summary>
         /// Job session service client for gRPC communication.
         /// </summary>
         private static IJobSessionService.IJobSessionServiceClient jobSessionServiceClient;

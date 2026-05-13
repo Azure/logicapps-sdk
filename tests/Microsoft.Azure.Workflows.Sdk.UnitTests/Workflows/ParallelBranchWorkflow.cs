@@ -7,38 +7,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     using Microsoft.Azure.Workflows.Sdk;
 
     /// <summary>
-    /// Test workflows demonstrating the Split method for fan-out patterns.
+    /// Test workflows demonstrating parallel branching.
     /// </summary>
-    public static class SplitWorkflow
+    public static class ParallelBranchWorkflow
     {
         /// <summary>
         /// Adds a workflow that splits into two branches based on run-after status,
         /// without merging them back (fan-out without fan-in).
         /// </summary>
-        public static void AddSplitWorkflow()
+        public static void AddParallelBranchWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
-            var process = WorkflowActions.BuiltIn.Compose(inputs: () => "Processing");
             var complete = WorkflowActions.BuiltIn.Compose(inputs: () => "Complete");
             var abandon = WorkflowActions.BuiltIn.Compose(inputs: () => "Abandon");
 
             var workflow = trigger
-                .Then(process)
-                .Split(parent => new[]
+                .Then(parent => new[]
                 {
                     parent.Then(complete, runAfter: new[] { FlowStatus.Succeeded }),
                     parent.Then(abandon, runAfter: new[] { FlowStatus.Failed }),
                 });
 
-            WorkflowFactory.CreateStatefulWorkflow("splitWorkflow", workflow);
+            WorkflowFactory.CreateStatefulWorkflow("parallelBranchWorkflow", workflow);
         }
 
         /// <summary>
         /// Adds a workflow that splits into multiple branches and then merges them
         /// back with a subsequent Then call (fan-out followed by fan-in).
         /// </summary>
-        public static void AddSplitThenMergeWorkflow()
+        public static void AddParallelBranchThenMergeWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var workflow = trigger
                 .Then(setup)
-                .Split(parent => new[]
+                .Then(parent => new[]
                 {
                     parent.Then(branch1),
                     parent.Then(branch2),
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 })
                 .Then(merged);
 
-            WorkflowFactory.CreateStatefulWorkflow("splitThenMergeWorkflow", workflow);
+            WorkflowFactory.CreateStatefulWorkflow("parallelBranchThenMergeWorkflow", workflow);
         }
     }
 }

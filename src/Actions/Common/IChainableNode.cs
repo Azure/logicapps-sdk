@@ -31,5 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="runAfter">The run-after configurations.</param>
         /// <returns>A <see cref="OperationChain"/> tracking the chain from this node's start to the appended action.</returns>
         OperationChain Then(IWorkflowAction action, RunAfter[] runAfter);
+
+        /// <summary>
+        /// Splits the chain into multiple branches that run in parallel after this node.
+        /// </summary>
+        /// <param name="branches">A callback that takes the current node and returns multiple new chains that share the same root.</param>
+        /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of all branches.</returns>
+        OperationChain Then(Func<IChainableNode, OperationChain[]> branches);
     }
 }

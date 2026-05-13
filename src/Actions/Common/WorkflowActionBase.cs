@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)
         {
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action), "Action cannot be null.");
+            }
             action.RunAfterConfig[this.Name] = new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
@@ -44,6 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action), "Action cannot be null.");
+            }
             action.RunAfterConfig[this.Name] = runAfter ?? new[] { FlowStatus.Succeeded };
             this.Children.Add(action);
 
@@ -53,7 +61,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
-            foreach (var ra in runAfter)
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action), "Action cannot be null.");
+            }
+            foreach (var ra in runAfter.CoalesceEnumerable())
             {
                 if (ra.Action == null || string.IsNullOrEmpty(ra.Action.Name))
                 {
@@ -64,6 +76,48 @@ namespace Microsoft.Azure.Workflows.Sdk
             this.Children.Add(action);
 
             return new OperationChain(this, action);
+        }
+
+        /// <inheritdoc/>
+        public OperationChain Then(Func<IChainableNode, OperationChain[]> branches)
+        {
+            if (branches == null)
+            {
+                throw new ArgumentNullException(nameof(branches));
+            }
+
+            var branchesArr = branches.Invoke(this)
+                ?? throw new InvalidOperationException("Branches must not be null.");
+
+            if (branchesArr.Length == 0)
+            {
+                throw new InvalidOperationException("At least one branch is required.");
+            }
+
+            var allEnds = new List<IWorkflowOperation>();
+
+            foreach (var branch in branchesArr)
+            {
+                if (branch == null)
+                {
+                    throw new InvalidOperationException("Null branch is not allowed.");
+                }
+
+                if (!object.ReferenceEquals(this, branch.Start))
+                {
+                    throw new InvalidOperationException("All branches must share the same root as the parent chain.");
+                }
+
+                foreach (var end in branch.Ends)
+                {
+                    if (!allEnds.Contains(end))
+                    {
+                        allEnds.Add(end);
+                    }
+                }
+            }
+
+            return new OperationChain(this, allEnds.ToArray());
         }
     }
 }
