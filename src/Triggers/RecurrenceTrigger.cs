@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a workflow recurrence trigger.
     /// Encapsulates recurrence configuration such as frequency, interval, count, start time, and time zone.
     /// </summary>
-    public class RecurrenceTrigger : IWorkflowTrigger
+    public class RecurrenceTrigger : WorkflowTriggerBase
     {
         /// <summary>
         /// Gets or sets the frequency of the recurrence (e.g., Minute, Hour, Day).
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="interval">The interval between recurrences.</param>
         /// <param name="startTime">The start time for the recurrence schedule.</param>
         /// <param name="timeZone">The time zone for the recurrence schedule.</param>
-        public RecurrenceTrigger(
+        internal RecurrenceTrigger(
             string name,
             FlowRecurrenceFrequency frequency,
             int interval,
@@ -59,14 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the name of the recurrence trigger.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets the trigger definition for the recurrence trigger.
         /// </summary>
-        public FlowTemplateTrigger GetTriggerDefinition()
+        public override FlowTemplateTrigger GetTriggerDefinition()
         {
             return new FlowTemplateTrigger
             {

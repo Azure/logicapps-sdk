@@ -7,12 +7,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput) : IWorkflowAction
+    public class ApiConnectionAction : WorkflowActionBase
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// API connection action input.
         /// </summary>
-        public string Name { get; set; }
+        private readonly ApiConnectionActionInput apiConnectionActionInput;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnectionAction"/> class.
+        /// </summary>
+        /// <param name="apiConnectionActionInput">The API connection action input.</param>
+        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        {
+            this.apiConnectionActionInput = apiConnectionActionInput;
+        }
 
         /// <summary>
         /// Gets the action definition for this API connection action.
@@ -21,12 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// A <see cref="FlowTemplateAction"/> representing the API connection operation to be performed in the workflow.
         /// </returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.ApiConnection,
-                Inputs = apiConnectionActionInput,
+                Inputs = this.apiConnectionActionInput,
             };
         }
     }
@@ -37,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
     {
-        public ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
             : base(apiConnectionActionInput)
         {
         }

@@ -7,14 +7,24 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Built-in triggers for workflow.
+    /// Provides factory methods for creating built-in workflow triggers. Built-in triggers are first-party
+    /// operations that run directly in the Logic Apps runtime without requiring external API connections.
     /// </summary>
+    /// <remarks>
+    /// Access this class through <c>WorkflowTriggers.BuiltIn</c>. Available trigger types include:
+    /// <list type="bullet">
+    ///   <item><description><see cref="CreateHttpTrigger"/> — Fires when an HTTP request is received.</description></item>
+    ///   <item><description><see cref="CreateRecurrenceTrigger"/> — Fires on a recurring schedule.</description></item>
+    ///   <item><description><see cref="CreateConversationalAgentTrigger"/> — Fires when a new conversational chat session starts.</description></item>
+    /// </list>
+    /// </remarks>
+    /// <seealso cref="WorkflowTriggers"/>
     public class WorkflowBuiltInTriggers
     {
         /// <summary>
         /// Adds an HTTP trigger to the flow.
         /// </summary>
-        /// <param name="name">The name to assign to the conversational flow trigger. Defaults to "when_an_HTTP_request_is_received".</param>
+        /// <param name="name">The name to assign to the HTTP trigger. Defaults to "when_an_HTTP_request_is_received".</param>
         /// <param name="method">The HTTP method to use for the request (optional).</param>
         /// <param name="requestBodyJsonSchema">The request body JSON schema (optional).</param>
         /// <param name="relativePath">The relative path (optional).</param>
@@ -31,6 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk
             httpRequestTrigger.Name = name;
 
             return httpRequestTrigger;
+        }
+
+        /// <summary>
+        /// Adds a conversational agent trigger to the flow.
+        /// </summary>
+        /// <param name="name">The name to assign to the conversational flow trigger. Defaults to "When_a_new_chat_session_starts".</param>
+        public ConversationalFlowTrigger CreateConversationalAgentTrigger(string name = "When_a_new_chat_session_starts")
+        {
+            var agentTrigger = new ConversationalFlowTrigger();
+            agentTrigger.Name = name;
+
+            return agentTrigger;
         }
 
         /// <summary>

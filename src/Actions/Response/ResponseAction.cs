@@ -9,44 +9,59 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// The nested flow action allows calling a workflow within another workflow.
+    /// The response action to return a response with specific status code, headers, and body from the workflow.
     /// </summary>
-    public class ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, Dictionary<string, string> headers = null, JToken schema = null) : IWorkflowAction
+    public class ResponseAction : WorkflowActionBase
     {
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
         /// </summary>
-        public HttpStatusCode StatusCode { get; } = statusCode;
+        public HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; } = headers;
+        public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
         /// </summary>
         [JsonProperty(Required = Required.Default, PropertyName = "requestBody")]
-        public object ResponseBody { get; set; } = responseBody;
+        public object ResponseBody { get; set; }
 
         /// <summary>
         /// Gets or sets the JSON schema of the response.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public JToken Schema { get; set; } = schema;
+        public JToken Schema { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResponseAction"/> class.
+        /// </summary>
+        /// <param name="statusCode">The response status code.</param>
+        /// <param name="responseBody">The response body.</param>
+        /// <param name="headers">The response headers.</param>
+        /// <param name="schema">The JSON schema of the response.</param>
+        internal ResponseAction(
+            HttpStatusCode statusCode = HttpStatusCode.OK, 
+            object responseBody = null, 
+            Dictionary<string, string> headers = null, 
+            JToken schema = null)
+        {
+            this.StatusCode = statusCode;
+            this.ResponseBody = responseBody;
+            this.Headers = headers;
+            this.Schema = schema;
+        }
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -63,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>
-    /// Represents a nested workflow action with a strongly-typed output body.
+    /// Represents a response action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public class ResponseAction<T> : ResponseAction, IBodyWorkflowAction<T>
@@ -75,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="responseBody">The response body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
         /// <param name="schema">The JSON schema of the response (optional).</param>
-        public ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, Dictionary<string, string> headers = null, JToken schema = null)
+        internal ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, Dictionary<string, string> headers = null, JToken schema = null)
             : base(statusCode, responseBody, headers, schema)
         {
         }

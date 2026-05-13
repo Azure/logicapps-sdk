@@ -33,7 +33,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             NullableNodeWorkflow.AddNullableNodeWorkflow();
 
-            var workflowArtifacts = WorkflowBuilderFactory.GetCodefulWorkflowArtifacts();
+            ComplexBranchWorkflow.GetComplexBranchWorkflow();
+            ComplexBranchWorkflow.GetComplexBranchWithRunAfterWorkflow();
+
+            ParallelBranchWorkflow.AddParallelBranchWorkflow();
+            ParallelBranchWorkflow.AddParallelBranchThenMergeWorkflow();
+
+            var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
 
             foreach (var workflow in workflowArtifacts.Flows)
             {

@@ -9,13 +9,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>
-    public class ApiConnectionTrigger : IWorkflowTrigger
+    public class ApiConnectionTrigger : WorkflowTriggerBase
     {
-        /// <summary>
-        /// Gets or sets the name of the trigger.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// The type of the flow template operation.
         /// </summary>
@@ -42,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
-        public ApiConnectionTrigger(
+        internal ApiConnectionTrigger(
             ApiConnectionNotificationActionInput input,
             string triggerName = null)
         {
@@ -58,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
-        public ApiConnectionTrigger(
+        internal ApiConnectionTrigger(
             ApiConnectionActionInput input,
             string triggerName = null,
             FlowRecurrence recurrence = null,
@@ -79,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition as a flow template trigger.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> containing the trigger configuration.</returns>
-        public FlowTemplateTrigger GetTriggerDefinition()
+        public override FlowTemplateTrigger GetTriggerDefinition()
         {
             return new FlowTemplateTrigger
             {
@@ -102,18 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
-        public ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
+        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
             : base(input, triggerName)
         { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with action input.
         /// </summary>
-        /// <param name="n">The API connection action input.</param>
+        /// <param name="input">The API connection action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
-        public ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
+        internal ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
             : base(input, triggerName, recurrence, enableSplitOn)
         { 
         }

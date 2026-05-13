@@ -17,16 +17,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddServiceBusSendMessageWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-
-            var builder = WorkflowBuilderFactory.CreateStatefulWorkflow("ServiceBusSendMessageWorkflow", trigger);
+            WorkflowFactory.CreateStatefulWorkflow("ServiceBusSendMessageWorkflow", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "Test compose");
-            builder.AddAction(compose);
 
-            var sendMessage = WorkflowActions.ManagedConnectors.Servicebus("servicebus").SendMessage(
+            var sendMessage = WorkflowActions.Managed.Servicebus("servicebus").SendMessage(
                 entityName: () => "my-queue",
                 messagecontent: () => compose.Output);
-            builder.AddAction(sendMessage);
+
+            trigger
+                .Then(compose)
+                .Then(sendMessage);
         }
     }
 }

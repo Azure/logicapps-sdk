@@ -7,35 +7,46 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class CSharpScriptCode(Delegate callback) : IWorkflowAction
+    public class CSharpScriptCode : WorkflowActionBase
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        public string Name { get; set; }
+        public string MethodName { get; private set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the callback delegate.
         /// </summary>
-        public string MethodName { get; private set; } = callback.Method.Name;
+        private Delegate callback { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CSharpScriptCode"/> class.
+        /// </summary>
+        /// <param name="callback">The callback delegate.</param>
+        internal CSharpScriptCode(Delegate callback)
+        {
+            this.callback = callback;
+            this.MethodName = callback.Method.Name;
+        }
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
-        public FlowTemplateAction GetActionDefinition(string flowName)
+        /// <param name="flowKind">The flow kind.</param>
+        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             ScriptExecutor.SaveCustomCodeMethodInfo(
                 workflowName: flowName,
-                callback: callback);
+                callback: this.callback);
 
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.CSharpScriptCode,
                 Inputs = new CSharpScriptCodeActionInput
                 {
-                    UserFunctionName = callback.Method.Name,
+                    UserFunctionName = this.callback.Method.Name,
                 },
             };
         }
@@ -50,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="CSharpScriptCode{T}"/> class.
         /// </summary>
-        public CSharpScriptCode(Func<WorkflowContext, Task<T>> callback) : base(callback)
+        internal CSharpScriptCode(Func<WorkflowContext, Task<T>> callback) : base(callback)
         {
         }
 

@@ -17,14 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public static void AddStatelessWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            WorkflowFactory.CreateStatelessWorkflow("TestStatelessWorkflow", trigger);
 
-            var builder = WorkflowBuilderFactory.CreateStatelessWorkflow("TestStatelessWorkflow", trigger);
+            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "hello").WithName("Compose");
 
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "hello");
-            builder.AddAction(compose, "ComposeOutput");
+            var response = WorkflowActions.BuiltIn.Response(responseBody: () => compose.Output).WithName("Response");
 
-            var response = WorkflowActions.BuiltIn.Response(responseBody: () => compose.Output);
-            builder.AddAction(response, "Response");
+            trigger
+                .Then(compose)
+                .Then(response);
         }
     }
 }

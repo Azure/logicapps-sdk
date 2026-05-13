@@ -17,13 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void AddNestedWorkflow()
         {
-            var nestedWorkflowBuilder = WorkflowBuilderFactory.CreateConversationalAgent("NestedWorkflow");
+            var trigger = WorkflowTriggers.BuiltIn.CreateConversationalAgentTrigger();
 
-            var agent = new AgentBuilder
-            {
-                AgentModelType = AgentModelType.AzureOpenAI,
-                DeploymentId = "gpt-4.1",
-                AgentModelSettings = new AgentModelSettings
+            var agent = WorkflowActions.BuiltIn.Agent(
+                agentModelType: AgentModelType.AzureOpenAI,
+                deploymentId: "gpt-4.1",
+                agentModelSettings: new AgentModelSettings
                 {
                     AgentChatCompletionSettings = new AgentChatCompletionSettings
                     {
@@ -40,60 +39,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         Version = "2024-11-20"
                     }
                 },
-                Messages = new AgentPromptMessage[]
+                connectionName: "agent",
+                messages: () => new AgentPromptMessage[]
+                {
+                    new AgentPromptMessage
                     {
-                        new AgentPromptMessage
-                        {
-                            Role = MessageRole.System,
-                            Content = "You are an agent to respond the weather to the user and send an email"
-                        }
-                    },
-                ConnectionName = "agent",
-            };
+                        Role = MessageRole.System,
+                        Content = "You are an agent to respond the weather to the user and send an email"
+                    }
+                }
+            );
 
-            var toolBuilder = new AgentTool<MyObject>();
-
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(toolContext =>
                 {
                     var nestedWorkflow = WorkflowActions.BuiltIn.NestedWorkflow(
                         workflowReferenceName: () => "HttpRequestResponse",
-                        requestBody: () => toolBuilder.Parameters.Location);
-                    toolBuilder.AddAction(nestedWorkflow);
+                        requestBody: () => toolContext.Parameters.Location);
+                    return nestedWorkflow;
                 },
                description: "This tool gets the weather",
                parameters: new WeatherObject());
 
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(toolContext =>
                 {
                     var composeAction = WorkflowActions.BuiltIn.Compose(inputs: () => "Sending HTTP Request after getting weather");
                     var http = WorkflowActions.BuiltIn.HttpAction(
                         uri: () => new Uri("https://google.com"),
                         method: () => HttpMethod.Post);
-                        toolBuilder.AddAction(http,
-                            runAfterSpecifications: new RunAfterSpecification[]
-                            {
-                                new RunAfterSpecification
-                                {
-                                    Action = composeAction,
-                                    Status = new FlowStatus[] { FlowStatus.Succeeded }
-                                }
-                            });
+                    return composeAction.Then(http);
                 },
                description: "This tool will send a message",
                parameters: new WeatherObject());
 
-            agent.AddTool(toolBuilder =>
+            agent.AddTool(toolContext =>
                 {
-                    var sendEmailAction = WorkflowActions.ManagedConnectors.Office365("connectionId").SendEmail(
+                    var sendEmailAction = WorkflowActions.Managed.Office365("connectionId").SendEmail(
                         emailMessageto: () => "apseth@microsoft.com",
                         emailMessagesubject: () => "Interview Scheduled",
                         emailMessagebody: () => "An interview has been scheduled.");
-                    toolBuilder.AddAction(action: sendEmailAction);
+                    return sendEmailAction;
                 },
                description: "This tool will send an email",
                parameters: new WeatherObject());
 
-            nestedWorkflowBuilder.AddAgent(agent);
+            trigger.Then(agent);
+
+            WorkflowFactory.CreateAgentWorkflow("NestedWorkflow", trigger);
         }
     }
 
