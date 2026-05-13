@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Agents.Services
             var workflowArtifacts = this.GetCodefulWorkflowArtifacts();
             this.loggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
 
-            if (workflowArtifacts.Flows?.Count != 0)
+            if (workflowArtifacts?.Flows != null && workflowArtifacts.Flows.Count != 0)
             {
                 var response = this.jobSessionServiceClient.CreateWorkflows(new WorkflowsRequest { Workflows = workflowArtifacts.ToJson() });
                 this.loggerService?.LogDebug($"Response got from calling the extension service '{response}'");

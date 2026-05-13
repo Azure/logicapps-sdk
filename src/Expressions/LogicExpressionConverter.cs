@@ -673,7 +673,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     }
                     break;
                 
+                case ExpressionType.AndAlso:
+                    if (leftType == typeof(bool) && rightType == typeof(bool))
+                    {
+                        return new FunctionCallNode
+                        {
+                            FunctionName = "and",
+                            Arguments = [left, right]
+                        };
+                    }
+                    break;
+                
                 case ExpressionType.Or:
+                    if (leftType == typeof(bool) && rightType == typeof(bool))
+                    {
+                        return new FunctionCallNode
+                        {
+                            FunctionName = "or",
+                            Arguments = [left, right]
+                        };
+                    }
+                    break;
+                
+                case ExpressionType.OrElse:
                     if (leftType == typeof(bool) && rightType == typeof(bool))
                     {
                         return new FunctionCallNode

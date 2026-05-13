@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         /// <summary>
-        /// Adds a workflow that splits into two branches based on run-after status,
+        /// Gets a workflow that splits into two branches based on run-after status,
         /// without merging them back (fan-out without fan-in).
         /// </summary>
         public FlowDefinition GetParallelBranchWorkflow()
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         /// <summary>
-        /// Adds a workflow that splits into multiple branches and then merges them
+        /// Gets a workflow that splits into multiple branches and then merges them
         /// back with a subsequent Then call (fan-out followed by fan-in).
         /// </summary>
         public FlowDefinition GetParallelBranchThenMergeWorkflow()

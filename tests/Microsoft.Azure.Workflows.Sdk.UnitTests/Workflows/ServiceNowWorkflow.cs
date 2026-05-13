@@ -5,12 +5,11 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice;
 
     /// <summary>
     /// ServiceNow workflow class.
     /// </summary>
-    public class SerivceNowWorkflow : IWorkflowProvider
+    public class ServiceNowWorkflow : IWorkflowProvider
     {
         /// <summary>
         /// Gets the ServiceNow workflow definitions.

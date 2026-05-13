@@ -27,9 +27,13 @@ namespace Microsoft.Azure.Workflows.Sdk
             IWorkflowAction trueBranchRoot,
             IWorkflowAction falseBranchRoot)
         {
+            if (trueBranchRoot == null && falseBranchRoot == null)
+            {
+                throw new ArgumentException("Condition action requires at least one non-null branch.");
+            }
             this.expression = expression ?? throw new ArgumentNullException(nameof(expression));
-            this.trueBranchRoot = trueBranchRoot ?? throw new ArgumentNullException(nameof(trueBranchRoot));
-            this.falseBranchRoot = falseBranchRoot ?? throw new ArgumentNullException(nameof(falseBranchRoot));
+            this.trueBranchRoot = trueBranchRoot;
+            this.falseBranchRoot = falseBranchRoot;
         }
 
         /// <summary>

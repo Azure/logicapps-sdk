@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-namespace la1
+namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
 
@@ -198,7 +198,9 @@ namespace la1
                 },
                 defaultCase: () => WorkflowActions.BuiltIn.Compose(inputs: () => "Default case"));
 
-            return WorkflowFactory.CreateStatefulWorkflow("switch", trigger);
+            var workflow = trigger.Then(switchAction);
+
+            return WorkflowFactory.CreateStatefulWorkflow("switch", workflow);
         }
 
         /// <summary>

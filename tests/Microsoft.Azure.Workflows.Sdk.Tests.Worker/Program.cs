@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
-    using System.Reflection;
     using Microsoft.Azure.Workflows.Sdk;
     using Microsoft.Extensions.Hosting;
 
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     services.AddWorkflowProvider<NestedWorkflow>();
                     services.AddWorkflowProvider<RecurrenceWorkflow>();
                     services.AddWorkflowProvider<WeatherWorkflow>();
-                    services.AddWorkflowProvider<SerivceNowWorkflow>();
+                    services.AddWorkflowProvider<ServiceNowWorkflow>();
                     services.AddWorkflowProvider<NullableNodeWorkflow>();
                 })
                 .Build();

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 new RecurrenceWorkflow(),
                 new EmailWorkflow(),
                 new WeatherWorkflow(),
-                new SerivceNowWorkflow(),
+                new ServiceNowWorkflow(),
                 new ServiceBusWorkflow(),
                 new ServiceBusSendMessageWorkflow(),
                 new NullableNodeWorkflow(),

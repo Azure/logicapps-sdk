@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         /// <summary>
-        /// Creates a workflow that fans out into two branches and then joins them
+        /// Gets a workflow that fans out into two branches and then joins them
         /// using the default Then overload on a joined chain.
         /// </summary>
         private FlowDefinition GetComplexBranchWorkflowDefinition()
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         /// <summary>
-        /// Creates a workflow that fans out into two branches and then joins them
+        /// Gets a workflow that fans out into two branches and then joins them
         /// using the per-chain runAfter overload for explicit status control.
         /// </summary>
         private FlowDefinition GetComplexBranchWithRunAfterWorkflowDefinition()

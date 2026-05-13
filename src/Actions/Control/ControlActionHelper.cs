@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A dictionary mapping action names to their FlowTemplateAction definitions.</returns>
         public static Dictionary<string, FlowTemplateAction> CollectActions(IWorkflowAction root, string flowName, FlowKind? flowKind = null)
         {
+            if (root == null)
+            {
+                return null;
+            }
+            
             var actions = new Dictionary<string, FlowTemplateAction>();
             var visited = new HashSet<string>();
             var queue = new Queue<IWorkflowAction>();

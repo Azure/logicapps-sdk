@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var itemsExpression = ExpressionConverter.ConvertO(items);
             var currentItemPlaceholder = new JValue("@item()");
-            var resolvedActions = actions?.Invoke(currentItemPlaceholder);
+            var resolvedActions = actions.Invoke(currentItemPlaceholder);
             return new ForEachAction(itemsExpression, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
 
@@ -97,8 +97,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(expression), "Until action requires a non-null expression.");
             }
+            if (actions == null)
+            {
+                throw new ArgumentNullException(nameof(actions), "Until action requires non-null actions.");
+            }
             var expressionStr = ExpressionConverter.Convert(expression);
-            var resolvedActions = actions?.Invoke();
+            var resolvedActions = actions.Invoke();
             return new UntilAction(expressionStr, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
 
@@ -117,8 +121,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(on), "Switch action requires a non-null 'on' expression.");
             }
+            if (cases == null)
+            {
+                throw new ArgumentNullException(nameof(cases), "Switch action requires a non-null cases factory.");
+            }
             var onExpression = ExpressionConverter.ConvertO(on);
-            var resolvedCasesDict = cases?.Invoke();
+            var resolvedCasesDict = cases.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
             return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction);
         }

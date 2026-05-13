@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public FlowStatus[] Status { get; set; }
 
         /// <summary>
-        /// Iniitializes a new instance of the <see cref="RunAfter"/> class that depends on a single
+        /// Initializes a new instance of the <see cref="RunAfter"/> class that depends on a single
         /// <see cref="FlowStatus"/> from the specified predecessor action name.
         /// </summary>
         /// <param name="actionName">The name of the predecessor action.</param>
