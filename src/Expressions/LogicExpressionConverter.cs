@@ -45,18 +45,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
-        /// Checks if a type implements a specific interface, either directly or through its interfaces.
-        /// </summary>
-        /// <param name="type">The type to check.</param>
-        /// <param name="interfaceType">The generic interface type to match.</param>
-        private static bool ImplementsInterface(Type type, Type interfaceType)
-        {
-            if (interfaceType.IsAssignableFrom(type))
-                return true;
-            return type.GetInterfaces().Any(i => i == interfaceType);
-        }
-
-        /// <summary>
         /// Gets the property name from a member, checking for JSON property attributes.
         /// </summary>
         /// <param name="obj">The object instance.</param>
@@ -260,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ]
                 };
             }
-            else if (litNode != null && ImplementsInterface(obj.Type, typeof(IVariableWorkflowAction)))
+            else if (litNode != null && typeof(IVariableWorkflowAction).IsAssignableFrom(obj.Type))
             {
                 if (e.Member.Name != "Value")
                 {
