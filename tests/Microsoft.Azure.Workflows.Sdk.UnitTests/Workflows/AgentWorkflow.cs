@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             /// The location.
             /// </summary>
             [JsonProperty(Required = Required.Default)]
-            public string? Location { get; set; }
+            public string Location { get; set; }
         }
 
         /// <summary>
@@ -96,17 +96,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             /// <summary>
             /// The email recipient.
             /// </summary>
-            public string? Recipient { get; set; }
+            public string Recipient { get; set; }
 
             /// <summary>
             /// The email subject.
             /// </summary>
-            public string? Subject { get; set; }
+            public string Subject { get; set; }
 
             /// <summary>
             /// The email body.
             /// </summary>
-            public string? Body { get; set; }
+            public string Body { get; set; }
         }
     }
 }
