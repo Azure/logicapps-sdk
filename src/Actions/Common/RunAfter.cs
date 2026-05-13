@@ -41,13 +41,47 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the predecessor action that this run-after dependency references.
         /// </summary>
-        public IWorkflowAction Action { get; set; }
+        public string ActionName { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="FlowStatus"/> values that the predecessor action must
         /// reach for the dependent action to execute.
         /// </summary>
         public FlowStatus[] Status { get; set; }
+
+        /// <summary>
+        /// Iniitializes a new instance of the <see cref="RunAfter"/> class that depends on a single
+        /// <see cref="FlowStatus"/> from the specified predecessor action name.
+        /// </summary>
+        /// <param name="actionName">The name of the predecessor action.</param>
+        /// <param name="status">The completion status required for the dependent action to execute.</param>
+        /// <exception cref="ArgumentException"><paramref name="actionName"/> is <see langword="null"/> or empty.</exception>
+        public RunAfter(string actionName, FlowStatus status)
+        {
+            if (string.IsNullOrEmpty(actionName))
+            {
+                throw new ArgumentException("Action name must be provided for a RunAfter dependency.", nameof(actionName));
+            }
+            this.ActionName = actionName;
+            this.Status = new[] { status };
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RunAfter"/> class that depends on multiple
+        /// <see cref="FlowStatus"/> values from the specified predecessor action name.
+        /// </summary>
+        /// <param name="actionName">The name of the predecessor action.</param>
+        /// <param name="statuses">The completion statuses required for the dependent action to execute.</param>
+        /// <exception cref="ArgumentException"><paramref name="actionName"/> is <see langword="null"/> or empty.</exception>
+        public RunAfter(string actionName, FlowStatus[] statuses)
+        {
+            if (string.IsNullOrEmpty(actionName))
+            {
+                throw new ArgumentException("Action name must be provided for a RunAfter dependency.", nameof(actionName));
+            }
+            this.ActionName = actionName;
+            this.Status = statuses ?? new[] { FlowStatus.Succeeded };
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RunAfter"/> class that depends on a single
@@ -74,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an IWorkflowAction.", nameof(chain));
-            this.Action = action;
+            this.ActionName = action.Name;
             this.Status = new[] { status };
         }
 
@@ -106,8 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an IWorkflowAction.", nameof(chain));
-            this.Action = action;
-            this.Status = statuses;
+            this.ActionName = action.Name;
+            this.Status = statuses ?? new[] { FlowStatus.Succeeded };
         }
     }
 }

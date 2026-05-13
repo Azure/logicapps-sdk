@@ -81,11 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             foreach (var ra in runAfter.CoalesceEnumerable())
             {
-                if (ra.Action == null || string.IsNullOrEmpty(ra.Action.Name))
+                if (string.IsNullOrEmpty(ra.ActionName))
                 {
-                    throw new InvalidOperationException($"Invalid action '{ra.Action?.Name}' in RunAfter configuration.");
+                    throw new InvalidOperationException($"Invalid action '{ra.ActionName}' in RunAfter configuration.");
                 }
-                action.RunAfterConfig[ra.Action.Name] = ra.Status ?? new[] { FlowStatus.Succeeded };
+                action.RunAfterConfig[ra.ActionName] = ra.Status ?? new[] { FlowStatus.Succeeded };
             }
             this.Children.Add(action);
 
