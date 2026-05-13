@@ -8,8 +8,26 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System.Collections.Generic;
 
     /// <summary>
-    /// Represents a chain of workflow operations.
+    /// Represents a directed chain of workflow operations, tracking a start node and one or more end nodes.
+    /// <see cref="OperationChain"/> is the result of every <c>.Then()</c> call and implements
+    /// <see cref="IChainableNode"/> so that additional operations can be appended fluently.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// An <see cref="OperationChain"/> always has exactly one <see cref="Start"/> node (the trigger or first action)
+    /// and one or more <see cref="Ends"/> nodes. When a chain has multiple end nodes, it represents a fan-out
+    /// (parallel branching) pattern. Calling <c>.Then()</c> on a multi-end chain attaches the next action
+    /// to <em>all</em> end nodes, creating a fan-in (merge) point.
+    /// </para>
+    /// <para>
+    /// Use the <see cref="Join"/> method to combine two chains that share the same root into a single chain
+    /// with a unified set of end nodes. This is useful for building fan-out/fan-in patterns where branches
+    /// are constructed independently.
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="IChainableNode"/>
+    /// <seealso cref="IWorkflowOperation"/>
+    /// <seealso cref="WorkflowFactory"/>
     public class OperationChain : IChainableNode
     {
         /// <summary>
@@ -50,10 +68,30 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Combines this chain with another chain that shares the same root.
+        /// Combines this chain with another chain that shares the same root, producing a single chain
+        /// whose end nodes are the union of both chains' end nodes. This enables fan-out/fan-in patterns
+        /// where parallel branches are built independently and then merged.
         /// </summary>
-        /// <param name="other">The other chain to join with. Must share the same root as this chain.</param>
+        /// <param name="other">
+        /// The other chain to join with. Must share the same <see cref="Start"/> node as this chain;
+        /// otherwise, an <see cref="InvalidOperationException"/> is thrown.
+        /// </param>
         /// <returns>A new <see cref="OperationChain"/> with the same start and the combined end nodes of both chains.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="other"/> is <see langword="null"/>.</exception>
+        /// <exception cref="InvalidOperationException">The two chains do not share the same root node.</exception>
+        /// <example>
+        /// Build two branches from the same trigger, join them, then add a merged action:
+        /// <code>
+        /// var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+        /// var left = trigger.Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Left").WithName("Left"));
+        /// var right = trigger.Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Right").WithName("Right"));
+        ///
+        /// left.Join(right)
+        ///     .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Merged").WithName("Merged"));
+        ///
+        /// WorkflowFactory.CreateStatefulWorkflow("fanInWorkflow", trigger);
+        /// </code>
+        /// </example>
         public OperationChain Join(OperationChain other)
         {
             if (other == null)

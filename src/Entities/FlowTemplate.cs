@@ -9,8 +9,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// The flow definition.
+    /// Represents the workflow template that contains the schema, triggers, actions, and metadata
+    /// for a workflow definition. This is the JSON-serializable structure that conforms to the
+    /// Azure Logic Apps workflow definition schema.
     /// </summary>
+    /// <seealso cref="FlowDefinition"/>
+    /// <seealso cref="FlowTemplateAction"/>
+    /// <seealso cref="FlowTemplateTrigger"/>
     public class FlowTemplate
     {
         /// <summary>

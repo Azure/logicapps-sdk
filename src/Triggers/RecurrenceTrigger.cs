@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="interval">The interval between recurrences.</param>
         /// <param name="startTime">The start time for the recurrence schedule.</param>
         /// <param name="timeZone">The time zone for the recurrence schedule.</param>
-        public RecurrenceTrigger(
+        internal RecurrenceTrigger(
             string name,
             FlowRecurrenceFrequency frequency,
             int interval,

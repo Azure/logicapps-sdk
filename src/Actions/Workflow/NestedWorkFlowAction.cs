@@ -9,24 +9,40 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The nested flow action allows calling a workflow within another workflow.
     /// </summary>
-    public class NestedWorkflowAction(string workflowReferenceName, object requestBody = null, Dictionary<string, string> headers = null) : WorkflowActionBase
+    public class NestedWorkflowAction : WorkflowActionBase
     {
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
         /// </summary>
-        public string WorkflowReferenceName { get; } = workflowReferenceName;
+        public string WorkflowReferenceName { get; }
 
         /// <summary>
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; } = headers;
+        public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public object RequestBody { get; set; } = requestBody;
+        public object RequestBody { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NestedWorkflowAction"/> class.
+        /// </summary>
+        /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>
+        /// <param name="requestBody">The request body (optional).</param>
+        /// <param name="headers">The request headers (optional).</param>
+        internal NestedWorkflowAction(
+            string workflowReferenceName,
+            object requestBody = null,
+            Dictionary<string, string> headers = null)
+        {
+            this.WorkflowReferenceName = workflowReferenceName;
+            this.RequestBody = requestBody;
+            this.Headers = headers;
+        }
 
         /// <summary>
         /// Gets the action definition for this nested workflow action.
@@ -67,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>
         /// <param name="requestBody">The request body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
-        public NestedWorkflowAction(
+        internal NestedWorkflowAction(
             string workflowReferenceName,
             object requestBody = null,
             Dictionary<string, string> headers = null)

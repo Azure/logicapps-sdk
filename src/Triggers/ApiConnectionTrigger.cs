@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
-        public ApiConnectionTrigger(
+        internal ApiConnectionTrigger(
             ApiConnectionNotificationActionInput input,
             string triggerName = null)
         {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
-        public ApiConnectionTrigger(
+        internal ApiConnectionTrigger(
             ApiConnectionActionInput input,
             string triggerName = null,
             FlowRecurrence recurrence = null,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
-        public ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
+        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
             : base(input, triggerName)
         { }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
-        public ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
+        internal ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
             : base(input, triggerName, recurrence, enableSplitOn)
         { 
         }

@@ -5,17 +5,35 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Workflow actions entry point providing access to built-in and managed connector actions.
+    /// Provides the top-level entry point for creating workflow actions. Use the <see cref="BuiltIn"/>
+    /// property to access built-in action types (HTTP, Compose, Response, Custom Code, etc.) and the
+    /// <see cref="Managed"/> property to access actions provided by managed API connectors.
     /// </summary>
+    /// <example>
+    /// <code>
+    /// // Create a built-in Compose action
+    /// var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "Hello").WithName("Greet");
+    ///
+    /// // Create a managed connector action
+    /// var sharepoint = WorkflowActions.Managed.Sharepointonline("sharepoint").GetItems(
+    ///     dataset: () => "https://example.sharepoint.com",
+    ///     table: () => "my-list-id");
+    /// </code>
+    /// </example>
+    /// <seealso cref="WorkflowBuiltInActions"/>
+    /// <seealso cref="WorkflowManagedActions"/>
     public static class WorkflowActions
     {
         /// <summary>
-        /// Built-in actions for workflow agents.
+        /// Gets the factory for built-in workflow actions such as HTTP, Compose, Response, Custom Code,
+        /// and Nested Workflow actions.
         /// </summary>
         public static WorkflowBuiltInActions BuiltIn = new WorkflowBuiltInActions();
 
         /// <summary>
-        /// Actions provided by managed connectors.
+        /// Gets the factory for managed connector actions (e.g., SharePoint, Service Bus, SQL Server).
+        /// Managed connector actions are auto-generated from connector definitions and available as
+        /// extension methods on this instance.
         /// </summary>
         public static WorkflowManagedActions Managed = new WorkflowManagedActions();
     }

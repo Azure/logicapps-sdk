@@ -5,9 +5,23 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Base class for workflow action nodes. Extends <see cref="OperationChain"/> for chain tracking
-    /// and implements <see cref="IWorkflowAction"/> for action-specific behavior.
+    /// Provides the base implementation for workflow action nodes. Concrete action types (such as
+    /// HTTP actions, Compose actions, and custom code actions) inherit from this class to get
+    /// automatic support for the fluent chaining API, name generation, and run-after configuration.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This class implements <see cref="IWorkflowAction"/> and all four <see cref="IChainableNode.Then(IWorkflowAction)">Then</see>
+    /// overloads. When <c>.Then()</c> is called on an action, the child action is added to <see cref="Children"/>
+    /// and its <see cref="IWorkflowAction.RunAfterConfig"/> is updated to reference this action.
+    /// </para>
+    /// <para>
+    /// Subclasses must implement <see cref="GetActionDefinition"/> to produce the
+    /// <see cref="FlowTemplateAction"/> that represents this action in the serialized workflow definition.
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="IWorkflowAction"/>
+    /// <seealso cref="WorkflowTriggerBase"/>
     public abstract class WorkflowActionBase : IWorkflowAction
     {
         /// <summary>

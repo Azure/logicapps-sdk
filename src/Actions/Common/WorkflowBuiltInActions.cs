@@ -11,8 +11,20 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Built-in actions for workflows.
+    /// Provides factory methods for creating built-in workflow actions. Built-in actions are first-party
+    /// operations that run directly in the Logic Apps runtime without requiring external API connections.
     /// </summary>
+    /// <remarks>
+    /// Access this class through <c>WorkflowActions.BuiltIn</c>. Available action types include:
+    /// <list type="bullet">
+    ///   <item><description><see cref="Compose(System.Linq.Expressions.Expression{Func{string}})"/> — Transforms and combines data.</description></item>
+    ///   <item><description><see cref="HttpAction"/> — Sends HTTP requests to external endpoints.</description></item>
+    ///   <item><description><see cref="Response"/> — Returns an HTTP response (for HTTP-triggered workflows).</description></item>
+    ///   <item><description><see cref="CustomCode{T}"/> — Executes a C# callback function inline.</description></item>
+    ///   <item><description><see cref="NestedWorkflow"/> — Invokes another workflow as a child.</description></item>
+    /// </list>
+    /// </remarks>
+    /// <seealso cref="WorkflowActions"/>
     public class WorkflowBuiltInActions
     {
         /// <summary>
@@ -55,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Creates a custom code action that executes a callback function.
         /// </summary>
-        /// <param name="callback">The delegate callback with signature Func&lt;WorkflowContext, Task&lt;T&gt;&gt;.</param>
+        /// <param name="callback">The delegate callback with signature Func<WorkflowContext, Task<T>>.</param>
         /// <typeparam name="T">The return type of the callback.</typeparam>
         public IBodyWorkflowAction<T> CustomCode<T>(Func<WorkflowContext, Task<T>> callback)
         {

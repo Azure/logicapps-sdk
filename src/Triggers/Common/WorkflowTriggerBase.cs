@@ -5,9 +5,25 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
-    /// Base class for workflow trigger nodes. Extends <see cref="OperationChain"/> for chain tracking
-    /// and implements <see cref="IWorkflowTrigger"/> for trigger-specific behavior.
+    /// Provides the base implementation for workflow trigger nodes. Concrete trigger types (such as
+    /// HTTP request triggers, recurrence triggers, and conversational agent triggers) inherit from
+    /// this class to get automatic support for the fluent chaining API and name generation.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This class implements <see cref="IWorkflowTrigger"/> and all four <see cref="IChainableNode.Then(IWorkflowAction)">Then</see>
+    /// overloads. When <c>.Then()</c> is called on a trigger, the action is added to <see cref="Children"/>.
+    /// Note that the <c>Then</c> overloads accepting <see cref="FlowStatus"/>[] or <see cref="RunAfter"/>[]
+    /// throw <see cref="InvalidOperationException"/>, because run-after conditions cannot be specified
+    /// on the first action directly after a trigger.
+    /// </para>
+    /// <para>
+    /// Subclasses must implement <see cref="GetTriggerDefinition"/> to produce the
+    /// <see cref="FlowTemplateTrigger"/> that represents this trigger in the serialized workflow definition.
+    /// </para>
+    /// </remarks>
+    /// <seealso cref="IWorkflowTrigger"/>
+    /// <seealso cref="WorkflowActionBase"/>
     public abstract class WorkflowTriggerBase : IWorkflowTrigger
     {
         /// <summary>

@@ -12,12 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The agent entity that represents a model deployment and its settings.
     /// </summary>
-    public class AgentAction(
-        AgentModelType agentModelType,
-        string deploymentId,
-        AgentModelSettings agentModelSettings,
-        string connectionName,
-        AgentPromptMessage[] messages) : WorkflowActionBase
+    public class AgentAction : WorkflowActionBase
     {
         /// <summary>
         /// The tools for the agent action.
@@ -28,32 +23,54 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the agent model type.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentModelType AgentModelType { get; set; } = agentModelType;
+        public AgentModelType AgentModelType { get; set; }
 
         /// <summary>
         /// Gets or sets the model deployment id.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string DeploymentId { get; set; } = deploymentId;
+        public string DeploymentId { get; set; }
 
         /// <summary>
         /// Gets or sets the agent model settings.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentModelSettings AgentModelSettings { get; set; } = agentModelSettings;
+        public AgentModelSettings AgentModelSettings { get; set; }
 
         /// <summary>
         /// Gets or sets the connection name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         [Agent(Type = ConnectorType.AgentConnection, ConnectorName = "agent", Id = "connectionProviders/agent")]
-        public string ConnectionName { get; set; } = connectionName;
+        public string ConnectionName { get; set; }
 
         /// <summary>
         /// Gets or sets the messages.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentPromptMessage[] Messages { get; set; } = messages;
+        public AgentPromptMessage[] Messages { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AgentAction"/> class.
+        /// </summary>
+        /// <param name="agentModelType">The agent model type.</param>
+        /// <param name="deploymentId">The model deployment id.</param>
+        /// <param name="agentModelSettings">The agent model settings.</param>
+        /// <param name="connectionName">The agent connection name.</param>
+        /// <param name="messages">The agent prompt messages.</param>
+        internal AgentAction(
+            AgentModelType agentModelType,
+            string deploymentId,
+            AgentModelSettings agentModelSettings,
+            string connectionName,
+            AgentPromptMessage[] messages)
+        {
+            this.AgentModelType = agentModelType;
+            this.DeploymentId = deploymentId;
+            this.AgentModelSettings = agentModelSettings;
+            this.ConnectionName = connectionName;
+            this.Messages = messages;
+        }
 
         /// <summary>
         /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch root action.

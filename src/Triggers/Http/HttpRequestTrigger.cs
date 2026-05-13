@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="method">The HTTP method to use for the request (optional).</param>
         /// <param name="requestBodyJsonSchema">The request body JSON schema (optional).</param>
         /// <param name="relativePath">The relative path (optional).</param>
-        public HttpRequestTrigger(
+        internal HttpRequestTrigger(
             HttpMethod method = null,
             JToken requestBodyJsonSchema = null,
             string relativePath = null)
