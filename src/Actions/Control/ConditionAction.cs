@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="expression">The converted boolean expression string.</param>
         /// <param name="trueBranchRoot">The root node of the true branch action graph.</param>
         /// <param name="falseBranchRoot">The root node of the false branch action graph.</param>
-        public ConditionAction(
+        internal ConditionAction(
             string expression,
             IWorkflowAction trueBranchRoot,
             IWorkflowAction falseBranchRoot)
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="flowKind">The flow kind.</param>
         public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
-            var trueActions = ControlActionHelper.CollectActions(this.trueBranchRoot, flowName);
-            var falseActions = ControlActionHelper.CollectActions(this.falseBranchRoot, flowName);
+            var trueActions = ControlActionHelper.CollectActions(this.trueBranchRoot, flowName, flowKind);
+            var falseActions = ControlActionHelper.CollectActions(this.falseBranchRoot, flowName, flowKind);
 
             return new FlowTemplateAction
             {
@@ -52,16 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Actions = falseActions,
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public ConditionAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

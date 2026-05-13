@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="variableName">The variable name.</param>
         /// <param name="variableType">The variable type (e.g., Integer, Float, Boolean, String, Array, Object).</param>
         /// <param name="initialValue">The initial value.</param>
-        public InitializeVariableAction(string variableName, string variableType, JToken initialValue)
+        internal InitializeVariableAction(string variableName, string variableType, JToken initialValue)
         {
             this.variableName = variableName;
             this.variableType = variableType;
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the variable value placeholder for use in expression trees.
-        /// </summary>
-        public JToken Value { get; }
-
-        /// <summary>
         /// Gets the name of the variable.
         /// </summary>
         public string VariableName => this.variableName;
+
+        /// <summary>
+        /// Gets the variable value placeholder for use in expression trees.
+        /// </summary>
+        public JToken Value => this.initialValue;
 
         /// <summary>
         /// Gets the action definition for this InitializeVariable action.
@@ -61,16 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     },
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IVariableWorkflowAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

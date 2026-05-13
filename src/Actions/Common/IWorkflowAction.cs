@@ -120,11 +120,5 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the name of the variable.
         /// </summary>
         string VariableName { get; }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        IVariableWorkflowAction WithName(string name);
     }
 }

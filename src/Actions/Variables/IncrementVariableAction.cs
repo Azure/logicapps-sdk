@@ -19,21 +19,21 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="variableName">The variable name.</param>
         /// <param name="value">The value to increment by.</param>
-        public IncrementVariableAction(string variableName, JToken value)
+        internal IncrementVariableAction(string variableName, JToken value)
         {
             this.variableName = variableName;
             this.value = value;
         }
 
         /// <summary>
-        /// Gets the variable value placeholder for use in expression trees.
-        /// </summary>
-        public JToken Value { get; }
-
-        /// <summary>
         /// Gets the name of the variable.
         /// </summary>
         public string VariableName => this.variableName;
+
+        /// <summary>
+        /// Gets the variable value placeholder for use in expression trees.
+        /// </summary>
+        public JToken Value => this.value;
 
         /// <summary>
         /// Gets the action definition for this increment variable action.
@@ -51,16 +51,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Value = this.value,
                 },
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public IVariableWorkflowAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

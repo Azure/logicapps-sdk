@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="onExpression">The expression to switch on.</param>
         /// <param name="cases">A dictionary mapping case labels to their SwitchCase entries.</param>
         /// <param name="defaultCaseRoot">The root action node for the default case (optional).</param>
-        public SwitchAction(
+        internal SwitchAction(
             JToken onExpression,
             Dictionary<string, SwitchCase> cases,
             IWorkflowAction defaultCaseRoot = null)
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             foreach (var kvp in this.cases)
             {
-                var caseActions = ControlActionHelper.CollectActions(kvp.Value.Actions, flowName);
+                var caseActions = ControlActionHelper.CollectActions(kvp.Value.Actions, flowName, flowKind);
                 templateCases[kvp.Key] = new FlowTemplateActionCaseBranch
                 {
                     Case = kvp.Value.Case,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             if (this.defaultCaseRoot != null)
             {
-                var defaultActions = ControlActionHelper.CollectActions(this.defaultCaseRoot, flowName);
+                var defaultActions = ControlActionHelper.CollectActions(this.defaultCaseRoot, flowName, flowKind);
                 action.Default = new FlowTemplateActionBranch
                 {
                     Actions = defaultActions,
@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             return action;
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public SwitchAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

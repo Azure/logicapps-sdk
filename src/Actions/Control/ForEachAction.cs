@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="items">The items collection.</param>
         /// <param name="actionsRoot">The root node of the nested action graph.</param>
-        public ForEachAction(
+        internal ForEachAction(
             JToken items,
             IWorkflowAction actionsRoot)
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="flowKind">The flow kind.</param>
         public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
-            var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName);
+            var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName, flowKind);
 
             return new FlowTemplateAction
             {
@@ -43,16 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Foreach = this.items,
                 Actions = nestedActions,
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public ForEachAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

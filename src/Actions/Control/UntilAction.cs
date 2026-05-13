@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="expression">The converted boolean expression string for the exit condition.</param>
         /// <param name="actionsRoot">The root node of the action graph to repeat.</param>
-        public UntilAction(
+        internal UntilAction(
             string expression,
             IWorkflowAction actionsRoot)
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="flowKind">The flow kind.</param>
         public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
         {
-            var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName);
+            var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName, flowKind);
 
             return new FlowTemplateAction
             {
@@ -44,16 +44,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Actions = nestedActions,
                 Limit = JToken.FromObject(new { count = 60, timeout = "PT1H" }),
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public UntilAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }

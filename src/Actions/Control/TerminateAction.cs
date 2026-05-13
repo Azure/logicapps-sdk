@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="status">The termination status string (e.g., Failed, Succeeded, Cancelled).</param>
         /// <param name="message">The termination message (optional).</param>
-        public TerminateAction(string status, string message = null)
+        internal TerminateAction(string status, string message = null)
         {
             this.status = status;
             this.message = message;
@@ -48,16 +48,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Type = FlowTemplateOperationType.Terminate,
                 Inputs = input,
             };
-        }
-
-        /// <summary>
-        /// Sets the action name.
-        /// </summary>
-        /// <param name="name">The action name.</param>
-        public TerminateAction WithName(string name)
-        {
-            this.Name = name;
-            return this;
         }
     }
 }
