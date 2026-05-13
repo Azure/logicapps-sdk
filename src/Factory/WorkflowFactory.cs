@@ -128,7 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger();
+            var trigger = chain.GetRootOperation() as IWorkflowTrigger
+                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
 
             return WorkflowFactory.CreateStatefulWorkflow(flowName, trigger);
         }
@@ -188,7 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger();
+            var trigger = chain.GetRootOperation() as IWorkflowTrigger
+                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
 
             return WorkflowFactory.CreateStatelessWorkflow(flowName, trigger);
         }
@@ -243,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger() as ConversationalFlowTrigger
+            var trigger = chain.GetRootOperation() as ConversationalFlowTrigger
                 ?? throw new InvalidOperationException("WorkflowChain must start with a ConversationalFlowTrigger to create an agent workflow.");
             
             return WorkflowFactory.CreateAgentWorkflow(flowName, trigger);

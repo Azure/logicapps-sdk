@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             var toolContext = new AgentToolContext<T>(parameters);
             var toolChain = tool.Invoke(toolContext);
-            var rootAction = toolChain.GetRootAction();
+            var rootAction = toolChain.GetRootOperation() as IWorkflowAction ?? throw new InvalidOperationException("Tool chain root must be an action.");
 
             var toolName = "Tool" + (this.Tools.Count + 1);
             var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
