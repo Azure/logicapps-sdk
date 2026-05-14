@@ -55,10 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                 foreach (var child in action.Children)
                 {
-                    if (!scopeActionsMap.ContainsKey(child.Name))
-                    {
-                        queue.Enqueue(child);
-                    }
+                    queue.Enqueue(child);
                 }
             }
 
@@ -72,8 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     throw new InvalidOperationException($"Root action '{action.Name}' of a scope cannot have RunAfter dependencies.");
                 }
 
-                var outOfScopeDependencies = action.RunAfterConfig
-                    .Select(kvp => kvp.Key)
+                var outOfScopeDependencies = action.RunAfterConfig.Keys
                     .Where(dep => !scopeActionsMap.ContainsKey(dep));
                 
                 if (outOfScopeDependencies.Any())

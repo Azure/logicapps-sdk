@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 new NullableNodeWorkflow(),
                 new ComplexBranchWorkflow(),
                 new ParallelBranchWorkflow(),
+                new ControlWorkflows(),
             };
 
             var allWorkflows = providers.SelectMany(p => p.GetWorkflows());
