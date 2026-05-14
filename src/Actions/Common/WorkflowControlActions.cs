@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var itemsExpression = ExpressionConverter.ConvertO(items);
-            var currentItemPlaceholder = new JValue("@item()");
+            var currentItemPlaceholder = new ForEachItemToken();
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
             return new ForEachAction(itemsExpression, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }

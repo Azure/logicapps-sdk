@@ -172,6 +172,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (litNode != null && IsClosureType(obj.Type))
             {
                 var value = this.GetMemberValue(e.Member, litNode.Value);
+                if (value is ForEachItemToken)
+                {
+                    return new FunctionCallNode
+                    {
+                        FunctionName = "item",
+                        Type = typeof(Newtonsoft.Json.Linq.JToken),
+                    };
+                }
                 return new LiteralNode
                 {
                     Type = value.GetType(),
