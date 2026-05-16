@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(actions), "Scope action requires non-null actions.");
             }
             var resolvedActions = actions.Invoke();
-            return new ScopeAction(resolvedActions.GetRootOperation() as IWorkflowAction);
+            return new ScopeAction(resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
 
         /// <summary>
