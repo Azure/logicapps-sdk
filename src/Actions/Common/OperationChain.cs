@@ -204,20 +204,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new OperationChain(this.Start, allEnds.ToArray());
         }
 
-        /// <summary>
-        /// Gets the root trigger of this operation chain (workflow).
-        /// </summary>
-        internal IWorkflowTrigger GetRootTrigger()
+        /// <inheritdoc/>
+        public IWorkflowOperation GetRootOperation()
         {
-            return this.Start as IWorkflowTrigger ?? throw new InvalidOperationException("Invalid GetRootTrigger usage: operation chain must start with a trigger.");
-        }
-
-        /// <summary>
-        /// Gets the root action of this operation chain.
-        /// </summary>
-        internal IWorkflowAction GetRootAction()
-        {
-            return this.Start as IWorkflowAction ?? throw new InvalidOperationException("Invalid GetRootAction usage: operation chain must start with an action.");
+            return this.Start;
         }
     }
 }

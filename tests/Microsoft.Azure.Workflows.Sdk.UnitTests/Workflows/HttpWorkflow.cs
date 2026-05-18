@@ -9,15 +9,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// HTTP request/response test workflow.
     /// </summary>
-    public static class HttpWorkflow
+    public class HttpWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the HTTP request/response workflow.
+        /// Gets the HTTP request/response workflow definitions.
         /// </summary>
-        public static void AddHttpRequestResponseWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            WorkflowFactory.CreateStatefulWorkflow("TestHttpRequestResponse", trigger);
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Received request: {trigger.TriggerOutput.Body}").WithName("ComposeInput");
 
@@ -31,6 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Then(compose)
                 .Then(sharepoint)
                 .Then(response);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("TestHttpRequestResponse", trigger) };
         }
     }
 }

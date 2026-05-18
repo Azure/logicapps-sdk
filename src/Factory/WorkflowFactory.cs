@@ -52,21 +52,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public static class WorkflowFactory
     {
         /// <summary>
-        /// The stored workflow trigger nodes indexed by flow name.
-        /// </summary>
-        private static readonly Dictionary<string, (IWorkflowTrigger Trigger, FlowKind Kind)> Workflows = new Dictionary<string, (IWorkflowTrigger, FlowKind)>();
-
-        /// <summary>
-        /// Job session service client for gRPC communication.
-        /// </summary>
-        private static IJobSessionService.IJobSessionServiceClient jobSessionServiceClient;
-
-        /// <summary>
-        /// The logger service.
-        /// </summary>
-        private static WorkflowLoggerService WorkflowLoggerService;
-
-        /// <summary>
         /// Creates and registers a new stateful workflow with the specified name and trigger.
         /// Stateful workflows persist their run state and history, making them suitable for
         /// long-running, durable workflows that require reliability and replay capabilities.
@@ -78,9 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trigger">
         /// The root trigger node of the workflow graph. Chain actions onto this trigger using
         /// <c>.Then()</c> before or after calling this method.
-        /// Must not be a <see cref="ConversationalFlowTrigger"/>.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the stateful workflow.</returns>
         /// <exception cref="ArgumentException"><paramref name="flowName"/> is <see langword="null"/> or empty.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="trigger"/> is <see langword="null"/>.</exception>
         /// <exception cref="InvalidOperationException"><paramref name="trigger"/> is a <see cref="ConversationalFlowTrigger"/>.</exception>
@@ -90,14 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// var action = WorkflowActions.BuiltIn.Compose(inputs: () => "Hello").WithName("Greet");
         /// trigger.Then(action);
         ///
-        /// WorkflowFactory.CreateStatefulWorkflow("MyStatefulWorkflow", trigger);
+        /// var flowDefinition = WorkflowFactory.CreateStatefulWorkflow("MyStatefulWorkflow", trigger);
         /// </code>
         /// </example>
-        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
+        public static FlowDefinition CreateStatefulWorkflow(string flowName, IWorkflowTrigger trigger)
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
@@ -105,11 +89,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             if (trigger is ConversationalFlowTrigger)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new InvalidOperationException("A conversational agent trigger cannot be used in a stateful workflow. Use CreateAgentWorkflow instead.");
             }
 
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateful);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateful);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
@@ -123,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// The workflow chain built using the fluent chaining API. Its <see cref="OperationChain.Start"/>
         /// must be an <see cref="IWorkflowTrigger"/>.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance extracted from the chain.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the stateful workflow.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="chain"/> is <see langword="null"/>.</exception>
         /// <exception cref="InvalidOperationException">The chain does not start with a trigger.</exception>
         /// <example>
@@ -134,16 +119,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         ///     .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Step 1").WithName("Step1"))
         ///     .Then(WorkflowActions.BuiltIn.Compose(inputs: () => "Step 2").WithName("Step2"));
         ///
-        /// WorkflowFactory.CreateStatefulWorkflow("ChainedWorkflow", chain);
+        /// var flowDefinition = WorkflowFactory.CreateStatefulWorkflow("ChainedWorkflow", chain);
         /// </code>
         /// </example>
-        public static IWorkflowTrigger CreateStatefulWorkflow(string flowName, OperationChain chain)
+        public static FlowDefinition CreateStatefulWorkflow(string flowName, OperationChain chain)
         {
             if (chain == null)
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger();
+            var trigger = chain.GetRootOperation() as IWorkflowTrigger
+                ?? throw new InvalidOperationException("The operation chain must start with a trigger to create a workflow. Ensure the first operation in the chain is a trigger, not an action.");
 
             return WorkflowFactory.CreateStatefulWorkflow(flowName, trigger);
         }
@@ -158,17 +144,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </param>
         /// <param name="trigger">
         /// The root trigger node of the workflow graph.
-        /// Must not be a <see cref="ConversationalFlowTrigger"/>.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the stateless workflow.</returns>
         /// <exception cref="ArgumentException"><paramref name="flowName"/> is <see langword="null"/> or empty.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="trigger"/> is <see langword="null"/>.</exception>
         /// <exception cref="InvalidOperationException"><paramref name="trigger"/> is a <see cref="ConversationalFlowTrigger"/>.</exception>
-        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
+        public static FlowDefinition CreateStatelessWorkflow(string flowName, IWorkflowTrigger trigger)
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
@@ -176,11 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             if (trigger is ConversationalFlowTrigger)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new InvalidOperationException("A conversational agent trigger cannot be used in a stateless workflow. Use CreateAgentWorkflow instead.");
             }
 
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Stateless);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateless);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
@@ -194,16 +180,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// The workflow chain built using the fluent chaining API. Its <see cref="OperationChain.Start"/>
         /// must be an <see cref="IWorkflowTrigger"/>.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance extracted from the chain.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the stateless workflow.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="chain"/> is <see langword="null"/>.</exception>
         /// <exception cref="InvalidOperationException">The chain does not start with a trigger.</exception>
-        public static IWorkflowTrigger CreateStatelessWorkflow(string flowName, OperationChain chain)
+        public static FlowDefinition CreateStatelessWorkflow(string flowName, OperationChain chain)
         {
             if (chain == null)
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger();
+            var trigger = chain.GetRootOperation() as IWorkflowTrigger
+                ?? throw new InvalidOperationException("The operation chain must start with a trigger to create a workflow. Ensure the first operation in the chain is a trigger, not an action.");
 
             return WorkflowFactory.CreateStatelessWorkflow(flowName, trigger);
         }
@@ -220,21 +207,22 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// A <see cref="ConversationalFlowTrigger"/> that initiates the agent workflow when a new
         /// chat session starts.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the agent workflow.</returns>
         /// <exception cref="ArgumentException"><paramref name="flowName"/> is <see langword="null"/> or empty.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="trigger"/> is <see langword="null"/>.</exception>
-        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
+        public static FlowDefinition CreateAgentWorkflow(string flowName, ConversationalFlowTrigger trigger)
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
                 throw new ArgumentNullException(nameof(trigger));
             }
-            WorkflowFactory.Workflows[flowName] = (trigger, FlowKind.Agent);
-            return trigger;
+            var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Agent);
+            definition.Name = flowName;
+            return definition;
         }
 
         /// <summary>
@@ -248,16 +236,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// The workflow chain built using the fluent chaining API. Its start must be a
         /// <see cref="ConversationalFlowTrigger"/>.
         /// </param>
-        /// <returns>The registered <see cref="IWorkflowTrigger"/> instance extracted from the chain.</returns>
+        /// <returns>The <see cref="FlowDefinition"/> representing the agent workflow.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="chain"/> is <see langword="null"/>.</exception>
         /// <exception cref="InvalidOperationException">The chain does not start with a trigger.</exception>
-        public static IWorkflowTrigger CreateAgentWorkflow(string flowName, OperationChain chain)
+        public static FlowDefinition CreateAgentWorkflow(string flowName, OperationChain chain)
         {
             if (chain == null)
             {
                 throw new ArgumentNullException(nameof(chain));
             }
-            var trigger = chain.GetRootTrigger() as ConversationalFlowTrigger;
+            var trigger = chain.GetRootOperation() as ConversationalFlowTrigger
+                ?? throw new InvalidOperationException("An agent workflow must start with a conversational agent trigger. For workflows that use other trigger types, use CreateStatefulWorkflow or CreateStatelessWorkflow.");
+            
             return WorkflowFactory.CreateAgentWorkflow(flowName, trigger);
         }
 
@@ -272,67 +262,16 @@ namespace Microsoft.Azure.Workflows.Sdk
             var grpcEndpoint = WorkflowFactory.GetGrpcUrl();
 
             var jobSessionServiceClient = new IJobSessionService.IJobSessionServiceClient(GrpcChannel.ForAddress(grpcEndpoint, channelOptions: new GrpcChannelOptions() { MaxReceiveMessageSize = int.MaxValue }));
-            WorkflowFactory.jobSessionServiceClient = jobSessionServiceClient;
 
-            services.AddSingleton<IJobSessionService.IJobSessionServiceClient>(serviceProvider =>
-            {
-                return jobSessionServiceClient;
-            });
+            services.AddSingleton<IJobSessionService.IJobSessionServiceClient>(jobSessionServiceClient);
 
             services.AddSingleton<WorkflowLoggerService>(serviceProvider =>
             {
-                var workflowService = new WorkflowLoggerService(serviceProvider.GetRequiredService<ILoggerFactory>());
-                WorkflowFactory.WorkflowLoggerService = workflowService;
-
-                return workflowService;
+                return new WorkflowLoggerService(serviceProvider.GetRequiredService<ILoggerFactory>());
             });
 
             services.AddSingleton<IFunctionMetadataProvider, DummyFunctionProvider>();
             services.AddHostedService<WorkflowInitializationService>();
-        }
-
-        /// <summary>
-        /// Serializes all registered workflow graphs into workflow definition artifacts and deploys them
-        /// to the Logic Apps extension service via gRPC. This method is called by the hosting infrastructure
-        /// during workflow initialization and is not typically invoked by application code directly.
-        /// </summary>
-        /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
-        internal static void CreateWorkflows(CancellationToken cancellationToken)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var workflowArtifacts = WorkflowFactory.GetCodefulWorkflowArtifacts();
-            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Creating workflows from worker '{workflowArtifacts.ToJson()}'");
-
-            if (workflowArtifacts.Flows?.Count != 0)
-            {
-                var response = WorkflowFactory.jobSessionServiceClient.CreateWorkflows(new WorkflowsRequest { Workflows = workflowArtifacts.ToJson() });
-
-                WorkflowFactory.WorkflowLoggerService?.LogDebug($"Response got from calling the extension service '{response}'");
-            }
-        }
-
-        /// <summary>
-        /// Traverses all registered workflow graphs and produces the serializable
-        /// <see cref="CodefulWorkflowsArtifacts"/> representation. This method is used by the hosting
-        /// infrastructure and is not typically invoked by application code directly.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="CodefulWorkflowsArtifacts"/> containing the <see cref="FlowDefinition"/> for
-        /// each registered workflow, keyed by workflow name.
-        /// </returns>
-        public static CodefulWorkflowsArtifacts GetCodefulWorkflowArtifacts()
-        {
-            WorkflowFactory.WorkflowLoggerService?.LogDebug($"Retrieving codeful workflow artifacts '{WorkflowFactory.Workflows?.Count}'");
-
-            var codefulArtifacts = new CodefulWorkflowsArtifacts
-            {
-                Flows = WorkflowFactory.Workflows.ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value.Trigger.GetFlowDefinition(flowName: kvp.Key, flowKind: kvp.Value.Kind)),
-            };
-
-            return codefulArtifacts;
         }
 
         #region Private Methods.

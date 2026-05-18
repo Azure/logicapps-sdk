@@ -4,7 +4,6 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <LogicAppFolderToPublish>$(MSBuildProjectDirectory)\lib\codeful</LogicAppFolderToPublish>
   </PropertyGroup>
   <ItemGroup>

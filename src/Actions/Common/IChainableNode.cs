@@ -143,5 +143,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </code>
         /// </example>
         OperationChain Then(Func<IChainableNode, OperationChain[]> branches);
+
+        /// <summary>
+        /// Gets the root operation (trigger or actions) of this chain.
+        /// </summary>
+        IWorkflowOperation GetRootOperation();
     }
 }

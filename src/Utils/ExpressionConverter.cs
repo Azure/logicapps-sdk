@@ -152,14 +152,16 @@
         }
 
         /// <summary>
-        /// Converts a boolean expression to its rendered form.
+        /// Converts a boolean expression to its rendered form using the LogicConverter.
+        /// Supports complex expressions including member access, method calls, and comparisons.
         /// </summary>
         /// <param name="e">The expression to convert.</param>
         public static string Convert(Expression<Func<bool>> e)
         {
-            var visitor = new Visitor();
-            visitor.Visit(e.Body);
-            return visitor.Result;
+            if (e == null) return string.Empty;
+            var converter = new LogicConverter();
+            var expr = e.Body.Visit(converter, null);
+            return expr.Render();
         }
 
         /// <summary>
@@ -187,7 +189,7 @@
                 FunctionName = "base64",
                 Arguments = [node]
             };
-            return expr.Render();;
+            return expr.Render();
         }
 
         /// <summary>

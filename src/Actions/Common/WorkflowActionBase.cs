@@ -81,11 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             foreach (var ra in runAfter.CoalesceEnumerable())
             {
-                if (ra.Action == null || string.IsNullOrEmpty(ra.Action.Name))
+                if (string.IsNullOrEmpty(ra.ActionName))
                 {
-                    throw new InvalidOperationException($"Invalid action '{ra.Action?.Name}' in RunAfter configuration.");
+                    throw new InvalidOperationException($"A run-after dependency references an action with a null or empty name.");
                 }
-                action.RunAfterConfig[ra.Action.Name] = ra.Status ?? new[] { FlowStatus.Succeeded };
+                action.RunAfterConfig[ra.ActionName] = ra.Status ?? new[] { FlowStatus.Succeeded };
             }
             this.Children.Add(action);
 
@@ -132,6 +132,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             return new OperationChain(this, allEnds.ToArray());
+        }
+
+        /// <inheritdoc/>
+        public IWorkflowOperation GetRootOperation()
+        {
+            return this;
         }
     }
 }

@@ -26,9 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <summary>
-        /// Gets the action definition for this nested workflow action.
+        /// Gets the action definition for this compose action.
         /// </summary>
-        /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
         public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)

@@ -9,18 +9,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Sample workflow that triggers when a message is received from Azure Service Bus.
     /// </summary>
-    public static class ServiceBusWorkflow
+    public class ServiceBusWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Creates a workflow that triggers on a new message from a Service Bus queue.
+        /// Gets the Service Bus queue trigger workflow definitions.
         /// </summary>
-        public static void AddServiceBusQueueWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.Managed.Servicebus("servicebus").GetMessageFromQueue(
                 queueName: () => "my-queue",
                 triggerName: "When_a_message_is_received_in_a_queue");
-
-            WorkflowFactory.CreateStatefulWorkflow("ServiceBusQueueWorkflow", trigger);
 
             var processMessage = WorkflowActions.BuiltIn.Compose(() => new
             {
@@ -33,6 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             }).WithName("Process_Message");
 
             trigger.Then(processMessage);
+
+            return new[] { WorkflowFactory.CreateStatefulWorkflow("ServiceBusQueueWorkflow", trigger) };
         }
     }
 }

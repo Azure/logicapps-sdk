@@ -56,6 +56,24 @@ namespace Microsoft.Azure.Workflows.Sdk
         public Dictionary<string, FlowStatus[]> RunAfter { get; set; }
 
         /// <summary>
+        /// Gets or sets the else branch (used by Condition/If actions for the false branch).
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public FlowTemplateActionBranch Else { get; set; }
+
+        /// <summary>
+        /// Gets or sets the switch cases (used by Switch actions).
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public Dictionary<string, FlowTemplateActionCaseBranch> Cases { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default branch.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public FlowTemplateActionBranch Default { get; set; }
+
+        /// <summary>
         /// Gets or sets the tools.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

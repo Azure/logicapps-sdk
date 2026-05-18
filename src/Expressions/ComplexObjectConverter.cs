@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(ConstantExpression e, object p)
         {
+            if (e.Value == null)
+            {
+                return JValue.CreateNull();
+            }
             if (e.Type == typeof(string))
             {
                 return new JValue((string)e.Value);
@@ -79,6 +83,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (e.Type == typeof(bool))
             {
                 return new JValue((bool)e.Value);
+            }
+            if (e.Type == typeof(int))
+            {
+                return new JValue((int)e.Value);
+            }
+            if (e.Type == typeof(long))
+            {
+                return new JValue((long)e.Value);
+            }
+            if (e.Type == typeof(double))
+            {
+                return new JValue((double)e.Value);
+            }
+            if (e.Type == typeof(float))
+            {
+                return new JValue((float)e.Value);
+            }
+            if (e.Type == typeof(decimal))
+            {
+                return new JValue((decimal)e.Value);
             }
             if (e.Type.IsEnum)
             {

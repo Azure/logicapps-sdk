@@ -17,25 +17,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public static void Main()
         {
-            // Configure the worker with workflow services
+            // Configure the worker with workflow services and providers
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults()
-                .ConfigureServices(services => WorkflowFactory.ConfigureServices(services))
+                .ConfigureServices(services =>
+                {
+                    WorkflowFactory.ConfigureServices(services);
+                    services.AddWorkflowProvider<HttpWorkflow>();
+                    services.AddWorkflowProvider<CustomCodeWorkflow>();
+                    services.AddWorkflowProvider<NestedWorkflow>();
+                    services.AddWorkflowProvider<RecurrenceWorkflow>();
+                    services.AddWorkflowProvider<WeatherWorkflow>();
+                    services.AddWorkflowProvider<ServiceNowWorkflow>();
+                    services.AddWorkflowProvider<NullableNodeWorkflow>();
+                })
                 .Build();
-
-            HttpWorkflow.AddHttpRequestResponseWorkflow();
-            CustomCodeWorkflow.AddStatefulWorkflowWithCustomCode();
-
-            NestedWorkflow.AddNestedWorkflow();
-
-            RecurrenceWorkflow.AddRecurrenceWorkflow();
-            //EmailWorkflow.AddEmailWorkflow();
-
-            WeatherWorkflow.AddWeatherWorkflow();
-
-            SerivceNowWorkflow.AddWorkflow();
-
-            NullableNodeWorkflow.AddNullableNodeWorkflow();
 
             host.Run();
         }

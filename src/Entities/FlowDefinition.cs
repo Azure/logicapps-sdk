@@ -16,6 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class FlowDefinition
     {
         /// <summary>
+        /// Gets or sets the workflow name used as the registration key.
+        /// This property is not serialized to JSON.
+        /// </summary>
+        [JsonIgnore]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the workflow kind, which determines the runtime behavior.
         /// <see cref="FlowKind.Stateful"/> workflows persist run state and history;
         /// <see cref="FlowKind.Stateless"/> workflows do not.

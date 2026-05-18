@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Recruitment workflow class.
     /// </summary>
-    public static class RecruitmentWorkflow
+    public class RecruitmentWorkflow : IWorkflowProvider
     {
         /// <summary>
-        /// Adds the recruitment workflow.
+        /// Gets the recruitment workflow definitions.
         /// </summary>
-        public static void AddRecruitmentWorkflow()
+        public FlowDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateConversationalAgentTrigger();
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             trigger.Then(agent);
 
-            WorkflowFactory.CreateAgentWorkflow("RecruitmentWorkflow", trigger);
+            return new[] { WorkflowFactory.CreateAgentWorkflow("RecruitmentWorkflow", trigger) };
         }
     }
 

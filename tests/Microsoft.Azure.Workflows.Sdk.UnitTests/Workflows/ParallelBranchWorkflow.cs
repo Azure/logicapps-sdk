@@ -9,13 +9,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     /// <summary>
     /// Test workflows demonstrating parallel branching.
     /// </summary>
-    public static class ParallelBranchWorkflow
+    public class ParallelBranchWorkflow : IWorkflowProvider
     {
+        public FlowDefinition[] GetWorkflows()
+        {
+            return new[]
+            {
+                this.GetParallelBranchWorkflow(),
+                this.GetParallelBranchThenMergeWorkflow(),
+            };
+        }
+
         /// <summary>
-        /// Adds a workflow that splits into two branches based on run-after status,
+        /// Gets a workflow that splits into two branches based on run-after status,
         /// without merging them back (fan-out without fan-in).
         /// </summary>
-        public static void AddParallelBranchWorkflow()
+        public FlowDefinition GetParallelBranchWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -29,14 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     parent.Then(abandon, runAfter: new[] { FlowStatus.Failed }),
                 });
 
-            WorkflowFactory.CreateStatefulWorkflow("parallelBranchWorkflow", workflow);
+            return WorkflowFactory.CreateStatefulWorkflow("parallelBranchWorkflow", workflow);
         }
 
         /// <summary>
-        /// Adds a workflow that splits into multiple branches and then merges them
+        /// Gets a workflow that splits into multiple branches and then merges them
         /// back with a subsequent Then call (fan-out followed by fan-in).
         /// </summary>
-        public static void AddParallelBranchThenMergeWorkflow()
+        public FlowDefinition GetParallelBranchThenMergeWorkflow()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
 
@@ -56,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 })
                 .Then(merged);
 
-            WorkflowFactory.CreateStatefulWorkflow("parallelBranchThenMergeWorkflow", workflow);
+            return WorkflowFactory.CreateStatefulWorkflow("parallelBranchThenMergeWorkflow", workflow);
         }
     }
 }

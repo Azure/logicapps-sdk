@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json.Linq;
+
     /// <summary>
     /// Represents an action step within a workflow. Actions are the individual units of work
     /// that execute after a trigger fires or after preceding actions complete. Each action
@@ -102,5 +104,21 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// to build workflow expressions that reference this action's output value at runtime.
         /// </summary>
         T Output { get; }
+    }
+
+    /// <summary>
+    /// Extends IWorkflowAction to support variable actions.
+    /// </summary>
+    public interface IVariableWorkflowAction : IWorkflowAction
+    {
+        /// <summary>
+        /// Gets the variable value.
+        /// </summary>
+        JToken Value { get; }
+
+        /// <summary>
+        /// Gets the name of the variable.
+        /// </summary>
+        string VariableName { get; }
     }
 }
