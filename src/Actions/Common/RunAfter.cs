@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentException("The chain must have only one end action to specify a run after condition.", nameof(chain));
             }
 
-            var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an IWorkflowAction.", nameof(chain));
+            var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an action, not a trigger.", nameof(chain));
             this.ActionName = action.Name;
             this.Status = new[] { status };
         }
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentException("The chain must have only one end action to specify a run after condition.", nameof(chain));
             }
 
-            var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an IWorkflowAction.", nameof(chain));
+            var action = chain.Ends.First() as IWorkflowAction ?? throw new ArgumentException("The end of the chain must be an action, not a trigger.", nameof(chain));
             this.ActionName = action.Name;
             this.Status = statuses ?? new[] { FlowStatus.Succeeded };
         }

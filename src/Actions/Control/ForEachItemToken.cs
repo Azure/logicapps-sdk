@@ -8,16 +8,14 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     /// <summary>
     /// A marker token representing the current item in a ForEach loop.
-    /// The expression converter recognizes this type and emits a <c>item()</c>
-    /// function call instead of treating it as a string literal.
+    /// The expression converter recognizes this type and emits a <c>item()</c> function call.
     /// </summary>
     internal class ForEachItemToken : JValue
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ForEachItemToken"/> class.
         /// </summary>
-        internal ForEachItemToken()
-            : base((object)null)
+        internal ForEachItemToken() : base((object)null)
         {
         }
     }

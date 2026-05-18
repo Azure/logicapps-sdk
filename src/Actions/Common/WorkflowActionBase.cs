@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 if (string.IsNullOrEmpty(ra.ActionName))
                 {
-                    throw new InvalidOperationException($"Invalid action '{ra.ActionName}' in RunAfter configuration.");
+                    throw new InvalidOperationException($"A run-after dependency references an action with a null or empty name.");
                 }
                 action.RunAfterConfig[ra.ActionName] = ra.Status ?? new[] { FlowStatus.Succeeded };
             }

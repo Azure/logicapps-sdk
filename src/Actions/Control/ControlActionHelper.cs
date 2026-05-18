@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             // BFS to discover all action nodes reachable from the root.
-            var scopeActions = new List<IWorkflowAction>();
-            var scopeActionsMap = new Dictionary<string, IWorkflowAction>();
+            var collectedActions = new List<IWorkflowAction>();
+            var collectedActionsMap = new Dictionary<string, IWorkflowAction>();
             var queue = new Queue<IWorkflowAction>();
 
             queue.Enqueue(root);
@@ -40,18 +40,18 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 var action = queue.Dequeue();
 
-                if (scopeActionsMap.TryGetValue(action.Name, out var existing))
+                if (collectedActionsMap.TryGetValue(action.Name, out var existing))
                 {
                     if (!object.ReferenceEquals(existing, action))
                     {
-                        throw new InvalidOperationException($"Duplicate action name '{action.Name}' detected in control action scope.");
+                        throw new InvalidOperationException($"Duplicate action name '{action.Name}' detected. Action names must be unique within each scope.");
                     }
 
                     continue;
                 }
 
-                scopeActionsMap[action.Name] = action;
-                scopeActions.Add(action);
+                collectedActionsMap[action.Name] = action;
+                collectedActions.Add(action);
 
                 foreach (var child in action.Children)
                 {
@@ -61,21 +61,21 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             // Validate RunAfterConfig scope isolation and build action definitions.
             var actions = new Dictionary<string, FlowTemplateAction>();
-            foreach (var action in scopeActions)
+            foreach (var action in collectedActions)
             {
                 var isRoot = object.ReferenceEquals(action, root);
                 if (isRoot && action.RunAfterConfig.Count > 0)
                 {
-                    throw new InvalidOperationException($"Root action '{action.Name}' of a scope cannot have RunAfter dependencies.");
+                    throw new InvalidOperationException($"The first action '{action.Name}' inside a scope cannot have run-after dependencies on other actions.");
                 }
 
                 var outOfScopeDependencies = action.RunAfterConfig.Keys
-                    .Where(dep => !scopeActionsMap.ContainsKey(dep));
+                    .Where(dep => !collectedActionsMap.ContainsKey(dep));
                 
                 if (outOfScopeDependencies.Any())
                 {
                     var deps = string.Join(", ", outOfScopeDependencies);
-                    throw new InvalidOperationException($"Action '{action.Name}' has RunAfter dependencies on actions outside the current scope: {deps}");
+                    throw new InvalidOperationException($"Action '{action.Name}' depends on actions outside the current scope: {deps}. All run-after dependencies must reference actions within the same scope.");
                 }
 
                 var actionDefinition = action.GetActionDefinition(flowName, flowKind);

@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             if (trigger is ConversationalFlowTrigger)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateful workflow.");
+                throw new InvalidOperationException("A conversational agent trigger cannot be used in a stateful workflow. Use CreateAgentWorkflow instead.");
             }
 
             var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateful);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(chain));
             }
             var trigger = chain.GetRootOperation() as IWorkflowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+                ?? throw new InvalidOperationException("The operation chain must start with a trigger to create a workflow. Ensure the first operation in the chain is a trigger, not an action.");
 
             return WorkflowFactory.CreateStatefulWorkflow(flowName, trigger);
         }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
             if (trigger is ConversationalFlowTrigger)
             {
-                throw new InvalidOperationException("ConversationalFlowTrigger cannot be used in a stateless workflow.");
+                throw new InvalidOperationException("A conversational agent trigger cannot be used in a stateless workflow. Use CreateAgentWorkflow instead.");
             }
 
             var definition = trigger.GetFlowDefinition(flowName: flowName, flowKind: FlowKind.Stateless);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(chain));
             }
             var trigger = chain.GetRootOperation() as IWorkflowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a trigger to create a workflow.");
+                ?? throw new InvalidOperationException("The operation chain must start with a trigger to create a workflow. Ensure the first operation in the chain is a trigger, not an action.");
 
             return WorkflowFactory.CreateStatelessWorkflow(flowName, trigger);
         }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (string.IsNullOrEmpty(flowName))
             {
-                throw new ArgumentException("Flow name must be provided.", nameof(flowName));
+                throw new ArgumentException("Workflow name must be provided.", nameof(flowName));
             }
             if (trigger == null)
             {
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(chain));
             }
             var trigger = chain.GetRootOperation() as ConversationalFlowTrigger
-                ?? throw new InvalidOperationException("WorkflowChain must start with a ConversationalFlowTrigger to create an agent workflow.");
+                ?? throw new InvalidOperationException("An agent workflow must start with a conversational agent trigger. For workflows that use other trigger types, use CreateStatefulWorkflow or CreateStatelessWorkflow.");
             
             return WorkflowFactory.CreateAgentWorkflow(flowName, trigger);
         }

@@ -82,10 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (tool == null)
             {
-                throw new ArgumentNullException(nameof(tool));
+                throw new ArgumentNullException(nameof(tool), "The tool definition callback cannot be null.");
             }
             var toolContext = new AgentToolContext<T>(parameters);
-            var rootAction = tool.Invoke(toolContext);
+            var rootAction = tool.Invoke(toolContext)
+                ?? throw new InvalidOperationException("The tool definition callback must return an action.");
 
             var toolName = "Tool" + (this.Tools.Count + 1);
             var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
@@ -104,11 +105,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (tool == null)
             {
-                throw new ArgumentNullException(nameof(tool));
+                throw new ArgumentNullException(nameof(tool), "The tool definition callback cannot be null.");
             }
             var toolContext = new AgentToolContext<T>(parameters);
-            var toolChain = tool.Invoke(toolContext);
-            var rootAction = toolChain.GetRootOperation() as IWorkflowAction ?? throw new InvalidOperationException("Tool chain root must be an action.");
+            var toolChain = tool.Invoke(toolContext)
+                ?? throw new InvalidOperationException("The tool definition callback must return an operation chain.");
+            var rootAction = toolChain.GetRootOperation() as IWorkflowAction ?? throw new InvalidOperationException("The first operation in a tool definition must be an action, not a trigger.");
 
             var toolName = "Tool" + (this.Tools.Count + 1);
             var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
@@ -171,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     if (!object.ReferenceEquals(visited[node.Name], node))
                     {
-                        throw new InvalidOperationException($"Duplicate action name detected: {node.Name}. Action names must be unique within a workflow.");
+                        throw new InvalidOperationException($"Duplicate action name '{node.Name}' detected. Action names must be unique within a tool definition.");
                     }
                     continue;
                 }

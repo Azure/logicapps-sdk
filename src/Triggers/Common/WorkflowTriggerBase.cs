@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter)
         {
-            throw new InvalidOperationException("RunAfter configuration can't be specified on first action after a trigger.");
+            throw new InvalidOperationException("Run-after conditions cannot be specified on the first action after a trigger. The first action runs when the trigger fires.");
         }
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter)
         {
-            throw new InvalidOperationException("RunAfter configuration can't be specified on first action after a trigger.");
+            throw new InvalidOperationException("Run-after conditions cannot be specified on the first action after a trigger. The first action runs when the trigger fires.");
         }
 
         /// <inheritdoc/>
