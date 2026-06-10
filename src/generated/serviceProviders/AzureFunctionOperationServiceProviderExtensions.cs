@@ -14,29 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFunctionOperation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureFunctionOperation")]
         public IBodyWorkflowAction<JToken> AzureFunction(Expression<Func<AzureFunctionMethodType>> method, Expression<Func<object>> body = null, Expression<Func<object>> headers = null, Expression<Func<object>> queries = null)
         {
-            var parameters = new JObject();
-            parameters["method"] = ExpressionConverter.ConvertO(method);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
             if (body != null)
             {
-                parameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
             }
 
             if (headers != null)
             {
-                parameters["headers"] = ExpressionConverter.ConvertO(headers);
+                serviceProviderParameters["headers"] = ExpressionConverter.ConvertO(headers);
             }
 
             if (queries != null)
             {
-                parameters["queries"] = ExpressionConverter.ConvertO(queries);
+                serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/connectionProviders/azureFunctionOperation", operationId: "azureFunction", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

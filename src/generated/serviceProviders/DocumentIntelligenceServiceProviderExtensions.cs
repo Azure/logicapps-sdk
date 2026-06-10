@@ -14,19 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
         public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
         {
-            var parameters = new JObject();
-            parameters["modelId"] = ExpressionConverter.ConvertO(modelId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
             if (modelIdInputs != null)
             {
-                parameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<AnalyzeDocumentOutput>(input);
+            return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
         }
     }
 

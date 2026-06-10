@@ -14,151 +14,151 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["documents"] = ExpressionConverter.ConvertO(documents);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocuments", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["document"] = ExpressionConverter.ConvertO(document);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> VectorSearch(Expression<Func<string>> indexName, Expression<Func<VectorSearchSearchVectorType>> searchVector, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<VectorSearchSearchModeType>> searchMode = null, Expression<Func<string>> filter = null)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["searchVector"] = ExpressionConverter.ConvertO(searchVector);
-            parameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["searchVector"] = ExpressionConverter.ConvertO(searchVector);
+            serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
             if (search != null)
             {
-                parameters["search"] = ExpressionConverter.ConvertO(search);
+                serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
             }
 
             if (searchMode != null)
             {
-                parameters["searchMode"] = ExpressionConverter.ConvertO(searchMode);
+                serviceProviderParameters["searchMode"] = ExpressionConverter.ConvertO(searchMode);
             }
 
             if (filter != null)
             {
-                parameters["filter"] = ExpressionConverter.ConvertO(filter);
+                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "vectorSearch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> searchText, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<JToken[]>> vectorizedSearchFields = null, Expression<Func<JToken[]>> selectFields = null)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["searchText"] = ExpressionConverter.ConvertO(searchText);
-            parameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["searchText"] = ExpressionConverter.ConvertO(searchText);
+            serviceProviderParameters["kNearestNeighbors"] = ExpressionConverter.ConvertO(kNearestNeighbors);
             if (search != null)
             {
-                parameters["search"] = ExpressionConverter.ConvertO(search);
+                serviceProviderParameters["search"] = ExpressionConverter.ConvertO(search);
             }
 
             if (filter != null)
             {
-                parameters["filter"] = ExpressionConverter.ConvertO(filter);
+                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
             }
 
             if (vectorizedSearchFields != null)
             {
-                parameters["vectorizedSearchFields"] = ExpressionConverter.ConvertO(vectorizedSearchFields);
+                serviceProviderParameters["vectorizedSearchFields"] = ExpressionConverter.ConvertO(vectorizedSearchFields);
             }
 
             if (selectFields != null)
             {
-                parameters["selectFields"] = ExpressionConverter.ConvertO(selectFields);
+                serviceProviderParameters["selectFields"] = ExpressionConverter.ConvertO(selectFields);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "integratedVectorSearch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["document"] = ExpressionConverter.ConvertO(document);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["documents"] = ExpressionConverter.ConvertO(documents);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["documents"] = ExpressionConverter.ConvertO(documents);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocuments", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["document"] = ExpressionConverter.ConvertO(document);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["document"] = ExpressionConverter.ConvertO(document);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "mergeDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> KnowledgeAgentRetrieval(Expression<Func<string>> indexName, Expression<Func<string>> agentName, Expression<Func<KnowledgeAgentRetrievalAgentMessageContentTypeItem[]>> agentMessageContent)
         {
-            var parameters = new JObject();
-            parameters["indexName"] = ExpressionConverter.ConvertO(indexName);
-            parameters["agentName"] = ExpressionConverter.ConvertO(agentName);
-            parameters["agentMessageContent"] = ExpressionConverter.ConvertO(agentMessageContent);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(indexName);
+            serviceProviderParameters["agentName"] = ExpressionConverter.ConvertO(agentName);
+            serviceProviderParameters["agentMessageContent"] = ExpressionConverter.ConvertO(agentMessageContent);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "knowledgeAgentRetrieval", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(input);
+            return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(serviceProviderInput);
         }
     }
 

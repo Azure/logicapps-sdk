@@ -14,102 +14,102 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.XmlOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "xmlOperations")]
         public IBodyWorkflowAction<JToken> XmlTransform(Expression<Func<string>> content, Expression<Func<XmlTransformMapType>> map, Expression<Func<object>> xsltParameters = null, Expression<Func<object>> xmlExtensionObject = null, Expression<Func<string>> transformOptions = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (xsltParameters != null)
             {
-                parameters["xsltParameters"] = ExpressionConverter.ConvertO(xsltParameters);
+                serviceProviderParameters["xsltParameters"] = ExpressionConverter.ConvertO(xsltParameters);
             }
 
             if (xmlExtensionObject != null)
             {
-                parameters["xmlExtensionObject"] = ExpressionConverter.ConvertO(xmlExtensionObject);
+                serviceProviderParameters["xmlExtensionObject"] = ExpressionConverter.ConvertO(xmlExtensionObject);
             }
 
             if (transformOptions != null)
             {
-                parameters["transformOptions"] = ExpressionConverter.ConvertO(transformOptions);
+                serviceProviderParameters["transformOptions"] = ExpressionConverter.ConvertO(transformOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/xmlOperations", operationId: "xmlTransform", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "xmlOperations")]
         public IBodyWorkflowAction<JToken> XmlValidation(Expression<Func<string>> content, Expression<Func<XmlValidationSchemaType>> schema)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["schema"] = ExpressionConverter.ConvertO(schema);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/xmlOperations", operationId: "xmlValidation", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "xmlOperations")]
         public IBodyWorkflowAction<XmlComposeOutput> XmlCompose(Expression<Func<XmlComposeSchemaType>> schema, Expression<Func<object>> content, Expression<Func<string>> rootNodeQualifiedName = null, Expression<Func<string>> dateTimeFormat = null, Expression<Func<XmlComposeXmlWriterSettingsType>> xmlWriterSettings = null)
         {
-            var parameters = new JObject();
-            parameters["schema"] = ExpressionConverter.ConvertO(schema);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
             if (rootNodeQualifiedName != null)
             {
-                parameters["rootNodeQualifiedName"] = ExpressionConverter.ConvertO(rootNodeQualifiedName);
+                serviceProviderParameters["rootNodeQualifiedName"] = ExpressionConverter.ConvertO(rootNodeQualifiedName);
             }
 
             if (dateTimeFormat != null)
             {
-                parameters["dateTimeFormat"] = ExpressionConverter.ConvertO(dateTimeFormat);
+                serviceProviderParameters["dateTimeFormat"] = ExpressionConverter.ConvertO(dateTimeFormat);
             }
 
-            parameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
             if (xmlWriterSettings != null)
             {
-                parameters["xmlWriterSettings"] = ExpressionConverter.ConvertO(xmlWriterSettings);
+                serviceProviderParameters["xmlWriterSettings"] = ExpressionConverter.ConvertO(xmlWriterSettings);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/xmlOperations", operationId: "XmlCompose", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<XmlComposeOutput>(input);
+            return new ServiceProviderAction<XmlComposeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "xmlOperations")]
         public IBodyWorkflowAction<XmlParseOutput> XmlParse(Expression<Func<object>> content, Expression<Func<XmlParseSchemaType>> schema, Expression<Func<XmlParseXmlReaderSettingsType>> xmlReaderSettings = null, Expression<Func<XmlParseJsonWriterSettingsType>> jsonWriterSettings = null, Expression<Func<string>> rootNodeQualifiedName = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["schema"] = ExpressionConverter.ConvertO(schema);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
             if (xmlReaderSettings != null)
             {
-                parameters["xmlReaderSettings"] = ExpressionConverter.ConvertO(xmlReaderSettings);
+                serviceProviderParameters["xmlReaderSettings"] = ExpressionConverter.ConvertO(xmlReaderSettings);
             }
 
             if (jsonWriterSettings != null)
             {
-                parameters["jsonWriterSettings"] = ExpressionConverter.ConvertO(jsonWriterSettings);
+                serviceProviderParameters["jsonWriterSettings"] = ExpressionConverter.ConvertO(jsonWriterSettings);
             }
 
             if (rootNodeQualifiedName != null)
             {
-                parameters["rootNodeQualifiedName"] = ExpressionConverter.ConvertO(rootNodeQualifiedName);
+                serviceProviderParameters["rootNodeQualifiedName"] = ExpressionConverter.ConvertO(rootNodeQualifiedName);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/xmlOperations", operationId: "XmlParse", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<XmlParseOutput>(input);
+            return new ServiceProviderAction<XmlParseOutput>(serviceProviderInput);
         }
     }
 

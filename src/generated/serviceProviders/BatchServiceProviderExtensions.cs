@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Batch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "batch")]
         public IBodyWorkflowAction<SendToBatchOutput> SendToBatch(Expression<Func<string>> batchName, Expression<Func<object>> content, Expression<Func<SendToBatchHostType>> host, Expression<Func<string>> partitionName = null, Expression<Func<string>> messageId = null)
         {
-            var parameters = new JObject();
-            parameters["batchName"] = ExpressionConverter.ConvertO(batchName);
-            parameters["content"] = ExpressionConverter.ConvertO(content);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["batchName"] = ExpressionConverter.ConvertO(batchName);
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
             if (partitionName != null)
             {
-                parameters["partitionName"] = ExpressionConverter.ConvertO(partitionName);
+                serviceProviderParameters["partitionName"] = ExpressionConverter.ConvertO(partitionName);
             }
 
             if (messageId != null)
             {
-                parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
             }
 
-            parameters["host"] = ExpressionConverter.ConvertO(host);
-            var input = new ServiceProviderActionInput
+            serviceProviderParameters["host"] = ExpressionConverter.ConvertO(host);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/connectionProviders/batch", operationId: "sendToBatch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<SendToBatchOutput>(input);
+            return new ServiceProviderAction<SendToBatchOutput>(serviceProviderInput);
         }
     }
 
@@ -41,15 +41,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Batch
     {
         public IBodyWorkflowTrigger<BatchOutput> Batch(Expression<Func<string>> mode, Expression<Func<BatchConfigurationsType>> configurations, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["mode"] = ExpressionConverter.ConvertO(mode);
-            parameters["configurations"] = ExpressionConverter.ConvertO(configurations);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["mode"] = ExpressionConverter.ConvertO(mode);
+            serviceProviderParameters["configurations"] = ExpressionConverter.ConvertO(configurations);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/connectionProviders/batch", operationId: "batch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<BatchOutput>(input, triggerName);
+            return new ServiceProviderTrigger<BatchOutput>(serviceProviderInput, triggerName);
         }
     }
 

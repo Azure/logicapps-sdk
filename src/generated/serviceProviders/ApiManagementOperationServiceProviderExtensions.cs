@@ -14,19 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ApiManagementOperation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "apiManagementOperation")]
         public IOutputWorkflowAction<JToken> ApiManagement(Expression<Func<ApiManagementApiManagementType>> apiManagement, Expression<Func<object>> operationDetails = null)
         {
-            var parameters = new JObject();
-            parameters["apiManagement"] = ExpressionConverter.ConvertO(apiManagement);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["apiManagement"] = ExpressionConverter.ConvertO(apiManagement);
             if (operationDetails != null)
             {
-                parameters["operationDetails"] = ExpressionConverter.ConvertO(operationDetails);
+                serviceProviderParameters["operationDetails"] = ExpressionConverter.ConvertO(operationDetails);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/connectionProviders/apiManagementOperation", operationId: "apiManagement", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
     }
 

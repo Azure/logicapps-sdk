@@ -14,67 +14,67 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.RosettaNetOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rosettaNetOperations")]
         public IBodyWorkflowAction<RosettaNetEncodeOutput> RosettaNetEncode(Expression<Func<object>> messageToEncode, Expression<Func<string>> hostPartnerName, Expression<Func<string>> guestPartnerName, Expression<Func<string>> processConfigurationCode, Expression<Func<string>> processConfigurationVersion, Expression<Func<string>> processConfigurationInstanceIdentity, Expression<Func<RosettaNetEncodeMessageTypeType>> messageType, Expression<Func<RosettaNetEncodeHomeRoleType>> homeRole, Expression<Func<string>> trackingId = null, Expression<Func<RosettaNetEncodeAttachmentsTypeItem[]>> attachments = null)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
-            parameters["hostPartnerName"] = ExpressionConverter.ConvertO(hostPartnerName);
-            parameters["guestPartnerName"] = ExpressionConverter.ConvertO(guestPartnerName);
-            parameters["processConfigurationCode"] = ExpressionConverter.ConvertO(processConfigurationCode);
-            parameters["processConfigurationVersion"] = ExpressionConverter.ConvertO(processConfigurationVersion);
-            parameters["processConfigurationInstanceIdentity"] = ExpressionConverter.ConvertO(processConfigurationInstanceIdentity);
-            parameters["messageType"] = ExpressionConverter.ConvertO(messageType);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            serviceProviderParameters["hostPartnerName"] = ExpressionConverter.ConvertO(hostPartnerName);
+            serviceProviderParameters["guestPartnerName"] = ExpressionConverter.ConvertO(guestPartnerName);
+            serviceProviderParameters["processConfigurationCode"] = ExpressionConverter.ConvertO(processConfigurationCode);
+            serviceProviderParameters["processConfigurationVersion"] = ExpressionConverter.ConvertO(processConfigurationVersion);
+            serviceProviderParameters["processConfigurationInstanceIdentity"] = ExpressionConverter.ConvertO(processConfigurationInstanceIdentity);
+            serviceProviderParameters["messageType"] = ExpressionConverter.ConvertO(messageType);
             if (trackingId != null)
             {
-                parameters["trackingId"] = ExpressionConverter.ConvertO(trackingId);
+                serviceProviderParameters["trackingId"] = ExpressionConverter.ConvertO(trackingId);
             }
 
-            parameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
+            serviceProviderParameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
             if (attachments != null)
             {
-                parameters["attachments"] = ExpressionConverter.ConvertO(attachments);
+                serviceProviderParameters["attachments"] = ExpressionConverter.ConvertO(attachments);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/rosettaNetOperations", operationId: "rosettaNetEncode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<RosettaNetEncodeOutput>(input);
+            return new ServiceProviderAction<RosettaNetEncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rosettaNetOperations")]
         public IBodyWorkflowAction<RosettaNetDecodeOutput> RosettaNetDecode(Expression<Func<object>> messageToDecode, Expression<Func<object>> messageHeaders, Expression<Func<RosettaNetDecodeHomeRoleType>> homeRole)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
-            parameters["messageHeaders"] = ExpressionConverter.ConvertO(messageHeaders);
-            parameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            serviceProviderParameters["messageHeaders"] = ExpressionConverter.ConvertO(messageHeaders);
+            serviceProviderParameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/rosettaNetOperations", operationId: "rosettaNetDecode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<RosettaNetDecodeOutput>(input);
+            return new ServiceProviderAction<RosettaNetDecodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rosettaNetOperations")]
         public IBodyWorkflowAction<RosettaNetWaitForResponseOutput> RosettaNetWaitForResponse(Expression<Func<object>> serviceContent, Expression<Func<string>> processInstanceIdentity, Expression<Func<int>> retryCount, Expression<Func<RosettaNetWaitForResponseHomeRoleType>> homeRole, Expression<Func<RosettaNetWaitForResponsePollingIntervalType>> pollingInterval = null)
         {
-            var parameters = new JObject();
-            parameters["serviceContent"] = ExpressionConverter.ConvertO(serviceContent);
-            parameters["processInstanceIdentity"] = ExpressionConverter.ConvertO(processInstanceIdentity);
-            parameters["retryCount"] = ExpressionConverter.ConvertO(retryCount);
-            parameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["serviceContent"] = ExpressionConverter.ConvertO(serviceContent);
+            serviceProviderParameters["processInstanceIdentity"] = ExpressionConverter.ConvertO(processInstanceIdentity);
+            serviceProviderParameters["retryCount"] = ExpressionConverter.ConvertO(retryCount);
+            serviceProviderParameters["homeRole"] = ExpressionConverter.ConvertO(homeRole);
             if (pollingInterval != null)
             {
-                parameters["pollingInterval"] = ExpressionConverter.ConvertO(pollingInterval);
+                serviceProviderParameters["pollingInterval"] = ExpressionConverter.ConvertO(pollingInterval);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/rosettaNetOperations", operationId: "rosettaNetWaitForResponse", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<RosettaNetWaitForResponseOutput>(input);
+            return new ServiceProviderAction<RosettaNetWaitForResponseOutput>(serviceProviderInput);
         }
     }
 

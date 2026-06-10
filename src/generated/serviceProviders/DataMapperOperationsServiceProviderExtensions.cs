@@ -14,20 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DataMapperOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "dataMapperOperations")]
         public IBodyWorkflowAction<JToken> XsltTransform(Expression<Func<object>> content, Expression<Func<XsltTransformMapType>> map, Expression<Func<object>> transformedContentSchema = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (transformedContentSchema != null)
             {
-                parameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
+                serviceProviderParameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/dataMapperOperations", operationId: "xsltTransform", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

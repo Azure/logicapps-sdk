@@ -14,163 +14,163 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            var parameters = new JObject();
-            parameters["query"] = ExpressionConverter.ConvertO(query);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
             if (queryParameters != null)
             {
-                parameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeQuery", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken[]>(input);
+            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (setColumns != null)
             {
-                parameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+                serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "insertRow", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> DeleteRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                parameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
             }
 
             if (primaryKey != null)
             {
-                parameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "deleteRows", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken[]>(input);
+            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null, Expression<Func<object>> queries = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                parameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
             }
 
             if (primaryKey != null)
             {
-                parameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
             }
 
             if (queries != null)
             {
-                parameters["queries"] = ExpressionConverter.ConvertO(queries);
+                serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getRows", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken[]>(input);
+            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2(Expression<Func<string>> tableName, Expression<Func<object>> queries = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (queries != null)
             {
-                parameters["queries"] = ExpressionConverter.ConvertO(queries);
+                serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getRowsV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetRowsV2Output>(input);
+            return new ServiceProviderAction<GetRowsV2Output>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken[]> UpdateRows(Expression<Func<string>> tableName, Expression<Func<object>> setColumns, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                parameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
             }
 
-            parameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+            serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
             if (primaryKey != null)
             {
-                parameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "updateRows", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken[]>(input);
+            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables()
         {
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getTables", connectionName: connectionId)
             };
-            return new ServiceProviderAction<GetTablesOutputItem[]>(input);
+            return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedureName, Expression<Func<object>> storedProcedureParameters = null, Expression<Func<bool>> includeEmptyResultSets = null)
         {
-            var parameters = new JObject();
-            parameters["storedProcedureName"] = ExpressionConverter.ConvertO(storedProcedureName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["storedProcedureName"] = ExpressionConverter.ConvertO(storedProcedureName);
             if (storedProcedureParameters != null)
             {
-                parameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(storedProcedureParameters);
+                serviceProviderParameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(storedProcedureParameters);
             }
 
             if (includeEmptyResultSets != null)
             {
-                parameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(includeEmptyResultSets);
+                serviceProviderParameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(includeEmptyResultSets);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeStoredProcedure", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(input);
+            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
         }
     }
 
@@ -178,50 +178,50 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     {
         public IBodyWorkflowTrigger<string[]> WhenARowIsUpdated(Expression<Func<string>> tableName, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsUpdated", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(input, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<string[]> WhenARowIsDeleted(Expression<Func<string>> tableName, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsDeleted", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(input, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<string[]> WhenARowIsInserted(Expression<Func<string>> tableName, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsInserted", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(input, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<string[]> WhenARowIsModified(Expression<Func<string>> tableName, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsModified", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(input, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
         }
     }
 

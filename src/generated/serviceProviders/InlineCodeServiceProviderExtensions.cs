@@ -14,45 +14,45 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.InlineCode
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "inlineCode")]
         public IOutputWorkflowAction<JToken> JavaScriptCode(Expression<Func<object>> code, Expression<Func<JavaScriptCodeExplicitDependenciesType>> explicitDependencies = null)
         {
-            var parameters = new JObject();
-            parameters["code"] = ExpressionConverter.ConvertO(code);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["code"] = ExpressionConverter.ConvertO(code);
             if (explicitDependencies != null)
             {
-                parameters["explicitDependencies"] = ExpressionConverter.ConvertO(explicitDependencies);
+                serviceProviderParameters["explicitDependencies"] = ExpressionConverter.ConvertO(explicitDependencies);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/inlineCode", operationId: "javaScriptCode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "inlineCode")]
         public IOutputWorkflowAction<JToken> CSharpScriptCode(Expression<Func<object>> codeFile)
         {
-            var parameters = new JObject();
-            parameters["CodeFile"] = ExpressionConverter.ConvertO(codeFile);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["CodeFile"] = ExpressionConverter.ConvertO(codeFile);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/inlineCode", operationId: "cSharpScriptCode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "inlineCode")]
         public IOutputWorkflowAction<JToken> PowershellCode(Expression<Func<object>> codeFile)
         {
-            var parameters = new JObject();
-            parameters["CodeFile"] = ExpressionConverter.ConvertO(codeFile);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["CodeFile"] = ExpressionConverter.ConvertO(codeFile);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/inlineCode", operationId: "powershellCode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
     }
 

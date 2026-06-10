@@ -14,38 +14,38 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.LocalWorkflowOperation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "localWorkflowOperation")]
         public IBodyWorkflowAction<JToken> InvokeWorkflow(Expression<Func<InvokeWorkflowHostType>> host, Expression<Func<object>> body = null, Expression<Func<object>> headers = null)
         {
-            var parameters = new JObject();
-            parameters["host"] = ExpressionConverter.ConvertO(host);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["host"] = ExpressionConverter.ConvertO(host);
             if (body != null)
             {
-                parameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
             }
 
             if (headers != null)
             {
-                parameters["headers"] = ExpressionConverter.ConvertO(headers);
+                serviceProviderParameters["headers"] = ExpressionConverter.ConvertO(headers);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/localWorkflowOperation", operationId: "invokeWorkflow", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "localWorkflowOperation")]
         public IBodyWorkflowAction<JToken> InvokeNestedAgent(Expression<Func<InvokeNestedAgentHostType>> host, Expression<Func<InvokeNestedAgentBodyType>> body)
         {
-            var parameters = new JObject();
-            parameters["host"] = ExpressionConverter.ConvertO(host);
-            parameters["body"] = ExpressionConverter.ConvertO(body);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["host"] = ExpressionConverter.ConvertO(host);
+            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/localWorkflowOperation", operationId: "invokeNestedAgent", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

@@ -14,57 +14,57 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AiOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "aiOperations")]
         public IBodyWorkflowAction<ParsedocumentOutput> Parsedocument(Expression<Func<object>> content)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/aiOperations", operationId: "parsedocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ParsedocumentOutput>(input);
+            return new ServiceProviderAction<ParsedocumentOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "aiOperations")]
         public IBodyWorkflowAction<ChunktextOutput> Chunktext(Expression<Func<ChunktextChunkingStrategyType>> chunkingStrategy, Expression<Func<object>> text)
         {
-            var parameters = new JObject();
-            parameters["chunkingStrategy"] = ExpressionConverter.ConvertO(chunkingStrategy);
-            parameters["text"] = ExpressionConverter.ConvertO(text);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["chunkingStrategy"] = ExpressionConverter.ConvertO(chunkingStrategy);
+            serviceProviderParameters["text"] = ExpressionConverter.ConvertO(text);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/aiOperations", operationId: "chunktext", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ChunktextOutput>(input);
+            return new ServiceProviderAction<ChunktextOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "aiOperations")]
         public IBodyWorkflowAction<ParsedocumentwithmetadataOutput> Parsedocumentwithmetadata(Expression<Func<object>> content, Expression<Func<ParsedocumentwithmetadataFileTypeType>> fileType)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["fileType"] = ExpressionConverter.ConvertO(fileType);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["fileType"] = ExpressionConverter.ConvertO(fileType);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/aiOperations", operationId: "parsedocumentwithmetadata", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ParsedocumentwithmetadataOutput>(input);
+            return new ServiceProviderAction<ParsedocumentwithmetadataOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "aiOperations")]
         public IBodyWorkflowAction<ChunktextwithmetadataOutput> Chunktextwithmetadata(Expression<Func<int>> tokenSize, Expression<Func<int>> chunkOverlapLength, Expression<Func<object>> pageText)
         {
-            var parameters = new JObject();
-            parameters["tokenSize"] = ExpressionConverter.ConvertO(tokenSize);
-            parameters["chunkOverlapLength"] = ExpressionConverter.ConvertO(chunkOverlapLength);
-            parameters["pageText"] = ExpressionConverter.ConvertO(pageText);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tokenSize"] = ExpressionConverter.ConvertO(tokenSize);
+            serviceProviderParameters["chunkOverlapLength"] = ExpressionConverter.ConvertO(chunkOverlapLength);
+            serviceProviderParameters["pageText"] = ExpressionConverter.ConvertO(pageText);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/aiOperations", operationId: "chunktextwithmetadata", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ChunktextwithmetadataOutput>(input);
+            return new ServiceProviderAction<ChunktextwithmetadataOutput>(serviceProviderInput);
         }
     }
 

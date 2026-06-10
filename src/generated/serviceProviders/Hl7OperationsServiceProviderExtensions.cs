@@ -14,33 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hl7Operations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hl7Operations")]
         public IBodyWorkflowAction<Hl7DecodeOutput> Hl7Decode(Expression<Func<object>> messageToDecode, Expression<Func<Hl7DecodeAcknowledgementModeType>> acknowledgementMode = null)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
             if (acknowledgementMode != null)
             {
-                parameters["acknowledgementMode"] = ExpressionConverter.ConvertO(acknowledgementMode);
+                serviceProviderParameters["acknowledgementMode"] = ExpressionConverter.ConvertO(acknowledgementMode);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/hl7Operations", operationId: "hl7Decode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<Hl7DecodeOutput>(input);
+            return new ServiceProviderAction<Hl7DecodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hl7Operations")]
         public IBodyWorkflowAction<Hl7EncodeOutput> Hl7Encode(Expression<Func<object>> messageToEncode, Expression<Func<object>> headerToEncode)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
-            parameters["headerToEncode"] = ExpressionConverter.ConvertO(headerToEncode);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            serviceProviderParameters["headerToEncode"] = ExpressionConverter.ConvertO(headerToEncode);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/hl7Operations", operationId: "hl7Encode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<Hl7EncodeOutput>(input);
+            return new ServiceProviderAction<Hl7EncodeOutput>(serviceProviderInput);
         }
     }
 

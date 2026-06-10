@@ -14,60 +14,60 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
         public IOutputWorkflowAction<SendEmailOutput> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailAttachmentTypeItem[]>> attachment = null)
         {
-            var parameters = new JObject();
-            parameters["from"] = ExpressionConverter.ConvertO(from);
-            parameters["to"] = ExpressionConverter.ConvertO(to);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["from"] = ExpressionConverter.ConvertO(from);
+            serviceProviderParameters["to"] = ExpressionConverter.ConvertO(to);
             if (cc != null)
             {
-                parameters["cc"] = ExpressionConverter.ConvertO(cc);
+                serviceProviderParameters["cc"] = ExpressionConverter.ConvertO(cc);
             }
 
             if (subject != null)
             {
-                parameters["subject"] = ExpressionConverter.ConvertO(subject);
+                serviceProviderParameters["subject"] = ExpressionConverter.ConvertO(subject);
             }
 
             if (body != null)
             {
-                parameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
             }
 
             if (isHTML != null)
             {
-                parameters["isHTML"] = ExpressionConverter.ConvertO(isHTML);
+                serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(isHTML);
             }
 
             if (bcc != null)
             {
-                parameters["bcc"] = ExpressionConverter.ConvertO(bcc);
+                serviceProviderParameters["bcc"] = ExpressionConverter.ConvertO(bcc);
             }
 
             if (importance != null)
             {
-                parameters["importance"] = ExpressionConverter.ConvertO(importance);
+                serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(importance);
             }
 
             if (readReceipt != null)
             {
-                parameters["readReceipt"] = ExpressionConverter.ConvertO(readReceipt);
+                serviceProviderParameters["readReceipt"] = ExpressionConverter.ConvertO(readReceipt);
             }
 
             if (deliveryReceipt != null)
             {
-                parameters["deliveryReceipt"] = ExpressionConverter.ConvertO(deliveryReceipt);
+                serviceProviderParameters["deliveryReceipt"] = ExpressionConverter.ConvertO(deliveryReceipt);
             }
 
             if (attachment != null)
             {
-                parameters["attachment"] = ExpressionConverter.ConvertO(attachment);
+                serviceProviderParameters["attachment"] = ExpressionConverter.ConvertO(attachment);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<SendEmailOutput>(input);
+            return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
         }
     }
 

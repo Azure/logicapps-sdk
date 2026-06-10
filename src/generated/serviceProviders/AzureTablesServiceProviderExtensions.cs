@@ -14,180 +14,180 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<CreateTableOutput> CreateTable(Expression<Func<string>> tableName, Expression<Func<bool>> failIfTableExists = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (failIfTableExists != null)
             {
-                parameters["failIfTableExists"] = ExpressionConverter.ConvertO(failIfTableExists);
+                serviceProviderParameters["failIfTableExists"] = ExpressionConverter.ConvertO(failIfTableExists);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "createTable", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CreateTableOutput>(input);
+            return new ServiceProviderAction<CreateTableOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<ListTablesOutput> ListTables(Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null)
         {
-            var parameters = new JObject();
+            var serviceProviderParameters = new JObject();
             if (continuationToken != null)
             {
-                parameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
             }
 
             if (filter != null)
             {
-                parameters["filter"] = ExpressionConverter.ConvertO(filter);
+                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
             }
 
             if (top != null)
             {
-                parameters["top"] = ExpressionConverter.ConvertO(top);
+                serviceProviderParameters["top"] = ExpressionConverter.ConvertO(top);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "listTables", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ListTablesOutput>(input);
+            return new ServiceProviderAction<ListTablesOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction DeleteTable(Expression<Func<string>> tableName)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteTable", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction(input);
+            return new ServiceProviderAction(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction UpsertEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<bool>> failIfEntityExists = null, Expression<Func<UpsertEntityUpdateModeType>> updateMode = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            parameters["entity"] = ExpressionConverter.ConvertO(entity);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(entity);
             if (failIfEntityExists != null)
             {
-                parameters["failIfEntityExists"] = ExpressionConverter.ConvertO(failIfEntityExists);
+                serviceProviderParameters["failIfEntityExists"] = ExpressionConverter.ConvertO(failIfEntityExists);
             }
 
             if (updateMode != null)
             {
-                parameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
+                serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "upsertEntity", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction(input);
+            return new ServiceProviderAction(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction UpdateEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<UpdateEntityUpdateModeType>> updateMode = null, Expression<Func<string>> ifMatch = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            parameters["entity"] = ExpressionConverter.ConvertO(entity);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(entity);
             if (updateMode != null)
             {
-                parameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
+                serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
             }
 
             if (ifMatch != null)
             {
-                parameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
+                serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "updateEntity", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction(input);
+            return new ServiceProviderAction(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction DeleteEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
-            parameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
             if (ifMatch != null)
             {
-                parameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
+                serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteEntity", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction(input);
+            return new ServiceProviderAction(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<GetEntityOutput> GetEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string[]>> select = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
-            parameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
             if (select != null)
             {
-                parameters["select"] = ExpressionConverter.ConvertO(select);
+                serviceProviderParameters["select"] = ExpressionConverter.ConvertO(select);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "getEntity", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetEntityOutput>(input);
+            return new ServiceProviderAction<GetEntityOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<QueryEntitiesOutput> QueryEntities(Expression<Func<string>> tableName, Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<string[]>> select = null, Expression<Func<int>> top = null)
         {
-            var parameters = new JObject();
-            parameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             if (continuationToken != null)
             {
-                parameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
             }
 
             if (filter != null)
             {
-                parameters["filter"] = ExpressionConverter.ConvertO(filter);
+                serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
             }
 
             if (select != null)
             {
-                parameters["select"] = ExpressionConverter.ConvertO(select);
+                serviceProviderParameters["select"] = ExpressionConverter.ConvertO(select);
             }
 
             if (top != null)
             {
-                parameters["top"] = ExpressionConverter.ConvertO(top);
+                serviceProviderParameters["top"] = ExpressionConverter.ConvertO(top);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "queryEntities", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<QueryEntitiesOutput>(input);
+            return new ServiceProviderAction<QueryEntitiesOutput>(serviceProviderInput);
         }
     }
 

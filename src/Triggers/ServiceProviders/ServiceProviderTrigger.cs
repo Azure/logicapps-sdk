@@ -13,18 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// The service provider action input containing the trigger configuration.
         /// </summary>
-        private readonly ServiceProviderActionInput serviceProviderActionInput;
+        private readonly ServiceProviderOperationInput serviceProviderTriggerInput;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger"/> class.
         /// </summary>
-        /// <param name="serviceProviderActionInput">The service provider action input.</param>
+        /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderTrigger(
-            ServiceProviderActionInput serviceProviderActionInput,
+            ServiceProviderOperationInput serviceProviderTriggerInput,
             string triggerName = null)
         {
-            this.serviceProviderActionInput = serviceProviderActionInput;
+            this.serviceProviderTriggerInput = serviceProviderTriggerInput;
             this.Name = triggerName ?? "ServiceProviderTrigger";
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateTrigger
             {
                 Type = FlowTemplateOperationType.ServiceProvider,
-                Inputs = this.serviceProviderActionInput.ToJToken(),
+                Inputs = this.serviceProviderTriggerInput.ToJToken(),
             };
         }
     }
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger{T}"/> class.
         /// </summary>
-        /// <param name="serviceProviderActionInput">The service provider action input.</param>
+        /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderTrigger(
-            ServiceProviderActionInput serviceProviderActionInput,
+            ServiceProviderOperationInput serviceProviderTriggerInput,
             string triggerName = null)
-            : base(serviceProviderActionInput, triggerName)
+            : base(serviceProviderTriggerInput, triggerName)
         {
         }
 
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderOutputTrigger{T}"/> class.
         /// </summary>
-        /// <param name="serviceProviderActionInput">The service provider action input.</param>
+        /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderOutputTrigger(
-            ServiceProviderActionInput serviceProviderActionInput,
+            ServiceProviderOperationInput serviceProviderTriggerInput,
             string triggerName = null)
-            : base(serviceProviderActionInput, triggerName)
+            : base(serviceProviderTriggerInput, triggerName)
         {
         }
 

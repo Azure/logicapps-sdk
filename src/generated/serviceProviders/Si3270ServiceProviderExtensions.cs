@@ -14,16 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
         public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidx, Expression<Func<string>> method, Expression<Func<object>> inputParameters)
         {
-            var parameters = new JObject();
-            parameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-            parameters["method"] = ExpressionConverter.ConvertO(method);
-            parameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
+            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
+            serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "executeMethod", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

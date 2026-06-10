@@ -14,53 +14,53 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
-            var parameters = new JObject();
-            parameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            parameters["eventData"] = ExpressionConverter.ConvertO(eventData);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            serviceProviderParameters["eventData"] = ExpressionConverter.ConvertO(eventData);
             if (partitionKey != null)
             {
-                parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
-            var parameters = new JObject();
-            parameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            parameters["eventDatas"] = ExpressionConverter.ConvertO(eventDatas);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            serviceProviderParameters["eventDatas"] = ExpressionConverter.ConvertO(eventDatas);
             if (partitionKey != null)
             {
-                parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
-            var parameters = new JObject();
-            parameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            parameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
     }
 
@@ -68,36 +68,36 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     {
         public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
             if (consumerGroup != null)
             {
-                parameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
             if (consumerGroup != null)
             {
-                parameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputTrigger<JToken>(input, triggerName);
+            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput, triggerName);
         }
     }
 

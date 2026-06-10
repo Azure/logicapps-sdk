@@ -14,546 +14,546 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageMessageType>> message)
         {
-            var parameters = new JObject();
-            parameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            parameters["message"] = ExpressionConverter.ConvertO(message);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesMessagesTypeItem[]>> messages)
         {
-            var parameters = new JObject();
-            parameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            parameters["messages"] = ExpressionConverter.ConvertO(messages);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+            serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
         {
-            var parameters = new JObject();
-            parameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            parameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
+            serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             if (deadLetterReason != null)
             {
-                parameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                parameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(input);
+            return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(input);
+            return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             if (deadLetterReason != null)
             {
-                parameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                parameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(input);
+            return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(input);
+            return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-            parameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+            serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
             if (topicSubscriptionCorrelationFilter != null)
             {
-                parameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
+                serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "createTopicSubscription", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            var parameters = new JObject();
-            parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
             if (lockToken != null)
             {
-                parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessageInSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            var parameters = new JObject();
-            parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
             if (lockToken != null)
             {
-                parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessageInSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            var parameters = new JObject();
-            parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
             if (lockToken != null)
             {
-                parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             }
 
             if (deadLetterReason != null)
             {
-                parameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                parameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessageInSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            var parameters = new JObject();
-            parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
             if (lockToken != null)
             {
-                parameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessageInSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
             if (acquireNewSession != null)
             {
-                parameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(input);
+            return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
             if (acquireNewSession != null)
             {
-                parameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(input);
+            return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
             if (acquireNewSession != null)
             {
-                parameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(input);
+            return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
             if (acquireNewSession != null)
             {
-                parameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(input);
+            return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
     }
 
@@ -561,207 +561,207 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     {
         public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (isSessionsEnabled != null)
             {
-                parameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
 
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (isSessionsEnabled != null)
             {
-                parameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
 
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (isSessionsEnabled != null)
             {
-                parameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
 
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputTrigger<JToken>(input, triggerName);
+            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput, triggerName);
         }
 
         public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (isSessionsEnabled != null)
             {
-                parameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
 
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputTrigger<JToken>(input, triggerName);
+            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessagesV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (maxMessageBatchSize != null)
             {
-                parameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessagesV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
             if (maxMessages != null)
             {
-                parameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(input, triggerName);
+            return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            parameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
+            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(input, triggerName);
+            return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, triggerName);
         }
     }
 

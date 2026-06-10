@@ -14,79 +14,79 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FlatFileOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "flatFileOperations")]
         public IBodyWorkflowAction<JToken> FlatFileDecoding(Expression<Func<object>> content, Expression<Func<FlatFileDecodingSchemaType>> schema)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["schema"] = ExpressionConverter.ConvertO(schema);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/flatFileOperations", operationId: "flatFileDecoding", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "flatFileOperations")]
         public IBodyWorkflowAction<JToken> FlatFileEncoding(Expression<Func<object>> content, Expression<Func<FlatFileEncodingSchemaType>> schema, Expression<Func<FlatFileEncodingEmptyNodeGenerationModeType>> emptyNodeGenerationMode = null, Expression<Func<bool>> xmlNormalization = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["schema"] = ExpressionConverter.ConvertO(schema);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
             if (emptyNodeGenerationMode != null)
             {
-                parameters["emptyNodeGenerationMode"] = ExpressionConverter.ConvertO(emptyNodeGenerationMode);
+                serviceProviderParameters["emptyNodeGenerationMode"] = ExpressionConverter.ConvertO(emptyNodeGenerationMode);
             }
 
             if (xmlNormalization != null)
             {
-                parameters["xmlNormalization"] = ExpressionConverter.ConvertO(xmlNormalization);
+                serviceProviderParameters["xmlNormalization"] = ExpressionConverter.ConvertO(xmlNormalization);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/flatFileOperations", operationId: "flatFileEncoding", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "flatFileOperations")]
         public IBodyWorkflowAction<JToken> FlatFileSchemaGeneration(Expression<Func<object>> content, Expression<Func<FlatFileSchemaGenerationRecordStructureType>> recordStructure, Expression<Func<bool>> hasHeader, Expression<Func<string>> rootElementName = null, Expression<Func<string>> targetNamespace = null, Expression<Func<string>> recordDelimiter = null, Expression<Func<FlatFileSchemaGenerationRecordDelimiterOrderType>> recordDelimiterOrder = null, Expression<Func<string>> recordName = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["recordStructure"] = ExpressionConverter.ConvertO(recordStructure);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["recordStructure"] = ExpressionConverter.ConvertO(recordStructure);
             if (rootElementName != null)
             {
-                parameters["rootElementName"] = ExpressionConverter.ConvertO(rootElementName);
+                serviceProviderParameters["rootElementName"] = ExpressionConverter.ConvertO(rootElementName);
             }
 
             if (targetNamespace != null)
             {
-                parameters["targetNamespace"] = ExpressionConverter.ConvertO(targetNamespace);
+                serviceProviderParameters["targetNamespace"] = ExpressionConverter.ConvertO(targetNamespace);
             }
 
-            parameters["hasHeader"] = ExpressionConverter.ConvertO(hasHeader);
+            serviceProviderParameters["hasHeader"] = ExpressionConverter.ConvertO(hasHeader);
             if (recordDelimiter != null)
             {
-                parameters["recordDelimiter"] = ExpressionConverter.ConvertO(recordDelimiter);
+                serviceProviderParameters["recordDelimiter"] = ExpressionConverter.ConvertO(recordDelimiter);
             }
 
             if (recordDelimiterOrder != null)
             {
-                parameters["recordDelimiterOrder"] = ExpressionConverter.ConvertO(recordDelimiterOrder);
+                serviceProviderParameters["recordDelimiterOrder"] = ExpressionConverter.ConvertO(recordDelimiterOrder);
             }
 
             if (recordName != null)
             {
-                parameters["recordName"] = ExpressionConverter.ConvertO(recordName);
+                serviceProviderParameters["recordName"] = ExpressionConverter.ConvertO(recordName);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/flatFileOperations", operationId: "flatFileSchemaGeneration", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

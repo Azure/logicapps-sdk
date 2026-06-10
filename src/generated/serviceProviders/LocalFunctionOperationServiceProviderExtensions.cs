@@ -14,15 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.LocalFunctionOperation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "localFunctionOperation")]
         public IBodyWorkflowAction<JToken> InvokeFunction(Expression<Func<string>> functionName, Expression<Func<object>> parameters)
         {
-            var parameters = new JObject();
-            parameters["functionName"] = ExpressionConverter.ConvertO(functionName);
-            parameters["parameters"] = ExpressionConverter.ConvertO(parameters);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["functionName"] = ExpressionConverter.ConvertO(functionName);
+            serviceProviderParameters["parameters"] = ExpressionConverter.ConvertO(parameters);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/localFunctionOperation", operationId: "invokeFunction", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

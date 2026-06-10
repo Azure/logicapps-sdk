@@ -14,169 +14,169 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageGetMessageOptionsType>> getMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<BrowseMessageOutput>(input);
+            return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchGetMessageOptionsType>> getMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<BrowseBatchOutput>(input);
+            return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageGetMessageOptionsType>> getMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ReceiveMessageOutput>(input);
+            return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchGetMessageOptionsType>> getMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ReceiveBatchOutput>(input);
+            return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["message"] = ExpressionConverter.ConvertO(message);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
             if (sendMessageOptions != null)
             {
-                parameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<SendMessageOutput>(input);
+            return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchMessageListTypeItem[]>> messageList, Expression<Func<SendBatchSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["messageList"] = ExpressionConverter.ConvertO(messageList);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
             if (sendMessageOptions != null)
             {
-                parameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<SendBatchOutput>(input);
+            return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageCompleteActionType>> completeAction)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
-            parameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            parameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
+            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CompleteMessageOutput>(input);
+            return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> queueName, Expression<Func<CompleteBatchCompleteActionType>> completeAction)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CompleteBatchOutput>(input);
+            return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var parameters = new JObject();
-            parameters["message"] = ExpressionConverter.ConvertO(message);
-            parameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
             if (deadLetterQueueName != null)
             {
-                parameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
+                serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
             }
 
             if (sendMessageOptions != null)
             {
-                parameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(input);
+            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
         }
     }
 
@@ -184,55 +184,55 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     {
         public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             if (waitIntervalInSeconds != null)
             {
-                parameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
+                serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollAvailableOutput>(input, triggerName);
+            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesGetMessageOptionsType>> getMessageOptions = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(input, triggerName);
+            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesGetMessageOptionsType>> getMessageOptions = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            parameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
             if (getMessageOptions != null)
             {
-                parameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollMessagesOutput>(input, triggerName);
+            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, triggerName);
         }
     }
 

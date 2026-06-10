@@ -14,15 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.IntegrationAccountOpera
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "integrationAccountOperations")]
         public IBodyWorkflowAction<JToken> IntegrationAccountArtifactLookup(Expression<Func<IntegrationAccountArtifactLookupArtifactTypeType>> artifactType, Expression<Func<string>> artifactName)
         {
-            var parameters = new JObject();
-            parameters["artifactType"] = ExpressionConverter.ConvertO(artifactType);
-            parameters["artifactName"] = ExpressionConverter.ConvertO(artifactName);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["artifactType"] = ExpressionConverter.ConvertO(artifactType);
+            serviceProviderParameters["artifactName"] = ExpressionConverter.ConvertO(artifactName);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/integrationAccountOperations", operationId: "integrationAccountArtifactLookup", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

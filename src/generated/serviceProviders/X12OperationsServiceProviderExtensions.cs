@@ -14,90 +14,90 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.X12Operations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "x12Operations")]
         public IBodyWorkflowAction<X12EncodeOutput> X12Encode(Expression<Func<object>> messageToEncode, Expression<Func<X12EncodeSenderIdentityType>> senderIdentity = null, Expression<Func<X12EncodeReceiverIdentityType>> receiverIdentity = null, Expression<Func<string>> agreementName = null, Expression<Func<string>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
             if (senderIdentity != null)
             {
-                parameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
+                serviceProviderParameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
             }
 
             if (receiverIdentity != null)
             {
-                parameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
+                serviceProviderParameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
             }
 
             if (agreementName != null)
             {
-                parameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
+                serviceProviderParameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/x12Operations", operationId: "x12Encode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<X12EncodeOutput>(input);
+            return new ServiceProviderAction<X12EncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "x12Operations")]
         public IBodyWorkflowAction<X12BatchEncodeOutput> X12BatchEncode(Expression<Func<X12BatchEncodeBatchMessageType>> batchMessage, Expression<Func<X12BatchEncodeSenderIdentityType>> senderIdentity = null, Expression<Func<X12BatchEncodeReceiverIdentityType>> receiverIdentity = null, Expression<Func<string>> agreementName = null, Expression<Func<object>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["batchMessage"] = ExpressionConverter.ConvertO(batchMessage);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["batchMessage"] = ExpressionConverter.ConvertO(batchMessage);
             if (senderIdentity != null)
             {
-                parameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
+                serviceProviderParameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
             }
 
             if (receiverIdentity != null)
             {
-                parameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
+                serviceProviderParameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
             }
 
             if (agreementName != null)
             {
-                parameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
+                serviceProviderParameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/x12Operations", operationId: "x12BatchEncode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<X12BatchEncodeOutput>(input);
+            return new ServiceProviderAction<X12BatchEncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "x12Operations")]
         public IBodyWorkflowAction<X12DecodeOutput> X12Decode(Expression<Func<object>> messageToDecode, Expression<Func<string>> b2bTrackingId = null, Expression<Func<string>> fallbackAgreementName = null)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
             if (fallbackAgreementName != null)
             {
-                parameters["fallbackAgreementName"] = ExpressionConverter.ConvertO(fallbackAgreementName);
+                serviceProviderParameters["fallbackAgreementName"] = ExpressionConverter.ConvertO(fallbackAgreementName);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/x12Operations", operationId: "x12Decode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<X12DecodeOutput>(input);
+            return new ServiceProviderAction<X12DecodeOutput>(serviceProviderInput);
         }
     }
 

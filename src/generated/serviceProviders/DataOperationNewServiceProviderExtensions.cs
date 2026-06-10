@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DataOperationNew
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "dataOperationNew")]
         public IOutputWorkflowAction<JToken> ComposeNew()
         {
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/dataOperationNew", operationId: "composeNew", connectionName: connectionId)
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
     }
 

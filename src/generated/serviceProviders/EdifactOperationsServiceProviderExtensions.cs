@@ -14,130 +14,130 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EdifactOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "edifactOperations")]
         public IBodyWorkflowAction<EdifactDecodeOutput> EdifactDecode(Expression<Func<object>> messageToDecode, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> escapeCharacter = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<EdifactDecodeSegmentTerminatorSuffixType>> segmentTerminatorSuffix = null, Expression<Func<EdifactDecodeDecimalPointIndicatorType>> decimalPointIndicator = null, Expression<Func<EdifactDecodePayloadCharacterSetType>> payloadCharacterSet = null, Expression<Func<object>> b2bTrackingId = null, Expression<Func<string>> fallbackAgreementName = null)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
             if (componentSeparator != null)
             {
-                parameters["componentSeparator"] = ExpressionConverter.ConvertO(componentSeparator);
+                serviceProviderParameters["componentSeparator"] = ExpressionConverter.ConvertO(componentSeparator);
             }
 
             if (dataElementSeparator != null)
             {
-                parameters["dataElementSeparator"] = ExpressionConverter.ConvertO(dataElementSeparator);
+                serviceProviderParameters["dataElementSeparator"] = ExpressionConverter.ConvertO(dataElementSeparator);
             }
 
             if (escapeCharacter != null)
             {
-                parameters["escapeCharacter"] = ExpressionConverter.ConvertO(escapeCharacter);
+                serviceProviderParameters["escapeCharacter"] = ExpressionConverter.ConvertO(escapeCharacter);
             }
 
             if (repetitionSeparator != null)
             {
-                parameters["repetitionSeparator"] = ExpressionConverter.ConvertO(repetitionSeparator);
+                serviceProviderParameters["repetitionSeparator"] = ExpressionConverter.ConvertO(repetitionSeparator);
             }
 
             if (segmentTerminator != null)
             {
-                parameters["segmentTerminator"] = ExpressionConverter.ConvertO(segmentTerminator);
+                serviceProviderParameters["segmentTerminator"] = ExpressionConverter.ConvertO(segmentTerminator);
             }
 
             if (segmentTerminatorSuffix != null)
             {
-                parameters["segmentTerminatorSuffix"] = ExpressionConverter.ConvertO(segmentTerminatorSuffix);
+                serviceProviderParameters["segmentTerminatorSuffix"] = ExpressionConverter.ConvertO(segmentTerminatorSuffix);
             }
 
             if (decimalPointIndicator != null)
             {
-                parameters["decimalPointIndicator"] = ExpressionConverter.ConvertO(decimalPointIndicator);
+                serviceProviderParameters["decimalPointIndicator"] = ExpressionConverter.ConvertO(decimalPointIndicator);
             }
 
             if (payloadCharacterSet != null)
             {
-                parameters["payloadCharacterSet"] = ExpressionConverter.ConvertO(payloadCharacterSet);
+                serviceProviderParameters["payloadCharacterSet"] = ExpressionConverter.ConvertO(payloadCharacterSet);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
             if (fallbackAgreementName != null)
             {
-                parameters["fallbackAgreementName"] = ExpressionConverter.ConvertO(fallbackAgreementName);
+                serviceProviderParameters["fallbackAgreementName"] = ExpressionConverter.ConvertO(fallbackAgreementName);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/edifactOperations", operationId: "EdifactDecode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<EdifactDecodeOutput>(input);
+            return new ServiceProviderAction<EdifactDecodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "edifactOperations")]
         public IBodyWorkflowAction<EdifactEncodeOutput> EdifactEncode(Expression<Func<object>> messageToEncode, Expression<Func<EdifactEncodeSenderIdentityType>> senderIdentity = null, Expression<Func<EdifactEncodeReceiverIdentityType>> receiverIdentity = null, Expression<Func<string>> agreementName = null, Expression<Func<object>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
             if (senderIdentity != null)
             {
-                parameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
+                serviceProviderParameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
             }
 
             if (receiverIdentity != null)
             {
-                parameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
+                serviceProviderParameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
             }
 
             if (agreementName != null)
             {
-                parameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
+                serviceProviderParameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/edifactOperations", operationId: "edifactEncode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<EdifactEncodeOutput>(input);
+            return new ServiceProviderAction<EdifactEncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "edifactOperations")]
         public IBodyWorkflowAction<EdifactBatchEncodeOutput> EdifactBatchEncode(Expression<Func<EdifactBatchEncodeBatchMessageType>> batchMessage, Expression<Func<EdifactBatchEncodeSenderIdentityType>> senderIdentity = null, Expression<Func<EdifactBatchEncodeReceiverIdentityType>> receiverIdentity = null, Expression<Func<string>> agreementName = null, Expression<Func<object>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["batchMessage"] = ExpressionConverter.ConvertO(batchMessage);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["batchMessage"] = ExpressionConverter.ConvertO(batchMessage);
             if (senderIdentity != null)
             {
-                parameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
+                serviceProviderParameters["senderIdentity"] = ExpressionConverter.ConvertO(senderIdentity);
             }
 
             if (receiverIdentity != null)
             {
-                parameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
+                serviceProviderParameters["receiverIdentity"] = ExpressionConverter.ConvertO(receiverIdentity);
             }
 
             if (agreementName != null)
             {
-                parameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
+                serviceProviderParameters["agreementName"] = ExpressionConverter.ConvertO(agreementName);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/edifactOperations", operationId: "edifactBatchEncode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<EdifactBatchEncodeOutput>(input);
+            return new ServiceProviderAction<EdifactBatchEncodeOutput>(serviceProviderInput);
         }
     }
 

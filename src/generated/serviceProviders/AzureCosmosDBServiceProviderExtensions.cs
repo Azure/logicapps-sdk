@@ -14,155 +14,155 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<BulkCreateOrUpdateDocumentOutputItem[]> BulkCreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<object>> items, Expression<Func<bool>> isUpsert = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["items"] = ExpressionConverter.ConvertO(items);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["items"] = ExpressionConverter.ConvertO(items);
             if (isUpsert != null)
             {
-                parameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
+                serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "BulkCreateOrUpdateDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<BulkCreateOrUpdateDocumentOutputItem[]>(input);
+            return new ServiceProviderAction<BulkCreateOrUpdateDocumentOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<CreateOrUpdateDocumentOutput> CreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> item, Expression<Func<string>> partitionKey = null, Expression<Func<bool>> isUpsert = null, Expression<Func<string>> sessionToken = null, Expression<Func<string>> etag = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["item"] = ExpressionConverter.ConvertO(item);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["item"] = ExpressionConverter.ConvertO(item);
             if (partitionKey != null)
             {
-                parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             }
 
             if (isUpsert != null)
             {
-                parameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
+                serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
             }
 
             if (sessionToken != null)
             {
-                parameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
             }
 
             if (etag != null)
             {
-                parameters["etag"] = ExpressionConverter.ConvertO(etag);
+                serviceProviderParameters["etag"] = ExpressionConverter.ConvertO(etag);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "CreateOrUpdateDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CreateOrUpdateDocumentOutput>(input);
+            return new ServiceProviderAction<CreateOrUpdateDocumentOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<DeleteDocumentOutput> DeleteDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
+            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             if (sessionToken != null)
             {
-                parameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "DeleteDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<DeleteDocumentOutput>(input);
+            return new ServiceProviderAction<DeleteDocumentOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<QueryDocumentsOutput> QueryDocuments(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText, Expression<Func<string>> partitionKey = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> maxItemCount = null, Expression<Func<string>> sessionToken = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["queryText"] = ExpressionConverter.ConvertO(queryText);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["queryText"] = ExpressionConverter.ConvertO(queryText);
             if (partitionKey != null)
             {
-                parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             }
 
             if (continuationToken != null)
             {
-                parameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
             }
 
             if (maxItemCount != null)
             {
-                parameters["maxItemCount"] = ExpressionConverter.ConvertO(maxItemCount);
+                serviceProviderParameters["maxItemCount"] = ExpressionConverter.ConvertO(maxItemCount);
             }
 
             if (sessionToken != null)
             {
-                parameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "QueryDocuments", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<QueryDocumentsOutput>(input);
+            return new ServiceProviderAction<QueryDocumentsOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
+            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             if (sessionToken != null)
             {
-                parameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "ReadDocument", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ReadDocumentOutput>(input);
+            return new ServiceProviderAction<ReadDocumentOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<PatchItemOutput> PatchItem(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<PatchItemPatchOperationsTypeItem[]>> patchOperations, Expression<Func<string>> sessionToken = null)
         {
-            var parameters = new JObject();
-            parameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            parameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            parameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            parameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
+            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
+            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
+            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
             if (sessionToken != null)
             {
-                parameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
             }
 
-            parameters["patchOperations"] = ExpressionConverter.ConvertO(patchOperations);
-            var input = new ServiceProviderActionInput
+            serviceProviderParameters["patchOperations"] = ExpressionConverter.ConvertO(patchOperations);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "PatchItem", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<PatchItemOutput>(input);
+            return new ServiceProviderAction<PatchItemOutput>(serviceProviderInput);
         }
     }
 
@@ -170,30 +170,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
     {
         public IBodyWorkflowTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]> WhenADocumentIsCreatedOrModified(Expression<Func<string>> databaseName, Expression<Func<string>> collectionName, Expression<Func<string>> leaseCollectionName = null, Expression<Func<bool>> createLeaseCollectionIfNotExists = null, Expression<Func<int>> leasesCollectionThroughput = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["databaseName"] = ExpressionConverter.ConvertO(databaseName);
-            parameters["collectionName"] = ExpressionConverter.ConvertO(collectionName);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["databaseName"] = ExpressionConverter.ConvertO(databaseName);
+            serviceProviderParameters["collectionName"] = ExpressionConverter.ConvertO(collectionName);
             if (leaseCollectionName != null)
             {
-                parameters["leaseCollectionName"] = ExpressionConverter.ConvertO(leaseCollectionName);
+                serviceProviderParameters["leaseCollectionName"] = ExpressionConverter.ConvertO(leaseCollectionName);
             }
 
             if (createLeaseCollectionIfNotExists != null)
             {
-                parameters["createLeaseCollectionIfNotExists"] = ExpressionConverter.ConvertO(createLeaseCollectionIfNotExists);
+                serviceProviderParameters["createLeaseCollectionIfNotExists"] = ExpressionConverter.ConvertO(createLeaseCollectionIfNotExists);
             }
 
             if (leasesCollectionThroughput != null)
             {
-                parameters["leasesCollectionThroughput"] = ExpressionConverter.ConvertO(leasesCollectionThroughput);
+                serviceProviderParameters["leasesCollectionThroughput"] = ExpressionConverter.ConvertO(leasesCollectionThroughput);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "whenADocumentIsCreatedOrModified", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(serviceProviderInput, triggerName);
         }
     }
 

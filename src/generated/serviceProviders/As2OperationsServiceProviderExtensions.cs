@@ -14,50 +14,50 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.As2Operations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "as2Operations")]
         public IBodyWorkflowAction<As2EncodeOutput> As2Encode(Expression<Func<object>> messageToEncode, Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> contentType = null, Expression<Func<string>> fileName = null, Expression<Func<string>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
-            parameters["as2From"] = ExpressionConverter.ConvertO(as2From);
-            parameters["as2To"] = ExpressionConverter.ConvertO(as2To);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            serviceProviderParameters["as2From"] = ExpressionConverter.ConvertO(as2From);
+            serviceProviderParameters["as2To"] = ExpressionConverter.ConvertO(as2To);
             if (contentType != null)
             {
-                parameters["contentType"] = ExpressionConverter.ConvertO(contentType);
+                serviceProviderParameters["contentType"] = ExpressionConverter.ConvertO(contentType);
             }
 
             if (fileName != null)
             {
-                parameters["fileName"] = ExpressionConverter.ConvertO(fileName);
+                serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
             }
 
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/as2Operations", operationId: "as2Encode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<As2EncodeOutput>(input);
+            return new ServiceProviderAction<As2EncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "as2Operations")]
         public IBodyWorkflowAction<As2DecodeOutput> As2Decode(Expression<Func<object>> messageToDecode, Expression<Func<object>> messageHeaders, Expression<Func<object>> b2bTrackingId = null)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
-            parameters["messageHeaders"] = ExpressionConverter.ConvertO(messageHeaders);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            serviceProviderParameters["messageHeaders"] = ExpressionConverter.ConvertO(messageHeaders);
             if (b2bTrackingId != null)
             {
-                parameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
+                serviceProviderParameters["b2bTrackingId"] = ExpressionConverter.ConvertO(b2bTrackingId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/as2Operations", operationId: "as2Decode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<As2DecodeOutput>(input);
+            return new ServiceProviderAction<As2DecodeOutput>(serviceProviderInput);
         }
     }
 

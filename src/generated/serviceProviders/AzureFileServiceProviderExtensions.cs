@@ -14,188 +14,188 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<CopyFileOutput> CopyFile(Expression<Func<string>> sourceFilePath, Expression<Func<string>> destinationFilePath, Expression<Func<bool>> overwrite = null)
         {
-            var parameters = new JObject();
-            parameters["SourceFilePath"] = ExpressionConverter.ConvertO(sourceFilePath);
-            parameters["destinationFilePath"] = ExpressionConverter.ConvertO(destinationFilePath);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["SourceFilePath"] = ExpressionConverter.ConvertO(sourceFilePath);
+            serviceProviderParameters["destinationFilePath"] = ExpressionConverter.ConvertO(destinationFilePath);
             if (overwrite != null)
             {
-                parameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "copyFile", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CopyFileOutput>(input);
+            return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> destinationFolderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<object>> fileContent = null)
         {
-            var parameters = new JObject();
+            var serviceProviderParameters = new JObject();
             if (filePath != null)
             {
-                parameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
             }
 
-            parameters["destinationFolderPath"] = ExpressionConverter.ConvertO(destinationFolderPath);
+            serviceProviderParameters["destinationFolderPath"] = ExpressionConverter.ConvertO(destinationFolderPath);
             if (overwriteExistingFilesBehaviour != null)
             {
-                parameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
+                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
             }
 
             if (fileContent != null)
             {
-                parameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
+                serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "extractArchive", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ExtractArchiveOutputItem[]>(input);
+            return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> fileName, Expression<Func<object>> fileContent, Expression<Func<bool>> overwrite = null)
         {
-            var parameters = new JObject();
-            parameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            parameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-            parameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
+            serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
             if (overwrite != null)
             {
-                parameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "createFile", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<CreateFileOutput>(input);
+            return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IOutputWorkflowAction<JToken> DeleteFile(Expression<Func<string>> fileId)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "deleteFile", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(input);
+            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
             if (inferContentType != null)
             {
-                parameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContent", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
             if (inferContentType != null)
             {
-                parameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentV2", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContentByPath(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
             if (inferContentType != null)
             {
-                parameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentByPath", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> fileId)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadata", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetFileMetadataOutput>(input);
+            return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<GetFileMetadataByPathOutput> GetFileMetadataByPath(Expression<Func<string>> filePath)
         {
-            var parameters = new JObject();
-            parameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadataByPath", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<GetFileMetadataByPathOutput>(input);
+            return new ServiceProviderAction<GetFileMetadataByPathOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderId)
         {
-            var parameters = new JObject();
-            parameters["folderId"] = ExpressionConverter.ConvertO(folderId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["folderId"] = ExpressionConverter.ConvertO(folderId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "listFolder", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ListFolderOutputItem[]>(input);
+            return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> fileId, Expression<Func<object>> fileContent)
         {
-            var parameters = new JObject();
-            parameters["fileId"] = ExpressionConverter.ConvertO(fileId);
-            parameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
+            serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "updateFile", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<UpdateFileOutput>(input);
+            return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
         }
     }
 
@@ -203,46 +203,46 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
     {
         public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutOffTimestamp = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
             if (maxFileCount != null)
             {
-                parameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
             }
 
             if (oldFilesCutOffTimestamp != null)
             {
-                parameters["oldFilesCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutOffTimestamp);
+                serviceProviderParameters["oldFilesCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutOffTimestamp);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAdded", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, triggerName);
         }
 
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutOffTimestamp = null, string triggerName = null)
         {
-            var parameters = new JObject();
-            parameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
             if (maxFileCount != null)
             {
-                parameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
             }
 
             if (oldFilesCutOffTimestamp != null)
             {
-                parameters["oldFilesCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutOffTimestamp);
+                serviceProviderParameters["oldFilesCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutOffTimestamp);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(input, triggerName);
+            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, triggerName);
         }
     }
 

@@ -14,29 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.SwiftOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "swiftOperations")]
         public IBodyWorkflowAction<SwiftMTEncodeOutput> SwiftMTEncode(Expression<Func<object>> messageToEncode, Expression<Func<SwiftMTEncodeMessageValidationType>> messageValidation)
         {
-            var parameters = new JObject();
-            parameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
-            parameters["messageValidation"] = ExpressionConverter.ConvertO(messageValidation);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToEncode"] = ExpressionConverter.ConvertO(messageToEncode);
+            serviceProviderParameters["messageValidation"] = ExpressionConverter.ConvertO(messageValidation);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/swiftOperations", operationId: "SwiftMTEncode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<SwiftMTEncodeOutput>(input);
+            return new ServiceProviderAction<SwiftMTEncodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "swiftOperations")]
         public IBodyWorkflowAction<SwiftMTDecodeOutput> SwiftMTDecode(Expression<Func<object>> messageToDecode, Expression<Func<SwiftMTDecodeMessageValidationType>> messageValidation)
         {
-            var parameters = new JObject();
-            parameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
-            parameters["messageValidation"] = ExpressionConverter.ConvertO(messageValidation);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["messageToDecode"] = ExpressionConverter.ConvertO(messageToDecode);
+            serviceProviderParameters["messageValidation"] = ExpressionConverter.ConvertO(messageValidation);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/swiftOperations", operationId: "SwiftMTDecode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<SwiftMTDecodeOutput>(input);
+            return new ServiceProviderAction<SwiftMTDecodeOutput>(serviceProviderInput);
         }
     }
 

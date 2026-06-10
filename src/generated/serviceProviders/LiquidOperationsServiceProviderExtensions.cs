@@ -14,77 +14,77 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.LiquidOperations
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "liquidOperations")]
         public IBodyWorkflowAction<JToken> LiquidJsonToJson(Expression<Func<object>> content, Expression<Func<LiquidJsonToJsonMapType>> map, Expression<Func<object>> transformedContentSchema = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (transformedContentSchema != null)
             {
-                parameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
+                serviceProviderParameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/liquidOperations", operationId: "liquidJsonToJson", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "liquidOperations")]
         public IBodyWorkflowAction<JToken> LiquidJsonToText(Expression<Func<object>> content, Expression<Func<LiquidJsonToTextMapType>> map, Expression<Func<object>> transformedContentSchema = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (transformedContentSchema != null)
             {
-                parameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
+                serviceProviderParameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/liquidOperations", operationId: "liquidJsonToText", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "liquidOperations")]
         public IBodyWorkflowAction<JToken> LiquidXmlToJson(Expression<Func<object>> content, Expression<Func<LiquidXmlToJsonMapType>> map, Expression<Func<object>> transformedContentSchema = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (transformedContentSchema != null)
             {
-                parameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
+                serviceProviderParameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/liquidOperations", operationId: "liquidXmlToJson", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "liquidOperations")]
         public IBodyWorkflowAction<JToken> LiquidXmlToText(Expression<Func<object>> content, Expression<Func<LiquidXmlToTextMapType>> map, Expression<Func<object>> transformedContentSchema = null)
         {
-            var parameters = new JObject();
-            parameters["content"] = ExpressionConverter.ConvertO(content);
-            parameters["map"] = ExpressionConverter.ConvertO(map);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["map"] = ExpressionConverter.ConvertO(map);
             if (transformedContentSchema != null)
             {
-                parameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
+                serviceProviderParameters["transformedContentSchema"] = ExpressionConverter.ConvertO(transformedContentSchema);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "connectionProviders/liquidOperations", operationId: "liquidXmlToText", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 

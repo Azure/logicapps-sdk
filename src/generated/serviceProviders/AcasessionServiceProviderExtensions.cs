@@ -14,65 +14,65 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<ExecuteCodeOutput> ExecuteCode(Expression<Func<object>> pythonCode, Expression<Func<object>> sessionId = null)
         {
-            var parameters = new JObject();
-            parameters["pythonCode"] = ExpressionConverter.ConvertO(pythonCode);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["pythonCode"] = ExpressionConverter.ConvertO(pythonCode);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "executeCode", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<ExecuteCodeOutput>(input);
+            return new ServiceProviderAction<ExecuteCodeOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<FileUploadOutput> FileUpload(Expression<Func<FileUploadFilesTypeItem[]>> files, Expression<Func<object>> sessionId = null)
         {
-            var parameters = new JObject();
-            parameters["files"] = ExpressionConverter.ConvertO(files);
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["files"] = ExpressionConverter.ConvertO(files);
             if (sessionId != null)
             {
-                parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             }
 
-            var input = new ServiceProviderActionInput
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileUpload", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<FileUploadOutput>(input);
+            return new ServiceProviderAction<FileUploadOutput>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<JToken> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<JToken> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            var parameters = new JObject();
-            parameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-            parameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var input = new ServiceProviderActionInput
+            var serviceProviderParameters = new JObject();
+            serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
+            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),
-                Parameters = parameters
+                Parameters = serviceProviderParameters
             };
-            return new ServiceProviderAction<JToken>(input);
+            return new ServiceProviderAction<JToken>(serviceProviderInput);
         }
     }
 
