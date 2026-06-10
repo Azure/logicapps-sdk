@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         private static FlowDefinition CreateActionWorkflow()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
 
             var sendMessage = WorkflowActions.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .PutMessage(

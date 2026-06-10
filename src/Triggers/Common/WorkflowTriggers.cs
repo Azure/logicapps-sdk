@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <example>
     /// <code>
     /// // Create a built-in HTTP trigger
-    /// var httpTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("MyTrigger");
+    /// var httpTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("MyTrigger");
     ///
     /// // Create a built-in recurrence trigger
     /// var timerTrigger = WorkflowTriggers.BuiltIn.CreateRecurrenceTrigger(frequency: FlowRecurrenceFrequency.Hour, interval: 1);

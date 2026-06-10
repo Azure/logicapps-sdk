@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public FlowDefinition[] GetWorkflows()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
 
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "Test compose");
 

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         public FlowDefinition[] GetWorkflows()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
 
             var composeStandalone = WorkflowActions.BuiltIn.Compose(
                 inputs: () => $"Output is: {trigger.TriggerOutput}").WithName("Compose_Standalone");
