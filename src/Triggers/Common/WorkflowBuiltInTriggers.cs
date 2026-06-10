@@ -22,6 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     public class WorkflowBuiltInTriggers
     {
         /// <summary>
+        /// Service provider triggers (e.g., Service Bus, SQL, Event Hub).
+        /// Service provider triggers are auto-generated from service provider operation manifests.
+        /// </summary>
+        public WorkflowServiceProviderTriggers ServiceProviders { get; } = new WorkflowServiceProviderTriggers();
+
+        /// <summary>
         /// Adds an HTTP trigger to the flow.
         /// </summary>
         /// <param name="name">The name to assign to the HTTP trigger. Defaults to "when_an_HTTP_request_is_received".</param>
