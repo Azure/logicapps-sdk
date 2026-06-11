@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 
     public class MqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, string triggerName = null)
+        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -196,10 +196,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesGetMessageOptionsType>> getMessageOptions = null, string triggerName = null)
+        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -214,10 +214,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesGetMessageOptionsType>> getMessageOptions = null, string triggerName = null)
+        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput);
         }
     }
 

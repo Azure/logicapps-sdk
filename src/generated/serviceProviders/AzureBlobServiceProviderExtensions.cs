@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
     public class AzureBlobTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified(Expression<Func<string>> path, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified(Expression<Func<string>> path)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["path"] = ExpressionConverter.ConvertO(path);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "whenABlobIsAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput);
         }
     }
 

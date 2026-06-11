@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
 
     public class FtpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput);
         }
     }
 

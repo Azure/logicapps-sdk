@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 
     public class RabbitmqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages(Expression<Func<object>> queueName, string triggerName = null)
+        public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages(Expression<Func<object>> queueName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName, string triggerName = null)
+        public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
         }
     }
 

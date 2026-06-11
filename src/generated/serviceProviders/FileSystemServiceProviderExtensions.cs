@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 
     public class FileSystemTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -230,10 +230,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAdded", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput);
         }
     }
 

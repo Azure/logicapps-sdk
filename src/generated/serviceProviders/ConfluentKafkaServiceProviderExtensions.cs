@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 
     public class ConfluentKafkaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null, string triggerName = null)
+        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(topic);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "ReceiveMessage", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
         }
     }
 

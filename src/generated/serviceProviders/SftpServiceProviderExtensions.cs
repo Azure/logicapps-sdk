@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 
     public class SftpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -244,10 +244,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, string triggerName = null)
+        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFileIsAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput);
         }
     }
 

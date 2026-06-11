@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 
     public class SqlTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string[]> WhenARowIsUpdated(Expression<Func<string>> tableName, string triggerName = null)
+        public IBodyWorkflowTrigger<string[]> WhenARowIsUpdated(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsUpdated", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<string[]> WhenARowIsDeleted(Expression<Func<string>> tableName, string triggerName = null)
+        public IBodyWorkflowTrigger<string[]> WhenARowIsDeleted(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
@@ -197,10 +197,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsDeleted", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<string[]> WhenARowIsInserted(Expression<Func<string>> tableName, string triggerName = null)
+        public IBodyWorkflowTrigger<string[]> WhenARowIsInserted(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
@@ -209,10 +209,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsInserted", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<string[]> WhenARowIsModified(Expression<Func<string>> tableName, string triggerName = null)
+        public IBodyWorkflowTrigger<string[]> WhenARowIsModified(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<string[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<string[]>(serviceProviderInput);
         }
     }
 

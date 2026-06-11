@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Batch
 
     public class BatchTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BatchOutput> Batch(Expression<Func<string>> mode, Expression<Func<BatchConfigurationsType>> configurations, string triggerName = null)
+        public IBodyWorkflowTrigger<BatchOutput> Batch(Expression<Func<string>> mode, Expression<Func<BatchConfigurationsType>> configurations)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["mode"] = ExpressionConverter.ConvertO(mode);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Batch
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/connectionProviders/batch", operationId: "batch", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<BatchOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<BatchOutput>(serviceProviderInput);
         }
     }
 

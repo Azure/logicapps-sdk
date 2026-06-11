@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .ReceiveQueueMessages(
-                    queueName: () => "incoming-messages",
-                    triggerName: "When_messages_are_available_in_a_queue");
+                    queueName: () => "incoming-messages")
+                .WithName("When_messages_are_available_in_a_queue");
 
             var logMessage = WorkflowActions.BuiltIn.Compose(() => new
             {

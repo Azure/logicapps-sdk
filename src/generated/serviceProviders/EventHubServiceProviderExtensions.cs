@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
     public class EventHubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null, string triggerName = null)
+        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null, string triggerName = null)
+        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput, triggerName);
+            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
         }
     }
 

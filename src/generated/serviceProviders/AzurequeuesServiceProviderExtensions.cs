@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> ReceiveQueueMessages(Expression<Func<object>> queueName, string triggerName = null)
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> ReceiveQueueMessages(Expression<Func<object>> queueName)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "receiveQueueMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput);
         }
 
-        public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold, string triggerName = null)
+        public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "specifiedNumberOfMessagesAvailable", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<int>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<int>(serviceProviderInput);
         }
     }
 

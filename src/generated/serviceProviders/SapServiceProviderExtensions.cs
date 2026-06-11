@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null, string triggerName = null)
+        public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "SapTrigger", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput, triggerName);
+            return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
         }
     }
 

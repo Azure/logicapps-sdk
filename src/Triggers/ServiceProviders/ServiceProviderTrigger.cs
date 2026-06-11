@@ -19,13 +19,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger"/> class.
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderTrigger(
-            ServiceProviderOperationInput serviceProviderTriggerInput,
-            string triggerName = null)
+            ServiceProviderOperationInput serviceProviderTriggerInput)
         {
             this.serviceProviderTriggerInput = serviceProviderTriggerInput;
-            this.Name = triggerName ?? "ServiceProviderTrigger";
+            this.Name = "ServiceProviderTrigger";
         }
 
         /// <summary>
@@ -52,11 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger{T}"/> class.
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderTrigger(
-            ServiceProviderOperationInput serviceProviderTriggerInput,
-            string triggerName = null)
-            : base(serviceProviderTriggerInput, triggerName)
+            ServiceProviderOperationInput serviceProviderTriggerInput)
+            : base(serviceProviderTriggerInput)
         {
         }
 
@@ -78,11 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ServiceProviderOutputTrigger{T}"/> class.
         /// </summary>
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
-        /// <param name="triggerName">The trigger name.</param>
         internal ServiceProviderOutputTrigger(
-            ServiceProviderOperationInput serviceProviderTriggerInput,
-            string triggerName = null)
-            : base(serviceProviderTriggerInput, triggerName)
+            ServiceProviderOperationInput serviceProviderTriggerInput)
+            : base(serviceProviderTriggerInput)
         {
         }
 
