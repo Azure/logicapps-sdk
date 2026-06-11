@@ -20,11 +20,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         public const int JsonSerializationMaxDepth = 512;
 
         /// <summary>
-        /// The JSON object type serializer.
-        /// </summary>
-        public static readonly JsonSerializer JsonObjectTypeSerializer = JsonSerializer.Create(JsonExtensions.ObjectSerializationSettings);
-
-        /// <summary>
         /// The JSON object serialization settings.
         /// </summary>
         public static readonly JsonSerializerSettings ObjectSerializationSettings = new JsonSerializerSettings
@@ -45,6 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 new VersionConverter(),
             }
         };
+
+        /// <summary>
+        /// The JSON object type serializer.
+        /// </summary>
+        public static readonly JsonSerializer JsonObjectTypeSerializer = JsonSerializer.Create(JsonExtensions.ObjectSerializationSettings);
 
         /// <summary>
         /// Serialize object to JToken.
