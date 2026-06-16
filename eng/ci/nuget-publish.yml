@@ -1,0 +1,93 @@
+trigger: none
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: OneBranch.Pipelines/GovernedTemplates
+      ref: refs/heads/main
+
+  pipelines:
+    - pipeline: LogicApps-SDK-Official-pipeline
+      project: One
+      source: LogicApps-SDK-Official
+      trigger: none  # Manual trigger only for NuGet publishing
+
+variables:
+  - group: LogicAppsNuGetCredentials
+
+  - name: NuGetPackagePattern
+    value: Microsoft.Azure.Workflows.Sdk.*.nupkg
+
+extends:
+  template: v2/OneBranch.Official.CrossPlat.yml@templates
+  parameters:
+    release:
+      # REQUIRED for Deploy Box Products / nuget.org publishing
+      category: NonAzure
+
+    stages:
+      - stage: Publish_NuGet
+        displayName: Publish NuGet packages to nuget.org
+        variables:
+          # REQUIRED for Production releases
+          ob_release_environment: Production
+
+        jobs:
+          - job: Publish
+            displayName: Push packages to nuget.org
+            pool:
+              type: release
+              os: windows
+
+            templateContext:
+              inputs:
+                - input: pipelineArtifact
+                  pipeline: LogicApps-SDK-Official-pipeline
+                  artifactName: drop_packages
+
+            steps:
+              - pwsh: |
+                  $ErrorActionPreference = 'Stop'
+
+                  $artifactRoot = "$(Pipeline.Workspace)"
+
+                  Write-Host "Searching for NuGet packages in:"
+                  Write-Host "  $artifactRoot"
+
+                  if (-not (Test-Path $artifactRoot)) {
+                    Write-Host "##vso[task.logissue type=error]Artifact root not found"
+                    Get-ChildItem "$(Pipeline.Workspace)" -Depth 2
+                    exit 1
+                  }
+
+                  $packages = Get-ChildItem `
+                    -Path $artifactRoot `
+                    -Filter "$(NuGetPackagePattern)" `
+                    -Recurse
+
+                  if (-not $packages -or $packages.Count -eq 0) {
+                    Write-Host "##vso[task.logissue type=error]No NuGet packages found matching pattern $(NuGetPackagePattern)"
+                    exit 1
+                  }
+
+                  Write-Host "Found $($packages.Count) package(s):"
+                  $packages | ForEach-Object { Write-Host " - $($_.FullName)" }
+                displayName: Validate NuGet packages exist
+
+              - task: NuGetCommand@2
+                displayName: Push packages to nuget.org
+                inputs:
+                  command: push
+                  packagesToPush: '$(Pipeline.Workspace)/$(NuGetPackagePattern)'
+                  nuGetFeedType: external
+                  publishFeedCredentials: LogicAppsTestSdkConnection
+                  allowPackageConflicts: true
+
+              - pwsh: |
+                  Write-Host "========================================"
+                  Write-Host "✅ NuGet Publish Complete"
+                  Write-Host "Target: https://www.nuget.org"
+                  Write-Host "Source artifact: LogicApps-SDK-Official-pipeline"
+                  Write-Host "========================================"
+                displayName: Log completion
