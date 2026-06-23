@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["message"] = ExpressionConverter.ConvertOWithBase64(message);
             if (timeToLive != null)
             {
                 serviceProviderParameters["timeToLive"] = ExpressionConverter.ConvertO(timeToLive);
