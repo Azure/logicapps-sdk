@@ -21,6 +21,21 @@
       <ExcludeFromStyleCop Include="**\*.cs" />
   </ItemGroup>
 
+  <!-- The evaluator is a separate project nested under src/; exclude it from this
+       (root-of-src) project's default compile glob so it is not double-compiled. -->
+  <ItemGroup>
+    <Compile Remove="Microsoft.Azure.Workflows.Sdk.ExpressionEvaluation\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Microsoft.Azure.Workflows.Sdk.ExpressionTests, PublicKey=00240000048000009400000006020000002400005253413100040000010001002549e359674acd5c9973cb966c1af490eb6c45b74a87ce5406a4d48175c997cfa82e1d55214075fca0bfe8ada9e092c8544ddad07ab446a1147e59953a2318f2efeb6f2e988273d1da68db43748fcb0d7114aa8fdd1810bdd88a5b855aa3cb0a5c8893a178dd46c6645a5a820d7873894830391a153650b51f5880e4d05df9cc</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests, PublicKey=00240000048000009400000006020000002400005253413100040000010001002549e359674acd5c9973cb966c1af490eb6c45b74a87ce5406a4d48175c997cfa82e1d55214075fca0bfe8ada9e092c8544ddad07ab446a1147e59953a2318f2efeb6f2e988273d1da68db43748fcb0d7114aa8fdd1810bdd88a5b855aa3cb0a5c8893a178dd46c6645a5a820d7873894830391a153650b51f5880e4d05df9cc</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.21.9" IncludeAssets="all" />
     <PackageReference Include="Grpc.Core.Api" Version="2.60.0" IncludeAssets="all" />
