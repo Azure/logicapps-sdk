@@ -32,7 +32,7 @@ jobs:
         command: custom
         custom: restore
         projects: $(project)
-        arguments: -v m
+        arguments: -v m --source https://packagefeedproxy.microsoft.io/nuget/v3/index.json
 
     - task: DotNetCoreCLI@2
       displayName: Build $(project)
