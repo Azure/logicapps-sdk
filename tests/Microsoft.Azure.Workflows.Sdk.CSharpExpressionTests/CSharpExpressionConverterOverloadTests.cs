@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Stubs;
-
+    
     /// <summary>
     /// GOAL specification for the remaining converter overloads, mirroring
     /// <c>ExpressionConverterOverloadTests</c>: HttpMethod, integer URL encoding, and enums.
@@ -17,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_HttpMethod_EmitsMethodNameString()
         {
             // LA: GET
-            Assert.Equal("\"GET\"", CSharpExpressionConverter.Convert(() => System.Net.Http.HttpMethod.Get));
+            Assert.Equal("\"GET\"", CSharpExpressionConverter.ConvertO(() => System.Net.Http.HttpMethod.Get));
         }
 
         [Fact]

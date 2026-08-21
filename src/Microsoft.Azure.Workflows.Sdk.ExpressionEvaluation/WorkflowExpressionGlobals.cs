@@ -32,17 +32,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionEvaluation
         private readonly IReadOnlyDictionary<string, JToken> actionOutputs;
         private readonly IReadOnlyDictionary<string, JToken> variableValues;
         private readonly IReadOnlyDictionary<string, JToken> agentParameterValues;
+        private readonly IReadOnlyDictionary<string, JToken> parameterValues;
+        private readonly IReadOnlyDictionary<string, JToken> resultValues;
+        private readonly IReadOnlyDictionary<string, JToken> itemValues;
+        private readonly IReadOnlyDictionary<string, JToken> iterationIndexValues;
+        private readonly JToken currentItemValue;
+        private readonly JToken workflowValue;
 
         public WorkflowExpressionGlobals(
             JToken triggerOutputs = null,
             IReadOnlyDictionary<string, JToken> actionOutputs = null,
             IReadOnlyDictionary<string, JToken> variables = null,
-            IReadOnlyDictionary<string, JToken> agentParameters = null)
+            IReadOnlyDictionary<string, JToken> agentParameters = null,
+            IReadOnlyDictionary<string, JToken> parameters = null,
+            IReadOnlyDictionary<string, JToken> results = null,
+            JToken currentItem = null,
+            IReadOnlyDictionary<string, JToken> items = null,
+            IReadOnlyDictionary<string, JToken> iterationIndexes = null,
+            JToken workflow = null)
         {
             this.triggerResult = triggerOutputs;
             this.actionOutputs = actionOutputs ?? new Dictionary<string, JToken>();
             this.variableValues = variables ?? new Dictionary<string, JToken>();
             this.agentParameterValues = agentParameters ?? new Dictionary<string, JToken>();
+            this.parameterValues = parameters ?? new Dictionary<string, JToken>();
+            this.resultValues = results ?? new Dictionary<string, JToken>();
+            this.currentItemValue = currentItem;
+            this.itemValues = items ?? new Dictionary<string, JToken>();
+            this.iterationIndexValues = iterationIndexes ?? new Dictionary<string, JToken>();
+            this.workflowValue = workflow;
         }
 
         // -------------------- Workflow data --------------------
@@ -58,6 +76,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionEvaluation
         public JToken variables(string name) => Lookup(this.variableValues, name);
 
         public JToken agentparameters(string name) => Lookup(this.agentParameterValues, name);
+
+        public JToken parameters(string name) => Lookup(this.parameterValues, name);
+
+        public JToken result(string actionName) => Lookup(this.resultValues, actionName);
+
+        public JToken item() => this.currentItemValue ?? JValue.CreateNull();
+
+        public JToken items(string foreachName) => Lookup(this.itemValues, foreachName);
+
+        public JToken iterationIndexes(string foreachName) => Lookup(this.iterationIndexValues, foreachName);
+
+        public JToken workflow() => this.workflowValue ?? JValue.CreateNull();
 
         // -------------------- Helper functions --------------------
         // Accept object so the converter can pass workflow data / non-string values

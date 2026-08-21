@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Stubs;
-
+    
     /// <summary>
     /// GOAL specification for trigger/action/agent runtime context, mirroring
     /// <c>TriggerAndActionExpressionTests</c>. Under the C# model these render as free
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             Assert.Equal(
                 "triggerOutputs()",
-                CSharpExpressionConverter.Convert(() => $"{trigger.TriggerOutput}"));
+                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput}"));
         }
 
         [Fact]
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             Assert.Equal(
                 "triggerOutputs()?[\"Body\"]",
-                CSharpExpressionConverter.Convert(() => $"{trigger.TriggerOutput.Body}"));
+                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput.Body}"));
         }
 
         [Fact]
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .OnMessages(storageAccountName: () => "a", queueName: () => "q");
             Assert.Equal(
                 "triggerBody()",
-                CSharpExpressionConverter.Convert(() => $"{trigger.TriggerBody}"));
+                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerBody}"));
         }
 
         // -------------------- Action outputs / body --------------------
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
                 "outputs(\"ComposeInput\")",
-                CSharpExpressionConverter.Convert(() => $"{compose.Output}"));
+                CSharpExpressionConverter.ConvertO(() => $"{compose.Output}"));
         }
 
         [Fact]
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("GetItems");
             Assert.Equal(
                 "body(\"GetItems\")",
-                CSharpExpressionConverter.Convert(() => $"{sharepoint.Body}"));
+                CSharpExpressionConverter.ConvertO(() => $"{sharepoint.Body}"));
         }
 
         // -------------------- Combinations --------------------
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("GetItems");
             Assert.Equal(
                 "$\"a {outputs(\"ComposeInput\")} b {body(\"GetItems\")}\"",
-                CSharpExpressionConverter.Convert(() => $"a {compose.Output} b {sharepoint.Body}"));
+                CSharpExpressionConverter.ConvertO(() => $"a {compose.Output} b {sharepoint.Body}"));
         }
 
         [Fact]
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
                 "triggerOutputs()?[\"Body\"] == outputs(\"ComposeInput\")",
-                CSharpExpressionConverter.Convert(() => trigger.TriggerOutput.Body == compose.Output));
+                CSharpExpressionConverter.ConvertO(() => trigger.TriggerOutput.Body == compose.Output));
         }
 
         // -------------------- Agent tool parameters --------------------
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var ctx = new AgentToolContext<Poco>(new Poco { Name = "n" });
             Assert.Equal(
                 "agentparameters(\"Name\")",
-                CSharpExpressionConverter.Convert(() => $"{ctx.Parameters.Name}"));
+                CSharpExpressionConverter.ConvertO(() => $"{ctx.Parameters.Name}"));
         }
     }
 }

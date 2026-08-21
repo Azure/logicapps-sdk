@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Stubs;
-
+    
     /// <summary>
     /// GOAL specification for object payloads, mirroring <c>ComplexObjectConverterTests</c>.
     ///
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // The C# model just emits the initializer source.
             Assert.Equal(
                 "new Poco { Name = \"hi\", Count = 3 }",
-                CSharpExpressionConverter.ConvertObject(() => new Poco { Name = "hi", Count = 3 }));
+                CSharpExpressionConverter.ConvertO(() => new Poco { Name = "hi", Count = 3 }));
         }
     }
 }

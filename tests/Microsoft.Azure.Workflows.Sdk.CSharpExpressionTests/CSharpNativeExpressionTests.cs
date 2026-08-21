@@ -6,8 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using System;
     using System.Linq;
-    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Stubs;
-
+    
     /// <summary>
     /// GOAL specification for arbitrary expressions that are natively supported by C# but
     /// that the Logic App converter cannot express at all (it would throw
@@ -27,21 +26,21 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_StringToUpper_EmitsToUpperCall()
         {
             string s = "hello";
-            Assert.Equal("\"hello\".ToUpper()", CSharpExpressionConverter.Convert(() => s.ToUpper()));
+            Assert.Equal("\"hello\".ToUpper()", CSharpExpressionConverter.ConvertO(() => s.ToUpper()));
         }
 
         [Fact]
         public void Convert_StringSubstring_EmitsSubstringCall()
         {
             string s = "hello";
-            Assert.Equal("\"hello\".Substring(1, 3)", CSharpExpressionConverter.Convert(() => s.Substring(1, 3)));
+            Assert.Equal("\"hello\".Substring(1, 3)", CSharpExpressionConverter.ConvertO(() => s.Substring(1, 3)));
         }
 
         [Fact]
         public void Convert_NullCoalescing_EmitsCoalesceOperator()
         {
             string s = "hello";
-            Assert.Equal("\"hello\" ?? \"fallback\"", CSharpExpressionConverter.Convert(() => s ?? "fallback"));
+            Assert.Equal("\"hello\" ?? \"fallback\"", CSharpExpressionConverter.ConvertO(() => s ?? "fallback"));
         }
 
         [Fact]
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             Assert.Equal(
                 "string.Join(\", \", new[] { \"a\", \"b\", \"c\" })",
-                CSharpExpressionConverter.Convert(() => string.Join(", ", new[] { "a", "b", "c" })));
+                CSharpExpressionConverter.ConvertO(() => string.Join(", ", new[] { "a", "b", "c" })));
         }
 
         [Fact]
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             int n = 5;
             Assert.Equal(
                 "5 > 0 ? \"positive\" : \"non-positive\"",
-                CSharpExpressionConverter.Convert(() => n > 0 ? "positive" : "non-positive"));
+                CSharpExpressionConverter.ConvertO(() => n > 0 ? "positive" : "non-positive"));
         }
 
         [Fact]
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string first = "John", last = "Doe";
             Assert.Equal(
                 "\"John\" + \" \" + \"Doe\"",
-                CSharpExpressionConverter.Convert(() => first + " " + last));
+                CSharpExpressionConverter.ConvertO(() => first + " " + last));
         }
 
         // -------------------- Boolean-producing expressions --------------------
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_StringContains_EmitsContainsCall()
         {
             string s = "hello";
-            Assert.Equal("\"hello\".Contains(\"ell\")", CSharpExpressionConverter.Convert(() => s.Contains("ell")));
+            Assert.Equal("\"hello\".Contains(\"ell\")", CSharpExpressionConverter.ConvertO(() => s.Contains("ell")));
         }
 
         [Fact]
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string s = "hello";
             Assert.Equal(
                 "\"hello\".StartsWith(\"he\") && \"hello\".EndsWith(\"lo\")",
-                CSharpExpressionConverter.Convert(() => s.StartsWith("he") && s.EndsWith("lo")));
+                CSharpExpressionConverter.ConvertO(() => s.StartsWith("he") && s.EndsWith("lo")));
         }
 
         [Fact]
@@ -94,14 +93,14 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             int a = 7, b = 3, c = 2, d = 2;
             Assert.Equal(
                 "7 > 3 || 2 == 2",
-                CSharpExpressionConverter.Convert(() => a > b || c == d));
+                CSharpExpressionConverter.ConvertO(() => a > b || c == d));
         }
 
         [Fact]
         public void Convert_Negation_EmitsNotOperator()
         {
             bool flag = true;
-            Assert.Equal("!true", CSharpExpressionConverter.Convert(() => !flag));
+            Assert.Equal("!true", CSharpExpressionConverter.ConvertO(() => !flag));
         }
 
         // -------------------- Int-producing expressions --------------------
@@ -110,14 +109,14 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_StringLength_EmitsLengthAccess()
         {
             string s = "hello";
-            Assert.Equal("\"hello\".Length", CSharpExpressionConverter.Convert(() => s.Length));
+            Assert.Equal("\"hello\".Length", CSharpExpressionConverter.ConvertO(() => s.Length));
         }
 
         [Fact]
         public void Convert_MathMax_EmitsMathMaxCall()
         {
             int a = 3, b = 7;
-            Assert.Equal("Math.Max(3, 7)", CSharpExpressionConverter.Convert(() => Math.Max(a, b)));
+            Assert.Equal("Math.Max(3, 7)", CSharpExpressionConverter.ConvertO(() => Math.Max(a, b)));
         }
 
         [Fact]
@@ -125,21 +124,21 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             Assert.Equal(
                 "new[] { 3, 1, 2 }.Max()",
-                CSharpExpressionConverter.Convert(() => new[] { 3, 1, 2 }.Max()));
+                CSharpExpressionConverter.ConvertO(() => new[] { 3, 1, 2 }.Max()));
         }
 
         [Fact]
         public void Convert_ArithmeticPrecedence_EmitsUnparenthesizedByPrecedence()
         {
             int a = 3, b = 7, c = 2;
-            Assert.Equal("3 * 7 + 2", CSharpExpressionConverter.Convert(() => a * b + c));
+            Assert.Equal("3 * 7 + 2", CSharpExpressionConverter.ConvertO(() => a * b + c));
         }
 
         [Fact]
         public void Convert_BitwiseAnd_EmitsAmpersandOperator()
         {
             int x = 12, y = 10;
-            Assert.Equal("12 & 10", CSharpExpressionConverter.Convert(() => x & y));
+            Assert.Equal("12 & 10", CSharpExpressionConverter.ConvertO(() => x & y));
         }
 
         // -------------------- Double-producing expressions --------------------
@@ -148,14 +147,14 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_MathRound_EmitsMathRoundCall()
         {
             double x = 3.14159;
-            Assert.Equal("Math.Round(3.14159, 2)", CSharpExpressionConverter.Convert(() => Math.Round(x, 2)));
+            Assert.Equal("Math.Round(3.14159, 2)", CSharpExpressionConverter.ConvertO(() => Math.Round(x, 2)));
         }
 
         [Fact]
         public void Convert_MathPow_EmitsMathPowCall()
         {
             double b = 2, e = 10;
-            Assert.Equal("Math.Pow(2, 10)", CSharpExpressionConverter.Convert(() => Math.Pow(b, e)));
+            Assert.Equal("Math.Pow(2, 10)", CSharpExpressionConverter.ConvertO(() => Math.Pow(b, e)));
         }
     }
 }

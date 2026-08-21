@@ -6,8 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using System.Collections.Generic;
     using Microsoft.Azure.Workflows.Sdk;
-    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Stubs;
-    using Newtonsoft.Json.Linq;
+        using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// GOAL specification for cases the Logic App converter handles incorrectly
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string[] arr = { "x", "y" };
             Assert.Equal(
                 "new[] { \"x\", \"y\" }[0]",
-                CSharpExpressionConverter.Convert(() => $"{arr[0]}"));
+                CSharpExpressionConverter.ConvertO(() => $"{arr[0]}"));
         }
 
         [Fact]
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string[] arr = { "x", "y" };
             Assert.Equal(
                 "new[] { \"x\", \"y\" }[1]",
-                CSharpExpressionConverter.Convert(() => $"{arr[1]}"));
+                CSharpExpressionConverter.ConvertO(() => $"{arr[1]}"));
         }
 
         [Fact]
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             IDictionary<string, string> dict = new Dictionary<string, string> { ["k"] = "v" };
             Assert.Equal(
                 "new Dictionary<string, string> { [\"k\"] = \"v\" }[\"k\"]",
-                CSharpExpressionConverter.Convert(() => dict["k"]));
+                CSharpExpressionConverter.ConvertO(() => dict["k"]));
         }
 
         [Fact]
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "myVar", value: () => "v");
             Assert.Equal(
                 "variables(\"myVar\").Value<string>()",
-                CSharpExpressionConverter.Convert(() => variable.Value.Value<string>()));
+                CSharpExpressionConverter.ConvertO(() => variable.Value.Value<string>()));
         }
 
         [Fact]
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA BUG: captured null throws NullReferenceException (value.GetType() in VisitMember).
             string sNull = null;
-            Assert.Equal("null == \"x\"", CSharpExpressionConverter.Convert(() => sNull == "x"));
+            Assert.Equal("null == \"x\"", CSharpExpressionConverter.ConvertO(() => sNull == "x"));
         }
     }
 }

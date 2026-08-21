@@ -23,6 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionEvaluation
 
         /// <summary>An agent parameter (e.g. <c>agentparameters("temperature")</c>).</summary>
         AgentParameter,
+
+        /// <summary>A workflow parameter (e.g. <c>parameters("connectionString")</c>).</summary>
+        Parameter,
+
+        /// <summary>A ForEach item or iteration reference (e.g. <c>item()</c>, <c>items("loop")</c>).</summary>
+        Item,
+
+        /// <summary>Workflow metadata (e.g. <c>workflow()</c>).</summary>
+        Workflow,
     }
 
     /// <summary>

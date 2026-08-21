@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionEvaluation
                 ["body"] = new AccessorDescriptor(WorkflowReferenceKind.Action, 0),
                 ["variables"] = new AccessorDescriptor(WorkflowReferenceKind.Variable, 0),
                 ["agentparameters"] = new AccessorDescriptor(WorkflowReferenceKind.AgentParameter, 0),
+                ["parameters"] = new AccessorDescriptor(WorkflowReferenceKind.Parameter, 0),
+                ["result"] = new AccessorDescriptor(WorkflowReferenceKind.Action, 0),
+                ["item"] = new AccessorDescriptor(WorkflowReferenceKind.Item, null),
+                ["items"] = new AccessorDescriptor(WorkflowReferenceKind.Item, 0),
+                ["iterationIndexes"] = new AccessorDescriptor(WorkflowReferenceKind.Item, 0),
+                ["workflow"] = new AccessorDescriptor(WorkflowReferenceKind.Workflow, null),
             };
 
         /// <summary>
