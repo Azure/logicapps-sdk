@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Deserializes the operation outputs to the specified type.
         /// </summary>
         /// <typeparam name="T">The type of the operation outputs.</typeparam>
-        /// <returns>The strongly-typed operation outputs.</returns>
+        /// <returns>The strongly-typed operation outputs, or <c>default(T)</c> when outputs are missing or null.</returns>
         public T GetOutputs<T>()
         {
             return this.Outputs == null || this.Outputs.Type == JTokenType.Null
