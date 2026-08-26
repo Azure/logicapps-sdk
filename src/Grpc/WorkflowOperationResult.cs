@@ -31,6 +31,33 @@ namespace Microsoft.Azure.Workflows.Sdk
         public JToken Outputs { get; set; }
 
         /// <summary>
+        /// Deserializes the operation outputs to the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the operation outputs.</typeparam>
+        /// <returns>The strongly-typed operation outputs.</returns>
+        public T GetOutputs<T>()
+        {
+            return this.Outputs == null || this.Outputs.Type == JTokenType.Null
+                ? default
+                : this.Outputs.ToObject<T>();
+        }
+
+        /// <summary>
+        /// Deserializes the operation output body to the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the operation output body.</typeparam>
+        /// <returns>The strongly-typed operation output body.</returns>
+        public T GetBody<T>()
+        {
+            var body = this.Outputs?.Type == JTokenType.Object
+                ? this.Outputs["body"]
+                : null;
+            return body == null || body.Type == JTokenType.Null
+                ? default
+                : body.ToObject<T>();
+        }
+
+        /// <summary>
         /// Gets or sets the operation start time.
         /// </summary>
         [JsonProperty]
