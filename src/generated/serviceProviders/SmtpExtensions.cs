@@ -48,6 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
             {
                 serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(importance);
             }
+            else
+            {
+                serviceProviderParameters["importance"] = "Normal";
+            }
 
             if (readReceipt != null)
             {

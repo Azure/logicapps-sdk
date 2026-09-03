@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -90,6 +94,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             {
                 serviceProviderParameters["skipDelete"] = ExpressionConverter.ConvertO(skipDelete);
             }
+            else
+            {
+                serviceProviderParameters["skipDelete"] = false;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -121,6 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             if (fetchMetadata != null)
             {
                 serviceProviderParameters["fetchMetadata"] = ExpressionConverter.ConvertO(fetchMetadata);
+            }
+            else
+            {
+                serviceProviderParameters["fetchMetadata"] = false;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -158,6 +170,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             if (inferContentType != null)
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+            }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -225,6 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             {
                 serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
             }
+            else
+            {
+                serviceProviderParameters["includeFileContent"] = false;
+            }
 
             if (maxFileCount != null)
             {
@@ -256,6 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
             if (includeFileContent != null)
             {
                 serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
+            }
+            else
+            {
+                serviceProviderParameters["includeFileContent"] = false;
             }
 
             if (oldFilesCutoffTimestamp != null)

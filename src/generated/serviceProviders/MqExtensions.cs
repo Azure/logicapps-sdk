@@ -1978,8 +1978,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [JsonProperty("putApplicationName")]
         public string PutApplicationName { get; set; }
 
-        [JsonProperty("putApplicationType")]
-        public MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType? PutApplicationType { get; set; }
+        [JsonProperty("putApplicationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        [System.ComponentModel.DefaultValue(MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType.NoContext)]
+        public MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType? PutApplicationType { get; set; } = MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType.NoContext;
 
         [JsonProperty("putDateTime")]
         public string PutDateTime { get; set; }
@@ -2017,7 +2018,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Wlm,
         Batch,
         RrsBatch,
-        Sib
+        Sib,
+        NoContext
     }
 }
 

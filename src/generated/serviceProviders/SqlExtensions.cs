@@ -166,6 +166,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             {
                 serviceProviderParameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(includeEmptyResultSets);
             }
+            else
+            {
+                serviceProviderParameters["includeEmptyResultSets"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {

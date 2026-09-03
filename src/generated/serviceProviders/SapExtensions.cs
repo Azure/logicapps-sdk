@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             {
                 serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(inputBodyType);
             }
+            else
+            {
+                serviceProviderParameters["inputBodyType"] = "XML";
+            }
 
             if (rfcName != null)
             {
@@ -55,6 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             if (outputBodyType != null)
             {
                 serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(outputBodyType);
+            }
+            else
+            {
+                serviceProviderParameters["outputBodyType"] = "XML";
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -170,6 +178,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             if (allowUnreleasedSegmentV2 != null)
             {
                 serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(allowUnreleasedSegmentV2);
+            }
+            else
+            {
+                serviceProviderParameters["allowUnreleasedSegmentV2"] = false;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -291,6 +303,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             if (returnFormat != null)
             {
                 serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(returnFormat);
+            }
+            else
+            {
+                serviceProviderParameters["returnFormat"] = "Json";
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -449,6 +465,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             if (gatewayWithoutWorkProcess != null)
             {
                 serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(gatewayWithoutWorkProcess);
+            }
+            else
+            {
+                serviceProviderParameters["GatewayWithoutWorkProcess"] = true;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

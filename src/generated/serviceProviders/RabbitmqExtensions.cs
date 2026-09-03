@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
             {
                 serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(requeueOnReject);
             }
+            else
+            {
+                serviceProviderParameters["requeueOnReject"] = false;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {

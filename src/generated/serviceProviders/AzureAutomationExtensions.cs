@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             {
                 serviceProviderParameters["waitForJob"] = ExpressionConverter.ConvertO(waitForJob);
             }
+            else
+            {
+                serviceProviderParameters["waitForJob"] = false;
+            }
 
             if (hybridAutomationWorkerGroup != null)
             {

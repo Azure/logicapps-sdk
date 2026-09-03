@@ -53,15 +53,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
             {
                 serviceProviderParameters["ConsumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
             }
+            else
+            {
+                serviceProviderParameters["ConsumerGroup"] = "$Default";
+            }
 
             if (authenticationMode != null)
             {
                 serviceProviderParameters["AuthenticationMode"] = ExpressionConverter.ConvertO(authenticationMode);
             }
+            else
+            {
+                serviceProviderParameters["AuthenticationMode"] = "Plain";
+            }
 
             if (protocol != null)
             {
                 serviceProviderParameters["Protocol"] = ExpressionConverter.ConvertO(protocol);
+            }
+            else
+            {
+                serviceProviderParameters["Protocol"] = "SaslSsl";
             }
 
             if (avroSchema != null)

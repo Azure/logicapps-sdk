@@ -96,6 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -113,6 +117,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             if (inferContentType != null)
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+            }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

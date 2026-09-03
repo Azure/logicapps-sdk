@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             {
                 serviceProviderParameters["messageCount"] = ExpressionConverter.ConvertO(messageCount);
             }
+            else
+            {
+                serviceProviderParameters["messageCount"] = 1;
+            }
 
             if (visibilityTimeout != null)
             {

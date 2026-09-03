@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             {
                 serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
             }
+            else
+            {
+                serviceProviderParameters["isUpsert"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -48,6 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             if (isUpsert != null)
             {
                 serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
+            }
+            else
+            {
+                serviceProviderParameters["isUpsert"] = true;
             }
 
             if (sessionToken != null)
@@ -179,10 +187,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             {
                 serviceProviderParameters["leaseCollectionName"] = ExpressionConverter.ConvertO(leaseCollectionName);
             }
+            else
+            {
+                serviceProviderParameters["leaseCollectionName"] = "leases";
+            }
 
             if (createLeaseCollectionIfNotExists != null)
             {
                 serviceProviderParameters["createLeaseCollectionIfNotExists"] = ExpressionConverter.ConvertO(createLeaseCollectionIfNotExists);
+            }
+            else
+            {
+                serviceProviderParameters["createLeaseCollectionIfNotExists"] = false;
             }
 
             if (leasesCollectionThroughput != null)

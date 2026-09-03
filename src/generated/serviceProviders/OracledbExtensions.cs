@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             {
                 serviceProviderParameters["ownedTables"] = ExpressionConverter.ConvertO(ownedTables);
             }
+            else
+            {
+                serviceProviderParameters["ownedTables"] = false;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -62,10 +66,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             {
                 serviceProviderParameters["skipCount"] = ExpressionConverter.ConvertO(skipCount);
             }
+            else
+            {
+                serviceProviderParameters["skipCount"] = 0;
+            }
 
             if (maxCount != null)
             {
                 serviceProviderParameters["maxCount"] = ExpressionConverter.ConvertO(maxCount);
+            }
+            else
+            {
+                serviceProviderParameters["maxCount"] = 0;
             }
 
             if (orderBy != null)

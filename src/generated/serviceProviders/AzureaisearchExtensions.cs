@@ -204,7 +204,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
     public class KnowledgeAgentRetrievalInputAgentMessageContentTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType Role { get; set; }
+        [System.ComponentModel.DefaultValue(KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType.User)]
+        public KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType Role { get; set; } = KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType.User;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }

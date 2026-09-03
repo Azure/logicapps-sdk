@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             {
                 serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
             }
+            else
+            {
+                serviceProviderParameters["temperature"] = 1;
+            }
 
             serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
             if (topP != null)
@@ -89,6 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             {
                 serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
             }
+            else
+            {
+                serviceProviderParameters["temperature"] = 1;
+            }
 
             serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
             if (topP != null)
@@ -104,6 +112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             if (n != null)
             {
                 serviceProviderParameters["n"] = ExpressionConverter.ConvertO(n);
+            }
+            else
+            {
+                serviceProviderParameters["n"] = 1;
             }
 
             if (presencePenalty != null)
@@ -132,6 +144,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             if (temperature != null)
             {
                 serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+            }
+            else
+            {
+                serviceProviderParameters["temperature"] = 1;
             }
 
             serviceProviderParameters["prompts"] = ExpressionConverter.ConvertO(prompts);
@@ -171,6 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             if (temperature != null)
             {
                 serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+            }
+            else
+            {
+                serviceProviderParameters["temperature"] = 1;
             }
 
             serviceProviderParameters["promptTemplateInput"] = ExpressionConverter.ConvertO(promptTemplateInput);
@@ -274,7 +294,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     public class GetChatCompletionsInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetChatCompletionsInputMessagesTypeItemRoleType Role { get; set; }
+        [System.ComponentModel.DefaultValue(GetChatCompletionsInputMessagesTypeItemRoleType.User)]
+        public GetChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = GetChatCompletionsInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -330,7 +351,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     public class GetMultipleChatCompletionsInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetMultipleChatCompletionsInputMessagesTypeItemRoleType Role { get; set; }
+        [System.ComponentModel.DefaultValue(GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User)]
+        public GetMultipleChatCompletionsInputMessagesTypeItemRoleType Role { get; set; } = GetMultipleChatCompletionsInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }

@@ -569,6 +569,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             {
                 serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
+            else
+            {
+                serviceProviderParameters["isSessionsEnabled"] = false;
+            }
 
             if (maxMessageBatchSize != null)
             {
@@ -592,6 +596,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             {
                 serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
             }
+            else
+            {
+                serviceProviderParameters["isSessionsEnabled"] = false;
+            }
 
             if (maxMessageBatchSize != null)
             {
@@ -613,6 +621,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             if (isSessionsEnabled != null)
             {
                 serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+            }
+            else
+            {
+                serviceProviderParameters["isSessionsEnabled"] = false;
             }
 
             if (maxMessageBatchSize != null)
@@ -636,6 +648,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             if (isSessionsEnabled != null)
             {
                 serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+            }
+            else
+            {
+                serviceProviderParameters["isSessionsEnabled"] = false;
             }
 
             if (maxMessageBatchSize != null)

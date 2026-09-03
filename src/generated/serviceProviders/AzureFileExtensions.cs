@@ -102,6 +102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -120,6 +124,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
             }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
+            }
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
@@ -137,6 +145,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             if (inferContentType != null)
             {
                 serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+            }
+            else
+            {
+                serviceProviderParameters["inferContentType"] = true;
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
