@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "callRfc", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "callRfc", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "createRfcTransaction", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createRfcTransaction", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<CreateRfcTransactionOutput>(serviceProviderInput);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "getRfcTransaction", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getRfcTransaction", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetRfcTransactionOutput>(serviceProviderInput);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "addRfcToTransaction", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "addRfcToTransaction", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<AddRfcToTransactionOutput>(serviceProviderInput);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "commitRfcTransaction", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "commitRfcTransaction", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<CommitRfcTransactionOutput>(serviceProviderInput);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "confirmTransactionId", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "sendIDoc", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendIDoc", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<SendIDocOutput>(serviceProviderInput);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "bapiCallMethod", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCallMethod", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<BapiCallMethodOutput>(serviceProviderInput);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         {
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "createSession", connectionId)
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createSession", connectionName: connectionId)
             };
             return new ServiceProviderAction<CreateSessionOutput>(serviceProviderInput);
         }
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "closeSession", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction(serviceProviderInput);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "bapiCommit", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<BapiCommitOutput>(serviceProviderInput);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "bapiRollback", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<BapiRollbackOutput>(serviceProviderInput);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "readTable", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "readTable", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ReadTableOutput>(serviceProviderInput);
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "getSchemaV2", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaV2", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "getIDocList", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetIDocListOutput>(serviceProviderInput);
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(iDocNumber);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "getIDocStatus", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetIDocStatusOutput>(serviceProviderInput);
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "respondToSapServer", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "respondToSapServer", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction(serviceProviderInput);
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "sendExceptionToSapServer", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendExceptionToSapServer", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction(serviceProviderInput);
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "runDiagnostics", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/sap", "SapTrigger", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "SapTrigger", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);

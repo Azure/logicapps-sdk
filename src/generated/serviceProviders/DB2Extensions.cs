@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             serviceProviderParameters["searchCondition"] = ExpressionConverter.ConvertO(searchCondition);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "deleteRow", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<DeleteRowOutput>(serviceProviderInput);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "executeNonQuery", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeNonQuery", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(serviceProviderInput);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "executeQuery", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeQuery", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken[]>(serviceProviderInput);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "getTables", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "getTables", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             serviceProviderParameters["insertParameters"] = ExpressionConverter.ConvertO(insertParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "insertRow", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<InsertRowOutput>(serviceProviderInput);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "storedProcedure", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "storedProcedure", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken[]>(serviceProviderInput);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             serviceProviderParameters["searchCondition"] = ExpressionConverter.ConvertO(searchCondition);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/DB2", "updateRow", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<UpdateRowOutput>(serviceProviderInput);

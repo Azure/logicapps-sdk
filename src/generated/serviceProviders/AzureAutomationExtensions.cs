@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azureAutomation", "createJob", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "createJob", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<CreateJobOutput>(serviceProviderInput);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             serviceProviderParameters["jobId"] = ExpressionConverter.ConvertO(jobId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azureAutomation", "getJobStatus", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetJobStatusOutput>(serviceProviderInput);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             serviceProviderParameters["jobId"] = ExpressionConverter.ConvertO(jobId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azureAutomation", "getJobOutput", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobOutput", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<string>(serviceProviderInput);

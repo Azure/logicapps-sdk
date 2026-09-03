@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "copyFile", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "copyFile", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "extractArchive", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "extractArchive", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "createFile", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "createFile", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "deleteFile", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "deleteFile", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<bool>(serviceProviderInput);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "getFileContent", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContent", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "getFileContentV2", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentV2", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "getFileContentByPath", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentByPath", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(fileId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "getFileMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "getFileMetadataByPath", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadataByPath", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetFileMetadataByPathOutput>(serviceProviderInput);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             serviceProviderParameters["folderId"] = ExpressionConverter.ConvertO(folderId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "listFolder", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "listFolder", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
             serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "updateFile", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "updateFile", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "whenFilesAreAdded", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAdded", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/AzureFile", "whenFilesAreAddedOrModified", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);

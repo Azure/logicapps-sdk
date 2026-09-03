@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ImsProgramCall
             serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/imsProgramCall", "executeMethod", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/imsProgramCall", operationId: "executeMethod", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);

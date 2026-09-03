@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/eventHub", "sendEvent", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/eventHub", "sendEvents", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
             serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/eventHub", "replicateEvents", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/eventHub", "receiveEvents", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/eventHub", "receiveEventsForReplication", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);

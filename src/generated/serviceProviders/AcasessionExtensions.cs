@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/acasession", "executeCode", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "executeCode", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ExecuteCodeOutput>(serviceProviderInput);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/acasession", "fileUpload", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileUpload", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<FileUploadOutput>(serviceProviderInput);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
             serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/acasession", "fileDownload", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
             serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/acasession", "fileDelete", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);

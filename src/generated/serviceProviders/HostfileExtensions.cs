@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
             serviceProviderParameters["rows"] = ExpressionConverter.ConvertO(rows);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/hostfile", "generateFileContents", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
             serviceProviderParameters["contents"] = ExpressionConverter.ConvertO(contents);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/hostfile", "parseFileContents", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);

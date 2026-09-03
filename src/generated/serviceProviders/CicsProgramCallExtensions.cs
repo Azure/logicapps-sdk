@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.CicsProgramCall
             serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/cicsProgramCall", "executeMethod", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "executeMethod", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);

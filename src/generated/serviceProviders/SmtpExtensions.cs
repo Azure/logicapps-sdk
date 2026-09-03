@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/Smtp", "sendEmail", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getSecret", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecret", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSecretOutput>(serviceProviderInput);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getSecretVersion", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersion", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSecretVersionOutput>(serviceProviderInput);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         {
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "listSecretMetadata", connectionId)
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
             };
             return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(serviceProviderInput);
         }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getSecretMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSecretMetadataOutput>(serviceProviderInput);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getSecretVersionMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersionMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSecretVersionMetadataOutput>(serviceProviderInput);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "listSecretVersionMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretVersionMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ListSecretVersionMetadataOutputItem[]>(serviceProviderInput);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getKeyMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetKeyMetadataOutput>(serviceProviderInput);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         {
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "listKeyMetadata", connectionId)
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
             };
             return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(serviceProviderInput);
         }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "getKeyVersionMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyVersionMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetKeyVersionMetadataOutput>(serviceProviderInput);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "listKeyVersionMetadata", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyVersionMetadata", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ListKeyVersionMetadataOutputItem[]>(serviceProviderInput);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["encryptedData"] = ExpressionConverter.ConvertO(encryptedData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "decryptDataWithKey", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKey", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<DecryptDataWithKeyOutput>(serviceProviderInput);
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["encryptedData"] = ExpressionConverter.ConvertO(encryptedData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "decryptDataWithKeyVersion", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKeyVersion", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<DecryptDataWithKeyVersionOutput>(serviceProviderInput);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["rawData"] = ExpressionConverter.ConvertO(rawData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "encryptDataWithKey", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKey", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<EncryptDataWithKeyOutput>(serviceProviderInput);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
             serviceProviderParameters["rawData"] = ExpressionConverter.ConvertO(rawData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/keyVault", "encryptDataWithKeyVersion", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKeyVersion", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<EncryptDataWithKeyVersionOutput>(serviceProviderInput);

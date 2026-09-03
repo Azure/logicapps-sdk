@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         {
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/Jdbc", "getTables", connectionId)
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
             };
             return new ServiceProviderAction<string[]>(serviceProviderInput);
         }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/Jdbc", "rawQuery", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken[]>(serviceProviderInput);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
             serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/Jdbc", "getSchema", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getArrayEmbeddings", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getSingleEmbedding", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getChatCompletions", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletions", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getMultipleChatCompletions", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getMultipleChatCompletions", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getCompletion", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getCompletion", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/openai", "getChatCompletionsUsingPromptTemplate", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletionsUsingPromptTemplate", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);

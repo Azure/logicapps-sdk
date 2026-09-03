@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
             serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/si3270", "executeMethod", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "executeMethod", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<JToken>(serviceProviderInput);

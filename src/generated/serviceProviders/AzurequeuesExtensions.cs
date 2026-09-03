@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "putMessage", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putMessage", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<PutMessageOutput>(serviceProviderInput);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "getMessages", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "getMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<GetMessagesOutputItem[]>(serviceProviderInput);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             serviceProviderParameters["popReceipt"] = ExpressionConverter.ConvertO(popReceipt);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "deleteMessage", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "deleteMessage", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "putQueue", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putQueue", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "listQueues", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "listQueues", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderAction<ListQueuesOutput>(serviceProviderInput);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "receiveQueueMessages", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "receiveQueueMessages", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             serviceProviderParameters["threshold"] = ExpressionConverter.ConvertO(threshold);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration("/serviceProviders/azurequeues", "specifiedNumberOfMessagesAvailable", connectionId),
+                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "specifiedNumberOfMessagesAvailable", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
             return new ServiceProviderTrigger<int>(serviceProviderInput, isPolling: true, recurrence: recurrence);
