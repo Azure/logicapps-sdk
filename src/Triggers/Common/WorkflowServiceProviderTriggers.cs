@@ -7,13 +7,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Provides access to service provider triggers. Service provider triggers are auto-generated
     /// from service provider operation manifests and are available as extension methods on this class.
-    /// Access through <c>WorkflowTriggers.BuiltIn.ServiceProviders</c>.
+    /// Access through <c>WorkflowTriggers.ServiceProviders</c>.
     /// </summary>
     /// <remarks>
     /// This is a partial class. Connector-specific methods are generated in separate source files
     /// under the <c>generated/serviceProviders</c> directory.
     /// </remarks>
-    /// <seealso cref="WorkflowBuiltInTriggers"/>
+    /// <seealso cref="WorkflowTriggers"/>
     public partial class WorkflowServiceProviderTriggers
     {
     }

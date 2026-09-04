@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Provides the top-level entry point for creating workflow triggers. Use the <see cref="BuiltIn"/>
     /// property to access built-in trigger types (HTTP Request, Recurrence, Conversational Agent) and the
-    /// <see cref="Managed"/> property to access triggers provided by managed API connectors.
+    /// <see cref="Managed"/> and <see cref="ServiceProviders"/> properties to access connector triggers.
     /// </summary>
     /// <example>
     /// <code>
@@ -34,5 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// extension methods on this instance.
         /// </summary>
         public static WorkflowManagedTriggers Managed = new WorkflowManagedTriggers();
+
+        /// <summary>
+        /// Gets the factory for service provider triggers (e.g., Service Bus, SQL, Event Hub).
+        /// Service provider triggers are auto-generated from operation manifests.
+        /// </summary>
+        public static WorkflowServiceProviderTriggers ServiceProviders = new WorkflowServiceProviderTriggers();
     }
 }

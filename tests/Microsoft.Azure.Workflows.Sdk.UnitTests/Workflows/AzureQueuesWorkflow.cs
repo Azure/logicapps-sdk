@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         /// </summary>
         private static FlowDefinition CreateTriggerWorkflow()
         {
-            var trigger = WorkflowTriggers.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
+            var trigger = WorkflowTriggers.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .ReceiveQueueMessages(
                     queueName: () => "incoming-messages")
                 .WithName("When_messages_are_available_in_a_queue");
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 InsertedOn = trigger.TriggerBody.InsertedOn,
             }).WithName("Log_Queue_Message");
 
-            var deleteMessage = WorkflowActions.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
+            var deleteMessage = WorkflowActions.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .DeleteMessage(
                     queueName: () => "incoming-messages",
                     messageId: () => $"{trigger.TriggerBody.MessageId}",
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
 
-            var sendMessage = WorkflowActions.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
+            var sendMessage = WorkflowActions.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .PutMessage(
                     queueName: () => "outgoing-messages",
                     message: () => $"Request received: {trigger.TriggerOutput.Body}")
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 ExpiresOn = sendMessage.Output.ExpiresOn,
             }).WithName("Log_Send_Result");
 
-            var listQueues = WorkflowActions.BuiltIn.ServiceProviders.Azurequeues("azureQueuesConnection")
+            var listQueues = WorkflowActions.ServiceProviders.Azurequeues("azureQueuesConnection")
                 .ListQueues(prefix: () => "outgoing")
                 .WithName("List_Queues");
 

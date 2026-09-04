@@ -39,12 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         public WorkflowVariableActions Variables { get; } = new WorkflowVariableActions();
 
         /// <summary>
-        /// Service provider actions (e.g., SQL, Service Bus, Azure Blob, Event Hub).
-        /// Service provider actions are auto-generated from service provider operation manifests.
-        /// </summary>
-        public WorkflowServiceProviderActions ServiceProviders { get; } = new WorkflowServiceProviderActions();
-
-        /// <summary>
         /// Creates a nested workflow action that calls another workflow.
         /// </summary>
         /// <param name="workflowReferenceName">The reference name of the workflow to call.</param>
