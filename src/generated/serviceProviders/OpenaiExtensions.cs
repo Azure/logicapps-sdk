@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     public class OpenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<string[]>> input)
+        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);

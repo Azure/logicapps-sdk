@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public string ActivityId { get; set; }
 
         [JsonProperty("items")]
-        public string[] Items { get; set; }
+        public JToken[] Items { get; set; }
 
         [JsonProperty("sessionToken")]
         public string SessionToken { get; set; }

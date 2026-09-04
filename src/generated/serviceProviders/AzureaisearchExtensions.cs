@@ -192,13 +192,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
     public class KnowledgeAgentRetrievalOutputValueType
     {
         [JsonProperty("response")]
-        public string[] Response { get; set; }
+        public JToken[] Response { get; set; }
 
         [JsonProperty("activity")]
-        public string[] Activity { get; set; }
+        public JToken[] Activity { get; set; }
 
         [JsonProperty("references")]
-        public string[] References { get; set; }
+        public JToken[] References { get; set; }
     }
 
     public class KnowledgeAgentRetrievalInputAgentMessageContentTypeItem
