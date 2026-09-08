@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IOutputWorkflowAction<JToken> DeleteFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> recursiveDelete = null)
+        public IWorkflowAction DeleteFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> recursiveDelete = null)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFolder", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            return new ServiceProviderAction(serviceProviderInput);
         }
     }
 

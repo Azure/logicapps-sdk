@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IOutputWorkflowAction<JToken> ConfirmTransactionId(Expression<Func<string>> tId)
+        public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
         {
             var serviceProviderParameters = new JObject();
             serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
                 Parameters = serviceProviderParameters
             };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            return new ServiceProviderAction(serviceProviderInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
