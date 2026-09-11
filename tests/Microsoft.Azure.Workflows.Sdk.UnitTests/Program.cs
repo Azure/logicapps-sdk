@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 new ServiceNowWorkflow(),
                 new ServiceBusWorkflow(),
                 new ServiceBusSendMessageWorkflow(),
+                new AzureQueuesWorkflow(),
                 new NullableNodeWorkflow(),
                 new ComplexBranchWorkflow(),
                 new ParallelBranchWorkflow(),

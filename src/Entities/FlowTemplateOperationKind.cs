@@ -27,5 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// The Agent operation kind.
         /// </summary>
         Agent,
+
+        /// <summary>
+        /// The polling trigger operation kind.
+        /// </summary>
+        Polling,
     }
 }

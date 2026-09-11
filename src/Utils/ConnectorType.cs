@@ -327,7 +327,7 @@ internal class CodefulConnectorOperationResult
     public int StatusCode { get; set; }
 }
 
-public class ServiceProviderActionInput
+public class ServiceProviderOperationInput
 {
     public ServiceProviderConfiguration ServiceProviderConfiguration { get; set; }
     public object Parameters { get; set; }

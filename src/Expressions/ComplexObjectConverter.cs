@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
     using Newtonsoft.Json.Linq;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq.Expressions;
     using System.Reflection;
@@ -144,6 +145,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 return result;
             }
 
+            if (e.Arguments.Count == 0)
+            {
+                var defaultValues = GetDefaultValues(
+                    type: e.Type,
+                    boundMemberNames: new HashSet<string>());
+                if (defaultValues.HasValues)
+                {
+                    return defaultValues;
+                }
+            }
+
             throw new NotImplementedException();
         }
 
@@ -218,12 +230,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         public override JToken Visit(MemberInitExpression e, object p)
         {
             var result = new JObject();
+            var boundMemberNames = new HashSet<string>();
             foreach (var binding in e.Bindings.OfType<MemberAssignment>())
             {
                 var name = GetPropertyName(binding.Member);
                 result[name] = binding.Expression.Visit(this, p);
+                boundMemberNames.Add(binding.Member.Name);
             }
+
+            result.Merge(
+                GetDefaultValues(
+                    type: e.Type,
+                    boundMemberNames: boundMemberNames));
             return result;
+        }
+
+        /// <summary>
+        /// Gets generated defaults for properties not explicitly bound by an expression.
+        /// </summary>
+        /// <param name="type">The generated input type.</param>
+        /// <param name="boundMemberNames">The explicitly bound CLR member names.</param>
+        private static JObject GetDefaultValues(
+            Type type,
+            HashSet<string> boundMemberNames)
+        {
+            var result = new JObject();
+            foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (boundMemberNames.Contains(property.Name))
+                {
+                    continue;
+                }
+
+                var defaultValueAttribute = property.GetCustomAttribute<DefaultValueAttribute>();
+                if (defaultValueAttribute != null)
+                {
+                    result[GetPropertyName(property)] = ConvertDefaultValue(
+                        defaultValueAttribute.Value,
+                        property.PropertyType);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts a property default to its workflow JSON representation.
+        /// </summary>
+        /// <param name="value">The default value.</param>
+        /// <param name="propertyType">The property type.</param>
+        private static JToken ConvertDefaultValue(object value, Type propertyType)
+        {
+            if (value == null)
+            {
+                return JValue.CreateNull();
+            }
+
+            var underlyingType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
+            if (underlyingType.IsEnum)
+            {
+                var enumName = Enum.GetName(underlyingType, value);
+                var member = underlyingType.GetMember(enumName).FirstOrDefault();
+                var enumMemberAttribute = member?.GetCustomAttribute<System.Runtime.Serialization.EnumMemberAttribute>();
+                return new JValue(enumMemberAttribute?.Value ?? enumName);
+            }
+
+            if (typeof(JToken).IsAssignableFrom(underlyingType) &&
+                value is string json)
+            {
+                return JToken.Parse(json);
+            }
+
+            return JToken.FromObject(value);
         }
 
         /// <summary>
