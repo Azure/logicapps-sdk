@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Microsoft.Azure.Workflows.Sdk.Expressions;
 
     /// <summary>
-    /// Converts LINQ expression trees to C# source strings for runtime evaluation.
-    /// Workflow data references are emitted as free-function calls matching
-    /// <c>WorkflowExpressionGlobals</c>; all other C# is preserved verbatim.
+    /// Converts LINQ expression trees to C# source strings for evaluation by the Logic Apps
+    /// runtime C# expression engine. Workflow data references are emitted as free-function
+    /// calls that use the runtime workflow globals; all other C# is preserved verbatim.
     /// </summary>
     internal static class CSharpExpressionConverter
     {

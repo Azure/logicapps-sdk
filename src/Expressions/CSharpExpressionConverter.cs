@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
     /// <summary>
     /// Walks a LINQ expression tree and emits a C# source string suitable for
-    /// runtime evaluation by <c>RoslynWorkflowExpressionEvaluator</c>.
+    /// evaluation by the Logic Apps runtime C# expression engine.
     ///
     /// Workflow data references (action outputs, trigger, variables, agent parameters)
     /// are converted to free-function calls (e.g. <c>body("X")</c>, <c>triggerOutputs()</c>)
-    /// matching the <c>WorkflowExpressionGlobals</c> API.
+    /// that use the runtime workflow globals.
     ///
     /// All other C# constructs (operators, method calls, LINQ, BCL) are preserved verbatim
     /// so the full power of C# is available at runtime.
