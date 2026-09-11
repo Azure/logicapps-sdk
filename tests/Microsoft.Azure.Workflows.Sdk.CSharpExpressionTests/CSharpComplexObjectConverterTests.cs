@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA JSON: {"Name":"n","Count":2,"renamed":"t"}
             Assert.Equal(
-                "new Poco { Name = \"n\", Count = 2, Tag = \"t\" }",
+                "new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"n\", Count = 2, Tag = \"t\" }",
                 CSharpExpressionConverter.ConvertO(() => new Poco { Name = "n", Count = 2, Tag = "t" }));
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA JSON: {"b":true,"l":10,"d":1.5,"dec":2.5,"e":"Running","n":null}
             Assert.Equal(
-                "new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = FlowStatus.Running, n = (string)null }",
+                "new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = global::Microsoft.Azure.Workflows.Sdk.FlowStatus.Running, n = (string)null }",
                 CSharpExpressionConverter.ConvertO(() => new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = FlowStatus.Running, n = (string)null }));
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: ConvertObject rewrites string members through the converter and re-compiles.
             // The C# model just emits the initializer source.
             Assert.Equal(
-                "new Poco { Name = \"hi\", Count = 3 }",
+                "new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"hi\", Count = 3 }",
                 CSharpExpressionConverter.ConvertO(() => new Poco { Name = "hi", Count = 3 }));
         }
     }

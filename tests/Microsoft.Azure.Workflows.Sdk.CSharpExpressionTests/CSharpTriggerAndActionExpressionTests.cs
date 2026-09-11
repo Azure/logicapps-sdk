@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: @{triggerOutputs()}
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             Assert.Equal(
-                "triggerOutputs()",
+                "JsonConvert.SerializeObject(triggerOutputs().ToObject<global::Microsoft.Azure.Workflows.Sdk.HttpRequestTriggerOutput>())",
                 CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput}"));
         }
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: @{triggerOutputs()?['Body']}
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             Assert.Equal(
-                "triggerOutputs()?[\"Body\"]",
+                "triggerOutputs().ToObject<global::Microsoft.Azure.Workflows.Sdk.HttpRequestTriggerOutput>().Body",
                 CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput.Body}"));
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var trigger = WorkflowTriggers.Managed.Azurequeues("conn")
                 .OnMessages(storageAccountName: () => "a", queueName: () => "q");
             Assert.Equal(
-                "triggerBody()",
+                "JsonConvert.SerializeObject(triggerBody().ToObject<global::Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues.Messages>())",
                 CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerBody}"));
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .GetItems(dataset: () => "d", table: () => "t")
                 .WithName("GetItems");
             Assert.Equal(
-                "body(\"GetItems\")",
+                "JsonConvert.SerializeObject(body(\"GetItems\").ToObject<global::Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline.ItemsList>())",
                 CSharpExpressionConverter.ConvertO(() => $"{sharepoint.Body}"));
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .GetItems(dataset: () => "d", table: () => "t")
                 .WithName("GetItems");
             Assert.Equal(
-                "$\"a {outputs(\"ComposeInput\")} b {body(\"GetItems\")}\"",
+                "$\"a {outputs(\"ComposeInput\")} b {JsonConvert.SerializeObject(body(\"GetItems\").ToObject<global::Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline.ItemsList>())}\"",
                 CSharpExpressionConverter.ConvertO(() => $"a {compose.Output} b {sharepoint.Body}"));
         }
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
-                "triggerOutputs()?[\"Body\"] == outputs(\"ComposeInput\")",
+                "triggerOutputs().ToObject<global::Microsoft.Azure.Workflows.Sdk.HttpRequestTriggerOutput>().Body == outputs(\"ComposeInput\")",
                 CSharpExpressionConverter.ConvertO(() => trigger.TriggerOutput.Body == compose.Output));
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: @{agentparameters('Name')}
             var ctx = new AgentToolContext<Poco>(new Poco { Name = "n" });
             Assert.Equal(
-                "agentparameters(\"Name\")",
+                "agentparameters(\"Name\").ToObject<string>()",
                 CSharpExpressionConverter.ConvertO(() => $"{ctx.Parameters.Name}"));
         }
     }

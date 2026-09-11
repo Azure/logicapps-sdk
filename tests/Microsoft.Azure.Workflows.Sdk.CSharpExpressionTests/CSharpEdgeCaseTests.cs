@@ -129,9 +129,8 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void ConvertO_TriggerOutputChainedAccess_EmitsNullSafeIndexerChain()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
-            // trigger.TriggerOutput.Body accesses nested members on JToken
             Assert.Equal(
-                "triggerOutputs()?[\"Body\"]",
+                "triggerOutputs().ToObject<global::Microsoft.Azure.Workflows.Sdk.HttpRequestTriggerOutput>().Body",
                 CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput.Body}"));
         }
 

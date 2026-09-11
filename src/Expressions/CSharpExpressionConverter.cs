@@ -81,6 +81,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 i.IsGenericType && i.GetGenericTypeDefinition() == genericInterfaceType);
         }
 
+        private static bool IsJTokenCompatible(Type type) =>
+            type != null && typeof(JToken).IsAssignableFrom(type);
+
+        private static VisitResult RenderWorkflowAccessor(string accessor, Type type)
+        {
+            if (IsJTokenCompatible(type))
+                return new VisitResult(accessor, true, false);
+
+            return new VisitResult($"{accessor}.ToObject<{GetTypeName(type)}>()", false, false);
+        }
+
         private static string GetPropertyName(MemberInfo member)
         {
             var jsonPropAttr = member.GetCustomAttribute(typeof(JsonPropertyAttribute));
@@ -325,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (e.Member.Name == "Output")
                 {
                     var actionName = ((IWorkflowAction)closureValue).Name;
-                    result = new VisitResult($"outputs(\"{EscapeString(actionName)}\")", true, false);
+                    result = RenderWorkflowAccessor($"outputs(\"{EscapeString(actionName)}\")", e.Type);
                     return true;
                 }
             }
@@ -336,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (e.Member.Name == "Body")
                 {
                     var actionName = ((IWorkflowAction)closureValue).Name;
-                    result = new VisitResult($"body(\"{EscapeString(actionName)}\")", true, false);
+                    result = RenderWorkflowAccessor($"body(\"{EscapeString(actionName)}\")", e.Type);
                     return true;
                 }
             }
@@ -346,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             {
                 if (e.Member.Name == "TriggerOutput")
                 {
-                    result = new VisitResult("triggerOutputs()", true, false);
+                    result = RenderWorkflowAccessor("triggerOutputs()", e.Type);
                     return true;
                 }
             }
@@ -356,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             {
                 if (e.Member.Name == "TriggerBody")
                 {
-                    result = new VisitResult("triggerBody()", true, false);
+                    result = RenderWorkflowAccessor("triggerBody()", e.Type);
                     return true;
                 }
             }
@@ -392,8 +403,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             // Agent parameters member access
             if (targetResult.IsAgentParams)
             {
-                var propName = GetPropertyName(e.Member);
-                result = new VisitResult($"agentparameters(\"{EscapeString(propName)}\")", true, false);
+                var propName = e.Member.Name;
+                result = RenderWorkflowAccessor(
+                    $"agentparameters(\"{EscapeString(propName)}\")",
+                    GetMemberType(e.Member));
                 return true;
             }
 
@@ -1125,27 +1138,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         private static string GetTypeName(Type type)
         {
             if (type == typeof(string)) return "string";
+            if (type == typeof(sbyte)) return "sbyte";
+            if (type == typeof(byte)) return "byte";
+            if (type == typeof(short)) return "short";
+            if (type == typeof(ushort)) return "ushort";
             if (type == typeof(int)) return "int";
+            if (type == typeof(uint)) return "uint";
             if (type == typeof(long)) return "long";
+            if (type == typeof(ulong)) return "ulong";
             if (type == typeof(double)) return "double";
             if (type == typeof(float)) return "float";
             if (type == typeof(decimal)) return "decimal";
             if (type == typeof(bool)) return "bool";
             if (type == typeof(object)) return "object";
             if (type == typeof(char)) return "char";
-            if (type == typeof(byte)) return "byte";
-            if (type == typeof(short)) return "short";
             if (type == typeof(void)) return "void";
 
-            if (type.IsGenericType)
+            if (type.IsArray)
+                return $"{GetTypeName(type.GetElementType())}[{new string(',', type.GetArrayRank() - 1)}]";
+
+            var nullableType = Nullable.GetUnderlyingType(type);
+            if (nullableType != null)
+                return $"{GetTypeName(nullableType)}?";
+
+            var typeChain = new Stack<Type>();
+            for (var current = type; current != null; current = current.DeclaringType)
+                typeChain.Push(current);
+
+            var typeArguments = type.IsGenericType
+                ? type.GetGenericArguments()
+                : Type.EmptyTypes;
+            var typeArgumentIndex = 0;
+            var segments = new List<string>();
+
+            while (typeChain.Count > 0)
             {
-                var genericDef = type.GetGenericTypeDefinition();
-                var baseName = type.Name.Substring(0, type.Name.IndexOf('`'));
-                var args = type.GetGenericArguments().Select(GetTypeName);
-                return $"{baseName}<{string.Join(", ", args)}>";
+                var current = typeChain.Pop();
+                var tickIndex = current.Name.IndexOf('`');
+                var segment = tickIndex >= 0 ? current.Name.Substring(0, tickIndex) : current.Name;
+                var genericArgumentCount = tickIndex >= 0
+                    ? int.Parse(current.Name.Substring(tickIndex + 1), CultureInfo.InvariantCulture)
+                    : 0;
+
+                if (genericArgumentCount > 0)
+                {
+                    var arguments = typeArguments
+                        .Skip(typeArgumentIndex)
+                        .Take(genericArgumentCount)
+                        .Select(GetTypeName);
+                    segment = $"{segment}<{string.Join(", ", arguments)}>";
+                    typeArgumentIndex += genericArgumentCount;
+                }
+
+                segments.Add(segment);
             }
 
-            return type.Name;
+            var name = string.Join(".", segments);
+            if (type.Namespace == "System" ||
+                (type.Namespace != null && type.Namespace.StartsWith("System.", StringComparison.Ordinal)))
+                return name;
+
+            return string.IsNullOrEmpty(type.Namespace)
+                ? $"global::{name}"
+                : $"global::{type.Namespace}.{name}";
         }
     }
 }

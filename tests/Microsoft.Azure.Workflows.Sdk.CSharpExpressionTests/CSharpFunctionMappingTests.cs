@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // IMPROVEMENT: instead of fragile hand-built JSON-via-concat, the C# model
             // serializes the object with a real serializer.
             Assert.Equal(
-                "JsonConvert.SerializeObject(new Poco { Name = \"n\", Count = 2 })",
+                "JsonConvert.SerializeObject(new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"n\", Count = 2 })",
                 CSharpExpressionConverter.ConvertO(() => $"{new Poco { Name = "n", Count = 2 }}"));
         }
 
