@@ -23,6 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         }
 
         [Fact]
+        public void Convert_WorkflowRuntimeFunctions_EmitNativeFunctions()
+        {
+            Assert.Equal(
+                "@actions('Action')",
+                ExpressionConverter.Convert(() => WorkflowFunctions.Actions("Action").ToObject<string>()));
+            Assert.Equal(
+                "@triggerFormDataValue('name')",
+                ExpressionConverter.Convert(() => WorkflowFunctions.TriggerFormDataValue("name").ToObject<string>()));
+        }
+
+        [Fact]
         public void Convert_StringConcatArray_EmitsConcatText()
         {
             Assert.Equal("abc", ExpressionConverter.Convert(() => string.Concat(new[] { "a", "b", "c" })));

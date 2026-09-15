@@ -425,11 +425,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             var dictType = typeof(IDictionary<string, string>);
             var getItemMethod = dictType.GetProperty("Item")?.GetGetMethod();
 
-            if (e.Method.DeclaringType == typeof(WorkflowFunctions) && e.Method.Name == "ToJson")
+            if (e.Method.DeclaringType == typeof(WorkflowFunctions))
             {
+                var functionName = WorkflowFunctions.GetExpressionFunctionName(e.Method.Name);
                 return new FunctionCallNode
                 {
-                    FunctionName = "json",
+                    FunctionName = functionName,
                     Arguments = args
                 };
             }

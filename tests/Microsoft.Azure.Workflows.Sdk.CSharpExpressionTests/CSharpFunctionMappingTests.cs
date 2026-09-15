@@ -14,6 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     /// </summary>
     public class CSharpFunctionMappingTests
     {
+        [Fact]
+        public void GetExpressionFunctionName_UnmappedName_Throws()
+        {
+            var exception = Assert.Throws<NotSupportedException>(
+                () => WorkflowFunctions.GetExpressionFunctionName("Unmapped"));
+
+            Assert.Contains("Unmapped", exception.Message);
+        }
+
         // -------------------- Function mappings --------------------
 
         [Fact]
@@ -24,6 +33,76 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             Assert.Equal(
                 "json(\"{\\\"k\\\":1}\")",
                 CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.ToJson<string>(input)));
+        }
+
+        [Fact]
+        public void Convert_WorkflowRecordFunctions_EmitRuntimeGlobals()
+        {
+            Assert.Equal(
+                "actions(\"Action\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.Actions("Action")));
+            Assert.Equal(
+                "trigger()",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.Trigger()));
+            Assert.Equal(
+                "action()",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.Action()));
+            Assert.Equal(
+                "currentRequest()",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.CurrentRequest()));
+        }
+
+        [Fact]
+        public void Convert_HostCallbackFunctions_EmitRuntimeGlobals()
+        {
+            Assert.Equal(
+                "listCallbackUrl()",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.ListCallbackUrl()));
+            Assert.Equal(
+                "appsetting(\"Setting\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.AppSetting("Setting")));
+        }
+
+        [Fact]
+        public void Convert_BinaryFunctions_EmitRuntimeGlobals()
+        {
+            Assert.Equal(
+                "binary(\"value\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.Binary("value")));
+            Assert.Equal(
+                "base64ToBinary(\"dmFsdWU=\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.Base64ToBinary("dmFsdWU=")));
+            Assert.Equal(
+                "dataUriToBinary(\"data:text/plain,value\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.DataUriToBinary("data:text/plain,value")));
+        }
+
+        [Fact]
+        public void Convert_ActionContentFunctions_EmitRuntimeGlobals()
+        {
+            Assert.Equal(
+                "multipartBody(\"Action\", 1L)",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.MultipartBody("Action", 1L)));
+            Assert.Equal(
+                "formDataValue(\"Action\", \"name\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.FormDataValue("Action", "name")));
+            Assert.Equal(
+                "formDataMultiValues(\"Action\", \"name\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.FormDataMultiValues("Action", "name")));
+        }
+
+        [Fact]
+        public void Convert_TriggerContentFunctions_EmitRuntimeGlobals()
+        {
+            Assert.Equal(
+                "triggerMultipartBody(1L)",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.TriggerMultipartBody(1L)));
+            Assert.Equal(
+                "triggerFormDataValue(\"name\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.TriggerFormDataValue("name")));
+            Assert.Equal(
+                "triggerFormDataMultiValues(\"name\")",
+                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.TriggerFormDataMultiValues("name")));
         }
 
         [Fact]

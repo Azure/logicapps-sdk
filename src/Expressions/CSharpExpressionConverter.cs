@@ -543,10 +543,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         {
             var args = e.Arguments.Select(arg => VisitExpression(arg, p)).ToArray();
 
-            // WorkflowFunctions.ToJson -> json()
-            if (e.Method.DeclaringType == typeof(WorkflowFunctions) && e.Method.Name == "ToJson")
+            if (e.Method.DeclaringType == typeof(WorkflowFunctions))
             {
-                return $"json({args[0]})";
+                var functionName = WorkflowFunctions.GetExpressionFunctionName(e.Method.Name);
+                return $"{functionName}({string.Join(", ", args)})";
             }
 
             // JToken.ToObject<T>() and JToken.Value<T>() - pass-through
