@@ -33,7 +33,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             NullValueHandling = NullValueHandling.Ignore,
 
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            ContractResolver = new CamelCasePropertyNamesContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy(
+                    processDictionaryKeys: false,
+                    overrideSpecifiedNames: true),
+            },
             Converters =
             {
                 new StringEnumConverter(),

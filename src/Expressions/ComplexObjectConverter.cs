@@ -48,22 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         /// <summary>
-        /// Visits a binary expression, with special handling for string concatenation.
+        /// Visits a binary expression supported by the template converter.
         /// </summary>
         /// <param name="e">The binary expression to visit.</param>
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(BinaryExpression e, object p)
         {
-            var concat2 = typeof(string).GetMethod("Concat", [typeof(string), typeof(string)]);
-
-            if (e.Method == concat2)
-            {
-                var conv = new LogicConverter();
-                var node = e.Visit(conv, null);
-                return new JValue(node.Render());
-            }
-
-            throw new NotImplementedException();
+            var node = e.Visit(new LogicConverter(), null);
+            return new JValue(node.Render());
         }
 
         /// <summary>

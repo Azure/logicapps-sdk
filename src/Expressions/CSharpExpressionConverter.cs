@@ -179,6 +179,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 return true;
             }
 
+            if (value is IList list)
+            {
+                var elementType = valueType.IsGenericType
+                    ? valueType.GetGenericArguments()[0]
+                    : typeof(object);
+                var items = list.Cast<object>()
+                    .Select(item => RenderLiteral(item, item?.GetType() ?? elementType))
+                    .ToArray();
+                result = $"new List<{GetTypeName(elementType)}> {{ {string.Join(", ", items)} }}";
+                return true;
+            }
+
             return false;
         }
 
@@ -316,6 +328,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             result = default;
             var target = targetResult.Text;
 
+            if (e.Member.Name == "Body" &&
+                targetResult.IsWorkflowData &&
+                target == "triggerOutputs()")
+            {
+                result = new VisitResult("triggerBody()", true, false);
+                return true;
+            }
+
             // We need the actual object value for workflow types - get it from the closure
             object closureValue = TryExtractClosureValue(e.Expression);
 
@@ -384,6 +404,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             // Member access on workflow data results (JToken navigation)
             if (targetResult.IsWorkflowData)
             {
+                var targetType = StripConvert(e.Expression).Type;
+                if (targetType != typeof(object) &&
+                    !typeof(JToken).IsAssignableFrom(targetType))
+                {
+                    result = new VisitResult(
+                        $"{target}.ToObject<{GetTypeName(targetType)}>().{e.Member.Name}",
+                        false,
+                        false);
+                    return true;
+                }
+
                 var propName = GetPropertyName(e.Member);
                 result = new VisitResult($"{target}?[\"{EscapeString(propName)}\"]", true, false);
                 return true;
@@ -427,13 +458,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         public override string Visit(BinaryExpression e, object p)
         {
-            var left = IsNullConstant(e.Left) ? "null" : VisitExpression(e.Left, p);
-            var right = IsNullConstant(e.Right) ? "null" : VisitExpression(e.Right, p);
+            var leftResult = VisitTagged(e.Left, p);
+            var rightResult = VisitTagged(e.Right, p);
+            var left = IsNullConstant(e.Left)
+                ? "null"
+                : MaterializeWorkflowValue(leftResult, e.Left.Type);
+            var right = IsNullConstant(e.Right)
+                ? "null"
+                : MaterializeWorkflowValue(rightResult, e.Right.Type);
 
             // Array index
             if (e.NodeType == ExpressionType.ArrayIndex)
             {
                 return $"{left}[{right}]";
+            }
+
+            if ((e.NodeType == ExpressionType.Equal || e.NodeType == ExpressionType.NotEqual) &&
+                !IsNullConstant(e.Left) &&
+                !IsNullConstant(e.Right) &&
+                leftResult.IsWorkflowData &&
+                rightResult.IsWorkflowData &&
+                IsWorkflowTokenType(e.Left.Type) &&
+                IsWorkflowTokenType(e.Right.Type))
+            {
+                var deepEquals = $"JToken.DeepEquals({left}, {right})";
+                return e.NodeType == ExpressionType.Equal ? deepEquals : $"!{deepEquals}";
             }
 
             // String concatenation via operator
@@ -484,7 +533,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         public override string Visit(UnaryExpression e, object p)
         {
-            var operand = VisitExpression(e.Operand, p);
+            var operand = MaterializeWorkflowValue(
+                VisitTagged(e.Operand, p),
+                e.Operand.Type);
 
             switch (e.NodeType)
             {
@@ -520,15 +571,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         public override string Visit(ConditionalExpression e, object p)
         {
-            var test = VisitExpression(e.Test, p);
-            var ifTrue = VisitExpression(e.IfTrue, p);
-            var ifFalse = VisitExpression(e.IfFalse, p);
-            return $"{test} ? {ifTrue} : {ifFalse}";
+            return VisitConditionalTagged(e, p).Text;
         }
 
         public override string Visit(MethodCallExpression e, object p)
         {
-            var args = e.Arguments.Select(arg => VisitExpression(arg, p)).ToArray();
+            var args = e.Arguments
+                .Select(arg => MaterializeWorkflowValue(VisitTagged(arg, p), arg.Type))
+                .ToArray();
 
             // WorkflowFunctions.ToJson -> json()
             if (e.Method.DeclaringType == typeof(WorkflowFunctions) && e.Method.Name == "ToJson")
@@ -574,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             // ToString() on any type
             if (e.Method.Name == "ToString" && e.Arguments.Count == 0 && e.Object != null)
             {
-                var instance = VisitExpression(e.Object, p);
+                var instance = VisitMethodInstance(e.Object, p);
                 // Wrap numeric literals in parens so "1.ToString()" doesn't parse as "1."
                 if (e.Object is ConstantExpression || IsNumericLiteral(instance))
                     return $"({instance}).ToString()";
@@ -583,14 +633,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             if (e.Object != null && e.Method.Name == "get_Item")
             {
-                var instance = VisitExpression(e.Object, p);
+                var instance = VisitMethodInstance(e.Object, p);
                 return $"{instance}[{string.Join(", ", args)}]";
             }
 
             // Instance methods (Contains, StartsWith, EndsWith, Substring, ToUpper, etc.)
             if (e.Object != null)
             {
-                var instance = VisitExpression(e.Object, p);
+                var instance = VisitMethodInstance(e.Object, p);
                 return $"{instance}.{e.Method.Name}{GetGenericMethodTypeArguments(e.Method)}({string.Join(", ", args)})";
             }
 
@@ -641,12 +691,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 default:
                     if (e.Object != null)
                     {
-                        var instance = VisitExpression(e.Object, p);
+                        var instance = VisitMethodInstance(e.Object, p);
                         return $"{instance}.{e.Method.Name}({string.Join(", ", args)})";
                     }
                     return $"string.{e.Method.Name}({string.Join(", ", args)})";
             }
         }
+
+        private string VisitMethodInstance(Expression expression, object parameter)
+        {
+            var instance = VisitTagged(expression, parameter);
+            var rendered = MaterializeWorkflowValue(instance, StripConvert(expression).Type);
+            if (expression is BinaryExpression or ConditionalExpression or UnaryExpression)
+            {
+                return $"({rendered})";
+            }
+
+            return rendered;
+        }
+
+        private VisitResult VisitConditionalTagged(ConditionalExpression expression, object parameter)
+        {
+            var test = MaterializeWorkflowValue(
+                VisitTagged(expression.Test, parameter),
+                expression.Test.Type);
+            var ifTrue = VisitTagged(expression.IfTrue, parameter);
+            var ifFalse = VisitTagged(expression.IfFalse, parameter);
+            return new VisitResult(
+                $"{test} ? {MaterializeWorkflowValue(ifTrue, expression.IfTrue.Type)} : {MaterializeWorkflowValue(ifFalse, expression.IfFalse.Type)}",
+                false,
+                false);
+        }
+
+        private static string MaterializeWorkflowValue(VisitResult value, Type type)
+        {
+            if (value.IsWorkflowData &&
+                type != typeof(object) &&
+                !typeof(JToken).IsAssignableFrom(type))
+            {
+                return $"{value.Text}.ToObject<{GetTypeName(type)}>()";
+            }
+
+            return value.Text;
+        }
+
+        private static bool IsWorkflowTokenType(Type type) =>
+            type == typeof(object) || typeof(JToken).IsAssignableFrom(type);
 
         private bool TryRenderInterpolatedFormat(MethodCallExpression e, object p, out string result)
         {
@@ -1092,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             {
                 BinaryExpression binary => new VisitResult(Visit(binary, p), false, false),
                 UnaryExpression unary => new VisitResult(Visit(unary, p), false, false),
-                ConditionalExpression conditional => new VisitResult(Visit(conditional, p), false, false),
+                ConditionalExpression conditional => VisitConditionalTagged(conditional, p),
                 ConstantExpression constant => new VisitResult(Visit(constant, p), false, false),
                 DefaultExpression defaultExpression => new VisitResult(Visit(defaultExpression, p), false, false),
                 IndexExpression index => new VisitResult(Visit(index, p), false, false),

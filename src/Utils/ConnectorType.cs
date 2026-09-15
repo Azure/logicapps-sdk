@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Workflows.Sdk;
 
 public class ApiConnectionActionInput(string path, string method, string connectionId) : RetryableActionInput
 {
+    private readonly Dictionary<string, JToken> typedHiddenQueryDefaults = new();
+
     #region IApiConnectionActionInput implementation
 
     /// <summary>
@@ -24,10 +26,41 @@ public class ApiConnectionActionInput(string path, string method, string connect
     /// <summary>
     /// Gets or sets the queries for the request.
     /// </summary>
-    [JsonProperty(Required = Required.Default)]
+    [JsonIgnore]
     public Dictionary<string, string> Queries { get; set; } = new();
 
-    public bool ShouldSerializeQueries() => Queries != null && Queries.Count > 0;
+    [JsonProperty("queries", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    private JObject SerializedQueries
+    {
+        get
+        {
+            if ((Queries == null || Queries.Count == 0) && this.typedHiddenQueryDefaults.Count == 0)
+            {
+                return null;
+            }
+
+            var queries = Queries != null
+                ? JObject.FromObject(Queries, JsonExtensions.JsonObjectTypeSerializer)
+                : new JObject();
+
+            foreach (var queryDefault in this.typedHiddenQueryDefaults)
+            {
+                queries[queryDefault.Key] = queryDefault.Value;
+            }
+
+            return queries;
+        }
+    }
+
+    /// <summary>
+    /// Sets a hidden query parameter default while preserving its JSON primitive type.
+    /// </summary>
+    /// <param name="name">The query parameter name.</param>
+    /// <param name="value">The hidden Swagger default value.</param>
+    internal void SetHiddenQueryDefault(string name, object value)
+    {
+        this.typedHiddenQueryDefaults[name] = value?.ToJToken() ?? JValue.CreateNull();
+    }
 
     /// <summary>
     /// Gets or sets the headers for the request.

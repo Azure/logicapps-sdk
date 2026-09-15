@@ -15,8 +15,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the status code for the response.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
+        [JsonIgnore]
         public int StatusCode { get; set; }
+
+        [JsonIgnore]
+        internal JToken StatusCodeExpression { get; set; }
+
+        [JsonProperty(PropertyName = "statusCode", Required = Required.Always)]
+        private JToken SerializedStatusCode =>
+            this.StatusCodeExpression ?? new JValue(this.StatusCode);
 
         /// <summary>
         /// Gets or sets the headers for the response.

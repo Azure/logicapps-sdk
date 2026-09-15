@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="InitializeVariableAction"/> class.
         /// </summary>
         /// <param name="variableName">The variable name.</param>
-        /// <param name="variableType">The variable type (e.g., Integer, Float, Boolean, String, Array, Object).</param>
+        /// <param name="variableType">The variable type (e.g., integer, float, boolean, string, array, object).</param>
         /// <param name="initialValue">The initial value.</param>
         internal InitializeVariableAction(string variableName, string variableType, JToken initialValue)
         {

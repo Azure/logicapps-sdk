@@ -28,3 +28,7 @@ For actions whose output is not wrapped in a `body` property, use `GetOutputs<T>
 var actionResult = await context.GetActionResults("Compose_customer");
 var customer = actionResult.GetOutputs<CustomerSummary>();
 ```
+
+## Generated managed connectors
+
+The connector wrappers in `generated/managed` are committed generated output. Their generator and templates are maintained outside this repository; this is separate from the user-authored `Workflow.cs` files that call these wrappers. Generated workflow input lambdas must be serialized with `CSharpExpressionConverter`; dynamic path parameters must be combined with `ConvertFormattedString` so the stored path is one complete C# expression. Apply equivalent changes to the external generator before refreshing these files.

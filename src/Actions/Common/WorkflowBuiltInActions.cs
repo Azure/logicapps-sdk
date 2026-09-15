@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<Dictionary<string, string>>> headers = null)
         {
            return new NestedWorkflowAction<JToken>(
-                ExpressionConverter.Convert(workflowReferenceName),
-                requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+               CSharpExpressionConverter.ConvertO(workflowReferenceName),
+               requestBody != null ? CSharpExpressionConverter.ConvertToken(requestBody) : null,
+                headers != null ? CSharpExpressionConverter.ConvertObject(headers) : null);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="inputs">The inputs to compose.</param>
         public IOutputWorkflowAction<JToken> Compose(Expression<Func<string>> inputs)
         {
-            return new ComposeAction<JToken>(ExpressionConverter.Convert(inputs));
+            return new ComposeAction<JToken>(CSharpExpressionConverter.ConvertToken(inputs));
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the composed output.</typeparam>
         public IOutputWorkflowAction<T> Compose<T>(Expression<Func<T>> input)
         {
-            var jt = ExpressionConverter.ConvertO<T>(input);
+            var jt = CSharpExpressionConverter.ConvertToken(input);
             return new ComposeAction<T>(jt);
         }
 
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<Dictionary<string, string>>> headers = null)
         {
             return new HttpAction<JToken>(
-                ExpressionConverter.Convert(uri),
-                ExpressionConverter.Convert(method),
-                requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,
-                queries != null ? ExpressionConverter.ConvertObject(queries) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+                CSharpExpressionConverter.ConvertO(uri),
+                CSharpExpressionConverter.ConvertO(method),
+                requestBody != null ? CSharpExpressionConverter.ConvertToken(requestBody) : null,
+                queries != null ? CSharpExpressionConverter.ConvertObject(queries) : null,
+                headers != null ? CSharpExpressionConverter.ConvertObject(headers) : null);
         }
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<JToken>> schema = null)
         {
             return new ResponseAction<JToken>(
-                statusCode != null ? ExpressionConverter.ConvertObject(statusCode) : HttpStatusCode.OK,
-                responseBody != null ? ExpressionConverter.ConvertO(responseBody) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null,
-                schema != null ? ExpressionConverter.ConvertObject(schema) : null);
+                CSharpExpressionConverter.ConvertStatusCode(statusCode),
+                responseBody != null ? CSharpExpressionConverter.ConvertToken(responseBody) : null,
+                headers != null ? CSharpExpressionConverter.ConvertObject(headers) : null,
+                schema != null ? CSharpExpressionConverter.ConvertToken(schema) : null);
         }
 
         public AgentAction Agent(
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 deploymentId: deploymentId,
                 agentModelSettings: agentModelSettings,
                 connectionName: connectionName,
-                messages: messages != null ? ExpressionConverter.ConvertO(messages)?.ToObject<AgentPromptMessage[]>() : null);
+                messages: messages != null ? CSharpExpressionConverter.ConvertObject(messages) : null);
         }
     }
 }

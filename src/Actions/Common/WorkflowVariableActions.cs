@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System;
     using System.Collections;
     using System.Linq.Expressions;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Provides factory methods for creating variable actions
@@ -25,8 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             var typeStr = InferVariableType(typeof(T));
             return new InitializeVariableAction(nameStr, typeStr, valueToken);
         }
@@ -41,8 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             return new SetVariableAction(nameStr, valueToken);
         }
 
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             return new IncrementVariableAction(nameStr, valueToken);
         }
 
@@ -71,8 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             return new DecrementVariableAction(nameStr, valueToken);
         }
 
@@ -85,8 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<string>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             return new AppendToStringVariableAction(nameStr, valueToken);
         }
 
@@ -100,8 +101,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> name,
             Expression<Func<T>> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = CSharpExpressionConverter.ConvertO(name);
+            var valueToken = CSharpExpressionConverter.ConvertToken(value);
             return new AppendToArrayVariableAction(nameStr, valueToken);
         }
 
@@ -112,16 +113,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         private static string InferVariableType(Type clrType)
         {
             if (clrType == typeof(int) || clrType == typeof(long) || clrType == typeof(short) || clrType == typeof(byte))
-                return "Integer";
+                return "integer";
             if (clrType == typeof(float) || clrType == typeof(double) || clrType == typeof(decimal))
-                return "Float";
+                return "float";
             if (clrType == typeof(bool))
-                return "Boolean";
+                return "boolean";
             if (clrType == typeof(string))
-                return "String";
+                return "string";
+            if (typeof(JObject).IsAssignableFrom(clrType))
+                return "object";
+            if (typeof(JArray).IsAssignableFrom(clrType))
+                return "array";
             if (clrType.IsArray || (clrType != typeof(string) && typeof(IEnumerable).IsAssignableFrom(clrType)))
-                return "Array";
-            return "Object";
+                return "array";
+            return "object";
         }
     }
 }

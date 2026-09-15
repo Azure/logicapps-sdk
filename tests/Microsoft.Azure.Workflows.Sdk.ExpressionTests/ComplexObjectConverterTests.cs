@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
     /// <summary>
     /// Characterization tests for <see cref="ExpressionConverter.ConvertO{T}"/> (the
     /// <c>ComplexObjectConverter</c>, which builds a JSON token) and
-    /// <see cref="ExpressionConverter.ConvertObject{T}"/>.
+    /// Tests structured template and hybrid object conversion.
     /// </summary>
     public class ComplexObjectConverterTests
     {
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         }
 
         [Fact]
-        public void ConvertObject_RewritesStringMembersThroughConverter_AndCompiles()
+        public void CSharpConvertObject_RewritesStringMembersThroughConverter_AndCompiles()
         {
-            var result = ExpressionConverter.ConvertObject(() => new Poco { Name = "hi", Count = 3 });
+            var result = CSharpExpressionConverter.ConvertObject(() => new Poco { Name = "hi", Count = 3 });
             Assert.Equal("hi", result.Name);
             Assert.Equal(3, result.Count);
         }

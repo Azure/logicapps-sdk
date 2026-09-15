@@ -169,7 +169,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             var litNode = obj as LiteralNode;
 
-            if (litNode != null && IsClosureType(obj.Type))
+            if (e.Member.Name == "Body" &&
+                obj is NullableNode nullable &&
+                nullable.Inner is FunctionCallNode function &&
+                function.FunctionName == "triggerOutputs")
+            {
+                return new FunctionCallNode
+                {
+                    FunctionName = "triggerBody",
+                    Type = GetMemberType(e.Member)
+                };
+            }
+            else if (litNode != null && IsClosureType(obj.Type))
             {
                 var value = this.GetMemberValue(e.Member, litNode.Value);
                 if (value is ForEachItemToken)
@@ -343,6 +354,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             // Custom logic for BinaryExpression
             var left = e.Left.Visit(this, p);
             var right = e.Right.Visit(this, p);
+            left.Type ??= e.Left.Type;
+            right.Type ??= e.Right.Type;
 
             if (e.NodeType == ExpressionType.ArrayIndex)
             {
@@ -368,7 +381,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 };
             }
 
-            return LogicConverter.ConvertBinaryFunction(e.NodeType, e.Method, left, right);
+            var result = LogicConverter.ConvertBinaryFunction(e.NodeType, e.Method, left, right);
+            result.Type = e.Type;
+            return result;
         }
 
         /// <summary>
@@ -385,6 +400,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             {
                 case ExpressionType.Convert:
                     return operand; // No conversion needed, just return the operand
+
+                case ExpressionType.Not:
+                    return new FunctionCallNode
+                    {
+                        FunctionName = "not",
+                        Arguments = [operand]
+                    };
 
                 default:
                     throw new NotImplementedException($"Unary operation {e.NodeType} not implemented for type {operand.Type.Name} -> {e.Type.Name}");

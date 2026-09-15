@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     using System;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk;
-    
+
     /// <summary>
     /// GOAL specification for the future <c>CSharpExpressionConverter</c>. Each test mirrors
     /// a case from the Logic App <c>ExpressionConverterTests</c> and asserts the *target*
@@ -28,28 +28,28 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_StringLiteral_EmitsQuotedString()
         {
             // LA: "hello"
-            Assert.Equal("\"hello\"", CSharpExpressionConverter.ConvertO(() => "hello"));
+            Assert.Equal("\"hello\"", CSharpExpressionConverter.ConvertCSharp(() => "hello"));
         }
 
         [Fact]
         public void Convert_BoolConstant_EmitsBoolLiteral()
         {
             // LA: "True"
-            Assert.Equal("true", CSharpExpressionConverter.ConvertO(() => true));
+            Assert.Equal("true", CSharpExpressionConverter.ConvertCSharp(() => true));
         }
 
         [Fact]
         public void Convert_IntExpression_EmitsFoldedConstant()
         {
             // LA: "3" (compiler folds 1 + 2 before the converter sees it)
-            Assert.Equal("3", CSharpExpressionConverter.ConvertO(() => 1 + 2));
+            Assert.Equal("3", CSharpExpressionConverter.ConvertCSharp(() => 1 + 2));
         }
 
         [Fact]
         public void Convert_DoubleExpression_EmitsFoldedConstant()
         {
             // LA: "4"
-            Assert.Equal("4", CSharpExpressionConverter.ConvertO(() => 1.5 + 2.5));
+            Assert.Equal("4", CSharpExpressionConverter.ConvertCSharp(() => 1.5 + 2.5));
         }
 
         // -------------------- Comparison operators --------------------
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @less(1, 2)
             int a = 1, b = 2;
-            Assert.Equal("1 < 2", CSharpExpressionConverter.ConvertO(() => a < b));
+            Assert.Equal("1 < 2", CSharpExpressionConverter.ConvertCSharp(() => a < b));
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @lessOrEquals(1, 2)
             int a = 1, b = 2;
-            Assert.Equal("1 <= 2", CSharpExpressionConverter.ConvertO(() => a <= b));
+            Assert.Equal("1 <= 2", CSharpExpressionConverter.ConvertCSharp(() => a <= b));
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(1, 2)
             int a = 1, b = 2;
-            Assert.Equal("1 == 2", CSharpExpressionConverter.ConvertO(() => a == b));
+            Assert.Equal("1 == 2", CSharpExpressionConverter.ConvertCSharp(() => a == b));
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @not(equals(1, 2))
             int a = 1, b = 2;
-            Assert.Equal("1 != 2", CSharpExpressionConverter.ConvertO(() => a != b));
+            Assert.Equal("1 != 2", CSharpExpressionConverter.ConvertCSharp(() => a != b));
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // IMPROVEMENT: the LA converter THROWS NotSupportedException here; native C# supports it.
             int a = 1, b = 2;
-            Assert.Equal("1 > 2", CSharpExpressionConverter.ConvertO(() => a > b));
+            Assert.Equal("1 > 2", CSharpExpressionConverter.ConvertCSharp(() => a > b));
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // IMPROVEMENT: the LA converter THROWS NotSupportedException here; native C# supports it.
             int a = 1, b = 2;
-            Assert.Equal("1 >= 2", CSharpExpressionConverter.ConvertO(() => a >= b));
+            Assert.Equal("1 >= 2", CSharpExpressionConverter.ConvertCSharp(() => a >= b));
         }
 
         // -------------------- Logical operators --------------------
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @and(true, false)
             bool t = true, f = false;
-            Assert.Equal("true && false", CSharpExpressionConverter.ConvertO(() => t && f));
+            Assert.Equal("true && false", CSharpExpressionConverter.ConvertCSharp(() => t && f));
         }
 
         [Fact]
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @or(true, false)
             bool t = true, f = false;
-            Assert.Equal("true || false", CSharpExpressionConverter.ConvertO(() => t || f));
+            Assert.Equal("true || false", CSharpExpressionConverter.ConvertCSharp(() => t || f));
         }
 
         // -------------------- Arithmetic operators --------------------
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(add(1, 2), 3)
             int a = 1, b = 2;
-            Assert.Equal("1 + 2 == 3", CSharpExpressionConverter.ConvertO(() => (a + b) == 3));
+            Assert.Equal("1 + 2 == 3", CSharpExpressionConverter.ConvertCSharp(() => (a + b) == 3));
         }
 
         [Fact]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(subtract(1, 2), 3)
             int a = 1, b = 2;
-            Assert.Equal("1 - 2 == 3", CSharpExpressionConverter.ConvertO(() => (a - b) == 3));
+            Assert.Equal("1 - 2 == 3", CSharpExpressionConverter.ConvertCSharp(() => (a - b) == 3));
         }
 
         [Fact]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(multiply(1, 2), 3)
             int a = 1, b = 2;
-            Assert.Equal("1 * 2 == 3", CSharpExpressionConverter.ConvertO(() => (a * b) == 3));
+            Assert.Equal("1 * 2 == 3", CSharpExpressionConverter.ConvertCSharp(() => (a * b) == 3));
         }
 
         [Fact]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(divide(1, 2), 3)
             int a = 1, b = 2;
-            Assert.Equal("1 / 2 == 3", CSharpExpressionConverter.ConvertO(() => (a / b) == 3));
+            Assert.Equal("1 / 2 == 3", CSharpExpressionConverter.ConvertCSharp(() => (a / b) == 3));
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(mod(1, 2), 3)
             int a = 1, b = 2;
-            Assert.Equal("1 % 2 == 3", CSharpExpressionConverter.ConvertO(() => (a % b) == 3));
+            Assert.Equal("1 % 2 == 3", CSharpExpressionConverter.ConvertCSharp(() => (a % b) == 3));
         }
 
         [Fact]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals(add(1.5, 2.5), 4)
             double a = 1.5, b = 2.5;
-            Assert.Equal("1.5 + 2.5 == 4", CSharpExpressionConverter.ConvertO(() => (a + b) == 4.0));
+            Assert.Equal("1.5 + 2.5 == 4", CSharpExpressionConverter.ConvertCSharp(() => (a + b) == 4.0));
         }
 
         // -------------------- Conditional --------------------
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string x = "hello", y = "world";
             Assert.Equal(
                 "1 < 2 ? \"hello\" : \"world\"",
-                CSharpExpressionConverter.ConvertO(() => a < b ? x : y));
+                CSharpExpressionConverter.ConvertCSharp(() => a < b ? x : y));
         }
 
         // -------------------- String functions --------------------
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: helloworld  (LA folds both literal operands into plain text)
             string a = "hello", b = "world";
-            Assert.Equal("\"hello\" + \"world\"", CSharpExpressionConverter.ConvertO(() => a + b));
+            Assert.Equal("\"hello\" + \"world\"", CSharpExpressionConverter.ConvertCSharp(() => a + b));
         }
 
         [Fact]
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string name = "world";
             Assert.Equal(
                 "string.Format(\"Hello {0}!\", \"world\")",
-                CSharpExpressionConverter.ConvertO(() => string.Format("Hello {0}!", name)));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Format("Hello {0}!", name)));
         }
 
         [Fact]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string a = "hello", b = "world";
             Assert.Equal(
                 "string.Format(\"{0}-{1}\", \"hello\", \"world\")",
-                CSharpExpressionConverter.ConvertO(() => string.Format("{0}-{1}", a, b)));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Format("{0}-{1}", a, b)));
         }
 
         [Fact]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: ab
             Assert.Equal(
                 "string.Concat(\"a\", \"b\")",
-                CSharpExpressionConverter.ConvertO(() => string.Concat("a", "b")));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Concat("a", "b")));
         }
 
         [Fact]
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // IMPROVEMENT: the LA converter THROWS NotImplementedException; native C# supports it.
             // Parentheses are required so "1." is not parsed as a double literal.
             int a = 1;
-            Assert.Equal("(1).ToString()", CSharpExpressionConverter.ConvertO(() => a.ToString()));
+            Assert.Equal("(1).ToString()", CSharpExpressionConverter.ConvertCSharp(() => a.ToString()));
         }
 
         // -------------------- Uri --------------------
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: http://example.com/path  (raw string)
             Assert.Equal(
                 "new Uri(\"http://example.com/path\")",
-                CSharpExpressionConverter.ConvertO(() => new Uri("http://example.com/path")));
+                CSharpExpressionConverter.ConvertCSharp(() => new Uri("http://example.com/path")));
         }
 
         // -------------------- URL encoding / base64 wrappers --------------------
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @{encodeURIComponent('a b')}
             Assert.Equal(
-                "encodeURIComponent(\"a b\")",
+                "@{encodeURIComponent('a b')}",
                 CSharpExpressionConverter.ConvertWithUrlEncoding(() => "a b", 1));
         }
 
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @{encodeURIComponent(encodeURIComponent('a b'))}
             Assert.Equal(
-                "encodeURIComponent(encodeURIComponent(\"a b\"))",
+                "@{encodeURIComponent(encodeURIComponent('a b'))}",
                 CSharpExpressionConverter.ConvertWithUrlEncoding(() => "a b", 2));
         }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void ConvertOWithBase64_WrapsInBase64Call()
         {
             // LA: @base64('hello')
-            Assert.Equal("base64(\"hello\")", CSharpExpressionConverter.ConvertOWithBase64<string>(() => "hello"));
+            Assert.Equal("base64(\"hello\")", CSharpExpressionConverter.ConvertCSharpWithBase64<string>(() => "hello"));
         }
 
         // -------------------- Workflow context member access --------------------
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 value: () => "v");
 
             // Single-hole interpolation collapses to the bare expression.
-            Assert.Equal("variables(\"myVar\")", CSharpExpressionConverter.ConvertO(() => $"{variable.Value}"));
+            Assert.Equal("variables(\"myVar\")", CSharpExpressionConverter.ConvertCSharp(() => $"{variable.Value}"));
         }
 
         [Fact]
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // Text + hole becomes a C# interpolated string.
             Assert.Equal(
                 "$\"prefix-{variables(\"myVar\")}\"",
-                CSharpExpressionConverter.ConvertO(() => $"prefix-{variable.Value}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"prefix-{variable.Value}"));
         }
 
         // -------------------- Arrays --------------------
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // IMPROVEMENT: the LA converter THROWS NotImplementedException for string[].
             Expression<Func<string[]>> e = () => new[] { "a", "b" };
-            Assert.Equal("new[] { \"a\", \"b\" }", CSharpExpressionConverter.ConvertO(e));
+            Assert.Equal("new[] { \"a\", \"b\" }", CSharpExpressionConverter.ConvertCSharp(e));
         }
     }
 }

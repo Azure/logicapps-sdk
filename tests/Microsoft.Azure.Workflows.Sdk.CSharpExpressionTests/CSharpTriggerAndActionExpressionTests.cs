@@ -1,11 +1,11 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using Microsoft.Azure.Workflows.Sdk;
-    
+
     /// <summary>
     /// GOAL specification for trigger/action/agent runtime context, mirroring
     /// <c>TriggerAndActionExpressionTests</c>. Under the C# model these render as free
@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void Convert_TriggerOutput_Standalone_EmitsTriggerOutputsCall()
         {
             // LA: @{triggerOutputs()}
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             Assert.Equal(
                 "triggerOutputs()",
-                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{trigger.TriggerOutput}"));
         }
 
         [Fact]
         public void Convert_TriggerOutput_MemberAccess_EmitsNullSafeIndexer()
         {
             // LA: @{triggerOutputs()?['Body']}
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             Assert.Equal(
-                "triggerOutputs()?[\"Body\"]",
-                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput.Body}"));
+                "triggerBody()",
+                CSharpExpressionConverter.ConvertCSharp(() => $"{trigger.TriggerOutput.Body}"));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .OnMessages(storageAccountName: () => "a", queueName: () => "q");
             Assert.Equal(
                 "triggerBody()",
-                CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerBody}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{trigger.TriggerBody}"));
         }
 
         // -------------------- Action outputs / body --------------------
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
                 "outputs(\"ComposeInput\")",
-                CSharpExpressionConverter.ConvertO(() => $"{compose.Output}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{compose.Output}"));
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("GetItems");
             Assert.Equal(
                 "body(\"GetItems\")",
-                CSharpExpressionConverter.ConvertO(() => $"{sharepoint.Body}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{sharepoint.Body}"));
         }
 
         // -------------------- Combinations --------------------
@@ -82,18 +82,18 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("GetItems");
             Assert.Equal(
                 "$\"a {outputs(\"ComposeInput\")} b {body(\"GetItems\")}\"",
-                CSharpExpressionConverter.ConvertO(() => $"a {compose.Output} b {sharepoint.Body}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"a {compose.Output} b {sharepoint.Body}"));
         }
 
         [Fact]
         public void Convert_TriggerOutputEqualsActionOutput_EmitsEqualityOperator()
         {
             // LA: @equals(triggerOutputs()?['Body'], outputs('ComposeInput'))
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
-                "triggerOutputs()?[\"Body\"] == outputs(\"ComposeInput\")",
-                CSharpExpressionConverter.ConvertO(() => trigger.TriggerOutput.Body == compose.Output));
+                "JToken.DeepEquals(triggerBody(), outputs(\"ComposeInput\"))",
+                CSharpExpressionConverter.ConvertCSharp(() => trigger.TriggerOutput.Body == compose.Output));
         }
 
         // -------------------- Agent tool parameters --------------------
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var ctx = new AgentToolContext<Poco>(new Poco { Name = "n" });
             Assert.Equal(
                 "agentparameters(\"Name\")",
-                CSharpExpressionConverter.ConvertO(() => $"{ctx.Parameters.Name}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{ctx.Parameters.Name}"));
         }
     }
 }

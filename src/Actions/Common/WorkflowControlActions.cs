@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(expression), "Condition action requires a non-null expression.");
             }
 
-            var expressionStr = ExpressionConverter.Convert(expression);
+            var expressionToken = CSharpExpressionConverter.ConvertCondition(expression);
             var resolvedTrueBranch = trueBranch?.Invoke();
             var resolvedFalseBranch = falseBranch?.Invoke();
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             return new ConditionAction(
-                expressionStr,
+                expressionToken,
                 resolvedTrueBranch?.GetRootOperation() as IWorkflowAction,
                 resolvedFalseBranch?.GetRootOperation() as IWorkflowAction);
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(actions), "ForEach action requires non-null actions.");
             }
 
-            var itemsExpression = ExpressionConverter.ConvertO(items);
+            var itemsExpression = CSharpExpressionConverter.ConvertToken(items);
             var currentItemPlaceholder = new ForEachItemToken();
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
             return new ForEachAction(itemsExpression, resolvedActions?.GetRootOperation() as IWorkflowAction);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(actions), "Until action requires non-null actions.");
             }
-            var expressionStr = ExpressionConverter.Convert(expression);
+            var expressionStr = CSharpExpressionConverter.ConvertO(expression);
             var resolvedActions = actions.Invoke();
             return new UntilAction(expressionStr, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(cases), "Switch action requires a non-null cases factory.");
             }
-            var onExpression = ExpressionConverter.ConvertO(on);
+            var onExpression = CSharpExpressionConverter.ConvertO(on);
             var resolvedCasesDict = cases.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
             return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction);
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(status), "Terminate action requires a non-null status expression.");
             }
-            var statusStr = ExpressionConverter.Convert(status);
-            var messageStr = message != null ? ExpressionConverter.Convert(message) : null;
+            var statusStr = CSharpExpressionConverter.Convert(status);
+            var messageStr = message != null ? CSharpExpressionConverter.ConvertO(message) : null;
             return new TerminateAction(statusStr, messageStr);
         }
     }

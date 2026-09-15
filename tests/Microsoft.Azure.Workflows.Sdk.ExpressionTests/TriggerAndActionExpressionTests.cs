@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         [Fact]
         public void Convert_TriggerOutput_Standalone_EmitsTriggerOutputs()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             Assert.Equal(
                 "@{triggerOutputs()}",
                 ExpressionConverter.Convert(() => $"{trigger.TriggerOutput}"));
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         [Fact]
         public void Convert_TriggerOutput_MemberAccess_EmitsNullSafeBracketAccess()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             Assert.Equal(
-                "@{triggerOutputs()?['Body']}",
+                "@{triggerBody()}",
                 ExpressionConverter.Convert(() => $"{trigger.TriggerOutput.Body}"));
         }
 
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         [Fact]
         public void Convert_TriggerOutputEqualsActionOutput_EmitsEquals()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("HttpTrigger");
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "x").WithName("ComposeInput");
             Assert.Equal(
-                "@equals(triggerOutputs()?['Body'], outputs('ComposeInput'))",
+                "@equals(triggerBody(), outputs('ComposeInput'))",
                 ExpressionConverter.Convert(() => trigger.TriggerOutput.Body == compose.Output));
         }
 

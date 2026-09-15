@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
     using System;
     using Microsoft.Azure.Workflows.Sdk;
-    
+
     /// <summary>
     /// GOAL specification for method-call function mappings and literal rendering,
     /// mirroring <c>FunctionMappingTests</c>. The C# model prefers native BCL calls and
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string input = "{\"k\":1}";
             Assert.Equal(
                 "json(\"{\\\"k\\\":1}\")",
-                CSharpExpressionConverter.ConvertO(() => WorkflowFunctions.ToJson<string>(input)));
+                CSharpExpressionConverter.ConvertCSharp(() => WorkflowFunctions.ToJson<string>(input)));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // LA: abc
             Assert.Equal(
                 "string.Concat(new[] { \"a\", \"b\", \"c\" })",
-                CSharpExpressionConverter.ConvertO(() => string.Concat(new[] { "a", "b", "c" })));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Concat(new[] { "a", "b", "c" })));
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             string a = "a", b = "b", c = "c";
             Assert.Equal(
                 "string.Format(\"{0}{1}{2}\", new object[] { \"a\", \"b\", \"c\" })",
-                CSharpExpressionConverter.ConvertO(() => string.Format("{0}{1}{2}", new object[] { a, b, c })));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Format("{0}{1}{2}", new object[] { a, b, c })));
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @string('hi')  (C# uses the native object.ToString())
             object o = "hi";
-            Assert.Equal("\"hi\".ToString()", CSharpExpressionConverter.ConvertO(() => o.ToString()));
+            Assert.Equal("\"hi\".ToString()", CSharpExpressionConverter.ConvertCSharp(() => o.ToString()));
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             // serializes the object with a real serializer.
             Assert.Equal(
                 "JsonConvert.SerializeObject(new Poco { Name = \"n\", Count = 2 })",
-                CSharpExpressionConverter.ConvertO(() => $"{new Poco { Name = "n", Count = 2 }}"));
+                CSharpExpressionConverter.ConvertCSharp(() => $"{new Poco { Name = "n", Count = 2 }}"));
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "myVar", value: () => "v");
             Assert.Equal(
                 "variables(\"myVar\").ToObject<string>()",
-                CSharpExpressionConverter.ConvertO(() => variable.Value.ToObject<string>()));
+                CSharpExpressionConverter.ConvertCSharp(() => variable.Value.ToObject<string>()));
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             int a = 1;
             Assert.Equal(
                 "string.Format(\"{0:00}\", 1)",
-                CSharpExpressionConverter.ConvertO(() => string.Format("{0:00}", a)));
+                CSharpExpressionConverter.ConvertCSharp(() => string.Format("{0:00}", a)));
         }
 
         // -------------------- Literal rendering --------------------
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA: @equals('a', null)
             string s = "a";
-            Assert.Equal("\"a\" == null", CSharpExpressionConverter.ConvertO(() => s == null));
+            Assert.Equal("\"a\" == null", CSharpExpressionConverter.ConvertCSharp(() => s == null));
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             DateTime d2 = d1;
             Assert.Equal(
                 "DateTime.Parse(\"2020-01-02T03:04:05.0000000Z\") == DateTime.Parse(\"2020-01-02T03:04:05.0000000Z\")",
-                CSharpExpressionConverter.ConvertO(() => d1 == d2));
+                CSharpExpressionConverter.ConvertCSharp(() => d1 == d2));
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             Guid g1 = Guid.Empty, g2 = Guid.Empty;
             Assert.Equal(
                 "Guid.Parse(\"00000000-0000-0000-0000-000000000000\") == Guid.Parse(\"00000000-0000-0000-0000-000000000000\")",
-                CSharpExpressionConverter.ConvertO(() => g1 == g2));
+                CSharpExpressionConverter.ConvertCSharp(() => g1 == g2));
         }
     }
 }

@@ -193,49 +193,6 @@
         }
 
         /// <summary>
-        /// Converts an expression to an object by processing member assignments and compiling the result.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <typeparam name="TResult">The result type.</typeparam>
-        public static TResult ConvertObject<TResult>(Expression<Func<TResult>> e)
-        {
-            var objConvert = new ObjectExpressionConverter();
-            var converted = objConvert.Visit(e.Body);
-
-            var newLambda = Expression.Lambda<Func<TResult>>(converted, e.Parameters);
-            var compiled = newLambda.Compile();
-            return compiled();
-        }
-
-        /// <summary>
-        /// Expression visitor for converting object member assignments.
-        /// </summary>
-        class ObjectExpressionConverter : ExpressionVisitor
-        {
-            /// <summary>
-            /// Visits a member assignment and converts string properties using logic converter.
-            /// </summary>
-            /// <param name="node">The member assignment to visit.</param>
-            protected override MemberAssignment VisitMemberAssignment(MemberAssignment node)
-            {
-                var shouldConvert =
-                    (node.Member is System.Reflection.PropertyInfo propertyInfo && propertyInfo.PropertyType == typeof(string)) ||
-                    (node.Member is System.Reflection.FieldInfo fieldInfo && fieldInfo.FieldType == typeof(string));
-
-                if (shouldConvert)
-                {
-                    var logicConverter = new LogicConverter();
-                    var newExpression = node.Expression.Visit(logicConverter, null);
-                    return Expression.Bind(
-                        node.Member,
-                        Expression.Constant(newExpression.Render(), typeof(string))
-                    );
-                }
-                return base.VisitMemberAssignment(node);
-            }
-        }
-
-        /// <summary>
         /// Expression visitor for evaluating simple expressions and concatenating results.
         /// </summary>
         class Visitor : ExpressionVisitor

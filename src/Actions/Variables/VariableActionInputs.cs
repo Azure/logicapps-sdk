@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the variable type (e.g., Integer, Float, Boolean, String, Array, Object).
+        /// Gets or sets the variable type (e.g., integer, float, boolean, string, array, object).
         /// </summary>
         [JsonProperty(Required = Required.Always)]
         public string Type { get; set; }
