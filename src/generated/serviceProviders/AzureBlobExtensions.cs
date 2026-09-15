@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<BlobExistsOutput> BlobExists(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "blobExists", connectionName: connectionId),
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IWorkflowAction DeleteBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "deleteBlob", connectionName: connectionId),
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IWorkflowAction DeleteBlobFromUri(Expression<Func<string>> blobUri)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "deleteBlobFromUri", connectionName: connectionId),
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ReadBlobOutput> ReadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<bool>> inferContentType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
             if (inferContentType != null)
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = CSharpExpressionConverter.ConvertToken(inferContentType);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ReadBlobFromUriOutput> ReadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<bool>> inferContentType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
             if (inferContentType != null)
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = CSharpExpressionConverter.ConvertToken(inferContentType);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -95,12 +95,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<UploadBlobOutput> UploadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<object>> content, Expression<Func<UploadBlobInputOverrideIfExistsType>> overrideIfExists = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
-            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
+            serviceProviderParameters["content"] = CSharpExpressionConverter.ConvertToken(content);
             if (overrideIfExists != null)
             {
-                serviceProviderParameters["overrideIfExists"] = ExpressionConverter.ConvertO(overrideIfExists);
+                serviceProviderParameters["overrideIfExists"] = CSharpExpressionConverter.ConvertToken(overrideIfExists);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<UploadBlobFromUriOutput> UploadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<object>> content, Expression<Func<UploadBlobFromUriInputOverrideIfExistsType>> overrideIfExists = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
-            serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
+            serviceProviderParameters["content"] = CSharpExpressionConverter.ConvertToken(content);
             if (overrideIfExists != null)
             {
-                serviceProviderParameters["overrideIfExists"] = ExpressionConverter.ConvertO(overrideIfExists);
+                serviceProviderParameters["overrideIfExists"] = CSharpExpressionConverter.ConvertToken(overrideIfExists);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -134,20 +134,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ListBlobsOutput> ListBlobs(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null, Expression<Func<string>> pageMarker = null, Expression<Func<bool>> excludeSubFolderBlobs = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
             if (blobNamePrefix != null)
             {
-                serviceProviderParameters["blobNamePrefix"] = ExpressionConverter.ConvertO(blobNamePrefix);
+                serviceProviderParameters["blobNamePrefix"] = CSharpExpressionConverter.ConvertToken(blobNamePrefix);
             }
 
             if (pageMarker != null)
             {
-                serviceProviderParameters["pageMarker"] = ExpressionConverter.ConvertO(pageMarker);
+                serviceProviderParameters["pageMarker"] = CSharpExpressionConverter.ConvertToken(pageMarker);
             }
 
             if (excludeSubFolderBlobs != null)
             {
-                serviceProviderParameters["excludeSubFolderBlobs"] = ExpressionConverter.ConvertO(excludeSubFolderBlobs);
+                serviceProviderParameters["excludeSubFolderBlobs"] = CSharpExpressionConverter.ConvertToken(excludeSubFolderBlobs);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -162,10 +162,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ListBlobsFromUriOutput> ListBlobsFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> pageMarker = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
             if (pageMarker != null)
             {
-                serviceProviderParameters["pageMarker"] = ExpressionConverter.ConvertO(pageMarker);
+                serviceProviderParameters["pageMarker"] = CSharpExpressionConverter.ConvertToken(pageMarker);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -180,10 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ListBlobDirectoriesOutput> ListBlobDirectories(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
             if (blobNamePrefix != null)
             {
-                serviceProviderParameters["blobNamePrefix"] = ExpressionConverter.ConvertO(blobNamePrefix);
+                serviceProviderParameters["blobNamePrefix"] = CSharpExpressionConverter.ConvertToken(blobNamePrefix);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var serviceProviderParameters = new JObject();
             if (pageMarker != null)
             {
-                serviceProviderParameters["pageMarker"] = ExpressionConverter.ConvertO(pageMarker);
+                serviceProviderParameters["pageMarker"] = CSharpExpressionConverter.ConvertToken(pageMarker);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -215,36 +215,36 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetBlobSASUriOutput> GetBlobSASUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
             if (groupPolicyIdentifier != null)
             {
-                serviceProviderParameters["groupPolicyIdentifier"] = ExpressionConverter.ConvertO(groupPolicyIdentifier);
+                serviceProviderParameters["groupPolicyIdentifier"] = CSharpExpressionConverter.ConvertToken(groupPolicyIdentifier);
             }
 
             if (permissions != null)
             {
-                serviceProviderParameters["permissions"] = ExpressionConverter.ConvertO(permissions);
+                serviceProviderParameters["permissions"] = CSharpExpressionConverter.ConvertToken(permissions);
             }
 
             if (startTime != null)
             {
-                serviceProviderParameters["startTime"] = ExpressionConverter.ConvertO(startTime);
+                serviceProviderParameters["startTime"] = CSharpExpressionConverter.ConvertToken(startTime);
             }
 
             if (expiryTime != null)
             {
-                serviceProviderParameters["expiryTime"] = ExpressionConverter.ConvertO(expiryTime);
+                serviceProviderParameters["expiryTime"] = CSharpExpressionConverter.ConvertToken(expiryTime);
             }
 
             if (sharedAccessProtocol != null)
             {
-                serviceProviderParameters["sharedAccessProtocol"] = ExpressionConverter.ConvertO(sharedAccessProtocol);
+                serviceProviderParameters["sharedAccessProtocol"] = CSharpExpressionConverter.ConvertToken(sharedAccessProtocol);
             }
 
             if (ipAddressRange != null)
             {
-                serviceProviderParameters["ipAddressRange"] = ExpressionConverter.ConvertO(ipAddressRange);
+                serviceProviderParameters["ipAddressRange"] = CSharpExpressionConverter.ConvertToken(ipAddressRange);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -259,35 +259,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetBlobSASUriFromUriOutput> GetBlobSASUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
             if (groupPolicyIdentifier != null)
             {
-                serviceProviderParameters["groupPolicyIdentifier"] = ExpressionConverter.ConvertO(groupPolicyIdentifier);
+                serviceProviderParameters["groupPolicyIdentifier"] = CSharpExpressionConverter.ConvertToken(groupPolicyIdentifier);
             }
 
             if (permissions != null)
             {
-                serviceProviderParameters["permissions"] = ExpressionConverter.ConvertO(permissions);
+                serviceProviderParameters["permissions"] = CSharpExpressionConverter.ConvertToken(permissions);
             }
 
             if (startTime != null)
             {
-                serviceProviderParameters["startTime"] = ExpressionConverter.ConvertO(startTime);
+                serviceProviderParameters["startTime"] = CSharpExpressionConverter.ConvertToken(startTime);
             }
 
             if (expiryTime != null)
             {
-                serviceProviderParameters["expiryTime"] = ExpressionConverter.ConvertO(expiryTime);
+                serviceProviderParameters["expiryTime"] = CSharpExpressionConverter.ConvertToken(expiryTime);
             }
 
             if (sharedAccessProtocol != null)
             {
-                serviceProviderParameters["sharedAccessProtocol"] = ExpressionConverter.ConvertO(sharedAccessProtocol);
+                serviceProviderParameters["sharedAccessProtocol"] = CSharpExpressionConverter.ConvertToken(sharedAccessProtocol);
             }
 
             if (ipAddressRange != null)
             {
-                serviceProviderParameters["ipAddressRange"] = ExpressionConverter.ConvertO(ipAddressRange);
+                serviceProviderParameters["ipAddressRange"] = CSharpExpressionConverter.ConvertToken(ipAddressRange);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -302,8 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetBlobMetadataOutput> GetBlobMetadata(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobMetadata", connectionName: connectionId),
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetBlobMetadataFromUriOutput> GetBlobMetadataFromUri(Expression<Func<string>> blobUri)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobMetadataFromUri", connectionName: connectionId),
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetContainerMetadataOutput> GetContainerMetadata(Expression<Func<string>> containerName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getContainerMetadata", connectionName: connectionId),
@@ -342,13 +342,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<CopyBlobOutput> CopyBlob(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationBlobName, Expression<Func<bool>> overrideIfExists = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sourceContainerName"] = ExpressionConverter.ConvertO(sourceContainerName);
-            serviceProviderParameters["sourceBlobName"] = ExpressionConverter.ConvertO(sourceBlobName);
-            serviceProviderParameters["destinationContainerName"] = ExpressionConverter.ConvertO(destinationContainerName);
-            serviceProviderParameters["destinationBlobName"] = ExpressionConverter.ConvertO(destinationBlobName);
+            serviceProviderParameters["sourceContainerName"] = CSharpExpressionConverter.ConvertToken(sourceContainerName);
+            serviceProviderParameters["sourceBlobName"] = CSharpExpressionConverter.ConvertToken(sourceBlobName);
+            serviceProviderParameters["destinationContainerName"] = CSharpExpressionConverter.ConvertToken(destinationContainerName);
+            serviceProviderParameters["destinationBlobName"] = CSharpExpressionConverter.ConvertToken(destinationBlobName);
             if (overrideIfExists != null)
             {
-                serviceProviderParameters["overrideIfExists"] = ExpressionConverter.ConvertO(overrideIfExists);
+                serviceProviderParameters["overrideIfExists"] = CSharpExpressionConverter.ConvertToken(overrideIfExists);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -363,11 +363,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<CopyBlobFromUriOutput> CopyBlobFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<bool>> overrideIfExists = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sourceBlobUri"] = ExpressionConverter.ConvertO(sourceBlobUri);
-            serviceProviderParameters["destinationBlobUri"] = ExpressionConverter.ConvertO(destinationBlobUri);
+            serviceProviderParameters["sourceBlobUri"] = CSharpExpressionConverter.ConvertToken(sourceBlobUri);
+            serviceProviderParameters["destinationBlobUri"] = CSharpExpressionConverter.ConvertToken(destinationBlobUri);
             if (overrideIfExists != null)
             {
-                serviceProviderParameters["overrideIfExists"] = ExpressionConverter.ConvertO(overrideIfExists);
+                serviceProviderParameters["overrideIfExists"] = CSharpExpressionConverter.ConvertToken(overrideIfExists);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<GetAccessPoliciesOutputItem[]> GetAccessPolicies(Expression<Func<string>> containerName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getAccessPolicies", connectionName: connectionId),
@@ -395,9 +395,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IWorkflowAction SetBlobTier(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<SetBlobTierInputBlobAccessTierType>> blobAccessTier)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(containerName);
-            serviceProviderParameters["blobName"] = ExpressionConverter.ConvertO(blobName);
-            serviceProviderParameters["blobAccessTier"] = ExpressionConverter.ConvertO(blobAccessTier);
+            serviceProviderParameters["containerName"] = CSharpExpressionConverter.ConvertToken(containerName);
+            serviceProviderParameters["blobName"] = CSharpExpressionConverter.ConvertToken(blobName);
+            serviceProviderParameters["blobAccessTier"] = CSharpExpressionConverter.ConvertToken(blobAccessTier);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "setBlobTier", connectionName: connectionId),
@@ -410,8 +410,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IWorkflowAction SetBlobTierFromUri(Expression<Func<string>> blobUri, Expression<Func<SetBlobTierFromUriInputBlobAccessTierType>> blobAccessTier)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(blobUri);
-            serviceProviderParameters["blobAccessTier"] = ExpressionConverter.ConvertO(blobAccessTier);
+            serviceProviderParameters["blobUri"] = CSharpExpressionConverter.ConvertToken(blobUri);
+            serviceProviderParameters["blobAccessTier"] = CSharpExpressionConverter.ConvertToken(blobAccessTier);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "setBlobTierFromUri", connectionName: connectionId),
@@ -424,13 +424,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput> ExtractArchiveFromBlobPath(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationFolderPath, Expression<Func<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sourceContainerName"] = ExpressionConverter.ConvertO(sourceContainerName);
-            serviceProviderParameters["sourceBlobName"] = ExpressionConverter.ConvertO(sourceBlobName);
-            serviceProviderParameters["destinationContainerName"] = ExpressionConverter.ConvertO(destinationContainerName);
-            serviceProviderParameters["destinationFolderPath"] = ExpressionConverter.ConvertO(destinationFolderPath);
+            serviceProviderParameters["sourceContainerName"] = CSharpExpressionConverter.ConvertToken(sourceContainerName);
+            serviceProviderParameters["sourceBlobName"] = CSharpExpressionConverter.ConvertToken(sourceBlobName);
+            serviceProviderParameters["destinationContainerName"] = CSharpExpressionConverter.ConvertToken(destinationContainerName);
+            serviceProviderParameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(destinationFolderPath);
             if (overwriteExistingFilesBehaviour != null)
             {
-                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
+                serviceProviderParameters["overwriteExistingFilesBehaviour"] = CSharpExpressionConverter.ConvertToken(overwriteExistingFilesBehaviour);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -445,11 +445,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowAction<ExtractArchiveFromUriOutput> ExtractArchiveFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sourceBlobUri"] = ExpressionConverter.ConvertO(sourceBlobUri);
-            serviceProviderParameters["destinationBlobUri"] = ExpressionConverter.ConvertO(destinationBlobUri);
+            serviceProviderParameters["sourceBlobUri"] = CSharpExpressionConverter.ConvertToken(sourceBlobUri);
+            serviceProviderParameters["destinationBlobUri"] = CSharpExpressionConverter.ConvertToken(destinationBlobUri);
             if (overwriteExistingFilesBehaviour != null)
             {
-                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
+                serviceProviderParameters["overwriteExistingFilesBehaviour"] = CSharpExpressionConverter.ConvertToken(overwriteExistingFilesBehaviour);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -466,18 +466,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var serviceProviderParameters = new JObject();
             if (content != null)
             {
-                serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+                serviceProviderParameters["content"] = CSharpExpressionConverter.ConvertToken(content);
             }
 
-            serviceProviderParameters["destinationContainerName"] = ExpressionConverter.ConvertO(destinationContainerName);
+            serviceProviderParameters["destinationContainerName"] = CSharpExpressionConverter.ConvertToken(destinationContainerName);
             if (destinationFolderPath != null)
             {
-                serviceProviderParameters["destinationFolderPath"] = ExpressionConverter.ConvertO(destinationFolderPath);
+                serviceProviderParameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(destinationFolderPath);
             }
 
             if (overwriteExistingFilesBehaviour != null)
             {
-                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
+                serviceProviderParameters["overwriteExistingFilesBehaviour"] = CSharpExpressionConverter.ConvertToken(overwriteExistingFilesBehaviour);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified(Expression<Func<string>> path)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["path"] = ExpressionConverter.ConvertO(path);
+            serviceProviderParameters["path"] = CSharpExpressionConverter.ConvertToken(path);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "whenABlobIsAddedOrModified", connectionName: connectionId),

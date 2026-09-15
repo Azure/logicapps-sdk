@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var serviceProviderParameters = new JObject();
             if (inputBodyType != null)
             {
-                serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(inputBodyType);
+                serviceProviderParameters["inputBodyType"] = CSharpExpressionConverter.ConvertToken(inputBodyType);
             }
             else
             {
@@ -28,37 +28,37 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             if (rfcName != null)
             {
-                serviceProviderParameters["rfcName"] = ExpressionConverter.ConvertO(rfcName);
+                serviceProviderParameters["rfcName"] = CSharpExpressionConverter.ConvertToken(rfcName);
             }
 
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             if (tId != null)
             {
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             }
 
             if (queueName != null)
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             }
 
             if (autoCommit != null)
             {
-                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
+                serviceProviderParameters["autoCommit"] = CSharpExpressionConverter.ConvertToken(autoCommit);
             }
 
             if (safeType != null)
             {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                serviceProviderParameters["safeType"] = CSharpExpressionConverter.ConvertToken(safeType);
             }
 
             if (outputBodyType != null)
             {
-                serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(outputBodyType);
+                serviceProviderParameters["outputBodyType"] = CSharpExpressionConverter.ConvertToken(outputBodyType);
             }
             else
             {
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             if (queueName != null)
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             if (queueName != null)
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -113,16 +113,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             if (queueName != null)
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             }
 
             if (autoCommit != null)
             {
-                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
+                serviceProviderParameters["autoCommit"] = CSharpExpressionConverter.ConvertToken(autoCommit);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             if (queueName != null)
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
@@ -168,16 +168,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<SendIDocOutput> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
+            serviceProviderParameters["idocFormat"] = CSharpExpressionConverter.ConvertToken(idocFormat);
             if (tId != null)
             {
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             }
 
-            serviceProviderParameters["confirmTid"] = ExpressionConverter.ConvertO(confirmTid);
+            serviceProviderParameters["confirmTid"] = CSharpExpressionConverter.ConvertToken(confirmTid);
             if (allowUnreleasedSegmentV2 != null)
             {
-                serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(allowUnreleasedSegmentV2);
+                serviceProviderParameters["allowUnreleasedSegmentV2"] = CSharpExpressionConverter.ConvertToken(allowUnreleasedSegmentV2);
             }
             else
             {
@@ -196,18 +196,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(businessObject);
-            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-            serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
+            serviceProviderParameters["businessObject"] = CSharpExpressionConverter.ConvertToken(businessObject);
+            serviceProviderParameters["method"] = CSharpExpressionConverter.ConvertToken(method);
+            serviceProviderParameters["autoCommit"] = CSharpExpressionConverter.ConvertToken(autoCommit);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+            serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             if (safeType != null)
             {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                serviceProviderParameters["safeType"] = CSharpExpressionConverter.ConvertToken(safeType);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IWorkflowAction CloseSession(Expression<Func<string>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
@@ -245,9 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<BapiCommitOutput> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            serviceProviderParameters["wait"] = ExpressionConverter.ConvertO(wait);
-            serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
+            serviceProviderParameters["wait"] = CSharpExpressionConverter.ConvertToken(wait);
+            serviceProviderParameters["closeSession"] = CSharpExpressionConverter.ConvertToken(closeSession);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
@@ -260,8 +260,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
+            serviceProviderParameters["closeSession"] = CSharpExpressionConverter.ConvertToken(closeSession);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
@@ -274,35 +274,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<ReadTableOutput> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (fieldNames != null)
             {
-                serviceProviderParameters["fieldNames"] = ExpressionConverter.ConvertO(fieldNames);
+                serviceProviderParameters["fieldNames"] = CSharpExpressionConverter.ConvertToken(fieldNames);
             }
 
             if (whereFilters != null)
             {
-                serviceProviderParameters["whereFilters"] = ExpressionConverter.ConvertO(whereFilters);
+                serviceProviderParameters["whereFilters"] = CSharpExpressionConverter.ConvertToken(whereFilters);
             }
 
             if (startIndex != null)
             {
-                serviceProviderParameters["startIndex"] = ExpressionConverter.ConvertO(startIndex);
+                serviceProviderParameters["startIndex"] = CSharpExpressionConverter.ConvertToken(startIndex);
             }
 
             if (numberOfRowsToRead != null)
             {
-                serviceProviderParameters["numberOfRowsToRead"] = ExpressionConverter.ConvertO(numberOfRowsToRead);
+                serviceProviderParameters["numberOfRowsToRead"] = CSharpExpressionConverter.ConvertToken(numberOfRowsToRead);
             }
 
             if (delimiter != null)
             {
-                serviceProviderParameters["delimiter"] = ExpressionConverter.ConvertO(delimiter);
+                serviceProviderParameters["delimiter"] = CSharpExpressionConverter.ConvertToken(delimiter);
             }
 
             if (returnFormat != null)
             {
-                serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(returnFormat);
+                serviceProviderParameters["returnFormat"] = CSharpExpressionConverter.ConvertToken(returnFormat);
             }
             else
             {
@@ -321,10 +321,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<JToken> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
+            serviceProviderParameters["operationType"] = CSharpExpressionConverter.ConvertToken(operationType);
             if (fileNamePrefix != null)
             {
-                serviceProviderParameters["fileNamePrefix"] = ExpressionConverter.ConvertO(fileNamePrefix);
+                serviceProviderParameters["fileNamePrefix"] = CSharpExpressionConverter.ConvertToken(fileNamePrefix);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -339,8 +339,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<GetIDocListOutput> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(direction);
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+            serviceProviderParameters["direction"] = CSharpExpressionConverter.ConvertToken(direction);
+            serviceProviderParameters["tId"] = CSharpExpressionConverter.ConvertToken(tId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus(Expression<Func<int>> iDocNumber)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(iDocNumber);
+            serviceProviderParameters["iDocNumber"] = CSharpExpressionConverter.ConvertToken(iDocNumber);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
@@ -366,10 +366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IWorkflowAction RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+            serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             if (safeType != null)
             {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                serviceProviderParameters["safeType"] = CSharpExpressionConverter.ConvertToken(safeType);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -384,30 +384,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IWorkflowAction SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerErrorMessage);
+            serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerErrorMessage);
             if (sendExceptionToSapServerExceptionName != null)
             {
-                serviceProviderParameters["SendExceptionToSapServerExceptionName"] = ExpressionConverter.ConvertO(sendExceptionToSapServerExceptionName);
+                serviceProviderParameters["SendExceptionToSapServerExceptionName"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerExceptionName);
             }
 
             if (sendExceptionToSapServerMessageType != null)
             {
-                serviceProviderParameters["SendExceptionToSapServerMessageType"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageType);
+                serviceProviderParameters["SendExceptionToSapServerMessageType"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerMessageType);
             }
 
             if (sendExceptionToSapServerMessageClass != null)
             {
-                serviceProviderParameters["SendExceptionToSapServerMessageClass"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageClass);
+                serviceProviderParameters["SendExceptionToSapServerMessageClass"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerMessageClass);
             }
 
             if (sendExceptionToSapServerMessageNumber != null)
             {
-                serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageNumber);
+                serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerMessageNumber);
             }
 
             if (sendExceptionToSapServerIsAbapMessage != null)
             {
-                serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerIsAbapMessage);
+                serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = CSharpExpressionConverter.ConvertToken(sendExceptionToSapServerIsAbapMessage);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowAction<JToken> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
+            serviceProviderParameters["operationType"] = CSharpExpressionConverter.ConvertToken(operationType);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
@@ -437,34 +437,34 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
+            serviceProviderParameters["idocFormat"] = CSharpExpressionConverter.ConvertToken(idocFormat);
             if (sncPartnerNames != null)
             {
-                serviceProviderParameters["SncPartnerNames"] = ExpressionConverter.ConvertO(sncPartnerNames);
+                serviceProviderParameters["SncPartnerNames"] = CSharpExpressionConverter.ConvertToken(sncPartnerNames);
             }
 
-            serviceProviderParameters["DegreeOfParallelism"] = ExpressionConverter.ConvertO(degreeOfParallelism);
+            serviceProviderParameters["DegreeOfParallelism"] = CSharpExpressionConverter.ConvertToken(degreeOfParallelism);
             if (receiveIDocsWithUnreleasedSegmentsV2 != null)
             {
-                serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = ExpressionConverter.ConvertO(receiveIDocsWithUnreleasedSegmentsV2);
+                serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = CSharpExpressionConverter.ConvertToken(receiveIDocsWithUnreleasedSegmentsV2);
             }
 
-            serviceProviderParameters["GatewayHost"] = ExpressionConverter.ConvertO(gatewayHost);
-            serviceProviderParameters["GatewayService"] = ExpressionConverter.ConvertO(gatewayService);
-            serviceProviderParameters["ProgramId"] = ExpressionConverter.ConvertO(programId);
+            serviceProviderParameters["GatewayHost"] = CSharpExpressionConverter.ConvertToken(gatewayHost);
+            serviceProviderParameters["GatewayService"] = CSharpExpressionConverter.ConvertToken(gatewayService);
+            serviceProviderParameters["ProgramId"] = CSharpExpressionConverter.ConvertToken(programId);
             if (defaultIDocRelease != null)
             {
-                serviceProviderParameters["DefaultIDocRelease"] = ExpressionConverter.ConvertO(defaultIDocRelease);
+                serviceProviderParameters["DefaultIDocRelease"] = CSharpExpressionConverter.ConvertToken(defaultIDocRelease);
             }
 
             if (receivedIDocTypeReleaseMapping != null)
             {
-                serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = ExpressionConverter.ConvertO(receivedIDocTypeReleaseMapping);
+                serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = CSharpExpressionConverter.ConvertToken(receivedIDocTypeReleaseMapping);
             }
 
             if (gatewayWithoutWorkProcess != null)
             {
-                serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(gatewayWithoutWorkProcess);
+                serviceProviderParameters["GatewayWithoutWorkProcess"] = CSharpExpressionConverter.ConvertToken(gatewayWithoutWorkProcess);
             }
             else
             {

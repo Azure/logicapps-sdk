@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         public IBodyWorkflowAction<CreateJobOutput> CreateJob(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> runbookName, Expression<Func<bool>> waitForJob = null, Expression<Func<object>> hybridAutomationWorkerGroup = null, Expression<Func<object>> runbookParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = ExpressionConverter.ConvertO(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = ExpressionConverter.ConvertO(resourceGroup);
-            serviceProviderParameters["automationAccount"] = ExpressionConverter.ConvertO(automationAccount);
+            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
+            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
+            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
             if (waitForJob != null)
             {
-                serviceProviderParameters["waitForJob"] = ExpressionConverter.ConvertO(waitForJob);
+                serviceProviderParameters["waitForJob"] = CSharpExpressionConverter.ConvertToken(waitForJob);
             }
             else
             {
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
 
             if (hybridAutomationWorkerGroup != null)
             {
-                serviceProviderParameters["hybridAutomationWorkerGroup"] = ExpressionConverter.ConvertO(hybridAutomationWorkerGroup);
+                serviceProviderParameters["hybridAutomationWorkerGroup"] = CSharpExpressionConverter.ConvertToken(hybridAutomationWorkerGroup);
             }
 
-            serviceProviderParameters["runbookName"] = ExpressionConverter.ConvertO(runbookName);
+            serviceProviderParameters["runbookName"] = CSharpExpressionConverter.ConvertToken(runbookName);
             if (runbookParameters != null)
             {
-                serviceProviderParameters["runbookParameters"] = ExpressionConverter.ConvertO(runbookParameters);
+                serviceProviderParameters["runbookParameters"] = CSharpExpressionConverter.ConvertToken(runbookParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = ExpressionConverter.ConvertO(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = ExpressionConverter.ConvertO(resourceGroup);
-            serviceProviderParameters["automationAccount"] = ExpressionConverter.ConvertO(automationAccount);
-            serviceProviderParameters["jobId"] = ExpressionConverter.ConvertO(jobId);
+            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
+            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
+            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
+            serviceProviderParameters["jobId"] = CSharpExpressionConverter.ConvertToken(jobId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = ExpressionConverter.ConvertO(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = ExpressionConverter.ConvertO(resourceGroup);
-            serviceProviderParameters["automationAccount"] = ExpressionConverter.ConvertO(automationAccount);
-            serviceProviderParameters["jobId"] = ExpressionConverter.ConvertO(jobId);
+            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
+            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
+            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
+            serviceProviderParameters["jobId"] = CSharpExpressionConverter.ConvertToken(jobId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobOutput", connectionName: connectionId),

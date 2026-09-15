@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -93,11 +93,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["message"] = CSharpExpressionConverter.ConvertToken(message);
             if (sendMessageOptions != null)
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = CSharpExpressionConverter.ConvertToken(sendMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["messageList"] = CSharpExpressionConverter.ConvertToken(messageList);
             if (sendMessageOptions != null)
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = CSharpExpressionConverter.ConvertToken(sendMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -131,11 +131,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+            serviceProviderParameters["connectionId"] = CSharpExpressionConverter.ConvertToken(operationConnectionId);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["uniqueId"] = CSharpExpressionConverter.ConvertToken(uniqueId);
+            serviceProviderParameters["messageId"] = CSharpExpressionConverter.ConvertToken(messageId);
+            serviceProviderParameters["completeAction"] = CSharpExpressionConverter.ConvertToken(completeAction);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+            serviceProviderParameters["connectionId"] = CSharpExpressionConverter.ConvertToken(operationConnectionId);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["completeAction"] = CSharpExpressionConverter.ConvertToken(completeAction);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
@@ -163,16 +163,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
+            serviceProviderParameters["message"] = CSharpExpressionConverter.ConvertToken(message);
+            serviceProviderParameters["reasonCode"] = CSharpExpressionConverter.ConvertToken(reasonCode);
             if (deadLetterQueueName != null)
             {
-                serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
+                serviceProviderParameters["deadLetterQueueName"] = CSharpExpressionConverter.ConvertToken(deadLetterQueueName);
             }
 
             if (sendMessageOptions != null)
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                serviceProviderParameters["sendMessageOptions"] = CSharpExpressionConverter.ConvertToken(sendMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -189,10 +189,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (waitIntervalInSeconds != null)
             {
-                serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
+                serviceProviderParameters["waitIntervalInSeconds"] = CSharpExpressionConverter.ConvertToken(waitIntervalInSeconds);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -206,11 +206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -224,11 +224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["includeInfo"] = CSharpExpressionConverter.ConvertToken(includeInfo);
             if (getMessageOptions != null)
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                serviceProviderParameters["getMessageOptions"] = CSharpExpressionConverter.ConvertToken(getMessageOptions);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
+            serviceProviderParameters["modelId"] = CSharpExpressionConverter.ConvertToken(modelId);
             if (modelIdInputs != null)
             {
-                serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                serviceProviderParameters["modelIdInputs"] = CSharpExpressionConverter.ConvertToken(modelIdInputs);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

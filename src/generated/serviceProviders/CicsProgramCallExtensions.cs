@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.CicsProgramCall
         public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidx, Expression<Func<string>> method, Expression<Func<object>> inputParameters)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-            serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
+            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
+            serviceProviderParameters["method"] = CSharpExpressionConverter.ConvertToken(method);
+            serviceProviderParameters["inputParameters"] = CSharpExpressionConverter.ConvertToken(inputParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "executeMethod", connectionName: connectionId),

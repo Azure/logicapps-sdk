@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
+            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
             if (queryParameters != null)
             {
-                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),

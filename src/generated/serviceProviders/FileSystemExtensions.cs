@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IWorkflowAction AppendFile(Expression<Func<string>> filePath, Expression<Func<object>> body, Expression<Func<bool>> createFileIfNotPresent = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
+            serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             if (createFileIfNotPresent != null)
             {
-                serviceProviderParameters["createFileIfNotPresent"] = ExpressionConverter.ConvertO(createFileIfNotPresent);
+                serviceProviderParameters["createFileIfNotPresent"] = CSharpExpressionConverter.ConvertToken(createFileIfNotPresent);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IWorkflowAction CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["source"] = ExpressionConverter.ConvertO(source);
-            serviceProviderParameters["destination"] = ExpressionConverter.ConvertO(destination);
+            serviceProviderParameters["source"] = CSharpExpressionConverter.ConvertToken(source);
+            serviceProviderParameters["destination"] = CSharpExpressionConverter.ConvertToken(destination);
             if (overwrite != null)
             {
-                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                serviceProviderParameters["overwrite"] = CSharpExpressionConverter.ConvertToken(overwrite);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> body = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             if (body != null)
             {
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IOutputWorkflowAction<JToken> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             if (skipIfFileNotPresent != null)
             {
-                serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(skipIfFileNotPresent);
+                serviceProviderParameters["skipIfFileNotPresent"] = CSharpExpressionConverter.ConvertToken(skipIfFileNotPresent);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             if (inferContentType != null)
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = CSharpExpressionConverter.ConvertToken(inferContentType);
             }
             else
             {
@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             if (inferContentType != null)
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                serviceProviderParameters["inferContentType"] = CSharpExpressionConverter.ConvertToken(inferContentType);
             }
             else
             {
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> filePath)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileMetadata", connectionName: connectionId),
@@ -148,10 +148,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> enableRecursiveListing = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            serviceProviderParameters["folderPath"] = CSharpExpressionConverter.ConvertToken(folderPath);
             if (enableRecursiveListing != null)
             {
-                serviceProviderParameters["enableRecursiveListing"] = ExpressionConverter.ConvertO(enableRecursiveListing);
+                serviceProviderParameters["enableRecursiveListing"] = CSharpExpressionConverter.ConvertToken(enableRecursiveListing);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -166,8 +166,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IWorkflowAction RenameFile(Expression<Func<string>> filePath, Expression<Func<string>> newName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["newName"] = ExpressionConverter.ConvertO(newName);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
+            serviceProviderParameters["newName"] = CSharpExpressionConverter.ConvertToken(newName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "renameFile", connectionName: connectionId),
@@ -180,8 +180,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> body)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+            serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
+            serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "updateFile", connectionName: connectionId),
@@ -196,18 +196,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             var serviceProviderParameters = new JObject();
             if (filePath != null)
             {
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                serviceProviderParameters["filePath"] = CSharpExpressionConverter.ConvertToken(filePath);
             }
 
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            serviceProviderParameters["folderPath"] = CSharpExpressionConverter.ConvertToken(folderPath);
             if (overwrite != null)
             {
-                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                serviceProviderParameters["overwrite"] = CSharpExpressionConverter.ConvertToken(overwrite);
             }
 
             if (body != null)
             {
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -224,15 +224,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            serviceProviderParameters["folderPath"] = CSharpExpressionConverter.ConvertToken(folderPath);
             if (maxFileCount != null)
             {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                serviceProviderParameters["maxFileCount"] = CSharpExpressionConverter.ConvertToken(maxFileCount);
             }
 
             if (oldFileCutOffTimestamp != null)
             {
-                serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
+                serviceProviderParameters["oldFileCutOffTimestamp"] = CSharpExpressionConverter.ConvertToken(oldFileCutOffTimestamp);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -246,15 +246,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+            serviceProviderParameters["folderPath"] = CSharpExpressionConverter.ConvertToken(folderPath);
             if (maxFileCount != null)
             {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                serviceProviderParameters["maxFileCount"] = CSharpExpressionConverter.ConvertToken(maxFileCount);
             }
 
             if (oldFileCutOffTimestamp != null)
             {
-                serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
+                serviceProviderParameters["oldFileCutOffTimestamp"] = CSharpExpressionConverter.ConvertToken(oldFileCutOffTimestamp);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

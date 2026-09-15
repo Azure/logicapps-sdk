@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInputMessageType>> message)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["entityName"] = CSharpExpressionConverter.ConvertToken(entityName);
+            serviceProviderParameters["message"] = CSharpExpressionConverter.ConvertToken(message);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesInputMessagesTypeItem[]>> messages)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+            serviceProviderParameters["entityName"] = CSharpExpressionConverter.ConvertToken(entityName);
+            serviceProviderParameters["messages"] = CSharpExpressionConverter.ConvertToken(messages);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-            serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+            serviceProviderParameters["entityName"] = CSharpExpressionConverter.ConvertToken(entityName);
+            serviceProviderParameters["skipAlreadyReplicated"] = CSharpExpressionConverter.ConvertToken(skipAlreadyReplicated);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
@@ -87,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             if (deadLetterReason != null)
             {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = CSharpExpressionConverter.ConvertToken(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = CSharpExpressionConverter.ConvertToken(deadLetterErrorDescription);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
@@ -139,8 +139,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["sequenceNumber"] = CSharpExpressionConverter.ConvertToken(sequenceNumber);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
@@ -153,10 +153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
@@ -201,17 +201,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             if (deadLetterReason != null)
             {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = CSharpExpressionConverter.ConvertToken(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = CSharpExpressionConverter.ConvertToken(deadLetterErrorDescription);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -226,9 +226,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
@@ -241,9 +241,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
@@ -256,9 +256,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["sequenceNumber"] = CSharpExpressionConverter.ConvertToken(sequenceNumber);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
@@ -271,11 +271,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -290,12 +290,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-            serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["topicSubscriptionName"] = CSharpExpressionConverter.ConvertToken(topicSubscriptionName);
+            serviceProviderParameters["topicSubscriptionFilterType"] = CSharpExpressionConverter.ConvertToken(topicSubscriptionFilterType);
             if (topicSubscriptionCorrelationFilter != null)
             {
-                serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
+                serviceProviderParameters["topicSubscriptionCorrelationFilter"] = CSharpExpressionConverter.ConvertToken(topicSubscriptionCorrelationFilter);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -310,8 +310,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["topicSubscriptionName"] = CSharpExpressionConverter.ConvertToken(topicSubscriptionName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
@@ -324,10 +324,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            serviceProviderParameters["messageId"] = CSharpExpressionConverter.ConvertToken(messageId);
             if (lockToken != null)
             {
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -342,10 +342,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            serviceProviderParameters["messageId"] = CSharpExpressionConverter.ConvertToken(messageId);
             if (lockToken != null)
             {
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -360,20 +360,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            serviceProviderParameters["messageId"] = CSharpExpressionConverter.ConvertToken(messageId);
             if (lockToken != null)
             {
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             }
 
             if (deadLetterReason != null)
             {
-                serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                serviceProviderParameters["deadLetterReason"] = CSharpExpressionConverter.ConvertToken(deadLetterReason);
             }
 
             if (deadLetterErrorDescription != null)
             {
-                serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                serviceProviderParameters["deadLetterErrorDescription"] = CSharpExpressionConverter.ConvertToken(deadLetterErrorDescription);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -388,10 +388,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+            serviceProviderParameters["messageId"] = CSharpExpressionConverter.ConvertToken(messageId);
             if (lockToken != null)
             {
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["lockToken"] = CSharpExpressionConverter.ConvertToken(lockToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -406,16 +406,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["sequenceNumber"] = CSharpExpressionConverter.ConvertToken(sequenceNumber);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             if (acquireNewSession != null)
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = CSharpExpressionConverter.ConvertToken(acquireNewSession);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -430,17 +430,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["sequenceNumber"] = CSharpExpressionConverter.ConvertToken(sequenceNumber);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             if (acquireNewSession != null)
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = CSharpExpressionConverter.ConvertToken(acquireNewSession);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -455,16 +455,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             if (acquireNewSession != null)
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = CSharpExpressionConverter.ConvertToken(acquireNewSession);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -479,17 +479,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             if (acquireNewSession != null)
             {
-                serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                serviceProviderParameters["acquireNewSession"] = CSharpExpressionConverter.ConvertToken(acquireNewSession);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -504,8 +504,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
@@ -518,9 +518,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
@@ -533,8 +533,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
@@ -547,9 +547,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowAction<JToken> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
@@ -564,10 +564,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (isSessionsEnabled != null)
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = CSharpExpressionConverter.ConvertToken(isSessionsEnabled);
             }
             else
             {
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -590,11 +590,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (isSessionsEnabled != null)
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = CSharpExpressionConverter.ConvertToken(isSessionsEnabled);
             }
             else
             {
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -617,10 +617,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (isSessionsEnabled != null)
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = CSharpExpressionConverter.ConvertToken(isSessionsEnabled);
             }
             else
             {
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -643,11 +643,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (isSessionsEnabled != null)
             {
-                serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                serviceProviderParameters["isSessionsEnabled"] = CSharpExpressionConverter.ConvertToken(isSessionsEnabled);
             }
             else
             {
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -670,10 +670,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -687,11 +687,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (maxMessageBatchSize != null)
             {
-                serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                serviceProviderParameters["maxMessageBatchSize"] = CSharpExpressionConverter.ConvertToken(maxMessageBatchSize);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -705,15 +705,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -727,16 +727,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             if (maxMessages != null)
             {
-                serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                serviceProviderParameters["maxMessages"] = CSharpExpressionConverter.ConvertToken(maxMessages);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -750,10 +750,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -767,11 +767,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
+            serviceProviderParameters["topicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["subscriptionName"] = CSharpExpressionConverter.ConvertToken(subscriptionName);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

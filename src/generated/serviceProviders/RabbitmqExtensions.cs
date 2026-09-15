@@ -17,16 +17,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public IBodyWorkflowAction<SendRabbitMQMessageOutput> SendRabbitMQMessage(Expression<Func<string>> queueName, Expression<Func<object>> message, Expression<Func<string>> exchangeName = null, Expression<Func<string>> routingKey = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["message"] = CSharpExpressionConverter.ConvertToken(message);
             if (exchangeName != null)
             {
-                serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
+                serviceProviderParameters["exchangeName"] = CSharpExpressionConverter.ConvertToken(exchangeName);
             }
 
             if (routingKey != null)
             {
-                serviceProviderParameters["routingKey"] = ExpressionConverter.ConvertO(routingKey);
+                serviceProviderParameters["routingKey"] = CSharpExpressionConverter.ConvertToken(routingKey);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public IBodyWorkflowAction<CreateQueueOutput> CreateQueue(Expression<Func<object>> queueName, Expression<Func<bool>> durable, Expression<Func<string>> exchangeName, Expression<Func<CreateQueueInputExchangeTypeType>> exchangeType, Expression<Func<string>> bindingKey)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["durable"] = ExpressionConverter.ConvertO(durable);
-            serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
-            serviceProviderParameters["exchangeType"] = ExpressionConverter.ConvertO(exchangeType);
-            serviceProviderParameters["bindingKey"] = ExpressionConverter.ConvertO(bindingKey);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
+            serviceProviderParameters["durable"] = CSharpExpressionConverter.ConvertToken(durable);
+            serviceProviderParameters["exchangeName"] = CSharpExpressionConverter.ConvertToken(exchangeName);
+            serviceProviderParameters["exchangeType"] = CSharpExpressionConverter.ConvertToken(exchangeType);
+            serviceProviderParameters["bindingKey"] = CSharpExpressionConverter.ConvertToken(bindingKey);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "createQueue", connectionName: connectionId),
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public IOutputWorkflowAction<JToken> CompleteMessage(Expression<Func<int>> deliveryTag, Expression<Func<string>> consumerTag, Expression<Func<CompleteMessageInputAcknowledgementType>> acknowledgement, Expression<Func<bool>> requeueOnReject = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(deliveryTag);
-            serviceProviderParameters["consumerTag"] = ExpressionConverter.ConvertO(consumerTag);
-            serviceProviderParameters["acknowledgement"] = ExpressionConverter.ConvertO(acknowledgement);
+            serviceProviderParameters["deliveryTag"] = CSharpExpressionConverter.ConvertToken(deliveryTag);
+            serviceProviderParameters["consumerTag"] = CSharpExpressionConverter.ConvertToken(consumerTag);
+            serviceProviderParameters["acknowledgement"] = CSharpExpressionConverter.ConvertToken(acknowledgement);
             if (requeueOnReject != null)
             {
-                serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(requeueOnReject);
+                serviceProviderParameters["requeueOnReject"] = CSharpExpressionConverter.ConvertToken(requeueOnReject);
             }
             else
             {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages(Expression<Func<object>> queueName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+            serviceProviderParameters["queueName"] = CSharpExpressionConverter.ConvertToken(queueName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),

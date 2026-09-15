@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
-            serviceProviderParameters["rows"] = ExpressionConverter.ConvertO(rows);
+            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
+            serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
+            serviceProviderParameters["rows"] = CSharpExpressionConverter.ConvertToken(rows);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-            serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
-            serviceProviderParameters["contents"] = ExpressionConverter.ConvertO(contents);
+            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
+            serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
+            serviceProviderParameters["contents"] = CSharpExpressionConverter.ConvertToken(contents);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetSecretOutput> GetSecret(Expression<Func<string>> secretName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
+            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecret", connectionName: connectionId),
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
-            serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
+            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
+            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersion", connectionName: connectionId),
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata(Expression<Func<string>> secretName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
+            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretMetadata", connectionName: connectionId),
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
-            serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
+            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
+            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersionMetadata", connectionName: connectionId),
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata(Expression<Func<string>> secretName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(secretName);
+            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretVersionMetadata", connectionName: connectionId),
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata(Expression<Func<string>> keyName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyMetadata", connectionName: connectionId),
@@ -117,8 +117,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> version)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
-            serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
+            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyVersionMetadata", connectionName: connectionId),
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata(Expression<Func<string>> keyName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyVersionMetadata", connectionName: connectionId),
@@ -144,9 +144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<DecryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
-            serviceProviderParameters["algorithm"] = ExpressionConverter.ConvertO(algorithm);
-            serviceProviderParameters["encryptedData"] = ExpressionConverter.ConvertO(encryptedData);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
+            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
+            serviceProviderParameters["encryptedData"] = CSharpExpressionConverter.ConvertToken(encryptedData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKey", connectionName: connectionId),
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<DecryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
-            serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
-            serviceProviderParameters["algorithm"] = ExpressionConverter.ConvertO(algorithm);
-            serviceProviderParameters["encryptedData"] = ExpressionConverter.ConvertO(encryptedData);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
+            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
+            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
+            serviceProviderParameters["encryptedData"] = CSharpExpressionConverter.ConvertToken(encryptedData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKeyVersion", connectionName: connectionId),
@@ -175,9 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<EncryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
-            serviceProviderParameters["algorithm"] = ExpressionConverter.ConvertO(algorithm);
-            serviceProviderParameters["rawData"] = ExpressionConverter.ConvertO(rawData);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
+            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
+            serviceProviderParameters["rawData"] = CSharpExpressionConverter.ConvertToken(rawData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKey", connectionName: connectionId),
@@ -190,10 +190,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<EncryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(keyName);
-            serviceProviderParameters["version"] = ExpressionConverter.ConvertO(version);
-            serviceProviderParameters["algorithm"] = ExpressionConverter.ConvertO(algorithm);
-            serviceProviderParameters["rawData"] = ExpressionConverter.ConvertO(rawData);
+            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
+            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
+            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
+            serviceProviderParameters["rawData"] = CSharpExpressionConverter.ConvertToken(rawData);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKeyVersion", connectionName: connectionId),

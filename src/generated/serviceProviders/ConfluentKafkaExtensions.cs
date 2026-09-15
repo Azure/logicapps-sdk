@@ -17,21 +17,21 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["TopicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["Message"] = ExpressionConverter.ConvertO(message);
+            serviceProviderParameters["TopicName"] = CSharpExpressionConverter.ConvertToken(topicName);
+            serviceProviderParameters["Message"] = CSharpExpressionConverter.ConvertToken(message);
             if (messageKey != null)
             {
-                serviceProviderParameters["messageKey"] = ExpressionConverter.ConvertO(messageKey);
+                serviceProviderParameters["messageKey"] = CSharpExpressionConverter.ConvertToken(messageKey);
             }
 
             if (headers != null)
             {
-                serviceProviderParameters["Headers"] = ExpressionConverter.ConvertO(headers);
+                serviceProviderParameters["Headers"] = CSharpExpressionConverter.ConvertToken(headers);
             }
 
             if (schemaSubjectName != null)
             {
-                serviceProviderParameters["SchemaSubjectName"] = ExpressionConverter.ConvertO(schemaSubjectName);
+                serviceProviderParameters["SchemaSubjectName"] = CSharpExpressionConverter.ConvertToken(schemaSubjectName);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(topic);
+            serviceProviderParameters["Topic"] = CSharpExpressionConverter.ConvertToken(topic);
             if (consumerGroup != null)
             {
-                serviceProviderParameters["ConsumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                serviceProviderParameters["ConsumerGroup"] = CSharpExpressionConverter.ConvertToken(consumerGroup);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 
             if (authenticationMode != null)
             {
-                serviceProviderParameters["AuthenticationMode"] = ExpressionConverter.ConvertO(authenticationMode);
+                serviceProviderParameters["AuthenticationMode"] = CSharpExpressionConverter.ConvertToken(authenticationMode);
             }
             else
             {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 
             if (protocol != null)
             {
-                serviceProviderParameters["Protocol"] = ExpressionConverter.ConvertO(protocol);
+                serviceProviderParameters["Protocol"] = CSharpExpressionConverter.ConvertToken(protocol);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 
             if (avroSchema != null)
             {
-                serviceProviderParameters["AvroSchema"] = ExpressionConverter.ConvertO(avroSchema);
+                serviceProviderParameters["AvroSchema"] = CSharpExpressionConverter.ConvertToken(avroSchema);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

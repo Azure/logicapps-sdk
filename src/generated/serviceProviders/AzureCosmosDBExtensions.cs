@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<BulkCreateOrUpdateDocumentOutputItem[]> BulkCreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<object>> items, Expression<Func<bool>> isUpsert = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["items"] = ExpressionConverter.ConvertO(items);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["items"] = CSharpExpressionConverter.ConvertToken(items);
             if (isUpsert != null)
             {
-                serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
+                serviceProviderParameters["isUpsert"] = CSharpExpressionConverter.ConvertToken(isUpsert);
             }
             else
             {
@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<CreateOrUpdateDocumentOutput> CreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> item, Expression<Func<string>> partitionKey = null, Expression<Func<bool>> isUpsert = null, Expression<Func<string>> sessionToken = null, Expression<Func<string>> etag = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["item"] = ExpressionConverter.ConvertO(item);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["item"] = CSharpExpressionConverter.ConvertToken(item);
             if (partitionKey != null)
             {
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             }
 
             if (isUpsert != null)
             {
-                serviceProviderParameters["isUpsert"] = ExpressionConverter.ConvertO(isUpsert);
+                serviceProviderParameters["isUpsert"] = CSharpExpressionConverter.ConvertToken(isUpsert);
             }
             else
             {
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
 
             if (sessionToken != null)
             {
-                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = CSharpExpressionConverter.ConvertToken(sessionToken);
             }
 
             if (etag != null)
             {
-                serviceProviderParameters["etag"] = ExpressionConverter.ConvertO(etag);
+                serviceProviderParameters["etag"] = CSharpExpressionConverter.ConvertToken(etag);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<DeleteDocumentOutput> DeleteDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["itemId"] = CSharpExpressionConverter.ConvertToken(itemId);
+            serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             if (sessionToken != null)
             {
-                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = CSharpExpressionConverter.ConvertToken(sessionToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -101,27 +101,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<QueryDocumentsOutput> QueryDocuments(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText, Expression<Func<string>> partitionKey = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> maxItemCount = null, Expression<Func<string>> sessionToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["queryText"] = ExpressionConverter.ConvertO(queryText);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["queryText"] = CSharpExpressionConverter.ConvertToken(queryText);
             if (partitionKey != null)
             {
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             }
 
             if (continuationToken != null)
             {
-                serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                serviceProviderParameters["continuationToken"] = CSharpExpressionConverter.ConvertToken(continuationToken);
             }
 
             if (maxItemCount != null)
             {
-                serviceProviderParameters["maxItemCount"] = ExpressionConverter.ConvertO(maxItemCount);
+                serviceProviderParameters["maxItemCount"] = CSharpExpressionConverter.ConvertToken(maxItemCount);
             }
 
             if (sessionToken != null)
             {
-                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = CSharpExpressionConverter.ConvertToken(sessionToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["itemId"] = CSharpExpressionConverter.ConvertToken(itemId);
+            serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             if (sessionToken != null)
             {
-                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = CSharpExpressionConverter.ConvertToken(sessionToken);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -157,16 +157,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowAction<PatchItemOutput> PatchItem(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<PatchItemInputPatchOperationsTypeItem[]>> patchOperations, Expression<Func<string>> sessionToken = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseId"] = ExpressionConverter.ConvertO(databaseId);
-            serviceProviderParameters["containerId"] = ExpressionConverter.ConvertO(containerId);
-            serviceProviderParameters["itemId"] = ExpressionConverter.ConvertO(itemId);
-            serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+            serviceProviderParameters["databaseId"] = CSharpExpressionConverter.ConvertToken(databaseId);
+            serviceProviderParameters["containerId"] = CSharpExpressionConverter.ConvertToken(containerId);
+            serviceProviderParameters["itemId"] = CSharpExpressionConverter.ConvertToken(itemId);
+            serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             if (sessionToken != null)
             {
-                serviceProviderParameters["sessionToken"] = ExpressionConverter.ConvertO(sessionToken);
+                serviceProviderParameters["sessionToken"] = CSharpExpressionConverter.ConvertToken(sessionToken);
             }
 
-            serviceProviderParameters["patchOperations"] = ExpressionConverter.ConvertO(patchOperations);
+            serviceProviderParameters["patchOperations"] = CSharpExpressionConverter.ConvertToken(patchOperations);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "PatchItem", connectionName: connectionId),
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public IBodyWorkflowTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]> WhenADocumentIsCreatedOrModified(Expression<Func<string>> databaseName, Expression<Func<string>> collectionName, Expression<Func<string>> leaseCollectionName = null, Expression<Func<bool>> createLeaseCollectionIfNotExists = null, Expression<Func<int>> leasesCollectionThroughput = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["databaseName"] = ExpressionConverter.ConvertO(databaseName);
-            serviceProviderParameters["collectionName"] = ExpressionConverter.ConvertO(collectionName);
+            serviceProviderParameters["databaseName"] = CSharpExpressionConverter.ConvertToken(databaseName);
+            serviceProviderParameters["collectionName"] = CSharpExpressionConverter.ConvertToken(collectionName);
             if (leaseCollectionName != null)
             {
-                serviceProviderParameters["leaseCollectionName"] = ExpressionConverter.ConvertO(leaseCollectionName);
+                serviceProviderParameters["leaseCollectionName"] = CSharpExpressionConverter.ConvertToken(leaseCollectionName);
             }
             else
             {
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
 
             if (createLeaseCollectionIfNotExists != null)
             {
-                serviceProviderParameters["createLeaseCollectionIfNotExists"] = ExpressionConverter.ConvertO(createLeaseCollectionIfNotExists);
+                serviceProviderParameters["createLeaseCollectionIfNotExists"] = CSharpExpressionConverter.ConvertToken(createLeaseCollectionIfNotExists);
             }
             else
             {
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
 
             if (leasesCollectionThroughput != null)
             {
-                serviceProviderParameters["leasesCollectionThroughput"] = ExpressionConverter.ConvertO(leasesCollectionThroughput);
+                serviceProviderParameters["leasesCollectionThroughput"] = CSharpExpressionConverter.ConvertToken(leasesCollectionThroughput);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         public IBodyWorkflowAction<ExecuteCodeOutput> ExecuteCode(Expression<Func<object>> pythonCode, Expression<Func<object>> sessionId = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["pythonCode"] = ExpressionConverter.ConvertO(pythonCode);
+            serviceProviderParameters["pythonCode"] = CSharpExpressionConverter.ConvertToken(pythonCode);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         public IBodyWorkflowAction<FileUploadOutput> FileUpload(Expression<Func<FileUploadInputFilesTypeItem[]>> files, Expression<Func<object>> sessionId = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["files"] = ExpressionConverter.ConvertO(files);
+            serviceProviderParameters["files"] = CSharpExpressionConverter.ConvertToken(files);
             if (sessionId != null)
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         public IBodyWorkflowAction<JToken> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["fileName"] = CSharpExpressionConverter.ConvertToken(fileName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         public IBodyWorkflowAction<JToken> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+            serviceProviderParameters["fileName"] = CSharpExpressionConverter.ConvertToken(fileName);
+            serviceProviderParameters["sessionId"] = CSharpExpressionConverter.ConvertToken(sessionId);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),

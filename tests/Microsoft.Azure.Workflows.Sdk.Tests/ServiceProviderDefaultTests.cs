@@ -46,5 +46,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             Assert.False(inputs["parameters"].Value<bool>("inferContentType"));
         }
+
+        /// <summary>
+        /// Verifies service provider parameters use hybrid template and C# conversion.
+        /// </summary>
+        [Fact]
+        public void GetActionDefinition_ExpressionsUseHybridConversion()
+        {
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
+            var action = new WorkflowServiceProviderActions()
+                .AzureBlob("azureblob")
+                .BlobExists(
+                    containerName: () => source.Output,
+                    blobName: () => source.Output.ToUpperInvariant());
+
+            var definition = action.GetActionDefinition(flowName: null);
+            var inputs = Assert.IsType<JObject>(definition.Inputs);
+
+            Assert.Equal("@outputs('Source')", inputs["parameters"].Value<string>("containerName"));
+            Assert.Equal(
+                "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
+                inputs["parameters"].Value<string>("blobName"));
+        }
     }
 }

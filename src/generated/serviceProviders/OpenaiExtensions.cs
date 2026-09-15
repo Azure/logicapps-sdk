@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-            serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
+            serviceProviderParameters["input"] = CSharpExpressionConverter.ConvertToken(input);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding(Expression<Func<string>> deploymentId, Expression<Func<string>> input)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-            serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
+            serviceProviderParameters["input"] = CSharpExpressionConverter.ConvertToken(input);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
@@ -45,35 +45,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
             if (temperature != null)
             {
-                serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
             }
             else
             {
                 serviceProviderParameters["temperature"] = 1;
             }
 
-            serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+            serviceProviderParameters["messages"] = CSharpExpressionConverter.ConvertToken(messages);
             if (topP != null)
             {
-                serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
             }
 
             if (maxTokens != null)
             {
-                serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
             }
 
             if (presencePenalty != null)
             {
-                serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
             }
 
             if (frequencyPenalty != null)
             {
-                serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -88,30 +88,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetMultipleChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<int>> n = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
             if (temperature != null)
             {
-                serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
             }
             else
             {
                 serviceProviderParameters["temperature"] = 1;
             }
 
-            serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+            serviceProviderParameters["messages"] = CSharpExpressionConverter.ConvertToken(messages);
             if (topP != null)
             {
-                serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
             }
 
             if (maxTokens != null)
             {
-                serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
             }
 
             if (n != null)
             {
-                serviceProviderParameters["n"] = ExpressionConverter.ConvertO(n);
+                serviceProviderParameters["n"] = CSharpExpressionConverter.ConvertToken(n);
             }
             else
             {
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 
             if (presencePenalty != null)
             {
-                serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
             }
 
             if (frequencyPenalty != null)
             {
-                serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -140,35 +140,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetCompletionOutput> GetCompletion(Expression<Func<string>> deploymentId, Expression<Func<string[]>> prompts, Expression<Func<double>> temperature = null, Expression<Func<string[]>> stopSequences = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
             if (temperature != null)
             {
-                serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
             }
             else
             {
                 serviceProviderParameters["temperature"] = 1;
             }
 
-            serviceProviderParameters["prompts"] = ExpressionConverter.ConvertO(prompts);
+            serviceProviderParameters["prompts"] = CSharpExpressionConverter.ConvertToken(prompts);
             if (stopSequences != null)
             {
-                serviceProviderParameters["stopSequences"] = ExpressionConverter.ConvertO(stopSequences);
+                serviceProviderParameters["stopSequences"] = CSharpExpressionConverter.ConvertToken(stopSequences);
             }
 
             if (maxTokens != null)
             {
-                serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
             }
 
             if (presencePenalty != null)
             {
-                serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
             }
 
             if (frequencyPenalty != null)
             {
-                serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -183,40 +183,40 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate(Expression<Func<string>> deploymentId, Expression<Func<string>> promptTemplateInput, Expression<Func<double>> temperature = null, Expression<Func<object>> promptTemplateInputVariables = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
+            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
             if (temperature != null)
             {
-                serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
             }
             else
             {
                 serviceProviderParameters["temperature"] = 1;
             }
 
-            serviceProviderParameters["promptTemplateInput"] = ExpressionConverter.ConvertO(promptTemplateInput);
+            serviceProviderParameters["promptTemplateInput"] = CSharpExpressionConverter.ConvertToken(promptTemplateInput);
             if (promptTemplateInputVariables != null)
             {
-                serviceProviderParameters["promptTemplateInputVariables"] = ExpressionConverter.ConvertO(promptTemplateInputVariables);
+                serviceProviderParameters["promptTemplateInputVariables"] = CSharpExpressionConverter.ConvertToken(promptTemplateInputVariables);
             }
 
             if (topP != null)
             {
-                serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
             }
 
             if (maxTokens != null)
             {
-                serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
             }
 
             if (presencePenalty != null)
             {
-                serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
             }
 
             if (frequencyPenalty != null)
             {
-                serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

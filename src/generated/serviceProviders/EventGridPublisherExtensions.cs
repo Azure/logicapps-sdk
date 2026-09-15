@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
         public IOutputWorkflowAction<JToken> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["events"] = ExpressionConverter.ConvertO(events);
+            serviceProviderParameters["events"] = CSharpExpressionConverter.ConvertToken(events);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),

@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            serviceProviderParameters["eventData"] = ExpressionConverter.ConvertO(eventData);
+            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
+            serviceProviderParameters["eventData"] = CSharpExpressionConverter.ConvertToken(eventData);
             if (partitionKey != null)
             {
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            serviceProviderParameters["eventDatas"] = ExpressionConverter.ConvertO(eventDatas);
+            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
+            serviceProviderParameters["eventDatas"] = CSharpExpressionConverter.ConvertToken(eventDatas);
             if (partitionKey != null)
             {
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-            serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
+            serviceProviderParameters["skipAlreadyReplicated"] = CSharpExpressionConverter.ConvertToken(skipAlreadyReplicated);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
             if (consumerGroup != null)
             {
-                serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                serviceProviderParameters["consumerGroup"] = CSharpExpressionConverter.ConvertToken(consumerGroup);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
+            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
             if (consumerGroup != null)
             {
-                serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                serviceProviderParameters["consumerGroup"] = CSharpExpressionConverter.ConvertToken(consumerGroup);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput

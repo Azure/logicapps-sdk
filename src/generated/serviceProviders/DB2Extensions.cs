@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IOutputWorkflowAction<DeleteRowOutput> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = ExpressionConverter.ConvertO(table);
-            serviceProviderParameters["searchCondition"] = ExpressionConverter.ConvertO(searchCondition);
+            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
+            serviceProviderParameters["searchCondition"] = CSharpExpressionConverter.ConvertToken(searchCondition);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IOutputWorkflowAction<ExecuteNonQueryOutput> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["statement"] = ExpressionConverter.ConvertO(statement);
+            serviceProviderParameters["statement"] = CSharpExpressionConverter.ConvertToken(statement);
             if (sqlParameters != null)
             {
-                serviceProviderParameters["sqlParameters"] = ExpressionConverter.ConvertO(sqlParameters);
+                serviceProviderParameters["sqlParameters"] = CSharpExpressionConverter.ConvertToken(sqlParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
+            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
             if (queryParameters != null)
             {
-                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
             var serviceProviderParameters = new JObject();
             if (schema != null)
             {
-                serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
+                serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IOutputWorkflowAction<InsertRowOutput> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = ExpressionConverter.ConvertO(table);
-            serviceProviderParameters["insertParameters"] = ExpressionConverter.ConvertO(insertParameters);
+            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
+            serviceProviderParameters["insertParameters"] = CSharpExpressionConverter.ConvertToken(insertParameters);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IBodyWorkflowAction<JToken[]> StoredProcedure(Expression<Func<string>> procedureName, Expression<Func<object>> procedureParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["procedureName"] = ExpressionConverter.ConvertO(procedureName);
+            serviceProviderParameters["procedureName"] = CSharpExpressionConverter.ConvertToken(procedureName);
             if (procedureParameters != null)
             {
-                serviceProviderParameters["procedureParameters"] = ExpressionConverter.ConvertO(procedureParameters);
+                serviceProviderParameters["procedureParameters"] = CSharpExpressionConverter.ConvertToken(procedureParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         public IOutputWorkflowAction<UpdateRowOutput> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = ExpressionConverter.ConvertO(table);
-            serviceProviderParameters["updatedColumns"] = ExpressionConverter.ConvertO(updatedColumns);
-            serviceProviderParameters["searchCondition"] = ExpressionConverter.ConvertO(searchCondition);
+            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
+            serviceProviderParameters["updatedColumns"] = CSharpExpressionConverter.ConvertToken(updatedColumns);
+            serviceProviderParameters["searchCondition"] = CSharpExpressionConverter.ConvertToken(searchCondition);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),

@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
+            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
             if (queryParameters != null)
             {
-                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (setColumns != null)
             {
-                serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+                serviceProviderParameters["setColumns"] = CSharpExpressionConverter.ConvertToken(setColumns);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<JToken[]> DeleteRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = CSharpExpressionConverter.ConvertToken(columnValuesForWhereCondition);
             }
 
             if (primaryKey != null)
             {
-                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = CSharpExpressionConverter.ConvertToken(primaryKey);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -76,20 +76,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null, Expression<Func<object>> queries = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = CSharpExpressionConverter.ConvertToken(columnValuesForWhereCondition);
             }
 
             if (primaryKey != null)
             {
-                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = CSharpExpressionConverter.ConvertToken(primaryKey);
             }
 
             if (queries != null)
             {
-                serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
+                serviceProviderParameters["queries"] = CSharpExpressionConverter.ConvertToken(queries);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2(Expression<Func<string>> tableName, Expression<Func<object>> queries = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (queries != null)
             {
-                serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
+                serviceProviderParameters["queries"] = CSharpExpressionConverter.ConvertToken(queries);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -122,16 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<JToken[]> UpdateRows(Expression<Func<string>> tableName, Expression<Func<object>> setColumns, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = CSharpExpressionConverter.ConvertToken(columnValuesForWhereCondition);
             }
 
-            serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+            serviceProviderParameters["setColumns"] = CSharpExpressionConverter.ConvertToken(setColumns);
             if (primaryKey != null)
             {
-                serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                serviceProviderParameters["primaryKey"] = CSharpExpressionConverter.ConvertToken(primaryKey);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -156,15 +156,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedureName, Expression<Func<object>> storedProcedureParameters = null, Expression<Func<bool>> includeEmptyResultSets = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["storedProcedureName"] = ExpressionConverter.ConvertO(storedProcedureName);
+            serviceProviderParameters["storedProcedureName"] = CSharpExpressionConverter.ConvertToken(storedProcedureName);
             if (storedProcedureParameters != null)
             {
-                serviceProviderParameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(storedProcedureParameters);
+                serviceProviderParameters["storedProcedureParameters"] = CSharpExpressionConverter.ConvertToken(storedProcedureParameters);
             }
 
             if (includeEmptyResultSets != null)
             {
-                serviceProviderParameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(includeEmptyResultSets);
+                serviceProviderParameters["includeEmptyResultSets"] = CSharpExpressionConverter.ConvertToken(includeEmptyResultSets);
             }
             else
             {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsUpdated(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsUpdated", connectionName: connectionId),
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsDeleted", connectionName: connectionId),
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsInserted", connectionName: connectionId),
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified(Expression<Func<string>> tableName)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             var serviceProviderInput = new ServiceProviderOperationInput
             {
                 ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsModified", connectionName: connectionId),

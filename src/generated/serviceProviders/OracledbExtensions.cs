@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
             var serviceProviderParameters = new JObject();
             if (ownedTables != null)
             {
-                serviceProviderParameters["ownedTables"] = ExpressionConverter.ConvertO(ownedTables);
+                serviceProviderParameters["ownedTables"] = CSharpExpressionConverter.ConvertToken(ownedTables);
             }
             else
             {
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
+            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
             if (queryParameters != null)
             {
-                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<int>> skipCount = null, Expression<Func<int>> maxCount = null, Expression<Func<string>> orderBy = null, Expression<Func<string[]>> filterBy = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (columnValuesForWhereCondition != null)
             {
-                serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                serviceProviderParameters["columnValuesForWhereCondition"] = CSharpExpressionConverter.ConvertToken(columnValuesForWhereCondition);
             }
 
             if (skipCount != null)
             {
-                serviceProviderParameters["skipCount"] = ExpressionConverter.ConvertO(skipCount);
+                serviceProviderParameters["skipCount"] = CSharpExpressionConverter.ConvertToken(skipCount);
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
 
             if (maxCount != null)
             {
-                serviceProviderParameters["maxCount"] = ExpressionConverter.ConvertO(maxCount);
+                serviceProviderParameters["maxCount"] = CSharpExpressionConverter.ConvertToken(maxCount);
             }
             else
             {
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
 
             if (orderBy != null)
             {
-                serviceProviderParameters["orderBy"] = ExpressionConverter.ConvertO(orderBy);
+                serviceProviderParameters["orderBy"] = CSharpExpressionConverter.ConvertToken(orderBy);
             }
 
             if (filterBy != null)
             {
-                serviceProviderParameters["filterBy"] = ExpressionConverter.ConvertO(filterBy);
+                serviceProviderParameters["filterBy"] = CSharpExpressionConverter.ConvertToken(filterBy);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -102,10 +102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
             if (setColumns != null)
             {
-                serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+                serviceProviderParameters["setColumns"] = CSharpExpressionConverter.ConvertToken(setColumns);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
@@ -120,10 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedure, Expression<Func<object>> storedProcedureParameters = null)
         {
             var serviceProviderParameters = new JObject();
-            serviceProviderParameters["storedProcedure"] = ExpressionConverter.ConvertO(storedProcedure);
+            serviceProviderParameters["storedProcedure"] = CSharpExpressionConverter.ConvertToken(storedProcedure);
             if (storedProcedureParameters != null)
             {
-                serviceProviderParameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(storedProcedureParameters);
+                serviceProviderParameters["storedProcedureParameters"] = CSharpExpressionConverter.ConvertToken(storedProcedureParameters);
             }
 
             var serviceProviderInput = new ServiceProviderOperationInput
